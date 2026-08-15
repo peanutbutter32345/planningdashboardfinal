@@ -1,0 +1,6 @@
+UPLOAD THESE EXTRACTED FILES/FOLDERS TO THE ROOT OF YOUR GITHUB REPOSITORY.
+
+Do NOT upload an .env file or API key.
+After GitHub upload, deploy the repo as a Render Web Service and add OPENAI_API_KEY in Render > Environment.
+
+If your existing GitHub repo used a custom-domain CNAME file, keep/re-add that CNAME file separately unless you are moving the domain to Render.
