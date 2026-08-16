@@ -6,30 +6,43 @@ import crypto from 'crypto';
 import pg from 'pg';
 import { SOURCES } from './data/sources.js';
 import { SYSTEM_INSTRUCTIONS } from './instructions.js';
- 
+import { PROJECTS } from './data/projects.js';
+import { NEWS_ARTICLES } from './data/news.js';
+import { BOARDS } from './data/boards.js';
+
 dotenv.config();
- 
+
 const app = express();
 const port = Number(process.env.PORT || 3000);
 const model = process.env.OPENAI_MODEL || 'gpt-5-mini';
 const vectorStoreId = (process.env.OPENAI_VECTOR_STORE_ID || '').trim();
 const enableWebSearch = String(process.env.ENABLE_WEB_SEARCH || '').toLowerCase() === 'true';
- 
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+const RESEND_FROM = process.env.RESEND_FROM || 'South Bay Area Planning Dashboard <onboarding@resend.dev>';
+const CRON_SECRET = process.env.CRON_SECRET || '';
+const SITE_URL = process.env.SITE_URL || 'https://southbaydashboard.com';
+
 if (!process.env.OPENAI_API_KEY) {
   console.warn('OPENAI_API_KEY is not set. The site will load, but /api/ask will return a configuration error.');
 }
 if (!process.env.DATABASE_URL) {
   console.warn('DATABASE_URL is not set. The site will load, but /api/register, /api/login, and /api/stars will return a configuration error.');
 }
- 
+if (!RESEND_API_KEY) {
+  console.warn('RESEND_API_KEY is not set. The site will load, but email digests will not be sent.');
+}
+if (!CRON_SECRET) {
+  console.warn('CRON_SECRET is not set. /api/cron/send-digests will refuse all requests until it is.');
+}
+
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'missing-key' });
- 
+
 // ---------------- DATABASE (Render Postgres) ----------------
 const { Pool } = pg;
 const pool = process.env.DATABASE_URL
   ? new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
   : null;
- 
+
 async function initDb() {
   if (!pool) return;
   await pool.query(`
@@ -40,6 +53,10 @@ async function initDb() {
       created_at TIMESTAMPTZ DEFAULT now()
     );
   `);
+  // Safe to run on an existing table - ADD COLUMN IF NOT EXISTS does nothing if already present.
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email TEXT;`);
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email_frequency TEXT NOT NULL DEFAULT 'off';`);
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_digest_sent_at TIMESTAMPTZ;`);
   await pool.query(`
     CREATE TABLE IF NOT EXISTS sessions (
       token TEXT PRIMARY KEY,
@@ -58,19 +75,51 @@ async function initDb() {
       UNIQUE(username, item_type, item_id)
     );
   `);
+  // Tracks the last-known state of every project, so we can detect real changes between digest runs.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS project_snapshots (
+      project_id TEXT PRIMARY KEY,
+      stage TEXT,
+      last_note TEXT,
+      flag TEXT,
+      addr TEXT,
+      city TEXT,
+      updated_at TIMESTAMPTZ DEFAULT now()
+    );
+  `);
+  // Tracks which news article URLs we've already seen, so we can detect genuinely new ones.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS news_seen (
+      url TEXT PRIMARY KEY,
+      title TEXT,
+      first_seen_at TIMESTAMPTZ DEFAULT now()
+    );
+  `);
+  // Tracks boards/get-involved entries so we can detect newly-added ones or changed meeting details.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS board_snapshots (
+      board_id TEXT PRIMARY KEY,
+      name TEXT,
+      when_text TEXT,
+      body TEXT,
+      city TEXT,
+      board_type TEXT,
+      updated_at TIMESTAMPTZ DEFAULT now()
+    );
+  `);
   console.log('Database tables ready.');
 }
 initDb().catch(err => console.error('Failed to initialize database tables:', err));
- 
+
 app.use(express.json({ limit: '4mb' }));
 app.use(express.static('public'));
- 
+
 // ---------------- AUTH HELPERS ----------------
 function requireDb(res) {
   if (!pool) { res.status(503).json({ error: 'DATABASE_URL is not configured on the server yet.' }); return false; }
   return true;
 }
- 
+
 async function authMiddleware(req, res, next) {
   if (!requireDb(res)) return;
   const authHeader = req.headers.authorization || '';
@@ -86,10 +135,10 @@ async function authMiddleware(req, res, next) {
     res.status(500).json({ error: 'Could not verify session.' });
   }
 }
- 
+
 function validUsername(u) { return typeof u === 'string' && /^[a-zA-Z0-9_]{3,20}$/.test(u); }
 function validPassword(p) { return typeof p === 'string' && p.length >= 8 && p.length <= 200; }
- 
+
 // ---------------- AUTH ROUTES ----------------
 app.post('/api/register', async (req, res) => {
   if (!requireDb(res)) return;
@@ -109,7 +158,7 @@ app.post('/api/register', async (req, res) => {
     res.status(500).json({ error: 'Could not create account. Please try again.' });
   }
 });
- 
+
 app.post('/api/login', async (req, res) => {
   if (!requireDb(res)) return;
   const { username, password } = req.body || {};
@@ -127,7 +176,7 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ error: 'Could not log in. Please try again.' });
   }
 });
- 
+
 app.post('/api/logout', authMiddleware, async (req, res) => {
   const authHeader = req.headers.authorization || '';
   const token = authHeader.slice(7);
@@ -139,7 +188,46 @@ app.post('/api/logout', authMiddleware, async (req, res) => {
     res.status(500).json({ error: 'Could not log out.' });
   }
 });
- 
+
+// ---------------- EMAIL DIGEST PREFERENCES ----------------
+const VALID_FREQUENCIES = ['off', 'weekly', 'monthly'];
+function validEmail(e) { return typeof e === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+app.get('/api/account/preferences', authMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT email, email_frequency FROM users WHERE username = $1', [req.username]);
+    if (!result.rows.length) return res.status(404).json({ error: 'Account not found.' });
+    res.json({ email: result.rows[0].email, emailFrequency: result.rows[0].email_frequency });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not load preferences.' });
+  }
+});
+
+app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
+  const { email, emailFrequency } = req.body || {};
+  if (email !== undefined && email !== null && email !== '' && !validEmail(email)) {
+    return res.status(400).json({ error: 'That doesn\'t look like a valid email address.' });
+  }
+  if (emailFrequency !== undefined && !VALID_FREQUENCIES.includes(emailFrequency)) {
+    return res.status(400).json({ error: 'Frequency must be off, weekly, or monthly.' });
+  }
+  try {
+    const fields = [];
+    const values = [];
+    let i = 1;
+    if (email !== undefined) { fields.push(`email = $${i++}`); values.push(email || null); }
+    if (emailFrequency !== undefined) { fields.push(`email_frequency = $${i++}`); values.push(emailFrequency); }
+    if (!fields.length) return res.status(400).json({ error: 'Nothing to update.' });
+    values.push(req.username);
+    await pool.query(`UPDATE users SET ${fields.join(', ')} WHERE username = $${i}`, values);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not save preferences.' });
+  }
+});
+
 // ---------------- STARS ROUTES ----------------
 app.get('/api/stars', authMiddleware, async (req, res) => {
   try {
@@ -153,7 +241,7 @@ app.get('/api/stars', authMiddleware, async (req, res) => {
     res.status(500).json({ error: 'Could not load your starred items.' });
   }
 });
- 
+
 app.post('/api/stars', authMiddleware, async (req, res) => {
   const { itemType, itemId, itemData } = req.body || {};
   if (!itemType || !itemId) return res.status(400).json({ error: 'itemType and itemId are required.' });
@@ -169,7 +257,7 @@ app.post('/api/stars', authMiddleware, async (req, res) => {
     res.status(500).json({ error: 'Could not save star.' });
   }
 });
- 
+
 app.delete('/api/stars/:itemType/:itemId', authMiddleware, async (req, res) => {
   try {
     await pool.query(
@@ -182,14 +270,14 @@ app.delete('/api/stars/:itemType/:itemId', authMiddleware, async (req, res) => {
     res.status(500).json({ error: 'Could not remove star.' });
   }
 });
- 
+
 // ---------------- EXISTING ASK / SOURCES / HEALTH ROUTES (unchanged) ----------------
 const STOP = new Set(['what','which','where','when','why','how','are','the','and','for','with','from','about','this','that','have','does','near','city','project','projects','planning','please','tell','show','into','under','over','most','major']);
- 
+
 function tokens(text='') {
   return String(text).toLowerCase().replace(/[^a-z0-9]+/g,' ').split(/\s+/).filter(w => w.length > 2 && !STOP.has(w));
 }
- 
+
 function rankSources(question, cityLabel) {
   const q = tokens(question);
   const citySources = SOURCES.filter(s => !cityLabel || s.city === cityLabel);
@@ -205,7 +293,7 @@ function rankSources(question, cityLabel) {
   ];
   const boosted = new Set();
   for (const [re,cats] of categoryBoosts) if (re.test(question.toLowerCase())) cats.forEach(c => boosted.add(c));
- 
+
   return citySources.map(s => {
     const hay = `${s.title} ${s.category} ${s.note} ${s.url}`.toLowerCase();
     let score = boosted.has(s.category) ? 8 : 0;
@@ -214,11 +302,11 @@ function rankSources(question, cityLabel) {
     return {source:s, score};
   }).sort((a,b)=>b.score-a.score).slice(0,18).map(x=>x.source);
 }
- 
+
 function projectHaystack(p) {
   return [p.id,p.addr,p.address,p.name,p.type,p.desc,p.description,p.applicant,p.fileNo,p.fileNumber,p.lastNote,p.flag,p.stage].filter(Boolean).join(' ').toLowerCase();
 }
- 
+
 function rankProjects(question, projects=[]) {
   if (!Array.isArray(projects)) return [];
   const q = tokens(question);
@@ -230,16 +318,16 @@ function rankProjects(question, projects=[]) {
     if (/largest|most|biggest/.test(question.toLowerCase()) && Number(p.units || 0) > 0) score += Math.min(Number(p.units)/200, 5);
     return {p,score};
   }).sort((a,b)=>b.score-a.score);
- 
+
   const matched = scored.filter(x=>x.score>0).slice(0,24).map(x=>x.p);
   return matched.length ? matched : scored.slice(0,16).map(x=>x.p);
 }
- 
+
 function cleanHistory(history=[]) {
   if (!Array.isArray(history)) return [];
   return history.slice(-8).filter(m => ['user','assistant'].includes(m?.role) && typeof m?.content === 'string').map(m => ({role:m.role, content:m.content.slice(0,6000)}));
 }
- 
+
 const outputSchema = {
   type:'object',
   additionalProperties:false,
@@ -249,32 +337,32 @@ const outputSchema = {
     resource_ids:{type:'array',items:{type:'string'},maxItems:8}
   }
 };
- 
+
 app.get('/api/health', (_req,res) => {
   res.json({ok:true, model, fileSearch:Boolean(vectorStoreId), webSearch:enableWebSearch, sourceCount:SOURCES.length, database:Boolean(pool)});
 });
- 
+
 app.get('/api/sources', (req,res) => {
   const city = String(req.query.city || '');
   res.json(city ? SOURCES.filter(s=>s.city===city) : SOURCES);
 });
- 
+
 app.post('/api/ask', async (req, res) => {
   try {
     if (!process.env.OPENAI_API_KEY) {
       return res.status(503).json({error:'OPENAI_API_KEY is not configured on the server yet.'});
     }
- 
+
     const question = String(req.body?.question || '').trim();
     const context = req.body?.context || {};
     if (!question) return res.status(400).json({error:'Question is required.'});
     if (question.length > 6000) return res.status(400).json({error:'Question is too long.'});
- 
+
     const cityLabel = String(context.cityLabel || context.cityKey || '').trim();
     const candidateSources = rankSources(question, cityLabel);
     const candidateProjects = rankProjects(question, context.projects || []);
     const history = cleanHistory(req.body?.history || []);
- 
+
     const sourceIndex = candidateSources.map(s => ({id:s.id,title:s.title,category:s.category,note:s.note,url:s.url}));
     const civicContext = {
       selected_city: cityLabel,
@@ -286,11 +374,11 @@ app.post('/api/ask', async (req, res) => {
       },
       candidate_official_sources: sourceIndex
     };
- 
+
     const tools = [];
     if (vectorStoreId) tools.push({type:'file_search', vector_store_ids:[vectorStoreId], max_num_results:8});
     if (enableWebSearch) tools.push({type:'web_search'});
- 
+
     const input = [
       ...history,
       {
@@ -298,7 +386,7 @@ app.post('/api/ask', async (req, res) => {
         content:`CURRENT CIVIC CONTEXT\n${JSON.stringify(civicContext)}\n\nQUESTION\n${question}\n\nReturn an answer plus only the IDs of the official candidate sources that are genuinely relevant. Do not invent source IDs.`
       }
     ];
- 
+
     const response = await openai.responses.create({
       model,
       reasoning:{effort:'low'},
@@ -317,20 +405,20 @@ app.post('/api/ask', async (req, res) => {
       },
       store:false
     });
- 
+
     let parsed;
     try { parsed = JSON.parse(response.output_text); }
     catch { parsed = {answer:response.output_text || 'No answer returned.', resource_ids:[]}; }
- 
+
     const allowed = new Map(candidateSources.map(s=>[s.id,s]));
     const resources = (Array.isArray(parsed.resource_ids) ? parsed.resource_ids : [])
       .map(id=>allowed.get(id)).filter(Boolean).slice(0,8)
       .map(({id,title,url,note,category})=>({id,title,url,note,category}));
- 
+
     if (!resources.length) {
       candidateSources.slice(0,3).forEach(({id,title,url,note,category})=>resources.push({id,title,url,note,category}));
     }
- 
+
     res.json({
       answer:String(parsed.answer || '').trim() || 'No answer returned.',
       resources,
@@ -342,5 +430,203 @@ app.post('/api/ask', async (req, res) => {
     res.status(status >= 400 && status < 600 ? status : 500).json({error:error?.message || 'Unable to answer the question.'});
   }
 });
- 
+
+// ---------------- EMAIL DIGESTS ----------------
+async function sendEmail(to, subject, html) {
+  if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY not configured');
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ from: RESEND_FROM, to: [to], subject, html })
+  });
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(`Resend API error (${res.status}): ${body}`);
+  }
+}
+
+// Compares the current PROJECTS/NEWS_ARTICLES (from the frontend-mirrored data files) against
+// what's stored in the database. First-ever run just seeds the tables silently - it does not
+// treat "every project" as a change, since that would blast every subscriber on day one.
+async function syncSnapshotsAndGetChanges() {
+  const existingCount = await pool.query('SELECT COUNT(*) FROM project_snapshots');
+  const isFirstRun = Number(existingCount.rows[0].count) === 0;
+
+  for (const p of PROJECTS) {
+    const existing = await pool.query('SELECT stage, last_note, flag FROM project_snapshots WHERE project_id = $1', [p.id]);
+    if (!existing.rows.length) {
+      await pool.query(
+        `INSERT INTO project_snapshots (project_id, stage, last_note, flag, addr, city, updated_at) VALUES ($1,$2,$3,$4,$5,$6, $7)`,
+        [p.id, p.stage, p.lastNote, p.flag, p.addr, p.city, isFirstRun ? new Date(0) : new Date()]
+      );
+    } else {
+      const row = existing.rows[0];
+      const changed = row.stage !== p.stage || row.last_note !== p.lastNote || row.flag !== p.flag;
+      if (changed) {
+        await pool.query(
+          `UPDATE project_snapshots SET stage=$1, last_note=$2, flag=$3, updated_at=now() WHERE project_id=$4`,
+          [p.stage, p.lastNote, p.flag, p.id]
+        );
+      }
+    }
+  }
+
+  const existingNewsCount = await pool.query('SELECT COUNT(*) FROM news_seen');
+  const isFirstNewsRun = Number(existingNewsCount.rows[0].count) === 0;
+  for (const a of NEWS_ARTICLES) {
+    const existing = await pool.query('SELECT 1 FROM news_seen WHERE url = $1', [a.url]);
+    if (!existing.rows.length) {
+      await pool.query(
+        `INSERT INTO news_seen (url, title, first_seen_at) VALUES ($1,$2,$3)`,
+        [a.url, a.title, isFirstNewsRun ? new Date(0) : new Date()]
+      );
+    }
+  }
+
+  const existingBoardsCount = await pool.query('SELECT COUNT(*) FROM board_snapshots');
+  const isFirstBoardsRun = Number(existingBoardsCount.rows[0].count) === 0;
+  for (const b of BOARDS) {
+    const existing = await pool.query('SELECT when_text, body FROM board_snapshots WHERE board_id = $1', [b.id]);
+    if (!existing.rows.length) {
+      await pool.query(
+        `INSERT INTO board_snapshots (board_id, name, when_text, body, city, board_type, updated_at) VALUES ($1,$2,$3,$4,$5,$6,$7)`,
+        [b.id, b.name, b.when, b.body, b.city, b.boardType, isFirstBoardsRun ? new Date(0) : new Date()]
+      );
+    } else {
+      const row = existing.rows[0];
+      const changed = row.when_text !== b.when || row.body !== b.body;
+      if (changed) {
+        await pool.query(
+          `UPDATE board_snapshots SET when_text=$1, body=$2, updated_at=now() WHERE board_id=$3`,
+          [b.when, b.body, b.id]
+        );
+      }
+    }
+  }
+}
+
+function digestHtml({ username, starredChanges, otherChanges, newArticles, boardChanges, starredBoardChanges, unsubscribeNote }) {
+  const rowsFor = (items) => items.map(p => `
+    <tr>
+      <td style="padding:10px 0; border-bottom:1px solid #E3E7DB;">
+        <div style="font-weight:700; color:#1A1A1A;">${p.addr}</div>
+        <div style="color:#5B5B5B; font-size:13px; margin-top:2px;">${p.last_note || ''}</div>
+        <div style="color:#8A8A8A; font-size:11px; margin-top:4px; text-transform:uppercase;">${p.city} &middot; ${p.stage}</div>
+      </td>
+    </tr>`).join('');
+  const newsRows = newArticles.map(a => `
+    <tr><td style="padding:8px 0; border-bottom:1px solid #E3E7DB;">
+      <a href="${a.url}" style="color:#3E4F24; font-weight:700; text-decoration:none;">${a.title}</a>
+    </td></tr>`).join('');
+  const boardRows = (items) => items.map(b => `
+    <tr>
+      <td style="padding:10px 0; border-bottom:1px solid #E3E7DB;">
+        <div style="font-weight:700; color:#1A1A1A;">${b.name}</div>
+        <div style="color:#5B5B5B; font-size:13px; margin-top:2px;">${b.when_text || ''}</div>
+        <div style="color:#8A8A8A; font-size:11px; margin-top:4px; text-transform:uppercase;">${b.city}</div>
+      </td>
+    </tr>`).join('');
+
+  return `
+  <div style="font-family:Arial,sans-serif; max-width:600px; margin:0 auto; color:#222;">
+    <div style="background:#3E4F24; padding:20px; color:#fff;">
+      <h1 style="margin:0; font-size:20px;">Your South Bay Area Planning Dashboard update</h1>
+    </div>
+    <div style="padding:20px;">
+      <p>Hi ${username},</p>
+      ${starredChanges.length ? `
+        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px;">Your starred projects</h2>
+        <table width="100%" cellspacing="0">${rowsFor(starredChanges)}</table>
+      ` : ''}
+      ${starredBoardChanges.length ? `
+        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin-top:24px;">Your starred boards</h2>
+        <table width="100%" cellspacing="0">${boardRows(starredBoardChanges)}</table>
+      ` : ''}
+      ${otherChanges.length ? `
+        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin-top:24px;">Other recent developments</h2>
+        <table width="100%" cellspacing="0">${rowsFor(otherChanges)}</table>
+      ` : ''}
+      ${boardChanges.length ? `
+        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin-top:24px;">Ways to get involved</h2>
+        <table width="100%" cellspacing="0">${boardRows(boardChanges)}</table>
+      ` : ''}
+      ${newArticles.length ? `
+        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin-top:24px;">New in the news feed</h2>
+        <table width="100%" cellspacing="0">${newsRows}</table>
+      ` : ''}
+      ${(!starredChanges.length && !otherChanges.length && !newArticles.length && !boardChanges.length && !starredBoardChanges.length) ? '<p>No changes since your last update.</p>' : ''}
+      <p style="margin-top:24px;"><a href="${SITE_URL}" style="color:#0056A0;">Open the dashboard &rarr;</a></p>
+      <p style="color:#8A8A8A; font-size:11px; margin-top:24px;">${unsubscribeNote}</p>
+    </div>
+  </div>`;
+}
+
+// Protected by a shared secret so only your external scheduler (e.g. cron-job.org) can trigger this.
+// Checks EVERY user each time it runs, but only actually emails whoever is individually due -
+// it's meant to be called on a fixed daily schedule regardless of each user's chosen frequency.
+app.post('/api/cron/send-digests', async (req, res) => {
+  if (!requireDb(res)) return;
+  const provided = req.headers['x-cron-secret'] || req.query.secret;
+  if (!CRON_SECRET || provided !== CRON_SECRET) return res.status(401).json({ error: 'Invalid or missing cron secret.' });
+
+  try {
+    await syncSnapshotsAndGetChanges();
+
+    // Interval differs per user's chosen frequency, so filter in JS rather than a single SQL interval.
+    const allCandidates = await pool.query(`
+      SELECT username, email, email_frequency, last_digest_sent_at, created_at FROM users
+      WHERE email_frequency != 'off' AND email IS NOT NULL
+    `);
+    const now = Date.now();
+    const due = allCandidates.rows.filter(u => {
+      const intervalMs = (u.email_frequency === 'weekly' ? 7 : 30) * 24 * 60 * 60 * 1000;
+      const last = u.last_digest_sent_at ? new Date(u.last_digest_sent_at).getTime() : new Date(u.created_at).getTime();
+      return !u.last_digest_sent_at ? true : (now - last) >= intervalMs;
+    });
+
+    let sent = 0, failed = 0;
+    for (const u of due) {
+      const since = u.last_digest_sent_at || u.created_at;
+      const changed = await pool.query('SELECT * FROM project_snapshots WHERE updated_at > $1 ORDER BY updated_at DESC', [since]);
+      const newArticles = await pool.query('SELECT * FROM news_seen WHERE first_seen_at > $1 ORDER BY first_seen_at DESC', [since]);
+      const boardsChanged = await pool.query('SELECT * FROM board_snapshots WHERE updated_at > $1 ORDER BY updated_at DESC', [since]);
+      const starred = await pool.query(`SELECT item_type, item_id FROM stars WHERE username = $1`, [u.username]);
+      const starredProjectIds = new Set(starred.rows.filter(r => r.item_type === 'project').map(r => r.item_id));
+      const starredBoardIds = new Set(starred.rows.filter(r => r.item_type === 'board').map(r => r.item_id));
+
+      const starredChanges = changed.rows.filter(r => starredProjectIds.has(r.project_id));
+      const otherChanges = changed.rows.filter(r => !starredProjectIds.has(r.project_id)).slice(0, 15);
+      const starredBoardChanges = boardsChanged.rows.filter(r => starredBoardIds.has(r.board_id));
+      const boardChanges = boardsChanged.rows.filter(r => !starredBoardIds.has(r.board_id)).slice(0, 10);
+
+      if (!starredChanges.length && !otherChanges.length && !newArticles.rows.length && !boardChanges.length && !starredBoardChanges.length) {
+        // Nothing to report - still counts as "checked", update the timestamp so we don't re-check daily.
+        await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [u.username]);
+        continue;
+      }
+
+      try{
+        const html = digestHtml({
+          username: u.username,
+          starredChanges, otherChanges,
+          newArticles: newArticles.rows,
+          boardChanges, starredBoardChanges,
+          unsubscribeNote: `You're getting this because your account is set to ${u.email_frequency} updates. Change this anytime from your Account page.`,
+        });
+        await sendEmail(u.email, 'Your South Bay Area Planning Dashboard update', html);
+        await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [u.username]);
+        sent++;
+      } catch (err) {
+        console.error(`Failed to send digest to ${u.username}:`, err.message);
+        failed++;
+      }
+    }
+
+    res.json({ ok: true, checked: allCandidates.rows.length, due: due.length, sent, failed });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Digest run failed: ' + err.message });
+  }
+});
+
 app.listen(port, () => console.log(`South Bay Planning AI running at http://localhost:${port}`));
