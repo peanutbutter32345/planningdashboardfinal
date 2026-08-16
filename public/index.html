@@ -296,6 +296,9 @@
 
   /* ---- Auth / Account ---- */
   .auth-tabs{display:flex; gap:8px; margin:18px 0 20px; border-bottom:2px solid var(--rule);}
+  .prefs-panel{background:var(--paper-2); border-radius:6px; padding:18px 20px; margin-bottom:24px;}
+  .prefs-panel h3{font-size:15px; margin-bottom:6px;}
+  .prefs-panel input[type="email"], .prefs-panel select{width:100%; max-width:340px; padding:9px 11px; border:1.5px solid var(--ink); border-radius:3px; font-family:'Open Sans',sans-serif; font-size:13.5px; display:block; margin-top:6px;}
   #accountPromptReason{background:var(--paper-2); border-left:4px solid var(--ink); border-radius:4px; padding:12px 14px; margin:14px 0; font-size:13px; color:var(--text);}
   .auth-tab{font-family:'Open Sans',sans-serif; font-size:13.5px; font-weight:700; padding:10px 4px; background:none; border:none; border-bottom:3px solid transparent; color:var(--text-soft); cursor:pointer; margin-bottom:-2px;}
   .auth-tab.active{color:var(--ink); border-bottom-color:var(--ink);}
@@ -609,6 +612,20 @@
         <div class="account-head">
           <h2>Hi, <span id="accountUsername"></span></h2>
           <button class="btn secondary" id="logoutBtn" type="button">Log out</button>
+        </div>
+        <div class="prefs-panel">
+          <h3>Email updates</h3>
+          <p class="section-note">Get a summary of new developments - and anything you've starred that changed - sent to your inbox as often as you like.</p>
+          <label for="prefsEmail" class="onboard-label">Email address</label>
+          <input id="prefsEmail" type="email" placeholder="you@example.com" autocomplete="email" />
+          <label for="prefsFrequency" class="onboard-label" style="margin-top:12px;">How often</label>
+          <select id="prefsFrequency">
+            <option value="off">Off</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+          <button class="btn" id="prefsSaveBtn" type="button" style="margin-top:12px;">Save preferences</button>
+          <div class="auth-error" id="prefsStatus" role="status" aria-live="polite"></div>
         </div>
         <div id="starredContent"></div>
       </div>
@@ -2355,6 +2372,8 @@ async function apiLogin(username, password){ return apiCall('/api/login', {metho
 async function apiGetStars(){ return apiCall('/api/stars'); }
 async function apiAddStar(itemType, itemId, itemData){ return apiCall('/api/stars', {method:'POST', body:JSON.stringify({itemType,itemId,itemData})}); }
 async function apiRemoveStar(itemType, itemId){ return apiCall('/api/stars/'+encodeURIComponent(itemType)+'/'+encodeURIComponent(itemId), {method:'DELETE'}); }
+async function apiGetPreferences(){ return apiCall('/api/account/preferences'); }
+async function apiSavePreferences(email, emailFrequency){ return apiCall('/api/account/preferences', {method:'PATCH', body:JSON.stringify({email, emailFrequency})}); }
 
 function setAuthSession(token, username){
   authToken = token; authUsername = username;
@@ -2425,6 +2444,13 @@ async function renderAccountPage(){
   }
   loggedOut.style.display='none'; loggedIn.style.display='block';
   document.getElementById('accountUsername').textContent = authUsername;
+  try{
+    const prefs = await apiGetPreferences();
+    document.getElementById('prefsEmail').value = prefs.email || '';
+    document.getElementById('prefsFrequency').value = prefs.emailFrequency || 'off';
+  } catch(err){
+    document.getElementById('prefsStatus').textContent = "Couldn't load your email preferences: " + err.message;
+  }
   const container = document.getElementById('starredContent');
   container.innerHTML = '<div class="starred-empty">Loading your starred items…</div>';
   try{
@@ -2498,6 +2524,18 @@ document.getElementById('signupForm').addEventListener('submit', async (e)=>{
 document.getElementById('logoutBtn').addEventListener('click', ()=>{
   clearAuthSession();
   renderAccountPage();
+});
+document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
+  const statusEl = document.getElementById('prefsStatus');
+  const email = document.getElementById('prefsEmail').value.trim();
+  const emailFrequency = document.getElementById('prefsFrequency').value;
+  statusEl.textContent = 'Saving…';
+  try{
+    await apiSavePreferences(email || null, emailFrequency);
+    statusEl.textContent = 'Saved \u2713';
+  } catch(err){
+    statusEl.textContent = "Couldn't save: " + err.message;
+  }
 });
 
 renderAuthNavState();
