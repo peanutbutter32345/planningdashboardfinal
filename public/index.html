@@ -978,6 +978,7 @@ const CU_DATA = [
 {id:'cu-deanza', addr:'10710 S De Anza Blvd - Mixed Use Development', lat:37.3126, lng:-122.0319, cat:'dev', type:'Mixed Use', desc:'SB330 preliminary application for 100 residential units and ~5,505 sf commercial space at De Anza Blvd and Bollinger Rd.', units:100, bmr:null, applicant:'Chao Wu, Apricot Village LLC', filed:'2026-07-16', stage:'proposed', lastDate:'2026-07-16', lastNote:'SB330 preliminary application received; no formal application yet.', fileNo:'SB330 Prelim', flag:null},
 {id:'cu-vista', addr:'Vista Heights (Former McDonald Dorsa Quarry)', lat:37.2965, lng:-122.0844, cat:'dev', type:'Residential', desc:'Builder\'s Remedy project proposing 33 units and a private recreation center in the hillside quarry area.', units:33, bmr:null, applicant:'Builder\'s Remedy applicant', filed:'2023-01-01', stage:'review', lastDate:'2025-01-22', lastNote:'Deemed incomplete even after a resubmittal, per January 2025 city update - not yet approved to move forward.', fileNo:"Builder's Remedy", flag:'Location is approximate (hillside quarry area); exact parcel boundary not confirmed here.'},
 {id:'cu-scofield', addr:'20739 Scofield Dr', lat:37.3213, lng:-122.0367, cat:'dev', type:'Residential', desc:'Builder\'s Remedy housing project proposal.', units:null, bmr:null, applicant:"Builder's Remedy applicant", filed:'2023-01-01', stage:'review', lastDate:'2025-01-22', lastNote:'Deemed incomplete even after a resubmittal, per January 2025 city update.', fileNo:"Builder's Remedy", flag:'Unit count not specified in the available public record.'},
+{id:'cu-scofield-20783', addr:'20783 Scofield Dr', lat:37.3212, lng:-122.0378, cat:'dev', type:'Residential', desc:'Separate Builder\'s Remedy housing project proposal on a different Scofield Drive parcel than the 20739 Scofield project above - one of the most contested Builder\'s Remedy filings in the city.', units:null, bmr:null, applicant:"Builder's Remedy applicant", filed:'2024-01-01', stage:'review', lastDate:'2024-01-01', lastNote:'City issued an incompleteness letter. Hundreds of residents from the surrounding neighborhood gathered at Faria Elementary School for an organized petition signing opposing the project.', fileNo:"Builder's Remedy - Incomplete", flag:'Unit count not specified in the available public record. This project drew unusually large organized community opposition compared to most Builder\'s Remedy filings.'},
 {id:'cu-stevens-inactive', addr:'20015 Stevens Creek Blvd', lat:37.3238, lng:-122.0235, cat:'dev', type:'Mixed Use', desc:'Builder\'s Remedy proposal: five-story building with 141 units replacing three commercial buildings.', units:141, bmr:null, applicant:'Acclaim Properties', filed:'2023-05-08', stage:'review', lastDate:'2023-09-27', lastNote:'SB330 preapplication 5/8/23; formal application 9/27/23.', fileNo:'DP-2023-005', flag:'Marked INACTIVE by the city - application is no longer moving forward.'},
 {id:'cu-dolores-expired', addr:'21911 Dolores Ave', lat:37.3167, lng:-122.0578, cat:'dev', type:'Residential', desc:'Builder\'s Remedy proposal: 5 townhome units (4 market-rate, 1 low-income) replacing one single-family home.', units:5, bmr:1, applicant:'TDDG, LLC', filed:'2024-04-15', stage:'proposed', lastDate:'2024-10-12', lastNote:'SB330 preliminary application submitted 4/15/24.', fileNo:"Builder's Remedy Prelim", flag:'SB330 vesting EXPIRED 10/12/2024 - no formal application was ever submitted within the 180-day window.'},
 {id:'cu-wolfe-teacher', addr:'10333 N Wolfe Rd - Wolfe Road Teacher Housing', lat:37.3309, lng:-122.0163, cat:'dev', type:'Residential', desc:'250 affordable educator (teacher/staff) housing units across seven buildings on a 5.16-acre site, acquired by Santa Clara County via a land swap with Apple.', units:250, bmr:250, applicant:'Santa Clara County / Eden Housing', filed:'2024-01-01', stage:'review', lastDate:'2026-03-17', lastNote:'City Council study session held 3/17/26. Funded by the 2016 Measure A Affordable Housing Bond - nearly 10 years after passage. 27 community engagement sessions held.', fileNo:'Housing Element Site', flag:null},
@@ -988,6 +989,7 @@ const CU_DATA = [
 {id:'cu-dividend-1', addr:'20085 & 20111 Stevens Creek Blvd - Dividend Homes Phase 1', lat:37.3234, lng:-122.0248, cat:'dev', type:'Residential', desc:'Demolition of existing office buildings for 10 new residential buildings totaling 57 townhomes (11 below-market-rate, 46 market-rate), up to three stories, with 124 vehicle and 8 bicycle parking spaces.', units:57, bmr:11, applicant:'Dividend Homes', filed:'2024-01-01', stage:'approved', lastDate:'2024-06-01', lastNote:'Approved via statutory CEQA exemption (PRC Section 21080.66) for projects under 20 acres in an incorporated city.', fileNo:'Statutory Exemption', flag:'Approval date is approximate - exact date not specified in the available record.'},
 ];
 const CU_FEED = [
+  {date:'2024-01-01', id:'cu-scofield-20783', title:'20783 Scofield Dr - Major community opposition', body:'Hundreds of residents petitioned against this Builder\'s Remedy proposal.'},
   {date:'2025-12-17', id:'cu-idlewild', title:'Idlewild Townhomes - Approved', body:'65 total units (55 townhomes + 10 ADUs) cleared via CEQA exemption.'},
   {date:'2025-08-19', id:'cu-bandley', title:'Bandley Center - New preliminary filing', body:'27 townhomes proposed; existing small businesses would not return.'},
   {date:'2025-07-09', id:'cu-stevens-20840', title:'20840 Stevens Creek Blvd - Approved', body:'59 townhome condos clear CEQA exemption, replacing 3 commercial buildings.'},
@@ -1031,12 +1033,16 @@ const MV_DATA = [
 {id:'mv-rengstorff-901', addr:'901, 913 &amp; 987 N Rengstorff Ave', lat:37.4176, lng:-122.0929, cat:'dev', type:'Residential', desc:'15-story, 455-unit apartment development with 20% affordable units above an at-grade parking garage, replacing a duplex and removing 20 heritage trees.', units:455, bmr:91, applicant:'Mario L. Ambra', filed:'2025-01-01', stage:'approved', lastDate:'2025-11-18', lastNote:'City Council approved 11/18/25; processed under the Builder\'s Remedy provisions of the Housing Accountability Act.', fileNo:"Builder's Remedy", flag:null},
 {id:'mv-moffett-400', addr:'400 Moffett Blvd', lat:37.3995, lng:-122.0753, cat:'dev', type:'Mixed Use', desc:'6-story, mixed-use development with 175 apartment units and 2,077 sf of ground-floor commercial space, replacing an existing commercial building.', units:175, bmr:null, applicant:'Prometheus Real Estate Group', filed:'2025-01-01', stage:'approved', lastDate:'2025-08-27', lastNote:'Zoning Administrator approved 8/27/25.', fileNo:'ZA Approval', flag:null},
 {id:'mv-google-middlefield', addr:'Middlefield Rd &amp; Ellis St - Google Middlefield Park Master Plan', lat:37.3959, lng:-122.0539, cat:'dev', type:'Mixed Use', desc:'Master plan for up to 1,900 residential units (15%+ affordable), 1.317M sf of office space, ~7 acres of dedicated public parkland, and 50,000 sf of ground-floor commercial, replacing office/industrial buildings on a 40-acre site.', units:1900, bmr:285, applicant:'Google', filed:'2021-01-01', stage:'approved', lastDate:'2025-06-02', lastNote:'Google ended its partnership with developer Lendlease on this project in late 2023, then confirmed in June 2025 it is exploring selling the Middlefield Park property outright rather than building it out itself. As of August 2026, Google has not provided an update on the property\'s status.', fileNo:'Master Plan', flag:'The entitlement is still approved, but the entity that would build it may no longer be Google - a genuine change in likelihood, not just staleness.'},
+{id:'mv-linkedin-campus', addr:'700 &amp; 800 E Middlefield Rd - LinkedIn Campus Update', lat:37.3921, lng:-122.0480, cat:'dev', type:'Commercial', desc:'28.7-acre corporate campus update: 3 new 6-story office buildings, 2 new parking garages (one level below-grade), retaining 3 existing 2-story buildings, removing all surface parking, and removing approximately 135 heritage trees.', units:null, bmr:null, applicant:'LinkedIn Corporation', filed:'2018-01-01', stage:'construction', lastDate:'2018-11-27', lastNote:'Approved by City Council 11/27/18, including a 10-year Development Agreement.', fileNo:'Council Approval', flag:null},
+{id:'mv-hopestreet-lots', addr:'Hope St (Lots 4 &amp; 8) - Hope Street Lots', lat:37.3943, lng:-122.0773, cat:'dev', type:'Mixed Use', desc:'Two former downtown city parking lots being redeveloped: Lot 4 gets a 5-story, 179-room hotel (Joie de Vivre) with underground parking, a restaurant, bar, and cafe; Lot 8 gets a 4-story mixed-use building with 49,000 sf of office and 3,500 sf of ground-floor retail.', units:null, bmr:null, applicant:'The Robert Green Company', filed:'2015-03-01', stage:'approved', lastDate:'2026-03-24', lastNote:'Entitlements approved in November 2018, but the project has faced repeated financing delays - City Council most recently extended the developer\'s financing deadline to March 31, 2026.', fileNo:'DDA - Hope St Lots', flag:'Approved in 2018, still not under construction nearly 8 years later - one of the most delayed projects in this tracker.'},
 ];
 const MV_FEED = [
   {date:'2025-11-18', id:'mv-rengstorff-901', title:'901 N Rengstorff Ave - Approved', body:'455-unit tower (20% affordable) approved via Builder\'s Remedy.'},
   {date:'2025-04-08', id:'mv-tyrella-294', title:'294-296 Tyrella Ave - Approved, more than doubled in size', body:'A 33-unit proposal became an 80-unit approved condo building.'},
   {date:'2024-12-17', id:'mv-middlefield-675', title:'675-685 E Middlefield Rd - Approved', body:'836 total units (150 affordable) plus a 275,200 sf office building.'},
   {date:'2024-11-19', id:'mv-fayette-2645', title:'2645 Fayette Dr - Approved', body:'70-unit condo building approved via Builder\'s Remedy.'},
+  {date:'2026-03-24', id:'mv-hopestreet-lots', title:'Hope Street Lots - Financing extended again', body:'179-room hotel + office/retail project, approved since 2018, still awaiting construction financing.'},
+  {date:'2018-11-27', id:'mv-linkedin-campus', title:'LinkedIn Campus - Approved, now under construction', body:'28.7-acre corporate campus update with a 10-year Development Agreement.'},
   {date:'2025-06-02', id:'mv-google-middlefield', title:'Google Middlefield Park - Google explores selling the site', body:'After ending its Lendlease partnership, Google confirmed it may sell rather than build the approved 1,900-unit master plan.'},
   {date:'2022-11-15', id:'mv-google-middlefield', title:'Google Middlefield Park - Master Plan adopted', body:'Up to 1,900 units approved on a 40-acre site, 20-year agreement.'},
   {date:'2025-06-10', id:'mv-sanantonio-village', title:'San Antonio Village Center - Approved', body:'New office building using transferred development rights from the school district.'},
@@ -1124,6 +1130,55 @@ const LA_JOIN = [
 ];
 const LA_SOURCES = ['City of Los Altos - Agendas and Minutes (CivicClerk)', 'City of Los Altos - Development Project List (uploaded city data export)', 'CEQAnet, Los Altos Housing Element filings', 'EAH Housing, Mountain View Voice, and Los Altos Online reporting, 2020-2026'];
 
+// ============== SARATOGA ==============
+const SAR_DATA = [
+{id:'sar-village-parking', addr:'Historic Saratoga Village (Downtown)', lat:37.2581, lng:-122.0333, cat:'infra', type:'Public Facility', desc:'Modernization of parking layout and accessibility across downtown Saratoga Village.', units:null, bmr:null, applicant:'City of Saratoga', filed:'2025-01-01', stage:'construction', lastDate:'2026-01-01', lastNote:'A $5 million infrastructure investment.', fileNo:'CIP - Village Parking', flag:null},
+{id:'sar-bellgrove-park', addr:'Bellgrove Park', lat:37.2763, lng:-122.0052, cat:'infra', type:'Public Facility', desc:'Park redesign concept aimed at community enhancements, steered by the Parks and Recreation Commission.', units:null, bmr:null, applicant:'City of Saratoga', filed:'2025-01-01', stage:'proposed', lastDate:'2026-01-01', lastNote:'Active concept design phase.', fileNo:'Parks &amp; Rec Project', flag:null},
+{id:'sar-marshall-barn', addr:'Heritage Orchard (Marshall Ln barn relocation)', lat:37.2688, lng:-122.0152, cat:'infra', type:'Public Facility', desc:'Physical relocation of a historic barn structure from Marshall Lane onto the municipal Heritage Orchard site.', units:null, bmr:null, applicant:'City of Saratoga', filed:'2025-01-01', stage:'construction', lastDate:'2026-01-01', lastNote:'Active relocation underway.', fileNo:'Heritage Project', flag:null},
+{id:'sar-library-parking', addr:'13650 Saratoga Ave - Library Parking Lot Expansion', lat:37.2701, lng:-122.0151, cat:'infra', type:'Public Facility', desc:'Expansion of the parking lot at the Saratoga branch library to increase capacity.', units:null, bmr:null, applicant:'City of Saratoga', filed:'2025-01-01', stage:'construction', lastDate:'2026-01-01', lastNote:'Construction underway.', fileNo:'CIP - Library Parking', flag:null},
+{id:'sar-oakplace-14486', addr:'14486 Oak Pl', lat:37.2578, lng:-122.0297, cat:'dev', type:'Residential', desc:'4-unit residential development filed under the Builder\'s Remedy provisions of the Housing Accountability Act.', units:4, bmr:null, applicant:'Private developer', filed:'2024-01-01', stage:'review', lastDate:'2024-01-01', lastNote:'One of several Builder\'s Remedy applications filed after Saratoga\'s Housing Element certification gap.', fileNo:"Builder's Remedy", flag:'Affordability split not specified in the available record.'},
+{id:'sar-pierce-masson', addr:'Pierce Rd - Masson Estates', lat:37.2595, lng:-122.0580, cat:'dev', type:'Residential', desc:'25-unit residential development filed under the Builder\'s Remedy provisions, contested by neighbors and appealed to the City Council.', units:25, bmr:null, applicant:'Private developer', filed:'2024-01-01', stage:'review', lastDate:'2025-01-01', lastNote:'Appealed to City Council after initial review - one of the more contested Builder\'s Remedy filings in the city.', fileNo:"Builder's Remedy - Appealed", flag:'Exact parcel location is approximate - Pierce Road spans a large hillside area; verify exact site with the city.'},
+{id:'sar-allendale-18580', addr:'18580 Allendale Ave', lat:37.2650, lng:-122.0100, cat:'dev', type:'Residential', desc:'Residential development filed under the Builder\'s Remedy provisions.', units:null, bmr:null, applicant:'Private developer', filed:'2024-01-01', stage:'review', lastDate:'2024-01-01', lastNote:'One of Saratoga\'s Builder\'s Remedy filings following the Housing Element certification gap.', fileNo:"Builder's Remedy", flag:'Unit count not specified in the available record.'},
+];
+const SAR_FEED = [
+  {date:'2026-01-01', id:'sar-village-parking', title:'Village Parking Districts - Under construction', body:'$5 million downtown parking modernization project.'},
+  {date:'2025-01-01', id:'sar-pierce-masson', title:'Pierce Rd (Masson Estates) - Appealed to Council', body:'25-unit Builder\'s Remedy project contested by neighbors.'},
+];
+const SAR_DECIDERS = [
+  {name:'Planning Commission', when:'Check current agenda', body:'Reviews development applications, including the city\'s active Builder\'s Remedy filings.', link:'https://www.saratoga.ca.us/'},
+  {name:'City Council', when:'Check current agenda', body:'Final decision-maker on appeals, including the contested Pierce Road/Masson Estates project.', link:'https://www.saratoga.ca.us/'},
+];
+const SAR_JOIN = [
+  {name:'Parks and Recreation Commission', when:'Check current agenda', body:'Steers park redesign projects like Bellgrove Park.', cat:'Civic', link:'https://www.saratoga.ca.us/'},
+];
+const SAR_SOURCES = ['City of Saratoga - Current Projects page', 'City of Saratoga - Builder\'s Remedy Projects tracking page', 'The Real Deal reporting on Saratoga\'s Builder\'s Remedy deadline, 2024', 'City of Saratoga Planning Commission meeting summaries, 2026'];
+
+// ============== WEST SAN JOSE ==============
+const WSJ_DATA = [
+{id:'wsj-meridian-3896', addr:'3896 Stevens Creek Blvd - Meridian', lat:37.3229, lng:-121.9694, cat:'dev', type:'Mixed Use', desc:'Two 8-story buildings replacing a small retail center: 575 apartments (including 29 very-low-income units) plus 14,000 sf of ground-floor retail. Approved under San Jose\'s streamlined ministerial ordinance.', units:575, bmr:29, applicant:'Holland Partner Group', filed:'2026-01-01', stage:'approved', lastDate:'2026-07-01', lastNote:'Final approval granted July 2026.', fileNo:'Streamlined Ministerial Approval', flag:null},
+{id:'wsj-elpaseo-1777', addr:'1777 Saratoga Ave - El Paseo Mixed-Use Village', lat:37.2901, lng:-121.9945, cat:'dev', type:'Mixed Use', desc:'A "Signature Project" replacing aging commercial space with 77 multi-family units across 10-12 story structures, a 7-story senior care facility, a new Whole Foods market, and 3.5 acres of public open space.', units:77, bmr:null, applicant:'Private developer', filed:'2024-01-01', stage:'construction', lastDate:'2026-03-01', lastNote:'Broke ground March 2026.', fileNo:'Signature Project', flag:'Affordability split not specified in the available record.'},
+{id:'wsj-winchester-1073', addr:'1073 S Winchester Blvd', lat:37.3072, lng:-121.9504, cat:'dev', type:'Mixed Use', desc:'Residential infill project introducing high-density apartments with integrated street-level commercial space, near the Santa Clara border.', units:null, bmr:null, applicant:'Private developer', filed:'2025-01-01', stage:'approved', lastDate:'2025-01-01', lastNote:'Approved by the city.', fileNo:'Council Approval', flag:'Unit count not specified in the available record.'},
+{id:'wsj-bascom-station', addr:'S Bascom Ave (Bascom Station / Dick\'s Center)', lat:37.2960, lng:-121.9530, cat:'dev', type:'Mixed Use', desc:'Transit-accessible mixed-use community reshaping the South Bascom Avenue corridor, replacing underutilized retail structures.', units:null, bmr:null, applicant:'Private developer', filed:'2025-01-01', stage:'approved', lastDate:'2025-01-01', lastNote:'Approved and active.', fileNo:'Council Approval', flag:'Exact address and unit count not specified in the available record - shown at an approximate S. Bascom Ave location.'},
+{id:'wsj-olin-hotel', addr:'425 S Winchester Blvd - Olin Hotel', lat:37.3208, lng:-121.9506, cat:'dev', type:'Commercial', desc:'Mid-rise boutique hotel serving the Winchester/Stevens Creek retail and tech corridor.', units:null, bmr:null, applicant:'Private developer', filed:'2025-01-01', stage:'approved', lastDate:'2025-01-01', lastNote:'Approved by the city.', fileNo:'Council Approval', flag:null},
+{id:'wsj-agrihood-76', addr:'76 N Winchester Blvd - Agrihood', lat:37.3257, lng:-121.9514, cat:'dev', type:'Residential', desc:'Urban-agricultural senior community: 163 affordable units for seniors built around a 1.5-acre operational farm and public park space.', units:163, bmr:163, applicant:'Private/nonprofit developer', filed:'2023-01-01', stage:'completed', lastDate:'2026-01-01', lastNote:'Recently completed.', fileNo:'Completed Project', flag:'Sits right at the San Jose/Santa Clara boundary - mapping services may label the address as Santa Clara.'},
+{id:'wsj-costco-westgate', addr:'5287 Prospect Rd - Costco Wholesale (Westgate West)', lat:37.2939, lng:-121.9949, cat:'dev', type:'Commercial', desc:'165,148 sf wholesale warehouse with a rooftop parking deck at the corner of Lawrence Expressway, replacing part of the Westgate West shopping center.', units:null, bmr:null, applicant:'Costco Wholesale', filed:'2024-01-01', stage:'approved', lastDate:'2026-01-01', lastNote:'Approved following the dismissal of local environmental lawsuits in early 2026.', fileNo:'Council Approval', flag:null},
+{id:'wsj-saratoga-urbanvillage', addr:'Saratoga Ave &amp; Lawrence Expy - Saratoga Avenue Urban Village Plan', lat:37.2893, lng:-121.9947, cat:'dev', type:'Mixed Use', desc:'Master plan governing 333 acres between Highway 280 and Lawrence Expressway - up to 1,620 new homes and 2,400 jobs at full build-out.', units:1620, bmr:null, applicant:'City of San Jose', filed:'2020-01-01', stage:'approved', lastDate:'2026-01-01', lastNote:'Formally integrated into city planning guidelines as an Urban Village.', fileNo:'Urban Village Plan', flag:'This is a planning-area master plan, not a single building - individual projects within it are approved separately.'},
+];
+const WSJ_FEED = [
+  {date:'2026-07-01', id:'wsj-meridian-3896', title:'3896 Stevens Creek Blvd (Meridian) - Final approval', body:'575 apartments across two 8-story buildings, including 29 very-low-income units.'},
+  {date:'2026-03-01', id:'wsj-elpaseo-1777', title:'El Paseo Mixed-Use Village - Groundbreaking', body:'77 units, a senior care facility, and a new Whole Foods break ground.'},
+  {date:'2026-01-01', id:'wsj-costco-westgate', title:'Westgate West Costco - Approved', body:'165,148 sf warehouse approved after environmental lawsuits were dismissed.'},
+];
+const WSJ_DECIDERS = [
+  {name:'Planning Commission', when:'Check current agenda', body:'Reviews development applications for the West San Jose area alongside the rest of the city.', link:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division'},
+  {name:'City Council (District 1 &amp; 6)', when:'Check current agenda', body:'West San Jose is represented by Council Districts 1 and 6 - check which applies to a specific project.', link:'https://www.sanjoseca.gov/your-government/departments-offices/mayor-and-city-council'},
+];
+const WSJ_JOIN = [
+  {name:'District 1 Planning &amp; Policy', when:'Check current agenda', body:'District office tracking projects and policy specific to West San Jose.', cat:'Civic', link:'https://www.sanjoseca.gov/your-government/departments-offices/mayor-and-city-council/district-1/projects-and-policy/planning'},
+];
+const WSJ_SOURCES = ['City of San Jose - Major Development Projects page', 'City of San Jose - Urban Villages planning pages', 'SF YIMBY and Urbanize SF reporting, 2026', 'City of San Jose District 1 planning and policy office'];
+
+
 
 const CITIES = {
   sunnyvale: {label:'Sunnyvale', center:{lat:37.383,lng:-122.020}, zoom:12, bbox:{minLat:37.34,maxLat:37.43,minLng:-122.06,maxLng:-121.97}, data:SV_DATA, feed:SV_FEED, deciders:SV_DECIDERS, join:SV_JOIN, sources:SV_SOURCES, note:'Sample of 9 records from a fuller ~30-project city dataset - see the full single-city Sunnyvale build for the complete version.',
@@ -1157,8 +1212,41 @@ const CITIES = {
       {label:'Development Project List', url:'https://www.losaltosca.gov/222/Development-Project-Lists'},
       {label:'Agendas and Minutes', url:'https://losaltosca.portal.civicclerk.com/'},
     ]},
+  saratoga: {label:'Saratoga', center:{lat:37.264,lng:-122.023}, zoom:12.5, bbox:{minLat:37.24,maxLat:37.29,minLng:-122.07,maxLng:-121.99}, data:SAR_DATA, feed:SAR_FEED, deciders:SAR_DECIDERS, join:SAR_JOIN, sources:SAR_SOURCES, note:'Small sample - Saratoga has filed numerous additional Builder\'s Remedy applications (Chester/Allendale, Chiquita Ct, Douglass Ln, Mt Eden Rd, Parker Ranch Rd, Quito Rd, Surrey Ln, Three Oaks Way, Vickery Ave, and more) not individually tracked here due to incomplete address/unit data - see the official tracking page for the full list.',
+    ctaLinks:[
+      {label:'Official Saratoga projects dashboard (GIS)', url:'https://www.arcgis.com/apps/dashboards/563a108925a14dd9882e716242cb4502'},
+      {label:"Builder's Remedy Projects tracking page", url:'https://www.saratoga.ca.us/603/Builders-Remedy-Projects'},
+      {label:'Current Projects', url:'https://www.saratoga.ca.us/649/Current-Projects'},
+    ]},
+  westsanjose: {label:'West San Jose', center:{lat:37.305,lng:-121.975}, zoom:12.5, bbox:{minLat:37.28,maxLat:37.335,minLng:-121.999,maxLng:-121.945}, data:WSJ_DATA, feed:WSJ_FEED, deciders:WSJ_DECIDERS, join:WSJ_JOIN, sources:WSJ_SOURCES, note:'"West San Jose" is a district within the City of San Jose, not a separate incorporated city - San Jose itself is enormous (~1 million residents), so this sample deliberately covers only the Stevens Creek/Winchester/Saratoga Ave corridor, not the whole city.',
+    ctaLinks:[
+      {label:'Official San Jose major projects map (GIS)', url:'https://csj.maps.arcgis.com/apps/instant/attachmentviewer/index.html?appid=95eb2c4821e54ff7b19a55278e742f85'},
+      {label:'Major Development Projects', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects'},
+      {label:'District 1 planning & policy', url:'https://www.sanjoseca.gov/your-government/departments-offices/mayor-and-city-council/district-1/projects-and-policy/planning'},
+    ]},
 };
 let currentCity = 'sunnyvale';
+
+// "All Cities" - a real aggregation of every tracked city's data, not a separate dataset.
+// Built after all individual cities above are defined so it can safely reference them.
+CITIES.all = {
+  label: 'All Cities',
+  center: {lat: 37.34, lng: -122.02},
+  zoom: 10.3,
+  bbox: {
+    minLat: Math.min(...Object.values(CITIES).map(c=>c.bbox.minLat)),
+    maxLat: Math.max(...Object.values(CITIES).map(c=>c.bbox.maxLat)),
+    minLng: Math.min(...Object.values(CITIES).map(c=>c.bbox.minLng)),
+    maxLng: Math.max(...Object.values(CITIES).map(c=>c.bbox.maxLng)),
+  },
+  data: Object.entries(CITIES).flatMap(([key,c]) => c.data.map(d => ({...d, _sourceCity:key}))),
+  feed: Object.entries(CITIES).flatMap(([key,c]) => c.feed.map(f => ({...f, _sourceCity:key}))).sort((a,b)=> new Date(b.date)-new Date(a.date)),
+  deciders: [],
+  join: [],
+  sources: ['Combined from every city\'s own sources - switch to a specific city to see its individual source list.'],
+  ctaLinks: [],
+  note: `Showing all ${Object.values(CITIES).reduce((a,c)=>a+c.data.length,0)} tracked projects across all ${Object.keys(CITIES).length} cities at once. Pick a specific city above for its Get Involved board and official links.`,
+};
 
 // ---------------- HELPERS ----------------
 function daysSince(dateStr){ if(!dateStr) return null; const d=new Date(dateStr+'T00:00:00'); return Math.round((TODAY-d)/86400000); }
@@ -1193,7 +1281,8 @@ function filtered(){
 }
 
 function renderCitySwitch(){
-  document.getElementById('citySwitch').innerHTML = Object.entries(CITIES).map(([key,c])=>
+  const orderedEntries = [['all', CITIES.all], ...Object.entries(CITIES).filter(([k])=>k!=='all')];
+  document.getElementById('citySwitch').innerHTML = orderedEntries.map(([key,c])=>
     `<button class="city-tab${key===currentCity?' active':''}" data-city="${key}" aria-pressed="${key===currentCity}">${c.label} <span class="mono" style="opacity:.7">(${c.data.length})</span></button>`
   ).join('');
   document.querySelectorAll('.city-tab').forEach(btn=>{
@@ -1391,6 +1480,30 @@ function renderUserLocationMarker(){
   }
   renderLegend();
 }
+// Highlights the selected city's approximate area using its bounding box - NOT the true
+// irregular legal city boundary (which would require real municipal GeoJSON shapefiles for
+// all 7 cities). Deliberately labeled "approximate area" everywhere it appears so this
+// simplification is honest, not hidden.
+let cityBoundaryG = null, cityBoundaryL = null;
+function clearCityBoundary(){
+  if(cityBoundaryG){ cityBoundaryG.setMap(null); cityBoundaryG = null; }
+  if(cityBoundaryL && lMap && lMap.hasLayer(cityBoundaryL)){ lMap.removeLayer(cityBoundaryL); } cityBoundaryL = null;
+}
+function renderCityBoundary(){
+  clearCityBoundary();
+  if(currentCity === 'all') return; // no single boundary to draw when viewing every city at once
+  const b = CITIES[currentCity].bbox;
+  if(mapProvider==='google' && gMap){
+    cityBoundaryG = new google.maps.Rectangle({
+      bounds: {north:b.maxLat, south:b.minLat, east:b.maxLng, west:b.minLng},
+      map: gMap, fillOpacity:0, strokeColor:'#3E4F24', strokeOpacity:0.7, strokeWeight:2.5,
+    });
+  } else if(mapProvider==='leaflet' && lMap){
+    cityBoundaryL = L.rectangle([[b.minLat,b.minLng],[b.maxLat,b.maxLng]], {
+      color:'#3E4F24', weight:2.5, fillOpacity:0, dashArray:null,
+    }).addTo(lMap);
+  }
+}
 function buildMarkersForCurrentProvider(){
   clearMarkers();
   if(mapProvider==='google' && gMap){
@@ -1417,6 +1530,7 @@ function buildMarkersForCurrentProvider(){
     lMap.flyTo([CITIES[currentCity].center.lat, CITIES[currentCity].center.lng], CITIES[currentCity].zoom, {duration:0.5});
   }
   renderUserLocationMarker();
+  renderCityBoundary();
   updateMapVisibility();
 }
 // ===== PASTE YOUR RESTRICTED GOOGLE MAPS API KEY BELOW =====
@@ -1480,6 +1594,7 @@ function renderLegend(){
   let html = CATEGORIES.map(c=>`<span><i style="background:${c.color}"></i>${c.label}</span>`).join('');
   html += `<span><i class="dia" style="background:#6B4C8A"></i>Diamond = public works</span>`;
   if(onboard.userLoc) html += `<span><i style="background:#0056A0"></i>Your area</span>`;
+  if(currentCity !== 'all') html += `<span style="opacity:.75;">Green outline = ${CITIES[currentCity].label}'s approximate area (not the exact legal boundary)</span>`;
   document.getElementById('legend').innerHTML = html;
 }
 function updateMapVisibility(){
@@ -1561,6 +1676,15 @@ function renderRegister(){
 function renderInvolved(){
   const c = CITIES[currentCity];
   document.getElementById('boardTitle').textContent = 'Get Involved';
+  if(currentCity === 'all'){
+    document.getElementById('boardSub').textContent = 'Get Involved boards are specific to each city - pick one above to see its meeting schedule, boards, and official links.';
+    document.getElementById('deciderRow').innerHTML = '';
+    document.getElementById('joinGrid').innerHTML = '';
+    document.getElementById('boardCta').innerHTML = '';
+    document.getElementById('boardNote').textContent = c.note;
+    document.getElementById('srcList').innerHTML = c.sources.join('<br>');
+    return;
+  }
   document.getElementById('boardSub').textContent = 'Every project above eventually goes in front of one of these bodies.';
   document.getElementById('deciderRow').innerHTML = c.deciders.map(x=>{
     const id = currentCity+':'+x.name;
@@ -1618,7 +1742,8 @@ function haversineMi(lat1,lng1,lat2,lng2){
 }
 
 function renderOnboardCityBtns(){
-  document.getElementById('onboardCityBtns').innerHTML = Object.entries(CITIES).map(([key,c])=>
+  const orderedEntries = [['all', CITIES.all], ...Object.entries(CITIES).filter(([k])=>k!=='all')];
+  document.getElementById('onboardCityBtns').innerHTML = orderedEntries.map(([key,c])=>
     `<button type="button" class="onboard-city-btn${key===onboard.city?' active':''}" data-city="${key}">${c.label}</button>`
   ).join('');
   document.querySelectorAll('.onboard-city-btn').forEach(btn=>{
@@ -1648,7 +1773,7 @@ function setOnboardBusy(busy, msg){
   const geoBtn = document.getElementById('onboardGeoBtn');
   submitBtn.disabled = busy; geoBtn.disabled = busy;
   submitBtn.style.opacity = busy ? '0.6' : '1';
-  if(msg) document.getElementById('onboardGeoStatus').textContent = msg;
+  if(msg !== undefined) document.getElementById('onboardGeoStatus').textContent = msg;
 }
 function useMyLocation(){
   const status = document.getElementById('onboardGeoStatus');
@@ -1663,7 +1788,7 @@ function useMyLocation(){
       renderOnboardCityBtns();
       setOnboardBusy(false, `You're actually in ${newLabel}, not ${oldLabel} - switched you there.`);
     } else if(!matchedCity){
-      setOnboardBusy(false, `Location found, but you're outside all cities this tracker covers (${Object.values(CITIES).map(c=>c.label).join(', ')}).`);
+      setOnboardBusy(false, `Location found, but you're outside all cities this tracker covers (${Object.entries(CITIES).filter(([k])=>k!=='all').map(([,c])=>c.label).join(', ')}).`);
     } else {
       setOnboardBusy(false, 'Location found \u2713');
     }
@@ -1681,6 +1806,7 @@ function useMyLocation(){
 // not hardcoded to whichever city happened to be selected when the search started.
 function cityContainingPoint(lat, lng){
   for(const key of Object.keys(CITIES)){
+    if(key === 'all') continue; // aggregate bbox is a superset - never a real "matched city"
     const b = CITIES[key].bbox;
     if(lat>=b.minLat && lat<=b.maxLat && lng>=b.minLng && lng<=b.maxLng) return key;
   }
@@ -1719,6 +1845,7 @@ function matchTypedAddress(text){
   const words = text.toLowerCase().split(/[\s,]+/).filter(w=>w.length>=3);
   let best = null;
   for(const cityKey of Object.keys(CITIES)){
+    if(cityKey === 'all') continue;
     CITIES[cityKey].data.forEach(d=>{
       const hay = d.addr.toLowerCase();
       const score = words.filter(w=>hay.includes(w)).length;
@@ -1791,7 +1918,7 @@ async function submitOnboard(){
 // so the choice is informed rather than arbitrary.
 function showCityChooser(lat, lng, placeLabel){
   document.getElementById('cityChooserLabel').textContent = `You're near ${placeLabel} - which city's projects do you want to track?`;
-  const ranked = Object.entries(CITIES).map(([key,c])=>({
+  const ranked = Object.entries(CITIES).filter(([key])=>key!=='all').map(([key,c])=>({
     key, label:c.label, dist: haversineMi(lat, lng, c.center.lat, c.center.lng)
   })).sort((a,b)=>a.dist-b.dist);
   const btnsEl = document.getElementById('cityChooserBtns');
@@ -2160,7 +2287,7 @@ function renderTopicPage(topicKey, categoryKey){
 
   const regionEl = document.getElementById('topicRegion'+cap);
   if(regionEl){
-    regionEl.innerHTML = Object.keys(CITIES).map(cityKey=>{
+    regionEl.innerHTML = Object.keys(CITIES).filter(k=>k!=='all').map(cityKey=>{
       const list = CITIES[cityKey].data.filter(d=> categoryOf(d)===categoryKey);
       if(!list.length) return '';
       return `<div class="topic-region-city">
@@ -2172,7 +2299,7 @@ function renderTopicPage(topicKey, categoryKey){
   document.querySelectorAll('#screen'+cap+' .locate-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const id = btn.getAttribute('data-id');
-      const owningCity = Object.keys(CITIES).find(k=> CITIES[k].data.some(d=>d.id===id));
+      const owningCity = Object.keys(CITIES).filter(k=>k!=='all').find(k=> CITIES[k].data.some(d=>d.id===id));
       if(owningCity && owningCity!==currentCity){ switchCity(owningCity); }
       showScreen('dashboard');
       flyTo(id);
