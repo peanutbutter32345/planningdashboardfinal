@@ -254,5 +254,63 @@ export const BOARDS = [
     "city": "westsanjose",
     "boardType": "join",
     "id": "westsanjose:District 1 Planning &amp; Policy"
+  },
+  {
+    "name": "Planning Commission",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Seven Council-appointed volunteer commissioners; first decision point on land use.",
+    "link": "https://www.santaclaraca.gov/our-city/government/boards-commissions/planning-commission",
+    "city": "santaclara",
+    "boardType": "decider",
+    "id": "santaclara:Planning Commission"
+  },
+  {
+    "name": "City Council",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Final say on appeals, development agreements, and rezonings.",
+    "link": "https://santaclara.legistar.com/Calendar.aspx",
+    "city": "santaclara",
+    "boardType": "decider",
+    "id": "santaclara:City Council"
+  },
+  {
+    "name": "Bicycle and Pedestrian Advisory Committee",
+    "when": "See the committee page for the current schedule",
+    "body": "Advises on bike and pedestrian infrastructure citywide.",
+    "cat": "Transportation",
+    "link": "https://www.santaclaraca.gov/our-city/government/boards-commissions/bicycle-and-pedestrian-advisory-committee",
+    "city": "santaclara",
+    "boardType": "join",
+    "id": "santaclara:Bicycle and Pedestrian Advisory Committee"
+  },
+  {
+    "name": "Historical &amp; Landmarks Commission",
+    "when": "See the commission page for the current schedule",
+    "body": "Reviews demolition and alteration of historic properties - often the constraint on infill projects.",
+    "cat": "Civic",
+    "link": "https://www.santaclaraca.gov/our-city/government/boards-commissions/historical-landmarks-commission",
+    "city": "santaclara",
+    "boardType": "join",
+    "id": "santaclara:Historical &amp; Landmarks Commission"
+  },
+  {
+    "name": "Parks &amp; Recreation Commission",
+    "when": "See the commission page for the current schedule",
+    "body": "Advises on parkland, which large residential projects are required to dedicate or pay toward.",
+    "cat": "Civic",
+    "link": "https://www.santaclaraca.gov/our-city/government/boards-commissions/parks-recreation-commission",
+    "city": "santaclara",
+    "boardType": "join",
+    "id": "santaclara:Parks &amp; Recreation Commission"
+  },
+  {
+    "name": "Cultural Commission",
+    "when": "See the commission page for the current schedule",
+    "body": "Advises on public art, including art requirements attached to new development.",
+    "cat": "Civic",
+    "link": "https://www.santaclaraca.gov/our-city/government/boards-commissions/cultural-commission",
+    "city": "santaclara",
+    "boardType": "join",
+    "id": "santaclara:Cultural Commission"
   }
 ];
