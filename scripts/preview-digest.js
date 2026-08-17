@@ -30,7 +30,7 @@ const stars = {
   news: new Set([starredArticle?.url].filter(Boolean)),
 };
 
-const base = { username: 'saumit', homeCity: HOME_CITY, frequency: 'weekly', stars };
+const base = { username: 'saumit', homeCity: HOME_CITY, frequency: 'monthly', stars };
 
 writeFileSync('preview-welcome.html', buildBriefing({ ...base, changed: null, isFirst: true }).html);
 

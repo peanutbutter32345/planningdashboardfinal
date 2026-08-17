@@ -60,6 +60,9 @@ async function initDb() {
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_digest_sent_at TIMESTAMPTZ;`);
   // The user's own city, so their local news leads the digest ahead of the rest of the South Bay.
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS home_city TEXT;`);
+  // Monthly is now the only cadence - move anyone still on daily/weekly across rather than
+  // leaving them on a frequency the Account page can no longer display.
+  await pool.query(`UPDATE users SET email_frequency = 'monthly' WHERE email_frequency IN ('daily','weekly');`);
   await pool.query(`
     CREATE TABLE IF NOT EXISTS sessions (
       token TEXT PRIMARY KEY,
@@ -193,7 +196,11 @@ app.post('/api/logout', authMiddleware, async (req, res) => {
 });
 
 // ---------------- EMAIL DIGEST PREFERENCES ----------------
-const VALID_FREQUENCIES = ['off', 'daily', 'weekly', 'monthly'];
+// Monthly is the only cadence offered: the underlying records are updated by hand, and sending
+// more often than the data changes just trains people to ignore the email. daily/weekly are still
+// honoured in FREQUENCY_DAYS so any rows predating this keep working until the migration below
+// converts them.
+const VALID_FREQUENCIES = ['off', 'monthly'];
 const FREQUENCY_DAYS = { daily: 1, weekly: 7, monthly: 30 };
 function validEmail(e) { return typeof e === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
@@ -219,7 +226,7 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     return res.status(400).json({ error: 'That doesn\'t look like a valid email address.' });
   }
   if (emailFrequency !== undefined && !VALID_FREQUENCIES.includes(emailFrequency)) {
-    return res.status(400).json({ error: 'Frequency must be off, daily, weekly, or monthly.' });
+    return res.status(400).json({ error: 'Frequency must be off or monthly.' });
   }
   if (homeCity !== undefined && homeCity !== null && homeCity !== '' && !CITY_LABELS[homeCity]) {
     return res.status(400).json({ error: 'Unknown city.' });
