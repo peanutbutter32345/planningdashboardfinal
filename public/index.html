@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>South Bay Area Planning Dashboard</title>
+<!-- Inline so it costs no extra request, and stops the browser 404ing on /favicon.ico -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%233E4F24'/%3E%3Cpath d='M7 22V13l5-4 5 4v9z' fill='%23fff'/%3E%3Crect x='19' y='15' width='6' height='7' fill='%23F0C86A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -240,7 +242,13 @@
   .plan-step .num{font-size:20px; font-weight:800; color:#fff; background:var(--ink); width:36px; height:36px; border-radius:3px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
   .plan-step .body h4{font-size:15px; color:#1A1A1A; margin-bottom:5px;}
   .plan-step .body p{font-size:13px; color:var(--text-soft); margin:0 0 8px;}
-  .plan-step .body a.plink{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:underline;}
+  .plan-step .body a.plink{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:underline; margin-right:14px;}
+  .plan-time{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); background:#F0F2EA; border:1px solid var(--rule); border-radius:3px; padding:2px 7px; margin-left:8px; vertical-align:2px; white-space:nowrap;}
+  .plan-projects{display:flex; flex-direction:column; gap:8px; margin:10px 0 12px;}
+  .plan-project{display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:#F7F8F3; border:1px solid var(--rule); border-left:3px solid var(--ink); border-radius:3px; padding:9px 12px; text-decoration:none;}
+  .plan-project:hover{background:#EEF1E6;}
+  .plan-project .addr{font-weight:700; color:var(--blue); font-size:13px;}
+  .plan-project .dist{font-family:'Open Sans',sans-serif; font-size:11px; color:var(--text-soft);}
 
   /* ---- Live data panel ---- */
   .live-panel{background:#fff; border:1.5px dashed var(--ink); border-radius:4px; padding:14px 16px; margin-bottom:16px; font-size:12.5px; color:var(--text-soft);}
@@ -338,6 +346,26 @@
   .util-bar-inner{display:flex; justify-content:flex-end; align-items:center; gap:16px; padding:6px 24px; flex-wrap:wrap;}
   .util-links a{color:#D9D9D9; text-decoration:none; margin-left:4px;}
   .util-links a:hover{color:#fff; text-decoration:underline;}
+  /* Scrolling signup call-out. Order-first so it reads before the utility links on wide screens. */
+  .util-bar-inner{justify-content:flex-start;}
+  .util-links{order:2; margin-left:auto;}
+  .marquee{order:1; flex:1 1 220px; min-width:0; overflow:hidden; mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+  .marquee-track{display:flex; width:max-content; gap:48px; animation:marqueeScroll 26s linear infinite;}
+  .marquee:hover .marquee-track, .marquee:focus-within .marquee-track{animation-play-state:paused;}
+  .marquee-item{white-space:nowrap; background:none; border:0; padding:0; cursor:pointer; font:inherit; color:#F0C86A; font-weight:700; letter-spacing:.04em; text-transform:uppercase;}
+  .marquee-item:hover{color:#fff; text-decoration:underline;}
+  @keyframes marqueeScroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  /* Static fallback for anyone who asked the OS to stop animations, and the small-screen layout. */
+  @media (prefers-reduced-motion: reduce){
+    .marquee{display:none;}
+    .util-signup{display:inline;}
+  }
+  .util-signup{display:none; order:3; color:#F0C86A; font-weight:700; text-decoration:none; text-transform:uppercase; letter-spacing:.04em;}
+  .util-signup:hover{color:#fff; text-decoration:underline;}
+  @media (max-width:700px){
+    .marquee{display:none;}
+    .util-signup{display:inline;}
+  }
 
   /* ---- Quick links button row ---- */
   .quicklinks-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;}
@@ -439,6 +467,15 @@
 <div class="util-bar">
   <div class="wrap util-bar-inner">
     <span class="util-links"><a href="#screenDashboard">Dashboard</a> · <a href="#involved">Get Involved</a> · <a href="#" id="utilTop">Search</a></span>
+    <div class="marquee" id="signupMarquee" aria-hidden="true">
+      <div class="marquee-track">
+        <button type="button" class="marquee-item" data-signup>Sign up for the South Bay Dashboard summary now</button>
+        <button type="button" class="marquee-item" data-signup>Sign up for the South Bay Dashboard summary now</button>
+        <button type="button" class="marquee-item" data-signup>Sign up for the South Bay Dashboard summary now</button>
+        <button type="button" class="marquee-item" data-signup>Sign up for the South Bay Dashboard summary now</button>
+      </div>
+    </div>
+    <a href="#" class="util-signup" data-signup>Sign up for the summary</a>
   </div>
 </div>
 
@@ -489,10 +526,17 @@
   <div class="wrap">
     <div class="planner-shell">
       <h2>Build your get-involved plan</h2>
-      <p class="section-note">Pick what you care about - we'll turn it into an ordered, specific plan: which meeting to watch, which board to apply to, and which nearby project to comment on first.</p>
+      <p class="section-note">Pick what you care about and how much time you actually have - we'll turn it into an ordered, specific plan: which meeting to watch, which board to apply to, and which nearby project to comment on first.</p>
+      <span class="onboard-label">1. What do you care about?</span>
       <div class="onboard-interests" id="plannerInterests" style="margin-bottom:18px;"></div>
+      <span class="onboard-label">2. How much time do you have?</span>
+      <div class="onboard-interests" id="plannerEffort" style="margin-bottom:18px;"></div>
       <button class="btn" id="plannerGenerate" type="button">Generate my plan →</button>
       <div id="plannerOutput" role="status" aria-live="polite"></div>
+      <div id="plannerActions" style="display:none; margin-top:16px;">
+        <button class="btn secondary" id="plannerCopy" type="button">Copy plan as text</button>
+        <span id="plannerCopyStatus" class="section-note" role="status" aria-live="polite"></span>
+      </div>
     </div>
   </div>
 </div>
@@ -2044,7 +2088,7 @@ renderOnboardInterests();
 let currentScreen = 'dashboard';
 function refreshCurrentScreen(){
   if(currentScreen==='yourarea') renderYourArea();
-  else if(currentScreen==='planner') renderPlannerInterests();
+  else if(currentScreen==='planner'){ renderPlannerInterests(); renderPlannerEffort(); }
   else if(currentScreen==='resources') renderResources();
   else if(currentScreen==='ask') renderAskContext();
   else if(currentScreen==='housing') renderTopicPage('housing','Housing');
@@ -2088,57 +2132,174 @@ function renderPlannerInterests(){
     });
   });
 }
+// How much the plan asks of you. Each level is a superset of the one above it, so picking a
+// bigger commitment adds steps rather than replacing them.
+const EFFORT_LEVELS = [
+  {key:'low',    label:'15 minutes, once',        note:'Just tell me the one thing to read.'},
+  {key:'medium', label:'An hour a month',          note:'I\'ll follow a couple of projects and speak up occasionally.'},
+  {key:'high',   label:'I want to be involved',    note:'Put me on a board or commission.'},
+];
+let plannerEffort = 'medium';
+let lastPlan = [];
+
+function renderPlannerEffort(){
+  document.getElementById('plannerEffort').innerHTML = EFFORT_LEVELS.map(o=>
+    `<label class="onboard-check${plannerEffort===o.key?' checked':''}" data-effort="${o.key}">
+      <input type="radio" name="plannerEffort" ${plannerEffort===o.key?'checked':''} /> ${o.label}
+      <span class="section-note" style="display:block; margin:2px 0 0;">${o.note}</span>
+    </label>`
+  ).join('');
+  document.querySelectorAll('#plannerEffort .onboard-check').forEach(label=>{
+    label.addEventListener('click', (e)=>{
+      e.preventDefault();
+      plannerEffort = label.getAttribute('data-effort');
+      renderPlannerEffort();
+    });
+  });
+}
+
 function generatePlan(){
-  const c = CITIES[currentCity];
   const keys = [...planner.interests];
-  const steps = [];
+  const out = document.getElementById('plannerOutput');
+  const actions = document.getElementById('plannerActions');
 
   if(keys.length===0){
-    document.getElementById('plannerOutput').innerHTML = '<div class="empty">Pick at least one topic above to generate a plan.</div>';
+    out.innerHTML = '<div class="empty">Pick at least one topic above to generate a plan.</div>';
+    actions.style.display = 'none';
     return;
   }
 
+  // "All Cities" has no boards or deciders of its own - a plan built from it would be empty and
+  // the deciding-bodies step would render as a sentence with no subject.
+  if(currentCity === 'all'){
+    out.innerHTML = '<div class="empty">Pick a single city first - getting involved happens at a specific city hall. '
+      + 'Use the city tabs at the top of the Dashboard, then come back.</div>';
+    actions.style.display = 'none';
+    return;
+  }
+
+  const c = CITIES[currentCity];
+  const loc = onboard.userLoc;
+  const steps = [];
+
+  // 1. Always: what's being decided right now.
   steps.push({
-    title:'This week: check what\'s actually on the agenda',
-    body:`See if any project you care about in ${c.label} has an upcoming hearing.`,
-    link: (c.ctaLinks && c.ctaLinks[0]) ? c.ctaLinks[0].url : null,
+    time:'5 min',
+    title:`Check what's on the agenda in ${c.label}`,
+    body:`Agendas post a few days before each meeting and list every project up for a vote. This is the single highest-value thing to skim.`,
+    link:(c.deciders.find(d=>/council/i.test(d.name)) || c.deciders[0] || {}).link || null,
   });
 
-  const relevantProjects = DATA().filter(d=> keys.includes(categoryOf(d)) && (d.stage==='review'||d.stage==='proposed'||d.stage==='approved')).slice(0,3);
-  if(relevantProjects.length){
+  // 2. Always: the specific projects they could still influence, nearest first when we know where
+  // they are. Decisions are only open before the vote, so completed/under-construction are excluded.
+  let open = DATA().filter(d=> keys.includes(categoryOf(d)) && ['proposed','review','approved'].includes(d.stage));
+  if(loc){
+    open = open.map(d=>({d, dist: haversineMi(loc.lat, loc.lng, d.lat, d.lng)}))
+               .sort((a,b)=>a.dist-b.dist);
+  } else {
+    open = open.sort((a,b)=> String(b.lastDate||'').localeCompare(String(a.lastDate||''))).map(d=>({d, dist:null}));
+  }
+  const shortlist = open.slice(0, plannerEffort === 'low' ? 1 : 3);
+  if(shortlist.length){
     steps.push({
-      title:'Comment on a project still being decided',
-      body:'These are still in play, not finalized: ' + relevantProjects.map(d=>d.addr).join('; ') + '. Comments matter most before a decision, not after.',
-      link:null,
+      time: plannerEffort === 'low' ? '10 min' : '30 min',
+      title: shortlist.length === 1 ? 'Read up on the project nearest you' : 'Pick one of these to follow',
+      body: loc
+        ? 'Still undecided, closest to your location first. Comments carry weight before the vote, not after.'
+        : 'Still undecided, most recently active first. Comments carry weight before the vote, not after.',
+      projects: shortlist,
     });
   }
 
-  const relevantBoards = c.join.filter(b=> keys.includes(b.cat));
-  relevantBoards.forEach(b=>{
+  // 3. Medium and up: keep track without having to check the site.
+  if(plannerEffort !== 'low'){
     steps.push({
-      title:'Apply to: ' + b.name.replace(/&amp;/g,'&'),
-      body: b.body.replace(/&amp;/g,'&') + (b.when ? ' Meets: ' + b.when + '.' : ''),
-      link: b.link || null,
+      time:'2 min',
+      title:'Star them, and get the briefing',
+      body:'Starring a project puts it at the top of your emailed briefing, so you hear when its status changes instead of checking back. Set your city and frequency on the Account page.',
+      action:'signup',
     });
-  });
+  }
 
-  steps.push({
-    title:'Put the deciding bodies on your radar',
-    body: c.deciders.map(d=>d.name.replace(/&amp;/g,'&')).join(' and ') + ' are who ultimately vote on everything above - worth knowing their schedule even if you never speak at a hearing.',
-    link: (c.deciders[1] && c.deciders[1].link) ? c.deciders[1].link : null,
-  });
+  // 4. High only: the actual seats you can apply for.
+  if(plannerEffort === 'high'){
+    const relevantBoards = c.join.filter(b=> keys.includes(b.cat));
+    const boards = relevantBoards.length ? relevantBoards : c.join;
+    boards.forEach(b=>{
+      steps.push({
+        time:'Application',
+        title:'Apply to: ' + b.name.replace(/&amp;/g,'&'),
+        body: b.body.replace(/&amp;/g,'&') + (b.when ? ' Meets ' + b.when.replace(/&amp;/g,'&') + '.' : ''),
+        link: b.link || null,
+      });
+    });
+    if(!relevantBoards.length && c.join.length){
+      steps[steps.length - c.join.length].note = `No ${c.label} commission maps exactly to your topics, so these are the general seats.`;
+    }
+  }
 
-  const out = document.getElementById('plannerOutput');
-  out.innerHTML = steps.map((s,i)=>`<div class="plan-step">
+  // 5. Always last: who actually votes. Guarded so an empty deciders list can't produce a
+  // sentence with no subject.
+  if(c.deciders.length){
+    steps.push({
+      time:'Ongoing',
+      title:'Know who casts the final vote',
+      body: c.deciders.map(d=>d.name.replace(/&amp;/g,'&')).join(' and ')
+        + ` decide everything above. Worth knowing their schedule even if you never speak at a hearing.`,
+      link:(c.deciders[1] || c.deciders[0] || {}).link || null,
+    });
+  }
+
+  lastPlan = steps;
+  out.innerHTML = steps.map((s,i)=>{
+    const projects = s.projects ? `<div class="plan-projects">${s.projects.map(({d,dist})=>`
+      <a class="plan-project" href="?project=${encodeURIComponent(d.id)}">
+        <span class="addr">${d.addr}</span>
+        <span class="stamp" style="background:${STAGE_MAP[d.stage].color}; border-color:${STAGE_MAP[d.stage].color}">${STAGE_MAP[d.stage].label}</span>
+        ${dist!==null ? `<span class="dist">${dist.toFixed(1)} mi away</span>` : ''}
+      </a>`).join('')}</div>` : '';
+    const link = s.link
+      ? `<a class="plink" href="${s.link}" target="_blank" rel="noopener" aria-label="Open link for: ${s.title} (opens in new tab)">Open →</a>` : '';
+    const action = s.action === 'signup'
+      ? `<a class="plink" href="#" data-signup>Set up my briefing →</a>` : '';
+    return `<div class="plan-step">
       <div class="num">${i+1}</div>
       <div class="body">
-        <h4>${s.title}</h4>
+        <h4>${s.title} <span class="plan-time">${s.time}</span></h4>
         <p>${s.body}</p>
-        ${s.link ? `<a class="plink" href="${s.link}" target="_blank" rel="noopener" aria-label="Open link for: ${s.title} (opens in new tab)">Open →</a>` : ''}
+        ${s.note ? `<p class="section-note">${s.note}</p>` : ''}
+        ${projects}${link}${action}
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
+
+  // The signup links inside a freshly generated plan need the same handler as the banner.
+  out.querySelectorAll('[data-signup]').forEach(el=>{
+    el.addEventListener('click', (e)=>{ e.preventDefault(); showScreen('account'); window.scrollTo({top:0, behavior:'smooth'}); });
+  });
+
+  actions.style.display = 'block';
+  document.getElementById('plannerCopyStatus').textContent = '';
 }
 document.getElementById('plannerGenerate').addEventListener('click', generatePlan);
+
+// A plan is only useful if it leaves the page - most people will paste it into notes or an email.
+document.getElementById('plannerCopy').addEventListener('click', async ()=>{
+  const text = lastPlan.map((s,i)=>{
+    const projects = s.projects ? s.projects.map(({d,dist})=>
+      `   - ${d.addr} (${STAGE_MAP[d.stage].label}${dist!==null?`, ${dist.toFixed(1)} mi`:''})`).join('\n') : '';
+    return `${i+1}. ${s.title} [${s.time}]\n   ${s.body.replace(/<[^>]*>/g,'')}`
+      + (projects ? '\n' + projects : '')
+      + (s.link ? `\n   ${s.link}` : '');
+  }).join('\n\n');
+  const status = document.getElementById('plannerCopyStatus');
+  try{
+    await navigator.clipboard.writeText(`My get-involved plan - ${CITIES[currentCity].label}\n\n${text}`);
+    status.textContent = 'Copied ✓';
+  } catch(err){
+    status.textContent = "Couldn't copy automatically - select the plan above and copy manually.";
+  }
+});
 
 // ---------------- ASK A QUESTION ----------------
 let askHistory = [];
@@ -2561,6 +2722,17 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
 });
 
 renderAuthNavState();
+
+// Every signup call-out (scrolling banner and its static fallback) lands on the Account page,
+// which is where the email address and city preference live.
+document.querySelectorAll('[data-signup]').forEach(el=>{
+  el.addEventListener('click', (e)=>{
+    e.preventDefault();
+    document.getElementById('onboardOverlay').style.display = 'none';
+    showScreen('account');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
 
 // ================= EMAIL DEEP LINKS =================
 // Digest emails link to ?project=<id> and ?city=<key>. Land the reader on the exact record
