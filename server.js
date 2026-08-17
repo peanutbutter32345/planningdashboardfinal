@@ -9,6 +9,7 @@ import { SYSTEM_INSTRUCTIONS } from './instructions.js';
 import { PROJECTS } from './data/projects.js';
 import { NEWS_ARTICLES } from './data/news.js';
 import { BOARDS } from './data/boards.js';
+import { buildChangeDigest, buildWelcomeRecap, CITY_LABELS, cityLabel } from './digest.js';
 
 dotenv.config();
 
@@ -57,6 +58,8 @@ async function initDb() {
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email TEXT;`);
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email_frequency TEXT NOT NULL DEFAULT 'off';`);
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_digest_sent_at TIMESTAMPTZ;`);
+  // The user's own city, so their local news leads the digest ahead of the rest of the South Bay.
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS home_city TEXT;`);
   await pool.query(`
     CREATE TABLE IF NOT EXISTS sessions (
       token TEXT PRIMARY KEY,
@@ -190,14 +193,20 @@ app.post('/api/logout', authMiddleware, async (req, res) => {
 });
 
 // ---------------- EMAIL DIGEST PREFERENCES ----------------
-const VALID_FREQUENCIES = ['off', 'weekly', 'monthly'];
+const VALID_FREQUENCIES = ['off', 'daily', 'weekly', 'monthly'];
+const FREQUENCY_DAYS = { daily: 1, weekly: 7, monthly: 30 };
 function validEmail(e) { return typeof e === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
 app.get('/api/account/preferences', authMiddleware, async (req, res) => {
   try {
-    const result = await pool.query('SELECT email, email_frequency FROM users WHERE username = $1', [req.username]);
+    const result = await pool.query('SELECT email, email_frequency, home_city FROM users WHERE username = $1', [req.username]);
     if (!result.rows.length) return res.status(404).json({ error: 'Account not found.' });
-    res.json({ email: result.rows[0].email, emailFrequency: result.rows[0].email_frequency });
+    res.json({
+      email: result.rows[0].email,
+      emailFrequency: result.rows[0].email_frequency,
+      homeCity: result.rows[0].home_city,
+      cities: Object.entries(CITY_LABELS).map(([value, label]) => ({ value, label })),
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Could not load preferences.' });
@@ -205,12 +214,15 @@ app.get('/api/account/preferences', authMiddleware, async (req, res) => {
 });
 
 app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
-  const { email, emailFrequency } = req.body || {};
+  const { email, emailFrequency, homeCity } = req.body || {};
   if (email !== undefined && email !== null && email !== '' && !validEmail(email)) {
     return res.status(400).json({ error: 'That doesn\'t look like a valid email address.' });
   }
   if (emailFrequency !== undefined && !VALID_FREQUENCIES.includes(emailFrequency)) {
-    return res.status(400).json({ error: 'Frequency must be off, weekly, or monthly.' });
+    return res.status(400).json({ error: 'Frequency must be off, daily, weekly, or monthly.' });
+  }
+  if (homeCity !== undefined && homeCity !== null && homeCity !== '' && !CITY_LABELS[homeCity]) {
+    return res.status(400).json({ error: 'Unknown city.' });
   }
   try {
     const fields = [];
@@ -218,10 +230,26 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     let i = 1;
     if (email !== undefined) { fields.push(`email = $${i++}`); values.push(email || null); }
     if (emailFrequency !== undefined) { fields.push(`email_frequency = $${i++}`); values.push(emailFrequency); }
+    if (homeCity !== undefined) { fields.push(`home_city = $${i++}`); values.push(homeCity || null); }
     if (!fields.length) return res.status(400).json({ error: 'Nothing to update.' });
     values.push(req.username);
     await pool.query(`UPDATE users SET ${fields.join(', ')} WHERE username = $${i}`, values);
-    res.json({ ok: true });
+
+    // Saving a real address + a live frequency sends an immediate welcome recap, so the user sees
+    // what they signed up for right away instead of waiting for the next scheduled run.
+    const after = await pool.query('SELECT email, email_frequency, home_city FROM users WHERE username = $1', [req.username]);
+    const u = after.rows[0];
+    let welcomeSent = false;
+    if (u.email && u.email_frequency !== 'off' && RESEND_API_KEY) {
+      try {
+        await sendWelcomeRecap({ username: req.username, email: u.email, homeCity: u.home_city, frequency: u.email_frequency });
+        welcomeSent = true;
+      } catch (err) {
+        // A failed welcome must not fail the save - preferences are already persisted.
+        console.error(`Welcome recap to ${req.username} failed:`, err.message);
+      }
+    }
+    res.json({ ok: true, welcomeSent });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Could not save preferences.' });
@@ -505,115 +533,78 @@ async function syncSnapshotsAndGetChanges() {
   }
 }
 
-function digestHtml({ username, starredChanges, otherChanges, newArticles, boardChanges, starredBoardChanges, unsubscribeNote }) {
-  const rowsFor = (items) => items.map(p => `
-    <tr>
-      <td style="padding:10px 0; border-bottom:1px solid #E3E7DB;">
-        <div style="font-weight:700; color:#1A1A1A;">${p.addr}</div>
-        <div style="color:#5B5B5B; font-size:13px; margin-top:2px;">${p.last_note || ''}</div>
-        <div style="color:#8A8A8A; font-size:11px; margin-top:4px; text-transform:uppercase;">${p.city} &middot; ${p.stage}</div>
-      </td>
-    </tr>`).join('');
-  const newsRows = newArticles.map(a => `
-    <tr><td style="padding:8px 0; border-bottom:1px solid #E3E7DB;">
-      <a href="${a.url}" style="color:#3E4F24; font-weight:700; text-decoration:none;">${a.title}</a>
-    </td></tr>`).join('');
-  const boardRows = (items) => items.map(b => `
-    <tr>
-      <td style="padding:10px 0; border-bottom:1px solid #E3E7DB;">
-        <div style="font-weight:700; color:#1A1A1A;">${b.name}</div>
-        <div style="color:#5B5B5B; font-size:13px; margin-top:2px;">${b.when_text || ''}</div>
-        <div style="color:#8A8A8A; font-size:11px; margin-top:4px; text-transform:uppercase;">${b.city}</div>
-      </td>
-    </tr>`).join('');
-
-  return `
-  <div style="font-family:Arial,sans-serif; max-width:600px; margin:0 auto; color:#222;">
-    <div style="background:#3E4F24; padding:20px; color:#fff;">
-      <h1 style="margin:0; font-size:20px;">Your South Bay Area Planning Dashboard update</h1>
-    </div>
-    <div style="padding:20px;">
-      <p>Hi ${username},</p>
-      ${starredChanges.length ? `
-        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px;">Your starred projects</h2>
-        <table width="100%" cellspacing="0">${rowsFor(starredChanges)}</table>
-      ` : ''}
-      ${starredBoardChanges.length ? `
-        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin-top:24px;">Your starred boards</h2>
-        <table width="100%" cellspacing="0">${boardRows(starredBoardChanges)}</table>
-      ` : ''}
-      ${otherChanges.length ? `
-        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin-top:24px;">Other recent developments</h2>
-        <table width="100%" cellspacing="0">${rowsFor(otherChanges)}</table>
-      ` : ''}
-      ${boardChanges.length ? `
-        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin-top:24px;">Ways to get involved</h2>
-        <table width="100%" cellspacing="0">${boardRows(boardChanges)}</table>
-      ` : ''}
-      ${newArticles.length ? `
-        <h2 style="font-size:15px; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin-top:24px;">New in the news feed</h2>
-        <table width="100%" cellspacing="0">${newsRows}</table>
-      ` : ''}
-      ${(!starredChanges.length && !otherChanges.length && !newArticles.length && !boardChanges.length && !starredBoardChanges.length) ? '<p>No changes since your last update.</p>' : ''}
-      <p style="margin-top:24px;"><a href="${SITE_URL}" style="color:#0056A0;">Open the dashboard &rarr;</a></p>
-      <p style="color:#8A8A8A; font-size:11px; margin-top:24px;">${unsubscribeNote}</p>
-    </div>
-  </div>`;
+async function starIdsFor(username) {
+  const starred = await pool.query('SELECT item_type, item_id FROM stars WHERE username = $1', [username]);
+  return {
+    projects: new Set(starred.rows.filter(r => r.item_type === 'project').map(r => r.item_id)),
+    boards: new Set(starred.rows.filter(r => r.item_type === 'board').map(r => r.item_id)),
+    news: new Set(starred.rows.filter(r => r.item_type === 'news').map(r => r.item_id)),
+  };
 }
 
-// Protected by a shared secret so only your external scheduler (e.g. cron-job.org) can trigger this.
-// Checks EVERY user each time it runs, but only actually emails whoever is individually due -
-// it's meant to be called on a fixed daily schedule regardless of each user's chosen frequency.
-app.post('/api/cron/send-digests', async (req, res) => {
-  if (!requireDb(res)) return;
+// Sends the immediate "you're set up" recap. Rendering lives in digest.js; this only supplies
+// the user's starred items and hands the result to Resend.
+async function sendWelcomeRecap({ username, email, homeCity, frequency }) {
+  const stars = await starIdsFor(username);
+  const { subject, html } = buildWelcomeRecap({ username, homeCity, frequency, stars });
+  await sendEmail(email, subject, html);
+}
+
+// Protected by a shared secret so only your external scheduler (e.g. cron-job.org) can trigger it.
+// Accepts GET as well as POST because most hosted schedulers send a plain GET by default.
+// Checks EVERY user each time it runs, but only emails whoever is individually due - so it's meant
+// to be called on a fixed daily schedule regardless of each user's chosen frequency.
+async function runDigests(req, res) {
+  // Secret first, so an unauthenticated caller learns nothing about how the server is configured.
   const provided = req.headers['x-cron-secret'] || req.query.secret;
   if (!CRON_SECRET || provided !== CRON_SECRET) return res.status(401).json({ error: 'Invalid or missing cron secret.' });
+  if (!requireDb(res)) return;
+  if (!RESEND_API_KEY) return res.status(500).json({ error: 'RESEND_API_KEY is not configured, so no email can be sent.' });
 
   try {
     await syncSnapshotsAndGetChanges();
 
     // Interval differs per user's chosen frequency, so filter in JS rather than a single SQL interval.
     const allCandidates = await pool.query(`
-      SELECT username, email, email_frequency, last_digest_sent_at, created_at FROM users
+      SELECT username, email, email_frequency, home_city, last_digest_sent_at, created_at FROM users
       WHERE email_frequency != 'off' AND email IS NOT NULL
     `);
     const now = Date.now();
     const due = allCandidates.rows.filter(u => {
-      const intervalMs = (u.email_frequency === 'weekly' ? 7 : 30) * 24 * 60 * 60 * 1000;
+      const days = FREQUENCY_DAYS[u.email_frequency] || 7;
       const last = u.last_digest_sent_at ? new Date(u.last_digest_sent_at).getTime() : new Date(u.created_at).getTime();
-      return !u.last_digest_sent_at ? true : (now - last) >= intervalMs;
+      return (now - last) >= days * 24 * 60 * 60 * 1000;
     });
 
-    let sent = 0, failed = 0;
+    let sent = 0, skipped = 0, failed = 0;
     for (const u of due) {
       const since = u.last_digest_sent_at || u.created_at;
-      const changed = await pool.query('SELECT * FROM project_snapshots WHERE updated_at > $1 ORDER BY updated_at DESC', [since]);
-      const newArticles = await pool.query('SELECT * FROM news_seen WHERE first_seen_at > $1 ORDER BY first_seen_at DESC', [since]);
-      const boardsChanged = await pool.query('SELECT * FROM board_snapshots WHERE updated_at > $1 ORDER BY updated_at DESC', [since]);
-      const starred = await pool.query(`SELECT item_type, item_id FROM stars WHERE username = $1`, [u.username]);
-      const starredProjectIds = new Set(starred.rows.filter(r => r.item_type === 'project').map(r => r.item_id));
-      const starredBoardIds = new Set(starred.rows.filter(r => r.item_type === 'board').map(r => r.item_id));
+      const [projectsChanged, articlesNew, boardsChanged, stars] = await Promise.all([
+        pool.query('SELECT * FROM project_snapshots WHERE updated_at > $1 ORDER BY updated_at DESC', [since]),
+        pool.query('SELECT * FROM news_seen WHERE first_seen_at > $1 ORDER BY first_seen_at DESC', [since]),
+        pool.query('SELECT * FROM board_snapshots WHERE updated_at > $1 ORDER BY updated_at DESC', [since]),
+        starIdsFor(u.username),
+      ]);
 
-      const starredChanges = changed.rows.filter(r => starredProjectIds.has(r.project_id));
-      const otherChanges = changed.rows.filter(r => !starredProjectIds.has(r.project_id)).slice(0, 15);
-      const starredBoardChanges = boardsChanged.rows.filter(r => starredBoardIds.has(r.board_id));
-      const boardChanges = boardsChanged.rows.filter(r => !starredBoardIds.has(r.board_id)).slice(0, 10);
+      const sinceLabel = new Date(since).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+      const digest = buildChangeDigest({
+        user: u,
+        projectsChanged: projectsChanged.rows,
+        boardsChanged: boardsChanged.rows,
+        articlesNew: articlesNew.rows,
+        stars,
+        sinceLabel,
+      });
 
-      if (!starredChanges.length && !otherChanges.length && !newArticles.rows.length && !boardChanges.length && !starredBoardChanges.length) {
-        // Nothing to report - still counts as "checked", update the timestamp so we don't re-check daily.
-        await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [u.username]);
+      if (!digest) {
+        // Nothing changed. Leave last_digest_sent_at alone so the next run still compares against
+        // the last email actually sent - otherwise a quiet period would silently swallow changes.
+        skipped++;
         continue;
       }
 
-      try{
-        const html = digestHtml({
-          username: u.username,
-          starredChanges, otherChanges,
-          newArticles: newArticles.rows,
-          boardChanges, starredBoardChanges,
-          unsubscribeNote: `You're getting this because your account is set to ${u.email_frequency} updates. Change this anytime from your Account page.`,
-        });
-        await sendEmail(u.email, 'Your South Bay Area Planning Dashboard update', html);
+      try {
+        await sendEmail(u.email, digest.subject, digest.html);
         await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [u.username]);
         sent++;
       } catch (err) {
@@ -622,11 +613,14 @@ app.post('/api/cron/send-digests', async (req, res) => {
       }
     }
 
-    res.json({ ok: true, checked: allCandidates.rows.length, due: due.length, sent, failed });
+    res.json({ ok: true, checked: allCandidates.rows.length, due: due.length, sent, skipped, failed });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Digest run failed: ' + err.message });
   }
-});
+}
+
+app.post('/api/cron/send-digests', runDigests);
+app.get('/api/cron/send-digests', runDigests);
 
 app.listen(port, () => console.log(`South Bay Planning AI running at http://localhost:${port}`));
