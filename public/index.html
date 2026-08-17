@@ -243,6 +243,33 @@
   .plan-step .body h4{font-size:15px; color:#1A1A1A; margin-bottom:5px;}
   .plan-step .body p{font-size:13px; color:var(--text-soft); margin:0 0 8px;}
   .plan-step .body a.plink{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:underline; margin-right:14px;}
+  /* Featured news, beside the hero copy. Two stories at a time, rotating. */
+  .hero-top{display:flex; gap:34px; align-items:flex-start;}
+  .hero-copy{flex:1 1 300px; min-width:0;}
+  /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
+  .featured-news{flex:0 1 330px; max-width:330px; min-width:250px; background:#fff; border:1px solid var(--rule); border-radius:4px; box-shadow:var(--shadow); overflow:hidden;}
+  .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:8px 12px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
+  .featured-dots{display:flex; gap:5px;}
+  .featured-dots i{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.35); display:block; transition:background .3s;}
+  .featured-dots i.on{background:#F0C86A;}
+  .featured-cards{display:flex; flex-direction:column;}
+  .featured-cards.fading{opacity:0;}
+  .featured-cards{transition:opacity .45s ease;}
+  .fcard{display:block; text-decoration:none; border-bottom:1px solid var(--rule); padding:0 0 10px;}
+  .fcard:last-child{border-bottom:0;}
+  .fcard:hover{background:#F7F8F3;}
+  .fcard img{width:100%; height:96px; object-fit:cover; display:block; background:#E3E7DB;}
+  .fcard .fbody{padding:8px 12px 0;}
+  .fcard .ftitle{font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; color:var(--blue); line-height:1.35;}
+  .fcard:hover .ftitle{text-decoration:underline;}
+  .fcard .fmeta{font-family:'Open Sans',sans-serif; font-size:10px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.05em; margin-top:5px;}
+  @media (max-width:640px){
+    /* Stacked, so flex-basis would be read as a height - reset both to auto. */
+    .hero-top{flex-direction:column; gap:20px;}
+    .hero-copy{flex:0 0 auto;}
+    .featured-news{flex:0 0 auto; max-width:none; width:100%; min-width:0;}
+    .fcard img{height:130px;}
+  }
   .plan-time{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); background:#F0F2EA; border:1px solid var(--rule); border-radius:3px; padding:2px 7px; margin-left:8px; vertical-align:2px; white-space:nowrap;}
   .plan-projects{display:flex; flex-direction:column; gap:8px; margin:10px 0 12px;}
   .plan-project{display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:#F7F8F3; border:1px solid var(--rule); border-left:3px solid var(--ink); border-radius:3px; padding:9px 12px; text-decoration:none;}
@@ -362,9 +389,12 @@
   }
   .util-signup{display:none; order:3; color:#F0C86A; font-weight:700; text-decoration:none; text-transform:uppercase; letter-spacing:.04em;}
   .util-signup:hover{color:#fff; text-decoration:underline;}
+  /* Keep it scrolling on phones too - it just gets the full width and its own line there. */
   @media (max-width:700px){
-    .marquee{display:none;}
-    .util-signup{display:inline;}
+    .util-bar-inner{padding:5px 12px; gap:6px;}
+    .util-links{order:1; margin-left:0; flex:1 1 100%; text-align:center;}
+    .marquee{order:2; flex:1 1 100%;}
+    .marquee-track{animation-duration:16s;}
   }
 
   /* ---- Quick links button row ---- */
@@ -469,10 +499,10 @@
     <span class="util-links"><a href="#screenDashboard">Dashboard</a> · <a href="#involved">Get Involved</a> · <a href="#" id="utilTop">Search</a></span>
     <div class="marquee" id="signupMarquee" aria-hidden="true">
       <div class="marquee-track">
-        <button type="button" class="marquee-item" data-signup>Sign up for the South Bay Dashboard summary now</button>
-        <button type="button" class="marquee-item" data-signup>Sign up for the South Bay Dashboard summary now</button>
-        <button type="button" class="marquee-item" data-signup>Sign up for the South Bay Dashboard summary now</button>
-        <button type="button" class="marquee-item" data-signup>Sign up for the South Bay Dashboard summary now</button>
+        <button type="button" class="marquee-item" data-signup>Sign up for biweekly or monthly recaps</button>
+        <button type="button" class="marquee-item" data-signup>Sign up for biweekly or monthly recaps</button>
+        <button type="button" class="marquee-item" data-signup>Sign up for biweekly or monthly recaps</button>
+        <button type="button" class="marquee-item" data-signup>Sign up for biweekly or monthly recaps</button>
       </div>
     </div>
     <a href="#" class="util-signup" data-signup>Sign up for the summary</a>
@@ -481,9 +511,20 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow"><span class="dot"></span> SOUTH BAY PUBLIC RECORDS PROTOTYPE</div>
-    <h1>South Bay Area <em>Planning Dashboard</em></h1>
-    <p class="lede">A dashboard for tracking real planning developments across the South Bay - housing, transportation, and civic projects, official city resources, and concrete ways to get involved. Pick a city below.</p>
+    <div class="hero-top">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> SOUTH BAY PUBLIC RECORDS PROTOTYPE</div>
+        <h1>South Bay Area <em>Planning Dashboard</em></h1>
+        <p class="lede">A dashboard for tracking real planning developments across the South Bay - housing, transportation, and civic projects, official city resources, and concrete ways to get involved. Pick a city below.</p>
+      </div>
+      <aside class="featured-news" id="featuredNews" aria-label="Featured news">
+        <div class="featured-head">
+          <span>Featured news</span>
+          <span class="featured-dots" id="featuredDots"></span>
+        </div>
+        <div class="featured-cards" id="featuredCards"></div>
+      </aside>
+    </div>
     <div class="city-switch" id="citySwitch"></div>
     <div class="snap-row" id="snapRow"></div>
     <div class="quicklinks-row" id="quickLinksRow"></div>
@@ -1257,6 +1298,249 @@ const WSJ_JOIN = [
 ];
 const WSJ_SOURCES = ['City of San Jose - Major Development Projects page', 'City of San Jose - Urban Villages planning pages', 'SF YIMBY and Urbanize SF reporting, 2026', 'City of San Jose District 1 planning and policy office'];
 
+// ============== SANTA CLARA ==============
+// Project records generated from the City of Santa Clara's own DevelopmentProjects feature
+// service (services2.arcgis.com/evwJC31SSJVvbZfF), which is what the city's public
+// Development Activity story map is built on. Coordinates, status, developer, and permit
+// numbers are the city's; nothing here is inferred beyond mapping status to this app's stages.
+const SC_DATA = [
+{id:'sc-1231-comstock-data-center', addr:'1231 Comstock Street', lat:37.37508, lng:-121.95489, cat:'dev', type:'Industrial',
+  desc:'The proposed project is the development of a four-story 122,000 square foot data center building along with six 3,000 kW diesel-fueled generators, one 500 kW house generator, rooftop mechanical equipment including eight 1,500 kW air-cooled chillers, four dedicated outdoor air units, and seven...',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:'PLN22-00282', flag:null},
+{id:'sc-1530-1540-pomeroy-avenue', addr:'1530-1540 Pomeroy Avenue', lat:37.35154, lng:-121.98717, cat:'dev', type:'Residential',
+  desc:'Architectural Review to construct six 3-story townhomes and two detached, 2-story single-family homes with a condominium map on two contiguous residential lots with a total lot area of 0.48 acres with 19 parking spaces. The project involves demolition of two existing one-story single family homes.',
+  units:6, bmr:null, applicant:'Not stated in the city record', filed:'2019-01-01', stage:'approved',
+  lastDate:'2019-01-01', lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 0.5 acres.', fileNo:'PLN2019-13924', flag:null},
+{id:'sc-1821-bowers-avenue-monopine', addr:'1821 Bowers Avenue', lat:37.35648, lng:-121.97727, cat:'dev', type:'Commercial',
+  desc:'Conditional Use Permit for a new unmanned telecommunication facility with the installation of 70-foot-tall monopine tree in the parking lot of the Christian Church of Santa Clara at 1821 Bowers Avenue.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN25-00181', flag:null},
+{id:'sc-1957-pruneridge-avenue', addr:'1957 Pruneridge Avenue', lat:37.33037, lng:-121.95217, cat:'dev', type:'Residential',
+  desc:'The proposal is to construct 19 detached two-story homes with attached accessory dwelling units and three car garages, and 3 detached two-story homes with detached two-car garages on a 2.47 property that is currently developed with a church use.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'construction',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Under Construction. Site area about 2.5 acres.', fileNo:'PLN22-00505', flag:null},
+{id:'sc-2075-de-la-cruz', addr:'2075 De La Cruz Boulevard', lat:37.36164, lng:-121.94088, cat:'dev', type:'Industrial',
+  desc:'General Plan Amendment and Rezoning application to changes the General Plan land use designation and Zoning District from Light Industrial to Community Commercial (C-C).',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:null, flag:null},
+{id:'sc-22-washington-street', addr:'22 Washington Street', lat:37.33812, lng:-121.9384, cat:'dev', type:'Mixed Use',
+  desc:'The project would annex a San Jose site and demolish the existing retail building and construct a six-story mixed-use building with up to 124 residential units and approximately 3,000 square feet of retail space. The project will include two-level structure parking.',
+  units:124, bmr:null, applicant:'Kapital Partners LLC', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review. Site area about 1.2 acres.', fileNo:'PLN24-00141,PLN25-00033,PLN25-00058,PLN25-00059', flag:null},
+{id:'sc-2300-and-2350-walsh', addr:'2300 and 2350 Walsh Avenue', lat:37.36802, lng:-121.96698, cat:'dev', type:'Industrial',
+  desc:'Architectural Review of a three-story, 692,634-square-foot office building with three levels of below-grade parking totaling 2,050 stalls, surface parking covered by a photovoltaic trellis, and a pedestrian bridge spanning Walsh Avenue.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN25-00536', flag:null},
+{id:'sc-2490-el-camino-real', addr:'2490 El Camino Real', lat:37.35181, lng:-121.97097, cat:'dev', type:'Mixed Use',
+  desc:'Architectural Review to demolish the existing structures in five parcels to construct 118 townhomes with associated site improvements.',
+  units:118, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:null, flag:null},
+{id:'sc-2610-el-camino-real', addr:'2610 El Camino Real', lat:37.35145, lng:-121.97552, cat:'dev', type:'Commercial',
+  desc:'Redevelopment of the existing 14.34-acre site of the Moonlite Center located at 2610 El Camino Real.',
+  units:null, bmr:null, applicant:'Toll Brothers', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review. Site area about 14.3 acres.', fileNo:null, flag:null},
+{id:'sc-2655-the-alameda-mixed', addr:'2655 The Alameda', lat:37.34621, lng:-121.93736, cat:'dev', type:'Mixed Use',
+  desc:'The proposal is to construct a four-story mixed-use development consisting of 1,540 square feet of ground floor commercial space and 39 residential units above on a 0.4 acre vacant parcel.',
+  units:39, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'construction',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Under Construction. Site area about 0.4 acres.', fileNo:'PLN22-00448', flag:null},
+{id:'sc-2805-bowers-avenue-data', addr:'2805 Bowers Avenue', lat:37.37218, lng:-121.9764, cat:'dev', type:'Industrial',
+  desc:'The project proposes to demolish the existing approximately 55,000 square foot 2-story building and construct a new 4- story 244,068 square foot data center with a substation. The proposal also involves a lot line adjustment.',
+  units:null, bmr:null, applicant:'GI Partners', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:'PLN2021-15069, PLN22-00479', flag:null},
+{id:'sc-2811-and-2831-mission', addr:'2811 and 2831 Mission College Boulevard - Sutter Santa Clara Hospital', lat:37.38855, lng:-121.97978, cat:'dev', type:'Commercial',
+  desc:'General Plan Amendment, Zoning Code Text Amendment, Use Permit and Architectural Review for the demolition of two existing office buildings on Parcel 1 (104-16-120)',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:null, flag:null},
+{id:'sc-2891-homestead-road-residemtial', addr:'2891 Homestead Road', lat:37.33844, lng:-121.97915, cat:'dev', type:'Residential',
+  desc:'The proposal is to demolish the existing residential structure and construct a 12- unit residential condominium development on a 0.38-acre unincorporated parcel.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN25-00338', flag:null},
+{id:'sc-2929-patrick-henry-drive', addr:'City Light Bible Church - 2929 Patrick Henry Drive', lat:37.39658, lng:-121.98101, cat:'dev', type:'Commercial',
+  desc:'Conditional Use Permit to allow a place of assembly (i.e. church) with up to 900 attendees to locate within a portion of an existing office building.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:null, flag:null},
+{id:'sc-3000-bowers-avenue-office', addr:'3000 Bowers Avenue', lat:37.37563, lng:-121.97932, cat:'dev', type:'Industrial',
+  desc:'Architectural Review Permit to allow the construction of a one-story, approximately 145,000 square foot building, with surface parking and on-site landscaping.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:null, flag:null},
+{id:'sc-3000-patrick-henry-drive', addr:'3000 Patrick Henry Drive', lat:37.39549, lng:-121.98218, cat:'dev', type:'Mixed Use',
+  desc:'Architectural Review for a seven-story 307-unit mixed-use building containing a 5,000 square-foot Community Arts Center space, an approximately 9,250 square-foot dedicated Art Park, and 4,000 square feet of retail space.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:'PLN22-00458', flag:null},
+{id:'sc-3065-bowers-avenue-bw2', addr:'3065 Bowers Avenue', lat:37.3756, lng:-121.97611, cat:'dev', type:'Commercial',
+  desc:'The project seeks Architectural Review approval for development of a new manufacturing building (BW2) with an attached Central Utility Building (CUB2) to serve the planned manufacturing equipment. The buildings will be three-story structures and will have a total area of 107,171 square feet.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'construction',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Under Construction. Site area about 2.4 acres.', fileNo:'PLN25-00132', flag:null},
+{id:'sc-3100-patrick-henry-drive', addr:'3100 Paatrick Henry Drive', lat:37.3955, lng:-121.98361, cat:'dev', type:'Residential',
+  desc:'Architectural Review Permit to allow the full demolition of an existing one-story office building, the construction of a new 100% affordable 7-story approximately 293-unit apartment building, the removal of 11 protected trees, a private park, and associated site improvements.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN26-00249', flag:null},
+{id:'sc-3137-forbes-avenue-institutional', addr:'3137 Forbes Avenue', lat:37.33476, lng:-121.98517, cat:'dev', type:'Commercial',
+  desc:'Use Permit / Architectural Review for a new 10,573 square foot single-story assembly building (place of worship). Site zoned Public / Quasi-Public (PQP) and currently developed with an existing assembly building.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN26-00266', flag:null},
+{id:'sc-3155-el-camino-real', addr:'3155 El Camino Real', lat:37.35295, lng:-121.98308, cat:'dev', type:'Residential',
+  desc:'Rezone from Thoroughfare Commercial (CT) to Planned Development (PD) to construct a 60-unit, three-story townhome development and Tentative Parcel Map to consolidate two parcels into a single lot subdivision of for-sale residential units.',
+  units:null, bmr:null, applicant:'Bayview Development', filed:'2020-01-01', stage:'construction',
+  lastDate:'2020-01-01', lastNote:'City of Santa Clara development activity layer lists this as Under Construction.', fileNo:null, flag:null},
+{id:'sc-3240-scott-boulevard-residential', addr:'3240 Scott Boulevard', lat:37.37854, lng:-121.97086, cat:'dev', type:'Industrial',
+  desc:'Architectural Review, Rezone, General Plan Amendment, and Tentative Subdivision Map to demolish the existing industrial office building and construct a housing development project comprised of 225 multi-family residential units in an eight-story building.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN24-00556 and PLN24-00579', flag:null},
+{id:'sc-3378-3386-el-camino', addr:'3378-3386 El Camino Real', lat:37.35201, lng:-121.98912, cat:'dev', type:'Residential',
+  desc:'Architectural Review for demolition of the existing commercial building and construction of a 3-story townhomes with 24 units for a total area of approximately 57,000 sq. ft. including garages. Project provides 48 parking spaces and utilizes Senate Bill (SB) 330.',
+  units:24, bmr:null, applicant:'VeGuard USA LLC', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:null, flag:null},
+{id:'sc-3521-and-3591-homestead', addr:'3521,3591 Homestead Road', lat:37.33882, lng:-121.99471, cat:'dev', type:'Residential',
+  desc:'Architecture Review for the demolition of the existing commercial and retail building for the construction of a 147-unit residential project that includes 90 four-story stacked townhomes.',
+  units:null, bmr:null, applicant:'Pulte Group', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN24-00633', flag:null},
+{id:'sc-3575-de-la-cruz', addr:'3575 De La Cruz Boulevard', lat:37.3883, lng:-121.94369, cat:'dev', type:'Residential',
+  desc:'Architectural Review for 15 Condominium units on an approximately 0.69 acre vacant City -owned parcel. Project utilizes Assembly Bill (AB) 3194.',
+  units:null, bmr:null, applicant:'Habitat for Humanity', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 0.7 acres.', fileNo:'PLN22-00518', flag:null},
+{id:'sc-3625-peterson-way-office', addr:'3625 Peterson Way', lat:37.38519, lng:-121.98254, cat:'dev', type:'Commercial',
+  desc:'Construction of two new, eight-story office buildings connected by bridges at two levels, a four-level parking structure with attached amenity building that includes a roof deck, surface parking, site landscaping and variance to increase maximum building height from 70 feet to 129 feet (with top of...',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:'PLN2018-13144; PLN2017-12579; CEQ2018-01050. APN = 216-30-049', flag:null},
+{id:'sc-3905-freedom-circle-mixed', addr:'3905 Freedom Circle', lat:37.38597, lng:-121.96959, cat:'dev', type:'Mixed Use',
+  desc:'Mixed-use development on a 16.6 acre site consisting of 1,018 residential units, 606,968 sq.ft. of office space, 18,653 sq.ft. of commercial space, and 2.5 acres of publicly accesible open space.',
+  units:1018, bmr:null, applicant:'Not stated in the city record', filed:'2019-01-01', stage:'approved',
+  lastDate:'2019-01-01', lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 16.6 acres.', fileNo:'PLN2017-12516', flag:null},
+{id:'sc-400-saratoga-avenue-the', addr:'400 Saratoga Avenue', lat:37.33042, lng:-121.96592, cat:'dev', type:'Residential',
+  desc:'Architectural Review, Rezone and General Plan Amendment to allow the construction of a five-story apartment building with up to 316 units wrapped around a seven-story parking structure, a new one-story, approximately 2,460 square foot maintenance building, and a 1.77-acre public park located on a...',
+  units:316, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review. Site area about 31.0 acres.', fileNo:'PLN24-00269', flag:null},
+{id:'sc-4249-cheeney-street', addr:'4249 Cheeney Street', lat:37.39319, lng:-121.96057, cat:'dev', type:'Residential',
+  desc:'Architectural Review, Rezone from R1-6L to R2, General Plan Amendment to change from Very Low Density to Low Density Residential and a Tentative Map to construct nine two-story townhomes with individual at-grade garages. Each townhome would have three bedrooms and two and a half bathrooms.',
+  units:null, bmr:null, applicant:'Maruti Builders, LLC', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:null, flag:null},
+{id:'sc-451-el-camino-real', addr:'451 El Camino Real', lat:37.35132, lng:-121.93417, cat:'dev', type:'Residential',
+  desc:'The proposed project includes demolishing of approximated 216,000 square feet of existing commercial buildings along with parking garages, existing utilities and trees to construct a new residential neighborhood featuring market-rate and affordable apartments and market-rate and affordable...',
+  units:null, bmr:null, applicant:'Bixby Land Company', filed:'2024-01-01', stage:'review',
+  lastDate:'2024-01-01', lastNote:'City of Santa Clara development activity layer lists this as Pending Review. Site area about 10.2 acres.', fileNo:'PLN24-00279', flag:null},
+{id:'sc-4590-patrick-henry-drive', addr:'4590 Patrick Henry Drive', lat:37.39692, lng:-121.98577, cat:'dev', type:'Industrial',
+  desc:'Architectural Review for the demolition of the existing 42,821 square-foot industrial building and construction of an eight-story, 284-unit multifamily residential building within the Patrick Henry Drive Specific Plan Area.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:'2024-01-01', stage:'approved',
+  lastDate:'2024-01-01', lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 0.6 acres.', fileNo:'PLN23-00290/PLN24-00310', flag:null},
+{id:'sc-5200-patrick-henry-drive', addr:'5200 Patrick Henry Drive Santa Clara, CA 95054', lat:37.40646, lng:-121.98534, cat:'dev', type:'Commercial',
+  desc:'he project include demolition of the existing one-story building, and construction of a new four-story office and engineering building with one level of subsurface parking, at-grade parking, and associated site improvements on a 5.63 acre site at the northwest corner of Patrick Henry Drive and...',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'construction',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Under Construction.', fileNo:'PLN22-00556', flag:null},
+{id:'sc-5201-patrick-henry-drive', addr:'5201 Patrick Henry Drive Santa Clara, CA 95054', lat:37.40654, lng:-121.98339, cat:'dev', type:'Commercial',
+  desc:'Architectural Review for a partial exterior demolition, removal of the mechanical penthouse, approximately 7,534 square foot addition, and interior renovations of an existing 144,390 square feet three-story office building resulting in a 113,272 square feet ft office and prefabrication facility...',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'construction',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Under Construction.', fileNo:null, flag:null},
+{id:'sc-860-858-civic-center', addr:'858, 860 Civic Center Drive & 1526 Alviso Street, Santa Clara, CA', lat:37.35588, lng:-121.94541, cat:'dev', type:'Residential',
+  desc:'The proposed project is to demolish the existing buildings and develop three separate multi-family buildings which include an eight-unit building, a six-unit building, and a two-unit building, resulting in 14 townhomes and a duplex building. Each townhome unit provides a two-car tandem garage.',
+  units:14, bmr:null, applicant:'Spenso Enterprises', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN24-00533', flag:null},
+{id:'sc-88-saratoga-avenue', addr:'88 Saratoga Avenue', lat:37.32543, lng:-121.96893, cat:'dev', type:'Mixed Use',
+  desc:'The project has been submitted for ministerial review pursuant to California Senate Bill 35 (SB35) for development of 200 affordable rental apartments and 8,625 square feet of commercial development on a 1.98 acre parcel with a Community Mixed-Use General Plan designation.',
+  units:null, bmr:null, applicant:'Maracor Development', filed:null, stage:'completed',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Completed. Site area about 2.0 acres.', fileNo:'PLN21-15214', flag:null},
+{id:'sc-agrihoomixed-use-development-project', addr:'1843 Worthington Circle and 90 N Winchester Boulevard', lat:37.32611, lng:-121.95131, cat:'dev', type:'Mixed Use',
+  desc:'Residential mixed-use development consisting of up to 160 mixed-income apartments,165 affordable senior apartments, 36 townhomes and approximately 1.5 acres of agricultural open space.',
+  units:36, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'completed',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Completed. Site area about 5.8 acres.', fileNo:'PLN2016-12390', flag:null},
+{id:'sc-agrihoomixed-use-development-project-2', addr:'1816 Worthington Circle', lat:37.32641, lng:-121.95138, cat:'dev', type:'Residential',
+  desc:'Five (5) three-story townhome buildings, providing a total of 44 residential units.',
+  units:44, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review.', fileNo:'PLN25-00255, PLN25-00390, PLN25-00409', flag:null},
+{id:'sc-city-place-santa-clara', addr:'5155 Stars and Stripes Drive', lat:37.41133, lng:-121.97056, cat:'dev', type:'Commercial',
+  desc:'Future sustainable village across from Levi\'s Stadium features 9M Sq.ft of the restaurants, retail, office and entertainment venue.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 240.0 acres.', fileNo:null, flag:null},
+{id:'sc-civic-center-drive-family', addr:'1601 Civic Center Drive', lat:37.35385, lng:-121.95602, cat:'dev', type:'Residential',
+  desc:'General Plan Amendment from Community Commercial to High Density Residential and Rezone from General Office to Planned Development (PD) to construct a five-story affordable housing development with 106 rental units at a density of 75 dwelling units per acre with 72 parking spaces at 0.7 spaces per...',
+  units:106, bmr:null, applicant:'Charities Housing', filed:'2022-01-01', stage:'approved',
+  lastDate:'2022-01-01', lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:null, flag:null},
+{id:'sc-gateway-crossing-hunter-storm', addr:'1205 Coleman Avenue', lat:37.35566, lng:-121.93391, cat:'dev', type:'Mixed Use',
+  desc:'Phased-mixed-use development (23.8 acres) with 1,600 residential units, 182,000 sq.ft. hotel, 15,000 sq.ft. of ancillary retail, parking faciilities, neighborhood park, and upgraded utilities.',
+  units:1600, bmr:null, applicant:'Hunter/Storm', filed:null, stage:'completed',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Completed. Site area about 23.8 acres.', fileNo:'Reshaped it as per Jason\'s email on 10/6/25', flag:null},
+{id:'sc-gateway-crossing-hunter-storm-2', addr:'1205 Coleman Avenue', lat:37.35458, lng:-121.93496, cat:'dev', type:'Mixed Use',
+  desc:'Phased-mixed-use development (23.8 acres) with 1,600 residential units, 182,000 sq.ft. hotel, 15,000 sq.ft. of ancillary retail, parking faciilities, neighborhood park, and upgraded utilities.',
+  units:1600, bmr:null, applicant:'Hunter/Storm', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:'Added new section as per Jason\'s email on 10/6', flag:null},
+{id:'sc-gateway-crossing-hunter-storm-3', addr:'1205 Coleman Avenue', lat:37.35611, lng:-121.9326, cat:'dev', type:'Mixed Use',
+  desc:'Phased-mixed-use development (23.8 acres) with 1,600 residential units, 182,000 sq.ft. hotel, 15,000 sq.ft. of ancillary retail, parking faciilities, neighborhood park, and upgraded utilities.',
+  units:1600, bmr:null, applicant:'Hunter/Storm', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:'Added new section as per Jason\'s email on 10/6', flag:null},
+{id:'sc-gateway-village-essex-property', addr:'3610 & 3700 El Camino Real', lat:37.35087, lng:-121.99796, cat:'dev', type:'Residential',
+  desc:'Leading edge urban village featuring 476 apartment homes, 108K prime retail, live work units nestled among quixotic landscaping.',
+  units:476, bmr:null, applicant:'Essex Property Trust', filed:null, stage:'completed',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Completed. Site area about 12.6 acres.', fileNo:null, flag:null},
+{id:'sc-gateway-village-essex-property-2', addr:'3680 El Camino Real', lat:37.35149, lng:-121.99798, cat:'dev', type:'Residential',
+  desc:'Leading edge urban village featuring 476 apartment homes, 108K prime retail, live work units nestled among quixotic landscaping.',
+  units:476, bmr:null, applicant:'Essex Property Trust', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 12.6 acres.', fileNo:null, flag:null},
+{id:'sc-great-america-parkway-tasman', addr:'2901 Tasman Drive', lat:37.40456, lng:-121.979, cat:'dev', type:'Industrial',
+  desc:'General Plan Amendment from Low Intensity Office to High Intensity Office and Rezoning from Light Industrial (ML) to Planned Development (PD) of a 10 acre site located at 2901 Tasman Drive.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Pending Review. Site area about 10.0 acres.', fileNo:'PLN2020-14361', flag:null},
+{id:'sc-kylli-mixed-use-development', addr:'3055 Democracy Way', lat:37.40099, lng:-121.98244, cat:'dev', type:'Mixed Use',
+  desc:'46 acre lot for a proposed high-intensity mix of office, commercial, and residential uses.',
+  units:null, bmr:null, applicant:'Kylli Inc.', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 46.0 acres.', fileNo:null, flag:null},
+{id:'sc-lawrence-station-project-lawrence', addr:'3069 Lawrence Expressway', lat:37.37692, lng:-121.99486, cat:'dev', type:'Residential',
+  desc:'The construction of an up to 328 units, four-story, multi-family development on a 3.92 gross-acre site. New design submittal expected.',
+  units:328, bmr:null, applicant:'Westlake Urban LLC', filed:'2019-01-01', stage:'construction',
+  lastDate:'2019-01-01', lastNote:'City of Santa Clara development activity layer lists this as Under Construction.', fileNo:'PLN2015-11411; APN 216-34-052', flag:null},
+{id:'sc-nvidia-phase-iii', addr:'2400 Condensa Street', lat:37.37306, lng:-121.96991, cat:'dev', type:'Commercial',
+  desc:'Landmark of Innovation. NVIDIA\'s new campus features state of the art design and space concepts in two 500,000 sq. ft. spaces.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 35.6 acres.', fileNo:null, flag:null},
+{id:'sc-sequoia-data-center-project', addr:'2600 De La Cruz Boulevard', lat:37.36847, lng:-121.9439, cat:'dev', type:'Industrial',
+  desc:'Architectural Review and adoption of a Mitigated Negative Declaration to construct a 703,450 square-foot, four-story data center, backup generating facility with a generation capacity up to 96.5 megawatts (MW), surface parking, landscaping and site improvements.',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:'2019-01-01', stage:'approved',
+  lastDate:'2019-01-01', lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 15.0 acres.', fileNo:'PLN2019-14128', flag:null},
+{id:'sc-starbucks-drive-thru', addr:'3575 Stevens Creek Boulevard', lat:37.32364, lng:-121.96184, cat:'dev', type:'Commercial',
+  desc:'The proposal is for a Use Permit and Architectural Review to allow the demolition of an existing 7,266 square foot retail and office building and construction a new 2,300 square foot drive-through restaurant (Starbucks) with an outdoor patio, double drive-through lanes, and offsite/onsite...',
+  units:null, bmr:null, applicant:'Not stated in the city record', filed:'2022-01-01', stage:'approved',
+  lastDate:'2022-01-01', lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 0.6 acres.', fileNo:'PLN22-00428', flag:null},
+{id:'sc-tasman-east-2263-calle', addr:'2263 Calle Del Mundo', lat:37.4104, lng:-121.96517, cat:'dev', type:'Mixed Use',
+  desc:'An approximately .95 acre proposed project is located within the Tasman East Specific Plan area and includes a mixed-use, mid-rise building with approximately 148 residential units, accessory residential amenity and structured parking.',
+  units:148, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'construction',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Under Construction.', fileNo:'PLN2018-13443', flag:null},
+{id:'sc-tasman-east-2354-calle', addr:'2354 Calle Del Mundo', lat:37.40892, lng:-121.9673, cat:'dev', type:'Residential',
+  desc:'Residential project with approximately 110 units in the Tasman East Specific Plan area.',
+  units:110, bmr:null, applicant:'Ensemble', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 0.5 acres.', fileNo:'PLN2019-14040 APN 097-46-002', flag:null},
+{id:'sc-tasman-east-5158-lafayette', addr:'5815 Lafayette Street', lat:37.40836, lng:-121.96718, cat:'dev', type:'Mixed Use',
+  desc:'A approximately 1.12 acre proposed project is located within the Tasman East Specific Plan area, adjacent to the Great America Light Rail Station and includes a mixed-use, mid-rise building with approximately 3,650 square feet of retail space, 147 residential units and structured parking.',
+  units:147, bmr:null, applicant:'Not stated in the city record', filed:null, stage:'approved',
+  lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved.', fileNo:null, flag:null},
+{id:'sc-tasman-east-2200-calle', addr:'2200 Calle De Luna', lat:37.41073, lng:-121.96311, cat:'dev', type:'Residential',
+  desc:'Construction of three 12-story residential towers, including approximately 600 residential apartment units with indoor and outdoor amenities and a three-level parking garage by Holland Partner Group.',
+  units:600, bmr:null, applicant:'Holland Partner Group', filed:'2019-01-01', stage:'approved',
+  lastDate:'2019-01-01', lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 3.7 acres.', fileNo:'PLN2018-13436', flag:null},
+];
+const SC_FEED = [
+  {date:'2024-01-01', id:'sc-4590-patrick-henry-drive', title:'4590 Patrick Henry Drive - Approved', body:'Santa Clara\'s development activity layer records this project under 2024 and lists it as Approved. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2024-01-01', id:'sc-451-el-camino-real', title:'451 El Camino Real - Pending Review', body:'Santa Clara\'s development activity layer records this project under 2024 and lists it as Pending Review. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2022-01-01', id:'sc-starbucks-drive-thru', title:'3575 Stevens Creek Boulevard - Approved', body:'Santa Clara\'s development activity layer records this project under 2022 and lists it as Approved. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2022-01-01', id:'sc-civic-center-drive-family', title:'1601 Civic Center Drive - Approved', body:'Santa Clara\'s development activity layer records this project under 2022 and lists it as Approved. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2020-01-01', id:'sc-3155-el-camino-real', title:'3155 El Camino Real - Under Construction', body:'Santa Clara\'s development activity layer records this project under 2020 and lists it as Under Construction. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2019-01-01', id:'sc-tasman-east-2200-calle', title:'2200 Calle De Luna - Approved', body:'Santa Clara\'s development activity layer records this project under 2019 and lists it as Approved. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2019-01-01', id:'sc-sequoia-data-center-project', title:'2600 De La Cruz Boulevard - Approved', body:'Santa Clara\'s development activity layer records this project under 2019 and lists it as Approved. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2019-01-01', id:'sc-lawrence-station-project-lawrence', title:'3069 Lawrence Expressway - Under Construction', body:'Santa Clara\'s development activity layer records this project under 2019 and lists it as Under Construction. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2019-01-01', id:'sc-3905-freedom-circle-mixed', title:'3905 Freedom Circle - Approved', body:'Santa Clara\'s development activity layer records this project under 2019 and lists it as Approved. The city publishes the year only, not the individual milestone dates.'},
+  {date:'2019-01-01', id:'sc-1530-1540-pomeroy-avenue', title:'1530-1540 Pomeroy Avenue - Approved', body:'Santa Clara\'s development activity layer records this project under 2019 and lists it as Approved. The city publishes the year only, not the individual milestone dates.'},
+];
+const SC_DECIDERS = [
+  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'Seven Council-appointed volunteer commissioners; first decision point on land use.', link:'https://www.santaclaraca.gov/our-city/government/boards-commissions/planning-commission'},
+  {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, development agreements, and rezonings.', link:'https://santaclara.legistar.com/Calendar.aspx'},
+];
+const SC_JOIN = [
+  {name:'Bicycle and Pedestrian Advisory Committee', when:'See the committee page for the current schedule', body:'Advises on bike and pedestrian infrastructure citywide.', cat:'Transportation', link:'https://www.santaclaraca.gov/our-city/government/boards-commissions/bicycle-and-pedestrian-advisory-committee'},
+  {name:'Historical &amp; Landmarks Commission', when:'See the commission page for the current schedule', body:'Reviews demolition and alteration of historic properties - often the constraint on infill projects.', cat:'Civic', link:'https://www.santaclaraca.gov/our-city/government/boards-commissions/historical-landmarks-commission'},
+  {name:'Parks &amp; Recreation Commission', when:'See the commission page for the current schedule', body:'Advises on parkland, which large residential projects are required to dedicate or pay toward.', cat:'Civic', link:'https://www.santaclaraca.gov/our-city/government/boards-commissions/parks-recreation-commission'},
+  {name:'Cultural Commission', when:'See the commission page for the current schedule', body:'Advises on public art, including art requirements attached to new development.', cat:'Civic', link:'https://www.santaclaraca.gov/our-city/government/boards-commissions/cultural-commission'},
+];
+const SC_SOURCES = ['City of Santa Clara - Development Activity story map and DevelopmentProjects GIS feature service', 'City of Santa Clara - Projects Listing', 'City of Santa Clara - Boards and Commissions', 'City of Santa Clara Legistar (Council and Planning Commission agendas)'];
+
 
 
 const CITIES = {
@@ -1302,6 +1586,13 @@ const CITIES = {
       {label:'Official San Jose major projects map (GIS)', url:'https://csj.maps.arcgis.com/apps/instant/attachmentviewer/index.html?appid=95eb2c4821e54ff7b19a55278e742f85'},
       {label:'Major Development Projects', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects'},
       {label:'District 1 planning & policy', url:'https://www.sanjoseca.gov/your-government/departments-offices/mayor-and-city-council/district-1/projects-and-policy/planning'},
+    ]},
+  santaclara: {label:'Santa Clara', center:{lat:37.362,lng:-121.965}, zoom:12.3, bbox:{minLat:37.32,maxLat:37.42,minLng:-122.01,maxLng:-121.92}, data:SC_DATA, feed:SC_FEED, deciders:SC_DECIDERS, join:SC_JOIN, sources:SC_SOURCES, note:'The most complete city in this tracker: all 53 records come straight from Santa Clara\'s own development-activity GIS layer, the same source behind the city\'s public story map. Because that layer publishes a year rather than milestone dates, the change feed is coarser here than in the hand-researched cities.',
+    ctaLinks:[
+      {label:'Official Santa Clara development map (GIS)', url:'https://www.santaclaraca.gov/our-city/departments-a-f/community-development/planning-division/development-activity'},
+      {label:'Projects Listing', url:'https://www.santaclaraca.gov/business-development/development-projects/projects-listing'},
+      {label:'Council & Planning Commission agendas', url:'https://santaclara.legistar.com/Calendar.aspx'},
+      {label:'Apply for a board or commission', url:'https://www.santaclaraca.gov/our-city/government/boards-commissions/interest-form'},
     ]},
 };
 let currentCity = 'sunnyvale';
@@ -1785,6 +2076,9 @@ document.getElementById('search').addEventListener('input', (e)=>{ state.q = e.t
 
 function switchCity(key){
   currentCity = key;
+  // Featured news leads with the selected city's stories, so it follows the tab.
+  featuredPage = 0;
+  if(typeof renderFeaturedNews === 'function'){ preloadFeaturedImages(); renderFeaturedNews(); }
   state = {q:'', stage:'all', cat:'all'};
   document.getElementById('search').value = '';
   renderCitySwitch();
@@ -2451,6 +2745,32 @@ const NEWS_ARTICLES = [
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/08/04171337/Google-rendering-1200x630.webp',
     snippet:'Google signed renewals on 2.1M sq ft of Sunnyvale office space, even as it cancelled its Mountain View "Google Landings" office project and now explores selling its Middlefield Park site.',
     url:'https://sanjosespotlight.com/google-renews-leases-for-two-silicon-valley-office-complexes/' },
+  {topic:'housing', city:'santaclara', title:'Santa Clara approves another 1,000+ housing project', source:'San José Spotlight', date:'2025-04-14', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/04/11163524/IMG_2693-1200x630.jpg', snippet:'North Santa Clara is slated for more than a thousand new homes over the next few years, with whole neighborhoods under construction.', url:'https://sanjosespotlight.com/santa-clara-approves-another-1000-housing-project/'},
+  {topic:'developments', city:'santaclara', title:'Major Santa Clara housing project clears development hurdle', source:'San José Spotlight', date:'2024-11-29', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2022/03/24105312/IMG_7923-1200x630.jpg', snippet:'Santa Clara has been bulking up housing in its northern neighborhoods and officials just approved plans for thousands more homes.', url:'https://sanjosespotlight.com/major-santa-clara-housing-project-clears-development-hurdle/'},
+  {topic:'housing', city:'santaclara', title:'Santa Clara approves contentious affordable housing project', source:'San José Spotlight', date:'2022-11-19', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2022/03/10213650/2900DD54-4691-457B-A920-60F00D1B0CFC_1_201_a-1200x630.jpeg', snippet:'After considerable pushback from residents and uncertainty among Santa Clara councilmembers, city leaders are greenlighting a controversial multifamily housing project on Civic Center Drive.', url:'https://sanjosespotlight.com/santa-clara-city-council-approves-contentious-affordable-housing-multifamily-apartment-project-civic-center-drive/'},
+  {topic:'housing', city:'santaclara', title:'Santa Clara approves plans for temporary homeless housing', source:'San José Spotlight', date:'2026-07-16', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/07/15171653/IMG_9123-1200x630.jpg', snippet:'After years of revisions, public debate and negotiations, Santa Clara has taken another step toward bringing a family-focused interim housing community to a vacant, county-owned site. The site will prioritize serving homeless families with children.', url:'https://sanjosespotlight.com/santa-clara-approves-plans-for-temporary-homeless-housing/'},
+  {topic:'developments', city:'santaclara', title:'Long-delayed Santa Clara project cuts office space', source:'San José Spotlight', date:'2025-07-16', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/15113140/IMG_3053-1200x630.jpg', snippet:'The behemoth development across the street from Levi’s Stadium in Santa Clara has received a key nod from city officials to help it move forward.', url:'https://sanjosespotlight.com/long-delayed-santa-clara-project-cuts-office-space/'},
+  {topic:'developments', city:'santaclara', title:'Santa Clara development offers hundreds of apartments', source:'San José Spotlight', date:'2025-10-02', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/09/30170702/PXL_20250930_174149798-1200x630.jpg', snippet:'A long-awaited Santa Clara housing development is already welcoming hundreds of residents, and the developers are just getting started.', url:'https://sanjosespotlight.com/santa-clara-development-offers-hundreds-of-apartments/'},
+  {topic:'housing', city:'santaclara', title:'Santa Clara County housing gets approved, but not built', source:'San José Spotlight', date:'2025-04-24', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2022/08/19122748/Villas-on-Fourth-1200x630.jpg', snippet:'Cities in Santa Clara County have approved hundreds of new homes, but construction hasn’t kept up, a data analysis by San José Spotlight shows.', url:'https://sanjosespotlight.com/santa-clara-county-housing-gets-approved-but-not-built/'},
+  {topic:'transportation', city:'sunnyvale', title:'Silicon Valley cities work with transit agency on safer route to school', source:'San José Spotlight', date:'2024-04-10', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/04/09160800/PXL_20240409_194336345.MP_-1200x630.jpg', snippet:'A partnership between multiple cities and a Silicon Valley transit agency is going to construct a long-needed safer route for students biking and walking to school. The Homestead Safe Routes to School project aims to make traveling to school easier for students attending Cupertino Middle School, Homestead High School and West Valley Elementary School by...', url:'https://sanjosespotlight.com/silicon-valley-cities-work-with-transit-agency-on-safer-route-to-school/'},
+  {topic:'transportation', city:'cupertino', title:'Silicon Valley cities get funding for ride-share service', source:'San José Spotlight', date:'2024-11-05', image:'https://sanjosespotlight.com/wp-content/uploads/2024/03/SV-Hopper-1-1200x630.png', snippet:'Multiple Silicon Valley cities are raking in money for micro-transit programs, which transit advocates say is critical for areas with sparser public transportation.', url:'https://sanjosespotlight.com/silicon-valley-cities-get-funding-for-ride-share-service/'},
+  {topic:'transportation', city:'santaclara', title:'Silicon Valley transit agency joins regional sales tax effort', source:'San José Spotlight', date:'2025-08-08', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/08/01160614/vta-1200x630.jpg', snippet:'After months of deliberation, VTA is joining five major Bay Area transit agencies in supporting a regional funding measure planned for the 2026 ballot.', url:'https://sanjosespotlight.com/silicon-valley-transit-agency-joins-regional-sales-tax-effort/'},
+  {topic:'transportation', city:'sunnyvale', title:'VTA questions future of light rail in Santa Clara County', source:'San José Spotlight', date:'2022-02-23', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2021/12/24134431/Baypointe-Station-2-1200x630.jpg', snippet:'VTA is pondering the future of its light rail system in Santa Clara County as it considers how to replace an aging fleet of public transit train cars.', url:'https://sanjosespotlight.com/san-jose-silicon-valley-transit-agency-vta-future-may-be-falling-off-the-rails-light-rail-train/'},
+  {topic:'transportation', city:'saratoga', title:'West Valley commuters have limited public transit service', source:'San José Spotlight', date:'2025-07-24', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/22162957/PXL_20250715_211403718.MP_-1200x630.jpg', snippet:'Kylie Clark is one of the residents stuck with a less frequent and sometimes unreliable public transportation system in Los Gatos and Cupertino, where transit riders have to rely solely on the buses, since there\'s no light rail.', url:'https://sanjosespotlight.com/west-valley-commuters-have-limited-public-transit-service/'},
+  {topic:'transportation', city:'milpitas', title:'Silicon Valley transit agency funds community growth near train stations', source:'San José Spotlight', date:'2024-11-18', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/10/18163845/image0-1200x630.png', snippet:'A Silicon Valley public transit agency wants to increase its presence, and ridership numbers, by pumping dollars into community groups near its light rail stations.', url:'https://sanjosespotlight.com/silicon-valley-transit-agency-funds-community-growth-near-train-stations-vta/'},
+  {topic:'transportation', city:'westsanjose', title:'Voters could decide future Bay Area public transit funding', source:'San José Spotlight', date:'2024-03-20', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/03/19113157/IMG_0211-1200x630.jpg', snippet:'The possible consolidation of numerous Bay Area public transit agencies and future funding sources could be left up to voters.', url:'https://sanjosespotlight.com/decision-to-consolidate-bay-area-silicon-valley-san-jose-public-transit-transportation-could-go-to-voters-bart-vta-mtc/'},
+  {topic:'transportation', city:'westsanjose', title:'East San Jose to get long overdue light rail extension', source:'San José Spotlight', date:'2024-03-08', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/03/08114001/East-Side-VTA-connector-2-1-1200x630.jpg', snippet:'South Bay transit leaders have approved a major contract to get construction underway on a long-planned light rail extension project in East San Jose.', url:'https://sanjosespotlight.com/east-san-jose-to-get-long-overdue-light-rail-extension-vta-bart-connector-public-transit/'},
+  {topic:'housing', city:'saratoga', title:'Saratoga housing development catches residents off guard', source:'San José Spotlight', date:'2025-08-14', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/08/08163818/Saratoga-1-1200x630.jpg', snippet:'A century-old Saratoga vineyard could transform into hundreds of homes, creating mixed feelings in the community. San Jose-based City Connect Real Estate Development is proposing a 231-home development on 11.6 acres of vineyard land at 14001 Chester Ave.', url:'https://sanjosespotlight.com/saratoga-housing-development-catches-residents-off-guard/'},
+  {topic:'housing', city:'saratoga', title:'Saratoga residents and developer come to terms on project', source:'San José Spotlight', date:'2026-07-12', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/07/09133451/Vineyard-One-site-1200x630.jpg', snippet:'Saratoga residents living next to a former vineyard that\'s about to be transformed into homes have reached an uneasy truce over the project, clearing the way for the developer to reap a $79 million profit by selling the site to a nationwide homebuilder.', url:'https://sanjosespotlight.com/saratoga-residents-and-developer-come-to-terms-on-project/'},
+  {topic:'housing', city:'westsanjose', title:'UPDATE: San Jose eases housing development requirements', source:'San José Spotlight', date:'2026-01-28', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/07/05125559/IMG_0758-scaled-1-1200x630.jpg', snippet:'San Jose is considering a policy package intended to spur local housing development by adjusting certain requirements that homebuilders say have stymied new projects.', url:'https://sanjosespotlight.com/san-jose-considers-easing-housing-development-requirements/'},
+  {topic:'housing', city:'mountainview', title:'Mountain View approves 4-story condo development', source:'San José Spotlight', date:'2025-10-02', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/09/30093440/MV-266-TYRELLA_Dec2024_WEB_1-1200x630.webp', snippet:'A four-story condo development in Mountain View largely sailed through a City Council meeting Tuesday evening, despite some opposition from residents who said the project was not a good fit for the neighborhood and did not provide enough parking.', url:'https://sanjosespotlight.com/mountain-view-approves-four-story-condo-development/'},
+  {topic:'housing', city:'mountainview', title:'Mountain View approves 8-story affordable housing development', source:'San José Spotlight', date:'2024-12-19', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/12/19150736/Screen-Shot-2024-12-19-at-3.06.45-PM.png', snippet:'Making some tradeoffs to get more homes built, Mountain View backed an affordable housing development that will support lower-income residents, but will have very few parking spaces for them. CRP Affordable Housing is proposing to build an eight-story apartment complex at 334 San Antonio Road, replacing a Valero gas station and auto repair shop. The City Council...', url:'https://sanjosespotlight.com/mountain-view-approves-8-story-affordable-housing-development/'},
+  {topic:'housing', city:'mountainview', title:'6-story housing approved to replace Mountain View’s historic Chase Bank', source:'San José Spotlight', date:'2025-11-24', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/11/24105134/Screenshot-2025-11-18-212327-scaled-1-1200x630.jpg', snippet:'The Mountain View City Council has approved a new mixed-use housing project that will add hundreds of apartments at one of Mountain View’s most prominent intersections, preserving elements of the existing historic bank building on the site.', url:'https://sanjosespotlight.com/6-story-housing-approved-to-replace-mountain-views-historic-chase-bank/'},
+  {topic:'developments', city:'mountainview', title:'State gives Mountain View $50M for housing, transit projects', source:'San José Spotlight', date:'2026-07-15', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/07/15102552/Mountain-View-Evelyn-Ave-development-rendering-Embarcadero.webp', snippet:'In a windfall for Mountain View, the California Department of Housing and Community Development recently awarded the city $50 million to support an affordable housing project and transportation improvements on Middlefield Road.', url:'https://sanjosespotlight.com/state-gives-mountain-view-50m-for-housing-transit-projects/'},
+  {topic:'housing', city:'mountainview', title:'Mountain View backs plan for more housing south of El Camino Real', source:'San José Spotlight', date:'2025-12-22', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/12/22100747/MV-Blossom-Valley-1200x630.webp', snippet:'Amid objections from some community members, the Mountain View City Council has backed a plan to allow for more housing in select areas south of El Camino Real, a part of the city that is currently made up of mostly single-family homes.', url:'https://sanjosespotlight.com/mountain-view-backs-plan-for-more-housing-south-of-el-camino-real/'},
+  {topic:'housing', city:'mountainview', title:'Mountain View approves 8-story condos after parkland fee dispute', source:'San José Spotlight', date:'2026-05-04', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/02165756/Mountain-View-Castor-1200x630.png', snippet:'A developer’s plan to build an eight-story condominium complex at a prominent gateway to downtown Mountain View got the greenlight Tuesday evening after a legal dispute over parkland fees threatened to derail the project earlier this year. In a split 4-2 vote, the City Council approved a 140-unit condominium project with nearly 10,000 square feet of ground floor retail...', url:'https://sanjosespotlight.com/mountain-view-approves-8-story-condos-after-parkland-fee-dispute/'},
+  {topic:'housing', city:'santaclara', title:'How Santa Clara County divvied up its housing bond dollars', source:'San José Spotlight', date:'2024-12-30', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/09/19101033/IMG_7371-1200x630.jpg', snippet:'A $950 million affordable housing bond has helped build thousands of affordable homes across Santa Clara County, though its efforts have focused on some parts of the region more than others. Measure A, passed by voters in 2016, has helped fund the construction of 5,135 new homes and smashed the county’s goal of 4,800 in...', url:'https://sanjosespotlight.com/how-santa-clara-county-divvied-up-its-housing-bond-dollars/'},
+  {topic:'housing', city:'cupertino', title:'Views of SB 9 vary among Silicon Valley cities', source:'San José Spotlight', date:'2022-01-24', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2019/12/19203519/Screenshot-2019-12-06-at-6.25.45-PM-1-1200x630.jpg', snippet:'Cities across California are deciding if they are going to welcome or fight a statewide housing bill that could change the makeup of neighborhoods.', url:'https://sanjosespotlight.com/not-all-santa-clara-county-cities-see-sb-9-new-housing-law-the-same-way-san-jose-silicon-valley/'}
 ];
 function renderTopicNews(topicKey, cap){
   const el = document.getElementById('topicNews'+cap);
@@ -2722,6 +3042,80 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
 });
 
 renderAuthNavState();
+
+// ================= FEATURED NEWS =================
+// Two stories beside the hero copy, cycling every 5 seconds. Pauses while the reader is hovering
+// or tabbing through it, so a link never moves out from under the cursor mid-click.
+const FEATURED_PER_PAGE = 2;
+const FEATURED_INTERVAL = 5000;
+// Cap the rotation. With 30+ articles the dot row becomes unreadable and a story you glimpsed
+// takes over a minute to come back around.
+const FEATURED_MAX_PAGES = 5;
+let featuredPage = 0;
+let featuredTimer = null;
+
+function featuredArticles(){
+  // Newest first, and prefer the current city's news so the panel is locally relevant.
+  const sorted = [...NEWS_ARTICLES].sort((a,b)=> String(b.date).localeCompare(String(a.date)));
+  const local = sorted.filter(a=> a.city === currentCity);
+  const rest  = sorted.filter(a=> a.city !== currentCity);
+  return [...local, ...rest];
+}
+
+function renderFeaturedNews(){
+  const cards = document.getElementById('featuredCards');
+  const dots = document.getElementById('featuredDots');
+  if(!cards) return;
+  const all = featuredArticles().slice(0, FEATURED_MAX_PAGES * FEATURED_PER_PAGE);
+  if(!all.length){ document.getElementById('featuredNews').style.display='none'; return; }
+  const pages = Math.max(1, Math.ceil(all.length / FEATURED_PER_PAGE));
+  featuredPage = featuredPage % pages;
+  const slice = all.slice(featuredPage*FEATURED_PER_PAGE, featuredPage*FEATURED_PER_PAGE + FEATURED_PER_PAGE);
+
+  cards.innerHTML = slice.map(a=>`
+    <a class="fcard" href="${a.url}" target="_blank" rel="noopener">
+      ${a.image ? `<img src="${a.image}" alt="" onerror="this.style.display='none'">` : ''}
+      <div class="fbody">
+        <div class="ftitle">${a.title}</div>
+        <div class="fmeta">${a.source} &middot; ${CITIES[a.city] ? CITIES[a.city].label : a.city}</div>
+      </div>
+    </a>`).join('');
+  dots.innerHTML = Array.from({length:pages}, (_,i)=>`<i class="${i===featuredPage?'on':''}"></i>`).join('');
+}
+
+function advanceFeatured(){
+  const cards = document.getElementById('featuredCards');
+  if(!cards) return;
+  cards.classList.add('fading');
+  setTimeout(()=>{ featuredPage++; renderFeaturedNews(); cards.classList.remove('fading'); }, 450);
+}
+
+function startFeaturedRotation(){
+  clearInterval(featuredTimer);
+  featuredTimer = setInterval(advanceFeatured, FEATURED_INTERVAL);
+}
+
+// The panel replaces its markup on every rotation, so a fresh <img> would restart its download
+// and never finish inside the 5s window. Warming the cache once up front keeps re-renders instant.
+function preloadFeaturedImages(){
+  featuredArticles().slice(0, FEATURED_MAX_PAGES * FEATURED_PER_PAGE)
+    .forEach(a=>{ if(a.image){ const i = new Image(); i.src = a.image; } });
+}
+
+preloadFeaturedImages();
+renderFeaturedNews();
+startFeaturedRotation();
+(function(){
+  const panel = document.getElementById('featuredNews');
+  if(!panel) return;
+  const pause = ()=> clearInterval(featuredTimer);
+  panel.addEventListener('mouseenter', pause);
+  panel.addEventListener('focusin', pause);
+  panel.addEventListener('mouseleave', startFeaturedRotation);
+  panel.addEventListener('focusout', startFeaturedRotation);
+  // Rotating while the tab is hidden just burns the list; restart on return.
+  document.addEventListener('visibilitychange', ()=> document.hidden ? pause() : startFeaturedRotation());
+})();
 
 // Every signup call-out (scrolling banner and its static fallback) lands on the Account page,
 // which is where the email address and city preference live.
