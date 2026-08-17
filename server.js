@@ -9,7 +9,7 @@ import { SYSTEM_INSTRUCTIONS } from './instructions.js';
 import { PROJECTS } from './data/projects.js';
 import { NEWS_ARTICLES } from './data/news.js';
 import { BOARDS } from './data/boards.js';
-import { buildChangeDigest, buildWelcomeRecap, CITY_LABELS, cityLabel } from './digest.js';
+import { buildBriefing, CITY_LABELS, cityLabel } from './digest.js';
 
 dotenv.config();
 
@@ -60,6 +60,9 @@ async function initDb() {
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_digest_sent_at TIMESTAMPTZ;`);
   // The user's own city, so their local news leads the digest ahead of the rest of the South Bay.
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS home_city TEXT;`);
+  // Biweekly and monthly are the only cadences now - move anyone on daily/weekly to the closest
+  // one still offered, rather than leaving them on a frequency the Account page can't display.
+  await pool.query(`UPDATE users SET email_frequency = 'biweekly' WHERE email_frequency IN ('daily','weekly');`);
   await pool.query(`
     CREATE TABLE IF NOT EXISTS sessions (
       token TEXT PRIMARY KEY,
@@ -193,8 +196,11 @@ app.post('/api/logout', authMiddleware, async (req, res) => {
 });
 
 // ---------------- EMAIL DIGEST PREFERENCES ----------------
-const VALID_FREQUENCIES = ['off', 'daily', 'weekly', 'monthly'];
-const FREQUENCY_DAYS = { daily: 1, weekly: 7, monthly: 30 };
+// Two cadences only. The underlying records are updated by hand, so anything more frequent would
+// send the same briefing twice. daily/weekly are still honoured in FREQUENCY_DAYS so any row
+// predating this is scheduled sensibly until the migration below converts it.
+const VALID_FREQUENCIES = ['off', 'biweekly', 'monthly'];
+const FREQUENCY_DAYS = { daily: 1, weekly: 7, biweekly: 14, monthly: 30 };
 function validEmail(e) { return typeof e === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
 app.get('/api/account/preferences', authMiddleware, async (req, res) => {
@@ -219,7 +225,7 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     return res.status(400).json({ error: 'That doesn\'t look like a valid email address.' });
   }
   if (emailFrequency !== undefined && !VALID_FREQUENCIES.includes(emailFrequency)) {
-    return res.status(400).json({ error: 'Frequency must be off, daily, weekly, or monthly.' });
+    return res.status(400).json({ error: 'Frequency must be off, biweekly, or monthly.' });
   }
   if (homeCity !== undefined && homeCity !== null && homeCity !== '' && !CITY_LABELS[homeCity]) {
     return res.status(400).json({ error: 'Unknown city.' });
@@ -546,7 +552,11 @@ async function starIdsFor(username) {
 // the user's starred items and hands the result to Resend.
 async function sendWelcomeRecap({ username, email, homeCity, frequency }) {
   const stars = await starIdsFor(username);
-  const { subject, html } = buildWelcomeRecap({ username, homeCity, frequency, stars });
+  const { subject, html } = buildBriefing({
+    username, homeCity, frequency, stars,
+    changed: null,   // nothing to compare against on the first send
+    isFirst: true,
+  });
   await sendEmail(email, subject, html);
 }
 
@@ -576,44 +586,45 @@ async function runDigests(req, res) {
       return (now - last) >= days * 24 * 60 * 60 * 1000;
     });
 
-    let sent = 0, skipped = 0, failed = 0;
+    let sent = 0, failed = 0;
     for (const u of due) {
       const since = u.last_digest_sent_at || u.created_at;
       const [projectsChanged, articlesNew, boardsChanged, stars] = await Promise.all([
-        pool.query('SELECT * FROM project_snapshots WHERE updated_at > $1 ORDER BY updated_at DESC', [since]),
-        pool.query('SELECT * FROM news_seen WHERE first_seen_at > $1 ORDER BY first_seen_at DESC', [since]),
-        pool.query('SELECT * FROM board_snapshots WHERE updated_at > $1 ORDER BY updated_at DESC', [since]),
+        pool.query('SELECT project_id FROM project_snapshots WHERE updated_at > $1', [since]),
+        pool.query('SELECT url FROM news_seen WHERE first_seen_at > $1', [since]),
+        pool.query('SELECT board_id FROM board_snapshots WHERE updated_at > $1', [since]),
         starIdsFor(u.username),
       ]);
 
-      const sinceLabel = new Date(since).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-      const digest = buildChangeDigest({
-        user: u,
-        projectsChanged: projectsChanged.rows,
-        boardsChanged: boardsChanged.rows,
-        articlesNew: articlesNew.rows,
+      // A quiet period still gets a briefing - these sets only control what's marked "Updated"
+      // and what sorts to the top, not whether an email goes out at all.
+      const changed = {
+        projects: new Set(projectsChanged.rows.map(r => r.project_id)),
+        boards: new Set(boardsChanged.rows.map(r => r.board_id)),
+        news: new Set(articlesNew.rows.map(r => r.url)),
+      };
+
+      const briefing = buildBriefing({
+        username: u.username,
+        homeCity: u.home_city,
+        frequency: u.email_frequency,
         stars,
-        sinceLabel,
+        changed,
+        sinceLabel: new Date(since).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),
+        isFirst: !u.last_digest_sent_at,
       });
 
-      if (!digest) {
-        // Nothing changed. Leave last_digest_sent_at alone so the next run still compares against
-        // the last email actually sent - otherwise a quiet period would silently swallow changes.
-        skipped++;
-        continue;
-      }
-
       try {
-        await sendEmail(u.email, digest.subject, digest.html);
+        await sendEmail(u.email, briefing.subject, briefing.html);
         await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [u.username]);
         sent++;
       } catch (err) {
-        console.error(`Failed to send digest to ${u.username}:`, err.message);
+        console.error(`Failed to send briefing to ${u.username}:`, err.message);
         failed++;
       }
     }
 
-    res.json({ ok: true, checked: allCandidates.rows.length, due: due.length, sent, skipped, failed });
+    res.json({ ok: true, checked: allCandidates.rows.length, due: due.length, sent, failed });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Digest run failed: ' + err.message });
