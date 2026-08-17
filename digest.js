@@ -26,6 +26,10 @@ export const CITY_LABELS = {
 };
 export function cityLabel(key) { return CITY_LABELS[key] || 'the South Bay'; }
 
+// Phrases rather than adjectives, so the footer reads as a sentence instead of "biweekly updates".
+const FREQUENCY_PHRASES = { biweekly: 'every two weeks', monthly: 'once a month' };
+function frequencyPhrase(f) { return FREQUENCY_PHRASES[f] || 'on a schedule you chose'; }
+
 const NEWS_BY_URL = new Map(NEWS_ARTICLES.map(a => [a.url, a]));
 
 // How many of each thing a single city section carries. Enough to feel like a briefing,
@@ -115,13 +119,13 @@ function officialLinksFor(homeCity) {
 
 // One plain-English opening line, assembled from real counts. Written by hand rather than
 // generated, so it reads the same way every time and can never invent something.
-function openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount }) {
+function openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount, frequency }) {
   const label = cityLabel(homeCity);
   const where = homeCity ? label : 'the South Bay';
   if (isFirst) {
     return `You're all set. Here's the current picture for ${where} &mdash; housing, transportation, ` +
-      `new development, and the boards that decide them. You'll get this regularly, with anything ` +
-      `that's moved marked <b>Updated</b>.`;
+      `new development, and the boards that decide them. You'll get this ${frequencyPhrase(frequency)}, ` +
+      `with anything that's moved marked <b>Updated</b>.`;
   }
   if (!changeCount) {
     return `Nothing major moved since ${sinceLabel}. Here's where ${where} stands anyway &mdash; ` +
@@ -237,10 +241,10 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
     html: shell({
       title,
       username,
-      opening: openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount }),
+      opening: openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount, frequency }),
       body,
-      footerNote: `You're getting this because your account is set to ${frequency} updates`
-        + `${homeCity ? ` for ${cityLabel(homeCity)}` : ''}. Change your city, your frequency, or turn this off anytime from your Account page.`,
+      footerNote: `You're getting this ${frequencyPhrase(frequency)}`
+        + `${homeCity ? ` for ${cityLabel(homeCity)}` : ''}. Change your city, how often it arrives, or turn it off anytime from your Account page.`,
     }),
   };
 }
