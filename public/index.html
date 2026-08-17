@@ -209,6 +209,11 @@
   .page-nav-tab.active{color:var(--ink); border-bottom-color:var(--ink);}
   .page-nav-tab:hover:not(.active){background:var(--paper-2); color:var(--ink);}
   .screen{min-height:40vh;}
+  /* Target of an email deep link - fades out on its own so it doesn't linger. */
+  .card.deep-linked{outline:3px solid #3E4F24; outline-offset:3px; animation:deepLinkFade 4s ease-out forwards;}
+  @keyframes deepLinkFade{0%,70%{outline-color:#3E4F24;}100%{outline-color:rgba(62,79,36,0);}}
+  .deep-link-banner{background:#F2F5EC; border-left:4px solid #3E4F24; padding:10px 14px; margin:0 0 14px; font-size:13px;}
+  .deep-link-banner a{color:#0056A0; font-weight:700;}
 
   /* ---- Your Area (full page) ---- */
   .yourarea-full{background:#fff; border:1px solid var(--rule); border-radius:4px; box-shadow:var(--shadow); padding:28px; margin:30px 0; border-top:4px solid var(--ink);}
@@ -618,9 +623,22 @@
           <p class="section-note">Get a summary of new developments - and anything you've starred that changed - sent to your inbox as often as you like.</p>
           <label for="prefsEmail" class="onboard-label">Email address</label>
           <input id="prefsEmail" type="email" placeholder="you@example.com" autocomplete="email" />
+          <label for="prefsCity" class="onboard-label" style="margin-top:12px;">Your city</label>
+          <select id="prefsCity">
+            <option value="">No city preference</option>
+            <option value="sunnyvale">Sunnyvale</option>
+            <option value="cupertino">Cupertino</option>
+            <option value="mountainview">Mountain View</option>
+            <option value="milpitas">Milpitas</option>
+            <option value="losaltos">Los Altos</option>
+            <option value="saratoga">Saratoga</option>
+            <option value="westsanjose">West San Jose</option>
+          </select>
+          <div class="auth-hint">Your city's news comes right after anything you've starred, ahead of the rest of the South Bay.</div>
           <label for="prefsFrequency" class="onboard-label" style="margin-top:12px;">How often</label>
           <select id="prefsFrequency">
             <option value="off">Off</option>
+            <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
           </select>
@@ -1670,7 +1688,7 @@ function projectCardHtml(d){
   const bmrBit = (d.bmr!==null && d.bmr!==undefined) ? `<span><b>${d.bmr.toLocaleString()}</b> affordable</span>` : (d.cat==='dev' && d.units ? `<span>affordability not disclosed</span>` : '');
   const expiresBit = d.expires ? `<span>expires <b>${fmtDate(d.expires)}</b></span>` : '';
   const starData = {title:d.addr, desc:d.desc + ' (' + st.label + ')'};
-  return `<div class="card" style="border-top-color:${c.color}">
+  return `<div class="card" data-project-id="${d.id}" style="border-top-color:${c.color}">
       <div class="row1"><div><div class="addr">${d.addr}</div><div class="type">${d.type}</div><div class="cattag" style="margin-top:4px;"><i style="background:${c.color}"></i>${c.label}</div></div>
       <div style="display:flex; align-items:flex-start; gap:6px;">${starButtonHtml('project', d.id, starData)}<span class="stamp" style="background:${st.color}; border-color:${st.color}">${st.label}</span></div></div>
       <div class="desc">${d.desc}</div>
@@ -2373,7 +2391,7 @@ async function apiGetStars(){ return apiCall('/api/stars'); }
 async function apiAddStar(itemType, itemId, itemData){ return apiCall('/api/stars', {method:'POST', body:JSON.stringify({itemType,itemId,itemData})}); }
 async function apiRemoveStar(itemType, itemId){ return apiCall('/api/stars/'+encodeURIComponent(itemType)+'/'+encodeURIComponent(itemId), {method:'DELETE'}); }
 async function apiGetPreferences(){ return apiCall('/api/account/preferences'); }
-async function apiSavePreferences(email, emailFrequency){ return apiCall('/api/account/preferences', {method:'PATCH', body:JSON.stringify({email, emailFrequency})}); }
+async function apiSavePreferences(email, emailFrequency, homeCity){ return apiCall('/api/account/preferences', {method:'PATCH', body:JSON.stringify({email, emailFrequency, homeCity})}); }
 
 function setAuthSession(token, username){
   authToken = token; authUsername = username;
@@ -2448,6 +2466,7 @@ async function renderAccountPage(){
     const prefs = await apiGetPreferences();
     document.getElementById('prefsEmail').value = prefs.email || '';
     document.getElementById('prefsFrequency').value = prefs.emailFrequency || 'off';
+    document.getElementById('prefsCity').value = prefs.homeCity || '';
   } catch(err){
     document.getElementById('prefsStatus').textContent = "Couldn't load your email preferences: " + err.message;
   }
@@ -2529,16 +2548,65 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
   const statusEl = document.getElementById('prefsStatus');
   const email = document.getElementById('prefsEmail').value.trim();
   const emailFrequency = document.getElementById('prefsFrequency').value;
+  const homeCity = document.getElementById('prefsCity').value;
   statusEl.textContent = 'Saving…';
   try{
-    await apiSavePreferences(email || null, emailFrequency);
-    statusEl.textContent = 'Saved \u2713';
+    const result = await apiSavePreferences(email || null, emailFrequency, homeCity || null);
+    statusEl.textContent = (result && result.welcomeSent)
+      ? 'Saved \u2713 \u2014 a recap is on its way to your inbox now.'
+      : 'Saved \u2713';
   } catch(err){
     statusEl.textContent = "Couldn't save: " + err.message;
   }
 });
 
 renderAuthNavState();
+
+// ================= EMAIL DEEP LINKS =================
+// Digest emails link to ?project=<id> and ?city=<key>. Land the reader on the exact record
+// rather than the top of the dashboard, then clean the URL so a refresh doesn't re-trigger.
+function applyDeepLink(){
+  const params = new URLSearchParams(location.search);
+  const projectId = params.get('project');
+  const cityKey = params.get('city');
+  if(!projectId && !cityKey) return;
+
+  // Someone arriving from an email already told us what they want to see - don't make them sit
+  // through the "let's set up your view" wizard first.
+  document.getElementById('onboardOverlay').style.display = 'none';
+
+  if(projectId){
+    const cityOfProject = Object.keys(CITIES).find(k => CITIES[k].data.some(d => d.id === projectId));
+    if(cityOfProject){
+      const record = CITIES[cityOfProject].data.find(d => d.id === projectId);
+      if(cityOfProject !== currentCity) switchCity(cityOfProject);
+      showScreen('dashboard');
+      // Filter down to the one record so it isn't buried in a long grid.
+      state.q = record.addr;
+      document.getElementById('search').value = record.addr;
+      renderAll();
+      const grid = document.getElementById('registerGrid');
+      const banner = document.createElement('div');
+      banner.className = 'deep-link-banner';
+      banner.innerHTML = `Showing <b>${record.addr}</b> from your email update. <a href="${location.pathname}">Show all ${CITIES[cityOfProject].label} records &rarr;</a>`;
+      grid.parentNode.insertBefore(banner, grid);
+      const card = grid.querySelector(`[data-project-id="${CSS.escape(projectId)}"]`);
+      if(card){
+        card.classList.add('deep-linked');
+        card.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+      history.replaceState({}, '', location.pathname);
+      return;
+    }
+  }
+
+  if(cityKey && CITIES[cityKey]){
+    switchCity(cityKey);
+    showScreen('dashboard');
+    history.replaceState({}, '', location.pathname);
+  }
+}
+applyDeepLink();
 </script>
 </body>
 </html>

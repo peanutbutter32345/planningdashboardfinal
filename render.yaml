@@ -13,3 +13,19 @@ services:
         value: gpt-5-mini
       - key: ENABLE_WEB_SEARCH
         value: "false"
+      # Postgres connection string. Without this, accounts, stars, and digests are all disabled.
+      - key: DATABASE_URL
+        sync: false
+      # Resend API key. Without this no digest email can be sent.
+      - key: RESEND_API_KEY
+        sync: false
+      # Verified sender. The onboarding@resend.dev default only delivers to your own Resend account
+      # address - set this to an address on a domain you've verified in Resend before going live.
+      - key: RESEND_FROM
+        sync: false
+      # Shared secret the scheduler must present. Generate a long random string.
+      - key: CRON_SECRET
+        sync: false
+      # Public site origin, used to build the links inside the emails. No trailing slash.
+      - key: SITE_URL
+        value: https://southbaydashboard.com

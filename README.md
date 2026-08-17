@@ -121,6 +121,61 @@ The existing Ask page already renders `answer` on the left and `resources` on th
 - The browser never receives the OpenAI key.
 - The assistant can only expose resource URLs that are already in the server's approved source registry.
 
+## Email digests
+
+Each digest is ordered the same way, top to bottom:
+
+1. **What you're following** — every starred project, board, and article, in one block.
+2. **In {your city}** — everything else in the city set on your Account page.
+3. **Around the rest of the South Bay** — everything else, grouped by city.
+4. **Official {your city} links** — the city's own planning, permit, and GIS pages.
+
+Every project title links to `?project=<id>` on the dashboard, which switches to that city, filters
+to that record, and highlights it. Board titles link to the city's own board page, and articles
+link to the source. Rendering lives in `digest.js` and is pure — no database, no network.
+
+Preview both emails in a browser without sending anything:
+
+```bash
+npm run digest:preview
+```
+
+That writes `preview-welcome.html` and `preview-update.html`. Set `PREVIEW_CITY` to try a
+different home city, e.g. `PREVIEW_CITY=cupertino npm run digest:preview`.
+
+### Required environment variables
+
+```text
+DATABASE_URL=postgres://...
+RESEND_API_KEY=re_...
+RESEND_FROM=South Bay Planning <updates@your-verified-domain.com>
+CRON_SECRET=<a long random string>
+SITE_URL=https://your-site.com
+```
+
+`RESEND_FROM` matters: the default `onboarding@resend.dev` only delivers to the email address on
+your own Resend account, so real subscribers will silently receive nothing until you verify a
+domain in Resend and set this.
+
+### Scheduling with cron-job.org
+
+Render's own cron jobs are a paid service type, so on the free plan use an external scheduler.
+
+- **URL** — `https://your-site.com/api/cron/send-digests?secret=YOUR_CRON_SECRET`
+- **Method** — GET or POST; both work. (Passing the secret as the `x-cron-secret` header instead of
+  a query parameter keeps it out of the scheduler's logs, if your scheduler supports headers.)
+- **Schedule** — once a day. Run it daily no matter what frequencies your users pick: the endpoint
+  checks everyone on each run and only emails whoever is actually due.
+
+A successful run returns JSON like `{"ok":true,"checked":4,"due":2,"sent":1,"skipped":1,"failed":0}`.
+`skipped` means the user was due but nothing had changed, so no email was sent and their clock was
+left alone — the next run still compares against their last real email.
+
+A `401` means the secret is missing or wrong. A `503` means `DATABASE_URL` isn't set.
+
+Free Render web services spin down when idle and take a few seconds to wake, so allow a generous
+timeout in the scheduler, or hit `/api/health` on a separate schedule to keep the service warm.
+
 ## Deploy on Render
 
 1. Push this repository to GitHub. Do not commit `.env`.
