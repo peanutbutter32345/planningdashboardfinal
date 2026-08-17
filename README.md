@@ -121,27 +121,39 @@ The existing Ask page already renders `answer` on the left and `resources` on th
 - The browser never receives the OpenAI key.
 - The assistant can only expose resource URLs that are already in the server's approved source registry.
 
-## Email digests
+## Email briefings
 
-Each digest is ordered the same way, top to bottom:
+Every send is a **standing briefing, not a change alert**. A quiet week still produces a full
+email — the point is to keep readers aware of housing, transportation, development, and the boards
+that decide them, whether or not anything moved. Anything that *has* changed since the reader's
+last email is marked **Updated** and sorts to the top of its section.
 
-1. **What you're following** — every starred project, board, and article, in one block.
-2. **In {your city}** — everything else in the city set on your Account page.
-3. **Around the rest of the South Bay** — everything else, grouped by city.
+Each briefing is ordered the same way:
+
+1. **What you're following** — every starred project, board, and article; changed ones first.
+2. **In {your city}** — Housing · Transportation · Other development · In the news ·
+   Who decides and when they meet · Ways to get involved.
+3. **Around the rest of the South Bay** — projects that moved, plus recent regional news.
 4. **Official {your city} links** — the city's own planning, permit, and GIS pages.
 
 Every project title links to `?project=<id>` on the dashboard, which switches to that city, filters
 to that record, and highlights it. Board titles link to the city's own board page, and articles
-link to the source. Rendering lives in `digest.js` and is pure — no database, no network.
+link to the source.
 
-Preview both emails in a browser without sending anything:
+Nothing here is model-generated. Status text is quoted verbatim from the data files, and the one
+summary sentence is assembled from integer counts — a model in that position could hallucinate a
+project's status, and people may act on this.
+
+Rendering lives in `digest.js` as pure functions: no database, no network. Preview every variant
+without sending anything:
 
 ```bash
 npm run digest:preview
 ```
 
-That writes `preview-welcome.html` and `preview-update.html`. Set `PREVIEW_CITY` to try a
-different home city, e.g. `PREVIEW_CITY=cupertino npm run digest:preview`.
+That writes `preview-welcome.html` (first send), `preview-update.html` (things changed), and
+`preview-quiet.html` (nothing changed). Set `PREVIEW_CITY` to try a different home city, e.g.
+`PREVIEW_CITY=cupertino npm run digest:preview`.
 
 ### Required environment variables
 
