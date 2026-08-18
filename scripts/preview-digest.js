@@ -31,7 +31,10 @@ const stars = {
 };
 
 const FREQUENCY = process.env.PREVIEW_FREQ || 'monthly';   // 'biweekly' or 'monthly'
-const base = { username: 'saumit', homeCity: HOME_CITY, frequency: FREQUENCY, stars };
+// PREVIEW_CATS=Housing,Transportation to preview a narrowed subscription.
+const CATEGORIES = (process.env.PREVIEW_CATS || '').split(',').map(c => c.trim()).filter(Boolean);
+const base = { username: 'saumit', homeCity: HOME_CITY, frequency: FREQUENCY, stars,
+               categories: CATEGORIES.length ? CATEGORIES : null };
 
 writeFileSync('preview-welcome.html', buildBriefing({ ...base, changed: null, isFirst: true }).html);
 

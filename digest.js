@@ -45,6 +45,28 @@ function topicOfProject(p) {
   return 'other';
 }
 
+// The four categories a reader can subscribe to, in the order they appear in the email. Each one
+// knows how to pull its own projects, news and boards, so a category can be rendered on its own
+// and the section order follows the reader's own priority rather than a hardcoded layout.
+const CATEGORY_SPECS = [
+  { key: 'Housing', label: 'Housing',
+    project: p => topicOfProject(p) === 'housing',
+    news: a => a.topic === 'housing' || a.topic === 'developments',
+    board: b => (b.cat || '') === 'Housing', cap: 5 },
+  { key: 'Transportation', label: 'Transportation',
+    project: p => topicOfProject(p) === 'transportation' || p.cat === 'infra',
+    news: a => a.topic === 'transportation',
+    board: b => (b.cat || '') === 'Transportation', cap: 4 },
+  { key: 'Building', label: 'Commercial and industrial',
+    project: p => p.type === 'Commercial' || p.type === 'Industrial',
+    news: a => a.topic === 'developments',
+    board: b => false, cap: 3 },
+  { key: 'Civic', label: 'Civic and public facilities',
+    project: p => p.type === 'Public Facility',
+    news: a => false,
+    board: b => (b.cat || '') === 'Civic', cap: 3 },
+];
+
 // The data files already contain HTML entities (e.g. "Housing &amp; Human Services"), so a blanket
 // ampersand escape would double-encode them. This leaves existing entities intact.
 function esc(s) {
@@ -94,12 +116,27 @@ function boardRows(items, changed = new Set()) {
   }).join('');
 }
 
+// Thumbnail on the left, text on the right. Nested tables rather than flex or grid, because
+// Outlook's rendering engine ignores both. Fixed width/height attributes on the <img> keep the
+// layout intact in clients that block images until the reader allows them.
 function newsRows(items, changed = new Set()) {
-  return items.map(a => `<tr><td style="${STYLE.row}">
-      <a href="${a.url}" style="${STYLE.link}">${esc(a.title)}</a>${updatedBadge(changed.has(a.url))}
-      ${a.snippet ? `<div style="${STYLE.note}">${esc(a.snippet)}</div>` : ''}
-      <div style="${STYLE.meta}">${a.source ? esc(a.source) + ' &middot; ' : ''}${esc(cityLabel(a.city))}</div>
-    </td></tr>`).join('');
+  return items.map(a => {
+    const thumb = a.image ? `
+      <td width="96" valign="top" style="padding-right:12px;">
+        <a href="${a.url}"><img src="${a.image}" width="96" height="64" alt=""
+           style="width:96px; height:64px; object-fit:cover; display:block; border:0; border-radius:3px; background:#E3E7DB;"></a>
+      </td>` : '';
+    return `<tr><td style="${STYLE.row}">
+      <table width="100%" cellspacing="0" cellpadding="0"><tr>
+        ${thumb}
+        <td valign="top">
+          <a href="${a.url}" style="${STYLE.link}">${esc(a.title)}</a>${updatedBadge(changed.has(a.url))}
+          ${a.snippet ? `<div style="${STYLE.note}">${esc(a.snippet)}</div>` : ''}
+          <div style="${STYLE.meta}">${a.source ? esc(a.source) + ' &middot; ' : ''}${esc(cityLabel(a.city))}</div>
+        </td>
+      </tr></table>
+    </td></tr>`;
+  }).join('');
 }
 
 function heading(title) { return `<h2 style="${STYLE.h2}">${esc(title)}</h2>`; }
@@ -124,12 +161,12 @@ function openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChange
   const label = cityLabel(homeCity);
   const where = homeCity ? label : 'the South Bay';
   if (isFirst) {
-    return `You're all set. Here's the current picture for ${where} &mdash; housing, transportation, ` +
+    return `You're all set. Here's the current picture for ${where}: housing, transportation, ` +
       `new development, and the boards that decide them. You'll get this ${frequencyPhrase(frequency)}, ` +
       `with anything that's moved marked <b>Updated</b>.`;
   }
   if (!changeCount) {
-    return `Nothing major moved since ${sinceLabel}. Here's where ${where} stands anyway &mdash; ` +
+    return `Nothing major moved since ${sinceLabel}. Here's where ${where} stands anyway: ` +
       `what's in the pipeline, and what's coming up.`;
   }
   const starredBit = starredChangeCount
@@ -164,7 +201,12 @@ const byDate = (a, b) => String(b.date || '').localeCompare(String(a.date || '')
  * changed: { projects:Set<id>, boards:Set<id>, news:Set<url> } - what moved since the reader's
  * last email. Pass empty sets for the first-ever send.
  */
-export function buildBriefing({ username, homeCity, frequency, stars, changed, sinceLabel, isFirst }) {
+export function buildBriefing({ username, homeCity, frequency, stars, changed, sinceLabel, isFirst, categories }) {
+  // Null/empty means every category, so a subscriber from before this existed still gets a full
+  // briefing rather than a silently narrowed one.
+  const wanted = (Array.isArray(categories) && categories.length)
+    ? CATEGORY_SPECS.filter(c => categories.includes(c.key))
+    : CATEGORY_SPECS;
   const ch = {
     projects: changed?.projects || new Set(),
     boards: changed?.boards || new Set(),
@@ -193,33 +235,45 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
       + newsRows([...starredNews].sort(changedFirst(ch.news, 'url')), ch.news));
   }
 
-  // 2. The reader's own city, broken out by the things they actually care about.
+  // 2. The reader's own city, one block per category they subscribed to, in their order.
+  // Every selected category is filled from current data whether or not anything changed, so a
+  // quiet month still produces a briefing with something under each heading.
   if (homeCity) {
-    const notStarred = (p) => !stars.projects.has(p.id);
-    const cityProjects = PROJECTS.filter(p => p.city === homeCity && notStarred(p)).sort(byRecency);
-    const pick = (topic, n) => cityProjects.filter(p => topicOfProject(p) === topic).slice(0, n);
+    const cityProjects = PROJECTS.filter(p => p.city === homeCity && !stars.projects.has(p.id)).sort(byRecency);
+    const cityNews = NEWS_ARTICLES.filter(a => a.city === homeCity && !stars.news.has(a.url)).sort(byDate);
+    const cityBoards = BOARDS.filter(b => b.city === homeCity && !stars.boards.has(b.id));
 
-    const housing = pick('housing', CAPS.housing);
-    const transport = pick('transportation', CAPS.transportation);
-    const other = pick('other', CAPS.other);
-    const deciders = BOARDS.filter(b => b.city === homeCity && b.boardType === 'decider' && !stars.boards.has(b.id)).slice(0, CAPS.deciders);
-    const join = BOARDS.filter(b => b.city === homeCity && b.boardType === 'join' && !stars.boards.has(b.id)).slice(0, CAPS.join);
-    const cityNews = NEWS_ARTICLES.filter(a => a.city === homeCity && !stars.news.has(a.url)).sort(byDate).slice(0, CAPS.news);
+    // Sort changed items to the top of each category, so "what moved" still reads first.
+    const changedFirstBy = (set, key) => (a, b) => Number(set.has(b[key])) - Number(set.has(a[key]));
 
-    body += heading(`In ${cityLabel(homeCity)}`)
-      + subsection('Housing', projectRows(housing, ch.projects))
-      + subsection('Transportation', projectRows(transport, ch.projects))
-      + subsection('Other development', projectRows(other, ch.projects))
-      + subsection('In the news', newsRows(cityNews, ch.news))
-      + subsection('Who decides, and when they meet', boardRows(deciders, ch.boards))
+    let cityBody = '';
+    for (const cat of wanted) {
+      const projects = cityProjects.filter(cat.project).sort(changedFirstBy(ch.projects, 'id')).slice(0, cat.cap);
+      const news = cityNews.filter(cat.news).sort(changedFirstBy(ch.news, 'url')).slice(0, 3);
+      const boards = cityBoards.filter(cat.board).slice(0, 2);
+      const rows = projectRows(projects, ch.projects) + newsRows(news, ch.news) + boardRows(boards, ch.boards);
+      cityBody += subsection(cat.label, rows);
+    }
+
+    // Who decides always appears: it's the actionable part, and it isn't category-specific.
+    const deciders = cityBoards.filter(b => b.boardType === 'decider').slice(0, CAPS.deciders);
+    const join = cityBoards.filter(b => b.boardType === 'join'
+      && wanted.some(c => c.board(b))).slice(0, CAPS.join);
+    cityBody += subsection('Who decides, and when they meet', boardRows(deciders, ch.boards))
       + subsection('Ways to get involved', boardRows(join, ch.boards));
+
+    if (cityBody) body += heading(`In ${cityLabel(homeCity)}`) + cityBody;
   }
 
   // 3. The rest of the region, lighter - recent news plus anything that actually moved.
+  const inWanted = {
+    project: p => wanted.some(c => c.project(p)),
+    news: a => wanted.some(c => c.news(a)),
+  };
   const elsewhereChanged = PROJECTS.filter(p =>
-    p.city !== homeCity && ch.projects.has(p.id) && !stars.projects.has(p.id)).sort(byRecency);
+    p.city !== homeCity && ch.projects.has(p.id) && !stars.projects.has(p.id) && inWanted.project(p)).sort(byRecency);
   const elsewhereNews = NEWS_ARTICLES.filter(a =>
-    a.city !== homeCity && !stars.news.has(a.url)).sort(byDate).slice(0, CAPS.elsewhere);
+    a.city !== homeCity && !stars.news.has(a.url) && inWanted.news(a)).sort(byDate).slice(0, CAPS.elsewhere);
 
   if (elsewhereChanged.length || elsewhereNews.length) {
     body += heading(homeCity ? 'Around the rest of the South Bay' : 'Around the South Bay')
@@ -245,7 +299,9 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
       opening: openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount, frequency }),
       body,
       footerNote: `You're getting this ${frequencyPhrase(frequency)}`
-        + `${homeCity ? ` for ${cityLabel(homeCity)}` : ''}. Change your city, how often it arrives, or turn it off anytime from your Account page.`,
+        + `${homeCity ? ` for ${cityLabel(homeCity)}` : ''}`
+        + `${wanted.length < CATEGORY_SPECS.length ? `, covering ${wanted.map(c => c.label.toLowerCase()).join(', ')}` : ''}`
+        + `. Change your city, your topics, how often it arrives, or turn it off anytime from your Account page.`,
     }),
   };
 }

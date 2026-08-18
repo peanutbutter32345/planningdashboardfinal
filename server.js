@@ -60,6 +60,10 @@ async function initDb() {
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_digest_sent_at TIMESTAMPTZ;`);
   // The user's own city, so their local news leads the digest ahead of the rest of the South Bay.
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS home_city TEXT;`);
+  // Comma-separated category keys (Housing, Transportation, Building, Civic). Null or empty means
+  // "all of them", so anyone who subscribed before this existed keeps getting a full briefing
+  // rather than having their email silently narrowed.
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS categories TEXT;`);
   // Biweekly and monthly are the only cadences now - move anyone on daily/weekly to the closest
   // one still offered, rather than leaving them on a frequency the Account page can't display.
   await pool.query(`UPDATE users SET email_frequency = 'biweekly' WHERE email_frequency IN ('daily','weekly');`);
@@ -199,18 +203,27 @@ app.post('/api/logout', authMiddleware, async (req, res) => {
 // Two cadences only. The underlying records are updated by hand, so anything more frequent would
 // send the same briefing twice. daily/weekly are still honoured in FREQUENCY_DAYS so any row
 // predating this is scheduled sensibly until the migration below converts it.
+const VALID_CATEGORIES = ['Housing', 'Transportation', 'Building', 'Civic'];
+function parseCategories(raw) {
+  if (!raw) return [...VALID_CATEGORIES];
+  const picked = String(raw).split(',').map(x => x.trim()).filter(c => VALID_CATEGORIES.includes(c));
+  return picked.length ? picked : [...VALID_CATEGORIES];
+}
+
 const VALID_FREQUENCIES = ['off', 'biweekly', 'monthly'];
 const FREQUENCY_DAYS = { daily: 1, weekly: 7, biweekly: 14, monthly: 30 };
 function validEmail(e) { return typeof e === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
 app.get('/api/account/preferences', authMiddleware, async (req, res) => {
   try {
-    const result = await pool.query('SELECT email, email_frequency, home_city FROM users WHERE username = $1', [req.username]);
+    const result = await pool.query('SELECT email, email_frequency, home_city, categories FROM users WHERE username = $1', [req.username]);
     if (!result.rows.length) return res.status(404).json({ error: 'Account not found.' });
     res.json({
       email: result.rows[0].email,
       emailFrequency: result.rows[0].email_frequency,
       homeCity: result.rows[0].home_city,
+      categories: parseCategories(result.rows[0].categories),
+      allCategories: VALID_CATEGORIES,
       cities: Object.entries(CITY_LABELS).map(([value, label]) => ({ value, label })),
     });
   } catch (err) {
@@ -220,7 +233,7 @@ app.get('/api/account/preferences', authMiddleware, async (req, res) => {
 });
 
 app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
-  const { email, emailFrequency, homeCity } = req.body || {};
+  const { email, emailFrequency, homeCity, categories } = req.body || {};
   if (email !== undefined && email !== null && email !== '' && !validEmail(email)) {
     return res.status(400).json({ error: 'That doesn\'t look like a valid email address.' });
   }
@@ -230,6 +243,12 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
   if (homeCity !== undefined && homeCity !== null && homeCity !== '' && !CITY_LABELS[homeCity]) {
     return res.status(400).json({ error: 'Unknown city.' });
   }
+  if (categories !== undefined && categories !== null) {
+    if (!Array.isArray(categories)) return res.status(400).json({ error: 'Categories must be a list.' });
+    const bad = categories.filter(c => !VALID_CATEGORIES.includes(c));
+    if (bad.length) return res.status(400).json({ error: `Unknown category: ${bad[0]}` });
+    if (!categories.length) return res.status(400).json({ error: 'Pick at least one category, or the briefing would be empty.' });
+  }
   try {
     const fields = [];
     const values = [];
@@ -237,13 +256,14 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     if (email !== undefined) { fields.push(`email = $${i++}`); values.push(email || null); }
     if (emailFrequency !== undefined) { fields.push(`email_frequency = $${i++}`); values.push(emailFrequency); }
     if (homeCity !== undefined) { fields.push(`home_city = $${i++}`); values.push(homeCity || null); }
+    if (categories !== undefined) { fields.push(`categories = $${i++}`); values.push(categories && categories.length ? categories.join(',') : null); }
     if (!fields.length) return res.status(400).json({ error: 'Nothing to update.' });
     values.push(req.username);
     await pool.query(`UPDATE users SET ${fields.join(', ')} WHERE username = $${i}`, values);
 
     // Saving a real address + a live frequency sends an immediate welcome recap, so the user sees
     // what they signed up for right away instead of waiting for the next scheduled run.
-    const after = await pool.query('SELECT email, email_frequency, home_city FROM users WHERE username = $1', [req.username]);
+    const after = await pool.query('SELECT email, email_frequency, home_city, categories FROM users WHERE username = $1', [req.username]);
     const u = after.rows[0];
     let welcomeSent = false;
     let welcomeError = null;
@@ -255,7 +275,8 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
       welcomeError = 'The server has no RESEND_API_KEY configured, so no email can be sent.';
     } else {
       try {
-        await sendWelcomeRecap({ username: req.username, email: u.email, homeCity: u.home_city, frequency: u.email_frequency });
+        await sendWelcomeRecap({ username: req.username, email: u.email, homeCity: u.home_city,
+                                 frequency: u.email_frequency, categories: parseCategories(u.categories) });
         welcomeSent = true;
       } catch (err) {
         // A failed welcome must not fail the save - preferences are already persisted. Surfacing
@@ -560,10 +581,10 @@ async function starIdsFor(username) {
 
 // Sends the immediate "you're set up" recap. Rendering lives in digest.js; this only supplies
 // the user's starred items and hands the result to Resend.
-async function sendWelcomeRecap({ username, email, homeCity, frequency }) {
+async function sendWelcomeRecap({ username, email, homeCity, frequency, categories }) {
   const stars = await starIdsFor(username);
   const { subject, html } = buildBriefing({
-    username, homeCity, frequency, stars,
+    username, homeCity, frequency, stars, categories,
     changed: null,   // nothing to compare against on the first send
     isFirst: true,
   });
@@ -599,7 +620,7 @@ async function runDigests(req, res) {
 
     // Interval differs per user's chosen frequency, so filter in JS rather than a single SQL interval.
     const params = [];
-    let sql = `SELECT username, email, email_frequency, home_city, last_digest_sent_at, created_at FROM users
+    let sql = `SELECT username, email, email_frequency, home_city, categories, last_digest_sent_at, created_at FROM users
                WHERE email_frequency != 'off' AND email IS NOT NULL`;
     if (only) { params.push(only); sql += ` AND username = $${params.length}`; }
     const allCandidates = await pool.query(sql, params);
@@ -635,6 +656,7 @@ async function runDigests(req, res) {
         username: u.username,
         homeCity: u.home_city,
         frequency: u.email_frequency,
+        categories: parseCategories(u.categories),
         stars,
         changed,
         sinceLabel: new Date(since).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),

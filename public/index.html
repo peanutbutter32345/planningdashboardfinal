@@ -726,7 +726,10 @@
             <option value="biweekly">Every 2 weeks</option>
             <option value="monthly">Monthly</option>
           </select>
-          <div class="auth-hint">A briefing on housing, transportation, development, and upcoming meetings for your city.</div>
+          <div class="auth-hint">A briefing on what's happening in your city, plus anything you've starred.</div>
+          <span class="onboard-label" style="display:block; margin-top:14px;">Topics to include</span>
+          <div class="onboard-interests" id="prefsCategories"></div>
+          <div class="auth-hint">Your starred projects, boards and articles are always included, whatever you pick here.</div>
           <button class="btn" id="prefsSaveBtn" type="button" style="margin-top:12px;">Save preferences</button>
           <div class="auth-error" id="prefsStatus" role="status" aria-live="polite"></div>
         </div>
@@ -2872,7 +2875,33 @@ async function apiGetStars(){ return apiCall('/api/stars'); }
 async function apiAddStar(itemType, itemId, itemData){ return apiCall('/api/stars', {method:'POST', body:JSON.stringify({itemType,itemId,itemData})}); }
 async function apiRemoveStar(itemType, itemId){ return apiCall('/api/stars/'+encodeURIComponent(itemType)+'/'+encodeURIComponent(itemId), {method:'DELETE'}); }
 async function apiGetPreferences(){ return apiCall('/api/account/preferences'); }
-async function apiSavePreferences(email, emailFrequency, homeCity){ return apiCall('/api/account/preferences', {method:'PATCH', body:JSON.stringify({email, emailFrequency, homeCity})}); }
+async function apiSavePreferences(email, emailFrequency, homeCity, categories){ return apiCall('/api/account/preferences', {method:'PATCH', body:JSON.stringify({email, emailFrequency, homeCity, categories})}); }
+
+// Which briefing topics this reader wants. Mirrors INTEREST_OPTIONS so the labels match the
+// language used everywhere else on the site.
+let prefsCategories = new Set(INTEREST_OPTIONS.map(o=>o.key));
+function renderPrefsCategories(){
+  const el = document.getElementById('prefsCategories');
+  if(!el) return;
+  el.innerHTML = INTEREST_OPTIONS.map(opt=>
+    `<label class="onboard-check${prefsCategories.has(opt.key)?' checked':''}" data-key="${opt.key}">
+      <input type="checkbox" ${prefsCategories.has(opt.key)?'checked':''} /> ${opt.label}
+    </label>`).join('');
+  el.querySelectorAll('.onboard-check').forEach(label=>{
+    label.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const key = label.getAttribute('data-key');
+      // Never allow zero - an empty selection would produce a briefing with nothing in it.
+      if(prefsCategories.has(key)){
+        if(prefsCategories.size === 1) return;
+        prefsCategories.delete(key);
+      } else {
+        prefsCategories.add(key);
+      }
+      renderPrefsCategories();
+    });
+  });
+}
 
 function setAuthSession(token, username){
   authToken = token; authUsername = username;
@@ -2948,6 +2977,8 @@ async function renderAccountPage(){
     document.getElementById('prefsEmail').value = prefs.email || '';
     document.getElementById('prefsFrequency').value = prefs.emailFrequency || 'off';
     document.getElementById('prefsCity').value = prefs.homeCity || '';
+    if(Array.isArray(prefs.categories) && prefs.categories.length) prefsCategories = new Set(prefs.categories);
+    renderPrefsCategories();
   } catch(err){
     document.getElementById('prefsStatus').textContent = "Couldn't load your email preferences: " + err.message;
   }
@@ -3032,7 +3063,7 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
   const homeCity = document.getElementById('prefsCity').value;
   statusEl.textContent = 'Saving…';
   try{
-    const result = await apiSavePreferences(email || null, emailFrequency, homeCity || null);
+    const result = await apiSavePreferences(email || null, emailFrequency, homeCity || null, [...prefsCategories]);
     if(result && result.welcomeSent){
       statusEl.textContent = 'Saved \u2713 \u2014 a recap is on its way to your inbox now.';
     } else if(result && result.welcomeError){
