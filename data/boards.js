@@ -368,5 +368,52 @@ export const BOARDS = [
     "city": "campbell",
     "boardType": "join",
     "id": "campbell:Public Works Department"
+  },
+  {
+    "name": "Planning and Transportation Commission",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Reviews development applications, zoning and transportation policy.",
+    "link": "https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Planning-and-Transportation-Commission",
+    "city": "paloalto",
+    "boardType": "decider",
+    "id": "paloalto:Planning and Transportation Commission"
+  },
+  {
+    "name": "City Council",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Final say on appeals, rezonings and housing policy.",
+    "link": "https://www.paloalto.gov/Departments/City-Clerk/City-Council",
+    "city": "paloalto",
+    "boardType": "decider",
+    "id": "paloalto:City Council"
+  },
+  {
+    "name": "Architectural Review Board",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Reviews building design; many Palo Alto projects turn on its findings.",
+    "link": "https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Architectural-Review-Board",
+    "city": "paloalto",
+    "boardType": "decider",
+    "id": "paloalto:Architectural Review Board"
+  },
+  {
+    "name": "Planning &amp; Development Services",
+    "when": "See the department page",
+    "body": "Runs current planning and publishes the housing dashboard these records come from.",
+    "cat": "Housing",
+    "link": "https://www.paloalto.gov/Departments/Planning-Development-Services",
+    "city": "paloalto",
+    "boardType": "join",
+    "id": "paloalto:Planning &amp; Development Services"
+  },
+  {
+    "name": "Housing Policies &amp; Projects",
+    "when": "See the program page",
+    "body": "Housing Element implementation, affordable housing programs, and ADU policy.",
+    "cat": "Housing",
+    "link": "https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects",
+    "city": "paloalto",
+    "boardType": "join",
+    "id": "paloalto:Housing Policies &amp; Projects"
   }
 ];

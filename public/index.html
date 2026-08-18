@@ -755,6 +755,7 @@
             <option value="santaclara">Santa Clara</option>
             <option value="losgatos">Los Gatos</option>
             <option value="campbell">Campbell</option>
+            <option value="paloalto">Palo Alto</option>
           </select>
           <div class="auth-hint">Your city's news comes right after anything you've starred, ahead of the rest of the South Bay.</div>
           <label for="prefsFrequency" class="onboard-label" style="margin-top:12px;">Email updates</label>
@@ -1704,6 +1705,97 @@ const CAM_JOIN = [
 ];
 const CAM_SOURCES = ['City of Campbell - Public Works Project Updates', 'Coordinates geocoded from addresses via OpenStreetMap Nominatim'];
 
+// ============== PALO ALTO ==============
+// From the City of Palo Alto housing pipeline layer behind the city's public housing
+// dashboard (services5.arcgis.com/nPtzMLkb4jZLRdvG). Unit counts, affordability tiers,
+// status, APN, acreage and zoning are the city's own; coordinates are the parcel centroids
+// returned by that layer. The layer is a Housing Element site inventory snapshot rather than
+// a live permit feed, so statuses lag the counter - the city note on this tab says so.
+const PA_DATA = [
+{id:'pa-425-429-university-av', addr:'425-429 University Av', lat:37.44771, lng:-122.16024, cat:'dev', type:'Residential',
+  desc:'Request by Bellomo Architects on behalf of Kipling Post LP for a Major Architectural Review to allow for the demolition of two one-story commercial structures on two existing parcels (425 University and 429 University), and the construction of a new four-',
+  units:3, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.18 acres. Zoned CD-C(GF)(P).', fileNo:'APN 12015028, 12015029', flag:null},
+{id:'pa-565-571-hamilton-ave', addr:'565, 571 HAMILTON AVE and 542 WEBSTER', lat:37.44868, lng:-122.15728, cat:'dev', type:'Residential',
+  desc:'Redevelopment. Lot consolidation.',
+  units:10, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.52 acres. Zoned CD-C (P) and RM-40.', fileNo:'APN 12003062, 061,060', flag:null},
+{id:'pa-3877-el-camino-real', addr:'3877 El Camino Real', lat:37.41791, lng:-122.13056, cat:'dev', type:'Residential',
+  desc:'The applicant requests approval of a Site and Design and a Design Enhancement Exception to allow the demolition of a vacant commercial building and construction of a new mixed-use project. The project is located on a 32,825-square foot L-shaped parcel wit',
+  units:17, bmr:2, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.75 acres. Zoned RM-30, CS.', fileNo:'APN 13241091', flag:null},
+{id:'pa-3225-el-camino-real', addr:'3225 El Camino Real', lat:37.42137, lng:-122.13782, cat:'dev', type:'Residential',
+  desc:'Mixed-use project. Redevlopment of commericial to residential. Potentially remove this project as unit yield is low and it brings down the density average.',
+  units:8, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.68 acres. Zoned CS.', fileNo:'APN 13238042', flag:null},
+{id:'pa-567-595-maybell', addr:'567 - 595 Maybell', lat:37.40838, lng:-122.12647, cat:'dev', type:'Residential',
+  desc:'Request by Yurong Han of Golden Gate Homes LLC for Major Architectural Review to demolish four existing homes and construct 16 detached single family homes in the R-2 and RM-15 zoning districts.',
+  units:12, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 2.46 acres. Zoned R-2 and RM-20.', fileNo:'APN 13725109', flag:null},
+{id:'pa-4115-el-camino-real', addr:'4115 El Camino Real', lat:37.41435, lng:-122.126, cat:'dev', type:'Residential',
+  desc:'Mixed-use project. Redevelopment of commercial to residential.',
+  units:7, bmr:1, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.35 acres. Zoned CN.', fileNo:'APN 13246100', flag:null},
+{id:'pa-2755-el-camino-real', addr:'2755 El Camino Real', lat:37.42359, lng:-122.14202, cat:'dev', type:'Residential',
+  desc:'Expecting Final Inspection by 9/30/2022. PF does not allow for Resi. Redevelopment of a parking lot to residential.',
+  units:57, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.48 acres. Zoned PF.', fileNo:'APN 13236084', flag:null},
+{id:'pa-788-796-san-antonio', addr:'788 - 796 San Antonio Ave', lat:37.41984, lng:-122.1015, cat:'dev', type:'Residential',
+  desc:'Project density is way higher than max density allowed.',
+  units:102, bmr:16, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.52 acres. Zoned CS.', fileNo:'APN 14703041, 14703042', flag:null},
+{id:'pa-2850-w-bayshore-rd', addr:'2850 W Bayshore Rd', lat:37.44165, lng:-122.11653, cat:'dev', type:'Residential',
+  desc:'Redevelopment of existing uses to residnetial.',
+  units:48, bmr:7, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 2.34 acres. Zoned ROLM.', fileNo:'APN 12701160', flag:null},
+{id:'pa-3001-3017-el-camino', addr:'3001- 3017 El Camino Real', lat:37.42221, lng:-122.13943, cat:'dev', type:'Residential',
+  desc:'The project proposes using the State Density Bonus to construct a five-story residential building with 100% affordable multi-family housing (129 units) on a proposed new 49,864 sf lot on 3001-3017 El Camino Real. Environmental Assessment: Pending',
+  units:129, bmr:129, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.32 acres. Zoned CS.', fileNo:'APN 13237074', flag:null},
+{id:'pa-3705-3709-el-camino', addr:'3705-3709 EL CAMINO REAL (Wilton Court)', lat:37.41834, lng:-122.13223, cat:'dev', type:'Residential',
+  desc:'100% affordable housing. Great example to show lower income can occur on small sites.',
+  units:59, bmr:58, applicant:'Not stated in the city layer', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Palo Alto housing pipeline layer lists this as Entitled. Site area 0.63 acres. Zoned CN.', fileNo:'APN 13235050, 13241085', flag:null},
+{id:'pa-739-sutter-ave', addr:'739 Sutter Ave', lat:37.43306, lng:-122.12613, cat:'dev', type:'Mixed Use',
+  desc:'0 net new units on 0.38 acres, zoned RM-15.',
+  units:null, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'review',
+  lastDate:null, lastNote:'Listed in Palo Alto\'s housing pipeline layer with no status recorded. Site area 0.38 acres. Zoned RM-15.', fileNo:'APN 12735200', flag:null},
+{id:'pa-800-and-808-san', addr:'800 and 808 SAN ANTONIO RD', lat:37.42059, lng:-122.10133, cat:'dev', type:'Mixed Use',
+  desc:'0 net new units on 0.45 acres, zoned CS.',
+  units:null, bmr:8, applicant:'Not stated in the city layer', filed:null, stage:'review',
+  lastDate:null, lastNote:'Listed in Palo Alto\'s housing pipeline layer with no status recorded. Site area 0.45 acres. Zoned CS.', fileNo:'APN 14703043', flag:null},
+{id:'pa-525-e-charleston-rd', addr:'525 E. Charleston Rd.', lat:37.41964, lng:-122.11144, cat:'dev', type:'Mixed Use',
+  desc:'0 net new units on 0.78 acres, zoned PF.',
+  units:null, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'review',
+  lastDate:null, lastNote:'Listed in Palo Alto\'s housing pipeline layer with no status recorded. Site area 0.78 acres. Zoned PF.', fileNo:'APN 13206039', flag:null},
+{id:'pa-800-and-808-san-2', addr:'800 and 808 SAN ANTONIO RD', lat:37.42032, lng:-122.10139, cat:'dev', type:'Mixed Use',
+  desc:'0 net new units on 0.43 acres, zoned CS.',
+  units:null, bmr:8, applicant:'Not stated in the city layer', filed:null, stage:'review',
+  lastDate:null, lastNote:'Listed in Palo Alto\'s housing pipeline layer with no status recorded. Site area 0.43 acres. Zoned CS.', fileNo:'APN 14703038', flag:null},
+{id:'pa-231-grant-ave', addr:'231 Grant Ave', lat:37.42678, lng:-122.14137, cat:'dev', type:'Mixed Use',
+  desc:'0 net new units on 1.39 acres, zoned PF.',
+  units:null, bmr:50, applicant:'Not stated in the city layer', filed:null, stage:'review',
+  lastDate:null, lastNote:'Listed in Palo Alto\'s housing pipeline layer with no status recorded. Site area 1.39 acres. Zoned PF.', fileNo:'APN 13231074', flag:null},
+{id:'pa-420-acacia-av', addr:'420 Acacia Av.', lat:37.42267, lng:-122.13877, cat:'dev', type:'Mixed Use',
+  desc:'0 net new units on 0.8061183437188718 acres, zoned CS.',
+  units:null, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'review',
+  lastDate:null, lastNote:'Listed in Palo Alto\'s housing pipeline layer with no status recorded. Site area 0.8061183437188718 acres. Zoned CS.', fileNo:'APN 13237075', flag:null},
+{id:'pa-200-portage-ave', addr:'200 Portage Ave', lat:37.42356, lng:-122.13671, cat:'dev', type:'Residential',
+  desc:'75 net new units on 4.86 acres, zoned RM-30/ PC.',
+  units:75, bmr:null, applicant:'Not stated in the city layer', filed:null, stage:'review',
+  lastDate:null, lastNote:'Listed in Palo Alto\'s housing pipeline layer with no status recorded. Site area 4.86 acres. Zoned RM-30/ PC.', fileNo:'APN 132-38-071', flag:null},
+];const PA_FEED = [];
+const PA_DECIDERS = [
+  {name:'Planning and Transportation Commission', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews development applications, zoning and transportation policy.', link:'https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Planning-and-Transportation-Commission'},
+  {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, rezonings and housing policy.', link:'https://www.paloalto.gov/Departments/City-Clerk/City-Council'},
+  {name:'Architectural Review Board', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews building design; many Palo Alto projects turn on its findings.', link:'https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Architectural-Review-Board'},
+];
+const PA_JOIN = [
+  {name:'Planning &amp; Development Services', when:'See the department page', body:'Runs current planning and publishes the housing dashboard these records come from.', cat:'Housing', link:'https://www.paloalto.gov/Departments/Planning-Development-Services'},
+  {name:'Housing Policies &amp; Projects', when:'See the program page', body:'Housing Element implementation, affordable housing programs, and ADU policy.', cat:'Housing', link:'https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects'},
+];
+const PA_SOURCES = ['City of Palo Alto - housing pipeline layer behind the public Housing Dashboard', 'City of Palo Alto - Current Planning Projects', 'City of Palo Alto - Housing Policies & Projects'];
+
 
 
 const CITIES = {
@@ -1760,6 +1852,12 @@ const CITIES = {
     ctaLinks:[
       {label:'Public Works project updates', url:'https://www.campbellca.gov/563/Project-Updates'},
       {label:'Community Development', url:'https://www.campbellca.gov/136/Community-Development'},
+    ]},
+  paloalto: {label:'Palo Alto', center:{lat:37.4300,lng:-122.1400}, zoom:12.5, bbox:{minLat:37.38,maxLat:37.47,minLng:-122.20,maxLng:-122.09}, data:PA_DATA, feed:PA_FEED, deciders:PA_DECIDERS, join:PA_JOIN, sources:PA_SOURCES, note:'These come from the housing pipeline layer behind Palo Alto\'s public housing dashboard, which is a Housing Element site inventory snapshot rather than a live permit feed. Statuses therefore lag the counter, and this is the housing pipeline specifically, not every application in the city.',
+    ctaLinks:[
+      {label:'Current Planning Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning/Projects'},
+      {label:'Housing Policies & Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects'},
+      {label:'Boards & Commissions', url:'https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions'},
     ]},
   santaclara: {label:'Santa Clara', center:{lat:37.362,lng:-121.965}, zoom:12.3, bbox:{minLat:37.32,maxLat:37.42,minLng:-122.01,maxLng:-121.92}, data:SC_DATA, feed:SC_FEED, deciders:SC_DECIDERS, join:SC_JOIN, sources:SC_SOURCES, note:'The most complete city in this tracker: all 53 records come straight from Santa Clara\'s own development-activity GIS layer, the same source behind the city\'s public story map. Because that layer publishes a year rather than milestone dates, the change feed is coarser here than in the hand-researched cities.',
     ctaLinks:[
