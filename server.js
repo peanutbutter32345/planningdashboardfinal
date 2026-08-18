@@ -579,24 +579,41 @@ async function runDigests(req, res) {
   const provided = req.headers['x-cron-secret'] || req.query.secret;
   if (!CRON_SECRET || provided !== CRON_SECRET) return res.status(401).json({ error: 'Invalid or missing cron secret.' });
   if (!requireDb(res)) return;
-  if (!RESEND_API_KEY) return res.status(500).json({ error: 'RESEND_API_KEY is not configured, so no email can be sent.' });
+
+  // Testing switches. All three are behind the same shared secret as the run itself, so only
+  // whoever holds CRON_SECRET can use them. Without these there is no way to exercise a
+  // biweekly/monthly briefing without waiting out the real interval.
+  //   dryRun=1   - build every briefing and report what would go out, but send nothing
+  //   force=1    - ignore the interval check, so a user who isn't due yet still gets one
+  //   only=<user> - restrict the run to a single username
+  const dryRun = ['1', 'true'].includes(String(req.query.dryRun || '').toLowerCase());
+  const force = ['1', 'true'].includes(String(req.query.force || '').toLowerCase());
+  const only = (req.query.only || '').trim();
+
+  if (!RESEND_API_KEY && !dryRun) {
+    return res.status(500).json({ error: 'RESEND_API_KEY is not configured, so no email can be sent.' });
+  }
 
   try {
     await syncSnapshotsAndGetChanges();
 
     // Interval differs per user's chosen frequency, so filter in JS rather than a single SQL interval.
-    const allCandidates = await pool.query(`
-      SELECT username, email, email_frequency, home_city, last_digest_sent_at, created_at FROM users
-      WHERE email_frequency != 'off' AND email IS NOT NULL
-    `);
+    const params = [];
+    let sql = `SELECT username, email, email_frequency, home_city, last_digest_sent_at, created_at FROM users
+               WHERE email_frequency != 'off' AND email IS NOT NULL`;
+    if (only) { params.push(only); sql += ` AND username = $${params.length}`; }
+    const allCandidates = await pool.query(sql, params);
+
     const now = Date.now();
     const due = allCandidates.rows.filter(u => {
+      if (force) return true;
       const days = FREQUENCY_DAYS[u.email_frequency] || 7;
       const last = u.last_digest_sent_at ? new Date(u.last_digest_sent_at).getTime() : new Date(u.created_at).getTime();
       return (now - last) >= days * 24 * 60 * 60 * 1000;
     });
 
     let sent = 0, failed = 0;
+    const report = [];
     for (const u of due) {
       const since = u.last_digest_sent_at || u.created_at;
       const [projectsChanged, articlesNew, boardsChanged, stars] = await Promise.all([
@@ -624,17 +641,34 @@ async function runDigests(req, res) {
         isFirst: !u.last_digest_sent_at,
       });
 
+      if (dryRun) {
+        // Everything above already ran, so this proves the briefing builds for this user - it
+        // just stops short of Resend and leaves last_digest_sent_at alone.
+        report.push({
+          username: u.username,
+          to: u.email.replace(/^(.).*(@.*)$/, '$1***$2'),
+          frequency: u.email_frequency,
+          city: u.home_city || null,
+          subject: briefing.subject,
+          htmlBytes: briefing.html.length,
+          markedUpdated: changed.projects.size + changed.boards.size + changed.news.size,
+        });
+        continue;
+      }
+
       try {
         await sendEmail(u.email, briefing.subject, briefing.html);
         await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [u.username]);
         sent++;
+        report.push({ username: u.username, to: u.email.replace(/^(.).*(@.*)$/, '$1***$2'), subject: briefing.subject, ok: true });
       } catch (err) {
         console.error(`Failed to send briefing to ${u.username}:`, err.message);
         failed++;
+        report.push({ username: u.username, ok: false, error: err.message });
       }
     }
 
-    res.json({ ok: true, checked: allCandidates.rows.length, due: due.length, sent, failed });
+    res.json({ ok: true, dryRun, force, checked: allCandidates.rows.length, due: due.length, sent, failed, report });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Digest run failed: ' + err.message });
