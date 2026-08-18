@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>South Bay Area Planning Dashboard</title>
+<title>South Bay Area Civic Dashboard</title>
 <!-- Inline so it costs no extra request, and stops the browser 404ing on /favicon.ico -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%233E4F24'/%3E%3Cpath d='M7 22V13l5-4 5 4v9z' fill='%23fff'/%3E%3Crect x='19' y='15' width='6' height='7' fill='%23F0C86A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -45,7 +45,7 @@
   .hero{background:var(--paper-2); color:var(--text); padding:38px 0 30px; border-bottom:4px solid var(--ink);}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
-  .hero h1{font-size:clamp(26px, 4vw, 38px); font-weight:800; color:#1A1A1A; max-width:22ch;}
+  .hero h1{font-family:'Source Serif 4', Georgia, 'Times New Roman', serif; font-size:clamp(28px, 4.2vw, 42px); font-weight:700; letter-spacing:-0.01em; color:#1A1A1A; max-width:22ch;}
   .hero h1 em{font-style:normal; color:var(--ink);}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
 
@@ -244,26 +244,49 @@
   .plan-step .body p{font-size:13px; color:var(--text-soft); margin:0 0 8px;}
   .plan-step .body a.plink{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:underline; margin-right:14px;}
   /* Statistics. Charts are inline SVG - no library, so nothing to load and nothing to break. */
-  .stat-block{margin-bottom:34px;}
-  .stat-block h3{font-family:'Open Sans',sans-serif; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); border-bottom:2px solid var(--ink); padding-bottom:6px; margin:0 0 4px;}
-  .stat-lede{font-size:13.5px; color:var(--text); line-height:1.6; margin:10px 0 16px;}
-  .stat-lede b{color:var(--ink);}
-  .stat-compare{background:#F2F5EC; border-left:4px solid var(--ink); padding:10px 14px; font-size:13px; line-height:1.55; margin:14px 0 0;}
-  .stat-bars{display:flex; flex-direction:column; gap:7px; margin-top:12px;}
-  .stat-row{display:grid; grid-template-columns:118px 1fr 92px; align-items:center; gap:10px; font-size:12.5px;}
+  .stat-hero{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:4px 0 30px;}
+  .stat-tile{background:#fff; padding:16px 16px 14px;}
+  .stat-tile .k{font-family:var(--mono); font-size:25px; font-weight:700; color:var(--ink); line-height:1.05; letter-spacing:-.5px;}
+  .stat-tile .l{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--text-soft); margin-top:7px; line-height:1.35;}
+  .stat-tile .s{font-size:11.5px; color:var(--text-soft); margin-top:6px; line-height:1.45;}
+  .stat-tile .s b{color:var(--ink);}
+  .stat-tile.wide{grid-column:span 3;}
+
+  .stat-sec{margin:0 0 34px;}
+  .stat-sec > h3{font-family:'Open Sans',sans-serif; font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--text-soft); margin:0 0 2px; font-weight:800;}
+  .stat-sec > .sub{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin:0 0 14px;}
+
+  .stat-bars{display:flex; flex-direction:column; gap:6px;}
+  .stat-row{display:grid; grid-template-columns:112px 1fr 88px; align-items:center; gap:10px; font-size:12.5px;}
   .stat-row .nm{font-family:'Open Sans',sans-serif; color:var(--text-soft); text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .stat-row.me .nm{color:var(--ink); font-weight:800;}
-  .stat-row .track{background:#E9ECE1; height:17px; border-radius:2px; overflow:hidden;}
+  .stat-row .track{display:block; background:#EDEFE7; height:15px; border-radius:2px; overflow:hidden;}
   /* Must be a block: an inline span ignores width and height, so the bar never renders. */
-  .stat-row .fill{display:block; height:100%; background:#8FA37A;}
+  .stat-row .fill{display:block; height:100%; background:#A8B795;}
   .stat-row.me .fill{background:var(--ink);}
-  .stat-row .val{font-family:var(--mono); font-size:12px; color:var(--ink); text-align:right;}
-  .stat-charts{display:flex; gap:22px; flex-wrap:wrap; margin-top:6px;}
-  .stat-chart{flex:1 1 260px; min-width:240px;}
-  .stat-chart h4{font-family:'Open Sans',sans-serif; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft); margin:0 0 6px;}
+  .stat-row .val{font-family:var(--mono); font-size:11.5px; color:var(--ink); text-align:right;}
+
+  .stat-charts{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .stat-chart{min-width:0;}
+  .stat-chart h4{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin:0 0 6px;}
   .stat-chart svg{width:100%; height:auto; display:block;}
-  .stat-note{font-size:11.5px; color:var(--text-soft); margin-top:8px; line-height:1.5;}
-  @media (max-width:560px){ .stat-row{grid-template-columns:84px 1fr 78px; font-size:11.5px;} }
+  .stat-chart .cap{font-size:11px; color:var(--text-soft); margin-top:5px; line-height:1.45;}
+
+  .stat-split{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule);}
+  .stat-split .cell{background:#fff; padding:13px 14px;}
+  .stat-split .cell .k{font-family:var(--mono); font-size:17px; color:var(--ink); font-weight:700;}
+  .stat-split .cell .l{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin-top:5px;}
+
+  .stat-foot{font-size:11.5px; color:var(--text-soft); line-height:1.6; border-top:1px solid var(--rule); padding-top:12px; margin-top:26px;}
+  @media (max-width:760px){
+    .stat-hero, .stat-charts, .stat-split{grid-template-columns:repeat(2,1fr);}
+    .stat-tile.wide{grid-column:span 2;}
+  }
+  @media (max-width:480px){
+    .stat-hero, .stat-charts, .stat-split{grid-template-columns:1fr;}
+    .stat-tile.wide{grid-column:span 1;}
+    .stat-row{grid-template-columns:80px 1fr 74px; font-size:11.5px;}
+  }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
   .hero-top{display:flex; gap:34px; align-items:flex-start;}
@@ -536,7 +559,7 @@
     <div class="hero-top">
       <div class="hero-copy">
         <div class="eyebrow"><span class="dot"></span> SOUTH BAY PUBLIC RECORDS PROTOTYPE</div>
-        <h1>South Bay Area <em>Planning Dashboard</em></h1>
+        <h1>South Bay Area <em>Civic Dashboard</em></h1>
         <p class="lede">A dashboard for tracking real planning developments across the South Bay - housing, transportation, and civic projects, official city resources, and concrete ways to get involved. Pick a city below.</p>
       </div>
       <aside class="featured-news" id="featuredNews" aria-label="Featured news">
@@ -903,7 +926,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="wrap">South Bay Area Planning Dashboard - an independent student-built prototype, not an official government product. Google Maps requires your own API key.</div>
+    <div class="wrap">South Bay Area Civic Dashboard - an independent student-built prototype, not an official government product. Google Maps requires your own API key.</div>
   </div>
 </footer>
 
@@ -3367,66 +3390,107 @@ const CITY_STATS = {
 const STATS_SOURCE = {"label":"Zillow Research public data (ZHVI and ZORI), city level","url":"https://www.zillow.com/research/data/","asOf":"July 2026"};
 
 // ================= STATISTICS =================
-// Market figures come from Zillow's public research data (see data/stats.js). Pipeline figures are
-// counted live from the records already loaded in CITIES, so the two can never drift apart.
+// Two sources only. Market figures come from Zillow's public research data (see data/stats.js).
+// Everything else is computed live from the project records already loaded in CITIES, so the
+// numbers on this screen can never disagree with the cards on the dashboard.
 
 function fmtMoney(n){ return n >= 1000000 ? '$' + (n/1000000).toFixed(2) + 'M' : '$' + Math.round(n).toLocaleString(); }
 function fmtRent(n){ return '$' + Math.round(n).toLocaleString(); }
+function fmtPct(n){ return (n > 0 ? '+' : '') + n.toFixed(0) + '%'; }
 function statsLabelOf(k){ return CITIES[k] ? CITIES[k].label : (CITY_STATS[k] ? CITY_STATS[k].zillowName : k); }
+function median(a){ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y); return s[Math.floor(s.length/2)]; }
 
-// Horizontal bars, every city ranked, the reader's own city highlighted.
+// Everything derivable from one city's records. Fields are missing on plenty of projects, so each
+// figure reports how many records it is actually based on rather than implying full coverage.
+function cityFacts(key){
+  const rows = (CITIES[key] ? CITIES[key].data : []);
+  const active = rows.filter(d=>d.stage!=='completed');
+  const withUnits = active.filter(d=>d.units);
+  const timed = rows.filter(d=>d.filed && d.lastDate)
+    .map(d=>(new Date(d.lastDate)-new Date(d.filed))/864e5).filter(d=>d>0);
+  const stages = {};
+  rows.forEach(d=>{ stages[d.stage]=(stages[d.stage]||0)+1; });
+  const byType = {};
+  active.forEach(d=>{ byType[d.type]=(byType[d.type]||0)+(d.units||0); });
+  return {
+    projects: active.length,
+    units: active.reduce((n,d)=>n+(d.units||0),0),
+    bmr: active.reduce((n,d)=>n+(d.bmr||0),0),
+    unitsKnown: withUnits.length,
+    medianUnits: median(withUnits.map(d=>d.units)),
+    biggest: withUnits.length ? withUnits.reduce((a,b)=>a.units>b.units?a:b) : null,
+    medianDays: median(timed),
+    timedCount: timed.length,
+    construction: rows.filter(d=>d.stage==='construction').length,
+    flagged: rows.filter(d=>d.flag).length,
+    builderRemedy: rows.filter(d=>/builder'?s remedy/i.test(d.flag||'')).length,
+    transport: rows.filter(d=>d.type==='Transportation'||d.cat==='infra').length,
+    stages, byType,
+  };
+}
+
+function growth(series){
+  if(!series || series.length < 2) return null;
+  const a = series[0].value, b = series[series.length-1].value;
+  return { pct: (b-a)/a*100, from: series[0].year, to: series[series.length-1].year };
+}
+
+function tile(value, label, sub){
+  return '<div class="stat-tile"><div class="k">'+value+'</div><div class="l">'+label+'</div>'
+       + (sub ? '<div class="s">'+sub+'</div>' : '') + '</div>';
+}
+
 function statBars(entries, me, fmt){
   if(!entries.length) return '';
   const max = Math.max(...entries.map(e=>e.value)) || 1;
   return '<div class="stat-bars">' + entries.map(e=>
     '<div class="stat-row'+(e.key===me?' me':'')+'">'
     + '<span class="nm">'+statsLabelOf(e.key)+'</span>'
-    + '<span class="track"><span class="fill" style="width:'+(e.value/max*100).toFixed(1)+'%"></span></span>'
+    + '<span class="track"><span class="fill" style="width:'+Math.max(1.5, e.value/max*100).toFixed(1)+'%"></span></span>'
     + '<span class="val">'+fmt(e.value)+'</span></div>').join('') + '</div>';
 }
 
-// Six-year trend as plain inline SVG - no chart library to load or break.
 function statLine(series, fmt, color){
   if(!series || series.length < 2) return '';
-  const W=280, H=112, PAD=30;
+  const W=260, H=104, PAD=34;
   const vals = series.map(p=>p.value);
   const min = Math.min(...vals), max = Math.max(...vals), span = (max-min) || 1;
   const x = i => PAD + i*(W-PAD-8)/(series.length-1);
   const y = v => 12 + (1-(v-min)/span)*(H-12-24);
   const pts = series.map((p,i)=>x(i).toFixed(1)+','+y(p.value).toFixed(1)).join(' ');
-  return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Trend from '+series[0].year+' to '+series[series.length-1].year+'">'
-    + '<polygon points="'+PAD+','+(H-22)+' '+pts+' '+x(series.length-1).toFixed(1)+','+(H-22)+'" fill="'+color+'" opacity="0.12"></polygon>'
-    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="2.5" stroke-linejoin="round"></polyline>'
-    + series.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.value).toFixed(1)+'" r="2.6" fill="'+color+'"></circle>').join('')
+  return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Trend '+series[0].year+' to '+series[series.length-1].year+'">'
+    + '<polygon points="'+PAD+','+(H-22)+' '+pts+' '+x(series.length-1).toFixed(1)+','+(H-22)+'" fill="'+color+'" opacity="0.11"></polygon>'
+    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="2.2" stroke-linejoin="round"></polyline>'
+    + series.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.value).toFixed(1)+'" r="2.4" fill="'+color+'"></circle>').join('')
     + '<text x="'+PAD+'" y="'+(H-6)+'" font-size="9" fill="#8A8A8A">'+series[0].year+'</text>'
     + '<text x="'+(W-8)+'" y="'+(H-6)+'" font-size="9" fill="#8A8A8A" text-anchor="end">'+series[series.length-1].year+'</text>'
     + '<text x="2" y="15" font-size="9" fill="#8A8A8A">'+fmt(max)+'</text>'
-    + '<text x="2" y="'+(H-26)+'" font-size="9" fill="#8A8A8A">'+fmt(min)+'</text>'
-    + '</svg>';
+    + '<text x="2" y="'+(H-26)+'" font-size="9" fill="#8A8A8A">'+fmt(min)+'</text></svg>';
 }
 
-// One plain-English sentence putting the reader's city against the South Bay median.
+// Stacked proportion bar - used for the stage mix and the unit-type split.
+function statStack(parts, colors){
+  const total = parts.reduce((n,p)=>n+p.value,0);
+  if(!total) return '';
+  let x=0;
+  const segs = parts.map((p,i)=>{
+    const w = p.value/total*100; const seg =
+      '<rect x="'+x.toFixed(2)+'" y="0" width="'+w.toFixed(2)+'" height="18" fill="'+colors[i%colors.length]+'"><title>'+p.label+': '+p.value+'</title></rect>';
+    x += w; return seg;
+  }).join('');
+  const legend = parts.filter(p=>p.value).map((p,i)=>
+    '<span style="display:inline-block; margin:6px 12px 0 0; font-size:11px; color:#5B5B5B;">'
+    + '<i style="display:inline-block; width:9px; height:9px; background:'+colors[i%colors.length]+'; margin-right:5px; border-radius:1px;"></i>'
+    + p.label+' <b style="color:#1A1A1A;">'+p.value+'</b></span>').join('');
+  return '<svg viewBox="0 0 100 18" preserveAspectRatio="none" style="width:100%; height:18px; display:block;">'+segs+'</svg><div>'+legend+'</div>';
+}
+
 function compareSentence(label, mine, others, fmt){
   if(mine == null || !others.length) return '';
-  const sorted = [...others].sort((a,b)=>a-b);
-  const median = sorted[Math.floor(sorted.length/2)];
-  const pct = Math.round((mine-median)/median*100);
-  const dir = pct > 2 ? '<b>'+pct+'% higher than</b>'
-            : pct < -2 ? '<b>'+Math.abs(pct)+'% lower than</b>'
-            : '<b>about the same as</b>';
-  return label+' in '+CITIES[currentCity].label+' is '+fmt(mine)+', '+dir+' the South Bay median of '+fmt(median)+'.';
-}
-
-function pipelineOf(k){
-  const c = CITIES[k];
-  if(!c) return {units:0, bmr:0, projects:0, transport:0};
-  const active = c.data.filter(d=>d.stage!=='completed');
-  return {
-    units: active.reduce((n,d)=>n+(d.units||0),0),
-    bmr: active.reduce((n,d)=>n+(d.bmr||0),0),
-    projects: active.length,
-    transport: c.data.filter(d=>d.type==='Transportation'||d.cat==='infra').length,
-  };
+  const med = median(others);
+  const pct = Math.round((mine-med)/med*100);
+  const dir = pct > 2 ? '<b>'+pct+'% above</b>' : pct < -2 ? '<b>'+Math.abs(pct)+'% below</b>' : '<b>level with</b>';
+  return label+' is '+fmt(mine)+', '+dir+' the South Bay median of '+fmt(med)+'.';
 }
 
 function renderStatistics(){
@@ -3438,48 +3502,101 @@ function renderStatistics(){
   const statKeys = Object.keys(CITY_STATS).filter(k=>CITY_STATS[k].homeValue);
   const homes = statKeys.map(k=>({key:k, value:CITY_STATS[k].homeValue})).sort((a,b)=>b.value-a.value);
   const rents = statKeys.filter(k=>CITY_STATS[k].rent).map(k=>({key:k, value:CITY_STATS[k].rent})).sort((a,b)=>b.value-a.value);
-
   const tracked = Object.keys(CITIES).filter(k=>k!=='all');
-  const pipeline = tracked.map(k=>({key:k, ...pipelineOf(k)})).filter(p=>p.units>0).sort((a,b)=>b.units-a.units);
-  const transport = tracked.map(k=>({key:k, value:pipelineOf(k).transport})).filter(x=>x.value>0).sort((a,b)=>b.value-a.value);
 
   const s = me ? CITY_STATS[me] : null;
-  const mine = me ? pipelineOf(me) : null;
-  const bmrShare = mine && mine.units ? Math.round(mine.bmr/mine.units*100) : 0;
+  const f = me ? cityFacts(me) : cityFacts('all');
+  const region = cityFacts('all');
+
+  const hv = s ? growth(s.homeValueSeries) : null;
+  const rt = s ? growth(s.rentSeries) : null;
+  // Price-to-rent: what a typical home costs relative to a year of typical rent. Above ~20 is
+  // usually read as a market where buying is expensive relative to renting.
+  const p2r = (s && s.rent) ? s.homeValue/(s.rent*12) : null;
+  const bmrShare = f.units ? Math.round(f.bmr/f.units*100) : 0;
+  const where = me ? CITIES[me].label : 'the South Bay';
+
+  const stageParts = ['proposed','review','approved','construction','completed']
+    .map(k=>({label:STAGE_MAP[k].label, value:f.stages[k]||0}));
+  const typeParts = Object.entries(f.byType).filter(([,v])=>v>0)
+    .sort((a,b)=>b[1]-a[1]).map(([k,v])=>({label:k, value:v}));
 
   host.innerHTML =
-    '<div class="stat-block"><h3>Housing costs</h3>'
-    + '<div class="stat-lede">What it costs to buy, citywide. This is a market index for the whole city, not a price for anything tracked in this dashboard.</div>'
-    + statBars(homes, me, fmtMoney)
-    + (s ? '<p class="stat-compare">'+compareSentence('The typical home value', s.homeValue, homes.map(h=>h.value), fmtMoney)+'</p>' : '')
-    + (s ? '<div class="stat-charts">'
-        + '<div class="stat-chart"><h4>'+CITIES[me].label+' home value, 6 years</h4>'+statLine(s.homeValueSeries, fmtMoney, '#3E4F24')+'</div>'
-        + '<div class="stat-chart"><h4>'+CITIES[me].label+' asking rent, 6 years</h4>'+statLine(s.rentSeries, fmtRent, '#2F5E82')+'</div>'
-        + '</div>' : '')
+    // --- headline tiles, three across ---
+    '<div class="stat-hero">'
+    + tile(f.units.toLocaleString(), 'Homes in the pipeline', 'Across <b>'+f.projects+'</b> active projects in '+where+'.')
+    + tile(bmrShare+'%', 'Below market rate', '<b>'+f.bmr.toLocaleString()+'</b> of those homes are income restricted.')
+    + tile(f.medianDays ? (f.medianDays/365).toFixed(1)+' yrs' : '--', 'Median time on file',
+           f.medianDays ? 'From filing to the last recorded action, across <b>'+f.timedCount+'</b> projects with both dates.'
+                        : 'Not enough dated records here to measure.')
+    + tile(s ? fmtMoney(s.homeValue) : '--', 'Typical home value', s && hv ? '<b>'+fmtPct(hv.pct)+'</b> since '+hv.from+'.' : 'Zillow home value index.')
+    + tile(s && s.rent ? fmtRent(s.rent) : '--', 'Typical asking rent', s && rt ? '<b>'+fmtPct(rt.pct)+'</b> since '+rt.from+'.' : 'Zillow rent index.')
+    + tile(p2r ? p2r.toFixed(0) + 'x' : '--', 'Price to rent ratio',
+           p2r ? 'A typical home costs about <b>'+p2r.toFixed(0)+' years</b> of typical rent.' : 'Needs both indexes.')
     + '</div>'
 
-    + '<div class="stat-block"><h3>Rents</h3>'
-    + '<div class="stat-lede">Typical asking rent across all home types, including apartments.</div>'
-    + statBars(rents, me, fmtRent)
-    + (s && s.rent ? '<p class="stat-compare">'+compareSentence('Typical asking rent', s.rent, rents.map(r=>r.value), fmtRent)+'</p>' : '')
+    // --- pipeline detail ---
+    + '<div class="stat-sec"><h3>The pipeline in '+where+'</h3>'
+    + '<div class="sub">Counted from this dashboard\'s own records. Unit counts exist for '+f.unitsKnown+' of '+f.projects+' active projects, so totals are a floor rather than a full count.</div>'
+    + '<div class="stat-split">'
+    + '<div class="cell"><div class="k">'+(f.medianUnits ? f.medianUnits.toLocaleString() : '--')+'</div><div class="l">Median project size</div></div>'
+    + '<div class="cell"><div class="k">'+f.construction+'</div><div class="l">Under construction now</div></div>'
+    + '<div class="cell"><div class="k">'+f.flagged+'</div><div class="l">Records with a data caveat</div></div>'
+    + '<div class="cell"><div class="k">'+(f.biggest ? f.biggest.units.toLocaleString() : '--')+'</div><div class="l">Largest single project</div></div>'
+    + '<div class="cell"><div class="k">'+f.builderRemedy+'</div><div class="l">Invoking Builder\'s Remedy</div></div>'
+    + '<div class="cell"><div class="k">'+f.transport+'</div><div class="l">Transport &amp; infrastructure</div></div>'
+    + '</div>'
+    + (f.biggest ? '<div class="sub" style="margin-top:12px;">Largest here is <b>'+f.biggest.addr+'</b> at '+f.biggest.units.toLocaleString()+' homes.</div>' : '')
     + '</div>'
 
-    + '<div class="stat-block"><h3>Housing being built</h3>'
-    + '<div class="stat-lede">Units in projects that are proposed, under review, approved, or under construction - everything except completed. Counted from the records in this dashboard, so it reflects this sample rather than every filing citywide.</div>'
-    + statBars(pipeline.map(p=>({key:p.key, value:p.units})), me, n=>n.toLocaleString()+' units')
-    + (mine && mine.units ? '<p class="stat-compare">'+CITIES[me].label+' has <b>'+mine.units.toLocaleString()+' units</b> across '+mine.projects+' active projects. '
-        + (mine.bmr ? '<b>'+mine.bmr.toLocaleString()+'</b> of them ('+bmrShare+'%) are recorded as below-market-rate.'
-                    : 'No below-market-rate counts are recorded for them in the public files this tracker uses.')+'</p>' : '')
+    // --- charts, three across ---
+    + '<div class="stat-sec"><h3>Trends and mix</h3>'
+    + '<div class="sub">Market indexes are citywide and cover all housing, not just the projects tracked here.</div>'
+    + '<div class="stat-charts">'
+    + '<div class="stat-chart"><h4>Home value, 6 years</h4>'+(s?statLine(s.homeValueSeries, fmtMoney, '#3E4F24'):'')
+      + '<div class="cap">'+(hv?fmtPct(hv.pct)+' between '+hv.from+' and '+hv.to+'.':'No series.')+'</div></div>'
+    + '<div class="stat-chart"><h4>Asking rent, 6 years</h4>'+(s?statLine(s.rentSeries, fmtRent, '#2F5E82'):'')
+      + '<div class="cap">'+(rt?fmtPct(rt.pct)+' between '+rt.from+' and '+rt.to+'.':'No series.')+'</div></div>'
+    + '<div class="stat-chart"><h4>Where projects stand</h4>'
+      + statStack(stageParts, ['#8A6E3C','#2F5E82','#8F6318','#9A3A1E','#3B7350'])
+      + '<div class="cap">Every tracked record in '+where+' by stage.</div></div>'
+    + '</div></div>'
+
+    // --- unit mix ---
+    + (typeParts.length ? '<div class="stat-sec"><h3>What is being built</h3>'
+      + '<div class="sub">Homes in the pipeline by project type.</div>'
+      + statStack(typeParts, ['#1F6F78','#3E4F24','#8C5A2B','#6B4C8A','#3F6B4C','#8A6E3C'])
+      + '</div>' : '')
+
+    // --- cross-city comparisons ---
+    + '<div class="stat-sec"><h3>Home values across the South Bay</h3>'
+    + (s ? '<div class="sub">'+compareSentence('The typical '+where+' home', s.homeValue, homes.map(h=>h.value), fmtMoney)+'</div>' : '<div class="sub">Pick a city to see it marked.</div>')
+    + statBars(homes, me, fmtMoney) + '</div>'
+
+    + '<div class="stat-sec"><h3>Asking rents across the South Bay</h3>'
+    + (s && s.rent ? '<div class="sub">'+compareSentence('Typical '+where+' rent', s.rent, rents.map(r=>r.value), fmtRent)+'</div>' : '')
+    + statBars(rents, me, fmtRent) + '</div>'
+
+    + '<div class="stat-sec"><h3>Homes in the pipeline, by city</h3>'
+    + '<div class="sub">Reflects the records this dashboard carries for each city, which vary in depth by how much each city publishes.</div>'
+    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).units})).filter(x=>x.value>0).sort((a,b)=>b.value-a.value), me, n=>n.toLocaleString())
     + '</div>'
 
-    + '<div class="stat-block"><h3>Transportation and infrastructure</h3>'
-    + '<div class="stat-lede">Transportation and infrastructure projects tracked per city. Commute times and ridership need a US Census API key, which this build does not carry.</div>'
-    + statBars(transport, me, n=>n+' project'+(n===1?'':'s'))
+    + '<div class="stat-sec"><h3>Median time on file, by city</h3>'
+    + '<div class="sub">Years between a project\'s filing date and its most recent recorded action. Only projects carrying both dates are counted, so cities publishing fewer dates show fewer records.</div>'
+    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).medianDays})).filter(x=>x.value).map(x=>({key:x.key, value:x.value/365}))
+        .sort((a,b)=>b.value-a.value), me, n=>n.toFixed(1)+' yrs')
+    + '</div>'
+
+    + '<div class="stat-sec"><h3>Transport and infrastructure projects</h3>'
+    + '<div class="sub">Transportation and infrastructure records per city. Commute times and transit ridership need a US Census API key, which this build does not carry.</div>'
+    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).transport})).filter(x=>x.value>0).sort((a,b)=>b.value-a.value), me, n=>n+'')
     + '</div>';
 
   document.getElementById('statsSource').innerHTML =
-    'Market figures: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, as of '+STATS_SOURCE.asOf+'. '
-    + "Pipeline figures counted from this dashboard's own records.";
+    'Home value and rent: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, as of '+STATS_SOURCE.asOf+'. '
+    + 'Everything else is computed from the '+region.projects+' active project records in this dashboard. '
+    + 'Region-wide, that is '+region.units.toLocaleString()+' homes across '+Object.keys(CITIES).filter(k=>k!=='all').length+' cities.';
 }
 
 // ================= FEATURED NEWS =================
