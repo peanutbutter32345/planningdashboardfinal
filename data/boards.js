@@ -312,5 +312,108 @@ export const BOARDS = [
     "city": "santaclara",
     "boardType": "join",
     "id": "santaclara:Cultural Commission"
+  },
+  {
+    "name": "Planning Commission",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "First decision point on land use applications.",
+    "link": "https://www.losgatosca.gov/89/Planning-Commission",
+    "city": "losgatos",
+    "boardType": "decider",
+    "id": "losgatos:Planning Commission"
+  },
+  {
+    "name": "Town Council",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Final say on appeals and on the SB 330 applications tracked here.",
+    "link": "https://www.losgatosca.gov/95/Town-Council",
+    "city": "losgatos",
+    "boardType": "decider",
+    "id": "losgatos:Town Council"
+  },
+  {
+    "name": "Community Development Department",
+    "when": "See the department page",
+    "body": "Runs planning review and maintains the SB 330 tracker these records come from.",
+    "cat": "Housing",
+    "link": "https://www.losgatosca.gov/74/Community-Development",
+    "city": "losgatos",
+    "boardType": "join",
+    "id": "losgatos:Community Development Department"
+  },
+  {
+    "name": "Planning Commission",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Reviews development applications and design.",
+    "link": "https://www.campbellca.gov/135/Planning-Commission",
+    "city": "campbell",
+    "boardType": "decider",
+    "id": "campbell:Planning Commission"
+  },
+  {
+    "name": "City Council",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Final say on appeals, budgets, and capital projects.",
+    "link": "https://www.campbellca.gov/122/City-Council",
+    "city": "campbell",
+    "boardType": "decider",
+    "id": "campbell:City Council"
+  },
+  {
+    "name": "Public Works Department",
+    "when": "See the project updates page",
+    "body": "Publishes the capital project updates these records come from.",
+    "cat": "Transportation",
+    "link": "https://www.campbellca.gov/563/Project-Updates",
+    "city": "campbell",
+    "boardType": "join",
+    "id": "campbell:Public Works Department"
+  },
+  {
+    "name": "Planning and Transportation Commission",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Reviews development applications, zoning and transportation policy.",
+    "link": "https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Planning-and-Transportation-Commission",
+    "city": "paloalto",
+    "boardType": "decider",
+    "id": "paloalto:Planning and Transportation Commission"
+  },
+  {
+    "name": "City Council",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Final say on appeals, rezonings and housing policy.",
+    "link": "https://www.paloalto.gov/Departments/City-Clerk/City-Council",
+    "city": "paloalto",
+    "boardType": "decider",
+    "id": "paloalto:City Council"
+  },
+  {
+    "name": "Architectural Review Board",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Reviews building design; many Palo Alto projects turn on its findings.",
+    "link": "https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Architectural-Review-Board",
+    "city": "paloalto",
+    "boardType": "decider",
+    "id": "paloalto:Architectural Review Board"
+  },
+  {
+    "name": "Planning &amp; Development Services",
+    "when": "See the department page",
+    "body": "Runs current planning and publishes the housing dashboard these records come from.",
+    "cat": "Housing",
+    "link": "https://www.paloalto.gov/Departments/Planning-Development-Services",
+    "city": "paloalto",
+    "boardType": "join",
+    "id": "paloalto:Planning &amp; Development Services"
+  },
+  {
+    "name": "Housing Policies &amp; Projects",
+    "when": "See the program page",
+    "body": "Housing Element implementation, affordable housing programs, and ADU policy.",
+    "cat": "Housing",
+    "link": "https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects",
+    "city": "paloalto",
+    "boardType": "join",
+    "id": "paloalto:Housing Policies &amp; Projects"
   }
 ];
