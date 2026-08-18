@@ -753,6 +753,8 @@
             <option value="saratoga">Saratoga</option>
             <option value="westsanjose">West San Jose</option>
             <option value="santaclara">Santa Clara</option>
+            <option value="losgatos">Los Gatos</option>
+            <option value="campbell">Campbell</option>
           </select>
           <div class="auth-hint">Your city's news comes right after anything you've starred, ahead of the rest of the South Bay.</div>
           <label for="prefsFrequency" class="onboard-label" style="margin-top:12px;">Email updates</label>
@@ -1579,6 +1581,129 @@ const SC_JOIN = [
 ];
 const SC_SOURCES = ['City of Santa Clara - Development Activity story map and DevelopmentProjects GIS feature service', 'City of Santa Clara - Projects Listing', 'City of Santa Clara - Boards and Commissions', 'City of Santa Clara Legistar (Council and Planning Commission agendas)'];
 
+// ============== LOS GATOS ==============
+// Every record comes from the Town of Los Gatos SB 330 application tracker, which publishes
+// unit counts, below-market counts, stories and status per application. Coordinates are
+// geocoded from the addresses via OpenStreetMap Nominatim. One tracker row (178 Twin Oaks Dr)
+// is omitted because it would not geocode, and a guessed pin is worse than a missing one.
+const LG_DATA = [
+{id:'lg-50-los-gatos', addr:'50 Los Gatos-Saratoga Road', lat:37.22495, lng:-121.97281, cat:'dev', type:'Residential',
+  desc:'Los Gatos Lodge. 155 residential units, 26 below market rate, 3 stories.',
+  units:155, bmr:26, applicant:'See the Town SB 330 application tracker', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Approved by Town Council on 3/4/2025.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-14859-los-gatos', addr:'14859 Los Gatos Blvd', lat:37.25259, lng:-121.95327, cat:'dev', type:'Residential',
+  desc:'North 40 Phase II - Multi-Building. 450 residential units, 77 below market rate, 7 stories.',
+  units:450, bmr:77, applicant:'See the Town SB 330 application tracker', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Approved by Town Council on 1/13/2026.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-15349-los-gatos', addr:'15349 Los Gatos Blvd', lat:37.24588, lng:-121.95854, cat:'dev', type:'Residential',
+  desc:'Genuine Automotive. 55 residential units, 8 below market rate, 3 stories.',
+  units:55, bmr:8, applicant:'See the Town SB 330 application tracker', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Approved by Town Council on 6/3/2025.', fileNo:null, flag:null},
+{id:'lg-143-e-main', addr:'143 E Main Street', lat:37.22123, lng:-121.97769, cat:'dev', type:'Residential',
+  desc:'Cafe Dio - Proposal 2. 30 residential units, 6 below market rate, 4 stories.',
+  units:30, bmr:6, applicant:'See the Town SB 330 application tracker', filed:null, stage:'approved',
+  lastDate:null, lastNote:'Approved by Town Council on 5/27/2025.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-101-blossom-hill', addr:'101 Blossom Hill Road', lat:37.23469, lng:-121.97497, cat:'dev', type:'Residential',
+  desc:'Oswalt Building. 63 residential units, 13 below market rate, 7 stories.',
+  units:63, bmr:13, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Formal application in progress. Held pending the Town\'s declaratory relief complaint in Santa Clara County Superior Court (Case No. 25CV462276).', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-14288-capri-dr', addr:'14288 Capri Dr', lat:37.2608, lng:-121.96334, cat:'dev', type:'Residential',
+  desc:'Capri Fruitstand - Proposal 3. 119 residential units, 24 below market rate, 13 stories.',
+  units:119, bmr:24, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Completeness review incomplete. Held pending the Town\'s declaratory relief complaint (Case No. 25CV462276).', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-14849-los-gatos', addr:'14849 Los Gatos Blvd', lat:37.25285, lng:-121.95329, cat:'dev', type:'Residential',
+  desc:'North 40 Single Building. 120 residential units, 24 below market rate, 9 stories.',
+  units:120, bmr:24, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Formal application filed; completeness review incomplete.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-15300-los-gatos', addr:'15300 Los Gatos Blvd', lat:37.24688, lng:-121.95648, cat:'dev', type:'Residential',
+  desc:'ACE Hardware Property. 175 residential units, 35 below market rate, 9 stories.',
+  units:175, bmr:35, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Formal application filed; completeness review incomplete.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-15495-los-gatos', addr:'15495 Los Gatos Boulevard', lat:37.24404, lng:-121.96075, cat:'dev', type:'Residential',
+  desc:'Newtown - tolling agreement. 238 residential units, 48 below market rate, 7 stories.',
+  units:238, bmr:48, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Tolling agreement approved by Town Council on 3/18/2025.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-16492-los-gatos', addr:'16492 Los Gatos Boulevard', lat:37.22915, lng:-121.96585, cat:'dev', type:'Residential',
+  desc:'Happy Cleaners. 10 residential units, 1 below market rate, 3 stories.',
+  units:10, bmr:1, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Formal application in progress.', fileNo:null, flag:null},
+{id:'lg-14789-oka-road', addr:'14789 Oka Road', lat:37.25511, lng:-121.95881, cat:'dev', type:'Residential',
+  desc:'Walnut Orchard. 138 residential units, 28 below market rate, 3 stories.',
+  units:138, bmr:28, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Formal application complete; pending decision.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-647-n-santa', addr:'647 N Santa Cruz Ave', lat:37.23533, lng:-121.97829, cat:'dev', type:'Residential',
+  desc:'State Farm - Proposal 2. 11 residential units, 1 below market rate, 3 stories.',
+  units:11, bmr:1, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Formal application in progress.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-101-s-santa', addr:'101 S Santa Cruz Ave', lat:37.22166, lng:-121.98451, cat:'dev', type:'Residential',
+  desc:'Post Office - Proposal 1. 58 residential units, 12 below market rate, 8 stories.',
+  units:58, bmr:12, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Formal application complete; pending decision.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-980-university-ave', addr:'980 University Ave', lat:37.25057, lng:-121.96607, cat:'dev', type:'Residential',
+  desc:'Cryptic. 68 residential units, 11 below market rate, 3 stories.',
+  units:68, bmr:11, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
+  lastDate:null, lastNote:'Formal application complete; pending decision.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
+{id:'lg-405-alberto-way', addr:'405 Alberto Way', lat:37.2268, lng:-121.97236, cat:'dev', type:'Residential',
+  desc:'Alberto Way. 52 residential units, 8 below market rate, 4 stories.',
+  units:52, bmr:8, applicant:'See the Town SB 330 application tracker', filed:null, stage:'proposed',
+  lastDate:null, lastNote:'SB 330 vesting expired.', fileNo:null, flag:null},
+];const LG_FEED = [];
+const LG_DECIDERS = [
+  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'First decision point on land use applications.', link:'https://www.losgatosca.gov/89/Planning-Commission'},
+  {name:'Town Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals and on the SB 330 applications tracked here.', link:'https://www.losgatosca.gov/95/Town-Council'},
+];
+const LG_JOIN = [
+  {name:'Community Development Department', when:'See the department page', body:'Runs planning review and maintains the SB 330 tracker these records come from.', cat:'Housing', link:'https://www.losgatosca.gov/74/Community-Development'},
+];
+const LG_SOURCES = ['Town of Los Gatos - Senate Bill (SB) 330 application tracker', 'Town of Los Gatos - Pending Planning Projects', 'Coordinates geocoded from addresses via OpenStreetMap Nominatim'];
+
+// ============== CAMPBELL ==============
+// The City of Campbell publishes current Public Works projects with their own update dates.
+// These are infrastructure and civic projects, not housing applications: Campbell does not
+// publish a machine-readable development pipeline the way Santa Clara and Los Gatos do.
+const CAM_DATA = [
+{id:'cam-hamilton-avenue-street-resurfacing', addr:'Hamilton Avenue Street Resurfacing', lat:37.29434, lng:-121.92563, cat:'infra', type:'Transportation',
+  desc:'Annual Street Maintenance Project 23-BB: resurfacing along Hamilton Avenue.',
+  units:null, bmr:null, applicant:'City of Campbell Public Works', filed:null, stage:'construction',
+  lastDate:'2026-08-11', lastNote:'City of Campbell project page last updated 2026-08-11.', fileNo:'23-BB', flag:null},
+{id:'cam-east-campbell-avenue-plan', addr:'East Campbell Avenue Plan Line', lat:37.28669, lng:-121.92496, cat:'infra', type:'Transportation',
+  desc:'Plan line project setting the future right-of-way along East Campbell Avenue.',
+  units:null, bmr:null, applicant:'City of Campbell Public Works', filed:null, stage:'construction',
+  lastDate:'2026-07-10', lastNote:'City of Campbell project page last updated 2026-07-10.', fileNo:'25-CC', flag:null},
+{id:'cam-measure-o-civic-center', addr:'Measure O Civic Center Improvements', lat:37.28843, lng:-121.94411, cat:'infra', type:'Public Facility',
+  desc:'Measure O funded improvements to the Campbell Civic Center.',
+  units:null, bmr:null, applicant:'City of Campbell Public Works', filed:null, stage:'construction',
+  lastDate:'2025-05-13', lastNote:'City of Campbell project page last updated 2025-05-13.', fileNo:'Measure O', flag:null},
+{id:'cam-hamilton-avenue-sr-17', addr:'Hamilton Avenue / SR-17 Bicycle Overcrossing', lat:37.2941, lng:-121.96563, cat:'infra', type:'Transportation',
+  desc:'Feasibility study for a bicycle and pedestrian overcrossing of State Route 17 at Hamilton Avenue.',
+  units:null, bmr:null, applicant:'City of Campbell Public Works', filed:null, stage:'construction',
+  lastDate:'2026-03-09', lastNote:'City of Campbell project page last updated 2026-03-09.', fileNo:'24-YY', flag:null},
+{id:'cam-comprehensive-traffic-safety-action', addr:'Comprehensive Traffic Safety Action Plan', lat:37.28706, lng:-121.94488, cat:'infra', type:'Transportation',
+  desc:'Citywide traffic safety action plan.',
+  units:null, bmr:null, applicant:'City of Campbell Public Works', filed:null, stage:'construction',
+  lastDate:'2025-08-27', lastNote:'City of Campbell project page last updated 2025-08-27.', fileNo:'Traffic Safety Action Plan', flag:null},
+{id:'cam-john-d-morgan-park', addr:'John D. Morgan Park Budd Avenue Restroom', lat:37.28245, lng:-121.95801, cat:'infra', type:'Public Facility',
+  desc:'Restroom improvement project at John D. Morgan Park on the Budd Avenue side.',
+  units:null, bmr:null, applicant:'City of Campbell Public Works', filed:null, stage:'construction',
+  lastDate:'2026-07-31', lastNote:'City of Campbell project page last updated 2026-07-31.', fileNo:'24-DD', flag:null},
+{id:'cam-campbell-pda-phase-2', addr:'Campbell PDA Phase 2, Orchard City Drive at South Central', lat:37.28651, lng:-121.9469, cat:'infra', type:'Transportation',
+  desc:'Priority Development Area enhancements, phase 2.',
+  units:null, bmr:null, applicant:'City of Campbell Public Works', filed:null, stage:'construction',
+  lastDate:'2026-07-13', lastNote:'City of Campbell project page last updated 2026-07-13.', fileNo:'26-NN', flag:null},
+{id:'cam-multimodal-transportation-plan', addr:'Multimodal Transportation Plan', lat:37.28706, lng:-121.94488, cat:'infra', type:'Transportation',
+  desc:'Citywide multimodal transportation planning effort.',
+  units:null, bmr:null, applicant:'City of Campbell Public Works', filed:null, stage:'review',
+  lastDate:null, lastNote:'Listed as a current public works project by the City of Campbell; no update date published.', fileNo:'Multimodal Transportation Plan', flag:null},
+];const CAM_FEED = [];
+const CAM_DECIDERS = [
+  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews development applications and design.', link:'https://www.campbellca.gov/135/Planning-Commission'},
+  {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, budgets, and capital projects.', link:'https://www.campbellca.gov/122/City-Council'},
+];
+const CAM_JOIN = [
+  {name:'Public Works Department', when:'See the project updates page', body:'Publishes the capital project updates these records come from.', cat:'Transportation', link:'https://www.campbellca.gov/563/Project-Updates'},
+];
+const CAM_SOURCES = ['City of Campbell - Public Works Project Updates', 'Coordinates geocoded from addresses via OpenStreetMap Nominatim'];
+
 
 
 const CITIES = {
@@ -1624,6 +1749,17 @@ const CITIES = {
       {label:'Official San Jose major projects map (GIS)', url:'https://csj.maps.arcgis.com/apps/instant/attachmentviewer/index.html?appid=95eb2c4821e54ff7b19a55278e742f85'},
       {label:'Major Development Projects', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects'},
       {label:'District 1 planning & policy', url:'https://www.sanjoseca.gov/your-government/departments-offices/mayor-and-city-council/district-1/projects-and-policy/planning'},
+    ]},
+  losgatos: {label:'Los Gatos', center:{lat:37.2358,lng:-121.9624}, zoom:13, bbox:{minLat:37.20,maxLat:37.28,minLng:-122.00,maxLng:-121.93}, data:LG_DATA, feed:LG_FEED, deciders:LG_DECIDERS, join:LG_JOIN, sources:LG_SOURCES, note:'Every record here is an SB 330 housing application from the Town\'s own tracker, so this is the housing pipeline specifically rather than a general project list. Most carry Builder\'s Remedy, which Los Gatos is contesting in court - the flag on each card explains what that means.',
+    ctaLinks:[
+      {label:'Town SB 330 application tracker', url:'https://www.losgatosca.gov/2875/Senate-Bill-SB-330'},
+      {label:'Pending Planning Projects', url:'https://www.losgatosca.gov/2370/Pending-Planning-Projects'},
+      {label:'Community Development', url:'https://www.losgatosca.gov/74/Community-Development'},
+    ]},
+  campbell: {label:'Campbell', center:{lat:37.2872,lng:-121.9500}, zoom:13, bbox:{minLat:37.26,maxLat:37.31,minLng:-121.98,maxLng:-121.92}, data:CAM_DATA, feed:CAM_FEED, deciders:CAM_DECIDERS, join:CAM_JOIN, sources:CAM_SOURCES, note:'Campbell publishes current Public Works projects but not a machine-readable housing pipeline, so this city covers infrastructure and civic projects rather than development applications. Housing filings for Campbell are not tracked here yet.',
+    ctaLinks:[
+      {label:'Public Works project updates', url:'https://www.campbellca.gov/563/Project-Updates'},
+      {label:'Community Development', url:'https://www.campbellca.gov/136/Community-Development'},
     ]},
   santaclara: {label:'Santa Clara', center:{lat:37.362,lng:-121.965}, zoom:12.3, bbox:{minLat:37.32,maxLat:37.42,minLng:-122.01,maxLng:-121.92}, data:SC_DATA, feed:SC_FEED, deciders:SC_DECIDERS, join:SC_JOIN, sources:SC_SOURCES, note:'The most complete city in this tracker: all 53 records come straight from Santa Clara\'s own development-activity GIS layer, the same source behind the city\'s public story map. Because that layer publishes a year rather than milestone dates, the change feed is coarser here than in the hand-researched cities.',
     ctaLinks:[
