@@ -1,6 +1,6 @@
 # South Bay Planning AI
 
-This package contains the planning dashboard plus a server-side AI assistant for Mountain View, Sunnyvale, and Cupertino.
+This package contains the civic dashboard plus a server-side AI assistant for Mountain View, Sunnyvale, and Cupertino.
 
 ## What is already wired
 

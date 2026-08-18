@@ -19,7 +19,7 @@ const model = process.env.OPENAI_MODEL || 'gpt-5-mini';
 const vectorStoreId = (process.env.OPENAI_VECTOR_STORE_ID || '').trim();
 const enableWebSearch = String(process.env.ENABLE_WEB_SEARCH || '').toLowerCase() === 'true';
 const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
-const RESEND_FROM = process.env.RESEND_FROM || 'South Bay Area Planning Dashboard <onboarding@resend.dev>';
+const RESEND_FROM = process.env.RESEND_FROM || 'South Bay Area Civic Dashboard <onboarding@resend.dev>';
 const CRON_SECRET = process.env.CRON_SECRET || '';
 const SITE_URL = process.env.SITE_URL || 'https://southbaydashboard.com';
 
