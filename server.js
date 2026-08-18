@@ -246,16 +246,26 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     const after = await pool.query('SELECT email, email_frequency, home_city FROM users WHERE username = $1', [req.username]);
     const u = after.rows[0];
     let welcomeSent = false;
-    if (u.email && u.email_frequency !== 'off' && RESEND_API_KEY) {
+    let welcomeError = null;
+    if (!u.email) {
+      welcomeError = 'No email address saved, so nothing was sent.';
+    } else if (u.email_frequency === 'off') {
+      welcomeError = 'Updates are set to Off, so nothing was sent.';
+    } else if (!RESEND_API_KEY) {
+      welcomeError = 'The server has no RESEND_API_KEY configured, so no email can be sent.';
+    } else {
       try {
         await sendWelcomeRecap({ username: req.username, email: u.email, homeCity: u.home_city, frequency: u.email_frequency });
         welcomeSent = true;
       } catch (err) {
-        // A failed welcome must not fail the save - preferences are already persisted.
+        // A failed welcome must not fail the save - preferences are already persisted. Surfacing
+        // the reason matters though: silently showing "Saved" for a failed send makes a
+        // misconfigured sender domain look like the feature simply doesn't work.
         console.error(`Welcome recap to ${req.username} failed:`, err.message);
+        welcomeError = err.message;
       }
     }
-    res.json({ ok: true, welcomeSent });
+    res.json({ ok: true, welcomeSent, welcomeError });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Could not save preferences.' });

@@ -3033,9 +3033,15 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
   statusEl.textContent = 'Saving…';
   try{
     const result = await apiSavePreferences(email || null, emailFrequency, homeCity || null);
-    statusEl.textContent = (result && result.welcomeSent)
-      ? 'Saved \u2713 \u2014 a recap is on its way to your inbox now.'
-      : 'Saved \u2713';
+    if(result && result.welcomeSent){
+      statusEl.textContent = 'Saved \u2713 \u2014 a recap is on its way to your inbox now.';
+    } else if(result && result.welcomeError){
+      // Say why nothing arrived. A silent "Saved" makes a misconfigured sender domain look
+      // like the email feature is simply broken.
+      statusEl.textContent = 'Saved \u2713 \u2014 but no email went out: ' + result.welcomeError;
+    } else {
+      statusEl.textContent = 'Saved \u2713';
+    }
   } catch(err){
     statusEl.textContent = "Couldn't save: " + err.message;
   }
