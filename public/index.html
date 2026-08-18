@@ -243,49 +243,50 @@
   .plan-step .body h4{font-size:15px; color:#1A1A1A; margin-bottom:5px;}
   .plan-step .body p{font-size:13px; color:var(--text-soft); margin:0 0 8px;}
   .plan-step .body a.plink{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:underline; margin-right:14px;}
-  /* Statistics. Charts are inline SVG - no library, so nothing to load and nothing to break. */
-  .stat-hero{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:4px 0 30px;}
-  .stat-tile{background:#fff; padding:16px 16px 14px;}
-  .stat-tile .k{font-family:var(--mono); font-size:25px; font-weight:700; color:var(--ink); line-height:1.05; letter-spacing:-.5px;}
-  .stat-tile .l{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--text-soft); margin-top:7px; line-height:1.35;}
-  .stat-tile .s{font-size:11.5px; color:var(--text-soft); margin-top:6px; line-height:1.45;}
-  .stat-tile .s b{color:var(--ink);}
-  .stat-tile.wide{grid-column:span 3;}
+  /* Statistics. Card-based, echoing the featured-news panel. Charts are inline SVG - no library. */
+  .stat-toolbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:2px 0 20px; padding-bottom:14px; border-bottom:1px solid var(--rule);}
+  .stat-toolbar .lab{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); font-weight:800; margin-right:2px;}
+  .stat-chip{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:600; padding:6px 13px; border-radius:999px; border:1.5px solid var(--rule); background:#fff; color:var(--text-soft); cursor:pointer; transition:all .15s;}
+  .stat-chip:hover{border-color:var(--ink); color:var(--ink);}
+  .stat-chip[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:#fff;}
 
-  .stat-sec{margin:0 0 34px;}
-  .stat-sec > h3{font-family:'Open Sans',sans-serif; font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--text-soft); margin:0 0 2px; font-weight:800;}
-  .stat-sec > .sub{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin:0 0 14px;}
+  .stat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:26px;}
+  .metric-card{background:#fff; border:1px solid var(--rule); border-radius:4px; box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;}
+  .metric-card .head{background:var(--ink); color:#fff; padding:7px 13px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center; gap:8px;}
+  .metric-card .head .tag{opacity:.72; font-weight:600; letter-spacing:.04em;}
+  .metric-card .body{padding:14px 13px 15px; flex:1;}
+  .metric-card .k{font-family:var(--mono); font-size:26px; font-weight:700; color:var(--ink); line-height:1.05; letter-spacing:-.5px;}
+  .metric-card .k .unit{font-size:14px; color:var(--text-soft); font-weight:400; margin-left:3px;}
+  .metric-card .s{font-size:12px; color:var(--text-soft); margin-top:8px; line-height:1.5;}
+  .metric-card .s b{color:var(--ink);}
+  .metric-card .rank{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:#F2F5EC; color:var(--ink);}
+  .metric-card .rank.hi{background:#F7EDE4; color:#8C5A2B;}
+  .metric-card .rank.lo{background:#EAF0EC; color:#3B7350;}
+  .metric-card .spark{margin-top:11px;}
+  .metric-card .spark svg{width:100%; height:auto; display:block;}
+
+  .stat-sec{margin:0 0 30px;}
+  .stat-sec > h3{font-family:'Open Sans',sans-serif; font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--text-soft); margin:0 0 3px; font-weight:800;}
+  .stat-sec > .sub{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin:0 0 13px;}
 
   .stat-bars{display:flex; flex-direction:column; gap:6px;}
-  .stat-row{display:grid; grid-template-columns:112px 1fr 88px; align-items:center; gap:10px; font-size:12.5px;}
+  .stat-row{display:grid; grid-template-columns:112px 1fr 92px; align-items:center; gap:10px; font-size:12.5px; cursor:pointer;}
   .stat-row .nm{font-family:'Open Sans',sans-serif; color:var(--text-soft); text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .stat-row.me .nm{color:var(--ink); font-weight:800;}
+  .stat-row:hover .nm{color:var(--ink);}
   .stat-row .track{display:block; background:#EDEFE7; height:15px; border-radius:2px; overflow:hidden;}
   /* Must be a block: an inline span ignores width and height, so the bar never renders. */
-  .stat-row .fill{display:block; height:100%; background:#A8B795;}
+  .stat-row .fill{display:block; height:100%; background:#A8B795; transition:width .5s cubic-bezier(.2,.7,.3,1);}
   .stat-row.me .fill{background:var(--ink);}
+  .stat-row:hover .fill{background:#7F9268;}
+  .stat-row.me:hover .fill{background:var(--ink-2);}
   .stat-row .val{font-family:var(--mono); font-size:11.5px; color:var(--ink); text-align:right;}
 
-  .stat-charts{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-  .stat-chart{min-width:0;}
-  .stat-chart h4{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin:0 0 6px;}
-  .stat-chart svg{width:100%; height:auto; display:block;}
-  .stat-chart .cap{font-size:11px; color:var(--text-soft); margin-top:5px; line-height:1.45;}
-
-  .stat-split{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule);}
-  .stat-split .cell{background:#fff; padding:13px 14px;}
-  .stat-split .cell .k{font-family:var(--mono); font-size:17px; color:var(--ink); font-weight:700;}
-  .stat-split .cell .l{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin-top:5px;}
-
-  .stat-foot{font-size:11.5px; color:var(--text-soft); line-height:1.6; border-top:1px solid var(--rule); padding-top:12px; margin-top:26px;}
-  @media (max-width:760px){
-    .stat-hero, .stat-charts, .stat-split{grid-template-columns:repeat(2,1fr);}
-    .stat-tile.wide{grid-column:span 2;}
-  }
-  @media (max-width:480px){
-    .stat-hero, .stat-charts, .stat-split{grid-template-columns:1fr;}
-    .stat-tile.wide{grid-column:span 1;}
-    .stat-row{grid-template-columns:80px 1fr 74px; font-size:11.5px;}
+  .stat-foot{font-size:11.5px; color:var(--text-soft); line-height:1.6; border-top:1px solid var(--rule); padding-top:13px; margin-top:8px;}
+  @media (max-width:860px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){
+    .stat-grid{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:80px 1fr 76px; font-size:11.5px;}
   }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
@@ -3373,45 +3374,47 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
 
 renderAuthNavState();
 
-// Generated from data/stats.js - Zillow Research public data, see that file for provenance.
+// Generated from data/stats.js - Zillow Research + US Census ACS. See that file for provenance.
 const CITY_STATS = {
-  sunnyvale: {zillowName:"Sunnyvale", homeValue:2050814, rent:3899, homeValueSeries:[{"year":"2021","value":1742337},{"year":"2022","value":2018276},{"year":"2023","value":1812393},{"year":"2024","value":2026853},{"year":"2025","value":2031676},{"year":"2026","value":2050814}], rentSeries:[{"year":"2021","value":3041},{"year":"2022","value":3362},{"year":"2023","value":3335},{"year":"2024","value":3487},{"year":"2025","value":3622},{"year":"2026","value":3899}]},
-  cupertino: {zillowName:"Cupertino", homeValue:3008438, rent:4359, homeValueSeries:[{"year":"2021","value":2352183},{"year":"2022","value":2817068},{"year":"2023","value":2504838},{"year":"2024","value":2858846},{"year":"2025","value":2915692},{"year":"2026","value":3008438}], rentSeries:[{"year":"2021","value":3321},{"year":"2022","value":3710},{"year":"2023","value":3754},{"year":"2024","value":3880},{"year":"2025","value":4009},{"year":"2026","value":4359}]},
-  mountainview: {zillowName:"Mountain View", homeValue:1962774, rent:4416, homeValueSeries:[{"year":"2021","value":1762957},{"year":"2022","value":2018566},{"year":"2023","value":1805245},{"year":"2024","value":1980622},{"year":"2025","value":1928206},{"year":"2026","value":1962774}], rentSeries:[{"year":"2021","value":3495},{"year":"2022","value":3833},{"year":"2023","value":3821},{"year":"2024","value":3939},{"year":"2025","value":4032},{"year":"2026","value":4416}]},
-  milpitas: {zillowName:"Milpitas", homeValue:1424179, rent:3715, homeValueSeries:[{"year":"2021","value":1194650},{"year":"2022","value":1406602},{"year":"2023","value":1283565},{"year":"2024","value":1463925},{"year":"2025","value":1444791},{"year":"2026","value":1424179}], rentSeries:[{"year":"2021","value":2932},{"year":"2022","value":3262},{"year":"2023","value":3295},{"year":"2024","value":3331},{"year":"2025","value":3429},{"year":"2026","value":3715}]},
-  losaltos: {zillowName:"Los Altos", homeValue:4601729, rent:7837, homeValueSeries:[{"year":"2021","value":3566636},{"year":"2022","value":4355235},{"year":"2023","value":3851085},{"year":"2024","value":4174999},{"year":"2025","value":4300426},{"year":"2026","value":4601729}], rentSeries:[{"year":"2021","value":5528},{"year":"2022","value":5945},{"year":"2023","value":6097},{"year":"2024","value":6463},{"year":"2025","value":6631},{"year":"2026","value":7837}]},
-  saratoga: {zillowName:"Saratoga", homeValue:4038070, rent:6244, homeValueSeries:[{"year":"2021","value":3090468},{"year":"2022","value":3769210},{"year":"2023","value":3404422},{"year":"2024","value":3773924},{"year":"2025","value":3890071},{"year":"2026","value":4038070}], rentSeries:[{"year":"2021","value":4833},{"year":"2022","value":5061},{"year":"2023","value":5330},{"year":"2024","value":5911},{"year":"2025","value":5945},{"year":"2026","value":6244}]},
-  westsanjose: {zillowName:"San Jose", homeValue:1391204, rent:3527, homeValueSeries:[{"year":"2021","value":1167162},{"year":"2022","value":1379685},{"year":"2023","value":1261707},{"year":"2024","value":1423045},{"year":"2025","value":1407324},{"year":"2026","value":1391204}], rentSeries:[{"year":"2021","value":2819},{"year":"2022","value":3110},{"year":"2023","value":3134},{"year":"2024","value":3227},{"year":"2025","value":3330},{"year":"2026","value":3527}]},
-  santaclara: {zillowName:"Santa Clara", homeValue:1680833, rent:3935, homeValueSeries:[{"year":"2021","value":1378395},{"year":"2022","value":1593938},{"year":"2023","value":1446945},{"year":"2024","value":1653683},{"year":"2025","value":1682983},{"year":"2026","value":1680833}], rentSeries:[{"year":"2021","value":3043},{"year":"2022","value":3381},{"year":"2023","value":3436},{"year":"2024","value":3562},{"year":"2025","value":3665},{"year":"2026","value":3935}]},
-  losgatos: {zillowName:"Los Gatos", homeValue:2628349, rent:4256, homeValueSeries:[{"year":"2021","value":2085374},{"year":"2022","value":2529169},{"year":"2023","value":2280686},{"year":"2024","value":2516411},{"year":"2025","value":2524032},{"year":"2026","value":2628349}], rentSeries:[{"year":"2021","value":3258},{"year":"2022","value":3522},{"year":"2023","value":3682},{"year":"2024","value":3828},{"year":"2025","value":3997},{"year":"2026","value":4256}]},
-  campbell: {zillowName:"Campbell", homeValue:1881250, rent:3395, homeValueSeries:[{"year":"2021","value":1456441},{"year":"2022","value":1706671},{"year":"2023","value":1563038},{"year":"2024","value":1786308},{"year":"2025","value":1831601},{"year":"2026","value":1881250}], rentSeries:[{"year":"2021","value":2796},{"year":"2022","value":3039},{"year":"2023","value":3062},{"year":"2024","value":3132},{"year":"2025","value":3188},{"year":"2026","value":3395}]},
-  paloalto: {zillowName:"Palo Alto", homeValue:3599324, rent:4501, homeValueSeries:[{"year":"2021","value":3091423},{"year":"2022","value":3563738},{"year":"2023","value":3179067},{"year":"2024","value":3403557},{"year":"2025","value":3442876},{"year":"2026","value":3599324}], rentSeries:[{"year":"2021","value":3576},{"year":"2022","value":3828},{"year":"2023","value":3888},{"year":"2024","value":3998},{"year":"2025","value":4195},{"year":"2026","value":4501}]},
+  sunnyvale: {"population":153455,"medianIncome":181862,"medianGrossRent":3065,"meanCommuteMin":23.2,"transitSharePct":4.3,"renterSharePct":56.2,"medianYearBuilt":1975,"censusHomeValue":1816600,"zillowName":"Sunnyvale","homeValue":2050814,"rent":3899,"homeValueSeries":[{"year":"2021","value":1742337},{"year":"2022","value":2018276},{"year":"2023","value":1812393},{"year":"2024","value":2026853},{"year":"2025","value":2031676},{"year":"2026","value":2050814}],"rentSeries":[{"year":"2021","value":3041},{"year":"2022","value":3362},{"year":"2023","value":3335},{"year":"2024","value":3487},{"year":"2025","value":3622},{"year":"2026","value":3899}]},
+  cupertino: {"population":58886,"medianIncome":231139,"medianGrossRent":3501,"meanCommuteMin":24.8,"transitSharePct":1.1,"renterSharePct":38.7,"medianYearBuilt":1973,"censusHomeValue":2000001,"zillowName":"Cupertino","homeValue":3008438,"rent":4359,"homeValueSeries":[{"year":"2021","value":2352183},{"year":"2022","value":2817068},{"year":"2023","value":2504838},{"year":"2024","value":2858846},{"year":"2025","value":2915692},{"year":"2026","value":3008438}],"rentSeries":[{"year":"2021","value":3321},{"year":"2022","value":3710},{"year":"2023","value":3754},{"year":"2024","value":3880},{"year":"2025","value":4009},{"year":"2026","value":4359}]},
+  mountainview: {"population":82363,"medianIncome":179917,"medianGrossRent":2975,"meanCommuteMin":23.6,"transitSharePct":4.1,"renterSharePct":61.2,"medianYearBuilt":1974,"censusHomeValue":1927400,"zillowName":"Mountain View","homeValue":1962774,"rent":4416,"homeValueSeries":[{"year":"2021","value":1762957},{"year":"2022","value":2018566},{"year":"2023","value":1805245},{"year":"2024","value":1980622},{"year":"2025","value":1928206},{"year":"2026","value":1962774}],"rentSeries":[{"year":"2021","value":3495},{"year":"2022","value":3833},{"year":"2023","value":3821},{"year":"2024","value":3939},{"year":"2025","value":4032},{"year":"2026","value":4416}]},
+  milpitas: {"population":78216,"medianIncome":176822,"medianGrossRent":3112,"meanCommuteMin":26.4,"transitSharePct":2.4,"renterSharePct":40.7,"medianYearBuilt":1987,"censusHomeValue":1180000,"zillowName":"Milpitas","homeValue":1424179,"rent":3715,"homeValueSeries":[{"year":"2021","value":1194650},{"year":"2022","value":1406602},{"year":"2023","value":1283565},{"year":"2024","value":1463925},{"year":"2025","value":1444791},{"year":"2026","value":1424179}],"rentSeries":[{"year":"2021","value":2932},{"year":"2022","value":3262},{"year":"2023","value":3295},{"year":"2024","value":3331},{"year":"2025","value":3429},{"year":"2026","value":3715}]},
+  losaltos: {"population":30736,"medianIncome":250001,"medianGrossRent":3501,"meanCommuteMin":22.9,"transitSharePct":1.4,"renterSharePct":19.2,"medianYearBuilt":1964,"censusHomeValue":2000001,"zillowName":"Los Altos","homeValue":4601729,"rent":7837,"homeValueSeries":[{"year":"2021","value":3566636},{"year":"2022","value":4355235},{"year":"2023","value":3851085},{"year":"2024","value":4174999},{"year":"2025","value":4300426},{"year":"2026","value":4601729}],"rentSeries":[{"year":"2021","value":5528},{"year":"2022","value":5945},{"year":"2023","value":6097},{"year":"2024","value":6463},{"year":"2025","value":6631},{"year":"2026","value":7837}]},
+  saratoga: {"population":30335,"medianIncome":241348,"medianGrossRent":3501,"meanCommuteMin":27.2,"transitSharePct":1.1,"renterSharePct":13.4,"medianYearBuilt":1967,"censusHomeValue":2000001,"zillowName":"Saratoga","homeValue":4038070,"rent":6244,"homeValueSeries":[{"year":"2021","value":3090468},{"year":"2022","value":3769210},{"year":"2023","value":3404422},{"year":"2024","value":3773924},{"year":"2025","value":3890071},{"year":"2026","value":4038070}],"rentSeries":[{"year":"2021","value":4833},{"year":"2022","value":5061},{"year":"2023","value":5330},{"year":"2024","value":5911},{"year":"2025","value":5945},{"year":"2026","value":6244}]},
+  westsanjose: {"population":990054,"medianIncome":141565,"medianGrossRent":2617,"meanCommuteMin":28.1,"transitSharePct":2.8,"renterSharePct":44.1,"medianYearBuilt":1975,"censusHomeValue":1187800,"zillowName":"San Jose","homeValue":1391204,"rent":3527,"homeValueSeries":[{"year":"2021","value":1167162},{"year":"2022","value":1379685},{"year":"2023","value":1261707},{"year":"2024","value":1423045},{"year":"2025","value":1407324},{"year":"2026","value":1391204}],"rentSeries":[{"year":"2021","value":2819},{"year":"2022","value":3110},{"year":"2023","value":3134},{"year":"2024","value":3227},{"year":"2025","value":3330},{"year":"2026","value":3527}]},
+  santaclara: {"population":129239,"medianIncome":173670,"medianGrossRent":2985,"meanCommuteMin":23.1,"transitSharePct":2.5,"renterSharePct":58.8,"medianYearBuilt":1973,"censusHomeValue":1527900,"zillowName":"Santa Clara","homeValue":1680833,"rent":3935,"homeValueSeries":[{"year":"2021","value":1378395},{"year":"2022","value":1593938},{"year":"2023","value":1446945},{"year":"2024","value":1653683},{"year":"2025","value":1682983},{"year":"2026","value":1680833}],"rentSeries":[{"year":"2021","value":3043},{"year":"2022","value":3381},{"year":"2023","value":3436},{"year":"2024","value":3562},{"year":"2025","value":3665},{"year":"2026","value":3935}]},
+  losgatos: {"population":32773,"medianIncome":207891,"medianGrossRent":2969,"meanCommuteMin":27.8,"transitSharePct":0.5,"renterSharePct":37.5,"medianYearBuilt":1971,"censusHomeValue":2000001,"zillowName":"Los Gatos","homeValue":2628349,"rent":4256,"homeValueSeries":[{"year":"2021","value":2085374},{"year":"2022","value":2529169},{"year":"2023","value":2280686},{"year":"2024","value":2516411},{"year":"2025","value":2524032},{"year":"2026","value":2628349}],"rentSeries":[{"year":"2021","value":3258},{"year":"2022","value":3522},{"year":"2023","value":3682},{"year":"2024","value":3828},{"year":"2025","value":3997},{"year":"2026","value":4256}]},
+  campbell: {"population":42848,"medianIncome":147128,"medianGrossRent":2751,"meanCommuteMin":23.7,"transitSharePct":1.2,"renterSharePct":49.5,"medianYearBuilt":1972,"censusHomeValue":1550000,"zillowName":"Campbell","homeValue":1881250,"rent":3395,"homeValueSeries":[{"year":"2021","value":1456441},{"year":"2022","value":1706671},{"year":"2023","value":1563038},{"year":"2024","value":1786308},{"year":"2025","value":1831601},{"year":"2026","value":1881250}],"rentSeries":[{"year":"2021","value":2796},{"year":"2022","value":3039},{"year":"2023","value":3062},{"year":"2024","value":3132},{"year":"2025","value":3188},{"year":"2026","value":3395}]},
+  paloalto: {"population":67231,"medianIncome":220408,"medianGrossRent":3328,"meanCommuteMin":22.9,"transitSharePct":3.1,"renterSharePct":45.8,"medianYearBuilt":1963,"censusHomeValue":2000001,"zillowName":"Palo Alto","homeValue":3599324,"rent":4501,"homeValueSeries":[{"year":"2021","value":3091423},{"year":"2022","value":3563738},{"year":"2023","value":3179067},{"year":"2024","value":3403557},{"year":"2025","value":3442876},{"year":"2026","value":3599324}],"rentSeries":[{"year":"2021","value":3576},{"year":"2022","value":3828},{"year":"2023","value":3888},{"year":"2024","value":3998},{"year":"2025","value":4195},{"year":"2026","value":4501}]},
 };
 const STATS_SOURCE = {"label":"Zillow Research public data (ZHVI and ZORI), city level","url":"https://www.zillow.com/research/data/","asOf":"July 2026"};
+const CENSUS_SOURCE = {"label":"US Census American Community Survey, 5-year estimates","url":"https://www.census.gov/programs-surveys/acs","asOf":"2023 (ACS 5-year)"};
 
 // ================= STATISTICS =================
-// Two sources only. Market figures come from Zillow's public research data (see data/stats.js).
-// Everything else is computed live from the project records already loaded in CITIES, so the
-// numbers on this screen can never disagree with the cards on the dashboard.
+// Three sources, no runtime dependencies. Market figures are Zillow's public research data and
+// demographics are US Census ACS 5-year estimates, both embedded in data/stats.js. Everything
+// else is computed live from the project records already loaded in CITIES, so the numbers here
+// can never disagree with the cards on the dashboard.
+
+let statsTopic = 'all';   // which group of cards is showing
+let statsMetric = null;   // which metric the comparison bars are ranking
 
 function fmtMoney(n){ return n >= 1000000 ? '$' + (n/1000000).toFixed(2) + 'M' : '$' + Math.round(n).toLocaleString(); }
 function fmtRent(n){ return '$' + Math.round(n).toLocaleString(); }
+function fmtInt(n){ return Math.round(n).toLocaleString(); }
 function fmtPct(n){ return (n > 0 ? '+' : '') + n.toFixed(0) + '%'; }
 function statsLabelOf(k){ return CITIES[k] ? CITIES[k].label : (CITY_STATS[k] ? CITY_STATS[k].zillowName : k); }
 function median(a){ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y); return s[Math.floor(s.length/2)]; }
 
-// Everything derivable from one city's records. Fields are missing on plenty of projects, so each
-// figure reports how many records it is actually based on rather than implying full coverage.
 function cityFacts(key){
   const rows = (CITIES[key] ? CITIES[key].data : []);
   const active = rows.filter(d=>d.stage!=='completed');
   const withUnits = active.filter(d=>d.units);
   const timed = rows.filter(d=>d.filed && d.lastDate)
     .map(d=>(new Date(d.lastDate)-new Date(d.filed))/864e5).filter(d=>d>0);
-  const stages = {};
-  rows.forEach(d=>{ stages[d.stage]=(stages[d.stage]||0)+1; });
-  const byType = {};
-  active.forEach(d=>{ byType[d.type]=(byType[d.type]||0)+(d.units||0); });
+  const stages = {}; rows.forEach(d=>{ stages[d.stage]=(stages[d.stage]||0)+1; });
+  const byType = {}; active.forEach(d=>{ byType[d.type]=(byType[d.type]||0)+(d.units||0); });
   return {
     projects: active.length,
     units: active.reduce((n,d)=>n+(d.units||0),0),
@@ -3419,7 +3422,7 @@ function cityFacts(key){
     unitsKnown: withUnits.length,
     medianUnits: median(withUnits.map(d=>d.units)),
     biggest: withUnits.length ? withUnits.reduce((a,b)=>a.units>b.units?a:b) : null,
-    medianDays: median(timed),
+    medianYears: (()=>{ const m = median(timed); return m ? m/365 : null; })(),
     timedCount: timed.length,
     construction: rows.filter(d=>d.stage==='construction').length,
     flagged: rows.filter(d=>d.flag).length,
@@ -3435,168 +3438,149 @@ function growth(series){
   return { pct: (b-a)/a*100, from: series[0].year, to: series[series.length-1].year };
 }
 
-function tile(value, label, sub){
-  return '<div class="stat-tile"><div class="k">'+value+'</div><div class="l">'+label+'</div>'
-       + (sub ? '<div class="s">'+sub+'</div>' : '') + '</div>';
+// Every metric declared once: how to read it per city, how to format it, and whether being high
+// is notable. The cards, the ranking bars and the chips are all driven off this list, so adding a
+// statistic means adding one entry here rather than touching three places.
+function metricCatalog(){
+  const stat = k => (c) => (CITY_STATS[c] ? CITY_STATS[c][k] : null);
+  const fact = k => (c) => { const f = cityFacts(c); return f ? f[k] : null; };
+  return [
+    {id:'homeValue',    topic:'housing',   label:'Typical home value',   tag:'Zillow',  get:stat('homeValue'),      fmt:fmtMoney, dir:'hi'},
+    {id:'rent',         topic:'housing',   label:'Typical asking rent',  tag:'Zillow',  get:stat('rent'),           fmt:fmtRent,  dir:'hi'},
+    {id:'grossRent',    topic:'housing',   label:'Median gross rent',    tag:'Census',  get:stat('medianGrossRent'),fmt:fmtRent,  dir:'hi'},
+    {id:'renterShare',  topic:'housing',   label:'Households renting',   tag:'Census',  get:stat('renterSharePct'), fmt:n=>n.toFixed(0)+'%', dir:'hi'},
+    {id:'yearBuilt',    topic:'housing',   label:'Median year built',    tag:'Census',  get:stat('medianYearBuilt'),fmt:n=>String(Math.round(n)), dir:'hi'},
+    {id:'commute',      topic:'transport', label:'Mean commute',         tag:'Census',  get:stat('meanCommuteMin'), fmt:n=>n.toFixed(1)+' min', dir:'hi'},
+    {id:'transitShare', topic:'transport', label:'Commute by transit',   tag:'Census',  get:stat('transitSharePct'),fmt:n=>n.toFixed(1)+'%', dir:'lo'},
+    {id:'transport',    topic:'transport', label:'Transport projects',   tag:'Tracked', get:fact('transport'),      fmt:fmtInt,   dir:'lo'},
+    {id:'units',        topic:'pipeline',  label:'Homes in the pipeline',tag:'Tracked', get:fact('units'),          fmt:fmtInt,   dir:'lo'},
+    {id:'bmr',          topic:'pipeline',  label:'Below-market homes',   tag:'Tracked', get:fact('bmr'),            fmt:fmtInt,   dir:'lo'},
+    {id:'projects',     topic:'pipeline',  label:'Active projects',      tag:'Tracked', get:fact('projects'),       fmt:fmtInt,   dir:'lo'},
+    {id:'medianUnits',  topic:'pipeline',  label:'Median project size',  tag:'Tracked', get:fact('medianUnits'),    fmt:n=>fmtInt(n)+' homes', dir:'lo'},
+    {id:'construction', topic:'pipeline',  label:'Under construction',   tag:'Tracked', get:fact('construction'),   fmt:fmtInt,   dir:'lo'},
+    {id:'medianYears',  topic:'pipeline',  label:'Median time on file',  tag:'Tracked', get:fact('medianYears'),    fmt:n=>n.toFixed(1)+' yrs', dir:'hi'},
+    {id:'income',       topic:'people',    label:'Median household income', tag:'Census', get:stat('medianIncome'), fmt:fmtMoney, dir:'hi'},
+    {id:'population',   topic:'people',    label:'Population',           tag:'Census',  get:stat('population'),     fmt:fmtInt,   dir:'lo'},
+    {id:'priceToRent',  topic:'people',    label:'Price to rent ratio',  tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.rent) ? s.homeValue/(s.rent*12) : null; }, fmt:n=>n.toFixed(0)+'x', dir:'hi'},
+    {id:'incomeToPrice',topic:'people',    label:'Home value vs income', tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.medianIncome) ? s.homeValue/s.medianIncome : null; }, fmt:n=>n.toFixed(1)+'x', dir:'hi'},
+  ];
 }
 
-function statBars(entries, me, fmt){
+const TOPICS = [
+  {id:'all', label:'Everything'}, {id:'housing', label:'Housing'},
+  {id:'transport', label:'Transport'}, {id:'pipeline', label:'Being built'},
+  {id:'people', label:'People and cost'},
+];
+
+function sparkline(series, color){
+  if(!series || series.length < 2) return '';
+  const W=200, H=34;
+  const vals=series.map(p=>p.value);
+  const min=Math.min(...vals), max=Math.max(...vals), span=(max-min)||1;
+  const pts=series.map((p,i)=>(i*(W-2)/(series.length-1)+1).toFixed(1)+','+(H-3-((p.value-min)/span)*(H-8)).toFixed(1)).join(' ');
+  return '<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'
+    + '<polygon points="1,'+(H-1)+' '+pts+' '+(W-1)+','+(H-1)+'" fill="'+color+'" opacity="0.13"></polygon>'
+    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="1.8"></polyline></svg>';
+}
+
+// Where this city sits among the others for a given metric.
+function rankOf(metric, me){
+  const vals = Object.keys(CITY_STATS).map(k=>({k, v:metric.get(k)})).filter(x=>x.v != null);
+  if(!vals.length || metric.get(me) == null) return null;
+  vals.sort((a,b)=>b.v-a.v);
+  const pos = vals.findIndex(x=>x.k===me) + 1;
+  return pos ? {pos, of:vals.length, med:median(vals.map(x=>x.v))} : null;
+}
+
+function statCard(metric, me){
+  const val = metric.get(me);
+  if(val == null) return '';
+  const s = CITY_STATS[me];
+  const r = rankOf(metric, me);
+  let rankHtml = '';
+  if(r){
+    const pct = Math.round((val - r.med)/r.med*100);
+    const cls = Math.abs(pct) <= 2 ? '' : (pct > 0 ? ' hi' : ' lo');
+    const word = Math.abs(pct) <= 2 ? 'level with the median'
+               : (pct > 0 ? '+'+pct+'% vs median' : pct+'% vs median');
+    rankHtml = '<span class="rank'+cls+'">#'+r.pos+' of '+r.of+' &middot; '+word+'</span>';
+  }
+  let spark = '';
+  if(metric.id === 'homeValue' && s) spark = '<div class="spark">'+sparkline(s.homeValueSeries, '#3E4F24')+'</div>';
+  if(metric.id === 'rent' && s)      spark = '<div class="spark">'+sparkline(s.rentSeries, '#2F5E82')+'</div>';
+  let sub = '';
+  const f = cityFacts(me);
+  if(metric.id==='units')       sub = 'Across <b>'+f.projects+'</b> active projects. Unit counts exist for '+f.unitsKnown+' of them.';
+  if(metric.id==='bmr')         sub = f.units ? '<b>'+Math.round(f.bmr/f.units*100)+'%</b> of the pipeline is income restricted.' : '';
+  if(metric.id==='medianYears') sub = 'Filing to last recorded action, across <b>'+f.timedCount+'</b> dated projects.';
+  if(metric.id==='medianUnits' && f.biggest) sub = 'Largest here is <b>'+f.biggest.addr+'</b> at '+fmtInt(f.biggest.units)+'.';
+  if(metric.id==='homeValue' && s){ const g=growth(s.homeValueSeries); if(g) sub='<b>'+fmtPct(g.pct)+'</b> since '+g.from+'.'; }
+  if(metric.id==='rent' && s){ const g=growth(s.rentSeries); if(g) sub='<b>'+fmtPct(g.pct)+'</b> since '+g.from+'.'; }
+  if(metric.id==='priceToRent') sub = 'A typical home costs about that many years of typical rent.';
+  if(metric.id==='incomeToPrice') sub = 'Typical home value divided by median household income.';
+  if(metric.id==='transitShare') sub = 'Share of commuters using public transit.';
+  if(metric.id==='commute')     sub = 'Average one-way travel time to work.';
+  if(metric.id==='builderRemedy') sub = 'Applications arguing local zoning does not apply.';
+
+  return '<button type="button" class="metric-card" data-metric="'+metric.id+'" aria-label="Rank cities by '+metric.label+'">'
+    + '<span class="head">'+metric.label+'<span class="tag">'+metric.tag+'</span></span>'
+    + '<span class="body">'
+    + '<span class="k">'+metric.fmt(val)+'</span>'
+    + (sub ? '<span class="s">'+sub+'</span>' : '')
+    + rankHtml + spark
+    + '</span></button>';
+}
+
+function statBars(metric, me){
+  const entries = Object.keys(CITY_STATS).map(k=>({key:k, value:metric.get(k)}))
+    .filter(e=>e.value != null).sort((a,b)=>b.value-a.value);
   if(!entries.length) return '';
   const max = Math.max(...entries.map(e=>e.value)) || 1;
   return '<div class="stat-bars">' + entries.map(e=>
-    '<div class="stat-row'+(e.key===me?' me':'')+'">'
+    '<div class="stat-row'+(e.key===me?' me':'')+'" data-city="'+e.key+'">'
     + '<span class="nm">'+statsLabelOf(e.key)+'</span>'
     + '<span class="track"><span class="fill" style="width:'+Math.max(1.5, e.value/max*100).toFixed(1)+'%"></span></span>'
-    + '<span class="val">'+fmt(e.value)+'</span></div>').join('') + '</div>';
-}
-
-function statLine(series, fmt, color){
-  if(!series || series.length < 2) return '';
-  const W=260, H=104, PAD=34;
-  const vals = series.map(p=>p.value);
-  const min = Math.min(...vals), max = Math.max(...vals), span = (max-min) || 1;
-  const x = i => PAD + i*(W-PAD-8)/(series.length-1);
-  const y = v => 12 + (1-(v-min)/span)*(H-12-24);
-  const pts = series.map((p,i)=>x(i).toFixed(1)+','+y(p.value).toFixed(1)).join(' ');
-  return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Trend '+series[0].year+' to '+series[series.length-1].year+'">'
-    + '<polygon points="'+PAD+','+(H-22)+' '+pts+' '+x(series.length-1).toFixed(1)+','+(H-22)+'" fill="'+color+'" opacity="0.11"></polygon>'
-    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="2.2" stroke-linejoin="round"></polyline>'
-    + series.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.value).toFixed(1)+'" r="2.4" fill="'+color+'"></circle>').join('')
-    + '<text x="'+PAD+'" y="'+(H-6)+'" font-size="9" fill="#8A8A8A">'+series[0].year+'</text>'
-    + '<text x="'+(W-8)+'" y="'+(H-6)+'" font-size="9" fill="#8A8A8A" text-anchor="end">'+series[series.length-1].year+'</text>'
-    + '<text x="2" y="15" font-size="9" fill="#8A8A8A">'+fmt(max)+'</text>'
-    + '<text x="2" y="'+(H-26)+'" font-size="9" fill="#8A8A8A">'+fmt(min)+'</text></svg>';
-}
-
-// Stacked proportion bar - used for the stage mix and the unit-type split.
-function statStack(parts, colors){
-  const total = parts.reduce((n,p)=>n+p.value,0);
-  if(!total) return '';
-  let x=0;
-  const segs = parts.map((p,i)=>{
-    const w = p.value/total*100; const seg =
-      '<rect x="'+x.toFixed(2)+'" y="0" width="'+w.toFixed(2)+'" height="18" fill="'+colors[i%colors.length]+'"><title>'+p.label+': '+p.value+'</title></rect>';
-    x += w; return seg;
-  }).join('');
-  const legend = parts.filter(p=>p.value).map((p,i)=>
-    '<span style="display:inline-block; margin:6px 12px 0 0; font-size:11px; color:#5B5B5B;">'
-    + '<i style="display:inline-block; width:9px; height:9px; background:'+colors[i%colors.length]+'; margin-right:5px; border-radius:1px;"></i>'
-    + p.label+' <b style="color:#1A1A1A;">'+p.value+'</b></span>').join('');
-  return '<svg viewBox="0 0 100 18" preserveAspectRatio="none" style="width:100%; height:18px; display:block;">'+segs+'</svg><div>'+legend+'</div>';
-}
-
-function compareSentence(label, mine, others, fmt){
-  if(mine == null || !others.length) return '';
-  const med = median(others);
-  const pct = Math.round((mine-med)/med*100);
-  const dir = pct > 2 ? '<b>'+pct+'% above</b>' : pct < -2 ? '<b>'+Math.abs(pct)+'% below</b>' : '<b>level with</b>';
-  return label+' is '+fmt(mine)+', '+dir+' the South Bay median of '+fmt(med)+'.';
+    + '<span class="val">'+metric.fmt(e.value)+'</span></div>').join('') + '</div>';
 }
 
 function renderStatistics(){
   const host = document.getElementById('statsContent');
   if(!host) return;
-  const me = currentCity === 'all' ? null : currentCity;
-  document.getElementById('statsCityName').textContent = me ? CITIES[me].label : 'each city';
+  const me = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  document.getElementById('statsCityName').textContent = CITIES[me] ? CITIES[me].label : 'your city';
 
-  const statKeys = Object.keys(CITY_STATS).filter(k=>CITY_STATS[k].homeValue);
-  const homes = statKeys.map(k=>({key:k, value:CITY_STATS[k].homeValue})).sort((a,b)=>b.value-a.value);
-  const rents = statKeys.filter(k=>CITY_STATS[k].rent).map(k=>({key:k, value:CITY_STATS[k].rent})).sort((a,b)=>b.value-a.value);
-  const tracked = Object.keys(CITIES).filter(k=>k!=='all');
-
-  const s = me ? CITY_STATS[me] : null;
-  const f = me ? cityFacts(me) : cityFacts('all');
-  const region = cityFacts('all');
-
-  const hv = s ? growth(s.homeValueSeries) : null;
-  const rt = s ? growth(s.rentSeries) : null;
-  // Price-to-rent: what a typical home costs relative to a year of typical rent. Above ~20 is
-  // usually read as a market where buying is expensive relative to renting.
-  const p2r = (s && s.rent) ? s.homeValue/(s.rent*12) : null;
-  const bmrShare = f.units ? Math.round(f.bmr/f.units*100) : 0;
-  const where = me ? CITIES[me].label : 'the South Bay';
-
-  const stageParts = ['proposed','review','approved','construction','completed']
-    .map(k=>({label:STAGE_MAP[k].label, value:f.stages[k]||0}));
-  const typeParts = Object.entries(f.byType).filter(([,v])=>v>0)
-    .sort((a,b)=>b[1]-a[1]).map(([k,v])=>({label:k, value:v}));
+  const all = metricCatalog();
+  const shown = all.filter(m=>statsTopic==='all' || m.topic===statsTopic);
+  if(!statsMetric || !all.some(m=>m.id===statsMetric && (statsTopic==='all'||m.topic===statsTopic))){
+    statsMetric = (shown[0]||all[0]).id;
+  }
+  const active = all.find(m=>m.id===statsMetric);
 
   host.innerHTML =
-    // --- headline tiles, three across ---
-    '<div class="stat-hero">'
-    + tile(f.units.toLocaleString(), 'Homes in the pipeline', 'Across <b>'+f.projects+'</b> active projects in '+where+'.')
-    + tile(bmrShare+'%', 'Below market rate', '<b>'+f.bmr.toLocaleString()+'</b> of those homes are income restricted.')
-    + tile(f.medianDays ? (f.medianDays/365).toFixed(1)+' yrs' : '--', 'Median time on file',
-           f.medianDays ? 'From filing to the last recorded action, across <b>'+f.timedCount+'</b> projects with both dates.'
-                        : 'Not enough dated records here to measure.')
-    + tile(s ? fmtMoney(s.homeValue) : '--', 'Typical home value', s && hv ? '<b>'+fmtPct(hv.pct)+'</b> since '+hv.from+'.' : 'Zillow home value index.')
-    + tile(s && s.rent ? fmtRent(s.rent) : '--', 'Typical asking rent', s && rt ? '<b>'+fmtPct(rt.pct)+'</b> since '+rt.from+'.' : 'Zillow rent index.')
-    + tile(p2r ? p2r.toFixed(0) + 'x' : '--', 'Price to rent ratio',
-           p2r ? 'A typical home costs about <b>'+p2r.toFixed(0)+' years</b> of typical rent.' : 'Needs both indexes.')
+    '<div class="stat-toolbar"><span class="lab">Show</span>'
+    + TOPICS.map(t=>'<button type="button" class="stat-chip" data-topic="'+t.id+'" aria-pressed="'+(statsTopic===t.id)+'">'+t.label+'</button>').join('')
     + '</div>'
-
-    // --- pipeline detail ---
-    + '<div class="stat-sec"><h3>The pipeline in '+where+'</h3>'
-    + '<div class="sub">Counted from this dashboard\'s own records. Unit counts exist for '+f.unitsKnown+' of '+f.projects+' active projects, so totals are a floor rather than a full count.</div>'
-    + '<div class="stat-split">'
-    + '<div class="cell"><div class="k">'+(f.medianUnits ? f.medianUnits.toLocaleString() : '--')+'</div><div class="l">Median project size</div></div>'
-    + '<div class="cell"><div class="k">'+f.construction+'</div><div class="l">Under construction now</div></div>'
-    + '<div class="cell"><div class="k">'+f.flagged+'</div><div class="l">Records with a data caveat</div></div>'
-    + '<div class="cell"><div class="k">'+(f.biggest ? f.biggest.units.toLocaleString() : '--')+'</div><div class="l">Largest single project</div></div>'
-    + '<div class="cell"><div class="k">'+f.builderRemedy+'</div><div class="l">Invoking Builder\'s Remedy</div></div>'
-    + '<div class="cell"><div class="k">'+f.transport+'</div><div class="l">Transport &amp; infrastructure</div></div>'
-    + '</div>'
-    + (f.biggest ? '<div class="sub" style="margin-top:12px;">Largest here is <b>'+f.biggest.addr+'</b> at '+f.biggest.units.toLocaleString()+' homes.</div>' : '')
-    + '</div>'
-
-    // --- charts, three across ---
-    + '<div class="stat-sec"><h3>Trends and mix</h3>'
-    + '<div class="sub">Market indexes are citywide and cover all housing, not just the projects tracked here.</div>'
-    + '<div class="stat-charts">'
-    + '<div class="stat-chart"><h4>Home value, 6 years</h4>'+(s?statLine(s.homeValueSeries, fmtMoney, '#3E4F24'):'')
-      + '<div class="cap">'+(hv?fmtPct(hv.pct)+' between '+hv.from+' and '+hv.to+'.':'No series.')+'</div></div>'
-    + '<div class="stat-chart"><h4>Asking rent, 6 years</h4>'+(s?statLine(s.rentSeries, fmtRent, '#2F5E82'):'')
-      + '<div class="cap">'+(rt?fmtPct(rt.pct)+' between '+rt.from+' and '+rt.to+'.':'No series.')+'</div></div>'
-    + '<div class="stat-chart"><h4>Where projects stand</h4>'
-      + statStack(stageParts, ['#8A6E3C','#2F5E82','#8F6318','#9A3A1E','#3B7350'])
-      + '<div class="cap">Every tracked record in '+where+' by stage.</div></div>'
-    + '</div></div>'
-
-    // --- unit mix ---
-    + (typeParts.length ? '<div class="stat-sec"><h3>What is being built</h3>'
-      + '<div class="sub">Homes in the pipeline by project type.</div>'
-      + statStack(typeParts, ['#1F6F78','#3E4F24','#8C5A2B','#6B4C8A','#3F6B4C','#8A6E3C'])
-      + '</div>' : '')
-
-    // --- cross-city comparisons ---
-    + '<div class="stat-sec"><h3>Home values across the South Bay</h3>'
-    + (s ? '<div class="sub">'+compareSentence('The typical '+where+' home', s.homeValue, homes.map(h=>h.value), fmtMoney)+'</div>' : '<div class="sub">Pick a city to see it marked.</div>')
-    + statBars(homes, me, fmtMoney) + '</div>'
-
-    + '<div class="stat-sec"><h3>Asking rents across the South Bay</h3>'
-    + (s && s.rent ? '<div class="sub">'+compareSentence('Typical '+where+' rent', s.rent, rents.map(r=>r.value), fmtRent)+'</div>' : '')
-    + statBars(rents, me, fmtRent) + '</div>'
-
-    + '<div class="stat-sec"><h3>Homes in the pipeline, by city</h3>'
-    + '<div class="sub">Reflects the records this dashboard carries for each city, which vary in depth by how much each city publishes.</div>'
-    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).units})).filter(x=>x.value>0).sort((a,b)=>b.value-a.value), me, n=>n.toLocaleString())
-    + '</div>'
-
-    + '<div class="stat-sec"><h3>Median time on file, by city</h3>'
-    + '<div class="sub">Years between a project\'s filing date and its most recent recorded action. Only projects carrying both dates are counted, so cities publishing fewer dates show fewer records.</div>'
-    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).medianDays})).filter(x=>x.value).map(x=>({key:x.key, value:x.value/365}))
-        .sort((a,b)=>b.value-a.value), me, n=>n.toFixed(1)+' yrs')
-    + '</div>'
-
-    + '<div class="stat-sec"><h3>Transport and infrastructure projects</h3>'
-    + '<div class="sub">Transportation and infrastructure records per city. Commute times and transit ridership need a US Census API key, which this build does not carry.</div>'
-    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).transport})).filter(x=>x.value>0).sort((a,b)=>b.value-a.value), me, n=>n+'')
+    + '<div class="stat-grid">' + shown.map(m=>statCard(m, me)).join('') + '</div>'
+    + '<div class="stat-sec"><h3>'+active.label+' across the South Bay</h3>'
+    + '<div class="sub">Click any card above to rank by that number, or any row below to jump to that city.</div>'
+    + statBars(active, me) + '</div>'
+    + '<div class="stat-foot">'
+    + 'Home value and asking rent: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, '+STATS_SOURCE.asOf+'. '
+    + 'Population, income, commute, tenure and housing age: <a href="'+CENSUS_SOURCE.url+'" target="_blank" rel="noopener">'+CENSUS_SOURCE.label+'</a>, '+CENSUS_SOURCE.asOf+'. '
+    + 'Pipeline figures are counted from this dashboard\'s own records and reflect what each city publishes.'
     + '</div>';
 
-  document.getElementById('statsSource').innerHTML =
-    'Home value and rent: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, as of '+STATS_SOURCE.asOf+'. '
-    + 'Everything else is computed from the '+region.projects+' active project records in this dashboard. '
-    + 'Region-wide, that is '+region.units.toLocaleString()+' homes across '+Object.keys(CITIES).filter(k=>k!=='all').length+' cities.';
+  host.querySelectorAll('.stat-chip').forEach(b=>b.addEventListener('click', ()=>{
+    statsTopic = b.getAttribute('data-topic'); statsMetric = null; renderStatistics();
+  }));
+  host.querySelectorAll('.metric-card').forEach(b=>b.addEventListener('click', ()=>{
+    statsMetric = b.getAttribute('data-metric'); renderStatistics();
+    document.querySelector('.stat-sec').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }));
+  host.querySelectorAll('.stat-row').forEach(r=>r.addEventListener('click', ()=>{
+    const c = r.getAttribute('data-city');
+    if(CITIES[c]){ switchCity(c); showScreen('statistics'); }
+  }));
 }
 
 // ================= FEATURED NEWS =================
