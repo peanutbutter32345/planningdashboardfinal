@@ -7,7 +7,7 @@
 <!-- Inline so it costs no extra request, and stops the browser 404ing on /favicon.ico -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%233E4F24'/%3E%3Cpath d='M7 22V13l5-4 5 4v9z' fill='%23fff'/%3E%3Crect x='19' y='15' width='6' height='7' fill='%23F0C86A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -45,7 +45,7 @@
   .hero{background:var(--paper-2); color:var(--text); padding:38px 0 30px; border-bottom:4px solid var(--ink);}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
-  .hero h1{font-family:'Source Serif 4', Georgia, 'Times New Roman', serif; font-size:clamp(28px, 4.2vw, 42px); font-weight:700; letter-spacing:-0.01em; color:#1A1A1A; max-width:22ch;}
+  .hero h1{font-family:'Open Sans', Arial, Helvetica, sans-serif; font-size:clamp(26px, 4vw, 38px); font-weight:800; letter-spacing:-0.01em; color:#1A1A1A; max-width:22ch;}
   .hero h1 em{font-style:normal; color:var(--ink);}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
 
@@ -243,49 +243,86 @@
   .plan-step .body h4{font-size:15px; color:#1A1A1A; margin-bottom:5px;}
   .plan-step .body p{font-size:13px; color:var(--text-soft); margin:0 0 8px;}
   .plan-step .body a.plink{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:underline; margin-right:14px;}
-  /* Statistics. Charts are inline SVG - no library, so nothing to load and nothing to break. */
-  .stat-hero{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:4px 0 30px;}
-  .stat-tile{background:#fff; padding:16px 16px 14px;}
-  .stat-tile .k{font-family:var(--mono); font-size:25px; font-weight:700; color:var(--ink); line-height:1.05; letter-spacing:-.5px;}
-  .stat-tile .l{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--text-soft); margin-top:7px; line-height:1.35;}
-  .stat-tile .s{font-size:11.5px; color:var(--text-soft); margin-top:6px; line-height:1.45;}
-  .stat-tile .s b{color:var(--ink);}
-  .stat-tile.wide{grid-column:span 3;}
+  /* Upcoming hearings. Date rail on the left, agenda detail on the right. */
+  .hearing-list{display:flex; flex-direction:column; gap:12px;}
+  .hearing{display:grid; grid-template-columns:150px 1fr; gap:16px; background:#fff; border:1px solid var(--rule); border-left:4px solid var(--rule); border-radius:4px; padding:14px 16px;}
+  .hearing.soon{border-left-color:var(--ink); background:#FCFDF9;}
+  .hearing-when .d{display:block; font-family:'Open Sans',sans-serif; font-size:13px; font-weight:800; color:var(--ink);}
+  .hearing-when .c{display:block; font-size:11.5px; color:var(--text-soft); margin-top:3px; text-transform:uppercase; letter-spacing:.04em;}
+  .hearing.soon .hearing-when .c{color:#9A3A1E; font-weight:700;}
+  .hearing-body-h{font-family:'Open Sans',sans-serif; font-size:14px; font-weight:700; color:#1A1A1A; display:flex; flex-wrap:wrap; gap:8px; align-items:baseline;}
+  .hearing-body-h .city{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-soft);}
+  .hearing-loc{font-size:12px; color:var(--text-soft); margin-top:3px;}
+  .hearing-projs{margin-top:9px;}
+  .hearing-projs .lab{display:block; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--ink); margin-bottom:5px;}
+  .hearing-proj{display:inline-block; background:#F2F5EC; border:1px solid #D7DFC8; color:var(--ink); font-weight:700; font-size:12.5px; text-decoration:none; padding:4px 10px; border-radius:3px; margin:0 6px 6px 0;}
+  .hearing-proj:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .hearing-items{margin:9px 0 0; padding-left:18px; font-size:12.5px; color:var(--text-soft); line-height:1.5;}
+  .hearing-items li{margin-bottom:3px;}
+  .hearing-note{font-size:12px; color:var(--text-soft); margin-top:8px; font-style:italic;}
+  .hearing-link{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:none;}
+  .hearing-link:hover{text-decoration:underline;}
+  @media (max-width:600px){ .hearing{grid-template-columns:1fr; gap:8px;} }
 
-  .stat-sec{margin:0 0 34px;}
-  .stat-sec > h3{font-family:'Open Sans',sans-serif; font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--text-soft); margin:0 0 2px; font-weight:800;}
-  .stat-sec > .sub{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin:0 0 14px;}
+  /* RHNA progress. One bar per income band, because the affordable bands are the story. */
+  .rhna-head{display:flex; gap:18px; align-items:flex-start; background:#F7F8F3; border:1px solid var(--rule); border-radius:4px; padding:14px 16px; margin-bottom:16px;}
+  .rhna-big{font-family:var(--mono); font-size:38px; font-weight:700; color:var(--ink); line-height:1; letter-spacing:-1px;}
+  .rhna-big .pc{font-size:19px; color:var(--text-soft);}
+  .rhna-note{font-size:13px; color:var(--text); line-height:1.6;}
+  .rhna-tiers{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  .rhna-tier .rt-head{display:flex; justify-content:space-between; align-items:baseline; gap:6px; margin-bottom:5px;}
+  .rhna-tier .rt-l{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft);}
+  .rhna-tier .rt-v{font-family:var(--mono); font-size:12px; color:var(--ink); white-space:nowrap;}
+  .rhna-tier .rt-v .of{color:var(--text-soft); font-size:10.5px;}
+  .rhna-tier .rt-track{background:#E9ECE1; height:9px; border-radius:2px; overflow:hidden;}
+  .rhna-tier .rt-fill{display:block; height:100%;}
+  .rhna-tier .rt-pct{font-family:var(--mono); font-size:11px; color:var(--text-soft); margin-top:4px;}
+  @media (max-width:760px){ .rhna-tiers{grid-template-columns:repeat(2,1fr);} .rhna-head{flex-direction:column; gap:8px;} }
+
+  /* Statistics. Card-based, echoing the featured-news panel. Charts are inline SVG - no library. */
+  .stat-toolbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:2px 0 20px; padding-bottom:14px; border-bottom:1px solid var(--rule);}
+  .stat-toolbar .lab{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); font-weight:800; margin-right:2px;}
+  .stat-chip{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:600; padding:6px 13px; border-radius:999px; border:1.5px solid var(--rule); background:#fff; color:var(--text-soft); cursor:pointer; transition:all .15s;}
+  .stat-chip:hover{border-color:var(--ink); color:var(--ink);}
+  .stat-chip[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:#fff;}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:26px;}
+  .metric-card{background:#fff; border:1px solid var(--rule); border-radius:4px; box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;}
+  .metric-card .head{background:var(--ink); color:#fff; padding:7px 13px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center; gap:8px;}
+  .metric-card .head .tag{opacity:.72; font-weight:600; letter-spacing:.04em;}
+  .metric-card .body{padding:14px 13px 15px; flex:1;}
+  .metric-card .k{font-family:var(--mono); font-size:26px; font-weight:700; color:var(--ink); line-height:1.05; letter-spacing:-.5px;}
+  .metric-card .k .unit{font-size:14px; color:var(--text-soft); font-weight:400; margin-left:3px;}
+  .metric-card .s{font-size:12px; color:var(--text-soft); margin-top:8px; line-height:1.5;}
+  .metric-card .s b{color:var(--ink);}
+  .metric-card .rank{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:#F2F5EC; color:var(--ink);}
+  .metric-card .rank.hi{background:#F7EDE4; color:#8C5A2B;}
+  .metric-card .rank.lo{background:#EAF0EC; color:#3B7350;}
+  .metric-card .spark{margin-top:11px;}
+  .metric-card .spark svg{width:100%; height:auto; display:block;}
+
+  .stat-sec{margin:0 0 30px;}
+  .stat-sec > h3{font-family:'Open Sans',sans-serif; font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--text-soft); margin:0 0 3px; font-weight:800;}
+  .stat-sec > .sub{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin:0 0 13px;}
 
   .stat-bars{display:flex; flex-direction:column; gap:6px;}
-  .stat-row{display:grid; grid-template-columns:112px 1fr 88px; align-items:center; gap:10px; font-size:12.5px;}
+  .stat-row{display:grid; grid-template-columns:112px 1fr 92px; align-items:center; gap:10px; font-size:12.5px; cursor:pointer;}
   .stat-row .nm{font-family:'Open Sans',sans-serif; color:var(--text-soft); text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .stat-row.me .nm{color:var(--ink); font-weight:800;}
+  .stat-row:hover .nm{color:var(--ink);}
   .stat-row .track{display:block; background:#EDEFE7; height:15px; border-radius:2px; overflow:hidden;}
   /* Must be a block: an inline span ignores width and height, so the bar never renders. */
-  .stat-row .fill{display:block; height:100%; background:#A8B795;}
+  .stat-row .fill{display:block; height:100%; background:#A8B795; transition:width .5s cubic-bezier(.2,.7,.3,1);}
   .stat-row.me .fill{background:var(--ink);}
+  .stat-row:hover .fill{background:#7F9268;}
+  .stat-row.me:hover .fill{background:var(--ink-2);}
   .stat-row .val{font-family:var(--mono); font-size:11.5px; color:var(--ink); text-align:right;}
 
-  .stat-charts{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-  .stat-chart{min-width:0;}
-  .stat-chart h4{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin:0 0 6px;}
-  .stat-chart svg{width:100%; height:auto; display:block;}
-  .stat-chart .cap{font-size:11px; color:var(--text-soft); margin-top:5px; line-height:1.45;}
-
-  .stat-split{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule);}
-  .stat-split .cell{background:#fff; padding:13px 14px;}
-  .stat-split .cell .k{font-family:var(--mono); font-size:17px; color:var(--ink); font-weight:700;}
-  .stat-split .cell .l{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin-top:5px;}
-
-  .stat-foot{font-size:11.5px; color:var(--text-soft); line-height:1.6; border-top:1px solid var(--rule); padding-top:12px; margin-top:26px;}
-  @media (max-width:760px){
-    .stat-hero, .stat-charts, .stat-split{grid-template-columns:repeat(2,1fr);}
-    .stat-tile.wide{grid-column:span 2;}
-  }
-  @media (max-width:480px){
-    .stat-hero, .stat-charts, .stat-split{grid-template-columns:1fr;}
-    .stat-tile.wide{grid-column:span 1;}
-    .stat-row{grid-template-columns:80px 1fr 74px; font-size:11.5px;}
+  .stat-foot{font-size:11.5px; color:var(--text-soft); line-height:1.6; border-top:1px solid var(--rule); padding-top:13px; margin-top:8px;}
+  @media (max-width:860px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){
+    .stat-grid{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:80px 1fr 76px; font-size:11.5px;}
   }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
@@ -585,6 +622,7 @@
     <button class="page-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
     <button class="page-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
     <button class="page-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
+    <button class="page-nav-tab" data-screen="hearings" role="tab" aria-selected="false">Hearings</button>
     <button class="page-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
     <button class="page-nav-tab" data-screen="resources" role="tab" aria-selected="false">Resources</button>
     <button class="page-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
@@ -624,6 +662,17 @@
         <button class="btn secondary" id="plannerCopy" type="button">Copy plan as text</button>
         <span id="plannerCopyStatus" class="section-note" role="status" aria-live="polite"></span>
       </div>
+    </div>
+  </div>
+</div>
+
+<div id="screenHearings" class="screen" style="display:none;">
+  <div class="wrap">
+    <div class="planner-shell">
+      <h2>Upcoming hearings</h2>
+      <p class="section-note">Public meetings in the next 45 days where land use is decided, pulled live from each city's official agenda system. Anything matching a project this dashboard tracks is linked. Cities usually post agendas about a week ahead, so a meeting can appear here before its agenda does.</p>
+      <div id="hearingsContent"><div class="empty">Loading upcoming meetings...</div></div>
+      <p class="section-note" id="hearingsFoot" style="margin-top:20px;"></p>
     </div>
   </div>
 </div>
@@ -2679,6 +2728,7 @@ function refreshCurrentScreen(){
   if(currentScreen==='yourarea') renderYourArea();
   else if(currentScreen==='planner'){ renderPlannerInterests(); renderPlannerEffort(); }
   else if(currentScreen==='statistics') renderStatistics();
+  else if(currentScreen==='hearings') renderHearings();
   else if(currentScreen==='resources') renderResources();
   else if(currentScreen==='ask') renderAskContext();
   else if(currentScreen==='housing') renderTopicPage('housing','Housing');
@@ -2688,7 +2738,7 @@ function refreshCurrentScreen(){
 }
 function showScreen(name){
   currentScreen = name;
-  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount'};
+  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount'};
   Object.entries(ids).forEach(([key,id])=>{
     const el = document.getElementById(id);
     if(el) el.style.display = (key===name) ? 'block' : 'none';
@@ -3066,7 +3116,25 @@ const NEWS_ARTICLES = [
   {topic:'housing', city:'mountainview', title:'Mountain View backs plan for more housing south of El Camino Real', source:'San José Spotlight', date:'2025-12-22', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/12/22100747/MV-Blossom-Valley-1200x630.webp', snippet:'Amid objections from some community members, the Mountain View City Council has backed a plan to allow for more housing in select areas south of El Camino Real, a part of the city that is currently made up of mostly single-family homes.', url:'https://sanjosespotlight.com/mountain-view-backs-plan-for-more-housing-south-of-el-camino-real/'},
   {topic:'housing', city:'mountainview', title:'Mountain View approves 8-story condos after parkland fee dispute', source:'San José Spotlight', date:'2026-05-04', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/02165756/Mountain-View-Castor-1200x630.png', snippet:'A developer’s plan to build an eight-story condominium complex at a prominent gateway to downtown Mountain View got the greenlight Tuesday evening after a legal dispute over parkland fees threatened to derail the project earlier this year. In a split 4-2 vote, the City Council approved a 140-unit condominium project with nearly 10,000 square feet of ground floor retail...', url:'https://sanjosespotlight.com/mountain-view-approves-8-story-condos-after-parkland-fee-dispute/'},
   {topic:'housing', city:'santaclara', title:'How Santa Clara County divvied up its housing bond dollars', source:'San José Spotlight', date:'2024-12-30', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/09/19101033/IMG_7371-1200x630.jpg', snippet:'A $950 million affordable housing bond has helped build thousands of affordable homes across Santa Clara County, though its efforts have focused on some parts of the region more than others. Measure A, passed by voters in 2016, has helped fund the construction of 5,135 new homes and smashed the county’s goal of 4,800 in...', url:'https://sanjosespotlight.com/how-santa-clara-county-divvied-up-its-housing-bond-dollars/'},
-  {topic:'housing', city:'cupertino', title:'Views of SB 9 vary among Silicon Valley cities', source:'San José Spotlight', date:'2022-01-24', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2019/12/19203519/Screenshot-2019-12-06-at-6.25.45-PM-1-1200x630.jpg', snippet:'Cities across California are deciding if they are going to welcome or fight a statewide housing bill that could change the makeup of neighborhoods.', url:'https://sanjosespotlight.com/not-all-santa-clara-county-cities-see-sb-9-new-housing-law-the-same-way-san-jose-silicon-valley/'}
+  {topic:'housing', city:'cupertino', title:'Views of SB 9 vary among Silicon Valley cities', source:'San José Spotlight', date:'2022-01-24', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2019/12/19203519/Screenshot-2019-12-06-at-6.25.45-PM-1-1200x630.jpg', snippet:'Cities across California are deciding if they are going to welcome or fight a statewide housing bill that could change the makeup of neighborhoods.', url:'https://sanjosespotlight.com/not-all-santa-clara-county-cities-see-sb-9-new-housing-law-the-same-way-san-jose-silicon-valley/'},
+  {topic:'housing', city:'losgatos', title:'More housing planned for Los Gatos Boulevard', source:'San José Spotlight', date:'2025-05-07', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/05/02172745/PXL_20250502_200929316-1200x630.jpg', snippet:'Another housing project along Los Gatos Boulevard is one step closer to fruition, with developers continuing to propose homes on the main thoroughfare.', url:'https://sanjosespotlight.com/more-housing-planned-for-los-gatos-boulevard/'},
+  {topic:'housing', city:'losgatos', title:'State signs off on Los Gatos housing plan', source:'San José Spotlight', date:'2024-05-07', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/05/06122136/PXL_20240327_195215140-1200x630.jpg', snippet:'After months of contentious debate among residents and town officials, Los Gatos has received state approval to build nearly 2,000 homes more than a year past the deadline.', url:'https://sanjosespotlight.com/los-gatos-housing-plan-gets-green-light-from-state/'},
+  {topic:'housing', city:'losgatos', title:'Developer for Los Gatos project warns of legal costs', source:'San José Spotlight', date:'2025-12-23', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/12/22141918/Los-Gatos-dev-Capri-Ave-1-1200x630.jpg', snippet:'The developer of a proposed 13-story apartment building in Los Gatos warned the Town Council last week of potential legal costs for blocking the project, even though the council says the developer’s application is moving forward.', url:'https://sanjosespotlight.com/developer-for-los-gatos-project-warns-of-legal-costs/'},
+  {topic:'housing', city:'losgatos', title:'Housing project across from Los Gatos High moves forward', source:'San José Spotlight', date:'2025-06-03', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/04/01163557/cafe-dio-scaled-e1748903841172-1200x630.jpg', snippet:'A controversial Los Gatos housing project next to the town high school is moving forward, despite residents raising safety concerns.', url:'https://sanjosespotlight.com/housing-project-across-from-los-gatos-high-school-moves-forward/'},
+  {topic:'housing', city:'losgatos', title:'Housing project next to Los Gatos High raises safety issues', source:'San José Spotlight', date:'2025-04-06', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/04/01163557/cafe-dio-1200x630.jpg', snippet:'A 30-home project could be built across the street from Los Gatos High School, bringing student safety to the forefront.', url:'https://sanjosespotlight.com/housing-project-next-to-los-gatos-high-school-raises-safety-issues/'},
+  {topic:'housing', city:'losgatos', title:'Housing development could loom over Los Gatos backyards', source:'San José Spotlight', date:'2024-04-25', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/04/23120218/PXL_20240419_183816147-1200x630.jpg', snippet:'A quiet neighborhood just off bustling Los Gatos Boulevard could be forever changed if a massive housing project comes to fruition.', url:'https://sanjosespotlight.com/housing-development-could-loom-over-los-gatos-backyards/'},
+  {topic:'developments', city:'losgatos', title:'Silicon Valley town may be tied up in building rules', source:'San José Spotlight', date:'2023-07-25', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2021/10/18174648/North-40-1-scaled-e1685144650888-1200x630.jpg', snippet:'Hundreds of new apartments could soon spring up in Los Gatos, as town officials continue revising plans to increase housing. Regulators still haven’t approved Los Gatos’ “housing element”—the state-mandated plan that lays out how towns and cities will help accommodate the state\'s affordable housing goals. But builders are still pushing ahead.', url:'https://sanjosespotlight.com/silicon-valley-town-los-gatos-may-be-tied-up-in-building-rules-california-builders-remedy-housing-element/'},
+  {topic:'housing', city:'campbell', title:'Campbell council closes housing development loophole', source:'San José Spotlight', date:'2026-04-25', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/04/23184224/Campbell-city-council-21-Apr-26-scaled-e1777070285500-1200x630.jpg', snippet:'Campbell residents have scored a partial victory in a fight against a state housing law that could open the door to replacing single-family homes with multifamily developments.', url:'https://sanjosespotlight.com/campbell-council-closes-housing-development-loophole/'},
+  {topic:'developments', city:'campbell', title:'Campbell office park could flip into large housing development', source:'San José Spotlight', date:'2025-02-06', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/01/30160607/PXL_20250130_182826457-1200x630.jpg', snippet:'Campbell’s Technology Parkway could become home to one of the city’s largest developments in recent years. The Campbell Planning Commission initiated the community feedback process Jan. 28 for a proposed 290-home development located between 635 and 695 Campbell Technology Parkway. Campbell-based Bay West Development submitted the site’s plans in 2023, including 27 single-family homes and...', url:'https://sanjosespotlight.com/campbell-office-park-to-flip-into-large-housing-development/'},
+  {topic:'housing', city:'paloalto', title:'Palo Alto City Council approves 8-story housing complex', source:'San José Spotlight', date:'2026-08-18', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/08/18095052/Palo-Alto-8-story-dev-rendering-Embarcadero-1200x630.webp', snippet:'Converting retail to housing is one of the pillars of Palo Alto’s plan to create a new residential neighborhood on San Antonio Road, a historically commercial corridor that borders Mountain View.', url:'https://sanjosespotlight.com/palo-alto-city-council-approves-8-story-housing-complex/'},
+  {topic:'housing', city:'paloalto', title:'Palo Alto seeks more housing on downtown lot project', source:'San José Spotlight', date:'2025-10-30', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/10/29133244/Screen-Shot-2025-10-29-at-1.31.32-PM-1200x630.png', snippet:'For a body historically known for paring down housing development proposals, the Palo Alto City Council this week overwhelmingly put its support behind a proposal for 72 affordable housing units on a downtown surface parking lot, an increase of 18 compared to the initial design that it had endorsed in January.', url:'https://sanjosespotlight.com/palo-alto-seeks-more-housing-on-downtown-lot-project/'},
+  {topic:'housing', city:'paloalto', title:'Palo Alto leaders approve 183-apartment complex', source:'San José Spotlight', date:'2026-05-18', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/18103842/3781-El-Camino-Palo-Alto-Embarcadero-1200x630.webp', snippet:'Palo Alto city leaders have enthusiastically backed a housing project that would have likely been dead on arrival just two years ago: an 85-foot-tall apartment building in the Ventura neighborhood.', url:'https://sanjosespotlight.com/palo-alto-leaders-approve-183-apartment-complex/'},
+  {topic:'housing', city:'paloalto', title:'Palo Alto approves 368-apartment complex on El Camino Real', source:'San José Spotlight', date:'2025-07-25', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/23162028/Screen-Shot-2025-07-23-at-4.19.57-PM.png', snippet:'One of Palo Alto’s largest and most ambitious housing projects, a 368-apartment complex proposed for the former site of The Fish Market on El Camino Real, has received the green light from the city, clearing the way for construction to begin. The proposal from Acclaim Companies for 3150 El Camino Real exemplifies more than any...', url:'https://sanjosespotlight.com/palo-alto-approves-368-apartment-complex-on-el-camino-real/'},
+  {topic:'developments', city:'paloalto', title:'Palo Alto downtown aims to raise heights, spur residential growth', source:'San José Spotlight', date:'2025-07-28', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/28104727/PA_DOWNTOWN_Mar2025_WEB_16-1200x630.jpg', snippet:'As Palo Alto leaders forge a new strategy for increasing housing in the downtown neighborhood, one edge of the 90-acre planning area is emerging as a promising site for a future residential boom. Downtown has seen virtually no residential growth over the past decade, even as other areas have experienced an influx of proposals. The...', url:'https://sanjosespotlight.com/palo-alto-downtown-aims-to-raise-heights-spur-residential-growth/'},
+  {topic:'housing', city:'paloalto', title:'Palo Alto seeks \'pro-housing\' designation after resisting growth', source:'San José Spotlight', date:'2026-05-29', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/29122515/Palo-Alto-Embarcadero-1200x630.webp', snippet:'Palo Alto is seeking to earn a pro-housing designation from the state of California this year, a label that would mark a major shift in the way the city has responded to growing regional housing needs amid significant resident pushback to new development.', url:'https://sanjosespotlight.com/palo-alto-seeks-pro-housing-designation-after-resisting-growth/'},
+  {topic:'housing', city:'paloalto', title:'Final housing projects round out Palo Alto’s SB 79 window', source:'San José Spotlight', date:'2026-07-23', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/07/23101749/Palo-Alto-SB-79-dev-rendering-Embarcadero.webp', snippet:'As the deadline approached, two additional housing proposals in Palo Alto applied under a new state housing law that affords greater height and density to projects near public transit.', url:'https://sanjosespotlight.com/final-housing-projects-round-out-palo-altos-sb-79-window/'},
+  {topic:'developments', city:'paloalto', title:'Palo Alto breaks ground on housing project at former Fish Market site', source:'San José Spotlight', date:'2026-08-13', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/08/13110556/Palo-Alto-Fish-Market-development-rendering-Embarcadero-1200x630.webp', snippet:'When it comes to fulfilling state and regional housing mandates in Palo Alto, no recent changes to state law can compare to the project that will take over the former site of The Fish Market on El Camino Real.', url:'https://sanjosespotlight.com/palo-alto-breaks-ground-on-large-housing-project-at-former-fish-market-site/'},
+  {topic:'developments', city:'paloalto', title:'Palo Alto Town & Country Village looks to construct apartment buildings', source:'San José Spotlight', date:'2025-11-19', image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/11/17094907/TownCountry3-1200x630.jpg', snippet:'After fiercely opposing a recently approved development with 10 condominiums on an adjacent lot, the owners of Town & Country Village are now looking to build a pair of seven-story apartment buildings on a parking lot next to the shopping center. Real estate investor Ellis Partners, which bought the property in 2004, filed a pre-application...', url:'https://sanjosespotlight.com/palo-alto-town-country-village-looks-to-construct-apartment-buildings/'}
 ];
 function renderTopicNews(topicKey, cap){
   const el = document.getElementById('topicNews'+cap);
@@ -3373,45 +3441,232 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
 
 renderAuthNavState();
 
-// Generated from data/stats.js - Zillow Research public data, see that file for provenance.
+// Generated from data/stats.js - Zillow Research + US Census ACS. See that file for provenance.
 const CITY_STATS = {
-  sunnyvale: {zillowName:"Sunnyvale", homeValue:2050814, rent:3899, homeValueSeries:[{"year":"2021","value":1742337},{"year":"2022","value":2018276},{"year":"2023","value":1812393},{"year":"2024","value":2026853},{"year":"2025","value":2031676},{"year":"2026","value":2050814}], rentSeries:[{"year":"2021","value":3041},{"year":"2022","value":3362},{"year":"2023","value":3335},{"year":"2024","value":3487},{"year":"2025","value":3622},{"year":"2026","value":3899}]},
-  cupertino: {zillowName:"Cupertino", homeValue:3008438, rent:4359, homeValueSeries:[{"year":"2021","value":2352183},{"year":"2022","value":2817068},{"year":"2023","value":2504838},{"year":"2024","value":2858846},{"year":"2025","value":2915692},{"year":"2026","value":3008438}], rentSeries:[{"year":"2021","value":3321},{"year":"2022","value":3710},{"year":"2023","value":3754},{"year":"2024","value":3880},{"year":"2025","value":4009},{"year":"2026","value":4359}]},
-  mountainview: {zillowName:"Mountain View", homeValue:1962774, rent:4416, homeValueSeries:[{"year":"2021","value":1762957},{"year":"2022","value":2018566},{"year":"2023","value":1805245},{"year":"2024","value":1980622},{"year":"2025","value":1928206},{"year":"2026","value":1962774}], rentSeries:[{"year":"2021","value":3495},{"year":"2022","value":3833},{"year":"2023","value":3821},{"year":"2024","value":3939},{"year":"2025","value":4032},{"year":"2026","value":4416}]},
-  milpitas: {zillowName:"Milpitas", homeValue:1424179, rent:3715, homeValueSeries:[{"year":"2021","value":1194650},{"year":"2022","value":1406602},{"year":"2023","value":1283565},{"year":"2024","value":1463925},{"year":"2025","value":1444791},{"year":"2026","value":1424179}], rentSeries:[{"year":"2021","value":2932},{"year":"2022","value":3262},{"year":"2023","value":3295},{"year":"2024","value":3331},{"year":"2025","value":3429},{"year":"2026","value":3715}]},
-  losaltos: {zillowName:"Los Altos", homeValue:4601729, rent:7837, homeValueSeries:[{"year":"2021","value":3566636},{"year":"2022","value":4355235},{"year":"2023","value":3851085},{"year":"2024","value":4174999},{"year":"2025","value":4300426},{"year":"2026","value":4601729}], rentSeries:[{"year":"2021","value":5528},{"year":"2022","value":5945},{"year":"2023","value":6097},{"year":"2024","value":6463},{"year":"2025","value":6631},{"year":"2026","value":7837}]},
-  saratoga: {zillowName:"Saratoga", homeValue:4038070, rent:6244, homeValueSeries:[{"year":"2021","value":3090468},{"year":"2022","value":3769210},{"year":"2023","value":3404422},{"year":"2024","value":3773924},{"year":"2025","value":3890071},{"year":"2026","value":4038070}], rentSeries:[{"year":"2021","value":4833},{"year":"2022","value":5061},{"year":"2023","value":5330},{"year":"2024","value":5911},{"year":"2025","value":5945},{"year":"2026","value":6244}]},
-  westsanjose: {zillowName:"San Jose", homeValue:1391204, rent:3527, homeValueSeries:[{"year":"2021","value":1167162},{"year":"2022","value":1379685},{"year":"2023","value":1261707},{"year":"2024","value":1423045},{"year":"2025","value":1407324},{"year":"2026","value":1391204}], rentSeries:[{"year":"2021","value":2819},{"year":"2022","value":3110},{"year":"2023","value":3134},{"year":"2024","value":3227},{"year":"2025","value":3330},{"year":"2026","value":3527}]},
-  santaclara: {zillowName:"Santa Clara", homeValue:1680833, rent:3935, homeValueSeries:[{"year":"2021","value":1378395},{"year":"2022","value":1593938},{"year":"2023","value":1446945},{"year":"2024","value":1653683},{"year":"2025","value":1682983},{"year":"2026","value":1680833}], rentSeries:[{"year":"2021","value":3043},{"year":"2022","value":3381},{"year":"2023","value":3436},{"year":"2024","value":3562},{"year":"2025","value":3665},{"year":"2026","value":3935}]},
-  losgatos: {zillowName:"Los Gatos", homeValue:2628349, rent:4256, homeValueSeries:[{"year":"2021","value":2085374},{"year":"2022","value":2529169},{"year":"2023","value":2280686},{"year":"2024","value":2516411},{"year":"2025","value":2524032},{"year":"2026","value":2628349}], rentSeries:[{"year":"2021","value":3258},{"year":"2022","value":3522},{"year":"2023","value":3682},{"year":"2024","value":3828},{"year":"2025","value":3997},{"year":"2026","value":4256}]},
-  campbell: {zillowName:"Campbell", homeValue:1881250, rent:3395, homeValueSeries:[{"year":"2021","value":1456441},{"year":"2022","value":1706671},{"year":"2023","value":1563038},{"year":"2024","value":1786308},{"year":"2025","value":1831601},{"year":"2026","value":1881250}], rentSeries:[{"year":"2021","value":2796},{"year":"2022","value":3039},{"year":"2023","value":3062},{"year":"2024","value":3132},{"year":"2025","value":3188},{"year":"2026","value":3395}]},
-  paloalto: {zillowName:"Palo Alto", homeValue:3599324, rent:4501, homeValueSeries:[{"year":"2021","value":3091423},{"year":"2022","value":3563738},{"year":"2023","value":3179067},{"year":"2024","value":3403557},{"year":"2025","value":3442876},{"year":"2026","value":3599324}], rentSeries:[{"year":"2021","value":3576},{"year":"2022","value":3828},{"year":"2023","value":3888},{"year":"2024","value":3998},{"year":"2025","value":4195},{"year":"2026","value":4501}]},
+  sunnyvale: {"population":153455,"medianIncome":181862,"medianGrossRent":3065,"meanCommuteMin":23.2,"transitSharePct":4.3,"renterSharePct":56.2,"medianYearBuilt":1975,"censusHomeValue":1816600,"zillowName":"Sunnyvale","homeValue":2050814,"rent":3899,"homeValueSeries":[{"year":"2021","value":1742337},{"year":"2022","value":2018276},{"year":"2023","value":1812393},{"year":"2024","value":2026853},{"year":"2025","value":2031676},{"year":"2026","value":2050814}],"rentSeries":[{"year":"2021","value":3041},{"year":"2022","value":3362},{"year":"2023","value":3335},{"year":"2024","value":3487},{"year":"2025","value":3622},{"year":"2026","value":3899}]},
+  cupertino: {"population":58886,"medianIncome":231139,"medianGrossRent":3501,"meanCommuteMin":24.8,"transitSharePct":1.1,"renterSharePct":38.7,"medianYearBuilt":1973,"censusHomeValue":2000001,"zillowName":"Cupertino","homeValue":3008438,"rent":4359,"homeValueSeries":[{"year":"2021","value":2352183},{"year":"2022","value":2817068},{"year":"2023","value":2504838},{"year":"2024","value":2858846},{"year":"2025","value":2915692},{"year":"2026","value":3008438}],"rentSeries":[{"year":"2021","value":3321},{"year":"2022","value":3710},{"year":"2023","value":3754},{"year":"2024","value":3880},{"year":"2025","value":4009},{"year":"2026","value":4359}]},
+  mountainview: {"population":82363,"medianIncome":179917,"medianGrossRent":2975,"meanCommuteMin":23.6,"transitSharePct":4.1,"renterSharePct":61.2,"medianYearBuilt":1974,"censusHomeValue":1927400,"zillowName":"Mountain View","homeValue":1962774,"rent":4416,"homeValueSeries":[{"year":"2021","value":1762957},{"year":"2022","value":2018566},{"year":"2023","value":1805245},{"year":"2024","value":1980622},{"year":"2025","value":1928206},{"year":"2026","value":1962774}],"rentSeries":[{"year":"2021","value":3495},{"year":"2022","value":3833},{"year":"2023","value":3821},{"year":"2024","value":3939},{"year":"2025","value":4032},{"year":"2026","value":4416}]},
+  milpitas: {"population":78216,"medianIncome":176822,"medianGrossRent":3112,"meanCommuteMin":26.4,"transitSharePct":2.4,"renterSharePct":40.7,"medianYearBuilt":1987,"censusHomeValue":1180000,"zillowName":"Milpitas","homeValue":1424179,"rent":3715,"homeValueSeries":[{"year":"2021","value":1194650},{"year":"2022","value":1406602},{"year":"2023","value":1283565},{"year":"2024","value":1463925},{"year":"2025","value":1444791},{"year":"2026","value":1424179}],"rentSeries":[{"year":"2021","value":2932},{"year":"2022","value":3262},{"year":"2023","value":3295},{"year":"2024","value":3331},{"year":"2025","value":3429},{"year":"2026","value":3715}]},
+  losaltos: {"population":30736,"medianIncome":250001,"medianGrossRent":3501,"meanCommuteMin":22.9,"transitSharePct":1.4,"renterSharePct":19.2,"medianYearBuilt":1964,"censusHomeValue":2000001,"zillowName":"Los Altos","homeValue":4601729,"rent":7837,"homeValueSeries":[{"year":"2021","value":3566636},{"year":"2022","value":4355235},{"year":"2023","value":3851085},{"year":"2024","value":4174999},{"year":"2025","value":4300426},{"year":"2026","value":4601729}],"rentSeries":[{"year":"2021","value":5528},{"year":"2022","value":5945},{"year":"2023","value":6097},{"year":"2024","value":6463},{"year":"2025","value":6631},{"year":"2026","value":7837}]},
+  saratoga: {"population":30335,"medianIncome":241348,"medianGrossRent":3501,"meanCommuteMin":27.2,"transitSharePct":1.1,"renterSharePct":13.4,"medianYearBuilt":1967,"censusHomeValue":2000001,"zillowName":"Saratoga","homeValue":4038070,"rent":6244,"homeValueSeries":[{"year":"2021","value":3090468},{"year":"2022","value":3769210},{"year":"2023","value":3404422},{"year":"2024","value":3773924},{"year":"2025","value":3890071},{"year":"2026","value":4038070}],"rentSeries":[{"year":"2021","value":4833},{"year":"2022","value":5061},{"year":"2023","value":5330},{"year":"2024","value":5911},{"year":"2025","value":5945},{"year":"2026","value":6244}]},
+  westsanjose: {"population":990054,"medianIncome":141565,"medianGrossRent":2617,"meanCommuteMin":28.1,"transitSharePct":2.8,"renterSharePct":44.1,"medianYearBuilt":1975,"censusHomeValue":1187800,"zillowName":"San Jose","homeValue":1391204,"rent":3527,"homeValueSeries":[{"year":"2021","value":1167162},{"year":"2022","value":1379685},{"year":"2023","value":1261707},{"year":"2024","value":1423045},{"year":"2025","value":1407324},{"year":"2026","value":1391204}],"rentSeries":[{"year":"2021","value":2819},{"year":"2022","value":3110},{"year":"2023","value":3134},{"year":"2024","value":3227},{"year":"2025","value":3330},{"year":"2026","value":3527}]},
+  santaclara: {"population":129239,"medianIncome":173670,"medianGrossRent":2985,"meanCommuteMin":23.1,"transitSharePct":2.5,"renterSharePct":58.8,"medianYearBuilt":1973,"censusHomeValue":1527900,"zillowName":"Santa Clara","homeValue":1680833,"rent":3935,"homeValueSeries":[{"year":"2021","value":1378395},{"year":"2022","value":1593938},{"year":"2023","value":1446945},{"year":"2024","value":1653683},{"year":"2025","value":1682983},{"year":"2026","value":1680833}],"rentSeries":[{"year":"2021","value":3043},{"year":"2022","value":3381},{"year":"2023","value":3436},{"year":"2024","value":3562},{"year":"2025","value":3665},{"year":"2026","value":3935}]},
+  losgatos: {"population":32773,"medianIncome":207891,"medianGrossRent":2969,"meanCommuteMin":27.8,"transitSharePct":0.5,"renterSharePct":37.5,"medianYearBuilt":1971,"censusHomeValue":2000001,"zillowName":"Los Gatos","homeValue":2628349,"rent":4256,"homeValueSeries":[{"year":"2021","value":2085374},{"year":"2022","value":2529169},{"year":"2023","value":2280686},{"year":"2024","value":2516411},{"year":"2025","value":2524032},{"year":"2026","value":2628349}],"rentSeries":[{"year":"2021","value":3258},{"year":"2022","value":3522},{"year":"2023","value":3682},{"year":"2024","value":3828},{"year":"2025","value":3997},{"year":"2026","value":4256}]},
+  campbell: {"population":42848,"medianIncome":147128,"medianGrossRent":2751,"meanCommuteMin":23.7,"transitSharePct":1.2,"renterSharePct":49.5,"medianYearBuilt":1972,"censusHomeValue":1550000,"zillowName":"Campbell","homeValue":1881250,"rent":3395,"homeValueSeries":[{"year":"2021","value":1456441},{"year":"2022","value":1706671},{"year":"2023","value":1563038},{"year":"2024","value":1786308},{"year":"2025","value":1831601},{"year":"2026","value":1881250}],"rentSeries":[{"year":"2021","value":2796},{"year":"2022","value":3039},{"year":"2023","value":3062},{"year":"2024","value":3132},{"year":"2025","value":3188},{"year":"2026","value":3395}]},
+  paloalto: {"population":67231,"medianIncome":220408,"medianGrossRent":3328,"meanCommuteMin":22.9,"transitSharePct":3.1,"renterSharePct":45.8,"medianYearBuilt":1963,"censusHomeValue":2000001,"zillowName":"Palo Alto","homeValue":3599324,"rent":4501,"homeValueSeries":[{"year":"2021","value":3091423},{"year":"2022","value":3563738},{"year":"2023","value":3179067},{"year":"2024","value":3403557},{"year":"2025","value":3442876},{"year":"2026","value":3599324}],"rentSeries":[{"year":"2021","value":3576},{"year":"2022","value":3828},{"year":"2023","value":3888},{"year":"2024","value":3998},{"year":"2025","value":4195},{"year":"2026","value":4501}]},
+  gilroy: {"zillowName":"Gilroy","homeValue":null,"rent":null,"homeValueSeries":[],"rentSeries":[],"population":58561,"medianIncome":131554,"medianGrossRent":2270,"meanCommuteMin":33.9,"transitSharePct":1.6,"renterSharePct":37.2,"medianYearBuilt":1990,"censusHomeValue":975800},
+  losaltoshills: {"zillowName":"Los Altos Hills","homeValue":null,"rent":null,"homeValueSeries":[],"rentSeries":[],"population":8367,"medianIncome":250001,"medianGrossRent":3501,"meanCommuteMin":27.7,"transitSharePct":1.2,"renterSharePct":5,"medianYearBuilt":1976,"censusHomeValue":2000001},
+  montesereno: {"zillowName":"Monte Sereno","homeValue":null,"rent":null,"homeValueSeries":[],"rentSeries":[],"population":3459,"medianIncome":250001,"medianGrossRent":2947,"meanCommuteMin":24.3,"transitSharePct":0.6,"renterSharePct":4.3,"medianYearBuilt":1964,"censusHomeValue":2000001},
+  morganhill: {"zillowName":"Morgan Hill","homeValue":null,"rent":null,"homeValueSeries":[],"rentSeries":[],"population":45152,"medianIncome":159758,"medianGrossRent":2275,"meanCommuteMin":34.8,"transitSharePct":1.7,"renterSharePct":27.7,"medianYearBuilt":1989,"censusHomeValue":1127600},
 };
 const STATS_SOURCE = {"label":"Zillow Research public data (ZHVI and ZORI), city level","url":"https://www.zillow.com/research/data/","asOf":"July 2026"};
+const CENSUS_SOURCE = {"label":"US Census American Community Survey, 5-year estimates","url":"https://www.census.gov/programs-surveys/acs","asOf":"2023 (ACS 5-year)"};
+
+// ================= UPCOMING HEARINGS =================
+// Fetched once per page load from /api/hearings, which caches Legistar for six hours. This is the
+// only part of the dashboard with a deadline attached, so it leads with how many days are left.
+
+let hearingsCache = null;
+let hearingsScope = 'city';   // 'city' or 'all'
+
+function daysUntil(iso){
+  const d = new Date(iso + 'T12:00:00');
+  return Math.round((d - new Date(new Date().toDateString())) / 864e5);
+}
+function whenLabel(n){
+  if(n < 0) return 'past';
+  if(n === 0) return 'today';
+  if(n === 1) return 'tomorrow';
+  if(n <= 7) return 'in ' + n + ' days';
+  return 'in ' + n + ' days';
+}
+function prettyDate(iso){
+  return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', {weekday:'short', month:'long', day:'numeric'});
+}
+
+function hearingCard(h){
+  const n = daysUntil(h.date);
+  const soon = n <= 7 ? ' soon' : '';
+  const matched = h.matters.filter(m=>m.projects.length);
+  const other = h.matters.filter(m=>!m.projects.length);
+
+  const projectLinks = matched.map(m=>m.projects.map(p=>
+    '<a class="hearing-proj" href="'+location.pathname+'?project='+encodeURIComponent(p.id)+'">'+p.addr+'</a>'
+  ).join('')).join('');
+
+  const otherItems = other.slice(0,4).map(m=>
+    '<li>'+(m.location ? '<b>'+m.location+'</b> &middot; ' : '')+m.title.slice(0,120)+'</li>').join('');
+
+  return '<div class="hearing'+soon+'">'
+    + '<div class="hearing-when"><span class="d">'+prettyDate(h.date)+'</span>'
+      + '<span class="c">'+whenLabel(n)+(h.time ? ' &middot; '+h.time : '')+'</span></div>'
+    + '<div class="hearing-body">'
+      + '<div class="hearing-body-h">'+h.body+'<span class="city">'+(CITIES[h.city]?CITIES[h.city].label:h.city)+'</span></div>'
+      + (h.location ? '<div class="hearing-loc">'+h.location+'</div>' : '')
+      + (projectLinks ? '<div class="hearing-projs"><span class="lab">Tracked projects on this agenda</span>'+projectLinks+'</div>' : '')
+      + (otherItems ? '<ul class="hearing-items">'+otherItems+'</ul>' : '')
+      + (!h.agendaPublished ? '<div class="hearing-note">Agenda not posted yet. Cities usually publish about a week ahead.</div>' : '')
+      + (h.agendaUrl ? '<a class="hearing-link" href="'+h.agendaUrl+'" target="_blank" rel="noopener">Official agenda &rarr;</a>' : '')
+    + '</div></div>';
+}
+
+function renderHearingsList(){
+  const host = document.getElementById('hearingsContent');
+  if(!host || !hearingsCache) return;
+  const all = hearingsCache.hearings || [];
+  const covered = (hearingsCache.cities || []).includes(currentCity);
+  const list = (hearingsScope === 'city' && covered) ? all.filter(h=>h.city===currentCity) : all;
+
+  let head = '<div class="stat-toolbar"><span class="lab">Show</span>'
+    + '<button type="button" class="stat-chip" data-scope="city" aria-pressed="'+(hearingsScope==='city')+'">'
+      + (CITIES[currentCity] ? CITIES[currentCity].label : 'This city') + '</button>'
+    + '<button type="button" class="stat-chip" data-scope="all" aria-pressed="'+(hearingsScope==='all')+'">All covered cities</button>'
+    + '</div>';
+
+  let body;
+  if(!covered && hearingsScope === 'city'){
+    body = '<div class="empty">'+(CITIES[currentCity]?CITIES[currentCity].label:'This city')
+      + ' does not publish agendas through Legistar, so its meetings can\'t be pulled automatically yet. '
+      + 'Switch to all covered cities, or use the official links on the Resources tab.</div>';
+  } else if(!list.length){
+    body = '<div class="empty">No land-use meetings scheduled in the next '+(hearingsCache.days||45)+' days.</div>';
+  } else {
+    body = '<div class="hearing-list">' + list.map(hearingCard).join('') + '</div>';
+  }
+  host.innerHTML = head + body;
+
+  host.querySelectorAll('.stat-chip').forEach(b=>b.addEventListener('click', ()=>{
+    hearingsScope = b.getAttribute('data-scope'); renderHearingsList();
+  }));
+
+  const covLabels = (hearingsCache.cities||[]).map(c=>CITIES[c]?CITIES[c].label:c).join(', ');
+  document.getElementById('hearingsFoot').innerHTML =
+    'Pulled from the Legistar public API for ' + covLabels + '. '
+    + 'Other South Bay cities run different agenda systems and are not covered yet. '
+    + (hearingsCache.generatedAt ? 'Last refreshed ' + new Date(hearingsCache.generatedAt).toLocaleString() + '.' : '');
+}
+
+async function renderHearings(){
+  const host = document.getElementById('hearingsContent');
+  if(!host) return;
+  if(hearingsCache){ renderHearingsList(); return; }
+  host.innerHTML = '<div class="empty">Loading upcoming meetings...</div>';
+  try{
+    const r = await fetch('/api/hearings');
+    hearingsCache = await r.json();
+    renderHearingsList();
+  } catch(err){
+    host.innerHTML = '<div class="empty">Could not load upcoming meetings: ' + err.message + '</div>';
+  }
+}
+
+// Generated from data/rhna.js - California HCD 6th Cycle RHNA Progress Report.
+const RHNA = {
+  campbell: {"vli":[42,752],"li":[43,434],"mod":[43,499],"above":[132,1292],"units":260,"target":2977,"pct":8.7},
+  cupertino: {"vli":[41,1193],"li":[41,687],"mod":[42,755],"above":[135,1953],"units":259,"target":4588,"pct":5.6},
+  gilroy: {"vli":[33,669],"li":[32,385],"mod":[32,200],"above":[309,519],"units":406,"target":1773,"pct":22.9},
+  losaltos: {"vli":[99,501],"li":[142,288],"mod":[117,326],"above":[248,843],"units":606,"target":1958,"pct":30.9},
+  losaltoshills: {"vli":[19,125],"li":[19,72],"mod":[58,82],"above":[19,210],"units":115,"target":489,"pct":23.5},
+  losgatos: {"vli":[43,537],"li":[36,310],"mod":[36,320],"above":[57,826],"units":172,"target":1993,"pct":8.6},
+  milpitas: {"vli":[59,1685],"li":[25,970],"mod":[59,1131],"above":[267,2927],"units":410,"target":6713,"pct":6.1},
+  montesereno: {"vli":[21,53],"li":[6,30],"mod":[3,31],"above":[24,79],"units":54,"target":193,"pct":28},
+  morganhill: {"vli":[65,262],"li":[0,151],"mod":[87,174],"above":[508,450],"units":660,"target":1037,"pct":63.6},
+  mountainview: {"vli":[259,2773],"li":[92,1597],"mod":[73,1885],"above":[502,4880],"units":926,"target":11135,"pct":8.3},
+  paloalto: {"vli":[41,1556],"li":[47,896],"mod":[81,1013],"above":[456,2621],"units":625,"target":6086,"pct":10.3},
+  santaclara: {"vli":[103,2872],"li":[241,1653],"mod":[137,1981],"above":[1063,5126],"units":1544,"target":11632,"pct":13.3},
+  saratoga: {"vli":[83,454],"li":[91,261],"mod":[81,278],"above":[200,719],"units":455,"target":1712,"pct":26.6},
+  sunnyvale: {"vli":[170,2968],"li":[115,1709],"mod":[173,2032],"above":[637,5257],"units":1095,"target":11966,"pct":9.2},
+  westsanjose: {"vli":[1971,15088],"li":[1945,8687],"mod":[2184,10711],"above":[1719,27714],"units":7819,"target":62200,"pct":12.6},
+};
+const RHNA_PERIOD = "01/31/2023 - 01/31/2031";
+const RHNA_SOURCE = {"label":"California HCD, 6th Cycle RHNA Progress Report","url":"https://data.ca.gov/dataset/rhna-progress-report","asOf":"August 2026"};
+
+// ---- RHNA progress ----
+// A city's Housing Element stays compliant by permitting its allocation. Fall far enough behind
+// and the element can be decertified, which is what lets Builder's Remedy projects ignore local
+// zoning. That is the link between this section and the flags on project cards.
+const RHNA_TIERS = [
+  {key:'vli',   label:'Very low income',  color:'#1F6F78'},
+  {key:'li',    label:'Low income',       color:'#3E4F24'},
+  {key:'mod',   label:'Moderate income',  color:'#8A6E3C'},
+  {key:'above', label:'Above moderate',   color:'#8C5A2B'},
+];
+
+function rhnaTierBar(city){
+  const r = RHNA[city];
+  if(!r) return '';
+  return '<div class="rhna-tiers">' + RHNA_TIERS.map(t=>{
+    const [got, target] = r[t.key];
+    const pct = target ? Math.min(100, got/target*100) : 0;
+    return '<div class="rhna-tier">'
+      + '<div class="rt-head"><span class="rt-l">'+t.label+'</span>'
+        + '<span class="rt-v">'+got.toLocaleString()+' <span class="of">of '+target.toLocaleString()+'</span></span></div>'
+      + '<div class="rt-track"><span class="rt-fill" style="width:'+pct.toFixed(1)+'%; background:'+t.color+'"></span></div>'
+      + '<div class="rt-pct">'+(target ? Math.round(got/target*100) : 0)+'%</div>'
+      + '</div>';
+  }).join('') + '</div>';
+}
+
+function rhnaSection(city){
+  const r = RHNA[city];
+  if(!r) return '';
+  const label = CITIES[city] ? CITIES[city].label : city;
+  const yearsIn = 3, yearsTotal = 8;      // cycle runs Jan 2023 to Jan 2031
+  const onPace = Math.round(yearsIn / yearsTotal * 100);
+  const behind = r.pct < onPace;
+  const br = (CITIES[city] ? CITIES[city].data : []).filter(d=>/builder'?s remedy/i.test(d.flag||'')).length;
+
+  // Rank all cities so the reader can see whether this is normal or unusual.
+  const ranked = Object.keys(RHNA).map(k=>({k, v:RHNA[k].pct})).sort((a,b)=>b.v-a.v);
+  const pos = ranked.findIndex(x=>x.k===city)+1;
+
+  return '<div class="stat-sec"><h3>Housing target progress</h3>'
+    + '<div class="sub">Every city has a state housing allocation for '+RHNA_PERIOD+', split across four income bands. '
+      + 'Permitting far below the target is what puts a Housing Element out of compliance, and that is what allows '
+      + 'Builder\'s Remedy projects to bypass local zoning.</div>'
+    + '<div class="rhna-head">'
+      + '<div class="rhna-big">'+r.pct+'<span class="pc">%</span></div>'
+      + '<div class="rhna-note">'
+        + '<b>'+label+' has permitted '+r.units.toLocaleString()+' of '+r.target.toLocaleString()+' homes</b> so far this cycle, '
+        + 'ranking #'+pos+' of '+ranked.length+' in the South Bay. '
+        + 'About '+onPace+'% of the cycle has elapsed, so the city is '
+        + (behind ? '<b>behind pace</b>' : '<b>at or ahead of pace</b>') + '.'
+        + (br ? ' <b>'+br+'</b> project'+(br===1?'':'s')+' tracked here '+(br===1?'has':'have')+' invoked Builder\'s Remedy.' : '')
+      + '</div>'
+    + '</div>'
+    + rhnaTierBar(city)
+    + '<div class="sub" style="margin-top:14px;">Affordable bands are where cities fall furthest behind: '
+      + 'market-rate homes tend to get built, deed-restricted ones need subsidy.</div>'
+    + '</div>';
+}
 
 // ================= STATISTICS =================
-// Two sources only. Market figures come from Zillow's public research data (see data/stats.js).
-// Everything else is computed live from the project records already loaded in CITIES, so the
-// numbers on this screen can never disagree with the cards on the dashboard.
+// Three sources, no runtime dependencies. Market figures are Zillow's public research data and
+// demographics are US Census ACS 5-year estimates, both embedded in data/stats.js. Everything
+// else is computed live from the project records already loaded in CITIES, so the numbers here
+// can never disagree with the cards on the dashboard.
+
+let statsTopic = 'all';   // which group of cards is showing
+let statsMetric = null;   // which metric the comparison bars are ranking
 
 function fmtMoney(n){ return n >= 1000000 ? '$' + (n/1000000).toFixed(2) + 'M' : '$' + Math.round(n).toLocaleString(); }
 function fmtRent(n){ return '$' + Math.round(n).toLocaleString(); }
+function fmtInt(n){ return Math.round(n).toLocaleString(); }
 function fmtPct(n){ return (n > 0 ? '+' : '') + n.toFixed(0) + '%'; }
 function statsLabelOf(k){ return CITIES[k] ? CITIES[k].label : (CITY_STATS[k] ? CITY_STATS[k].zillowName : k); }
+// Cities the dashboard has no project records for still appear in the rankings when they carry
+// market or census figures - they just cannot show pipeline numbers.
+function statsCityKeys(){ return Object.keys(CITY_STATS); }
 function median(a){ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y); return s[Math.floor(s.length/2)]; }
 
-// Everything derivable from one city's records. Fields are missing on plenty of projects, so each
-// figure reports how many records it is actually based on rather than implying full coverage.
 function cityFacts(key){
   const rows = (CITIES[key] ? CITIES[key].data : []);
   const active = rows.filter(d=>d.stage!=='completed');
   const withUnits = active.filter(d=>d.units);
   const timed = rows.filter(d=>d.filed && d.lastDate)
     .map(d=>(new Date(d.lastDate)-new Date(d.filed))/864e5).filter(d=>d>0);
-  const stages = {};
-  rows.forEach(d=>{ stages[d.stage]=(stages[d.stage]||0)+1; });
-  const byType = {};
-  active.forEach(d=>{ byType[d.type]=(byType[d.type]||0)+(d.units||0); });
+  const stages = {}; rows.forEach(d=>{ stages[d.stage]=(stages[d.stage]||0)+1; });
+  const byType = {}; active.forEach(d=>{ byType[d.type]=(byType[d.type]||0)+(d.units||0); });
   return {
     projects: active.length,
     units: active.reduce((n,d)=>n+(d.units||0),0),
@@ -3419,7 +3674,7 @@ function cityFacts(key){
     unitsKnown: withUnits.length,
     medianUnits: median(withUnits.map(d=>d.units)),
     biggest: withUnits.length ? withUnits.reduce((a,b)=>a.units>b.units?a:b) : null,
-    medianDays: median(timed),
+    medianYears: (()=>{ const m = median(timed); return m ? m/365 : null; })(),
     timedCount: timed.length,
     construction: rows.filter(d=>d.stage==='construction').length,
     flagged: rows.filter(d=>d.flag).length,
@@ -3435,168 +3690,157 @@ function growth(series){
   return { pct: (b-a)/a*100, from: series[0].year, to: series[series.length-1].year };
 }
 
-function tile(value, label, sub){
-  return '<div class="stat-tile"><div class="k">'+value+'</div><div class="l">'+label+'</div>'
-       + (sub ? '<div class="s">'+sub+'</div>' : '') + '</div>';
+// Every metric declared once: how to read it per city, how to format it, and whether being high
+// is notable. The cards, the ranking bars and the chips are all driven off this list, so adding a
+// statistic means adding one entry here rather than touching three places.
+function metricCatalog(){
+  const stat = k => (c) => (CITY_STATS[c] ? CITY_STATS[c][k] : null);
+  const fact = k => (c) => { const f = cityFacts(c); return f ? f[k] : null; };
+  return [
+    {id:'homeValue',    topic:'housing',   label:'Typical home value',   tag:'Zillow',  get:stat('homeValue'),      fmt:fmtMoney, dir:'hi'},
+    {id:'rent',         topic:'housing',   label:'Typical asking rent',  tag:'Zillow',  get:stat('rent'),           fmt:fmtRent,  dir:'hi'},
+    {id:'grossRent',    topic:'housing',   label:'Median gross rent',    tag:'Census',  get:stat('medianGrossRent'),fmt:fmtRent,  dir:'hi'},
+    {id:'renterShare',  topic:'housing',   label:'Households renting',   tag:'Census',  get:stat('renterSharePct'), fmt:n=>n.toFixed(0)+'%', dir:'hi'},
+    {id:'yearBuilt',    topic:'housing',   label:'Median year built',    tag:'Census',  get:stat('medianYearBuilt'),fmt:n=>String(Math.round(n)), dir:'hi'},
+    {id:'commute',      topic:'transport', label:'Mean commute',         tag:'Census',  get:stat('meanCommuteMin'), fmt:n=>n.toFixed(1)+' min', dir:'hi'},
+    {id:'transitShare', topic:'transport', label:'Commute by transit',   tag:'Census',  get:stat('transitSharePct'),fmt:n=>n.toFixed(1)+'%', dir:'lo'},
+    {id:'transport',    topic:'transport', label:'Transport projects',   tag:'Tracked', get:fact('transport'),      fmt:fmtInt,   dir:'lo'},
+    {id:'units',        topic:'pipeline',  label:'Homes in the pipeline',tag:'Tracked', get:fact('units'),          fmt:fmtInt,   dir:'lo'},
+    {id:'bmr',          topic:'pipeline',  label:'Below-market homes',   tag:'Tracked', get:fact('bmr'),            fmt:fmtInt,   dir:'lo'},
+    {id:'projects',     topic:'pipeline',  label:'Active projects',      tag:'Tracked', get:fact('projects'),       fmt:fmtInt,   dir:'lo'},
+    {id:'medianUnits',  topic:'pipeline',  label:'Median project size',  tag:'Tracked', get:fact('medianUnits'),    fmt:n=>fmtInt(n)+' homes', dir:'lo'},
+    {id:'construction', topic:'pipeline',  label:'Under construction',   tag:'Tracked', get:fact('construction'),   fmt:fmtInt,   dir:'lo'},
+    {id:'medianYears',  topic:'pipeline',  label:'Median time on file',  tag:'Tracked', get:fact('medianYears'),    fmt:n=>n.toFixed(1)+' yrs', dir:'hi'},
+    {id:'rhnaPct',      topic:'pipeline',  label:'Housing target met',   tag:'State',   get:(c)=>RHNA[c]?RHNA[c].pct:null, fmt:n=>n.toFixed(1)+'%', dir:'lo'},
+    {id:'rhnaTarget',   topic:'pipeline',  label:'Housing target for the cycle', tag:'State', get:(c)=>RHNA[c]?RHNA[c].target:null, fmt:fmtInt, dir:'lo'},
+    {id:'rhnaAffordable',topic:'pipeline', label:'Affordable homes permitted', tag:'State', get:(c)=>{ const r=RHNA[c]; return r ? r.vli[0]+r.li[0] : null; }, fmt:fmtInt, dir:'lo'},
+    {id:'income',       topic:'people',    label:'Median household income', tag:'Census', get:stat('medianIncome'), fmt:fmtMoney, dir:'hi'},
+    {id:'population',   topic:'people',    label:'Population',           tag:'Census',  get:stat('population'),     fmt:fmtInt,   dir:'lo'},
+    {id:'priceToRent',  topic:'people',    label:'Price to rent ratio',  tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.rent) ? s.homeValue/(s.rent*12) : null; }, fmt:n=>n.toFixed(0)+'x', dir:'hi'},
+    {id:'incomeToPrice',topic:'people',    label:'Home value vs income', tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.medianIncome) ? s.homeValue/s.medianIncome : null; }, fmt:n=>n.toFixed(1)+'x', dir:'hi'},
+  ];
 }
 
-function statBars(entries, me, fmt){
+const TOPICS = [
+  {id:'all', label:'Everything'}, {id:'housing', label:'Housing'},
+  {id:'transport', label:'Transport'}, {id:'pipeline', label:'Being built'},
+  {id:'people', label:'People and cost'},
+];
+
+function sparkline(series, color){
+  if(!series || series.length < 2) return '';
+  const W=200, H=34;
+  const vals=series.map(p=>p.value);
+  const min=Math.min(...vals), max=Math.max(...vals), span=(max-min)||1;
+  const pts=series.map((p,i)=>(i*(W-2)/(series.length-1)+1).toFixed(1)+','+(H-3-((p.value-min)/span)*(H-8)).toFixed(1)).join(' ');
+  return '<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'
+    + '<polygon points="1,'+(H-1)+' '+pts+' '+(W-1)+','+(H-1)+'" fill="'+color+'" opacity="0.13"></polygon>'
+    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="1.8"></polyline></svg>';
+}
+
+// Where this city sits among the others for a given metric.
+function rankOf(metric, me){
+  const vals = statsCityKeys().map(k=>({k, v:metric.get(k)})).filter(x=>x.v != null);
+  if(!vals.length || metric.get(me) == null) return null;
+  vals.sort((a,b)=>b.v-a.v);
+  const pos = vals.findIndex(x=>x.k===me) + 1;
+  return pos ? {pos, of:vals.length, med:median(vals.map(x=>x.v))} : null;
+}
+
+function statCard(metric, me){
+  const val = metric.get(me);
+  if(val == null) return '';
+  const s = CITY_STATS[me];
+  const r = rankOf(metric, me);
+  let rankHtml = '';
+  if(r){
+    const pct = Math.round((val - r.med)/r.med*100);
+    const cls = Math.abs(pct) <= 2 ? '' : (pct > 0 ? ' hi' : ' lo');
+    const word = Math.abs(pct) <= 2 ? 'level with the median'
+               : (pct > 0 ? '+'+pct+'% vs median' : pct+'% vs median');
+    rankHtml = '<span class="rank'+cls+'">#'+r.pos+' of '+r.of+' &middot; '+word+'</span>';
+  }
+  let spark = '';
+  if(metric.id === 'homeValue' && s) spark = '<div class="spark">'+sparkline(s.homeValueSeries, '#3E4F24')+'</div>';
+  if(metric.id === 'rent' && s)      spark = '<div class="spark">'+sparkline(s.rentSeries, '#2F5E82')+'</div>';
+  let sub = '';
+  const f = cityFacts(me);
+  if(metric.id==='units')       sub = 'Across <b>'+f.projects+'</b> active projects. Unit counts exist for '+f.unitsKnown+' of them.';
+  if(metric.id==='bmr')         sub = f.units ? '<b>'+Math.round(f.bmr/f.units*100)+'%</b> of the pipeline is income restricted.' : '';
+  if(metric.id==='medianYears') sub = 'Filing to last recorded action, across <b>'+f.timedCount+'</b> dated projects.';
+  if(metric.id==='medianUnits' && f.biggest) sub = 'Largest here is <b>'+f.biggest.addr+'</b> at '+fmtInt(f.biggest.units)+'.';
+  if(metric.id==='homeValue' && s){ const g=growth(s.homeValueSeries); if(g) sub='<b>'+fmtPct(g.pct)+'</b> since '+g.from+'.'; }
+  if(metric.id==='rent' && s){ const g=growth(s.rentSeries); if(g) sub='<b>'+fmtPct(g.pct)+'</b> since '+g.from+'.'; }
+  if(metric.id==='priceToRent') sub = 'A typical home costs about that many years of typical rent.';
+  if(metric.id==='incomeToPrice') sub = 'Typical home value divided by median household income.';
+  if(metric.id==='rhnaPct' && RHNA[me]) sub = RHNA[me].units.toLocaleString()+' of '+RHNA[me].target.toLocaleString()+' homes permitted this cycle.';
+  if(metric.id==='rhnaTarget') sub = 'State allocation for '+RHNA_PERIOD+'.';
+  if(metric.id==='rhnaAffordable' && RHNA[me]) sub = 'Very low plus low income, against a target of <b>'+(RHNA[me].vli[1]+RHNA[me].li[1]).toLocaleString()+'</b>.';
+  if(metric.id==='transitShare') sub = 'Share of commuters using public transit.';
+  if(metric.id==='commute')     sub = 'Average one-way travel time to work.';
+  if(metric.id==='builderRemedy') sub = 'Applications arguing local zoning does not apply.';
+
+  return '<button type="button" class="metric-card" data-metric="'+metric.id+'" aria-label="Rank cities by '+metric.label+'">'
+    + '<span class="head">'+metric.label+'<span class="tag">'+metric.tag+'</span></span>'
+    + '<span class="body">'
+    + '<span class="k">'+metric.fmt(val)+'</span>'
+    + (sub ? '<span class="s">'+sub+'</span>' : '')
+    + rankHtml + spark
+    + '</span></button>';
+}
+
+function statBars(metric, me){
+  const entries = statsCityKeys().map(k=>({key:k, value:metric.get(k)}))
+    .filter(e=>e.value != null).sort((a,b)=>b.value-a.value);
   if(!entries.length) return '';
   const max = Math.max(...entries.map(e=>e.value)) || 1;
   return '<div class="stat-bars">' + entries.map(e=>
-    '<div class="stat-row'+(e.key===me?' me':'')+'">'
+    '<div class="stat-row'+(e.key===me?' me':'')+'" data-city="'+e.key+'">'
     + '<span class="nm">'+statsLabelOf(e.key)+'</span>'
     + '<span class="track"><span class="fill" style="width:'+Math.max(1.5, e.value/max*100).toFixed(1)+'%"></span></span>'
-    + '<span class="val">'+fmt(e.value)+'</span></div>').join('') + '</div>';
-}
-
-function statLine(series, fmt, color){
-  if(!series || series.length < 2) return '';
-  const W=260, H=104, PAD=34;
-  const vals = series.map(p=>p.value);
-  const min = Math.min(...vals), max = Math.max(...vals), span = (max-min) || 1;
-  const x = i => PAD + i*(W-PAD-8)/(series.length-1);
-  const y = v => 12 + (1-(v-min)/span)*(H-12-24);
-  const pts = series.map((p,i)=>x(i).toFixed(1)+','+y(p.value).toFixed(1)).join(' ');
-  return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Trend '+series[0].year+' to '+series[series.length-1].year+'">'
-    + '<polygon points="'+PAD+','+(H-22)+' '+pts+' '+x(series.length-1).toFixed(1)+','+(H-22)+'" fill="'+color+'" opacity="0.11"></polygon>'
-    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="2.2" stroke-linejoin="round"></polyline>'
-    + series.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.value).toFixed(1)+'" r="2.4" fill="'+color+'"></circle>').join('')
-    + '<text x="'+PAD+'" y="'+(H-6)+'" font-size="9" fill="#8A8A8A">'+series[0].year+'</text>'
-    + '<text x="'+(W-8)+'" y="'+(H-6)+'" font-size="9" fill="#8A8A8A" text-anchor="end">'+series[series.length-1].year+'</text>'
-    + '<text x="2" y="15" font-size="9" fill="#8A8A8A">'+fmt(max)+'</text>'
-    + '<text x="2" y="'+(H-26)+'" font-size="9" fill="#8A8A8A">'+fmt(min)+'</text></svg>';
-}
-
-// Stacked proportion bar - used for the stage mix and the unit-type split.
-function statStack(parts, colors){
-  const total = parts.reduce((n,p)=>n+p.value,0);
-  if(!total) return '';
-  let x=0;
-  const segs = parts.map((p,i)=>{
-    const w = p.value/total*100; const seg =
-      '<rect x="'+x.toFixed(2)+'" y="0" width="'+w.toFixed(2)+'" height="18" fill="'+colors[i%colors.length]+'"><title>'+p.label+': '+p.value+'</title></rect>';
-    x += w; return seg;
-  }).join('');
-  const legend = parts.filter(p=>p.value).map((p,i)=>
-    '<span style="display:inline-block; margin:6px 12px 0 0; font-size:11px; color:#5B5B5B;">'
-    + '<i style="display:inline-block; width:9px; height:9px; background:'+colors[i%colors.length]+'; margin-right:5px; border-radius:1px;"></i>'
-    + p.label+' <b style="color:#1A1A1A;">'+p.value+'</b></span>').join('');
-  return '<svg viewBox="0 0 100 18" preserveAspectRatio="none" style="width:100%; height:18px; display:block;">'+segs+'</svg><div>'+legend+'</div>';
-}
-
-function compareSentence(label, mine, others, fmt){
-  if(mine == null || !others.length) return '';
-  const med = median(others);
-  const pct = Math.round((mine-med)/med*100);
-  const dir = pct > 2 ? '<b>'+pct+'% above</b>' : pct < -2 ? '<b>'+Math.abs(pct)+'% below</b>' : '<b>level with</b>';
-  return label+' is '+fmt(mine)+', '+dir+' the South Bay median of '+fmt(med)+'.';
+    + '<span class="val">'+metric.fmt(e.value)+'</span></div>').join('') + '</div>';
 }
 
 function renderStatistics(){
   const host = document.getElementById('statsContent');
   if(!host) return;
-  const me = currentCity === 'all' ? null : currentCity;
-  document.getElementById('statsCityName').textContent = me ? CITIES[me].label : 'each city';
+  const me = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  document.getElementById('statsCityName').textContent = CITIES[me] ? CITIES[me].label : 'your city';
 
-  const statKeys = Object.keys(CITY_STATS).filter(k=>CITY_STATS[k].homeValue);
-  const homes = statKeys.map(k=>({key:k, value:CITY_STATS[k].homeValue})).sort((a,b)=>b.value-a.value);
-  const rents = statKeys.filter(k=>CITY_STATS[k].rent).map(k=>({key:k, value:CITY_STATS[k].rent})).sort((a,b)=>b.value-a.value);
-  const tracked = Object.keys(CITIES).filter(k=>k!=='all');
-
-  const s = me ? CITY_STATS[me] : null;
-  const f = me ? cityFacts(me) : cityFacts('all');
-  const region = cityFacts('all');
-
-  const hv = s ? growth(s.homeValueSeries) : null;
-  const rt = s ? growth(s.rentSeries) : null;
-  // Price-to-rent: what a typical home costs relative to a year of typical rent. Above ~20 is
-  // usually read as a market where buying is expensive relative to renting.
-  const p2r = (s && s.rent) ? s.homeValue/(s.rent*12) : null;
-  const bmrShare = f.units ? Math.round(f.bmr/f.units*100) : 0;
-  const where = me ? CITIES[me].label : 'the South Bay';
-
-  const stageParts = ['proposed','review','approved','construction','completed']
-    .map(k=>({label:STAGE_MAP[k].label, value:f.stages[k]||0}));
-  const typeParts = Object.entries(f.byType).filter(([,v])=>v>0)
-    .sort((a,b)=>b[1]-a[1]).map(([k,v])=>({label:k, value:v}));
+  const all = metricCatalog();
+  const shown = all.filter(m=>statsTopic==='all' || m.topic===statsTopic);
+  if(!statsMetric || !all.some(m=>m.id===statsMetric && (statsTopic==='all'||m.topic===statsTopic))){
+    statsMetric = (shown[0]||all[0]).id;
+  }
+  const active = all.find(m=>m.id===statsMetric);
 
   host.innerHTML =
-    // --- headline tiles, three across ---
-    '<div class="stat-hero">'
-    + tile(f.units.toLocaleString(), 'Homes in the pipeline', 'Across <b>'+f.projects+'</b> active projects in '+where+'.')
-    + tile(bmrShare+'%', 'Below market rate', '<b>'+f.bmr.toLocaleString()+'</b> of those homes are income restricted.')
-    + tile(f.medianDays ? (f.medianDays/365).toFixed(1)+' yrs' : '--', 'Median time on file',
-           f.medianDays ? 'From filing to the last recorded action, across <b>'+f.timedCount+'</b> projects with both dates.'
-                        : 'Not enough dated records here to measure.')
-    + tile(s ? fmtMoney(s.homeValue) : '--', 'Typical home value', s && hv ? '<b>'+fmtPct(hv.pct)+'</b> since '+hv.from+'.' : 'Zillow home value index.')
-    + tile(s && s.rent ? fmtRent(s.rent) : '--', 'Typical asking rent', s && rt ? '<b>'+fmtPct(rt.pct)+'</b> since '+rt.from+'.' : 'Zillow rent index.')
-    + tile(p2r ? p2r.toFixed(0) + 'x' : '--', 'Price to rent ratio',
-           p2r ? 'A typical home costs about <b>'+p2r.toFixed(0)+' years</b> of typical rent.' : 'Needs both indexes.')
+    '<div class="stat-toolbar"><span class="lab">Show</span>'
+    + TOPICS.map(t=>'<button type="button" class="stat-chip" data-topic="'+t.id+'" aria-pressed="'+(statsTopic===t.id)+'">'+t.label+'</button>').join('')
     + '</div>'
-
-    // --- pipeline detail ---
-    + '<div class="stat-sec"><h3>The pipeline in '+where+'</h3>'
-    + '<div class="sub">Counted from this dashboard\'s own records. Unit counts exist for '+f.unitsKnown+' of '+f.projects+' active projects, so totals are a floor rather than a full count.</div>'
-    + '<div class="stat-split">'
-    + '<div class="cell"><div class="k">'+(f.medianUnits ? f.medianUnits.toLocaleString() : '--')+'</div><div class="l">Median project size</div></div>'
-    + '<div class="cell"><div class="k">'+f.construction+'</div><div class="l">Under construction now</div></div>'
-    + '<div class="cell"><div class="k">'+f.flagged+'</div><div class="l">Records with a data caveat</div></div>'
-    + '<div class="cell"><div class="k">'+(f.biggest ? f.biggest.units.toLocaleString() : '--')+'</div><div class="l">Largest single project</div></div>'
-    + '<div class="cell"><div class="k">'+f.builderRemedy+'</div><div class="l">Invoking Builder\'s Remedy</div></div>'
-    + '<div class="cell"><div class="k">'+f.transport+'</div><div class="l">Transport &amp; infrastructure</div></div>'
-    + '</div>'
-    + (f.biggest ? '<div class="sub" style="margin-top:12px;">Largest here is <b>'+f.biggest.addr+'</b> at '+f.biggest.units.toLocaleString()+' homes.</div>' : '')
-    + '</div>'
-
-    // --- charts, three across ---
-    + '<div class="stat-sec"><h3>Trends and mix</h3>'
-    + '<div class="sub">Market indexes are citywide and cover all housing, not just the projects tracked here.</div>'
-    + '<div class="stat-charts">'
-    + '<div class="stat-chart"><h4>Home value, 6 years</h4>'+(s?statLine(s.homeValueSeries, fmtMoney, '#3E4F24'):'')
-      + '<div class="cap">'+(hv?fmtPct(hv.pct)+' between '+hv.from+' and '+hv.to+'.':'No series.')+'</div></div>'
-    + '<div class="stat-chart"><h4>Asking rent, 6 years</h4>'+(s?statLine(s.rentSeries, fmtRent, '#2F5E82'):'')
-      + '<div class="cap">'+(rt?fmtPct(rt.pct)+' between '+rt.from+' and '+rt.to+'.':'No series.')+'</div></div>'
-    + '<div class="stat-chart"><h4>Where projects stand</h4>'
-      + statStack(stageParts, ['#8A6E3C','#2F5E82','#8F6318','#9A3A1E','#3B7350'])
-      + '<div class="cap">Every tracked record in '+where+' by stage.</div></div>'
-    + '</div></div>'
-
-    // --- unit mix ---
-    + (typeParts.length ? '<div class="stat-sec"><h3>What is being built</h3>'
-      + '<div class="sub">Homes in the pipeline by project type.</div>'
-      + statStack(typeParts, ['#1F6F78','#3E4F24','#8C5A2B','#6B4C8A','#3F6B4C','#8A6E3C'])
-      + '</div>' : '')
-
-    // --- cross-city comparisons ---
-    + '<div class="stat-sec"><h3>Home values across the South Bay</h3>'
-    + (s ? '<div class="sub">'+compareSentence('The typical '+where+' home', s.homeValue, homes.map(h=>h.value), fmtMoney)+'</div>' : '<div class="sub">Pick a city to see it marked.</div>')
-    + statBars(homes, me, fmtMoney) + '</div>'
-
-    + '<div class="stat-sec"><h3>Asking rents across the South Bay</h3>'
-    + (s && s.rent ? '<div class="sub">'+compareSentence('Typical '+where+' rent', s.rent, rents.map(r=>r.value), fmtRent)+'</div>' : '')
-    + statBars(rents, me, fmtRent) + '</div>'
-
-    + '<div class="stat-sec"><h3>Homes in the pipeline, by city</h3>'
-    + '<div class="sub">Reflects the records this dashboard carries for each city, which vary in depth by how much each city publishes.</div>'
-    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).units})).filter(x=>x.value>0).sort((a,b)=>b.value-a.value), me, n=>n.toLocaleString())
-    + '</div>'
-
-    + '<div class="stat-sec"><h3>Median time on file, by city</h3>'
-    + '<div class="sub">Years between a project\'s filing date and its most recent recorded action. Only projects carrying both dates are counted, so cities publishing fewer dates show fewer records.</div>'
-    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).medianDays})).filter(x=>x.value).map(x=>({key:x.key, value:x.value/365}))
-        .sort((a,b)=>b.value-a.value), me, n=>n.toFixed(1)+' yrs')
-    + '</div>'
-
-    + '<div class="stat-sec"><h3>Transport and infrastructure projects</h3>'
-    + '<div class="sub">Transportation and infrastructure records per city. Commute times and transit ridership need a US Census API key, which this build does not carry.</div>'
-    + statBars(tracked.map(k=>({key:k, value:cityFacts(k).transport})).filter(x=>x.value>0).sort((a,b)=>b.value-a.value), me, n=>n+'')
+    + '<div class="stat-grid">' + shown.map(m=>statCard(m, me)).join('') + '</div>'
+    + (RHNA[me] ? rhnaSection(me) : '')
+    + '<div class="stat-sec"><h3>'+active.label+' across the South Bay</h3>'
+    + '<div class="sub">Click any card above to rank by that number, or any row below to jump to that city.</div>'
+    + statBars(active, me) + '</div>'
+    + '<div class="stat-foot">'
+    + 'Home value and asking rent: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, '+STATS_SOURCE.asOf+'. '
+    + 'Population, income, commute, tenure and housing age: <a href="'+CENSUS_SOURCE.url+'" target="_blank" rel="noopener">'+CENSUS_SOURCE.label+'</a>, '+CENSUS_SOURCE.asOf+'. '
+    + 'Housing target progress: <a href="'+RHNA_SOURCE.url+'" target="_blank" rel="noopener">'+RHNA_SOURCE.label+'</a>, '+RHNA_SOURCE.asOf+'. '
+    + 'Pipeline figures are counted from this dashboard\'s own records and reflect what each city publishes.'
     + '</div>';
 
-  document.getElementById('statsSource').innerHTML =
-    'Home value and rent: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, as of '+STATS_SOURCE.asOf+'. '
-    + 'Everything else is computed from the '+region.projects+' active project records in this dashboard. '
-    + 'Region-wide, that is '+region.units.toLocaleString()+' homes across '+Object.keys(CITIES).filter(k=>k!=='all').length+' cities.';
+  host.querySelectorAll('.stat-chip').forEach(b=>b.addEventListener('click', ()=>{
+    statsTopic = b.getAttribute('data-topic'); statsMetric = null; renderStatistics();
+  }));
+  host.querySelectorAll('.metric-card').forEach(b=>b.addEventListener('click', ()=>{
+    statsMetric = b.getAttribute('data-metric'); renderStatistics();
+    document.querySelector('.stat-sec').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }));
+  host.querySelectorAll('.stat-row').forEach(r=>r.addEventListener('click', ()=>{
+    const c = r.getAttribute('data-city');
+    if(CITIES[c]){ switchCity(c); showScreen('statistics'); }
+  }));
 }
 
 // ================= FEATURED NEWS =================

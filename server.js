@@ -10,6 +10,7 @@ import { PROJECTS } from './data/projects.js';
 import { NEWS_ARTICLES } from './data/news.js';
 import { BOARDS } from './data/boards.js';
 import { buildBriefing, CITY_LABELS, cityLabel } from './digest.js';
+import { getHearings } from './hearings.js';
 
 dotenv.config();
 
@@ -583,8 +584,11 @@ async function starIdsFor(username) {
 // the user's starred items and hands the result to Resend.
 async function sendWelcomeRecap({ username, email, homeCity, frequency, categories }) {
   const stars = await starIdsFor(username);
+  let hearings = [];
+  try { hearings = (await getHearings()).hearings; }
+  catch (err) { console.error('Hearings unavailable for welcome recap:', err.message); }
   const { subject, html } = buildBriefing({
-    username, homeCity, frequency, stars, categories,
+    username, homeCity, frequency, stars, categories, hearings,
     changed: null,   // nothing to compare against on the first send
     isFirst: true,
   });
@@ -617,6 +621,12 @@ async function runDigests(req, res) {
 
   try {
     await syncSnapshotsAndGetChanges();
+
+    // One fetch for the whole run, shared by every briefing. A Legistar outage must not stop the
+    // emails: an empty list just means the hearings section is omitted.
+    let hearingData = { hearings: [] };
+    try { hearingData = await getHearings(); }
+    catch (err) { console.error('Hearings unavailable for this run:', err.message); }
 
     // Interval differs per user's chosen frequency, so filter in JS rather than a single SQL interval.
     const params = [];
@@ -657,6 +667,7 @@ async function runDigests(req, res) {
         homeCity: u.home_city,
         frequency: u.email_frequency,
         categories: parseCategories(u.categories),
+        hearings: hearingData.hearings,
         stars,
         changed,
         sinceLabel: new Date(since).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),
@@ -696,6 +707,20 @@ async function runDigests(req, res) {
     res.status(500).json({ error: 'Digest run failed: ' + err.message });
   }
 }
+
+// ---------------- UPCOMING HEARINGS ----------------
+// Read-only and unauthenticated: it exposes nothing but public meeting agendas. The six-hour
+// cache lives in hearings.js so repeated page loads don't hit Legistar five times over.
+app.get('/api/hearings', async (req, res) => {
+  try {
+    const data = await getHearings({ force: req.query.force === '1' });
+    res.json(data);
+  } catch (err) {
+    console.error('Hearings fetch failed:', err.message);
+    // A Legistar outage must not take the panel down - the page renders without it.
+    res.status(200).json({ generatedAt: new Date().toISOString(), hearings: [], errors: [{ error: err.message }] });
+  }
+});
 
 app.post('/api/cron/send-digests', runDigests);
 app.get('/api/cron/send-digests', runDigests);
