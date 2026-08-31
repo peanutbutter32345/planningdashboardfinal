@@ -160,23 +160,26 @@ function officialLinksFor(homeCity) {
 
 // One plain-English opening line, assembled from real counts. Written by hand rather than
 // generated, so it reads the same way every time and can never invent something.
-function openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount, frequency }) {
+function openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount, frequency, hearingCount }) {
+  const hearingBit = hearingCount
+    ? ` <b>${hearingCount} public hearing${hearingCount === 1 ? '' : 's'}</b> ${hearingCount === 1 ? 'is' : 'are'} coming up, listed first.`
+    : '';
   const label = cityLabel(homeCity);
   const where = homeCity ? label : 'the South Bay';
   if (isFirst) {
     return `You're all set. Here's the current picture for ${where}: housing, transportation, ` +
       `new development, and the boards that decide them. You'll get this ${frequencyPhrase(frequency)}, ` +
-      `with anything that's moved marked <b>Updated</b>.`;
+      `with anything that's moved marked <b>Updated</b>.` + hearingBit;
   }
   if (!changeCount) {
     return `Nothing major moved since ${sinceLabel}. Here's where ${where} stands anyway: ` +
-      `what's in the pipeline, and what's coming up.`;
+      `what's in the pipeline, and what's coming up.` + hearingBit;
   }
   const starredBit = starredChangeCount
     ? `<b>${starredChangeCount} of them ${starredChangeCount === 1 ? 'is' : 'are'} something you follow</b>. `
     : '';
   return `${changeCount} update${changeCount === 1 ? '' : 's'} since ${sinceLabel}. ${starredBit}` +
-    `Everything that moved is marked <b>Updated</b> below.`;
+    `Everything that moved is marked <b>Updated</b> below.` + hearingBit;
 }
 
 function shell({ title, username, opening, body, footerNote }) {
@@ -204,7 +207,25 @@ const byDate = (a, b) => String(b.date || '').localeCompare(String(a.date || '')
  * changed: { projects:Set<id>, boards:Set<id>, news:Set<url> } - what moved since the reader's
  * last email. Pass empty sets for the first-ever send.
  */
-export function buildBriefing({ username, homeCity, frequency, stars, changed, sinceLabel, isFirst, categories }) {
+function hearingRows(hearings) {
+  return hearings.map(h => {
+    const when = new Date(h.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    const tracked = h.matters.flatMap(m => m.projects);
+    const projs = tracked.length
+      ? `<div style="${STYLE.note}"><b>On the agenda:</b> ` +
+        tracked.map(p => `<a href="${projectUrl(p.id)}" style="${STYLE.link}">${esc(p.addr)}</a>`).join(', ') + '</div>'
+      : (h.agendaPublished ? '' : `<div style="${STYLE.note}">Agenda not posted yet.</div>`);
+    return `<tr><td style="${STYLE.row}">
+      <span style="font-weight:700; color:#1A1A1A;">${esc(h.body)}</span>
+      <div style="${STYLE.note}"><b>${esc(when)}</b>${h.time ? ' at ' + esc(h.time) : ''}${h.location ? ' &middot; ' + esc(h.location) : ''}</div>
+      ${projs}
+      ${h.agendaUrl ? `<div style="${STYLE.note}"><a href="${h.agendaUrl}" style="${STYLE.link}">Official agenda &rarr;</a></div>` : ''}
+      <div style="${STYLE.meta}">${esc(cityLabel(h.city))}</div>
+    </td></tr>`;
+  }).join('');
+}
+
+export function buildBriefing({ username, homeCity, frequency, stars, changed, sinceLabel, isFirst, categories, hearings }) {
   // Null/empty means every category, so a subscriber from before this existed still gets a full
   // briefing rather than a silently narrowed one.
   const wanted = (Array.isArray(categories) && categories.length)
@@ -227,6 +248,13 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
     starredNews.filter(a => ch.news.has(a.url)).length;
 
   let body = '';
+
+  // 0. Anything with a date attached leads. A hearing you can still speak at outranks a status
+  // change you can only read about.
+  const upcoming = (hearings || []).filter(h => !homeCity || h.city === homeCity).slice(0, 6);
+  if (upcoming.length) {
+    body += section('Coming up: public hearings', hearingRows(upcoming));
+  }
 
   // 1. Anything the reader follows leads, whether or not it moved - changed ones sort first.
   if (starredProjects.length || starredBoards.length || starredNews.length) {
@@ -299,7 +327,7 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
     html: shell({
       title,
       username,
-      opening: openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount, frequency }),
+      opening: openingLine({ isFirst, homeCity, sinceLabel, changeCount, starredChangeCount, frequency, hearingCount: upcoming.length }),
       body,
       footerNote: `You're getting this ${frequencyPhrase(frequency)}`
         + `${homeCity ? ` for ${cityLabel(homeCity)}` : ''}`

@@ -243,6 +243,27 @@
   .plan-step .body h4{font-size:15px; color:#1A1A1A; margin-bottom:5px;}
   .plan-step .body p{font-size:13px; color:var(--text-soft); margin:0 0 8px;}
   .plan-step .body a.plink{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:underline; margin-right:14px;}
+  /* Upcoming hearings. Date rail on the left, agenda detail on the right. */
+  .hearing-list{display:flex; flex-direction:column; gap:12px;}
+  .hearing{display:grid; grid-template-columns:150px 1fr; gap:16px; background:#fff; border:1px solid var(--rule); border-left:4px solid var(--rule); border-radius:4px; padding:14px 16px;}
+  .hearing.soon{border-left-color:var(--ink); background:#FCFDF9;}
+  .hearing-when .d{display:block; font-family:'Open Sans',sans-serif; font-size:13px; font-weight:800; color:var(--ink);}
+  .hearing-when .c{display:block; font-size:11.5px; color:var(--text-soft); margin-top:3px; text-transform:uppercase; letter-spacing:.04em;}
+  .hearing.soon .hearing-when .c{color:#9A3A1E; font-weight:700;}
+  .hearing-body-h{font-family:'Open Sans',sans-serif; font-size:14px; font-weight:700; color:#1A1A1A; display:flex; flex-wrap:wrap; gap:8px; align-items:baseline;}
+  .hearing-body-h .city{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-soft);}
+  .hearing-loc{font-size:12px; color:var(--text-soft); margin-top:3px;}
+  .hearing-projs{margin-top:9px;}
+  .hearing-projs .lab{display:block; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--ink); margin-bottom:5px;}
+  .hearing-proj{display:inline-block; background:#F2F5EC; border:1px solid #D7DFC8; color:var(--ink); font-weight:700; font-size:12.5px; text-decoration:none; padding:4px 10px; border-radius:3px; margin:0 6px 6px 0;}
+  .hearing-proj:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .hearing-items{margin:9px 0 0; padding-left:18px; font-size:12.5px; color:var(--text-soft); line-height:1.5;}
+  .hearing-items li{margin-bottom:3px;}
+  .hearing-note{font-size:12px; color:var(--text-soft); margin-top:8px; font-style:italic;}
+  .hearing-link{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:none;}
+  .hearing-link:hover{text-decoration:underline;}
+  @media (max-width:600px){ .hearing{grid-template-columns:1fr; gap:8px;} }
+
   /* Statistics. Card-based, echoing the featured-news panel. Charts are inline SVG - no library. */
   .stat-toolbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:2px 0 20px; padding-bottom:14px; border-bottom:1px solid var(--rule);}
   .stat-toolbar .lab{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); font-weight:800; margin-right:2px;}
@@ -586,6 +607,7 @@
     <button class="page-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
     <button class="page-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
     <button class="page-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
+    <button class="page-nav-tab" data-screen="hearings" role="tab" aria-selected="false">Hearings</button>
     <button class="page-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
     <button class="page-nav-tab" data-screen="resources" role="tab" aria-selected="false">Resources</button>
     <button class="page-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
@@ -625,6 +647,17 @@
         <button class="btn secondary" id="plannerCopy" type="button">Copy plan as text</button>
         <span id="plannerCopyStatus" class="section-note" role="status" aria-live="polite"></span>
       </div>
+    </div>
+  </div>
+</div>
+
+<div id="screenHearings" class="screen" style="display:none;">
+  <div class="wrap">
+    <div class="planner-shell">
+      <h2>Upcoming hearings</h2>
+      <p class="section-note">Public meetings in the next 45 days where land use is decided, pulled live from each city's official agenda system. Anything matching a project this dashboard tracks is linked. Cities usually post agendas about a week ahead, so a meeting can appear here before its agenda does.</p>
+      <div id="hearingsContent"><div class="empty">Loading upcoming meetings...</div></div>
+      <p class="section-note" id="hearingsFoot" style="margin-top:20px;"></p>
     </div>
   </div>
 </div>
@@ -2680,6 +2713,7 @@ function refreshCurrentScreen(){
   if(currentScreen==='yourarea') renderYourArea();
   else if(currentScreen==='planner'){ renderPlannerInterests(); renderPlannerEffort(); }
   else if(currentScreen==='statistics') renderStatistics();
+  else if(currentScreen==='hearings') renderHearings();
   else if(currentScreen==='resources') renderResources();
   else if(currentScreen==='ask') renderAskContext();
   else if(currentScreen==='housing') renderTopicPage('housing','Housing');
@@ -2689,7 +2723,7 @@ function refreshCurrentScreen(){
 }
 function showScreen(name){
   currentScreen = name;
-  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount'};
+  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount'};
   Object.entries(ids).forEach(([key,id])=>{
     const el = document.getElementById(id);
     if(el) el.style.display = (key===name) ? 'block' : 'none';
@@ -3412,6 +3446,104 @@ const CITY_STATS = {
 };
 const STATS_SOURCE = {"label":"Zillow Research public data (ZHVI and ZORI), city level","url":"https://www.zillow.com/research/data/","asOf":"July 2026"};
 const CENSUS_SOURCE = {"label":"US Census American Community Survey, 5-year estimates","url":"https://www.census.gov/programs-surveys/acs","asOf":"2023 (ACS 5-year)"};
+
+// ================= UPCOMING HEARINGS =================
+// Fetched once per page load from /api/hearings, which caches Legistar for six hours. This is the
+// only part of the dashboard with a deadline attached, so it leads with how many days are left.
+
+let hearingsCache = null;
+let hearingsScope = 'city';   // 'city' or 'all'
+
+function daysUntil(iso){
+  const d = new Date(iso + 'T12:00:00');
+  return Math.round((d - new Date(new Date().toDateString())) / 864e5);
+}
+function whenLabel(n){
+  if(n < 0) return 'past';
+  if(n === 0) return 'today';
+  if(n === 1) return 'tomorrow';
+  if(n <= 7) return 'in ' + n + ' days';
+  return 'in ' + n + ' days';
+}
+function prettyDate(iso){
+  return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', {weekday:'short', month:'long', day:'numeric'});
+}
+
+function hearingCard(h){
+  const n = daysUntil(h.date);
+  const soon = n <= 7 ? ' soon' : '';
+  const matched = h.matters.filter(m=>m.projects.length);
+  const other = h.matters.filter(m=>!m.projects.length);
+
+  const projectLinks = matched.map(m=>m.projects.map(p=>
+    '<a class="hearing-proj" href="'+location.pathname+'?project='+encodeURIComponent(p.id)+'">'+p.addr+'</a>'
+  ).join('')).join('');
+
+  const otherItems = other.slice(0,4).map(m=>
+    '<li>'+(m.location ? '<b>'+m.location+'</b> &middot; ' : '')+m.title.slice(0,120)+'</li>').join('');
+
+  return '<div class="hearing'+soon+'">'
+    + '<div class="hearing-when"><span class="d">'+prettyDate(h.date)+'</span>'
+      + '<span class="c">'+whenLabel(n)+(h.time ? ' &middot; '+h.time : '')+'</span></div>'
+    + '<div class="hearing-body">'
+      + '<div class="hearing-body-h">'+h.body+'<span class="city">'+(CITIES[h.city]?CITIES[h.city].label:h.city)+'</span></div>'
+      + (h.location ? '<div class="hearing-loc">'+h.location+'</div>' : '')
+      + (projectLinks ? '<div class="hearing-projs"><span class="lab">Tracked projects on this agenda</span>'+projectLinks+'</div>' : '')
+      + (otherItems ? '<ul class="hearing-items">'+otherItems+'</ul>' : '')
+      + (!h.agendaPublished ? '<div class="hearing-note">Agenda not posted yet. Cities usually publish about a week ahead.</div>' : '')
+      + (h.agendaUrl ? '<a class="hearing-link" href="'+h.agendaUrl+'" target="_blank" rel="noopener">Official agenda &rarr;</a>' : '')
+    + '</div></div>';
+}
+
+function renderHearingsList(){
+  const host = document.getElementById('hearingsContent');
+  if(!host || !hearingsCache) return;
+  const all = hearingsCache.hearings || [];
+  const covered = (hearingsCache.cities || []).includes(currentCity);
+  const list = (hearingsScope === 'city' && covered) ? all.filter(h=>h.city===currentCity) : all;
+
+  let head = '<div class="stat-toolbar"><span class="lab">Show</span>'
+    + '<button type="button" class="stat-chip" data-scope="city" aria-pressed="'+(hearingsScope==='city')+'">'
+      + (CITIES[currentCity] ? CITIES[currentCity].label : 'This city') + '</button>'
+    + '<button type="button" class="stat-chip" data-scope="all" aria-pressed="'+(hearingsScope==='all')+'">All covered cities</button>'
+    + '</div>';
+
+  let body;
+  if(!covered && hearingsScope === 'city'){
+    body = '<div class="empty">'+(CITIES[currentCity]?CITIES[currentCity].label:'This city')
+      + ' does not publish agendas through Legistar, so its meetings can\'t be pulled automatically yet. '
+      + 'Switch to all covered cities, or use the official links on the Resources tab.</div>';
+  } else if(!list.length){
+    body = '<div class="empty">No land-use meetings scheduled in the next '+(hearingsCache.days||45)+' days.</div>';
+  } else {
+    body = '<div class="hearing-list">' + list.map(hearingCard).join('') + '</div>';
+  }
+  host.innerHTML = head + body;
+
+  host.querySelectorAll('.stat-chip').forEach(b=>b.addEventListener('click', ()=>{
+    hearingsScope = b.getAttribute('data-scope'); renderHearingsList();
+  }));
+
+  const covLabels = (hearingsCache.cities||[]).map(c=>CITIES[c]?CITIES[c].label:c).join(', ');
+  document.getElementById('hearingsFoot').innerHTML =
+    'Pulled from the Legistar public API for ' + covLabels + '. '
+    + 'Other South Bay cities run different agenda systems and are not covered yet. '
+    + (hearingsCache.generatedAt ? 'Last refreshed ' + new Date(hearingsCache.generatedAt).toLocaleString() + '.' : '');
+}
+
+async function renderHearings(){
+  const host = document.getElementById('hearingsContent');
+  if(!host) return;
+  if(hearingsCache){ renderHearingsList(); return; }
+  host.innerHTML = '<div class="empty">Loading upcoming meetings...</div>';
+  try{
+    const r = await fetch('/api/hearings');
+    hearingsCache = await r.json();
+    renderHearingsList();
+  } catch(err){
+    host.innerHTML = '<div class="empty">Could not load upcoming meetings: ' + err.message + '</div>';
+  }
+}
 
 // ================= STATISTICS =================
 // Three sources, no runtime dependencies. Market figures are Zillow's public research data and

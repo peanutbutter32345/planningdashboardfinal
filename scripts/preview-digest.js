@@ -12,6 +12,7 @@
 
 import { writeFileSync } from 'fs';
 import { buildBriefing } from '../digest.js';
+import { getHearings } from '../hearings.js';
 import { PROJECTS } from '../data/projects.js';
 import { BOARDS } from '../data/boards.js';
 import { NEWS_ARTICLES } from '../data/news.js';
@@ -33,7 +34,14 @@ const stars = {
 const FREQUENCY = process.env.PREVIEW_FREQ || 'monthly';   // 'biweekly' or 'monthly'
 // PREVIEW_CATS=Housing,Transportation to preview a narrowed subscription.
 const CATEGORIES = (process.env.PREVIEW_CATS || '').split(',').map(c => c.trim()).filter(Boolean);
-const base = { username: 'saumit', homeCity: HOME_CITY, frequency: FREQUENCY, stars,
+// Real upcoming hearings, unless PREVIEW_NO_HEARINGS is set or Legistar is unreachable.
+let hearings = [];
+if (!process.env.PREVIEW_NO_HEARINGS) {
+  try { hearings = (await getHearings()).hearings; }
+  catch (err) { console.warn('Hearings unavailable, previewing without them:', err.message); }
+}
+
+const base = { username: 'saumit', homeCity: HOME_CITY, frequency: FREQUENCY, stars, hearings,
                categories: CATEGORIES.length ? CATEGORIES : null };
 
 writeFileSync('preview-welcome.html', buildBriefing({ ...base, changed: null, isFirst: true }).html);
