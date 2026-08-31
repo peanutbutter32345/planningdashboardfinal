@@ -111,6 +111,38 @@ export const CITY_STATS = {
     homeValueSeries: [{year:'2021', value:3091423}, {year:'2022', value:3563738}, {year:'2023', value:3179067}, {year:'2024', value:3403557}, {year:'2025', value:3442876}, {year:'2026', value:3599324}],
     rentSeries: [{year:'2021', value:3576}, {year:'2022', value:3828}, {year:'2023', value:3888}, {year:'2024', value:3998}, {year:'2025', value:4195}, {year:'2026', value:4501}],
   },
+  gilroy: {
+    zillowName: 'Gilroy',
+    homeValue: null, rent: null,
+    homeValueSeries: [], rentSeries: [],
+    population: 58561, medianIncome: 131554, medianGrossRent: 2270,
+    meanCommuteMin: 33.9, transitSharePct: 1.6, renterSharePct: 37.2,
+    medianYearBuilt: 1990, censusHomeValue: 975800,
+  },
+  losaltoshills: {
+    zillowName: 'Los Altos Hills',
+    homeValue: null, rent: null,
+    homeValueSeries: [], rentSeries: [],
+    population: 8367, medianIncome: 250001, medianGrossRent: 3501,
+    meanCommuteMin: 27.7, transitSharePct: 1.2, renterSharePct: 5.0,
+    medianYearBuilt: 1976, censusHomeValue: 2000001,
+  },
+  montesereno: {
+    zillowName: 'Monte Sereno',
+    homeValue: null, rent: null,
+    homeValueSeries: [], rentSeries: [],
+    population: 3459, medianIncome: 250001, medianGrossRent: 2947,
+    meanCommuteMin: 24.3, transitSharePct: 0.6, renterSharePct: 4.3,
+    medianYearBuilt: 1964, censusHomeValue: 2000001,
+  },
+  morganhill: {
+    zillowName: 'Morgan Hill',
+    homeValue: null, rent: null,
+    homeValueSeries: [], rentSeries: [],
+    population: 45152, medianIncome: 159758, medianGrossRent: 2275,
+    meanCommuteMin: 34.8, transitSharePct: 1.7, renterSharePct: 27.7,
+    medianYearBuilt: 1989, censusHomeValue: 1127600,
+  },
 };
 
 export const STATS_SOURCE = {

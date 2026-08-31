@@ -328,5 +328,185 @@ export const NEWS_ARTICLES = [
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2019/12/19203519/Screenshot-2019-12-06-at-6.25.45-PM-1-1200x630.jpg",
     "snippet": "Cities across California are deciding if they are going to welcome or fight a statewide housing bill that could change the makeup of neighborhoods.",
     "url": "https://sanjosespotlight.com/not-all-santa-clara-county-cities-see-sb-9-new-housing-law-the-same-way-san-jose-silicon-valley/"
+  },
+  {
+    "topic": "housing",
+    "city": "losgatos",
+    "title": "More housing planned for Los Gatos Boulevard",
+    "source": "San José Spotlight",
+    "date": "2025-05-07",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/05/02172745/PXL_20250502_200929316-1200x630.jpg",
+    "snippet": "Another housing project along Los Gatos Boulevard is one step closer to fruition, with developers continuing to propose homes on the main thoroughfare.",
+    "url": "https://sanjosespotlight.com/more-housing-planned-for-los-gatos-boulevard/"
+  },
+  {
+    "topic": "housing",
+    "city": "losgatos",
+    "title": "State signs off on Los Gatos housing plan",
+    "source": "San José Spotlight",
+    "date": "2024-05-07",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/05/06122136/PXL_20240327_195215140-1200x630.jpg",
+    "snippet": "After months of contentious debate among residents and town officials, Los Gatos has received state approval to build nearly 2,000 homes more than a year past the deadline.",
+    "url": "https://sanjosespotlight.com/los-gatos-housing-plan-gets-green-light-from-state/"
+  },
+  {
+    "topic": "housing",
+    "city": "losgatos",
+    "title": "Developer for Los Gatos project warns of legal costs",
+    "source": "San José Spotlight",
+    "date": "2025-12-23",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/12/22141918/Los-Gatos-dev-Capri-Ave-1-1200x630.jpg",
+    "snippet": "The developer of a proposed 13-story apartment building in Los Gatos warned the Town Council last week of potential legal costs for blocking the project, even though the council says the developer’s application is moving forward.",
+    "url": "https://sanjosespotlight.com/developer-for-los-gatos-project-warns-of-legal-costs/"
+  },
+  {
+    "topic": "housing",
+    "city": "losgatos",
+    "title": "Housing project across from Los Gatos High moves forward",
+    "source": "San José Spotlight",
+    "date": "2025-06-03",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/04/01163557/cafe-dio-scaled-e1748903841172-1200x630.jpg",
+    "snippet": "A controversial Los Gatos housing project next to the town high school is moving forward, despite residents raising safety concerns.",
+    "url": "https://sanjosespotlight.com/housing-project-across-from-los-gatos-high-school-moves-forward/"
+  },
+  {
+    "topic": "housing",
+    "city": "losgatos",
+    "title": "Housing project next to Los Gatos High raises safety issues",
+    "source": "San José Spotlight",
+    "date": "2025-04-06",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/04/01163557/cafe-dio-1200x630.jpg",
+    "snippet": "A 30-home project could be built across the street from Los Gatos High School, bringing student safety to the forefront.",
+    "url": "https://sanjosespotlight.com/housing-project-next-to-los-gatos-high-school-raises-safety-issues/"
+  },
+  {
+    "topic": "housing",
+    "city": "losgatos",
+    "title": "Housing development could loom over Los Gatos backyards",
+    "source": "San José Spotlight",
+    "date": "2024-04-25",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/04/23120218/PXL_20240419_183816147-1200x630.jpg",
+    "snippet": "A quiet neighborhood just off bustling Los Gatos Boulevard could be forever changed if a massive housing project comes to fruition.",
+    "url": "https://sanjosespotlight.com/housing-development-could-loom-over-los-gatos-backyards/"
+  },
+  {
+    "topic": "developments",
+    "city": "losgatos",
+    "title": "Silicon Valley town may be tied up in building rules",
+    "source": "San José Spotlight",
+    "date": "2023-07-25",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2021/10/18174648/North-40-1-scaled-e1685144650888-1200x630.jpg",
+    "snippet": "Hundreds of new apartments could soon spring up in Los Gatos, as town officials continue revising plans to increase housing. Regulators still haven’t approved Los Gatos’ “housing element”—the state-mandated plan that lays out how towns and cities will help accommodate the state's affordable housing goals. But builders are still pushing ahead.",
+    "url": "https://sanjosespotlight.com/silicon-valley-town-los-gatos-may-be-tied-up-in-building-rules-california-builders-remedy-housing-element/"
+  },
+  {
+    "topic": "housing",
+    "city": "campbell",
+    "title": "Campbell council closes housing development loophole",
+    "source": "San José Spotlight",
+    "date": "2026-04-25",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/04/23184224/Campbell-city-council-21-Apr-26-scaled-e1777070285500-1200x630.jpg",
+    "snippet": "Campbell residents have scored a partial victory in a fight against a state housing law that could open the door to replacing single-family homes with multifamily developments.",
+    "url": "https://sanjosespotlight.com/campbell-council-closes-housing-development-loophole/"
+  },
+  {
+    "topic": "developments",
+    "city": "campbell",
+    "title": "Campbell office park could flip into large housing development",
+    "source": "San José Spotlight",
+    "date": "2025-02-06",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/01/30160607/PXL_20250130_182826457-1200x630.jpg",
+    "snippet": "Campbell’s Technology Parkway could become home to one of the city’s largest developments in recent years. The Campbell Planning Commission initiated the community feedback process Jan. 28 for a proposed 290-home development located between 635 and 695 Campbell Technology Parkway. Campbell-based Bay West Development submitted the site’s plans in 2023, including 27 single-family homes and...",
+    "url": "https://sanjosespotlight.com/campbell-office-park-to-flip-into-large-housing-development/"
+  },
+  {
+    "topic": "housing",
+    "city": "paloalto",
+    "title": "Palo Alto City Council approves 8-story housing complex",
+    "source": "San José Spotlight",
+    "date": "2026-08-18",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/08/18095052/Palo-Alto-8-story-dev-rendering-Embarcadero-1200x630.webp",
+    "snippet": "Converting retail to housing is one of the pillars of Palo Alto’s plan to create a new residential neighborhood on San Antonio Road, a historically commercial corridor that borders Mountain View.",
+    "url": "https://sanjosespotlight.com/palo-alto-city-council-approves-8-story-housing-complex/"
+  },
+  {
+    "topic": "housing",
+    "city": "paloalto",
+    "title": "Palo Alto seeks more housing on downtown lot project",
+    "source": "San José Spotlight",
+    "date": "2025-10-30",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/10/29133244/Screen-Shot-2025-10-29-at-1.31.32-PM-1200x630.png",
+    "snippet": "For a body historically known for paring down housing development proposals, the Palo Alto City Council this week overwhelmingly put its support behind a proposal for 72 affordable housing units on a downtown surface parking lot, an increase of 18 compared to the initial design that it had endorsed in January.",
+    "url": "https://sanjosespotlight.com/palo-alto-seeks-more-housing-on-downtown-lot-project/"
+  },
+  {
+    "topic": "housing",
+    "city": "paloalto",
+    "title": "Palo Alto leaders approve 183-apartment complex",
+    "source": "San José Spotlight",
+    "date": "2026-05-18",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/18103842/3781-El-Camino-Palo-Alto-Embarcadero-1200x630.webp",
+    "snippet": "Palo Alto city leaders have enthusiastically backed a housing project that would have likely been dead on arrival just two years ago: an 85-foot-tall apartment building in the Ventura neighborhood.",
+    "url": "https://sanjosespotlight.com/palo-alto-leaders-approve-183-apartment-complex/"
+  },
+  {
+    "topic": "housing",
+    "city": "paloalto",
+    "title": "Palo Alto approves 368-apartment complex on El Camino Real",
+    "source": "San José Spotlight",
+    "date": "2025-07-25",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/23162028/Screen-Shot-2025-07-23-at-4.19.57-PM.png",
+    "snippet": "One of Palo Alto’s largest and most ambitious housing projects, a 368-apartment complex proposed for the former site of The Fish Market on El Camino Real, has received the green light from the city, clearing the way for construction to begin. The proposal from Acclaim Companies for 3150 El Camino Real exemplifies more than any...",
+    "url": "https://sanjosespotlight.com/palo-alto-approves-368-apartment-complex-on-el-camino-real/"
+  },
+  {
+    "topic": "developments",
+    "city": "paloalto",
+    "title": "Palo Alto downtown aims to raise heights, spur residential growth",
+    "source": "San José Spotlight",
+    "date": "2025-07-28",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/28104727/PA_DOWNTOWN_Mar2025_WEB_16-1200x630.jpg",
+    "snippet": "As Palo Alto leaders forge a new strategy for increasing housing in the downtown neighborhood, one edge of the 90-acre planning area is emerging as a promising site for a future residential boom. Downtown has seen virtually no residential growth over the past decade, even as other areas have experienced an influx of proposals. The...",
+    "url": "https://sanjosespotlight.com/palo-alto-downtown-aims-to-raise-heights-spur-residential-growth/"
+  },
+  {
+    "topic": "housing",
+    "city": "paloalto",
+    "title": "Palo Alto seeks 'pro-housing' designation after resisting growth",
+    "source": "San José Spotlight",
+    "date": "2026-05-29",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/29122515/Palo-Alto-Embarcadero-1200x630.webp",
+    "snippet": "Palo Alto is seeking to earn a pro-housing designation from the state of California this year, a label that would mark a major shift in the way the city has responded to growing regional housing needs amid significant resident pushback to new development.",
+    "url": "https://sanjosespotlight.com/palo-alto-seeks-pro-housing-designation-after-resisting-growth/"
+  },
+  {
+    "topic": "housing",
+    "city": "paloalto",
+    "title": "Final housing projects round out Palo Alto’s SB 79 window",
+    "source": "San José Spotlight",
+    "date": "2026-07-23",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/07/23101749/Palo-Alto-SB-79-dev-rendering-Embarcadero.webp",
+    "snippet": "As the deadline approached, two additional housing proposals in Palo Alto applied under a new state housing law that affords greater height and density to projects near public transit.",
+    "url": "https://sanjosespotlight.com/final-housing-projects-round-out-palo-altos-sb-79-window/"
+  },
+  {
+    "topic": "developments",
+    "city": "paloalto",
+    "title": "Palo Alto breaks ground on housing project at former Fish Market site",
+    "source": "San José Spotlight",
+    "date": "2026-08-13",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/08/13110556/Palo-Alto-Fish-Market-development-rendering-Embarcadero-1200x630.webp",
+    "snippet": "When it comes to fulfilling state and regional housing mandates in Palo Alto, no recent changes to state law can compare to the project that will take over the former site of The Fish Market on El Camino Real.",
+    "url": "https://sanjosespotlight.com/palo-alto-breaks-ground-on-large-housing-project-at-former-fish-market-site/"
+  },
+  {
+    "topic": "developments",
+    "city": "paloalto",
+    "title": "Palo Alto Town & Country Village looks to construct apartment buildings",
+    "source": "San José Spotlight",
+    "date": "2025-11-19",
+    "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/11/17094907/TownCountry3-1200x630.jpg",
+    "snippet": "After fiercely opposing a recently approved development with 10 condominiums on an adjacent lot, the owners of Town & Country Village are now looking to build a pair of seven-story apartment buildings on a parking lot next to the shopping center. Real estate investor Ellis Partners, which bought the property in 2004, filed a pre-application...",
+    "url": "https://sanjosespotlight.com/palo-alto-town-country-village-looks-to-construct-apartment-buildings/"
   }
 ];
