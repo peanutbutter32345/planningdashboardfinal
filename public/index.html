@@ -264,6 +264,21 @@
   .hearing-link:hover{text-decoration:underline;}
   @media (max-width:600px){ .hearing{grid-template-columns:1fr; gap:8px;} }
 
+  /* RHNA progress. One bar per income band, because the affordable bands are the story. */
+  .rhna-head{display:flex; gap:18px; align-items:flex-start; background:#F7F8F3; border:1px solid var(--rule); border-radius:4px; padding:14px 16px; margin-bottom:16px;}
+  .rhna-big{font-family:var(--mono); font-size:38px; font-weight:700; color:var(--ink); line-height:1; letter-spacing:-1px;}
+  .rhna-big .pc{font-size:19px; color:var(--text-soft);}
+  .rhna-note{font-size:13px; color:var(--text); line-height:1.6;}
+  .rhna-tiers{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  .rhna-tier .rt-head{display:flex; justify-content:space-between; align-items:baseline; gap:6px; margin-bottom:5px;}
+  .rhna-tier .rt-l{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft);}
+  .rhna-tier .rt-v{font-family:var(--mono); font-size:12px; color:var(--ink); white-space:nowrap;}
+  .rhna-tier .rt-v .of{color:var(--text-soft); font-size:10.5px;}
+  .rhna-tier .rt-track{background:#E9ECE1; height:9px; border-radius:2px; overflow:hidden;}
+  .rhna-tier .rt-fill{display:block; height:100%;}
+  .rhna-tier .rt-pct{font-family:var(--mono); font-size:11px; color:var(--text-soft); margin-top:4px;}
+  @media (max-width:760px){ .rhna-tiers{grid-template-columns:repeat(2,1fr);} .rhna-head{flex-direction:column; gap:8px;} }
+
   /* Statistics. Card-based, echoing the featured-news panel. Charts are inline SVG - no library. */
   .stat-toolbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:2px 0 20px; padding-bottom:14px; border-bottom:1px solid var(--rule);}
   .stat-toolbar .lab{font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); font-weight:800; margin-right:2px;}
@@ -3545,6 +3560,86 @@ async function renderHearings(){
   }
 }
 
+// Generated from data/rhna.js - California HCD 6th Cycle RHNA Progress Report.
+const RHNA = {
+  campbell: {"vli":[42,752],"li":[43,434],"mod":[43,499],"above":[132,1292],"units":260,"target":2977,"pct":8.7},
+  cupertino: {"vli":[41,1193],"li":[41,687],"mod":[42,755],"above":[135,1953],"units":259,"target":4588,"pct":5.6},
+  gilroy: {"vli":[33,669],"li":[32,385],"mod":[32,200],"above":[309,519],"units":406,"target":1773,"pct":22.9},
+  losaltos: {"vli":[99,501],"li":[142,288],"mod":[117,326],"above":[248,843],"units":606,"target":1958,"pct":30.9},
+  losaltoshills: {"vli":[19,125],"li":[19,72],"mod":[58,82],"above":[19,210],"units":115,"target":489,"pct":23.5},
+  losgatos: {"vli":[43,537],"li":[36,310],"mod":[36,320],"above":[57,826],"units":172,"target":1993,"pct":8.6},
+  milpitas: {"vli":[59,1685],"li":[25,970],"mod":[59,1131],"above":[267,2927],"units":410,"target":6713,"pct":6.1},
+  montesereno: {"vli":[21,53],"li":[6,30],"mod":[3,31],"above":[24,79],"units":54,"target":193,"pct":28},
+  morganhill: {"vli":[65,262],"li":[0,151],"mod":[87,174],"above":[508,450],"units":660,"target":1037,"pct":63.6},
+  mountainview: {"vli":[259,2773],"li":[92,1597],"mod":[73,1885],"above":[502,4880],"units":926,"target":11135,"pct":8.3},
+  paloalto: {"vli":[41,1556],"li":[47,896],"mod":[81,1013],"above":[456,2621],"units":625,"target":6086,"pct":10.3},
+  santaclara: {"vli":[103,2872],"li":[241,1653],"mod":[137,1981],"above":[1063,5126],"units":1544,"target":11632,"pct":13.3},
+  saratoga: {"vli":[83,454],"li":[91,261],"mod":[81,278],"above":[200,719],"units":455,"target":1712,"pct":26.6},
+  sunnyvale: {"vli":[170,2968],"li":[115,1709],"mod":[173,2032],"above":[637,5257],"units":1095,"target":11966,"pct":9.2},
+  westsanjose: {"vli":[1971,15088],"li":[1945,8687],"mod":[2184,10711],"above":[1719,27714],"units":7819,"target":62200,"pct":12.6},
+};
+const RHNA_PERIOD = "01/31/2023 - 01/31/2031";
+const RHNA_SOURCE = {"label":"California HCD, 6th Cycle RHNA Progress Report","url":"https://data.ca.gov/dataset/rhna-progress-report","asOf":"August 2026"};
+
+// ---- RHNA progress ----
+// A city's Housing Element stays compliant by permitting its allocation. Fall far enough behind
+// and the element can be decertified, which is what lets Builder's Remedy projects ignore local
+// zoning. That is the link between this section and the flags on project cards.
+const RHNA_TIERS = [
+  {key:'vli',   label:'Very low income',  color:'#1F6F78'},
+  {key:'li',    label:'Low income',       color:'#3E4F24'},
+  {key:'mod',   label:'Moderate income',  color:'#8A6E3C'},
+  {key:'above', label:'Above moderate',   color:'#8C5A2B'},
+];
+
+function rhnaTierBar(city){
+  const r = RHNA[city];
+  if(!r) return '';
+  return '<div class="rhna-tiers">' + RHNA_TIERS.map(t=>{
+    const [got, target] = r[t.key];
+    const pct = target ? Math.min(100, got/target*100) : 0;
+    return '<div class="rhna-tier">'
+      + '<div class="rt-head"><span class="rt-l">'+t.label+'</span>'
+        + '<span class="rt-v">'+got.toLocaleString()+' <span class="of">of '+target.toLocaleString()+'</span></span></div>'
+      + '<div class="rt-track"><span class="rt-fill" style="width:'+pct.toFixed(1)+'%; background:'+t.color+'"></span></div>'
+      + '<div class="rt-pct">'+(target ? Math.round(got/target*100) : 0)+'%</div>'
+      + '</div>';
+  }).join('') + '</div>';
+}
+
+function rhnaSection(city){
+  const r = RHNA[city];
+  if(!r) return '';
+  const label = CITIES[city] ? CITIES[city].label : city;
+  const yearsIn = 3, yearsTotal = 8;      // cycle runs Jan 2023 to Jan 2031
+  const onPace = Math.round(yearsIn / yearsTotal * 100);
+  const behind = r.pct < onPace;
+  const br = (CITIES[city] ? CITIES[city].data : []).filter(d=>/builder'?s remedy/i.test(d.flag||'')).length;
+
+  // Rank all cities so the reader can see whether this is normal or unusual.
+  const ranked = Object.keys(RHNA).map(k=>({k, v:RHNA[k].pct})).sort((a,b)=>b.v-a.v);
+  const pos = ranked.findIndex(x=>x.k===city)+1;
+
+  return '<div class="stat-sec"><h3>Housing target progress</h3>'
+    + '<div class="sub">Every city has a state housing allocation for '+RHNA_PERIOD+', split across four income bands. '
+      + 'Permitting far below the target is what puts a Housing Element out of compliance, and that is what allows '
+      + 'Builder\'s Remedy projects to bypass local zoning.</div>'
+    + '<div class="rhna-head">'
+      + '<div class="rhna-big">'+r.pct+'<span class="pc">%</span></div>'
+      + '<div class="rhna-note">'
+        + '<b>'+label+' has permitted '+r.units.toLocaleString()+' of '+r.target.toLocaleString()+' homes</b> so far this cycle, '
+        + 'ranking #'+pos+' of '+ranked.length+' in the South Bay. '
+        + 'About '+onPace+'% of the cycle has elapsed, so the city is '
+        + (behind ? '<b>behind pace</b>' : '<b>at or ahead of pace</b>') + '.'
+        + (br ? ' <b>'+br+'</b> project'+(br===1?'':'s')+' tracked here '+(br===1?'has':'have')+' invoked Builder\'s Remedy.' : '')
+      + '</div>'
+    + '</div>'
+    + rhnaTierBar(city)
+    + '<div class="sub" style="margin-top:14px;">Affordable bands are where cities fall furthest behind: '
+      + 'market-rate homes tend to get built, deed-restricted ones need subsidy.</div>'
+    + '</div>';
+}
+
 // ================= STATISTICS =================
 // Three sources, no runtime dependencies. Market figures are Zillow's public research data and
 // demographics are US Census ACS 5-year estimates, both embedded in data/stats.js. Everything
@@ -3616,6 +3711,9 @@ function metricCatalog(){
     {id:'medianUnits',  topic:'pipeline',  label:'Median project size',  tag:'Tracked', get:fact('medianUnits'),    fmt:n=>fmtInt(n)+' homes', dir:'lo'},
     {id:'construction', topic:'pipeline',  label:'Under construction',   tag:'Tracked', get:fact('construction'),   fmt:fmtInt,   dir:'lo'},
     {id:'medianYears',  topic:'pipeline',  label:'Median time on file',  tag:'Tracked', get:fact('medianYears'),    fmt:n=>n.toFixed(1)+' yrs', dir:'hi'},
+    {id:'rhnaPct',      topic:'pipeline',  label:'Housing target met',   tag:'State',   get:(c)=>RHNA[c]?RHNA[c].pct:null, fmt:n=>n.toFixed(1)+'%', dir:'lo'},
+    {id:'rhnaTarget',   topic:'pipeline',  label:'Housing target for the cycle', tag:'State', get:(c)=>RHNA[c]?RHNA[c].target:null, fmt:fmtInt, dir:'lo'},
+    {id:'rhnaAffordable',topic:'pipeline', label:'Affordable homes permitted', tag:'State', get:(c)=>{ const r=RHNA[c]; return r ? r.vli[0]+r.li[0] : null; }, fmt:fmtInt, dir:'lo'},
     {id:'income',       topic:'people',    label:'Median household income', tag:'Census', get:stat('medianIncome'), fmt:fmtMoney, dir:'hi'},
     {id:'population',   topic:'people',    label:'Population',           tag:'Census',  get:stat('population'),     fmt:fmtInt,   dir:'lo'},
     {id:'priceToRent',  topic:'people',    label:'Price to rent ratio',  tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.rent) ? s.homeValue/(s.rent*12) : null; }, fmt:n=>n.toFixed(0)+'x', dir:'hi'},
@@ -3675,6 +3773,9 @@ function statCard(metric, me){
   if(metric.id==='rent' && s){ const g=growth(s.rentSeries); if(g) sub='<b>'+fmtPct(g.pct)+'</b> since '+g.from+'.'; }
   if(metric.id==='priceToRent') sub = 'A typical home costs about that many years of typical rent.';
   if(metric.id==='incomeToPrice') sub = 'Typical home value divided by median household income.';
+  if(metric.id==='rhnaPct' && RHNA[me]) sub = RHNA[me].units.toLocaleString()+' of '+RHNA[me].target.toLocaleString()+' homes permitted this cycle.';
+  if(metric.id==='rhnaTarget') sub = 'State allocation for '+RHNA_PERIOD+'.';
+  if(metric.id==='rhnaAffordable' && RHNA[me]) sub = 'Very low plus low income, against a target of <b>'+(RHNA[me].vli[1]+RHNA[me].li[1]).toLocaleString()+'</b>.';
   if(metric.id==='transitShare') sub = 'Share of commuters using public transit.';
   if(metric.id==='commute')     sub = 'Average one-way travel time to work.';
   if(metric.id==='builderRemedy') sub = 'Applications arguing local zoning does not apply.';
@@ -3718,12 +3819,14 @@ function renderStatistics(){
     + TOPICS.map(t=>'<button type="button" class="stat-chip" data-topic="'+t.id+'" aria-pressed="'+(statsTopic===t.id)+'">'+t.label+'</button>').join('')
     + '</div>'
     + '<div class="stat-grid">' + shown.map(m=>statCard(m, me)).join('') + '</div>'
+    + (RHNA[me] ? rhnaSection(me) : '')
     + '<div class="stat-sec"><h3>'+active.label+' across the South Bay</h3>'
     + '<div class="sub">Click any card above to rank by that number, or any row below to jump to that city.</div>'
     + statBars(active, me) + '</div>'
     + '<div class="stat-foot">'
     + 'Home value and asking rent: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, '+STATS_SOURCE.asOf+'. '
     + 'Population, income, commute, tenure and housing age: <a href="'+CENSUS_SOURCE.url+'" target="_blank" rel="noopener">'+CENSUS_SOURCE.label+'</a>, '+CENSUS_SOURCE.asOf+'. '
+    + 'Housing target progress: <a href="'+RHNA_SOURCE.url+'" target="_blank" rel="noopener">'+RHNA_SOURCE.label+'</a>, '+RHNA_SOURCE.asOf+'. '
     + 'Pipeline figures are counted from this dashboard\'s own records and reflect what each city publishes.'
     + '</div>';
 
