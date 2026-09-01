@@ -45,11 +45,23 @@
   .wrap{max-width:1240px; margin:0 auto; padding:0 24px;}
   @media (max-width:640px){ .wrap{padding:0 16px;} }
 
-  .hero{background:var(--paper-2); color:var(--text); padding:38px 0 30px; border-bottom:4px solid var(--ink);}
+  /* Hero photograph: Historic Murphy Avenue, Sunnyvale, by "The Sands of Time 0", CC BY-SA 4.0,
+     via Wikimedia Commons. The licence requires attribution, which is rendered below the lede. */
+  .hero{position:relative; background:var(--paper-2); color:var(--text); padding:54px 0 34px; border-bottom:3px solid var(--ink);
+    background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Historic_Murphy_Avenue%2C_Sunnyvale_%28May_2025%29.jpg/1280px-Historic_Murphy_Avenue%2C_Sunnyvale_%28May_2025%29.jpg');
+    background-size:cover; background-position:center 60%; background-repeat:no-repeat;}
+  /* The wash. Without it the photo fights the masthead; with it the photo reads as paper texture. */
+  .hero::before{content:''; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(243,245,238,0.95) 0%, rgba(243,245,238,0.965) 55%, rgba(243,245,238,0.995) 100%);}
+  /* Desaturating the photo keeps it from competing with the green interface below it. */
+  .hero{background-blend-mode:luminosity; background-color:var(--paper-2);}
+  .hero > .wrap{position:relative; z-index:1;}
+  .hero-credit{margin-top:22px; font-size:10.5px; color:#7C8479; letter-spacing:.02em;}
+  .hero-credit a{color:#7C8479; text-decoration:underline;}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
-  .hero h1{font-family:'Open Sans', Arial, Helvetica, sans-serif; font-size:clamp(26px, 4vw, 38px); font-weight:800; letter-spacing:-0.01em; color:#1A1A1A; max-width:22ch;}
-  .hero h1 em{font-style:normal; color:var(--ink);}
+  .hero h1{font-family:'Times New Roman', Times, Georgia, serif; font-size:clamp(34px, 5.2vw, 54px); font-weight:700; letter-spacing:-0.015em; line-height:1.08; color:#000; max-width:16ch;}
+  .hero h1 em{font-style:normal; color:#000;}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
 
   .city-switch{display:flex; gap:8px; margin-top:18px; flex-wrap:wrap;}
@@ -208,10 +220,13 @@
   .onboard-actions .btn{flex:1 1 auto;}
 
   /* ---- Page nav ---- */
-  .page-nav{background:#fff; border-bottom:3px solid var(--ink); position:sticky; top:0; z-index:50;}
-  .page-nav-inner{display:flex; gap:2px; padding:0 24px;}
-  .page-nav-tab{font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; padding:13px 18px; border-radius:0; border:none; background:transparent; color:var(--text-soft); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-3px;}
-  .page-nav-tab.active{color:var(--ink); border-bottom-color:var(--ink);}
+  .page-nav{background:#fff; border-bottom:2px solid var(--ink); position:sticky; top:0; z-index:50;}
+  /* One row that scrolls sideways on narrow screens. Wrapping made "Get-Involved Planner" stack
+     three lines deep and pushed the whole bar to triple height. */
+  .page-nav-inner{display:flex; gap:0; padding:0 24px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
+  .page-nav-inner::-webkit-scrollbar{display:none;}
+  .page-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.01em; padding:14px 15px; border-radius:0; border:none; background:transparent; color:var(--text-soft); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-3px;}
+  .page-nav-tab.active{color:var(--ink); font-weight:800; border-bottom-color:var(--ink);}
   .page-nav-tab:hover:not(.active){background:var(--paper-2); color:var(--ink);}
   .screen{min-height:40vh;}
   /* Target of an email deep link - fades out on its own so it doesn't linger. */
@@ -598,7 +613,6 @@
   <div class="wrap">
     <div class="hero-top">
       <div class="hero-copy">
-        <div class="eyebrow"><span class="dot"></span> SOUTH BAY PUBLIC RECORDS PROTOTYPE</div>
         <h1>South Bay Area <em>Civic Dashboard</em></h1>
         <p class="lede">A dashboard for tracking real planning developments across the South Bay - housing, transportation, and civic projects, official city resources, and concrete ways to get involved. Pick a city below.</p>
       </div>
@@ -610,6 +624,7 @@
         <div class="featured-cards" id="featuredCards"></div>
       </aside>
     </div>
+    <div class="hero-credit">Background: Historic Murphy Avenue, Sunnyvale &middot; photo by The Sands of Time 0, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Historic_Murphy_Avenue,_Sunnyvale_(May_2025).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></div>
     <div class="city-switch" id="citySwitch"></div>
     <div class="snap-row" id="snapRow"></div>
     <div class="quicklinks-row" id="quickLinksRow"></div>
