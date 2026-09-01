@@ -45,18 +45,18 @@
   .wrap{max-width:1240px; margin:0 auto; padding:0 24px;}
   @media (max-width:640px){ .wrap{padding:0 16px;} }
 
-  /* Hero photograph: Historic Murphy Avenue, Sunnyvale, by "The Sands of Time 0", CC BY-SA 4.0,
-     via Wikimedia Commons. The licence requires attribution, which is rendered below the lede. */
+  /* Hero photograph: El Camino Real at Mathilda Avenue, Sunnyvale - the corridor most of the
+     housing tracked here sits on. Public domain, via Wikimedia Commons; credited anyway. */
   .hero{position:relative; background:var(--paper-2); color:var(--text); padding:54px 0 34px; border-bottom:3px solid var(--ink);
-    background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Historic_Murphy_Avenue%2C_Sunnyvale_%28May_2025%29.jpg/1280px-Historic_Murphy_Avenue%2C_Sunnyvale_%28May_2025%29.jpg');
-    background-size:cover; background-position:center 60%; background-repeat:no-repeat;}
+    background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/El_camino_and_mathilda.jpg/1280px-El_camino_and_mathilda.jpg');
+    background-size:cover; background-position:center 58%; background-repeat:no-repeat;}
   /* The wash. Without it the photo fights the masthead; with it the photo reads as paper texture. */
   .hero::before{content:''; position:absolute; inset:0; pointer-events:none;
     background:linear-gradient(180deg, rgba(243,245,238,0.95) 0%, rgba(243,245,238,0.965) 55%, rgba(243,245,238,0.995) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
   .hero{background-blend-mode:luminosity; background-color:var(--paper-2);}
   .hero > .wrap{position:relative; z-index:1;}
-  .hero-credit{margin-top:22px; font-size:10.5px; color:#7C8479; letter-spacing:.02em;}
+  .hero-credit{margin-top:18px; text-align:right; font-size:10px; color:#8B9285; letter-spacing:.02em;}
   .hero-credit a{color:#7C8479; text-decoration:underline;}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
@@ -220,14 +220,17 @@
   .onboard-actions .btn{flex:1 1 auto;}
 
   /* ---- Page nav ---- */
-  .page-nav{background:#fff; border-bottom:2px solid var(--ink); position:sticky; top:0; z-index:50;}
+  .page-nav{background:#fff; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); position:sticky; top:0; z-index:50; box-shadow:0 1px 0 rgba(0,0,0,.03);}
   /* One row that scrolls sideways on narrow screens. Wrapping made "Get-Involved Planner" stack
      three lines deep and pushed the whole bar to triple height. */
   .page-nav-inner{display:flex; gap:0; padding:0 24px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
   .page-nav-inner::-webkit-scrollbar{display:none;}
-  .page-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.01em; padding:14px 15px; border-radius:0; border:none; background:transparent; color:var(--text-soft); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-3px;}
-  .page-nav-tab.active{color:var(--ink); font-weight:800; border-bottom-color:var(--ink);}
-  .page-nav-tab:hover:not(.active){background:var(--paper-2); color:var(--ink);}
+  .page-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:15px 14px 13px; border-radius:0; border:none; background:transparent; color:var(--text-soft); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-3px;}
+  /* Active state is a cap above the tab, not a rule below it: it reads as a selected tab rather
+     than an underline floating near the content. */
+  .page-nav-tab{border-bottom:none; border-top:3px solid transparent; transition:color .12s, background .12s, border-color .12s;}
+  .page-nav-tab.active{color:var(--ink); border-top-color:var(--ink); background:linear-gradient(180deg, rgba(62,79,36,0.07), rgba(62,79,36,0));}
+  .page-nav-tab:hover:not(.active){color:var(--ink); border-top-color:var(--paper-3);}
   .screen{min-height:40vh;}
   /* Target of an email deep link - fades out on its own so it doesn't linger. */
   .card.deep-linked{outline:3px solid #3E4F24; outline-offset:3px; animation:deepLinkFade 4s ease-out forwards;}
@@ -344,7 +347,7 @@
   }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
-  .hero-top{display:flex; gap:34px; align-items:flex-start;}
+  .hero-top{display:flex; gap:40px; align-items:center;}
   .hero-copy{flex:1 1 340px; min-width:0;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
   .featured-news{flex:0 1 430px; max-width:430px; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
@@ -624,7 +627,7 @@
         <div class="featured-cards" id="featuredCards"></div>
       </aside>
     </div>
-    <div class="hero-credit">Background: Historic Murphy Avenue, Sunnyvale &middot; photo by The Sands of Time 0, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Historic_Murphy_Avenue,_Sunnyvale_(May_2025).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></div>
+    <div class="hero-credit">Background: El Camino Real at Mathilda Avenue, Sunnyvale &middot; photo by ZuperB, public domain, via <a href="https://commons.wikimedia.org/wiki/File:El_camino_and_mathilda.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></div>
     <div class="city-switch" id="citySwitch"></div>
     <div class="snap-row" id="snapRow"></div>
     <div class="quicklinks-row" id="quickLinksRow"></div>
