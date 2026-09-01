@@ -53,7 +53,7 @@
     background-size:cover; background-position:center 58%; background-repeat:no-repeat;}
   /* The wash. Without it the photo fights the masthead; with it the photo reads as paper texture. */
   .hero::before{content:''; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(180deg, rgba(243,245,238,0.62) 0%, rgba(243,245,238,0.80) 45%, rgba(243,245,238,0.97) 100%);}
+    background:linear-gradient(180deg, rgba(243,245,238,0.46) 0%, rgba(243,245,238,0.68) 45%, rgba(243,245,238,0.93) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
   .hero{background-blend-mode:luminosity; background-color:var(--paper-2);}
   .hero > .wrap{position:relative; z-index:1;}
@@ -61,7 +61,7 @@
   .hero-credit a{color:#7C8479; text-decoration:underline;}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
-  .hero h1{font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:clamp(30px, 3.4vw, 44px); font-weight:700; letter-spacing:-0.022em; line-height:1.06; color:#000; max-width:14ch;}
+  .hero h1{font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:clamp(34px, 4.2vw, 56px); font-weight:700; letter-spacing:-0.022em; line-height:1.06; color:#000; max-width:14ch;}
   .hero h1 em{font-style:normal; color:#000;}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
 
@@ -221,16 +221,16 @@
   .onboard-actions .btn{flex:1 1 auto;}
 
   /* ---- Page nav ---- */
-  .page-nav{background:#3D3D3D; border:none; position:sticky; top:0; z-index:50;}
+  .page-nav{background:#000; border:none; position:sticky; top:0; z-index:50;}
   /* One row that scrolls sideways on narrow screens. Wrapping made "Get-Involved Planner" stack
      three lines deep and pushed the whole bar to triple height. */
   .page-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
   .page-nav-inner::-webkit-scrollbar{display:none;}
-  .page-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; letter-spacing:0; text-transform:none; padding:13px 15px; color:#F2F2F2; border-radius:0; border:none; background:transparent; color:var(--text-soft); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-3px;}
+  .page-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; letter-spacing:0; text-transform:none; padding:13px 15px; border-radius:0; border:none; background:transparent; color:#FFFFFF; cursor:pointer;}
   /* Active state is a filled block, the way a newspaper section bar marks its current section. */
   .page-nav-tab{border:none; transition:background .12s, color .12s;}
   .page-nav-tab.active{background:var(--ink); color:#fff;}
-  .page-nav-tab:hover:not(.active){background:#4C4C4C; color:#fff;}
+  .page-nav-tab:hover:not(.active){background:#262626; color:#fff;}
   .screen{min-height:40vh;}
   /* Target of an email deep link - fades out on its own so it doesn't linger. */
   .card.deep-linked{outline:3px solid #3E4F24; outline-offset:3px; animation:deepLinkFade 4s ease-out forwards;}
@@ -347,7 +347,7 @@
   }
 
   /* Left rail: signup plus a rotating figure, mirroring Featured News on the right. */
-  .hero-rail{flex:0 1 300px; max-width:320px; min-width:250px; display:flex; flex-direction:column; gap:14px;}
+  .hero-rail{flex:0 1 320px; max-width:340px; min-width:250px; display:flex; flex-direction:column; gap:14px;}
   .rail-card{background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .rail-head{background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;}
   .rail-body{padding:14px 15px 15px;}
@@ -377,9 +377,11 @@
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
   .hero-copy{flex:1 1 320px; min-width:0; align-self:center;}
-  .hero-panels{display:flex; gap:26px; align-items:stretch;}
+  /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
+     while the masthead keeps the normal measure between them. */
+  .hero-panels{display:flex; gap:30px; align-items:stretch; margin:0 -30px;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
-  .featured-news{flex:0 1 380px; max-width:400px; min-width:290px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  .featured-news{flex:0 1 400px; max-width:420px; min-width:290px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
   .featured-dots{display:flex; gap:5px;}
   .featured-dots i{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.35); display:block; transition:background .3s;}
@@ -3987,7 +3989,21 @@ document.querySelectorAll('[data-signup]').forEach(el=>{
     e.preventDefault();
     document.getElementById('onboardOverlay').style.display = 'none';
     showScreen('account');
-    window.scrollTo({top:0, behavior:'smooth'});
+    // Scroll to the form itself. Scrolling to the top of the page just showed the hero again,
+    // so the screen switch happened but looked like nothing had.
+    // showScreen smooth-scrolls to the top itself, and that animation was overriding this one, so
+    // the screen switched but the page stayed on the hero and the click looked like a no-op.
+    // Wait for it to settle, then scroll the form clear of the sticky bar and focus it.
+    setTimeout(()=>{
+      const target = document.getElementById('screenAccount');
+      if(target){
+        const navH = (document.querySelector('.page-nav') || {}).offsetHeight || 0;
+        const y = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+        window.scrollTo({top:Math.max(0, y), behavior:'smooth'});
+      }
+      const first = document.querySelector('#accountLoggedOut input, #prefsEmail');
+      if(first) setTimeout(()=>first.focus({preventScroll:true}), 450);
+    }, 420);
   });
 });
 
