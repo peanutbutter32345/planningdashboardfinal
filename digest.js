@@ -83,7 +83,7 @@ function cityUrl(city) { return `${SITE_URL}/?city=${encodeURIComponent(city)}`;
 const STYLE = {
   h2: 'font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:#3E4F24; border-bottom:2px solid #3E4F24; padding-bottom:6px; margin:30px 0 2px;',
   h3: 'font-size:12px; color:#6B6B6B; margin:20px 0 0; font-weight:700; letter-spacing:.04em; text-transform:uppercase;',
-  link: 'color:#0056A0; font-weight:700; text-decoration:none;',
+  link: 'color:#2F5B37; font-weight:700; text-decoration:none;',
   meta: 'color:#8A8A8A; font-size:11px; margin-top:5px; text-transform:uppercase; letter-spacing:.03em;',
   note: 'color:#4A4A4A; font-size:13px; margin-top:4px; line-height:1.5;',
   row: 'padding:13px 0; border-bottom:1px solid #E3E7DB;',
@@ -94,7 +94,7 @@ const updatedBadge = (on) => on ? `<span style="${STYLE.badge}">UPDATED</span>` 
 
 function projectRows(items, changed = new Set()) {
   return items.map(p => {
-    const flag = p.flag ? `<div style="${STYLE.note} color:#8A5A00;"><b>Worth knowing:</b> ${esc(p.flag)}</div>` : '';
+    const flag = p.flag ? `<div style="${STYLE.note} color:#7A6636;"><b>Worth knowing:</b> ${esc(p.flag)}</div>` : '';
     const units = p.units ? `${p.units.toLocaleString()} units &middot; ` : '';
     return `<tr><td style="${STYLE.row}">
       <a href="${projectUrl(p.id)}" style="${STYLE.link}">${esc(p.addr)}</a>${updatedBadge(changed.has(p.id))}
