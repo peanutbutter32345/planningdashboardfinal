@@ -53,19 +53,17 @@
     background-size:cover; background-position:center 58%; background-repeat:no-repeat;}
   /* The wash. Without it the photo fights the masthead; with it the photo reads as paper texture. */
   .hero::before{content:''; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(180deg, rgba(243,245,238,0.06) 0%, rgba(243,245,238,0.10) 55%, rgba(243,245,238,0.42) 100%);}
+    background:linear-gradient(180deg, rgba(243,245,238,0.46) 0%, rgba(243,245,238,0.68) 45%, rgba(243,245,238,0.93) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
-  .hero{background-color:var(--paper-2);}
+  .hero{background-blend-mode:luminosity; background-color:var(--paper-2);}
   .hero > .wrap{position:relative; z-index:1;}
   .hero-credit{margin-top:18px; text-align:right; font-size:10px; color:#8B9285; letter-spacing:.02em;}
   .hero-credit a{color:#7C8479; text-decoration:underline;}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
-  /* Sized in vw and locked to one line: the whole title reads as a single masthead rule rather
-     than wrapping. A white glow keeps black type legible now that the photo is at full strength. */
-  .hero h1{font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:clamp(22px, 5.6vw, 82px);
-    font-weight:700; letter-spacing:-0.03em; line-height:1.02; color:#000; max-width:none; white-space:nowrap;
-    text-shadow:0 1px 0 rgba(255,255,255,.55), 0 0 26px rgba(255,255,255,.75);}
+  .hero h1{font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:clamp(34px, 5.2vw, 76px);
+    font-weight:700; letter-spacing:-0.028em; line-height:1.02; color:#000; max-width:none;
+    text-shadow:0 1px 0 rgba(255,255,255,.5), 0 0 22px rgba(255,255,255,.6);}
   .hero h1 em{font-style:normal; color:#000;}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
 
@@ -351,7 +349,7 @@
   }
 
   /* Left rail: signup plus a rotating figure, mirroring Featured News on the right. */
-  .hero-rail{flex:1 1 0; max-width:none; min-width:280px; display:flex; flex-direction:column; gap:14px;}
+  .hero-rail{flex:0 1 290px; max-width:300px; min-width:240px; display:flex; flex-direction:column; gap:14px;}
   .rail-card{background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .rail-head{background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;}
   .rail-body{padding:14px 15px 15px;}
@@ -360,9 +358,9 @@
   .rail-dots{display:flex; gap:5px;}
   .rail-dots i{width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,.35); display:block;}
   .rail-dots i.on{background:#fff;}
-  .rail-rotator{min-height:150px; transition:opacity .45s ease;}
+  .rail-rotator{min-height:118px; transition:opacity .45s ease;}
   .rail-rotator.fading{opacity:0;}
-  .rail-k{font-family:var(--mono); font-size:32px; font-weight:700; color:var(--ink); line-height:1.05; letter-spacing:-.5px;}
+  .rail-k{font-family:var(--mono); font-size:27px; font-weight:700; color:var(--ink); line-height:1.05; letter-spacing:-.5px;}
   .rail-l{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--text-soft); margin-top:7px;}
   .rail-s{font-size:12.5px; color:var(--text-soft); line-height:1.5; margin-top:7px;}
   .rail-s b{color:var(--ink);}
@@ -370,8 +368,9 @@
   .rail-link:hover{text-decoration:underline;}
   @media (max-width:1080px){
     /* Below three-column width the masthead leads, then the panels sit side by side. */
-    .hero-panels{flex-direction:column; margin:30px 0 0;}
-    .hero-rail, .featured-news{flex:0 0 auto; width:100%; min-width:0;}
+    .hero-panels{flex-wrap:wrap;}
+    .hero-copy{order:-1; flex:1 1 100%; align-self:auto;}
+    .hero-rail, .featured-news{flex:1 1 300px; max-width:none;}
   }
   @media (max-width:760px){
     .hero-rail, .featured-news{flex:1 1 100%;}
@@ -379,13 +378,12 @@
   @media (max-width:640px){ .hero-rail{flex:0 0 auto; max-width:none; width:100%;} }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
-  .hero-copy{max-width:none;}
+  .hero-copy{flex:1 1 420px; min-width:0; align-self:center;}
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
-  /* Panels sit lower and pull past the wrap's gutter so they hug the page edges. */
-  .hero-panels{display:flex; gap:34px; align-items:stretch; margin:44px -34px 0;}
+  .hero-panels{display:flex; gap:30px; align-items:stretch; margin:0 -30px;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
-  .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  .featured-news{flex:0 1 350px; max-width:370px; min-width:280px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
   .featured-dots{display:flex; gap:5px;}
   .featured-dots i{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.35); display:block; transition:background .3s;}
@@ -396,9 +394,9 @@
   .fcard{display:block; text-decoration:none; border-bottom:1px solid var(--rule); padding:0 0 13px;}
   .fcard:last-child{border-bottom:0;}
   .fcard:hover{background:#F7F8F3;}
-  .fcard img{width:100%; height:210px; object-fit:cover; display:block; background:#E3E7DB;}
+  .fcard img{width:100%; height:158px; object-fit:cover; display:block; background:#E3E7DB;}
   .fcard .fbody{padding:11px 15px 0;}
-  .fcard .ftitle{font-family:'Open Sans',sans-serif; font-size:16px; font-weight:700; color:var(--blue); line-height:1.35;}
+  .fcard .ftitle{font-family:'Open Sans',sans-serif; font-size:15px; font-weight:700; color:var(--blue); line-height:1.35;}
   .fcard:hover .ftitle{text-decoration:underline;}
   .fcard .fmeta{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.05em; margin-top:5px;}
   @media (max-width:640px){
@@ -646,11 +644,6 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="hero-copy">
-        <h1>South Bay Area <em>Civic Dashboard</em></h1>
-        <p class="lede">A dashboard for tracking real planning developments across the South Bay - housing, transportation, and civic projects, official city resources, and concrete ways to get involved. Pick a city below.</p>
-      </div>
-
     <div class="hero-panels">
       <aside class="hero-rail" aria-label="Sign up and local figures">
         <div class="rail-card rail-signup">
@@ -666,7 +659,10 @@
         </div>
       </aside>
 
-      
+      <div class="hero-copy">
+        <h1>South Bay Area <em>Civic Dashboard</em></h1>
+        <p class="lede">A dashboard for tracking real planning developments across the South Bay - housing, transportation, and civic projects, official city resources, and concrete ways to get involved. Pick a city below.</p>
+      </div>
 
       <aside class="featured-news" id="featuredNews" aria-label="Featured news">
         <div class="featured-head">
