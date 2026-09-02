@@ -47,7 +47,7 @@
 
   /* Hero photograph, served from public/img. AVIF first with a JPEG fallback, since Safari below
      16 and older Edge can't decode AVIF and would otherwise render no background at all. */
-  .hero{position:relative; background:linear-gradient(165deg,#44572A 0%,#3E4F24 55%,#35441F 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid #2B3819;}
+  .hero{position:relative; background:linear-gradient(165deg,#E4EDD6 0%,#DCE7CB 55%,#D3E0BE 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--ink);}
     background:linear-gradient(180deg, rgba(243,245,238,0.05) 0%, rgba(243,245,238,0.14) 45%, rgba(243,245,238,0.62) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
   .hero > .wrap{position:relative; z-index:1;}
@@ -347,20 +347,20 @@
      paper block with a green kicker bar above and a standfirst row beneath carrying live counts.
      Backdrop-filter lifts it off the photo without hiding it; the rgba fallback covers browsers
      that don't support the filter. */
-  .nameplate{background:transparent; color:#fff; padding:0 4px 14px; margin-bottom:10px; box-shadow:none;
-    border-bottom:1px solid rgba(255,255,255,.22);}
-  .nameplate h1{color:#fff;}
-  .nameplate h1 em{font-style:normal; color:#C9D6B4;}
+  .nameplate{background:transparent; color:#111; padding:0 4px 14px; margin-bottom:10px; box-shadow:none;
+    border-bottom:1px solid rgba(46,59,28,.22);}
+  .nameplate h1{color:#000;}
+  .nameplate h1 em{font-style:normal; color:#4E6330;}
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
-    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#C9D6B4; margin-bottom:6px;}
-  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:#C9D6B4; opacity:.6;}
-  .np-foot{display:flex; gap:26px; align-items:flex-start; border-top:1px solid rgba(255,255,255,.22); margin-top:12px; padding-top:12px;}
-  .np-foot .lede{flex:1 1 auto; margin:0; font-size:13.5px; line-height:1.6; color:rgba(255,255,255,.92); max-width:62ch;}
+    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:var(--ink); margin-bottom:6px;}
+  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:var(--ink); opacity:.55;}
+  .np-foot{display:flex; gap:26px; align-items:flex-start; border-top:1px solid rgba(46,59,28,.22); margin-top:12px; padding-top:12px;}
+  .hero .np-foot p.lede{flex:1 1 auto; margin:0; font-size:13.5px; line-height:1.6; color:#000; max-width:62ch;}
   .np-stats{flex:0 0 auto; display:flex; gap:22px;}
   .np-stat{text-align:right;}
-  .np-stat .n{display:block; font-family:var(--mono); font-size:19px; font-weight:700; color:#fff; line-height:1;}
+  .np-stat .n{display:block; font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink); line-height:1;}
   .np-stat .t{display:block; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.08em;
-    text-transform:uppercase; color:rgba(255,255,255,.62); margin-top:5px;}
+    text-transform:uppercase; color:#5B6B4A; margin-top:5px;}
   @media (max-width:860px){
     .nameplate{padding:14px 18px 16px;}
     .np-foot{flex-direction:column; gap:14px;}
