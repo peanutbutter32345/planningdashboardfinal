@@ -15,7 +15,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 
-INK, SOFT, GRID, AXIS = '#2E3B1C', '#B9C2AB', '#E8EAE3', '#7A7F72'
+INK, SOFT, GRID, AXIS = '#2F663A', '#B4D8B7', '#E4EEE5', '#6E7B70'
 OUT = 'public/img/figures'
 os.makedirs(OUT, exist_ok=True)
 
