@@ -350,6 +350,16 @@
     .stat-row{grid-template-columns:80px 1fr 76px; font-size:11.5px;}
   }
 
+  /* Masthead furniture: a tracked kicker above and a rule beneath, so the block reads as a
+     masthead rather than one large word floating on a photograph. */
+  .hero-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
+    font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#3E4F24; margin-bottom:14px;}
+  .hero-kicker i{flex:0 0 auto; width:26px; height:1px; background:#3E4F24; opacity:.45;}
+  .hero-rule{height:2px; background:#1A1A1A; opacity:.8; margin:16px 0 16px;}
+  .hero .lede{font-size:15.5px; line-height:1.62; color:#3A3A3A;}
+  /* The slide's chart, run full bleed across the card above the number. */
+  .rail-viz{display:block; margin:-14px -15px 14px; width:calc(100% + 30px); height:auto;}
+
   /* Left rail: signup plus a rotating figure, mirroring Featured News on the right. */
   .hero-rail{flex:1 1 0; max-width:none; min-width:280px; display:flex; flex-direction:column; gap:14px;}
   .rail-card{background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
@@ -642,7 +652,9 @@
 <header class="hero">
   <div class="wrap">
     <div class="hero-copy">
+        <div class="hero-kicker"><span>Santa Clara County</span><i></i><span>Public planning records</span></div>
         <h1>South Bay Area <em>Civic Dashboard</em></h1>
+        <div class="hero-rule"></div>
         <p class="lede">A dashboard for tracking real planning developments across the South Bay - housing, transportation, and civic projects, official city resources, and concrete ways to get involved. Pick a city below.</p>
       </div>
 
@@ -4028,35 +4040,78 @@ function railSlides(){
       ? Math.round((s.homeValueSeries[s.homeValueSeries.length-1].value - s.homeValueSeries[0].value) / s.homeValueSeries[0].value * 100) : null;
     out.push({k:'$'+(s.homeValue/1e6).toFixed(2)+'M', l:'Typical home value, '+label,
       s: g !== null ? '<b>'+(g>0?'+':'')+g+'%</b> since '+s.homeValueSeries[0].year+'.' : 'Zillow home value index.',
-      href:'statistics', cta:'See all cities'});
+      viz: railSpark(s.homeValueSeries, '#3E4F24'), href:'statistics', cta:'See all cities'});
   }
   if(s && s.rent){
     out.push({k:'$'+Math.round(s.rent).toLocaleString(), l:'Typical asking rent, '+label,
-      s:'Across all home types, including apartments.', href:'statistics', cta:'Compare rents'});
+      s:'Across all home types, including apartments.',
+      viz: railSpark(s.rentSeries, '#5F7640'), href:'statistics', cta:'Compare rents'});
   }
   if(s && s.meanCommuteMin){
     out.push({k:s.meanCommuteMin+' min', l:'Average commute, '+label,
       s: s.transitSharePct ? '<b>'+s.transitSharePct+'%</b> of commuters take transit.' : 'One-way travel time to work.',
-      href:'statistics', cta:'See the gradient'});
+      viz: railRanking(k=>CITY_STATS[k].meanCommuteMin), href:'statistics', cta:'See the gradient'});
   }
   if(r){
     out.push({k:r.pct+'%', l:'Housing target met, '+label,
       s:'<b>'+r.units.toLocaleString()+'</b> of '+r.target.toLocaleString()+' homes permitted this cycle.',
-      href:'statistics', cta:'Why this matters'});
+      viz: railProgress(r.pct), href:'statistics', cta:'Why this matters'});
   }
   const boards = (CITIES[c] ? CITIES[c].join : []) || [];
   if(boards.length){
     out.push({k:String(boards.length), l:'Commissions you can join in '+label,
       s: boards.slice(0,2).map(b=>b.name.replace(/&amp;/g,'&')).join(' &middot; ') + (boards.length>2 ? ' and more.' : '.'),
+      viz: railRanking(k=>{ const c=CITIES[k]; return c && c.join && c.join.length ? c.join.length : null; }),
       href:'planner', cta:'Build a plan'});
   }
   const active = (CITIES[c] ? CITIES[c].data : []).filter(d=>d.stage!=='completed');
   const units = active.reduce((n,d)=>n+(d.units||0),0);
   if(units){
     out.push({k:units.toLocaleString(), l:'Homes in the pipeline, '+label,
-      s:'Across <b>'+active.length+'</b> active projects tracked here.', href:'developments', cta:'See the register'});
+      s:'Across <b>'+active.length+'</b> active projects tracked here.',
+      viz: railRanking(k=>{ const c=CITIES[k]; if(!c) return null;
+        return c.data.filter(d=>d.stage!=='completed').reduce((n,d)=>n+(d.units||0),0) || null; }),
+      href:'developments', cta:'See the register'});
   }
   return out;
+}
+
+// A six-year trend line, drawn wide and short so it reads as a band across the card.
+function railSpark(series, color){
+  if(!series || series.length < 2) return '';
+  const W=300, H=76;
+  const vals=series.map(p=>p.value);
+  const min=Math.min(...vals), max=Math.max(...vals), span=(max-min)||1;
+  const x=i=>i*(W-2)/(series.length-1)+1;
+  const y=v=>H-6-((v-min)/span)*(H-18);
+  const pts=series.map((p,i)=>x(i).toFixed(1)+','+y(p.value).toFixed(1)).join(' ');
+  return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'
+    + '<polygon points="1,'+H+' '+pts+' '+(W-1)+','+H+'" fill="'+color+'" opacity="0.14"></polygon>'
+    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="2.4"></polyline>'
+    + series.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.value).toFixed(1)+'" r="2.6" fill="'+color+'"></circle>').join('')
+    + '</svg>';
+}
+
+// Where this city sits against the others, as a stack of bars with the city's own bar filled.
+function railRanking(getter, fmt){
+  const rows = Object.keys(CITY_STATS).map(k=>({k, v:getter(k)})).filter(r=>r.v!=null).sort((a,b)=>b.v-a.v);
+  if(rows.length < 3) return '';
+  const me = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  const max = Math.max(...rows.map(r=>r.v)) || 1;
+  const W=300, bh=7, gap=3.4;
+  const bars = rows.map((r,i)=>
+    '<rect x="0" y="'+(i*(bh+gap)).toFixed(1)+'" width="'+(r.v/max*W).toFixed(1)+'" height="'+bh+'" '
+    + 'fill="'+(r.k===me ? '#3E4F24' : '#C3CBB6')+'"></rect>').join('');
+  const H = rows.length*(bh+gap);
+  return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H.toFixed(1)+'" preserveAspectRatio="none" aria-hidden="true">'+bars+'</svg>';
+}
+
+// Progress against the state housing target, as a single filled bar.
+function railProgress(pct){
+  const W=300, H=22;
+  return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'
+    + '<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#E9ECE1"></rect>'
+    + '<rect x="0" y="0" width="'+(Math.min(100,pct)/100*W).toFixed(1)+'" height="'+H+'" fill="#3E4F24"></rect></svg>';
 }
 
 function renderRail(){
@@ -4067,7 +4122,8 @@ function renderRail(){
   if(!all.length){ host.innerHTML = ''; return; }
   railPage = railPage % all.length;
   const v = all[railPage];
-  host.innerHTML = '<div class="rail-k">'+v.k+'</div><div class="rail-l">'+v.l+'</div>'
+  host.innerHTML = (v.viz || '')
+    + '<div class="rail-k">'+v.k+'</div><div class="rail-l">'+v.l+'</div>'
     + '<div class="rail-s">'+v.s+'</div>'
     + '<a class="rail-link" href="#" data-goto="'+v.href+'">'+v.cta+' &rarr;</a>';
   dots.innerHTML = all.map((_,i)=>'<i class="'+(i===railPage?'on':'')+'"></i>').join('');
