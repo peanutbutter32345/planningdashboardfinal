@@ -7,7 +7,6 @@
 <!-- Inline so it costs no extra request, and stops the browser 404ing on /favicon.ico -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%233E4F24'/%3E%3Cpath d='M7 22V13l5-4 5 4v9z' fill='%23fff'/%3E%3Crect x='19' y='15' width='6' height='7' fill='%23F0C86A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -48,23 +47,17 @@
 
   /* Hero photograph, served from public/img. AVIF first with a JPEG fallback, since Safari below
      16 and older Edge can't decode AVIF and would otherwise render no background at all. */
-  .hero{position:relative; background:var(--paper-2); color:var(--text); padding:54px 0 34px; border-bottom:3px solid var(--ink);
-    background-image:url('/img/hero.jpg');
-    background-image:image-set(url('/img/hero.avif') type('image/avif'), url('/img/hero.jpg') type('image/jpeg'));
-    background-size:cover; background-position:center 58%; background-repeat:no-repeat;}
-  /* The wash. Without it the photo fights the masthead; with it the photo reads as paper texture. */
-  .hero::before{content:''; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(180deg, rgba(243,245,238,0.26) 0%, rgba(243,245,238,0.46) 45%, rgba(243,245,238,0.84) 100%);}
+  .hero{position:relative; background:linear-gradient(165deg,#44572A 0%,#3E4F24 55%,#35441F 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid #2B3819;}
+    background:linear-gradient(180deg, rgba(243,245,238,0.05) 0%, rgba(243,245,238,0.14) 45%, rgba(243,245,238,0.62) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
-  .hero{background-blend-mode:luminosity; background-color:var(--paper-2);}
   .hero > .wrap{position:relative; z-index:1;}
-  .hero-credit{margin-top:18px; text-align:right; font-size:10px; color:#8B9285; letter-spacing:.02em;}
+  .hero-credit{display:none;}
   .hero-credit a{color:#7C8479; text-decoration:underline;}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
   /* Sized in vw and locked to one line. The vw factor was measured against the rendered text
      width rather than guessed, so the title fills the measure without ever wrapping. */
-  .hero h1{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:clamp(20px, 5.3vw, 76px);
+  .hero h1{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:clamp(18px, 4.7vw, 68px);
     font-weight:600; letter-spacing:-0.035em; line-height:1.02; max-width:none; white-space:nowrap;}
   .hero h1 em{font-style:normal; color:#000;}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
@@ -354,15 +347,15 @@
      paper block with a green kicker bar above and a standfirst row beneath carrying live counts.
      Backdrop-filter lifts it off the photo without hiding it; the rgba fallback covers browsers
      that don't support the filter. */
-  .nameplate{background:var(--ink); color:#fff; padding:16px 26px 18px;
-    box-shadow:0 2px 16px rgba(0,0,0,.16);}
+  .nameplate{background:transparent; color:#fff; padding:0 4px 14px; margin-bottom:10px; box-shadow:none;
+    border-bottom:1px solid rgba(255,255,255,.22);}
   .nameplate h1{color:#fff;}
   .nameplate h1 em{font-style:normal; color:#C9D6B4;}
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
     font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#C9D6B4; margin-bottom:6px;}
   .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:#C9D6B4; opacity:.6;}
   .np-foot{display:flex; gap:26px; align-items:flex-start; border-top:1px solid rgba(255,255,255,.22); margin-top:12px; padding-top:12px;}
-  .np-foot .lede{flex:1 1 auto; margin:0; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.92); max-width:62ch;}
+  .np-foot .lede{flex:1 1 auto; margin:0; font-size:13.5px; line-height:1.6; color:rgba(255,255,255,.92); max-width:62ch;}
   .np-stats{flex:0 0 auto; display:flex; gap:22px;}
   .np-stat{text-align:right;}
   .np-stat .n{display:block; font-family:var(--mono); font-size:19px; font-weight:700; color:#fff; line-height:1;}
@@ -386,8 +379,7 @@
   .res-note{display:block; font-size:11px; color:var(--text-soft); margin-top:1px;}
   #railResources .rail-link{margin-top:11px;}
 
-  .rail-chart{position:relative; height:132px; margin:-4px -4px 10px;}
-  .rail-chart canvas{width:100% !important; height:100% !important;}
+  .rail-fig{display:block; width:100%; height:auto; margin:-2px 0 9px;}
   /* The slide's chart, run full bleed across the card above the number. */
   .rail-viz{display:block; margin:-14px -15px 14px; width:calc(100% + 30px); height:auto;}
 
@@ -416,24 +408,24 @@
   @media (max-width:640px){ .hero-rail{flex:0 0 auto; max-width:none; width:100%;} }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
-  .hero-copy{max-width:none; margin:0 -26px;}
+  .hero-copy{max-width:none; margin:0 -12px;}
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
   .hero-panels{display:flex; gap:30px; align-items:stretch; margin:0 -30px;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
-  .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
   .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
   .featured-dots{display:flex; gap:5px;}
   .featured-dots i{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.35); display:block; transition:background .3s;}
   .featured-dots i.on{background:#FFFFFF;}
-  .featured-cards{display:flex; flex-direction:column;}
+  .featured-cards{display:flex; flex-direction:column; flex:1 1 auto;}
   .featured-cards.fading{opacity:0;}
   .featured-cards{transition:opacity .45s ease;}
-  .fcard{display:block; text-decoration:none; border-bottom:1px solid var(--rule); padding:0 0 10px;}
+  .fcard{display:block; text-decoration:none; border-bottom:1px solid var(--rule); padding:0 0 9px;}
   .fcard:last-child{border-bottom:0;}
   .fcard:hover{background:#F7F8F3;}
   .fcard img{width:100%; height:158px; object-fit:cover; display:block; background:#E3E7DB;}
-  .fcard .fbody{padding:9px 13px 0;}
+  .fcard .fbody{padding:8px 13px 0;}
   .fcard .ftitle{font-family:'Open Sans',sans-serif; font-size:15px; font-weight:700; color:var(--blue); line-height:1.35;}
   .fcard:hover .ftitle{text-decoration:underline;}
   .fcard .fmeta{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.05em; margin-top:5px;}
@@ -694,21 +686,21 @@
     </div>
 
     <div class="hero-panels">
-      <aside class="hero-rail" aria-label="Sign up and local figures">
+      <aside class="hero-rail" aria-label="Local figures, resources and signup">
+        <div class="rail-card" id="railFiguresCard">
+          <div class="rail-head">Local figures<span class="rail-dots" id="railDots"></span></div>
+          <div class="rail-body rail-rotator" id="railRotator"></div>
+        </div>
+        <div class="rail-card" id="railResourcesCard">
+          <div class="rail-head">Local resources<span class="rail-city" id="resourceCity"></span></div>
+          <div class="rail-body" id="railResources"></div>
+        </div>
         <div class="rail-card rail-signup">
           <div class="rail-head">Get the briefing</div>
           <div class="rail-body">
             <p>A plain-English recap of what's being built, what's changing, and which meetings decide it. Every two weeks or once a month, for your city.</p>
             <button type="button" class="btn rail-btn" data-signup>Sign up now</button>
           </div>
-        </div>
-        <div class="rail-card">
-          <div class="rail-head">Local figures<span class="rail-dots" id="railDots"></span></div>
-          <div class="rail-body rail-rotator" id="railRotator"></div>
-        </div>
-        <div class="rail-card">
-          <div class="rail-head">Local resources<span class="rail-city" id="resourceCity"></span></div>
-          <div class="rail-body" id="railResources"></div>
         </div>
       </aside>
 
@@ -2539,7 +2531,7 @@ function switchCity(key){
   // Featured news leads with the selected city's stories, so it follows the tab.
   featuredPage = 0;
   if(typeof renderFeaturedNews === 'function'){ preloadFeaturedImages(); renderFeaturedNews(); }
-  if(typeof renderRail === 'function'){ railPage = 0; renderRail(); renderRailResources(); }
+  if(typeof renderRail === 'function'){ railPage = 0; railFace = 0; renderRail(); renderRailResources(); applyRailMode(); }
   state = {q:'', stage:'all', cat:'all'};
   document.getElementById('search').value = '';
   renderCitySwitch();
@@ -3963,7 +3955,7 @@ function renderStatistics(){
 // ================= FEATURED NEWS =================
 // Two stories beside the hero copy, cycling every 5 seconds. Pauses while the reader is hovering
 // or tabbing through it, so a link never moves out from under the cursor mid-click.
-const FEATURED_PER_PAGE = 2;
+const FEATURED_PER_PAGE = 4;
 const FEATURED_INTERVAL = 5000;
 // Cap the rotation. With 30+ articles the dot row becomes unreadable and a story you glimpsed
 // takes over a minute to come back around.
@@ -4079,37 +4071,32 @@ function railSlides(){
       ? Math.round((s.homeValueSeries[s.homeValueSeries.length-1].value - s.homeValueSeries[0].value) / s.homeValueSeries[0].value * 100) : null;
     out.push({k:'$'+(s.homeValue/1e6).toFixed(2)+'M', l:'Typical home value, '+label,
       s: g !== null ? '<b>'+(g>0?'+':'')+g+'%</b> since '+s.homeValueSeries[0].year+'.' : 'Zillow home value index.',
-      viz: railSpark(s.homeValueSeries, '#3E4F24'),
-      draw: (cv)=>drawTrend(cv, s.homeValueSeries, v=>'$'+(v/1e6).toFixed(1)+'M'),
+      fig:'homeValue',
       href:'statistics', cta:'See all cities'});
   }
   if(s && s.rent){
     out.push({k:'$'+Math.round(s.rent).toLocaleString(), l:'Typical asking rent, '+label,
       s:'Across all home types, including apartments.',
-      viz: railSpark(s.rentSeries, '#5F7640'),
-      draw: (cv)=>drawTrend(cv, s.rentSeries, v=>'$'+Math.round(v/100)/10+'k'),
+      fig:'rent',
       href:'statistics', cta:'Compare rents'});
   }
   if(s && s.meanCommuteMin){
     out.push({k:s.meanCommuteMin+' min', l:'Average commute, '+label,
       s: s.transitSharePct ? '<b>'+s.transitSharePct+'%</b> of commuters take transit.' : 'One-way travel time to work.',
-      viz: railRanking(k=>CITY_STATS[k].meanCommuteMin),
-      draw: (cv)=>drawRanking(cv, k=>CITY_STATS[k].meanCommuteMin, v=>v+' min'),
+      fig:'commute',
       href:'statistics', cta:'See the gradient'});
   }
   if(r){
     out.push({k:r.pct+'%', l:'Housing target met, '+label,
       s:'<b>'+r.units.toLocaleString()+'</b> of '+r.target.toLocaleString()+' homes permitted this cycle.',
-      viz: railProgress(r.pct),
-      draw: (cv)=>drawProgress(cv, r),
+      fig:'rhnaPct',
       href:'statistics', cta:'Why this matters'});
   }
   const boards = (CITIES[c] ? CITIES[c].join : []) || [];
   if(boards.length){
     out.push({k:String(boards.length), l:'Commissions you can join in '+label,
       s: boards.slice(0,2).map(b=>b.name.replace(/&amp;/g,'&')).join(' &middot; ') + (boards.length>2 ? ' and more.' : '.'),
-      viz: railRanking(k=>{ const c=CITIES[k]; return c && c.join && c.join.length ? c.join.length : null; }),
-      draw: (cv)=>drawRanking(cv, k=>{ const c=CITIES[k]; return c && c.join && c.join.length ? c.join.length : null; }, v=>v+''),
+      fig:'commissions',
       href:'planner', cta:'Build a plan'});
   }
   const active = (CITIES[c] ? CITIES[c].data : []).filter(d=>d.stage!=='completed');
@@ -4117,11 +4104,7 @@ function railSlides(){
   if(units){
     out.push({k:units.toLocaleString(), l:'Homes in the pipeline, '+label,
       s:'Across <b>'+active.length+'</b> active projects tracked here.',
-      viz: railRanking(k=>{ const c=CITIES[k]; if(!c) return null;
-        return c.data.filter(d=>d.stage!=='completed').reduce((n,d)=>n+(d.units||0),0) || null; }),
-      draw: (cv)=>drawRanking(cv, k=>{ const c=CITIES[k]; if(!c) return null;
-        return c.data.filter(d=>d.stage!=='completed').reduce((n,d)=>n+(d.units||0),0) || null; },
-        v=>v>=1000 ? (v/1000).toFixed(1)+'k' : v+''),
+      fig:'units',
       href:'developments', cta:'See the register'});
   }
   return out;
@@ -4267,6 +4250,25 @@ function railProgress(pct){
 // ---- Local resources: the boards and official links for the selected city ----
 // Static rather than rotating: this is a reference list, and a list you have to wait for is
 // useless. Each entry links straight out to the city's own page.
+// True while the reader hasn't chosen a city. In that state Local Figures and Local Resources
+// take turns in a single slot rather than both showing county-wide placeholders.
+function railAlternating(){ return currentCity === 'all'; }
+let railFace = 0;   // 0 = figures, 1 = resources, only used while alternating
+
+function applyRailMode(){
+  const figures = document.getElementById('railRotator');
+  const resources = document.getElementById('railResources');
+  if(!figures || !resources) return;
+  const figCard = figures.closest('.rail-card');
+  const resCard = resources.closest('.rail-card');
+  if(!railAlternating()){
+    figCard.style.display = ''; resCard.style.display = '';
+    return;
+  }
+  figCard.style.display = railFace === 0 ? '' : 'none';
+  resCard.style.display = railFace === 1 ? '' : 'none';
+}
+
 function renderRailResources(){
   const host = document.getElementById('railResources');
   const cityEl = document.getElementById('resourceCity');
@@ -4320,15 +4322,12 @@ function renderRail(){
   if(!all.length){ host.innerHTML = ''; return; }
   railPage = railPage % all.length;
   const v = all[railPage];
-  const useChart = chartReady() && typeof v.draw === 'function';
-  host.innerHTML = (useChart ? '<div class="rail-chart"><canvas id="railCanvas"></canvas></div>' : (v.viz || ''))
+  const city = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  const fig = v.fig ? '/img/figures/'+city+'-'+v.fig+'.svg' : null;
+  host.innerHTML = (fig ? '<img class="rail-fig" src="'+fig+'" alt="" onerror="this.style.display=\'none\'">' : '')
     + '<div class="rail-k">'+v.k+'</div><div class="rail-l">'+v.l+'</div>'
     + '<div class="rail-s">'+v.s+'</div>'
     + '<a class="rail-link" href="#" data-goto="'+v.href+'">'+v.cta+' &rarr;</a>';
-  if(useChart){
-    try { v.draw(document.getElementById('railCanvas')); }
-    catch(err){ destroyRailChart(); host.querySelector('.rail-chart').outerHTML = v.viz || ''; }
-  }
   dots.innerHTML = all.map((_,i)=>'<i class="'+(i===railPage?'on':'')+'"></i>').join('');
   host.querySelector('[data-goto]').addEventListener('click', (e)=>{
     e.preventDefault(); showScreen(host.querySelector('[data-goto]').getAttribute('data-goto'));
@@ -4340,7 +4339,18 @@ function advanceRail(){
   const host = document.getElementById('railRotator');
   if(!host) return;
   host.classList.add('fading');
-  setTimeout(()=>{ railPage++; renderRail(); host.classList.remove('fading'); }, 450);
+  setTimeout(()=>{
+    if(railAlternating()){
+      // Swap which card is showing; only advance the figure when figures come back around.
+      railFace = 1 - railFace;
+      if(railFace === 0) railPage++;
+      applyRailMode();
+    } else {
+      railPage++;
+    }
+    renderRail(); renderRailResources();
+    host.classList.remove('fading');
+  }, 450);
 }
 function startRail(){ clearInterval(railTimer); railTimer = setInterval(advanceRail, RAIL_INTERVAL); }
 
@@ -4357,9 +4367,9 @@ function renderNameplateStats(){
 renderNameplateStats();
 renderRail();
 renderRailResources();
+applyRailMode();
 startRail();
 // The script is deferred, so the first paint may use the SVG fallback; redraw once it lands.
-window.addEventListener('load', ()=>{ if(chartReady()) renderRail(); });
 (function(){
   const card = document.getElementById('railRotator');
   if(!card) return;
