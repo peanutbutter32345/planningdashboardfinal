@@ -57,7 +57,7 @@
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
   /* Sized in vw and locked to one line. The vw factor was measured against the rendered text
      width rather than guessed, so the title fills the measure without ever wrapping. */
-  .hero h1{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:clamp(18px, 4.7vw, 68px);
+  .hero h1{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:clamp(20px, 5.5vw, 82px);
     font-weight:600; letter-spacing:-0.035em; line-height:1.02; max-width:none; white-space:nowrap;}
   .hero h1 em{font-style:normal; color:#000;}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
@@ -354,7 +354,7 @@
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
     font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:var(--ink); margin-bottom:6px;}
   .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:var(--ink); opacity:.55;}
-  .np-foot{display:flex; gap:26px; align-items:flex-start; border-top:1px solid rgba(46,59,28,.22); margin-top:12px; padding-top:12px;}
+  .np-foot{display:flex; gap:26px; align-items:center; justify-content:flex-end; border-top:1px solid rgba(46,59,28,.22); margin-top:10px; padding-top:10px;}
   .hero .np-foot p.lede{flex:1 1 auto; margin:0; font-size:13.5px; line-height:1.6; color:#000; max-width:62ch;}
   .np-stats{flex:0 0 auto; display:flex; gap:22px;}
   .np-stat{text-align:right;}
@@ -379,7 +379,7 @@
   .res-note{display:block; font-size:11px; color:var(--text-soft); margin-top:1px;}
   #railResources .rail-link{margin-top:11px;}
 
-  .rail-fig{display:block; width:100%; height:auto; margin:-2px 0 9px;}
+  .rail-fig{display:block; width:100%; height:auto; margin:-2px 0 8px;}
   /* The slide's chart, run full bleed across the card above the number. */
   .rail-viz{display:block; margin:-14px -15px 14px; width:calc(100% + 30px); height:auto;}
 
@@ -411,7 +411,7 @@
   .hero-copy{max-width:none; margin:0 -12px;}
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
-  .hero-panels{display:flex; gap:30px; align-items:stretch; margin:0 -30px;}
+  .hero-panels{display:flex; gap:30px; align-items:stretch; margin:30px 46px 0;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
   .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
   .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
@@ -679,7 +679,7 @@
         <div class="np-kicker"><span>Santa Clara County</span><i></i><span>Public planning records</span></div>
         <h1>South Bay Area <em>Civic Dashboard</em></h1>
         <div class="np-foot">
-          <p class="lede">Tracking real planning developments across the South Bay: housing, transportation and civic projects, official city resources, and concrete ways to get involved.</p>
+          
           <div class="np-stats" id="npStats"></div>
         </div>
       </div>
