@@ -47,7 +47,7 @@
 
   /* Hero photograph, served from public/img. AVIF first with a JPEG fallback, since Safari below
      16 and older Edge can't decode AVIF and would otherwise render no background at all. */
-  .hero{position:relative; background:linear-gradient(165deg,#E4EDD6 0%,#DCE7CB 55%,#D3E0BE 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--ink);}
+  .hero{position:relative; background:linear-gradient(165deg,#F2F2F0 0%,#ECECEA 55%,#E4E5E2 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--ink);}
     background:linear-gradient(180deg, rgba(243,245,238,0.05) 0%, rgba(243,245,238,0.14) 45%, rgba(243,245,238,0.62) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
   .hero > .wrap{position:relative; z-index:1;}
@@ -347,13 +347,12 @@
      paper block with a green kicker bar above and a standfirst row beneath carrying live counts.
      Backdrop-filter lifts it off the photo without hiding it; the rgba fallback covers browsers
      that don't support the filter. */
-  .nameplate{background:transparent; color:#111; padding:0 4px 14px; margin-bottom:10px; box-shadow:none;
-    border-bottom:1px solid rgba(46,59,28,.22);}
+  .nameplate{background:transparent; color:#111; padding:0 4px 4px; margin-bottom:0; box-shadow:none; border-bottom:none;}
   .nameplate h1{color:#000;}
-  .nameplate h1 em{font-style:normal; color:#4E6330;}
+  .nameplate h1 em{font-style:normal; color:#14532D;}
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
-    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:var(--ink); margin-bottom:6px;}
-  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:var(--ink); opacity:.55;}
+    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#14532D; margin-bottom:6px;}
+  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:#14532D; opacity:.5;}
   .np-foot{display:flex; gap:26px; align-items:center; justify-content:flex-end; border-top:1px solid rgba(46,59,28,.22); margin-top:10px; padding-top:10px;}
   .hero .np-foot p.lede{flex:1 1 auto; margin:0; font-size:13.5px; line-height:1.6; color:#000; max-width:62ch;}
   .np-stats{flex:0 0 auto; display:flex; gap:22px;}
@@ -678,10 +677,7 @@
       <div class="nameplate">
         <div class="np-kicker"><span>Santa Clara County</span><i></i><span>Public planning records</span></div>
         <h1>South Bay Area <em>Civic Dashboard</em></h1>
-        <div class="np-foot">
-          
-          <div class="np-stats" id="npStats"></div>
-        </div>
+        
       </div>
     </div>
 
@@ -4354,17 +4350,6 @@ function advanceRail(){
 }
 function startRail(){ clearInterval(railTimer); railTimer = setInterval(advanceRail, RAIL_INTERVAL); }
 
-// Counts in the nameplate come from the loaded data, so they can never drift from the tabs.
-function renderNameplateStats(){
-  const el = document.getElementById('npStats');
-  if(!el) return;
-  const cities = Object.keys(CITIES).filter(k=>k!=='all').length;
-  const projects = CITIES.all ? CITIES.all.data.length : 0;
-  const stat = (n,t)=>'<div class="np-stat"><span class="n">'+n+'</span><span class="t">'+t+'</span></div>';
-  el.innerHTML = stat(projects.toLocaleString(),'Projects') + stat(cities,'Cities')
-    + stat(typeof NEWS_ARTICLES!=='undefined' ? NEWS_ARTICLES.length : 0,'Stories');
-}
-renderNameplateStats();
 renderRail();
 renderRailResources();
 applyRailMode();
