@@ -7,7 +7,8 @@
 <!-- Inline so it costs no extra request, and stops the browser 404ing on /favicon.ico -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%233E4F24'/%3E%3Cpath d='M7 22V13l5-4 5 4v9z' fill='%23fff'/%3E%3Crect x='19' y='15' width='6' height='7' fill='%23F0C86A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -53,7 +54,7 @@
     background-size:cover; background-position:center 58%; background-repeat:no-repeat;}
   /* The wash. Without it the photo fights the masthead; with it the photo reads as paper texture. */
   .hero::before{content:''; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(180deg, rgba(243,245,238,0.46) 0%, rgba(243,245,238,0.68) 45%, rgba(243,245,238,0.93) 100%);}
+    background:linear-gradient(180deg, rgba(243,245,238,0.26) 0%, rgba(243,245,238,0.46) 45%, rgba(243,245,238,0.84) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
   .hero{background-blend-mode:luminosity; background-color:var(--paper-2);}
   .hero > .wrap{position:relative; z-index:1;}
@@ -61,9 +62,10 @@
   .hero-credit a{color:#7C8479; text-decoration:underline;}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
-  .hero h1{font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:clamp(34px, 5.2vw, 76px);
-    font-weight:700; letter-spacing:-0.028em; line-height:1.02; color:#000; max-width:none;
-    text-shadow:0 1px 0 rgba(255,255,255,.5), 0 0 22px rgba(255,255,255,.6);}
+  /* Sized in vw and locked to one line. The vw factor was measured against the rendered text
+     width rather than guessed, so the title fills the measure without ever wrapping. */
+  .hero h1{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:clamp(20px, 5.3vw, 76px);
+    font-weight:600; letter-spacing:-0.035em; line-height:1.02; max-width:none; white-space:nowrap;}
   .hero h1 em{font-style:normal; color:#000;}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
 
@@ -348,12 +350,53 @@
     .stat-row{grid-template-columns:80px 1fr 76px; font-size:11.5px;}
   }
 
+  /* Nameplate. A large word alone on a photograph reads as unfinished, so the masthead sits in a
+     paper block with a green kicker bar above and a standfirst row beneath carrying live counts.
+     Backdrop-filter lifts it off the photo without hiding it; the rgba fallback covers browsers
+     that don't support the filter. */
+  .nameplate{background:var(--ink); color:#fff; padding:16px 26px 18px;
+    box-shadow:0 2px 16px rgba(0,0,0,.16);}
+  .nameplate h1{color:#fff;}
+  .nameplate h1 em{font-style:normal; color:#C9D6B4;}
+  .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
+    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#C9D6B4; margin-bottom:6px;}
+  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:#C9D6B4; opacity:.6;}
+  .np-foot{display:flex; gap:26px; align-items:flex-start; border-top:1px solid rgba(255,255,255,.22); margin-top:12px; padding-top:12px;}
+  .np-foot .lede{flex:1 1 auto; margin:0; font-size:14.5px; line-height:1.6; color:rgba(255,255,255,.92); max-width:62ch;}
+  .np-stats{flex:0 0 auto; display:flex; gap:22px;}
+  .np-stat{text-align:right;}
+  .np-stat .n{display:block; font-family:var(--mono); font-size:19px; font-weight:700; color:#fff; line-height:1;}
+  .np-stat .t{display:block; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.08em;
+    text-transform:uppercase; color:rgba(255,255,255,.62); margin-top:5px;}
+  @media (max-width:860px){
+    .nameplate{padding:14px 18px 16px;}
+    .np-foot{flex-direction:column; gap:14px;}
+    .np-stats{gap:26px;}
+    .np-stat{text-align:left;}
+  }
+  .rail-city{font-weight:600; letter-spacing:.04em; opacity:.75;}
+  .res-row{display:flex; gap:10px; align-items:center; padding:7px 0; border-bottom:1px solid var(--rule); text-decoration:none;}
+  .res-row:last-of-type{border-bottom:none;}
+  .res-row:hover .res-name{text-decoration:underline;}
+  .rail-thumb{flex:0 0 auto; width:38px; height:38px; border-radius:2px; overflow:hidden; display:block;}
+  .rail-thumb svg{width:100%; height:100%; display:block;}
+  .res-tag{display:inline-block; margin-top:3px; font-family:'Open Sans',sans-serif; font-size:8.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--ink);}
+  .res-body{min-width:0;}
+  .res-name{display:block; font-family:'Open Sans',sans-serif; font-size:12.5px; font-weight:700; color:var(--blue); line-height:1.28;}
+  .res-note{display:block; font-size:11px; color:var(--text-soft); margin-top:1px;}
+  #railResources .rail-link{margin-top:11px;}
+
+  .rail-chart{position:relative; height:132px; margin:-4px -4px 10px;}
+  .rail-chart canvas{width:100% !important; height:100% !important;}
+  /* The slide's chart, run full bleed across the card above the number. */
+  .rail-viz{display:block; margin:-14px -15px 14px; width:calc(100% + 30px); height:auto;}
+
   /* Left rail: signup plus a rotating figure, mirroring Featured News on the right. */
-  .hero-rail{flex:0 1 290px; max-width:300px; min-width:240px; display:flex; flex-direction:column; gap:14px;}
+  .hero-rail{flex:1 1 0; max-width:none; min-width:280px; display:flex; flex-direction:column; gap:11px;}
   .rail-card{background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .rail-head{background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;}
-  .rail-body{padding:14px 15px 15px;}
-  .rail-signup p{margin:0 0 12px; font-size:13px; color:var(--text-soft); line-height:1.55;}
+  .rail-body{padding:11px 13px 12px;}
+  .rail-signup p{margin:0 0 10px; font-size:12.5px; color:var(--text-soft); line-height:1.55;}
   .rail-btn{width:100%; justify-content:center;}
   .rail-dots{display:flex; gap:5px;}
   .rail-dots i{width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,.35); display:block;}
@@ -366,24 +409,19 @@
   .rail-s b{color:var(--ink);}
   .rail-link{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--blue); text-decoration:none;}
   .rail-link:hover{text-decoration:underline;}
-  @media (max-width:1080px){
-    /* Below three-column width the masthead leads, then the panels sit side by side. */
-    .hero-panels{flex-wrap:wrap;}
-    .hero-copy{order:-1; flex:1 1 100%; align-self:auto;}
-    .hero-rail, .featured-news{flex:1 1 300px; max-width:none;}
-  }
-  @media (max-width:760px){
-    .hero-rail, .featured-news{flex:1 1 100%;}
+  @media (max-width:860px){
+    .hero-panels{flex-direction:column; margin:34px 0 0;}
+    .hero-rail, .featured-news{flex:0 0 auto; width:100%; min-width:0;}
   }
   @media (max-width:640px){ .hero-rail{flex:0 0 auto; max-width:none; width:100%;} }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
-  .hero-copy{flex:1 1 420px; min-width:0; align-self:center;}
+  .hero-copy{max-width:none; margin:0 -26px;}
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
   .hero-panels{display:flex; gap:30px; align-items:stretch; margin:0 -30px;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
-  .featured-news{flex:0 1 350px; max-width:370px; min-width:280px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
   .featured-dots{display:flex; gap:5px;}
   .featured-dots i{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.35); display:block; transition:background .3s;}
@@ -391,11 +429,11 @@
   .featured-cards{display:flex; flex-direction:column;}
   .featured-cards.fading{opacity:0;}
   .featured-cards{transition:opacity .45s ease;}
-  .fcard{display:block; text-decoration:none; border-bottom:1px solid var(--rule); padding:0 0 13px;}
+  .fcard{display:block; text-decoration:none; border-bottom:1px solid var(--rule); padding:0 0 10px;}
   .fcard:last-child{border-bottom:0;}
   .fcard:hover{background:#F7F8F3;}
   .fcard img{width:100%; height:158px; object-fit:cover; display:block; background:#E3E7DB;}
-  .fcard .fbody{padding:11px 15px 0;}
+  .fcard .fbody{padding:9px 13px 0;}
   .fcard .ftitle{font-family:'Open Sans',sans-serif; font-size:15px; font-weight:700; color:var(--blue); line-height:1.35;}
   .fcard:hover .ftitle{text-decoration:underline;}
   .fcard .fmeta{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.05em; margin-top:5px;}
@@ -644,6 +682,17 @@
 
 <header class="hero">
   <div class="wrap">
+    <div class="hero-copy">
+      <div class="nameplate">
+        <div class="np-kicker"><span>Santa Clara County</span><i></i><span>Public planning records</span></div>
+        <h1>South Bay Area <em>Civic Dashboard</em></h1>
+        <div class="np-foot">
+          <p class="lede">Tracking real planning developments across the South Bay: housing, transportation and civic projects, official city resources, and concrete ways to get involved.</p>
+          <div class="np-stats" id="npStats"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="hero-panels">
       <aside class="hero-rail" aria-label="Sign up and local figures">
         <div class="rail-card rail-signup">
@@ -657,12 +706,13 @@
           <div class="rail-head">Local figures<span class="rail-dots" id="railDots"></span></div>
           <div class="rail-body rail-rotator" id="railRotator"></div>
         </div>
+        <div class="rail-card">
+          <div class="rail-head">Local resources<span class="rail-city" id="resourceCity"></span></div>
+          <div class="rail-body" id="railResources"></div>
+        </div>
       </aside>
 
-      <div class="hero-copy">
-        <h1>South Bay Area <em>Civic Dashboard</em></h1>
-        <p class="lede">A dashboard for tracking real planning developments across the South Bay - housing, transportation, and civic projects, official city resources, and concrete ways to get involved. Pick a city below.</p>
-      </div>
+      
 
       <aside class="featured-news" id="featuredNews" aria-label="Featured news">
         <div class="featured-head">
@@ -2489,7 +2539,7 @@ function switchCity(key){
   // Featured news leads with the selected city's stories, so it follows the tab.
   featuredPage = 0;
   if(typeof renderFeaturedNews === 'function'){ preloadFeaturedImages(); renderFeaturedNews(); }
-  if(typeof renderRail === 'function'){ railPage = 0; renderRail(); }
+  if(typeof renderRail === 'function'){ railPage = 0; renderRail(); renderRailResources(); }
   state = {q:'', stage:'all', cat:'all'};
   document.getElementById('search').value = '';
   renderCitySwitch();
@@ -4029,35 +4079,237 @@ function railSlides(){
       ? Math.round((s.homeValueSeries[s.homeValueSeries.length-1].value - s.homeValueSeries[0].value) / s.homeValueSeries[0].value * 100) : null;
     out.push({k:'$'+(s.homeValue/1e6).toFixed(2)+'M', l:'Typical home value, '+label,
       s: g !== null ? '<b>'+(g>0?'+':'')+g+'%</b> since '+s.homeValueSeries[0].year+'.' : 'Zillow home value index.',
+      viz: railSpark(s.homeValueSeries, '#3E4F24'),
+      draw: (cv)=>drawTrend(cv, s.homeValueSeries, v=>'$'+(v/1e6).toFixed(1)+'M'),
       href:'statistics', cta:'See all cities'});
   }
   if(s && s.rent){
     out.push({k:'$'+Math.round(s.rent).toLocaleString(), l:'Typical asking rent, '+label,
-      s:'Across all home types, including apartments.', href:'statistics', cta:'Compare rents'});
+      s:'Across all home types, including apartments.',
+      viz: railSpark(s.rentSeries, '#5F7640'),
+      draw: (cv)=>drawTrend(cv, s.rentSeries, v=>'$'+Math.round(v/100)/10+'k'),
+      href:'statistics', cta:'Compare rents'});
   }
   if(s && s.meanCommuteMin){
     out.push({k:s.meanCommuteMin+' min', l:'Average commute, '+label,
       s: s.transitSharePct ? '<b>'+s.transitSharePct+'%</b> of commuters take transit.' : 'One-way travel time to work.',
+      viz: railRanking(k=>CITY_STATS[k].meanCommuteMin),
+      draw: (cv)=>drawRanking(cv, k=>CITY_STATS[k].meanCommuteMin, v=>v+' min'),
       href:'statistics', cta:'See the gradient'});
   }
   if(r){
     out.push({k:r.pct+'%', l:'Housing target met, '+label,
       s:'<b>'+r.units.toLocaleString()+'</b> of '+r.target.toLocaleString()+' homes permitted this cycle.',
+      viz: railProgress(r.pct),
+      draw: (cv)=>drawProgress(cv, r),
       href:'statistics', cta:'Why this matters'});
   }
   const boards = (CITIES[c] ? CITIES[c].join : []) || [];
   if(boards.length){
     out.push({k:String(boards.length), l:'Commissions you can join in '+label,
       s: boards.slice(0,2).map(b=>b.name.replace(/&amp;/g,'&')).join(' &middot; ') + (boards.length>2 ? ' and more.' : '.'),
+      viz: railRanking(k=>{ const c=CITIES[k]; return c && c.join && c.join.length ? c.join.length : null; }),
+      draw: (cv)=>drawRanking(cv, k=>{ const c=CITIES[k]; return c && c.join && c.join.length ? c.join.length : null; }, v=>v+''),
       href:'planner', cta:'Build a plan'});
   }
   const active = (CITIES[c] ? CITIES[c].data : []).filter(d=>d.stage!=='completed');
   const units = active.reduce((n,d)=>n+(d.units||0),0);
   if(units){
     out.push({k:units.toLocaleString(), l:'Homes in the pipeline, '+label,
-      s:'Across <b>'+active.length+'</b> active projects tracked here.', href:'developments', cta:'See the register'});
+      s:'Across <b>'+active.length+'</b> active projects tracked here.',
+      viz: railRanking(k=>{ const c=CITIES[k]; if(!c) return null;
+        return c.data.filter(d=>d.stage!=='completed').reduce((n,d)=>n+(d.units||0),0) || null; }),
+      draw: (cv)=>drawRanking(cv, k=>{ const c=CITIES[k]; if(!c) return null;
+        return c.data.filter(d=>d.stage!=='completed').reduce((n,d)=>n+(d.units||0),0) || null; },
+        v=>v>=1000 ? (v/1000).toFixed(1)+'k' : v+''),
+      href:'developments', cta:'See the register'});
   }
   return out;
+}
+
+// ---- Local Figures charts ----
+// Chart.js when it's available, with the hand-rolled SVG as a fallback so a blocked or slow CDN
+// degrades to a simpler chart rather than an empty card. One instance is kept and destroyed on
+// each slide change; leaving them alive leaks canvases and animations on a rotating panel.
+let railChart = null;
+const CHART_INK = '#2E3B1C', CHART_SOFT = '#B9C2AB', CHART_GRID = '#E8EAE3', CHART_AXIS = '#7A7F72';
+
+function chartReady(){ return typeof Chart !== 'undefined'; }
+
+function destroyRailChart(){
+  if(railChart){ railChart.destroy(); railChart = null; }
+}
+
+function baseOpts(extra){
+  return Object.assign({
+    responsive:true, maintainAspectRatio:false, animation:{duration:420},
+    plugins:{ legend:{display:false}, tooltip:{
+      backgroundColor:'#1A1A1A', padding:8, displayColors:false, cornerRadius:2,
+      titleFont:{family:"'Open Sans',sans-serif", size:11},
+      bodyFont:{family:"'Roboto Mono',monospace", size:12}, }},
+  }, extra || {});
+}
+
+const AXIS_FONT = {family:"'Roboto Mono',monospace", size:8.5};
+
+// Six-year trend, with a real y-axis and gridlines rather than a bare sparkline.
+function drawTrend(canvas, series, fmt){
+  destroyRailChart();
+  railChart = new Chart(canvas, {
+    type:'line',
+    data:{ labels: series.map(p=>p.year),
+      datasets:[{ data: series.map(p=>p.value), borderColor:CHART_INK, borderWidth:1.6,
+        backgroundColor:'rgba(46,59,28,0.07)', fill:true, tension:0,
+        pointRadius:2.6, pointStyle:'rect', pointBackgroundColor:CHART_INK, pointHoverRadius:4.5 }]},
+    options: baseOpts({
+      layout:{padding:{top:6, right:6}},
+      scales:{
+        x:{ grid:{display:false}, border:{color:CHART_AXIS, width:1},
+            ticks:{color:CHART_AXIS, font:AXIS_FONT, maxRotation:0, padding:4} },
+        y:{ grid:{color:CHART_GRID, drawTicks:false, lineWidth:1}, border:{color:CHART_AXIS, width:1},
+            ticks:{color:CHART_AXIS, font:AXIS_FONT, maxTicksLimit:4, padding:5, callback:v=>fmt(v)} }
+      },
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:ctx=>fmt(ctx.parsed.y) } } }
+    })
+  });
+}
+
+// Every city ranked, this one filled, so the number carries its own context.
+function drawRanking(canvas, getter, fmt){
+  destroyRailChart();
+  const me = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  const rows = Object.keys(CITY_STATS).map(k=>({k, v:getter(k)}))
+    .filter(r=>r.v != null).sort((a,b)=>b.v-a.v).slice(0, 8);
+  railChart = new Chart(canvas, {
+    type:'bar',
+    data:{ labels: rows.map(r=>statsLabelOf(r.k)),
+      datasets:[{ data: rows.map(r=>r.v),
+        backgroundColor: rows.map(r=>r.k===me ? CHART_INK : CHART_SOFT),
+        borderRadius:0, barPercentage:0.72, borderWidth:0 }]},
+    options: baseOpts({
+      indexAxis:'y',
+      layout:{padding:{top:4, right:8}},
+      scales:{
+        x:{ grid:{color:CHART_GRID, drawTicks:false, lineWidth:1}, border:{color:CHART_AXIS, width:1},
+            ticks:{color:CHART_AXIS, font:AXIS_FONT, maxTicksLimit:4, padding:4, callback:v=>fmt(v)} },
+        y:{ grid:{display:false}, border:{color:CHART_AXIS, width:1},
+            ticks:{color:'#4A4A4A', font:AXIS_FONT, padding:5} }
+      },
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:ctx=>fmt(ctx.parsed.x) } } }
+    })
+  });
+}
+
+// Permitted against the state allocation, as a stacked bar reading to 100 percent of target.
+function drawProgress(canvas, r){
+  destroyRailChart();
+  railChart = new Chart(canvas, {
+    type:'bar',
+    data:{ labels:['Very low','Low','Moderate','Above mod'],
+      datasets:[
+        { label:'Permitted', data:[r.vli[0], r.li[0], r.mod[0], r.above[0]], backgroundColor:CHART_INK, borderRadius:0, barPercentage:0.7 },
+        { label:'Still to go', data:[
+            Math.max(0,r.vli[1]-r.vli[0]), Math.max(0,r.li[1]-r.li[0]),
+            Math.max(0,r.mod[1]-r.mod[0]), Math.max(0,r.above[1]-r.above[0])],
+          backgroundColor:CHART_SOFT, borderRadius:0, barPercentage:0.7 }]},
+    options: baseOpts({
+      layout:{padding:{top:4, right:6}},
+      scales:{
+        x:{ stacked:true, grid:{display:false}, border:{color:CHART_AXIS, width:1},
+            ticks:{color:CHART_AXIS, font:AXIS_FONT, padding:4} },
+        y:{ stacked:true, grid:{color:CHART_GRID, drawTicks:false, lineWidth:1}, border:{color:CHART_AXIS, width:1},
+            ticks:{color:CHART_AXIS, font:AXIS_FONT, maxTicksLimit:4, padding:5} }
+      },
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{
+        label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toLocaleString()+' homes' } } }
+    })
+  });
+}
+
+// A six-year trend line, drawn wide and short so it reads as a band across the card.
+function railSpark(series, color){
+  if(!series || series.length < 2) return '';
+  const W=300, H=76;
+  const vals=series.map(p=>p.value);
+  const min=Math.min(...vals), max=Math.max(...vals), span=(max-min)||1;
+  const x=i=>i*(W-2)/(series.length-1)+1;
+  const y=v=>H-6-((v-min)/span)*(H-18);
+  const pts=series.map((p,i)=>x(i).toFixed(1)+','+y(p.value).toFixed(1)).join(' ');
+  return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'
+    + '<polygon points="1,'+H+' '+pts+' '+(W-1)+','+H+'" fill="'+color+'" opacity="0.14"></polygon>'
+    + '<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="2.4"></polyline>'
+    + series.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.value).toFixed(1)+'" r="2.6" fill="'+color+'"></circle>').join('')
+    + '</svg>';
+}
+
+// Where this city sits against the others, as a stack of bars with the city's own bar filled.
+function railRanking(getter, fmt){
+  const rows = Object.keys(CITY_STATS).map(k=>({k, v:getter(k)})).filter(r=>r.v!=null).sort((a,b)=>b.v-a.v);
+  if(rows.length < 3) return '';
+  const me = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  const max = Math.max(...rows.map(r=>r.v)) || 1;
+  const W=300, bh=7, gap=3.4;
+  const bars = rows.map((r,i)=>
+    '<rect x="0" y="'+(i*(bh+gap)).toFixed(1)+'" width="'+(r.v/max*W).toFixed(1)+'" height="'+bh+'" '
+    + 'fill="'+(r.k===me ? '#3E4F24' : '#C3CBB6')+'"></rect>').join('');
+  const H = rows.length*(bh+gap);
+  return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H.toFixed(1)+'" preserveAspectRatio="none" aria-hidden="true">'+bars+'</svg>';
+}
+
+// Progress against the state housing target, as a single filled bar.
+function railProgress(pct){
+  const W=300, H=22;
+  return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'
+    + '<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#E9ECE1"></rect>'
+    + '<rect x="0" y="0" width="'+(Math.min(100,pct)/100*W).toFixed(1)+'" height="'+H+'" fill="#3E4F24"></rect></svg>';
+}
+
+// ---- Local resources: the boards and official links for the selected city ----
+// Static rather than rotating: this is a reference list, and a list you have to wait for is
+// useless. Each entry links straight out to the city's own page.
+function renderRailResources(){
+  const host = document.getElementById('railResources');
+  const cityEl = document.getElementById('resourceCity');
+  if(!host) return;
+  const c = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  const city = CITIES[c];
+  if(cityEl) cityEl.textContent = city ? city.label : '';
+  if(!city){ host.innerHTML = ''; return; }
+
+  const deciders = (city.deciders || []).slice(0, 2);
+  const join = (city.join || []).slice(0, 1);
+  const links = (city.ctaLinks || []).slice(0, 1);
+
+  // One drawn mark per kind. There is no honest photograph of "the Planning Commission", and a
+  // stock image would imply one exists, so these are figures rather than pictures.
+  const THUMB = {
+    Board: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
+      + '<rect x="7" y="16" width="26" height="15" fill="#3E4F24"/>'
+      + '<polygon points="20,7 34,16 6,16" fill="#5F7640"/>'
+      + '<rect x="12" y="21" width="4" height="10" fill="#EEF1E7"/><rect x="18" y="21" width="4" height="10" fill="#EEF1E7"/>'
+      + '<rect x="24" y="21" width="4" height="10" fill="#EEF1E7"/></svg>',
+    Join: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
+      + '<circle cx="20" cy="15" r="6" fill="#3E4F24"/>'
+      + '<path d="M8 33c0-6.6 5.4-10 12-10s12 3.4 12 10z" fill="#5F7640"/></svg>',
+    Link: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
+      + '<path d="M6 30 L15 10 L25 20 L34 8 L34 32 Z" fill="#5F7640"/>'
+      + '<circle cx="15" cy="10" r="3" fill="#3E4F24"/><circle cx="25" cy="20" r="3" fill="#3E4F24"/></svg>',
+  };
+  const row = (name, note, href, tag) =>
+    '<a class="res-row" href="'+(href || '#')+'"'+(href ? ' target="_blank" rel="noopener"' : '')+'>'
+    + '<span class="rail-thumb">'+(THUMB[tag] || '')+'</span>'
+    + '<span class="res-body"><span class="res-name">'+name.replace(/&amp;/g,'&')+'</span>'
+    + (note ? '<span class="res-note">'+note+'</span>' : '')
+    + '<span class="res-tag">'+tag+'</span></span></a>';
+
+  host.innerHTML =
+    deciders.map(d=>row(d.name, 'Decides land use here', d.link, 'Board')).join('')
+    + join.map(b=>row(b.name, 'Accepting applicants', b.link, 'Join')).join('')
+    + links.map(l=>row(l.label, 'Official city page', l.url, 'Link')).join('')
+    + '<a class="rail-link" href="#" data-res-goto="resources">All '+city.label+' resources &rarr;</a>';
+
+  const more = host.querySelector('[data-res-goto]');
+  if(more) more.addEventListener('click', (e)=>{ e.preventDefault(); showScreen('resources'); });
 }
 
 function renderRail(){
@@ -4068,9 +4320,15 @@ function renderRail(){
   if(!all.length){ host.innerHTML = ''; return; }
   railPage = railPage % all.length;
   const v = all[railPage];
-  host.innerHTML = '<div class="rail-k">'+v.k+'</div><div class="rail-l">'+v.l+'</div>'
+  const useChart = chartReady() && typeof v.draw === 'function';
+  host.innerHTML = (useChart ? '<div class="rail-chart"><canvas id="railCanvas"></canvas></div>' : (v.viz || ''))
+    + '<div class="rail-k">'+v.k+'</div><div class="rail-l">'+v.l+'</div>'
     + '<div class="rail-s">'+v.s+'</div>'
     + '<a class="rail-link" href="#" data-goto="'+v.href+'">'+v.cta+' &rarr;</a>';
+  if(useChart){
+    try { v.draw(document.getElementById('railCanvas')); }
+    catch(err){ destroyRailChart(); host.querySelector('.rail-chart').outerHTML = v.viz || ''; }
+  }
   dots.innerHTML = all.map((_,i)=>'<i class="'+(i===railPage?'on':'')+'"></i>').join('');
   host.querySelector('[data-goto]').addEventListener('click', (e)=>{
     e.preventDefault(); showScreen(host.querySelector('[data-goto]').getAttribute('data-goto'));
@@ -4086,8 +4344,22 @@ function advanceRail(){
 }
 function startRail(){ clearInterval(railTimer); railTimer = setInterval(advanceRail, RAIL_INTERVAL); }
 
+// Counts in the nameplate come from the loaded data, so they can never drift from the tabs.
+function renderNameplateStats(){
+  const el = document.getElementById('npStats');
+  if(!el) return;
+  const cities = Object.keys(CITIES).filter(k=>k!=='all').length;
+  const projects = CITIES.all ? CITIES.all.data.length : 0;
+  const stat = (n,t)=>'<div class="np-stat"><span class="n">'+n+'</span><span class="t">'+t+'</span></div>';
+  el.innerHTML = stat(projects.toLocaleString(),'Projects') + stat(cities,'Cities')
+    + stat(typeof NEWS_ARTICLES!=='undefined' ? NEWS_ARTICLES.length : 0,'Stories');
+}
+renderNameplateStats();
 renderRail();
+renderRailResources();
 startRail();
+// The script is deferred, so the first paint may use the SVG fallback; redraw once it lands.
+window.addEventListener('load', ()=>{ if(chartReady()) renderRail(); });
 (function(){
   const card = document.getElementById('railRotator');
   if(!card) return;
