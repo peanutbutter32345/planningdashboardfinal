@@ -12,18 +12,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
   :root{
-    --ink:#4A9B5D; --ink-2:#3E8A50; --ink-deep:#2F663A;
+    --ink:#3E4F24; --ink-2:#556D31;
     --paper:#FFFFFF; --paper-2:#F2F4EE; --paper-3:#E3E7DB;
     --text:#222222; --text-soft:#5B5B5B;
     /* Stages read as one ramp: the further a project has come, the deeper the green.
        Completed is deliberately neutral - it's finished, so it should recede. */
-    --stamp-proposed:#A9DCAB; --stamp-review:#7CC77F; --stamp-approved:#52A865;
-    --stamp-construction:#4A9B5D; --stamp-completed:#9BA79C;
+    --stamp-proposed:#A3AC90; --stamp-review:#87956B; --stamp-approved:#67794A;
+    --stamp-construction:#44572A; --stamp-completed:#818B79;
     --flag:#7A6636; --rule:#D9D9D9;
     --shadow: 0 1px 2px rgba(0,0,0,0.06);
     /* Categories share the same family, separated by value rather than hue. */
-    --cat-housing:#4A9B5D; --cat-building:#9CB49F; --cat-transport:#4A9B5D; --cat-civic:#BEDCC0;
-    --blue:#2F663A;
+    --cat-housing:#3E4F24; --cat-building:#8C9481; --cat-transport:#5F7640; --cat-civic:#AEB6A3;
+    --blue:#2F5B37;
   }
   *{box-sizing:border-box;}
 
@@ -47,7 +47,7 @@
 
   /* Hero photograph, served from public/img. AVIF first with a JPEG fallback, since Safari below
      16 and older Edge can't decode AVIF and would otherwise render no background at all. */
-  .hero{position:relative; background:linear-gradient(165deg,#8ACE8C 0%,#7CC77F 55%,#6FBF74 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--ink);}
+  .hero{position:relative; background:linear-gradient(165deg,#E4EDD6 0%,#DCE7CB 55%,#D3E0BE 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--ink);}
     background:linear-gradient(180deg, rgba(243,245,238,0.05) 0%, rgba(243,245,238,0.14) 45%, rgba(243,245,238,0.62) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
   .hero > .wrap{position:relative; z-index:1;}
@@ -57,7 +57,7 @@
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
   /* Sized in vw and locked to one line. The vw factor was measured against the rendered text
      width rather than guessed, so the title fills the measure without ever wrapping. */
-  .hero h1{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:clamp(18px, 4.7vw, 68px);
+  .hero h1{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:clamp(20px, 5.5vw, 82px);
     font-weight:600; letter-spacing:-0.035em; line-height:1.02; max-width:none; white-space:nowrap;}
   .hero h1 em{font-style:normal; color:#000;}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
@@ -230,9 +230,9 @@
   .page-nav-tab:hover:not(.active){background:#262626; color:#fff;}
   .screen{min-height:40vh;}
   /* Target of an email deep link - fades out on its own so it doesn't linger. */
-  .card.deep-linked{outline:3px solid #4A9B5D; outline-offset:3px; animation:deepLinkFade 4s ease-out forwards;}
-  @keyframes deepLinkFade{0%,70%{outline-color:#4A9B5D;}100%{outline-color:rgba(74,155,93,0);}}
-  .deep-link-banner{background:#F2F5EC; border-left:4px solid #4A9B5D; padding:10px 14px; margin:0 0 14px; font-size:13px;}
+  .card.deep-linked{outline:3px solid #3E4F24; outline-offset:3px; animation:deepLinkFade 4s ease-out forwards;}
+  @keyframes deepLinkFade{0%,70%{outline-color:#3E4F24;}100%{outline-color:rgba(62,79,36,0);}}
+  .deep-link-banner{background:#F2F5EC; border-left:4px solid #3E4F24; padding:10px 14px; margin:0 0 14px; font-size:13px;}
   .deep-link-banner a{color:var(--blue); font-weight:700;}
 
   /* ---- Your Area (full page) ---- */
@@ -315,7 +315,7 @@
   .metric-card .s b{color:var(--ink);}
   .metric-card .rank{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:#F2F5EC; color:var(--ink);}
   .metric-card .rank.hi{background:#EFF0EA; color:#6E7566;}
-  .metric-card .rank.lo{background:#E9EFE0; color:#3E8A50;}
+  .metric-card .rank.lo{background:#E9EFE0; color:#44572A;}
   .metric-card .spark{margin-top:11px;}
   .metric-card .spark svg{width:100%; height:auto; display:block;}
 
@@ -347,20 +347,20 @@
      paper block with a green kicker bar above and a standfirst row beneath carrying live counts.
      Backdrop-filter lifts it off the photo without hiding it; the rgba fallback covers browsers
      that don't support the filter. */
-  .nameplate{background:transparent; color:#000; padding:0 4px 14px; margin-bottom:10px; box-shadow:none;
-    border-bottom:1px solid rgba(0,0,0,.24);}
+  .nameplate{background:transparent; color:#111; padding:0 4px 14px; margin-bottom:10px; box-shadow:none;
+    border-bottom:1px solid rgba(46,59,28,.22);}
   .nameplate h1{color:#000;}
-  .nameplate h1 em{font-style:normal; color:#000;}
+  .nameplate h1 em{font-style:normal; color:#4E6330;}
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
-    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#1B4527; margin-bottom:6px;}
-  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:#1B4527; opacity:.6;}
-  .np-foot{display:flex; gap:26px; align-items:flex-start; border-top:1px solid rgba(0,0,0,.24); margin-top:12px; padding-top:12px;}
+    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:var(--ink); margin-bottom:6px;}
+  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:var(--ink); opacity:.55;}
+  .np-foot{display:flex; gap:26px; align-items:center; justify-content:flex-end; border-top:1px solid rgba(46,59,28,.22); margin-top:10px; padding-top:10px;}
   .hero .np-foot p.lede{flex:1 1 auto; margin:0; font-size:13.5px; line-height:1.6; color:#000; max-width:62ch;}
   .np-stats{flex:0 0 auto; display:flex; gap:22px;}
   .np-stat{text-align:right;}
-  .np-stat .n{display:block; font-family:var(--mono); font-size:19px; font-weight:700; color:#000; line-height:1;}
+  .np-stat .n{display:block; font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink); line-height:1;}
   .np-stat .t{display:block; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.08em;
-    text-transform:uppercase; color:#1B4527; margin-top:5px;}
+    text-transform:uppercase; color:#5B6B4A; margin-top:5px;}
   @media (max-width:860px){
     .nameplate{padding:14px 18px 16px;}
     .np-foot{flex-direction:column; gap:14px;}
@@ -379,7 +379,7 @@
   .res-note{display:block; font-size:11px; color:var(--text-soft); margin-top:1px;}
   #railResources .rail-link{margin-top:11px;}
 
-  .rail-fig{display:block; width:100%; height:auto; margin:-2px 0 9px;}
+  .rail-fig{display:block; width:100%; height:auto; margin:-2px 0 8px;}
   /* The slide's chart, run full bleed across the card above the number. */
   .rail-viz{display:block; margin:-14px -15px 14px; width:calc(100% + 30px); height:auto;}
 
@@ -411,7 +411,7 @@
   .hero-copy{max-width:none; margin:0 -12px;}
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
-  .hero-panels{display:flex; gap:30px; align-items:stretch; margin:0 -30px;}
+  .hero-panels{display:flex; gap:30px; align-items:stretch; margin:30px 46px 0;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
   .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
   .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
@@ -679,7 +679,7 @@
         <div class="np-kicker"><span>Santa Clara County</span><i></i><span>Public planning records</span></div>
         <h1>South Bay Area <em>Civic Dashboard</em></h1>
         <div class="np-foot">
-          <p class="lede">Tracking real planning developments across the South Bay: housing, transportation and civic projects, official city resources, and concrete ways to get involved.</p>
+          
           <div class="np-stats" id="npStats"></div>
         </div>
       </div>
@@ -1090,17 +1090,17 @@
 <script>
 const TODAY = new Date('2026-07-24T00:00:00');
 const STAGES = [
-  {key:'proposed',     label:'Proposed',            color:'#A9DCAB'},
-  {key:'review',       label:'Under Review',        color:'#7CC77F'},
-  {key:'approved',     label:'Approved',            color:'#52A865'},
-  {key:'construction', label:'Under Construction',  color:'#3E8A50'},
+  {key:'proposed',     label:'Proposed',            color:'#A3AC90'},
+  {key:'review',       label:'Under Review',        color:'#87956B'},
+  {key:'approved',     label:'Approved',            color:'#67794A'},
+  {key:'construction', label:'Under Construction',  color:'#44572A'},
   {key:'completed',    label:'Completed',           color:'#818B79'},
 ];
 const STAGE_MAP = Object.fromEntries(STAGES.map(s=>[s.key,s]));
 const CATEGORIES = [
-  {key:'Housing',        label:'Housing',                          color:'#4A9B5D'},
+  {key:'Housing',        label:'Housing',                          color:'#3E4F24'},
   {key:'Building',       label:'Commercial & Industrial',          color:'#8C9481'},
-  {key:'Transportation', label:'Transportation & Infrastructure',  color:'#52A865'},
+  {key:'Transportation', label:'Transportation & Infrastructure',  color:'#5F7640'},
   {key:'Civic',          label:'Civic & Public Facilities',        color:'#AEB6A3'},
 ];
 const CAT_MAP = Object.fromEntries(CATEGORIES.map(c=>[c.key,c]));
@@ -2221,12 +2221,12 @@ async function tryLiveCupertinoData(){
       const st = STAGE_MAP[d.stage] || STAGE_MAP.proposed;
       if(mapProvider==='google' && gMap){
         const marker = new google.maps.Marker({ position:{lat:d.lat,lng:d.lng}, map:gMap,
-          icon:{path:google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, scale:5, fillColor:'#3E8A50', fillOpacity:1, strokeColor:'#fff', strokeWeight:1.5, rotation:180},
+          icon:{path:google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, scale:5, fillColor:'#44572A', fillOpacity:1, strokeColor:'#fff', strokeWeight:1.5, rotation:180},
           title:'[LIVE] '+d.addr });
         marker.addListener('click', ()=>{ gInfoWindow.setContent(`<div class="infowin"><b><span class="live-badge">LIVE</span>${d.addr}</b><span class="stamp" style="background:${st.color};border-color:${st.color}">${st.label}</span><div class="desc">${d.notes||d.name}</div>${d.editedDate?`<div class="meta">Last edited (city record): ${d.editedDate}</div>`:''}${d.url?`<div class="meta"><a href="${d.url}" target="_blank" rel="noopener">City project page &#8594;</a></div>`:''}</div>`); gInfoWindow.open(gMap, marker); });
         liveMarkers[d.id] = marker;
       } else if(mapProvider==='leaflet' && lMap){
-        const marker = L.circleMarker([d.lat,d.lng], {radius:6, color:'#fff', weight:1.5, fillColor:'#3E8A50', fillOpacity:0.95});
+        const marker = L.circleMarker([d.lat,d.lng], {radius:6, color:'#fff', weight:1.5, fillColor:'#44572A', fillOpacity:0.95});
         marker.bindPopup(`<b><span class="live-badge">LIVE</span>${d.addr}</b><br>${st.label}<br>${d.notes||d.name}`);
         marker.addTo(lMap);
         liveMarkers[d.id] = marker;
@@ -2318,11 +2318,11 @@ function renderCityBoundary(){
   if(mapProvider==='google' && gMap){
     cityBoundaryG = new google.maps.Rectangle({
       bounds: {north:b.maxLat, south:b.minLat, east:b.maxLng, west:b.minLng},
-      map: gMap, fillOpacity:0, strokeColor:'#4A9B5D', strokeOpacity:0.7, strokeWeight:2.5,
+      map: gMap, fillOpacity:0, strokeColor:'#3E4F24', strokeOpacity:0.7, strokeWeight:2.5,
     });
   } else if(mapProvider==='leaflet' && lMap){
     cityBoundaryL = L.rectangle([[b.minLat,b.minLng],[b.maxLat,b.maxLng]], {
-      color:'#4A9B5D', weight:2.5, fillOpacity:0, dashArray:null,
+      color:'#3E4F24', weight:2.5, fillOpacity:0, dashArray:null,
     }).addTo(lMap);
   }
 }
@@ -2414,7 +2414,7 @@ if(GOOGLE_MAPS_API_KEY && GOOGLE_MAPS_API_KEY !== 'YOUR_API_KEY_HERE'){
 }
 function renderLegend(){
   let html = CATEGORIES.map(c=>`<span><i style="background:${c.color}"></i>${c.label}</span>`).join('');
-  html += `<span><i class="dia" style="background:#52A865"></i>Diamond = public works</span>`;
+  html += `<span><i class="dia" style="background:#5F7640"></i>Diamond = public works</span>`;
   if(onboard.userLoc) html += `<span><i style="background:#1A1A1A"></i>Your area</span>`;
   if(currentCity !== 'all') html += `<span style="opacity:.75;">Green outline = ${CITIES[currentCity].label}'s approximate area (not the exact legal boundary)</span>`;
   document.getElementById('legend').innerHTML = html;
@@ -3163,9 +3163,9 @@ document.querySelectorAll('#askSuggestions .ask-chip').forEach(btn=>{
 
 // ---------------- RESOURCES PAGE ----------------
 const RES_CAT_COLOR = {
-  'Official City Tool': '#4A9B5D',
-  'Meeting Calendar':   '#52A865',
-  'Board You Can Join': '#3E8A50',
+  'Official City Tool': '#3E4F24',
+  'Meeting Calendar':   '#5F7640',
+  'Board You Can Join': '#44572A',
   'Data Source':        '#8C9481',
 };
 function domainOf(url){
@@ -3305,7 +3305,7 @@ function renderResources(){
   c.sources.forEach(s=> items.push({cat:'Data Source', name:s.replace(/&amp;/g,'&'), body:'Where this tracker\'s data for '+c.label+' comes from.', url:null}));
   const grid = document.getElementById('resourceGrid');
   grid.innerHTML = items.map(it=>{
-    const color = RES_CAT_COLOR[it.cat] || '#4A9B5D';
+    const color = RES_CAT_COLOR[it.cat] || '#3E4F24';
     const domain = it.url ? domainOf(it.url) : '';
     const id = currentCity+':'+it.name;
     const starData = {title:it.name, desc:it.body, url:it.url};
@@ -3695,9 +3695,9 @@ const RHNA_SOURCE = {"label":"California HCD, 6th Cycle RHNA Progress Report","u
 // and the element can be decertified, which is what lets Builder's Remedy projects ignore local
 // zoning. That is the link between this section and the flags on project cards.
 const RHNA_TIERS = [
-  {key:'vli',   label:'Very low income',  color:'#4A9B5D'},
-  {key:'li',    label:'Low income',       color:'#4A9B5D'},
-  {key:'mod',   label:'Moderate income',  color:'#7CC77F'},
+  {key:'vli',   label:'Very low income',  color:'#3E4F24'},
+  {key:'li',    label:'Low income',       color:'#3E4F24'},
+  {key:'mod',   label:'Moderate income',  color:'#87956B'},
   {key:'above', label:'Above moderate',   color:'#AEB6A3'},
 ];
 
@@ -3870,8 +3870,8 @@ function statCard(metric, me){
     rankHtml = '<span class="rank'+cls+'">#'+r.pos+' of '+r.of+' &middot; '+word+'</span>';
   }
   let spark = '';
-  if(metric.id === 'homeValue' && s) spark = '<div class="spark">'+sparkline(s.homeValueSeries, '#4A9B5D')+'</div>';
-  if(metric.id === 'rent' && s)      spark = '<div class="spark">'+sparkline(s.rentSeries, '#7CC77F')+'</div>';
+  if(metric.id === 'homeValue' && s) spark = '<div class="spark">'+sparkline(s.homeValueSeries, '#3E4F24')+'</div>';
+  if(metric.id === 'rent' && s)      spark = '<div class="spark">'+sparkline(s.rentSeries, '#87956B')+'</div>';
   let sub = '';
   const f = cityFacts(me);
   if(metric.id==='units')       sub = 'Across <b>'+f.projects+'</b> active projects. Unit counts exist for '+f.unitsKnown+' of them.';
@@ -4115,7 +4115,7 @@ function railSlides(){
 // degrades to a simpler chart rather than an empty card. One instance is kept and destroyed on
 // each slide change; leaving them alive leaks canvases and animations on a rotating panel.
 let railChart = null;
-const CHART_INK = '#2F663A', CHART_SOFT = '#B9C2AB', CHART_GRID = '#E8EAE3', CHART_AXIS = '#7A7F72';
+const CHART_INK = '#2E3B1C', CHART_SOFT = '#B9C2AB', CHART_GRID = '#E8EAE3', CHART_AXIS = '#7A7F72';
 
 function chartReady(){ return typeof Chart !== 'undefined'; }
 
@@ -4234,7 +4234,7 @@ function railRanking(getter, fmt){
   const W=300, bh=7, gap=3.4;
   const bars = rows.map((r,i)=>
     '<rect x="0" y="'+(i*(bh+gap)).toFixed(1)+'" width="'+(r.v/max*W).toFixed(1)+'" height="'+bh+'" '
-    + 'fill="'+(r.k===me ? '#4A9B5D' : '#C3CBB6')+'"></rect>').join('');
+    + 'fill="'+(r.k===me ? '#3E4F24' : '#C3CBB6')+'"></rect>').join('');
   const H = rows.length*(bh+gap);
   return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H.toFixed(1)+'" preserveAspectRatio="none" aria-hidden="true">'+bars+'</svg>';
 }
@@ -4244,7 +4244,7 @@ function railProgress(pct){
   const W=300, H=22;
   return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'
     + '<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#E9ECE1"></rect>'
-    + '<rect x="0" y="0" width="'+(Math.min(100,pct)/100*W).toFixed(1)+'" height="'+H+'" fill="#4A9B5D"></rect></svg>';
+    + '<rect x="0" y="0" width="'+(Math.min(100,pct)/100*W).toFixed(1)+'" height="'+H+'" fill="#3E4F24"></rect></svg>';
 }
 
 // ---- Local resources: the boards and official links for the selected city ----
@@ -4286,16 +4286,16 @@ function renderRailResources(){
   // stock image would imply one exists, so these are figures rather than pictures.
   const THUMB = {
     Board: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
-      + '<rect x="7" y="16" width="26" height="15" fill="#4A9B5D"/>'
-      + '<polygon points="20,7 34,16 6,16" fill="#52A865"/>'
+      + '<rect x="7" y="16" width="26" height="15" fill="#3E4F24"/>'
+      + '<polygon points="20,7 34,16 6,16" fill="#5F7640"/>'
       + '<rect x="12" y="21" width="4" height="10" fill="#EEF1E7"/><rect x="18" y="21" width="4" height="10" fill="#EEF1E7"/>'
       + '<rect x="24" y="21" width="4" height="10" fill="#EEF1E7"/></svg>',
     Join: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
-      + '<circle cx="20" cy="15" r="6" fill="#4A9B5D"/>'
-      + '<path d="M8 33c0-6.6 5.4-10 12-10s12 3.4 12 10z" fill="#52A865"/></svg>',
+      + '<circle cx="20" cy="15" r="6" fill="#3E4F24"/>'
+      + '<path d="M8 33c0-6.6 5.4-10 12-10s12 3.4 12 10z" fill="#5F7640"/></svg>',
     Link: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
-      + '<path d="M6 30 L15 10 L25 20 L34 8 L34 32 Z" fill="#52A865"/>'
-      + '<circle cx="15" cy="10" r="3" fill="#4A9B5D"/><circle cx="25" cy="20" r="3" fill="#4A9B5D"/></svg>',
+      + '<path d="M6 30 L15 10 L25 20 L34 8 L34 32 Z" fill="#5F7640"/>'
+      + '<circle cx="15" cy="10" r="3" fill="#3E4F24"/><circle cx="25" cy="20" r="3" fill="#3E4F24"/></svg>',
   };
   const row = (name, note, href, tag) =>
     '<a class="res-row" href="'+(href || '#')+'"'+(href ? ' target="_blank" rel="noopener"' : '')+'>'
