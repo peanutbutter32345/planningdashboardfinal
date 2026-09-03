@@ -27,6 +27,7 @@ export const CITY_LABELS = {
   losgatos: 'Los Gatos',
   campbell: 'Campbell',
   paloalto: 'Palo Alto',
+  gilroy: 'Gilroy',
 };
 export function cityLabel(key) { return CITY_LABELS[key] || 'the South Bay'; }
 

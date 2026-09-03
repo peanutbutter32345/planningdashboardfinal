@@ -948,6 +948,7 @@
             <option value="losgatos">Los Gatos</option>
             <option value="campbell">Campbell</option>
             <option value="paloalto">Palo Alto</option>
+            <option value="gilroy">Gilroy</option>
           </select>
           <div class="auth-hint">Your city's news comes right after anything you've starred, ahead of the rest of the South Bay.</div>
           <label for="prefsFrequency" class="onboard-label" style="margin-top:12px;">Email updates</label>
@@ -2012,6 +2013,96 @@ const PA_JOIN = [
 ];
 const PA_SOURCES = ['City of Palo Alto - housing pipeline layer behind the public Housing Dashboard', 'City of Palo Alto - Current Planning Projects', 'City of Palo Alto - Housing Policies & Projects'];
 
+// ============== GILROY ==============
+// From the City of Gilroy Development Activity Projects list and the individual project
+// pages behind it. Descriptions, dates and status wording are the city's own. Coordinates
+// are geocoded from the addresses the city publishes via OpenStreetMap Nominatim; the three
+// projects for which no address is published carry a flag saying the marker is the city
+// centre, and street-level approximations say so too.
+const GIL_DATA = [
+{id:'gil-2480-2740-hecker-pass', addr:'2480 & 2740 Hecker Pass', lat:37.01194, lng:-121.61732, cat:'dev', type:'Residential',
+  desc:'The applicant has submitted an application for an Architectural and Site Review permit to allow the construction of a 116-unit single family home development including 7% affordable units (nine extremely low income units) and a Tentative Map application for a 116-lot subdivision on a 24.3 acre site...',
+  units:116, bmr:null, applicant:'See the city project page', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Gilroy development activity list, Under review. CEQA in progress. Project Title: 2480 & 2740 Hecker Pass Road, Gilroy Project Applicant: Mana Camden Fund,.', fileNo:null, flag:null},
+{id:'gil-315-las-animas-avenue', addr:'315 Las Animas Avenue', lat:37.03107, lng:-121.57577, cat:'dev', type:'Residential',
+  desc:'An Architectural and Site Review permit to develop a 530-unit rental multi-family housing project and associated amenities (Project) on an approximately 27.55 acres, submitted pursuant to California Government Code Section 65589.5(d)(5), the portion of the Housing Accountability Act referred to as...',
+  units:530, bmr:null, applicant:'See the city project page', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Gilroy development activity list, current planning project.', fileNo:null, flag:null},
+{id:'gil-monterey-family-apartments', addr:'Monterey Family Apartments', lat:36.99875, lng:-121.56485, cat:'dev', type:'Residential',
+  desc:'On October 18, 2024, the City approved an application for an Architectural and Site Review permit to construct a 94-unit, 100% affordable, apartment complex and to demolish an existing single-family residence, automotive repair building, and storage buildings on a 2.88-acre site in the Downtown...',
+  units:94, bmr:null, applicant:'See the city project page', filed:'2024-10-18', stage:'approved',
+  lastDate:'2024-10-18', lastNote:'City of Gilroy development activity list, Building permit and grading permit issued on 6/22/2026. Project Title: Monterey Family Apartments Project Applicant: ROE.', fileNo:null, flag:'Marker is placed on the street the city names for this project, not a surveyed parcel.'},
+{id:'gil-700-w-6th-street', addr:'700 W. 6th Street', lat:37.00424, lng:-121.57719, cat:'dev', type:'Residential',
+  desc:'On August 1, 2022, the City Council approved a Tentative Map application to subdivide a 3.70-acre site into 19 single-family residential lots located at 700 W. 6th Street in the R-1 (Single-Family Residential) zoning district.',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2022-08-01', stage:'construction',
+  lastDate:'2022-08-01', lastNote:'City of Gilroy development activity list, Under Construction Project Description : On August 1, 2022, the City Council approved a Tentative Map application to sub.', fileNo:null, flag:null},
+{id:'gil-glen-loma-ranch', addr:'Glen Loma Ranch', lat:37.02984, lng:-121.59807, cat:'dev', type:'Residential',
+  desc:'A Tentative Map application was submitted to subdivide approximately 6.7 acres of the Glen Loma Ranch Specific Plan area for build out of the Town Center Flex neighborhood . The tentative map proposes to create 42 single-family duet residential lots, and 1.44 acres of private open space.',
+  units:null, bmr:null, applicant:'See the city project page', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Gilroy development activity list, current planning project.', fileNo:null, flag:'Marker is placed on the street the city names for this project, not a surveyed parcel.'},
+{id:'gil-renfu-villa', addr:'RenFu Villa', lat:36.98571, lng:-121.55718, cat:'dev', type:'Residential',
+  desc:'The City approved a Zoning Map amendment (Z 22-03) to rezone the property to RH (Residential Hillside), consistent with the 2040 General Plan Hillside Residential land use designation, and a Tentative Map (TM 22-02) to subdivide the 37.54 acre site into 54 lots on February 24, 2025.',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2025-02-24', stage:'approved',
+  lastDate:'2025-02-24', lastNote:'City of Gilroy development activity list, current planning project.', fileNo:null, flag:'Marker is placed on the street the city names for this project, not a surveyed parcel.'},
+{id:'gil-royal-way-townhomes', addr:'Royal Way Townhomes', lat:36.99344, lng:-121.57279, cat:'dev', type:'Residential',
+  desc:'On November 21, 2022, the City Council approved an Architectural and Site Review Permit, Tentative Map, and rezoning from R3 to a Planned Unit Development to construct 45 two-story townhomes on a 3.37-acre site.',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2022-11-21', stage:'approved',
+  lastDate:'2022-11-21', lastNote:'City of Gilroy development activity list, Building permit under review Project Applicant: Lennar Homes Project Location: 6630 Royal Way. Assessor Parcel Numbers:.', fileNo:null, flag:'Marker is placed on the street the city names for this project, not a surveyed parcel.'},
+{id:'gil-95-howson-street', addr:'95 Howson Street', lat:37.01718, lng:-121.57489, cat:'dev', type:'Residential',
+  desc:'On March 26, 2024, the City received an application for an Architectural and Site Review permit to construct 42 townhomes and a Vesting Tentative Map application to subdivide the lot for condominium purposes on a 1.99-acre site located at 95 Howson Street in the Downtown Specific Plan Gateway...',
+  units:42, bmr:null, applicant:'See the city project page', filed:'2024-03-26', stage:'review',
+  lastDate:'2024-03-26', lastNote:'City of Gilroy development activity list, Entitlements approved. The project was heard at the April 2, 2026 Planning Commission meeting. Application V 26-01 was a.', fileNo:null, flag:null},
+{id:'gil-transit-plaza-mixed-use', addr:'Transit Plaza Mixed-Use Project', lat:37.01848, lng:-121.57441, cat:'dev', type:'Residential',
+  desc:'On November 19, 2024, the city received an application for an Architectural and Site Review permit to redevelop this 1.35-acre site, which currently contains an existing building and other site improvements across three parcels, with the following: Four story mixed-use building with commercial and...',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2024-11-19', stage:'review',
+  lastDate:'2024-11-19', lastNote:'City of Gilroy development activity list, In review Project Title: Transit Plaza Project Applicant: Jose Montes Project Location: 7050 Monterey Street. Assessor P.', fileNo:null, flag:'Marker is placed on the street the city names for this project, not a surveyed parcel.'},
+{id:'gil-401-first-street-new', addr:'401 First Street (New Monopine)', lat:37.01355, lng:-121.57746, cat:'dev', type:'Commercial',
+  desc:'On July 17, 2024, the City received an application for an Architectural and Site Review permit and a Variance permit to demolish an existing 35-foot tall monopole and develop a new wireless tower facility for Crown Castle with antennas and related equipment for T-Mobile on a 0.22-acre site in the...',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2024-07-17', stage:'review',
+  lastDate:'2024-07-17', lastNote:'City of Gilroy development activity list, Under Building permit review. Entitlements were approved on June 16, 2025 by City Council for a 70-foot tall monopine wi.', fileNo:null, flag:null},
+{id:'gil-5955-travel-park-cir', addr:'5955 Travel Park Cir (ARCO)', lat:36.9865, lng:-121.55641, cat:'dev', type:'Commercial',
+  desc:'On April 15, 2025, the City approved an application for an Architectural and Site Review permit to demolish an existing restaurant and construct a new gas station with 6 pumps, a 2,900 square-foot convenience store, and related site improvements for ARCO on a 1.02-acre site in the Commercial...',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2025-04-15', stage:'approved',
+  lastDate:'2025-04-15', lastNote:'City of Gilroy development activity list, Building permit under review Project Title: ARCO Gas Station Project Applicant: Ahmad Ghaderi Project Location: 5955 Tra.', fileNo:null, flag:null},
+{id:'gil-california-sports-center', addr:'California Sports Center', lat:37.00651, lng:-121.56317, cat:'dev', type:'Commercial',
+  desc:'The proposed project is requesting a Conditional Use Permit to allow a youth focused gymnastics facility within an existing building located at 7800 Arroyo Circle, (APN 841-69-024), within the M2 General Industrial zoning district.',
+  units:null, bmr:null, applicant:'See the city project page', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Gilroy development activity list, Entitlement approved by the Planning Commission on November 6, 2025. Project Applicant: Torey Cetani, California Sports.', fileNo:null, flag:'The city does not publish a street address for this application, so the marker sits on the centre of Gilroy rather than the site.'},
+{id:'gil-pacheco-pass-hwy-development', addr:'Pacheco Pass Hwy Development', lat:37.003, lng:-121.55653, cat:'dev', type:'Commercial',
+  desc:'On April 8, 2025, the City received an application for a Tentative Map and an Architectural and Site Review permit to develop a 3,181 sq.ft. fast food restaurant (Pad 1), 3,060 convenience store (Pad 2), a 990 sq.ft.',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2025-04-08', stage:'review',
+  lastDate:'2025-04-08', lastNote:'City of Gilroy development activity list, Incomplete Project Title & Applicant: Pacheco Pass Hwy Development, Greenberg Farrow Project Location: Corner of Silacci.', fileNo:null, flag:'Marker is placed on the street the city names for this project, not a surveyed parcel.'},
+{id:'gil-201-210-yamane-drive', addr:'201 & 210 Yamane Drive', lat:37.02665, lng:-121.5769, cat:'dev', type:'Industrial',
+  desc:'On October 5, 2023, the Planning Commission approved an Architectural and Site Review permit to construct a 163,400 square-foot, one-story, 40-foot tall warehouse and light industrial building on a vacant 8.88-acre site in the M1 (Limited Industrial) zoning district and Murray-Las Animas Overlay...',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2023-10-05', stage:'construction',
+  lastDate:'2023-10-05', lastNote:'City of Gilroy development activity list, Under Construction Project Description : On October 5, 2023, the Planning Commission approved an Architectural and Site.', fileNo:null, flag:null},
+{id:'gil-210-las-animas-avenue', addr:'210 Las Animas Avenue', lat:37.03048, lng:-121.57696, cat:'dev', type:'Industrial',
+  desc:'On October 5, 2023, the Planning Commission approved an Architectural and Site Review permit to develop a 4.2+/- acres site with a single-story 18,825+/- square foot warehouse and light industrial building, with an associated outside storage area, located in the M1 (Limited Industrial)/Murray-Las...',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2023-10-05', stage:'construction',
+  lastDate:'2023-10-05', lastNote:'City of Gilroy development activity list, Under construction. Building permit issued August 15, 2025. Project Description : On October 5, 2023, the Planning Commi.', fileNo:null, flag:null},
+{id:'gil-8831-8841-muraoka-drive', addr:'8831 & 8841 Muraoka Drive', lat:37.02461, lng:-121.57617, cat:'dev', type:'Industrial',
+  desc:'On August 7, 2025, the Planning Commission approved an Architectural and Site Review permit to construct two speculative commercial industrial buildings on two vacant parcels, totaling 1.67 acres, located at 8831 and 8841 Muraoka Drive (APNs 831-31-015 and 831-31-016), within the M1 (Limited...',
+  units:null, bmr:null, applicant:'See the city project page', filed:'2025-08-07', stage:'construction',
+  lastDate:'2025-08-07', lastNote:'City of Gilroy development activity list, Under construction. Project Location : 8831 and 8841 Muraoka Drive, APNs: 831-31-015 and 831-31-016 Project Applicant: J.', fileNo:null, flag:null},
+{id:'gil-gilroy-data-center-by', addr:'Gilroy Data Center (by AWS)', lat:37.00651, lng:-121.56317, cat:'infra', type:'Industrial',
+  desc:'(by Amazon Web Services) | Gilroy, CA - Official Website Skip to Main Content Search Home City Hall Community Development Planning Gilroy Data Center by AWS Gilroy Data Center (by Amazon Web Services) Addressing Your Questions We recognize that the data cente',
+  units:null, bmr:null, applicant:'See the city project page', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Gilroy development activity list, current planning project.', fileNo:null, flag:'The city does not publish a street address for this application, so the marker sits on the centre of Gilroy rather than the site.'},
+{id:'gil-heat-wave', addr:'Heat Wave', lat:37.00651, lng:-121.56317, cat:'dev', type:'Industrial',
+  desc:'The proposed project is for an Architectural and Site Review permit to construct three industrial warehouse buildings on a vacant 7.29-acre site in the M1 (Limited Industrial) zoning district and Murray-Las Animas Overlay District.',
+  units:null, bmr:null, applicant:'See the city project page', filed:null, stage:'review',
+  lastDate:null, lastNote:'City of Gilroy development activity list, Entitlement approved by the Planning Commission on May 1, 2025. Project Description : The proposed project is for an Arc.', fileNo:null, flag:'The city does not publish a street address for this application, so the marker sits on the centre of Gilroy rather than the site.'},
+];const GIL_FEED = [];
+const GIL_DECIDERS = [
+  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'First decision point on land use applications.', link:'https://www.cityofgilroy.org/271/Planning-Commission'},
+  {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, rezonings and development agreements.', link:'https://www.cityofgilroy.org/163/City-Council'},
+];
+const GIL_JOIN = [
+  {name:'Community Development Department', when:'See the department page', body:'Runs current planning and maintains the development activity list these records come from.', cat:'Housing', link:'https://www.cityofgilroy.org/167/Community-Development'},
+  {name:'Boards, Commissions &amp; Committees', when:'See the city page for openings', body:'Where residents apply to serve on the bodies that review development.', cat:'Civic', link:'https://www.cityofgilroy.org/165/Boards-Commissions-Committees'},
+];
+const GIL_SOURCES = ['City of Gilroy - Development Activity Projects and individual project pages', 'City of Gilroy - Current Planning and Development Project List', 'Coordinates geocoded from published addresses via OpenStreetMap Nominatim'];
+
 
 
 const CITIES = {
@@ -2074,6 +2165,12 @@ const CITIES = {
       {label:'Current Planning Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning/Projects'},
       {label:'Housing Policies & Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects'},
       {label:'Boards & Commissions', url:'https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions'},
+    ]},
+  gilroy: {label:'Gilroy', center:{lat:37.0090,lng:-121.5683}, zoom:12.5, bbox:{minLat:36.97,maxLat:37.05,minLng:-121.63,maxLng:-121.53}, data:GIL_DATA, feed:GIL_FEED, deciders:GIL_DECIDERS, join:GIL_JOIN, sources:GIL_SOURCES, note:'Gilroy publishes a curated list of significant projects rather than a full permit feed, so this is the city\'s own shortlist across residential, commercial and industrial. Three records carry no published street address; their markers sit on the centre of Gilroy and say so.',
+    ctaLinks:[
+      {label:'Development Activity Projects', url:'https://www.cityofgilroy.org/298/Development-Activity-Projects'},
+      {label:'Planning Division', url:'https://www.cityofgilroy.org/269/Planning'},
+      {label:'Boards & Commissions', url:'https://www.cityofgilroy.org/165/Boards-Commissions-Committees'},
     ]},
   santaclara: {label:'Santa Clara', center:{lat:37.362,lng:-121.965}, zoom:12.3, bbox:{minLat:37.32,maxLat:37.42,minLng:-122.01,maxLng:-121.92}, data:SC_DATA, feed:SC_FEED, deciders:SC_DECIDERS, join:SC_JOIN, sources:SC_SOURCES, note:'The most complete city in this tracker: all 53 records come straight from Santa Clara\'s own development-activity GIS layer, the same source behind the city\'s public story map. Because that layer publishes a year rather than milestone dates, the change feed is coarser here than in the hand-researched cities.',
     ctaLinks:[
