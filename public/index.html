@@ -531,6 +531,8 @@
   .res-card .star-btn{position:absolute; top:8px; right:8px; z-index:2; background:rgba(255,255,255,0.9); border-radius:50%;}
 
   /* ---- Utility bar (Palo Alto style) ---- */
+  .footer-slim{background:#1A1A1A; color:#8A8A8A; font-size:11.5px; padding:14px 0; text-align:center; letter-spacing:.01em;}
+
   .util-bar{background:var(--ink); color:#E8EDE0; font-size:11.5px;}
   .util-bar-inner{display:flex; justify-content:flex-end; align-items:center; gap:16px; padding:6px 24px; flex-wrap:wrap;}
   .util-links a{color:#D3DCC6; text-decoration:none; margin-left:4px;}
@@ -1062,25 +1064,8 @@
 </div>
 </main>
 
-<footer>
-  <div class="wrap footer-grid">
-    <div class="footer-col">
-      <h3>About This Dashboard</h3>
-      <p>250 Hamilton Ave–style civic offices exist in every city shown - this tool is independent of all of them.</p>
-      <p>A working prototype built from real, current public planning records for three South Bay cities. Each city's dataset is a representative sample (not the complete active list) pulled from that city's own development reports, project pages, and boards/commissions pages. Some records are flagged where a status date is old, a permit expired, or a detail wasn't specified in the public record - that's surfaced, not hidden.</p>
-    </div>
-    <div class="footer-col">
-      <h3>Quick Links</h3>
-      <ul class="footer-links" id="footerQuickLinks"></ul>
-    </div>
-    <div class="footer-col">
-      <h3>Sources</h3>
-      <div class="src-list" id="srcList"></div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="wrap">South Bay Area Civic Dashboard - an independent student-built prototype, not an official government product. Google Maps requires your own API key.</div>
-  </div>
+<footer class="footer-slim">
+  <div class="wrap">An independent, student-built prototype. Not an official government product.</div>
 </footer>
 
 <script>
@@ -2134,7 +2119,7 @@ function renderQuickLinks(){
     {label:'Meeting Calendar', url:(c.ctaLinks && c.ctaLinks.find(l=>/calendar/i.test(l.label)))?.url || (c.deciders[1]&&c.deciders[1].link) || '#'},
     {label:'Current Public Hearings', url:(c.ctaLinks && c.ctaLinks.find(l=>/hearing/i.test(l.label)))?.url || '#'},
   ];
-  document.getElementById('footerQuickLinks').innerHTML = footerLinks.map(l=>`<li><a href="${l.url}" target="_blank" rel="noopener">${l.label}</a></li>`).join('');
+  // Footer quick-links were removed with the footer.
 }
 
 function renderFunnel(){
@@ -2500,7 +2485,7 @@ function renderInvolved(){
     document.getElementById('joinGrid').innerHTML = '';
     document.getElementById('boardCta').innerHTML = '';
     document.getElementById('boardNote').textContent = c.note;
-    document.getElementById('srcList').innerHTML = c.sources.join('<br>');
+    // Source list was removed with the footer.
     return;
   }
   document.getElementById('boardSub').textContent = 'Every project above eventually goes in front of one of these bodies.';
@@ -2517,7 +2502,7 @@ function renderInvolved(){
   }).join('');
   document.getElementById('boardCta').innerHTML = (c.ctaLinks||[]).map(l=>`<a class="btnlink" href="${l.url}" target="_blank" rel="noopener">${l.label} →</a>`).join('');
   document.getElementById('boardNote').textContent = c.note;
-  document.getElementById('srcList').innerHTML = c.sources.join('<br>') + '<br>Address search powered by OpenStreetMap Nominatim (openstreetmap.org, ODbL-licensed data)';
+  // Source list was removed with the footer.
 }
 
 document.getElementById('search').addEventListener('input', (e)=>{ state.q = e.target.value.trim(); renderAll(); });
