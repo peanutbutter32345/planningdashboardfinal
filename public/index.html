@@ -531,7 +531,20 @@
   .res-card .star-btn{position:absolute; top:8px; right:8px; z-index:2; background:rgba(255,255,255,0.9); border-radius:50%;}
 
   /* ---- Utility bar (Palo Alto style) ---- */
-  .footer-slim{background:#1A1A1A; color:#8A8A8A; font-size:11.5px; padding:14px 0; text-align:center; letter-spacing:.01em;}
+  .site-footer{background:#1A1A1A; color:#C7C7C7; margin-top:48px;}
+  .site-footer .footer-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:34px; padding:38px 24px 30px;}
+  .site-footer h3{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.11em;
+    text-transform:uppercase; color:#fff; margin:0 0 12px;}
+  .footer-links{list-style:none; margin:0; padding:0; font-size:12.5px; line-height:1.5;}
+  .footer-links li{margin-bottom:7px; color:#9A9A9A;}
+  .footer-links a{color:#D7D7D7; text-decoration:none;}
+  .footer-links a:hover{color:#fff; text-decoration:underline;}
+  .footer-cities{columns:2; column-gap:14px;}
+  .footer-bottom{border-top:1px solid #303030; font-size:11.5px; color:#8A8A8A;}
+  .footer-bottom .wrap{display:flex; flex-wrap:wrap; gap:6px 18px; justify-content:space-between; padding:13px 24px;}
+  @media (max-width:900px){ .site-footer .footer-grid{grid-template-columns:repeat(2,1fr); gap:26px;} }
+  @media (max-width:520px){ .site-footer .footer-grid{grid-template-columns:1fr;} .footer-cities{columns:2;} }
+
 
   .util-bar{background:var(--ink); color:#E8EDE0; font-size:11.5px;}
   .util-bar-inner{display:flex; justify-content:flex-end; align-items:center; gap:16px; padding:6px 24px; flex-wrap:wrap;}
@@ -1064,8 +1077,49 @@
 </div>
 </main>
 
-<footer class="footer-slim">
-  <div class="wrap">An independent, student-built prototype. Not an official government product.</div>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-col">
+      <h3>Browse</h3>
+      <ul class="footer-links">
+        <li><a href="#" data-goto-screen="dashboard">Project register</a></li>
+        <li><a href="#" data-goto-screen="hearings">Upcoming hearings</a></li>
+        <li><a href="#" data-goto-screen="statistics">Statistics</a></li>
+        <li><a href="#" data-goto-screen="housing">Housing</a></li>
+        <li><a href="#" data-goto-screen="transportation">Transportation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Take part</h3>
+      <ul class="footer-links">
+        <li><a href="#" data-goto-screen="planner">Build a get-involved plan</a></li>
+        <li><a href="#" data-goto-screen="resources">Boards and commissions</a></li>
+        <li><a href="#" data-goto-screen="yourarea">Projects near you</a></li>
+        <li><a href="#" data-goto-screen="ask">Ask a question</a></li>
+        <li><a href="#" data-signup>Get the email briefing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Cities</h3>
+      <ul class="footer-links footer-cities" id="footerCities"></ul>
+    </div>
+    <div class="footer-col">
+      <h3>Where the data comes from</h3>
+      <ul class="footer-links">
+        <li><a href="https://www.zillow.com/research/data/" target="_blank" rel="noopener">Zillow Research</a> &mdash; home values and rents</li>
+        <li><a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener">US Census ACS</a> &mdash; commute, income, tenure</li>
+        <li><a href="https://data.ca.gov/dataset/rhna-progress-report" target="_blank" rel="noopener">California HCD</a> &mdash; housing targets</li>
+        <li><a href="https://webapi.legistar.com/" target="_blank" rel="noopener">Legistar</a> &mdash; meeting agendas</li>
+        <li><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &mdash; geocoding</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="wrap">
+      <span>South Bay Area Civic Dashboard</span>
+      <span>An independent, student-built prototype. Not an official government product.</span>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -4350,6 +4404,29 @@ startRail();
   card.addEventListener('focusout', startRail);
   document.addEventListener('visibilitychange', ()=> document.hidden ? pause() : startRail());
 })();
+
+// ---- Footer ----
+// City list is built from CITIES so it can't fall out of step with the tabs, and the section
+// links drive showScreen rather than being dead anchors.
+function renderFooter(){
+  const el = document.getElementById('footerCities');
+  if(el){
+    el.innerHTML = Object.keys(CITIES).filter(k=>k!=='all')
+      .map(k=>'<li><a href="#" data-goto-city="'+k+'">'+CITIES[k].label+'</a></li>').join('');
+    el.querySelectorAll('[data-goto-city]').forEach(a=>a.addEventListener('click', e=>{
+      e.preventDefault();
+      switchCity(a.getAttribute('data-goto-city'));
+      showScreen('dashboard');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }));
+  }
+  document.querySelectorAll('[data-goto-screen]').forEach(a=>a.addEventListener('click', e=>{
+    e.preventDefault();
+    showScreen(a.getAttribute('data-goto-screen'));
+    window.scrollTo({top:0, behavior:'smooth'});
+  }));
+}
+renderFooter();
 
 // ================= EMAIL DEEP LINKS =================
 // Digest emails link to ?project=<id> and ?city=<key>. Land the reader on the exact record
