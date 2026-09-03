@@ -18,7 +18,7 @@
     /* Stages read as one ramp: the further a project has come, the deeper the green.
        Completed is deliberately neutral - it's finished, so it should recede. */
     --stamp-proposed:#A3AC90; --stamp-review:#87956B; --stamp-approved:#67794A;
-    --stamp-construction:#44572A; --stamp-completed:#818B79;
+    --stamp-construction:#4E6330; --stamp-completed:#3E4F24;
     --flag:#7A6636; --rule:#D9D9D9;
     --shadow: 0 1px 2px rgba(0,0,0,0.06);
     /* Categories share the same family, separated by value rather than hue. */
@@ -71,7 +71,8 @@
   .funnel{margin-top:20px; display:flex; gap:3px; border-radius:2px; overflow:hidden; border:1px solid var(--rule); background:var(--rule);}
   .funnel-seg{flex:1 1 0; padding:12px 10px; cursor:pointer; border-right:1px solid rgba(255,255,255,0.4); border-top:none; border-bottom:none; border-left:none; text-align:left; font-family:inherit; display:block;}
   .funnel-seg:last-child{border-right:none;}
-  .funnel-seg:hover{filter:brightness(1.08);}
+  .funnel-seg:hover:not(.empty){filter:brightness(1.08);}
+  .funnel-seg.empty{opacity:.42; cursor:default;}
   .funnel-seg.active{outline:2px solid #1A1A1A; outline-offset:-2px;}
   .funnel-seg .n{display:block; font-size:20px; font-weight:800; color:#fff;}
   .funnel-seg .l{display:block; font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:rgba(255,255,255,0.92); margin-top:2px; font-weight:600;}
@@ -673,7 +674,7 @@
 
 <div class="util-bar">
   <div class="wrap util-bar-inner">
-    <span class="util-links"><a href="#screenDashboard">Dashboard</a> · <a href="#involved">Get Involved</a> · <a href="#" id="utilTop">Search</a></span>
+    <span class="util-links"><a href="#" data-goto-screen="dashboard">Dashboard</a> &middot; <a href="#" data-goto-screen="planner">Get Involved</a> · <a href="#" id="utilTop" data-util-search>Search</a></span>
     <div class="marquee" id="signupMarquee" aria-hidden="true">
       <div class="marquee-track">
         <button type="button" class="marquee-item" data-signup>Sign up for email recaps</button>
@@ -1128,8 +1129,8 @@ const STAGES = [
   {key:'proposed',     label:'Proposed',            color:'#A3AC90'},
   {key:'review',       label:'Under Review',        color:'#87956B'},
   {key:'approved',     label:'Approved',            color:'#67794A'},
-  {key:'construction', label:'Under Construction',  color:'#44572A'},
-  {key:'completed',    label:'Completed',           color:'#818B79'},
+  {key:'construction', label:'Under Construction',  color:'#4E6330'},
+  {key:'completed',    label:'Completed',           color:'#3E4F24'},
 ];
 const STAGE_MAP = Object.fromEntries(STAGES.map(s=>[s.key,s]));
 const CATEGORIES = [
@@ -2183,7 +2184,8 @@ function renderFunnel(){
   el.innerHTML = STAGES.map(s=>{
     const n=DATA().filter(d=>d.stage===s.key).length;
     const isActive = state.stage===s.key;
-    return `<button type="button" class="funnel-seg${isActive?' active':''}" style="background:${s.color}" data-stage="${s.key}" aria-pressed="${isActive}"><span class="n">${n}</span><span class="l">${s.label}</span></button>`;
+    const empty = n === 0;
+    return `<button type="button" class="funnel-seg${isActive?' active':''}${empty?' empty':''}" style="background:${s.color}" data-stage="${s.key}" aria-pressed="${isActive}"${empty?' disabled aria-disabled="true" title="No records at this stage"':''}><span class="n">${n}</span><span class="l">${s.label}</span></button>`;
   }).join('');
   el.querySelectorAll('.funnel-seg').forEach(seg=>{
     seg.addEventListener('click', ()=>{ const st=seg.getAttribute('data-stage'); state.stage=(state.stage===st)?'all':st; renderAll(); });
@@ -4403,6 +4405,23 @@ startRail();
   card.addEventListener('mouseleave', startRail);
   card.addEventListener('focusout', startRail);
   document.addEventListener('visibilitychange', ()=> document.hidden ? pause() : startRail());
+})();
+
+// The utility-bar "Search" link had no handler and no target - it now focuses the register's
+// search box, which is the only search on the page.
+(function(){
+  const link = document.getElementById('utilTop');
+  if(!link) return;
+  link.addEventListener('click', (e)=>{
+    e.preventDefault();
+    document.getElementById('onboardOverlay').style.display = 'none';
+    showScreen('dashboard');
+    const box = document.getElementById('search');
+    if(box){
+      box.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(()=>box.focus({preventScroll:true}), 420);
+    }
+  });
 })();
 
 // ---- Footer ----
