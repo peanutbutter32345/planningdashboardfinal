@@ -415,5 +415,43 @@ export const BOARDS = [
     "city": "paloalto",
     "boardType": "join",
     "id": "paloalto:Housing Policies &amp; Projects"
+  },
+  {
+    "name": "Planning Commission",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "First decision point on land use applications.",
+    "link": "https://www.cityofgilroy.org/271/Planning-Commission",
+    "city": "gilroy",
+    "boardType": "decider",
+    "id": "gilroy:Planning Commission"
+  },
+  {
+    "name": "City Council",
+    "when": "Check current agenda - schedule not independently confirmed here",
+    "body": "Final say on appeals, rezonings and development agreements.",
+    "link": "https://www.cityofgilroy.org/163/City-Council",
+    "city": "gilroy",
+    "boardType": "decider",
+    "id": "gilroy:City Council"
+  },
+  {
+    "name": "Community Development Department",
+    "when": "See the department page",
+    "body": "Runs current planning and maintains the development activity list these records come from.",
+    "cat": "Housing",
+    "link": "https://www.cityofgilroy.org/167/Community-Development",
+    "city": "gilroy",
+    "boardType": "join",
+    "id": "gilroy:Community Development Department"
+  },
+  {
+    "name": "Boards, Commissions &amp; Committees",
+    "when": "See the city page for openings",
+    "body": "Where residents apply to serve on the bodies that review development.",
+    "cat": "Civic",
+    "link": "https://www.cityofgilroy.org/165/Boards-Commissions-Committees",
+    "city": "gilroy",
+    "boardType": "join",
+    "id": "gilroy:Boards, Commissions &amp; Committees"
   }
 ];
