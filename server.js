@@ -708,6 +708,49 @@ async function runDigests(req, res) {
   }
 }
 
+// ---------------- ADMIN STATS ----------------
+// Behind the same shared secret as the cron run. Returns counts only - no addresses, no
+// usernames - so a leaked URL exposes totals rather than anyone's contact details.
+app.get('/api/admin/stats', async (req, res) => {
+  const provided = req.headers['x-cron-secret'] || req.query.secret;
+  if (!CRON_SECRET || provided !== CRON_SECRET) return res.status(401).json({ error: 'Invalid or missing cron secret.' });
+  if (!requireDb(res)) return;
+  try {
+    const [totals, byFreq, byCity, recent, stars] = await Promise.all([
+      pool.query(`SELECT
+          count(*)::int AS accounts,
+          count(email)::int AS with_email,
+          count(*) FILTER (WHERE email_frequency <> 'off')::int AS subscribed,
+          count(*) FILTER (WHERE last_digest_sent_at IS NOT NULL)::int AS ever_emailed,
+          min(created_at) AS first_signup,
+          max(created_at) AS latest_signup
+        FROM users`),
+      pool.query(`SELECT email_frequency AS frequency, count(*)::int AS n
+                  FROM users GROUP BY 1 ORDER BY 2 DESC`),
+      pool.query(`SELECT coalesce(home_city,'(not set)') AS city, count(*)::int AS n
+                  FROM users GROUP BY 1 ORDER BY 2 DESC`),
+      pool.query(`SELECT count(*)::int AS n FROM users WHERE created_at > now() - interval '7 days'`),
+      pool.query(`SELECT item_type, count(*)::int AS n FROM stars GROUP BY 1 ORDER BY 2 DESC`),
+    ]);
+    res.json({
+      ok: true,
+      accounts: totals.rows[0].accounts,
+      withEmail: totals.rows[0].with_email,
+      subscribed: totals.rows[0].subscribed,
+      everEmailed: totals.rows[0].ever_emailed,
+      signedUpLast7Days: recent.rows[0].n,
+      firstSignup: totals.rows[0].first_signup,
+      latestSignup: totals.rows[0].latest_signup,
+      byFrequency: Object.fromEntries(byFreq.rows.map(r => [r.frequency, r.n])),
+      byCity: Object.fromEntries(byCity.rows.map(r => [r.city, r.n])),
+      starsByType: Object.fromEntries(stars.rows.map(r => [r.item_type, r.n])),
+    });
+  } catch (err) {
+    console.error('Admin stats failed:', err.message);
+    res.status(500).json({ error: 'Could not read stats: ' + err.message });
+  }
+});
+
 // ---------------- UPCOMING HEARINGS ----------------
 // Read-only and unauthenticated: it exposes nothing but public meeting agendas. The six-hour
 // cache lives in hearings.js so repeated page loads don't hit Legistar five times over.
