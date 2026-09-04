@@ -563,6 +563,33 @@
   .acct-steps li{margin-bottom:5px;}
   .acct-fineprint{font-size:11.5px; color:var(--text-soft); line-height:1.55;}
   .acct-effort{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
+  .acct-chatbar{margin-bottom:14px;}
+  .acct-chat{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:13px 15px; margin-bottom:10px;}
+  .acct-chat-head{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:6px;}
+  .acct-chat-head .d{font-family:var(--mono); font-size:11px; color:var(--text-soft);}
+  .acct-chat-del{background:none; border:none; padding:0; cursor:pointer; font-family:'Open Sans',sans-serif;
+    font-size:11px; font-weight:700; color:var(--text-soft); text-decoration:underline;}
+  .acct-chat-del:hover{color:#8C2F1E;}
+  .acct-chat h4{font-size:14px; color:var(--ink); margin-bottom:6px; line-height:1.4;}
+  .acct-chat p{font-size:13px; color:var(--text); line-height:1.65;}
+  .acct-chat-src{margin-top:9px; padding-top:8px; border-top:1px solid var(--rule);
+    font-size:11.5px; color:var(--text-soft); line-height:1.6;}
+  .ask-save{display:block; margin-top:9px; background:none; border:1px solid var(--rule); border-radius:2px;
+    padding:5px 10px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11.5px;
+    font-weight:700; color:var(--text-soft);}
+  .ask-save:hover:not(:disabled){border-color:var(--ink); color:var(--ink);}
+  .ask-save:disabled{cursor:default; opacity:.75;}
+  /* Drafting tools */
+  .acct-draft-pick{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:16px 18px; margin-bottom:16px;}
+  .acct-draft-pick select, .acct-draft-pick input[type="text"], .acct-draft-pick textarea{
+    width:100%; max-width:460px; padding:9px 11px; border:1.5px solid var(--ink); border-radius:2px;
+    font-family:'Open Sans',sans-serif; font-size:13.5px; display:block; margin-top:6px; background:#fff;}
+  .acct-draft-pick textarea{font-family:var(--mono); font-size:12.5px; line-height:1.6; resize:vertical;}
+  .acct-draft{width:100%; padding:14px 16px; border:1.5px solid var(--ink); border-radius:2px;
+    font-family:var(--mono); font-size:12.5px; line-height:1.7; background:#fff; color:var(--text); resize:vertical;}
+  .acct-draft-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  .acct-draft-notes{margin-top:14px; padding-top:12px; border-top:1px solid var(--rule);}
+  .acct-draft-notes p{font-size:12px; color:var(--text-soft); line-height:1.6; margin-bottom:5px;}
   .prefs-panel{background:var(--paper-2); border-radius:2px; padding:18px 20px; margin-bottom:24px;}
   .prefs-panel h3{font-size:15px; margin-bottom:6px;}
   .prefs-panel input[type="email"], .prefs-panel select{width:100%; max-width:340px; padding:9px 11px; border:1.5px solid var(--ink); border-radius:2px; font-family:'Open Sans',sans-serif; font-size:13.5px; display:block; margin-top:6px;}
@@ -1012,6 +1039,8 @@
             <button type="button" class="acct-navbtn" data-acct="stats" role="tab">Statistics</button>
             <button type="button" class="acct-navbtn" data-acct="plan" role="tab">Get Involved</button>
             <button type="button" class="acct-navbtn" data-acct="email" role="tab">Email briefing<span class="acct-badge" id="acctBadgeEmail"></span></button>
+            <button type="button" class="acct-navbtn" data-acct="resources" role="tab">Saved resources<span class="acct-badge" id="acctBadgeResources"></span></button>
+            <button type="button" class="acct-navbtn" data-acct="chat" role="tab">Chat history<span class="acct-badge" id="acctBadgeChat"></span></button>
             <button type="button" class="acct-navbtn" data-acct="saved" role="tab">Saved<span class="acct-badge" id="acctBadgeSaved"></span></button>
           </nav>
           <button class="btn secondary acct-logout" id="logoutBtn" type="button">Log out</button>
@@ -1060,6 +1089,35 @@
             <p class="section-note">A concrete plan sized to the time you actually have, built from your city's real meeting schedule and open seats.</p>
             <div class="acct-effort" id="acctEffort"></div>
             <div id="acctPlanOut"></div>
+            <div class="acct-sec-h">Drafting tools</div>
+            <p class="section-note">Working drafts you can edit and send. Each one is assembled from your city's real record - the body that decides, where it meets, and the project you pick. The argument is yours to write; the procedural scaffolding is filled in for you.</p>
+            <div class="acct-draft-pick">
+              <label class="onboard-label" for="draftKind">What do you want to write?</label>
+              <select id="draftKind">
+                <option value="comment">Public comment on a project</option>
+                <option value="proposal">Proposal to a board or council</option>
+                <option value="records">Public records request (CPRA)</option>
+                <option value="application">Board or commission application statement</option>
+                <option value="rep">Letter to your council member</option>
+              </select>
+              <label class="onboard-label" for="draftProject" style="margin-top:10px;">About which project?</label>
+              <select id="draftProject"></select>
+              <label class="onboard-label" for="draftStance" style="margin-top:10px;">Your position</label>
+              <select id="draftStance">
+                <option value="support">I support it</option>
+                <option value="support-if">I support it, with changes</option>
+                <option value="oppose">I oppose it</option>
+                <option value="question">I have questions, no position yet</option>
+              </select>
+              <label class="onboard-label" for="draftPoints" style="margin-top:10px;">Your reasons, one per line</label>
+              <textarea id="draftPoints" rows="4" placeholder="e.g. The site is a 6 minute walk from the Caltrain station&#10;Three of the units are family-sized"></textarea>
+              <div class="auth-hint">These go into the draft word for word. Nothing is written for you - a letter that argues something you didn't say is worse than no letter.</div>
+              <label class="onboard-label" for="draftName" style="margin-top:10px;">Your name and street (optional)</label>
+              <input id="draftName" type="text" placeholder="Jordan Lee, 123 Oak St" />
+              <div class="auth-hint">Boards weight comments from people who live in the city. Leave blank if you'd rather not.</div>
+              <button class="btn" id="draftBuild" type="button" style="margin-top:12px;">Build the draft</button>
+            </div>
+            <div id="draftOut"></div>
           </section>
 
           <section class="acct-panel" data-panel="email" hidden>
@@ -1106,6 +1164,25 @@
               <li><b>Official links</b> - your city's own planning, permit and GIS pages.</li>
             </ol>
             <p class="acct-fineprint">Nothing in the briefing is model-generated. Status text is quoted from the record, and the summary line is assembled from counts.</p>
+          </section>
+
+          <section class="acct-panel" data-panel="resources" hidden>
+            <h2>Saved resources</h2>
+            <p class="section-note">Official tools, maps, board pages and meeting calendars you've starred, plus the full set for your city.</p>
+            <div class="acct-sec-h">Starred by you</div>
+            <div class="resource-grid" id="acctSavedResources"></div>
+            <div class="acct-sec-h">All official links for your city</div>
+            <div class="stat-toolbar" id="acctResFilters"><span class="lab">Type</span></div>
+            <div class="topic-links" id="acctCityResources"></div>
+          </section>
+
+          <section class="acct-panel" data-panel="chat" hidden>
+            <h2>Chat history</h2>
+            <p class="section-note">Answers you saved from the planning assistant, with the official sources each one cited. Saved answers are yours alone and are never used to train anything.</p>
+            <div class="acct-chatbar">
+              <button type="button" class="btn secondary" id="acctChatClear">Clear all saved answers</button>
+            </div>
+            <div id="acctChatList"><div class="starred-empty">Loading&hellip;</div></div>
           </section>
 
           <section class="acct-panel" data-panel="saved" hidden>
@@ -3450,8 +3527,22 @@ async function sendAskQuestion(){
     if(!res.ok) throw new Error(data.error||`Request failed (${res.status})`);
 
     const answer=data.answer||data.reply||'No answer returned.';
-    addAskMessage(answer,'assistant');
-    renderAskResources(data.resources || data.sources || data.links || []);
+    const answerEl=addAskMessage(answer,'assistant');
+    const answerResources=data.resources || data.sources || data.links || [];
+    renderAskResources(answerResources);
+    if(isLoggedIn() && answerEl){
+      const save=document.createElement('button');
+      save.type='button'; save.className='ask-save'; save.textContent='Save this answer';
+      save.addEventListener('click', async ()=>{
+        save.disabled=true;
+        try{
+          await apiCall('/api/chat/history', {method:'POST', body:JSON.stringify({
+            question, answer, resources:answerResources, city:currentCity })});
+          save.textContent='Saved to your account';
+        }catch(err){ save.disabled=false; save.textContent='Could not save - '+err.message; }
+      });
+      answerEl.appendChild(save);
+    }
 
     askHistory.push({role:'user',content:question});
     askHistory.push({role:'assistant',content:answer});
@@ -4435,7 +4526,8 @@ function acctCity(){
 function showAcctPanel(name){
   acctPanel = name;
   document.querySelectorAll('.acct-panel').forEach(p=>{ p.hidden = p.getAttribute('data-panel') !== name; });
-  document.querySelectorAll('.acct-navbtn').forEach(b=>{
+  
+document.querySelectorAll('.acct-navbtn').forEach(b=>{
     const on = b.getAttribute('data-acct') === name;
     b.classList.toggle('active', on);
     b.setAttribute('aria-selected', on ? 'true' : 'false');
@@ -4449,6 +4541,8 @@ function renderAcctPanel(name){
   else if(name==='news') renderAcctNews();
   else if(name==='stats') renderAcctStats();
   else if(name==='plan') renderAcctPlan();
+  else if(name==='resources') renderAcctResources();
+  else if(name==='chat') renderAcctChat();
 }
 
 function acctTile(k, l, s){
@@ -4468,6 +4562,7 @@ function renderAcctSideCounts(){
   const total = s.project+s.news+s.board+s.resource;
   const set = (id,v)=>{ const el=document.getElementById(id); if(el) el.textContent = v || ''; };
   set('acctBadgeSaved', total || '');
+  set('acctBadgeResources', s.resource || '');
   set('acctBadgeBoards', (CITIES[city].deciders.length + CITIES[city].join.length) || '');
   set('acctBadgeNews', NEWS_ARTICLES.filter(a=>a.city===city).length || '');
   const freq = (document.getElementById('prefsFrequency')||{}).value;
@@ -4656,7 +4751,244 @@ function renderAcctPlan(){
       '<div class="acct-board"><div><div class="when">'+s.t+'</div><h4>'+s.h+'</h4><p>'+s.b+'</p></div>'
     + (s.l ? '<a class="res-link go" href="'+s.l+'" target="_blank" rel="noopener">Open &#8594;</a>' : '')
     + '</div>').join('') + '</div>';
+  renderDraftPicker();
 }
+
+// ---- Saved resources ----
+let acctResFilter = 'all';
+function renderAcctResources(){
+  const city = acctCity();
+  const c = CITIES[city];
+
+  const mine = [];
+  starredMap.forEach((data, key)=>{ if(String(key).startsWith('resource:')) mine.push(data||{}); });
+  const savedHost = document.getElementById('acctSavedResources');
+  if(savedHost){
+    savedHost.innerHTML = mine.length ? mine.map(it=>{
+      const title = it.title || it.name || 'Untitled';
+      const desc = it.desc || it.body || '';
+      return '<div class="res-card"><div class="res-body">'
+        + (it.url ? '<div class="res-cat">'+domainOf(it.url)+'</div>' : '')
+        + '<h4>'+title+'</h4><p>'+desc+'</p>'
+        + (it.url ? '<a class="res-link" href="'+it.url+'" target="_blank" rel="noopener">Open &#8594;</a>' : '')
+        + '</div></div>';
+    }).join('')
+    : '<div class="starred-empty">Nothing starred yet. The &#9734; on any card in Resources saves it here.</div>';
+  }
+
+  const links = OFFICIAL_LINKS[city] || [];
+  const cats = ['all', ...Array.from(new Set(links.map(l=>l.cat)))];
+  const bar = document.getElementById('acctResFilters');
+  if(bar){
+    bar.innerHTML = '<span class="lab">Type</span>' + cats.map(k=>
+      '<button type="button" class="stat-chip" data-acctres="'+k+'" aria-pressed="'+(acctResFilter===k)+'">'
+      + (k==='all'?'All':k) + '</button>').join('');
+    bar.querySelectorAll('[data-acctres]').forEach(b=> b.addEventListener('click', ()=>{
+      acctResFilter = b.getAttribute('data-acctres'); renderAcctResources();
+    }));
+  }
+  const host = document.getElementById('acctCityResources');
+  if(host){
+    const show = links.filter(l=> acctResFilter==='all' || l.cat===acctResFilter);
+    host.innerHTML = show.length ? show.map(l=>
+        '<a class="topic-link" href="'+l.url+'" target="_blank" rel="noopener">'
+      + '<span class="tl-cat">'+l.cat+'</span><span class="tl-title">'+l.title+'</span>'
+      + '<span class="tl-note">'+l.note+'</span>'
+      + '<span class="tl-dom">'+domainOf(l.url)+' &#8599;</span></a>').join('')
+      : '<div class="empty">No official links recorded for '+c.label+' in this category.</div>';
+  }
+}
+
+// ---- Chat history ----
+async function renderAcctChat(){
+  const host = document.getElementById('acctChatList');
+  if(!host) return;
+  if(!isLoggedIn()){ host.innerHTML = '<div class="starred-empty">Log in to keep answers.</div>'; return; }
+  host.innerHTML = '<div class="starred-empty">Loading&hellip;</div>';
+  try{
+    const data = await apiCall('/api/chat/history');
+    const list = data.history || [];
+    const badge = document.getElementById('acctBadgeChat');
+    if(badge) badge.textContent = list.length || '';
+    if(!list.length){
+      host.innerHTML = '<div class="starred-empty">No saved answers yet. Ask the planning assistant something, then press <b>Save this answer</b> under its reply.</div>';
+      return;
+    }
+    host.innerHTML = list.map(row=>{
+      let res = [];
+      try{ res = Array.isArray(row.resources) ? row.resources : JSON.parse(row.resources||'[]'); }catch(e){ res = []; }
+      return '<div class="acct-chat">'
+        + '<div class="acct-chat-head"><span class="d">'+fmtDate(String(row.created_at).slice(0,10))
+        + (row.city && CITIES[row.city] ? ' &middot; '+CITIES[row.city].label : '')+'</span>'
+        + '<button type="button" class="acct-chat-del" data-chatdel="'+row.id+'" aria-label="Delete this saved answer">Delete</button></div>'
+        + '<h4>'+escapeHtml(row.question)+'</h4>'
+        + '<p>'+escapeHtml(row.answer).replace(/\n/g,'<br>')+'</p>'
+        + (res.length ? '<div class="acct-chat-src">Sources cited: '
+            + res.map(r=> r && r.url ? '<a href="'+r.url+'" target="_blank" rel="noopener">'+escapeHtml(r.title||domainOf(r.url))+'</a>' : '').filter(Boolean).join(' &middot; ')
+            + '</div>' : '')
+        + '</div>';
+    }).join('');
+    host.querySelectorAll('[data-chatdel]').forEach(b=> b.addEventListener('click', async ()=>{
+      try{ await apiCall('/api/chat/history/'+b.getAttribute('data-chatdel'), {method:'DELETE'}); renderAcctChat(); }
+      catch(err){ alert("Couldn't delete: "+err.message); }
+    }));
+  }catch(err){
+    host.innerHTML = '<div class="starred-empty">Couldn\'t load your saved answers: '+escapeHtml(err.message)+'</div>';
+  }
+}
+
+function escapeHtml(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+
+// ---- Drafting tools ----
+// Every draft is a template: the procedural facts come from the city's own record, and the
+// argument is whatever the reader typed, reproduced verbatim. Nothing here writes a claim on
+// their behalf - a letter that argues a position they did not take is worse than no letter.
+const STANCE_LINE = {
+  'support':    'I am writing in support of',
+  'support-if': 'I am writing in support of, with the changes noted below,',
+  'oppose':     'I am writing in opposition to',
+  'question':   'I am writing with questions about',
+};
+function renderDraftPicker(){
+  const city = acctCity();
+  const sel = document.getElementById('draftProject');
+  if(!sel) return;
+  const list = CITIES[city].data || [];
+  sel.innerHTML = '<option value="">A general matter (no specific project)</option>'
+    + list.map(p=>'<option value="'+p.id+'">'+escapeHtml(p.title||p.addr||p.id)+'</option>').join('');
+}
+function buildDraft(){
+  const city = acctCity();
+  const c = CITIES[city];
+  const kind = (document.getElementById('draftKind')||{}).value || 'comment';
+  const stance = (document.getElementById('draftStance')||{}).value || 'support';
+  const pid = (document.getElementById('draftProject')||{}).value || '';
+  const proj = (c.data||[]).find(p=>p.id===pid);
+  const who = ((document.getElementById('draftName')||{}).value || '').trim();
+  const points = ((document.getElementById('draftPoints')||{}).value || '')
+    .split('\n').map(x=>x.trim()).filter(Boolean);
+
+  const body = c.deciders.find(d=>/planning/i.test(d.name)) || c.deciders[0] || {name:'the Planning Commission', when:''};
+  const council = c.deciders.find(d=>/council/i.test(d.name)) || body;
+  const subject = proj ? (proj.title || proj.addr || pid) : ('planning in ' + c.label);
+  const L = [];
+
+  if(kind === 'records'){
+    L.push('To: City Clerk, City of ' + c.label);
+    L.push('Subject: Public Records Act request - ' + subject);
+    L.push('');
+    L.push('Under the California Public Records Act (Government Code section 7920.000 et seq.), I request copies of the following records:');
+    L.push('');
+    (points.length ? points : ['[Describe the records you want - staff reports, correspondence, traffic studies, environmental filings.]'])
+      .forEach((p,i)=> L.push('  ' + (i+1) + '. ' + p));
+    L.push('');
+    L.push('I am willing to receive these electronically. If any portion is withheld, please cite the specific exemption relied on and release the remainder.');
+    L.push('');
+    L.push('The Act requires a determination within 10 calendar days of receipt, with a written extension of up to 14 additional days in limited circumstances.');
+  } else if(kind === 'application'){
+    L.push('Statement of interest - ' + c.label + ' boards and commissions');
+    L.push('');
+    L.push('I am applying to serve on a ' + c.label + ' advisory body. ' + (proj ? 'My interest was prompted in part by ' + subject + '. ' : ''));
+    L.push('');
+    L.push('Why I want to serve:');
+    (points.length ? points : ['[What draws you to this - the issue, the neighborhood, the work itself.]'])
+      .forEach(p=> L.push('  - ' + p));
+    L.push('');
+    L.push('I understand the commitment involved. ' + (body.when ? 'The ' + body.name + ' meets ' + String(body.when).replace(/&amp;/g,'&') + '.' : ''));
+  } else if(kind === 'proposal'){
+    L.push('To: ' + body.name + ', City of ' + c.label);
+    L.push('Subject: Proposal regarding ' + subject);
+    L.push('');
+    L.push('Members of the ' + body.name + ',');
+    L.push('');
+    L.push('I am bringing the following proposal for your consideration' + (proj ? ' in connection with ' + subject : ' regarding planning in ' + c.label) + '.');
+    L.push('');
+    L.push('What I am proposing:');
+    (points.length ? points : ['[State the change you want, as specifically as you can.]'])
+      .forEach((p,i)=> L.push('  ' + (i+1) + '. ' + p));
+    L.push('');
+    L.push('I would welcome the chance to discuss this at a meeting or with staff beforehand.');
+  } else if(kind === 'rep'){
+    L.push('To: ' + council.name + ', City of ' + c.label);
+    L.push('Subject: ' + subject);
+    L.push('');
+    L.push('Dear Council member,');
+    L.push('');
+    L.push((STANCE_LINE[stance] || STANCE_LINE.support) + ' ' + subject + '.');
+    L.push('');
+    (points.length ? points : ['[Your reasons. Two or three specific ones beat a long list.]'])
+      .forEach(p=> L.push('  - ' + p));
+    L.push('');
+    L.push('I would appreciate knowing your position, and whether this is coming before the Council.');
+  } else {
+    L.push('To: ' + body.name + ', City of ' + c.label);
+    L.push('Subject: Public comment - ' + subject);
+    L.push('');
+    L.push('Members of the ' + body.name + ',');
+    L.push('');
+    L.push((STANCE_LINE[stance] || STANCE_LINE.support) + ' ' + subject + '.');
+    if(proj && proj.status) L.push('This item is currently listed as: ' + proj.status + '.');
+    L.push('');
+    (points.length ? points : ['[Your reasons, one per line. Specific and local carries more weight than general.]'])
+      .forEach(p=> L.push('  - ' + p));
+    L.push('');
+    if(stance === 'support-if') L.push('I would support this item if the changes above were made.');
+    if(stance === 'question') L.push('I am not taking a position and would like these questions answered on the record.');
+    L.push('Thank you for considering this comment and entering it into the record.');
+  }
+
+  L.push('');
+  L.push(who || '[Your name]');
+  if(who && !/\d/.test(who)) L.push('[Your street, if you want it on the record]');
+
+  const notes = [];
+  if(body.when) notes.push('<b>'+escapeHtml(body.name)+'</b> meets '+escapeHtml(String(body.when).replace(/&amp;/g,'&'))+'.');
+  if(body.link) notes.push('Agendas and comment instructions: <a href="'+body.link+'" target="_blank" rel="noopener">'+domainOf(body.link)+'</a>');
+  notes.push('Most cities take written comment up to a set cutoff before the meeting - check the agenda for the exact deadline and address. This tool does not send anything for you.');
+
+  const out = document.getElementById('draftOut');
+  if(!out) return;
+  out.innerHTML = '<div class="acct-sec-h">Your draft</div>'
+    + '<textarea class="acct-draft" id="draftText" rows="18" spellcheck="true"></textarea>'
+    + '<div class="acct-draft-actions">'
+    + '<button type="button" class="btn" id="draftCopy">Copy to clipboard</button>'
+    + '<button type="button" class="btn secondary" id="draftDownload">Download as .txt</button>'
+    + '</div>'
+    + '<div class="acct-draft-notes">' + notes.map(n=>'<p>'+n+'</p>').join('') + '</div>';
+  document.getElementById('draftText').value = L.join('\n');
+
+  document.getElementById('draftCopy').addEventListener('click', async ()=>{
+    try{ await navigator.clipboard.writeText(document.getElementById('draftText').value);
+      document.getElementById('draftCopy').textContent = 'Copied';
+      setTimeout(()=>{ document.getElementById('draftCopy').textContent = 'Copy to clipboard'; }, 1600);
+    }catch(e){ alert('Select the text and copy it manually.'); }
+  });
+  document.getElementById('draftDownload').addEventListener('click', ()=>{
+    const blob = new Blob([document.getElementById('draftText').value], {type:'text/plain'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (kind==='records'?'records-request':kind==='proposal'?'proposal':kind==='application'?'board-application':kind==='rep'?'letter-to-council':'public-comment') + '-' + city + '.txt';
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+  });
+}
+
+const draftBtn = document.getElementById('draftBuild');
+if(draftBtn) draftBtn.addEventListener('click', buildDraft);
+const draftKindSel = document.getElementById('draftKind');
+if(draftKindSel) draftKindSel.addEventListener('change', ()=>{
+  // Stance and project only apply to some of these; hide what does not.
+  const k = draftKindSel.value;
+  const stanceWrap = document.getElementById('draftStance');
+  if(stanceWrap) stanceWrap.closest('.acct-draft-pick') && (stanceWrap.previousElementSibling.hidden = stanceWrap.hidden = (k==='records'||k==='application'));
+});
+const chatClear = document.getElementById('acctChatClear');
+if(chatClear) chatClear.addEventListener('click', async ()=>{
+  if(!confirm('Delete every saved answer? This cannot be undone.')) return;
+  try{ await apiCall('/api/chat/history', {method:'DELETE'}); renderAcctChat(); }
+  catch(err){ alert("Couldn't clear: "+err.message); }
+});
 
 document.querySelectorAll('.acct-navbtn').forEach(b=>{
   b.addEventListener('click', ()=> showAcctPanel(b.getAttribute('data-acct')));

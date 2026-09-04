@@ -86,6 +86,21 @@ async function initDb() {
       UNIQUE(username, item_type, item_id)
     );
   `);
+  // Saved question-and-answer turns from the planning assistant, so a reader can come back to an
+  // answer later. Only stored for logged-in readers, and only when they ask for it.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS chat_history (
+      id SERIAL PRIMARY KEY,
+      username TEXT NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+      question TEXT NOT NULL,
+      answer TEXT NOT NULL,
+      resources JSONB,
+      city TEXT,
+      created_at TIMESTAMPTZ DEFAULT now()
+    );
+  `);
+  await pool.query(`CREATE INDEX IF NOT EXISTS chat_history_user_idx ON chat_history (username, created_at DESC);`);
+
   // Tracks the last-known state of every project, so we can detect real changes between digest runs.
   await pool.query(`
     CREATE TABLE IF NOT EXISTS project_snapshots (
@@ -295,6 +310,65 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
 });
 
 // ---------------- STARS ROUTES ----------------
+// ---------------- CHAT HISTORY ----------------
+// A reader's own saved answers from the planning assistant. Capped per user so one account
+// cannot grow without bound, and scoped to the session's username on every query.
+const CHAT_HISTORY_MAX = 100;
+
+app.get('/api/chat/history', authMiddleware, async (req, res) => {
+  try {
+    const result = await pool.query(
+      'SELECT id, question, answer, resources, city, created_at FROM chat_history WHERE username = $1 ORDER BY created_at DESC LIMIT $2',
+      [req.username, CHAT_HISTORY_MAX]);
+    res.json({ history: result.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not load your saved answers.' });
+  }
+});
+
+app.post('/api/chat/history', authMiddleware, async (req, res) => {
+  const { question, answer, resources, city } = req.body || {};
+  if (typeof question !== 'string' || !question.trim()) return res.status(400).json({ error: 'A question is required.' });
+  if (typeof answer !== 'string' || !answer.trim()) return res.status(400).json({ error: 'An answer is required.' });
+  if (question.length > 2000 || answer.length > 20000) return res.status(400).json({ error: 'That exchange is too long to save.' });
+  try {
+    const row = await pool.query(
+      'INSERT INTO chat_history (username, question, answer, resources, city) VALUES ($1,$2,$3,$4,$5) RETURNING id, created_at',
+      [req.username, question.trim(), answer.trim(), JSON.stringify(Array.isArray(resources) ? resources.slice(0, 12) : []), typeof city === 'string' ? city.slice(0, 40) : null]);
+    // Keep only the newest CHAT_HISTORY_MAX rows for this user.
+    await pool.query(
+      `DELETE FROM chat_history WHERE username = $1 AND id NOT IN (
+         SELECT id FROM chat_history WHERE username = $1 ORDER BY created_at DESC LIMIT $2)`,
+      [req.username, CHAT_HISTORY_MAX]);
+    res.json({ ok: true, id: row.rows[0].id, createdAt: row.rows[0].created_at });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not save that answer.' });
+  }
+});
+
+app.delete('/api/chat/history/:id', authMiddleware, async (req, res) => {
+  try {
+    // The username predicate is what stops one account deleting another's rows.
+    await pool.query('DELETE FROM chat_history WHERE id = $1 AND username = $2', [req.params.id, req.username]);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not delete that saved answer.' });
+  }
+});
+
+app.delete('/api/chat/history', authMiddleware, async (req, res) => {
+  try {
+    await pool.query('DELETE FROM chat_history WHERE username = $1', [req.username]);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not clear your saved answers.' });
+  }
+});
+
 app.get('/api/stars', authMiddleware, async (req, res) => {
   try {
     const result = await pool.query(
