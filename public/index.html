@@ -219,18 +219,29 @@
   .onboard-actions .btn{flex:1 1 auto;}
 
   /* ---- Page nav ---- */
-  .page-nav{background:#000; border:none; position:sticky; top:0; z-index:50;}
-  /* One row that scrolls sideways on narrow screens. Wrapping made "Get-Involved Planner" stack
-     three lines deep and pushed the whole bar to triple height. */
-  .page-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch;}
-  /* The brand stays pinned; only the tab strip scrolls sideways on narrow screens. */
-  .page-nav-tabs{display:flex; gap:0; align-items:stretch; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
-  .page-nav-tabs::-webkit-scrollbar{display:none;}
-  .page-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; letter-spacing:0; text-transform:none; padding:13px 11px; border-radius:0; border:none; background:transparent; color:#FFFFFF; cursor:pointer;}
-  /* Active state is a filled block, the way a newspaper section bar marks its current section. */
-  .page-nav-tab{border:none; transition:background .12s, color .12s;}
-  .page-nav-tab.active{background:var(--ink); color:#fff;}
-  .page-nav-tab:hover:not(.active){background:#262626; color:#fff;}
+  /* The three top-level pages sit as a vertical stack pinned to the right edge, so the top of
+     the page belongs to the content rather than to navigation. */
+  .page-nav{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:60;
+    background:transparent; border:none; width:auto;}
+  .page-nav-inner{display:block; padding:0; max-width:none; margin:0;}
+  .page-nav-tabs{display:flex; flex-direction:column; gap:2px; align-items:stretch;}
+  .page-nav-tab{display:block; width:168px; text-align:left; white-space:normal;
+    font-family:'Open Sans',sans-serif; font-size:12.5px; font-weight:700; line-height:1.3;
+    letter-spacing:0; text-transform:none; padding:12px 14px; border:none; border-radius:2px 0 0 2px;
+    background:#000; color:#FFFFFF; cursor:pointer;
+    box-shadow:-1px 1px 0 rgba(0,0,0,.18); transition:background .12s, color .12s, padding-left .12s;}
+  .page-nav-tab.active{background:var(--ink); color:#fff; padding-left:19px;}
+  .page-nav-tab:hover:not(.active){background:#262626; color:#fff; padding-left:17px;}
+  /* Too narrow for a floating rail - lay them across the top instead. */
+  @media (max-width:1180px){
+    .page-nav{position:sticky; top:0; transform:none; right:auto; background:#000;}
+    .page-nav-inner{display:flex; padding:0 12px;}
+    .page-nav-tabs{flex-direction:row; gap:0; overflow-x:auto; scrollbar-width:none;}
+    .page-nav-tabs::-webkit-scrollbar{display:none;}
+    .page-nav-tab{width:auto; white-space:nowrap; border-radius:0; box-shadow:none;
+      background:transparent; padding:13px 12px;}
+    .page-nav-tab.active, .page-nav-tab:hover:not(.active){padding-left:12px;}
+  }
   .screen{min-height:40vh;}
   /* Target of an email deep link - fades out on its own so it doesn't linger. */
   .card.deep-linked{outline:3px solid #3E4F24; outline-offset:3px; animation:deepLinkFade 4s ease-out forwards;}
@@ -563,6 +574,19 @@
   .acct-steps li{margin-bottom:5px;}
   .acct-fineprint{font-size:11.5px; color:var(--text-soft); line-height:1.55;}
   .acct-effort{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
+  /* Account masthead: the reader's city, pictured, with its headline numbers. */
+  .acct-masthead{position:relative; border:1px solid var(--rule); border-radius:2px; overflow:hidden;
+    margin-bottom:18px; background:var(--ink); min-height:150px;}
+  .acct-mast-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.34;}
+  .acct-mast-body{position:relative; padding:20px 22px 16px;}
+  .acct-mast-kicker{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800;
+    letter-spacing:.09em; text-transform:uppercase; color:#CBD6BC; margin-bottom:4px;}
+  .acct-mast-city{font-family:'Playfair Display',Georgia,serif; font-size:34px; font-weight:700;
+    color:#fff; line-height:1.05; letter-spacing:-.5px;}
+  .acct-mast-facts{display:flex; gap:16px; flex-wrap:wrap; margin-top:12px;}
+  .acct-mast-facts span{font-family:'Open Sans',sans-serif; font-size:11.5px; color:#DCE4D2;}
+  .acct-mast-facts b{font-family:var(--mono); font-size:15px; color:#fff; font-weight:700;}
+  .acct-mast-credit{position:relative; padding:6px 22px 8px; font-size:9.5px; color:#A9B79A; line-height:1.4;}
   .acct-chatbar{margin-bottom:14px;}
   .acct-chat{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:13px 15px; margin-bottom:10px;}
   .acct-chat-head{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:6px;}
@@ -591,7 +615,10 @@
   .acct-draft-notes{margin-top:14px; padding-top:12px; border-top:1px solid var(--rule);}
   .acct-draft-notes p{font-size:12px; color:var(--text-soft); line-height:1.6; margin-bottom:5px;}
   /* ---- Sub-nav under the three top-level pages ---- */
-  .sub-nav{background:var(--paper-2); border-bottom:1px solid var(--rule); position:sticky; top:44px; z-index:49;}
+  .sub-nav{background:var(--paper-2); border-bottom:1px solid var(--rule); position:sticky; top:0; z-index:49;}
+  @media (max-width:1180px){ .sub-nav{top:44px;} }
+  /* Keep content clear of the floating rail. */
+  @media (min-width:1181px){ body{padding-right:176px;} }
   .sub-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch; overflow-x:auto;
     scrollbar-width:none; -ms-overflow-style:none;}
   .sub-nav-inner::-webkit-scrollbar{display:none;}
@@ -602,6 +629,21 @@
   .sub-nav-tab:hover{color:var(--ink);}
   .sub-nav-tab.active{color:var(--ink); border-bottom-color:var(--ink);}
   /* ---- Resource bank ---- */
+  .bank-mosaic{display:grid; grid-template-columns:repeat(auto-fit,minmax(96px,1fr)); gap:2px;
+    margin:18px 0 4px; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  .bank-tile{position:relative; height:82px; padding:0; border:none; cursor:pointer;
+    background:var(--ink); overflow:hidden; display:block;}
+  .bank-tile img{width:100%; height:100%; object-fit:cover; opacity:.55; transition:opacity .15s, transform .3s;}
+  .bank-tile span{position:absolute; left:0; right:0; bottom:0; padding:4px 6px;
+    font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.03em;
+    color:#fff; text-align:left; background:linear-gradient(transparent,rgba(0,0,0,.72));}
+  .bank-tile:hover img{opacity:.85; transform:scale(1.05);}
+  .bank-sources{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:10px; margin:12px 0 16px;}
+  .bank-src{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:12px 14px;}
+  .bank-src h5{font-family:'Open Sans',sans-serif; font-size:12.5px; font-weight:800; color:var(--ink); margin-bottom:4px;}
+  .bank-src h5 a{color:var(--ink); text-decoration:none;}
+  .bank-src h5 a:hover{text-decoration:underline;}
+  .bank-src p{font-size:11.5px; color:var(--text-soft); line-height:1.55;}
   .bank-hero{padding:22px 0 6px;}
   .bank-hero h2{font-size:26px; margin-bottom:6px;}
   .bank-lede{font-size:14px; color:var(--text-soft); line-height:1.65; max-width:760px; margin-bottom:16px;}
@@ -1115,6 +1157,7 @@
 
         <div class="acct-main">
           <section class="acct-panel" data-panel="overview">
+            <div class="acct-masthead" id="acctMasthead"></div>
             <h2>Overview</h2>
             <p class="section-note" id="acctOverviewNote"></p>
             <div class="acct-tiles" id="acctTiles"></div>
@@ -1266,6 +1309,7 @@
 
 <div id="screenBank" class="screen" style="display:none;">
   <div class="wrap">
+    <div class="bank-mosaic" id="bankMosaic" aria-hidden="true"></div>
     <div class="bank-hero">
       <h2>Resource bank</h2>
       <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all thirteen cities.</p>
@@ -1287,6 +1331,7 @@
       <h3>About this dashboard</h3>
       <p>This is a public record of what is being built across the South Bay, and of the meetings where those decisions actually get made. It exists because that information is public but scattered: a project lives on one city page, the hearing that decides it on another, and the housing target that explains why it was filed at all on a state portal none of them link to.</p>
       <h4>Where the data comes from</h4>
+      <div class="bank-sources" id="bankSources"></div>
       <p>Projects come from each city's own development records - GIS feature services, published pipelines, and posted project lists. Hearings come from cities' Legistar feeds. Housing target progress comes from the California Department of Housing and Community Development's 6th Cycle RHNA Progress Report. Home values and rents come from Zillow's public research data; commute, income, tenure and housing age come from the Census Bureau's American Community Survey. News comes from local newsrooms, linked in full to the publisher.</p>
       <h4>What this is not</h4>
       <p>Nothing here is generated. No project status, board schedule, or headline on this site was written by a language model, and no record is included that could not be traced to a public source. Where a city publishes nothing usable, the register for that city is left empty rather than filled in - Morgan Hill has no project list here for exactly that reason.</p>
@@ -3324,7 +3369,7 @@ function refreshCurrentScreen(){
   else if(currentScreen==='statistics') renderStatistics();
   else if(currentScreen==='hearings') renderHearings();
   else if(currentScreen==='resources') renderResources();
-  else if(currentScreen==='bank'){ renderBankExamples(); renderBank(); }
+  else if(currentScreen==='bank'){ renderBankMosaic(); renderBankSources(); renderBankExamples(); renderBank(); }
   else if(currentScreen==='ask') renderAskContext();
   else if(currentScreen==='housing') renderTopicPage('housing','Housing');
   else if(currentScreen==='developments') renderTopicPage('developments','Building');
@@ -3333,6 +3378,30 @@ function refreshCurrentScreen(){
 }
 // Nav clicks used to jump to top, which meant scrolling past the entire hero again to reach the
 // thing you just asked for. Land on the screen itself, clear of the sticky bar.
+
+
+// City photographs from Wikimedia Commons. Each file was looked up through the Commons API,
+// checked to actually depict the city it is filed under (the first pass returned a San Jose
+// office block for Santa Clara and a stock college photo for Gilroy), and loaded to confirm it
+// resolves. Licences are recorded because most of these require attribution, which the pages
+// that use them render.
+const CITY_PHOTOS = {
+  sunnyvale:{url:'https://upload.wikimedia.org/wikipedia/commons/6/60/Murphystreetsunnyvale.jpg', cap:'Murphy Street, downtown Sunnyvale', lic:'CC BY-SA 3.0', by:'Coolcaesar'},
+  cupertino:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Public_park_in_Cupertino_California_with_trees_and_walkway.JPG/1280px-Public_park_in_Cupertino_California_with_trees_and_walkway.JPG', cap:'Public park, Cupertino', lic:'CC0', by:'Tomwsulcer'},
+  mountainview:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Castro_Street_Mountain_View_sidewalk.jpg/1280px-Castro_Street_Mountain_View_sidewalk.jpg', cap:'Castro Street, Mountain View', lic:'CC BY-SA 3.0', by:'Runner1928'},
+  milpitas:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Milpitas_mtns2.JPG/1280px-Milpitas_mtns2.JPG', cap:'Milpitas and the eastern hills', lic:'Public domain', by:'Milpitas guy'},
+  losaltos:{url:'https://upload.wikimedia.org/wikipedia/commons/2/2f/Los_Altos_Main_Street_2.jpg', cap:'Main Street, Los Altos', lic:'CC BY-SA 3.0', by:'Coolcaesar'},
+  saratoga:{url:'https://upload.wikimedia.org/wikipedia/commons/6/69/Saratoga_Village_Library.jpg', cap:'Saratoga Village Library', lic:'Public domain', by:'Los Gatos Star'},
+  westsanjose:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/San_Jose_California_Skyline.jpg/1280px-San_Jose_California_Skyline.jpg', cap:'The San Jose skyline', lic:'CC BY 2.0', by:'Michael, San Jose'},
+  santaclara:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/USA-Santa_Clara-743_Franklin_Street-1.jpg/1280px-USA-Santa_Clara-743_Franklin_Street-1.jpg', cap:'743 Franklin Street, Santa Clara', lic:'CC BY-SA 4.0', by:'Eugene Zelenko'},
+  losgatos:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Hotel_Los_Gatos.jpg/1280px-Hotel_Los_Gatos.jpg', cap:'Hotel Los Gatos', lic:'CC BY-SA 4.0', by:'Ramkumar Menon'},
+  campbell:{url:'https://upload.wikimedia.org/wikipedia/commons/e/ea/DowntownCampbellVTA030406.jpg', cap:'Downtown Campbell', lic:'Public domain', by:'Brianvdb'},
+  paloalto:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Palo_Alto_California_buildings_and_streets.jpg/1280px-Palo_Alto_California_buildings_and_streets.jpg', cap:'Downtown Palo Alto', lic:'CC0', by:'Tomwsulcer'},
+  gilroy:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/USA-Gilroy-Strand_Theater.jpg/1280px-USA-Gilroy-Strand_Theater.jpg', cap:'The Strand Theater, downtown Gilroy', lic:'CC BY-SA 4.0', by:'Eugene Zelenko'},
+  morganhill:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg/1280px-Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg', cap:'First and Monterey, Morgan Hill', lic:'CC BY-SA 4.0', by:'Cristiano Tom\u00e1s'},
+};
+function cityPhoto(k){ return CITY_PHOTOS[k] || null; }
+function photoCredit(p){ return p ? (p.cap + ' &middot; ' + p.by + ', ' + p.lic + ', via Wikimedia Commons') : ''; }
 
 // ================= RESOURCE BANK =================
 // One searchable index over everything the site holds. Built once, lazily, from the same
@@ -3523,6 +3592,46 @@ function renderBank(){
     if(kind==='project'){ showPage('dashboard'); showScreen('dashboard'); flyTo(b.getAttribute('data-bankid')); }
     else if(kind==='stats'){ showPage('dashboard'); showScreen('statistics'); }
   }));
+}
+
+
+// A strip of the thirteen city photographs across the top of the bank, so the page reads as
+// covering places rather than rows in a table.
+function renderBankMosaic(){
+  const el = document.getElementById('bankMosaic');
+  if(!el) return;
+  const keys = Object.keys(CITIES).filter(k=>k!=='all' && CITY_PHOTOS[k]);
+  el.innerHTML = keys.map(k=>{
+    const ph = CITY_PHOTOS[k];
+    return '<button type="button" class="bank-tile" data-banktile="'+k+'" title="'+escapeHtml(ph.cap)+'">'
+      + '<img src="'+ph.url+'" alt="" loading="lazy" onerror="this.closest(\'.bank-tile\').style.display=\'none\'" />'
+      + '<span>'+CITIES[k].label+'</span></button>';
+  }).join('');
+  el.removeAttribute('aria-hidden');
+  el.querySelectorAll('[data-banktile]').forEach(b=> b.addEventListener('click', ()=>{
+    bankCity = b.getAttribute('data-banktile');
+    renderBank();
+    document.getElementById('bankResults').scrollIntoView({behavior:'smooth', block:'start'});
+  }));
+}
+
+// The upstream sources, named and linked rather than described in prose.
+const BANK_SOURCES = [
+  {n:'City development records', d:'GIS feature services, published pipelines and posted project lists from each city.', u:null},
+  {n:'Legistar', d:'Agendas and upcoming hearings, straight from each city\'s meeting system.', u:'https://webapi.legistar.com/'},
+  {n:'California HCD', d:'6th Cycle RHNA Progress Report - the housing target every city is measured against.', u:'https://data.ca.gov/dataset/rhna-progress-report'},
+  {n:'US Census Bureau', d:'American Community Survey: commute, income, tenure and housing age.', u:'https://www.census.gov/programs-surveys/acs'},
+  {n:'Zillow Research', d:'Public home value and asking rent series.', u:'https://www.zillow.com/research/data/'},
+  {n:'Local newsrooms', d:'San Jos\u00e9 Spotlight, the Los Gatan, Morgan Hill Times, Gilroy Dispatch, Milpitas Beat and SF YIMBY. Every article links to the publisher.', u:null},
+  {n:'OpenStreetMap', d:'Nominatim geocoding, where a city publishes an address but no coordinates.', u:'https://www.openstreetmap.org/copyright'},
+];
+function renderBankSources(){
+  const el = document.getElementById('bankSources');
+  if(!el) return;
+  el.innerHTML = BANK_SOURCES.map(x=>
+    '<div class="bank-src">'
+    + '<h5>'+(x.u ? '<a href="'+x.u+'" target="_blank" rel="noopener">'+x.n+' &#8599;</a>' : x.n)+'</h5>'
+    + '<p>'+x.d+'</p></div>').join('');
 }
 
 const BANK_EXAMPLES = ["builder's remedy", 'housing element', 'planning commission',
@@ -4949,6 +5058,25 @@ async function renderAcctOverview(){
 
   const note = document.getElementById('acctOverviewNote');
   if(note) note.textContent = 'Everything below is for ' + c.label + '. Change your city under Email briefing.';
+
+  const mast = document.getElementById('acctMasthead');
+  if(mast){
+    const ph = cityPhoto(city);
+    mast.innerHTML =
+        (ph ? '<img class="acct-mast-img" src="'+ph.url+'" alt="'+escapeHtml(ph.cap)+'" loading="lazy" onerror="this.style.display=\'none\'" />' : '')
+      + '<div class="acct-mast-body">'
+      +   '<div class="acct-mast-kicker">Your account &middot; '+escapeHtml(authUsername||'')+'</div>'
+      +   '<div class="acct-mast-city">'+c.label+'</div>'
+      +   '<div class="acct-mast-facts">'
+      +     '<span><b>'+c.data.length+'</b> tracked projects</span>'
+      +     '<span><b>'+NEWS_ARTICLES.filter(a=>a.city===city).length+'</b> articles</span>'
+      +     '<span><b>'+(c.deciders.length + c.join.length)+'</b> boards</span>'
+      +     '<span><b>'+((OFFICIAL_LINKS[city]||[]).length)+'</b> official links</span>'
+      +     (RHNA[city] ? '<span><b>'+RHNA[city].pct+'%</b> of housing target</span>' : '')
+      +   '</div>'
+      + '</div>'
+      + (ph ? '<div class="acct-mast-credit">'+photoCredit(ph)+'</div>' : '');
+  }
 
   const tiles = document.getElementById('acctTiles');
   if(tiles){
