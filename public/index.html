@@ -590,6 +590,64 @@
   .acct-draft-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
   .acct-draft-notes{margin-top:14px; padding-top:12px; border-top:1px solid var(--rule);}
   .acct-draft-notes p{font-size:12px; color:var(--text-soft); line-height:1.6; margin-bottom:5px;}
+  /* ---- Sub-nav under the three top-level pages ---- */
+  .sub-nav{background:var(--paper-2); border-bottom:1px solid var(--rule); position:sticky; top:44px; z-index:49;}
+  .sub-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch; overflow-x:auto;
+    scrollbar-width:none; -ms-overflow-style:none;}
+  .sub-nav-inner::-webkit-scrollbar{display:none;}
+  .sub-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:12.5px;
+    font-weight:700; padding:9px 12px; border:none; border-bottom:3px solid transparent;
+    background:transparent; color:var(--text-soft); cursor:pointer; border-radius:0;
+    transition:color .12s, border-color .12s;}
+  .sub-nav-tab:hover{color:var(--ink);}
+  .sub-nav-tab.active{color:var(--ink); border-bottom-color:var(--ink);}
+  /* ---- Resource bank ---- */
+  .bank-hero{padding:22px 0 6px;}
+  .bank-hero h2{font-size:26px; margin-bottom:6px;}
+  .bank-lede{font-size:14px; color:var(--text-soft); line-height:1.65; max-width:760px; margin-bottom:16px;}
+  .bank-searchwrap{max-width:760px;}
+  #bankSearch{width:100%; padding:13px 16px; border:2px solid var(--ink); border-radius:2px;
+    font-family:'Open Sans',sans-serif; font-size:15px; background:#fff; color:var(--text);}
+  #bankSearch:focus{outline:none; box-shadow:0 2px 0 var(--ink);}
+  .bank-count{font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-top:7px;}
+  .bank-examples{display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin:12px 0 4px;}
+  .bank-examples .lab{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin-right:2px;}
+  .bank-eg{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:4px 9px;
+    font-family:'Open Sans',sans-serif; font-size:11.5px; color:var(--text); cursor:pointer;}
+  .bank-eg:hover{border-color:var(--ink); color:var(--ink);}
+  .bank-filters{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    padding:10px 0; margin:16px 0 18px; display:grid; gap:7px;}
+  .bank-filterrow{display:flex; gap:6px; align-items:center; flex-wrap:wrap;}
+  .bank-filterrow .lab{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); width:46px; flex:0 0 46px;}
+  .bank-filterrow span span{display:contents;}
+  .chip-n{font-family:var(--mono); font-size:10px; opacity:.65;}
+  .bank-list{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:2px;}
+  .bank-row{background:#fff; padding:11px 14px; display:flex; gap:14px; justify-content:space-between;
+    align-items:center; flex-wrap:wrap;}
+  .bank-row:hover{background:#FAFBF7;}
+  .bank-rowmain{min-width:0; flex:1 1 320px;}
+  .bank-meta{display:flex; gap:8px; align-items:center; margin-bottom:3px;}
+  .bank-badge{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.06em;
+    text-transform:uppercase; color:#fff; background:var(--ink); padding:2px 6px; border-radius:2px;}
+  .bank-project{background:#3E4F24;} .bank-news{background:#5F7640;} .bank-commission{background:#44572A;}
+  .bank-document{background:#55693A;} .bank-statistic{background:#6B7F4C;}
+  .bank-city{font-family:var(--mono); font-size:10.5px; color:var(--text-soft);}
+  .bank-row h4{font-size:14px; color:var(--ink); line-height:1.35;}
+  .bank-sub{font-size:12px; color:var(--text-soft); margin-top:2px; line-height:1.45;}
+  .bank-go{flex:0 0 auto; background:none; border:1px solid var(--rule); border-radius:2px;
+    padding:5px 10px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11.5px;
+    font-weight:700; color:var(--text-soft); text-decoration:none; white-space:nowrap;}
+  .bank-go:hover{border-color:var(--ink); color:var(--ink);}
+  .bank-more{font-size:12px; color:var(--text-soft); padding:12px 2px; text-align:center;}
+  .bank-empty{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:22px;}
+  .bank-empty b{font-size:14px; color:var(--ink);}
+  .bank-empty p{font-size:13px; color:var(--text-soft); margin-top:6px; line-height:1.6;}
+  .bank-about{margin-top:38px; padding-top:22px; border-top:3px solid var(--ink); max-width:780px;}
+  .bank-about h3{font-size:19px; margin-bottom:10px;}
+  .bank-about h4{font-size:13.5px; color:var(--ink); margin:18px 0 6px;}
+  .bank-about p{font-size:13.5px; color:var(--text); line-height:1.75; margin-bottom:9px;}
   .prefs-panel{background:var(--paper-2); border-radius:2px; padding:18px 20px; margin-bottom:24px;}
   .prefs-panel h3{font-size:15px; margin-bottom:6px;}
   .prefs-panel input[type="email"], .prefs-panel select{width:100%; max-width:340px; padding:9px 11px; border:1.5px solid var(--ink); border-radius:2px; font-family:'Open Sans',sans-serif; font-size:13.5px; display:block; margin-top:6px;}
@@ -778,20 +836,29 @@
   </div>
 </div>
 
-<nav class="page-nav" aria-label="Dashboard sections">
+<nav class="page-nav" aria-label="Main sections">
   <div class="wrap page-nav-inner">
     <div class="page-nav-tabs" role="tablist">
-      <button class="page-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Dashboard</button>
-      <button class="page-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
-      <button class="page-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get Involved</button>
-      <button class="page-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
-      <button class="page-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
-      <button class="page-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
-      <button class="page-nav-tab" data-screen="hearings" role="tab" aria-selected="false">Hearings</button>
-      <button class="page-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
-      <button class="page-nav-tab" data-screen="resources" role="tab" aria-selected="false">Resources</button>
-      <button class="page-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
+      <button class="page-nav-tab active" data-page="dashboard" role="tab" aria-selected="true">Dashboard</button>
+      <button class="page-nav-tab" data-page="account" role="tab" aria-selected="false">Your Account</button>
+      <button class="page-nav-tab" data-page="bank" role="tab" aria-selected="false">Resource Bank &amp; About</button>
     </div>
+  </div>
+</nav>
+
+<!-- Sections within the Dashboard. Hidden on the other two top-level pages. -->
+<nav class="sub-nav" id="subNav" aria-label="Dashboard sections">
+  <div class="wrap sub-nav-inner" role="tablist">
+    <button class="sub-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Overview</button>
+    <button class="sub-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
+    <button class="sub-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get Involved</button>
+    <button class="sub-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
+    <button class="sub-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
+    <button class="sub-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
+    <button class="sub-nav-tab" data-screen="hearings" role="tab" aria-selected="false">Hearings</button>
+    <button class="sub-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
+    <button class="sub-nav-tab" data-screen="resources" role="tab" aria-selected="false">Resources</button>
+    <button class="sub-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
   </div>
 </nav>
 
@@ -1193,6 +1260,39 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<div id="screenBank" class="screen" style="display:none;">
+  <div class="wrap">
+    <div class="bank-hero">
+      <h2>Resource bank</h2>
+      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all thirteen cities.</p>
+      <div class="bank-searchwrap">
+        <input id="bankSearch" type="search" placeholder="Search anything: an address, a commission, &ldquo;builder&rsquo;s remedy&rdquo;, &ldquo;housing element&rdquo;, a street name&hellip;" autocomplete="off" aria-label="Search the resource bank" />
+        <div class="bank-count" id="bankCount"></div>
+      </div>
+      <div class="bank-examples" id="bankExamples"></div>
+    </div>
+
+    <div class="bank-filters">
+      <div class="bank-filterrow"><span class="lab">Type</span><span id="bankTypeChips"></span></div>
+      <div class="bank-filterrow"><span class="lab">City</span><span id="bankCityChips"></span></div>
+    </div>
+
+    <div id="bankResults"></div>
+
+    <div class="bank-about" id="bankAbout">
+      <h3>About this dashboard</h3>
+      <p>This is a public record of what is being built across the South Bay, and of the meetings where those decisions actually get made. It exists because that information is public but scattered: a project lives on one city page, the hearing that decides it on another, and the housing target that explains why it was filed at all on a state portal none of them link to.</p>
+      <h4>Where the data comes from</h4>
+      <p>Projects come from each city's own development records - GIS feature services, published pipelines, and posted project lists. Hearings come from cities' Legistar feeds. Housing target progress comes from the California Department of Housing and Community Development's 6th Cycle RHNA Progress Report. Home values and rents come from Zillow's public research data; commute, income, tenure and housing age come from the Census Bureau's American Community Survey. News comes from local newsrooms, linked in full to the publisher.</p>
+      <h4>What this is not</h4>
+      <p>Nothing here is generated. No project status, board schedule, or headline on this site was written by a language model, and no record is included that could not be traced to a public source. Where a city publishes nothing usable, the register for that city is left empty rather than filled in - Morgan Hill has no project list here for exactly that reason.</p>
+      <p>Statuses lag. A city that updates its pipeline quarterly will show a stale status here for up to a quarter, and a project can move between the last refresh and the moment you read this. Always confirm against the city's own page before acting - every record links to it.</p>
+      <h4>Corrections</h4>
+      <p>If a record here is wrong, the source it links to is the authority, not this page. Errors are worth reporting: a planning dashboard that quietly misstates a project is worse than no dashboard.</p>
     </div>
   </div>
 </div>
@@ -3224,6 +3324,7 @@ function refreshCurrentScreen(){
   else if(currentScreen==='statistics') renderStatistics();
   else if(currentScreen==='hearings') renderHearings();
   else if(currentScreen==='resources') renderResources();
+  else if(currentScreen==='bank'){ renderBankExamples(); renderBank(); }
   else if(currentScreen==='ask') renderAskContext();
   else if(currentScreen==='housing') renderTopicPage('housing','Housing');
   else if(currentScreen==='developments') renderTopicPage('developments','Building');
@@ -3232,26 +3333,280 @@ function refreshCurrentScreen(){
 }
 // Nav clicks used to jump to top, which meant scrolling past the entire hero again to reach the
 // thing you just asked for. Land on the screen itself, clear of the sticky bar.
+
+// ================= RESOURCE BANK =================
+// One searchable index over everything the site holds. Built once, lazily, from the same
+// arrays every other screen reads - so a result here can never describe a record that the
+// page it links to would describe differently.
+let BANK_INDEX = null;
+let bankType = 'all';
+let bankCity = 'all';
+let bankQuery = '';
+
+function buildBankIndex(){
+  if(BANK_INDEX) return BANK_INDEX;
+  const out = [];
+  const cityKeys = Object.keys(CITIES).filter(k=>k!=='all');
+
+  // Projects - the development register.
+  cityKeys.forEach(ck=>{
+    (CITIES[ck].data||[]).forEach(p=>{
+      out.push({
+        type:'project', city:ck,
+        title: p.title || p.addr || p.id,
+        sub: [p.addr, p.status].filter(Boolean).join(' · '),
+        body: [p.desc, p.notes, p.units ? p.units+' units' : '', p.permit, p.category].filter(Boolean).join(' '),
+        action:{label:'Open in register', kind:'project', id:p.id, city:ck},
+      });
+    });
+  });
+
+  // Commissions and the bodies that decide - both the deciders and the ones you can join.
+  cityKeys.forEach(ck=>{
+    (CITIES[ck].deciders||[]).forEach(d=>{
+      out.push({ type:'commission', city:ck, title:String(d.name).replace(/&amp;/g,'&'),
+        sub:String(d.when||'').replace(/&amp;/g,'&'), body:(d.body||'')+' decides deciding body commission board meeting agenda',
+        url:d.link });
+    });
+    (CITIES[ck].join||[]).forEach(j=>{
+      out.push({ type:'commission', city:ck, title:String(j.name).replace(/&amp;/g,'&'),
+        sub:String(j.when||'').replace(/&amp;/g,'&'), body:(j.body||'')+' apply join seat vacancy volunteer commission board',
+        url:j.link });
+    });
+  });
+
+  // News.
+  NEWS_ARTICLES.forEach(a=>{
+    out.push({ type:'news', city:a.city, title:a.title,
+      sub:a.source+' · '+fmtDate(a.date), body:a.snippet+' '+a.topic, url:a.url, date:a.date });
+  });
+
+  // Official documents and tools.
+  cityKeys.forEach(ck=>{
+    (OFFICIAL_LINKS[ck]||[]).forEach(l=>{
+      out.push({ type:'document', city:ck, title:l.title, sub:l.cat, body:l.note+' '+l.cat, url:l.url });
+    });
+    (CITIES[ck].ctaLinks||[]).forEach(l=>{
+      out.push({ type:'document', city:ck, title:l.label, sub:'Official city tool',
+        body:'official city tool map portal', url:l.url });
+    });
+  });
+
+  // Statistics - one entry per metric per city, so a number is findable by name.
+  try{
+    const metrics = (typeof metricCatalog === 'function') ? metricCatalog() : [];
+    metrics.forEach(m=>{
+      cityKeys.forEach(ck=>{
+        const v = typeof m.get === 'function' ? m.get(ck) : undefined;
+        if(v === undefined || v === null || (typeof v === 'number' && isNaN(v))) return;
+        out.push({ type:'statistic', city:ck, title:m.label+' — '+CITIES[ck].label,
+          sub:(m.fmt ? m.fmt(v) : v) + (m.tag ? ' · '+m.tag : ''),
+          body:m.label+' '+(m.topic||'')+' '+(m.tag||'')+' statistic number data',
+          action:{label:'See in Statistics', kind:'stats', id:m.id, city:ck} });
+      });
+    });
+  }catch(e){ /* statistics are optional to the index */ }
+
+  // Housing target progress.
+  cityKeys.forEach(ck=>{
+    const r = RHNA[ck];
+    if(!r) return;
+    out.push({ type:'statistic', city:ck, title:'Housing target progress — '+CITIES[ck].label,
+      sub:r.pct+'% permitted · '+r.units.toLocaleString()+' of '+r.target.toLocaleString(),
+      body:'RHNA regional housing needs allocation target housing element builder’s remedy compliance state target',
+      action:{label:'See in Statistics', kind:'stats', id:'rhna', city:ck} });
+  });
+
+  BANK_INDEX = out;
+  return out;
+}
+
+const BANK_TYPES = [
+  {id:'all', label:'Everything'}, {id:'project', label:'Projects'}, {id:'news', label:'News'},
+  {id:'commission', label:'Commissions'}, {id:'document', label:'Documents'}, {id:'statistic', label:'Statistics'},
+];
+const BANK_TYPE_LABEL = {project:'Project', news:'News', commission:'Commission', document:'Document', statistic:'Statistic'};
+
+function bankScore(item, terms){
+  if(!terms.length) return 1;
+  const title = (item.title||'').toLowerCase();
+  const sub   = (item.sub||'').toLowerCase();
+  const body  = (item.body||'').toLowerCase();
+  const city  = (CITIES[item.city] ? CITIES[item.city].label : '').toLowerCase();
+  let score = 0;
+  for(const t of terms){
+    let hit = 0;
+    if(title.includes(t)) hit += title.startsWith(t) ? 12 : 8;
+    if(sub.includes(t))   hit += 4;
+    if(city.includes(t))  hit += 5;
+    if(body.includes(t))  hit += 2;
+    if(!hit) return 0;               // every term must appear somewhere
+    score += hit;
+  }
+  return score;
+}
+
+function renderBank(){
+  const all = buildBankIndex();
+  const terms = bankQuery.toLowerCase().split(/\s+/).map(t=>t.trim()).filter(Boolean);
+
+  const chips = document.getElementById('bankTypeChips');
+  if(chips){
+    chips.innerHTML = BANK_TYPES.map(t=>{
+      const n = t.id==='all' ? all.length : all.filter(x=>x.type===t.id).length;
+      return '<button type="button" class="stat-chip" data-banktype="'+t.id+'" aria-pressed="'+(bankType===t.id)+'">'
+        + t.label + ' <span class="chip-n">'+n+'</span></button>';
+    }).join('');
+    chips.querySelectorAll('[data-banktype]').forEach(b=> b.addEventListener('click', ()=>{
+      bankType = b.getAttribute('data-banktype'); renderBank();
+    }));
+  }
+  const cchips = document.getElementById('bankCityChips');
+  if(cchips){
+    const keys = ['all', ...Object.keys(CITIES).filter(k=>k!=='all')];
+    cchips.innerHTML = keys.map(k=>
+      '<button type="button" class="stat-chip" data-bankcity="'+k+'" aria-pressed="'+(bankCity===k)+'">'
+      + (k==='all'?'All cities':CITIES[k].label) + '</button>').join('');
+    cchips.querySelectorAll('[data-bankcity]').forEach(b=> b.addEventListener('click', ()=>{
+      bankCity = b.getAttribute('data-bankcity'); renderBank();
+    }));
+  }
+
+  let rows = all
+    .filter(x=> bankType==='all' || x.type===bankType)
+    .filter(x=> bankCity==='all' || x.city===bankCity)
+    .map(x=> ({x, s:bankScore(x, terms)}))
+    .filter(r=> r.s > 0);
+
+  // Relevance when searching; newest-then-alphabetical when just browsing.
+  rows.sort((a,b)=>{
+    if(terms.length && b.s !== a.s) return b.s - a.s;
+    if(a.x.date && b.x.date && a.x.date !== b.x.date) return b.x.date.localeCompare(a.x.date);
+    return (a.x.title||'').localeCompare(b.x.title||'');
+  });
+
+  const countEl = document.getElementById('bankCount');
+  if(countEl){
+    countEl.textContent = terms.length
+      ? rows.length.toLocaleString()+' of '+all.length.toLocaleString()+' records match'
+      : all.length.toLocaleString()+' records indexed';
+  }
+
+  const host = document.getElementById('bankResults');
+  if(!host) return;
+  if(!rows.length){
+    host.innerHTML = '<div class="bank-empty"><b>Nothing matched &ldquo;'+escapeHtml(bankQuery)+'&rdquo;.</b>'
+      + '<p>Every word has to appear somewhere in a record. Try fewer words, a street name, or a commission name.</p></div>';
+    return;
+  }
+  const CAP = 120;
+  const shown = rows.slice(0, CAP);
+  host.innerHTML = '<div class="bank-list">' + shown.map(({x})=>{
+    const cityLabel = CITIES[x.city] ? CITIES[x.city].label : 'Regional';
+    const act = x.url
+      ? '<a class="bank-go" href="'+x.url+'" target="_blank" rel="noopener">Open &#8599;</a>'
+      : (x.action ? '<button type="button" class="bank-go" data-bankact="'+x.action.kind+'" data-bankid="'+escapeHtml(x.action.id)+'" data-bankcityk="'+x.action.city+'">'+x.action.label+' &#8594;</button>' : '');
+    return '<div class="bank-row">'
+      + '<div class="bank-rowmain">'
+      + '<div class="bank-meta"><span class="bank-badge bank-'+x.type+'">'+(BANK_TYPE_LABEL[x.type]||x.type)+'</span>'
+      + '<span class="bank-city">'+cityLabel+'</span></div>'
+      + '<h4>'+escapeHtml(x.title)+'</h4>'
+      + (x.sub ? '<div class="bank-sub">'+escapeHtml(x.sub)+'</div>' : '')
+      + '</div>' + act + '</div>';
+  }).join('') + '</div>'
+  + (rows.length > CAP ? '<div class="bank-more">Showing the top '+CAP+' of '+rows.length.toLocaleString()+' matches. Narrow it with a filter or another word.</div>' : '');
+
+  host.querySelectorAll('[data-bankact]').forEach(b=> b.addEventListener('click', ()=>{
+    const kind = b.getAttribute('data-bankact');
+    const ck = b.getAttribute('data-bankcityk');
+    if(ck && CITIES[ck]) switchCity(ck);
+    if(kind==='project'){ showPage('dashboard'); showScreen('dashboard'); flyTo(b.getAttribute('data-bankid')); }
+    else if(kind==='stats'){ showPage('dashboard'); showScreen('statistics'); }
+  }));
+}
+
+const BANK_EXAMPLES = ["builder's remedy", 'housing element', 'planning commission',
+                       'grade separation', 'affordable', 'El Camino Real', 'ADU', 'downtown'];
+function renderBankExamples(){
+  const el = document.getElementById('bankExamples');
+  if(!el) return;
+  el.innerHTML = '<span class="lab">Try</span>' + BANK_EXAMPLES.map(q=>
+    '<button type="button" class="bank-eg" data-bankeg="'+escapeHtml(q)+'">'+escapeHtml(q)+'</button>').join('');
+  el.querySelectorAll('[data-bankeg]').forEach(b=> b.addEventListener('click', ()=>{
+    bankQuery = b.getAttribute('data-bankeg');
+    const input = document.getElementById('bankSearch');
+    if(input) input.value = bankQuery;
+    renderBank();
+  }));
+}
+
+// ---- Top-level pages: Dashboard, Your Account, Resource Bank ----
+// The existing screens all live under Dashboard; the sub-nav is hidden on the other two.
+let currentPage = 'dashboard';
+const PAGE_DEFAULT_SCREEN = {dashboard:'dashboard', account:'account', bank:'bank'};
+
+function showPage(page){
+  currentPage = page;
+  document.querySelectorAll('.page-nav-tab').forEach(t=>{
+    const on = t.getAttribute('data-page') === page;
+    t.classList.toggle('active', on);
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  const sub = document.getElementById('subNav');
+  if(sub) sub.hidden = (page !== 'dashboard');
+  if(page === 'dashboard'){
+    // Coming back to Dashboard should land where the sub-nav says it is, not always Overview.
+    const active = document.querySelector('.sub-nav-tab.active');
+    showScreen(active ? active.getAttribute('data-screen') : 'dashboard');
+  } else {
+    showScreen(PAGE_DEFAULT_SCREEN[page]);
+  }
+}
+document.querySelectorAll('.page-nav-tab').forEach(t=>{
+  t.addEventListener('click', ()=> showPage(t.getAttribute('data-page')));
+});
+document.querySelectorAll('.sub-nav-tab').forEach(t=>{
+  t.addEventListener('click', ()=> showScreen(t.getAttribute('data-screen')));
+});
+
 function scrollToScreen(name){
-  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount'};
+  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank'};
   const el = document.getElementById(ids[name]);
   if(!el){ window.scrollTo({top:0, behavior:'smooth'}); return; }
-  const navH = (document.querySelector('.page-nav') || {}).offsetHeight || 0;
+  // Both bars stick, so clear the sub-nav too when it is showing.
+  const navH = stickyNavHeight();
   const y = el.getBoundingClientRect().top + window.scrollY - navH - 10;
   window.scrollTo({top: Math.max(0, y), behavior:'smooth'});
 }
+function stickyNavHeight(){
+  const nav = document.querySelector('.page-nav');
+  const sub = document.getElementById('subNav');
+  return (nav ? nav.offsetHeight : 0) + (sub && !sub.hidden ? sub.offsetHeight : 0);
+}
 function showScreen(name){
   currentScreen = name;
-  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount'};
+  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank'};
   Object.entries(ids).forEach(([key,id])=>{
     const el = document.getElementById(id);
     if(el) el.style.display = (key===name) ? 'block' : 'none';
   });
-  document.querySelectorAll('.page-nav-tab').forEach(t=> {
+  document.querySelectorAll('.sub-nav-tab').forEach(t=> {
     const isActive = t.getAttribute('data-screen')===name;
     t.classList.toggle('active', isActive);
     t.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
+  // Keep the top-level tabs honest when something switches screens directly.
+  const owningPage = name==='account' ? 'account' : name==='bank' ? 'bank' : 'dashboard';
+  if(owningPage !== currentPage){
+    currentPage = owningPage;
+    document.querySelectorAll('.page-nav-tab').forEach(t=>{
+      const on = t.getAttribute('data-page') === owningPage;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    const sub = document.getElementById('subNav');
+    if(sub) sub.hidden = (owningPage !== 'dashboard');
+  }
   scrollToScreen(name);
   refreshCurrentScreen();
 }
@@ -4527,6 +4882,16 @@ function showAcctPanel(name){
   acctPanel = name;
   document.querySelectorAll('.acct-panel').forEach(p=>{ p.hidden = p.getAttribute('data-panel') !== name; });
   
+
+const bankInput = document.getElementById('bankSearch');
+if(bankInput){
+  let bankTimer = null;
+  bankInput.addEventListener('input', ()=>{
+    clearTimeout(bankTimer);
+    bankTimer = setTimeout(()=>{ bankQuery = bankInput.value.trim(); renderBank(); }, 140);
+  });
+}
+
 document.querySelectorAll('.acct-navbtn').forEach(b=>{
     const on = b.getAttribute('data-acct') === name;
     b.classList.toggle('active', on);
@@ -5617,7 +5982,7 @@ document.querySelectorAll('[data-signup]').forEach(el=>{
     setTimeout(()=>{
       const target = document.getElementById('screenAccount');
       if(target){
-        const navH = (document.querySelector('.page-nav') || {}).offsetHeight || 0;
+        const navH = stickyNavHeight();
         const y = target.getBoundingClientRect().top + window.scrollY - navH - 8;
         window.scrollTo({top:Math.max(0, y), behavior:'smooth'});
       }
