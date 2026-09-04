@@ -618,9 +618,9 @@
   .sub-nav{background:var(--paper-2); border-bottom:1px solid var(--rule); position:sticky; top:0; z-index:49;}
   /* Account and Resource Bank are their own pages: the dashboard masthead and section
      tabs are hidden there rather than left sitting above the content. */
-  body.page-account #siteHero, body.page-bank #siteHero,
-  body.page-account .sub-nav, body.page-bank .sub-nav{display:none;}
-  body.page-account #mainContent, body.page-bank #mainContent{padding-top:8px;}
+  body.page-account #siteHero, body.page-bank #siteHero, body.page-about #siteHero,
+  body.page-account .sub-nav, body.page-bank .sub-nav, body.page-about .sub-nav{display:none;}
+  body.page-account #mainContent, body.page-bank #mainContent, body.page-about #mainContent{padding-top:8px;}
   .sub-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch; overflow-x:auto;
     scrollbar-width:none; -ms-overflow-style:none;}
   .sub-nav-inner::-webkit-scrollbar{display:none;}
@@ -631,6 +631,18 @@
   .sub-nav-tab:hover{color:var(--ink);}
   .sub-nav-tab.active{color:var(--ink); border-bottom-color:var(--ink);}
   /* ---- Resource bank ---- */
+  .about-shell{max-width:800px; padding-top:14px;}
+  .about-hero{border-bottom:3px solid var(--ink); padding-bottom:14px; margin-bottom:20px;}
+  .about-kicker{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800;
+    letter-spacing:.09em; text-transform:uppercase; color:var(--text-soft); margin-bottom:6px;}
+  .about-hero h2{font-size:30px; line-height:1.1;}
+  .about-mosaic{display:grid; grid-template-columns:repeat(auto-fit,minmax(112px,1fr)); gap:8px; margin:12px 0 18px;}
+  .about-tile{margin:0;}
+  .about-tile img{width:100%; height:76px; object-fit:cover; border-radius:2px; display:block; border:1px solid var(--rule);}
+  .about-tile figcaption{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700;
+    color:var(--text-soft); margin-top:4px;}
+  .about-credits{font-size:10.5px !important; color:var(--text-soft); line-height:1.6; margin-top:14px;
+    padding-top:10px; border-top:1px solid var(--rule);}
   .bank-mosaic{display:grid; grid-template-columns:repeat(auto-fit,minmax(96px,1fr)); gap:2px;
     margin:18px 0 4px; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .bank-tile{position:relative; height:82px; padding:0; border:none; cursor:pointer;
@@ -888,7 +900,8 @@
   <div class="nav-menu" id="navMenu" role="menu" hidden>
     <button class="page-nav-tab active" data-page="dashboard" role="menuitem">Dashboard</button>
     <button class="page-nav-tab" data-page="account" role="menuitem">Your Account</button>
-    <button class="page-nav-tab" data-page="bank" role="menuitem">Resource Bank &amp; About</button>
+    <button class="page-nav-tab" data-page="bank" role="menuitem">Resource Bank</button>
+    <button class="page-nav-tab" data-page="about" role="menuitem">About</button>
   </div>
 </nav>
 
@@ -1331,8 +1344,18 @@
 
     <div id="bankResults"></div>
 
-    <div class="bank-about" id="bankAbout">
-      <h3>About this dashboard</h3>
+  </div>
+</div>
+
+<div id="screenAbout" class="screen" style="display:none;">
+  <div class="wrap">
+    <div class="about-shell">
+      <div class="about-hero">
+        <div class="about-kicker">Santa Clara County &middot; Public planning records</div>
+        <h2>About this dashboard</h2>
+      </div>
+
+      
       <p>This is a public record of what is being built across the South Bay, and of the meetings where those decisions actually get made. It exists because that information is public but scattered: a project lives on one city page, the hearing that decides it on another, and the housing target that explains why it was filed at all on a state portal none of them link to.</p>
       <h4>Where the data comes from</h4>
       <div class="bank-sources" id="bankSources"></div>
@@ -1340,8 +1363,12 @@
       <h4>What this is not</h4>
       <p>Nothing here is generated. No project status, board schedule, or headline on this site was written by a language model, and no record is included that could not be traced to a public source. Where a city publishes nothing usable, the register for that city is left empty rather than filled in - Morgan Hill has no project list here for exactly that reason.</p>
       <p>Statuses lag. A city that updates its pipeline quarterly will show a stale status here for up to a quarter, and a project can move between the last refresh and the moment you read this. Always confirm against the city's own page before acting - every record links to it.</p>
+      <h4>What it covers</h4>
+      <p>Thirteen cities across Santa Clara County and the South Bay.</p>
+      <div class="about-mosaic" id="aboutMosaic"></div>
       <h4>Corrections</h4>
       <p>If a record here is wrong, the source it links to is the authority, not this page. Errors are worth reporting: a planning dashboard that quietly misstates a project is worse than no dashboard.</p>
+      <p class="about-credits" id="aboutCredits"></p>
     </div>
   </div>
 </div>
@@ -3373,7 +3400,8 @@ function refreshCurrentScreen(){
   else if(currentScreen==='statistics') renderStatistics();
   else if(currentScreen==='hearings') renderHearings();
   else if(currentScreen==='resources') renderResources();
-  else if(currentScreen==='bank'){ renderBankMosaic(); renderBankSources(); renderBankExamples(); renderBank(); }
+  else if(currentScreen==='bank'){ renderBankMosaic(); renderBankExamples(); renderBank(); }
+  else if(currentScreen==='about'){ renderBankSources(); renderAboutMosaic(); }
   else if(currentScreen==='ask') renderAskContext();
   else if(currentScreen==='housing') renderTopicPage('housing','Housing');
   else if(currentScreen==='developments') renderTopicPage('developments','Building');
@@ -3642,6 +3670,26 @@ function renderBankSources(){
     + '<p>'+x.d+'</p></div>').join('');
 }
 
+
+// A quieter version of the mosaic for the About page - it illustrates coverage rather than
+// acting as a filter, so the tiles are not clickable there.
+function renderAboutMosaic(){
+  const el = document.getElementById('aboutMosaic');
+  if(!el) return;
+  const keys = Object.keys(CITIES).filter(k=>k!=='all' && CITY_PHOTOS[k]);
+  el.innerHTML = keys.map(k=>{
+    const ph = CITY_PHOTOS[k];
+    return '<figure class="about-tile"><img src="'+ph.url+'" alt="'+escapeHtml(ph.cap)+'" loading="lazy" '
+      + 'onerror="this.closest(\'.about-tile\').style.display=\'none\'" />'
+      + '<figcaption>'+CITIES[k].label+'</figcaption></figure>';
+  }).join('');
+  const cred = document.getElementById('aboutCredits');
+  if(cred){
+    cred.innerHTML = 'City photographs via Wikimedia Commons: '
+      + keys.map(k=> escapeHtml(CITY_PHOTOS[k].cap)+' ('+escapeHtml(CITY_PHOTOS[k].by)+', '+CITY_PHOTOS[k].lic+')').join('; ') + '.';
+  }
+}
+
 const BANK_EXAMPLES = ["builder's remedy", 'housing element', 'planning commission',
                        'grade separation', 'affordable', 'El Camino Real', 'ADU', 'downtown'];
 function renderBankExamples(){
@@ -3661,12 +3709,12 @@ function renderBankExamples(){
 // The existing screens all live under Dashboard; the sub-nav is hidden on the other two.
 let currentPage = 'dashboard';
 document.body.classList.add('page-dashboard');
-const PAGE_DEFAULT_SCREEN = {dashboard:'dashboard', account:'account', bank:'bank'};
+const PAGE_DEFAULT_SCREEN = {dashboard:'dashboard', account:'account', bank:'bank', about:'about'};
 
 function applyPageChrome(page){
   // A body class drives what the dashboard-only furniture does, so Account and Resource Bank
   // read as their own pages instead of appearing under the masthead.
-  document.body.classList.remove('page-dashboard','page-account','page-bank');
+  document.body.classList.remove('page-dashboard','page-account','page-bank','page-about');
   document.body.classList.add('page-'+page);
   const sub = document.getElementById('subNav');
   if(sub) sub.hidden = (page !== 'dashboard');
@@ -3719,9 +3767,9 @@ document.querySelectorAll('.sub-nav-tab').forEach(t=>{
   t.addEventListener('click', ()=> showScreen(t.getAttribute('data-screen')));
 });
 
+const SCREEN_IDS = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
 function scrollToScreen(name){
-  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank'};
-  const el = document.getElementById(ids[name]);
+  const el = document.getElementById(SCREEN_IDS[name]);
   if(!el){ window.scrollTo({top:0, behavior:'smooth'}); return; }
   // Both bars stick, so clear the sub-nav too when it is showing.
   const navH = stickyNavHeight();
@@ -3734,9 +3782,10 @@ function stickyNavHeight(){
   return (nav ? nav.offsetHeight : 0) + (sub && !sub.hidden ? sub.offsetHeight : 0);
 }
 function showScreen(name){
+  // A bad name used to blank the page: every screen hid and none matched.
+  if(!name || !SCREEN_IDS[name]) return;
   currentScreen = name;
-  const ids = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank'};
-  Object.entries(ids).forEach(([key,id])=>{
+  Object.entries(SCREEN_IDS).forEach(([key,id])=>{
     const el = document.getElementById(id);
     if(el) el.style.display = (key===name) ? 'block' : 'none';
   });
@@ -3746,7 +3795,7 @@ function showScreen(name){
     t.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
   // Keep the top-level tabs honest when something switches screens directly.
-  const owningPage = name==='account' ? 'account' : name==='bank' ? 'bank' : 'dashboard';
+  const owningPage = name==='account' ? 'account' : name==='bank' ? 'bank' : name==='about' ? 'about' : 'dashboard';
   if(owningPage !== currentPage){
     currentPage = owningPage;
     document.querySelectorAll('.page-nav-tab').forEach(t=>{
@@ -3757,9 +3806,6 @@ function showScreen(name){
   scrollToScreen(name);
   refreshCurrentScreen();
 }
-document.querySelectorAll('.page-nav-tab').forEach(tab=>{
-  tab.addEventListener('click', ()=> showScreen(tab.getAttribute('data-screen')));
-});
 
 // ---------------- PLANNER ----------------
 const planner = { interests:new Set(['Housing','Transportation','Building','Civic']) };
