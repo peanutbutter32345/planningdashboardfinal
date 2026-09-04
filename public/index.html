@@ -222,9 +222,17 @@
   .page-nav{background:#000; border:none; position:sticky; top:0; z-index:50;}
   /* One row that scrolls sideways on narrow screens. Wrapping made "Get-Involved Planner" stack
      three lines deep and pushed the whole bar to triple height. */
-  .page-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
-  .page-nav-inner::-webkit-scrollbar{display:none;}
-  .page-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; letter-spacing:0; text-transform:none; padding:13px 15px; border-radius:0; border:none; background:transparent; color:#FFFFFF; cursor:pointer;}
+  .page-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch;}
+  /* The brand stays pinned; only the tab strip scrolls sideways on narrow screens. */
+  .page-nav-tabs{display:flex; gap:0; align-items:stretch; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
+  .page-nav-tabs::-webkit-scrollbar{display:none;}
+  .page-nav-brand{flex:0 0 auto; display:flex; align-items:center; white-space:nowrap; margin-right:12px;
+    font-family:'Open Sans',sans-serif; font-size:13.5px; font-weight:800; letter-spacing:.02em;
+    background:transparent; border:none; color:#fff; cursor:pointer; padding:13px 4px 13px 3px;}
+  .page-nav-brand:hover{color:#fff; opacity:.75;}
+  /* On phones the brand would eat most of the bar, and the title sits right below it anyway. */
+  @media (max-width:700px){ .page-nav-brand{display:none;} }
+  .page-nav-tab{white-space:nowrap; flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; letter-spacing:0; text-transform:none; padding:13px 11px; border-radius:0; border:none; background:transparent; color:#FFFFFF; cursor:pointer;}
   /* Active state is a filled block, the way a newspaper section bar marks its current section. */
   .page-nav-tab{border:none; transition:background .12s, color .12s;}
   .page-nav-tab.active{background:var(--ink); color:#fff;}
@@ -687,6 +695,25 @@
   </div>
 </div>
 
+<nav class="page-nav" aria-label="Dashboard sections">
+  <div class="wrap page-nav-inner">
+    <button type="button" class="page-nav-brand" data-goto-screen="dashboard">Civic Dashboard</button>
+    <div class="page-nav-tabs" role="tablist">
+      <button class="page-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Dashboard</button>
+      <button class="page-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
+      <button class="page-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get-Involved Planner</button>
+      <button class="page-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
+      <button class="page-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
+      <button class="page-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
+      <button class="page-nav-tab" data-screen="hearings" role="tab" aria-selected="false">Hearings</button>
+      <button class="page-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
+      <button class="page-nav-tab" data-screen="resources" role="tab" aria-selected="false">Resources</button>
+      <button class="page-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
+      <button class="page-nav-tab" data-screen="account" role="tab" aria-selected="false" id="accountNavTab">Account</button>
+    </div>
+  </div>
+</nav>
+
 <header class="hero">
   <div class="wrap">
     <div class="hero-copy">
@@ -733,22 +760,6 @@
     <div class="funnel" id="funnel"></div>
   </div>
 </header>
-
-<nav class="page-nav" aria-label="Dashboard sections">
-  <div class="wrap page-nav-inner" role="tablist">
-    <button class="page-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Dashboard</button>
-    <button class="page-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
-    <button class="page-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get-Involved Planner</button>
-    <button class="page-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
-    <button class="page-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
-    <button class="page-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
-    <button class="page-nav-tab" data-screen="hearings" role="tab" aria-selected="false">Hearings</button>
-    <button class="page-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
-    <button class="page-nav-tab" data-screen="resources" role="tab" aria-selected="false">Resources</button>
-    <button class="page-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
-    <button class="page-nav-tab" data-screen="account" role="tab" aria-selected="false" id="accountNavTab">Account</button>
-  </div>
-</nav>
 
 <main id="mainContent">
 <div id="screenYourArea" class="screen" style="display:none;">
