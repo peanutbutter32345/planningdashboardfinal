@@ -636,102 +636,115 @@
   .card-src{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700;
     color:var(--text-soft); text-decoration:none; border-bottom:1px solid var(--rule); white-space:nowrap;}
   .card-src:hover{color:var(--ink); border-bottom-color:var(--ink);}
-  /* ---- Timeline ---- */
-  .tl-shell{max-width:860px; padding-top:14px;}
-  .tl-head{border-bottom:3px solid var(--ink); padding-bottom:12px; margin-bottom:16px;}
-  .tl-head h2{font-size:24px; margin-bottom:5px;}
-  .tl-progress{margin-bottom:16px;}
-  .tl-prog-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;}
-  .tl-prog-k{font-family:'Open Sans',sans-serif; font-size:11px; font-weight:800;
-    letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft);}
-  .tl-prog-p{font-family:var(--mono); font-size:17px; font-weight:700; color:var(--ink);}
-  .tl-prog-track{background:#E4E8DC; height:7px; border-radius:2px; overflow:hidden;}
-  .tl-prog-fill{display:block; height:100%; background:var(--ink); transition:width .25s;}
-  /* The spine runs behind the dots; each node hangs off it. */
-  .tl-line{position:relative; padding-left:26px;}
-  .tl-line::before{content:''; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--rule);}
-  .tl-node{position:relative; margin-bottom:12px;}
-  .tl-dot{position:absolute; left:-26px; top:15px; width:16px; height:16px; border-radius:50%;
-    background:#fff; border:3px solid var(--rule); z-index:1;}
-  .tl-node.tl-doing .tl-dot{border-color:var(--ink); background:#fff;}
-  .tl-node.tl-done .tl-dot{border-color:var(--ink); background:var(--ink);}
-  .tl-card{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:13px 15px;}
-  .tl-node.tl-done .tl-card{background:#F7F8F3;}
-  .tl-node.tl-done h4{text-decoration:line-through; color:var(--text-soft);}
-  .tl-meta{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:4px;}
-  .tl-kind{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.06em;
-    text-transform:uppercase; color:#fff; background:var(--ink); padding:2px 6px; border-radius:2px;}
-  .tl-k-meeting{background:#3E4F24;} .tl-k-project{background:#4A5E2B;} .tl-k-board{background:#55693A;}
-  .tl-k-news{background:#5F7640;} .tl-k-step{background:#6B7F4C;}
-  .tl-city, .tl-date{font-family:var(--mono); font-size:10.5px; color:var(--text-soft);}
-  .tl-date{margin-left:auto;}
-  .tl-card h4{font-size:14.5px; color:var(--ink); line-height:1.35;}
-  .tl-sub{font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-top:3px;}
-  .tl-card p{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin-top:5px;}
-  .tl-controls{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px;}
-  .tl-status{display:flex; gap:0; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
-  .tl-st{background:#fff; border:none; padding:5px 10px; cursor:pointer; font-family:'Open Sans',sans-serif;
-    font-size:11px; font-weight:700; color:var(--text-soft); border-right:1px solid var(--rule);}
-  .tl-st:last-child{border-right:none;}
-  .tl-st:hover{background:#F0F2EA; color:var(--ink);}
-  .tl-st.on{background:var(--ink); color:#fff;}
-  .tl-due{font-family:'Open Sans',sans-serif; font-size:11px; font-weight:700; color:var(--text-soft);
-    display:flex; align-items:center; gap:5px;}
-  .tl-due input{border:1px solid var(--rule); border-radius:2px; padding:4px 6px;
-    font-family:var(--mono); font-size:11px; color:var(--text); background:#fff;}
-  .tl-go{margin-left:auto; background:none; border:1px solid var(--rule); border-radius:2px;
-    padding:5px 10px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11px;
-    font-weight:700; color:var(--text-soft); text-decoration:none; white-space:nowrap;}
-  .tl-go:hover{border-color:var(--ink); color:var(--ink);}
-  .tl-note{width:100%; margin-top:9px; padding:8px 10px; border:1px solid var(--rule); border-radius:2px;
-    font-family:'Open Sans',sans-serif; font-size:12.5px; line-height:1.5; color:var(--text);
-    background:#FCFDFA; resize:vertical;}
-  .tl-note:focus{outline:none; border-color:var(--ink); background:#fff;}
-  .tl-empty{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:24px;}
-  .tl-empty b{font-size:15px; color:var(--ink);}
-  .tl-empty p{font-size:13px; color:var(--text-soft); margin-top:7px; line-height:1.6;}
-  .tl-empty-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
-  /* Timeline setup, forecast and quiz */
-  .tl-setup-wrap{border:1px solid var(--rule); border-radius:2px; background:var(--paper-2); margin-bottom:18px;}
-  .tl-setup-wrap summary{cursor:pointer; padding:11px 15px; font-family:'Open Sans',sans-serif;
-    font-size:13px; font-weight:800; color:var(--ink); list-style:none;}
-  .tl-setup-wrap summary::-webkit-details-marker{display:none;}
-  .tl-setup-wrap summary::before{content:'\25B8'; display:inline-block; margin-right:8px; transition:transform .15s;}
-  .tl-setup-wrap[open] summary::before{transform:rotate(90deg);}
-  .tl-setup-hint{font-weight:400; font-size:11px; color:var(--text-soft); margin-left:6px;}
-  .tl-setup{padding:0 15px 14px;}
-  .tl-q{margin-bottom:14px;}
-  .tl-q-t{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:800; color:var(--ink); margin-bottom:6px;}
-  .tl-q-opts{display:flex; gap:6px; flex-wrap:wrap;}
-  .tl-opt{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:6px 11px;
-    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:12px; color:var(--text);}
-  .tl-opt:hover{border-color:var(--ink); color:var(--ink);}
-  .tl-opt.on{background:var(--ink); border-color:var(--ink); color:#fff;}
-  .tl-q-foot{font-size:11.5px; color:var(--text-soft); padding-top:4px;}
-  .tl-fc-note{margin-bottom:12px !important;}
-  .tl-fc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:12px; margin-bottom:6px;}
-  .tl-fc{background:#fff; border:1px solid var(--rule); border-left:3px solid var(--ink);
-    border-radius:2px; padding:14px 16px;}
-  .tl-fc-k{font-family:var(--mono); font-size:26px; font-weight:700; color:var(--ink); line-height:1.05;}
-  .tl-fc-l{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.05em;
-    text-transform:uppercase; color:var(--text-soft); margin-top:5px;}
-  .tl-fc p{font-size:12.5px; color:var(--text); line-height:1.6; margin-top:8px;}
-  .tl-fc-m{font-size:11px; color:var(--text-soft); line-height:1.5; margin-top:8px;
-    padding-top:7px; border-top:1px solid var(--rule);}
-  .tl-quiz{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:16px 18px; margin-bottom:6px;}
-  .tl-quiz-q{font-size:14.5px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.4;}
-  .tl-quiz-opts{display:flex; gap:7px; flex-wrap:wrap;}
-  .tl-quiz-o{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:8px 13px;
-    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:12.5px; color:var(--text);}
-  .tl-quiz-o:hover:not(:disabled){border-color:var(--ink); color:var(--ink);}
-  .tl-quiz-o.right{background:var(--ink); border-color:var(--ink); color:#fff;}
-  .tl-quiz-o.wrong{background:#F3E4E1; border-color:#B4796C; color:#7A3626;}
-  .tl-quiz-o.dim{opacity:.45;}
-  .tl-quiz-a{font-size:12.5px; color:var(--text); line-height:1.6; margin-top:11px;
-    padding-top:10px; border-top:1px solid var(--rule);}
-  .tl-quiz-next{margin-top:11px; background:none; border:none; padding:0; cursor:pointer;
-    font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--text-soft); text-decoration:underline;}
-  .tl-quiz-next:hover{color:var(--ink);}
+  /* ---- Track ---- */
+  .tk-setup{max-width:820px; padding-top:18px;}
+  .tk-kicker{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800;
+    letter-spacing:.09em; text-transform:uppercase; color:var(--text-soft); margin-bottom:5px;}
+  .tk-setup-head h2{font-size:28px; line-height:1.15; margin-bottom:7px;}
+  .tk-setup-head p{font-size:14px; color:var(--text-soft); line-height:1.65; margin-bottom:20px;}
+  .tk-q{margin-bottom:18px;}
+  .tk-q-t{font-family:'Open Sans',sans-serif; font-size:12.5px; font-weight:800; color:var(--ink); margin-bottom:8px;}
+  .tk-q-opts{display:flex; gap:7px; flex-wrap:wrap;}
+  .tk-opt{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:8px 13px;
+    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:12.5px; color:var(--text); text-align:left;}
+  .tk-opt:hover{border-color:var(--ink); color:var(--ink);}
+  .tk-opt.on{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .tk-opt-wide{min-width:186px;}
+  .tk-opt-wide b{display:block; font-size:13px; margin-bottom:2px;}
+  .tk-opt-wide span{display:block; font-size:11px; opacity:.75; font-weight:400;}
+  .tk-setup-actions{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:6px;
+    border-top:1px solid var(--rule); padding-top:16px;}
+  .tk-setup-note{font-size:12px; color:var(--text-soft);}
+  .tk-bar{display:flex; justify-content:space-between; align-items:flex-end; gap:14px;
+    flex-wrap:wrap; border-bottom:3px solid var(--ink); padding:16px 0 12px; margin-bottom:14px;}
+  .tk-bar h2{font-size:28px; line-height:1.1;}
+  .tk-edit{font-size:12px; padding:7px 12px;}
+  .tk-tracks{display:flex; gap:6px; margin-bottom:14px;}
+  .tk-tt{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:8px 14px;
+    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:12.5px; font-weight:700; color:var(--text-soft);}
+  .tk-tt:hover{border-color:var(--ink); color:var(--ink);}
+  .tk-tt.on{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .tk-tt-n{font-family:var(--mono); font-size:10.5px; opacity:.7;}
+  .tk-progwrap{margin-bottom:16px;}
+  .tk-prog{background:#E4E8DC; height:6px; border-radius:2px; overflow:hidden;}
+  .tk-prog span{display:block; height:100%; background:var(--ink); width:0; transition:width .3s;}
+  .tk-progtext{font-family:var(--mono); font-size:11px; color:var(--text-soft); margin-top:5px;}
+  /* The horizontal line of stations. */
+  .tk-railwrap{position:relative; margin-bottom:20px;}
+  .tk-rail{display:flex; gap:0; overflow-x:auto; scroll-behavior:smooth; padding:8px 0 14px;
+    scrollbar-width:thin;}
+  .tk-rail::-webkit-scrollbar{height:7px;}
+  .tk-rail::-webkit-scrollbar-thumb{background:var(--rule); border-radius:4px;}
+  .tk-st{position:relative; flex:0 0 176px; background:#fff; border:1px solid var(--rule);
+    border-radius:2px; margin-right:12px; padding:12px 13px 13px; cursor:pointer; text-align:left;
+    transition:border-color .12s, transform .12s;}
+  /* the connecting line */
+  .tk-st::after{content:''; position:absolute; right:-12px; top:50%; width:12px; height:2px; background:var(--rule);}
+  .tk-st:last-child{margin-right:0;}
+  .tk-st:last-child::after{display:none;}
+  .tk-st:hover{border-color:var(--ink); transform:translateY(-2px);}
+  .tk-st.open{border-color:var(--ink); box-shadow:0 0 0 2px var(--ink);}
+  .tk-st.tk-done{background:#F5F7F0;}
+  .tk-st-n{position:absolute; top:-8px; left:11px; width:20px; height:20px; border-radius:50%;
+    background:var(--ink); color:#fff; font-family:var(--mono); font-size:10.5px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;}
+  .tk-st-img{display:block; height:66px; margin:6px 0 9px; border-radius:2px;
+    background-size:cover; background-position:center; background-color:#DEE3D5;}
+  .tk-st-icon{display:flex; align-items:center; justify-content:center; height:66px; margin:6px 0 9px;
+    border-radius:2px; background:#EDF0E6; font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink);}
+  .tk-st-lab{display:block; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800;
+    letter-spacing:.07em; text-transform:uppercase; color:var(--text-soft); margin-bottom:3px;}
+  .tk-st-t{display:block; font-size:12.5px; font-weight:700; color:var(--ink); line-height:1.35;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;}
+  .tk-st-done{display:inline-block; margin-top:7px; font-family:'Open Sans',sans-serif;
+    font-size:9.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    background:var(--ink); color:#fff; padding:2px 6px; border-radius:2px;}
+  .tk-scroll{position:absolute; top:44%; z-index:2; width:30px; height:30px; border-radius:50%;
+    border:1px solid var(--rule); background:#fff; cursor:pointer; font-size:17px; line-height:1;
+    color:var(--ink); box-shadow:0 1px 5px rgba(0,0,0,.14);}
+  .tk-scroll-l{left:-9px;} .tk-scroll-r{right:-9px;}
+  .tk-scroll:hover{border-color:var(--ink);}
+  /* Opened station */
+  .tk-panel{min-height:80px;}
+  .tk-panel-empty{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px;
+    padding:22px; font-size:13px; color:var(--text-soft);}
+  .tk-p{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:20px 22px; max-width:760px;}
+  .tk-p-img{width:100%; max-height:250px; object-fit:cover; border-radius:2px; margin-bottom:13px;}
+  .tk-p-meta{font-family:var(--mono); font-size:11px; color:var(--text-soft); margin-bottom:5px;}
+  .tk-p-big{font-family:var(--mono); font-size:44px; font-weight:700; color:var(--ink); line-height:1; margin:2px 0 7px;}
+  .tk-p h3{font-size:19px; line-height:1.3; margin-bottom:8px;}
+  .tk-p p{font-size:13.5px; color:var(--text); line-height:1.7; margin-bottom:12px;}
+  .tk-p-cta{margin-top:4px; display:inline-block;}
+  .tk-p-src{display:block; font-size:11.5px; color:var(--text-soft); margin-top:11px;
+    padding-top:9px; border-top:1px solid var(--rule);}
+  .tk-p-src a{color:var(--text-soft);}
+  .tk-lab{display:block; font-family:'Open Sans',sans-serif; font-size:11.5px; font-weight:800;
+    color:var(--ink); margin:11px 0 4px;}
+  .tk-p input[type="text"], .tk-p textarea{width:100%; padding:9px 11px; border:1.5px solid var(--rule);
+    border-radius:2px; font-family:'Open Sans',sans-serif; font-size:13px; background:#fff; color:var(--text);}
+  .tk-p textarea{font-family:var(--mono); font-size:12.5px; line-height:1.6; resize:vertical;}
+  .tk-draft{width:100%; margin-top:12px; padding:13px 15px; border:1.5px solid var(--ink);
+    border-radius:2px; font-family:var(--mono); font-size:12.5px; line-height:1.7; background:#fff;}
+  .tk-draft-actions{display:flex; gap:8px; margin-top:9px;}
+  .tk-quiz-opts{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:4px;}
+  .tk-quiz-o{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:9px 14px;
+    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:13px; color:var(--text);}
+  .tk-quiz-o:hover:not(:disabled){border-color:var(--ink); color:var(--ink);}
+  .tk-quiz-o.right{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .tk-quiz-o.wrong{background:#F3E4E1; border-color:#B4796C; color:#7A3626;}
+  .tk-quiz-o.dim{opacity:.42;}
+  .tk-quiz-a{font-size:13px; color:var(--text); line-height:1.65; margin-top:12px;
+    padding-top:11px; border-top:1px solid var(--rule);}
+  .tk-p-foot{display:flex; gap:11px; align-items:flex-start; margin-top:16px;
+    padding-top:14px; border-top:1px solid var(--rule);}
+  .tk-mark{flex:0 0 auto; background:#fff; border:1.5px solid var(--ink); border-radius:2px;
+    padding:8px 15px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:12.5px;
+    font-weight:700; color:var(--ink);}
+  .tk-mark:hover{background:#F0F2EA;}
+  .tk-mark.on{background:var(--ink); color:#fff;}
+  .tk-p-note{flex:1 1 auto; padding:8px 10px; border:1px solid var(--rule); border-radius:2px;
+    font-family:'Open Sans',sans-serif; font-size:12.5px; line-height:1.5; background:#FCFDFA; resize:vertical;}
+  .tk-p-note:focus{outline:none; border-color:var(--ink); background:#fff;}
   /* ---- Resource bank ---- */
   .about-shell{max-width:800px; padding-top:14px;}
   .about-hero{border-bottom:3px solid var(--ink); padding-bottom:14px; margin-bottom:20px;}
@@ -1074,43 +1087,48 @@
 <main id="mainContent">
 <div id="screenTimeline" class="screen" style="display:none;">
   <div class="wrap">
-    <div class="tl-shell">
-      <div class="tl-head">
-        <div>
-          <h2>Your timeline</h2>
-          <p class="section-note">Everything you're following, in the order it happens - the projects, the meetings that decide them, the boards you could join, and the steps you set yourself. Mark things off, and keep notes where you'll find them again.</p>
+
+    <!-- Step 1: who they are and what they care about -->
+    <section class="tk-setup" id="tkSetup">
+      <div class="tk-setup-head">
+        <div class="tk-kicker">Set up your track</div>
+        <h2>What are you following, and where?</h2>
+        <p>Pick your area and what you care about. Everything after this is built from those answers, and it is saved to your account.</p>
+      </div>
+      <div id="tkQuestions"></div>
+      <div class="tk-setup-actions">
+        <button class="btn" id="tkBuild" type="button">Build my track</button>
+        <span class="tk-setup-note" id="tkSetupNote"></span>
+      </div>
+    </section>
+
+    <!-- Step 2: the track -->
+    <section class="tk-main" id="tkMain" hidden>
+      <div class="tk-bar">
+        <div class="tk-bar-left">
+          <div class="tk-kicker" id="tkTrackKicker"></div>
+          <h2 id="tkTrackTitle"></h2>
         </div>
+        <button class="btn secondary tk-edit" id="tkEdit" type="button">Change my answers</button>
       </div>
 
-      <details class="tl-setup-wrap" id="tlSetupWrap">
-        <summary>Tell it about you <span class="tl-setup-hint" id="tlSetupHint"></span></summary>
-        <div class="tl-setup" id="tlSetup"></div>
-      </details>
+      <div class="tk-tracks" id="tkTrackTabs"></div>
 
-      <div class="tl-progress" id="tlProgress"></div>
-
-      <div class="acct-sec-h">What the numbers project</div>
-      <p class="section-note tl-fc-note">Arithmetic on the data already on this site - a line through a published series, or a median of how long comparable projects have taken. Each one says how it was worked out. None of it is a model output.</p>
-      <div id="tlForecast"></div>
-
-      <div class="acct-sec-h">Know your city</div>
-      <div class="tl-quiz" id="tlQuiz"></div>
-
-      <div class="acct-sec-h">Your timeline</div>
-      <div class="stat-toolbar" id="tlFilters"><span class="lab">Show</span></div>
-
-      <div id="tlBody"></div>
-
-      <div class="tl-empty" id="tlEmpty" hidden>
-        <b>Your timeline is empty.</b>
-        <p>It fills from what you follow. Star a project, a board, or an article anywhere on the site - the &#9734; on any card - and it appears here with its dates and a place to keep notes.</p>
-        <p>Boards and hearings for your city are added automatically once you set one.</p>
-        <div class="tl-empty-actions">
-          <button type="button" class="btn" data-goto-screen="dashboard">Browse projects</button>
-          <button type="button" class="btn secondary" data-goto-screen="planner">Build a get-involved plan</button>
-        </div>
+      <div class="tk-progwrap">
+        <div class="tk-prog"><span id="tkProgFill"></span></div>
+        <div class="tk-progtext" id="tkProgText"></div>
       </div>
-    </div>
+
+      <!-- horizontal, scrollable line of stations -->
+      <div class="tk-railwrap">
+        <button type="button" class="tk-scroll tk-scroll-l" id="tkLeft" aria-label="Scroll left">&#8249;</button>
+        <div class="tk-rail" id="tkRail"></div>
+        <button type="button" class="tk-scroll tk-scroll-r" id="tkRight" aria-label="Scroll right">&#8250;</button>
+      </div>
+
+      <div class="tk-panel" id="tkPanel"></div>
+    </section>
+
   </div>
 </div>
 
@@ -1385,7 +1403,7 @@
               </select>
               <label class="onboard-label" for="draftPoints" style="margin-top:10px;">Your reasons, one per line</label>
               <textarea id="draftPoints" rows="4" placeholder="e.g. The site is a 6 minute walk from the Caltrain station&#10;Three of the units are family-sized"></textarea>
-              <div class="auth-hint">These go into the draft word for word. Nothing is written for you - a letter that argues something you didn't say is worse than no letter.</div>
+              <div class="auth-hint">These go into the draft exactly as you type them. Nothing is written for you.</div>
               <label class="onboard-label" for="draftName" style="margin-top:10px;">Your name and street (optional)</label>
               <input id="draftName" type="text" placeholder="Jordan Lee, 123 Oak St" />
               <div class="auth-hint">Boards weight comments from people who live in the city. Leave blank if you'd rather not.</div>
@@ -1510,7 +1528,7 @@
       <p>Projects come from each city's development records: GIS feature services, published pipelines and posted project lists. Hearings come from city Legistar feeds. Housing target progress comes from the California Department of Housing and Community Development's 6th Cycle RHNA Progress Report. Home values and rents come from Zillow's public research data. Commute times, income, tenure and housing age come from the Census Bureau's American Community Survey. News comes from local newsrooms and links to the publisher.</p>
 
       <h4>How records are handled</h4>
-      <p>Project statuses are quoted from the source. Summary counts are arithmetic on those records. No status, schedule or headline on this site was written by a language model.</p>
+      <p>Project statuses are quoted from the source. Counts are worked out from those records. Nothing on this site is written for you.</p>
       <p>Where a city publishes no usable project data, that city's register is left empty. Morgan Hill is the current example: its news, boards, official links and housing numbers are here, but it has no project list.</p>
 
       <h4>How current it is</h4>
@@ -3775,7 +3793,7 @@ function refreshCurrentScreen(){
   else if(currentScreen==='statistics') renderStatistics();
   else if(currentScreen==='hearings') renderHearings();
   else if(currentScreen==='resources') renderResources();
-  else if(currentScreen==='timeline'){ loadTimelineState().then(renderTimeline); }
+  else if(currentScreen==='timeline'){ tkLoad().then(renderTrack); }
   else if(currentScreen==='bank'){ renderBankMosaic(); renderBankExamples(); renderBank(); }
   else if(currentScreen==='about'){ renderBankSources(); renderAboutMosaic(); }
   else if(currentScreen==='ask') renderAskContext();
@@ -3812,535 +3830,460 @@ function cityPhoto(k){ return CITY_PHOTOS[k] || null; }
 function photoCredit(p){ return p ? (p.cap + ' &middot; ' + p.by + ', ' + p.lic + ', via Wikimedia Commons') : ''; }
 
 
-// ================= TIMELINE =================
-// Assembles one ordered view of everything a reader is following: starred projects, the
-// hearings that decide them, boards they could join, articles they kept, and the steps from
-// their own plan. Progress, notes and target dates live server-side per reader; everything
-// else is read from the same data the rest of the site uses.
-let tlState = new Map();     // itemKey -> {status, note, due_date}
-let tlFilter = 'all';
-let tlHearings = null;
-let tlSaveTimers = new Map();
+// ================= TRACK =================
+// A set-up step, then a horizontal line of stations built from what the reader picked: things
+// to read, figures to learn, questions to answer, and things to do. Progress and answers are
+// kept per reader.
+let tkProfile = {city:'', topics:[], stake:'', time:'', experience:''};
+let tkState = new Map();          // station key -> {status, note}
+let tkTrack = 'local';            // 'local' | 'county'
+let tkOpen = null;                // key of the opened station
+let tkSaveTimers = new Map();
+const TK_PROFILE_KEY = '__track_profile__';
 
-const TL_STATUS = [{id:'todo',label:'To do'},{id:'doing',label:'In progress'},{id:'done',label:'Done'}];
-const TL_FILTERS = [{id:'all',label:'Everything'},{id:'open',label:'Not done'},{id:'project',label:'Projects'},
-                    {id:'meeting',label:'Meetings'},{id:'board',label:'Boards'},{id:'news',label:'Articles'},
-                    {id:'step',label:'My steps'}];
-
-async function loadTimelineState(){
-  if(!isLoggedIn()){ tlState = new Map(); return; }
-  try{
-    const d = await apiCall('/api/timeline');
-    tlState = new Map((d.items||[]).map(r=>[r.item_key, r]));
-    loadProfileFrom(d.items);
-  }catch(err){ tlState = new Map(); }
-}
-
-function tlSave(key, patch){
-  const cur = tlState.get(key) || {status:'todo', note:'', due_date:null};
-  const next = Object.assign({}, cur, patch);
-  tlState.set(key, next);
-  if(!isLoggedIn()) return;
-  // Typing in a note should not fire a request per keystroke.
-  clearTimeout(tlSaveTimers.get(key));
-  tlSaveTimers.set(key, setTimeout(()=>{
-    apiCall('/api/timeline', {method:'PUT', body:JSON.stringify({
-      itemKey:key, status:next.status, note:next.note || null,
-      dueDate:next.due_date || null })}).catch(()=>{});
-  }, 500));
-}
-
-// Build the nodes. Each carries a stable key so progress survives a data refresh.
-function buildTimeline(){
-  const nodes = [];
-  const city = acctCity();
-  const c = CITIES[city];
-
-  starredMap.forEach((data, key)=>{
-    const [type, ...rest] = String(key).split(':');
-    const id = rest.join(':');
-    const d = data || {};
-    if(type === 'project'){
-      const owner = Object.keys(CITIES).filter(k=>k!=='all').find(k=> CITIES[k].data.some(p=>p.id===id));
-      const proj = owner ? CITIES[owner].data.find(p=>p.id===id) : null;
-      nodes.push({key:'project:'+id, kind:'project', title:d.title || (proj&&proj.title) || id,
-        city:owner || city, meta:(proj && proj.status) ? proj.status : 'Followed project',
-        body:(proj && (proj.addr || proj.desc)) || d.desc || '',
-        action:{kind:'project', id, city:owner}, date:null});
-    } else if(type === 'board'){
-      nodes.push({key:'board:'+id, kind:'board', title:d.title || d.name || id,
-        city:d.city || city, meta:d.when || 'Board you follow', body:d.desc || d.body || '',
-        url:d.url || d.link, date:null});
-    } else if(type === 'news'){
-      nodes.push({key:'news:'+id, kind:'news', title:d.title || 'Saved article',
-        city:d.city || city, meta:'Article you saved', body:d.desc || d.snippet || '',
-        url:d.url || id, date:d.date || null});
-    } else if(type === 'resource'){
-      nodes.push({key:'resource:'+id, kind:'board', title:d.title || d.name || id,
-        city:city, meta:'Saved resource', body:d.desc || d.body || '', url:d.url, date:null});
-    }
-  });
-
-  // Upcoming hearings in the reader's city, and any that name a project they follow.
-  const followed = new Set([...starredMap.keys()].filter(k=>String(k).startsWith('project:'))
-    .map(k=>String(k).slice('project:'.length)));
-  if(tlHearings && Array.isArray(tlHearings.hearings)){
-    tlHearings.hearings.forEach(h=>{
-      const matchesCity = h.city === city;
-      const matchesProject = Array.isArray(h.matches) && h.matches.some(m=> followed.has(m.id || m));
-      if(!matchesCity && !matchesProject) return;
-      nodes.push({key:'meeting:'+(h.id || (h.city+'|'+(h.date||'')+'|'+(h.body||h.name||''))),
-        kind:'meeting', title:h.body || h.name || 'Public meeting',
-        city:h.city || city, meta:h.dateLabel || h.date || 'Upcoming',
-        body: matchesProject ? 'An item you follow is on this agenda.' : 'Meeting in your city.',
-        url:h.agendaUrl || null, date:h.date || null});
-    });
-  }
-
-  // Boards in the reader's city they can apply to.
-  (c.join||[]).forEach(j=>{
-    nodes.push({key:'board:'+city+':'+j.name, kind:'board',
-      title:String(j.name).replace(/&amp;/g,'&'), city:city,
-      meta:String(j.when||'').replace(/&amp;/g,'&') || 'Open to residents',
-      body:j.body || 'A seat residents can apply for.', url:j.link, date:null});
-  });
-
-  // The reader's own steps, from the plan they built.
-  const stepSeeds = [
-    {k:'agenda', t:'Read one agenda for '+c.label, b:'Agendas post a few days before each meeting and list every item up for a vote.',
-     u:(c.deciders[0]||{}).link},
-    {k:'comment', t:'Send one written comment', b:'Written comment on a specific agenda item goes into the record. The Get Involved page will draft it with you.', u:null},
-  ];
-  if(RHNA[city]) stepSeeds.push({k:'rhna', t:'Check '+c.label+"'s housing number",
-    b:c.label+' has permitted '+RHNA[city].pct+'% of its state target ('+RHNA[city].units.toLocaleString()+' of '+RHNA[city].target.toLocaleString()+').',
-    u:RHNA_SOURCE.url});
-  if((c.join||[]).length) stepSeeds.push({k:'apply', t:'Apply for a seat on a '+c.label+' board',
-    b:c.label+' has '+c.join.length+' board'+(c.join.length===1?'':'s')+' residents can apply to.', u:(c.join[0]||{}).link});
-  stepSeeds.forEach(x=> nodes.push({key:'step:'+city+':'+x.k, kind:'step', title:x.t, city:city,
-    meta:'Your step', body:x.b, url:x.u, date:null}));
-
-  // Dated items first and soonest-first; undated fall to the end grouped by kind.
-  // Dated items stay in date order; undated ones sort by what the reader said they care about.
-  const order = {meeting:0, project:1, step:2, board:3, news:4};
-  nodes.sort((a,b)=>{
-    if(a.date && b.date) return a.date.localeCompare(b.date);
-    if(a.date) return -1;
-    if(b.date) return 1;
-    const w = profileWeight(b.kind) - profileWeight(a.kind);
-    if(w) return w;
-    return (order[a.kind]??9) - (order[b.kind]??9);
-  });
-  return nodes;
-}
-
-const TL_KIND_LABEL = {project:'Project', meeting:'Meeting', board:'Board', news:'Article', step:'Step'};
-
-async function renderTimeline(){
-  const host = document.getElementById('tlBody');
-  const empty = document.getElementById('tlEmpty');
-  if(!host) return;
-
-  // Hearings come from Legistar and can take several seconds on a cold cache. Draw everything
-  // else straight away and fold them in when they land, rather than holding a blank screen.
-  if(tlHearings === null){
-    tlHearings = {hearings:[]};
-    fetch('/api/hearings').then(r=>r.json()).then(d=>{
-      tlHearings = d && Array.isArray(d.hearings) ? d : {hearings:[]};
-      if(currentScreen === 'timeline') renderTimeline();
-    }).catch(()=>{});
-  }
-  const nodes = buildTimeline();
-  renderTlSetup();
-  renderTlForecast();
-  renderTlQuiz();
-  const hint = document.getElementById('tlSetupHint');
-  if(hint) hint.textContent = profileAnswered() ? 'answered' : 'not answered yet';
-
-  const bar = document.getElementById('tlFilters');
-  if(bar){
-    bar.innerHTML = '<span class="lab">Show</span>' + TL_FILTERS.map(f=>{
-      const n = f.id==='all' ? nodes.length
-              : f.id==='open' ? nodes.filter(x=>(tlState.get(x.key)||{}).status !== 'done').length
-              : nodes.filter(x=>x.kind===f.id).length;
-      return '<button type="button" class="stat-chip" data-tlf="'+f.id+'" aria-pressed="'+(tlFilter===f.id)+'">'
-        + f.label + ' <span class="chip-n">'+n+'</span></button>';
-    }).join('');
-    bar.querySelectorAll('[data-tlf]').forEach(b=> b.addEventListener('click', ()=>{
-      tlFilter = b.getAttribute('data-tlf'); renderTimeline();
-    }));
-  }
-
-  const done = nodes.filter(x=>(tlState.get(x.key)||{}).status==='done').length;
-  const prog = document.getElementById('tlProgress');
-  if(prog){
-    const pct = nodes.length ? Math.round(done/nodes.length*100) : 0;
-    prog.innerHTML = nodes.length
-      ? '<div class="tl-prog-top"><span class="tl-prog-k">'+done+' of '+nodes.length+' done</span>'
-        + '<span class="tl-prog-p">'+pct+'%</span></div>'
-        + '<div class="tl-prog-track"><span class="tl-prog-fill" style="width:'+pct+'%"></span></div>'
-      : '';
-  }
-
-  const shown = nodes.filter(x=>{
-    if(tlFilter==='all') return true;
-    if(tlFilter==='open') return (tlState.get(x.key)||{}).status !== 'done';
-    return x.kind===tlFilter;
-  });
-
-  if(!nodes.length){ host.innerHTML=''; if(empty) empty.hidden=false; return; }
-  if(empty) empty.hidden = true;
-
-  host.innerHTML = '<div class="tl-line">' + shown.map(n=>{
-    const st = tlState.get(n.key) || {status:'todo', note:'', due_date:null};
-    const cityLabel = CITIES[n.city] ? CITIES[n.city].label : '';
-    const act = n.url
-      ? '<a class="tl-go" href="'+n.url+'" target="_blank" rel="noopener">Open &#8599;</a>'
-      : (n.action ? '<button type="button" class="tl-go" data-tlact="'+n.action.kind+'" data-tlid="'+escapeHtml(n.action.id)+'" data-tlcity="'+(n.action.city||'')+'">Open &#8594;</button>' : '');
-    return '<article class="tl-node tl-'+st.status+'" data-key="'+escapeHtml(n.key)+'">'
-      + '<div class="tl-dot" aria-hidden="true"></div>'
-      + '<div class="tl-card">'
-      +   '<div class="tl-meta"><span class="tl-kind tl-k-'+n.kind+'">'+(TL_KIND_LABEL[n.kind]||n.kind)+'</span>'
-      +     (cityLabel?'<span class="tl-city">'+cityLabel+'</span>':'')
-      +     (n.date?'<span class="tl-date">'+fmtDate(n.date)+'</span>':'')
-      +   '</div>'
-      +   '<h4>'+escapeHtml(n.title)+'</h4>'
-      +   (n.meta?'<div class="tl-sub">'+escapeHtml(n.meta)+'</div>':'')
-      +   (n.body?'<p>'+escapeHtml(n.body)+'</p>':'')
-      +   '<div class="tl-controls">'
-      +     '<div class="tl-status" role="group" aria-label="Progress">'
-      +       TL_STATUS.map(s=>'<button type="button" class="tl-st'+(st.status===s.id?' on':'')+'" data-tlstatus="'+s.id+'">'+s.label+'</button>').join('')
-      +     '</div>'
-      +     '<label class="tl-due">Target <input type="date" data-tldue value="'+(st.due_date?String(st.due_date).slice(0,10):'')+'" /></label>'
-      +     act
-      +   '</div>'
-      +   '<textarea class="tl-note" data-tlnote rows="2" placeholder="Notes - what you want to say, who to ask, what to check">'+escapeHtml(st.note||'')+'</textarea>'
-      + '</div></article>';
-  }).join('') + '</div>';
-
-  host.querySelectorAll('.tl-node').forEach(node=>{
-    const key = node.getAttribute('data-key');
-    node.querySelectorAll('[data-tlstatus]').forEach(b=> b.addEventListener('click', ()=>{
-      tlSave(key, {status:b.getAttribute('data-tlstatus')});
-      renderTimeline();
-    }));
-    const due = node.querySelector('[data-tldue]');
-    if(due) due.addEventListener('change', ()=> tlSave(key, {due_date:due.value || null}));
-    const note = node.querySelector('[data-tlnote]');
-    if(note) note.addEventListener('input', ()=> tlSave(key, {note:note.value}));
-    const go = node.querySelector('[data-tlact]');
-    if(go) go.addEventListener('click', ()=>{
-      const ck = go.getAttribute('data-tlcity');
-      if(ck && CITIES[ck]) switchCity(ck);
-      showScreen('dashboard');
-      flyTo(go.getAttribute('data-tlid'));
-    });
-  });
-}
-
-
-// ---- Projections ----
-// Everything below is arithmetic on the data already on this site: a least-squares line through
-// a published series, or a median of observed durations. None of it is a model output, and none
-// of it knows anything the source data does not. Each one states its own method and sample size
-// so a reader can judge it rather than trust it.
-
-// Least-squares fit over {year, value} points. Returns slope per year and a projector.
-function linearTrend(series){
-  const pts = (series||[]).map(p=>({x:+p.year, y:+p.value})).filter(p=>isFinite(p.x)&&isFinite(p.y));
-  if(pts.length < 3) return null;
-  const n=pts.length, sx=pts.reduce((a,p)=>a+p.x,0), sy=pts.reduce((a,p)=>a+p.y,0);
-  const sxx=pts.reduce((a,p)=>a+p.x*p.x,0), sxy=pts.reduce((a,p)=>a+p.x*p.y,0);
-  const denom = n*sxx - sx*sx;
-  if(!denom) return null;
-  const slope = (n*sxy - sx*sy)/denom;
-  const intercept = (sy - slope*sx)/n;
-  // R^2, so a noisy series can say so instead of pretending to a trend.
-  const mean = sy/n;
-  const ssTot = pts.reduce((a,p)=>a+Math.pow(p.y-mean,2),0);
-  const ssRes = pts.reduce((a,p)=>a+Math.pow(p.y-(slope*p.x+intercept),2),0);
-  const r2 = ssTot ? 1 - ssRes/ssTot : 0;
-  return {slope, intercept, r2, n, first:pts[0].x, last:pts[pts.length-1].x,
-          at:(year)=> slope*year + intercept};
-}
-
-// Median observed days from filing to last recorded activity, per stage, across every project
-// on the site that records both dates. Computed once.
-let STAGE_DURATIONS = null;
-function stageDurations(){
-  if(STAGE_DURATIONS) return STAGE_DURATIONS;
-  const buckets = {};
-  Object.keys(CITIES).filter(k=>k!=='all').forEach(k=>
-    (CITIES[k].data||[]).forEach(p=>{
-      if(!p.filed || !p.lastDate || !p.stage) return;
-      const d = (new Date(p.lastDate) - new Date(p.filed)) / 86400000;
-      if(!(d > 0 && d < 8000)) return;
-      (buckets[p.stage] = buckets[p.stage] || []).push(d);
-    }));
-  STAGE_DURATIONS = {};
-  Object.entries(buckets).forEach(([k,v])=>{
-    v.sort((a,b)=>a-b);
-    STAGE_DURATIONS[k] = {n:v.length, median:v[Math.floor(v.length/2)],
-      p25:v[Math.floor(v.length*0.25)], p75:v[Math.floor(v.length*0.75)]};
-  });
-  return STAGE_DURATIONS;
-}
-
-const RHNA_START = new Date('2023-01-31'), RHNA_END = new Date('2031-01-31');
-function rhnaProjection(cityKey){
-  const r = RHNA[cityKey];
-  if(!r) return null;
-  const now = new Date();
-  const elapsedYears = (now - RHNA_START) / (365.25*86400000);
-  const totalYears = (RHNA_END - RHNA_START) / (365.25*86400000);
-  if(elapsedYears <= 0.5) return null;
-  const perYear = r.units / elapsedYears;
-  const projected = Math.round(perYear * totalYears);
-  const shortfall = r.target - projected;
-  const neededPerYear = (r.target - r.units) / Math.max(0.25, totalYears - elapsedYears);
-  return {perYear:Math.round(perYear), projected, shortfall,
-          pctOfTarget: Math.round(projected / r.target * 1000)/10,
-          neededPerYear: Math.round(neededPerYear),
-          multiple: perYear > 0 ? Math.round(neededPerYear / perYear * 10)/10 : null,
-          elapsedYears: Math.round(elapsedYears*10)/10,
-          remainingYears: Math.round((totalYears - elapsedYears)*10)/10};
-}
-
-// What the record says about how long a project like this one has taken.
-function projectOutlook(p){
-  const dur = stageDurations()[p.stage];
-  // Below about ten comparable records the median says more about the sample than the process,
-  // so no figure is offered rather than a shaky one.
-  if(!dur || dur.n < 10 || !p.filed) return null;
-  const elapsed = (new Date() - new Date(p.filed)) / 86400000;
-  const yrs = d => Math.round(d/365*10)/10;
-  return {stage:p.stage, n:dur.n, medianYears:yrs(dur.median),
-          p25Years:yrs(dur.p25), p75Years:yrs(dur.p75),
-          elapsedYears:yrs(elapsed),
-          pastMedian: elapsed > dur.median};
-}
-
-// ---- Reader profile ----
-// The answers shape what the timeline shows and how the projections are framed. Stored in the
-// timeline table under a reserved key so it needs no extra migration.
-const TL_PROFILE_KEY = '__profile__';
-let tlProfile = {stake:'', time:'', goals:[], horizon:'', experience:''};
-
-const TL_QUESTIONS = [
-  {id:'stake', q:'What is your stake in this?', multi:false, opts:[
-    {v:'renter', l:'I rent here'}, {v:'owner', l:'I own here'},
-    {v:'buying', l:"I'm trying to buy here"}, {v:'business', l:'I run a business here'},
-    {v:'student', l:"I'm a student here"}, {v:'watching', l:'Just keeping track'}]},
-  {id:'time', q:'How much time can you actually give this?', multi:false, opts:[
-    {v:'low', l:'15 minutes, once'}, {v:'medium', l:'An hour a month'},
-    {v:'high', l:'A few hours a month'}, {v:'max', l:'As much as it takes'}]},
-  {id:'goals', q:'What would you like to see happen? Pick any.', multi:true, opts:[
-    {v:'morehousing', l:'More housing built'}, {v:'affordable', l:'More of it affordable'},
-    {v:'transit', l:'Better transit and bike routes'}, {v:'safety', l:'Safer streets'},
-    {v:'character', l:'Keep the character of the area'}, {v:'process', l:'A say in decisions'},
-    {v:'jobs', l:'Jobs and local business'}, {v:'climate', l:'Climate and open space'}]},
-  {id:'horizon', q:'What are you looking at?', multi:false, opts:[
-    {v:'now', l:'The next few months'}, {v:'year', l:'This year'},
-    {v:'cycle', l:'The whole housing cycle, to 2031'}]},
-  {id:'experience', q:'Have you done any of this before?', multi:false, opts:[
-    {v:'none', l:'Never been to a meeting'}, {v:'some', l:'Been to one or two'},
-    {v:'regular', l:'I follow this regularly'}, {v:'insider', l:'I serve or have served on a body'}]},
+const TK_TOPICS = [
+  {v:'housing',  l:'Housing',            d:'What gets built, and who can afford it'},
+  {v:'transit',  l:'Transit & streets',  d:'Caltrain, VTA, bike lanes, crossings'},
+  {v:'develop',  l:'Development',        d:'Offices, retail, industrial, mixed-use'},
+  {v:'civic',    l:'Meetings & boards',  d:'Who decides, and how to reach them'},
+  {v:'climate',  l:'Climate & open space', d:'Trees, parks, flooding, emissions'},
 ];
 
-function loadProfileFrom(items){
-  const row = (items||[]).find(r=>r.item_key === TL_PROFILE_KEY);
-  if(row && row.note){ try{ tlProfile = Object.assign(tlProfile, JSON.parse(row.note)); }catch(e){} }
-}
-function saveProfile(){
+const TK_QUESTIONS = [
+  {id:'city', q:'Which city are you following?', type:'city'},
+  {id:'topics', q:'What do you care about? Pick as many as you like.', type:'topics'},
+  {id:'stake', q:'What is your stake here?', type:'opts', opts:[
+    {v:'renter',l:'I rent here'},{v:'owner',l:'I own here'},{v:'buying',l:"I'm trying to buy here"},
+    {v:'business',l:'I run a business here'},{v:'student',l:"I'm a student here"},{v:'watching',l:'Keeping track'}]},
+  {id:'time', q:'How much time do you have for this?', type:'opts', opts:[
+    {v:'low',l:'A few minutes'},{v:'medium',l:'An hour a month'},
+    {v:'high',l:'A few hours a month'},{v:'max',l:'As much as it takes'}]},
+  {id:'experience', q:'Have you done any of this before?', type:'opts', opts:[
+    {v:'none',l:'Never been to a meeting'},{v:'some',l:'Been to one or two'},
+    {v:'regular',l:'I follow this closely'},{v:'insider',l:'I serve or have served on a body'}]},
+];
+
+function tkSaveProfile(){
   if(!isLoggedIn()) return;
-  clearTimeout(tlSaveTimers.get(TL_PROFILE_KEY));
-  tlSaveTimers.set(TL_PROFILE_KEY, setTimeout(()=>{
+  clearTimeout(tkSaveTimers.get(TK_PROFILE_KEY));
+  tkSaveTimers.set(TK_PROFILE_KEY, setTimeout(()=>{
     apiCall('/api/timeline', {method:'PUT', body:JSON.stringify({
-      itemKey:TL_PROFILE_KEY, status:'done', note:JSON.stringify(tlProfile)})}).catch(()=>{});
+      itemKey:TK_PROFILE_KEY, status:'done', note:JSON.stringify(tkProfile)})}).catch(()=>{});
   }, 400));
 }
-function profileAnswered(){
-  return !!(tlProfile.stake && tlProfile.time && tlProfile.horizon);
+function tkSaveStation(key, patch){
+  const cur = tkState.get(key) || {status:'todo', note:''};
+  const next = Object.assign({}, cur, patch);
+  tkState.set(key, next);
+  if(!isLoggedIn()) return;
+  clearTimeout(tkSaveTimers.get(key));
+  tkSaveTimers.set(key, setTimeout(()=>{
+    apiCall('/api/timeline', {method:'PUT', body:JSON.stringify({
+      itemKey:key, status:next.status, note:next.note || null})}).catch(()=>{});
+  }, 450));
 }
+async function tkLoad(){
+  if(!isLoggedIn()){ tkState = new Map(); return; }
+  try{
+    const d = await apiCall('/api/timeline');
+    tkState = new Map((d.items||[]).map(r=>[r.item_key, r]));
+    const row = (d.items||[]).find(r=>r.item_key === TK_PROFILE_KEY);
+    if(row && row.note){ try{ tkProfile = Object.assign(tkProfile, JSON.parse(row.note)); }catch(e){} }
+  }catch(err){ tkState = new Map(); }
+}
+function tkReady(){ return !!(tkProfile.city && (tkProfile.topics||[]).length); }
 
-function renderTlSetup(){
-  const host = document.getElementById('tlSetup');
+function renderTkSetup(){
+  const host = document.getElementById('tkQuestions');
   if(!host) return;
-  host.innerHTML = TL_QUESTIONS.map(q=>
-      '<div class="tl-q"><div class="tl-q-t">'+q.q+'</div><div class="tl-q-opts">'
-    + q.opts.map(o=>{
-        const on = q.multi ? (tlProfile[q.id]||[]).includes(o.v) : tlProfile[q.id]===o.v;
-        return '<button type="button" class="tl-opt'+(on?' on':'')+'" data-q="'+q.id+'" data-v="'+o.v+'" data-multi="'+(q.multi?1:0)+'">'+o.l+'</button>';
-      }).join('')
-    + '</div></div>').join('')
-    + '<div class="tl-q-foot"><span id="tlSetupState"></span></div>';
-
-  host.querySelectorAll('[data-q]').forEach(b=> b.addEventListener('click', ()=>{
-    const q=b.getAttribute('data-q'), v=b.getAttribute('data-v'), multi=b.getAttribute('data-multi')==='1';
-    if(multi){
-      const cur = new Set(tlProfile[q]||[]);
-      cur.has(v) ? cur.delete(v) : cur.add(v);
-      tlProfile[q] = [...cur];
+  host.innerHTML = TK_QUESTIONS.map(q=>{
+    let body = '';
+    if(q.type === 'city'){
+      body = Object.keys(CITIES).filter(k=>k!=='all').map(k=>
+        '<button type="button" class="tk-opt'+(tkProfile.city===k?' on':'')+'" data-tkq="city" data-v="'+k+'">'
+        + CITIES[k].label + '</button>').join('');
+    } else if(q.type === 'topics'){
+      body = TK_TOPICS.map(t=>
+        '<button type="button" class="tk-opt tk-opt-wide'+((tkProfile.topics||[]).includes(t.v)?' on':'')+'" data-tkq="topics" data-v="'+t.v+'">'
+        + '<b>'+t.l+'</b><span>'+t.d+'</span></button>').join('');
     } else {
-      tlProfile[q] = tlProfile[q]===v ? '' : v;
+      body = q.opts.map(o=>
+        '<button type="button" class="tk-opt'+(tkProfile[q.id]===o.v?' on':'')+'" data-tkq="'+q.id+'" data-v="'+o.v+'">'
+        + o.l + '</button>').join('');
     }
-    saveProfile(); renderTlSetup(); renderTimeline();
+    return '<div class="tk-q"><div class="tk-q-t">'+q.q+'</div><div class="tk-q-opts">'+body+'</div></div>';
+  }).join('');
+
+  host.querySelectorAll('[data-tkq]').forEach(b=> b.addEventListener('click', ()=>{
+    const k = b.getAttribute('data-tkq'), v = b.getAttribute('data-v');
+    if(k === 'topics'){
+      const cur = new Set(tkProfile.topics||[]);
+      cur.has(v) ? cur.delete(v) : cur.add(v);
+      tkProfile.topics = [...cur];
+    } else {
+      tkProfile[k] = tkProfile[k] === v ? '' : v;
+      if(k === 'city' && CITIES[v]) switchCity(v);
+    }
+    tkSaveProfile(); renderTkSetup();
   }));
-  const st = document.getElementById('tlSetupState');
-  if(st) st.textContent = isLoggedIn()
-    ? (profileAnswered() ? 'Saved to your account.' : 'Answer the first, second and fourth to tailor the rest.')
-    : 'Log in to keep these answers and your progress.';
+
+  const note = document.getElementById('tkSetupNote');
+  if(note) note.textContent = !tkReady()
+    ? 'Pick a city and at least one topic.'
+    : (isLoggedIn() ? 'Saved to your account.' : 'Log in to keep this and your progress.');
+  const btn = document.getElementById('tkBuild');
+  if(btn) btn.disabled = !tkReady();
 }
 
-// What the reader said they want, turned into which node kinds lead.
-function profileWeight(kind){
-  const g = new Set(tlProfile.goals||[]);
-  let w = 0;
-  if(kind==='meeting' && (tlProfile.time==='high'||tlProfile.time==='max'||g.has('process'))) w += 2;
-  if(kind==='project' && (g.has('morehousing')||g.has('affordable')||g.has('character'))) w += 2;
-  if(kind==='board' && (tlProfile.experience==='regular'||tlProfile.experience==='insider'||g.has('process'))) w += 2;
-  if(kind==='news' && tlProfile.time==='low') w += 1;
-  if(kind==='step' && tlProfile.experience==='none') w += 2;
-  return w;
-}
+// ---- Building the stations ----
+const TK_TOPIC_NEWS = {housing:'housing', develop:'developments', transit:'transportation'};
 
-// ---- Forecast panel ----
-function renderTlForecast(){
-  const host = document.getElementById('tlForecast');
-  if(!host) return;
-  const city = acctCity();
+// Questions are written against a real figure for the chosen city, so the answer can always
+// name where it came from.
+function tkQuestionsFor(city, topics){
   const c = CITIES[city];
   const st = (typeof CITY_STATS !== 'undefined') ? CITY_STATS[city] : null;
-  const cards = [];
+  const r = RHNA[city];
+  const out = [];
+  const has = t => topics.includes(t);
 
-  const rp = rhnaProjection(city);
-  if(rp){
-    const r = RHNA[city];
-    const onTrack = rp.pctOfTarget >= 100;
-    cards.push({
-      k: rp.projected.toLocaleString(),
-      l: 'Homes by 2031 at the current rate',
-      s: c.label+' has permitted '+r.units.toLocaleString()+' in '+rp.elapsedYears+' years, about '
-         + rp.perYear.toLocaleString()+' a year. Held flat for the '+rp.remainingYears
-         + ' years left, that reaches '+rp.pctOfTarget+'% of its '+r.target.toLocaleString()+' target'
-         + (onTrack ? '.' : ', short by '+Math.abs(rp.shortfall).toLocaleString()+'.'),
-      m: 'Straight-line from permits to date. Cities often permit unevenly, so treat it as a pace check, not a forecast of any single year.'
-    });
-    if(!onTrack && rp.multiple){
-      cards.push({
-        k: rp.neededPerYear.toLocaleString()+'/yr',
-        l: 'Rate needed to still hit the target',
-        s: 'That is '+rp.multiple+'x the current pace. A city that misses its target can have its Housing Element found out of compliance, which is what opens the door to Builder’s Remedy applications.',
-        m: 'Remaining units divided by remaining years in the cycle.'
-      });
-    }
-  }
-
-  if(st && st.rentSeries){
-    const t = linearTrend(st.rentSeries);
-    if(t && t.r2 >= 0.3){
-      const y = new Date().getFullYear() + 3;
-      cards.push({
-        k: '$'+Math.round(t.at(y)).toLocaleString(),
-        l: 'Asking rent in '+y+' if the trend holds',
-        s: 'Rent in '+c.label+' has moved about $'+Math.round(t.slope).toLocaleString()
-           +' a year across '+t.n+' years of Zillow data.',
-        m: 'Least-squares line through '+t.first+'–'+t.last+', R² '+t.r2.toFixed(2)+'. A line through six points is a description of the past, not a promise.'
-      });
-    }
-  }
-  if(st && st.homeValueSeries){
-    const t = linearTrend(st.homeValueSeries);
-    if(t && t.r2 >= 0.3){
-      const y = new Date().getFullYear() + 3;
-      cards.push({
-        k: '$'+(Math.round(t.at(y)/1000)*1000).toLocaleString(),
-        l: 'Typical home value in '+y+' if the trend holds',
-        s: 'Values in '+c.label+' have moved about $'+Math.round(t.slope).toLocaleString()+' a year.',
-        m: 'Least-squares line through '+t.first+'–'+t.last+', R² '+t.r2.toFixed(2)+'.'
-      });
-    }
-  }
-
-  // Outlook on the reader's own starred projects, from how long comparable ones have taken.
-  const mine = [];
-  starredMap.forEach((_d,key)=>{
-    if(!String(key).startsWith('project:')) return;
-    const id = String(key).slice('project:'.length);
-    const owner = cityOfProject(id);
-    const p = owner ? CITIES[owner].data.find(x=>x.id===id) : null;
-    if(p) mine.push({p, owner});
-  });
-  mine.slice(0,4).forEach(({p,owner})=>{
-    const o = projectOutlook(p);
-    if(!o) return;
-    cards.push({
-      k: o.medianYears+' yr',
-      l: 'Typical time at this stage — '+(p.addr||p.id),
-      s: p.addr+' has been on file '+o.elapsedYears+' years and sits at "'+o.stage+'". Comparable records reached their last recorded activity in '
-         + o.p25Years+'–'+o.p75Years+' years'+(o.pastMedian ? '. This one is already past the median.' : '.'),
-      m: 'Median of '+o.n+' projects on this site at the same stage that record both a filing date and a later activity date.'
-    });
-  });
-
-  if(!cards.length){ host.innerHTML = '<div class="empty">No projections available for this city yet.</div>'; return; }
-  host.innerHTML = '<div class="tl-fc-grid">' + cards.map(x=>
-      '<div class="tl-fc"><div class="tl-fc-k">'+x.k+'</div><div class="tl-fc-l">'+x.l+'</div>'
-    + '<p>'+x.s+'</p><div class="tl-fc-m">'+x.m+'</div></div>').join('') + '</div>';
+  if(has('housing') && r) out.push({
+    q: c.label + ' has permitted what share of the homes the state assigned it for 2023-2031?',
+    opts:[r.pct + '%', '48%', '76%', 'It already met the target'], a:0,
+    why:'From the state’s own progress report. A city far behind can have its housing plan found out of compliance, and that is what lets developers bypass local zoning under the Builder’s Remedy.',
+    src:{l:'California HCD RHNA Progress Report', u:RHNA_SOURCE.url}});
+  if(has('housing') && r) out.push({
+    q: 'Of the ' + r.target.toLocaleString() + ' homes ' + c.label + ' was assigned, how many are meant to be affordable to lower-income households?',
+    opts:[(r.vli[1]+r.li[1]).toLocaleString(), '0', (r.above[1]).toLocaleString(), '100'], a:0,
+    why:'The state splits every city’s target across four income bands. The two lowest bands are the ones cities most often miss.',
+    src:{l:'California HCD RHNA Progress Report', u:RHNA_SOURCE.url}});
+  if(has('housing') && st && st.renterSharePct != null) out.push({
+    q:'What share of households in ' + c.label + ' rent rather than own?',
+    opts:[Math.round(st.renterSharePct)+'%','14%','81%','33%'], a:0,
+    why:'Renters are the group most affected by housing decisions and least likely to be in the room when they are made.',
+    src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
+  if(has('transit') && st && st.transitSharePct != null) out.push({
+    q:'What share of ' + c.label + ' commuters take public transit to work?',
+    opts:['About 2%','About ' + Math.round(st.transitSharePct) + '%','About 18%','About 34%'], a:1,
+    why:'Most South Bay cities sit in the low single digits, which is the number behind a lot of the argument over parking and density near stations.',
+    src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
+  if(has('transit') && st && st.meanCommuteMin) out.push({
+    q:'How long is the average commute in ' + c.label + '?',
+    opts:[st.meanCommuteMin + ' minutes','8 minutes','44 minutes','58 minutes'], a:0,
+    why:'Commute length is what the state now measures a project against, in place of how much a project slows car traffic.',
+    src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
+  if(has('develop') && st && st.medianYearBuilt) out.push({
+    q:'What is the median year a home in ' + c.label + ' was built?',
+    opts:[String(st.medianYearBuilt),'1994','2011','1946'], a:0,
+    why:'Housing age sits underneath most design arguments: parking minimums, setbacks, and what counts as in keeping with the area.',
+    src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
+  if(has('develop')) out.push({
+    q:'Which body normally decides a development application first in ' + c.label + '?',
+    opts:['The Planning Commission','The Mayor alone','The county','A statewide board'], a:0,
+    why:'Planning Commissions hear applications first; Council usually only sees one on appeal. That is why a comment to the Commission lands earlier than one to Council.',
+    src:{l:c.label + ' boards and meetings', u:(c.deciders[0]||{}).link}});
+  if(has('civic')) out.push({
+    q:'When does a city normally publish the agenda for a public meeting?',
+    opts:['A few days before','The morning of','A month ahead','Only afterwards'], a:0,
+    why:'California requires 72 hours notice for a regular meeting. That short window is why following agendas beats following the news if you want to say something in time.',
+    src:{l:c.label + ' agendas', u:(c.deciders[0]||{}).link}});
+  if(has('civic') && (c.join||[]).length) out.push({
+    q:'How many bodies in ' + c.label + ' can a resident apply to sit on, going by what is tracked here?',
+    opts:[String(c.join.length),'None','Only one','You have to be elected'], a:0,
+    why:'Seats on advisory bodies go unfilled more often than people expect, and they are the most direct way in.',
+    src:{l:c.label + ' boards you can join', u:(c.join[0]||{}).link}});
+  if(has('climate') && st && st.transitSharePct != null) out.push({
+    q:'Roughly what share of ' + c.label + ' commuters drive alone?',
+    opts:['Around three quarters','About a third','Under 10%','Almost nobody'], a:0,
+    why:'Driving is the largest single source of emissions in most South Bay cities, which is why housing near transit is treated as a climate question as well as a housing one.',
+    src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
+  return out;
 }
 
-// ---- Statistics prompts ----
-// Guess-then-reveal against a real number for the reader's city. The point is to make the
-// figure stick, so the answer always shows where it came from.
-let tlQuizIdx = 0;
-function tlQuizBank(){
-  const city = acctCity(), c = CITIES[city];
+function tkBuildStations(){
+  const city = tkProfile.city || acctCity();
+  const c = CITIES[city];
+  const topics = tkProfile.topics || [];
   const st = (typeof CITY_STATS !== 'undefined') ? CITY_STATS[city] : null;
-  const q = [];
-  if(st && st.transitSharePct != null) q.push({
-    q:'What share of '+c.label+' commuters take public transit?',
-    opts:['About 2%','About '+Math.round(st.transitSharePct)+'%','About 15%','About 30%'],
-    a:1, why:'Census ACS 5-year estimates. Most South Bay cities sit in the low single digits.'});
-  if(st && st.renterSharePct != null) q.push({
-    q:'What share of households in '+c.label+' rent rather than own?',
-    opts:[Math.round(st.renterSharePct)+'%','12%','78%','35%'],
-    a:0, why:'Census ACS. Renters are the group least likely to show up at a hearing and most affected by what happens there.'});
-  if(RHNA[city]) q.push({
-    q:c.label+' has permitted what share of its state housing target so far?',
-    opts:['About '+RHNA[city].pct+'%','About 45%','About 70%','It already met it'],
-    a:0, why:'California HCD 6th Cycle RHNA Progress Report. Falling far behind is what puts a Housing Element out of compliance.'});
-  if(st && st.medianYearBuilt) q.push({
-    q:'What is the median year a home in '+c.label+' was built?',
-    opts:[String(st.medianYearBuilt),'1998','2012','1948'],
-    a:0, why:'Census ACS. Housing age drives a lot of what gets debated: parking minimums, setbacks, and what "in character" means.'});
-  if(st && st.meanCommuteMin) q.push({
-    q:'How long is the average commute in '+c.label+'?',
-    opts:[st.meanCommuteMin+' minutes','9 minutes','48 minutes','62 minutes'],
-    a:0, why:'Census ACS, mean travel time to work.'});
-  return q;
+  const r = RHNA[city];
+  const local = [], county = [];
+
+  // --- Readings: real articles for the chosen topics, that city first ---
+  const wantTopics = topics.map(t=>TK_TOPIC_NEWS[t]).filter(Boolean);
+  let reads = NEWS_ARTICLES.filter(a=> a.city===city && (!wantTopics.length || wantTopics.includes(a.topic)));
+  if(reads.length < 4) reads = reads.concat(
+    NEWS_ARTICLES.filter(a=> a.city!==city && wantTopics.includes(a.topic)).slice(0, 5 - reads.length));
+  reads.slice(0,6).forEach((a,i)=> local.push({
+    key:'read:'+a.url, kind:'read', title:a.title, label:'Read',
+    image:a.image, meta:a.source+' · '+fmtDate(a.date),
+    city:a.city, body:a.snippet, url:a.url}));
+
+  // --- Figures: the numbers behind those topics ---
+  const figs = [];
+  if(topics.includes('housing') && r) figs.push({
+    key:'fig:rhna:'+city, kind:'figure', title:'The housing target',
+    big:r.pct+'%', label:'Figure',
+    meta:c.label+' · 2023-2031',
+    body:c.label+' has permitted '+r.units.toLocaleString()+' of the '+r.target.toLocaleString()
+      +' homes the state assigned it for this cycle. Of that target, '+(r.vli[1]+r.li[1]).toLocaleString()
+      +' are meant to be affordable to lower-income households.',
+    src:{l:'California HCD, 6th Cycle RHNA Progress Report', u:RHNA_SOURCE.url}});
+  if(topics.includes('housing') && st) figs.push({
+    key:'fig:rent:'+city, kind:'figure', title:'What it costs to live here',
+    big:'$'+(st.rent||st.medianGrossRent||0).toLocaleString(), label:'Figure',
+    meta:c.label+' · typical asking rent',
+    body:'Median household income here is $'+(st.medianIncome||0).toLocaleString()+', and '
+      +Math.round(st.renterSharePct||0)+'% of households rent.',
+    src:{l:'Zillow research data and the US Census', u:'https://www.zillow.com/research/data/'}});
+  if(topics.includes('transit') && st) figs.push({
+    key:'fig:commute:'+city, kind:'figure', title:'How people get to work',
+    big:(st.meanCommuteMin||0)+' min', label:'Figure',
+    meta:c.label+' · average commute',
+    body:Math.round(st.transitSharePct||0)+'% of commuters here take public transit. That share is the number behind most arguments about parking, density and new stations.',
+    src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
+  if(topics.includes('develop')) figs.push({
+    key:'fig:pipeline:'+city, kind:'figure', title:'What is in the pipeline',
+    big:String(c.data.length), label:'Figure',
+    meta:c.label+' · tracked projects',
+    body:(c.data.length
+      ? 'Together they account for '+c.data.reduce((a,p)=>a+(p.units||0),0).toLocaleString()
+        +' homes on record. '+c.data.filter(p=>p.stage==='review').length+' are still under review, which is the stage where public comment still changes things.'
+      : c.label+' does not publish a machine-readable project list, so there is no register here for it.'),
+    src:{l:c.label+' development records', u:(citySourceLink(city)||{}).url}});
+  figs.forEach(f=> local.push(f));
+
+  // --- Questions on the chosen topics ---
+  tkQuestionsFor(city, topics).forEach((q,i)=> local.push({
+    key:'q:'+city+':'+i, kind:'quiz', title:'Question '+(i+1), label:'Question',
+    meta:c.label, quiz:q}));
+
+  // --- Things to do, in the city ---
+  const deciders = c.deciders||[], joins = c.join||[];
+  if(deciders.length) local.push({
+    key:'do:agenda:'+city, kind:'action', title:'Read one agenda', label:'Do',
+    meta:String(deciders[0].when||'').replace(/&amp;/g,'&'),
+    body:'Agendas go up a few days before each meeting and list every item due for a vote. Skimming one is the fastest way to see what is actually being decided.',
+    url:deciders[0].link, cta:'Open agendas'});
+  if(deciders.length) local.push({
+    key:'do:write:'+city, kind:'write', title:'Write to the people deciding', label:'Do',
+    meta:deciders[0].name.replace(/&amp;/g,'&'),
+    body:'Written comment on a specific item goes into the record and is read by staff before the meeting. Draft one here, then send it from your own email.',
+    url:deciders[0].link});
+  if(joins.length) local.push({
+    key:'do:apply:'+city, kind:'action', title:'Apply for a seat', label:'Do',
+    meta:joins[0].name.replace(/&amp;/g,'&'),
+    body:c.label+' has '+joins.length+' bod'+(joins.length===1?'y':'ies')+' residents can apply to sit on. Seats go unfilled more often than people expect.',
+    url:joins[0].link, cta:'How to apply'});
+
+  // --- County track ---
+  county.push({key:'co:supervisors', kind:'action', title:'Your county supervisor', label:'Do',
+    meta:'Santa Clara County Board of Supervisors',
+    body:'The county runs health, social services, jails and roads outside city limits, and it holds land the cities do not. Five supervisors are elected by district.',
+    url:'https://bos.santaclaracounty.gov/home', cta:'Find your district'});
+  county.push({key:'co:agendas', kind:'action', title:'County agendas and meetings', label:'Do',
+    meta:'Board of Supervisors', body:'Agendas, minutes and video for the Board and its committees.',
+    url:'https://sccgov.iqm2.com/Citizens/default.aspx?departmentid=1179&frame=no', cta:'Open agendas'});
+  if(topics.includes('housing')) county.push({key:'co:housing', kind:'action', title:'County housing authority', label:'Do',
+    meta:'Santa Clara County', body:'Runs the housing voucher programme and county-owned affordable housing, separately from anything a city does.',
+    url:'https://www.scchousingauthority.org/', cta:'Open'});
+  if(topics.includes('housing')) county.push({key:'co:oshod', kind:'action', title:'County housing department', label:'Do',
+    meta:'Office of Supportive Housing', body:'The county side of homelessness response and supportive housing funding.',
+    url:'https://osh.santaclaracounty.gov/', cta:'Open'});
+  if(topics.includes('transit')) county.push({key:'co:vta', kind:'action', title:'VTA board and committees', label:'Do',
+    meta:'Santa Clara Valley Transportation Authority',
+    body:'VTA runs the buses and light rail and is governed by a board of city and county elected officials. Its advisory committees take public members.',
+    url:'https://www.vta.org/about/board-and-committees', cta:'Open'});
+  if(topics.includes('climate')) county.push({key:'co:openspace', kind:'action', title:'Open space authority', label:'Do',
+    meta:'Santa Clara Valley Open Space Authority',
+    body:'A separate elected agency that buys and manages open space across the valley.',
+    url:'https://www.openspaceauthority.org/', cta:'Open'});
+  county.push({key:'co:agendasvta', kind:'action', title:'VTA board agendas', label:'Do',
+    meta:'Transit decisions', body:'Agendas and minutes for the VTA board and its committees, including the ones that take public members.',
+    url:'https://santaclaravta.iqm2.com/Citizens/default.aspx', cta:'Open agendas'});
+
+  return {local, county};
 }
-function renderTlQuiz(){
-  const host = document.getElementById('tlQuiz');
-  if(!host) return;
-  const bank = tlQuizBank();
-  if(!bank.length){ host.innerHTML=''; return; }
-  const item = bank[tlQuizIdx % bank.length];
-  host.innerHTML = '<div class="tl-quiz-q">'+item.q+'</div>'
-    + '<div class="tl-quiz-opts">' + item.opts.map((o,i)=>
-        '<button type="button" class="tl-quiz-o" data-qi="'+i+'">'+o+'</button>').join('') + '</div>'
-    + '<div class="tl-quiz-a" id="tlQuizA" hidden></div>'
-    + '<button type="button" class="tl-quiz-next" id="tlQuizNext">Another one &#8594;</button>';
-  host.querySelectorAll('[data-qi]').forEach(b=> b.addEventListener('click', ()=>{
-    const i = +b.getAttribute('data-qi');
-    host.querySelectorAll('.tl-quiz-o').forEach((el,j)=>{
-      el.classList.add(j===item.a ? 'right' : (j===i ? 'wrong' : 'dim'));
-      el.disabled = true;
-    });
-    const a = document.getElementById('tlQuizA');
-    a.hidden = false;
-    a.innerHTML = (i===item.a ? '<b>Right.</b> ' : '<b>The answer is '+item.opts[item.a]+'.</b> ') + item.why;
+
+// ---- The rail ----
+const TK_KIND_ICON = {read:'▤', figure:'■', quiz:'?', action:'→', write:'✎'};
+
+function tkStations(){
+  const built = tkBuildStations();
+  return tkTrack === 'county' ? built.county : built.local;
+}
+
+function renderTrack(){
+  const setup = document.getElementById('tkSetup');
+  const main = document.getElementById('tkMain');
+  if(!setup || !main) return;
+  if(!tkReady()){ setup.hidden = false; main.hidden = true; renderTkSetup(); return; }
+  setup.hidden = true; main.hidden = false;
+
+  const city = tkProfile.city;
+  const c = CITIES[city];
+  const topicLabels = (tkProfile.topics||[]).map(t=>(TK_TOPICS.find(x=>x.v===t)||{}).l).filter(Boolean);
+  document.getElementById('tkTrackKicker').textContent = topicLabels.join(' · ');
+  document.getElementById('tkTrackTitle').textContent = c.label;
+
+  const tabs = document.getElementById('tkTrackTabs');
+  const built = tkBuildStations();
+  tabs.innerHTML = [['local','In '+c.label, built.local.length],['county','Across the county', built.county.length]]
+    .map(([id,l,n])=> '<button type="button" class="tk-tt'+(tkTrack===id?' on':'')+'" data-tktrack="'+id+'">'
+      + l + ' <span class="tk-tt-n">'+n+'</span></button>').join('');
+  tabs.querySelectorAll('[data-tktrack]').forEach(b=> b.addEventListener('click', ()=>{
+    tkTrack = b.getAttribute('data-tktrack'); tkOpen = null; renderTrack();
   }));
-  const nx = document.getElementById('tlQuizNext');
-  if(nx) nx.addEventListener('click', ()=>{ tlQuizIdx++; renderTlQuiz(); });
+
+  const list = tkStations();
+  const done = list.filter(s=>(tkState.get(s.key)||{}).status==='done').length;
+  const pct = list.length ? Math.round(done/list.length*100) : 0;
+  document.getElementById('tkProgFill').style.width = pct+'%';
+  document.getElementById('tkProgText').textContent = done+' of '+list.length+' done';
+
+  const rail = document.getElementById('tkRail');
+  rail.innerHTML = list.map((s,i)=>{
+    const stt = (tkState.get(s.key)||{}).status || 'todo';
+    const img = s.image
+      ? '<span class="tk-st-img" style="background-image:url(\''+s.image+'\')"></span>'
+      : '<span class="tk-st-icon">'+(s.big || TK_KIND_ICON[s.kind] || '')+'</span>';
+    return '<button type="button" class="tk-st tk-'+stt+(tkOpen===s.key?' open':'')+'" data-tkst="'+escapeHtml(s.key)+'">'
+      + '<span class="tk-st-n">'+(i+1)+'</span>'
+      + img
+      + '<span class="tk-st-lab">'+s.label+'</span>'
+      + '<span class="tk-st-t">'+escapeHtml(s.title)+'</span>'
+      + (stt==='done' ? '<span class="tk-st-done">Done</span>' : '')
+      + '</button>';
+  }).join('');
+  rail.querySelectorAll('[data-tkst]').forEach(b=> b.addEventListener('click', ()=>{
+    const k = b.getAttribute('data-tkst');
+    tkOpen = (tkOpen === k) ? null : k;
+    renderTrack();
+    if(tkOpen) document.getElementById('tkPanel').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }));
+
+  renderTkPanel(list);
+}
+
+function renderTkPanel(list){
+  const host = document.getElementById('tkPanel');
+  if(!host) return;
+  const s = list.find(x=>x.key === tkOpen);
+  if(!s){
+    host.innerHTML = '<div class="tk-panel-empty">Pick anything on the line above to open it.</div>';
+    return;
+  }
+  const stt = (tkState.get(s.key)||{}).status || 'todo';
+  const note = (tkState.get(s.key)||{}).note || '';
+  let body = '';
+
+  if(s.kind === 'read'){
+    body = (s.image ? '<img class="tk-p-img" src="'+s.image+'" alt="" loading="lazy" onerror="this.style.display=\'none\'" />' : '')
+      + '<div class="tk-p-meta">'+escapeHtml(s.meta)+(CITIES[s.city]?' · '+CITIES[s.city].label:'')+'</div>'
+      + '<h3>'+escapeHtml(s.title)+'</h3>'
+      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + '<a class="btn tk-p-cta" href="'+s.url+'" target="_blank" rel="noopener">Read it at '+domainOf(s.url)+' &#8599;</a>';
+  } else if(s.kind === 'figure'){
+    body = '<div class="tk-p-meta">'+escapeHtml(s.meta)+'</div>'
+      + '<div class="tk-p-big">'+s.big+'</div>'
+      + '<h3>'+escapeHtml(s.title)+'</h3>'
+      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.src && s.src.u ? '<a class="tk-p-src" href="'+s.src.u+'" target="_blank" rel="noopener">'+escapeHtml(s.src.l)+' &#8599;</a>'
+                          : (s.src ? '<div class="tk-p-src">'+escapeHtml(s.src.l)+'</div>' : ''));
+  } else if(s.kind === 'quiz'){
+    const q = s.quiz;
+    body = '<div class="tk-p-meta">'+escapeHtml(s.meta)+'</div>'
+      + '<h3>'+escapeHtml(q.q)+'</h3>'
+      + '<div class="tk-quiz-opts">' + q.opts.map((o,i)=>
+          '<button type="button" class="tk-quiz-o" data-tkqi="'+i+'">'+escapeHtml(o)+'</button>').join('') + '</div>'
+      + '<div class="tk-quiz-a" id="tkQuizA" hidden></div>';
+  } else if(s.kind === 'write'){
+    body = '<div class="tk-p-meta">'+escapeHtml(s.meta)+'</div>'
+      + '<h3>'+escapeHtml(s.title)+'</h3>'
+      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + '<label class="tk-lab" for="tkWriteWhat">What is it about?</label>'
+      + '<input id="tkWriteWhat" type="text" placeholder="e.g. the apartments proposed on Oak Road" />'
+      + '<label class="tk-lab" for="tkWritePts">Your reasons, one per line</label>'
+      + '<textarea id="tkWritePts" rows="4" placeholder="Two or three specific reasons carry more than a long list"></textarea>'
+      + '<label class="tk-lab" for="tkWriteName">Your name and street (optional)</label>'
+      + '<input id="tkWriteName" type="text" placeholder="Jordan Lee, 123 Oak St" />'
+      + '<button type="button" class="btn tk-p-cta" id="tkWriteBuild">Write the draft</button>'
+      + '<div id="tkWriteOut"></div>'
+      + (s.url ? '<a class="tk-p-src" href="'+s.url+'" target="_blank" rel="noopener">Where to send it, and the deadline &#8599;</a>' : '');
+  } else {
+    body = '<div class="tk-p-meta">'+escapeHtml(s.meta||'')+'</div>'
+      + '<h3>'+escapeHtml(s.title)+'</h3>'
+      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.url ? '<a class="btn tk-p-cta" href="'+s.url+'" target="_blank" rel="noopener">'+(s.cta||'Open')+' &#8599;</a>' : '');
+  }
+
+  host.innerHTML = '<div class="tk-p">'
+    + body
+    + '<div class="tk-p-foot">'
+    +   '<button type="button" class="tk-mark'+(stt==='done'?' on':'')+'" id="tkMark">'
+    +     (stt==='done' ? '&#10003; Done' : 'Mark done') + '</button>'
+    +   '<textarea class="tk-p-note" id="tkNote" rows="2" placeholder="Notes for yourself">'+escapeHtml(note)+'</textarea>'
+    + '</div></div>';
+
+  const mark = document.getElementById('tkMark');
+  if(mark) mark.addEventListener('click', ()=>{
+    tkSaveStation(s.key, {status: stt==='done' ? 'todo' : 'done'});
+    renderTrack();
+  });
+  const nt = document.getElementById('tkNote');
+  if(nt) nt.addEventListener('input', ()=> tkSaveStation(s.key, {note:nt.value}));
+
+  if(s.kind === 'quiz'){
+    const q = s.quiz;
+    host.querySelectorAll('[data-tkqi]').forEach(b=> b.addEventListener('click', ()=>{
+      const i = +b.getAttribute('data-tkqi');
+      host.querySelectorAll('.tk-quiz-o').forEach((el,j)=>{
+        el.classList.add(j===q.a ? 'right' : (j===i ? 'wrong' : 'dim'));
+        el.disabled = true;
+      });
+      const a = document.getElementById('tkQuizA');
+      a.hidden = false;
+      a.innerHTML = (i===q.a ? '<b>Right.</b> ' : '<b>The answer is '+escapeHtml(q.opts[q.a])+'.</b> ')
+        + escapeHtml(q.why)
+        + (q.src && q.src.u ? ' <a href="'+q.src.u+'" target="_blank" rel="noopener">'+escapeHtml(q.src.l)+' &#8599;</a>' : '');
+      tkSaveStation(s.key, {status:'done'});
+      const m = document.getElementById('tkMark');
+      if(m){ m.classList.add('on'); m.innerHTML = '&#10003; Done'; }
+    }));
+  }
+  if(s.kind === 'write'){
+    const btn = document.getElementById('tkWriteBuild');
+    if(btn) btn.addEventListener('click', ()=>{
+      const city = tkProfile.city, c = CITIES[city];
+      const body0 = (c.deciders.find(d=>/planning/i.test(d.name)) || c.deciders[0] || {name:'the Planning Commission'});
+      const what = (document.getElementById('tkWriteWhat').value||'').trim() || '[what this is about]';
+      const pts = (document.getElementById('tkWritePts').value||'').split('\n').map(x=>x.trim()).filter(Boolean);
+      const who = (document.getElementById('tkWriteName').value||'').trim();
+      const L = ['To: '+body0.name.replace(/&amp;/g,'&')+', City of '+c.label,
+                 'Subject: Public comment - '+what, '',
+                 'Members of the '+body0.name.replace(/&amp;/g,'&')+',', '',
+                 'I am writing about '+what+'.', ''];
+      (pts.length ? pts : ['[Your reasons, one per line.]']).forEach(x=> L.push('  - '+x));
+      L.push('', 'Thank you for entering this into the record.', '', who || '[Your name]');
+      const text = L.join('\n');
+      document.getElementById('tkWriteOut').innerHTML =
+          '<textarea class="tk-draft" id="tkDraft" rows="12"></textarea>'
+        + '<div class="tk-draft-actions">'
+        +   '<button type="button" class="btn secondary" id="tkCopy">Copy</button>'
+        +   '<a class="btn secondary" id="tkMail" href="#">Open in email</a>'
+        + '</div>'
+        + '<div class="tk-p-src">This does not send anything. Check the agenda for the address and the cutoff before you send it.</div>';
+      document.getElementById('tkDraft').value = text;
+      document.getElementById('tkCopy').addEventListener('click', async ()=>{
+        try{ await navigator.clipboard.writeText(document.getElementById('tkDraft').value);
+          document.getElementById('tkCopy').textContent='Copied';
+        }catch(e){ alert('Select the text and copy it.'); }
+      });
+      const mail = document.getElementById('tkMail');
+      mail.setAttribute('href','mailto:?subject='+encodeURIComponent('Public comment - '+what)
+        + '&body=' + encodeURIComponent(text));
+      tkSaveStation(s.key, {status:'done'});
+    });
+  }
 }
 
 // ================= RESOURCE BANK =================
@@ -5792,6 +5735,20 @@ if(bankInput){
     bankTimer = setTimeout(()=>{ bankQuery = bankInput.value.trim(); renderBank(); }, 140);
   });
 }
+
+
+const tkBuildBtn = document.getElementById('tkBuild');
+if(tkBuildBtn) tkBuildBtn.addEventListener('click', ()=>{ tkOpen=null; renderTrack(); window.scrollTo({top:0,behavior:'smooth'}); });
+const tkEditBtn = document.getElementById('tkEdit');
+if(tkEditBtn) tkEditBtn.addEventListener('click', ()=>{
+  document.getElementById('tkMain').hidden = true;
+  document.getElementById('tkSetup').hidden = false;
+  renderTkSetup();
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+const tkL = document.getElementById('tkLeft'), tkR = document.getElementById('tkRight');
+if(tkL) tkL.addEventListener('click', ()=> document.getElementById('tkRail').scrollBy({left:-380, behavior:'smooth'}));
+if(tkR) tkR.addEventListener('click', ()=> document.getElementById('tkRail').scrollBy({left: 380, behavior:'smooth'}));
 
 document.querySelectorAll('.acct-navbtn').forEach(b=>{
     const on = b.getAttribute('data-acct') === name;
