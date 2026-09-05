@@ -632,6 +632,9 @@
     transition:color .12s, border-color .12s;}
   .sub-nav-tab:hover{color:var(--ink);}
   .sub-nav-tab.active{color:var(--ink); border-bottom-color:var(--ink);}
+  .card-src{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700;
+    color:var(--text-soft); text-decoration:none; border-bottom:1px solid var(--rule); white-space:nowrap;}
+  .card-src:hover{color:var(--ink); border-bottom-color:var(--ink);}
   /* ---- Timeline ---- */
   .tl-shell{max-width:860px; padding-top:14px;}
   .tl-head{border-bottom:3px solid var(--ink); padding-bottom:12px; margin-bottom:16px;}
@@ -1456,7 +1459,7 @@
       <p>Where a city publishes no usable project data, that city's register is left empty. Morgan Hill is the current example: its news, boards, official links and housing numbers are here, but it has no project list.</p>
 
       <h4>How current it is</h4>
-      <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Every record links to the city page it came from.</p>
+      <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Each project shows the city's own file number and links to the register it came from, where that number can be looked up.</p>
 
       <h4>What it covers</h4>
       <p>Thirteen cities in Santa Clara County and the South Bay.</p>
@@ -2363,11 +2366,11 @@ const LG_DATA = [
   lastDate:null, lastNote:'SB 330 vesting expired.', fileNo:null, flag:null},
 ];const LG_FEED = [];
 const LG_DECIDERS = [
-  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'First decision point on land use applications.', link:'https://www.losgatosca.gov/89/Planning-Commission'},
-  {name:'Town Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals and on the SB 330 applications tracked here.', link:'https://www.losgatosca.gov/95/Town-Council'},
+  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'First decision point on land use applications.', link:'https://www.losgatosca.gov/189/Planning-Commission'},
+  {name:'Town Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals and on the SB 330 applications tracked here.', link:'https://www.losgatosca.gov/11/Town-Council'},
 ];
 const LG_JOIN = [
-  {name:'Community Development Department', when:'See the department page', body:'Runs planning review and maintains the SB 330 tracker these records come from.', cat:'Housing', link:'https://www.losgatosca.gov/74/Community-Development'},
+  {name:'Community Development Department', when:'See the department page', body:'Runs planning review and maintains the SB 330 tracker these records come from.', cat:'Housing', link:'https://www.losgatosca.gov/46/Community-Development'},
 ];
 const LG_SOURCES = ['Town of Los Gatos - Senate Bill (SB) 330 application tracker', 'Town of Los Gatos - Pending Planning Projects', 'Coordinates geocoded from addresses via OpenStreetMap Nominatim'];
 
@@ -2410,8 +2413,8 @@ const CAM_DATA = [
   lastDate:null, lastNote:'Listed as a current public works project by the City of Campbell; no update date published.', fileNo:'Multimodal Transportation Plan', flag:null},
 ];const CAM_FEED = [];
 const CAM_DECIDERS = [
-  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews development applications and design.', link:'https://www.campbellca.gov/135/Planning-Commission'},
-  {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, budgets, and capital projects.', link:'https://www.campbellca.gov/122/City-Council'},
+  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews development applications and design.', link:'https://www.campbellca.gov/180/Planning-Commission'},
+  {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, budgets, and capital projects.', link:'https://www.campbellca.gov/189/City-Council'},
 ];
 const CAM_JOIN = [
   {name:'Public Works Department', when:'See the project updates page', body:'Publishes the capital project updates these records come from.', cat:'Transportation', link:'https://www.campbellca.gov/563/Project-Updates'},
@@ -2499,9 +2502,9 @@ const PA_DATA = [
   lastDate:null, lastNote:'Listed in Palo Alto\'s housing pipeline layer with no status recorded. Site area 4.86 acres. Zoned RM-30/ PC.', fileNo:'APN 132-38-071', flag:null},
 ];const PA_FEED = [];
 const PA_DECIDERS = [
-  {name:'Planning and Transportation Commission', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews development applications, zoning and transportation policy.', link:'https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Planning-and-Transportation-Commission'},
+  {name:'Planning and Transportation Commission', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews development applications, zoning and transportation policy.', link:'https://www.paloalto.gov/Departments/Planning-Development-Services/Planning-and-Transportation-Commission-PTC'},
   {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, rezonings and housing policy.', link:'https://www.paloalto.gov/Departments/City-Clerk/City-Council'},
-  {name:'Architectural Review Board', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews building design; many Palo Alto projects turn on its findings.', link:'https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Architectural-Review-Board'},
+  {name:'Architectural Review Board', when:'Check current agenda - schedule not independently confirmed here', body:'Reviews building design; many Palo Alto projects turn on its findings.', link:'https://www.paloalto.gov/Departments/Planning-Development-Services/Architectural-Review-Board-ARB'},
 ];
 const PA_JOIN = [
   {name:'Planning &amp; Development Services', when:'See the department page', body:'Runs current planning and publishes the housing dashboard these records come from.', cat:'Housing', link:'https://www.paloalto.gov/Departments/Planning-Development-Services'},
@@ -2590,8 +2593,8 @@ const GIL_DATA = [
   lastDate:null, lastNote:'City of Gilroy development activity list, Entitlement approved by the Planning Commission on May 1, 2025. Project Description : The proposed project is for an Arc.', fileNo:null, flag:'The city does not publish a street address for this application, so the marker sits on the centre of Gilroy rather than the site.'},
 ];const GIL_FEED = [];
 const GIL_DECIDERS = [
-  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'First decision point on land use applications.', link:'https://www.cityofgilroy.org/271/Planning-Commission'},
-  {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, rezonings and development agreements.', link:'https://www.cityofgilroy.org/163/City-Council'},
+  {name:'Planning Commission', when:'Check current agenda - schedule not independently confirmed here', body:'First decision point on land use applications.', link:'https://www.cityofgilroy.org/300/Planning-Commission'},
+  {name:'City Council', when:'Check current agenda - schedule not independently confirmed here', body:'Final say on appeals, rezonings and development agreements.', link:'https://www.cityofgilroy.org/341/City-Council'},
 ];
 const GIL_JOIN = [
   {name:'Community Development Department', when:'See the department page', body:'Runs current planning and maintains the development activity list these records come from.', cat:'Housing', link:'https://www.cityofgilroy.org/167/Community-Development'},
@@ -2667,18 +2670,18 @@ const CITIES = {
     ctaLinks:[
       {label:'Town SB 330 application tracker', url:'https://www.losgatosca.gov/2875/Senate-Bill-SB-330'},
       {label:'Pending Planning Projects', url:'https://www.losgatosca.gov/2370/Pending-Planning-Projects'},
-      {label:'Community Development', url:'https://www.losgatosca.gov/74/Community-Development'},
+      {label:'Community Development', url:'https://www.losgatosca.gov/46/Community-Development'},
     ]},
   campbell: {label:'Campbell', center:{lat:37.2872,lng:-121.9500}, zoom:13, bbox:{minLat:37.26,maxLat:37.31,minLng:-121.98,maxLng:-121.92}, data:CAM_DATA, feed:CAM_FEED, deciders:CAM_DECIDERS, join:CAM_JOIN, sources:CAM_SOURCES, note:'Campbell publishes current Public Works projects but not a machine-readable housing pipeline, so this city covers infrastructure and civic projects rather than development applications. Housing filings for Campbell are not tracked here yet.',
     ctaLinks:[
       {label:'Public Works project updates', url:'https://www.campbellca.gov/563/Project-Updates'},
-      {label:'Community Development', url:'https://www.campbellca.gov/136/Community-Development'},
+      {label:'Community Development', url:'https://www.campbellca.gov/151/Community-Development'},
     ]},
   paloalto: {label:'Palo Alto', center:{lat:37.4300,lng:-122.1400}, zoom:12.5, bbox:{minLat:37.38,maxLat:37.47,minLng:-122.20,maxLng:-122.09}, data:PA_DATA, feed:PA_FEED, deciders:PA_DECIDERS, join:PA_JOIN, sources:PA_SOURCES, note:'These come from the housing pipeline layer behind Palo Alto\'s public housing dashboard, which is a Housing Element site inventory snapshot rather than a live permit feed. Statuses therefore lag the counter, and this is the housing pipeline specifically, not every application in the city.',
     ctaLinks:[
       {label:'Current Planning Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning/Projects'},
       {label:'Housing Policies & Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects'},
-      {label:'Boards & Commissions', url:'https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions'},
+      {label:'Boards & Commissions', url:'https://www.paloalto.gov/City-Hall/Boards-Commissions'},
     ]},
   gilroy: {label:'Gilroy', center:{lat:37.0090,lng:-121.5683}, zoom:12.5, bbox:{minLat:36.97,maxLat:37.05,minLng:-121.63,maxLng:-121.53}, data:GIL_DATA, feed:GIL_FEED, deciders:GIL_DECIDERS, join:GIL_JOIN, sources:GIL_SOURCES, note:'Gilroy publishes a curated list of significant projects rather than a full permit feed, so this is the city\'s own shortlist across residential, commercial and industrial. Three records carry no published street address; their markers sit on the centre of Gilroy and say so.',
     ctaLinks:[
@@ -3124,6 +3127,229 @@ function renderFeed(){
   }).join('');
   el.querySelectorAll('.feed-item').forEach(item=> item.addEventListener('click', ()=>flyTo(item.getAttribute('data-id'))));
 }
+// ================= OFFICIAL CITY LINKS =================
+// Every URL below returned HTTP 200 on 2026-09-03, checked one at a time. The paloalto.gov,
+// sanjoseca.gov and milpitas.gov entries sit behind a WAF that rejects command-line clients, so
+// those were confirmed by loading each page in a browser and reading its title instead.
+// Palo Alto moved off cityofpaloalto.org to paloalto.gov - the old host no longer serves these.
+const OFFICIAL_LINKS = {
+  morganhill: [
+    {cat:'Planning Hub', title:'Development Services', url:'https://www.morganhill.ca.gov/151/Development-Services', note:'Planning, building, and engineering review.'},
+    {cat:'Planning Hub', title:'Planning Documents, Maps and Data', url:'https://www.morganhill.ca.gov/662/Planning-Documents-Maps-and-Data', note:'The city\'s planning document and map library.'},
+    {cat:'Housing', title:'Housing Laws and Development Processes', url:'https://www.morganhill.ca.gov/109/Housing-Laws-and-Development-Processes', note:'How state housing law applies to applications here.'},
+    {cat:'Housing', title:'RHNA Progress', url:'https://www.morganhill.ca.gov/2640/Regional-Housing-Needs-Allocation-Progre', note:'The city\'s own reporting against its state housing target.'},
+    {cat:'Housing', title:'Housing Programs', url:'https://www.morganhill.ca.gov/1826/Housing-Programs', note:'Affordable housing programs and eligibility.'},
+    {cat:'Housing', title:'Density Bonus and CEQA Exemptions', url:'https://www.morganhill.ca.gov/2231/Density-Bonus-and-CEQA-Exemptions', note:'Extra units allowed in exchange for affordability.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.morganhill.ca.gov/75/General-Plan', note:'Long-range land use and policy framework.'},
+    {cat:'Land Use', title:'Greater Downtown Specific Plan', url:'https://www.morganhill.ca.gov/2677/Greater-Downtown-Specific-Plan', note:'The plan governing downtown development.'},
+    {cat:'Land Use', title:'Station Area Master Plan', url:'https://www.morganhill.ca.gov/1641/Station-Area-Master-Plan', note:'Planning around the Caltrain station.'},
+    {cat:'Zoning', title:'Zoning', url:'https://www.morganhill.ca.gov/76/Zoning', note:'Zoning districts and what they allow.'},
+    {cat:'Permits', title:'Applications / Permits / Fees', url:'https://www.morganhill.ca.gov/124/Applications-Permits-Fees', note:'What to file, and what it costs.'},
+    {cat:'Environmental', title:'Environmental Review', url:'https://www.morganhill.ca.gov/868/Environmental-Review', note:'CEQA notices and environmental studies.'},
+    {cat:'Transportation', title:'Master Plan for Parks, Trails and Bikeways', url:'https://www.morganhill.ca.gov/1429/Master-Plan-for-Parks-Trails-and-Bikeway', note:'Trail and bikeway network planning.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.morganhill.ca.gov/569/Planning-Commission', note:'Hears most land use applications.'},
+    {cat:'Boards', title:'Commissions & Boards', url:'https://www.morganhill.ca.gov/148/Commissions-Boards', note:'Bodies you can apply to serve on.'},
+    {cat:'Meetings', title:'Council Agenda, Minutes & Video', url:'https://www.morganhill.ca.gov/1343/Council-Agenda-Minutes-Video', note:'Agendas, packets, minutes, and recordings.'},
+  ],
+  mountainview: [
+    {cat:'Development Projects', title:'Active Development Projects', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/active-projects', note:'Official city index and status report for active development projects.'},
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.mountainview.gov/our-city/departments/community-development/planning', note:'Official planning hub for development review, regulations, projects, and participation.'},
+    {cat:'Planning Hub', title:'Development Review Process', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/development-review-process', note:'Explains Mountain View development review and public decision processes.'},
+    {cat:'Permits', title:'Development Permits Portal', url:'https://developmentpermits.mountainview.gov/', note:'Official permitting portal.'},
+    {cat:'Permits', title:'Planning Permit Applications', url:'https://developmentpermits.mountainview.gov/about-permits/apply-for-permit/planning-permit', note:'Planning permit application requirements and process.'},
+    {cat:'Permits', title:'Permit Center', url:'https://developmentpermits.mountainview.gov/about-permits/permit-center', note:'Permit center information and services.'},
+    {cat:'Zoning', title:'Zoning and Interactive Map', url:'https://developmentpermits.mountainview.gov/about-permits/zoning', note:'Zoning information and mapping.'},
+    {cat:'Land Use', title:'Precise Plans', url:'https://developmentpermits.mountainview.gov/about-permits/zoning/precise-plans', note:'Official precise-plan documents for special planning areas.'},
+    {cat:'Land Use', title:'2030 General Plan', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/regulations/general-plan', note:'Citywide long-range land-use policy and General Plan materials.'},
+    {cat:'Housing', title:'2023-2031 Housing Element', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/regulations/housing-element', note:'Housing policy, sites, programs, and Housing Element materials.'},
+    {cat:'Environmental', title:'CEQA / NEPA Environmental Postings', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/active-projects/ceqa-postings', note:'Environmental notices and review documents.'},
+    {cat:'Transportation', title:'Transportation Analysis / VMT / MTA', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/regulations/transportation-analysis-vmt-mta', note:'Transportation-analysis and VMT requirements for development.'},
+    {cat:'Transportation', title:'Active Transportation Plan', url:'https://collaborate.mountainview.gov/atp', note:'Walking, bicycling, and active transportation planning.'},
+    {cat:'Transportation', title:'City Project Highlights', url:'https://www.mountainview.gov/our-city/departments/public-works/city-projects-bids/city-project-highlights', note:'Public works, transportation, utilities, parks, and facility projects.'},
+    {cat:'Meetings', title:'Mountain View Legistar', url:'https://mountainview.legistar.com/', note:'City Council and public-meeting agendas, staff reports, and actions.'},
+    {cat:'Development Projects', title:'Builder\'s Remedy Projects', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/development-projects/builder-s-remedy-projects', note:'Official Builder\'s Remedy project information.'},
+  ],
+  sunnyvale: [
+    {cat:'Development Projects', title:'Projects in Sunnyvale', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale', note:'Official hub for development, transportation, and long-range projects.'},
+    {cat:'Development Projects', title:'Development Reports', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/development-reports', note:'Development activity reports, project data, and related resources.'},
+    {cat:'Development Projects', title:'Development Projects', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/development-projects', note:'Official development-project index.'},
+    {cat:'Planning Hub', title:'Planning and Building', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building', note:'Planning, development, building, and permit hub.'},
+    {cat:'Permits', title:'Planning & Building Permit Center', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/permit-center', note:'Official planning and building permit information.'},
+    {cat:'GIS', title:'Maps & GIS', url:'https://www.sunnyvale.ca.gov/city-services/online-services/maps-and-gis', note:'Official GIS tools including development, land use, zoning, housing, transportation, and other maps.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.sunnyvale.ca.gov/your-government/codes-and-policies/general-plan', note:'Citywide long-range policy and land-use framework.'},
+    {cat:'Land Use', title:'Specific Plans', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/permit-center/specific-plans', note:'Specific plans for major planning areas.'},
+    {cat:'Planning Hub', title:'Long-Range Planning Initiatives', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/long-range-planning-initiatives', note:'Major long-range planning initiatives and plan updates.'},
+    {cat:'Housing', title:'Housing Element', url:'https://www.sunnyvale.ca.gov/homes-streets-and-property/housing/housing-element', note:'Housing needs, sites, policies, and implementation.'},
+    {cat:'Transportation', title:'Transportation & Traffic Safety', url:'https://www.sunnyvale.ca.gov/homes-streets-and-property/transportation-and-traffic-safety', note:'Transportation planning, active transportation, traffic safety, Vision Zero, and roadway programs.'},
+    {cat:'Transportation', title:'Public Works', url:'https://www.sunnyvale.ca.gov/your-government/departments/public-works', note:'Transportation, infrastructure, engineering, and public works programs.'},
+    {cat:'Meetings', title:'Current Planning Public Hearings', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/current-public-hearings', note:'Current planning hearings and opportunities for public participation.'},
+    {cat:'Environmental', title:'CEQA Environmental Notices', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/ceqa-environmental-notices', note:'Official environmental-review notices and documents.'},
+    {cat:'Meetings', title:'Documents Portal', url:'https://www.sunnyvale.ca.gov/your-government/city-clerk/documents-portal', note:'City records, agendas, minutes, and documents.'},
+    {cat:'Land Use', title:'Downtown Specific Plan Amendment', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/long-range-planning-initiatives/downtown-specific-plan-amendment', note:'Official downtown planning initiative.'},
+    {cat:'Land Use', title:'Peery Park Specific Plan Amendment', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/long-range-planning-initiatives/peery-park-specific-plan-amendment', note:'Official Peery Park planning initiative.'},
+  ],
+  cupertino: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.cupertino.gov/planning', note:'Official planning hub.'},
+    {cat:'Development Projects', title:'Major Projects', url:'https://www.cupertino.gov/Your-City/Departments/Community-Development/Planning/Major-Projects', note:'Official index of major development projects.'},
+    {cat:'Development Projects', title:'All City Projects', url:'https://www.cupertino.gov/Projects', note:'Citywide project index.'},
+    {cat:'Housing', title:'Major Residential Projects', url:'https://www.cupertino.gov/Your-City/Departments/Community-Development/Planning/Major-Residential-Projects', note:'Official residential development index.'},
+    {cat:'Permits', title:'AgencyCounter', url:'https://cupertino.agencycounter.com/', note:'Development and permit activity viewer.'},
+    {cat:'Transportation', title:'Capital Improvement Program & Projects', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Capital-Improvement-Programs-Projects', note:'Capital projects, infrastructure, facilities, parks, and CIP information.'},
+    {cat:'Transportation', title:'Transportation & Mobility', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility', note:'Transportation and mobility hub.'},
+    {cat:'Transportation', title:'Transportation Projects', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Projects', note:'Official transportation-project index.'},
+    {cat:'Transportation', title:'Transportation Plans & Studies', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Transportation-Plans-Studies', note:'Transportation plans, studies, and policy documents.'},
+    {cat:'Transportation', title:'Active Transportation Plan', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Transportation-Plans-Studies/Active-Transportation-Plan', note:'Walking and bicycling plan.'},
+    {cat:'Transportation', title:'Regional Transportation Projects', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Projects/Regional-Transportation-Projects', note:'Regional projects affecting Cupertino.'},
+    {cat:'Transportation', title:'Transportation Guide for Developers / VMT', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Developers', note:'Developer transportation requirements and VMT guidance.'},
+    {cat:'Transportation', title:'Local Roadway Safety Plan', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Transportation-Plans-Studies/Local-Roadway-Safety-Plan', note:'Roadway safety analysis and recommendations.'},
+    {cat:'Transportation', title:'Stevens Creek Boulevard Corridor Vision Study', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Transportation-Plans-Studies/Stevens-Creek-Boulevard-Corridor-Vision-Study', note:'Corridor planning and transportation vision.'},
+  ],
+  santaclara: [
+    {cat:'Development Projects', title:'Development Activity', url:'https://www.santaclaraca.gov/our-city/departments-a-f/community-development/planning-division/development-activity', note:'Official development activity page, including the city GIS story map.'},
+    {cat:'Development Projects', title:'Projects Listing', url:'https://www.santaclaraca.gov/business-development/development-projects/projects-listing', note:'Full searchable list of current development projects.'},
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.santaclaraca.gov/our-city/departments-a-f/community-development/planning-division', note:'Official planning hub for development review and regulations.'},
+    {cat:'Meetings', title:'Boards and Commissions', url:'https://www.santaclaraca.gov/our-city/government/boards-commissions', note:'Every city board and commission, with the interest form to apply.'},
+    {cat:'Meetings', title:'Santa Clara Legistar', url:'https://santaclara.legistar.com/Calendar.aspx', note:'Council and Planning Commission agendas, staff reports, and actions.'},
+    {cat:'Meetings', title:'Planning Commission', url:'https://www.santaclaraca.gov/our-city/government/boards-commissions/planning-commission', note:'First decision point on land use; seven Council-appointed commissioners.'},
+  ],
+  paloalto: [
+    {cat:'Planning Hub', title:'Planning & Development Services', url:'https://www.paloalto.gov/Departments/Planning-Development-Services', note:'Department hub for development review, permits, and long-range planning.'},
+    {cat:'Development Projects', title:'Current Planning', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning', note:'Applications under active review and their status.'},
+    {cat:'Permits', title:'Development Services', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Development-Services', note:'Permit intake, plan check, and inspection.'},
+    {cat:'Housing', title:'Housing Policies & Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects', note:'Housing Element, affordable housing programs, and pipeline.'},
+    {cat:'Housing', title:'Affordable Housing', url:'https://www.paloalto.gov/City-Hall/Housing/Affordable-Housing', note:'Below-market-rate programs and eligibility.'},
+    {cat:'Housing', title:'Accessory Dwelling Units', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Accessory-Dwelling-Units', note:'ADU rules, sizes, and streamlined approval paths.'},
+    {cat:'Land Use', title:'Area Plans and Studies', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Area-Plans-and-Studies', note:'Coordinated area plans and special planning studies.'},
+    {cat:'Boards', title:'Planning & Transportation Commission', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Planning-and-Transportation-Commission-PTC', note:'Reviews major projects and advises Council on land use.'},
+    {cat:'Boards', title:'Architectural Review Board', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Architectural-Review-Board-ARB', note:'Reviews building design for larger projects.'},
+    {cat:'Meetings', title:'Council Agendas & Minutes', url:'https://www.paloalto.gov/City-Hall/City-Council/Council-Agendas-Minutes', note:'Agendas, packets, and minutes for City Council.'},
+    {cat:'Transportation', title:'Transportation Projects', url:'https://www.paloalto.gov/Departments/Transportation/Transportation-Projects', note:'Street, bike, rail-crossing, and safety projects.'},
+  ],
+  westsanjose: [
+    {cat:'Planning Hub', title:'Planning, Building & Code Enforcement', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement', note:'The department that reviews and approves development citywide.'},
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division', note:'Entitlements, zoning, and general plan administration.'},
+    {cat:'Permits', title:'Development Services Permit Center', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/development-services-permit-center', note:'Where permit applications are filed and tracked.'},
+    {cat:'Meetings', title:'Commissions and Hearings', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/commissions-hearings-and-developers-roundtable', note:'Planning Commission, Director’s Hearings, and the Developers Roundtable.'},
+    {cat:'Housing', title:'Housing Department', url:'https://www.sanjoseca.gov/your-government/departments-offices/housing', note:'Affordable housing funding, rent stabilization, and homelessness response.'},
+    {cat:'Zoning', title:'Zoning Code (Municipal Code Title 20)', url:'https://www.sanjoseca.gov/business/check-zoning', note:'Look up what a parcel is zoned for.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.sanjoseca.gov/your-government/agendas-minutes', note:'City Council and committee agendas and minutes.'},
+  ],
+  gilroy: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.cityofgilroy.org/193/Planning-Division', note:'Current and long-range planning for the city.'},
+    {cat:'Development Projects', title:'Development Activity Projects', url:'https://www.cityofgilroy.org/298/Development-Activity-Projects', note:'The city’s own index of active development applications.'},
+    {cat:'Planning Hub', title:'Community Development Department', url:'https://www.cityofgilroy.org/167/Community-Development', note:'Planning, building, and code enforcement.'},
+    {cat:'Permits', title:'Development Services', url:'https://www.cityofgilroy.org/212/Development-Services', note:'Permit intake and development review.'},
+    {cat:'Permits', title:'Entitlement Roadmap', url:'https://www.cityofgilroy.org/1064/Entitlement-Roadmap', note:'Step-by-step guide to how an application moves through the city.'},
+    {cat:'Land Use', title:'2040 General Plan', url:'https://www.cityofgilroy.org/274/2040-General-Plan', note:'Long-range land use and policy framework.'},
+    {cat:'GIS', title:'General Plan Map', url:'https://www.cityofgilroy.org/275/General-Plan-Map', note:'Mapped land use designations citywide.'},
+    {cat:'Housing', title:'Housing Element', url:'https://www.cityofgilroy.org/290/Housing-Element', note:'State-required housing plan and site inventory.'},
+    {cat:'Housing', title:'By-Right Housing Element Sites', url:'https://www.cityofgilroy.org/1016/By-Right-Housing-Element-Sites', note:'Sites where qualifying housing can be approved without discretionary review.'},
+    {cat:'Housing', title:'Affordable Housing Policy', url:'https://www.cityofgilroy.org/1000/Affordable-Housing-Policy', note:'Inclusionary requirements and affordable housing rules.'},
+    {cat:'Housing', title:'Housing Legislation', url:'https://www.cityofgilroy.org/1056/Housing-Legislation', note:'How state housing laws apply in Gilroy.'},
+    {cat:'Land Use', title:'Long Range Planning Projects', url:'https://www.cityofgilroy.org/1098/Long-Range-Planning-Projects', note:'Specific plans and policy updates in progress.'},
+    {cat:'Zoning', title:'Zoning Code Update', url:'https://www.cityofgilroy.org/1004/Zoning-Code-Update', note:'The in-progress rewrite of the city’s zoning code.'},
+    {cat:'Permits', title:'Development Impact Fees', url:'https://www.cityofgilroy.org/235/Development-Impact-Fees', note:'What a project pays toward roads, parks, and facilities.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.cityofgilroy.org/1151/Agendas-Minutes', note:'Council, Planning Commission, and committee agendas.'},
+    {cat:'Boards', title:'Boards, Commissions & Committees', url:'https://www.cityofgilroy.org/1150/Boards-Commissions-Committees', note:'Bodies you can apply to serve on.'},
+    {cat:'Environmental', title:'Environmental Programs', url:'https://www.cityofgilroy.org/302/Environmental-Programs', note:'Environmental review and sustainability programs.'},
+  ],
+  milpitas: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.milpitas.gov/1124/Planning', note:'Current planning, zoning, and development review.'},
+    {cat:'Development Projects', title:'Planning Project Pipeline (GIS)', url:'https://milpitas-gis-milpitas.hub.arcgis.com/apps/24fe9a09abcc4639913968f21309e510/explore', note:'Live map of every project in the city’s review pipeline.'},
+    {cat:'Development Projects', title:'Development', url:'https://www.milpitas.gov/1139/Development', note:'Development activity and major project pages.'},
+    {cat:'Housing', title:'Office of Housing', url:'https://www.milpitas.gov/1289/Office-of-Housing', note:'Affordable housing programs and tenant resources.'},
+    {cat:'Housing', title:'Housing Element', url:'https://www.milpitas.gov/487/Housing-Element', note:'State-required housing plan and site inventory.'},
+    {cat:'Housing', title:'Housing Opportunity Districts (HOD)', url:'https://www.milpitas.gov/1119/Housing-Opportunity-Districts-HOD', note:'Districts rezoned to accept housing at higher densities.'},
+    {cat:'Land Use', title:'Milpitas 2040 General Plan', url:'https://www.milpitas.gov/370/Milpitas-2040-General-Plan', note:'Long-range land use and policy framework.'},
+    {cat:'Environmental', title:'Environmental Documents (CEQA)', url:'https://www.milpitas.gov/379/Environmental-Documents-CEQA', note:'Environmental review notices and studies.'},
+    {cat:'GIS', title:'Geographic Information System (GIS)', url:'https://www.milpitas.gov/289/Geographic-Information-System-GIS', note:'City mapping tools and data.'},
+    {cat:'Zoning', title:'Comprehensive Zoning Update', url:'https://www.milpitas.gov/1175/Comprehensive-Zoning-Update', note:'The in-progress zoning code rewrite.'},
+    {cat:'Permits', title:'Development Review Handbook', url:'https://www.milpitas.gov/1193/Development-Review-Handbook', note:'How an application is reviewed, start to finish.'},
+    {cat:'Permits', title:'One-Stop Permit and License Center', url:'https://www.milpitas.gov/1096/One-Stop-Permit-and-License-Center', note:'Permit intake for building and planning.'},
+    {cat:'Permits', title:'Land Development', url:'https://www.milpitas.gov/1025/Land-Development', note:'Engineering review, subdivisions, and encroachments.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.milpitas.gov/1017/Agendas-Minutes', note:'Council and commission agendas and minutes.'},
+    {cat:'Boards', title:'Commissions', url:'https://www.milpitas.gov/1018/Commissions', note:'Bodies you can apply to serve on.'},
+  ],
+  losgatos: [
+    {cat:'Development Projects', title:'Development Projects', url:'https://www.losgatosca.gov/2201/Development-Projects', note:'The town’s index of pending and approved projects.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.losgatosca.gov/189/Planning-Commission', note:'Decides most land use applications in town.'},
+    {cat:'Boards', title:'Development Review Committee', url:'https://www.losgatosca.gov/188/Development-Review-Committee', note:'Staff-level review body for smaller applications.'},
+    {cat:'Planning Hub', title:'Planning Documents', url:'https://www.losgatosca.gov/198/Planning-Documents', note:'Applications, handouts, and submittal requirements.'},
+    {cat:'Housing', title:'General Plan — Housing Element', url:'https://www.losgatosca.gov/1735/General-Plan---Housing-Element', note:'State-required housing plan and site inventory.'},
+    {cat:'Land Use', title:'North 40 Specific Plan Area', url:'https://www.losgatosca.gov/1729/North-40-Specific-Plan-Area', note:'The town’s largest planned development area.'},
+    {cat:'GIS', title:'GIS / Mapping', url:'https://www.losgatosca.gov/1513/GIS', note:'Town mapping tools and parcel data.'},
+    {cat:'Permits', title:'Monthly Issued Permits', url:'https://www.losgatosca.gov/1014/Monthly-Issued-Permits', note:'Running list of building permits issued each month.'},
+    {cat:'Permits', title:'Approved Conditional Use Permits', url:'https://www.losgatosca.gov/2014/Approved-Conditional-Use-Permits', note:'CUPs granted, useful for tracking commercial changes.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.losgatosca.gov/13/Agendas-Minutes', note:'Town Council and commission agendas.'},
+    {cat:'Boards', title:'Boards, Commissions & Committees', url:'https://www.losgatosca.gov/12/Boards-Commissions-Committees', note:'Bodies you can apply to serve on.'},
+  ],
+  losaltos: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.losaltosca.gov/217/Planning', note:'Current and long-range planning for the city.'},
+    {cat:'Development Projects', title:'Development Project Lists', url:'https://www.losaltosca.gov/222/Development-Project-Lists', note:'The city’s own list of projects under review.'},
+    {cat:'Permits', title:'Development Services', url:'https://www.losaltosca.gov/192/Development-Services', note:'Permit intake and development review.'},
+    {cat:'Housing', title:'Housing Element', url:'https://www.losaltosca.gov/214/Housing-Element', note:'State-required housing plan and site inventory.'},
+    {cat:'Housing', title:'Affordable Housing', url:'https://www.losaltosca.gov/212/Affordable-Housing', note:'Below-market-rate programs and requirements.'},
+    {cat:'Housing', title:'SB 9 Projects', url:'https://www.losaltosca.gov/229/SB-9-Projects', note:'Lot splits and duplexes filed under state SB 9.'},
+    {cat:'Land Use', title:'Adopted Plans', url:'https://www.losaltosca.gov/218/Adopted-Plans', note:'General Plan and adopted specific plans.'},
+    {cat:'Environmental', title:'Environmental Documents', url:'https://www.losaltosca.gov/224/Environmental-Documents', note:'CEQA notices and environmental studies.'},
+    {cat:'GIS', title:'Public GIS Viewer', url:'https://www.losaltosca.gov/228/Public-GIS-Viewer', note:'Parcel, zoning, and land use mapping.'},
+    {cat:'Permits', title:'Permit Submittal Process', url:'https://www.losaltosca.gov/198/Permit-Submittal-Process', note:'What to file and in what order.'},
+    {cat:'Permits', title:'Monthly Issued Permits', url:'https://www.losaltosca.gov/197/Monthly-Issued-Permits', note:'Running list of permits issued each month.'},
+    {cat:'Transportation', title:'Capital Improvement Plan', url:'https://www.losaltosca.gov/247/Capital-Improvement-Plan', note:'Funded street, park, and facility projects.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.losaltosca.gov/129/Agendas-Minutes', note:'Council and commission agendas and minutes.'},
+  ],
+  campbell: [
+    {cat:'Planning Hub', title:'Community Development Department', url:'https://www.campbellca.gov/151/Community-Development', note:'Planning, building, and housing for the city.'},
+    {cat:'Development Projects', title:'Planning Applications', url:'https://www.campbellca.gov/1051/Planning-Applications', note:'Applications currently filed and under review.'},
+    {cat:'Permits', title:'Permit Center', url:'https://www.campbellca.gov/1050/Permits-Center', note:'Permit intake, plan check, and inspection.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.campbellca.gov/1083/General-Plan', note:'Long-range land use and policy framework.'},
+    {cat:'Housing', title:'Housing Element', url:'https://www.campbellca.gov/1234/Housing-Element', note:'State-required housing plan and site inventory.'},
+    {cat:'Land Use', title:'Area Plans', url:'https://www.campbellca.gov/1058/Area-Plans', note:'Plans governing specific parts of the city.'},
+    {cat:'Land Use', title:'Hamilton Avenue Plan', url:'https://www.campbellca.gov/1460/Hamilton-Avenue-Plan', note:'Corridor plan for one of Campbell’s main streets.'},
+    {cat:'Zoning', title:'Zoning and Land Use', url:'https://www.campbellca.gov/166/Zoning-and-Land-Use', note:'Zoning districts and what they allow.'},
+    {cat:'GIS', title:'City Maps Gallery', url:'https://www.campbellca.gov/1424/City-Maps-Gallery', note:'Zoning, land use, and district maps.'},
+    {cat:'Transportation', title:'Multimodal Transportation Plan', url:'https://www.campbellca.gov/1490/Multimodal-Transportation-Plan', note:'Walking, biking, transit, and street planning.'},
+    {cat:'Environmental', title:'Climate Action and Adaptation Plan', url:'https://www.campbellca.gov/1372/Climate-Action-and-Adaptation-Plan', note:'Emissions targets and adaptation measures.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.campbellca.gov/AgendaCenter', note:'Council and Planning Commission agendas.'},
+  ],
+  saratoga: [
+    {cat:'Planning Hub', title:'Community Development Department', url:'https://www.saratoga.ca.us/150/Community-Development', note:'Planning, building, and code enforcement.'},
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.saratoga.ca.us/152/Planning-Division', note:'Current planning and application review.'},
+    {cat:'Development Projects', title:'Residential Development', url:'https://www.saratoga.ca.us/163/Residential-Development', note:'Residential applications and requirements.'},
+    {cat:'Permits', title:'Planning Application Materials', url:'https://www.saratoga.ca.us/168/Planning-Application-Materials', note:'Forms, checklists, and submittal requirements.'},
+    {cat:'Permits', title:'Building Permit Activity Reports', url:'https://www.saratoga.ca.us/153/Building-Permit-Activity-Reports', note:'Periodic reports on permits issued.'},
+    {cat:'Housing', title:'2023-2031 Housing Element', url:'https://www.saratoga.ca.us/499/2023-2031-Housing-Element', note:'State-required housing plan and site inventory.'},
+    {cat:'Land Use', title:'2040 General Plan', url:'https://www.saratoga.ca.us/656/2040-General-Plan', note:'Long-range land use and policy framework.'},
+    {cat:'GIS', title:'Interactive GIS Map', url:'https://www.saratoga.ca.us/459/Interactive-GIS-Map', note:'Parcel, zoning, and land use mapping.'},
+    {cat:'GIS', title:'City Maps', url:'https://www.saratoga.ca.us/265/City-Maps', note:'Downloadable city map library.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.saratoga.ca.us/357/Planning-Commission', note:'Decides most land use applications in the city.'},
+    {cat:'Environmental', title:'Environmental Programs', url:'https://www.saratoga.ca.us/487/Environmental-Programs', note:'Environmental review and sustainability programs.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.saratoga.ca.us/403/Agendas-Minutes', note:'Council and commission agendas and minutes.'},
+  ],
+};
+
+// Which city a project belongs to. The inline city arrays imply it by membership rather than
+// carrying a city field, so it is resolved by id once and cached - the record's own d.city is
+// undefined here, which is why the first attempt at this silently produced no links at all.
+let PROJECT_CITY = null;
+function cityOfProject(id){
+  if(!PROJECT_CITY){
+    PROJECT_CITY = new Map();
+    Object.keys(CITIES).filter(k=>k!=='all').forEach(k=>
+      (CITIES[k].data||[]).forEach(p=> PROJECT_CITY.set(p.id, k)));
+  }
+  return PROJECT_CITY.get(id) || null;
+}
+
+// The city page a project record came from. There is no per-project URL in the source data,
+// so this is the city's own project index - the place a reader can look the file number up.
+function citySourceLink(cityKey){
+  const links = OFFICIAL_LINKS[cityKey] || [];
+  const pick = links.find(l=>l.cat==='Development Projects') || links.find(l=>l.cat==='Planning Hub');
+  if(pick) return {url:pick.url, label:pick.title};
+  const cta = (CITIES[cityKey] && CITIES[cityKey].ctaLinks || [])[0];
+  return cta ? {url:cta.url, label:cta.label} : null;
+}
 function projectCardHtml(d){
   const st = STAGE_MAP[d.stage]; const c = CAT_MAP[categoryOf(d)];
   const unitsBit = d.units ? `<span><b>${d.units.toLocaleString()}</b> units</span>` : '';
@@ -3138,7 +3364,7 @@ function projectCardHtml(d){
       <div class="meta"><span>Filed <b>${fmtDate(d.filed)}</b></span><span>File <b class="mono">${d.fileNo}</b></span><span>${d.applicant}</span></div>
       <div class="meta" style="color:var(--text);">${d.lastNote}</div>
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
-      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span><button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
+      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">City record &#8599;</a>`:'';})()}<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
     </div>`;
 }
 function renderRegister(){
@@ -4431,206 +4657,6 @@ document.querySelectorAll('#askSuggestions .ask-chip').forEach(btn=>{
 });
 
 // ---------------- RESOURCES PAGE ----------------
-// ================= OFFICIAL CITY LINKS =================
-// Every URL below returned HTTP 200 on 2026-09-03, checked one at a time. The paloalto.gov,
-// sanjoseca.gov and milpitas.gov entries sit behind a WAF that rejects command-line clients, so
-// those were confirmed by loading each page in a browser and reading its title instead.
-// Palo Alto moved off cityofpaloalto.org to paloalto.gov - the old host no longer serves these.
-const OFFICIAL_LINKS = {
-  morganhill: [
-    {cat:'Planning Hub', title:'Development Services', url:'https://www.morganhill.ca.gov/151/Development-Services', note:'Planning, building, and engineering review.'},
-    {cat:'Planning Hub', title:'Planning Documents, Maps and Data', url:'https://www.morganhill.ca.gov/662/Planning-Documents-Maps-and-Data', note:'The city\'s planning document and map library.'},
-    {cat:'Housing', title:'Housing Laws and Development Processes', url:'https://www.morganhill.ca.gov/109/Housing-Laws-and-Development-Processes', note:'How state housing law applies to applications here.'},
-    {cat:'Housing', title:'RHNA Progress', url:'https://www.morganhill.ca.gov/2640/Regional-Housing-Needs-Allocation-Progre', note:'The city\'s own reporting against its state housing target.'},
-    {cat:'Housing', title:'Housing Programs', url:'https://www.morganhill.ca.gov/1826/Housing-Programs', note:'Affordable housing programs and eligibility.'},
-    {cat:'Housing', title:'Density Bonus and CEQA Exemptions', url:'https://www.morganhill.ca.gov/2231/Density-Bonus-and-CEQA-Exemptions', note:'Extra units allowed in exchange for affordability.'},
-    {cat:'Land Use', title:'General Plan', url:'https://www.morganhill.ca.gov/75/General-Plan', note:'Long-range land use and policy framework.'},
-    {cat:'Land Use', title:'Greater Downtown Specific Plan', url:'https://www.morganhill.ca.gov/2677/Greater-Downtown-Specific-Plan', note:'The plan governing downtown development.'},
-    {cat:'Land Use', title:'Station Area Master Plan', url:'https://www.morganhill.ca.gov/1641/Station-Area-Master-Plan', note:'Planning around the Caltrain station.'},
-    {cat:'Zoning', title:'Zoning', url:'https://www.morganhill.ca.gov/76/Zoning', note:'Zoning districts and what they allow.'},
-    {cat:'Permits', title:'Applications / Permits / Fees', url:'https://www.morganhill.ca.gov/124/Applications-Permits-Fees', note:'What to file, and what it costs.'},
-    {cat:'Environmental', title:'Environmental Review', url:'https://www.morganhill.ca.gov/868/Environmental-Review', note:'CEQA notices and environmental studies.'},
-    {cat:'Transportation', title:'Master Plan for Parks, Trails and Bikeways', url:'https://www.morganhill.ca.gov/1429/Master-Plan-for-Parks-Trails-and-Bikeway', note:'Trail and bikeway network planning.'},
-    {cat:'Boards', title:'Planning Commission', url:'https://www.morganhill.ca.gov/569/Planning-Commission', note:'Hears most land use applications.'},
-    {cat:'Boards', title:'Commissions & Boards', url:'https://www.morganhill.ca.gov/148/Commissions-Boards', note:'Bodies you can apply to serve on.'},
-    {cat:'Meetings', title:'Council Agenda, Minutes & Video', url:'https://www.morganhill.ca.gov/1343/Council-Agenda-Minutes-Video', note:'Agendas, packets, minutes, and recordings.'},
-  ],
-  mountainview: [
-    {cat:'Development Projects', title:'Active Development Projects', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/active-projects', note:'Official city index and status report for active development projects.'},
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.mountainview.gov/our-city/departments/community-development/planning', note:'Official planning hub for development review, regulations, projects, and participation.'},
-    {cat:'Planning Hub', title:'Development Review Process', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/development-review-process', note:'Explains Mountain View development review and public decision processes.'},
-    {cat:'Permits', title:'Development Permits Portal', url:'https://developmentpermits.mountainview.gov/', note:'Official permitting portal.'},
-    {cat:'Permits', title:'Planning Permit Applications', url:'https://developmentpermits.mountainview.gov/about-permits/apply-for-permit/planning-permit', note:'Planning permit application requirements and process.'},
-    {cat:'Permits', title:'Permit Center', url:'https://developmentpermits.mountainview.gov/about-permits/permit-center', note:'Permit center information and services.'},
-    {cat:'Zoning', title:'Zoning and Interactive Map', url:'https://developmentpermits.mountainview.gov/about-permits/zoning', note:'Zoning information and mapping.'},
-    {cat:'Land Use', title:'Precise Plans', url:'https://developmentpermits.mountainview.gov/about-permits/zoning/precise-plans', note:'Official precise-plan documents for special planning areas.'},
-    {cat:'Land Use', title:'2030 General Plan', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/regulations/general-plan', note:'Citywide long-range land-use policy and General Plan materials.'},
-    {cat:'Housing', title:'2023-2031 Housing Element', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/regulations/housing-element', note:'Housing policy, sites, programs, and Housing Element materials.'},
-    {cat:'Environmental', title:'CEQA / NEPA Environmental Postings', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/active-projects/ceqa-postings', note:'Environmental notices and review documents.'},
-    {cat:'Transportation', title:'Transportation Analysis / VMT / MTA', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/regulations/transportation-analysis-vmt-mta', note:'Transportation-analysis and VMT requirements for development.'},
-    {cat:'Transportation', title:'Active Transportation Plan', url:'https://collaborate.mountainview.gov/atp', note:'Walking, bicycling, and active transportation planning.'},
-    {cat:'Transportation', title:'City Project Highlights', url:'https://www.mountainview.gov/our-city/departments/public-works/city-projects-bids/city-project-highlights', note:'Public works, transportation, utilities, parks, and facility projects.'},
-    {cat:'Meetings', title:'Mountain View Legistar', url:'https://mountainview.legistar.com/', note:'City Council and public-meeting agendas, staff reports, and actions.'},
-    {cat:'Development Projects', title:'Builder\'s Remedy Projects', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/development-projects/builder-s-remedy-projects', note:'Official Builder\'s Remedy project information.'},
-  ],
-  sunnyvale: [
-    {cat:'Development Projects', title:'Projects in Sunnyvale', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale', note:'Official hub for development, transportation, and long-range projects.'},
-    {cat:'Development Projects', title:'Development Reports', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/development-reports', note:'Development activity reports, project data, and related resources.'},
-    {cat:'Development Projects', title:'Development Projects', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/development-projects', note:'Official development-project index.'},
-    {cat:'Planning Hub', title:'Planning and Building', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building', note:'Planning, development, building, and permit hub.'},
-    {cat:'Permits', title:'Planning & Building Permit Center', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/permit-center', note:'Official planning and building permit information.'},
-    {cat:'GIS', title:'Maps & GIS', url:'https://www.sunnyvale.ca.gov/city-services/online-services/maps-and-gis', note:'Official GIS tools including development, land use, zoning, housing, transportation, and other maps.'},
-    {cat:'Land Use', title:'General Plan', url:'https://www.sunnyvale.ca.gov/your-government/codes-and-policies/general-plan', note:'Citywide long-range policy and land-use framework.'},
-    {cat:'Land Use', title:'Specific Plans', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/permit-center/specific-plans', note:'Specific plans for major planning areas.'},
-    {cat:'Planning Hub', title:'Long-Range Planning Initiatives', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/long-range-planning-initiatives', note:'Major long-range planning initiatives and plan updates.'},
-    {cat:'Housing', title:'Housing Element', url:'https://www.sunnyvale.ca.gov/homes-streets-and-property/housing/housing-element', note:'Housing needs, sites, policies, and implementation.'},
-    {cat:'Transportation', title:'Transportation & Traffic Safety', url:'https://www.sunnyvale.ca.gov/homes-streets-and-property/transportation-and-traffic-safety', note:'Transportation planning, active transportation, traffic safety, Vision Zero, and roadway programs.'},
-    {cat:'Transportation', title:'Public Works', url:'https://www.sunnyvale.ca.gov/your-government/departments/public-works', note:'Transportation, infrastructure, engineering, and public works programs.'},
-    {cat:'Meetings', title:'Current Planning Public Hearings', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/current-public-hearings', note:'Current planning hearings and opportunities for public participation.'},
-    {cat:'Environmental', title:'CEQA Environmental Notices', url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/ceqa-environmental-notices', note:'Official environmental-review notices and documents.'},
-    {cat:'Meetings', title:'Documents Portal', url:'https://www.sunnyvale.ca.gov/your-government/city-clerk/documents-portal', note:'City records, agendas, minutes, and documents.'},
-    {cat:'Land Use', title:'Downtown Specific Plan Amendment', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/long-range-planning-initiatives/downtown-specific-plan-amendment', note:'Official downtown planning initiative.'},
-    {cat:'Land Use', title:'Peery Park Specific Plan Amendment', url:'https://www.sunnyvale.ca.gov/business-and-development/projects-in-sunnyvale/long-range-planning-initiatives/peery-park-specific-plan-amendment', note:'Official Peery Park planning initiative.'},
-  ],
-  cupertino: [
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.cupertino.gov/planning', note:'Official planning hub.'},
-    {cat:'Development Projects', title:'Major Projects', url:'https://www.cupertino.gov/Your-City/Departments/Community-Development/Planning/Major-Projects', note:'Official index of major development projects.'},
-    {cat:'Development Projects', title:'All City Projects', url:'https://www.cupertino.gov/Projects', note:'Citywide project index.'},
-    {cat:'Housing', title:'Major Residential Projects', url:'https://www.cupertino.gov/Your-City/Departments/Community-Development/Planning/Major-Residential-Projects', note:'Official residential development index.'},
-    {cat:'Permits', title:'AgencyCounter', url:'https://cupertino.agencycounter.com/', note:'Development and permit activity viewer.'},
-    {cat:'Transportation', title:'Capital Improvement Program & Projects', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Capital-Improvement-Programs-Projects', note:'Capital projects, infrastructure, facilities, parks, and CIP information.'},
-    {cat:'Transportation', title:'Transportation & Mobility', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility', note:'Transportation and mobility hub.'},
-    {cat:'Transportation', title:'Transportation Projects', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Projects', note:'Official transportation-project index.'},
-    {cat:'Transportation', title:'Transportation Plans & Studies', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Transportation-Plans-Studies', note:'Transportation plans, studies, and policy documents.'},
-    {cat:'Transportation', title:'Active Transportation Plan', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Transportation-Plans-Studies/Active-Transportation-Plan', note:'Walking and bicycling plan.'},
-    {cat:'Transportation', title:'Regional Transportation Projects', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Projects/Regional-Transportation-Projects', note:'Regional projects affecting Cupertino.'},
-    {cat:'Transportation', title:'Transportation Guide for Developers / VMT', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Developers', note:'Developer transportation requirements and VMT guidance.'},
-    {cat:'Transportation', title:'Local Roadway Safety Plan', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Transportation-Plans-Studies/Local-Roadway-Safety-Plan', note:'Roadway safety analysis and recommendations.'},
-    {cat:'Transportation', title:'Stevens Creek Boulevard Corridor Vision Study', url:'https://www.cupertino.gov/Your-City/Departments/Public-Works/Transportation-Mobility/Transportation-Plans-Studies/Stevens-Creek-Boulevard-Corridor-Vision-Study', note:'Corridor planning and transportation vision.'},
-  ],
-  santaclara: [
-    {cat:'Development Projects', title:'Development Activity', url:'https://www.santaclaraca.gov/our-city/departments-a-f/community-development/planning-division/development-activity', note:'Official development activity page, including the city GIS story map.'},
-    {cat:'Development Projects', title:'Projects Listing', url:'https://www.santaclaraca.gov/business-development/development-projects/projects-listing', note:'Full searchable list of current development projects.'},
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.santaclaraca.gov/our-city/departments-a-f/community-development/planning-division', note:'Official planning hub for development review and regulations.'},
-    {cat:'Meetings', title:'Boards and Commissions', url:'https://www.santaclaraca.gov/our-city/government/boards-commissions', note:'Every city board and commission, with the interest form to apply.'},
-    {cat:'Meetings', title:'Santa Clara Legistar', url:'https://santaclara.legistar.com/Calendar.aspx', note:'Council and Planning Commission agendas, staff reports, and actions.'},
-    {cat:'Meetings', title:'Planning Commission', url:'https://www.santaclaraca.gov/our-city/government/boards-commissions/planning-commission', note:'First decision point on land use; seven Council-appointed commissioners.'},
-  ],
-  paloalto: [
-    {cat:'Planning Hub', title:'Planning & Development Services', url:'https://www.paloalto.gov/Departments/Planning-Development-Services', note:'Department hub for development review, permits, and long-range planning.'},
-    {cat:'Development Projects', title:'Current Planning', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning', note:'Applications under active review and their status.'},
-    {cat:'Permits', title:'Development Services', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Development-Services', note:'Permit intake, plan check, and inspection.'},
-    {cat:'Housing', title:'Housing Policies & Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects', note:'Housing Element, affordable housing programs, and pipeline.'},
-    {cat:'Housing', title:'Affordable Housing', url:'https://www.paloalto.gov/City-Hall/Housing/Affordable-Housing', note:'Below-market-rate programs and eligibility.'},
-    {cat:'Housing', title:'Accessory Dwelling Units', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Accessory-Dwelling-Units', note:'ADU rules, sizes, and streamlined approval paths.'},
-    {cat:'Land Use', title:'Area Plans and Studies', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Area-Plans-and-Studies', note:'Coordinated area plans and special planning studies.'},
-    {cat:'Boards', title:'Planning & Transportation Commission', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Planning-and-Transportation-Commission-PTC', note:'Reviews major projects and advises Council on land use.'},
-    {cat:'Boards', title:'Architectural Review Board', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Architectural-Review-Board-ARB', note:'Reviews building design for larger projects.'},
-    {cat:'Meetings', title:'Council Agendas & Minutes', url:'https://www.paloalto.gov/City-Hall/City-Council/Council-Agendas-Minutes', note:'Agendas, packets, and minutes for City Council.'},
-    {cat:'Transportation', title:'Transportation Projects', url:'https://www.paloalto.gov/Departments/Transportation/Transportation-Projects', note:'Street, bike, rail-crossing, and safety projects.'},
-  ],
-  westsanjose: [
-    {cat:'Planning Hub', title:'Planning, Building & Code Enforcement', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement', note:'The department that reviews and approves development citywide.'},
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division', note:'Entitlements, zoning, and general plan administration.'},
-    {cat:'Permits', title:'Development Services Permit Center', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/development-services-permit-center', note:'Where permit applications are filed and tracked.'},
-    {cat:'Meetings', title:'Commissions and Hearings', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/commissions-hearings-and-developers-roundtable', note:'Planning Commission, Director’s Hearings, and the Developers Roundtable.'},
-    {cat:'Housing', title:'Housing Department', url:'https://www.sanjoseca.gov/your-government/departments-offices/housing', note:'Affordable housing funding, rent stabilization, and homelessness response.'},
-    {cat:'Zoning', title:'Zoning Code (Municipal Code Title 20)', url:'https://www.sanjoseca.gov/business/check-zoning', note:'Look up what a parcel is zoned for.'},
-    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.sanjoseca.gov/your-government/agendas-minutes', note:'City Council and committee agendas and minutes.'},
-  ],
-  gilroy: [
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.cityofgilroy.org/193/Planning-Division', note:'Current and long-range planning for the city.'},
-    {cat:'Development Projects', title:'Development Activity Projects', url:'https://www.cityofgilroy.org/298/Development-Activity-Projects', note:'The city’s own index of active development applications.'},
-    {cat:'Planning Hub', title:'Community Development Department', url:'https://www.cityofgilroy.org/167/Community-Development', note:'Planning, building, and code enforcement.'},
-    {cat:'Permits', title:'Development Services', url:'https://www.cityofgilroy.org/212/Development-Services', note:'Permit intake and development review.'},
-    {cat:'Permits', title:'Entitlement Roadmap', url:'https://www.cityofgilroy.org/1064/Entitlement-Roadmap', note:'Step-by-step guide to how an application moves through the city.'},
-    {cat:'Land Use', title:'2040 General Plan', url:'https://www.cityofgilroy.org/274/2040-General-Plan', note:'Long-range land use and policy framework.'},
-    {cat:'GIS', title:'General Plan Map', url:'https://www.cityofgilroy.org/275/General-Plan-Map', note:'Mapped land use designations citywide.'},
-    {cat:'Housing', title:'Housing Element', url:'https://www.cityofgilroy.org/290/Housing-Element', note:'State-required housing plan and site inventory.'},
-    {cat:'Housing', title:'By-Right Housing Element Sites', url:'https://www.cityofgilroy.org/1016/By-Right-Housing-Element-Sites', note:'Sites where qualifying housing can be approved without discretionary review.'},
-    {cat:'Housing', title:'Affordable Housing Policy', url:'https://www.cityofgilroy.org/1000/Affordable-Housing-Policy', note:'Inclusionary requirements and affordable housing rules.'},
-    {cat:'Housing', title:'Housing Legislation', url:'https://www.cityofgilroy.org/1056/Housing-Legislation', note:'How state housing laws apply in Gilroy.'},
-    {cat:'Land Use', title:'Long Range Planning Projects', url:'https://www.cityofgilroy.org/1098/Long-Range-Planning-Projects', note:'Specific plans and policy updates in progress.'},
-    {cat:'Zoning', title:'Zoning Code Update', url:'https://www.cityofgilroy.org/1004/Zoning-Code-Update', note:'The in-progress rewrite of the city’s zoning code.'},
-    {cat:'Permits', title:'Development Impact Fees', url:'https://www.cityofgilroy.org/235/Development-Impact-Fees', note:'What a project pays toward roads, parks, and facilities.'},
-    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.cityofgilroy.org/1151/Agendas-Minutes', note:'Council, Planning Commission, and committee agendas.'},
-    {cat:'Boards', title:'Boards, Commissions & Committees', url:'https://www.cityofgilroy.org/1150/Boards-Commissions-Committees', note:'Bodies you can apply to serve on.'},
-    {cat:'Environmental', title:'Environmental Programs', url:'https://www.cityofgilroy.org/302/Environmental-Programs', note:'Environmental review and sustainability programs.'},
-  ],
-  milpitas: [
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.milpitas.gov/1124/Planning', note:'Current planning, zoning, and development review.'},
-    {cat:'Development Projects', title:'Planning Project Pipeline (GIS)', url:'https://milpitas-gis-milpitas.hub.arcgis.com/apps/24fe9a09abcc4639913968f21309e510/explore', note:'Live map of every project in the city’s review pipeline.'},
-    {cat:'Development Projects', title:'Development', url:'https://www.milpitas.gov/1139/Development', note:'Development activity and major project pages.'},
-    {cat:'Housing', title:'Office of Housing', url:'https://www.milpitas.gov/1289/Office-of-Housing', note:'Affordable housing programs and tenant resources.'},
-    {cat:'Housing', title:'Housing Element', url:'https://www.milpitas.gov/487/Housing-Element', note:'State-required housing plan and site inventory.'},
-    {cat:'Housing', title:'Housing Opportunity Districts (HOD)', url:'https://www.milpitas.gov/1119/Housing-Opportunity-Districts-HOD', note:'Districts rezoned to accept housing at higher densities.'},
-    {cat:'Land Use', title:'Milpitas 2040 General Plan', url:'https://www.milpitas.gov/370/Milpitas-2040-General-Plan', note:'Long-range land use and policy framework.'},
-    {cat:'Environmental', title:'Environmental Documents (CEQA)', url:'https://www.milpitas.gov/379/Environmental-Documents-CEQA', note:'Environmental review notices and studies.'},
-    {cat:'GIS', title:'Geographic Information System (GIS)', url:'https://www.milpitas.gov/289/Geographic-Information-System-GIS', note:'City mapping tools and data.'},
-    {cat:'Zoning', title:'Comprehensive Zoning Update', url:'https://www.milpitas.gov/1175/Comprehensive-Zoning-Update', note:'The in-progress zoning code rewrite.'},
-    {cat:'Permits', title:'Development Review Handbook', url:'https://www.milpitas.gov/1193/Development-Review-Handbook', note:'How an application is reviewed, start to finish.'},
-    {cat:'Permits', title:'One-Stop Permit and License Center', url:'https://www.milpitas.gov/1096/One-Stop-Permit-and-License-Center', note:'Permit intake for building and planning.'},
-    {cat:'Permits', title:'Land Development', url:'https://www.milpitas.gov/1025/Land-Development', note:'Engineering review, subdivisions, and encroachments.'},
-    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.milpitas.gov/1017/Agendas-Minutes', note:'Council and commission agendas and minutes.'},
-    {cat:'Boards', title:'Commissions', url:'https://www.milpitas.gov/1018/Commissions', note:'Bodies you can apply to serve on.'},
-  ],
-  losgatos: [
-    {cat:'Development Projects', title:'Development Projects', url:'https://www.losgatosca.gov/2201/Development-Projects', note:'The town’s index of pending and approved projects.'},
-    {cat:'Boards', title:'Planning Commission', url:'https://www.losgatosca.gov/189/Planning-Commission', note:'Decides most land use applications in town.'},
-    {cat:'Boards', title:'Development Review Committee', url:'https://www.losgatosca.gov/188/Development-Review-Committee', note:'Staff-level review body for smaller applications.'},
-    {cat:'Planning Hub', title:'Planning Documents', url:'https://www.losgatosca.gov/198/Planning-Documents', note:'Applications, handouts, and submittal requirements.'},
-    {cat:'Housing', title:'General Plan — Housing Element', url:'https://www.losgatosca.gov/1735/General-Plan---Housing-Element', note:'State-required housing plan and site inventory.'},
-    {cat:'Land Use', title:'North 40 Specific Plan Area', url:'https://www.losgatosca.gov/1729/North-40-Specific-Plan-Area', note:'The town’s largest planned development area.'},
-    {cat:'GIS', title:'GIS / Mapping', url:'https://www.losgatosca.gov/1513/GIS', note:'Town mapping tools and parcel data.'},
-    {cat:'Permits', title:'Monthly Issued Permits', url:'https://www.losgatosca.gov/1014/Monthly-Issued-Permits', note:'Running list of building permits issued each month.'},
-    {cat:'Permits', title:'Approved Conditional Use Permits', url:'https://www.losgatosca.gov/2014/Approved-Conditional-Use-Permits', note:'CUPs granted, useful for tracking commercial changes.'},
-    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.losgatosca.gov/13/Agendas-Minutes', note:'Town Council and commission agendas.'},
-    {cat:'Boards', title:'Boards, Commissions & Committees', url:'https://www.losgatosca.gov/12/Boards-Commissions-Committees', note:'Bodies you can apply to serve on.'},
-  ],
-  losaltos: [
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.losaltosca.gov/217/Planning', note:'Current and long-range planning for the city.'},
-    {cat:'Development Projects', title:'Development Project Lists', url:'https://www.losaltosca.gov/222/Development-Project-Lists', note:'The city’s own list of projects under review.'},
-    {cat:'Permits', title:'Development Services', url:'https://www.losaltosca.gov/192/Development-Services', note:'Permit intake and development review.'},
-    {cat:'Housing', title:'Housing Element', url:'https://www.losaltosca.gov/214/Housing-Element', note:'State-required housing plan and site inventory.'},
-    {cat:'Housing', title:'Affordable Housing', url:'https://www.losaltosca.gov/212/Affordable-Housing', note:'Below-market-rate programs and requirements.'},
-    {cat:'Housing', title:'SB 9 Projects', url:'https://www.losaltosca.gov/229/SB-9-Projects', note:'Lot splits and duplexes filed under state SB 9.'},
-    {cat:'Land Use', title:'Adopted Plans', url:'https://www.losaltosca.gov/218/Adopted-Plans', note:'General Plan and adopted specific plans.'},
-    {cat:'Environmental', title:'Environmental Documents', url:'https://www.losaltosca.gov/224/Environmental-Documents', note:'CEQA notices and environmental studies.'},
-    {cat:'GIS', title:'Public GIS Viewer', url:'https://www.losaltosca.gov/228/Public-GIS-Viewer', note:'Parcel, zoning, and land use mapping.'},
-    {cat:'Permits', title:'Permit Submittal Process', url:'https://www.losaltosca.gov/198/Permit-Submittal-Process', note:'What to file and in what order.'},
-    {cat:'Permits', title:'Monthly Issued Permits', url:'https://www.losaltosca.gov/197/Monthly-Issued-Permits', note:'Running list of permits issued each month.'},
-    {cat:'Transportation', title:'Capital Improvement Plan', url:'https://www.losaltosca.gov/247/Capital-Improvement-Plan', note:'Funded street, park, and facility projects.'},
-    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.losaltosca.gov/129/Agendas-Minutes', note:'Council and commission agendas and minutes.'},
-  ],
-  campbell: [
-    {cat:'Planning Hub', title:'Community Development Department', url:'https://www.campbellca.gov/151/Community-Development', note:'Planning, building, and housing for the city.'},
-    {cat:'Development Projects', title:'Planning Applications', url:'https://www.campbellca.gov/1051/Planning-Applications', note:'Applications currently filed and under review.'},
-    {cat:'Permits', title:'Permit Center', url:'https://www.campbellca.gov/1050/Permits-Center', note:'Permit intake, plan check, and inspection.'},
-    {cat:'Land Use', title:'General Plan', url:'https://www.campbellca.gov/1083/General-Plan', note:'Long-range land use and policy framework.'},
-    {cat:'Housing', title:'Housing Element', url:'https://www.campbellca.gov/1234/Housing-Element', note:'State-required housing plan and site inventory.'},
-    {cat:'Land Use', title:'Area Plans', url:'https://www.campbellca.gov/1058/Area-Plans', note:'Plans governing specific parts of the city.'},
-    {cat:'Land Use', title:'Hamilton Avenue Plan', url:'https://www.campbellca.gov/1460/Hamilton-Avenue-Plan', note:'Corridor plan for one of Campbell’s main streets.'},
-    {cat:'Zoning', title:'Zoning and Land Use', url:'https://www.campbellca.gov/166/Zoning-and-Land-Use', note:'Zoning districts and what they allow.'},
-    {cat:'GIS', title:'City Maps Gallery', url:'https://www.campbellca.gov/1424/City-Maps-Gallery', note:'Zoning, land use, and district maps.'},
-    {cat:'Transportation', title:'Multimodal Transportation Plan', url:'https://www.campbellca.gov/1490/Multimodal-Transportation-Plan', note:'Walking, biking, transit, and street planning.'},
-    {cat:'Environmental', title:'Climate Action and Adaptation Plan', url:'https://www.campbellca.gov/1372/Climate-Action-and-Adaptation-Plan', note:'Emissions targets and adaptation measures.'},
-    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.campbellca.gov/AgendaCenter', note:'Council and Planning Commission agendas.'},
-  ],
-  saratoga: [
-    {cat:'Planning Hub', title:'Community Development Department', url:'https://www.saratoga.ca.us/150/Community-Development', note:'Planning, building, and code enforcement.'},
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.saratoga.ca.us/152/Planning-Division', note:'Current planning and application review.'},
-    {cat:'Development Projects', title:'Residential Development', url:'https://www.saratoga.ca.us/163/Residential-Development', note:'Residential applications and requirements.'},
-    {cat:'Permits', title:'Planning Application Materials', url:'https://www.saratoga.ca.us/168/Planning-Application-Materials', note:'Forms, checklists, and submittal requirements.'},
-    {cat:'Permits', title:'Building Permit Activity Reports', url:'https://www.saratoga.ca.us/153/Building-Permit-Activity-Reports', note:'Periodic reports on permits issued.'},
-    {cat:'Housing', title:'2023-2031 Housing Element', url:'https://www.saratoga.ca.us/499/2023-2031-Housing-Element', note:'State-required housing plan and site inventory.'},
-    {cat:'Land Use', title:'2040 General Plan', url:'https://www.saratoga.ca.us/656/2040-General-Plan', note:'Long-range land use and policy framework.'},
-    {cat:'GIS', title:'Interactive GIS Map', url:'https://www.saratoga.ca.us/459/Interactive-GIS-Map', note:'Parcel, zoning, and land use mapping.'},
-    {cat:'GIS', title:'City Maps', url:'https://www.saratoga.ca.us/265/City-Maps', note:'Downloadable city map library.'},
-    {cat:'Boards', title:'Planning Commission', url:'https://www.saratoga.ca.us/357/Planning-Commission', note:'Decides most land use applications in the city.'},
-    {cat:'Environmental', title:'Environmental Programs', url:'https://www.saratoga.ca.us/487/Environmental-Programs', note:'Environmental review and sustainability programs.'},
-    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.saratoga.ca.us/403/Agendas-Minutes', note:'Council and commission agendas and minutes.'},
-  ],
-};
 
 const RES_CAT_COLOR = {
   'Official City Tool': '#3E4F24',

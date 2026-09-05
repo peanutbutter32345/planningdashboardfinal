@@ -317,7 +317,7 @@ export const BOARDS = [
     "name": "Planning Commission",
     "when": "Check current agenda - schedule not independently confirmed here",
     "body": "First decision point on land use applications.",
-    "link": "https://www.losgatosca.gov/89/Planning-Commission",
+    "link": "https://www.losgatosca.gov/189/Planning-Commission",
     "city": "losgatos",
     "boardType": "decider",
     "id": "losgatos:Planning Commission"
@@ -326,7 +326,7 @@ export const BOARDS = [
     "name": "Town Council",
     "when": "Check current agenda - schedule not independently confirmed here",
     "body": "Final say on appeals and on the SB 330 applications tracked here.",
-    "link": "https://www.losgatosca.gov/95/Town-Council",
+    "link": "https://www.losgatosca.gov/11/Town-Council",
     "city": "losgatos",
     "boardType": "decider",
     "id": "losgatos:Town Council"
@@ -336,7 +336,7 @@ export const BOARDS = [
     "when": "See the department page",
     "body": "Runs planning review and maintains the SB 330 tracker these records come from.",
     "cat": "Housing",
-    "link": "https://www.losgatosca.gov/74/Community-Development",
+    "link": "https://www.losgatosca.gov/46/Community-Development",
     "city": "losgatos",
     "boardType": "join",
     "id": "losgatos:Community Development Department"
@@ -345,7 +345,7 @@ export const BOARDS = [
     "name": "Planning Commission",
     "when": "Check current agenda - schedule not independently confirmed here",
     "body": "Reviews development applications and design.",
-    "link": "https://www.campbellca.gov/135/Planning-Commission",
+    "link": "https://www.campbellca.gov/180/Planning-Commission",
     "city": "campbell",
     "boardType": "decider",
     "id": "campbell:Planning Commission"
@@ -354,7 +354,7 @@ export const BOARDS = [
     "name": "City Council",
     "when": "Check current agenda - schedule not independently confirmed here",
     "body": "Final say on appeals, budgets, and capital projects.",
-    "link": "https://www.campbellca.gov/122/City-Council",
+    "link": "https://www.campbellca.gov/189/City-Council",
     "city": "campbell",
     "boardType": "decider",
     "id": "campbell:City Council"
@@ -373,7 +373,7 @@ export const BOARDS = [
     "name": "Planning and Transportation Commission",
     "when": "Check current agenda - schedule not independently confirmed here",
     "body": "Reviews development applications, zoning and transportation policy.",
-    "link": "https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Planning-and-Transportation-Commission",
+    "link": "https://www.paloalto.gov/Departments/Planning-Development-Services/Planning-and-Transportation-Commission-PTC",
     "city": "paloalto",
     "boardType": "decider",
     "id": "paloalto:Planning and Transportation Commission"
@@ -391,7 +391,7 @@ export const BOARDS = [
     "name": "Architectural Review Board",
     "when": "Check current agenda - schedule not independently confirmed here",
     "body": "Reviews building design; many Palo Alto projects turn on its findings.",
-    "link": "https://www.paloalto.gov/Departments/City-Clerk/Boards-and-Commissions/Architectural-Review-Board",
+    "link": "https://www.paloalto.gov/Departments/Planning-Development-Services/Architectural-Review-Board-ARB",
     "city": "paloalto",
     "boardType": "decider",
     "id": "paloalto:Architectural Review Board"
@@ -420,7 +420,7 @@ export const BOARDS = [
     "name": "Planning Commission",
     "when": "Check current agenda - schedule not independently confirmed here",
     "body": "First decision point on land use applications.",
-    "link": "https://www.cityofgilroy.org/271/Planning-Commission",
+    "link": "https://www.cityofgilroy.org/300/Planning-Commission",
     "city": "gilroy",
     "boardType": "decider",
     "id": "gilroy:Planning Commission"
@@ -429,7 +429,7 @@ export const BOARDS = [
     "name": "City Council",
     "when": "Check current agenda - schedule not independently confirmed here",
     "body": "Final say on appeals, rezonings and development agreements.",
-    "link": "https://www.cityofgilroy.org/163/City-Council",
+    "link": "https://www.cityofgilroy.org/341/City-Council",
     "city": "gilroy",
     "boardType": "decider",
     "id": "gilroy:City Council"
