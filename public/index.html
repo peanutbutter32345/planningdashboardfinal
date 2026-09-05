@@ -554,6 +554,15 @@
   .acct-navbtn:hover{background:#EDEFE7; color:var(--ink);}
   .acct-navbtn.active{background:#EDEFE7; border-left-color:var(--ink); color:var(--ink);}
   @media (max-width:820px){ .acct-navbtn.active{border-left-color:transparent; border-bottom-color:var(--ink);} }
+  /* Statistics cards can be starred, so the wrapper carries the button. */
+  .metric-wrap{position:relative;}
+  .metric-wrap > .star-btn{position:absolute; top:8px; right:8px; z-index:2;}
+  /* The email tab is the one people are looking for. */
+  .acct-navbtn-feature{background:#EEF2E6; border-left-color:var(--ink); font-weight:800; line-height:1.35;}
+  .acct-navbtn-feature:hover{background:#E6EBDC;}
+  .acct-navbtn-feature.active{background:var(--ink); color:#fff;}
+  .acct-navbtn-feature.active .acct-badge{color:#D6DECB;}
+  .acct-nav-star{margin-right:6px;}
   .acct-badge{font-family:var(--mono); font-size:10.5px; color:var(--text-soft); font-weight:400;}
   .acct-navbtn.active .acct-badge{color:var(--ink);}
   .acct-logout{margin-top:14px; width:100%; font-size:12px; padding:7px 10px;}
@@ -1490,10 +1499,8 @@
           <nav class="acct-nav" role="tablist">
             <button type="button" class="acct-navbtn active" data-acct="overview" role="tab">Overview<span class="acct-badge" id="acctBadgeOverview"></span></button>
             <button type="button" class="acct-navbtn" data-acct="boards" role="tab">Boards<span class="acct-badge" id="acctBadgeBoards"></span></button>
-            <button type="button" class="acct-navbtn" data-acct="news" role="tab">News<span class="acct-badge" id="acctBadgeNews"></span></button>
-            <button type="button" class="acct-navbtn" data-acct="stats" role="tab">Statistics</button>
-            <button type="button" class="acct-navbtn" data-acct="plan" role="tab">Get Involved</button>
-            <button type="button" class="acct-navbtn" data-acct="email" role="tab">Email briefing<span class="acct-badge" id="acctBadgeEmail"></span></button>
+            <button type="button" class="acct-navbtn" data-acct="plan" role="tab">Draft a plan</button>
+            <button type="button" class="acct-navbtn acct-navbtn-feature" data-acct="email" role="tab"><span class="acct-nav-star">&#9993;</span>Stay Updated With Email Summaries<span class="acct-badge" id="acctBadgeEmail"></span></button>
             <button type="button" class="acct-navbtn" data-acct="reminders" role="tab">Reminders<span class="acct-badge" id="acctBadgeReminders"></span></button>
             <button type="button" class="acct-navbtn" data-acct="resources" role="tab">Saved resources<span class="acct-badge" id="acctBadgeResources"></span></button>
             <button type="button" class="acct-navbtn" data-acct="chat" role="tab">Chat history<span class="acct-badge" id="acctBadgeChat"></span></button>
@@ -1526,21 +1533,7 @@
             <div class="topic-links" id="acctBoardLinks"></div>
           </section>
 
-          <section class="acct-panel" data-panel="news" hidden>
-            <h2>News</h2>
-            <p class="section-note">Coverage for your city first, then the rest of the South Bay.</p>
-            <div class="stat-toolbar" id="acctNewsFilters"><span class="lab">Topic</span></div>
-            <div class="news-grid" id="acctNewsGrid"></div>
-            <div class="acct-sec-h">Elsewhere in the South Bay</div>
-            <div class="news-grid" id="acctNewsRegion"></div>
-          </section>
 
-          <section class="acct-panel" data-panel="stats" hidden>
-            <h2>Statistics</h2>
-            <p class="section-note">How your city compares with the rest of the South Bay, and how it is tracking against its state housing target.</p>
-            <div class="acct-tiles" id="acctStatTiles"></div>
-            <div id="acctStatRhna"></div>
-          </section>
 
           <section class="acct-panel" data-panel="plan" hidden>
             <h2>Your get-involved plan</h2>
@@ -1579,7 +1572,7 @@
           </section>
 
           <section class="acct-panel" data-panel="email" hidden>
-            <h2>Email briefing</h2>
+            <h2>Stay updated with email summaries</h2>
             <div class="prefs-panel">
               <p class="section-note">A plain-English recap of what is being built, what changed, and which meetings decide it. Quiet weeks still send - the point is to keep you current, not only to alert you.</p>
               <label for="prefsEmail" class="onboard-label">Email address</label>
@@ -6397,8 +6390,6 @@ document.querySelectorAll('.acct-navbtn').forEach(b=>{
 function renderAcctPanel(name){
   if(name==='overview') renderAcctOverview();
   else if(name==='boards') renderAcctBoards();
-  else if(name==='news') renderAcctNews();
-  else if(name==='stats') renderAcctStats();
   else if(name==='plan') renderAcctPlan();
   else if(name==='reminders') renderAcctReminders();
   else if(name==='resources') renderAcctResources();
@@ -6411,7 +6402,7 @@ function acctTile(k, l, s){
 }
 
 function starCounts(){
-  const c = {project:0, news:0, board:0, resource:0};
+  const c = {project:0, news:0, board:0, resource:0, statistic:0};
   starredMap.forEach((_v, key)=>{ const t = String(key).split(':')[0]; if(c[t]!==undefined) c[t]++; });
   return c;
 }
@@ -6419,13 +6410,12 @@ function starCounts(){
 function renderAcctSideCounts(){
   const city = acctCity();
   const s = starCounts();
-  const total = s.project+s.news+s.board+s.resource;
+  const total = s.project+s.news+s.board+s.resource+s.statistic;
   const set = (id,v)=>{ const el=document.getElementById(id); if(el) el.textContent = v || ''; };
   set('acctBadgeSaved', total || '');
   set('acctBadgeResources', s.resource || '');
   set('acctBadgeReminders', (remItems && remItems.length) || '');
   set('acctBadgeBoards', (CITIES[city].deciders.length + CITIES[city].join.length) || '');
-  set('acctBadgeNews', NEWS_ARTICLES.filter(a=>a.city===city).length || '');
   const freq = (document.getElementById('prefsFrequency')||{}).value;
   set('acctBadgeEmail', freq && freq!=='off' ? 'on' : 'off');
   set('acctBadgeOverview', '');
@@ -6444,7 +6434,7 @@ async function renderAcctOverview(){
   const r = RHNA[city];
 
   const note = document.getElementById('acctOverviewNote');
-  if(note) note.textContent = 'Everything below is for ' + c.label + '. Change your city under Email briefing.';
+  if(note) note.textContent = 'Everything below is for ' + c.label + '. Change your city under Stay updated with email summaries.';
 
   const mast = document.getElementById('acctMasthead');
   if(mast){
@@ -6988,18 +6978,28 @@ async function renderAccountPage(){
       return;
     }
     renderAcctSideCounts();
-    const groups = {project:[], news:[], board:[], resource:[]};
-    data.stars.forEach(s=>{ if(groups[s.item_type]) groups[s.item_type].push(s.item_data || {}); });
-    const groupLabels = {project:'Starred Projects', news:'Starred News', board:'Starred Boards & Meetings', resource:'Starred Resources'};
+    // Sorted into the four kinds of thing, in the order they are usually wanted.
+    const groups = {news:[], project:[], statistic:[], board:[], resource:[]};
+    data.stars.forEach(st=>{
+      const t = groups[st.item_type] ? st.item_type : 'resource';
+      groups[t].push(Object.assign({__type:st.item_type, __id:st.item_id}, st.item_data || {}));
+    });
+    const groupLabels = {news:'News', project:'Developments & projects', statistic:'Statistics',
+                         board:'Boards & meetings', resource:'Other saved resources'};
     container.innerHTML = Object.entries(groups).filter(([k,v])=>v.length).map(([type,items])=>{
       const cards = items.map(it=>{
         const title = it.title || it.name || it.addr || 'Untitled';
         const desc = it.desc || it.snippet || it.body || '';
         const url = it.url;
-        return `<div class="res-card"><div class="res-body"><h4>${title}</h4><p>${desc}</p>${url?`<a class="res-link" href="${url}" target="_blank" rel="noopener">Open &#8594;</a>`:''}</div></div>`;
+        // A saved board gets the same two controls it has everywhere else.
+        const boardBits = (type === 'board')
+          ? boardActionsHtml((it.city || currentCity), String(it.__id||title).split(':').slice(1).join(':') || title, desc, url)
+          : '';
+        return `<div class="res-card"><div class="res-body"><h4>${title}</h4><p>${desc}</p>${url?`<a class="res-link" href="${url}" target="_blank" rel="noopener">Open &#8594;</a>`:''}${boardBits}</div></div>`;
       }).join('');
       return `<div class="topic-section-h">${groupLabels[type]} (${items.length})</div><div class="resource-grid">${cards}</div>`;
     }).join('');
+    wireBoardActions(container);
   } catch(err){
     container.innerHTML = '<div class="starred-empty">Couldn\'t load your starred items: '+err.message+'</div>';
   }
@@ -7416,13 +7416,18 @@ function statCard(metric, me){
   if(metric.id==='commute')     sub = 'Average one-way travel time to work.';
   if(metric.id==='builderRemedy') sub = 'Applications arguing local zoning does not apply.';
 
-  return '<button type="button" class="metric-card" data-metric="'+metric.id+'" aria-label="Rank cities by '+metric.label+'">'
+  const starId = me+':'+metric.id;
+  const starData = {title:metric.label+' - '+(CITIES[me]?CITIES[me].label:me),
+                    desc:metric.fmt(val)+(sub ? ' - '+String(sub).replace(/<[^>]*>/g,'') : ''),
+                    kind:'statistic'};
+  return '<div class="metric-wrap">' + starButtonHtml('statistic', starId, starData)
+    + '<button type="button" class="metric-card" data-metric="'+metric.id+'" aria-label="Rank cities by '+metric.label+'">'
     + '<span class="head">'+metric.label+'<span class="tag">'+metric.tag+'</span></span>'
     + '<span class="body">'
     + '<span class="k">'+metric.fmt(val)+'</span>'
     + (sub ? '<span class="s">'+sub+'</span>' : '')
     + rankHtml + spark
-    + '</span></button>';
+    + '</span></button></div>';
 }
 
 function statBars(metric, me){
