@@ -3130,9 +3130,14 @@ function loadGoogleMaps(){
   document.getElementById('loadGoogleBtn').textContent='Loading…';
   loadGoogleMapsWithKey(key);
 }
+// CARTO basemap key. Public by design - it travels in the tile URL that every browser fetches.
+const CARTO_KEY = 'cb1_2yfl_1_7d3d28857fa3499697a194fe';
+const CARTO_ATTRIB = '&copy; OpenStreetMap contributors &copy; CARTO';
+function cartoTileUrl(path){ return 'https://' + path + '?api_key=' + CARTO_KEY; }
+
 function initLeafletMap(){
   lMap = L.map('map', {scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat, CITIES[currentCity].center.lng], CITIES[currentCity].zoom);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {attribution:'&copy; OpenStreetMap contributors &copy; CARTO', maxZoom:19}).addTo(lMap);
+  L.tileLayer(cartoTileUrl('{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'), {attribution:CARTO_ATTRIB, maxZoom:19}).addTo(lMap);
   mapProvider='leaflet';
   document.getElementById('mapGate').style.display='none';
   document.getElementById('mapLeafletWrap').style.display='block';
@@ -3961,7 +3966,7 @@ function tileFor(lat, lng, z){
   const n = Math.pow(2, z);
   const x = Math.floor((lng + 180) / 360 * n);
   const y = Math.floor((1 - Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI) / 2 * n);
-  return 'https://a.basemaps.cartocdn.com/light_all/'+z+'/'+x+'/'+y+'@2x.png';
+  return cartoTileUrl('a.basemaps.cartocdn.com/light_all/'+z+'/'+x+'/'+y+'@2x.png');
 }
 function cityImage(city){ return (CITY_PHOTOS[city]||{}).url || null; }
 // A chart if one exists for this city, otherwise the city itself.
