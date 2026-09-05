@@ -523,8 +523,9 @@
   /* ---- Account: side rail plus panels, instead of one long scroll ---- */
   .acct-shell{display:grid; grid-template-columns:212px 1fr; gap:28px; align-items:start;}
   @media (max-width:820px){ .acct-shell{grid-template-columns:1fr; gap:18px;} }
-  .acct-rail{position:sticky; top:60px; align-self:start;}
-  @media (max-width:820px){ .acct-rail{position:static;} }
+  .acct-rail{align-self:stretch;}
+  .acct-rail-inner{position:sticky; top:14px;}
+  @media (max-width:820px){ .acct-rail-inner{position:static;} }
   .acct-who{display:flex; gap:10px; align-items:center; padding-bottom:12px; margin-bottom:12px; border-bottom:2px solid var(--ink);}
   .acct-avatar{width:38px; height:38px; flex:0 0 38px; border-radius:50%; background:var(--ink); color:#fff;
     display:flex; align-items:center; justify-content:center; font-family:'Open Sans',sans-serif;
@@ -575,7 +576,8 @@
   /* Account masthead: the reader's city, pictured, with its headline numbers. */
   .acct-masthead{position:relative; border:1px solid var(--rule); border-radius:2px; overflow:hidden;
     margin-bottom:18px; background:var(--ink); min-height:150px;}
-  .acct-mast-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5;}
+  .acct-mast-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5;
+    transform:translateZ(0); backface-visibility:hidden;}
   .acct-masthead::after{content:''; position:absolute; inset:0; background:linear-gradient(100deg,rgba(20,28,12,.88) 0%,rgba(20,28,12,.62) 55%,rgba(20,28,12,.35) 100%);}
   .acct-mast-body, .acct-mast-credit{z-index:1;}
   .acct-mast-body{position:relative; padding:20px 22px 16px;}
@@ -630,6 +632,61 @@
     transition:color .12s, border-color .12s;}
   .sub-nav-tab:hover{color:var(--ink);}
   .sub-nav-tab.active{color:var(--ink); border-bottom-color:var(--ink);}
+  /* ---- Timeline ---- */
+  .tl-shell{max-width:860px; padding-top:14px;}
+  .tl-head{border-bottom:3px solid var(--ink); padding-bottom:12px; margin-bottom:16px;}
+  .tl-head h2{font-size:24px; margin-bottom:5px;}
+  .tl-progress{margin-bottom:16px;}
+  .tl-prog-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;}
+  .tl-prog-k{font-family:'Open Sans',sans-serif; font-size:11px; font-weight:800;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft);}
+  .tl-prog-p{font-family:var(--mono); font-size:17px; font-weight:700; color:var(--ink);}
+  .tl-prog-track{background:#E4E8DC; height:7px; border-radius:2px; overflow:hidden;}
+  .tl-prog-fill{display:block; height:100%; background:var(--ink); transition:width .25s;}
+  /* The spine runs behind the dots; each node hangs off it. */
+  .tl-line{position:relative; padding-left:26px;}
+  .tl-line::before{content:''; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--rule);}
+  .tl-node{position:relative; margin-bottom:12px;}
+  .tl-dot{position:absolute; left:-26px; top:15px; width:16px; height:16px; border-radius:50%;
+    background:#fff; border:3px solid var(--rule); z-index:1;}
+  .tl-node.tl-doing .tl-dot{border-color:var(--ink); background:#fff;}
+  .tl-node.tl-done .tl-dot{border-color:var(--ink); background:var(--ink);}
+  .tl-card{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:13px 15px;}
+  .tl-node.tl-done .tl-card{background:#F7F8F3;}
+  .tl-node.tl-done h4{text-decoration:line-through; color:var(--text-soft);}
+  .tl-meta{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:4px;}
+  .tl-kind{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.06em;
+    text-transform:uppercase; color:#fff; background:var(--ink); padding:2px 6px; border-radius:2px;}
+  .tl-k-meeting{background:#3E4F24;} .tl-k-project{background:#4A5E2B;} .tl-k-board{background:#55693A;}
+  .tl-k-news{background:#5F7640;} .tl-k-step{background:#6B7F4C;}
+  .tl-city, .tl-date{font-family:var(--mono); font-size:10.5px; color:var(--text-soft);}
+  .tl-date{margin-left:auto;}
+  .tl-card h4{font-size:14.5px; color:var(--ink); line-height:1.35;}
+  .tl-sub{font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-top:3px;}
+  .tl-card p{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin-top:5px;}
+  .tl-controls{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px;}
+  .tl-status{display:flex; gap:0; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  .tl-st{background:#fff; border:none; padding:5px 10px; cursor:pointer; font-family:'Open Sans',sans-serif;
+    font-size:11px; font-weight:700; color:var(--text-soft); border-right:1px solid var(--rule);}
+  .tl-st:last-child{border-right:none;}
+  .tl-st:hover{background:#F0F2EA; color:var(--ink);}
+  .tl-st.on{background:var(--ink); color:#fff;}
+  .tl-due{font-family:'Open Sans',sans-serif; font-size:11px; font-weight:700; color:var(--text-soft);
+    display:flex; align-items:center; gap:5px;}
+  .tl-due input{border:1px solid var(--rule); border-radius:2px; padding:4px 6px;
+    font-family:var(--mono); font-size:11px; color:var(--text); background:#fff;}
+  .tl-go{margin-left:auto; background:none; border:1px solid var(--rule); border-radius:2px;
+    padding:5px 10px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11px;
+    font-weight:700; color:var(--text-soft); text-decoration:none; white-space:nowrap;}
+  .tl-go:hover{border-color:var(--ink); color:var(--ink);}
+  .tl-note{width:100%; margin-top:9px; padding:8px 10px; border:1px solid var(--rule); border-radius:2px;
+    font-family:'Open Sans',sans-serif; font-size:12.5px; line-height:1.5; color:var(--text);
+    background:#FCFDFA; resize:vertical;}
+  .tl-note:focus{outline:none; border-color:var(--ink); background:#fff;}
+  .tl-empty{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:24px;}
+  .tl-empty b{font-size:15px; color:var(--ink);}
+  .tl-empty p{font-size:13px; color:var(--text-soft); margin-top:7px; line-height:1.6;}
+  .tl-empty-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
   /* ---- Resource bank ---- */
   .about-shell{max-width:800px; padding-top:14px;}
   .about-hero{border-bottom:3px solid var(--ink); padding-bottom:14px; margin-bottom:20px;}
@@ -909,6 +966,7 @@
 <nav class="sub-nav" id="subNav" aria-label="Dashboard sections">
   <div class="wrap sub-nav-inner" role="tablist">
     <button class="sub-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Overview</button>
+    <button class="sub-nav-tab" data-screen="timeline" role="tab" aria-selected="false">Timeline</button>
     <button class="sub-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
     <button class="sub-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get Involved</button>
     <button class="sub-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
@@ -969,6 +1027,35 @@
 </header>
 
 <main id="mainContent">
+<div id="screenTimeline" class="screen" style="display:none;">
+  <div class="wrap">
+    <div class="tl-shell">
+      <div class="tl-head">
+        <div>
+          <h2>Your timeline</h2>
+          <p class="section-note">Everything you're following, in the order it happens - the projects, the meetings that decide them, the boards you could join, and the steps you set yourself. Mark things off, and keep notes where you'll find them again.</p>
+        </div>
+      </div>
+
+      <div class="tl-progress" id="tlProgress"></div>
+
+      <div class="stat-toolbar" id="tlFilters"><span class="lab">Show</span></div>
+
+      <div id="tlBody"></div>
+
+      <div class="tl-empty" id="tlEmpty" hidden>
+        <b>Your timeline is empty.</b>
+        <p>It fills from what you follow. Star a project, a board, or an article anywhere on the site - the &#9734; on any card - and it appears here with its dates and a place to keep notes.</p>
+        <p>Boards and hearings for your city are added automatically once you set one.</p>
+        <div class="tl-empty-actions">
+          <button type="button" class="btn" data-goto-screen="dashboard">Browse projects</button>
+          <button type="button" class="btn secondary" data-goto-screen="planner">Build a get-involved plan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="screenYourArea" class="screen" style="display:none;">
   <div class="wrap">
     <div class="yourarea-full">
@@ -1151,6 +1238,7 @@
 
       <div id="accountLoggedIn" class="acct-shell" style="display:none;">
         <aside class="acct-rail" aria-label="Account sections">
+         <div class="acct-rail-inner">
           <div class="acct-who">
             <div class="acct-avatar" id="acctAvatar">?</div>
             <div class="acct-whotext">
@@ -1170,6 +1258,7 @@
             <button type="button" class="acct-navbtn" data-acct="saved" role="tab">Saved<span class="acct-badge" id="acctBadgeSaved"></span></button>
           </nav>
           <button class="btn secondary acct-logout" id="logoutBtn" type="button">Log out</button>
+         </div>
         </aside>
 
         <div class="acct-main">
@@ -1356,18 +1445,23 @@
       </div>
 
       
-      <p>This is a public record of what is being built across the South Bay, and of the meetings where those decisions actually get made. It exists because that information is public but scattered: a project lives on one city page, the hearing that decides it on another, and the housing target that explains why it was filed at all on a state portal none of them link to.</p>
+      <p>This site collects what is being built across the South Bay and when the meetings that decide it take place. All of it is public information already. It is spread across thirteen city websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
+
       <h4>Where the data comes from</h4>
       <div class="bank-sources" id="bankSources"></div>
-      <p>Projects come from each city's own development records - GIS feature services, published pipelines, and posted project lists. Hearings come from cities' Legistar feeds. Housing target progress comes from the California Department of Housing and Community Development's 6th Cycle RHNA Progress Report. Home values and rents come from Zillow's public research data; commute, income, tenure and housing age come from the Census Bureau's American Community Survey. News comes from local newsrooms, linked in full to the publisher.</p>
-      <h4>What this is not</h4>
-      <p>Nothing here is generated. No project status, board schedule, or headline on this site was written by a language model, and no record is included that could not be traced to a public source. Where a city publishes nothing usable, the register for that city is left empty rather than filled in - Morgan Hill has no project list here for exactly that reason.</p>
-      <p>Statuses lag. A city that updates its pipeline quarterly will show a stale status here for up to a quarter, and a project can move between the last refresh and the moment you read this. Always confirm against the city's own page before acting - every record links to it.</p>
+      <p>Projects come from each city's development records: GIS feature services, published pipelines and posted project lists. Hearings come from city Legistar feeds. Housing target progress comes from the California Department of Housing and Community Development's 6th Cycle RHNA Progress Report. Home values and rents come from Zillow's public research data. Commute times, income, tenure and housing age come from the Census Bureau's American Community Survey. News comes from local newsrooms and links to the publisher.</p>
+
+      <h4>How records are handled</h4>
+      <p>Project statuses are quoted from the source. Summary counts are arithmetic on those records. No status, schedule or headline on this site was written by a language model.</p>
+      <p>Where a city publishes no usable project data, that city's register is left empty. Morgan Hill is the current example: its news, boards, official links and housing numbers are here, but it has no project list.</p>
+
+      <h4>How current it is</h4>
+      <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Every record links to the city page it came from.</p>
+
       <h4>What it covers</h4>
-      <p>Thirteen cities across Santa Clara County and the South Bay.</p>
+      <p>Thirteen cities in Santa Clara County and the South Bay.</p>
       <div class="about-mosaic" id="aboutMosaic"></div>
-      <h4>Corrections</h4>
-      <p>If a record here is wrong, the source it links to is the authority, not this page. Errors are worth reporting: a planning dashboard that quietly misstates a project is worse than no dashboard.</p>
+
       <p class="about-credits" id="aboutCredits"></p>
     </div>
   </div>
@@ -3400,6 +3494,7 @@ function refreshCurrentScreen(){
   else if(currentScreen==='statistics') renderStatistics();
   else if(currentScreen==='hearings') renderHearings();
   else if(currentScreen==='resources') renderResources();
+  else if(currentScreen==='timeline'){ loadTimelineState().then(renderTimeline); }
   else if(currentScreen==='bank'){ renderBankMosaic(); renderBankExamples(); renderBank(); }
   else if(currentScreen==='about'){ renderBankSources(); renderAboutMosaic(); }
   else if(currentScreen==='ask') renderAskContext();
@@ -3434,6 +3529,223 @@ const CITY_PHOTOS = {
 };
 function cityPhoto(k){ return CITY_PHOTOS[k] || null; }
 function photoCredit(p){ return p ? (p.cap + ' &middot; ' + p.by + ', ' + p.lic + ', via Wikimedia Commons') : ''; }
+
+
+// ================= TIMELINE =================
+// Assembles one ordered view of everything a reader is following: starred projects, the
+// hearings that decide them, boards they could join, articles they kept, and the steps from
+// their own plan. Progress, notes and target dates live server-side per reader; everything
+// else is read from the same data the rest of the site uses.
+let tlState = new Map();     // itemKey -> {status, note, due_date}
+let tlFilter = 'all';
+let tlHearings = null;
+let tlSaveTimers = new Map();
+
+const TL_STATUS = [{id:'todo',label:'To do'},{id:'doing',label:'In progress'},{id:'done',label:'Done'}];
+const TL_FILTERS = [{id:'all',label:'Everything'},{id:'open',label:'Not done'},{id:'project',label:'Projects'},
+                    {id:'meeting',label:'Meetings'},{id:'board',label:'Boards'},{id:'news',label:'Articles'},
+                    {id:'step',label:'My steps'}];
+
+async function loadTimelineState(){
+  if(!isLoggedIn()){ tlState = new Map(); return; }
+  try{
+    const d = await apiCall('/api/timeline');
+    tlState = new Map((d.items||[]).map(r=>[r.item_key, r]));
+  }catch(err){ tlState = new Map(); }
+}
+
+function tlSave(key, patch){
+  const cur = tlState.get(key) || {status:'todo', note:'', due_date:null};
+  const next = Object.assign({}, cur, patch);
+  tlState.set(key, next);
+  if(!isLoggedIn()) return;
+  // Typing in a note should not fire a request per keystroke.
+  clearTimeout(tlSaveTimers.get(key));
+  tlSaveTimers.set(key, setTimeout(()=>{
+    apiCall('/api/timeline', {method:'PUT', body:JSON.stringify({
+      itemKey:key, status:next.status, note:next.note || null,
+      dueDate:next.due_date || null })}).catch(()=>{});
+  }, 500));
+}
+
+// Build the nodes. Each carries a stable key so progress survives a data refresh.
+function buildTimeline(){
+  const nodes = [];
+  const city = acctCity();
+  const c = CITIES[city];
+
+  starredMap.forEach((data, key)=>{
+    const [type, ...rest] = String(key).split(':');
+    const id = rest.join(':');
+    const d = data || {};
+    if(type === 'project'){
+      const owner = Object.keys(CITIES).filter(k=>k!=='all').find(k=> CITIES[k].data.some(p=>p.id===id));
+      const proj = owner ? CITIES[owner].data.find(p=>p.id===id) : null;
+      nodes.push({key:'project:'+id, kind:'project', title:d.title || (proj&&proj.title) || id,
+        city:owner || city, meta:(proj && proj.status) ? proj.status : 'Followed project',
+        body:(proj && (proj.addr || proj.desc)) || d.desc || '',
+        action:{kind:'project', id, city:owner}, date:null});
+    } else if(type === 'board'){
+      nodes.push({key:'board:'+id, kind:'board', title:d.title || d.name || id,
+        city:d.city || city, meta:d.when || 'Board you follow', body:d.desc || d.body || '',
+        url:d.url || d.link, date:null});
+    } else if(type === 'news'){
+      nodes.push({key:'news:'+id, kind:'news', title:d.title || 'Saved article',
+        city:d.city || city, meta:'Article you saved', body:d.desc || d.snippet || '',
+        url:d.url || id, date:d.date || null});
+    } else if(type === 'resource'){
+      nodes.push({key:'resource:'+id, kind:'board', title:d.title || d.name || id,
+        city:city, meta:'Saved resource', body:d.desc || d.body || '', url:d.url, date:null});
+    }
+  });
+
+  // Upcoming hearings in the reader's city, and any that name a project they follow.
+  const followed = new Set([...starredMap.keys()].filter(k=>String(k).startsWith('project:'))
+    .map(k=>String(k).slice('project:'.length)));
+  if(tlHearings && Array.isArray(tlHearings.hearings)){
+    tlHearings.hearings.forEach(h=>{
+      const matchesCity = h.city === city;
+      const matchesProject = Array.isArray(h.matches) && h.matches.some(m=> followed.has(m.id || m));
+      if(!matchesCity && !matchesProject) return;
+      nodes.push({key:'meeting:'+(h.id || (h.city+'|'+(h.date||'')+'|'+(h.body||h.name||''))),
+        kind:'meeting', title:h.body || h.name || 'Public meeting',
+        city:h.city || city, meta:h.dateLabel || h.date || 'Upcoming',
+        body: matchesProject ? 'An item you follow is on this agenda.' : 'Meeting in your city.',
+        url:h.agendaUrl || null, date:h.date || null});
+    });
+  }
+
+  // Boards in the reader's city they can apply to.
+  (c.join||[]).forEach(j=>{
+    nodes.push({key:'board:'+city+':'+j.name, kind:'board',
+      title:String(j.name).replace(/&amp;/g,'&'), city:city,
+      meta:String(j.when||'').replace(/&amp;/g,'&') || 'Open to residents',
+      body:j.body || 'A seat residents can apply for.', url:j.link, date:null});
+  });
+
+  // The reader's own steps, from the plan they built.
+  const stepSeeds = [
+    {k:'agenda', t:'Read one agenda for '+c.label, b:'Agendas post a few days before each meeting and list every item up for a vote.',
+     u:(c.deciders[0]||{}).link},
+    {k:'comment', t:'Send one written comment', b:'Written comment on a specific agenda item goes into the record. The Get Involved page will draft it with you.', u:null},
+  ];
+  if(RHNA[city]) stepSeeds.push({k:'rhna', t:'Check '+c.label+"'s housing number",
+    b:c.label+' has permitted '+RHNA[city].pct+'% of its state target ('+RHNA[city].units.toLocaleString()+' of '+RHNA[city].target.toLocaleString()+').',
+    u:RHNA_SOURCE.url});
+  if((c.join||[]).length) stepSeeds.push({k:'apply', t:'Apply for a seat on a '+c.label+' board',
+    b:c.label+' has '+c.join.length+' board'+(c.join.length===1?'':'s')+' residents can apply to.', u:(c.join[0]||{}).link});
+  stepSeeds.forEach(x=> nodes.push({key:'step:'+city+':'+x.k, kind:'step', title:x.t, city:city,
+    meta:'Your step', body:x.b, url:x.u, date:null}));
+
+  // Dated items first and soonest-first; undated fall to the end grouped by kind.
+  const order = {meeting:0, project:1, step:2, board:3, news:4};
+  nodes.sort((a,b)=>{
+    if(a.date && b.date) return a.date.localeCompare(b.date);
+    if(a.date) return -1;
+    if(b.date) return 1;
+    return (order[a.kind]??9) - (order[b.kind]??9);
+  });
+  return nodes;
+}
+
+const TL_KIND_LABEL = {project:'Project', meeting:'Meeting', board:'Board', news:'Article', step:'Step'};
+
+async function renderTimeline(){
+  const host = document.getElementById('tlBody');
+  const empty = document.getElementById('tlEmpty');
+  if(!host) return;
+
+  // Hearings come from Legistar and can take several seconds on a cold cache. Draw everything
+  // else straight away and fold them in when they land, rather than holding a blank screen.
+  if(tlHearings === null){
+    tlHearings = {hearings:[]};
+    fetch('/api/hearings').then(r=>r.json()).then(d=>{
+      tlHearings = d && Array.isArray(d.hearings) ? d : {hearings:[]};
+      if(currentScreen === 'timeline') renderTimeline();
+    }).catch(()=>{});
+  }
+  const nodes = buildTimeline();
+
+  const bar = document.getElementById('tlFilters');
+  if(bar){
+    bar.innerHTML = '<span class="lab">Show</span>' + TL_FILTERS.map(f=>{
+      const n = f.id==='all' ? nodes.length
+              : f.id==='open' ? nodes.filter(x=>(tlState.get(x.key)||{}).status !== 'done').length
+              : nodes.filter(x=>x.kind===f.id).length;
+      return '<button type="button" class="stat-chip" data-tlf="'+f.id+'" aria-pressed="'+(tlFilter===f.id)+'">'
+        + f.label + ' <span class="chip-n">'+n+'</span></button>';
+    }).join('');
+    bar.querySelectorAll('[data-tlf]').forEach(b=> b.addEventListener('click', ()=>{
+      tlFilter = b.getAttribute('data-tlf'); renderTimeline();
+    }));
+  }
+
+  const done = nodes.filter(x=>(tlState.get(x.key)||{}).status==='done').length;
+  const prog = document.getElementById('tlProgress');
+  if(prog){
+    const pct = nodes.length ? Math.round(done/nodes.length*100) : 0;
+    prog.innerHTML = nodes.length
+      ? '<div class="tl-prog-top"><span class="tl-prog-k">'+done+' of '+nodes.length+' done</span>'
+        + '<span class="tl-prog-p">'+pct+'%</span></div>'
+        + '<div class="tl-prog-track"><span class="tl-prog-fill" style="width:'+pct+'%"></span></div>'
+      : '';
+  }
+
+  const shown = nodes.filter(x=>{
+    if(tlFilter==='all') return true;
+    if(tlFilter==='open') return (tlState.get(x.key)||{}).status !== 'done';
+    return x.kind===tlFilter;
+  });
+
+  if(!nodes.length){ host.innerHTML=''; if(empty) empty.hidden=false; return; }
+  if(empty) empty.hidden = true;
+
+  host.innerHTML = '<div class="tl-line">' + shown.map(n=>{
+    const st = tlState.get(n.key) || {status:'todo', note:'', due_date:null};
+    const cityLabel = CITIES[n.city] ? CITIES[n.city].label : '';
+    const act = n.url
+      ? '<a class="tl-go" href="'+n.url+'" target="_blank" rel="noopener">Open &#8599;</a>'
+      : (n.action ? '<button type="button" class="tl-go" data-tlact="'+n.action.kind+'" data-tlid="'+escapeHtml(n.action.id)+'" data-tlcity="'+(n.action.city||'')+'">Open &#8594;</button>' : '');
+    return '<article class="tl-node tl-'+st.status+'" data-key="'+escapeHtml(n.key)+'">'
+      + '<div class="tl-dot" aria-hidden="true"></div>'
+      + '<div class="tl-card">'
+      +   '<div class="tl-meta"><span class="tl-kind tl-k-'+n.kind+'">'+(TL_KIND_LABEL[n.kind]||n.kind)+'</span>'
+      +     (cityLabel?'<span class="tl-city">'+cityLabel+'</span>':'')
+      +     (n.date?'<span class="tl-date">'+fmtDate(n.date)+'</span>':'')
+      +   '</div>'
+      +   '<h4>'+escapeHtml(n.title)+'</h4>'
+      +   (n.meta?'<div class="tl-sub">'+escapeHtml(n.meta)+'</div>':'')
+      +   (n.body?'<p>'+escapeHtml(n.body)+'</p>':'')
+      +   '<div class="tl-controls">'
+      +     '<div class="tl-status" role="group" aria-label="Progress">'
+      +       TL_STATUS.map(s=>'<button type="button" class="tl-st'+(st.status===s.id?' on':'')+'" data-tlstatus="'+s.id+'">'+s.label+'</button>').join('')
+      +     '</div>'
+      +     '<label class="tl-due">Target <input type="date" data-tldue value="'+(st.due_date?String(st.due_date).slice(0,10):'')+'" /></label>'
+      +     act
+      +   '</div>'
+      +   '<textarea class="tl-note" data-tlnote rows="2" placeholder="Notes - what you want to say, who to ask, what to check">'+escapeHtml(st.note||'')+'</textarea>'
+      + '</div></article>';
+  }).join('') + '</div>';
+
+  host.querySelectorAll('.tl-node').forEach(node=>{
+    const key = node.getAttribute('data-key');
+    node.querySelectorAll('[data-tlstatus]').forEach(b=> b.addEventListener('click', ()=>{
+      tlSave(key, {status:b.getAttribute('data-tlstatus')});
+      renderTimeline();
+    }));
+    const due = node.querySelector('[data-tldue]');
+    if(due) due.addEventListener('change', ()=> tlSave(key, {due_date:due.value || null}));
+    const note = node.querySelector('[data-tlnote]');
+    if(note) note.addEventListener('input', ()=> tlSave(key, {note:note.value}));
+    const go = node.querySelector('[data-tlact]');
+    if(go) go.addEventListener('click', ()=>{
+      const ck = go.getAttribute('data-tlcity');
+      if(ck && CITIES[ck]) switchCity(ck);
+      showScreen('dashboard');
+      flyTo(go.getAttribute('data-tlid'));
+    });
+  });
+}
 
 // ================= RESOURCE BANK =================
 // One searchable index over everything the site holds. Built once, lazily, from the same
@@ -3767,7 +4079,7 @@ document.querySelectorAll('.sub-nav-tab').forEach(t=>{
   t.addEventListener('click', ()=> showScreen(t.getAttribute('data-screen')));
 });
 
-const SCREEN_IDS = {dashboard:'screenDashboard', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
+const SCREEN_IDS = {dashboard:'screenDashboard', timeline:'screenTimeline', yourarea:'screenYourArea', planner:'screenPlanner', hearings:'screenHearings', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
 function scrollToScreen(name){
   const el = document.getElementById(SCREEN_IDS[name]);
   if(!el){ window.scrollTo({top:0, behavior:'smooth'}); return; }

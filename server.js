@@ -86,6 +86,22 @@ async function initDb() {
       UNIQUE(username, item_type, item_id)
     );
   `);
+  // Per-reader progress on their own timeline: a status, a note and an optional target date
+  // against any item they follow. Keyed by the item's own id so it survives data refreshes.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS timeline_items (
+      id SERIAL PRIMARY KEY,
+      username TEXT NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+      item_key TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'todo',
+      note TEXT,
+      due_date DATE,
+      updated_at TIMESTAMPTZ DEFAULT now(),
+      UNIQUE(username, item_key)
+    );
+  `);
+  await pool.query(`CREATE INDEX IF NOT EXISTS timeline_user_idx ON timeline_items (username);`);
+
   // Saved question-and-answer turns from the planning assistant, so a reader can come back to an
   // answer later. Only stored for logged-in readers, and only when they ask for it.
   await pool.query(`
@@ -310,6 +326,61 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
 });
 
 // ---------------- STARS ROUTES ----------------
+// ---------------- TIMELINE ----------------
+const TIMELINE_STATUSES = ['todo', 'doing', 'done'];
+
+app.get('/api/timeline', authMiddleware, async (req, res) => {
+  try {
+    const r = await pool.query(
+      'SELECT item_key, status, note, due_date, updated_at FROM timeline_items WHERE username = $1', [req.username]);
+    res.json({ items: r.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not load your timeline.' });
+  }
+});
+
+// Upsert: the client sends the whole state of one node whenever it changes.
+app.put('/api/timeline', authMiddleware, async (req, res) => {
+  const { itemKey, status, note, dueDate } = req.body || {};
+  if (typeof itemKey !== 'string' || !itemKey.trim() || itemKey.length > 300) {
+    return res.status(400).json({ error: 'A valid item key is required.' });
+  }
+  if (status !== undefined && !TIMELINE_STATUSES.includes(status)) {
+    return res.status(400).json({ error: 'Status must be todo, doing or done.' });
+  }
+  if (note !== undefined && note !== null && String(note).length > 4000) {
+    return res.status(400).json({ error: 'That note is too long.' });
+  }
+  const due = (typeof dueDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dueDate)) ? dueDate : null;
+  try {
+    await pool.query(
+      `INSERT INTO timeline_items (username, item_key, status, note, due_date, updated_at)
+       VALUES ($1,$2,COALESCE($3,'todo'),$4,$5, now())
+       ON CONFLICT (username, item_key) DO UPDATE
+         SET status = COALESCE(EXCLUDED.status, timeline_items.status),
+             note = EXCLUDED.note,
+             due_date = EXCLUDED.due_date,
+             updated_at = now()`,
+      [req.username, itemKey.trim(), status || null, note == null ? null : String(note), due]);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not save that change.' });
+  }
+});
+
+app.delete('/api/timeline/:key', authMiddleware, async (req, res) => {
+  try {
+    await pool.query('DELETE FROM timeline_items WHERE username = $1 AND item_key = $2',
+      [req.username, req.params.key]);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not clear that item.' });
+  }
+});
+
 // ---------------- CHAT HISTORY ----------------
 // A reader's own saved answers from the planning assistant. Capped per user so one account
 // cannot grow without bound, and scoped to the session's username on every query.
