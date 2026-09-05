@@ -620,9 +620,10 @@
   .sub-nav{background:var(--paper-2); border-bottom:1px solid var(--rule); position:sticky; top:0; z-index:49;}
   /* Account and Resource Bank are their own pages: the dashboard masthead and section
      tabs are hidden there rather than left sitting above the content. */
-  body.page-account #siteHero, body.page-bank #siteHero, body.page-about #siteHero,
-  body.page-account .sub-nav, body.page-bank .sub-nav, body.page-about .sub-nav{display:none;}
-  body.page-account #mainContent, body.page-bank #mainContent, body.page-about #mainContent{padding-top:8px;}
+  body.page-account #siteHero, body.page-bank #siteHero, body.page-about #siteHero, body.page-timeline #siteHero,
+  body.page-account .sub-nav, body.page-bank .sub-nav, body.page-about .sub-nav, body.page-timeline .sub-nav{display:none;}
+  body.page-account #mainContent, body.page-bank #mainContent, body.page-about #mainContent,
+  body.page-timeline #mainContent{padding-top:8px;}
   .sub-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch; overflow-x:auto;
     scrollbar-width:none; -ms-overflow-style:none;}
   .sub-nav-inner::-webkit-scrollbar{display:none;}
@@ -690,6 +691,47 @@
   .tl-empty b{font-size:15px; color:var(--ink);}
   .tl-empty p{font-size:13px; color:var(--text-soft); margin-top:7px; line-height:1.6;}
   .tl-empty-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+  /* Timeline setup, forecast and quiz */
+  .tl-setup-wrap{border:1px solid var(--rule); border-radius:2px; background:var(--paper-2); margin-bottom:18px;}
+  .tl-setup-wrap summary{cursor:pointer; padding:11px 15px; font-family:'Open Sans',sans-serif;
+    font-size:13px; font-weight:800; color:var(--ink); list-style:none;}
+  .tl-setup-wrap summary::-webkit-details-marker{display:none;}
+  .tl-setup-wrap summary::before{content:'\25B8'; display:inline-block; margin-right:8px; transition:transform .15s;}
+  .tl-setup-wrap[open] summary::before{transform:rotate(90deg);}
+  .tl-setup-hint{font-weight:400; font-size:11px; color:var(--text-soft); margin-left:6px;}
+  .tl-setup{padding:0 15px 14px;}
+  .tl-q{margin-bottom:14px;}
+  .tl-q-t{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:800; color:var(--ink); margin-bottom:6px;}
+  .tl-q-opts{display:flex; gap:6px; flex-wrap:wrap;}
+  .tl-opt{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:6px 11px;
+    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:12px; color:var(--text);}
+  .tl-opt:hover{border-color:var(--ink); color:var(--ink);}
+  .tl-opt.on{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .tl-q-foot{font-size:11.5px; color:var(--text-soft); padding-top:4px;}
+  .tl-fc-note{margin-bottom:12px !important;}
+  .tl-fc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:12px; margin-bottom:6px;}
+  .tl-fc{background:#fff; border:1px solid var(--rule); border-left:3px solid var(--ink);
+    border-radius:2px; padding:14px 16px;}
+  .tl-fc-k{font-family:var(--mono); font-size:26px; font-weight:700; color:var(--ink); line-height:1.05;}
+  .tl-fc-l{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--text-soft); margin-top:5px;}
+  .tl-fc p{font-size:12.5px; color:var(--text); line-height:1.6; margin-top:8px;}
+  .tl-fc-m{font-size:11px; color:var(--text-soft); line-height:1.5; margin-top:8px;
+    padding-top:7px; border-top:1px solid var(--rule);}
+  .tl-quiz{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:16px 18px; margin-bottom:6px;}
+  .tl-quiz-q{font-size:14.5px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.4;}
+  .tl-quiz-opts{display:flex; gap:7px; flex-wrap:wrap;}
+  .tl-quiz-o{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:8px 13px;
+    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:12.5px; color:var(--text);}
+  .tl-quiz-o:hover:not(:disabled){border-color:var(--ink); color:var(--ink);}
+  .tl-quiz-o.right{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .tl-quiz-o.wrong{background:#F3E4E1; border-color:#B4796C; color:#7A3626;}
+  .tl-quiz-o.dim{opacity:.45;}
+  .tl-quiz-a{font-size:12.5px; color:var(--text); line-height:1.6; margin-top:11px;
+    padding-top:10px; border-top:1px solid var(--rule);}
+  .tl-quiz-next{margin-top:11px; background:none; border:none; padding:0; cursor:pointer;
+    font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--text-soft); text-decoration:underline;}
+  .tl-quiz-next:hover{color:var(--ink);}
   /* ---- Resource bank ---- */
   .about-shell{max-width:800px; padding-top:14px;}
   .about-hero{border-bottom:3px solid var(--ink); padding-bottom:14px; margin-bottom:20px;}
@@ -959,6 +1001,7 @@
   </button>
   <div class="nav-menu" id="navMenu" role="menu" hidden>
     <button class="page-nav-tab active" data-page="dashboard" role="menuitem">Dashboard</button>
+    <button class="page-nav-tab" data-page="timeline" role="menuitem">Timeline</button>
     <button class="page-nav-tab" data-page="account" role="menuitem">Your Account</button>
     <button class="page-nav-tab" data-page="bank" role="menuitem">Resource Bank</button>
     <button class="page-nav-tab" data-page="about" role="menuitem">About</button>
@@ -969,7 +1012,6 @@
 <nav class="sub-nav" id="subNav" aria-label="Dashboard sections">
   <div class="wrap sub-nav-inner" role="tablist">
     <button class="sub-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Overview</button>
-    <button class="sub-nav-tab" data-screen="timeline" role="tab" aria-selected="false">Timeline</button>
     <button class="sub-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
     <button class="sub-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get Involved</button>
     <button class="sub-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
@@ -1040,8 +1082,21 @@
         </div>
       </div>
 
+      <details class="tl-setup-wrap" id="tlSetupWrap">
+        <summary>Tell it about you <span class="tl-setup-hint" id="tlSetupHint"></span></summary>
+        <div class="tl-setup" id="tlSetup"></div>
+      </details>
+
       <div class="tl-progress" id="tlProgress"></div>
 
+      <div class="acct-sec-h">What the numbers project</div>
+      <p class="section-note tl-fc-note">Arithmetic on the data already on this site - a line through a published series, or a median of how long comparable projects have taken. Each one says how it was worked out. None of it is a model output.</p>
+      <div id="tlForecast"></div>
+
+      <div class="acct-sec-h">Know your city</div>
+      <div class="tl-quiz" id="tlQuiz"></div>
+
+      <div class="acct-sec-h">Your timeline</div>
       <div class="stat-toolbar" id="tlFilters"><span class="lab">Show</span></div>
 
       <div id="tlBody"></div>
@@ -3777,6 +3832,7 @@ async function loadTimelineState(){
   try{
     const d = await apiCall('/api/timeline');
     tlState = new Map((d.items||[]).map(r=>[r.item_key, r]));
+    loadProfileFrom(d.items);
   }catch(err){ tlState = new Map(); }
 }
 
@@ -3864,11 +3920,14 @@ function buildTimeline(){
     meta:'Your step', body:x.b, url:x.u, date:null}));
 
   // Dated items first and soonest-first; undated fall to the end grouped by kind.
+  // Dated items stay in date order; undated ones sort by what the reader said they care about.
   const order = {meeting:0, project:1, step:2, board:3, news:4};
   nodes.sort((a,b)=>{
     if(a.date && b.date) return a.date.localeCompare(b.date);
     if(a.date) return -1;
     if(b.date) return 1;
+    const w = profileWeight(b.kind) - profileWeight(a.kind);
+    if(w) return w;
     return (order[a.kind]??9) - (order[b.kind]??9);
   });
   return nodes;
@@ -3891,6 +3950,11 @@ async function renderTimeline(){
     }).catch(()=>{});
   }
   const nodes = buildTimeline();
+  renderTlSetup();
+  renderTlForecast();
+  renderTlQuiz();
+  const hint = document.getElementById('tlSetupHint');
+  if(hint) hint.textContent = profileAnswered() ? 'answered' : 'not answered yet';
 
   const bar = document.getElementById('tlFilters');
   if(bar){
@@ -3971,6 +4035,312 @@ async function renderTimeline(){
       flyTo(go.getAttribute('data-tlid'));
     });
   });
+}
+
+
+// ---- Projections ----
+// Everything below is arithmetic on the data already on this site: a least-squares line through
+// a published series, or a median of observed durations. None of it is a model output, and none
+// of it knows anything the source data does not. Each one states its own method and sample size
+// so a reader can judge it rather than trust it.
+
+// Least-squares fit over {year, value} points. Returns slope per year and a projector.
+function linearTrend(series){
+  const pts = (series||[]).map(p=>({x:+p.year, y:+p.value})).filter(p=>isFinite(p.x)&&isFinite(p.y));
+  if(pts.length < 3) return null;
+  const n=pts.length, sx=pts.reduce((a,p)=>a+p.x,0), sy=pts.reduce((a,p)=>a+p.y,0);
+  const sxx=pts.reduce((a,p)=>a+p.x*p.x,0), sxy=pts.reduce((a,p)=>a+p.x*p.y,0);
+  const denom = n*sxx - sx*sx;
+  if(!denom) return null;
+  const slope = (n*sxy - sx*sy)/denom;
+  const intercept = (sy - slope*sx)/n;
+  // R^2, so a noisy series can say so instead of pretending to a trend.
+  const mean = sy/n;
+  const ssTot = pts.reduce((a,p)=>a+Math.pow(p.y-mean,2),0);
+  const ssRes = pts.reduce((a,p)=>a+Math.pow(p.y-(slope*p.x+intercept),2),0);
+  const r2 = ssTot ? 1 - ssRes/ssTot : 0;
+  return {slope, intercept, r2, n, first:pts[0].x, last:pts[pts.length-1].x,
+          at:(year)=> slope*year + intercept};
+}
+
+// Median observed days from filing to last recorded activity, per stage, across every project
+// on the site that records both dates. Computed once.
+let STAGE_DURATIONS = null;
+function stageDurations(){
+  if(STAGE_DURATIONS) return STAGE_DURATIONS;
+  const buckets = {};
+  Object.keys(CITIES).filter(k=>k!=='all').forEach(k=>
+    (CITIES[k].data||[]).forEach(p=>{
+      if(!p.filed || !p.lastDate || !p.stage) return;
+      const d = (new Date(p.lastDate) - new Date(p.filed)) / 86400000;
+      if(!(d > 0 && d < 8000)) return;
+      (buckets[p.stage] = buckets[p.stage] || []).push(d);
+    }));
+  STAGE_DURATIONS = {};
+  Object.entries(buckets).forEach(([k,v])=>{
+    v.sort((a,b)=>a-b);
+    STAGE_DURATIONS[k] = {n:v.length, median:v[Math.floor(v.length/2)],
+      p25:v[Math.floor(v.length*0.25)], p75:v[Math.floor(v.length*0.75)]};
+  });
+  return STAGE_DURATIONS;
+}
+
+const RHNA_START = new Date('2023-01-31'), RHNA_END = new Date('2031-01-31');
+function rhnaProjection(cityKey){
+  const r = RHNA[cityKey];
+  if(!r) return null;
+  const now = new Date();
+  const elapsedYears = (now - RHNA_START) / (365.25*86400000);
+  const totalYears = (RHNA_END - RHNA_START) / (365.25*86400000);
+  if(elapsedYears <= 0.5) return null;
+  const perYear = r.units / elapsedYears;
+  const projected = Math.round(perYear * totalYears);
+  const shortfall = r.target - projected;
+  const neededPerYear = (r.target - r.units) / Math.max(0.25, totalYears - elapsedYears);
+  return {perYear:Math.round(perYear), projected, shortfall,
+          pctOfTarget: Math.round(projected / r.target * 1000)/10,
+          neededPerYear: Math.round(neededPerYear),
+          multiple: perYear > 0 ? Math.round(neededPerYear / perYear * 10)/10 : null,
+          elapsedYears: Math.round(elapsedYears*10)/10,
+          remainingYears: Math.round((totalYears - elapsedYears)*10)/10};
+}
+
+// What the record says about how long a project like this one has taken.
+function projectOutlook(p){
+  const dur = stageDurations()[p.stage];
+  // Below about ten comparable records the median says more about the sample than the process,
+  // so no figure is offered rather than a shaky one.
+  if(!dur || dur.n < 10 || !p.filed) return null;
+  const elapsed = (new Date() - new Date(p.filed)) / 86400000;
+  const yrs = d => Math.round(d/365*10)/10;
+  return {stage:p.stage, n:dur.n, medianYears:yrs(dur.median),
+          p25Years:yrs(dur.p25), p75Years:yrs(dur.p75),
+          elapsedYears:yrs(elapsed),
+          pastMedian: elapsed > dur.median};
+}
+
+// ---- Reader profile ----
+// The answers shape what the timeline shows and how the projections are framed. Stored in the
+// timeline table under a reserved key so it needs no extra migration.
+const TL_PROFILE_KEY = '__profile__';
+let tlProfile = {stake:'', time:'', goals:[], horizon:'', experience:''};
+
+const TL_QUESTIONS = [
+  {id:'stake', q:'What is your stake in this?', multi:false, opts:[
+    {v:'renter', l:'I rent here'}, {v:'owner', l:'I own here'},
+    {v:'buying', l:"I'm trying to buy here"}, {v:'business', l:'I run a business here'},
+    {v:'student', l:"I'm a student here"}, {v:'watching', l:'Just keeping track'}]},
+  {id:'time', q:'How much time can you actually give this?', multi:false, opts:[
+    {v:'low', l:'15 minutes, once'}, {v:'medium', l:'An hour a month'},
+    {v:'high', l:'A few hours a month'}, {v:'max', l:'As much as it takes'}]},
+  {id:'goals', q:'What would you like to see happen? Pick any.', multi:true, opts:[
+    {v:'morehousing', l:'More housing built'}, {v:'affordable', l:'More of it affordable'},
+    {v:'transit', l:'Better transit and bike routes'}, {v:'safety', l:'Safer streets'},
+    {v:'character', l:'Keep the character of the area'}, {v:'process', l:'A say in decisions'},
+    {v:'jobs', l:'Jobs and local business'}, {v:'climate', l:'Climate and open space'}]},
+  {id:'horizon', q:'What are you looking at?', multi:false, opts:[
+    {v:'now', l:'The next few months'}, {v:'year', l:'This year'},
+    {v:'cycle', l:'The whole housing cycle, to 2031'}]},
+  {id:'experience', q:'Have you done any of this before?', multi:false, opts:[
+    {v:'none', l:'Never been to a meeting'}, {v:'some', l:'Been to one or two'},
+    {v:'regular', l:'I follow this regularly'}, {v:'insider', l:'I serve or have served on a body'}]},
+];
+
+function loadProfileFrom(items){
+  const row = (items||[]).find(r=>r.item_key === TL_PROFILE_KEY);
+  if(row && row.note){ try{ tlProfile = Object.assign(tlProfile, JSON.parse(row.note)); }catch(e){} }
+}
+function saveProfile(){
+  if(!isLoggedIn()) return;
+  clearTimeout(tlSaveTimers.get(TL_PROFILE_KEY));
+  tlSaveTimers.set(TL_PROFILE_KEY, setTimeout(()=>{
+    apiCall('/api/timeline', {method:'PUT', body:JSON.stringify({
+      itemKey:TL_PROFILE_KEY, status:'done', note:JSON.stringify(tlProfile)})}).catch(()=>{});
+  }, 400));
+}
+function profileAnswered(){
+  return !!(tlProfile.stake && tlProfile.time && tlProfile.horizon);
+}
+
+function renderTlSetup(){
+  const host = document.getElementById('tlSetup');
+  if(!host) return;
+  host.innerHTML = TL_QUESTIONS.map(q=>
+      '<div class="tl-q"><div class="tl-q-t">'+q.q+'</div><div class="tl-q-opts">'
+    + q.opts.map(o=>{
+        const on = q.multi ? (tlProfile[q.id]||[]).includes(o.v) : tlProfile[q.id]===o.v;
+        return '<button type="button" class="tl-opt'+(on?' on':'')+'" data-q="'+q.id+'" data-v="'+o.v+'" data-multi="'+(q.multi?1:0)+'">'+o.l+'</button>';
+      }).join('')
+    + '</div></div>').join('')
+    + '<div class="tl-q-foot"><span id="tlSetupState"></span></div>';
+
+  host.querySelectorAll('[data-q]').forEach(b=> b.addEventListener('click', ()=>{
+    const q=b.getAttribute('data-q'), v=b.getAttribute('data-v'), multi=b.getAttribute('data-multi')==='1';
+    if(multi){
+      const cur = new Set(tlProfile[q]||[]);
+      cur.has(v) ? cur.delete(v) : cur.add(v);
+      tlProfile[q] = [...cur];
+    } else {
+      tlProfile[q] = tlProfile[q]===v ? '' : v;
+    }
+    saveProfile(); renderTlSetup(); renderTimeline();
+  }));
+  const st = document.getElementById('tlSetupState');
+  if(st) st.textContent = isLoggedIn()
+    ? (profileAnswered() ? 'Saved to your account.' : 'Answer the first, second and fourth to tailor the rest.')
+    : 'Log in to keep these answers and your progress.';
+}
+
+// What the reader said they want, turned into which node kinds lead.
+function profileWeight(kind){
+  const g = new Set(tlProfile.goals||[]);
+  let w = 0;
+  if(kind==='meeting' && (tlProfile.time==='high'||tlProfile.time==='max'||g.has('process'))) w += 2;
+  if(kind==='project' && (g.has('morehousing')||g.has('affordable')||g.has('character'))) w += 2;
+  if(kind==='board' && (tlProfile.experience==='regular'||tlProfile.experience==='insider'||g.has('process'))) w += 2;
+  if(kind==='news' && tlProfile.time==='low') w += 1;
+  if(kind==='step' && tlProfile.experience==='none') w += 2;
+  return w;
+}
+
+// ---- Forecast panel ----
+function renderTlForecast(){
+  const host = document.getElementById('tlForecast');
+  if(!host) return;
+  const city = acctCity();
+  const c = CITIES[city];
+  const st = (typeof CITY_STATS !== 'undefined') ? CITY_STATS[city] : null;
+  const cards = [];
+
+  const rp = rhnaProjection(city);
+  if(rp){
+    const r = RHNA[city];
+    const onTrack = rp.pctOfTarget >= 100;
+    cards.push({
+      k: rp.projected.toLocaleString(),
+      l: 'Homes by 2031 at the current rate',
+      s: c.label+' has permitted '+r.units.toLocaleString()+' in '+rp.elapsedYears+' years, about '
+         + rp.perYear.toLocaleString()+' a year. Held flat for the '+rp.remainingYears
+         + ' years left, that reaches '+rp.pctOfTarget+'% of its '+r.target.toLocaleString()+' target'
+         + (onTrack ? '.' : ', short by '+Math.abs(rp.shortfall).toLocaleString()+'.'),
+      m: 'Straight-line from permits to date. Cities often permit unevenly, so treat it as a pace check, not a forecast of any single year.'
+    });
+    if(!onTrack && rp.multiple){
+      cards.push({
+        k: rp.neededPerYear.toLocaleString()+'/yr',
+        l: 'Rate needed to still hit the target',
+        s: 'That is '+rp.multiple+'x the current pace. A city that misses its target can have its Housing Element found out of compliance, which is what opens the door to Builder’s Remedy applications.',
+        m: 'Remaining units divided by remaining years in the cycle.'
+      });
+    }
+  }
+
+  if(st && st.rentSeries){
+    const t = linearTrend(st.rentSeries);
+    if(t && t.r2 >= 0.3){
+      const y = new Date().getFullYear() + 3;
+      cards.push({
+        k: '$'+Math.round(t.at(y)).toLocaleString(),
+        l: 'Asking rent in '+y+' if the trend holds',
+        s: 'Rent in '+c.label+' has moved about $'+Math.round(t.slope).toLocaleString()
+           +' a year across '+t.n+' years of Zillow data.',
+        m: 'Least-squares line through '+t.first+'–'+t.last+', R² '+t.r2.toFixed(2)+'. A line through six points is a description of the past, not a promise.'
+      });
+    }
+  }
+  if(st && st.homeValueSeries){
+    const t = linearTrend(st.homeValueSeries);
+    if(t && t.r2 >= 0.3){
+      const y = new Date().getFullYear() + 3;
+      cards.push({
+        k: '$'+(Math.round(t.at(y)/1000)*1000).toLocaleString(),
+        l: 'Typical home value in '+y+' if the trend holds',
+        s: 'Values in '+c.label+' have moved about $'+Math.round(t.slope).toLocaleString()+' a year.',
+        m: 'Least-squares line through '+t.first+'–'+t.last+', R² '+t.r2.toFixed(2)+'.'
+      });
+    }
+  }
+
+  // Outlook on the reader's own starred projects, from how long comparable ones have taken.
+  const mine = [];
+  starredMap.forEach((_d,key)=>{
+    if(!String(key).startsWith('project:')) return;
+    const id = String(key).slice('project:'.length);
+    const owner = cityOfProject(id);
+    const p = owner ? CITIES[owner].data.find(x=>x.id===id) : null;
+    if(p) mine.push({p, owner});
+  });
+  mine.slice(0,4).forEach(({p,owner})=>{
+    const o = projectOutlook(p);
+    if(!o) return;
+    cards.push({
+      k: o.medianYears+' yr',
+      l: 'Typical time at this stage — '+(p.addr||p.id),
+      s: p.addr+' has been on file '+o.elapsedYears+' years and sits at "'+o.stage+'". Comparable records reached their last recorded activity in '
+         + o.p25Years+'–'+o.p75Years+' years'+(o.pastMedian ? '. This one is already past the median.' : '.'),
+      m: 'Median of '+o.n+' projects on this site at the same stage that record both a filing date and a later activity date.'
+    });
+  });
+
+  if(!cards.length){ host.innerHTML = '<div class="empty">No projections available for this city yet.</div>'; return; }
+  host.innerHTML = '<div class="tl-fc-grid">' + cards.map(x=>
+      '<div class="tl-fc"><div class="tl-fc-k">'+x.k+'</div><div class="tl-fc-l">'+x.l+'</div>'
+    + '<p>'+x.s+'</p><div class="tl-fc-m">'+x.m+'</div></div>').join('') + '</div>';
+}
+
+// ---- Statistics prompts ----
+// Guess-then-reveal against a real number for the reader's city. The point is to make the
+// figure stick, so the answer always shows where it came from.
+let tlQuizIdx = 0;
+function tlQuizBank(){
+  const city = acctCity(), c = CITIES[city];
+  const st = (typeof CITY_STATS !== 'undefined') ? CITY_STATS[city] : null;
+  const q = [];
+  if(st && st.transitSharePct != null) q.push({
+    q:'What share of '+c.label+' commuters take public transit?',
+    opts:['About 2%','About '+Math.round(st.transitSharePct)+'%','About 15%','About 30%'],
+    a:1, why:'Census ACS 5-year estimates. Most South Bay cities sit in the low single digits.'});
+  if(st && st.renterSharePct != null) q.push({
+    q:'What share of households in '+c.label+' rent rather than own?',
+    opts:[Math.round(st.renterSharePct)+'%','12%','78%','35%'],
+    a:0, why:'Census ACS. Renters are the group least likely to show up at a hearing and most affected by what happens there.'});
+  if(RHNA[city]) q.push({
+    q:c.label+' has permitted what share of its state housing target so far?',
+    opts:['About '+RHNA[city].pct+'%','About 45%','About 70%','It already met it'],
+    a:0, why:'California HCD 6th Cycle RHNA Progress Report. Falling far behind is what puts a Housing Element out of compliance.'});
+  if(st && st.medianYearBuilt) q.push({
+    q:'What is the median year a home in '+c.label+' was built?',
+    opts:[String(st.medianYearBuilt),'1998','2012','1948'],
+    a:0, why:'Census ACS. Housing age drives a lot of what gets debated: parking minimums, setbacks, and what "in character" means.'});
+  if(st && st.meanCommuteMin) q.push({
+    q:'How long is the average commute in '+c.label+'?',
+    opts:[st.meanCommuteMin+' minutes','9 minutes','48 minutes','62 minutes'],
+    a:0, why:'Census ACS, mean travel time to work.'});
+  return q;
+}
+function renderTlQuiz(){
+  const host = document.getElementById('tlQuiz');
+  if(!host) return;
+  const bank = tlQuizBank();
+  if(!bank.length){ host.innerHTML=''; return; }
+  const item = bank[tlQuizIdx % bank.length];
+  host.innerHTML = '<div class="tl-quiz-q">'+item.q+'</div>'
+    + '<div class="tl-quiz-opts">' + item.opts.map((o,i)=>
+        '<button type="button" class="tl-quiz-o" data-qi="'+i+'">'+o+'</button>').join('') + '</div>'
+    + '<div class="tl-quiz-a" id="tlQuizA" hidden></div>'
+    + '<button type="button" class="tl-quiz-next" id="tlQuizNext">Another one &#8594;</button>';
+  host.querySelectorAll('[data-qi]').forEach(b=> b.addEventListener('click', ()=>{
+    const i = +b.getAttribute('data-qi');
+    host.querySelectorAll('.tl-quiz-o').forEach((el,j)=>{
+      el.classList.add(j===item.a ? 'right' : (j===i ? 'wrong' : 'dim'));
+      el.disabled = true;
+    });
+    const a = document.getElementById('tlQuizA');
+    a.hidden = false;
+    a.innerHTML = (i===item.a ? '<b>Right.</b> ' : '<b>The answer is '+item.opts[item.a]+'.</b> ') + item.why;
+  }));
+  const nx = document.getElementById('tlQuizNext');
+  if(nx) nx.addEventListener('click', ()=>{ tlQuizIdx++; renderTlQuiz(); });
 }
 
 // ================= RESOURCE BANK =================
@@ -4247,12 +4617,12 @@ function renderBankExamples(){
 // The existing screens all live under Dashboard; the sub-nav is hidden on the other two.
 let currentPage = 'dashboard';
 document.body.classList.add('page-dashboard');
-const PAGE_DEFAULT_SCREEN = {dashboard:'dashboard', account:'account', bank:'bank', about:'about'};
+const PAGE_DEFAULT_SCREEN = {dashboard:'dashboard', timeline:'timeline', account:'account', bank:'bank', about:'about'};
 
 function applyPageChrome(page){
   // A body class drives what the dashboard-only furniture does, so Account and Resource Bank
   // read as their own pages instead of appearing under the masthead.
-  document.body.classList.remove('page-dashboard','page-account','page-bank','page-about');
+  document.body.classList.remove('page-dashboard','page-timeline','page-account','page-bank','page-about');
   document.body.classList.add('page-'+page);
   const sub = document.getElementById('subNav');
   if(sub) sub.hidden = (page !== 'dashboard');
@@ -4333,7 +4703,7 @@ function showScreen(name){
     t.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
   // Keep the top-level tabs honest when something switches screens directly.
-  const owningPage = name==='account' ? 'account' : name==='bank' ? 'bank' : name==='about' ? 'about' : 'dashboard';
+  const owningPage = name==='account' ? 'account' : name==='bank' ? 'bank' : name==='about' ? 'about' : name==='timeline' ? 'timeline' : 'dashboard';
   if(owningPage !== currentPage){
     currentPage = owningPage;
     document.querySelectorAll('.page-nav-tab').forEach(t=>{
