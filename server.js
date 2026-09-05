@@ -86,6 +86,26 @@ async function initDb() {
       UNIQUE(username, item_type, item_id)
     );
   `);
+  // Things a reader has asked to be reminded about: a board's meeting schedule, or a plan they
+  // built. They can have one mailed to themselves now, and mark it to ride along with the
+  // regular briefing.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS reminders (
+      id SERIAL PRIMARY KEY,
+      username TEXT NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+      kind TEXT NOT NULL,
+      ref_id TEXT NOT NULL,
+      label TEXT NOT NULL,
+      detail TEXT,
+      url TEXT,
+      city TEXT,
+      in_digest BOOLEAN NOT NULL DEFAULT true,
+      created_at TIMESTAMPTZ DEFAULT now(),
+      UNIQUE(username, kind, ref_id)
+    );
+  `);
+  await pool.query(`CREATE INDEX IF NOT EXISTS reminders_user_idx ON reminders (username);`);
+
   // Per-reader progress on their own timeline: a status, a note and an optional target date
   // against any item they follow. Keyed by the item's own id so it survives data refreshes.
   await pool.query(`
@@ -326,6 +346,116 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
 });
 
 // ---------------- STARS ROUTES ----------------
+// ---------------- REMINDERS ----------------
+const REMINDER_KINDS = ['board', 'plan', 'project', 'hearing'];
+const REMINDERS_MAX = 60;
+
+function reminderHtml(rows, username) {
+  const esc = t => String(t == null ? '' : t)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const items = rows.map(r => `
+    <tr><td style="padding:14px 0; border-bottom:1px solid #E3E7DA;">
+      <div style="font:700 15px/1.35 Georgia,serif; color:#2F3B1E;">${esc(r.label)}</div>
+      ${r.detail ? `<div style="font:400 13px/1.6 Georgia,serif; color:#5A6350; margin-top:4px;">${esc(r.detail)}</div>` : ''}
+      ${r.city ? `<div style="font:400 12px/1.5 Georgia,serif; color:#8A927F; margin-top:3px;">${esc(r.city)}</div>` : ''}
+      ${r.url ? `<div style="margin-top:7px;"><a href="${esc(r.url)}" style="font:700 13px/1.4 Georgia,serif; color:#3E4F24;">Open &rarr;</a></div>` : ''}
+    </td></tr>`).join('');
+  return `<div style="max-width:600px; margin:0 auto; font-family:Georgia,serif; color:#2A2A2A;">
+    <div style="border-bottom:3px solid #2F3B1E; padding-bottom:10px; margin-bottom:6px;">
+      <div style="font:700 11px/1.4 Arial,sans-serif; letter-spacing:.09em; text-transform:uppercase; color:#8A927F;">South Bay Area Civic Dashboard</div>
+      <div style="font:700 22px/1.2 Georgia,serif; color:#2F3B1E; margin-top:4px;">Your reminders</div>
+    </div>
+    <p style="font:400 13px/1.7 Georgia,serif; color:#5A6350;">You asked to keep these, ${esc(username)}. Meeting times are as the city published them; check the agenda before you go.</p>
+    <table width="100%" cellpadding="0" cellspacing="0">${items}</table>
+    <p style="font:400 11.5px/1.6 Georgia,serif; color:#8A927F; margin-top:22px; padding-top:12px; border-top:1px solid #E3E7DA;">
+      Sent because you pressed "email this to me" on the dashboard. Manage these under Your Account &rsaquo; Reminders.</p>
+  </div>`;
+}
+
+app.get('/api/reminders', authMiddleware, async (req, res) => {
+  try {
+    const r = await pool.query(
+      'SELECT id, kind, ref_id, label, detail, url, city, in_digest, created_at FROM reminders WHERE username = $1 ORDER BY created_at DESC',
+      [req.username]);
+    res.json({ reminders: r.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not load your reminders.' });
+  }
+});
+
+app.post('/api/reminders', authMiddleware, async (req, res) => {
+  const { kind, refId, label, detail, url, city, inDigest } = req.body || {};
+  if (!REMINDER_KINDS.includes(kind)) return res.status(400).json({ error: 'Unknown reminder type.' });
+  if (typeof refId !== 'string' || !refId.trim()) return res.status(400).json({ error: 'A reference is required.' });
+  if (typeof label !== 'string' || !label.trim()) return res.status(400).json({ error: 'A label is required.' });
+  if (label.length > 300 || (detail && String(detail).length > 4000)) return res.status(400).json({ error: 'That reminder is too long.' });
+  try {
+    const count = await pool.query('SELECT COUNT(*)::int AS n FROM reminders WHERE username = $1', [req.username]);
+    if (count.rows[0].n >= REMINDERS_MAX) return res.status(400).json({ error: `You can keep up to ${REMINDERS_MAX} reminders.` });
+    const r = await pool.query(
+      `INSERT INTO reminders (username, kind, ref_id, label, detail, url, city, in_digest)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+       ON CONFLICT (username, kind, ref_id) DO UPDATE
+         SET label = EXCLUDED.label, detail = EXCLUDED.detail, url = EXCLUDED.url,
+             city = EXCLUDED.city, in_digest = EXCLUDED.in_digest
+       RETURNING id`,
+      [req.username, kind, refId.trim(), label.trim(), detail || null, url || null, city || null,
+       inDigest === false ? false : true]);
+    res.json({ ok: true, id: r.rows[0].id });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not save that reminder.' });
+  }
+});
+
+app.patch('/api/reminders/:id', authMiddleware, async (req, res) => {
+  const { inDigest } = req.body || {};
+  if (typeof inDigest !== 'boolean') return res.status(400).json({ error: 'inDigest must be true or false.' });
+  try {
+    await pool.query('UPDATE reminders SET in_digest = $1 WHERE id = $2 AND username = $3',
+      [inDigest, req.params.id, req.username]);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not update that reminder.' });
+  }
+});
+
+app.delete('/api/reminders/:id', authMiddleware, async (req, res) => {
+  try {
+    await pool.query('DELETE FROM reminders WHERE id = $1 AND username = $2', [req.params.id, req.username]);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not remove that reminder.' });
+  }
+});
+
+// Mail the reader their own reminders, to the address already on their account. It only ever
+// sends to that address - nothing here takes a recipient from the request.
+app.post('/api/reminders/email', authMiddleware, async (req, res) => {
+  try {
+    const u = await pool.query('SELECT email FROM users WHERE username = $1', [req.username]);
+    const email = u.rows[0] && u.rows[0].email;
+    if (!email) return res.status(400).json({ error: 'Add an email address under Your Account first.' });
+    if (!RESEND_API_KEY) return res.status(503).json({ error: 'Email is not configured on the server yet.' });
+
+    const only = req.body && req.body.id;
+    const rows = only
+      ? (await pool.query('SELECT * FROM reminders WHERE id = $1 AND username = $2', [only, req.username])).rows
+      : (await pool.query('SELECT * FROM reminders WHERE username = $1 ORDER BY created_at DESC', [req.username])).rows;
+    if (!rows.length) return res.status(400).json({ error: 'Nothing to send yet.' });
+
+    await sendEmail(email, rows.length === 1 ? 'Reminder: ' + rows[0].label : 'Your reminders',
+                    reminderHtml(rows, req.username));
+    res.json({ ok: true, sent: rows.length, to: email.replace(/(.{2}).*(@.*)/, '$1***$2') });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not send that email: ' + err.message });
+  }
+});
+
 // ---------------- TIMELINE ----------------
 const TIMELINE_STATUSES = ['todo', 'doing', 'done'];
 
@@ -792,11 +922,13 @@ async function runDigests(req, res) {
     const report = [];
     for (const u of due) {
       const since = u.last_digest_sent_at || u.created_at;
-      const [projectsChanged, articlesNew, boardsChanged, stars] = await Promise.all([
+      const [projectsChanged, articlesNew, boardsChanged, stars, remindersRow] = await Promise.all([
         pool.query('SELECT project_id FROM project_snapshots WHERE updated_at > $1', [since]),
         pool.query('SELECT url FROM news_seen WHERE first_seen_at > $1', [since]),
         pool.query('SELECT board_id FROM board_snapshots WHERE updated_at > $1', [since]),
         starIdsFor(u.username),
+        // Only the ones this reader marked to ride along with the briefing.
+        pool.query('SELECT label, detail, url, city FROM reminders WHERE username = $1 AND in_digest = true ORDER BY created_at DESC', [u.username]),
       ]);
 
       // A quiet period still gets a briefing - these sets only control what's marked "Updated"
@@ -813,6 +945,7 @@ async function runDigests(req, res) {
         frequency: u.email_frequency,
         categories: parseCategories(u.categories),
         hearings: hearingData.hearings,
+        reminders: remindersRow.rows,
         stars,
         changed,
         sinceLabel: new Date(since).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),

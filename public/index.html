@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
+  /* Any rule that sets display on an element also overrides the browser's [hidden] behaviour.
+     That has now bitten twice - a closed menu sat over the page eating clicks, and the map
+     picker did the same - so make hidden win outright rather than fixing it per selector. */
+  [hidden]{display:none !important;}
+
   :root{
     --ink:#3E4F24; --ink-2:#556D31;
     --paper:#FFFFFF; --paper-2:#F2F4EE; --paper-3:#E3E7DB;
@@ -239,9 +244,6 @@
   .nav-menu{position:absolute; top:46px; right:0; min-width:212px; background:#000;
     border-radius:2px; box-shadow:0 6px 22px rgba(0,0,0,.34); padding:5px; display:flex;
     flex-direction:column; gap:2px;}
-  /* display:flex above beats the browser's [hidden] rule, which left the closed menu sitting
-     invisible over the top right of every page and swallowing clicks meant for the content. */
-  .nav-menu[hidden]{display:none;}
   .page-nav-tab{display:block; width:100%; text-align:left; white-space:nowrap;
     font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; line-height:1.3;
     padding:10px 13px; border:none; border-radius:2px; background:transparent; color:#fff;
@@ -644,6 +646,35 @@
   .card-src{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700;
     color:var(--text-soft); text-decoration:none; border-bottom:1px solid var(--rule); white-space:nowrap;}
   .card-src:hover{color:var(--ink); border-bottom-color:var(--ink);}
+  /* Reminders */
+  .rem-btn{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:5px 11px;
+    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11.5px; font-weight:700; color:var(--text-soft);}
+  .rem-btn:hover{border-color:var(--ink); color:var(--ink);}
+  .rem-btn.on{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .acct-board-tools{margin-top:9px;}
+  .plan-remind{display:flex; gap:11px; align-items:center; flex-wrap:wrap; margin-top:14px;
+    padding-top:13px; border-top:1px solid var(--rule);}
+  .plan-remind-note{font-size:11.5px; color:var(--text-soft); flex:1 1 240px; line-height:1.5;}
+  .rem-actions{display:flex; gap:11px; align-items:center; flex-wrap:wrap; margin-bottom:16px;}
+  .rem-status{font-size:12px; color:var(--text-soft);}
+  .rem-row{display:flex; gap:16px; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; background:#fff; border:1px solid var(--rule); border-radius:2px;
+    padding:13px 15px; margin-bottom:9px;}
+  .rem-main{flex:1 1 300px; min-width:0;}
+  .rem-kind{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.07em;
+    text-transform:uppercase; color:#fff; background:var(--ink); display:inline-block;
+    padding:2px 6px; border-radius:2px; margin-bottom:5px;}
+  .rem-row h4{font-size:14px; color:var(--ink); line-height:1.35;}
+  .rem-row p{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin-top:4px;}
+  .rem-city{font-family:var(--mono); font-size:10.5px; color:var(--text-soft); margin-top:4px;}
+  .rem-side{flex:0 0 auto; display:flex; flex-direction:column; gap:6px; align-items:flex-start;}
+  .rem-toggle{display:flex; align-items:center; gap:6px; font-family:'Open Sans',sans-serif;
+    font-size:11.5px; font-weight:700; color:var(--text-soft); cursor:pointer;}
+  .rem-mini{background:none; border:1px solid var(--rule); border-radius:2px; padding:4px 9px;
+    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11px; font-weight:700;
+    color:var(--text-soft); text-decoration:none; white-space:nowrap;}
+  .rem-mini:hover{border-color:var(--ink); color:var(--ink);}
+  .rem-del:hover{border-color:#8C2F1E; color:#8C2F1E;}
   /* ---- Your area: settings strip and the reader's own map ---- */
   .ya-settings{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule);
     border-radius:2px; margin:14px 0 22px;}
@@ -655,6 +686,12 @@
     padding:4px 11px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11.5px;
     font-weight:700; color:var(--text-soft);}
   .ya-set-edit:hover{border-color:var(--ink); color:var(--ink);}
+  /* Map on the left, the picker beside it, so adding does not push the map off screen. */
+  .ya-split{display:grid; grid-template-columns:1fr; gap:14px; align-items:start;}
+  .ya-split:has(.ya-picker:not([hidden])){grid-template-columns:1fr 1fr;}
+  @media (max-width:900px){ .ya-split:has(.ya-picker:not([hidden])){grid-template-columns:1fr;} }
+  .ya-split > .ya-picker{margin-top:0; max-height:460px; display:flex; flex-direction:column;}
+  .ya-split > .ya-picker .ya-picker-list{flex:1 1 auto; max-height:none;}
   .ya-map-sec{margin-bottom:26px;}
   .ya-map-head{display:flex; justify-content:space-between; align-items:flex-end; gap:14px;
     flex-wrap:wrap; border-bottom:1px solid var(--rule); padding-bottom:9px; margin-bottom:12px;}
@@ -1243,6 +1280,7 @@
             <button type="button" class="btn secondary" id="yaFit">Fit to pins</button>
           </div>
         </div>
+        <div class="ya-split">
         <div class="ya-map-wrap">
           <div id="yaMap" class="ya-map"></div>
           <div class="ya-map-empty" id="yaMapEmpty" hidden>
@@ -1258,6 +1296,7 @@
           <div class="stat-toolbar" id="yaPickTabs"><span class="lab">Type</span></div>
           <input type="search" id="yaPickSearch" placeholder="Search by address, name or number&hellip;" aria-label="Search things to add" />
           <div class="ya-picker-list" id="yaPickList"></div>
+        </div>
         </div>
         <div class="ya-pinlist" id="yaPinList"></div>
       </section>
@@ -1449,6 +1488,7 @@
             <button type="button" class="acct-navbtn" data-acct="stats" role="tab">Statistics</button>
             <button type="button" class="acct-navbtn" data-acct="plan" role="tab">Get Involved</button>
             <button type="button" class="acct-navbtn" data-acct="email" role="tab">Email briefing<span class="acct-badge" id="acctBadgeEmail"></span></button>
+            <button type="button" class="acct-navbtn" data-acct="reminders" role="tab">Reminders<span class="acct-badge" id="acctBadgeReminders"></span></button>
             <button type="button" class="acct-navbtn" data-acct="resources" role="tab">Saved resources<span class="acct-badge" id="acctBadgeResources"></span></button>
             <button type="button" class="acct-navbtn" data-acct="chat" role="tab">Chat history<span class="acct-badge" id="acctBadgeChat"></span></button>
             <button type="button" class="acct-navbtn" data-acct="saved" role="tab">Saved<span class="acct-badge" id="acctBadgeSaved"></span></button>
@@ -1576,6 +1616,16 @@
               <li><b>Official links</b> - your city's own planning, permit and GIS pages.</li>
             </ol>
             <p class="acct-fineprint">Nothing in the briefing is model-generated. Status text is quoted from the record, and the summary line is assembled from counts.</p>
+          </section>
+
+          <section class="acct-panel" data-panel="reminders" hidden>
+            <h2>Reminders</h2>
+            <p class="section-note">Meeting schedules and plans you asked to keep. Send them to yourself now, or let them ride along with your regular briefing.</p>
+            <div class="rem-actions">
+              <button type="button" class="btn" id="remEmailAll">Email all of these to me</button>
+              <span class="rem-status" id="remStatus" role="status" aria-live="polite"></span>
+            </div>
+            <div id="remList"><div class="starred-empty">Loading&hellip;</div></div>
           </section>
 
           <section class="acct-panel" data-panel="resources" hidden>
@@ -3969,6 +4019,110 @@ function photoCredit(p){ return p ? (p.cap + ' &middot; ' + p.by + ', ' + p.lic 
 
 
 
+
+// ================= REMINDERS =================
+// Things the reader asked to keep: a board's meeting schedule, or a plan they built. They can
+// have them mailed now, and mark each one to ride along with the regular briefing.
+let remItems = [];
+
+async function loadReminders(){
+  if(!isLoggedIn()){ remItems = []; return; }
+  try{ remItems = (await apiCall('/api/reminders')).reminders || []; }
+  catch(e){ remItems = []; }
+}
+function remHas(kind, refId){ return remItems.some(r=>r.kind===kind && r.ref_id===refId); }
+
+async function addReminder(kind, refId, label, detail, url, city){
+  if(!isLoggedIn()){
+    // Same route starring uses when there is no account yet.
+    window.pendingLoginReason = 'Log in or create a free account to keep reminders - they can be emailed to you and added to your regular briefing.';
+    showPage('account');
+    return false;
+  }
+  try{
+    await apiCall('/api/reminders', {method:'POST', body:JSON.stringify({
+      kind, refId, label, detail:detail||null, url:url||null, city:city||null, inDigest:true })});
+    await loadReminders();
+    renderAcctSideCounts();
+    return true;
+  }catch(err){ alert("Couldn't save that reminder: " + err.message); return false; }
+}
+async function removeReminder(id){
+  try{ await apiCall('/api/reminders/'+id, {method:'DELETE'}); await loadReminders(); renderAcctSideCounts(); }
+  catch(err){ alert("Couldn't remove that: " + err.message); }
+}
+
+// A "remind me" button for any board or plan, wherever it appears.
+function reminderButtonHtml(kind, refId, label, detail, url, city){
+  const on = remHas(kind, refId);
+  const payload = encodeURIComponent(JSON.stringify({kind, refId, label, detail:detail||'', url:url||'', city:city||''}));
+  return '<button type="button" class="rem-btn'+(on?' on':'')+'" data-remind="'+payload+'">'
+    + (on ? '&#10003; Reminder set' : 'Remind me') + '</button>';
+}
+function wireReminderButtons(root){
+  (root || document).querySelectorAll('[data-remind]').forEach(b=>{
+    if(b.dataset.remWired) return;
+    b.dataset.remWired = '1';
+    b.addEventListener('click', async ()=>{
+      let d; try{ d = JSON.parse(decodeURIComponent(b.getAttribute('data-remind'))); }catch(e){ return; }
+      const existing = remItems.find(r=>r.kind===d.kind && r.ref_id===d.refId);
+      if(existing){ await removeReminder(existing.id); }
+      else { await addReminder(d.kind, d.refId, d.label, d.detail, d.url, d.city); }
+      const nowOn = remHas(d.kind, d.refId);
+      b.classList.toggle('on', nowOn);
+      b.innerHTML = nowOn ? '&#10003; Reminder set' : 'Remind me';
+      if(currentScreen==='account' && acctPanel==='reminders') renderAcctReminders();
+    });
+  });
+}
+
+async function renderAcctReminders(){
+  const host = document.getElementById('remList');
+  if(!host) return;
+  if(!isLoggedIn()){ host.innerHTML = '<div class="starred-empty">Log in to keep reminders.</div>'; return; }
+  await loadReminders();
+  const badge = document.getElementById('acctBadgeReminders');
+  if(badge) badge.textContent = remItems.length || '';
+  if(!remItems.length){
+    host.innerHTML = '<div class="starred-empty">Nothing yet. Press <b>Remind me</b> on any board under Boards, or on a plan you build under Get Involved.</div>';
+    return;
+  }
+  host.innerHTML = remItems.map(r=>
+      '<div class="rem-row">'
+    + '<div class="rem-main">'
+    +   '<div class="rem-kind">'+escapeHtml(r.kind)+'</div>'
+    +   '<h4>'+escapeHtml(r.label)+'</h4>'
+    +   (r.detail ? '<p>'+escapeHtml(r.detail)+'</p>' : '')
+    +   (r.city && CITIES[r.city] ? '<div class="rem-city">'+CITIES[r.city].label+'</div>' : '')
+    + '</div>'
+    + '<div class="rem-side">'
+    +   '<label class="rem-toggle"><input type="checkbox" data-remdigest="'+r.id+'"'+(r.in_digest?' checked':'')+' /> In my briefing</label>'
+    +   '<button type="button" class="rem-mini" data-rememail="'+r.id+'">Email me this</button>'
+    +   (r.url ? '<a class="rem-mini" href="'+r.url+'" target="_blank" rel="noopener">Open &#8599;</a>' : '')
+    +   '<button type="button" class="rem-mini rem-del" data-remdel="'+r.id+'">Remove</button>'
+    + '</div></div>').join('');
+
+  host.querySelectorAll('[data-remdigest]').forEach(cb=> cb.addEventListener('change', async ()=>{
+    try{ await apiCall('/api/reminders/'+cb.getAttribute('data-remdigest'), {method:'PATCH',
+      body:JSON.stringify({inDigest:cb.checked})}); await loadReminders(); }
+    catch(err){ cb.checked = !cb.checked; alert("Couldn't update that: "+err.message); }
+  }));
+  host.querySelectorAll('[data-remdel]').forEach(b=> b.addEventListener('click', async ()=>{
+    await removeReminder(b.getAttribute('data-remdel')); renderAcctReminders();
+  }));
+  host.querySelectorAll('[data-rememail]').forEach(b=> b.addEventListener('click', ()=> remSend(b.getAttribute('data-rememail'))));
+}
+
+async function remSend(id){
+  const st = document.getElementById('remStatus');
+  const say = t => { if(st) st.textContent = t; };
+  say('Sending…');
+  try{
+    const r = await apiCall('/api/reminders/email', {method:'POST', body:JSON.stringify(id ? {id} : {})});
+    say('Sent to ' + (r.to || 'your address') + '.');
+  }catch(err){ say(err.message); }
+}
+
 // ================= MY MAP =================
 // A map the reader assembles: the projects, boards and figures they want to watch, kept on
 // their account under one key so it survives a data refresh.
@@ -6185,6 +6339,7 @@ function renderAcctPanel(name){
   else if(name==='news') renderAcctNews();
   else if(name==='stats') renderAcctStats();
   else if(name==='plan') renderAcctPlan();
+  else if(name==='reminders') renderAcctReminders();
   else if(name==='resources') renderAcctResources();
   else if(name==='chat') renderAcctChat();
 }
@@ -6207,6 +6362,7 @@ function renderAcctSideCounts(){
   const set = (id,v)=>{ const el=document.getElementById(id); if(el) el.textContent = v || ''; };
   set('acctBadgeSaved', total || '');
   set('acctBadgeResources', s.resource || '');
+  set('acctBadgeReminders', (remItems && remItems.length) || '');
   set('acctBadgeBoards', (CITIES[city].deciders.length + CITIES[city].join.length) || '');
   set('acctBadgeNews', NEWS_ARTICLES.filter(a=>a.city===city).length || '');
   const freq = (document.getElementById('prefsFrequency')||{}).value;
@@ -6297,14 +6453,18 @@ function acctNewsCards(list, emptyMsg){
 function renderAcctBoards(){
   const city = acctCity();
   const c = CITIES[city];
-  const row = (b, cta)=>
-      '<div class="acct-board"><div>'
-    + '<h4>'+String(b.name).replace(/&amp;/g,'&')+'</h4>'
-    + '<div class="when">'+String(b.when||'').replace(/&amp;/g,'&')+'</div>'
+  const row = (b, cta)=>{
+    const nm = String(b.name).replace(/&amp;/g,'&');
+    const wh = String(b.when||'').replace(/&amp;/g,'&');
+    return '<div class="acct-board"><div>'
+    + '<h4>'+nm+'</h4>'
+    + '<div class="when">'+wh+'</div>'
     + (b.body ? '<p>'+b.body+'</p>' : '')
+    + '<div class="acct-board-tools">'+reminderButtonHtml('board', city+':'+nm, nm, wh, b.link, city)+'</div>'
     + '</div>'
     + (b.link ? '<a class="res-link go" href="'+b.link+'" target="_blank" rel="noopener">'+cta+' &#8594;</a>' : '')
     + '</div>';
+  };
 
   const dec = document.getElementById('acctDeciders');
   if(dec) dec.innerHTML = c.deciders.length ? c.deciders.map(d=>row(d,'Agenda')).join('')
@@ -6313,6 +6473,8 @@ function renderAcctBoards(){
   const join = document.getElementById('acctJoinable');
   if(join) join.innerHTML = c.join.length ? c.join.map(j=>row(j,'How to join')).join('')
     : '<div class="empty">No open board seats recorded for '+c.label+' yet.</div>';
+
+  wireReminderButtons(document.querySelector('[data-panel="boards"]'));
 
   const links = document.getElementById('acctBoardLinks');
   if(links){
@@ -6410,10 +6572,18 @@ function renderAcctPlan(){
       b:c.label+' has '+c.join.length+' board'+(c.join.length===1?'':'s')+' residents can apply to. Seats go unfilled more often than people expect.',
       l:c.join[0].link});
   }
+  const planText = steps.map((x,i)=> (i+1)+'. '+x.h+' - '+x.b).join('  |  ');
   out.innerHTML = '<div class="acct-boardlist">' + steps.map(s=>
       '<div class="acct-board"><div><div class="when">'+s.t+'</div><h4>'+s.h+'</h4><p>'+s.b+'</p></div>'
     + (s.l ? '<a class="res-link go" href="'+s.l+'" target="_blank" rel="noopener">Open &#8594;</a>' : '')
-    + '</div>').join('') + '</div>';
+    + '</div>').join('') + '</div>'
+    + '<div class="plan-remind">'
+    +   reminderButtonHtml('plan', 'plan:'+city+':'+plannerEffort,
+          'My get-involved plan for '+c.label,
+          planText.slice(0, 900), null, city)
+    +   '<span class="plan-remind-note">Keeps the plan on your account. You can email it to yourself, or have it come with your briefing.</span>'
+    + '</div>';
+  wireReminderButtons(out);
   renderDraftPicker();
 }
 
@@ -6663,6 +6833,9 @@ if(bankInput){
 }
 
 
+const remAllBtn = document.getElementById('remEmailAll');
+if(remAllBtn) remAllBtn.addEventListener('click', ()=> remSend(null));
+
 // --- My map controls ---
 const yaOpen = document.getElementById('yaAddOpen');
 if(yaOpen) yaOpen.addEventListener('click', ()=>{
@@ -6733,6 +6906,7 @@ async function renderAccountPage(){
   } catch(err){
     document.getElementById('prefsStatus').textContent = "Couldn't load your email preferences: " + err.message;
   }
+  await loadReminders();
   renderAcctSideCounts();
   showAcctPanel(acctPanel);
   const container = document.getElementById('starredContent');

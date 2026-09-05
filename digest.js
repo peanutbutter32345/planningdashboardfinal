@@ -227,7 +227,18 @@ function hearingRows(hearings) {
   }).join('');
 }
 
-export function buildBriefing({ username, homeCity, frequency, stars, changed, sinceLabel, isFirst, categories, hearings }) {
+
+// Reminders the reader asked to carry into the briefing. Their own words for what to watch.
+function reminderRows(reminders) {
+  return (reminders || []).map(r => `<tr><td style="${STYLE.row}">
+      <span style="font-weight:700; color:#1A1A1A;">${esc(r.label)}</span>
+      ${r.detail ? `<div style="${STYLE.note}">${esc(r.detail)}</div>` : ''}
+      ${r.url ? `<div style="${STYLE.note}"><a href="${esc(r.url)}" style="${STYLE.link}">Open &rarr;</a></div>` : ''}
+      ${r.city ? `<div style="${STYLE.meta}">${esc(cityLabel(r.city))}</div>` : ''}
+    </td></tr>`).join('');
+}
+
+export function buildBriefing({ username, homeCity, frequency, stars, changed, sinceLabel, isFirst, categories, hearings, reminders }) {
   // Null/empty means every category, so a subscriber from before this existed still gets a full
   // briefing rather than a silently narrowed one.
   const wanted = (Array.isArray(categories) && categories.length)
@@ -256,6 +267,9 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
   const upcoming = (hearings || []).filter(h => !homeCity || h.city === homeCity).slice(0, 6);
   if (upcoming.length) {
     body += section('Coming up: public hearings', hearingRows(upcoming));
+  }
+  if (Array.isArray(reminders) && reminders.length) {
+    body += section('You asked to be reminded', reminderRows(reminders));
   }
 
   // 1. Anything the reader follows leads, whether or not it moved - changed ones sort first.
