@@ -105,6 +105,8 @@
   @media (max-width:920px){ .explore-grid{grid-template-columns:1fr;} }
 
   .map-shell{border-radius:2px; border:1px solid var(--rule); overflow:hidden; background:#fff;}
+  /* Same containment for the dashboard map, so Leaflet cannot paint over dialogs. */
+  #mapWrap, .map-wrap, #map{position:relative; z-index:0; isolation:isolate;}
   #mapGate{padding:22px;}
   #mapGate h3{font-size:16px; color:#1A1A1A; margin-bottom:8px;}
   #mapGate p{font-size:12.5px; color:var(--text-soft); max-width:52ch; margin:0 0 12px;}
@@ -195,7 +197,7 @@
   .empty{padding:26px; text-align:center; color:var(--text-soft); font-family:'Open Sans',sans-serif; font-size:12px;}
 
   /* ---- Onboarding overlay ---- */
-  .onboard-overlay{position:fixed; inset:0; z-index:200; background:rgba(20,20,20,0.75); display:flex; align-items:center; justify-content:center; padding:24px; overflow-y:auto;}
+  .onboard-overlay{position:fixed; inset:0; z-index:3000; background:rgba(20,20,20,0.75); display:flex; align-items:center; justify-content:center; padding:24px; overflow-y:auto;}
   .onboard-card{background:#fff; border-radius:2px; max-width:560px; width:100%; padding:32px; box-shadow:0 8px 30px rgba(0,0,0,0.3); margin:auto; border-top:5px solid var(--ink);}
   .onboard-card h2{font-size:22px; color:#1A1A1A; margin-bottom:6px;}
   .onboard-card .sub{font-size:13px; color:var(--text-soft); margin-bottom:22px;}
@@ -237,6 +239,9 @@
   .nav-menu{position:absolute; top:46px; right:0; min-width:212px; background:#000;
     border-radius:2px; box-shadow:0 6px 22px rgba(0,0,0,.34); padding:5px; display:flex;
     flex-direction:column; gap:2px;}
+  /* display:flex above beats the browser's [hidden] rule, which left the closed menu sitting
+     invisible over the top right of every page and swallowing clicks meant for the content. */
+  .nav-menu[hidden]{display:none;}
   .page-nav-tab{display:block; width:100%; text-align:left; white-space:nowrap;
     font-family:'Open Sans',sans-serif; font-size:13px; font-weight:700; line-height:1.3;
     padding:10px 13px; border:none; border-radius:2px; background:transparent; color:#fff;
@@ -657,12 +662,14 @@
   .ya-map-head .section-note{margin:3px 0 0;}
   .ya-map-actions{display:flex; gap:7px;}
   .ya-map-actions .btn{font-size:12px; padding:7px 12px;}
-  .ya-map-wrap{position:relative; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  .ya-map-wrap{position:relative; z-index:0; isolation:isolate; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .ya-map{height:380px; background:#EDEFE6;}
-  .ya-map-empty{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
-    align-items:center; text-align:center; padding:26px; background:rgba(247,248,243,.94); z-index:500;}
-  .ya-map-empty b{font-size:15px; color:var(--ink);}
-  .ya-map-empty p{font-size:13px; color:var(--text-soft); max-width:46ch; margin-top:7px; line-height:1.6;}
+  .ya-map-empty{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    max-width:330px; text-align:center; padding:16px 20px; border-radius:2px;
+    background:rgba(255,255,255,.95); border:1px solid var(--rule);
+    box-shadow:0 2px 12px rgba(0,0,0,.12); z-index:450; pointer-events:none;}
+  .ya-map-empty b{font-size:14px; color:var(--ink);}
+  .ya-map-empty p{font-size:12.5px; color:var(--text-soft); margin-top:6px; line-height:1.55;}
   .ya-picker{margin-top:12px; border:1px solid var(--ink); border-radius:2px; background:#fff; padding:14px 16px;}
   .ya-picker-head{display:flex; justify-content:space-between; align-items:center;
     font-family:'Open Sans',sans-serif; font-size:13px; font-weight:800; color:var(--ink); margin-bottom:9px;}
