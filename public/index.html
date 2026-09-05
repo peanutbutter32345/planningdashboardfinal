@@ -669,6 +669,12 @@
   .tk-prog{background:#E4E8DC; height:6px; border-radius:2px; overflow:hidden;}
   .tk-prog span{display:block; height:100%; background:var(--ink); width:0; transition:width .3s;}
   .tk-progtext{font-family:var(--mono); font-size:11px; color:var(--text-soft); margin-top:5px;}
+  .tk-row{margin-bottom:26px;}
+  .tk-row-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+    border-bottom:1px solid var(--rule); padding-bottom:7px; margin-bottom:4px;}
+  .tk-row-head h3{font-size:16px; color:var(--ink); display:inline;}
+  .tk-row-sub{font-size:11.5px; color:var(--text-soft); margin-left:9px;}
+  .tk-row-n{font-family:var(--mono); font-size:11px; color:var(--text-soft); white-space:nowrap;}
   /* The horizontal line of stations. */
   .tk-railwrap{position:relative; margin-bottom:20px;}
   .tk-rail{display:flex; gap:0; overflow-x:auto; scroll-behavior:smooth; padding:8px 0 14px;
@@ -1119,12 +1125,8 @@
         <div class="tk-progtext" id="tkProgText"></div>
       </div>
 
-      <!-- horizontal, scrollable line of stations -->
-      <div class="tk-railwrap">
-        <button type="button" class="tk-scroll tk-scroll-l" id="tkLeft" aria-label="Scroll left">&#8249;</button>
-        <div class="tk-rail" id="tkRail"></div>
-        <button type="button" class="tk-scroll tk-scroll-r" id="tkRight" aria-label="Scroll right">&#8250;</button>
-      </div>
+      <!-- one scrollable row per kind of thing -->
+      <div id="tkRows"></div>
 
       <div class="tk-panel" id="tkPanel"></div>
     </section>
@@ -4140,25 +4142,54 @@ function renderTrack(){
   document.getElementById('tkProgFill').style.width = pct+'%';
   document.getElementById('tkProgText').textContent = done+' of '+list.length+' done';
 
-  const rail = document.getElementById('tkRail');
-  rail.innerHTML = list.map((s,i)=>{
-    const stt = (tkState.get(s.key)||{}).status || 'todo';
-    const img = s.image
-      ? '<span class="tk-st-img" style="background-image:url(\''+s.image+'\')"></span>'
-      : '<span class="tk-st-icon">'+(s.big || TK_KIND_ICON[s.kind] || '')+'</span>';
-    return '<button type="button" class="tk-st tk-'+stt+(tkOpen===s.key?' open':'')+'" data-tkst="'+escapeHtml(s.key)+'">'
-      + '<span class="tk-st-n">'+(i+1)+'</span>'
-      + img
-      + '<span class="tk-st-lab">'+s.label+'</span>'
-      + '<span class="tk-st-t">'+escapeHtml(s.title)+'</span>'
-      + (stt==='done' ? '<span class="tk-st-done">Done</span>' : '')
-      + '</button>';
-  }).join('');
-  rail.querySelectorAll('[data-tkst]').forEach(b=> b.addEventListener('click', ()=>{
+  // Three rows rather than one long line: things to read, the figures and questions behind
+  // them, and things to actually do. A row with nothing in it is left out.
+  const ROWS = [
+    {id:'read',    label:'Read',         sub:'Coverage of what you picked',        kinds:['read']},
+    {id:'stats',   label:'Statistics',   sub:'The figures, and questions on them', kinds:['figure','quiz']},
+    {id:'involve', label:'Get involved', sub:'Commissions, meetings, and writing in', kinds:['action','write']},
+  ];
+  const rowsHost = document.getElementById('tkRows');
+  rowsHost.innerHTML = ROWS.map(row=>{
+    const items = list.filter(x=> row.kinds.includes(x.kind));
+    if(!items.length) return '';
+    const rdone = items.filter(x=>(tkState.get(x.key)||{}).status==='done').length;
+    return '<section class="tk-row">'
+      + '<div class="tk-row-head">'
+      +   '<div><h3>'+row.label+'</h3><span class="tk-row-sub">'+row.sub+'</span></div>'
+      +   '<span class="tk-row-n">'+rdone+' of '+items.length+'</span>'
+      + '</div>'
+      + '<div class="tk-railwrap">'
+      +   '<button type="button" class="tk-scroll tk-scroll-l" data-tkscroll="'+row.id+'" data-dir="-1" aria-label="Scroll left">&#8249;</button>'
+      +   '<div class="tk-rail" id="tkRail-'+row.id+'">'
+      +     items.map(s=>{
+              const i = list.indexOf(s);
+              const stt = (tkState.get(s.key)||{}).status || 'todo';
+              const img = s.image
+                ? '<span class="tk-st-img" style="background-image:url(\''+s.image+'\')"></span>'
+                : '<span class="tk-st-icon">'+(s.big || TK_KIND_ICON[s.kind] || '')+'</span>';
+              return '<button type="button" class="tk-st tk-'+stt+(tkOpen===s.key?' open':'')+'" data-tkst="'+escapeHtml(s.key)+'">'
+                + '<span class="tk-st-n">'+(i+1)+'</span>'
+                + img
+                + '<span class="tk-st-lab">'+s.label+'</span>'
+                + '<span class="tk-st-t">'+escapeHtml(s.title)+'</span>'
+                + (stt==='done' ? '<span class="tk-st-done">Done</span>' : '')
+                + '</button>';
+            }).join('')
+      +   '</div>'
+      +   '<button type="button" class="tk-scroll tk-scroll-r" data-tkscroll="'+row.id+'" data-dir="1" aria-label="Scroll right">&#8250;</button>'
+      + '</div></section>';
+  }).join('') || '<div class="tk-panel-empty">Nothing to show for these choices yet.</div>';
+
+  rowsHost.querySelectorAll('[data-tkst]').forEach(b=> b.addEventListener('click', ()=>{
     const k = b.getAttribute('data-tkst');
     tkOpen = (tkOpen === k) ? null : k;
     renderTrack();
     if(tkOpen) document.getElementById('tkPanel').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }));
+  rowsHost.querySelectorAll('[data-tkscroll]').forEach(b=> b.addEventListener('click', ()=>{
+    const r = document.getElementById('tkRail-'+b.getAttribute('data-tkscroll'));
+    if(r) r.scrollBy({left: 380 * (+b.getAttribute('data-dir')), behavior:'smooth'});
   }));
 
   renderTkPanel(list);
@@ -6228,9 +6259,6 @@ if(tkEditBtn) tkEditBtn.addEventListener('click', ()=>{
   renderTkSetup();
   window.scrollTo({top:0, behavior:'smooth'});
 });
-const tkL = document.getElementById('tkLeft'), tkR = document.getElementById('tkRight');
-if(tkL) tkL.addEventListener('click', ()=> document.getElementById('tkRail').scrollBy({left:-380, behavior:'smooth'}));
-if(tkR) tkR.addEventListener('click', ()=> document.getElementById('tkRail').scrollBy({left: 380, behavior:'smooth'}));
 
 document.querySelectorAll('.acct-navbtn').forEach(b=>{
   b.addEventListener('click', ()=> showAcctPanel(b.getAttribute('data-acct')));
