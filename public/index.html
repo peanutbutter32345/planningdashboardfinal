@@ -5727,29 +5727,6 @@ function showAcctPanel(name){
   document.querySelectorAll('.acct-panel').forEach(p=>{ p.hidden = p.getAttribute('data-panel') !== name; });
   
 
-const bankInput = document.getElementById('bankSearch');
-if(bankInput){
-  let bankTimer = null;
-  bankInput.addEventListener('input', ()=>{
-    clearTimeout(bankTimer);
-    bankTimer = setTimeout(()=>{ bankQuery = bankInput.value.trim(); renderBank(); }, 140);
-  });
-}
-
-
-const tkBuildBtn = document.getElementById('tkBuild');
-if(tkBuildBtn) tkBuildBtn.addEventListener('click', ()=>{ tkOpen=null; renderTrack(); window.scrollTo({top:0,behavior:'smooth'}); });
-const tkEditBtn = document.getElementById('tkEdit');
-if(tkEditBtn) tkEditBtn.addEventListener('click', ()=>{
-  document.getElementById('tkMain').hidden = true;
-  document.getElementById('tkSetup').hidden = false;
-  renderTkSetup();
-  window.scrollTo({top:0, behavior:'smooth'});
-});
-const tkL = document.getElementById('tkLeft'), tkR = document.getElementById('tkRight');
-if(tkL) tkL.addEventListener('click', ()=> document.getElementById('tkRail').scrollBy({left:-380, behavior:'smooth'}));
-if(tkR) tkR.addEventListener('click', ()=> document.getElementById('tkRail').scrollBy({left: 380, behavior:'smooth'}));
-
 document.querySelectorAll('.acct-navbtn').forEach(b=>{
     const on = b.getAttribute('data-acct') === name;
     b.classList.toggle('active', on);
@@ -6231,6 +6208,29 @@ if(chatClear) chatClear.addEventListener('click', async ()=>{
   try{ await apiCall('/api/chat/history', {method:'DELETE'}); renderAcctChat(); }
   catch(err){ alert("Couldn't clear: "+err.message); }
 });
+
+const bankInput = document.getElementById('bankSearch');
+if(bankInput){
+  let bankTimer = null;
+  bankInput.addEventListener('input', ()=>{
+    clearTimeout(bankTimer);
+    bankTimer = setTimeout(()=>{ bankQuery = bankInput.value.trim(); renderBank(); }, 140);
+  });
+}
+
+
+const tkBuildBtn = document.getElementById('tkBuild');
+if(tkBuildBtn) tkBuildBtn.addEventListener('click', ()=>{ tkOpen=null; renderTrack(); window.scrollTo({top:0,behavior:'smooth'}); });
+const tkEditBtn = document.getElementById('tkEdit');
+if(tkEditBtn) tkEditBtn.addEventListener('click', ()=>{
+  document.getElementById('tkMain').hidden = true;
+  document.getElementById('tkSetup').hidden = false;
+  renderTkSetup();
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+const tkL = document.getElementById('tkLeft'), tkR = document.getElementById('tkRight');
+if(tkL) tkL.addEventListener('click', ()=> document.getElementById('tkRail').scrollBy({left:-380, behavior:'smooth'}));
+if(tkR) tkR.addEventListener('click', ()=> document.getElementById('tkRail').scrollBy({left: 380, behavior:'smooth'}));
 
 document.querySelectorAll('.acct-navbtn').forEach(b=>{
   b.addEventListener('click', ()=> showAcctPanel(b.getAttribute('data-acct')));
