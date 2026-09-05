@@ -3133,7 +3133,9 @@ function loadGoogleMaps(){
 // CARTO basemap key. Public by design - it travels in the tile URL that every browser fetches.
 const CARTO_KEY = 'cb1_2yfl_1_7d3d28857fa3499697a194fe';
 const CARTO_ATTRIB = '&copy; OpenStreetMap contributors &copy; CARTO';
-function cartoTileUrl(path){ return 'https://' + path + '?api_key=' + CARTO_KEY; }
+// CARTO takes the key as `key`, not `api_key`. With the wrong name it answers 200 with a PNG
+// that is the "API KEY REQUIRED" watermark, so status and content-type prove nothing here.
+function cartoTileUrl(path){ return 'https://' + path + '?key=' + CARTO_KEY; }
 
 function initLeafletMap(){
   lMap = L.map('map', {scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat, CITIES[currentCity].center.lng], CITIES[currentCity].zoom);
