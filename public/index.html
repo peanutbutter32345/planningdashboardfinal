@@ -1288,7 +1288,7 @@
             <p>Use <b>Add to map</b> to drop the projects you are following, the boards that decide them, or a figure you want to remember.</p>
           </div>
         </div>
-        <div class="ya-picker" id="yaPicker" hidden>
+        <div class="ya-picker" id="yaPicker">
           <div class="ya-picker-head">
             <span>Add to your map</span>
             <button type="button" class="ya-picker-x" id="yaAddClose" aria-label="Close">&times;</button>
@@ -3914,7 +3914,7 @@ function skipOnboard(){
   showScreen('dashboard');
 }
 function renderYourArea(){
-  if(!onboard.userLoc){ document.getElementById('yourAreaLoc').textContent = 'No location set yet - click "Edit my area & interests" below.'; document.getElementById('yourAreaList').innerHTML=''; return; }
+  if(!onboard.userLoc){ document.getElementById('yourAreaLoc').textContent = 'No location set yet - use Change next to Location above.'; document.getElementById('yourAreaList').innerHTML=''; return; }
   document.getElementById('yourAreaLoc').textContent = 'Near ' + onboard.userLoc.label + ' · ' + CITIES[currentCity].label;
   const withDist = DATA().filter(d=> onboard.interests.has(categoryOf(d)))
     .map(d=>({d, dist: haversineMi(onboard.userLoc.lat, onboard.userLoc.lng, d.lat, d.lng)}))
@@ -4318,6 +4318,7 @@ function renderYaSettings(){
 
 async function renderYourAreaMap(){
   renderYaSettings();
+  if(typeof yaSyncToggle === 'function') yaSyncToggle();
   if(!yaPins.length) await yaLoad();
   renderYaMap(); renderYaPicker(); renderYaPinList();
 }
@@ -6838,13 +6839,21 @@ if(remAllBtn) remAllBtn.addEventListener('click', ()=> remSend(null));
 
 // --- My map controls ---
 const yaOpen = document.getElementById('yaAddOpen');
+function yaSyncToggle(){
+  const p = document.getElementById('yaPicker');
+  const b = document.getElementById('yaAddOpen');
+  if(b && p) b.textContent = p.hidden ? 'Add to map' : 'Hide the list';
+  // Leaflet needs telling when its container changes width.
+  if(yaMap) setTimeout(()=>{ try{ yaMap.invalidateSize(); }catch(e){} }, 120);
+}
 if(yaOpen) yaOpen.addEventListener('click', ()=>{
   const p = document.getElementById('yaPicker');
   p.hidden = !p.hidden;
   if(!p.hidden){ renderYaPicker(); document.getElementById('yaPickSearch').focus(); }
+  yaSyncToggle();
 });
 const yaClose = document.getElementById('yaAddClose');
-if(yaClose) yaClose.addEventListener('click', ()=>{ document.getElementById('yaPicker').hidden = true; });
+if(yaClose) yaClose.addEventListener('click', ()=>{ document.getElementById('yaPicker').hidden = true; yaSyncToggle(); });
 const yaSearch = document.getElementById('yaPickSearch');
 if(yaSearch){
   let t = null;
