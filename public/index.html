@@ -646,6 +646,13 @@
   .card-src{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700;
     color:var(--text-soft); text-decoration:none; border-bottom:1px solid var(--rule); white-space:nowrap;}
   .card-src:hover{color:var(--ink); border-bottom-color:var(--ink);}
+  .board-actions{display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:9px;}
+  .board-act-status{font-size:11px; color:var(--text-soft);}
+  /* The dashboard board cards sit on a dark panel. */
+  .board-actions.on-dark .rem-btn{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.4); color:#fff;}
+  .board-actions.on-dark .rem-btn:hover{background:rgba(255,255,255,.22); border-color:#fff; color:#fff;}
+  .board-actions.on-dark .rem-btn.on{background:#fff; border-color:#fff; color:var(--ink);}
+  .board-actions.on-dark .board-act-status{color:#D6DECB;}
   /* Reminders */
   .rem-btn{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:5px 11px;
     cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11.5px; font-weight:700; color:var(--text-soft);}
@@ -2981,6 +2988,9 @@ let state = {q:'', stage:'all', cat:'all'};
 let authToken = localStorage.getItem('sbpd_token') || null;
 let authUsername = localStorage.getItem('sbpd_username') || null;
 let starredMap = new Map();
+// Declared here rather than with the rest of the reminder code: the board cards read it during
+// the first render, which happens before that block is evaluated.
+let remItems = [];
 function isLoggedIn(){ return Boolean(authToken); }
 function starKey(type,id){ return type+':'+id; }
 function isStarred(type,id){ return starredMap.has(starKey(type,id)); }
@@ -3653,14 +3663,16 @@ function renderInvolved(){
   document.getElementById('deciderRow').innerHTML = c.deciders.map(x=>{
     const id = currentCity+':'+x.name;
     const starData = {title:x.name.replace(/&amp;/g,'&')+' ('+c.label+')', desc:x.body+' '+x.when, url:x.link};
-    return `<div class="decider-card">${starButtonHtml('board', id, starData)}<h4>${x.link?`<a href="${x.link}" target="_blank" rel="noopener" style="color:#fff;">${x.name} ↗</a>`:x.name}</h4><div class="when">${x.when}</div><p>${x.body}</p></div>`;
+    return `<div class="decider-card">${starButtonHtml('board', id, starData)}<h4>${x.link?`<a href="${x.link}" target="_blank" rel="noopener" style="color:#fff;">${x.name} ↗</a>`:x.name}</h4><div class="when">${x.when}</div><p>${x.body}</p>${boardActionsHtml(currentCity, x.name, x.when, x.link, {dark:true})}</div>`;
   }).join('');
   document.getElementById('joinGrid').innerHTML = c.join.map(x=>{
     const cat = CAT_MAP[x.cat] || CAT_MAP['Civic'];
     const id = currentCity+':'+x.name;
     const starData = {title:x.name.replace(/&amp;/g,'&')+' ('+c.label+')', desc:x.body+' '+x.when, url:x.link};
-    return `<div class="join-card" style="border-top-color:${cat.color}">${starButtonHtml('board', id, starData)}<h4>${x.link?`<a href="${x.link}" target="_blank" rel="noopener" style="color:#fff;">${x.name} ↗</a>`:x.name}</h4><div class="when">${x.when}</div><p>${x.body}</p></div>`;
+    return `<div class="join-card" style="border-top-color:${cat.color}">${starButtonHtml('board', id, starData)}<h4>${x.link?`<a href="${x.link}" target="_blank" rel="noopener" style="color:#fff;">${x.name} ↗</a>`:x.name}</h4><div class="when">${x.when}</div><p>${x.body}</p>${boardActionsHtml(currentCity, x.name, x.when, x.link, {dark:true})}</div>`;
   }).join('');
+  wireBoardActions(document.getElementById('deciderRow'));
+  wireBoardActions(document.getElementById('joinGrid'));
   document.getElementById('boardCta').innerHTML = (c.ctaLinks||[]).map(l=>`<a class="btnlink" href="${l.url}" target="_blank" rel="noopener">${l.label} →</a>`).join('');
   document.getElementById('boardNote').textContent = c.note;
   // Source list was removed with the footer.
@@ -4023,8 +4035,6 @@ function photoCredit(p){ return p ? (p.cap + ' &middot; ' + p.by + ', ' + p.lic 
 // ================= REMINDERS =================
 // Things the reader asked to keep: a board's meeting schedule, or a plan they built. They can
 // have them mailed now, and mark each one to ride along with the regular briefing.
-let remItems = [];
-
 async function loadReminders(){
   if(!isLoggedIn()){ remItems = []; return; }
   try{ remItems = (await apiCall('/api/reminders')).reminders || []; }
@@ -4121,6 +4131,53 @@ async function remSend(id){
     const r = await apiCall('/api/reminders/email', {method:'POST', body:JSON.stringify(id ? {id} : {})});
     say('Sent to ' + (r.to || 'your address') + '.');
   }catch(err){ say(err.message); }
+}
+
+
+// Remind me / Email me this, for any board wherever it is shown. "Email me this" saves the
+// reminder first if it is not already kept, then asks the server to mail it - the server only
+// ever sends to the address on the account.
+function boardActionsHtml(city, name, when, url, opts){
+  const nm = String(name).replace(/&amp;/g,'&');
+  const wh = String(when||'').replace(/&amp;/g,'&');
+  const ref = city+':'+nm;
+  const payload = encodeURIComponent(JSON.stringify({kind:'board', refId:ref, label:nm, detail:wh, url:url||'', city:city}));
+  return '<div class="board-actions'+((opts&&opts.dark)?' on-dark':'')+'">'
+    + reminderButtonHtml('board', ref, nm, wh, url, city)
+    + '<button type="button" class="rem-btn" data-emailthis="'+payload+'">Email me this</button>'
+    + '<span class="board-act-status" role="status" aria-live="polite"></span>'
+    + '</div>';
+}
+function wireBoardActions(root){
+  wireReminderButtons(root);
+  (root || document).querySelectorAll('[data-emailthis]').forEach(b=>{
+    if(b.dataset.emWired) return;
+    b.dataset.emWired = '1';
+    b.addEventListener('click', async ()=>{
+      let d; try{ d = JSON.parse(decodeURIComponent(b.getAttribute('data-emailthis'))); }catch(e){ return; }
+      const say = t => { const el = b.parentElement.querySelector('.board-act-status'); if(el) el.textContent = t; };
+      if(!isLoggedIn()){
+        window.pendingLoginReason = 'Log in or create a free account to have this emailed to you.';
+        showPage('account');
+        return;
+      }
+      b.disabled = true; say('Sending…');
+      try{
+        let row = remItems.find(r=>r.kind==='board' && r.ref_id===d.refId);
+        if(!row){
+          await addReminder('board', d.refId, d.label, d.detail, d.url, d.city);
+          row = remItems.find(r=>r.kind==='board' && r.ref_id===d.refId);
+        }
+        if(!row) throw new Error('Could not save it first.');
+        const res = await apiCall('/api/reminders/email', {method:'POST', body:JSON.stringify({id:row.id})});
+        say('Sent to ' + (res.to || 'your address') + '.');
+        // Saving it also turns the Remind me button on.
+        const rb = b.parentElement.querySelector('[data-remind]');
+        if(rb){ rb.classList.add('on'); rb.innerHTML = '&#10003; Reminder set'; }
+      }catch(err){ say(err.message); }
+      b.disabled = false;
+    });
+  });
 }
 
 // ================= MY MAP =================
@@ -4805,7 +4862,8 @@ function renderTkPanel(list){
     body = '<div class="tk-p-meta">'+escapeHtml(s.meta||'')+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
       + '<p>'+escapeHtml(s.body||'')+'</p>'
-      + (s.url ? '<a class="btn tk-p-cta" href="'+s.url+'" target="_blank" rel="noopener">'+(s.cta||'Open')+' &#8599;</a>' : '');
+      + (s.url ? '<a class="btn tk-p-cta" href="'+s.url+'" target="_blank" rel="noopener">'+(s.cta||'Open')+' &#8599;</a>' : '')
+      + boardActionsHtml(tkProfile.city || acctCity(), s.title, s.meta||'', s.url||'');
   }
 
   host.innerHTML = '<div class="tk-p">'
@@ -4816,6 +4874,7 @@ function renderTkPanel(list){
     +   '<textarea class="tk-p-note" id="tkNote" rows="2" placeholder="Notes for yourself">'+escapeHtml(note)+'</textarea>'
     + '</div></div>';
 
+  wireBoardActions(host);
   const goBtn = host.querySelector('[data-tkgo]');
   if(goBtn) goBtn.addEventListener('click', ()=>{
     const ck = goBtn.getAttribute('data-tkgocity');
@@ -6181,8 +6240,8 @@ function renderResources(){
   document.getElementById('resCityName').textContent = c.label;
   const items = [];
   (c.ctaLinks||[]).forEach(l=> items.push({cat:'Official City Tool', name:l.label, body:'Direct link to the city\'s own system.', url:l.url}));
-  c.deciders.forEach(d=> items.push({cat:'Meeting Calendar', name:d.name.replace(/&amp;/g,'&'), body:d.when.replace(/&amp;/g,'&'), url:d.link}));
-  c.join.forEach(j=> items.push({cat:'Board You Can Join', name:j.name.replace(/&amp;/g,'&'), body:j.when, url:j.link}));
+  c.deciders.forEach(d=> items.push({cat:'Meeting Calendar', name:d.name.replace(/&amp;/g,'&'), body:d.when.replace(/&amp;/g,'&'), url:d.link, board:{when:d.when}}));
+  c.join.forEach(j=> items.push({cat:'Board You Can Join', name:j.name.replace(/&amp;/g,'&'), body:j.when, url:j.link, board:{when:j.when}}));
   (OFFICIAL_LINKS[currentCity]||[]).forEach(l=> items.push({cat:l.cat, name:l.title, body:l.note, url:l.url}));
   c.sources.forEach(s=> items.push({cat:'Data Source', name:s.replace(/&amp;/g,'&'), body:'Where this tracker\'s data for '+c.label+' comes from.', url:null}));
   const grid = document.getElementById('resourceGrid');
@@ -6202,9 +6261,11 @@ function renderResources(){
         <h4>${it.name}</h4>
         <p>${it.body}</p>
         ${it.url ? `<a class="res-link" href="${it.url}" target="_blank" rel="noopener" aria-label="Open ${it.name} (opens in new tab)">Open &#8594;</a>` : ''}
+        ${it.board ? boardActionsHtml(currentCity, it.name, it.board.when, it.url) : ''}
       </div>
     </div>`;
   }).join('');
+  wireBoardActions(grid);
 }
 
 // ================= ACCOUNTS + STARRING (API, session, UI wiring) =================
@@ -6461,7 +6522,7 @@ function renderAcctBoards(){
     + '<h4>'+nm+'</h4>'
     + '<div class="when">'+wh+'</div>'
     + (b.body ? '<p>'+b.body+'</p>' : '')
-    + '<div class="acct-board-tools">'+reminderButtonHtml('board', city+':'+nm, nm, wh, b.link, city)+'</div>'
+    + boardActionsHtml(city, nm, wh, b.link)
     + '</div>'
     + (b.link ? '<a class="res-link go" href="'+b.link+'" target="_blank" rel="noopener">'+cta+' &#8594;</a>' : '')
     + '</div>';
@@ -6475,7 +6536,7 @@ function renderAcctBoards(){
   if(join) join.innerHTML = c.join.length ? c.join.map(j=>row(j,'How to join')).join('')
     : '<div class="empty">No open board seats recorded for '+c.label+' yet.</div>';
 
-  wireReminderButtons(document.querySelector('[data-panel="boards"]'));
+  wireBoardActions(document.querySelector('[data-panel="boards"]'));
 
   const links = document.getElementById('acctBoardLinks');
   if(links){
