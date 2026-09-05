@@ -696,6 +696,8 @@
     display:flex; align-items:center; justify-content:center;}
   .tk-st-img{display:block; height:66px; margin:6px 0 9px; border-radius:2px;
     background-size:cover; background-position:center; background-color:#DEE3D5;}
+  .tk-st-img-fit{background-size:contain; background-repeat:no-repeat; background-color:#fff;}
+  .tk-p-map{max-height:210px; border:1px solid var(--rule);}
   .tk-st-icon{display:flex; align-items:center; justify-content:center; height:66px; margin:6px 0 9px;
     border-radius:2px; background:#EDF0E6; font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink);}
   .tk-st-lab{display:block; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800;
@@ -3937,6 +3939,37 @@ function renderTkSetup(){
   if(btn) btn.disabled = !tkReady();
 }
 
+
+// Pictures for the cards. Three real sources, no stand-ins: the matplotlib charts already
+// rendered into public/img/figures for statistics, a map tile of the actual coordinates for a
+// project, and the city photograph for anything civic.
+const TK_FIG_IMG = {rhna:'rhnaPct', rent:'rent', commute:'commute', pipeline:'units', value:'homeValue', commissions:'commissions'};
+// Which charts were actually rendered. Gilroy and Morgan Hill have no rent or home-value
+// series published for them, so asking for those files returned 404s on the cards.
+const FIGURES_AVAILABLE = {"campbell":["commissions","commute","homeValue","rent","rhnaPct","units"],"cupertino":["commissions","commute","homeValue","rent","rhnaPct","units"],"gilroy":["commissions","commute","rhnaPct","units"],"losaltos":["commissions","commute","homeValue","rent","rhnaPct","units"],"losaltoshills":["commissions","commute","rhnaPct","units"],"losgatos":["commissions","commute","homeValue","rent","rhnaPct","units"],"milpitas":["commissions","commute","homeValue","rent","rhnaPct","units"],"montesereno":["commissions","commute","rhnaPct","units"],"morganhill":["commissions","commute","rhnaPct","units"],"mountainview":["commissions","commute","homeValue","rent","rhnaPct","units"],"paloalto":["commissions","commute","homeValue","rent","rhnaPct","units"],"santaclara":["commissions","commute","homeValue","rent","rhnaPct","units"],"saratoga":["commissions","commute","homeValue","rent","rhnaPct","units"],"sunnyvale":["commissions","commute","homeValue","rent","rhnaPct","units"],"westsanjose":["commissions","commute","homeValue","rent","rhnaPct","units"]};
+function figureImage(city, metric){
+  const m = TK_FIG_IMG[metric];
+  if(!m) return null;
+  const have = FIGURES_AVAILABLE[city];
+  if(!have || have.indexOf(m) === -1) return null;
+  return '/img/figures/'+city+'-'+m+'.svg';
+}
+// Slippy-map tile covering a set of coordinates, so a project card shows where it actually is.
+function tileFor(lat, lng, z){
+  z = z || 15;
+  if(!isFinite(lat) || !isFinite(lng)) return null;
+  const n = Math.pow(2, z);
+  const x = Math.floor((lng + 180) / 360 * n);
+  const y = Math.floor((1 - Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI) / 2 * n);
+  return 'https://a.basemaps.cartocdn.com/light_all/'+z+'/'+x+'/'+y+'@2x.png';
+}
+function cityImage(city){ return (CITY_PHOTOS[city]||{}).url || null; }
+// A chart if one exists for this city, otherwise the city itself.
+function figureOrCity(city, metric){
+  const f = figureImage(city, metric);
+  return f ? {image:f, fit:'contain'} : {image:cityImage(city), fit:'cover'};
+}
+
 // ---- Building the stations ----
 const TK_TOPIC_NEWS = {housing:'housing', develop:'developments', transit:'transportation'};
 
@@ -3951,52 +3984,52 @@ function tkQuestionsFor(city, topics){
 
   if(has('housing') && r) out.push({
     q: c.label + ' has permitted what share of the homes the state assigned it for 2023-2031?',
-    opts:[r.pct + '%', '48%', '76%', 'It already met the target'], a:0,
+    opts:[r.pct + '%', '48%', '76%', 'It already met the target'], a:0, metric:'rhna',
     why:'From the state’s own progress report. A city far behind can have its housing plan found out of compliance, and that is what lets developers bypass local zoning under the Builder’s Remedy.',
     src:{l:'California HCD RHNA Progress Report', u:RHNA_SOURCE.url}});
   if(has('housing') && r) out.push({
     q: 'Of the ' + r.target.toLocaleString() + ' homes ' + c.label + ' was assigned, how many are meant to be affordable to lower-income households?',
-    opts:[(r.vli[1]+r.li[1]).toLocaleString(), '0', (r.above[1]).toLocaleString(), '100'], a:0,
+    opts:[(r.vli[1]+r.li[1]).toLocaleString(), '0', (r.above[1]).toLocaleString(), '100'], a:0, metric:'rhna',
     why:'The state splits every city’s target across four income bands. The two lowest bands are the ones cities most often miss.',
     src:{l:'California HCD RHNA Progress Report', u:RHNA_SOURCE.url}});
   if(has('housing') && st && st.renterSharePct != null) out.push({
     q:'What share of households in ' + c.label + ' rent rather than own?',
-    opts:[Math.round(st.renterSharePct)+'%','14%','81%','33%'], a:0,
+    opts:[Math.round(st.renterSharePct)+'%','14%','81%','33%'], a:0, metric:'rent',
     why:'Renters are the group most affected by housing decisions and least likely to be in the room when they are made.',
     src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
   if(has('transit') && st && st.transitSharePct != null) out.push({
     q:'What share of ' + c.label + ' commuters take public transit to work?',
-    opts:['About 2%','About ' + Math.round(st.transitSharePct) + '%','About 18%','About 34%'], a:1,
+    opts:['About 2%','About ' + Math.round(st.transitSharePct) + '%','About 18%','About 34%'], a:1, metric:'commute',
     why:'Most South Bay cities sit in the low single digits, which is the number behind a lot of the argument over parking and density near stations.',
     src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
   if(has('transit') && st && st.meanCommuteMin) out.push({
     q:'How long is the average commute in ' + c.label + '?',
-    opts:[st.meanCommuteMin + ' minutes','8 minutes','44 minutes','58 minutes'], a:0,
+    opts:[st.meanCommuteMin + ' minutes','8 minutes','44 minutes','58 minutes'], a:0, metric:'commute',
     why:'Commute length is what the state now measures a project against, in place of how much a project slows car traffic.',
     src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
   if(has('develop') && st && st.medianYearBuilt) out.push({
     q:'What is the median year a home in ' + c.label + ' was built?',
-    opts:[String(st.medianYearBuilt),'1994','2011','1946'], a:0,
+    opts:[String(st.medianYearBuilt),'1994','2011','1946'], a:0, metric:'value',
     why:'Housing age sits underneath most design arguments: parking minimums, setbacks, and what counts as in keeping with the area.',
     src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
   if(has('develop')) out.push({
     q:'Which body normally decides a development application first in ' + c.label + '?',
-    opts:['The Planning Commission','The Mayor alone','The county','A statewide board'], a:0,
+    opts:['The Planning Commission','The Mayor alone','The county','A statewide board'], a:0, metric:'pipeline',
     why:'Planning Commissions hear applications first; Council usually only sees one on appeal. That is why a comment to the Commission lands earlier than one to Council.',
     src:{l:c.label + ' boards and meetings', u:(c.deciders[0]||{}).link}});
   if(has('civic')) out.push({
     q:'When does a city normally publish the agenda for a public meeting?',
-    opts:['A few days before','The morning of','A month ahead','Only afterwards'], a:0,
+    opts:['A few days before','The morning of','A month ahead','Only afterwards'], a:0, metric:'commissions',
     why:'California requires 72 hours notice for a regular meeting. That short window is why following agendas beats following the news if you want to say something in time.',
     src:{l:c.label + ' agendas', u:(c.deciders[0]||{}).link}});
   if(has('civic') && (c.join||[]).length) out.push({
     q:'How many bodies in ' + c.label + ' can a resident apply to sit on, going by what is tracked here?',
-    opts:[String(c.join.length),'None','Only one','You have to be elected'], a:0,
+    opts:[String(c.join.length),'None','Only one','You have to be elected'], a:0, metric:'commissions',
     why:'Seats on advisory bodies go unfilled more often than people expect, and they are the most direct way in.',
     src:{l:c.label + ' boards you can join', u:(c.join[0]||{}).link}});
   if(has('climate') && st && st.transitSharePct != null) out.push({
     q:'Roughly what share of ' + c.label + ' commuters drive alone?',
-    opts:['Around three quarters','About a third','Under 10%','Almost nobody'], a:0,
+    opts:['Around three quarters','About a third','Under 10%','Almost nobody'], a:0, metric:'commute',
     why:'Driving is the largest single source of emissions in most South Bay cities, which is why housing near transit is treated as a climate question as well as a housing one.',
     src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
   return out;
@@ -4020,11 +4053,29 @@ function tkBuildStations(){
     image:a.image, meta:a.source+' · '+fmtDate(a.date),
     city:a.city, body:a.snippet, url:a.url}));
 
+
+  // --- Projects: real records for the chosen topics, nearest to a decision first ---
+  const CAT_FOR_TOPIC = {housing:['Housing'], develop:['Building','Commercial','Industrial','Office','Mixed-use'],
+                         transit:['Transportation'], climate:['Transportation']};
+  const wantCats = new Set();
+  topics.forEach(t=> (CAT_FOR_TOPIC[t]||[]).forEach(x=> wantCats.add(x.toLowerCase())));
+  const stageRank = {review:0, proposed:1, approved:2, construction:3, completed:4};
+  const projs = (c.data||[])
+    .filter(p=> !wantCats.size || wantCats.has(String(categoryOf(p)||'').toLowerCase()) || wantCats.has(String(p.cat||'').toLowerCase()))
+    .sort((a,b)=> (stageRank[a.stage]??9) - (stageRank[b.stage]??9))
+    .slice(0,8);
+  projs.forEach(p=> local.push({
+    key:'proj:'+p.id, kind:'project', title:p.addr || p.desc || p.id, label:'Project',
+    image:tileFor(p.lat, p.lng), imageFit:'cover',
+    meta:[p.stage, p.units ? p.units+' homes' : null].filter(Boolean).join(' · '),
+    body:[p.desc, p.lastNote, p.applicant ? 'Applicant: '+p.applicant : null].filter(Boolean).join(' '),
+    city, action:{kind:'project', id:p.id, city}}));
+
   // --- Figures: the numbers behind those topics ---
   const figs = [];
   if(topics.includes('housing') && r) figs.push({
     key:'fig:rhna:'+city, kind:'figure', title:'The housing target',
-    big:r.pct+'%', label:'Figure',
+    big:r.pct+'%', label:'Figure', image:figureOrCity(city,'rhna').image, imageFit:figureOrCity(city,'rhna').fit,
     meta:c.label+' · 2023-2031',
     body:c.label+' has permitted '+r.units.toLocaleString()+' of the '+r.target.toLocaleString()
       +' homes the state assigned it for this cycle. Of that target, '+(r.vli[1]+r.li[1]).toLocaleString()
@@ -4033,6 +4084,7 @@ function tkBuildStations(){
   if(topics.includes('housing') && st) figs.push({
     key:'fig:rent:'+city, kind:'figure', title:'What it costs to live here',
     big:'$'+(st.rent||st.medianGrossRent||0).toLocaleString(), label:'Figure',
+    image:figureOrCity(city,'rent').image, imageFit:figureOrCity(city,'rent').fit,
     meta:c.label+' · typical asking rent',
     body:'Median household income here is $'+(st.medianIncome||0).toLocaleString()+', and '
       +Math.round(st.renterSharePct||0)+'% of households rent.',
@@ -4040,12 +4092,14 @@ function tkBuildStations(){
   if(topics.includes('transit') && st) figs.push({
     key:'fig:commute:'+city, kind:'figure', title:'How people get to work',
     big:(st.meanCommuteMin||0)+' min', label:'Figure',
+    image:figureOrCity(city,'commute').image, imageFit:figureOrCity(city,'commute').fit,
     meta:c.label+' · average commute',
     body:Math.round(st.transitSharePct||0)+'% of commuters here take public transit. That share is the number behind most arguments about parking, density and new stations.',
     src:{l:'US Census, American Community Survey', u:'https://www.census.gov/programs-surveys/acs'}});
   if(topics.includes('develop')) figs.push({
     key:'fig:pipeline:'+city, kind:'figure', title:'What is in the pipeline',
     big:String(c.data.length), label:'Figure',
+    image:figureOrCity(city,'pipeline').image, imageFit:figureOrCity(city,'pipeline').fit,
     meta:c.label+' · tracked projects',
     body:(c.data.length
       ? 'Together they account for '+c.data.reduce((a,p)=>a+(p.units||0),0).toLocaleString()
@@ -4057,49 +4111,59 @@ function tkBuildStations(){
   // --- Questions on the chosen topics ---
   tkQuestionsFor(city, topics).forEach((q,i)=> local.push({
     key:'q:'+city+':'+i, kind:'quiz', title:'Question '+(i+1), label:'Question',
-    meta:c.label, quiz:q}));
+    meta:c.label, quiz:q, image:figureOrCity(city, q.metric).image, imageFit:figureOrCity(city, q.metric).fit}));
 
   // --- Things to do, in the city ---
   const deciders = c.deciders||[], joins = c.join||[];
   if(deciders.length) local.push({
     key:'do:agenda:'+city, kind:'action', title:'Read one agenda', label:'Do',
+    image:cityImage(city),
     meta:String(deciders[0].when||'').replace(/&amp;/g,'&'),
     body:'Agendas go up a few days before each meeting and list every item due for a vote. Skimming one is the fastest way to see what is actually being decided.',
     url:deciders[0].link, cta:'Open agendas'});
   if(deciders.length) local.push({
     key:'do:write:'+city, kind:'write', title:'Write to the people deciding', label:'Do',
+    image:cityImage(city),
     meta:deciders[0].name.replace(/&amp;/g,'&'),
     body:'Written comment on a specific item goes into the record and is read by staff before the meeting. Draft one here, then send it from your own email.',
     url:deciders[0].link});
   if(joins.length) local.push({
     key:'do:apply:'+city, kind:'action', title:'Apply for a seat', label:'Do',
+    image:cityImage(city),
     meta:joins[0].name.replace(/&amp;/g,'&'),
     body:c.label+' has '+joins.length+' bod'+(joins.length===1?'y':'ies')+' residents can apply to sit on. Seats go unfilled more often than people expect.',
     url:joins[0].link, cta:'How to apply'});
 
   // --- County track ---
   county.push({key:'co:supervisors', kind:'action', title:'Your county supervisor', label:'Do',
+    image:cityImage('westsanjose'),
     meta:'Santa Clara County Board of Supervisors',
     body:'The county runs health, social services, jails and roads outside city limits, and it holds land the cities do not. Five supervisors are elected by district.',
     url:'https://bos.santaclaracounty.gov/home', cta:'Find your district'});
   county.push({key:'co:agendas', kind:'action', title:'County agendas and meetings', label:'Do',
+    image:cityImage('westsanjose'),
     meta:'Board of Supervisors', body:'Agendas, minutes and video for the Board and its committees.',
     url:'https://sccgov.iqm2.com/Citizens/default.aspx?departmentid=1179&frame=no', cta:'Open agendas'});
   if(topics.includes('housing')) county.push({key:'co:housing', kind:'action', title:'County housing authority', label:'Do',
+    image:cityImage('westsanjose'),
     meta:'Santa Clara County', body:'Runs the housing voucher programme and county-owned affordable housing, separately from anything a city does.',
     url:'https://www.scchousingauthority.org/', cta:'Open'});
   if(topics.includes('housing')) county.push({key:'co:oshod', kind:'action', title:'County housing department', label:'Do',
+    image:cityImage('westsanjose'),
     meta:'Office of Supportive Housing', body:'The county side of homelessness response and supportive housing funding.',
     url:'https://osh.santaclaracounty.gov/', cta:'Open'});
   if(topics.includes('transit')) county.push({key:'co:vta', kind:'action', title:'VTA board and committees', label:'Do',
+    image:cityImage('westsanjose'),
     meta:'Santa Clara Valley Transportation Authority',
     body:'VTA runs the buses and light rail and is governed by a board of city and county elected officials. Its advisory committees take public members.',
     url:'https://www.vta.org/about/board-and-committees', cta:'Open'});
   if(topics.includes('climate')) county.push({key:'co:openspace', kind:'action', title:'Open space authority', label:'Do',
+    image:cityImage('westsanjose'),
     meta:'Santa Clara Valley Open Space Authority',
     body:'A separate elected agency that buys and manages open space across the valley.',
     url:'https://www.openspaceauthority.org/', cta:'Open'});
   county.push({key:'co:agendasvta', kind:'action', title:'VTA board agendas', label:'Do',
+    image:cityImage('westsanjose'),
     meta:'Transit decisions', body:'Agendas and minutes for the VTA board and its committees, including the ones that take public members.',
     url:'https://santaclaravta.iqm2.com/Citizens/default.aspx', cta:'Open agendas'});
 
@@ -4107,7 +4171,7 @@ function tkBuildStations(){
 }
 
 // ---- The rail ----
-const TK_KIND_ICON = {read:'▤', figure:'■', quiz:'?', action:'→', write:'✎'};
+const TK_KIND_ICON = {read:'▤', figure:'■', quiz:'?', action:'→', write:'✎', project:'▣'};
 
 function tkStations(){
   const built = tkBuildStations();
@@ -4146,6 +4210,7 @@ function renderTrack(){
   // them, and things to actually do. A row with nothing in it is left out.
   const ROWS = [
     {id:'read',    label:'Read',         sub:'Coverage of what you picked',        kinds:['read']},
+    {id:'proj',    label:'Projects',     sub:'What is actually on file near you',   kinds:['project']},
     {id:'stats',   label:'Statistics',   sub:'The figures, and questions on them', kinds:['figure','quiz']},
     {id:'involve', label:'Get involved', sub:'Commissions, meetings, and writing in', kinds:['action','write']},
   ];
@@ -4166,7 +4231,7 @@ function renderTrack(){
               const i = list.indexOf(s);
               const stt = (tkState.get(s.key)||{}).status || 'todo';
               const img = s.image
-                ? '<span class="tk-st-img" style="background-image:url(\''+s.image+'\')"></span>'
+                ? '<span class="tk-st-img'+(s.imageFit==='contain'?' tk-st-img-fit':'')+'" style="background-image:url(\''+s.image+'\')"></span>'
                 : '<span class="tk-st-icon">'+(s.big || TK_KIND_ICON[s.kind] || '')+'</span>';
               return '<button type="button" class="tk-st tk-'+stt+(tkOpen===s.key?' open':'')+'" data-tkst="'+escapeHtml(s.key)+'">'
                 + '<span class="tk-st-n">'+(i+1)+'</span>'
@@ -4240,6 +4305,13 @@ function renderTkPanel(list){
       + '<button type="button" class="btn tk-p-cta" id="tkWriteBuild">Write the draft</button>'
       + '<div id="tkWriteOut"></div>'
       + (s.url ? '<a class="tk-p-src" href="'+s.url+'" target="_blank" rel="noopener">Where to send it, and the deadline &#8599;</a>' : '');
+  } else if(s.kind === 'project'){
+    body = (s.image ? '<img class="tk-p-img tk-p-map" src="'+s.image+'" alt="Map of the area around '+escapeHtml(s.title)+'" loading="lazy" onerror="this.style.display=\'none\'" />' : '')
+      + '<div class="tk-p-meta">'+escapeHtml(s.meta||'')+(CITIES[s.city]?' · '+CITIES[s.city].label:'')+'</div>'
+      + '<h3>'+escapeHtml(s.title)+'</h3>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
+      + '<button type="button" class="btn tk-p-cta" data-tkgo="'+escapeHtml(s.action.id)+'" data-tkgocity="'+s.action.city+'">See it on the map &#8594;</button>'
+      + '<div class="tk-p-src">Map tile &copy; OpenStreetMap contributors, &copy; CARTO.</div>';
   } else {
     body = '<div class="tk-p-meta">'+escapeHtml(s.meta||'')+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
@@ -4255,6 +4327,13 @@ function renderTkPanel(list){
     +   '<textarea class="tk-p-note" id="tkNote" rows="2" placeholder="Notes for yourself">'+escapeHtml(note)+'</textarea>'
     + '</div></div>';
 
+  const goBtn = host.querySelector('[data-tkgo]');
+  if(goBtn) goBtn.addEventListener('click', ()=>{
+    const ck = goBtn.getAttribute('data-tkgocity');
+    if(ck && CITIES[ck]) switchCity(ck);
+    showPage('dashboard'); showScreen('dashboard');
+    flyTo(goBtn.getAttribute('data-tkgo'));
+  });
   const mark = document.getElementById('tkMark');
   if(mark) mark.addEventListener('click', ()=>{
     tkSaveStation(s.key, {status: stt==='done' ? 'todo' : 'done'});
