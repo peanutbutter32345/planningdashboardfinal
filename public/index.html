@@ -662,6 +662,79 @@
   .board-actions.on-dark .rem-btn:hover{background:rgba(255,255,255,.22); border-color:#fff; color:#fff;}
   .board-actions.on-dark .rem-btn.on{background:#fff; border-color:#fff; color:var(--ink);}
   .board-actions.on-dark .board-act-status{color:#D6DECB;}
+  /* ---- Get involved ---- */
+  .gi-tabs{display:flex; gap:6px; flex-wrap:wrap; border-bottom:2px solid var(--ink); padding-bottom:0; margin:16px 0 18px;}
+  .gi-tab{background:#fff; border:1px solid var(--rule); border-bottom:none; border-radius:2px 2px 0 0;
+    padding:9px 15px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:13px;
+    font-weight:700; color:var(--text-soft); margin-bottom:-1px;}
+  .gi-tab:hover{color:var(--ink);}
+  .gi-tab.on{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .gi-filters{display:grid; gap:9px; margin-bottom:12px;}
+  #giSearch{width:100%; max-width:520px; padding:10px 13px; border:1.5px solid var(--rule);
+    border-radius:2px; font-family:'Open Sans',sans-serif; font-size:13.5px;}
+  #giSearch:focus{outline:none; border-color:var(--ink);}
+  .gi-count{font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-bottom:10px;}
+  .gi-boardlist{display:grid; gap:9px;}
+  .gi-board{position:relative; display:flex; gap:14px; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; background:#fff; border:1px solid var(--rule); border-radius:2px; padding:13px 15px;}
+  .gi-board-main{flex:1 1 320px; min-width:0;}
+  .gi-board-meta{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:4px;}
+  .gi-role{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.06em;
+    text-transform:uppercase; color:#fff; padding:2px 6px; border-radius:2px;}
+  .gi-role-decides{background:#3E4F24;} .gi-role-join{background:#8C5A2B;}
+  .gi-city{font-family:var(--mono); font-size:10.5px; color:var(--text-soft);}
+  .gi-sched{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.05em;
+    text-transform:uppercase; color:#5F7640;}
+  .gi-board h4{font-size:14.5px; color:var(--ink); line-height:1.35;}
+  .gi-when{font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-top:3px;}
+  .gi-board p{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin-top:5px;}
+  .gi-open{flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:11.5px; font-weight:700;
+    color:var(--text-soft); text-decoration:none; border:1px solid var(--rule); border-radius:2px; padding:5px 10px;}
+  .gi-open:hover{border-color:var(--ink); color:var(--ink);}
+  /* calendar */
+  .gi-cal-head{display:flex; justify-content:space-between; align-items:flex-end; gap:14px;
+    flex-wrap:wrap; margin-bottom:12px;}
+  .gi-cal-head h3{font-size:17px; color:var(--ink);}
+  .gi-cal-nav{display:flex; gap:8px; align-items:center;}
+  .gi-cal-nav .btn{padding:6px 12px; font-size:15px; line-height:1;}
+  .gi-cal-month{font-family:'Open Sans',sans-serif; font-size:14px; font-weight:800; color:var(--ink); min-width:150px; text-align:center;}
+  .gi-cal-opts{display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:11px;
+    font-family:'Open Sans',sans-serif; font-size:12px; color:var(--text-soft);}
+  .gi-cal-opts label{display:flex; gap:6px; align-items:center; cursor:pointer;}
+  .gi-legend{display:flex; gap:6px; align-items:center;}
+  .gi-legend i{width:9px; height:9px; border-radius:2px; display:inline-block; margin-left:8px;}
+  .dot-conf{background:#3E4F24;} .dot-rec{background:#C3CDB2;}
+  .gi-cal{display:grid; grid-template-columns:repeat(7,1fr); gap:1px; background:var(--rule);
+    border:1px solid var(--rule); border-radius:2px; overflow:hidden; margin-bottom:20px;}
+  .gi-dow{background:var(--paper-2); padding:7px 6px; font-family:'Open Sans',sans-serif;
+    font-size:10px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft); text-align:center;}
+  .gi-cell{background:#fff; min-height:82px; padding:5px 6px; display:flex; flex-direction:column; gap:2px;}
+  .gi-empty{background:#FAFBF7;}
+  .gi-today{background:#F2F5EC;}
+  .gi-today .gi-daynum{background:var(--ink); color:#fff; border-radius:50%; width:19px; height:19px;
+    display:inline-flex; align-items:center; justify-content:center;}
+  .gi-daynum{font-family:var(--mono); font-size:11px; color:var(--text-soft);}
+  .gi-ev{display:block; font-size:9.5px; line-height:1.3; padding:2px 4px; border-radius:2px;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .gi-ev.gi-conf{background:#3E4F24; color:#fff;}
+  .gi-ev.gi-rec{background:#E7EBDD; color:#3E4F24;}
+  .gi-more{font-size:9px; color:var(--text-soft);}
+  .gi-cal-row{display:grid; grid-template-columns:70px 1fr 170px 90px 78px; gap:10px; align-items:center;
+    background:#fff; border:1px solid var(--rule); border-radius:2px; padding:8px 12px; margin-bottom:5px;}
+  @media (max-width:820px){ .gi-cal-row{grid-template-columns:64px 1fr; } .gi-cal-c,.gi-cal-b,.gi-cal-l{grid-column:2;} }
+  .gi-cal-d{font-family:var(--mono); font-size:11.5px; font-weight:700; color:var(--ink);}
+  .gi-cal-n{font-size:13px; color:var(--ink); font-weight:700;}
+  .gi-cal-c{font-size:11.5px; color:var(--text-soft);}
+  .gi-cal-b{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.05em;
+    text-transform:uppercase; padding:2px 6px; border-radius:2px; text-align:center;}
+  .gi-cal-b.gi-conf{background:#3E4F24; color:#fff;} .gi-cal-b.gi-rec{background:#E7EBDD; color:#3E4F24;}
+  .gi-cal-l{font-size:11px; font-weight:700; color:var(--text-soft); text-decoration:none;}
+  .gi-unscheduled{margin-top:22px;}
+  .gi-unsched-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:6px;}
+  .gi-unsched{font-size:12px; color:var(--ink); background:var(--paper-2); border:1px solid var(--rule);
+    border-radius:2px; padding:7px 10px;}
+  .gi-unsched span{color:var(--text-soft); font-family:var(--mono); font-size:10.5px;}
+  .gi-unsched a{font-size:10.5px; color:var(--text-soft);}
   /* Reminders */
   .rem-btn{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:5px 11px;
     cursor:pointer; font-family:'Open Sans',sans-serif; font-size:11.5px; font-weight:700; color:var(--text-soft);}
@@ -1157,7 +1230,6 @@
     <button class="sub-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
     <button class="sub-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
     <button class="sub-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
-    <button class="sub-nav-tab" data-screen="hearings" role="tab" aria-selected="false">Hearings</button>
     <button class="sub-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
     <button class="sub-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
   </div>
@@ -1325,29 +1397,67 @@
 <div id="screenPlanner" class="screen" style="display:none;">
   <div class="wrap">
     <div class="planner-shell">
-      <h2>Build your get-involved plan</h2>
-      <p class="section-note">Pick what you care about and how much time you actually have - we'll turn it into an ordered, specific plan: which meeting to watch, which board to apply to, and which nearby project to comment on first.</p>
-      <span class="onboard-label">1. What do you care about?</span>
-      <div class="onboard-interests" id="plannerInterests" style="margin-bottom:18px;"></div>
-      <span class="onboard-label">2. How much time do you have?</span>
-      <div class="onboard-interests" id="plannerEffort" style="margin-bottom:18px;"></div>
-      <button class="btn" id="plannerGenerate" type="button">Generate my plan →</button>
-      <div id="plannerOutput" role="status" aria-live="polite"></div>
-      <div id="plannerActions" style="display:none; margin-top:16px;">
-        <button class="btn secondary" id="plannerCopy" type="button">Copy plan as text</button>
-        <span id="plannerCopyStatus" class="section-note" role="status" aria-live="polite"></span>
-      </div>
-    </div>
-  </div>
-</div>
+      <h2>Get involved</h2>
+      <p class="section-note">Every board and commission across the South Bay, when they meet, and which of those meetings are actually confirmed on an agenda.</p>
 
-<div id="screenHearings" class="screen" style="display:none;">
-  <div class="wrap">
-    <div class="planner-shell">
-      <h2>Upcoming hearings</h2>
-      <p class="section-note">Public meetings in the next 45 days where land use is decided, pulled live from each city's official agenda system. Anything matching a project this dashboard tracks is linked. Cities usually post agendas about a week ahead, so a meeting can appear here before its agenda does.</p>
-      <div id="hearingsContent"><div class="empty">Loading upcoming meetings...</div></div>
-      <p class="section-note" id="hearingsFoot" style="margin-top:20px;"></p>
+      <div class="gi-tabs" id="giTabs"></div>
+
+      <!-- 1. every board -->
+      <section class="gi-sec" data-gi="boards">
+        <div class="gi-filters">
+          <input type="search" id="giSearch" placeholder="Search boards by name, city or subject&hellip;" aria-label="Search boards" />
+          <div class="stat-toolbar" id="giCityChips"><span class="lab">City</span></div>
+          <div class="stat-toolbar" id="giCatChips"><span class="lab">Kind</span></div>
+        </div>
+        <div class="gi-count" id="giCount"></div>
+        <div class="gi-boardlist" id="giBoardList"></div>
+      </section>
+
+      <!-- 2. the calendar -->
+      <section class="gi-sec" data-gi="calendar" hidden>
+        <div class="gi-cal-head">
+          <div>
+            <h3>Meeting calendar</h3>
+            <p class="section-note">Built from each body's published schedule. A date is marked <b>confirmed</b> only when it appears on a real agenda; the rest are the recurring pattern the city publishes, which can move.</p>
+          </div>
+          <div class="gi-cal-nav">
+            <button type="button" class="btn secondary" id="giPrev" aria-label="Previous month">&#8249;</button>
+            <span class="gi-cal-month" id="giMonth"></span>
+            <button type="button" class="btn secondary" id="giNext" aria-label="Next month">&#8250;</button>
+          </div>
+        </div>
+        <div class="gi-cal-opts">
+          <label><input type="checkbox" id="giOnlyStarred" /> Only what I follow</label>
+          <span class="gi-legend"><i class="dot-conf"></i> confirmed on an agenda <i class="dot-rec"></i> recurring pattern</span>
+        </div>
+        <div class="gi-cal" id="giCal"></div>
+        <div class="gi-cal-list" id="giCalList"></div>
+        <div class="gi-unscheduled" id="giUnscheduled"></div>
+      </section>
+
+      <!-- 3. live hearings -->
+      <section class="gi-sec" data-gi="hearings" hidden>
+        <h3>Upcoming hearings</h3>
+        <p class="section-note">Public meetings in the next 45 days where land use is decided, pulled live from each city's official agenda system. Anything matching a project this dashboard tracks is linked. Cities usually post agendas about a week ahead, so a meeting can appear here before its agenda does.</p>
+        <div id="hearingsContent"><div class="empty">Loading upcoming meetings...</div></div>
+        <p class="section-note" id="hearingsFoot" style="margin-top:20px;"></p>
+      </section>
+
+      <!-- 4. the plan builder -->
+      <section class="gi-sec" data-gi="plan" hidden>
+        <h3>Build your get-involved plan</h3>
+        <p class="section-note">Pick what you care about and how much time you actually have - we'll turn it into an ordered, specific plan: which meeting to watch, which board to apply to, and which nearby project to comment on first.</p>
+        <span class="onboard-label">1. What do you care about?</span>
+        <div class="onboard-interests" id="plannerInterests" style="margin-bottom:18px;"></div>
+        <span class="onboard-label">2. How much time do you have?</span>
+        <div class="onboard-interests" id="plannerEffort" style="margin-bottom:18px;"></div>
+        <button class="btn" id="plannerGenerate" type="button">Generate my plan →</button>
+        <div id="plannerOutput" role="status" aria-live="polite"></div>
+        <div id="plannerActions" style="display:none; margin-top:16px;">
+          <button class="btn secondary" id="plannerCopy" type="button">Copy plan as text</button>
+          <span id="plannerCopyStatus" class="section-note" role="status" aria-live="polite"></span>
+        </div>
+      </section>
     </div>
   </div>
 </div>
@@ -3981,9 +4091,8 @@ renderOnboardInterests();
 let currentScreen = 'dashboard';
 function refreshCurrentScreen(){
   if(currentScreen==='yourarea'){ renderYourArea(); renderYourAreaMap(); }
-  else if(currentScreen==='planner'){ renderPlannerInterests(); renderPlannerEffort(); }
+  else if(currentScreen==='planner') renderGetInvolved();
   else if(currentScreen==='statistics') renderStatistics();
-  else if(currentScreen==='hearings') renderHearings();
   else if(currentScreen==='resources') renderResources();
   else if(currentScreen==='timeline'){ tkLoad().then(renderTrack); }
   else if(currentScreen==='bank'){ renderBankMosaic(); renderBankExamples(); renderBank(); }
@@ -4037,8 +4146,9 @@ function remHas(kind, refId){ return remItems.some(r=>r.kind===kind && r.ref_id=
 async function addReminder(kind, refId, label, detail, url, city){
   if(!isLoggedIn()){
     // Same route starring uses when there is no account yet.
-    window.pendingLoginReason = 'Log in or create a free account to keep reminders - they can be emailed to you and added to your regular briefing.';
+    window.pendingLoginReason = 'Log in or create a free account to add this to your reminders. Reminders are kept here, can be emailed to you on demand, and can ride along with your email summary.';
     showPage('account');
+    showAcctPanel('reminders');
     return false;
   }
   try{
@@ -4059,7 +4169,7 @@ function reminderButtonHtml(kind, refId, label, detail, url, city){
   const on = remHas(kind, refId);
   const payload = encodeURIComponent(JSON.stringify({kind, refId, label, detail:detail||'', url:url||'', city:city||''}));
   return '<button type="button" class="rem-btn'+(on?' on':'')+'" data-remind="'+payload+'">'
-    + (on ? '&#10003; Reminder set' : 'Remind me') + '</button>';
+    + (on ? '&#10003; In my reminders' : 'Add to reminders') + '</button>';
 }
 function wireReminderButtons(root){
   (root || document).querySelectorAll('[data-remind]').forEach(b=>{
@@ -4072,7 +4182,7 @@ function wireReminderButtons(root){
       else { await addReminder(d.kind, d.refId, d.label, d.detail, d.url, d.city); }
       const nowOn = remHas(d.kind, d.refId);
       b.classList.toggle('on', nowOn);
-      b.innerHTML = nowOn ? '&#10003; Reminder set' : 'Remind me';
+      b.innerHTML = nowOn ? '&#10003; In my reminders' : 'Add to reminders';
       if(currentScreen==='account' && acctPanel==='reminders') renderAcctReminders();
     });
   });
@@ -4149,8 +4259,9 @@ function wireBoardActions(root){
       let d; try{ d = JSON.parse(decodeURIComponent(b.getAttribute('data-emailthis'))); }catch(e){ return; }
       const say = t => { const el = b.parentElement.querySelector('.board-act-status'); if(el) el.textContent = t; };
       if(!isLoggedIn()){
-        window.pendingLoginReason = 'Log in or create a free account to have this emailed to you.';
+        window.pendingLoginReason = 'Log in or create a free account to have this emailed to you. We can only send to an address on your own account.';
         showPage('account');
+        showAcctPanel('reminders');
         return;
       }
       b.disabled = true; say('Sending…');
@@ -4165,11 +4276,266 @@ function wireBoardActions(root){
         say('Sent to ' + (res.to || 'your address') + '.');
         // Saving it also turns the Remind me button on.
         const rb = b.parentElement.querySelector('[data-remind]');
-        if(rb){ rb.classList.add('on'); rb.innerHTML = '&#10003; Reminder set'; }
+        if(rb){ rb.classList.add('on'); rb.innerHTML = '&#10003; In my reminders'; }
       }catch(err){ say(err.message); }
       b.disabled = false;
     });
   });
+}
+
+
+// ================= GET INVOLVED =================
+// One screen for the bodies that decide: every board, a calendar of when they sit, and the
+// hearings that are actually on an agenda.
+let giTab = 'boards';
+let giQuery = '', giCity = 'all', giCat = 'all';
+let giMonth = new Date();
+let giOnlyStarred = false;
+
+const GI_TABS = [
+  {id:'boards',   l:'All boards'},
+  {id:'calendar', l:'Meeting calendar'},
+  {id:'hearings', l:'Live hearings'},
+  {id:'plan',     l:'Build a plan'},
+];
+
+// Every board in every city, with the city it belongs to and whether it takes applications.
+function giAllBoards(){
+  const out = [];
+  Object.keys(CITIES).filter(k=>k!=='all').forEach(ck=>{
+    const c = CITIES[ck];
+    (c.deciders||[]).forEach(b=> out.push({city:ck, cityLabel:c.label, role:'decides',
+      name:String(b.name).replace(/&amp;/g,'&'), when:String(b.when||'').replace(/&amp;/g,'&'),
+      body:b.body||'', url:b.link}));
+    (c.join||[]).forEach(b=> out.push({city:ck, cityLabel:c.label, role:'join',
+      name:String(b.name).replace(/&amp;/g,'&'), when:String(b.when||'').replace(/&amp;/g,'&'),
+      body:b.body||'', cat:b.cat||'Civic', url:b.link}));
+  });
+  return out;
+}
+
+// ---- Reading a published schedule ----
+// Cities write these as prose. Only a fixed "Nth weekday" pattern can be turned into dates;
+// anything else is left off the calendar rather than guessed at.
+const GI_DAYS = {sunday:0, monday:1, tuesday:2, wednesday:3, thursday:4, friday:5, saturday:6};
+const GI_ORD = {'1st':1, 'first':1, '2nd':2, 'second':2, '3rd':3, 'third':3, '4th':4, 'fourth':4, '5th':5};
+function parseSchedule(when){
+  if(!when) return null;
+  const t = when.toLowerCase();
+  if(/check current agenda|see the |not independently confirmed|applications open/.test(t)) return null;
+  // e.g. "2nd & 4th Monday", "1st and 3rd Wednesday", "4th Thursday", "3rd Monday"
+  const m = t.match(/((?:1st|2nd|3rd|4th|5th|first|second|third|fourth)(?:\s*(?:&|and|,)\s*(?:1st|2nd|3rd|4th|5th|first|second|third|fourth))*)\s+(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/);
+  if(!m) return null;
+  const ords = m[1].split(/\s*(?:&|and|,)\s*/).map(x=>GI_ORD[x.trim()]).filter(Boolean);
+  const dow = GI_DAYS[m[2]];
+  if(!ords.length || dow === undefined) return null;
+  const tm = t.match(/(\d{1,2})(?::(\d{2}))?\s*(a\.m\.|p\.m\.|am|pm)/);
+  let time = null;
+  if(tm){
+    let h = +tm[1]; const mins = tm[2] || '00';
+    if(/p/.test(tm[3]) && h < 12) h += 12;
+    if(/a/.test(tm[3]) && h === 12) h = 0;
+    time = String(h).padStart(2,'0')+':'+mins;
+  }
+  return {ords, dow, time};
+}
+// The actual dates a pattern lands on in a given month.
+function datesFor(sched, year, month){
+  const out = [];
+  const last = new Date(year, month+1, 0).getDate();
+  let seen = 0;
+  for(let d=1; d<=last; d++){
+    const dt = new Date(year, month, d);
+    if(dt.getDay() !== sched.dow) continue;
+    seen++;
+    if(sched.ords.includes(seen)) out.push(d);
+  }
+  return out;
+}
+
+function giFiltered(){
+  const q = giQuery.toLowerCase().trim();
+  return giAllBoards().filter(b=>{
+    if(giCity !== 'all' && b.city !== giCity) return false;
+    if(giCat === 'decides' && b.role !== 'decides') return false;
+    if(giCat === 'join' && b.role !== 'join') return false;
+    if(giCat === 'scheduled' && !parseSchedule(b.when)) return false;
+    if(q && !(b.name+' '+b.cityLabel+' '+b.body+' '+b.when).toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+function renderGiBoards(){
+  const cityHost = document.getElementById('giCityChips');
+  const catHost = document.getElementById('giCatChips');
+  const all = giAllBoards();
+  if(cityHost){
+    const keys = ['all', ...Object.keys(CITIES).filter(k=>k!=='all')];
+    cityHost.innerHTML = '<span class="lab">City</span>' + keys.map(k=>
+      '<button type="button" class="stat-chip" data-gicity="'+k+'" aria-pressed="'+(giCity===k)+'">'
+      + (k==='all' ? 'All ' + all.length : CITIES[k].label) + '</button>').join('');
+    cityHost.querySelectorAll('[data-gicity]').forEach(b=> b.addEventListener('click', ()=>{
+      giCity = b.getAttribute('data-gicity'); renderGiBoards();
+    }));
+  }
+  if(catHost){
+    const cats = [{id:'all',l:'Everything'},{id:'decides',l:'Decides land use'},
+                  {id:'join',l:'You can apply'},{id:'scheduled',l:'Has a fixed schedule'}];
+    catHost.innerHTML = '<span class="lab">Kind</span>' + cats.map(c=>
+      '<button type="button" class="stat-chip" data-gicat="'+c.id+'" aria-pressed="'+(giCat===c.id)+'">'+c.l+'</button>').join('');
+    catHost.querySelectorAll('[data-gicat]').forEach(b=> b.addEventListener('click', ()=>{
+      giCat = b.getAttribute('data-gicat'); renderGiBoards();
+    }));
+  }
+
+  const rows = giFiltered();
+  const cnt = document.getElementById('giCount');
+  if(cnt) cnt.textContent = rows.length + ' of ' + all.length + ' boards';
+
+  const host = document.getElementById('giBoardList');
+  if(!host) return;
+  host.innerHTML = rows.length ? rows.map(b=>{
+    const id = b.city+':'+b.name;
+    const sched = parseSchedule(b.when);
+    const starData = {title:b.name+' ('+b.cityLabel+')', desc:b.body+' '+b.when, url:b.url, city:b.city};
+    return '<div class="gi-board">'
+      + starButtonHtml('board', id, starData)
+      + '<div class="gi-board-main">'
+      +   '<div class="gi-board-meta"><span class="gi-role gi-role-'+b.role+'">'
+      +     (b.role==='decides' ? 'Decides' : 'You can apply') + '</span>'
+      +     '<span class="gi-city">'+escapeHtml(b.cityLabel)+'</span>'
+      +     (sched ? '<span class="gi-sched">on the calendar</span>' : '') + '</div>'
+      +   '<h4>'+escapeHtml(b.name)+'</h4>'
+      +   (b.when ? '<div class="gi-when">'+escapeHtml(b.when)+'</div>' : '')
+      +   (b.body ? '<p>'+escapeHtml(b.body)+'</p>' : '')
+      +   boardActionsHtml(b.city, b.name, b.when, b.url)
+      + '</div>'
+      + (b.url ? '<a class="gi-open" href="'+b.url+'" target="_blank" rel="noopener">Open &#8599;</a>' : '')
+      + '</div>';
+  }).join('') : '<div class="empty">No boards match that.</div>';
+  wireBoardActions(host);
+  if(typeof wireStarButtons === 'function') wireStarButtons(host);
+}
+
+// ---- The calendar ----
+// Recurring patterns the cities publish, plus the dates that are actually on an agenda.
+let giHearings = null;
+
+function giMonthEvents(year, month){
+  const events = [];   // {day, name, city, cityLabel, time, confirmed, url}
+  giAllBoards().forEach(b=>{
+    const sched = parseSchedule(b.when);
+    if(!sched) return;
+    if(giOnlyStarred && !isStarred('board', b.city+':'+b.name)) return;
+    datesFor(sched, year, month).forEach(d=> events.push({
+      day:d, name:b.name, city:b.city, cityLabel:b.cityLabel,
+      time:sched.time, confirmed:false, url:b.url}));
+  });
+  // Real agenda dates win: if a hearing lands on the same day for the same body, mark it.
+  if(giHearings && Array.isArray(giHearings.hearings)){
+    giHearings.hearings.forEach(h=>{
+      if(!h.date) return;
+      const dt = new Date(h.date + 'T12:00:00');
+      if(dt.getFullYear() !== year || dt.getMonth() !== month) return;
+      const d = dt.getDate();
+      const name = h.body || h.name || 'Public meeting';
+      if(giOnlyStarred && !isStarred('board', h.city+':'+name)) return;
+      const existing = events.find(e=> e.day===d && e.city===h.city && e.name===name);
+      if(existing){ existing.confirmed = true; existing.url = h.agendaUrl || existing.url; }
+      else events.push({day:d, name, city:h.city, cityLabel:(CITIES[h.city]||{}).label||h.city,
+        time:h.time||null, confirmed:true, url:h.agendaUrl||null});
+    });
+  }
+  return events;
+}
+
+const GI_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+function renderGiCalendar(){
+  const y = giMonth.getFullYear(), m = giMonth.getMonth();
+  const label = document.getElementById('giMonth');
+  if(label) label.textContent = GI_MONTHS[m] + ' ' + y;
+
+  const events = giMonthEvents(y, m);
+  const byDay = {};
+  events.forEach(e=> (byDay[e.day] = byDay[e.day] || []).push(e));
+
+  const first = new Date(y, m, 1).getDay();
+  const days = new Date(y, m+1, 0).getDate();
+  const today = new Date();
+  const isThisMonth = today.getFullYear()===y && today.getMonth()===m;
+
+  let cells = '';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d=> cells += '<div class="gi-dow">'+d+'</div>');
+  for(let i=0;i<first;i++) cells += '<div class="gi-cell gi-empty"></div>';
+  for(let d=1; d<=days; d++){
+    const evs = byDay[d] || [];
+    const isToday = isThisMonth && today.getDate()===d;
+    cells += '<div class="gi-cell'+(isToday?' gi-today':'')+(evs.length?' gi-has':'')+'">'
+      + '<span class="gi-daynum">'+d+'</span>'
+      + evs.slice(0,3).map(e=>
+          '<span class="gi-ev '+(e.confirmed?'gi-conf':'gi-rec')+'" title="'+escapeHtml(e.name+' - '+e.cityLabel+(e.time?' at '+e.time:''))+'">'
+          + escapeHtml(e.name.length>18 ? e.name.slice(0,17)+'…' : e.name) + '</span>').join('')
+      + (evs.length>3 ? '<span class="gi-more">+'+(evs.length-3)+' more</span>' : '')
+      + '</div>';
+  }
+  const cal = document.getElementById('giCal');
+  if(cal) cal.innerHTML = cells;
+
+  // A plain list under the grid, which is what people actually read from.
+  const list = document.getElementById('giCalList');
+  if(list){
+    const sorted = events.slice().sort((a,b)=> a.day-b.day || a.name.localeCompare(b.name));
+    list.innerHTML = sorted.length
+      ? '<div class="acct-sec-h">Every meeting this month ('+sorted.length+')</div>'
+        + sorted.map(e=>
+          '<div class="gi-cal-row"><span class="gi-cal-d">'+GI_MONTHS[m].slice(0,3)+' '+e.day+'</span>'
+          + '<span class="gi-cal-n">'+escapeHtml(e.name)+'</span>'
+          + '<span class="gi-cal-c">'+escapeHtml(e.cityLabel)+(e.time?' &middot; '+e.time:'')+'</span>'
+          + '<span class="gi-cal-b '+(e.confirmed?'gi-conf':'gi-rec')+'">'+(e.confirmed?'confirmed':'recurring')+'</span>'
+          + (e.url ? '<a class="gi-cal-l" href="'+e.url+'" target="_blank" rel="noopener">Open &#8599;</a>' : '<span></span>')
+          + '</div>').join('')
+      : '<div class="empty">No meetings fall in this month from the schedules published.</div>';
+  }
+
+  // Be explicit about the bodies that cannot be put on a calendar.
+  const un = document.getElementById('giUnscheduled');
+  if(un){
+    const noSched = giAllBoards().filter(b=> !parseSchedule(b.when));
+    un.innerHTML = noSched.length
+      ? '<div class="acct-sec-h">Not on the calendar ('+noSched.length+')</div>'
+        + '<p class="section-note">These bodies do not publish a fixed pattern, so no date is guessed for them. Their pages carry the current schedule.</p>'
+        + '<div class="gi-unsched-list">' + noSched.map(b=>
+            '<div class="gi-unsched">'+escapeHtml(b.name)+' <span>'+escapeHtml(b.cityLabel)+'</span>'
+            + (b.url ? ' <a href="'+b.url+'" target="_blank" rel="noopener">check &#8599;</a>' : '') + '</div>').join('')
+        + '</div>'
+      : '';
+  }
+}
+
+function renderGetInvolved(){
+  const tabs = document.getElementById('giTabs');
+  if(tabs){
+    tabs.innerHTML = GI_TABS.map(t=>
+      '<button type="button" class="gi-tab'+(giTab===t.id?' on':'')+'" data-gitab="'+t.id+'">'+t.l+'</button>').join('');
+    tabs.querySelectorAll('[data-gitab]').forEach(b=> b.addEventListener('click', ()=>{
+      giTab = b.getAttribute('data-gitab'); renderGetInvolved();
+    }));
+  }
+  document.querySelectorAll('.gi-sec').forEach(sec=>{ sec.hidden = sec.getAttribute('data-gi') !== giTab; });
+
+  if(giTab === 'boards') renderGiBoards();
+  else if(giTab === 'calendar'){
+    if(giHearings === null){
+      giHearings = {hearings:[]};
+      fetch('/api/hearings').then(r=>r.json()).then(d=>{
+        giHearings = d && Array.isArray(d.hearings) ? d : {hearings:[]};
+        if(currentScreen==='planner' && giTab==='calendar') renderGiCalendar();
+      }).catch(()=>{});
+    }
+    renderGiCalendar();
+  }
+  else if(giTab === 'hearings') renderHearings();
+  else if(giTab === 'plan'){ renderPlannerInterests(); renderPlannerEffort(); }
 }
 
 // ================= MY MAP =================
@@ -6886,6 +7252,15 @@ if(bankInput){
 
 const remAllBtn = document.getElementById('remEmailAll');
 if(remAllBtn) remAllBtn.addEventListener('click', ()=> remSend(null));
+
+const giPrevBtn = document.getElementById('giPrev');
+if(giPrevBtn) giPrevBtn.addEventListener('click', ()=>{ giMonth = new Date(giMonth.getFullYear(), giMonth.getMonth()-1, 1); renderGiCalendar(); });
+const giNextBtn = document.getElementById('giNext');
+if(giNextBtn) giNextBtn.addEventListener('click', ()=>{ giMonth = new Date(giMonth.getFullYear(), giMonth.getMonth()+1, 1); renderGiCalendar(); });
+const giStarOnly = document.getElementById('giOnlyStarred');
+if(giStarOnly) giStarOnly.addEventListener('change', ()=>{ giOnlyStarred = giStarOnly.checked; renderGiCalendar(); });
+const giSearchEl = document.getElementById('giSearch');
+if(giSearchEl){ let t=null; giSearchEl.addEventListener('input', ()=>{ clearTimeout(t); t=setTimeout(()=>{ giQuery = giSearchEl.value; renderGiBoards(); }, 130); }); }
 
 // --- My map controls ---
 const yaOpen = document.getElementById('yaAddOpen');
