@@ -50,14 +50,21 @@
   .wrap{max-width:1560px; margin:0 auto; padding:0 22px;}
   @media (max-width:640px){ .wrap{padding:0 16px;} }
 
-  /* Hero photograph, served from public/img. AVIF first with a JPEG fallback, since Safari below
-     16 and older Edge can't decode AVIF and would otherwise render no background at all. */
-  .hero{position:relative; background:linear-gradient(165deg,#F2F2F0 0%,#ECECEA 55%,#E4E5E2 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--ink);}
-    background:linear-gradient(180deg, rgba(243,245,238,0.05) 0%, rgba(243,245,238,0.14) 45%, rgba(243,245,238,0.62) 100%);}
-  /* Desaturating the photo keeps it from competing with the green interface below it. */
-  .hero > .wrap{position:relative; z-index:1;}
-  .hero-credit{display:none;}
-  .hero-credit a{color:#7C8479; text-decoration:underline;}
+  /* The hero sits on a photograph of one of the thirteen cities, changing on the same rhythm as
+     the featured stories. Two layers so one can fade in over the other. */
+  .hero{position:relative; background:#1D2417; color:#fff; padding:46px 0 30px;
+    border-bottom:3px solid var(--ink); overflow:hidden;}
+  .hero-bg{position:absolute; inset:0; background-size:cover; background-position:center;
+    opacity:0; transition:opacity 1.1s ease-in-out; z-index:0;}
+  .hero-bg.on{opacity:1;}
+  /* A scrim, heavier at the left where the words are, so the text stays legible on any photo. */
+  .hero::after{content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(100deg, rgba(16,22,12,.90) 0%, rgba(16,22,12,.78) 34%,
+      rgba(16,22,12,.46) 62%, rgba(16,22,12,.30) 100%);}
+  .hero > .wrap{position:relative; z-index:2;}
+  .hero-credit{display:block; position:relative; z-index:2; font-size:10.5px; color:#B9C2AF;
+    margin-top:14px; line-height:1.5;}
+  .hero-credit a{color:#D3DBC8; text-decoration:underline;}
   .eyebrow{font-family:'Open Sans',sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
   /* Sized in vw and locked to one line. The vw factor was measured against the rendered text
@@ -383,19 +390,18 @@
      Backdrop-filter lifts it off the photo without hiding it; the rgba fallback covers browsers
      that don't support the filter. */
   /* The title reads as a masthead block rather than floating text over the photo. */
-  .nameplate{background:#F4F6F0; color:var(--text); padding:22px 26px 24px; border-radius:2px;
-    max-width:560px; margin:0 0 4px; border-left:5px solid var(--ink);
-    box-shadow:0 2px 12px rgba(0,0,0,.12);}
+  .nameplate{background:transparent; color:#fff; padding:6px 0 2px; border-radius:0;
+    max-width:none; margin:0; border-left:none; box-shadow:none;}
   /* Both lines in one face and one colour, so it reads as a single name. */
   .nameplate h1{display:flex; flex-direction:column; line-height:.96;
     font-family:'Times New Roman', Times, serif; font-weight:700; letter-spacing:-.5px;}
-  .np-l1, .np-l2{display:block; color:#000;}
+  .np-l1, .np-l2{display:block; color:#fff;}
   .np-l2{font-style:normal;}
-  .nameplate .np-kicker{color:#4A5A32;}
-  .nameplate .np-kicker i{background:#8A9678;}
+  .nameplate .np-kicker{color:#CBD6BC;}
+  .nameplate .np-kicker i{background:#9BA98A;}
   .nameplate h1{color:#fff;}
-  .nameplate h1 em{color:#000;}
-  .np-lede{font-size:14px; line-height:1.6; color:#41412F; margin-top:11px; max-width:56ch;}
+  .nameplate h1 em{color:#fff;}
+  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin-top:11px; max-width:62ch; text-shadow:0 1px 2px rgba(0,0,0,.35);}
   @media (max-width:640px){ .nameplate{padding:16px 18px 18px;} .np-lede{font-size:13px;} }
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
     font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#14532D; margin-bottom:6px;}
@@ -1349,6 +1355,8 @@
 </nav>
 
 <header class="hero" id="siteHero">
+  <div class="hero-bg" id="heroBgA"></div>
+  <div class="hero-bg" id="heroBgB"></div>
   <div class="wrap">
     <div class="hero-copy">
       <div class="nameplate">
@@ -3939,6 +3947,7 @@ function switchCity(key){
   if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
   if(typeof renderHeroMap === 'function') yaLoad().then(renderHeroMap).catch(()=>renderHeroMap());
   if(typeof renderHeroCalendar === 'function') renderHeroCalendar();
+  if(typeof startHeroBgRotation === 'function'){ heroBgIdx = 0; startHeroBgRotation(); }
   if(typeof renderRail === 'function'){ railPage = 0; railFace = 0; renderRail(); renderRailResources(); applyRailMode(); }
   state = {q:'', stage:'all', cat:'all'};
   document.getElementById('search').value = '';
@@ -8365,6 +8374,42 @@ function renderHeroCalendar(){
   if(typeof wireCalendarActions === 'function') wireCalendarActions(host);
 }
 
+
+// The hero photograph cycles through the thirteen cities on the same rhythm as the featured
+// stories. Two layers, so one fades in over the other rather than the image snapping.
+let heroBgIdx = 0, heroBgWhich = 0, heroBgTimer = null;
+function heroBgOrder(){
+  const keys = Object.keys(CITY_PHOTOS).filter(k => CITIES[k]);
+  // Start on whichever city is selected, so the first frame matches the page.
+  const i = keys.indexOf(currentCity);
+  return i > 0 ? keys.slice(i).concat(keys.slice(0, i)) : keys;
+}
+function paintHeroBg(){
+  const order = heroBgOrder();
+  if(!order.length) return;
+  const key = order[heroBgIdx % order.length];
+  const ph = CITY_PHOTOS[key];
+  if(!ph) return;
+  const a = document.getElementById('heroBgA'), b = document.getElementById('heroBgB');
+  if(!a || !b) return;
+  const show = heroBgWhich === 0 ? a : b, hide = heroBgWhich === 0 ? b : a;
+  const img = new Image();
+  img.onload = ()=>{
+    show.style.backgroundImage = 'url("'+ph.url+'")';
+    show.classList.add('on'); hide.classList.remove('on');
+    heroBgWhich = 1 - heroBgWhich;
+    const cred = document.querySelector('.hero-credit');
+    if(cred) cred.innerHTML = escapeHtml(ph.cap) + ' &middot; ' + escapeHtml(ph.by) + ', ' + ph.lic
+      + ', via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>';
+  };
+  img.src = ph.url;
+}
+function startHeroBgRotation(){
+  paintHeroBg();
+  clearInterval(heroBgTimer);
+  heroBgTimer = setInterval(()=>{ heroBgIdx++; paintHeroBg(); }, 7000);
+}
+
 function renderFeaturedNews(){
   const cards = document.getElementById('featuredCards');
   const dots = document.getElementById('featuredDots');
@@ -8424,6 +8469,7 @@ if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
 if(typeof renderHeroMap === 'function'){ yaLoad().then(renderHeroMap).catch(()=>renderHeroMap()); }
 if(typeof renderHeroCalendar === 'function') renderHeroCalendar();
 startFeaturedRotation();
+if(typeof startHeroBgRotation === 'function') startHeroBgRotation();
 (function(){
   const panel = document.getElementById('featuredNews');
   if(!panel) return;
