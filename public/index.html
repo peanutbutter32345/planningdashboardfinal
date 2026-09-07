@@ -17,20 +17,22 @@
   [hidden]{display:none !important;}
 
   :root{
-  --chrome-green:#0B3E2E;
-  --chrome-green-lo:#12523C;
-    --ink:#3E4F24; --ink-2:#556D31;
-    --paper:#FFFFFF; --paper-2:#F2F4EE; --paper-3:#E3E7DB;
+    /* Chrome Green HC-189, sampled from the swatch: rgb(11,66,48). */
+    --chrome-green:#0B4230; --chrome-green-lo:#157A59;
+    /* The deep green from the Green Vehicle Guide asset, used for the title block. */
+    --title-green:#01654A;
+    --ink:#0B4230; --ink-2:#146046;
+    --paper:#FFFFFF; --paper-2:#EFF5F1; --paper-3:#DCEAE2;
     --text:#222222; --text-soft:#5B5B5B;
     /* Stages read as one ramp: the further a project has come, the deeper the green.
        Completed is deliberately neutral - it's finished, so it should recede. */
-    --stamp-proposed:#A3AC90; --stamp-review:#87956B; --stamp-approved:#67794A;
-    --stamp-construction:#4E6330; --stamp-completed:#3E4F24;
+    --stamp-proposed:#8CC4B0; --stamp-review:#4E9C7F; --stamp-approved:#1E6E51;
+    --stamp-construction:#125C43; --stamp-completed:#0B4230;
     --flag:#7A6636; --rule:#D9D9D9;
     --shadow: 0 1px 2px rgba(0,0,0,0.06);
     /* Categories share the same family, separated by value rather than hue. */
-    --cat-housing:#3E4F24; --cat-building:#8C9481; --cat-transport:#5F7640; --cat-civic:#AEB6A3;
-    --blue:#2F5B37;
+    --cat-housing:#0B4230; --cat-building:#6FAF97; --cat-transport:#1A6B4E; --cat-civic:#9BCFBC;
+    --blue:#0B4230;
   }
   *{box-sizing:border-box;}
 
@@ -40,9 +42,9 @@
   .skip-link:focus{left:0;}
   /* Visible, high-contrast focus ring on every interactive element - restored wherever outline was previously removed */
   a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
-    outline:3px solid #2F5B37; outline-offset:2px;
+    outline:3px solid #0B4230; outline-offset:2px;
   }
-  .search-box:focus-within, .onboard-loc-row input:focus-visible{ outline:3px solid #2F5B37; outline-offset:1px; }
+  .search-box:focus-within, .onboard-loc-row input:focus-visible{ outline:3px solid #0B4230; outline-offset:1px; }
   html{scroll-behavior:smooth;}
   body{margin:0; background:var(--paper); color:var(--text); font-family:'Open Sans', Arial, Helvetica, sans-serif; line-height:1.55; font-size:15px;}
   h1,h2,h3,h4{font-family:'Open Sans', Arial, Helvetica, sans-serif; margin:0; font-weight:700; color:#1A1A1A;}
@@ -54,7 +56,7 @@
 
   /* Hero photograph, served from public/img. AVIF first with a JPEG fallback, since Safari below
      16 and older Edge can't decode AVIF and would otherwise render no background at all. */
-  .hero{position:relative; background:linear-gradient(165deg, var(--chrome-green) 0%, var(--chrome-green-lo) 18%, #6E7B72 46%, #C9CCC6 72%, #E4E5E2 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--chrome-green);}
+  .hero{position:relative; background:linear-gradient(165deg, #2E8A67 0%, #57AD8B 26%, #8FC9B1 52%, #C2E1D4 76%, #E9F3ED 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--chrome-green);}
     background:linear-gradient(180deg, rgba(243,245,238,0.05) 0%, rgba(243,245,238,0.14) 45%, rgba(243,245,238,0.62) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
   .hero > .wrap{position:relative; z-index:1;}
@@ -257,9 +259,9 @@
   .page-nav-tab:hover:not(.active){background:#262626;}
   .screen{min-height:40vh;}
   /* Target of an email deep link - fades out on its own so it doesn't linger. */
-  .card.deep-linked{outline:3px solid #3E4F24; outline-offset:3px; animation:deepLinkFade 4s ease-out forwards;}
-  @keyframes deepLinkFade{0%,70%{outline-color:#3E4F24;}100%{outline-color:rgba(62,79,36,0);}}
-  .deep-link-banner{background:#F2F5EC; border-left:4px solid #3E4F24; padding:10px 14px; margin:0 0 14px; font-size:13px;}
+  .card.deep-linked{outline:3px solid #0B4230; outline-offset:3px; animation:deepLinkFade 4s ease-out forwards;}
+  @keyframes deepLinkFade{0%,70%{outline-color:#0B4230;}100%{outline-color:rgba(62,79,36,0);}}
+  .deep-link-banner{background:#EDF6F1; border-left:4px solid #0B4230; padding:10px 14px; margin:0 0 14px; font-size:13px;}
   .deep-link-banner a{color:var(--blue); font-weight:700;}
 
   /* ---- Your Area (full page) ---- */
@@ -300,7 +302,7 @@
   .hearing-loc{font-size:12px; color:var(--text-soft); margin-top:3px;}
   .hearing-projs{margin-top:9px;}
   .hearing-projs .lab{display:block; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--ink); margin-bottom:5px;}
-  .hearing-proj{display:inline-block; background:#F2F5EC; border:1px solid #D7DFC8; color:var(--ink); font-weight:700; font-size:12.5px; text-decoration:none; padding:4px 10px; border-radius:2px; margin:0 6px 6px 0;}
+  .hearing-proj{display:inline-block; background:#EDF6F1; border:1px solid #D7DFC8; color:var(--ink); font-weight:700; font-size:12.5px; text-decoration:none; padding:4px 10px; border-radius:2px; margin:0 6px 6px 0;}
   .hearing-proj:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
   .hearing-items{margin:9px 0 0; padding-left:18px; font-size:12.5px; color:var(--text-soft); line-height:1.5;}
   .hearing-items li{margin-bottom:3px;}
@@ -320,7 +322,7 @@
   .topic-link .tl-note{display:block; font-size:11.5px; color:var(--text-soft); line-height:1.45;}
   .topic-link .tl-dom{display:block; font-family:var(--mono); font-size:10px; color:var(--text-soft); margin-top:6px;}
   /* RHNA progress. One bar per income band, because the affordable bands are the story. */
-  .rhna-head{display:flex; gap:18px; align-items:flex-start; background:#F7F8F3; border:1px solid var(--rule); border-radius:2px; padding:14px 16px; margin-bottom:16px;}
+  .rhna-head{display:flex; gap:18px; align-items:flex-start; background:#F4F9F6; border:1px solid var(--rule); border-radius:2px; padding:14px 16px; margin-bottom:16px;}
   .rhna-big{font-family:var(--mono); font-size:38px; font-weight:700; color:var(--ink); line-height:1; letter-spacing:-1px;}
   .rhna-big .pc{font-size:19px; color:var(--text-soft);}
   .rhna-note{font-size:13px; color:var(--text); line-height:1.6;}
@@ -350,9 +352,9 @@
   .metric-card .k .unit{font-size:14px; color:var(--text-soft); font-weight:400; margin-left:3px;}
   .metric-card .s{font-size:12px; color:var(--text-soft); margin-top:8px; line-height:1.5;}
   .metric-card .s b{color:var(--ink);}
-  .metric-card .rank{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:#F2F5EC; color:var(--ink);}
+  .metric-card .rank{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:#EDF6F1; color:var(--ink);}
   .metric-card .rank.hi{background:#EFF0EA; color:#6E7566;}
-  .metric-card .rank.lo{background:#E9EFE0; color:#44572A;}
+  .metric-card .rank.lo{background:#E9EFE0; color:#0F4E38;}
   .metric-card .spark{margin-top:11px;}
   .metric-card .spark svg{width:100%; height:auto; display:block;}
 
@@ -385,20 +387,20 @@
      Backdrop-filter lifts it off the photo without hiding it; the rgba fallback covers browsers
      that don't support the filter. */
   /* The title reads as a masthead block rather than floating text over the photo. */
-  .nameplate{background:var(--chrome-green); color:#fff; padding:22px 26px 24px; border-radius:2px;
+  .nameplate{background:var(--title-green); color:#fff; padding:22px 26px 24px; border-radius:2px;
     max-width:560px; margin:0 0 4px; box-shadow:0 2px 14px rgba(0,0,0,.22);}
   .nameplate h1{display:flex; flex-direction:column; line-height:.94;}
   .np-l1, .np-l2{display:block;}
   .np-l2{font-style:normal;}
-  .nameplate .np-kicker{color:#C7D3B6;}
-  .nameplate .np-kicker i{background:#7F8C6B;}
+  .nameplate .np-kicker{color:#D9EDE4;}
+  .nameplate .np-kicker i{background:#7FBBA4;}
   .nameplate h1{color:#fff;}
   .nameplate h1 em{color:#C9DBA6;}
-  .np-lede{font-size:14px; line-height:1.6; color:#DDE4D2; margin-top:11px; max-width:56ch;}
+  .np-lede{font-size:14px; line-height:1.6; color:#E4F1EA; margin-top:11px; max-width:56ch;}
   @media (max-width:640px){ .nameplate{padding:16px 18px 18px;} .np-lede{font-size:13px;} }
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
-    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#14532D; margin-bottom:6px;}
-  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:#14532D; opacity:.5;}
+    font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#0B4230; margin-bottom:6px;}
+  .np-kicker i{flex:0 0 auto; width:28px; height:1px; background:#0B4230; opacity:.5;}
   .np-foot{display:flex; gap:26px; align-items:center; justify-content:flex-end; border-top:1px solid rgba(46,59,28,.22); margin-top:10px; padding-top:10px;}
   .hero .np-foot p.lede{flex:1 1 auto; margin:0; font-size:13.5px; line-height:1.6; color:#000; max-width:62ch;}
   .np-stats{flex:0 0 auto; display:flex; gap:22px;}
@@ -529,8 +531,8 @@
   .featured-cards{transition:opacity .45s ease;}
   .fcard{display:block; text-decoration:none; border-bottom:1px solid var(--rule); padding:0 0 9px;}
   .fcard:last-child{border-bottom:0;}
-  .fcard:hover{background:#F7F8F3;}
-  .fcard img{width:100%; height:158px; object-fit:cover; display:block; background:#E3E7DB;}
+  .fcard:hover{background:#F4F9F6;}
+  .fcard img{width:100%; height:158px; object-fit:cover; display:block; background:#DCEAE2;}
   .fcard .fbody{padding:8px 13px 0;}
   .fcard .ftitle{font-family:'Open Sans',sans-serif; font-size:15px; font-weight:700; color:var(--blue); line-height:1.35;}
   .fcard:hover .ftitle{text-decoration:underline;}
@@ -539,9 +541,9 @@
     .featured-news{min-width:0;}
     .fcard img{height:180px;}
   }
-  .plan-time{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); background:#F0F2EA; border:1px solid var(--rule); border-radius:2px; padding:2px 7px; margin-left:8px; vertical-align:2px; white-space:nowrap;}
+  .plan-time{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); background:#E8F3EE; border:1px solid var(--rule); border-radius:2px; padding:2px 7px; margin-left:8px; vertical-align:2px; white-space:nowrap;}
   .plan-projects{display:flex; flex-direction:column; gap:8px; margin:10px 0 12px;}
-  .plan-project{display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:#F7F8F3; border:1px solid var(--rule); border-left:3px solid var(--ink); border-radius:2px; padding:9px 12px; text-decoration:none;}
+  .plan-project{display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:#F4F9F6; border:1px solid var(--rule); border-left:3px solid var(--ink); border-radius:2px; padding:9px 12px; text-decoration:none;}
   .plan-project:hover{background:#EEF1E6;}
   .plan-project .addr{font-weight:700; color:var(--blue); font-size:13px;}
   .plan-project .dist{font-family:'Open Sans',sans-serif; font-size:11px; color:var(--text-soft);}
@@ -786,10 +788,10 @@
   .gi-board-meta{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:4px;}
   .gi-role{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.06em;
     text-transform:uppercase; color:#fff; padding:2px 6px; border-radius:2px;}
-  .gi-role-decides{background:#3E4F24;} .gi-role-join{background:#8C5A2B;}
+  .gi-role-decides{background:#0B4230;} .gi-role-join{background:#8C5A2B;}
   .gi-city{font-family:var(--mono); font-size:10.5px; color:var(--text-soft);}
   .gi-sched{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.05em;
-    text-transform:uppercase; color:#5F7640;}
+    text-transform:uppercase; color:#1A6B4E;}
   .gi-board h4{font-size:14.5px; color:var(--ink); line-height:1.35;}
   .gi-when{font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-top:3px;}
   .gi-board p{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin-top:5px;}
@@ -808,21 +810,21 @@
   .gi-cal-opts label{display:flex; gap:6px; align-items:center; cursor:pointer;}
   .gi-legend{display:flex; gap:6px; align-items:center;}
   .gi-legend i{width:9px; height:9px; border-radius:2px; display:inline-block; margin-left:8px;}
-  .dot-conf{background:#3E4F24;} .dot-rec{background:#C3CDB2;}
+  .dot-conf{background:#0B4230;} .dot-rec{background:#B6DCCC;}
   .gi-cal{display:grid; grid-template-columns:repeat(7,1fr); gap:1px; background:var(--rule);
     border:1px solid var(--rule); border-radius:2px; overflow:hidden; margin-bottom:20px;}
   .gi-dow{background:var(--paper-2); padding:7px 6px; font-family:'Open Sans',sans-serif;
     font-size:10px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft); text-align:center;}
   .gi-cell{background:#fff; min-height:82px; padding:5px 6px; display:flex; flex-direction:column; gap:2px;}
-  .gi-empty{background:#FAFBF7;}
-  .gi-today{background:#F2F5EC;}
+  .gi-empty{background:#F8FBF9;}
+  .gi-today{background:#EDF6F1;}
   .gi-today .gi-daynum{background:var(--ink); color:#fff; border-radius:50%; width:19px; height:19px;
     display:inline-flex; align-items:center; justify-content:center;}
   .gi-daynum{font-family:var(--mono); font-size:11px; color:var(--text-soft);}
   .gi-ev{display:block; font-size:9.5px; line-height:1.3; padding:2px 4px; border-radius:2px;
     overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .gi-ev.gi-conf{background:#3E4F24; color:#fff;}
-  .gi-ev.gi-rec{background:#E7EBDD; color:#3E4F24;}
+  .gi-ev.gi-conf{background:#0B4230; color:#fff;}
+  .gi-ev.gi-rec{background:#DDEEE6; color:#0B4230;}
   .gi-more{font-size:9px; color:var(--text-soft);}
   .gi-cal-row{display:grid; grid-template-columns:70px 1fr 150px 88px 200px; gap:10px; align-items:center;
     background:#fff; border:1px solid var(--rule); border-radius:2px; padding:8px 12px; margin-bottom:5px;}
@@ -832,7 +834,7 @@
   .gi-cal-c{font-size:11.5px; color:var(--text-soft);}
   .gi-cal-b{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.05em;
     text-transform:uppercase; padding:2px 6px; border-radius:2px; text-align:center;}
-  .gi-cal-b.gi-conf{background:#3E4F24; color:#fff;} .gi-cal-b.gi-rec{background:#E7EBDD; color:#3E4F24;}
+  .gi-cal-b.gi-conf{background:#0B4230; color:#fff;} .gi-cal-b.gi-rec{background:#DDEEE6; color:#0B4230;}
   .gi-cal-acts{display:flex; gap:5px; align-items:center; justify-content:flex-end;}
   .gi-cal-add, .gi-cal-ics{background:#fff; border:1px solid var(--rule); border-radius:2px;
     padding:3px 8px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:10.5px;
@@ -918,8 +920,8 @@
     border:1px solid var(--rule); border-radius:2px;}
   .ya-pick{display:flex; align-items:center; gap:10px; width:100%; text-align:left; background:#fff;
     border:none; padding:9px 12px; cursor:pointer;}
-  .ya-pick:hover{background:#F5F7F0;}
-  .ya-pick.on{background:#EEF2E6;}
+  .ya-pick:hover{background:#F3F9F5;}
+  .ya-pick.on{background:#E4F2EB;}
   .ya-pick-dot{flex:0 0 9px; width:9px; height:9px; border-radius:50%;}
   .ya-pick-txt{flex:1 1 auto; min-width:0;}
   .ya-pick-txt b{display:block; font-size:13px; color:var(--ink); font-weight:700;
@@ -969,7 +971,7 @@
   .tk-tt.on{background:var(--ink); border-color:var(--ink); color:#fff;}
   .tk-tt-n{font-family:var(--mono); font-size:10.5px; opacity:.7;}
   .tk-progwrap{margin-bottom:16px;}
-  .tk-prog{background:#E4E8DC; height:6px; border-radius:2px; overflow:hidden;}
+  .tk-prog{background:#DCEAE2; height:6px; border-radius:2px; overflow:hidden;}
   .tk-prog span{display:block; height:100%; background:var(--ink); width:0; transition:width .3s;}
   .tk-progtext{font-family:var(--mono); font-size:11px; color:var(--text-soft); margin-top:5px;}
   .tk-row{margin-bottom:26px;}
@@ -994,7 +996,7 @@
   .tk-st:last-child::after{display:none;}
   .tk-st:hover{border-color:var(--ink); transform:translateY(-2px);}
   .tk-st.open{border-color:var(--ink); box-shadow:0 0 0 2px var(--ink);}
-  .tk-st.tk-done{background:#F5F7F0;}
+  .tk-st.tk-done{background:#F3F9F5;}
   .tk-st-n{position:absolute; top:-8px; left:11px; width:20px; height:20px; border-radius:50%;
     background:var(--ink); color:#fff; font-family:var(--mono); font-size:10.5px; font-weight:700;
     display:flex; align-items:center; justify-content:center;}
@@ -1003,7 +1005,7 @@
   .tk-st-img-fit{background-size:contain; background-repeat:no-repeat; background-color:#fff;}
   .tk-p-map{max-height:210px; border:1px solid var(--rule);}
   .tk-st-icon{display:flex; align-items:center; justify-content:center; height:66px; margin:6px 0 9px;
-    border-radius:2px; background:#EDF0E6; font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink);}
+    border-radius:2px; background:#E4F2EB; font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink);}
   .tk-st-lab{display:block; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800;
     letter-spacing:.07em; text-transform:uppercase; color:var(--text-soft); margin-bottom:3px;}
   .tk-st-t{font-size:12.5px; font-weight:700; color:var(--ink); line-height:1.35; flex:1 1 auto;
@@ -1052,10 +1054,10 @@
   .tk-mark{flex:0 0 auto; background:#fff; border:1.5px solid var(--ink); border-radius:2px;
     padding:8px 15px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:12.5px;
     font-weight:700; color:var(--ink);}
-  .tk-mark:hover{background:#F0F2EA;}
+  .tk-mark:hover{background:#E8F3EE;}
   .tk-mark.on{background:var(--ink); color:#fff;}
   .tk-p-note{flex:1 1 auto; padding:8px 10px; border:1px solid var(--rule); border-radius:2px;
-    font-family:'Open Sans',sans-serif; font-size:12.5px; line-height:1.5; background:#FCFDFA; resize:vertical;}
+    font-family:'Open Sans',sans-serif; font-size:12.5px; line-height:1.5; background:#FAFDFB; resize:vertical;}
   .tk-p-note:focus{outline:none; border-color:var(--ink); background:#fff;}
   /* ---- Resource bank ---- */
   .about-shell{max-width:800px; padding-top:14px;}
@@ -1110,13 +1112,13 @@
   .bank-list{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:2px;}
   .bank-row{background:#fff; padding:11px 14px; display:flex; gap:14px; justify-content:space-between;
     align-items:center; flex-wrap:wrap;}
-  .bank-row:hover{background:#FAFBF7;}
+  .bank-row:hover{background:#F8FBF9;}
   .bank-rowmain{min-width:0; flex:1 1 320px;}
   .bank-meta{display:flex; gap:8px; align-items:center; margin-bottom:3px;}
   .bank-badge{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.06em;
     text-transform:uppercase; color:#fff; background:var(--ink); padding:2px 6px; border-radius:2px;}
-  .bank-project{background:#3E4F24;} .bank-news{background:#5F7640;} .bank-commission{background:#44572A;}
-  .bank-document{background:#55693A;} .bank-statistic{background:#6B7F4C;}
+  .bank-project{background:#0B4230;} .bank-news{background:#1A6B4E;} .bank-commission{background:#0F4E38;}
+  .bank-document{background:#176045;} .bank-statistic{background:#22785A;}
   .bank-city{font-family:var(--mono); font-size:10.5px; color:var(--text-soft);}
   .bank-row h4{font-size:14px; color:var(--ink); line-height:1.35;}
   .bank-sub{font-size:12px; color:var(--text-soft); margin-top:2px; line-height:1.45;}
@@ -2126,18 +2128,18 @@
 <script>
 const TODAY = new Date('2026-07-24T00:00:00');
 const STAGES = [
-  {key:'proposed',     label:'Proposed',            color:'#A3AC90'},
-  {key:'review',       label:'Under Review',        color:'#87956B'},
-  {key:'approved',     label:'Approved',            color:'#67794A'},
-  {key:'construction', label:'Under Construction',  color:'#4E6330'},
-  {key:'completed',    label:'Completed',           color:'#3E4F24'},
+  {key:'proposed',     label:'Proposed',            color:'#8CC4B0'},
+  {key:'review',       label:'Under Review',        color:'#4E9C7F'},
+  {key:'approved',     label:'Approved',            color:'#1E6E51'},
+  {key:'construction', label:'Under Construction',  color:'#125C43'},
+  {key:'completed',    label:'Completed',           color:'#0B4230'},
 ];
 const STAGE_MAP = Object.fromEntries(STAGES.map(s=>[s.key,s]));
 const CATEGORIES = [
-  {key:'Housing',        label:'Housing',                          color:'#3E4F24'},
-  {key:'Building',       label:'Commercial & Industrial',          color:'#8C9481'},
-  {key:'Transportation', label:'Transportation & Infrastructure',  color:'#5F7640'},
-  {key:'Civic',          label:'Civic & Public Facilities',        color:'#AEB6A3'},
+  {key:'Housing',        label:'Housing',                          color:'#0B4230'},
+  {key:'Building',       label:'Commercial & Industrial',          color:'#6FAF97'},
+  {key:'Transportation', label:'Transportation & Infrastructure',  color:'#1A6B4E'},
+  {key:'Civic',          label:'Civic & Public Facilities',        color:'#9BCFBC'},
 ];
 const CAT_MAP = Object.fromEntries(CATEGORIES.map(c=>[c.key,c]));
 function categoryOf(d){
@@ -3382,12 +3384,12 @@ async function tryLiveCupertinoData(){
       const st = STAGE_MAP[d.stage] || STAGE_MAP.proposed;
       if(mapProvider==='google' && gMap){
         const marker = new google.maps.Marker({ position:{lat:d.lat,lng:d.lng}, map:gMap,
-          icon:{path:google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, scale:5, fillColor:'#44572A', fillOpacity:1, strokeColor:'#fff', strokeWeight:1.5, rotation:180},
+          icon:{path:google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, scale:5, fillColor:'#0F4E38', fillOpacity:1, strokeColor:'#fff', strokeWeight:1.5, rotation:180},
           title:'[LIVE] '+d.addr });
         marker.addListener('click', ()=>{ gInfoWindow.setContent(`<div class="infowin"><b><span class="live-badge">LIVE</span>${d.addr}</b><span class="stamp" style="background:${st.color};border-color:${st.color}">${st.label}</span><div class="desc">${d.notes||d.name}</div>${d.editedDate?`<div class="meta">Last edited (city record): ${d.editedDate}</div>`:''}${d.url?`<div class="meta"><a href="${d.url}" target="_blank" rel="noopener">City project page &#8594;</a></div>`:''}</div>`); gInfoWindow.open(gMap, marker); });
         liveMarkers[d.id] = marker;
       } else if(mapProvider==='leaflet' && lMap){
-        const marker = L.circleMarker([d.lat,d.lng], {radius:6, color:'#fff', weight:1.5, fillColor:'#44572A', fillOpacity:0.95});
+        const marker = L.circleMarker([d.lat,d.lng], {radius:6, color:'#fff', weight:1.5, fillColor:'#0F4E38', fillOpacity:0.95});
         marker.bindPopup(`<b><span class="live-badge">LIVE</span>${d.addr}</b><br>${st.label}<br>${d.notes||d.name}`);
         marker.addTo(lMap);
         liveMarkers[d.id] = marker;
@@ -3479,11 +3481,11 @@ function renderCityBoundary(){
   if(mapProvider==='google' && gMap){
     cityBoundaryG = new google.maps.Rectangle({
       bounds: {north:b.maxLat, south:b.minLat, east:b.maxLng, west:b.minLng},
-      map: gMap, fillOpacity:0, strokeColor:'#3E4F24', strokeOpacity:0.7, strokeWeight:2.5,
+      map: gMap, fillOpacity:0, strokeColor:'#0B4230', strokeOpacity:0.7, strokeWeight:2.5,
     });
   } else if(mapProvider==='leaflet' && lMap){
     cityBoundaryL = L.rectangle([[b.minLat,b.minLng],[b.maxLat,b.maxLng]], {
-      color:'#3E4F24', weight:2.5, fillOpacity:0, dashArray:null,
+      color:'#0B4230', weight:2.5, fillOpacity:0, dashArray:null,
     }).addTo(lMap);
   }
 }
@@ -3591,7 +3593,7 @@ if(GOOGLE_MAPS_API_KEY && GOOGLE_MAPS_API_KEY !== 'YOUR_API_KEY_HERE'){
 }
 function renderLegend(){
   let html = CATEGORIES.map(c=>`<span><i style="background:${c.color}"></i>${c.label}</span>`).join('');
-  html += `<span><i class="dia" style="background:#5F7640"></i>Diamond = public works</span>`;
+  html += `<span><i class="dia" style="background:#1A6B4E"></i>Diamond = public works</span>`;
   if(onboard.userLoc) html += `<span><i style="background:#1A1A1A"></i>Your area</span>`;
   if(currentCity !== 'all') html += `<span style="opacity:.75;">Green outline = ${CITIES[currentCity].label}'s approximate area (not the exact legal boundary)</span>`;
   document.getElementById('legend').innerHTML = html;
@@ -4018,7 +4020,9 @@ function refreshOnboardGate(){
   btn.style.opacity = ok ? '1' : '0.55';
   btn.style.cursor = ok ? 'pointer' : 'not-allowed';
   if(note){
-    note.textContent = ok ? 'An address is optional - you can add one later.'
+    note.textContent = ok ? (document.getElementById('onboardAddr').value.trim()
+        ? 'Ready. We will centre on that address.'
+        : 'Ready. No address needed - you will land on the city view, and can add one later.')
       : (!onboard.city ? 'Pick a city to continue.' : 'Pick at least one thing you are interested in.');
   }
 }
@@ -4158,15 +4162,18 @@ async function submitOnboard(){
       }
     }
   }
-  if(!onboard.userLoc){
-    document.getElementById('onboardGeoStatus').textContent = 'Enter an address or use your current location first.';
-    return;
-  }
+  // The address is optional. Without one there is nothing to centre "Your area" on, so the
+  // city view is what makes sense - everything there works city-wide.
   if(currentCity !== onboard.city) switchCity(onboard.city);
   else renderUserLocationMarker();
   document.getElementById('onboardOverlay').style.display = 'none';
-  renderYourArea();
-  showScreen('yourarea');
+  if(onboard.userLoc){
+    renderYourArea();
+    showScreen('yourarea');
+  } else {
+    showPage('dashboard');
+    showScreen('dashboard');
+  }
 }
 // Shown when a real, successfully-geocoded address falls outside all three tracked cities.
 // Presents the three tracked cities sorted by actual distance from where the person really is,
@@ -4250,6 +4257,10 @@ document.getElementById('onboardAddr').addEventListener('input', ()=>{
   document.getElementById('onboardGeoStatus').textContent = "We'll match a typed address to the nearest known projects - for a precise pin, \"use my current location\" instead.";
 });
 document.getElementById('onboardSubmit').addEventListener('click', submitOnboard);
+// The note says where pressing it will land you, so typing an address has to refresh it.
+document.getElementById('onboardAddr').addEventListener('input', ()=>{
+  if(typeof refreshOnboardGate === 'function') refreshOnboardGate();
+});
 document.getElementById('onboardAccountLink').addEventListener('click', (e)=>{
   e.preventDefault();
   document.getElementById('onboardOverlay').style.display = 'none';
@@ -4902,7 +4913,7 @@ let yaMap = null, yaLayer = null, yaSaveTimer = null;
 let yaPickType = 'project';
 let yaPickQuery = '';
 
-const YA_PIN_COLOR = {project:'#3E4F24', board:'#8C5A2B', figure:'#4A6B8A', place:'#6B7F4C'};
+const YA_PIN_COLOR = {project:'#0B4230', board:'#8C5A2B', figure:'#4A6B8A', place:'#22785A'};
 
 function yaSave(){
   if(!isLoggedIn()) return;
@@ -5008,7 +5019,7 @@ function renderYaMap(){
   yaLayer.clearLayers();
   yaPins.forEach(p=>{
     if(!isFinite(p.lat) || !isFinite(p.lng)) return;
-    const col = YA_PIN_COLOR[p.type] || '#3E4F24';
+    const col = YA_PIN_COLOR[p.type] || '#0B4230';
     L.circleMarker([p.lat, p.lng], {radius:7, color:'#fff', weight:2, fillColor:col, fillOpacity:1})
       .bindPopup('<b>'+escapeHtml(p.label)+'</b><br>'+escapeHtml(p.sub||'')
         + (p.approx ? '<br><i>Pinned at the city centre - no coordinates published.</i>' : ''))
@@ -5048,7 +5059,7 @@ function renderYaPicker(){
   list.innerHTML = rows.slice(0,60).map(r=>{
     const on = yaHasPin(r.type, r.id);
     return '<button type="button" class="ya-pick'+(on?' on':'')+'" data-yaadd="'+escapeHtml(r.type+'|'+r.id)+'">'
-      + '<span class="ya-pick-dot" style="background:'+(YA_PIN_COLOR[r.type]||'#3E4F24')+'"></span>'
+      + '<span class="ya-pick-dot" style="background:'+(YA_PIN_COLOR[r.type]||'#0B4230')+'"></span>'
       + '<span class="ya-pick-txt"><b>'+escapeHtml(r.label)+'</b><span>'+escapeHtml(r.sub||'')+'</span></span>'
       + '<span class="ya-pick-act">'+(on?'Remove':'Add')+'</span></button>';
   }).join('') || '<div class="empty">Nothing matches that.</div>';
@@ -5066,7 +5077,7 @@ function renderYaPinList(){
   if(!yaPins.length){ host.innerHTML = ''; return; }
   host.innerHTML = '<div class="ya-pin-h">'+yaPins.length+' pinned</div>'
     + yaPins.map((p,i)=>
-      '<div class="ya-pin"><span class="ya-pick-dot" style="background:'+(YA_PIN_COLOR[p.type]||'#3E4F24')+'"></span>'
+      '<div class="ya-pin"><span class="ya-pick-dot" style="background:'+(YA_PIN_COLOR[p.type]||'#0B4230')+'"></span>'
       + '<span class="ya-pin-txt"><b>'+escapeHtml(p.label)+'</b><span>'+escapeHtml(p.sub||'')+'</span></span>'
       + '<button type="button" class="ya-pin-x" data-yarm="'+i+'" aria-label="Remove">Remove</button></div>').join('');
   host.querySelectorAll('[data-yarm]').forEach(b=> b.addEventListener('click', ()=>{
@@ -6351,20 +6362,20 @@ document.querySelectorAll('#askSuggestions .ask-chip').forEach(btn=>{
 // ---------------- RESOURCES PAGE ----------------
 
 const RES_CAT_COLOR = {
-  'Official City Tool': '#3E4F24',
-  'Meeting Calendar':   '#5F7640',
-  'Board You Can Join': '#44572A',
-  'Data Source':        '#8C9481',
+  'Official City Tool': '#0B4230',
+  'Meeting Calendar':   '#1A6B4E',
+  'Board You Can Join': '#0F4E38',
+  'Data Source':        '#6FAF97',
   'Planning Hub':        '#39491F',
-  'Development Projects':'#4A5E2B',
-  'Permits':             '#55693A',
-  'Housing':             '#3E4F24',
-  'Land Use':            '#5F7640',
-  'Zoning':              '#6B7F4C',
-  'GIS':                 '#4A5E2B',
-  'Environmental':       '#55693A',
-  'Transportation':      '#5F7640',
-  'Meetings':            '#44572A',
+  'Development Projects':'#125841',
+  'Permits':             '#176045',
+  'Housing':             '#0B4230',
+  'Land Use':            '#1A6B4E',
+  'Zoning':              '#22785A',
+  'GIS':                 '#125841',
+  'Environmental':       '#176045',
+  'Transportation':      '#1A6B4E',
+  'Meetings':            '#0F4E38',
   'Boards':              '#39491F',
 };
 function domainOf(url){
@@ -6969,7 +6980,7 @@ function renderResources(){
   c.sources.forEach(s=> items.push({cat:'Data Source', name:s.replace(/&amp;/g,'&'), body:'Where this tracker\'s data for '+c.label+' comes from.', url:null}));
   const grid = document.getElementById('resourceGrid');
   grid.innerHTML = items.map(it=>{
-    const color = RES_CAT_COLOR[it.cat] || '#3E4F24';
+    const color = RES_CAT_COLOR[it.cat] || '#0B4230';
     const domain = it.url ? domainOf(it.url) : '';
     const id = currentCity+':'+it.name;
     const starData = {title:it.name, desc:it.body, url:it.url};
@@ -7963,10 +7974,10 @@ const RHNA_SOURCE = {"label":"California HCD, 6th Cycle RHNA Progress Report","u
 // and the element can be decertified, which is what lets Builder's Remedy projects ignore local
 // zoning. That is the link between this section and the flags on project cards.
 const RHNA_TIERS = [
-  {key:'vli',   label:'Very low income',  color:'#3E4F24'},
-  {key:'li',    label:'Low income',       color:'#3E4F24'},
-  {key:'mod',   label:'Moderate income',  color:'#87956B'},
-  {key:'above', label:'Above moderate',   color:'#AEB6A3'},
+  {key:'vli',   label:'Very low income',  color:'#0B4230'},
+  {key:'li',    label:'Low income',       color:'#0B4230'},
+  {key:'mod',   label:'Moderate income',  color:'#4E9C7F'},
+  {key:'above', label:'Above moderate',   color:'#9BCFBC'},
 ];
 
 function rhnaTierBar(city){
@@ -8138,8 +8149,8 @@ function statCard(metric, me){
     rankHtml = '<span class="rank'+cls+'">#'+r.pos+' of '+r.of+' &middot; '+word+'</span>';
   }
   let spark = '';
-  if(metric.id === 'homeValue' && s) spark = '<div class="spark">'+sparkline(s.homeValueSeries, '#3E4F24')+'</div>';
-  if(metric.id === 'rent' && s)      spark = '<div class="spark">'+sparkline(s.rentSeries, '#87956B')+'</div>';
+  if(metric.id === 'homeValue' && s) spark = '<div class="spark">'+sparkline(s.homeValueSeries, '#0B4230')+'</div>';
+  if(metric.id === 'rent' && s)      spark = '<div class="spark">'+sparkline(s.rentSeries, '#4E9C7F')+'</div>';
   let sub = '';
   const f = cityFacts(me);
   if(metric.id==='units')       sub = 'Across <b>'+f.projects+'</b> active projects. Unit counts exist for '+f.unitsKnown+' of them.';
@@ -8284,7 +8295,7 @@ function renderHeroMap(){
   (yaPins||[]).forEach(p=>{
     if(!isFinite(p.lat) || !isFinite(p.lng)) return;
     L.circleMarker([p.lat,p.lng], {radius:5, color:'#fff', weight:2,
-      fillColor:(YA_PIN_COLOR[p.type]||'#3E4F24'), fillOpacity:1})
+      fillColor:(YA_PIN_COLOR[p.type]||'#0B4230'), fillOpacity:1})
       .bindPopup('<b>'+escapeHtml(p.label)+'</b>').addTo(heroLayer);
   });
   const cnt = document.getElementById('heroMapCount');
@@ -8634,7 +8645,7 @@ function railRanking(getter, fmt){
   const W=300, bh=7, gap=3.4;
   const bars = rows.map((r,i)=>
     '<rect x="0" y="'+(i*(bh+gap)).toFixed(1)+'" width="'+(r.v/max*W).toFixed(1)+'" height="'+bh+'" '
-    + 'fill="'+(r.k===me ? '#3E4F24' : '#C3CBB6')+'"></rect>').join('');
+    + 'fill="'+(r.k===me ? '#0B4230' : '#C3CBB6')+'"></rect>').join('');
   const H = rows.length*(bh+gap);
   return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H.toFixed(1)+'" preserveAspectRatio="none" aria-hidden="true">'+bars+'</svg>';
 }
@@ -8644,7 +8655,7 @@ function railProgress(pct){
   const W=300, H=22;
   return '<svg class="rail-viz" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'
     + '<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#E9ECE1"></rect>'
-    + '<rect x="0" y="0" width="'+(Math.min(100,pct)/100*W).toFixed(1)+'" height="'+H+'" fill="#3E4F24"></rect></svg>';
+    + '<rect x="0" y="0" width="'+(Math.min(100,pct)/100*W).toFixed(1)+'" height="'+H+'" fill="#0B4230"></rect></svg>';
 }
 
 // ---- Local resources: the boards and official links for the selected city ----
@@ -8686,16 +8697,16 @@ function renderRailResources(){
   // stock image would imply one exists, so these are figures rather than pictures.
   const THUMB = {
     Board: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
-      + '<rect x="7" y="16" width="26" height="15" fill="#3E4F24"/>'
-      + '<polygon points="20,7 34,16 6,16" fill="#5F7640"/>'
+      + '<rect x="7" y="16" width="26" height="15" fill="#0B4230"/>'
+      + '<polygon points="20,7 34,16 6,16" fill="#1A6B4E"/>'
       + '<rect x="12" y="21" width="4" height="10" fill="#EEF1E7"/><rect x="18" y="21" width="4" height="10" fill="#EEF1E7"/>'
       + '<rect x="24" y="21" width="4" height="10" fill="#EEF1E7"/></svg>',
     Join: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
-      + '<circle cx="20" cy="15" r="6" fill="#3E4F24"/>'
-      + '<path d="M8 33c0-6.6 5.4-10 12-10s12 3.4 12 10z" fill="#5F7640"/></svg>',
+      + '<circle cx="20" cy="15" r="6" fill="#0B4230"/>'
+      + '<path d="M8 33c0-6.6 5.4-10 12-10s12 3.4 12 10z" fill="#1A6B4E"/></svg>',
     Link: '<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#EEF1E7"/>'
-      + '<path d="M6 30 L15 10 L25 20 L34 8 L34 32 Z" fill="#5F7640"/>'
-      + '<circle cx="15" cy="10" r="3" fill="#3E4F24"/><circle cx="25" cy="20" r="3" fill="#3E4F24"/></svg>',
+      + '<path d="M6 30 L15 10 L25 20 L34 8 L34 32 Z" fill="#1A6B4E"/>'
+      + '<circle cx="15" cy="10" r="3" fill="#0B4230"/><circle cx="25" cy="20" r="3" fill="#0B4230"/></svg>',
   };
   const row = (name, note, href, tag) =>
     '<a class="res-row" href="'+(href || '#')+'"'+(href ? ' target="_blank" rel="noopener"' : '')+'>'
