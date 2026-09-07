@@ -47,7 +47,7 @@
   .mono{font-family:'Roboto Mono', ui-monospace, monospace;}
   a{color:var(--blue); text-decoration:underline;}
   a:hover{color:var(--ink);}
-  .wrap{max-width:1240px; margin:0 auto; padding:0 24px;}
+  .wrap{max-width:1560px; margin:0 auto; padding:0 22px;}
   @media (max-width:640px){ .wrap{padding:0 16px;} }
 
   /* Hero photograph, served from public/img. AVIF first with a JPEG fallback, since Safari below
@@ -442,7 +442,33 @@
   .hero-copy{max-width:none; margin:0 -12px;}
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
-  .hero-panels{display:flex; gap:30px; align-items:stretch; margin:30px 46px 0;}
+  /* Three columns in the hero: the rail, your map, the news. */
+  .hero-map{flex:1 1 0; min-width:250px; display:flex; flex-direction:column; gap:8px;
+    background:#fff; border:1px solid var(--rule); border-radius:2px; padding:0 0 11px; overflow:hidden;}
+  .hero-map .rail-head{margin:0;}
+  .hero-map-wrap{position:relative; z-index:0; isolation:isolate; margin:0 11px; border:1px solid var(--rule);
+    border-radius:2px; overflow:hidden;}
+  .hero-map-el{height:190px; background:#EDEFE6;}
+  .hero-map-add{display:flex; gap:5px; flex-wrap:wrap; align-items:center; padding:0 11px;}
+  .hero-map-lab{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--text-soft);}
+  .hero-map-chip{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:3px 8px;
+    cursor:pointer; font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text);}
+  .hero-map-chip:hover{border-color:var(--ink); color:var(--ink);}
+  .rail-editmore{display:block; padding:0 11px; font-family:'Open Sans',sans-serif; font-size:11px;
+    font-weight:700; color:var(--text-soft); text-decoration:none;}
+  .rail-editmore:hover{color:var(--ink);}
+  .rail-citypick select{width:100%; padding:7px 9px; border:1.5px solid var(--rule); border-radius:2px;
+    font-family:'Open Sans',sans-serif; font-size:12.5px; background:#fff; color:var(--text); margin-bottom:7px;}
+  .rail-citypick select:focus{outline:none; border-color:var(--ink);}
+  /* Featured news, split by topic. */
+  .featured-groups{display:flex; flex-direction:column; gap:10px; padding:0 11px 11px;}
+  .fgroup-h{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.07em;
+    text-transform:uppercase; color:var(--text-soft); border-bottom:1px solid var(--rule);
+    padding-bottom:4px; margin-bottom:6px;}
+  .featured-groups .fcard{margin-bottom:6px;}
+  @media (max-width:1100px){ .hero-map{display:none;} }
+  .hero-panels{display:flex; gap:20px; align-items:stretch; margin:30px 0 0;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
   .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
   .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
@@ -869,13 +895,14 @@
   .tk-row-n{font-family:var(--mono); font-size:11px; color:var(--text-soft); white-space:nowrap;}
   /* The horizontal line of stations. */
   .tk-railwrap{position:relative; margin-bottom:20px;}
-  .tk-rail{display:flex; gap:0; overflow-x:auto; scroll-behavior:smooth; padding:8px 0 14px;
-    scrollbar-width:thin;}
+  .tk-rail{display:flex; gap:0; overflow-x:auto; overflow-y:hidden; scroll-behavior:smooth;
+    padding:16px 0 14px; scrollbar-width:thin; align-items:stretch;}
   .tk-rail::-webkit-scrollbar{height:7px;}
   .tk-rail::-webkit-scrollbar-thumb{background:var(--rule); border-radius:4px;}
   .tk-st{position:relative; flex:0 0 176px; background:#fff; border:1px solid var(--rule);
     border-radius:2px; margin-right:12px; padding:12px 13px 13px; cursor:pointer; text-align:left;
-    transition:border-color .12s, transform .12s;}
+    transition:border-color .12s, transform .12s;
+    display:flex; flex-direction:column; min-height:186px;}
   /* the connecting line */
   .tk-st::after{content:''; position:absolute; right:-12px; top:50%; width:12px; height:2px; background:var(--rule);}
   .tk-st:last-child{margin-right:0;}
@@ -894,9 +921,9 @@
     border-radius:2px; background:#EDF0E6; font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink);}
   .tk-st-lab{display:block; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800;
     letter-spacing:.07em; text-transform:uppercase; color:var(--text-soft); margin-bottom:3px;}
-  .tk-st-t{display:block; font-size:12.5px; font-weight:700; color:var(--ink); line-height:1.35;
+  .tk-st-t{font-size:12.5px; font-weight:700; color:var(--ink); line-height:1.35; flex:1 1 auto;
     display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;}
-  .tk-st-done{display:inline-block; margin-top:7px; font-family:'Open Sans',sans-serif;
+  .tk-st-done{align-self:flex-start; margin-top:7px; font-family:'Open Sans',sans-serif;
     font-size:9.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
     background:var(--ink); color:#fff; padding:2px 6px; border-radius:2px;}
   .tk-scroll{position:absolute; top:44%; z-index:2; width:30px; height:30px; border-radius:50%;
@@ -1255,6 +1282,13 @@
           <div class="rail-head">Local resources<span class="rail-city" id="resourceCity"></span></div>
           <div class="rail-body" id="railResources"></div>
         </div>
+        <div class="rail-card rail-citypick">
+          <div class="rail-head">Your city<span class="rail-city" id="railCityNow"></span></div>
+          <div class="rail-body">
+            <select id="railCitySelect" aria-label="Change your city"></select>
+            <a href="#" class="rail-editmore" data-goto-screen="yourarea">Edit my area and interests &rarr;</a>
+          </div>
+        </div>
         <div class="rail-card rail-signup">
           <div class="rail-head">Get the briefing</div>
           <div class="rail-body">
@@ -1266,12 +1300,21 @@
 
       
 
+      <aside class="hero-map" id="heroMapCard" aria-label="Your map">
+        <div class="rail-head">Your map<span class="rail-city" id="heroMapCount"></span></div>
+        <div class="hero-map-wrap">
+          <div id="heroMap" class="hero-map-el"></div>
+        </div>
+        <div class="hero-map-add" id="heroMapAdd"></div>
+        <a href="#" class="rail-editmore" data-goto-screen="yourarea">Open the full map &rarr;</a>
+      </aside>
+
       <aside class="featured-news" id="featuredNews" aria-label="Featured news">
         <div class="featured-head">
           <span>Featured news</span>
           <span class="featured-dots" id="featuredDots"></span>
         </div>
-        <div class="featured-cards" id="featuredCards"></div>
+        <div class="featured-groups" id="featuredCards"></div>
       </aside>
     </div>
     <div class="hero-credit">Background: El Camino Real at Mathilda Avenue, Sunnyvale &middot; photo by ZuperB, public domain, via <a href="https://commons.wikimedia.org/wiki/File:El_camino_and_mathilda.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></div>
@@ -3787,6 +3830,8 @@ function switchCity(key){
   // Featured news leads with the selected city's stories, so it follows the tab.
   featuredPage = 0;
   if(typeof renderFeaturedNews === 'function'){ preloadFeaturedImages(); renderFeaturedNews(); }
+  if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
+  if(typeof renderHeroMap === 'function') yaLoad().then(renderHeroMap).catch(()=>renderHeroMap());
   if(typeof renderRail === 'function'){ railPage = 0; railFace = 0; renderRail(); renderRailResources(); applyRailMode(); }
   state = {q:'', stage:'all', cat:'all'};
   document.getElementById('search').value = '';
@@ -7878,6 +7923,80 @@ function featuredArticles(){
   return [...local, ...rest];
 }
 
+
+// --- Hero: city picker, and a small version of the reader's own map ---
+function renderRailCityPicker(){
+  const sel = document.getElementById('railCitySelect');
+  const now = document.getElementById('railCityNow');
+  if(!sel) return;
+  const keys = Object.keys(CITIES).filter(k=>k!=='all');
+  if(sel.options.length !== keys.length){
+    sel.innerHTML = keys.map(k=>'<option value="'+k+'">'+CITIES[k].label+'</option>').join('');
+    sel.addEventListener('change', ()=>{ switchCity(sel.value); });
+  }
+  if(currentCity !== 'all') sel.value = currentCity;
+  if(now) now.textContent = currentCity === 'all' ? 'all cities' : '';
+}
+
+let heroMap = null, heroLayer = null;
+function renderHeroMap(){
+  const card = document.getElementById('heroMapCard');
+  if(!card || typeof L === 'undefined') return;
+  const el = document.getElementById('heroMap');
+  if(!el) return;
+  // The hero is often not laid out yet on the first pass, and Leaflet cannot size itself into a
+  // zero-width box. Come back once it has one rather than silently doing nothing.
+  if(!el.offsetWidth){
+    if(renderHeroMap._tries === undefined) renderHeroMap._tries = 0;
+    if(renderHeroMap._tries++ < 20) setTimeout(renderHeroMap, 250);
+    return;
+  }
+  const c = CITIES[currentCity !== 'all' ? currentCity : 'sunnyvale'];
+  if(!heroMap){
+    heroMap = L.map('heroMap', {scrollWheelZoom:false, zoomControl:false, attributionControl:false})
+      .setView([c.center.lat, c.center.lng], 11);
+    L.tileLayer(cartoTileUrl('{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'),
+      {subdomains:'abcd', maxZoom:19}).addTo(heroMap);
+    heroLayer = L.layerGroup().addTo(heroMap);
+  }
+  heroLayer.clearLayers();
+  (yaPins||[]).forEach(p=>{
+    if(!isFinite(p.lat) || !isFinite(p.lng)) return;
+    L.circleMarker([p.lat,p.lng], {radius:5, color:'#fff', weight:2,
+      fillColor:(YA_PIN_COLOR[p.type]||'#3E4F24'), fillOpacity:1})
+      .bindPopup('<b>'+escapeHtml(p.label)+'</b>').addTo(heroLayer);
+  });
+  const cnt = document.getElementById('heroMapCount');
+  if(cnt) cnt.textContent = (yaPins||[]).length ? (yaPins.length + ' pinned') : 'nothing pinned';
+  const pts = (yaPins||[]).filter(p=>isFinite(p.lat)&&isFinite(p.lng)).map(p=>[p.lat,p.lng]);
+  if(pts.length > 1) heroMap.fitBounds(pts, {padding:[24,24]});
+  else if(pts.length === 1) heroMap.setView(pts[0], 13);
+  else heroMap.setView([c.center.lat, c.center.lng], 11);
+  setTimeout(()=>{ try{ heroMap.invalidateSize(); }catch(e){} }, 80);
+
+  // A few one-press things to put on it, from this city.
+  const add = document.getElementById('heroMapAdd');
+  if(add){
+    const cand = (CITIES[currentCity!=='all'?currentCity:'sunnyvale'].data||[])
+      .filter(p=>isFinite(p.lat)&&isFinite(p.lng))
+      .filter(p=>!yaPins.some(x=>x.type==='project'&&x.id===p.id))
+      .slice(0,3);
+    add.innerHTML = cand.length
+      ? '<span class="hero-map-lab">Add</span>' + cand.map(p=>
+          '<button type="button" class="hero-map-chip" data-heroadd="'+escapeHtml(p.id)+'" title="'+escapeHtml(p.addr||p.id)+'">'
+          + escapeHtml((p.addr||p.id).length>22 ? (p.addr||p.id).slice(0,21)+'…' : (p.addr||p.id)) + '</button>').join('')
+      : '<span class="hero-map-lab">All the nearby projects are on your map.</span>';
+    add.querySelectorAll('[data-heroadd]').forEach(b=> b.addEventListener('click', ()=>{
+      const ck = currentCity!=='all'?currentCity:'sunnyvale';
+      const p = (CITIES[ck].data||[]).find(x=>x.id===b.getAttribute('data-heroadd'));
+      if(!p) return;
+      yaTogglePin({type:'project', id:p.id, label:p.addr||p.id,
+        sub:[CITIES[ck].label, p.stage].filter(Boolean).join(' · '), lat:p.lat, lng:p.lng, city:ck});
+      renderHeroMap();
+    }));
+  }
+}
+
 function renderFeaturedNews(){
   const cards = document.getElementById('featuredCards');
   const dots = document.getElementById('featuredDots');
@@ -7888,14 +8007,25 @@ function renderFeaturedNews(){
   featuredPage = featuredPage % pages;
   const slice = all.slice(featuredPage*FEATURED_PER_PAGE, featuredPage*FEATURED_PER_PAGE + FEATURED_PER_PAGE);
 
-  cards.innerHTML = slice.map(a=>`
-    <a class="fcard" href="${a.url}" target="_blank" rel="noopener">
-      ${a.image ? `<img src="${a.image}" alt="" onerror="this.style.display='none'">` : ''}
-      <div class="fbody">
-        <div class="ftitle">${a.title}</div>
-        <div class="fmeta">${a.source} &middot; ${CITIES[a.city] ? CITIES[a.city].label : a.city}</div>
-      </div>
-    </a>`).join('');
+  // Split into the three topics rather than one undifferentiated stack.
+  const GROUPS = [{id:'housing', l:'Housing'}, {id:'developments', l:'Development'},
+                  {id:'transportation', l:'Transportation'}];
+  const pool = featuredArticles();
+  cards.innerHTML = GROUPS.map(g=>{
+    // One from this page's slice where possible, then top up from the wider pool.
+    const mine = slice.filter(a=>a.topic===g.id);
+    const extra = pool.filter(a=>a.topic===g.id && !mine.includes(a));
+    const items = mine.concat(extra).slice(0, 2);
+    if(!items.length) return '';
+    return `<div class="fgroup"><div class="fgroup-h">${g.l}</div>` + items.map(a=>`
+      <a class="fcard" href="${a.url}" target="_blank" rel="noopener">
+        ${a.image ? `<img src="${a.image}" alt="" onerror="this.style.display='none'">` : ''}
+        <div class="fbody">
+          <div class="ftitle">${a.title}</div>
+          <div class="fmeta">${a.source} &middot; ${CITIES[a.city] ? CITIES[a.city].label : a.city}</div>
+        </div>
+      </a>`).join('') + '</div>';
+  }).join('');
   dots.innerHTML = Array.from({length:pages}, (_,i)=>`<i class="${i===featuredPage?'on':''}"></i>`).join('');
 }
 
@@ -7920,6 +8050,9 @@ function preloadFeaturedImages(){
 
 preloadFeaturedImages();
 renderFeaturedNews();
+if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
+// switchCity draws these too, but it does not run on first load.
+if(typeof renderHeroMap === 'function'){ yaLoad().then(renderHeroMap).catch(()=>renderHeroMap()); }
 startFeaturedRotation();
 (function(){
   const panel = document.getElementById('featuredNews');
