@@ -225,6 +225,9 @@
   .onboard-check{display:flex; align-items:center; gap:9px; font-size:13px; padding:10px 12px; border:1.5px solid var(--rule); border-radius:2px; cursor:pointer; background:#fff;}
   .onboard-check.checked{border-color:var(--ink); background:var(--paper-2);}
   .onboard-check input{accent-color:var(--ink);}
+  .onboard-req{font-family:'Open Sans',sans-serif; font-size:11.5px; color:var(--text-soft);
+    align-self:center; flex:1 1 100%;}
+  .onboard-label em{font-style:normal; font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-soft);}
   .onboard-actions{display:flex; gap:10px; margin-top:24px; flex-wrap:wrap;}
   .onboard-actions .btn{flex:1 1 auto;}
 
@@ -781,7 +784,7 @@
   .gi-ev.gi-conf{background:#3E4F24; color:#fff;}
   .gi-ev.gi-rec{background:#E7EBDD; color:#3E4F24;}
   .gi-more{font-size:9px; color:var(--text-soft);}
-  .gi-cal-row{display:grid; grid-template-columns:70px 1fr 170px 90px 78px; gap:10px; align-items:center;
+  .gi-cal-row{display:grid; grid-template-columns:70px 1fr 150px 88px 200px; gap:10px; align-items:center;
     background:#fff; border:1px solid var(--rule); border-radius:2px; padding:8px 12px; margin-bottom:5px;}
   @media (max-width:820px){ .gi-cal-row{grid-template-columns:64px 1fr; } .gi-cal-c,.gi-cal-b,.gi-cal-l{grid-column:2;} }
   .gi-cal-d{font-family:var(--mono); font-size:11.5px; font-weight:700; color:var(--ink);}
@@ -790,6 +793,12 @@
   .gi-cal-b{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.05em;
     text-transform:uppercase; padding:2px 6px; border-radius:2px; text-align:center;}
   .gi-cal-b.gi-conf{background:#3E4F24; color:#fff;} .gi-cal-b.gi-rec{background:#E7EBDD; color:#3E4F24;}
+  .gi-cal-acts{display:flex; gap:5px; align-items:center; justify-content:flex-end;}
+  .gi-cal-add, .gi-cal-ics{background:#fff; border:1px solid var(--rule); border-radius:2px;
+    padding:3px 8px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:10.5px;
+    font-weight:700; color:var(--text-soft); white-space:nowrap;}
+  .gi-cal-add:hover, .gi-cal-ics:hover{border-color:var(--ink); color:var(--ink);}
+  .gi-cal-add.on{background:var(--ink); border-color:var(--ink); color:#fff;}
   .gi-cal-l{font-size:11px; font-weight:700; color:var(--text-soft); text-decoration:none;}
   .gi-unscheduled{margin-top:22px;}
   .gi-unsched-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:6px;}
@@ -1251,7 +1260,7 @@
 
     <div class="onboard-actions">
       <button class="btn" id="onboardSubmit" type="button">Show my area →</button>
-      <button class="btn secondary" id="onboardSkip" type="button">Skip - show me everything</button>
+      <span class="onboard-req" id="onboardReq"></span>
     </div>
   </div>
 </div>
@@ -3930,7 +3939,7 @@ function renderOnboardCityBtns(){
     `<button type="button" class="onboard-city-btn${key===onboard.city?' active':''}" data-city="${key}">${c.label}</button>`
   ).join('');
   document.querySelectorAll('.onboard-city-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{ onboard.city = btn.getAttribute('data-city'); renderOnboardCityBtns(); });
+    btn.addEventListener('click', ()=>{ onboard.city = btn.getAttribute('data-city'); renderOnboardCityBtns(); refreshOnboardGate(); });
   });
 }
 function renderOnboardInterests(){
@@ -3948,9 +3957,31 @@ function renderOnboardInterests(){
       if(key==='involved'){ onboard.wantInvolved = !onboard.wantInvolved; }
       else { onboard.interests.has(key) ? onboard.interests.delete(key) : onboard.interests.add(key); }
       renderOnboardInterests();
+      refreshOnboardGate();
     });
   });
+  refreshOnboardGate();
 }
+
+// City and interests drive every other screen, so they are required. A location is not - the
+// site works city-wide without one.
+function onboardComplete(){
+  return Boolean(onboard.city && onboard.interests && onboard.interests.size > 0);
+}
+function refreshOnboardGate(){
+  const btn = document.getElementById('onboardSubmit');
+  const note = document.getElementById('onboardReq');
+  if(!btn) return;
+  const ok = onboardComplete();
+  btn.disabled = !ok;
+  btn.style.opacity = ok ? '1' : '0.55';
+  btn.style.cursor = ok ? 'pointer' : 'not-allowed';
+  if(note){
+    note.textContent = ok ? 'An address is optional - you can add one later.'
+      : (!onboard.city ? 'Pick a city to continue.' : 'Pick at least one thing you are interested in.');
+  }
+}
+
 function setOnboardBusy(busy, msg){
   const submitBtn = document.getElementById('onboardSubmit');
   const geoBtn = document.getElementById('onboardGeoBtn');
@@ -4123,6 +4154,7 @@ function showCityChooser(lat, lng, placeLabel){
   document.getElementById('cityChooserStep').style.display = 'block';
   document.getElementById('cityChooserStep').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
+// Kept for the deep-link path, which bypasses the dialog entirely.
 function skipOnboard(){
   onboard.userLoc = null;
   document.getElementById('onboardOverlay').style.display = 'none';
@@ -4177,7 +4209,6 @@ document.getElementById('onboardAddr').addEventListener('input', ()=>{
   document.getElementById('onboardGeoStatus').textContent = "We'll match a typed address to the nearest known projects - for a precise pin, \"use my current location\" instead.";
 });
 document.getElementById('onboardSubmit').addEventListener('click', submitOnboard);
-document.getElementById('onboardSkip').addEventListener('click', skipOnboard);
 document.getElementById('onboardAccountLink').addEventListener('click', (e)=>{
   e.preventDefault();
   document.getElementById('onboardOverlay').style.display = 'none';
@@ -4718,10 +4749,21 @@ function renderGiCalendar(){
           + '<span class="gi-cal-n">'+escapeHtml(e.name)+'</span>'
           + '<span class="gi-cal-c">'+escapeHtml(e.cityLabel)+(e.time?' &middot; '+e.time:'')+'</span>'
           + '<span class="gi-cal-b '+(e.confirmed?'gi-conf':'gi-rec')+'">'+(e.confirmed?'confirmed':'recurring')+'</span>'
-          + (e.url ? '<a class="gi-cal-l" href="'+e.url+'" target="_blank" rel="noopener">Open &#8599;</a>' : '<span></span>')
+          + '<span class="gi-cal-acts">'
+          +   (()=>{ const ref='cal:'+e.city+':'+e.name+':'+y+'-'+String(m+1).padStart(2,'0')+'-'+String(e.day).padStart(2,'0');
+                     const on = remHas('hearing', ref);
+                     const pay = encodeURIComponent(JSON.stringify({ref, name:e.name, city:e.city,
+                       cityLabel:e.cityLabel, y, m, day:e.day, time:e.time||'', url:e.url||'', confirmed:!!e.confirmed}));
+                     return '<button type="button" class="gi-cal-add'+(on?' on':'')+'" data-caladd="'+pay+'">'
+                          + (on ? '&#10003; On my calendar' : 'Add') + '</button>'
+                          + '<button type="button" class="gi-cal-ics" data-calics="'+pay+'" title="Download for your calendar app">.ics</button>'; })()
+          +   (e.url ? '<a class="gi-cal-l" href="'+e.url+'" target="_blank" rel="noopener">Open &#8599;</a>' : '')
+          + '</span>'
           + '</div>').join('')
       : '<div class="empty">No meetings fall in this month from the schedules published.</div>';
   }
+
+  wireCalendarActions(document.getElementById('giCalList'));
 
   // Be explicit about the bodies that cannot be put on a calendar.
   const un = document.getElementById('giUnscheduled');
@@ -4736,6 +4778,52 @@ function renderGiCalendar(){
         + '</div>'
       : '';
   }
+}
+
+
+// Saving a meeting keeps it with the reminders, so it also appears in the email summary. The
+// .ics is a real file the reader's own calendar can import - nothing is sent anywhere.
+function icsFor(d){
+  const pad = n => String(n).padStart(2,'0');
+  const dt = new Date(d.y, d.m, d.day, d.time ? +d.time.split(':')[0] : 19, d.time ? +d.time.split(':')[1] : 0);
+  const end = new Date(dt.getTime() + 2*60*60*1000);
+  const fmt = x => x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(x.getHours())+pad(x.getMinutes())+'00';
+  const esc = t => String(t||'').replace(/([,;\\])/g,'\\$1').replace(/\n/g,'\\n');
+  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//South Bay Area Civic Dashboard//EN','BEGIN:VEVENT',
+    'UID:'+encodeURIComponent(d.ref)+'@southbaydashboard',
+    'DTSTAMP:'+fmt(new Date()), 'DTSTART:'+fmt(dt), 'DTEND:'+fmt(end),
+    'SUMMARY:'+esc(d.name+' - '+d.cityLabel),
+    'DESCRIPTION:'+esc((d.confirmed ? 'Confirmed on a published agenda.' : 'From the published recurring schedule - confirm against the agenda before attending.') + (d.url ? ' ' + d.url : '')),
+    'LOCATION:'+esc(d.cityLabel), 'END:VEVENT','END:VCALENDAR'].join('\r\n');
+}
+function wireCalendarActions(root){
+  (root||document).querySelectorAll('[data-caladd]').forEach(b=>{
+    if(b.dataset.calWired) return; b.dataset.calWired='1';
+    b.addEventListener('click', async ()=>{
+      let d; try{ d = JSON.parse(decodeURIComponent(b.getAttribute('data-caladd'))); }catch(e){ return; }
+      const existing = remItems.find(r=>r.kind==='hearing' && r.ref_id===d.ref);
+      if(existing){ await removeReminder(existing.id); }
+      else {
+        const when = GI_MONTHS[d.m]+' '+d.day+', '+d.y + (d.time ? ' at '+d.time : '')
+                   + (d.confirmed ? ' (confirmed on the agenda)' : ' (recurring schedule - confirm before attending)');
+        await addReminder('hearing', d.ref, d.name+' - '+d.cityLabel, when, d.url, d.city);
+      }
+      const on = remHas('hearing', d.ref);
+      b.classList.toggle('on', on);
+      b.innerHTML = on ? '&#10003; On my calendar' : 'Add';
+    });
+  });
+  (root||document).querySelectorAll('[data-calics]').forEach(b=>{
+    if(b.dataset.icsWired) return; b.dataset.icsWired='1';
+    b.addEventListener('click', ()=>{
+      let d; try{ d = JSON.parse(decodeURIComponent(b.getAttribute('data-calics'))); }catch(e){ return; }
+      const blob = new Blob([icsFor(d)], {type:'text/calendar'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = d.name.replace(/[^a-z0-9]+/gi,'-').toLowerCase()+'-'+d.y+'-'+String(d.m+1).padStart(2,'0')+'-'+String(d.day).padStart(2,'0')+'.ics';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+    });
+  });
 }
 
 function renderGetInvolved(){
