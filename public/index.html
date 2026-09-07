@@ -443,12 +443,32 @@
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
   /* Three columns in the hero: the rail, your map, the news. */
+  .hero-map{justify-content:flex-start;}
+  .hero-projlist{flex:1 1 auto;}
+  .hero-rail > .rail-card:nth-child(2){flex:1 1 auto; display:flex; flex-direction:column;}
+  .hero-rail > .rail-card:nth-child(2) .rail-body{flex:1 1 auto; overflow:auto;}
+  .featured-news{display:flex; flex-direction:column;}
+  .featured-groups{flex:1 1 auto;}
+  .hero-citypick{padding:0 11px 4px;}
+  .hero-citypick select{width:100%; padding:7px 9px; border:1.5px solid var(--rule); border-radius:2px;
+    font-family:'Open Sans',sans-serif; font-size:12.5px; background:#fff; color:var(--text); margin-bottom:6px;}
+  .hero-citypick select:focus{outline:none; border-color:var(--ink);}
+  .hero-projlist{display:flex; flex-direction:column; gap:4px; padding:0 11px;}
+  .hero-proj{display:flex; gap:9px; align-items:flex-start; text-align:left; width:100%;
+    background:#fff; border:1px solid var(--rule); border-radius:2px; padding:7px 9px; cursor:pointer;}
+  .hero-proj:hover{border-color:var(--ink);}
+  .hp-stage{flex:0 0 auto; font-family:'Open Sans',sans-serif; font-size:8.5px; font-weight:800;
+    letter-spacing:.05em; text-transform:uppercase; color:#fff; padding:2px 5px; border-radius:2px; margin-top:1px;}
+  .hp-main{min-width:0; display:block;}
+  .hp-main b{display:block; font-size:12px; color:var(--ink); line-height:1.3;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .hp-main span{display:block; font-family:var(--mono); font-size:10px; color:var(--text-soft); margin-top:1px;}
   .hero-map{flex:1 1 0; min-width:250px; display:flex; flex-direction:column; gap:8px;
     background:#fff; border:1px solid var(--rule); border-radius:2px; padding:0 0 11px; overflow:hidden;}
   .hero-map .rail-head{margin:0;}
   .hero-map-wrap{position:relative; z-index:0; isolation:isolate; margin:0 11px; border:1px solid var(--rule);
     border-radius:2px; overflow:hidden;}
-  .hero-map-el{height:190px; background:#EDEFE6;}
+  .hero-map-el{height:340px; background:#EDEFE6;}
   .hero-map-add{display:flex; gap:5px; flex-wrap:wrap; align-items:center; padding:0 11px;}
   .hero-map-lab{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.06em;
     text-transform:uppercase; color:var(--text-soft);}
@@ -583,12 +603,6 @@
   /* Statistics cards can be starred, so the wrapper carries the button. */
   .metric-wrap{position:relative;}
   .metric-wrap > .star-btn{position:absolute; top:8px; right:8px; z-index:2;}
-  /* The email tab is the one people are looking for. */
-  .acct-navbtn-feature{background:#EEF2E6; border-left-color:var(--ink); font-weight:800; line-height:1.35;}
-  .acct-navbtn-feature:hover{background:#E6EBDC;}
-  .acct-navbtn-feature.active{background:var(--ink); color:#fff;}
-  .acct-navbtn-feature.active .acct-badge{color:#D6DECB;}
-  .acct-nav-star{margin-right:6px;}
   .acct-badge{font-family:var(--mono); font-size:10.5px; color:var(--text-soft); font-weight:400;}
   .acct-navbtn.active .acct-badge{color:var(--ink);}
   .acct-logout{margin-top:14px; width:100%; font-size:12px; padding:7px 10px;}
@@ -688,6 +702,28 @@
   .board-actions.on-dark .rem-btn:hover{background:rgba(255,255,255,.22); border-color:#fff; color:#fff;}
   .board-actions.on-dark .rem-btn.on{background:#fff; border-color:#fff; color:var(--ink);}
   .board-actions.on-dark .board-act-status{color:#D6DECB;}
+  .topic-map-count{font-family:var(--mono); font-size:10.5px; color:var(--text-soft); text-transform:none; letter-spacing:0; margin-left:10px;}
+  .topic-map-wrap{position:relative; z-index:0; isolation:isolate; border:1px solid var(--rule);
+    border-radius:2px; overflow:hidden; margin-bottom:8px;}
+  .topic-map{height:360px; background:#EDEFE6;}
+  .topic-legend{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px;}
+  .tm-key{display:flex; align-items:center; gap:5px; font-family:'Open Sans',sans-serif;
+    font-size:11px; color:var(--text-soft);}
+  .tm-key i{width:9px; height:9px; border-radius:50%; display:inline-block;}
+  .law-list{display:grid; gap:5px; margin-bottom:22px;}
+  .law{background:#fff; border:1px solid var(--rule); border-radius:2px;}
+  .law summary{cursor:pointer; padding:11px 14px; display:flex; gap:10px; align-items:baseline;
+    flex-wrap:wrap; list-style:none;}
+  .law summary::-webkit-details-marker{display:none;}
+  .law summary::before{content:'\25B8'; color:var(--text-soft); transition:transform .15s; display:inline-block;}
+  .law[open] summary::before{transform:rotate(90deg);}
+  .law-n{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:800; color:#fff;
+    background:var(--ink); padding:2px 7px; border-radius:2px;}
+  .law-t{font-size:13.5px; font-weight:700; color:var(--ink);}
+  .law-y{font-family:var(--mono); font-size:11px; color:var(--text-soft); margin-left:auto;}
+  .law-body{padding:0 14px 13px 34px; border-top:1px solid var(--rule); margin-top:2px; padding-top:11px;}
+  .law-body p{font-size:13px; color:var(--text); line-height:1.65; margin-bottom:7px;}
+  .law-body a{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; color:var(--ink);}
   /* ---- Get involved ---- */
   .gi-tabs{display:flex; gap:6px; flex-wrap:wrap; border-bottom:2px solid var(--ink); padding-bottom:0; margin:16px 0 18px;}
   .gi-tab{background:#fff; border:1px solid var(--rule); border-bottom:none; border-radius:2px 2px 0 0;
@@ -1282,13 +1318,6 @@
           <div class="rail-head">Local resources<span class="rail-city" id="resourceCity"></span></div>
           <div class="rail-body" id="railResources"></div>
         </div>
-        <div class="rail-card rail-citypick">
-          <div class="rail-head">Your city<span class="rail-city" id="railCityNow"></span></div>
-          <div class="rail-body">
-            <select id="railCitySelect" aria-label="Change your city"></select>
-            <a href="#" class="rail-editmore" data-goto-screen="yourarea">Edit my area and interests &rarr;</a>
-          </div>
-        </div>
         <div class="rail-card rail-signup">
           <div class="rail-head">Get the briefing</div>
           <div class="rail-body">
@@ -1300,13 +1329,20 @@
 
       
 
-      <aside class="hero-map" id="heroMapCard" aria-label="Your map">
+      <aside class="hero-map" id="heroMapCard" aria-label="Your city and map">
+        <div class="rail-head">Your city<span class="rail-city" id="railCityNow"></span></div>
+        <div class="hero-citypick">
+          <select id="railCitySelect" aria-label="Change your city"></select>
+          <a href="#" class="rail-editmore" data-goto-screen="yourarea">Edit my area and interests &rarr;</a>
+        </div>
         <div class="rail-head">Your map<span class="rail-city" id="heroMapCount"></span></div>
         <div class="hero-map-wrap">
           <div id="heroMap" class="hero-map-el"></div>
         </div>
         <div class="hero-map-add" id="heroMapAdd"></div>
         <a href="#" class="rail-editmore" data-goto-screen="yourarea">Open the full map &rarr;</a>
+        <div class="rail-head">Nearest to a decision<span class="rail-city" id="heroProjCity"></span></div>
+        <div class="hero-projlist" id="heroProjList"></div>
       </aside>
 
       <aside class="featured-news" id="featuredNews" aria-label="Featured news">
@@ -1541,6 +1577,12 @@
         <p>Housing projects are decided by each city's Planning Commission first, with City Council as the final word on appeals. See the Get Involved section below for exact meeting schedules and how to submit public comment on a specific project.</p>
       </div>
       <div id="topicRhnaHousing"></div>
+      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountHousing"></span></div>
+      <div class="topic-map-wrap"><div class="topic-map" id="topicMapHousing"></div></div>
+      <div class="topic-legend" id="topicLegendHousing"></div>
+      <div class="topic-section-h">The laws behind these records</div>
+      <p class="section-note">Most of what happens on this page is driven by a handful of state laws. Each one links to its own text.</p>
+      <div class="law-list" id="topicLawsHousing"></div>
       <div class="topic-section-h">Recent News</div>
       <div class="news-grid" id="topicNewsHousing"></div>
       <div class="topic-section-h" id="topicLinksHeadHousing"></div>
@@ -1568,6 +1610,12 @@
         <h3>Development Agreements</h3>
         <p>For large projects, cities sometimes negotiate a formal Development Agreement - a contract that locks in the project's entitlements for a set number of years (often 20-30) in exchange for public benefits like parkland, infrastructure funding, or affordable housing. Google's Middlefield Park and North Bayshore master plans in Mountain View are both governed by long-term Development Agreements.</p>
       </div>
+      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountDevelopments"></span></div>
+      <div class="topic-map-wrap"><div class="topic-map" id="topicMapDevelopments"></div></div>
+      <div class="topic-legend" id="topicLegendDevelopments"></div>
+      <div class="topic-section-h">The laws behind these records</div>
+      <p class="section-note">Most of what happens on this page is driven by a handful of state laws. Each one links to its own text.</p>
+      <div class="law-list" id="topicLawsDevelopments"></div>
       <div class="topic-section-h">Recent News</div>
       <div class="news-grid" id="topicNewsDevelopments"></div>
       <div class="topic-section-h" id="topicLinksHeadDevelopments"></div>
@@ -1594,6 +1642,12 @@
         <h3>Vision Zero</h3>
         <p>Many cities in this tracker have adopted <b>Vision Zero</b> - a policy goal of eliminating all traffic deaths and severe injuries by a target year, usually through street redesigns (protected bike lanes, shorter crossings, slower design speeds) rather than relying on driver behavior alone. Bicycle and pedestrian projects tracked here are often justified directly by Vision Zero commitments.</p>
       </div>
+      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountTransportation"></span></div>
+      <div class="topic-map-wrap"><div class="topic-map" id="topicMapTransportation"></div></div>
+      <div class="topic-legend" id="topicLegendTransportation"></div>
+      <div class="topic-section-h">The laws behind these records</div>
+      <p class="section-note">Most of what happens on this page is driven by a handful of state laws. Each one links to its own text.</p>
+      <div class="law-list" id="topicLawsTransportation"></div>
       <div class="topic-section-h">Recent News</div>
       <div class="news-grid" id="topicNewsTransportation"></div>
       <div class="topic-section-h" id="topicLinksHeadTransportation"></div>
@@ -1651,9 +1705,10 @@
           </div>
           <nav class="acct-nav" role="tablist">
             <button type="button" class="acct-navbtn active" data-acct="overview" role="tab">Overview<span class="acct-badge" id="acctBadgeOverview"></span></button>
+            <button type="button" class="acct-navbtn" data-acct="email" role="tab">Stay Updated With Email Summaries<span class="acct-badge" id="acctBadgeEmail"></span></button>
             <button type="button" class="acct-navbtn" data-acct="boards" role="tab">Boards<span class="acct-badge" id="acctBadgeBoards"></span></button>
             <button type="button" class="acct-navbtn" data-acct="plan" role="tab">Draft a plan</button>
-            <button type="button" class="acct-navbtn acct-navbtn-feature" data-acct="email" role="tab"><span class="acct-nav-star">&#9993;</span>Stay Updated With Email Summaries<span class="acct-badge" id="acctBadgeEmail"></span></button>
+            
             <button type="button" class="acct-navbtn" data-acct="reminders" role="tab">Reminders<span class="acct-badge" id="acctBadgeReminders"></span></button>
             <button type="button" class="acct-navbtn" data-acct="resources" role="tab">Saved resources<span class="acct-badge" id="acctBadgeResources"></span></button>
             <button type="button" class="acct-navbtn" data-acct="chat" role="tab">Chat history<span class="acct-badge" id="acctBadgeChat"></span></button>
@@ -3832,6 +3887,7 @@ function switchCity(key){
   if(typeof renderFeaturedNews === 'function'){ preloadFeaturedImages(); renderFeaturedNews(); }
   if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
   if(typeof renderHeroMap === 'function') yaLoad().then(renderHeroMap).catch(()=>renderHeroMap());
+  if(typeof renderHeroProjects === 'function') renderHeroProjects();
   if(typeof renderRail === 'function'){ railPage = 0; railFace = 0; renderRail(); renderRailResources(); applyRailMode(); }
   state = {q:'', stage:'all', cat:'all'};
   document.getElementById('search').value = '';
@@ -4328,6 +4384,131 @@ function wireBoardActions(root){
   });
 }
 
+
+
+// ================= THE LAWS BEHIND THE RECORDS =================
+// Each entry links to the bill text or the agency page for it. Every URL below was requested
+// and answered 200. What each law does is stated plainly and narrowly; where a project on this
+// site cites one of these, that is why.
+const LAWS = [
+  {id:'sb330', name:'SB 330', year:2019, topics:['housing','developments'],
+   title:'Housing Crisis Act',
+   what:'Stops a city changing the rules on a housing application once it is filed. The city has to review it under the standards in force on the day it was submitted, is limited to five hearings, and cannot cut the number of homes a site allows.',
+   why:'This is why an application filed years ago is still judged by the old rules, and why "deemed complete" is a date worth noting on a project record.',
+   url:'https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201920200SB330'},
+  {id:'sb35', name:'SB 35', year:2017, topics:['housing'],
+   title:'Streamlined ministerial approval',
+   what:'A qualifying project in a city behind on its housing targets can be approved by staff without discretionary review or a public hearing, if it meets objective standards and pays prevailing wages.',
+   why:'A project marked SB 35 is not skipping the rules; it is using a path the state created for cities that missed their targets.',
+   url:'https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201720180SB35'},
+  {id:'sb9', name:'SB 9', year:2021, topics:['housing'],
+   title:'Lot splits and duplexes',
+   what:'Lets an owner split a single-family lot in two, or put up to two homes on it, with ministerial approval rather than a hearing.',
+   why:'Small filings that never reach a commission agenda. Los Altos tracks them as their own category.',
+   url:'https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220SB9'},
+  {id:'ab2011', name:'AB 2011', year:2022, topics:['housing','developments'],
+   title:'Affordable Housing and High Road Jobs Act',
+   what:'Allows housing on land zoned for commercial, office and retail, by right, if it meets affordability and labour standards.',
+   why:'The reason an old shopping centre or office park can become homes without a rezoning fight.',
+   url:'https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220AB2011'},
+  {id:'sb423', name:'SB 423', year:2023, topics:['housing'],
+   title:'Extension of SB 35',
+   what:'Continued and widened the SB 35 streamlining path, which had been due to expire.',
+   why:'Streamlined approvals filed after 2023 usually cite this rather than SB 35 itself.',
+   url:'https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240SB423'},
+  {id:'ab2234', name:'AB 2234', year:2022, topics:['housing','developments'],
+   title:'Post-entitlement permit deadlines',
+   what:'Puts deadlines on the permits that come after approval - building, grading, utilities - so an approved project cannot sit indefinitely waiting on paperwork.',
+   why:'Several cities publish an AB 2234 checklist; it is why "approved" and "permitted" are different dates.',
+   url:'https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220AB2234'},
+  {id:'sb743', name:'SB 743', year:2013, topics:['transportation','developments'],
+   title:'VMT replaces level of service',
+   what:'Environmental review now measures how many miles of driving a project causes, not how much it slows traffic at nearby junctions.',
+   why:'It reversed the incentive. Under the old test, dense housing near a station looked bad because it added congestion; under this one it looks good because it adds fewer miles.',
+   url:'https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201320140SB743'},
+  {id:'housingelement', name:'Housing Element', year:null, topics:['housing'],
+   title:'The plan every city has to write',
+   what:'Every city must adopt a state-certified plan showing where its assigned homes can be built. The state reviews it and can find it out of compliance.',
+   why:'Compliance is the switch. A city out of compliance loses control of its own zoning in specific ways - see the Builder Remedy entry below.',
+   url:'https://www.hcd.ca.gov/planning-and-community-development/housing-elements'},
+  {id:'rhna', name:'RHNA', year:null, topics:['housing'],
+   title:'How the targets are set',
+   what:'The state assigns each region a number of homes across four income bands, and the region divides it between cities. The current cycle runs to 2031.',
+   why:'Every percentage on the Statistics page is measured against this. It is the number that decides whether a Housing Element stays certified.',
+   url:'https://www.hcd.ca.gov/planning-and-community-development/regional-housing-needs-allocation'},
+  {id:'builderremedy', name:"Builder's Remedy", year:null, topics:['housing','developments'],
+   title:'What a non-compliant city loses',
+   what:'While a city has no certified Housing Element, it cannot use its own zoning or general plan to reject a housing project that includes enough affordable homes.',
+   why:'This is why several records here sit in cities that never zoned for them. Los Gatos and Cupertino both drew filings during periods of non-compliance.',
+   url:'https://www.hcd.ca.gov/planning-and-community-development/housing-elements'},
+  {id:'ceqa', name:'CEQA', year:1970, topics:['housing','developments','transportation'],
+   title:'California Environmental Quality Act',
+   what:'Any discretionary approval has to consider environmental effects - through a full report, a narrower study, or a documented exemption.',
+   why:'"Notice of Exemption" on a record is a real finding, not a shortcut: infill on an already-developed site usually qualifies.',
+   url:'https://opr.ca.gov/ceqa/'},
+];
+function lawsFor(topic){ return LAWS.filter(l=> l.topics.includes(topic)); }
+
+function renderTopicLaws(topicKey, cap){
+  const host = document.getElementById('topicLaws'+cap);
+  if(!host) return;
+  const laws = lawsFor(topicKey);
+  host.innerHTML = laws.map(l=>
+      '<details class="law"><summary><span class="law-n">'+l.name+'</span>'
+    + '<span class="law-t">'+escapeHtml(l.title)+'</span>'
+    + (l.year ? '<span class="law-y">'+l.year+'</span>' : '') + '</summary>'
+    + '<div class="law-body"><p><b>What it does.</b> '+escapeHtml(l.what)+'</p>'
+    + '<p><b>Why it shows up here.</b> '+escapeHtml(l.why)+'</p>'
+    + '<a href="'+l.url+'" target="_blank" rel="noopener">'+(/leginfo/.test(l.url)?'Read the bill':'Official page')+' &#8599;</a>'
+    + '</div></details>').join('');
+}
+
+// ---- A map of just this topic's records, for the city being viewed ----
+const topicMaps = {};
+function renderTopicMap(topicKey, cap, categoryKey){
+  const el = document.getElementById('topicMap'+cap);
+  if(!el || typeof L === 'undefined') return;
+  if(!el.offsetWidth){
+    renderTopicMap._t = renderTopicMap._t || {};
+    renderTopicMap._t[cap] = (renderTopicMap._t[cap]||0) + 1;
+    if(renderTopicMap._t[cap] < 20) setTimeout(()=>renderTopicMap(topicKey, cap, categoryKey), 250);
+    return;
+  }
+  const c = CITIES[currentCity !== 'all' ? currentCity : 'sunnyvale'];
+  let m = topicMaps[cap];
+  if(!m){
+    m = topicMaps[cap] = {map:L.map('topicMap'+cap, {scrollWheelZoom:false}).setView([c.center.lat, c.center.lng], c.zoom||12)};
+    L.tileLayer(cartoTileUrl('{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'),
+      {attribution:CARTO_ATTRIB, subdomains:'abcd', maxZoom:19}).addTo(m.map);
+    m.layer = L.layerGroup().addTo(m.map);
+  }
+  m.layer.clearLayers();
+  const rows = (c.data||[]).filter(d=> categoryOf(d)===categoryKey && isFinite(d.lat) && isFinite(d.lng));
+  const pts = [];
+  rows.forEach(d=>{
+    const st = STAGE_MAP[d.stage] || {label:d.stage||'', color:'#8A8A8A'};
+    pts.push([d.lat,d.lng]);
+    L.circleMarker([d.lat,d.lng], {radius:7, color:'#fff', weight:2, fillColor:st.color, fillOpacity:1})
+      .bindPopup('<b>'+escapeHtml(d.addr||d.id)+'</b><br>'+escapeHtml(st.label)
+        + (d.units ? '<br>'+d.units.toLocaleString()+' homes' : '')
+        + '<br><a href="?project='+encodeURIComponent(d.id)+'">Open the record &rarr;</a>')
+      .addTo(m.layer);
+  });
+  const cnt = document.getElementById('topicMapCount'+cap);
+  if(cnt) cnt.textContent = rows.length + ' mapped in ' + c.label;
+  if(pts.length > 1) m.map.fitBounds(pts, {padding:[26,26]});
+  else if(pts.length === 1) m.map.setView(pts[0], 15);
+  else m.map.setView([c.center.lat, c.center.lng], c.zoom||12);
+  setTimeout(()=>{ try{ m.map.invalidateSize(); }catch(e){} }, 80);
+
+  const legend = document.getElementById('topicLegend'+cap);
+  if(legend){
+    const seen = {};
+    rows.forEach(d=>{ const st=STAGE_MAP[d.stage]; if(st) seen[st.label]=st.color; });
+    legend.innerHTML = Object.entries(seen).map(([l,col])=>
+      '<span class="tm-key"><i style="background:'+col+'"></i>'+escapeHtml(l)+'</span>').join('');
+  }
+}
 
 // ================= GET INVOLVED =================
 // One screen for the bodies that decide: every board, a calendar of when they sit, and the
@@ -4835,13 +5016,21 @@ function tkSaveStation(key, patch){
       itemKey:key, status:next.status, note:next.note || null})}).catch(()=>{});
   }, 450));
 }
+// Picking a city calls switchCity, which refreshes the screen, which called this again. The
+// saved profile is written on a debounce, so the reload was overwriting the choice with the
+// older stored one and the selection appeared to undo itself. Pull the profile once; after
+// that only the per-station progress is refreshed.
+let tkProfileLoaded = false;
 async function tkLoad(){
   if(!isLoggedIn()){ tkState = new Map(); return; }
   try{
     const d = await apiCall('/api/timeline');
     tkState = new Map((d.items||[]).map(r=>[r.item_key, r]));
-    const row = (d.items||[]).find(r=>r.item_key === TK_PROFILE_KEY);
-    if(row && row.note){ try{ tkProfile = Object.assign(tkProfile, JSON.parse(row.note)); }catch(e){} }
+    if(!tkProfileLoaded){
+      const row = (d.items||[]).find(r=>r.item_key === TK_PROFILE_KEY);
+      if(row && row.note){ try{ tkProfile = Object.assign(tkProfile, JSON.parse(row.note)); }catch(e){} }
+      tkProfileLoaded = true;
+    }
   }catch(err){ tkState = new Map(); }
 }
 function tkReady(){ return !!(tkProfile.city && (tkProfile.topics||[]).length); }
@@ -6608,6 +6797,8 @@ function renderTopicLinks(topicKey, cap){
 function renderTopicPage(topicKey, categoryKey){
   const cap = topicKey.charAt(0).toUpperCase()+topicKey.slice(1);
   renderTopicNews(topicKey, cap);
+  renderTopicLaws(topicKey, cap);
+  renderTopicMap(topicKey, cap, categoryKey);
   renderTopicLinks(topicKey, cap);
   const rhnaHost = document.getElementById('topicRhna'+cap);
   if(rhnaHost) rhnaHost.innerHTML = RHNA[currentCity] ? rhnaSection(currentCity) : '';
@@ -6725,6 +6916,7 @@ function setAuthSession(token, username){
   localStorage.setItem('sbpd_username', username);
 }
 function clearAuthSession(){
+  tkProfileLoaded = false;
   authToken = null; authUsername = null; starredMap = new Map();
   localStorage.removeItem('sbpd_token');
   localStorage.removeItem('sbpd_username');
@@ -7997,6 +8189,34 @@ function renderHeroMap(){
   }
 }
 
+
+// The projects closest to a decision in this city - the middle column would otherwise be a
+// tall empty box next to a full rail.
+function renderHeroProjects(){
+  const host = document.getElementById('heroProjList');
+  if(!host) return;
+  const ck = currentCity !== 'all' ? currentCity : 'sunnyvale';
+  const c = CITIES[ck];
+  const lab = document.getElementById('heroProjCity');
+  if(lab) lab.textContent = c.label;
+  const rank = {review:0, proposed:1, approved:2, construction:3, completed:4};
+  const rows = (c.data||[]).slice()
+    .sort((a,b)=> (rank[a.stage]??9)-(rank[b.stage]??9) || (b.units||0)-(a.units||0))
+    .slice(0, 10);
+  host.innerHTML = rows.length ? rows.map(p=>{
+    const st = STAGE_MAP[p.stage] || {label:p.stage||'', color:'#8A8A8A'};
+    return '<button type="button" class="hero-proj" data-heroproj="'+escapeHtml(p.id)+'">'
+      + '<span class="hp-stage" style="background:'+st.color+'">'+escapeHtml(st.label)+'</span>'
+      + '<span class="hp-main"><b>'+escapeHtml(p.addr||p.id)+'</b>'
+      +   '<span>'+(p.units ? p.units.toLocaleString()+' homes' : escapeHtml((p.type||'').slice(0,32)))+'</span></span>'
+      + '</button>';
+  }).join('')
+  : '<div class="empty">'+c.label+' does not publish a project list.</div>';
+  host.querySelectorAll('[data-heroproj]').forEach(b=> b.addEventListener('click', ()=>{
+    showPage('dashboard'); showScreen('dashboard'); flyTo(b.getAttribute('data-heroproj'));
+  }));
+}
+
 function renderFeaturedNews(){
   const cards = document.getElementById('featuredCards');
   const dots = document.getElementById('featuredDots');
@@ -8015,7 +8235,8 @@ function renderFeaturedNews(){
     // One from this page's slice where possible, then top up from the wider pool.
     const mine = slice.filter(a=>a.topic===g.id);
     const extra = pool.filter(a=>a.topic===g.id && !mine.includes(a));
-    const items = mine.concat(extra).slice(0, 2);
+    // Two fewer overall: housing keeps a pair, the other two carry one each.
+    const items = mine.concat(extra).slice(0, g.id === 'housing' ? 2 : 1);
     if(!items.length) return '';
     return `<div class="fgroup"><div class="fgroup-h">${g.l}</div>` + items.map(a=>`
       <a class="fcard" href="${a.url}" target="_blank" rel="noopener">
@@ -8053,6 +8274,7 @@ renderFeaturedNews();
 if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
 // switchCity draws these too, but it does not run on first load.
 if(typeof renderHeroMap === 'function'){ yaLoad().then(renderHeroMap).catch(()=>renderHeroMap()); }
+if(typeof renderHeroProjects === 'function') renderHeroProjects();
 startFeaturedRotation();
 (function(){
   const panel = document.getElementById('featuredNews');
