@@ -17,6 +17,8 @@
   [hidden]{display:none !important;}
 
   :root{
+  --chrome-green:#0B3E2E;
+  --chrome-green-lo:#12523C;
     --ink:#3E4F24; --ink-2:#556D31;
     --paper:#FFFFFF; --paper-2:#F2F4EE; --paper-3:#E3E7DB;
     --text:#222222; --text-soft:#5B5B5B;
@@ -52,7 +54,7 @@
 
   /* Hero photograph, served from public/img. AVIF first with a JPEG fallback, since Safari below
      16 and older Edge can't decode AVIF and would otherwise render no background at all. */
-  .hero{position:relative; background:linear-gradient(165deg,#F2F2F0 0%,#ECECEA 55%,#E4E5E2 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--ink);}
+  .hero{position:relative; background:linear-gradient(165deg, var(--chrome-green) 0%, var(--chrome-green-lo) 18%, #6E7B72 46%, #C9CCC6 72%, #E4E5E2 100%); color:var(--text); padding:46px 0 30px; border-bottom:3px solid var(--chrome-green);}
     background:linear-gradient(180deg, rgba(243,245,238,0.05) 0%, rgba(243,245,238,0.14) 45%, rgba(243,245,238,0.62) 100%);}
   /* Desaturating the photo keeps it from competing with the green interface below it. */
   .hero > .wrap{position:relative; z-index:1;}
@@ -383,8 +385,11 @@
      Backdrop-filter lifts it off the photo without hiding it; the rgba fallback covers browsers
      that don't support the filter. */
   /* The title reads as a masthead block rather than floating text over the photo. */
-  .nameplate{background:var(--ink); color:#fff; padding:20px 24px 22px; border-radius:2px;
-    max-width:640px; margin:0 0 4px; box-shadow:0 2px 10px rgba(0,0,0,.16);}
+  .nameplate{background:var(--chrome-green); color:#fff; padding:22px 26px 24px; border-radius:2px;
+    max-width:560px; margin:0 0 4px; box-shadow:0 2px 14px rgba(0,0,0,.22);}
+  .nameplate h1{display:flex; flex-direction:column; line-height:.94;}
+  .np-l1, .np-l2{display:block;}
+  .np-l2{font-style:normal;}
   .nameplate .np-kicker{color:#C7D3B6;}
   .nameplate .np-kicker i{background:#7F8C6B;}
   .nameplate h1{color:#fff;}
@@ -599,6 +604,20 @@
   .news-card .news-date{font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--text-soft); margin-top:2px;}
 
   /* ---- Auth / Account ---- */
+  /* Sign in is a narrow column, not a page-wide band. */
+  #accountLoggedOut{max-width:440px;}
+  #accountLoggedOut h2{font-size:22px; border-bottom:3px solid var(--ink); padding-bottom:10px; margin-bottom:10px;}
+  #accountLoggedOut .section-note{margin-bottom:4px;}
+  #accountPromptReason{background:var(--paper-2); border-left:3px solid var(--ink); border-radius:2px;
+    padding:11px 13px; font-size:13px; line-height:1.6; color:var(--text); margin:14px 0 4px;}
+  .auth-form{max-width:none;}
+  .auth-form input{width:100%; padding:9px 11px; border:1.5px solid var(--rule); border-radius:2px;
+    font-family:'Open Sans',sans-serif; font-size:13.5px;}
+  .auth-form input:focus{outline:none; border-color:var(--ink);}
+  .auth-form label{font-family:'Open Sans',sans-serif; font-size:11.5px; font-weight:800;
+    color:var(--ink); margin-top:8px;}
+  .auth-form .btn{margin-top:12px;}
+  .auth-hint{font-size:11.5px; color:var(--text-soft); line-height:1.5;}
   .auth-tabs{display:flex; gap:8px; margin:18px 0 20px; border-bottom:2px solid var(--rule);}
   /* ---- Account: side rail plus panels, instead of one long scroll ---- */
   .acct-shell{display:grid; grid-template-columns:212px 1fr; gap:28px; align-items:start;}
@@ -1254,14 +1273,14 @@
     <p class="sub">Tell us where you are and what you care about - we'll build a personal view of what's happening nearby.</p>
 
     <div class="onboard-step">
-      <span class="onboard-label">1. Which city?</span>
+      <span class="onboard-label">1. Which city? <em>(required)</em></span>
       <div class="onboard-citybtns" id="onboardCityBtns"></div>
       <div class="onboard-hint">Not sure? Skip this and just enter your address below - we'll figure out which city to show.</div>
       <div class="onboard-account-hint">Want your saved projects to follow you across visits? <a href="#" id="onboardAccountLink">Create a free account</a> - you can also just explore first and sign up later.</div>
     </div>
 
     <div class="onboard-step">
-      <label class="onboard-label" for="onboardAddr">2. Your address or approximate location</label>
+      <label class="onboard-label" for="onboardAddr">2. Your address or approximate location <em>(optional)</em></label>
       <div class="onboard-loc-row">
         <input id="onboardAddr" type="text" placeholder="e.g. a street name, cross streets, or neighborhood…" />
         <button class="btn secondary" id="onboardGeoBtn" type="button">Use my current location</button>
@@ -1275,7 +1294,7 @@
     </div>
 
     <div class="onboard-step">
-      <span class="onboard-label">3. What are you interested in?</span>
+      <span class="onboard-label">3. What are you interested in? <em>(required)</em></span>
       <div class="onboard-interests" id="onboardInterests"></div>
     </div>
 
@@ -1333,7 +1352,7 @@
     <div class="hero-copy">
       <div class="nameplate">
         <div class="np-kicker"><span>Santa Clara County</span><i></i><span>Public planning records</span></div>
-        <h1>South Bay Area <em>Civic Dashboard</em></h1>
+        <h1><span class="np-l1">South Bay</span><em class="np-l2">Civic Dashboard</em></h1>
         <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. Thirteen cities, from each city's own records.</p>
       </div>
     </div>
