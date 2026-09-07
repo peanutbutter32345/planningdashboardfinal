@@ -447,6 +447,21 @@
      while the masthead keeps the normal measure between them. */
   /* Three columns in the hero: the rail, your map, the news. */
   .hero-map{justify-content:flex-start;}
+  .hero-callist{display:flex; flex-direction:column; gap:4px; padding:0 11px; flex:1 1 auto;}
+  .hero-cal{display:flex; gap:9px; align-items:center; background:#fff; border:1px solid var(--rule);
+    border-radius:2px; padding:6px 9px;}
+  .hc-date{flex:0 0 34px; text-align:center; font-family:'Open Sans',sans-serif; font-size:8.5px;
+    font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--text-soft); line-height:1.1;}
+  .hc-date b{display:block; font-family:var(--mono); font-size:14px; color:var(--ink); letter-spacing:0;}
+  .hc-main{min-width:0; flex:1 1 auto;}
+  .hc-main b{display:block; font-size:11.5px; color:var(--ink); line-height:1.3;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .hc-main span{display:block; font-family:var(--mono); font-size:9.5px; color:var(--text-soft);}
+  .hc-add{flex:0 0 auto; background:#fff; border:1px solid var(--rule); border-radius:2px;
+    padding:3px 8px; cursor:pointer; font-family:'Open Sans',sans-serif; font-size:10px;
+    font-weight:700; color:var(--text-soft);}
+  .hc-add:hover{border-color:var(--ink); color:var(--ink);}
+  .hc-add.on{background:var(--ink); border-color:var(--ink); color:#fff;}
   .hero-projlist{flex:1 1 auto;}
   .hero-rail > .rail-card:nth-child(2){flex:1 1 auto; display:flex; flex-direction:column;}
   .hero-rail > .rail-card:nth-child(2) .rail-body{flex:1 1 auto; overflow:auto;}
@@ -1350,8 +1365,9 @@
         </div>
         <div class="hero-map-add" id="heroMapAdd"></div>
         <a href="#" class="rail-editmore" data-goto-screen="yourarea">Open the full map &rarr;</a>
-        <div class="rail-head">Nearest to a decision<span class="rail-city" id="heroProjCity"></span></div>
-        <div class="hero-projlist" id="heroProjList"></div>
+        <div class="rail-head">Your calendar<span class="rail-city" id="heroCalCount"></span></div>
+        <div class="hero-callist" id="heroCalList"></div>
+        <a href="#" class="rail-editmore" data-goto-screen="planner">See the whole calendar &rarr;</a>
       </aside>
 
       <aside class="featured-news" id="featuredNews" aria-label="Featured news">
@@ -3896,7 +3912,7 @@ function switchCity(key){
   if(typeof renderFeaturedNews === 'function'){ preloadFeaturedImages(); renderFeaturedNews(); }
   if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
   if(typeof renderHeroMap === 'function') yaLoad().then(renderHeroMap).catch(()=>renderHeroMap());
-  if(typeof renderHeroProjects === 'function') renderHeroProjects();
+  if(typeof renderHeroCalendar === 'function') renderHeroCalendar();
   if(typeof renderRail === 'function'){ railPage = 0; railFace = 0; renderRail(); renderRailResources(); applyRailMode(); }
   state = {q:'', stage:'all', cat:'all'};
   document.getElementById('search').value = '';
@@ -8260,7 +8276,7 @@ function renderHeroMap(){
     const cand = (CITIES[currentCity!=='all'?currentCity:'sunnyvale'].data||[])
       .filter(p=>isFinite(p.lat)&&isFinite(p.lng))
       .filter(p=>!yaPins.some(x=>x.type==='project'&&x.id===p.id))
-      .slice(0,3);
+      .slice(0,6);
     add.innerHTML = cand.length
       ? '<span class="hero-map-lab">Add</span>' + cand.map(p=>
           '<button type="button" class="hero-map-chip" data-heroadd="'+escapeHtml(p.id)+'" title="'+escapeHtml(p.addr||p.id)+'">'
@@ -8278,31 +8294,40 @@ function renderHeroMap(){
 }
 
 
-// The projects closest to a decision in this city - the middle column would otherwise be a
-// tall empty box next to a full rail.
-function renderHeroProjects(){
-  const host = document.getElementById('heroProjList');
+// The next meetings the reader could actually attend, with one press to keep each. Drawn from
+// the same schedules and agendas the full calendar uses.
+function renderHeroCalendar(){
+  const host = document.getElementById('heroCalList');
   if(!host) return;
+  if(typeof giMonthEvents !== 'function'){ setTimeout(renderHeroCalendar, 300); return; }
   const ck = currentCity !== 'all' ? currentCity : 'sunnyvale';
-  const c = CITIES[ck];
-  const lab = document.getElementById('heroProjCity');
-  if(lab) lab.textContent = c.label;
-  const rank = {review:0, proposed:1, approved:2, construction:3, completed:4};
-  const rows = (c.data||[]).slice()
-    .sort((a,b)=> (rank[a.stage]??9)-(rank[b.stage]??9) || (b.units||0)-(a.units||0))
-    .slice(0, 10);
-  host.innerHTML = rows.length ? rows.map(p=>{
-    const st = STAGE_MAP[p.stage] || {label:p.stage||'', color:'#8A8A8A'};
-    return '<button type="button" class="hero-proj" data-heroproj="'+escapeHtml(p.id)+'">'
-      + '<span class="hp-stage" style="background:'+st.color+'">'+escapeHtml(st.label)+'</span>'
-      + '<span class="hp-main"><b>'+escapeHtml(p.addr||p.id)+'</b>'
-      +   '<span>'+(p.units ? p.units.toLocaleString()+' homes' : escapeHtml((p.type||'').slice(0,32)))+'</span></span>'
-      + '</button>';
-  }).join('')
-  : '<div class="empty">'+c.label+' does not publish a project list.</div>';
-  host.querySelectorAll('[data-heroproj]').forEach(b=> b.addEventListener('click', ()=>{
-    showPage('dashboard'); showScreen('dashboard'); flyTo(b.getAttribute('data-heroproj'));
-  }));
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const out = [];
+  // This month and the next two, so there is always something to show.
+  for(let i=0; i<3 && out.length<8; i++){
+    const d = new Date(now.getFullYear(), now.getMonth()+i, 1);
+    giMonthEvents(d.getFullYear(), d.getMonth())
+      .filter(e=> e.city === ck)
+      .filter(e=> new Date(d.getFullYear(), d.getMonth(), e.day) >= today)
+      .sort((a,b)=> a.day-b.day)
+      .forEach(e=> out.push(Object.assign({y:d.getFullYear(), m:d.getMonth()}, e)));
+  }
+  const rows = out.slice(0, 8);
+  const cnt = document.getElementById('heroCalCount');
+  if(cnt) cnt.textContent = rows.length ? rows.length+' coming up' : 'nothing scheduled';
+  host.innerHTML = rows.length ? rows.map(e=>{
+    const ref = 'cal:'+e.city+':'+e.name+':'+e.y+'-'+String(e.m+1).padStart(2,'0')+'-'+String(e.day).padStart(2,'0');
+    const on = (typeof remHas === 'function') && remHas('hearing', ref);
+    const pay = encodeURIComponent(JSON.stringify({ref, name:e.name, city:e.city, cityLabel:e.cityLabel,
+      y:e.y, m:e.m, day:e.day, time:e.time||'', url:e.url||'', confirmed:!!e.confirmed}));
+    return '<div class="hero-cal"><span class="hc-date">'+GI_MONTHS[e.m].slice(0,3)+'<b>'+e.day+'</b></span>'
+      + '<span class="hc-main"><b>'+escapeHtml(e.name)+'</b>'
+      +   '<span>'+(e.time ? e.time+' &middot; ' : '')+(e.confirmed ? 'confirmed' : 'recurring')+'</span></span>'
+      + '<button type="button" class="hc-add'+(on?' on':'')+'" data-caladd="'+pay+'">'+(on?'&#10003;':'Add')+'</button>'
+      + '</div>';
+  }).join('') : '<div class="empty">No meetings published for '+CITIES[ck].label+' in the next three months.</div>';
+  if(typeof wireCalendarActions === 'function') wireCalendarActions(host);
 }
 
 function renderFeaturedNews(){
@@ -8362,7 +8387,7 @@ renderFeaturedNews();
 if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
 // switchCity draws these too, but it does not run on first load.
 if(typeof renderHeroMap === 'function'){ yaLoad().then(renderHeroMap).catch(()=>renderHeroMap()); }
-if(typeof renderHeroProjects === 'function') renderHeroProjects();
+if(typeof renderHeroCalendar === 'function') renderHeroCalendar();
 startFeaturedRotation();
 (function(){
   const panel = document.getElementById('featuredNews');
