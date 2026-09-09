@@ -819,4 +819,1644 @@ export const NEWS_ARTICLES = [
     image:'https://milpitasbeat.com/wp-content/uploads/2023/03/image1.png',
     snippet:'Residents of the Sunnyhills Apartments can breathe a sigh of relief – at least for the next 5 years. JMK Investments, the developer of the historic apartment complex, recently renewed the Housing and Urban Development (HUD) contract until 2028, ensuring that 149 of the units there maintain subsidized housing status. We',
     url:'https://milpitasbeat.com/developer-of-sunnyhills-apartments-renews-hud-contract-for-5-more-years/' },
+  {
+    "topic": "developments",
+    "city": "atherton",
+    "title": "Newly appointed Atherton Council member says she’s ready to listen, learn",
+    "source": "The Almanac",
+    "date": "2026-08-26",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/David-Christine-02_web.jpg",
+    "snippet": "After numerous years on advisory commissions and a failed council bid, Christine David will be joining the Atherton City Council in December after being appointed earlier this month. Photo by Magali Gauthier. Christine David may be new to the Atherton City Council when she takes office in December, but the longtime resident is no stranger […]",
+    "url": "https://www.almanacnews.com/atherton/2026/08/26/newly-appointed-atherton-council-member-says-shes-ready-to-listen-learn/"
+  },
+  {
+    "topic": "developments",
+    "city": "atherton",
+    "title": "Atherton cancels November election, appoints four to City Council",
+    "source": "The Almanac",
+    "date": "2026-08-18",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/04/Atherton_CouncilChambers_Exterior_01_web.jpg",
+    "snippet": "The Atherton City Council canceled its November election and appointed four candidates to the council, including two newcomers who will take office in January.",
+    "url": "https://www.almanacnews.com/atherton/2026/08/18/atherton-cancels-november-election-appoints-four-to-city-council/"
+  },
+  {
+    "topic": "developments",
+    "city": "atherton",
+    "title": "Atherton Council heading for uncontested race this fall",
+    "source": "The Almanac",
+    "date": "2026-08-10",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/04/Atherton_CouncilChambers_Exterior_01_web.jpg",
+    "snippet": "Four candidates have qualified for the four Atherton City Council seats on the November ballot, which has three four-year terms and one two-year term up for grabs.",
+    "url": "https://www.almanacnews.com/election/2026/08/10/atherton-council-heading-for-uncontested-race-this-fall/"
+  },
+  {
+    "topic": "transportation",
+    "city": "atherton",
+    "title": "Preliminary Permits Filed For 110 Glenwood Avenue, Atherton",
+    "source": "SF YIMBY",
+    "date": "2026-08-06",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/08/110-Glenwood-Avenue-illustration-by-SDG-Architects.jpg",
+    "snippet": "Preliminary permits have been filed for a townhouse infill at 110 Glenwood Avenue in Atherton, San Mateo County. The application is using Senate Bill 79 to streamline the approval process for 30 apartments close to the Menlo Park Caltrain Station. Cupertino-based AlphaX RE Capital is responsible for the development.",
+    "url": "https://sfyimby.com/2026/08/preliminary-permits-filed-for-110-glenwood-avenue-atherton.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "atherton",
+    "title": "New state law paves way for 30-unit townhome development in Atherton",
+    "source": "The Almanac",
+    "date": "2026-07-31",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/07/110-Glenwood-Ave-Page_3_Image_0007-2-scaled.jpg",
+    "snippet": "Atherton, a town known for single-family homes on spacious lots, could soon see a 30-unit townhome development. A developer submitted a preliminary application under a new state law that allows denser housing near transit.",
+    "url": "https://www.almanacnews.com/atherton/2026/07/31/developer-proposes-30-unit-atherton-townhome-project-using-new-state-law/"
+  },
+  {
+    "topic": "transportation",
+    "city": "belmont",
+    "title": "Additional Funds For 951 Old County Road, Belmont",
+    "source": "SF YIMBY",
+    "date": "2026-05-09",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/05/951-Old-County-Road-rendering-by-AO.jpg",
+    "snippet": "The City of Belmont has approved an additional $2 million to jumpstart construction of an eight-story affordable housing complex at 951 Old County Road in Belmont, San Mateo County. The plan will bring new low and extremely-low-income residents close to the city’s Caltrain Station. San Diego-based CRP Affordable Housing and Community Development is the project’s developer.",
+    "url": "https://sfyimby.com/2026/05/additional-funds-for-951-old-county-road-belmont.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "belmont",
+    "title": "Approval Granted For 1301 Shoreway Road, Belmont, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2026-03-22",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/01/1301-Shoreway-Road-rendering-by-DGA.jpg",
+    "snippet": "The City of Belmont has granted approval for a new life sciences campus at 1301 Shoreway Road in Belmont, San Mateo County. The development is expected to rise in an industrial neighborhood between the Belmont Slough and Highway 101. Los Altos-based Four Corners Properties is the project developer.",
+    "url": "https://sfyimby.com/2026/03/approval-granted-for-1301-shoreway-road-belmont-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "belmont",
+    "title": "Meeting Tomorrow For 1301 Shoreway Road, Belmont",
+    "source": "SF YIMBY",
+    "date": "2026-01-19",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/01/1301-Shoreway-Road-aerial-overview-rendering-by-DGA.jpg",
+    "snippet": "The Belmont Planning Commission is scheduled to review plans tomorrow evening for an office campus at 1301 Shoreway Road in Belmont, San Mateo County. The speculative project aims to build two structures for prospective office, R&D, or life sciences tenants. Los Altos-based Four Corners Properties is the project developer.",
+    "url": "https://sfyimby.com/2026/01/meeting-tomorrow-for-1301-shoreway-road-belmont.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "belmont",
+    "title": "Life Sciences Campus Proposed for 405-455 Harbor Boulevard, Belmont",
+    "source": "SF YIMBY",
+    "date": "2025-03-20",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/03/405-455-Harbor-Boulevard-establishing-view-rendering-by-DES-scaled.jpg",
+    "snippet": "Preliminary plans have been filed for a life-science industrial project at 405 and 455 Harbor Boulevard in Belmont, San Mateo County. The proposal aims to create around 812,000 square feet of offices and parking for over a thousand cars. Beam Reach Properties is the project developer.",
+    "url": "https://sfyimby.com/2025/03/life-sciences-campus-proposed-for-405-455-harbor-boulevard-belmont.html"
+  },
+  {
+    "topic": "developments",
+    "city": "belmont",
+    "title": "Draft Environmental Review Published for 1301 Shoreway Road, Belmont",
+    "source": "SF YIMBY",
+    "date": "2024-10-10",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/10/1301-Shoreway-Road-rendering-by-SWA.jpg",
+    "snippet": "The Draft Environmental Impact Report has been published for the office and research proposal at 1301 Shoreway Road in Belmont, San Mateo County. The development could create two offices and a garage across from the Redwood Shores Lagoon for a potential life sciences company. Los Altos-based Four Corners Properties is the project developer.",
+    "url": "https://sfyimby.com/2024/10/draft-environmental-review-published-for-1301-shoreway-road-belmont.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "belmont",
+    "title": "Construction Finished for 815 Old County Road, Belmont",
+    "source": "SF YIMBY",
+    "date": "2024-08-04",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/07/The-Hayden-at-815-Old-County-Road-rendering-by-PYATOK.jpg",
+    "snippet": "Construction has finished for Hayden at 815 Old County Road in Belmont, San Mateo County. The five-story building, which has 177 apartments, is now leasing a block away from the city’s Caltrain station. Carmel Partners is the project developer, and Greystar is responsible for property management.",
+    "url": "https://sfyimby.com/2024/08/construction-finished-for-815-old-county-road-belmont.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "belmont",
+    "title": "Environmental Review Process Starts for 1301 Shoreway Road, Belmont",
+    "source": "SF YIMBY",
+    "date": "2024-06-29",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/06/1301-Shoreway-Road-new-design-illustration-by-SWA.jpg",
+    "snippet": "The City of Belmont has published a notice of preparation for the environmental review of plans for 1301 Shoreway Road. Plans have been filed for two office structures and a garage close to Ralston and Highway 101. Los Altos-based real estate investment and operating company Four Corners Properties is the project developer.",
+    "url": "https://sfyimby.com/2024/06/environmental-review-process-starts-for-1301-shoreway-road-belmont.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "belmont",
+    "title": "Completion Expected for Apartments at 815 Old County Road, Belmont",
+    "source": "SF YIMBY",
+    "date": "2024-02-19",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/02/815-Old-County-Road.jpg",
+    "snippet": "Construction updates have been released for a new apartment building proposes at 815 Old County Road in Belmont. The project proposal includes the construction of a new four-story multifamily residential building offering onsite amenities and parking. Carmel Partners is the project developer. PYATOK Architecture + Urban Design is responsible for the designs.",
+    "url": "https://sfyimby.com/2024/02/completion-expected-for-apartments-at-815-old-county-road-belmont.html"
+  },
+  {
+    "topic": "housing",
+    "city": "belmont",
+    "title": "Construction Tops Out for Belmont Village Senior Living, San Ramon",
+    "source": "SF YIMBY",
+    "date": "2023-09-11",
+    "image": "https://sfyimby.com/wp-content/uploads/2021/09/Belmont-Village-Senior-Housing-at-Bishop-Ranch-1A-design-by-HKIT-Architects.jpg",
+    "snippet": "Construction has topped out for the five-story affordable Belmont Village Senior Living at Bishop Ranch 1A in San Ramon, Contra Costa County. The project, addressed at 6151 Bollinger Canyon Road, is the first in a massive 600-acre masterplan led by Sunset Development to transform a car-oriented office campus into a walkable city with 4,500 homes, parks, and shops. Belmont Village Senior Housing is",
+    "url": "https://sfyimby.com/2023/09/construction-tops-out-for-belmont-village-senior-living-san-ramon.html"
+  },
+  {
+    "topic": "developments",
+    "city": "belmont",
+    "title": "Office-Research Project Planned At 2 Davis Drive, Belmont, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2023-08-28",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/08/2-Davis-Drive.jpg",
+    "snippet": "A new mixed-use project has been proposed for development at 2 Davis Drive in Belmont, San Mateo County. The project proposal includes the development of a four-story mixed-use building offering spaces for office and research…",
+    "url": "https://sfyimby.com/2023/08/office-research-project-planned-at-2-davis-drive-belmont-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "brisbane",
+    "title": "Brisbane’s award-winning Little Green Cyclo hosts weekend pop-ups and introduces new Vietnamese coffee flavors",
+    "source": "The Almanac",
+    "date": "2025-05-27",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2025/05/QM1-scaled-1.jpg",
+    "snippet": "For fans of the bold flavor and caffeine buzz of Vietnamese iced coffee who don’t have time to linger in a cafe or prepare the beverage at home, Little Green Cyclo’s ready-to-drink canned coffees offer a convenient – and award-winning – solution.",
+    "url": "https://www.almanacnews.com/food/2025/05/27/brisbanes-award-winning-little-green-cyclo-hosts-weekend-pop-ups-and-introduces-new-vietnamese-coffee-flavors/"
+  },
+  {
+    "topic": "developments",
+    "city": "brisbane",
+    "title": "Brisbane Baylands Site Plan to Include 157 Acres of Open Space",
+    "source": "SF YIMBY",
+    "date": "2025-04-13",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/04/Brisbane-Baylands-Visittacian-Creek-Concept-Rendering-Image-via-Brisbane-Planning.png",
+    "snippet": "The new Brisbane Baylands site development plan reported on by SF YIMBY last week is set to include more than 157 acres of open space in addition to the other developed areas. The open space areas will include urban plazas, community parks, hiking and recreation areas, and flood protection buffer areas. Beyond the 157 acres, the plan also sets aside several large open areas for sustainable infrast",
+    "url": "https://sfyimby.com/2025/04/brisbane-baylands-site-plan-to-include-157-acres-of-open-space.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "brisbane",
+    "title": "Brisbane Files with CEQA for Baylands Specific Development Plan",
+    "source": "SF YIMBY",
+    "date": "2025-04-11",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/04/Brisbane-Baylands-Site-Location-image-via-Brisbane-Planning.png",
+    "snippet": "Last week, the City of Brisbane’s proposal for the Baylands development area was opened for public review through the CEQA application page. The specific site plan, developed in partnership with the Metis Environmental Group and Environmental Science Associates, is a sweeping redevelopment of more than 680 acres along Highway 101 and the Caltrain tracks between San Francisco and South San Francisc",
+    "url": "https://sfyimby.com/2025/04/brisbane-files-ceqa-applicaiton-for-baylands-specific-development-plan.html"
+  },
+  {
+    "topic": "developments",
+    "city": "brisbane",
+    "title": "Construction Tops Out for Genesis Marina, Brisbane, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2022-09-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/09/Genesis-Marina-establishing-view-rendering-courtesy-Skidmore-Owings-Merrill.jpg",
+    "snippet": "Construction work has topped out with facade installation well under-way for Genesis Marina, a life sciences campus in Brisbane, San Mateo County. The project will create over half a million square feet of rentable floor area for the region’s ever-growing biotech industry. Architecture is by Skidmore, Owings & Merrill.",
+    "url": "https://sfyimby.com/2022/09/construction-tops-out-for-genesis-marina-brisbane-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "burlingame",
+    "title": "Plans Approved For Bay Rise Park Project, Burlingame",
+    "source": "SF YIMBY",
+    "date": "2026-08-22",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/08/Bay-Rise-Park-educational-facility-overlooking-the-restored-marsh-rendering-by-SERA-Architects.jpg",
+    "snippet": "Plans have been approved for the Bay Rise Park at 410 Airport Boulevard in Burlingame, San Mateo County. The proposal would fill a vacant lot with an educational facility and landscaping improvements. The project is a joint venture between The SPHERE Institute and the San Mateo Resource Conservation District.",
+    "url": "https://sfyimby.com/2026/08/plans-approved-for-bay-rise-park-project-burlingame.html"
+  },
+  {
+    "topic": "developments",
+    "city": "burlingame",
+    "title": "Initial Environmental Review For 1430 Chapin Avenue, Burlingame",
+    "source": "SF YIMBY",
+    "date": "2026-07-29",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/07/1430-Chapin-Avenue-rendering-by-Lever-Architecture.jpg",
+    "snippet": "Planners have started one of the first steps of the environmental review process for 1430 Chapin Avenue in Burlingame, San Mateo County. The recent notice has invited public comments regarding a proposed five-story office building near Burlingame Avenue and El Camino Real. San Mateo-based developUrban is responsible for the project.",
+    "url": "https://sfyimby.com/2026/07/initial-environmental-review-for-1430-chapin-avenue-burlingame.html"
+  },
+  {
+    "topic": "housing",
+    "city": "burlingame",
+    "title": "CEQA Exemption For 2 Park Road in Burlingame, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2026-06-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/2-Park-Road-establishing-view-rendering-by-BDE-Architecture.jpg",
+    "snippet": "The City of Burlingame has granted a CEQA exemption for plans to redevelop 2 Park Road in Burlingame, San Mateo County. The project would replace a fitness center and vacant neoclassical funeral house with 144 dwelling units across a seven-story apartment complex. Windy Hill Property Ventures is responsible for the application.",
+    "url": "https://sfyimby.com/2026/06/ceqa-exemption-for-2-park-road-in-burlingame-san-mateo-county.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "burlingame",
+    "title": "Construction Starts For 30 Ingold Road, Burlingame",
+    "source": "SF YIMBY",
+    "date": "2026-05-07",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/05/30-Ingold-Road-rendering-by-BDE-Architecture.jpg",
+    "snippet": "Construction has started for a seven-story apartment complex at 30 Ingold Road in Burlingame, San Mateo County. The development is looking to add over three hundred units near the Millbrae transit hub. Summerhill Apartment Communities is the project sponsor.",
+    "url": "https://sfyimby.com/2026/05/construction-starts-for-30-ingold-road-burlingame.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "burlingame",
+    "title": "Topping Out for 1766 El Camino Real, Burlingame",
+    "source": "SF YIMBY",
+    "date": "2024-08-30",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/08/1766-El-Camino-Real-aerial-view-rendering-by-TCA-Architects.jpg",
+    "snippet": "Construction has topped out for the eight-story apartment complex rising at 1766 El Camino Real in Burlingame, San Mateo County. The future 311-unit building, named Revery, is forming part of the burgeoning high-density neighborhood across from the Millbrae Transit Station. Carmel Partners Is the project developer.",
+    "url": "https://sfyimby.com/2024/08/topping-out-for-1766-el-camino-real-burlingame.html"
+  },
+  {
+    "topic": "housing",
+    "city": "burlingame",
+    "title": "Concrete Rising for Affordable Housing in Burlingame",
+    "source": "SF YIMBY",
+    "date": "2024-08-30",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/02/Eucalyptus-Grove-at-1875-California-Drive-rendering-by-Studio-T-Square.jpg",
+    "snippet": "Construction is moving quickly for Eucalyptus Grove, the growing affordable housing complex at 1875 California Street in Burlingame, San Mateo County. Concrete is already surpassing the third floor on the future eight-story building overlooking the…",
+    "url": "https://sfyimby.com/2024/08/concrete-rising-for-affordable-housing-in-burlingame.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "burlingame",
+    "title": "Meeting Today for 1499 Old Bayshore Highway, Burlingame",
+    "source": "SF YIMBY",
+    "date": "2024-04-08",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/04/1499-Old-Bayshore-Highway-aerial-view-rendering-by-DGA.jpg",
+    "snippet": "The Burlingame Planning Commission is scheduled to review a life sciences proposal at 1499 Old Bayshore Highway in the city’s waterfront industrial neighborhood. The proposal will bring eight stories of future lab space alongside a seven-story garage. It is the second joint venture between Helios Real Estate Partners and King Street Properties in the San Mateo County city, the first of which has a",
+    "url": "https://sfyimby.com/2024/04/meeting-today-for-1499-old-bayshore-highway-burlingame.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "burlingame",
+    "title": "Groundbreaking for Affordable Housing in Burlingame",
+    "source": "SF YIMBY",
+    "date": "2024-04-05",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/02/Eucalyptus-Grove-at-1875-California-Drive-rendering-by-Studio-T-Square.jpg",
+    "snippet": "Construction has started for Eucalyptus Grove, an affordable housing complex rising at 1875 California Drive in Burlingame, San Mateo County. The property will bring several dozen new apartments near El Camino Real and a five-minute walk from the Millbrae Transit Station. CRP Affordable is the project sponsor.",
+    "url": "https://sfyimby.com/2024/04/groundbreaking-for-affordable-housing-in-burlingame.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "burlingame",
+    "title": "Meeting Today for 1200-1340 Old Bayshore Highway, Burlingame",
+    "source": "SF YIMBY",
+    "date": "2024-03-11",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/02/Peninsula-Crossing-establishing-view-rendering-by-WRNS-Studio.jpg",
+    "snippet": "The Burlingame Planning Commission is scheduled to review plans today for a multi-structure life sciences/office campus at 1200-1340 Old Bayshore Highway in Burlingame, San Mateo County. The Peninsula Crossing proposal will create over 1.4 million square feet of commercial space and two ten-story garages. DivcoWest and Woodstock Development are jointly responsible for the project developer.",
+    "url": "https://sfyimby.com/2024/03/meeting-today-for-1200-1340-old-bayshore-highway-burlingame.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "burlingame",
+    "title": "First Structure Tops Out for Bayshore Highway Labs in Burlingame",
+    "source": "SF YIMBY",
+    "date": "2023-12-04",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/01/1699-Bayshore-Highway-seen-from-the-Stanton-Road-and-Highway-intersection-rendering-by-PerkinsWill-scaled.jpg",
+    "snippet": "Construction has topped out for the first life science structure in The Landing, rising at 1699 Old Bayshore Highway in Burlingame, San Mateo County. The progress comes just eight months after YIMBY’s last site visit, during which Hathaway Dinwiddie was starting on the foundation. King Street Properties and Helios Real Estate Partners are joint developers for the project.",
+    "url": "https://sfyimby.com/2023/12/first-structure-tops-out-for-bayshore-highway-labs-in-burlingame.html"
+  },
+  {
+    "topic": "housing",
+    "city": "colma",
+    "title": "Veterans village in Colma first of its kind to offer housing and on-site services to vets",
+    "source": "Local News Matters",
+    "date": "2024-04-11",
+    "image": null,
+    "snippet": "Headline from Local News Matters. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOME1PSTloWE1FZzJtbzVLdVhJeDNhcHVaWjA4NGdLS3MxQ1ZzSG1YVWZnUTJjOEVJRDVmU3k3bzlhQWFkVElyTHkyUmMwSmZhTmNicGpwNWZSa0M0a3NOMWRNWGhfVUpxZUVYUEp0cGNqNlZJc3lVYUR2LV9kd0xjYV9DU3pNanI3bGphOVdmelo4cFdrMkF3dzVhMUFFeGZfQWgwR2RNeXptclQ2cTdKNWNNSks4WDZoYlg5cGNGT01qWnBZV1hoMW13?oc=5"
+  },
+  {
+    "topic": "developments",
+    "city": "colma",
+    "title": "Health forces Colma councilmember to retire",
+    "source": "San Mateo Daily Journal",
+    "date": "2022-10-18",
+    "image": null,
+    "snippet": "Headline from San Mateo Daily Journal. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPOVNHeGdfWVhTcjVZRHhvdUhRVlFxcDVyWlNCSTc4OFh3QWluenBZSU84OFVBYmJJQnA4aGNtU3lRZV9sYnFIM25pVS1DQ1A0X0t6RndBTTk3TDBURkw3U0VKcEd4Yy16NHpBTXpIcDgtWWtnZWJERDZXS2hDUkY2SDdodEtyV01Fb0J6Wmp3UFdneTFaUkVmUEtFcnRhUGtRVGxydlpTZkV4MVJmd0w0VnNxeFZGWnpYZ25peGxuSmo1QUJQMkpGd21tQU5TY19N?oc=5"
+  },
+  {
+    "topic": "developments",
+    "city": "colma",
+    "title": "County supervisor responds to ‘burial crisis’ in Colma",
+    "source": "KRON4",
+    "date": "2018-05-06",
+    "image": null,
+    "snippet": "Headline from KRON4. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOMmpXcm9YYjU5S2U4d1o2ZFZqYklINmtUbGZoejVoMUVYYkIzQVFCMDhQa0R3NVVJVU5XWjRwcldKYjdUY3lkSkhKcmh6MHZDVG9MRW1MS3NRUEsxdkhydnZOQVV0VG14MEpDVXN0ZzRSQnNJR3Z4MVBZUHkwM2t5NzJnQlZhS2_SAYwBQVVfeXFMTWFTWGhKeDlGTXluUU0yMXVtbU1uQTM4RTZFX1FwTGdYYnlnSjEtckUxUU9NaTVweTdBVlgxU21FamRyUzdjclJ5a2kwamd0TkJuMkV3WW9RVFFKQXpXRFRsZ2ZUbjRrS3JaR0Z2aHlzMHhlcUlPdGZZUXBma1F6dm1McHc3QXFDeUN1RUI?oc=5"
+  },
+  {
+    "topic": "developments",
+    "city": "colma",
+    "title": "Colma cemeteries buried in demand as shortage of land lies ahead",
+    "source": "San Francisco Chronicle",
+    "date": "2018-05-05",
+    "image": null,
+    "snippet": "Headline from San Francisco Chronicle. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQNm5JOXVqTjgwLXRJa0g4UmhYNzhqdkhqMDh0aUoxRzJjdjYxLVczU2dqU1dDWDhjSEkxMWtJVG1kdkh4anB4d2FZaWM1UXpmWFdaMHl3Z3A0N3hkT3FKZ0NzaTgwRzZibzhiUnpianlqQlN5d3hpX19EajJFNEZnR2VoWTdNRTlwN1hkdTd6d1VqUTRMdWtPMnVLMlR4a2xLYmZMRmtjUGxzZw?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "colma",
+    "title": "BRIDGE housing plan OK’d by Colma",
+    "source": "East Bay Times",
+    "date": "2008-04-18",
+    "image": null,
+    "snippet": "Headline from East Bay Times. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBTQ2xmTHhGTU1MTDlDTFJmYVVGenlTT1JxX1RycXA3NGdzQjJZTzdqVmNsTzI1MU0zQUIwaDZ6QXpGb2RMZHVFRGxralhiU2I0ODhISnpGTFNvVWJLc0Q4TzhMdlRIdUdfUng2WXZhZzhPZmktZmVxQmx2TU5fd9IBgwFBVV95cUxPVWZSdGFScFZ1aTA2bXNjZmswRll1WTFjRHc3NXR1Ry1fb3U0dTFHTVZFYWV3R0JzZXBCY3h3Y3hPdFJBTkQwUEkyeGxWSVI2MmtOd1JhRGZUUjlNS1ByeWJYNTZtazcwY3NaYkZ2a0N1WnlObWZlQVFlclFnNjVHN2NSUQ?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "dalycity",
+    "title": "Construction Starts For The Chester at Westlake in Daly City, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2025-09-05",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/09/The-Chester-at-Westgate-rendering-by-BDE-Architecture.jpg",
+    "snippet": "Construction has officially started on the first new mixed-use apartment community to rise in Daly City in fifteen years. Chester at Westlake will become a seven-story residential complex with over two hundred homes at 99 Southgate Avenue, overlooking the popular Westlake Shopping Center. Kimco Realty and Bozzuto have partnered together as joint developers.",
+    "url": "https://sfyimby.com/2025/09/construction-starts-for-the-chester-at-westlake-in-daly-city-san-mateo-county.html"
+  },
+  {
+    "topic": "housing",
+    "city": "dalycity",
+    "title": "Construction Starts on Second Phase of Midway Village, Daly City",
+    "source": "SF YIMBY",
+    "date": "2025-05-27",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/05/Midway-Village-2-rendering-by-David-Baker-Architects.jpg",
+    "snippet": "Construction is now underway for the second phase of the Midway Village development by Cow Palace in Daly City, San Mateo County. The affordable housing team celebrated the groundbreaking for Midway Village 2 earlier this month, at the same event as the ribbon cutting for Midway Village I. Once complete, the two structures will bring 260 apartments to the city. MidPen Housing is the project develo",
+    "url": "https://sfyimby.com/2025/05/construction-starts-on-second-phase-of-midway-village-daly-city.html"
+  },
+  {
+    "topic": "housing",
+    "city": "dalycity",
+    "title": "Daly City school district opens affordable housing units for teachers at elementary school",
+    "source": "CBS News",
+    "date": "2024-08-06",
+    "image": null,
+    "snippet": "Headline from CBS News. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPdDFlaXU0REVFNHRIREU4WF8zQzNPRjdpbC1MSEFjX2FVUkUxTGJCV2lmNUJDNUplQ2dqWGNyYmdZcVdtdzdtLVlRUnljOXJxclZIYWE4NFgtU1FiRE1mYlJobnFhQTNpWVR5SldtWGFVekRMNmhBTWFFSl9JTF9qXzBhdV9BaExNMUJmMVN0WGhNMi1VVDlLQkQ4SGdJdV9SZTRFQThNNVdRUEJjVmxXTm1pV19sNWpMM0NfVm4yZW9wSlNGZm03Rmo1YThDZ9IB0wFBVV95cUxNNk13LVRqRWNNdURnS2lkUHVTX2Ezb2FKbDhmTm5HMjdOa080OGRiLUFtRkZLem5mTXN2dDVacDdTQUczaGt5TWpTQW1jQkVVTzFfQnVnYzBiUUstT3AwVnlCRlBJc2tPZVlOYXlSbnFCc2l3VnZCQllXaEJjdU9iRWIwa0I1eXlHQmE1LWJkcmF5MGw4b0V5ZVFaMmwtd2o5NjU3OTdpbm9LejZOZ3NndnMwMHJNamRLR2RLTFV3S01rYU9jYVpCSWdveGlkMkxWcjJB?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "dalycity",
+    "title": "Westlake South Mixed-Use Project Planned At 99 Southgate Avenue In Daly City",
+    "source": "SF YIMBY",
+    "date": "2022-06-27",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/06/99-Southgate-Avenue-View.jpg",
+    "snippet": "Development permits have been filed seeking the construction of a new mixed-use project at 99 Southgate Avenue in Daly City. The project proposal includes the construction of a seven-story mixed-use building offering residential and commercial spaces. The project proposes the demolition of an existing vacant Burlington Coat Factory retail building on the site. Kimco Westlake LP is the project appl",
+    "url": "https://sfyimby.com/2022/06/westlake-south-mixed-use-project-planned-at-99-southgate-avenue-in-daly-city.html"
+  },
+  {
+    "topic": "housing",
+    "city": "dalycity",
+    "title": "Daly City council approves 1,200-unit apartment project near Serramonte mall",
+    "source": "San Francisco Chronicle",
+    "date": "2022-01-11",
+    "image": null,
+    "snippet": "Headline from San Francisco Chronicle. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOeTg1Q3JZR1dmQ3NsQ1Q5cEVhSC1UdnZYSWlUX2FxRmF0ZWE4c1RvcDg1dXRyOTE4VUZ4dUxIR29CLTFrZklHMVh4LWhaSTJBbHRPYml4eFVoZG9oQU56Q2ctSUgwMXdnVkRWR3FXYWQwamtmNU5rbnBOSEtFOFJPYjZNZ3RkSjZ3VmQ3T21lTFAyVDFjTzlnZkJuSXhvLWJUYzhjdWE2RQ?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "dalycity",
+    "title": "Jefferson Union High School District building 122 housing units for teachers and staff in Daly City",
+    "source": "abc7news.com",
+    "date": "2020-02-04",
+    "image": null,
+    "snippet": "Headline from abc7news.com. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQajE2aG8ybFZqTWpSZk44c2gyS1NpaW1FcWlDNzlBaFBfbVplN1VKSkt0U29XLWMzOEljMG5wQkgtM25uODJxcl9zbER1bDBrbVZLT1FUbXFKb1ZONU1pQmotWTBDWkdZaHJnemtKZC0xcVJjLTUzc1hpNTFGajFpTlNkVDlfbE41a2Y0TjFUWXRZMGZrVTFHRHJINi3SAaIBQVVfeXFMTmNsTWtzZ3VvcU5ibG1KMXNuNF9faFlxbDltcnRqaThTQlNQN05LOEwzTUcwMnNvSVdtUm15SWxEM3Q3b3JBbWl4RHA3UTl1MkpIeE9tbjZTTkhKQnNUcnNZYjlUb2xVMmJ4S1c1THRDUUV6QXdROXVtWFFkRVkzcWhvZ2dKWjlkZzlVRTU0NjFGQmc3Sm1XN05YSFpCVjZCOXJR?oc=5"
+  },
+  {
+    "topic": "developments",
+    "city": "dalycity",
+    "title": "Family mourns Daly City construction worker killed on first day of job",
+    "source": "abc7news.com",
+    "date": "2018-07-29",
+    "image": null,
+    "snippet": "Headline from abc7news.com. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOUTNJcnppQTV6TnAwelFOT0dJdnV5bVVLMFJNcnVGVWVpUmh3M1dDMkpGdFpkNW9FYm1MNk9iZmZjOE1NNXNWU3dxeHRNWDF2dEFsTWIyTld6UXN2TXNNSXkzQ2lJRXNVamFYSjk3alJHekpPRmlULURnWkpKbUtXZXdNMjk4WnhMellUWjF2UVZFZ3J6ZDBPN0VLa2ZjLVFhTElqSENEWWbSAa4BQVVfeXFMT0VpbnRkdkEzTXE0dUhLdXZwQlREd1NJRjNkbHV3UnRvWHZRakdvODJWc1BscFdTMl9YRnFIVnh3U0Z5QkxaUU5TMTN1LXVOaVk5VHhLU1h3TXhFaDRPYllQMjdkTUQ5dDV6QVJIX195NWY1SE5zTXdYaGVPMUlqOGhraFBYNUR1QzE3Y1FJYV8ybVVmR1RYUHFVR2sxU1l2Z1N2NDNITlhmemxpQlh3?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "dalycity",
+    "title": "Daly City housing complex haunted by toxic past",
+    "source": "SFGATE",
+    "date": "2009-03-02",
+    "image": null,
+    "snippet": "Headline from SFGATE. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOTXY0aXNDejJsQTBuR2lVS2ZOMVpvenRseFprd2NrbnNwSENWWkI0Ql9EZVhCQVZjS2J2Z000emNmY3pCYUk0MkI1TV8xaml5Tjl6SHZ4d3lSVzBydDFZbEc1ZUxHWFp0a1JuOVNYTkw1Tk5pV1FZY3lnX0xRaXJ5SjN1bWU5elBnenp4SmRBVGhyNzM4allFNGFBTTJMdw?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "eastpaloalto",
+    "title": "Giant teacher housing project advances in East Palo Alto",
+    "source": "The Almanac",
+    "date": "2026-09-08",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/09/Screenshot-2026-09-08-at-1.26.34-PM.png",
+    "snippet": "The East Palo Alto City Council offered a boost to a 430-unit housing project for school staff and residents at 2120-2160 Euclid Ave. when it approved last week the affordability levels for units in the new development.",
+    "url": "https://www.almanacnews.com/east-palo-alto/2026/09/08/giant-teacher-housing-project-advances-in-east-palo-alto/"
+  },
+  {
+    "topic": "developments",
+    "city": "eastpaloalto",
+    "title": "Seven candidates vie for two seats on East Palo Alto council",
+    "source": "The Almanac",
+    "date": "2026-08-20",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/WEB-251231-EPA_Government-Center_06.jpg",
+    "snippet": "The race for the East Palo Alto City Council will feature plenty of familiar faces – and a few new ones – as seven residents vie for two seats on the five-member council.",
+    "url": "https://www.almanacnews.com/election/2026/08/20/seven-candidates-vie-for-two-seats-on-east-palo-alto-council/"
+  },
+  {
+    "topic": "developments",
+    "city": "eastpaloalto",
+    "title": "Menlo Park hero plumbers’ boss joins East Palo Alto council race",
+    "source": "The Almanac",
+    "date": "2026-08-11",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/MP_FireBoardMeeting_2026_0014_FullRez.jpg",
+    "snippet": "Sam Jimenez submitted papers to run for one of two open seats on the City council that will go before voters in the November election.",
+    "url": "https://www.almanacnews.com/east-palo-alto/2026/08/11/small-business-owner-and-veteran-sam-jimenez-joins-east-palo-alto-council-race/"
+  },
+  {
+    "topic": "transportation",
+    "city": "eastpaloalto",
+    "title": "Overnight closures begin on US 101 between South SF, East Palo Alto",
+    "source": "The Almanac",
+    "date": "2026-08-04",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/96242_col.jpg",
+    "snippet": "Overnight lane and ramp closures will begin along U.S. Highway 101 on Monday between South San Francisco and East Palo Alto as Caltrans crews carry out road work.",
+    "url": "https://www.almanacnews.com/traffic/2026/08/04/overnight-closures-begin-on-us-101-between-south-sf-east-palo-alto/"
+  },
+  {
+    "topic": "housing",
+    "city": "eastpaloalto",
+    "title": "At eleventh hour, East Palo Alto kills ordinance that would have lowered affordable housing standards",
+    "source": "The Almanac",
+    "date": "2026-07-22",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/07/FULLREZ-260317-EPA_City-Council_001-scaled-1.jpg",
+    "snippet": "The East Palo Alto City Council majority voted on Tuesday to reject a Temporary Housing Development Incentive Program, which would have exempted projects with 20 or fewer units from stringent local affordable housing laws. The move ended months of debate.",
+    "url": "https://www.almanacnews.com/east-palo-alto/2026/07/22/at-eleventh-hour-east-palo-alto-kills-ordinance-to-lower-affordable-housing-standards/"
+  },
+  {
+    "topic": "developments",
+    "city": "eastpaloalto",
+    "title": "East Palo Alto recycling plant gets dumped after violations",
+    "source": "The Almanac",
+    "date": "2026-07-14",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/07/EPA_TOXIC-GROUNDWATER-SITES_Feb2025_WEB_5.jpg",
+    "snippet": "An East Palo Alto vehicle recycling plant that has been in operation for more than 75 years is set to shutter after the Planning Commission cited ongoing code violations and negative impacts to the environment at a Monday meeting.",
+    "url": "https://www.almanacnews.com/environment/2026/07/14/east-palo-alto-recycling-plant-gets-dumped-after-violations/"
+  },
+  {
+    "topic": "housing",
+    "city": "eastpaloalto",
+    "title": "Colibri Commons Affordable Housing Opens in East Palo Alto",
+    "source": "SF YIMBY",
+    "date": "2026-05-26",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/05/Colibri-Commons-image-by-Bruce-Damonte.jpg",
+    "snippet": "The project team and partners recently celebrated the opening of Colibri Commons, an affordable housing complex at 965 Weeks Street in East Palo Alto, San Mateo County. The multi-structure complex has added 136 apartments, ranging in size from studios to four bedrooms, to the formerly vacant parcel. MidPen Housing and EPACANDO are jointly responsible for the development.",
+    "url": "https://sfyimby.com/2026/05/colibri-commons-affordable-housing-opens-in-east-palo-alto.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "eastpaloalto",
+    "title": "Construction Tops Out at 965 Weeks Street In East Palo Alto",
+    "source": "SF YIMBY",
+    "date": "2025-01-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/02/965-Weeks-Street-illustration-by-David-Baker-Architects.jpg",
+    "snippet": "A new affordable housing project celebrated its inauguration at its project site located at 965 Weeks Street in East Palo Alto. The project proposal included the development of a new affordable housing complex comprised of four structures offering 136 residential units, onsite services, and parking.",
+    "url": "https://sfyimby.com/2025/01/construction-tops-out-at-965-weeks-street-in-east-palo-alto.html"
+  },
+  {
+    "topic": "housing",
+    "city": "eastpaloalto",
+    "title": "Construction Starts on Affordable Housing in East Palo Alto",
+    "source": "SF YIMBY",
+    "date": "2024-02-09",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/02/965-Weeks-Street-illustration-by-David-Baker-Architects.jpg",
+    "snippet": "Community members gathered last week to celebrate the official groundbreaking ceremony of Colibri Commons, a new affordable housing complex rising at 965 Weeks Street in East Palo Alto, San Mateo County. The project is a joint development by EPACANDO and MidPen Housing to create 136 homes on city-owned land. Residents are expected to move in as early as next year.",
+    "url": "https://sfyimby.com/2024/02/construction-starts-on-affordable-housing-in-east-palo-alto.html"
+  },
+  {
+    "topic": "housing",
+    "city": "eastpaloalto",
+    "title": "State Funding for Affordable Housing at 965 Weeks Street in East Palo Alto, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2022-07-12",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/07/965-Weeks-Street-illustration-by-David-Baker-Architects.jpg",
+    "snippet": "Assemblymember Marc Berman has secured $8 million from the state for 965 Weeks Street, a multi-structure affordable housing development in East Palo Alto, San Mateo County. The project would create 136 units on undeveloped city-owned land. MidPen Housing and EPACANDO are joint developers.",
+    "url": "https://sfyimby.com/2022/07/state-funding-for-affordable-housing-at-965-weeks-street-in-east-palo-alto-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "fostercity",
+    "title": "Meeting Scheduled Today for Gilead Campus Expansion at 1165 Chess Drive in Foster City",
+    "source": "SF YIMBY",
+    "date": "2026-05-21",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/05/Gilead-Campus-Expansion-Plan-image-via-Foster-City-Planning.png",
+    "snippet": "The Foster City Planning Commission will meet later this evening to discuss plans for the Gilead Campus Expansion Project located at 1155, 1165, and 1185 Chess Drive. The project would span a full twelve-acre property, involving the demolition of several existing properties. Gilead Sciences is self-sponsoring the project’s development.",
+    "url": "https://sfyimby.com/2026/05/meeting-scheduled-today-for-gilead-campus-expansion-at-1165-chess-drive-in-foster-city.html"
+  },
+  {
+    "topic": "developments",
+    "city": "fostercity",
+    "title": "Cancer Research Center Celebrates Topping-Out of New Foster City Facility",
+    "source": "SF YIMBY",
+    "date": "2025-05-09",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/05/331-Lakeside-Drive-Under-Construction-image-from-Suffolk-Construction.png",
+    "snippet": "A combined team from Suffolk Construction and Gilead Sciences celebrated the topping out of the new state-of-the-art facility in Foster City. The project, at 331 Lakeside Drive, was previously reported on by SF YIMBY in 2023. Gensler is responsible for the architecture and design.",
+    "url": "https://sfyimby.com/2025/05/cancer-research-center-celebrates-topping-out-of-new-foster-city-facility.html"
+  },
+  {
+    "topic": "developments",
+    "city": "fostercity",
+    "title": "Meeting Today for Gilead Sciences Development, Foster City",
+    "source": "SF YIMBY",
+    "date": "2023-11-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/11/331-Lakeside-Drive-evening-view-rendering-by-Gensler.jpg",
+    "snippet": "The Foster City Planning Commission is scheduled to review plans for the latest expansion of the Gilead Sciences global headquarters campus. The five-story infill at 331 Lakeside Drive will contribute to the 72-acre Gilead campus along San Mateo County’s waterfront. Gensler is responsible for the design.",
+    "url": "https://sfyimby.com/2023/11/meeting-today-for-gilead-sciences-development-foster-city.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "fostercity",
+    "title": "Luxury Townhomes and Reisdences Now Open At 563 Pilgrim Drive In Foster City",
+    "source": "SF YIMBY",
+    "date": "2022-05-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/05/Laguna-Vista-Aerial-View.jpg",
+    "snippet": "A new residential development is now open and available on the market at 563 Pilgrim Drive in Foster City. The project proposal includes the construction of a three-story residential community developed with 22 apartments and 70 townhomes with open and onsite parking space. KTGY Architecture + Planning is responsible for the design concepts. SummerHill Homes is the project developer. The Guzzardo",
+    "url": "https://sfyimby.com/2022/05/luxury-townhomes-and-reisdences-now-open-at-563-pilgrim-drive-in-foster-city.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "fostercity",
+    "title": "Environmental Review Finishes for 388 Vintage Park Drive, Foster City",
+    "source": "SF YIMBY",
+    "date": "2022-01-01",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/01/388-Vintage-Park-Drive-corner-activity-rendering-courtesy-SteelWave-scaled.jpg",
+    "snippet": "The Environmental Impact Report has been published for a proposed research and development office in Foster City, San Mateo County. Located at 388 Vintage Park, construction will replace a single-story structure and surface parking with 120,000 square feet of office space. The application, called TheLab Foster City, is led by a joint venture between SteelWave and Helios Real Estate Partners.",
+    "url": "https://sfyimby.com/2022/01/environmental-review-finishes-for-388-vintage-park-drive-foster-city.html"
+  },
+  {
+    "topic": "developments",
+    "city": "halfmoonbay",
+    "title": "A wine bar and a Coastside brewery’s expansion are bringing new life to downtown Half Moon Bay",
+    "source": "The Almanac",
+    "date": "2026-07-14",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/07/WEB-260626-HMB_Lab-and-Hound_13.jpg",
+    "snippet": "Half Moon Bay Brewing has opened a second location, while Lab and Hound Wine Bar and Tasting Room is slated for an August debut.",
+    "url": "https://www.almanacnews.com/food/feature-food/2026/07/14/a-half-moon-bay-revival-new-watering-holes-come-to-main-street/"
+  },
+  {
+    "topic": "housing",
+    "city": "halfmoonbay",
+    "title": "Lease Agreement Reached For 555 Kelly Avenue, Half Moon Bay",
+    "source": "SF YIMBY",
+    "date": "2026-05-10",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/05/555-Kelly-Avenue-rendering-by-Van-Meter-Williams-Pollack.jpg",
+    "snippet": "The City Council of Half Moon Bay has approved a lease agreement for the affordable housing project at 555 Kelly Avenue in downtown Half Moon Bay, San Mateo County. The town has entered into a 99-year lease agreement with project developer Mercy Housing for a five-story housing project for retired and senior farmworkers. The building will also include a new resource center for Ayudando Latinos A S",
+    "url": "https://sfyimby.com/2026/05/lease-agreement-reached-for-555-kelly-avenue-half-moon-bay.html"
+  },
+  {
+    "topic": "developments",
+    "city": "halfmoonbay",
+    "title": "Half Moon Bay brunch destination Johnny’s now open in San Mateo",
+    "source": "The Almanac",
+    "date": "2026-04-13",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/04/Johnnys-Kids-Waffle.jpg",
+    "snippet": "For the Del Fierro family, opening a second location of Johnny’s in downtown San Mateo feels like a homecoming.",
+    "url": "https://www.almanacnews.com/san-mateo-county/2026/04/13/half-moon-bay-brunch-destination-johnnys-now-open-in-san-mateo/"
+  },
+  {
+    "topic": "developments",
+    "city": "halfmoonbay",
+    "title": "Construction Finished at 433 Main Street, Half Moon Bay",
+    "source": "SF YIMBY",
+    "date": "2025-07-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/07/433-Main-Street-image-by-Andrew-Campbell-Nelson.jpg",
+    "snippet": "Construction has wrapped up with retail spaces now occupied at 433 Main Street in Half Moon Bay, San Mateo County. The project has replaced a long-vacant parcel at a highly visible corner lot in the oceanside town with two three-story structures. Anthony Uccelli is the project developer working for property owner Ozella Cardoni.",
+    "url": "https://sfyimby.com/2025/07/construction-finished-at-433-main-street-half-moon-bay.html"
+  },
+  {
+    "topic": "developments",
+    "city": "halfmoonbay",
+    "title": "Hotel Approved for Downtown Half Moon Bay, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2025-02-06",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/02/Hyatt-Place-Proposal-establishing-view-rendering-by-Axis-GFA.jpg",
+    "snippet": "The Half Moon Bay City Council has approved plans for a proposed hotel at 1200 Main Street in Downtown Half Moon Bay, San Mateo County. The project will bring over a hundred hotel rooms to a former auto dealership after nearly a decade of review. Greg Jamison of RGJC South LLC is the project sponsor.",
+    "url": "https://sfyimby.com/2025/02/hotel-approved-for-downtown-half-moon-bay-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "halfmoonbay",
+    "title": "Half Moon Bay Planning Commission Reviews Hyatt Hotel Proposal",
+    "source": "SF YIMBY",
+    "date": "2024-10-08",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/10/1200-Main-Street.png",
+    "snippet": "The Half Moon Bay Planning Commission is scheduled to review plans for a new Hyatt Hotel development at 1200 Main Street in Half Moon Bay, San Mateo County. The project will reshape a five-acre parcel on the southern edge of Main Street with a 102-key hotel. RGJC SOUTH, LLC is responsible for the application.",
+    "url": "https://sfyimby.com/2024/10/half-moon-bay-planning-commission-reviews-hyatt-hotel-proposal.html"
+  },
+  {
+    "topic": "developments",
+    "city": "halfmoonbay",
+    "title": "Meeting Tomorrow For 2800 Champs Elysee Boulevard, Half Moon Bay",
+    "source": "SF YIMBY",
+    "date": "2024-09-10",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/09/2800-Champs-Elysee-Boulevard-rendering-by-Hayes-Group-Architects.jpg",
+    "snippet": "The Half Moon Bay Planning Commission is scheduled to review plans later today for a single-family home at 2800 Champs Elysee Boulevard in Half Moon Bay, San Mateo County. The project will be within the Miramar district, close to Roosevelt Beach. John Vidovich & Family is listed as the property owner, represented by Mark Massara.",
+    "url": "https://sfyimby.com/2024/09/meeting-tomorrow-for-2800-champs-elysee-boulevard-half-moon-bay.html"
+  },
+  {
+    "topic": "housing",
+    "city": "halfmoonbay",
+    "title": "City Council Approves 555 Kelly Avenue, Half Moon Bay",
+    "source": "SF YIMBY",
+    "date": "2024-07-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/05/555-Kelly-Avenue-pedestrian-view-rendering-by-Van-Meter-Williams-Pollack.jpg",
+    "snippet": "The Half Moon Bay City Council has granted final approval for the proposed farmworker housing at 555 Kelly Avenue. The affordable housing project would bring 40 units to support the coastal city’s agricultural community. Mercy Housing is the project developer, working alongside local non-profit Ayudando Latinos A Soñar, or ALAS.",
+    "url": "https://sfyimby.com/2024/07/city-council-approves-555-kelly-avenue-half-moon-bay.html"
+  },
+  {
+    "topic": "housing",
+    "city": "halfmoonbay",
+    "title": "Affordable Housing Approved For 880 Stone Pine Road, Half Moon Bay",
+    "source": "SF YIMBY",
+    "date": "2024-06-08",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/06/Stone-Pine-Cove-aerial-view-of-the-housing-looking-south-rendering-by-Bigfoot-Homes.jpg",
+    "snippet": "The San Mateo County Board of Supervisors has approved construction financing for Stone Pine Cove, a proposed manufactured homes development at 880 Stone Pine Road in Half Moon Bay. The county has secured $11.5 million, with completion expected by early 2025. Sacramento-based Capital Program Management is the project coordinator.",
+    "url": "https://sfyimby.com/2024/06/affordable-housing-approved-for-880-stone-pine-road-half-moon-bay.html"
+  },
+  {
+    "topic": "housing",
+    "city": "halfmoonbay",
+    "title": "Planning Commission Approves Farmer Housing in Half Moon Bay",
+    "source": "SF YIMBY",
+    "date": "2024-05-16",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/05/555-Kelly-Avenue-pedestrian-view-rendering-by-Van-Meter-Williams-Pollack.jpg",
+    "snippet": "The Half Moon Bay Planning Commission has approved plans for a five-story affordable housing project at 555 Kelly Avenue in the heart of the coastal San Mateo County city. However, this approval was not simple, as several commissioners voiced strong disapproval of the project and vocalized potential conditions of approval that would contravene state law. The decision is appealable, and the project",
+    "url": "https://sfyimby.com/2024/05/planning-commission-approves-farmer-housing-in-half-moon-bay.html"
+  },
+  {
+    "topic": "developments",
+    "city": "hillsborough",
+    "title": "Hillsborough City School District Starts Construction on New Multipurpose and Administration Facilities at Crocker Middle School",
+    "source": "School Construction News",
+    "date": "2026-06-30",
+    "image": null,
+    "snippet": "Headline from School Construction News. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQZWp1VGRCVU5UckhwVUswd1locFhQa1Fjd0JSTkRtb05CNTBMeVktSFFQRHBjd19IcHlkVWxOVy1KZGdZRTNaSnFtejVOcXkwNHJNVEtWVEhqWklsdUxFVVY0ajJhb1A2Zk5fREdzV1pBS2FPRXJFbWRMZ3pQWEFGZVlNYm5Ba0ZQVkhKamxRY25IRWMtaGRkZmhiRTgxQ0gySVRLMkFNU0dWZWdaUVdBano3dHBxdS1BMElCZlZvM0U1Mnk4T1FMQ1ZIN3I0dEF1YnF0NnBOcXlFZ241cTFyNjJoZUVHYkljM01WSUdUWEpkQWlBOGhnakVJZ3ZycEhibG1UbV93?oc=5"
+  },
+  {
+    "topic": "developments",
+    "city": "hillsborough",
+    "title": "Nueva School Science and Environmental Center, Hillsborough, CA",
+    "source": "e-architect",
+    "date": "2024-04-16",
+    "image": null,
+    "snippet": "Headline from e-architect. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNNGRSelZWOXVESWFiazNLR2o3UXh3MnhaWXVaR21MRjJaUkdONVRfQ1RkMVA0djcxQ2gwblBLQ21UQjBBWWV1ZVA5M3VTeF9jQ1VaZ1N6TVBhcXQ5dGR4NEFLWnFyTzliNHVUWnI5VDBtNnFsS0FtR3BnaFp1emx0WTdHaURfek1mY3ljLQ?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "hillsborough",
+    "title": "Hillsborough plans for housing",
+    "source": "San Mateo Daily Journal",
+    "date": "2023-02-03",
+    "image": null,
+    "snippet": "Headline from San Mateo Daily Journal. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQaXdUeXVFNkozZkRQRjVDWGFHTFo5ZmFzMk16ZXZibE00UFlOT2ZLa205bGx0RGt1eGppVnBac2RyNElQQmp4aXU1NTUxYTFHSVZ6OTJEUzNQNHNISWxGSjdhVnhVUDJfbFpfdFlsS1NSY0dBYVRRUjE1THhtLW1mTnEwdHRoVklOaDI2bjd6LU94R1V2dlVYLTJVME1Kamw3WTNlSDVzZjB5ak15SFFhWVJoQ0VRWjBRTHdrM05nZw?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "hillsborough",
+    "title": "Hillsborough planning for ADUs",
+    "source": "San Mateo Daily Journal",
+    "date": "2022-10-20",
+    "image": null,
+    "snippet": "Headline from San Mateo Daily Journal. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPUF83YWdsTTZzV3dqdUFia1ZlckdlTDUtSEVTR2oxb3FMSmhYUjJTYzBhNC0zdzFxeU5YbzgtM2dMVFZFV04xaEtWVnFMWFJtbGVucFdha2VJZHV6ZUs3MzJ6eG1kZ3VTWi0wWGc5dTNrLU1FVHRoZ2g1VE5raDE0RXhHSmdPZ1dvbVF0V29SUFl5S1VJeThLazlWR2hNc0phejVoN2xtdGN6RHlTMG1zd2otTklQenJ3c3RWR3hFYw?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "hillsborough",
+    "title": "Debate over affordable housing heats up in Hillsborough",
+    "source": "abc7news.com",
+    "date": "2022-09-27",
+    "image": null,
+    "snippet": "Headline from abc7news.com. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQSHluMlNzdWpqd0x5UXhVbU1sRV9LMWNLTFpQVVBCUGNFNWtjdVgyQ2ZORGRrZTc5ZDhDTUQyMVVDazlORHo0ODFfQ0g0dGVkRUFhaVh1THlmQzI0REtwZ2hLT1ByeVlXTVdHLVNPODBodVFSS3M4XzB1MmMzZ2ZCNzl0RFBDVWdOdlpEeS15b29TMWVMbG0zbTlOTWRMdzjSAaQBQVVfeXFMUGVFNHhxQkxIUk01cVJKRG5ueDc0RlU1UVUyTlVTWEVvSEJwQ045VFM0SHdoS2xPX2hrUDdqcHkyc2h0QW5DeUNya2xjVUNXSFRTc2JhTHZyWjRfVFluTUVqRFBJQUlyOEJSdGh5OU5MeDUwWHQwX3M3cFlkU25aaW9zc3RvTkQ1OEFza0xMSUw0RGZpblRKQ3FLd1hPel9GX0VRMFE?oc=5"
+  },
+  {
+    "topic": "developments",
+    "city": "menlopark",
+    "title": "Here’s who is running for school board in Menlo Park and Sequoia districts",
+    "source": "The Almanac",
+    "date": "2026-09-03",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/09/Almanac_LaurelSchoolUpperCampus_2026_Web-01-scaled.jpg",
+    "snippet": "School board races across the Midpeninsula will have returning incumbents and newcomers joining next year, but only two school districts will have candidates on the Nov. 3 general election ballot.",
+    "url": "https://www.almanacnews.com/education/2026/09/03/school-board-candidates-running-for-menlo-park-and-sequoia-districts/"
+  },
+  {
+    "topic": "developments",
+    "city": "menlopark",
+    "title": "Looking to trim deficit, Menlo Park plans to hike child care center’s tuition — again",
+    "source": "The Almanac",
+    "date": "2026-09-01",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2024/09/IMG_7813-scaled.jpg",
+    "snippet": "Menlo Park parents are facing higher fees at a city-run childcare program, part of the City Council’s measures to end a structural deficit.",
+    "url": "https://www.almanacnews.com/menlo-park/2026/09/01/looking-to-trim-deficit-menlo-park-plans-to-hike-child-care-centers-tuition-again/"
+  },
+  {
+    "topic": "developments",
+    "city": "menlopark",
+    "title": "Longtime West Menlo Park eatery Lutticken’s to close after 45 years",
+    "source": "The Almanac",
+    "date": "2026-08-31",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/Luttickens01_01_SEP_11_ml.jpg",
+    "snippet": "A mainstay of West Menlo Park for the past 45 years is closing. Lutticken’s Deli & After 5 Restaurant, will serve its last sandwich at the end of September, Manager Judy Congdon said.",
+    "url": "https://www.almanacnews.com/san-mateo-county/2026/08/31/longtime-west-menlo-park-eatery-luttickens-to-close-after-45-years/"
+  },
+  {
+    "topic": "developments",
+    "city": "menlopark",
+    "title": "Menlo Park overhauls license plate reader sharing after discovering more improper searches",
+    "source": "The Almanac",
+    "date": "2026-08-27",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/WEB-260422-PA_FlockPlateReaders_0007.jpg",
+    "snippet": "Amid a wave of scrutiny over automated license plate readers across the Bay Area, the Menlo Park Police Department is tightening controls on its camera data after finding that outside agencies improperly searched the system for the second time in roughly a year.",
+    "url": "https://www.almanacnews.com/public-safety/2026/08/27/menlo-park-overhauls-license-plate-reader-sharing-after-discovering-more-improper-searches/"
+  },
+  {
+    "topic": "developments",
+    "city": "menlopark",
+    "title": "Menlo Park council candidate aims to preserve, beautify Belle Haven",
+    "source": "The Almanac",
+    "date": "2026-08-20",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/JamesRohr_2026_3-scaled.jpg",
+    "snippet": "Belle Haven resident and retired cybersecurity professional James Rohr said he wants to focus on beautifying the neighborhood and equitably representing District 1 if elected to the Menlo Park City Council.",
+    "url": "https://www.almanacnews.com/city-politics/2026/08/20/menlo-park-council-candidate-aims-to-preserve-beautify-belle-haven/"
+  },
+  {
+    "topic": "developments",
+    "city": "menlopark",
+    "title": "Menlo Park launches ‘Laurel,’ an AI chatbot to help navigate city services",
+    "source": "The Almanac",
+    "date": "2026-08-17",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/MenloPark_LauralChatbotlogo-1.png",
+    "snippet": "The city of Menlo Park launched a chatbot called “Laurel” on its website in early August, hoping to help community members access information about city services around the clock.",
+    "url": "https://www.almanacnews.com/city-government/2026/08/17/menlo-park-launches-laurel-an-ai-chatbot-to-help-navigate-city-services/"
+  },
+  {
+    "topic": "developments",
+    "city": "menlopark",
+    "title": "California Attorney General Pushes Scales For 80 Willow Road, Menlo Park",
+    "source": "SF YIMBY",
+    "date": "2026-08-05",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/08/80-Willow-Road-aerial-overview-rendering-by-Solomon-Cordwell-Buenz.jpg",
+    "snippet": "California Attorney General Robert Bonta has weighed in on the prolonged planning process for 80 Willow Road in Menlo Park, San Mateo County. More than two years have passed since N17 filed plans for the 665-unit development, dubbed Willow Park, and the most recent progress shared by the city in May was the latest determination of ineligibility for processing under Assembly Bill 2011. In the recen",
+    "url": "https://sfyimby.com/2026/08/california-attorney-general-pushes-scales-for-80-willow-road-menlo-park.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "menlopark",
+    "title": "Updated Plans For Laurel Landing, Menlo Park",
+    "source": "SF YIMBY",
+    "date": "2026-06-26",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/Laurel-Landing-establishing-view-rendering-by-TCA-Architects.jpg",
+    "snippet": "Habitat for Humanity has submitted updated plans for a residential infill project at 335-355 Pierce Road in the Belle Haven neighborhood of Menlo Park, San Mateo County. The project, named Laurel Landing, would add eight townhouse-style units to a small parcel overlooking Highway 101 and close to Meta Park.",
+    "url": "https://sfyimby.com/2026/06/updated-plans-for-laurel-landing-menlo-park.html"
+  },
+  {
+    "topic": "developments",
+    "city": "menlopark",
+    "title": "Significantly Modified Masterplan Revealed For Parkline, Menlo Park",
+    "source": "SF YIMBY",
+    "date": "2026-06-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/Parkline-offices-rendering-by-SOM.jpg",
+    "snippet": "Updated plans have been filed for the proposed redevelopment of the former SRI campus around 333 Ravenswood Avenue in Menlo Park, San Mateo County. The modified master plan significantly reduces office capacity and moderately increases…",
+    "url": "https://sfyimby.com/2026/06/significantly-modified-masterplan-revealed-for-parkline-menlo-park.html"
+  },
+  {
+    "topic": "housing",
+    "city": "menlopark",
+    "title": "Updated Plans Filed For USGS Campus Redevelopment, Menlo Park",
+    "source": "SF YIMBY",
+    "date": "2026-06-19",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/345-Middlefield-Road-pedestrian-view-from-Redwood-Meadow-rendering-by-Gensler-scaled.jpg",
+    "snippet": "Updated plans have been filed for the mixed-use redevelopment of the former United States Geological Survey agency campus at 345 Middlefield Road in Menlo Park, San Mateo County. New renderings have been published showing slight modifications to the expansive project, reshaping the office grounds with housing, public parks, and retail. Presidio Bay Ventures is the developer and applicant responsib",
+    "url": "https://sfyimby.com/2026/06/updated-plans-filed-for-usgs-campus-redevelopment-menlo-park.html"
+  },
+  {
+    "topic": "housing",
+    "city": "millbrae",
+    "title": "Affordable Housing Approved at 1301 Broadway, Millbrae, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2024-08-22",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/08/1301-Broadway-establishing-view-rendering-by-AO.jpg",
+    "snippet": "The City of Millbrae has approved plans for 1301 Broadway in Millbrae, San Mateo County. The project will add a seven-story apartment building with nearly a hundred affordable units close to El Camino and in a mixed-use neighborhood with several restaurants, retail, and hotels. AMG & Associates and the Pacific Companies are jointly responsible for the project.",
+    "url": "https://sfyimby.com/2024/08/affordable-housing-approved-at-1301-broadway-millbrae-san-mateo-county.html"
+  },
+  {
+    "topic": "housing",
+    "city": "millbrae",
+    "title": "Permits Filed For Preparing Millbrae’s La Quinta by Wyndham for HomeKey Housing Project",
+    "source": "SF YIMBY",
+    "date": "2024-03-21",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/03/La-Quinta-by-Wyndham-image-by-Google-Satellite.jpg",
+    "snippet": "Partial demolition permits have been filed to facilitate the conversion of the La Quinta by Wyndham Hotel into affordable housing at 1390 El Camino Real in Millbrae, San Mateo County. The project hopes to use funds from the statewide Homekey program to create new permanent supportive housing. The Episcopal Community Services of San Francisco will operate the future property and services.",
+    "url": "https://sfyimby.com/2024/03/permits-filed-for-preparing-millbraes-la-quinta-by-wyndham-for-homekey-housing-project.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "millbrae",
+    "title": "Topping Out for New Eikon Offices in Millbrae, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2023-05-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/06/Millbrae-Campus-with-Eikon-signage-on-display-rendering-by-WRNS-Studio.jpg",
+    "snippet": "Yesterday afternoon marked the official topping out of the BART-adjacent Millbrae Office and Life Sciences Campus in Millbrae, San Mateo County. Truebeck Construction has rapidly transformed the flat plot of land with a six-story steel structure in less than a year for the largest of four buildings for the Life Sciences campus in less than a year. Alexandria Real Estate Equities is the project dev",
+    "url": "https://sfyimby.com/2023/05/topping-out-for-new-eikon-offices-in-millbrae-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "millbrae",
+    "title": "Construction Update is for Avia Labs at 210 Adrian Court, Millbrae",
+    "source": "SF YIMBY",
+    "date": "2023-05-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/03/AVIA-Labs-exterior-view-from-the-Eikon-Campus-rendering-by-Flad-Architecture.jpg",
+    "snippet": "After a recent site visit to the Millbrae Life Sciences Campus, YIMBY documented construction for Avia Labs at 210 Adrian Court, San Mateo County. Just three months after an official groundbreaking, Level 10 Construction has already finished excavation, with portions of the foundation now visible. Longfellow Real Estate Partners is the project sponsor.",
+    "url": "https://sfyimby.com/2023/05/construction-update-is-for-avia-labs-at-210-adrian-court-millbrae.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "millbrae",
+    "title": "Gateway at Millbrae Officially Opens in San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2023-04-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2021/09/Gateway-at-Millbrae-Station.jpg",
+    "snippet": "The Gateway at Millbrae Station mixed-use development is officially open in Millbrae, San Mateo County. The project has brought affordable housing, market-rate housing, offices, a hotel, and new retail directly across from the county’s largest transit hub, serviced by BART, Caltrain, SamTrans, and eventually, the High-Speed Rail. Republic Urban Properties is the project sponsor.",
+    "url": "https://sfyimby.com/2023/04/gateway-at-millbrae-officially-opens-in-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "millbrae",
+    "title": "Construction Financing Secured for Avia Labs in Millbrae, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2023-03-07",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/03/AVIA-Labs-exterior-view-from-the-Eikon-Campus-rendering-by-Flad-Architecture.jpg",
+    "snippet": "Less than a week after the official groundbreaking ceremony, JLL announced a $310 million construction loan brokered with Longfellow Real Estate Partners for Avia Labs, located at 210 Adrian Road in Millbrae, San Mateo County. Excavation has already started for what will become the six-story life sciences project across from Millbrae Station. Otera Capital has provided the loan.",
+    "url": "https://sfyimby.com/2023/03/construction-financing-secured-for-avia-labs-in-millbrae-san-mateo-county.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "millbrae",
+    "title": "Groundbreaking for Avia Labs Across from Millbrae Transit Center",
+    "source": "SF YIMBY",
+    "date": "2023-03-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/03/AVIA-Labs-exterior-view-from-the-Eikon-Campus-rendering-by-Flad-Architecture.jpg",
+    "snippet": "The official groundbreaking ceremony was held yesterday afternoon for Avia Labs, a new life sciences project at 210 Adrian Road in Millbrae, San Mateo County. Once complete, the six-story project will open up in a burgeoning district, with direct access to the Millbrae BART and Caltrain Station through an underpass. Longfellow Real Estate Partners is the project sponsor.",
+    "url": "https://sfyimby.com/2023/03/groundbreaking-for-avia-labs-across-from-millbrae-transit-center.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "millbrae",
+    "title": "Meeting Today for 959 El Camino Real in Millbrae, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2022-06-29",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/06/959-El-Camino-Real-from-Broadway-and-Paseo-rendering-by-BDE-Architecture.jpg",
+    "snippet": "A Special Planning Commission Meeting has been scheduled for tonight to review plans for a six-story residential infill at 959 El Camino Real in Millbrae, San Mateo County. The project will replace a single-story commercial structure and surface parking with 278 homes and 349 parking spaces, with some affordable housing. High Street Residential is the project applicant and owner.",
+    "url": "https://sfyimby.com/2022/06/meeting-today-for-959-el-camino-real-in-millbrae-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "millbrae",
+    "title": "Demolition Complete, Eikon Leases Offices at Millbrae Life Sciences Campus",
+    "source": "SF YIMBY",
+    "date": "2022-06-17",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/06/Millbrae-Campus-with-Eikon-signage-on-display-rendering-by-WRNS-Studio.jpg",
+    "snippet": "Alexandria Real Estate Equities has secured a future long-term headquarters for Eikon Therapeutics. The new HQ will be in the Millbrae Offices and Life Sciences campus, currently under construction across from the Millbrae Train Station. The company will be moving to San Mateo County from its current location in Hayward.",
+    "url": "https://sfyimby.com/2022/06/demolition-complete-eikon-leases-offices-at-millbrae-life-sciences-campus.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "millbrae",
+    "title": "New Rendering for Life Sciences at 210 Adrian Court, Millbrae, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2022-05-13",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/05/210-Adrian-Court-seen-from-Harriet-Tubman-View-rendering-by-Flad-Architecture.jpg",
+    "snippet": "Plans for a new life science building at 210 Adrian Court in Millbrae is scheduled for review by the city’s planning commission on Monday, May 16th. A new rendering has been revealed for the six-story project, set to rise directly across from the nearby BART Station, end of the line in San Mateo County. Longfellow Real Estate Partners is responsible for the application.",
+    "url": "https://sfyimby.com/2022/05/new-rendering-for-life-sciences-at-210-adrian-court-millbrae-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "pacifica",
+    "title": "As the Pacifica Pier faces an uncertain fate, its closure has the community that calls it home reeling",
+    "source": "The Almanac",
+    "date": "2026-06-18",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/06/WEB-260614-Pacifica_PierDamage_0004.jpg",
+    "snippet": "Locals and visitors have rallied around Chit Chat Cafe and the city of Pacifica as crews work to stabilize the pier.",
+    "url": "https://www.almanacnews.com/outdoor-recreation/2026/06/18/as-the-pacifica-pier-faces-an-uncertain-fate-its-closure-has-the-community-that-calls-it-home-reeling/"
+  },
+  {
+    "topic": "housing",
+    "city": "pacifica",
+    "title": "Construction Underway For Oddstad Elementary School Redevelopment, Pacifica",
+    "source": "SF YIMBY",
+    "date": "2026-05-13",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/05/Pacifica-Housing-project-rendering-by-Seidel-and-BDE.jpg",
+    "snippet": "Construction is now underway, with a recently approved $39 million contract to complete phase one of the residential redevelopment at the former Oddstad Elementary School site in Pacifica, San Mateo County. The property had been vacant for over two decades after the school’s closure. Crews are now expecting the first 45 units to finish next year, offering affordable housing dedicated to Pacifica S",
+    "url": "https://sfyimby.com/2026/05/construction-underway-for-oddstad-elementary-school-redevelopment-pacifica.html"
+  },
+  {
+    "topic": "developments",
+    "city": "pacifica",
+    "title": "Pacifica Development at 570 Crespi Drive Releases a Revised CEQA Report",
+    "source": "SF YIMBY",
+    "date": "2025-08-07",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/08/570-Crespi-Drive-Site-Location-image-via-Raney-Planning-and-Management.jpg",
+    "snippet": "A new project planned in Pacifica begins to move forward with a revised Environmental Impact Report for the site. The project area, located at 570 Crespi Drive, largely consists of a patch of wetlands and requires a detailed environmental review. Raney Planning and Management is responsible for compiling the new report. In terms of ownership, the development area is divided between the City of Pac",
+    "url": "https://sfyimby.com/2025/08/pacifica-development-at-570-crespi-drive-releases-a-revised-ceqa-report.html"
+  },
+  {
+    "topic": "housing",
+    "city": "pacifica",
+    "title": "Preliminary Plans For Pacifica Quarry Residential Redevelopment, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2025-04-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/04/Coastal-Crest-Residences-site-image-via-Google-Satellite.jpg",
+    "snippet": "Preliminary plans have been filed for Coastal Crest Residences, a potential residential redevelopment of the Pacifica Quarry Site by Rockaway Beach. The builder’s remedy-assisted application looks to create a new residential neighborhood of over a thousand affordable units pushed back from the San Mateo County coastline. The project is a joint venture led by Paul Heule’s Michigan-based company, Ee",
+    "url": "https://sfyimby.com/2025/04/preliminary-plans-for-pacifica-quarry-residential-redevelopment-san-mateo-county.html"
+  },
+  {
+    "topic": "housing",
+    "city": "pacifica",
+    "title": "Housing Approved for 930 Oddstad Boulevard in Pacifica, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2023-05-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/05/Pacifica-Housing-project-rendering-by-Seidel-and-BDE.jpg",
+    "snippet": "New plans have been approved by the City Council for low-density housing at 930 Oddstad Boulevard in Pacifica, San Mateo County. The plan will replace a long-closed elementary school with 70 homes, including eleven affordable housing units. Brookwood Equities is the project applicant.",
+    "url": "https://sfyimby.com/2023/05/housing-approved-for-930-oddstad-boulevard-in-pacifica-san-mateo-county.html"
+  },
+  {
+    "topic": "housing",
+    "city": "pacifica",
+    "title": "CEQA Review Published for 570 Crespi Drive, Pacifica, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2021-12-11",
+    "image": "https://sfyimby.com/wp-content/uploads/2021/12/570-Crespi-Drive-viewed-from-across-the-street-rendering-of-design-by-EID-Architects.jpg",
+    "snippet": "New project details have been published with plans for 570 Crespi Drive, a block away from the coastline in Pacifica, San Mateo County. The proposal would create three structures with commercial space and 19 new homes, of which three will be affordable. SC Properties, a San Mateo-based firm, is sponsoring the development.",
+    "url": "https://sfyimby.com/2021/12/ceqa-review-published-for-570-crespi-drive-pacifica-san-mateo-county.html"
+  },
+  {
+    "topic": "housing",
+    "city": "pacifica",
+    "title": "Accommodations Planned On the Site of Oddstad Elementary School In Pacifica",
+    "source": "SF YIMBY",
+    "date": "2021-10-28",
+    "image": "https://sfyimby.com/wp-content/uploads/2021/10/930-Oddstad-Boulevard-Site-e1635438365767.jpg",
+    "snippet": "A new residential project has been proposed on the site located at 930 Oddstad Boulevard in Park Pacifica. The project proposal includes the development of a residential project with affordable housing units and onsite amenities. Plans call for the demolition of the existing non-operational elementary school, Oddstad Elementary School, on the site. M-Group is the project consultant. Brookwood Grou",
+    "url": "https://sfyimby.com/2021/10/accommodations-planned-on-the-site-of-oddstad-elementary-school-in-pacifica.html"
+  },
+  {
+    "topic": "developments",
+    "city": "portolavalley",
+    "title": "Portola Valley will hold election, even though Town Council race is uncontested",
+    "source": "The Almanac",
+    "date": "2026-08-25",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2024/03/portolavalley_smc_votecenter_nov2022_06_web.png",
+    "snippet": "Portola Valley will have an uncontested Town Council race this November with no challengers stepping up to run against three incumbents. Unless write-in candidates file to run by Oct. 20, Mayor Craig Taylor and council members Mary Hufty and Judith Hasko will return to their seats at the dais.",
+    "url": "https://www.almanacnews.com/portola-valley/2026/08/25/portola-valley-will-hold-election-even-though-town-council-race-is-uncontested/"
+  },
+  {
+    "topic": "transportation",
+    "city": "portolavalley",
+    "title": "Community briefs: Portola Valley cleanup, Woodside open house and Alpine Road tree removal",
+    "source": "The Almanac",
+    "date": "2026-08-14",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2021/12/57945_original-1.jpg",
+    "snippet": "In this week’s Community Briefs, traffic impacts from Stanford’s tree removal, Portola Valley holds a town cleanup and Woodside invites comments on Town Center at an open house.",
+    "url": "https://www.almanacnews.com/news/2026/08/14/community-briefs-portola-valley-cleanup-woodside-open-house-and-alpine-road-tree-removal/"
+  },
+  {
+    "topic": "developments",
+    "city": "portolavalley",
+    "title": "School board races at a glance: Sequoia, Las Lomitas, Menlo Park, Woodside, Portola Valley",
+    "source": "The Almanac",
+    "date": "2026-07-24",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/07/RWC_SMC-COUNTY-CLERK-VOTE-CENTER_Nov2024_WEB_13.jpg",
+    "snippet": "Voting sticker at the San Mateo County Clerk-Recorder office in Redwood City on Nov. 4, 2024. Photo by Anna Hoch-Kenney. While the California gubernatorial election and Menlo Park ballot measure may be front of mind for residents preparing for the 2026 midterm elections, several seats on local school boards will also go before voters on […]",
+    "url": "https://www.almanacnews.com/education/2026/07/24/school-board-races-at-a-glance-sequoia-las-lomitas-menlo-park-woodside-portola-valley/"
+  },
+  {
+    "topic": "developments",
+    "city": "portolavalley",
+    "title": "Council races at a glance: Atherton, Menlo Park, Portola Valley and Woodside",
+    "source": "The Almanac",
+    "date": "2026-07-23",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/07/RWC_SMC-COUNTY-CLERK-VOTE-CENTER_Nov2024_WEB_14.jpg",
+    "snippet": "The November 2026 election is shaping up to be consequential for Menlo Park, Atherton, Portola Valley and Woodside. Key seats on city and town councils are up for grabs, with a number of incumbents saying they won’t run for reelection.",
+    "url": "https://www.almanacnews.com/election/2026/07/23/council-races-at-a-glance-atherton-menlo-park-portola-valley-and-woodside/"
+  },
+  {
+    "topic": "developments",
+    "city": "portolavalley",
+    "title": "What to know about Portola Valley’s attempt to become a charter town",
+    "source": "The Almanac",
+    "date": "2026-07-17",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/02/PV_Town-Center_May2024_WEB_03.jpg",
+    "snippet": "The town of Portola Valley is inching closer to becoming a charter town. The Town Council is set to meet on July 22 to discuss putting a ballot measure for the November general election.",
+    "url": "https://www.almanacnews.com/portola-valley/2026/07/17/what-to-know-about-portola-valleys-attempt-to-become-a-charter-town/"
+  },
+  {
+    "topic": "housing",
+    "city": "portolavalley",
+    "title": "Stanford-Proposed Housing Approved at 3530 Alpine Road, Portola Valley",
+    "source": "SF YIMBY",
+    "date": "2025-01-12",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/01/3530-Alpine-Road-aerial-view-rendering-by-Seigel-Strain-Architects.jpg",
+    "snippet": "Portola Valley has approved plans by Stanford University for Portola Terraces, a new housing project at 3530 Alpine Road in the unincorporated town of San Mateo County. The small proposal would bring 39 units south of the campus. Stanford University‘s Real Estate Department is responsible for the application.",
+    "url": "https://sfyimby.com/2025/01/stanford-proposed-housing-approved-at-3530-alpine-road-portola-valley.html"
+  },
+  {
+    "topic": "developments",
+    "city": "redwoodcity",
+    "title": "State of the ‘Union’: Redwood City music studio builds a creative community",
+    "source": "The Almanac",
+    "date": "2026-09-03",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/09/WEB-260820-RWC_Sound-Union_020.jpg",
+    "snippet": "Two years after opening, membership-based Sound Union brings musicians together through organized events and relaxed hangouts alike.",
+    "url": "https://www.almanacnews.com/ae/features/2026/09/03/state-of-the-union-redwood-city-music-studio-builds-a-creative-community/"
+  },
+  {
+    "topic": "developments",
+    "city": "redwoodcity",
+    "title": "Redwood City Police admit to improper street camera data sharing",
+    "source": "The Almanac",
+    "date": "2026-08-26",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/WEB-260714-RWC_Flock-cameras_017.jpg",
+    "snippet": "The Redwood City Police Department’s automated license plate reader settings were incorrectly configured, allowing unauthorized agencies and Flock Safety employees to search the city’s database at least 99 times in a two-year period.",
+    "url": "https://www.almanacnews.com/police/2026/08/26/redwood-city-police-admit-to-improper-street-camera-data-sharing/"
+  },
+  {
+    "topic": "developments",
+    "city": "redwoodcity",
+    "title": "Crane hoists historic carriage into new home in downtown Redwood City museum",
+    "source": "The Almanac",
+    "date": "2026-08-18",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/08/WEB-260817-RWC_Carriage-museum_008.jpg",
+    "snippet": "Drivers and pedestrians on Marshall Street in downtown Redwood City pulled out their cellphones as a crane hoisted horse-drawn carriages into the air. After 50 years in storage, a collection of historic carriages were moved to their new home in the San Mateo County History Museum’s Taube Family Carriage House and Automobile Gallery on Aug. 17.",
+    "url": "https://www.almanacnews.com/san-mateo-county/2026/08/18/crane-hoists-historic-carriage-into-new-home-in-downtown-redwood-city-museum/"
+  },
+  {
+    "topic": "developments",
+    "city": "redwoodcity",
+    "title": "Preliminary Permits For 10 Twin Dolphin Drive, Redwood City",
+    "source": "SF YIMBY",
+    "date": "2026-08-10",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/08/10-Twin-Dolphin-Drive-overview-rendering-by-Gensler.jpg",
+    "snippet": "Updated plans have surfaced for a sprawling research & development office complex at 10 Twin Dolphin Drive in Redwood City, San Mateo County. The project is looking to replace the existing office building with two structures across a 15-acre campus. The Minkoff Group is the property owner and developer.",
+    "url": "https://sfyimby.com/2026/08/preliminary-permits-for-10-twin-dolphin-drive-redwood-city.html"
+  },
+  {
+    "topic": "developments",
+    "city": "redwoodcity",
+    "title": "Plans Filed For 150 Charter Street, Redwood City",
+    "source": "SF YIMBY",
+    "date": "2026-08-03",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/07/150-Charter-Street-rendering-by-Studio-T-Square.jpg",
+    "snippet": "Plans have been filed for a townhouse development at 150 Charter Street in Redwood City, San Mateo County. The proposal would replace the existing Mi Rancho Supermarket with 58 condominiums close to a Target department store. Cupertino-based Chengde Capital LLC is listed as the project applicant.",
+    "url": "https://sfyimby.com/2026/08/plans-filed-for-150-charter-street-redwood-city.html"
+  },
+  {
+    "topic": "housing",
+    "city": "redwoodcity",
+    "title": "Updated Plans For 21-Story Senior Housing Proposal in Redwood City",
+    "source": "SF YIMBY",
+    "date": "2026-07-27",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/07/910-Marshall-Street-aerial-view-rendering-by-HGA.jpg",
+    "snippet": "Updated plans have been filed for 910 Marshall Street in Redwood City, San Mateo County. New renderings have been published for a proposal seeking to add over two hundred senior living units in a 21-story tower, the potential third-tallest building in the county. Palo Alto-based R+M Properties is the project client.",
+    "url": "https://sfyimby.com/2026/07/updated-plans-for-21-story-senior-housing-proposal-in-redwood-city.html"
+  },
+  {
+    "topic": "housing",
+    "city": "redwoodcity",
+    "title": "Updated Plans Filed For 1330 El Camino Real, Redwood City",
+    "source": "SF YIMBY",
+    "date": "2026-06-23",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/1330-El-Camino-Real-rendering-by-BDE-Architecture.jpg",
+    "snippet": "Preliminary permits have been filed for an eight-story apartment complex at 1330 El Camino Real in Redwood City, San Mateo County. The latest proposal shows vertical expansion compared to previously filed plans, though the unit count is slightly reduced. Menlo Park-based Mecah Ventures is responsible for the application.",
+    "url": "https://sfyimby.com/2026/06/updated-plans-filed-for-1330-el-camino-real-redwood-city.html"
+  },
+  {
+    "topic": "housing",
+    "city": "redwoodcity",
+    "title": "Preliminary Plans For 300-400 Walnut Street, Redwood City",
+    "source": "SF YIMBY",
+    "date": "2026-05-07",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/05/300-400-Walnut-Street-illustration-by-SDG-Architects.jpg",
+    "snippet": "Preliminary plans have been filed for a townhouse development at 300-400 Walnut Street in Redwood City, San Mateo County. The project is looking to replace a portion of a shopping center with over a hundred dwelling units. San Francisco-based Harvest Properties is responsible for the application.",
+    "url": "https://sfyimby.com/2026/05/preliminary-plans-for-300-400-walnut-street-redwood-city.html"
+  },
+  {
+    "topic": "housing",
+    "city": "redwoodcity",
+    "title": "Preliminary Plans Filed For Island Parkway Development in Belmont and Redwood City",
+    "source": "SF YIMBY",
+    "date": "2026-05-05",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/05/Island-Parkway-site-plan-illustration-by-KTGY.jpg",
+    "snippet": "Preliminary plans have been filed for a new residential neighborhood spanning 11 acres in Belmont and Redwood City, San Mateo County. The plans call for around 400 dwelling units spread across a mix of single-family homes, townhomes, and an apartment complex. Baywest Development is responsible for the application.",
+    "url": "https://sfyimby.com/2026/05/preliminary-plans-filed-for-island-parkway-development-in-belmont-and-redwood-city.html"
+  },
+  {
+    "topic": "housing",
+    "city": "redwoodcity",
+    "title": "Updated Plans Published For 705 Veterans Boulevard, Redwood City",
+    "source": "SF YIMBY",
+    "date": "2026-04-18",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/04/705-Veterans-Boulevard-rendering-by-BAR-Architects-and-Interiors.jpg",
+    "snippet": "Updated plans have been published for the five-story affordable project at 705 Veterans Boulevard in Redwood City, San Mateo County. The project is looking to add affordable senior housing just outside of the city’s downtown core. Hayward-based non-profit developer Eden Housing is the project sponsor.",
+    "url": "https://sfyimby.com/2026/04/updated-plans-published-for-705-veterans-boulevard-redwood-city.html"
+  },
+  {
+    "topic": "housing",
+    "city": "sanbruno",
+    "title": "Mazra San Bruno reopens after 2-year renovation",
+    "source": "The Almanac",
+    "date": "2026-03-11",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2026/03/SB_Mazra_2026_0013_web-scaled-1.jpg",
+    "snippet": "After a two-year renovation, the highly anticipated Mazra San Bruno has finally reopened. The causal Mediterranean restaurant was founded by brothers Saif and Jordan Makableh in 2020 and quickly gained a reputation for its affordable, high-quality dishes and stunning ambiance.",
+    "url": "https://www.almanacnews.com/food/2026/03/11/mazra-san-bruno-reopens/"
+  },
+  {
+    "topic": "housing",
+    "city": "sanbruno",
+    "title": "Environmental Impact Report Published for Tanforan Mall Redevelopment, San Bruno",
+    "source": "SF YIMBY",
+    "date": "2025-07-03",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/07/Tanforan-Mall-pedestrian-view-rendering-by-Gensler.jpg",
+    "snippet": "The Environmental Impact Report has been published for the potentially massive redevelopment of the Tanforan Mall in San Bruno, San Mateo County. The EIR considers two possible scenarios for the mixed-use redevelopment, where the balance of housing to office space is flipped. Alexandria Real Estate Equities is the project developer.",
+    "url": "https://sfyimby.com/2025/07/environmental-impact-report-published-for-tanforan-mall-redevelopment-san-bruno.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sanbruno",
+    "title": "Construction Tops Out For YouTube HQ in San Bruno",
+    "source": "SF YIMBY",
+    "date": "2024-09-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2021/10/YouTube-HQ-Expansion-aerial-view-design-by-SHoP-Architects.jpg",
+    "snippet": "Construction has topped out for phase one of the YouTube headquarters redevelopment in San Bruno, San Mateo County. Crews have brought together the steel and mass-timber frame that form two three-story office buildings designed by the New York-based SHoP Architects. San Francisco-based Ellis Partners is the development manager.",
+    "url": "https://sfyimby.com/2024/09/construction-tops-out-for-youtube-hq-in-san-bruno.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sanbruno",
+    "title": "Construction Tops Out for 732 El Camino Real in San Bruno",
+    "source": "SF YIMBY",
+    "date": "2024-09-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/09/732-El-Camino-Real-establishing-view-rendering-by-AO.jpg",
+    "snippet": "Construction has topped out for the six-story housing development at 732 El Camino Real in San Bruno, San Mateo County. Once complete, the project will add 134 rental units within walking distance of the city’s Caltrain Station. AMG & Associates is the project developer.",
+    "url": "https://sfyimby.com/2024/09/construction-tops-out-for-732-el-camino-real-in-san-bruno.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sanbruno",
+    "title": "Meeting Today for Housing at 111 San Bruno Avenue West, San Bruno",
+    "source": "SF YIMBY",
+    "date": "2024-07-09",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/07/111-San-Bruno-Avenue-West-overlooking-Huntington-Avenue-rendering-by-Dinar-Associates.jpg",
+    "snippet": "City Council is scheduled to review revised plans today for 111 San Bruno Avenue West in San Bruno, San Mateo County. The project aims to build 46 apartments overlooking the city’s elevated Caltrain Station. San Mateo-based Larry Li is responsible for the application as the property owner, filing through San Bruno Development LLC.",
+    "url": "https://sfyimby.com/2024/07/meeting-today-for-housing-at-111-san-bruno-avenue-west-san-bruno.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sanbruno",
+    "title": "Ten-Story Affordable Housing Proposed in San Bruno, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2023-11-30",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/11/840-San-Bruno-Avenue-golden-hour-view-rendering-by-KTGY.jpg",
+    "snippet": "Two ten-story residential projects have been proposed at 840 San Bruno Avenue in San Bruno, San Mateo County. The dense complex will bring over three hundred new affordable homes close to the rising YouTube Headquarters and Caltrain. JEMCOR Development Partners is responsible for the application.",
+    "url": "https://sfyimby.com/2023/11/ten-story-affordable-housing-proposed-in-san-bruno-san-mateo-county.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sanbruno",
+    "title": "SHoP-Designed Youtube HQ Construction Underway in San Bruno, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2023-04-05",
+    "image": "https://sfyimby.com/wp-content/uploads/2021/10/YouTube-HQ-Expansion-aerial-view-design-by-SHoP-Architects.jpg",
+    "snippet": "Excavation work is wrapping up for the first phase of the new Youtube Headquarters in San Bruno, San Mateo County. A corner facade mock-up has been delivered on-site, showing off the SHoP Architects-designed black integrated metal louver system that will wrap around the mass-timber framework in the new offices. San Francisco-based Ellis Partners is the development manager.",
+    "url": "https://sfyimby.com/2023/04/shop-designed-youtube-hq-construction-underway-in-san-bruno-san-mateo-county.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sanbruno",
+    "title": "New Affordable Housing Community Inaugurated At 3300 College Road, San Bruno",
+    "source": "SF YIMBY",
+    "date": "2023-02-07",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/02/3300-College-Road.jpg",
+    "snippet": "A new affordable housing community has been opened at 3300 College Road in San Bruno. The project proposal includes the construction of a three-story building offering affordable units, amenities, and onsite parking. In partnership with…",
+    "url": "https://sfyimby.com/2023/02/new-affordable-housing-community-inaugurated-at-3300-college-road-san-bruno.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sanbruno",
+    "title": "Meeting Today for Tanforan Mall Redevelopment Project in San Bruno",
+    "source": "SF YIMBY",
+    "date": "2022-10-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/10/Tanforan-Mall-Redevelopment-as-seen-from-the-San-Bruno-BART-entrance-rendering-by-Gensler.jpg",
+    "snippet": "The preliminary project application will be reviewed today with the San Bruno City Council. The 44-acre masterplan led by Alexandria Real Estate Equities will reshape the existing BART-connected mall with new retail, homes, and a life science campus. The plans have been able to move ahead since Alexandria purchased the final necessary parcel of land in February of this year. The total cost for the",
+    "url": "https://sfyimby.com/2022/10/meeting-today-for-tanforan-mall-redevelopment-project-in-san-bruno.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sancarlos",
+    "title": "Groundbreaking For 11 El Camino Real, San Carlos",
+    "source": "SF YIMBY",
+    "date": "2026-07-10",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/07/11-El-Camino-Real-rendering-by-KTGY.jpg",
+    "snippet": "Construction has officially started following the groundbreaking ceremony at 11 El Camino Real in San Carlos, San Mateo County. The project is replacing a former CVS pharmacy with over two hundred rental apartments between the Belmont and San Carlos Caltrain Stations. SummerHill Apartment Communities is the project developer.",
+    "url": "https://sfyimby.com/2026/07/groundbreaking-for-11-el-camino-real-san-carlos.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sancarlos",
+    "title": "Life Sciences Approved at 789 Old County Road, San Carlos",
+    "source": "SF YIMBY",
+    "date": "2025-10-20",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/10/789-Old-County-Road-pedestrian-view-rendering-by-DES-and-Pickard-Chilton.jpg",
+    "snippet": "Plans for a five-story life sciences project have been approved for 789 Old County Road in San Carlos, San Mateo County. The proposal will add two commercial buildings and an eight-story garage to a corner lot. The Minkoff Group is responsible for the development.",
+    "url": "https://sfyimby.com/2025/10/life-sciences-approved-at-789-old-county-road-san-carlos.html"
+  },
+  {
+    "topic": "housing",
+    "city": "sancarlos",
+    "title": "Groundbreaking for Cherry Street Commons Affordable Housing in San Carlos, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2025-04-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/04/1233-1242-Cherry-Street-rendering-by-Van-Meter-Williams-Pollack.jpg",
+    "snippet": "Construction has started for Cherry Street Commons, a new five-story affordable housing complex at 1232-1244 Cherry Street in San Carlos, San Mateo County. The development is expected to bring nearly three dozen units for low-income families, developed by the joint partnership of Eden Housing and HIP Housing. The groundbreaking ceremony was attended by the project team alongside Mayor Sara McDowel",
+    "url": "https://sfyimby.com/2025/04/groundbreaking-for-cherry-street-commons-affordable-housing-in-san-carlos-san-mateo-county.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sancarlos",
+    "title": "Environmental Review Starting For San Carlos Northeast Plan",
+    "source": "SF YIMBY",
+    "date": "2024-07-05",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/07/Northeast-Area-Specific-Plan-surrounding-context-illustration-via-City-of-San-Carlos.jpg",
+    "snippet": "There’s new progress in San Carlos’s bid to add nearly two thousand units to an industrial neighborhood close to the San Mateo County city’s Caltrain Station. The Northeast Area Specific Plan would rezone a 43-acre district for new housing. Earlier this week, the city published the notice of preparation for the Draft Environmental Impact Report (DEIR) and solicited public comment to inform the rev",
+    "url": "https://sfyimby.com/2024/07/environmental-review-starting-for-san-carlos-northeast-plan.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sancarlos",
+    "title": "San Carlos Approves Life Science Infill at 841 Old County Road",
+    "source": "SF YIMBY",
+    "date": "2023-10-22",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/10/841-Old-Country-Road-establishing-view-rendering-by-Studios-Architecture.jpg",
+    "snippet": "The San Carlos City Council has approved final plans for two Life Science buildings to rise at 841 Old County Road. While the San Mateo County city has seen several new life science projects rising, 841 Old County Road is the closest to the city’s Caltrain station, with more public open space than initially considered. The Sobrato Organization is the project developer.",
+    "url": "https://sfyimby.com/2023/10/san-carlos-approves-life-science-infill-at-841-old-county-road.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sancarlos",
+    "title": "Presidio Bay Ventures Tops Out On Life Science Project in San Carlos",
+    "source": "SF YIMBY",
+    "date": "2023-10-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/06/777-Industrial-Road-pedestrian-view-rendering-by-Stanton-Architecture.jpg",
+    "snippet": "Construction work has topped out with facade installation nearly complete for the four-story life science project at 777 Industrial Road in San Carlos, San Mateo County. The project rose quickly since our prior coverage in June last year when demolition had finished for everything but a single floor for adaptive reuse. Presidio Bay Ventures is the project developer, and W.L. Butler is the general",
+    "url": "https://sfyimby.com/2023/10/presidio-bay-ventures-tops-out-on-life-science-project-in-san-carlos.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sancarlos",
+    "title": "Construction Nearly Done for Life Sciences Project in San Carlos",
+    "source": "SF YIMBY",
+    "date": "2023-09-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/09/1091-Industrial-Road-rendering-by-Bogza-for-brick.jpg",
+    "snippet": "Construction is wrapping up for the latest life science development at 1091 Industrial Road in San Carlos, San Mateo County. The project is part of a new hub for the biotech and medical research market on the Peninsula. Premia Capital and Prince Street Partners were jointly responsible for the development before selling it to the Florida State Board of Administration in 2021 for $177 million.",
+    "url": "https://sfyimby.com/2023/09/construction-nearly-done-for-life-sciences-project-in-san-carlos.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sancarlos",
+    "title": "Construction Tops Out for 1030 Brittan Avenue, San Carlos",
+    "source": "SF YIMBY",
+    "date": "2023-09-25",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/09/1030-Brittan-Avenue-looking-east-rendering-by-MBH-Architects.jpg",
+    "snippet": "Construction has reached the third floor at 1030 Brittan Avenue in San Carlos, San Mateo County. The development is the third location in the city by MBC BioLabs and Dewey Land, close to their second location at 930 Brittan Avenue. Dewey Land purchased the site in early 2022 for $20 million.",
+    "url": "https://sfyimby.com/2023/09/construction-tops-out-for-1030-brittan-avenue-san-carlos.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sancarlos",
+    "title": "Plans Approved for Housing at 11 El Camino Real, San Carlos",
+    "source": "SF YIMBY",
+    "date": "2023-09-21",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/09/11-El-Camino-Real-rendering-by-KTGY.jpg",
+    "snippet": "Plans have been approved for the six-story apartment complex at 11 El Camino Real in San Carlos, San Mateo County. The proposal aims to replace a CVS Pharmacy and surface parking with 242 apartments. Palo Alto-based Summerhill is the project developer.",
+    "url": "https://sfyimby.com/2023/09/plans-approved-for-housing-at-11-el-camino-real-san-carlos.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sancarlos",
+    "title": "Excavation Underway for Life Sciences in San Carlos, San Mateo County",
+    "source": "SF YIMBY",
+    "date": "2023-09-19",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/09/405-Industrial-Road-establishing-view-rendering-by-Menlo-Equities.jpg",
+    "snippet": "Construction has started with excavation work well underway for a new six-story life sciences complex at 405 Industrial Road in San Carlos, San Mateo County. The project, now named ​​Portal 405, is one of several life science projects rising along Industrial Road, contributing to a new life sciences hub in the San Francisco Peninsula market. Menlo Equities and Beacon Capital Partners are joint ven",
+    "url": "https://sfyimby.com/2023/09/excavation-underway-for-life-sciences-in-san-carlos-san-mateo-county.html"
+  },
+  {
+    "topic": "housing",
+    "city": "sanmateo",
+    "title": "Townhouse Development Proposed at 1 Hayward Avenue, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-08-30",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/08/1-Hayward-Avenue-rendering-by-Haonan-Studio.jpg",
+    "snippet": "Plans have been published for a townhouse-style development at 1 Hayward Avenue in San Mateo, San Mateo County. The proposal would replace three single-story duplexes with ten larger residential units above a shared garage. DNL Real Estate Development is the property owner responsible for the development.",
+    "url": "https://sfyimby.com/2026/08/townhouse-development-proposed-at-1-hayward-avenue-san-mateo.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sanmateo",
+    "title": "Burger King Housing Planned at 2817 El Camino Real, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-08-11",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/08/2817-El-Camino-Real-rendering-by-RG-Architecture.jpg",
+    "snippet": "Plans have been filed to replace a Burger King restaurant with a dense housing project at 2817 El Camino Real in San Mateo, San Mateo County. The project is looking to add 151 new apartments to the corner lot, overlooking the Hillsdale Caltrain Station and near the Hillsdale Mall. Ghai Management is responsible for the development, filing through Livermore-based 1857 East Main Street LLC.",
+    "url": "https://sfyimby.com/2026/08/burger-king-housing-planned-at-2817-el-camino-real-san-mateo.html"
+  },
+  {
+    "topic": "housing",
+    "city": "sanmateo",
+    "title": "Preliminary Plans For 606 South Delaware Street, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-08-01",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/07/606-South-Delaware-Street-illustration-courtesy-San-Mateo-Planning-website.jpg",
+    "snippet": "Preliminary plans have been filed for a residential infill at 606 South Delaware Street near downtown San Mateo, San Mateo County. The project would replace a single-family home with 20 studio apartments. The property owners are listed as Gustavo Hornos and Jesica Salomon, two San Rafael-based individuals and stage winners at the 2011 USA Tango Championship.",
+    "url": "https://sfyimby.com/2026/08/preliminary-plans-for-606-south-delaware-street-san-mateo.html"
+  },
+  {
+    "topic": "housing",
+    "city": "sanmateo",
+    "title": "Updated Permits Approved for 690 Concar Drive in San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-07-30",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/07/690-Concar-Drive-Apartments-and-Townhomes-image-by-KTGY.png",
+    "snippet": "Updated zoning permits will allow progress on a proposed development at 640-690 Concar Drive in San Mateo. The permits approve the redevelopment of a largely vacant shopping center into new townhomes and apartments. This project was first reported on by SF YIMBY in March of 2025, but has since undergone several modifications. Brookfield Residential and The Pacific Companies are still responsible f",
+    "url": "https://sfyimby.com/2026/07/updated-permits-approved-for-690-concar-drive-in-san-mateo.html"
+  },
+  {
+    "topic": "housing",
+    "city": "sanmateo",
+    "title": "Updated Illustrations For 2555 Flores Street, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-07-18",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/07/2555-Flores-Street-establishing-view-rendering-by-DNA-Design-and-Architecture.jpg",
+    "snippet": "Updated illustrations have been published with a new plan set for 2555 Flores Street in San Mateo, San Mateo County. The project will replace a mid-century modern office complex with a seven-story apartment complex now expected to contain 80 apartments. Kapo Yeung of SM Flores LLC is listed as the project applicant.",
+    "url": "https://sfyimby.com/2026/07/updated-illustrations-for-2555-flores-street-san-mateo.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sanmateo",
+    "title": "Planning Commission Recommends Approval For 616 South B Street, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-06-22",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/616-South-B-Street-corner-view-rendering-by-ARC-TEC.jpg",
+    "snippet": "The San Mateo Planning Commission recommends approval for an eight-story mixed-use complex at 616 South B Street in downtown San Mateo. The application now looks to replace a vacated commercial structure with 94 rental apartments and retail space, a block away from Central Park. Nazareth Enterprises is responsible for the application as the property owner.",
+    "url": "https://sfyimby.com/2026/06/planning-commission-recommends-approval-for-616-south-b-street-san-mateo.html"
+  },
+  {
+    "topic": "housing",
+    "city": "sanmateo",
+    "title": "Housing Approved For 220 West 20th Avenue, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-06-18",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/220-West-20th-Avenue-rendering-by-BAR-Architects-Interior-scaled.jpg",
+    "snippet": "City Council has approved plans for a seven-story apartment complex at 220 West 20th Avenue in San Mateo, San Mateo County. The application was streamlined by Senate Bill 330, ensuring that the 232-unit project was exempt from CEQA review and standardized fees. Summerhill Apartment Communities is responsible for the development.",
+    "url": "https://sfyimby.com/2026/06/housing-approved-for-220-west-20th-avenue-san-mateo.html"
+  },
+  {
+    "topic": "housing",
+    "city": "sanmateo",
+    "title": "Updated Plans For 4095 Pacific Boulevard, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-06-14",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/4095-Pacific-Boulevard-rendering-by-AO-scaled.jpg",
+    "snippet": "Formal application permits have been filed for the six-story residential complex at 4095 Pacific Boulevard in San Mateo, San Mateo County. The development will produce 202 apartments on a corner lot close to the city’s border with Belmont. McLellan Company is the project applicant and property owner.",
+    "url": "https://sfyimby.com/2026/06/updated-plans-for-4095-pacific-boulevard-san-mateo.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "sanmateo",
+    "title": "Formal Application For 1919 O’Farrell Street, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-06-09",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/06/1919-OFarrell-Street-front-view-rendering-by-Design-Architecture-scaled.jpg",
+    "snippet": "Formal plans have been filed for a seven-story apartment complex at 1919 O’Farrell Street in San Mateo, San Mateo County. The proposal will bring 87 apartments at the end of a cul-de-sac between 20th Avenue and Highway 92. San Mateo-based Sierra Investments is listed as the project owner and applicant.",
+    "url": "https://sfyimby.com/2026/06/formal-application-for-1919-ofarrell-street-san-mateo.html"
+  },
+  {
+    "topic": "developments",
+    "city": "sanmateo",
+    "title": "Townhomes Approved For 2015 Pioneer Court, San Mateo",
+    "source": "SF YIMBY",
+    "date": "2026-05-14",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/05/2015-Pioneer-Court-rendering-by-Y.A.-Studio.jpg",
+    "snippet": "Plans have been approved for a townhouse development at 2015 Pioneer Court in San Mateo, San Mateo County. The project, dubbed Pioneer Vista Townhomes, will add ten apartments along West 20th Avenue, just a block off El Camino Real. Jack Boyajian of STILL Property Group is responsible for the application.",
+    "url": "https://sfyimby.com/2026/05/townhomes-approved-for-2015-pioneer-court-san-mateo.html"
+  },
+  {
+    "topic": "developments",
+    "city": "southsanfrancisco",
+    "title": "Meeting Tomorrow for Genentech gRED Center, South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2026-09-02",
+    "image": "https://sfyimby.com/wp-content/uploads/2026/09/gRED-Center-aerial-view-rendering-by-CannonDesign-and-Foster-Partners.jpg",
+    "snippet": "The South San Francisco Planning Commission is scheduled to review plans tomorrow evening for the first phase of the Genentech campus redevelopment in South San Francisco, San Mateo County. The proposal would expand the company’s presence in the East Side neighborhood, where it helped kick off one of the nation’s most significant industrial and life science hubs. The proposal is dubbed the Genente",
+    "url": "https://sfyimby.com/2026/09/meeting-tomorrow-for-genentech-gred-center-south-san-francisco.html"
+  },
+  {
+    "topic": "housing",
+    "city": "southsanfrancisco",
+    "title": "Infill Housing Proposed for 227 Armour Avenue, South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2025-08-07",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/08/227-Armour-Avenue-rendering-by-Andrea-Costanzo.jpg",
+    "snippet": "The South San Francisco Planning Commission is scheduled to review plans tomorrow evening for a three-story apartment complex at 227 Armour Avenue. The proposal would cover half of a small lot to add four units to a low-slung residential neighborhood. San Bruno-based Andrea Costanzo is responsible for the design.",
+    "url": "https://sfyimby.com/2025/08/infill-housing-proposed-for-227-armour-avenue-south-san-francisco.html"
+  },
+  {
+    "topic": "housing",
+    "city": "southsanfrancisco",
+    "title": "Construction Loan Secured For Alexan Icon, South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2025-07-31",
+    "image": "https://sfyimby.com/wp-content/uploads/2022/05/Previous-proposal-for-40-Airport-Boulevard-aerial-view-with-100-Produce-and-124-Airport-projects-illustrated-image-courtesy-Bella-Vista-Development.jpg",
+    "snippet": "Kennedy Wilson has provided a $183 million construction loan for Alexan Icon, a large residential development set to rise at 1587 and 1588 San Mateo Avenue in South San Francisco, San Mateo County. The project is looking to add nearly five hundred units across two seven-story structures. Hanover Company is the project developer.",
+    "url": "https://sfyimby.com/2025/07/construction-loan-secured-for-alexan-icon-south-san-francisco.html"
+  },
+  {
+    "topic": "developments",
+    "city": "southsanfrancisco",
+    "title": "Decade-long Extension Requested For 800 Dubuque Avenue, South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2025-07-23",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/06/800-Dubuque-Avenue-rendering-by-PerkinsWill.jpg",
+    "snippet": "The developer behind a proposed life-science campus is looking for a ten-year extension for the approved entitlements at 800-890 Dubuque Avenue in South San Francisco, San Mateo County. The request comes amid a fledgling market with record-high vacancies across the region. IQHQ is the project developer.",
+    "url": "https://sfyimby.com/2025/07/decade-long-extension-requested-for-800-dubuque-avenue-south-san-francisco.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "southsanfrancisco",
+    "title": "Meeting Tomorrow For Townhomes at 500 Railroad Avenue in South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2025-05-14",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/05/500-Railroad-Avenue-aerial-view-rendering-by-SIM-Architects.jpg",
+    "snippet": "The South San Francisco Planning Commission is scheduled to review plans tomorrow for an innovative townhouse development at 500 Railroad Avenue in South City, San Mateo County. The project will fit 70 units of housing into a narrow quarter-mile-long strip of land close to the Caltrain Station. Newlife Investments is responsible for the developer.",
+    "url": "https://sfyimby.com/2025/05/meeting-tomorrow-for-townhomes-at-500-railroad-avenue-in-south-san-francisco.html"
+  },
+  {
+    "topic": "housing",
+    "city": "southsanfrancisco",
+    "title": "Plans Approved For 40 Airport Boulevard, South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2025-04-29",
+    "image": "https://sfyimby.com/wp-content/uploads/2025/04/40-Airport-Boulevard-illustration-courtesy-of-Blake-Griggs-Properties.jpg",
+    "snippet": "New plans have been filed for the eight-story apartment complex at 40 Airport Boulevard in South San Francisco, San Mateo County. The latest approval reduces the overall capacity by one unit since our last coverage, now looking to add 291 units to an irregularly-shaped lot. Blake Griggs Properties is responsible for the application.",
+    "url": "https://sfyimby.com/2025/04/plans-approved-for-40-airport-boulevard-south-san-francisco.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "southsanfrancisco",
+    "title": "Construction Finishing For 889 McLellan Drive, South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2024-09-01",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/08/889-McLellan-Drive-rendering-by-EID-Architects.jpg",
+    "snippet": "Construction is finishing on a four-story residential building at 889 McLellan Drive in South San Francisco, San Mateo County. The project will bring twenty for sale apartments next to the South City BART Station, grocery stores, and the El Camino High School campus. Foster City-based resident Kathy Feng is listed as the property owner.",
+    "url": "https://sfyimby.com/2024/09/construction-finishing-for-889-mclellan-drive-south-san-francisco.html"
+  },
+  {
+    "topic": "developments",
+    "city": "southsanfrancisco",
+    "title": "Environmental Review Published For 131 Terminal Court, South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2024-06-21",
+    "image": "https://sfyimby.com/wp-content/uploads/2023/09/Outdated-Terminal-101-design-rendering-by-Carducci-Associates-landscape-architect.jpg",
+    "snippet": "The Environmental Impact Report has been published for 131 Terminal Court, an eye-catching research office proposal in South San Francisco, San Mateo County. The documents are a significant milestone for the project, which aims to create 1.7 million square feet of R&D space west of 101 and close to Tanforan Mall. Steelwave is the project developer.",
+    "url": "https://sfyimby.com/2024/06/environmental-review-published-for-131-terminal-court-south-san-francisco.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "southsanfrancisco",
+    "title": "Celeste Apartments Completed in South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2024-05-27",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/05/Celeste-apartments-aerial-view-image-by-Steven-Magner.jpg",
+    "snippet": "Sares Regis Group has celebrated the full opening of Celeste, a 195-unit apartment complex at 401 Cypress Avenue in South San Francisco, San Mateo County. The eight-story complex is located close to the city’s Caltrain Station and has already leased almost half of all units. The project is the latest of a handful of new apartments increasing the density of the predominantly suburban city.",
+    "url": "https://sfyimby.com/2024/05/celeste-apartments-completed-in-south-san-francisco.html"
+  },
+  {
+    "topic": "transportation",
+    "city": "southsanfrancisco",
+    "title": "Meeting Scheduled for 721 Airport Boulevard, South San Francisco",
+    "source": "SF YIMBY",
+    "date": "2024-05-11",
+    "image": "https://sfyimby.com/wp-content/uploads/2024/05/721-Airport-Boulevard.png",
+    "snippet": "A new residential project may be proposed for development at 721 Airport Boulevard in South San Francisco. The project proposal includes the construction of a four-story building offering residential units and onsite parking.",
+    "url": "https://sfyimby.com/2024/05/meeting-scheduled-for-721-airport-boulevard-south-san-francisco.html"
+  },
+  {
+    "topic": "developments",
+    "city": "woodside",
+    "title": "Speed limit drops to 15 mph in front of Woodside Elementary School",
+    "source": "The Almanac",
+    "date": "2026-08-17",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2017/05/21037_original-1-scaled.jpg",
+    "snippet": "Drivers on Woodside Road will have to slow down to 15 mph in front of Woodside Elementary School. As of Aug. 5, a new speed limit that has been in the works for years by the town’s Circulation Committee, took effect.",
+    "url": "https://www.almanacnews.com/woodside/2026/08/17/speed-limit-drops-to-15-mph-in-front-of-woodside-elementary-school/"
+  },
+  {
+    "topic": "developments",
+    "city": "woodside",
+    "title": "Guest opinion: Woodside’s ethics decision raises questions about accountability",
+    "source": "The Almanac",
+    "date": "2026-08-07",
+    "image": "https://www.almanacnews.com/wp-content/uploads/2024/01/67227_original.jpg",
+    "snippet": "Nothing in the July 28 agenda told a resident that the Woodside Town Council was about to resolve the only sustained finding against a sitting councilmember in an investigation that took four months and used considerable public money. Residents figured it out anyway, says Lexi Reese in this week’s guest opinion.",
+    "url": "https://www.almanacnews.com/guest-opinion/2026/08/07/guest-opinion-woodsides-ethics-decision-raises-questions-about-accountability/"
+  },
+  {
+    "topic": "developments",
+    "city": "woodside",
+    "title": "New candidates enter race for open seats on Woodside Town Council",
+    "source": "The Almanac",
+    "date": "2026-07-31",
+    "image": null,
+    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOLWtMVmk1QURoN0VEOTI2Y3hoTzg2OUZ0RjJ1bXRkQi1qenVxRWZ6NnJDc2s4V092a1NUN0ZpSVAyaldVeTJOblJYdWowRTB1NFpVVGNmOEtZTE9oa0l6Z01hZFBDWHFKdWJHelJ0aXk1YmVLbVR2WENFSE1hTUZFRjJTWFhWOEdxUEZELUM5UVcwa19pR3dfMEZiNkJyejUxZFZndmV1VTZpMVU0QWdUVTB0dXg4V0F6UVE?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "woodside",
+    "title": "Woodside and SoCal developer wrangle over 16-story housing project’s fate",
+    "source": "The Almanac",
+    "date": "2026-06-26",
+    "image": null,
+    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQTzkyNmZ3QlVwSkRDdHFlOENQTy1TT0QtaGNRRk5KdmY3VVV0U1RfclJBWmsxYndnS1lhYnF6Z3pLVkZ2aTlWY1VJUUJaWFlZNnV4STBwZUVEOERDdnRUREl1MUhKZENlcFN5SDlXWV91c0c2S1lqdjNzMDdpbmN5SUZWMFAweWxVMGJvYmFtVENqb3V3ZXM3RjZBdnhPcnpNRFhTMVNZNXFmdlNpaU1tbVk4aEFGcGNLNTE2Xzh3?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "woodside",
+    "title": "Woodside family struggles to build affordable housing for over 6 years",
+    "source": "The Almanac",
+    "date": "2025-11-19",
+    "image": null,
+    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNM2ROVno2a0pFVUEySUlVcW9YQlRLcW13eU9iMWF3X2UyUzVqd21PNVpsR0U2bnNiZDdPU3hBNVlJb3hvZzNuaHhXQWpWVDBqV3l1QmdEb2dSSG1HX2lGclcxZEJ1ZE85WHBOVk9obGhYbm9iSFhxZnQ3Z3FMYkNTUFV0NWFwODNSUUxENWZVYXFiOEZZLWhwUHQ3Rmx0MnVtUHR6clVzTlVwMlRLTVhsZ01ybnNkMjRWc2lF?oc=5"
+  },
+  {
+    "topic": "transportation",
+    "city": "woodside",
+    "title": "Woodside Town Council rezones 773 Cañada Road parcel",
+    "source": "The Almanac",
+    "date": "2025-02-19",
+    "image": null,
+    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOM2xoaDRhUk5DMjVLZmxwT19nRFZPRWlNQ1J2NXRZOXQ4OF9KM0UtVWhjWFpoLUQ4Mk84eGVBVHFIZldKOTlZc0F4NGpLU1l5RGtONVlrS0I1clh3aG9HQm9jRVJZRGh5WnRoU0k4cFJtNUFnTVptS2RlcGlhUXo3OHBsNHladzF6SHktYzRBQ1FocUFUb2VqZVhPT2xsUmIzNE1J?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "woodside",
+    "title": "State certifies Woodside’s housing element",
+    "source": "The Almanac",
+    "date": "2025-02-04",
+    "image": null,
+    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQRzkyTEMxNXdTbHhfXzlnT3Rsc2RlQ1puR2tKbDRNaXAxS1ZXeS1ncXhjU2xNWGpyb3pBdnFrSUZ3V1pFZE5EQXRXaG9HWFFJVlQ4ZGxsRURISTJFYlB4cmpsb3pxWVVCSTViME0yTUtiOG8ybjRDazMtX2tyblBMOC1HM0xDalF6YURRV1lGUDNQMnRT?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "woodside",
+    "title": "Woodside residents hire lawyers to challenge housing element process",
+    "source": "The Almanac",
+    "date": "2024-09-09",
+    "image": null,
+    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPYXFfb1ZJcjFUTl9VMDh0eUZqakFWcEVaRUoxelB4S0ZLWXUzcVJwYkpvckpKMHoxcjhWeUhHZXBzVl9GeTlnbFZ0T2RJS2x5WEZKb3RjSXhsaDFmQmktWEg1WUh6d2FVcmd5cl93ZzlpZVFYaWNMcFJ6Szd3Q0R2LUprejR6VzRjcG91YXQ5Yy1fZnB4bTdXM3BuZmczamhwcUtDdEpQMWdTRVY1RW9yZW9pQUM5RnJR?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "woodside",
+    "title": "Woodside Town Council concludes housing element public hearing amid outcry over plans",
+    "source": "The Almanac",
+    "date": "2024-08-08",
+    "image": null,
+    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQQmVXYVBkcVRaUmhXc2dCUi1PQ0dNSXlRT2dMSHpFTWtrRUs4UW4wdmdSVGozY3E5dE5ySkxKVDhmM2NreFU1a3dxbEEwN0x6b19WLTIwdzh2bzZaa0xCYXYyNHRxQi15S2pVZjY4cF9DSXNKcTlQamhnb1RuUVNlNG5mZkF1aEoxWXpxbzdvTWhESEFZc3prQlZxeUR0N2plRUU4bEloWndhOU53UG1zcnFrOU9WR1FHV3Bfb05MSnFMZlkzQVZiajU2d1NsTUU?oc=5"
+  },
+  {
+    "topic": "housing",
+    "city": "woodside",
+    "title": "Woodside Town Council feels pressure from state to get housing element certified",
+    "source": "The Almanac",
+    "date": "2024-07-26",
+    "image": null,
+    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVVFzUnJwWmJiekc1YVpMYzdoMENMSERULXRVWUg4NWZFc0NtZlZmSG9CM19NYXF0YnV4aGNfWDJVZzc5ZzJDd3hqR3U0d1I4Y29yS1FubmNKaWpKZjNMNkVlaGtER2lEdGZLaUhDMVI0clBUSWdLbFZqNUtCWUtiRUw5aUxYUkJqTkdCNXY0T1RaaTBDcGR1SUJNeE1ZbjRscXpqcVdSbWxpcXpUUXR4NGlibnV2aVJPZ256bjRVVUlFa0RQT0k0Zw?oc=5"
+  }
 ];
