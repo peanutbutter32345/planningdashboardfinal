@@ -528,7 +528,16 @@
     text-transform:uppercase; color:var(--text-soft); border-bottom:1px solid var(--rule);
     padding-bottom:4px; margin-bottom:6px;}
   .featured-groups .fcard{margin-bottom:6px;}
-  @media (max-width:1100px){ .hero-map{display:none;} }
+  /* This column holds the hero's only city picker, the "edit my area" link and the whole
+     calendar, not just the map. Hiding it below 1100px took all of that away on any laptop
+     narrower than that, so it reflows to a full-width band instead of disappearing. */
+  @media (max-width:1100px){
+    .hero-panels{flex-wrap:wrap;}
+    .hero-map{order:3; flex:1 1 100%; min-width:0;}
+    .hero-map-el{height:280px;}
+  }
+  /* Once the panels stack, the picker belongs above the long news list, not under it. */
+  @media (max-width:860px){ .hero-map{order:0;} }
   .hero-panels{display:flex; gap:20px; align-items:stretch; margin:30px 0 0;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
   .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
