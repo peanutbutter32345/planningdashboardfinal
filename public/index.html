@@ -50,7 +50,7 @@
   .wrap{max-width:1560px; margin:0 auto; padding:0 22px;}
   @media (max-width:640px){ .wrap{padding:0 16px;} }
 
-  /* The hero sits on a photograph of one of the thirteen cities, changing on the same rhythm as
+  /* The hero sits on a photograph of one of the covered cities, changing on the same rhythm as
      the featured stories. Two layers so one can fade in over the other. */
   .hero{position:relative; background:#1D2417; color:#fff; padding:46px 0 30px;
     border-bottom:3px solid var(--ink); overflow:hidden;}
@@ -75,6 +75,11 @@
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
 
   .city-switch{display:flex; gap:8px; margin-top:18px; flex-wrap:wrap;}
+  .city-group{display:flex; gap:8px; flex-wrap:wrap; align-items:center; width:100%;}
+  .city-group-label{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); width:100%; margin:6px 0 -2px;}
+  .onboard-cityfilter{font-family:'Open Sans',sans-serif; font-size:12.5px; padding:8px 11px; border:1.5px solid var(--rule); border-radius:2px; width:100%; margin-bottom:9px;}
+  .onboard-cityfilter:focus{outline:none; border-color:var(--ink);}
+  .onboard-cityempty{font-size:12.5px; color:var(--muted); padding:4px 0;}
   .city-tab{font-family:'Open Sans',sans-serif; font-size:13px; font-weight:600; padding:9px 16px; border-radius:2px; border:1.5px solid var(--ink); background:#fff; color:var(--ink); cursor:pointer;}
   .city-tab.active{background:var(--ink); border-color:var(--ink); color:#fff;}
   .snap-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
@@ -1360,9 +1365,9 @@
   <div class="wrap">
     <div class="hero-copy">
       <div class="nameplate">
-        <div class="np-kicker"><span>Santa Clara County</span><i></i><span>Public planning records</span></div>
+        <div class="np-kicker"><span id="npKickerCounty">Santa Clara &amp; San Mateo Counties</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1">South Bay</span><em class="np-l2">Civic Dashboard</em></h1>
-        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. Thirteen cities, from each city's own records.</p>
+        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. Thirty-three cities across Santa Clara and San Mateo counties, from each city's own records.</p>
       </div>
     </div>
 
@@ -1847,19 +1852,43 @@
               <label for="prefsCity" class="onboard-label" style="margin-top:12px;">Your city</label>
               <select id="prefsCity">
                 <option value="">No city preference</option>
-                <option value="sunnyvale">Sunnyvale</option>
-                <option value="cupertino">Cupertino</option>
-                <option value="mountainview">Mountain View</option>
-                <option value="milpitas">Milpitas</option>
-                <option value="losaltos">Los Altos</option>
-                <option value="saratoga">Saratoga</option>
-                <option value="westsanjose">West San Jose</option>
-                <option value="santaclara">Santa Clara</option>
-                <option value="losgatos">Los Gatos</option>
-                <option value="campbell">Campbell</option>
-                <option value="paloalto">Palo Alto</option>
-                <option value="gilroy">Gilroy</option>
-                <option value="morganhill">Morgan Hill</option>
+                <optgroup label="Santa Clara County">
+                  <option value="sunnyvale">Sunnyvale</option>
+                  <option value="cupertino">Cupertino</option>
+                  <option value="mountainview">Mountain View</option>
+                  <option value="milpitas">Milpitas</option>
+                  <option value="losaltos">Los Altos</option>
+                  <option value="saratoga">Saratoga</option>
+                  <option value="westsanjose">West San Jose</option>
+                  <option value="santaclara">Santa Clara</option>
+                  <option value="losgatos">Los Gatos</option>
+                  <option value="campbell">Campbell</option>
+                  <option value="paloalto">Palo Alto</option>
+                  <option value="gilroy">Gilroy</option>
+                  <option value="morganhill">Morgan Hill</option>
+                </optgroup>
+                <optgroup label="San Mateo County">
+                  <option value="atherton">Atherton</option>
+                  <option value="belmont">Belmont</option>
+                  <option value="brisbane">Brisbane</option>
+                  <option value="burlingame">Burlingame</option>
+                  <option value="colma">Colma</option>
+                  <option value="dalycity">Daly City</option>
+                  <option value="eastpaloalto">East Palo Alto</option>
+                  <option value="fostercity">Foster City</option>
+                  <option value="halfmoonbay">Half Moon Bay</option>
+                  <option value="hillsborough">Hillsborough</option>
+                  <option value="menlopark">Menlo Park</option>
+                  <option value="millbrae">Millbrae</option>
+                  <option value="pacifica">Pacifica</option>
+                  <option value="portolavalley">Portola Valley</option>
+                  <option value="redwoodcity">Redwood City</option>
+                  <option value="sanbruno">San Bruno</option>
+                  <option value="sancarlos">San Carlos</option>
+                  <option value="sanmateo">San Mateo</option>
+                  <option value="southsanfrancisco">South San Francisco</option>
+                  <option value="woodside">Woodside</option>
+                </optgroup>
               </select>
               <div class="auth-hint">Your city's news comes right after anything you've starred, ahead of the rest of the South Bay.</div>
               <label for="prefsFrequency" class="onboard-label" style="margin-top:12px;">How often</label>
@@ -1930,7 +1959,7 @@
     <div class="bank-mosaic" id="bankMosaic" aria-hidden="true"></div>
     <div class="bank-hero">
       <h2>Resource bank</h2>
-      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all thirteen cities.</p>
+      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all thirty-three cities.</p>
       <div class="bank-searchwrap">
         <input id="bankSearch" type="search" placeholder="Search anything: an address, a commission, &ldquo;builder&rsquo;s remedy&rdquo;, &ldquo;housing element&rdquo;, a street name&hellip;" autocomplete="off" aria-label="Search the resource bank" />
         <div class="bank-count" id="bankCount"></div>
@@ -1957,7 +1986,7 @@
       </div>
 
       
-      <p>This site collects what is being built across the South Bay and when the meetings that decide it take place. All of it is public information already. It is spread across thirteen city websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
+      <p>This site collects what is being built across the South Bay and when the meetings that decide it take place. All of it is public information already. It is spread across thirty-three city websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
 
       <h4>Where the data comes from</h4>
       <div class="bank-sources" id="bankSources"></div>
@@ -1971,7 +2000,7 @@
       <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Each project shows the city's own file number and links to the register it came from, where that number can be looked up.</p>
 
       <h4>What it covers</h4>
-      <p>Thirteen cities in Santa Clara County and the South Bay.</p>
+      <p>Thirty-three cities: all thirteen this site started with in Santa Clara County and the South Bay, plus all twenty cities and towns of San Mateo County.</p>
       <div class="about-mosaic" id="aboutMosaic"></div>
 
       <p class="about-credits" id="aboutCredits"></p>
@@ -2351,9 +2380,9 @@ const SV_DECIDERS = [
   {name:'City Council', when:'7 p.m. · at least two Tuesdays a month · Council Chambers', body:'Final say on appeals, development agreements, and rezonings.', link:'https://sunnyvaleca.legistar.com/Calendar.aspx'},
 ];
 const SV_JOIN = [
-  {name:'Housing &amp; Human Services Commission', when:'4th Wednesday, 7 p.m.', body:'Advises on housing policy - directly upstream of affordable-housing projects.', cat:'Housing', link:'https://www.sunnyvale.ca.gov/your-government/governance/boards-and-commissions'},
-  {name:'Bicycle &amp; Pedestrian Advisory Commission', when:'3rd Thursday, 6:30 p.m.', body:'Advises on bike/ped issues, including grade-separation projects.', cat:'Transportation', link:'https://www.sunnyvale.ca.gov/your-government/governance/boards-and-commissions'},
-  {name:'Sustainability Commission', when:'3rd Monday, 7 p.m.', body:'Advises on the Climate Action Playbook and General Plan sustainability goals.', cat:'Civic', link:'https://www.sunnyvale.ca.gov/your-government/governance/boards-and-commissions'},
+  {name:'Housing &amp; Human Services Commission', when:'4th Wednesday, 7 p.m.', body:'Advises on housing policy - directly upstream of affordable-housing projects.', cat:'Housing', link:'https://www.sunnyvale.ca.gov/your-government/governance/boards-and-commissions/apply-for-boards-and-commissions'},
+  {name:'Bicycle &amp; Pedestrian Advisory Commission', when:'3rd Thursday, 6:30 p.m.', body:'Advises on bike/ped issues, including grade-separation projects.', cat:'Transportation', link:'https://www.sunnyvale.ca.gov/your-government/governance/boards-and-commissions/apply-for-boards-and-commissions'},
+  {name:'Sustainability Commission', when:'3rd Monday, 7 p.m.', body:'Advises on the Climate Action Playbook and General Plan sustainability goals.', cat:'Civic', link:'https://www.sunnyvale.ca.gov/your-government/governance/boards-and-commissions/apply-for-boards-and-commissions'},
 ];
 const SV_SOURCES = ['City of Sunnyvale - New Development Update, June 2026', 'City of Sunnyvale - Infrastructure Projects pages', 'City of Sunnyvale - Boards and Commissions'];
 
@@ -2484,7 +2513,6 @@ const MP_DECIDERS = [
   {name:'City Council', when:'Check current agenda', body:'Final decision-maker on major approvals like the Metro Specific Plan and individual development projects.', link:'https://www.milpitas.gov/129/Agendas-Minutes'},
 ];
 const MP_JOIN = [
-  {name:'Planning Commission', when:'2nd &amp; 4th Wednesday, 7 p.m.', body:'Reviews development and design review applications before they reach Council.', cat:'Housing', link:'https://www.milpitas.gov/our-government/commission/planning-commission/'},
 ];
 const MP_SOURCES = ['City of Milpitas - Agendas &amp; Minutes', 'CEQAnet (California environmental review database), Milpitas filings', 'The Milpitas Beat and Mercury News reporting, 2021-2026', 'VTA - Milpitas Transit Center project pages'];
 
@@ -2512,7 +2540,6 @@ const LA_DECIDERS = [
   {name:'City Council', when:'Check current agenda · Council Chambers, 1 N. San Antonio Rd', body:'Final decision-maker on appeals and major approvals.', link:'https://www.losaltosca.gov/642/Agendas-and-Minutes'},
 ];
 const LA_JOIN = [
-  {name:'Planning Commission', when:'Check current agenda', body:'Reviews design and development applications before they reach Council.', cat:'Housing', link:'https://losaltosca.portal.civicclerk.com/'},
 ];
 const LA_SOURCES = ['City of Los Altos - Agendas and Minutes (CivicClerk)', 'City of Los Altos - Development Project List (uploaded city data export)', 'CEQAnet, Los Altos Housing Element filings', 'EAH Housing, Mountain View Voice, and Los Altos Online reporting, 2020-2026'];
 
@@ -2531,11 +2558,12 @@ const SAR_FEED = [
   {date:'2025-01-01', id:'sar-pierce-masson', title:'Pierce Rd (Masson Estates) - Appealed to Council', body:'25-unit Builder\'s Remedy project contested by neighbors.'},
 ];
 const SAR_DECIDERS = [
-  {name:'Planning Commission', when:'Check current agenda', body:'Reviews development applications, including the city\'s active Builder\'s Remedy filings.', link:'https://www.saratoga.ca.us/'},
-  {name:'City Council', when:'Check current agenda', body:'Final decision-maker on appeals, including the contested Pierce Road/Masson Estates project.', link:'https://www.saratoga.ca.us/'},
+  {name:'Planning Commission', when:'Check current agenda', body:'Reviews development applications, including the city\'s active Builder\'s Remedy filings.', link:'https://www.saratoga.ca.us/357/Planning-Commission'},
+  {name:'City Council', when:'Check current agenda', body:'Final decision-maker on appeals, including the contested Pierce Road/Masson Estates project.', link:'https://www.saratoga.ca.us/241/City-Council'},
 ];
 const SAR_JOIN = [
-  {name:'Parks and Recreation Commission', when:'Check current agenda', body:'Steers park redesign projects like Bellgrove Park.', cat:'Civic', link:'https://www.saratoga.ca.us/'},
+  {name:'Parks and Recreation Commission', when:'Check current agenda', body:'Steers park redesign projects like Bellgrove Park.', cat:'Civic', link:'https://www.saratoga.ca.us/364/Parks-Recreation-Commission'},
+  {name:'Commission Vacancies', when:'See the page for current openings', body:'Saratoga posts its open commission seats here.', cat:'Civic', link:'https://www.saratoga.ca.us/331/Vacancies'},
 ];
 const SAR_SOURCES = ['City of Saratoga - Current Projects page', 'City of Saratoga - Builder\'s Remedy Projects tracking page', 'The Real Deal reporting on Saratoga\'s Builder\'s Remedy deadline, 2024', 'City of Saratoga Planning Commission meeting summaries, 2026'];
 
@@ -3127,85 +3155,400 @@ const MH_DECIDERS = [
 ];
 const MH_JOIN = [
   {name:'Commissions & Boards', when:'See the city\'s commissions page for vacancies', body:'Advisory bodies residents can apply to serve on.', cat:'Civic', link:'https://www.morganhill.ca.gov/148/Commissions-Boards'},
-  {name:'Planning Commission', when:'Applications through the City Clerk', body:'The body that hears most land use applications.', cat:'Housing', link:'https://www.morganhill.ca.gov/569/Planning-Commission'},
 ];
 const MH_SOURCES = ['City of Morgan Hill - Development Services and Planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'Morgan Hill Times reporting, 2023-2026'];
 
+
+// ============== SAN MATEO COUNTY ==============
+// Twenty cities and towns. Housing targets come from the state's 6th Cycle progress report,
+// the figures from the Census and Zillow, and every link was fetched and answered 200.
+// None of them publishes a project feed this build can read, so no project register is
+// claimed for any of them - the same treatment Morgan Hill gets.
+const ATHERTON_DATA = [];
+const ATHERTON_FEED = [];
+const ATHERTON_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Atherton.', link:'https://www.athertonca.gov/143/Planning-Commission'},
+  {name:'Town Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Atherton.', link:'https://www.athertonca.gov/641/Agendas-Minutes'}
+];
+const ATHERTON_JOIN = [
+];
+const ATHERTON_SOURCES = ['City of Atherton official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const BELMONT_DATA = [];
+const BELMONT_FEED = [];
+const BELMONT_DECIDERS = [
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Belmont.', link:'https://www.belmont.gov/our-city/city-government/meetings-agendas-minutes'}
+];
+const BELMONT_JOIN = [
+  {name:'Commission Openings', when:'See the page for how appointments are made', body:'Belmont posts its current commission vacancies here.', cat:'Civic', link:'https://www.belmont.gov/services/participate/commission-openings'}
+];
+const BELMONT_SOURCES = ['City of Belmont official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const BRISBANE_DATA = [];
+const BRISBANE_FEED = [];
+const BRISBANE_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Brisbane.', link:'https://www.brisbaneca.gov/533/Planning-Commission'},
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Brisbane.', link:'https://www.brisbaneca.gov/742/Agendas-and-Minutes'}
+];
+const BRISBANE_JOIN = [
+];
+const BRISBANE_SOURCES = ['City of Brisbane official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const BURLINGAME_DATA = [];
+const BURLINGAME_FEED = [];
+const BURLINGAME_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Burlingame.', link:'https://www.burlingame.org/1003/Planning-Commission'}
+];
+const BURLINGAME_JOIN = [
+];
+const BURLINGAME_SOURCES = ['City of Burlingame official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const COLMA_DATA = [];
+const COLMA_FEED = [];
+const COLMA_DECIDERS = [
+  {name:'Town Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Colma.', link:'https://www.colma.ca.gov/city-council-meetings/'}
+];
+const COLMA_JOIN = [
+];
+const COLMA_SOURCES = ['City of Colma official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const DALYCITY_DATA = [];
+const DALYCITY_FEED = [];
+const DALYCITY_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Daly City.', link:'https://www.dalycity.org/369/Planning-Commission'},
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Daly City.', link:'https://www.dalycity.org/958/Notifications-for-City-Council-Agendas'}
+];
+const DALYCITY_JOIN = [
+];
+const DALYCITY_SOURCES = ['City of Daly City official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const EASTPALOALTO_DATA = [];
+const EASTPALOALTO_FEED = [];
+const EASTPALOALTO_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for East Palo Alto.', link:'https://www.cityofepa.org/bc-pc'},
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in East Palo Alto.', link:'https://www.cityofepa.org/agenda'}
+];
+const EASTPALOALTO_JOIN = [
+  {name:'Boards and Commissions', when:'See the page for how appointments are made', body:'The index of every East Palo Alto body, with how each one is appointed.', cat:'Civic', link:'https://www.cityofepa.org/bc'}
+];
+const EASTPALOALTO_SOURCES = ['City of East Palo Alto official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const FOSTERCITY_DATA = [];
+const FOSTERCITY_FEED = [];
+const FOSTERCITY_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Foster City. Linked to its public notices page.', link:'https://www.fostercity.org/1208/Planning-Commission-Public-Notices'},
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Foster City.', link:'https://www.fostercity.org/1215/Agendas-and-Minutes'}
+];
+const FOSTERCITY_JOIN = [
+];
+const FOSTERCITY_SOURCES = ['City of Foster City official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const HALFMOONBAY_DATA = [];
+const HALFMOONBAY_FEED = [];
+const HALFMOONBAY_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Half Moon Bay.', link:'https://www.halfmoonbay.gov/157/Planning-Commission'}
+];
+const HALFMOONBAY_JOIN = [
+];
+const HALFMOONBAY_SOURCES = ['City of Half Moon Bay official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const HILLSBOROUGH_DATA = [];
+const HILLSBOROUGH_FEED = [];
+const HILLSBOROUGH_DECIDERS = [
+  {name:'Town Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Hillsborough.', link:'https://www.hillsborough.net/501/City-Council-Agendas-Minutes'}
+];
+const HILLSBOROUGH_JOIN = [
+];
+const HILLSBOROUGH_SOURCES = ['City of Hillsborough official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const MENLOPARK_DATA = [];
+const MENLOPARK_FEED = [];
+const MENLOPARK_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Menlo Park.', link:'https://www.menlopark.gov/Government/Commissions/Planning-Commission'},
+  {name:'Housing Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Advises on housing policy and programs.', link:'https://www.menlopark.gov/Government/Commissions/Housing-Commission'},
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Menlo Park.', link:'https://www.menlopark.gov/Agendas-and-minutes'}
+];
+const MENLOPARK_JOIN = [
+];
+const MENLOPARK_SOURCES = ['City of Menlo Park official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const MILLBRAE_DATA = [];
+const MILLBRAE_FEED = [];
+const MILLBRAE_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Millbrae.', link:'https://www.ci.millbrae.ca.us/387/Planning-Commission'},
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Millbrae.', link:'https://www.ci.millbrae.ca.us/421/Agendas-Minutes'}
+];
+const MILLBRAE_JOIN = [
+];
+const MILLBRAE_SOURCES = ['City of Millbrae official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const PACIFICA_DATA = [];
+const PACIFICA_FEED = [];
+const PACIFICA_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Pacifica.', link:'https://www.cityofpacifica.org/departments/community-development/planning-commission'}
+];
+const PACIFICA_JOIN = [
+  {name:'Commissions & Committees', when:'See the page for how appointments are made', body:'The Pacifica apply-to-serve page for commissions and committees.', cat:'Civic', link:'https://www.cityofpacifica.org/i-want-to/apply-for/commissions-committees'}
+];
+const PACIFICA_SOURCES = ['City of Pacifica official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const PORTOLAVALLEY_DATA = [];
+const PORTOLAVALLEY_FEED = [];
+const PORTOLAVALLEY_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Portola Valley.', link:'https://www.portolavalley.net/town-government/planning-commission'},
+  {name:'Architectural & Site Control Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews building design and siting.', link:'https://www.portolavalley.net/town-government/architectural-site-control-commission'}
+];
+const PORTOLAVALLEY_JOIN = [
+];
+const PORTOLAVALLEY_SOURCES = ['City of Portola Valley official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const REDWOODCITY_DATA = [];
+const REDWOODCITY_FEED = [];
+const REDWOODCITY_DECIDERS = [
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Redwood City.', link:'https://www.redwoodcity.org/city-hall/city-council/city-council-meetings-agendas-and-minutes'}
+];
+const REDWOODCITY_JOIN = [
+  {name:'Boards, Commissions & Committees', when:'See the page for how appointments are made', body:'The index of every Redwood City body, with how each one is appointed.', cat:'Civic', link:'https://www.redwoodcity.org/departments/community-development-department/boards-committees-commissions'}
+];
+const REDWOODCITY_SOURCES = ['City of Redwood City official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const SANBRUNO_DATA = [];
+const SANBRUNO_FEED = [];
+const SANBRUNO_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for San Bruno.', link:'https://www.sanbruno.ca.gov/563/Planning-Commission'},
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in San Bruno.', link:'https://www.sanbruno.ca.gov/129/Agendas-Minutes'}
+];
+const SANBRUNO_JOIN = [
+];
+const SANBRUNO_SOURCES = ['City of San Bruno official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const SANCARLOS_DATA = [];
+const SANCARLOS_FEED = [];
+const SANCARLOS_DECIDERS = [
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in San Carlos.', link:'https://www.cityofsancarlos.org/city_hall/city_council/index.php'}
+];
+const SANCARLOS_JOIN = [
+  {name:'Boards and Commissions', when:'See the page for how appointments are made', body:'The index of every San Carlos body, with how each one is appointed.', cat:'Civic', link:'https://www.cityofsancarlos.org/city_hall/boards_and_commissions/index.php'}
+];
+const SANCARLOS_SOURCES = ['City of San Carlos official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const SANMATEO_DATA = [];
+const SANMATEO_FEED = [];
+const SANMATEO_DECIDERS = [
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in San Mateo.', link:'https://www.cityofsanmateo.org/3448/Agendas-Minutes'}
+];
+const SANMATEO_JOIN = [
+];
+const SANMATEO_SOURCES = ['City of San Mateo official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const SOUTHSANFRANCISCO_DATA = [];
+const SOUTHSANFRANCISCO_FEED = [];
+const SOUTHSANFRANCISCO_DECIDERS = [
+  {name:'City Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in South San Francisco.', link:'https://ci-ssf-ca.legistar.com/Calendar.aspx'}
+];
+const SOUTHSANFRANCISCO_JOIN = [
+  {name:'Boards & Commissions', when:'See the page for how appointments are made', body:'The index of every South San Francisco body, with how each one is appointed.', cat:'Civic', link:'https://www.ssfca.gov/Government/Boards-Commissions'},
+  {name:'Boards and Commissions Application', when:'See the page for how appointments are made', body:'The city application form for serving on a board or commission.', cat:'Civic', link:'https://www.ssfca.gov/Government/Boards-Commissions/Boards-and-Commissions-Application'}
+];
+const SOUTHSANFRANCISCO_SOURCES = ['City of South San Francisco official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+const WOODSIDE_DATA = [];
+const WOODSIDE_FEED = [];
+const WOODSIDE_DECIDERS = [
+  {name:'Planning Commission', when:'Check the current agenda - schedule not independently confirmed here', body:'Reviews land use applications for Woodside.', link:'https://www.woodsideca.gov/280/Planning-Commission'},
+  {name:'Town Council', when:'Check the current agenda - schedule not independently confirmed here', body:'Final say on land use in Woodside.', link:'https://www.woodsideca.gov/129/Agendas-Minutes'}
+];
+const WOODSIDE_JOIN = [
+];
+const WOODSIDE_SOURCES = ['City of Woodside official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
+
 const CITIES = {
-  sunnyvale: {label:'Sunnyvale', center:{lat:37.383,lng:-122.020}, zoom:12, bbox:{minLat:37.34,maxLat:37.43,minLng:-122.06,maxLng:-121.97}, data:SV_DATA, feed:SV_FEED, deciders:SV_DECIDERS, join:SV_JOIN, sources:SV_SOURCES, note:'Sample of 9 records from a fuller ~30-project city dataset - see the full single-city Sunnyvale build for the complete version.',
+  sunnyvale: {label:'Sunnyvale', center:{lat:37.383,lng:-122.020}, zoom:12, bbox:{minLat:37.34,maxLat:37.43,minLng:-122.06,maxLng:-121.97}, county:'Santa Clara', data:SV_DATA, feed:SV_FEED, deciders:SV_DECIDERS, join:SV_JOIN, sources:SV_SOURCES, note:'Sample of 9 records from a fuller ~30-project city dataset - see the full single-city Sunnyvale build for the complete version.',
     ctaLinks:[
       {label:"Official Sunnyvale project map (GIS)", url:'https://gis.sunnyvale.ca.gov/portal/apps/webappviewer/index.html?id=2f1aa0291ad04119b9a7f886067976d8'},
       {label:"Apply for a board or commission", url:'https://www.sunnyvale.ca.gov/your-government/governance/boards-and-commissions/apply-for-boards-and-commissions'},
       {label:"This week's public hearings", url:'https://www.sunnyvale.ca.gov/business-and-development/planning-and-building/current-public-hearings'},
       {label:'Full meeting calendar', url:'https://sunnyvaleca.legistar.com/Calendar.aspx'},
     ]},
-  cupertino: {label:'Cupertino', center:{lat:37.323,lng:-122.032}, zoom:12.5, bbox:{minLat:37.29,maxLat:37.34,minLng:-122.09,maxLng:-122.00}, data:CU_DATA, feed:CU_FEED, deciders:CU_DECIDERS, join:CU_JOIN, sources:CU_SOURCES, note:'Cupertino has been under Builder\'s Remedy exposure since its Housing Element was found non-compliant - several records above are direct results of that: stalled, inactive, or expired applications.',
+  cupertino: {label:'Cupertino', center:{lat:37.323,lng:-122.032}, zoom:12.5, bbox:{minLat:37.29,maxLat:37.34,minLng:-122.09,maxLng:-122.00}, county:'Santa Clara', data:CU_DATA, feed:CU_FEED, deciders:CU_DECIDERS, join:CU_JOIN, sources:CU_SOURCES, note:'Cupertino has been under Builder\'s Remedy exposure since its Housing Element was found non-compliant - several records above are direct results of that: stalled, inactive, or expired applications.',
     ctaLinks:[
       {label:'Official Cupertino Project Activity Map', url:'https://gis.cupertino.org/webmap/pam/'},
       {label:'See all commissions & vacancies', url:'https://www.cupertino.gov/Your-City/Commissions-and-Committees/Commission-Vacancies'},
       {label:'Teen Commission application', url:'https://apps.cupertino.org/teencommission/userapplication.aspx'},
       {label:'Full meeting calendar', url:'https://cupertino.legistar.com/Calendar.aspx'},
     ]},
-  mountainview: {label:'Mountain View', center:{lat:37.386,lng:-122.083}, zoom:12.5, bbox:{minLat:37.35,maxLat:37.42,minLng:-122.12,maxLng:-122.03}, data:MV_DATA, feed:MV_FEED, deciders:MV_DECIDERS, join:MV_JOIN, sources:MV_SOURCES, note:'Smallest sample of the three (3 projects) - Mountain View publishes a much longer bi-monthly report; this is a representative slice, not the full list. Citywide, ~3,600 approved units and ~4,900 under-review units exist beyond this sample (Hoodline, Mar. 2026).',
+  mountainview: {label:'Mountain View', center:{lat:37.386,lng:-122.083}, zoom:12.5, bbox:{minLat:37.35,maxLat:37.42,minLng:-122.12,maxLng:-122.03}, county:'Santa Clara', data:MV_DATA, feed:MV_FEED, deciders:MV_DECIDERS, join:MV_JOIN, sources:MV_SOURCES, note:'Smallest sample of the three (3 projects) - Mountain View publishes a much longer bi-monthly report; this is a representative slice, not the full list. Citywide, ~3,600 approved units and ~4,900 under-review units exist beyond this sample (Hoodline, Mar. 2026).',
     ctaLinks:[
       {label:'Official MV active projects (has email alerts!)', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/active-projects'},
       {label:'Apply to an advisory body', url:'https://www.mountainview.gov/our-city/city-council/boards-commissions-and-committees'},
       {label:'Youth Advisory Committee', url:'https://www.mountainview.gov/our-city/city-council/boards-commissions-and-committees/youth-advisory-committee'},
     ]},
-  milpitas: {label:'Milpitas', center:{lat:37.428,lng:-121.906}, zoom:12.5, bbox:{minLat:37.39,maxLat:37.47,minLng:-121.94,maxLng:-121.85}, data:MP_DATA, feed:MP_FEED, deciders:MP_DECIDERS, join:MP_JOIN, sources:MP_SOURCES, note:'Small sample centered on the Transit Area Specific Plan/Metro Plan area near BART - Milpitas has additional single-family and smaller projects not included in this sample.',
+  milpitas: {label:'Milpitas', center:{lat:37.428,lng:-121.906}, zoom:12.5, bbox:{minLat:37.39,maxLat:37.47,minLng:-121.94,maxLng:-121.85}, county:'Santa Clara', data:MP_DATA, feed:MP_FEED, deciders:MP_DECIDERS, join:MP_JOIN, sources:MP_SOURCES, note:'Small sample centered on the Transit Area Specific Plan/Metro Plan area near BART - Milpitas has additional single-family and smaller projects not included in this sample.',
     ctaLinks:[
       {label:'Official Milpitas Planning Project Pipeline (GIS)', url:'https://milpitas-gis-milpitas.hub.arcgis.com/apps/24fe9a09abcc4639913968f21309e510/explore'},
       {label:'Agendas & Minutes', url:'https://www.milpitas.gov/129/Agendas-Minutes'},
     ]},
-  losaltos: {label:'Los Altos', center:{lat:37.385,lng:-122.114}, zoom:13, bbox:{minLat:37.35,maxLat:37.41,minLng:-122.14,maxLng:-122.075}, data:LA_DATA, feed:LA_FEED, deciders:LA_DECIDERS, join:LA_JOIN, sources:LA_SOURCES, note:'Small sample - most of Los Altos\' permit activity is small-scale (additions, tree removals, ADUs) and isn\'t tracked here; this sample focuses on multi-unit and notable projects only. Los Altos\' RHNA target is 1,958 units through 2031.',
+  losaltos: {label:'Los Altos', center:{lat:37.385,lng:-122.114}, zoom:13, bbox:{minLat:37.35,maxLat:37.41,minLng:-122.14,maxLng:-122.075}, county:'Santa Clara', data:LA_DATA, feed:LA_FEED, deciders:LA_DECIDERS, join:LA_JOIN, sources:LA_SOURCES, note:'Small sample - most of Los Altos\' permit activity is small-scale (additions, tree removals, ADUs) and isn\'t tracked here; this sample focuses on multi-unit and notable projects only. Los Altos\' RHNA target is 1,958 units through 2031.',
     ctaLinks:[
       {label:'Official Los Altos project map (GIS)', url:'https://losaltos.maps.arcgis.com/apps/webappviewer/index.html?id=cc2d724e72af46dda3a03174b51ccd05'},
       {label:'Development Project List', url:'https://www.losaltosca.gov/222/Development-Project-Lists'},
       {label:'Agendas and Minutes', url:'https://losaltosca.portal.civicclerk.com/'},
     ]},
-  saratoga: {label:'Saratoga', center:{lat:37.264,lng:-122.023}, zoom:12.5, bbox:{minLat:37.24,maxLat:37.29,minLng:-122.07,maxLng:-121.99}, data:SAR_DATA, feed:SAR_FEED, deciders:SAR_DECIDERS, join:SAR_JOIN, sources:SAR_SOURCES, note:'Small sample - Saratoga has filed numerous additional Builder\'s Remedy applications (Chester/Allendale, Chiquita Ct, Douglass Ln, Mt Eden Rd, Parker Ranch Rd, Quito Rd, Surrey Ln, Three Oaks Way, Vickery Ave, and more) not individually tracked here due to incomplete address/unit data - see the official tracking page for the full list.',
+  saratoga: {label:'Saratoga', center:{lat:37.264,lng:-122.023}, zoom:12.5, bbox:{minLat:37.24,maxLat:37.29,minLng:-122.07,maxLng:-121.99}, county:'Santa Clara', data:SAR_DATA, feed:SAR_FEED, deciders:SAR_DECIDERS, join:SAR_JOIN, sources:SAR_SOURCES, note:'Small sample - Saratoga has filed numerous additional Builder\'s Remedy applications (Chester/Allendale, Chiquita Ct, Douglass Ln, Mt Eden Rd, Parker Ranch Rd, Quito Rd, Surrey Ln, Three Oaks Way, Vickery Ave, and more) not individually tracked here due to incomplete address/unit data - see the official tracking page for the full list.',
     ctaLinks:[
       {label:'Official Saratoga projects dashboard (GIS)', url:'https://www.arcgis.com/apps/dashboards/563a108925a14dd9882e716242cb4502'},
       {label:"Builder's Remedy Projects tracking page", url:'https://www.saratoga.ca.us/603/Builders-Remedy-Projects'},
       {label:'Current Projects', url:'https://www.saratoga.ca.us/649/Current-Projects'},
     ]},
-  westsanjose: {label:'West San Jose', center:{lat:37.305,lng:-121.975}, zoom:12.5, bbox:{minLat:37.28,maxLat:37.335,minLng:-121.999,maxLng:-121.945}, data:WSJ_DATA, feed:WSJ_FEED, deciders:WSJ_DECIDERS, join:WSJ_JOIN, sources:WSJ_SOURCES, note:'"West San Jose" is a district within the City of San Jose, not a separate incorporated city - San Jose itself is enormous (~1 million residents), so this sample deliberately covers only the Stevens Creek/Winchester/Saratoga Ave corridor, not the whole city.',
+  westsanjose: {label:'West San Jose', center:{lat:37.305,lng:-121.975}, zoom:12.5, bbox:{minLat:37.28,maxLat:37.335,minLng:-121.999,maxLng:-121.945}, county:'Santa Clara', data:WSJ_DATA, feed:WSJ_FEED, deciders:WSJ_DECIDERS, join:WSJ_JOIN, sources:WSJ_SOURCES, note:'"West San Jose" is a district within the City of San Jose, not a separate incorporated city - San Jose itself is enormous (~1 million residents), so this sample deliberately covers only the Stevens Creek/Winchester/Saratoga Ave corridor, not the whole city.',
     ctaLinks:[
       {label:'Official San Jose major projects map (GIS)', url:'https://csj.maps.arcgis.com/apps/instant/attachmentviewer/index.html?appid=95eb2c4821e54ff7b19a55278e742f85'},
       {label:'Major Development Projects', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects'},
       {label:'District 1 planning & policy', url:'https://www.sanjoseca.gov/your-government/departments-offices/mayor-and-city-council/district-1/projects-and-policy/planning'},
     ]},
-  losgatos: {label:'Los Gatos', center:{lat:37.2358,lng:-121.9624}, zoom:13, bbox:{minLat:37.20,maxLat:37.28,minLng:-122.00,maxLng:-121.93}, data:LG_DATA, feed:LG_FEED, deciders:LG_DECIDERS, join:LG_JOIN, sources:LG_SOURCES, note:'Every record here is an SB 330 housing application from the Town\'s own tracker, so this is the housing pipeline specifically rather than a general project list. Most carry Builder\'s Remedy, which Los Gatos is contesting in court - the flag on each card explains what that means.',
+  losgatos: {label:'Los Gatos', center:{lat:37.2358,lng:-121.9624}, zoom:13, bbox:{minLat:37.20,maxLat:37.28,minLng:-122.00,maxLng:-121.93}, county:'Santa Clara', data:LG_DATA, feed:LG_FEED, deciders:LG_DECIDERS, join:LG_JOIN, sources:LG_SOURCES, note:'Every record here is an SB 330 housing application from the Town\'s own tracker, so this is the housing pipeline specifically rather than a general project list. Most carry Builder\'s Remedy, which Los Gatos is contesting in court - the flag on each card explains what that means.',
     ctaLinks:[
       {label:'Town SB 330 application tracker', url:'https://www.losgatosca.gov/2875/Senate-Bill-SB-330'},
       {label:'Pending Planning Projects', url:'https://www.losgatosca.gov/2370/Pending-Planning-Projects'},
       {label:'Community Development', url:'https://www.losgatosca.gov/46/Community-Development'},
     ]},
-  campbell: {label:'Campbell', center:{lat:37.2872,lng:-121.9500}, zoom:13, bbox:{minLat:37.26,maxLat:37.31,minLng:-121.98,maxLng:-121.92}, data:CAM_DATA, feed:CAM_FEED, deciders:CAM_DECIDERS, join:CAM_JOIN, sources:CAM_SOURCES, note:'Campbell publishes current Public Works projects but not a machine-readable housing pipeline, so this city covers infrastructure and civic projects rather than development applications. Housing filings for Campbell are not tracked here yet.',
+  campbell: {label:'Campbell', center:{lat:37.2872,lng:-121.9500}, zoom:13, bbox:{minLat:37.26,maxLat:37.31,minLng:-121.98,maxLng:-121.92}, county:'Santa Clara', data:CAM_DATA, feed:CAM_FEED, deciders:CAM_DECIDERS, join:CAM_JOIN, sources:CAM_SOURCES, note:'Campbell publishes current Public Works projects but not a machine-readable housing pipeline, so this city covers infrastructure and civic projects rather than development applications. Housing filings for Campbell are not tracked here yet.',
     ctaLinks:[
       {label:'Public Works project updates', url:'https://www.campbellca.gov/563/Project-Updates'},
       {label:'Community Development', url:'https://www.campbellca.gov/151/Community-Development'},
     ]},
-  paloalto: {label:'Palo Alto', center:{lat:37.4300,lng:-122.1400}, zoom:12.5, bbox:{minLat:37.38,maxLat:37.47,minLng:-122.20,maxLng:-122.09}, data:PA_DATA, feed:PA_FEED, deciders:PA_DECIDERS, join:PA_JOIN, sources:PA_SOURCES, note:'These come from the housing pipeline layer behind Palo Alto\'s public housing dashboard, which is a Housing Element site inventory snapshot rather than a live permit feed. Statuses therefore lag the counter, and this is the housing pipeline specifically, not every application in the city.',
+  paloalto: {label:'Palo Alto', center:{lat:37.4300,lng:-122.1400}, zoom:12.5, bbox:{minLat:37.38,maxLat:37.47,minLng:-122.20,maxLng:-122.09}, county:'Santa Clara', data:PA_DATA, feed:PA_FEED, deciders:PA_DECIDERS, join:PA_JOIN, sources:PA_SOURCES, note:'These come from the housing pipeline layer behind Palo Alto\'s public housing dashboard, which is a Housing Element site inventory snapshot rather than a live permit feed. Statuses therefore lag the counter, and this is the housing pipeline specifically, not every application in the city.',
     ctaLinks:[
       {label:'Current Planning Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Current-Planning/Projects'},
       {label:'Housing Policies & Projects', url:'https://www.paloalto.gov/Departments/Planning-Development-Services/Housing-Policies-Projects'},
       {label:'Boards & Commissions', url:'https://www.paloalto.gov/City-Hall/Boards-Commissions'},
     ]},
-  gilroy: {label:'Gilroy', center:{lat:37.0090,lng:-121.5683}, zoom:12.5, bbox:{minLat:36.97,maxLat:37.05,minLng:-121.63,maxLng:-121.53}, data:GIL_DATA, feed:GIL_FEED, deciders:GIL_DECIDERS, join:GIL_JOIN, sources:GIL_SOURCES, note:'Gilroy publishes a curated list of significant projects rather than a full permit feed, so this is the city\'s own shortlist across residential, commercial and industrial. Three records carry no published street address; their markers sit on the centre of Gilroy and say so.',
+  gilroy: {label:'Gilroy', center:{lat:37.0090,lng:-121.5683}, zoom:12.5, bbox:{minLat:36.97,maxLat:37.05,minLng:-121.63,maxLng:-121.53}, county:'Santa Clara', data:GIL_DATA, feed:GIL_FEED, deciders:GIL_DECIDERS, join:GIL_JOIN, sources:GIL_SOURCES, note:'Gilroy publishes a curated list of significant projects rather than a full permit feed, so this is the city\'s own shortlist across residential, commercial and industrial. Three records carry no published street address; their markers sit on the centre of Gilroy and say so.',
     ctaLinks:[
       {label:'Development Activity Projects', url:'https://www.cityofgilroy.org/298/Development-Activity-Projects'},
       {label:'Planning Division', url:'https://www.cityofgilroy.org/269/Planning'},
       {label:'Boards & Commissions', url:'https://www.cityofgilroy.org/165/Boards-Commissions-Committees'},
     ]},
-  morganhill: {label:'Morgan Hill', center:{lat:37.1305,lng:-121.6544}, zoom:12.5, bbox:{minLat:37.09,maxLat:37.18,minLng:-121.71,maxLng:-121.60}, data:MH_DATA, feed:MH_FEED, deciders:MH_DECIDERS, join:MH_JOIN, sources:MH_SOURCES, note:'Morgan Hill has no public machine-readable project pipeline, so there is no project register here yet - the one available scrape returned City Hall\'s address for every record and was discarded rather than published. News, boards, official links and state housing-target progress are real. Morgan Hill has permitted 63.6% of its state housing target, the highest rate of any city tracked here.',
+  morganhill: {label:'Morgan Hill', center:{lat:37.1305,lng:-121.6544}, zoom:12.5, bbox:{minLat:37.09,maxLat:37.18,minLng:-121.71,maxLng:-121.60}, county:'Santa Clara', data:MH_DATA, feed:MH_FEED, deciders:MH_DECIDERS, join:MH_JOIN, sources:MH_SOURCES, note:'Morgan Hill has no public machine-readable project pipeline, so there is no project register here yet - the one available scrape returned City Hall\'s address for every record and was discarded rather than published. News, boards, official links and state housing-target progress are real. Morgan Hill has permitted 63.6% of its state housing target, the highest rate of any city tracked here.',
     ctaLinks:[
       {label:'Development Services', url:'https://www.morganhill.ca.gov/151/Development-Services'},
       {label:'Planning Documents, Maps and Data', url:'https://www.morganhill.ca.gov/662/Planning-Documents-Maps-and-Data'},
       {label:'RHNA Progress', url:'https://www.morganhill.ca.gov/2640/Regional-Housing-Needs-Allocation-Progre'},
       {label:'Council agendas, minutes & video', url:'https://www.morganhill.ca.gov/1343/Council-Agenda-Minutes-Video'},
     ]},
-  santaclara: {label:'Santa Clara', center:{lat:37.362,lng:-121.965}, zoom:12.3, bbox:{minLat:37.32,maxLat:37.42,minLng:-122.01,maxLng:-121.92}, data:SC_DATA, feed:SC_FEED, deciders:SC_DECIDERS, join:SC_JOIN, sources:SC_SOURCES, note:'The most complete city in this tracker: all 53 records come straight from Santa Clara\'s own development-activity GIS layer, the same source behind the city\'s public story map. Because that layer publishes a year rather than milestone dates, the change feed is coarser here than in the hand-researched cities.',
+  // ---- San Mateo County ----
+  atherton: {label:'Atherton', center:{lat:37.4613,lng:-122.1977}, zoom:13.5, bbox:{minLat:37.416,maxLat:37.506,minLng:-122.253,maxLng:-122.143}, data:ATHERTON_DATA, feed:ATHERTON_FEED, deciders:ATHERTON_DECIDERS, join:ATHERTON_JOIN, sources:ATHERTON_SOURCES, county:'San Mateo', note:'Atherton has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Atherton has permitted 144 of its 348-home target for this cycle, 41.4%.',
+    ctaLinks:[
+      {label:'Planning', url:'https://www.athertonca.gov/199/Planning'},
+      {label:'Major Projects', url:'https://www.athertonca.gov/207/Major-Projects'},
+      {label:'2014-22 Housing Element Update', url:'https://www.athertonca.gov/356/2014-22-Housing-Element-Update'},
+      {label:'Agendas & Minutes', url:'https://www.athertonca.gov/641/Agendas-Minutes'},
+    ]},
+  belmont: {label:'Belmont', center:{lat:37.5202,lng:-122.2758}, zoom:13, bbox:{minLat:37.475,maxLat:37.565,minLng:-122.331,maxLng:-122.221}, data:BELMONT_DATA, feed:BELMONT_FEED, deciders:BELMONT_DECIDERS, join:BELMONT_JOIN, sources:BELMONT_SOURCES, county:'San Mateo', note:'Belmont has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Belmont has permitted 241 of its 1,785-home target for this cycle, 13.5%.',
+    ctaLinks:[
+      {label:'Community Development', url:'https://www.belmont.gov/departments/community-development'},
+      {label:'Major Development Projects', url:'https://www.belmont.gov/departments/community-development/major-development-projects'},
+      {label:'Housing', url:'https://www.belmont.gov/departments/administrative-services/housing'},
+      {label:'Meetings, Agendas & Minutes', url:'https://www.belmont.gov/our-city/city-government/meetings-agendas-minutes'},
+    ]},
+  brisbane: {label:'Brisbane', center:{lat:37.6805,lng:-122.3999}, zoom:13.5, bbox:{minLat:37.636,maxLat:37.726,minLng:-122.455,maxLng:-122.345}, data:BRISBANE_DATA, feed:BRISBANE_FEED, deciders:BRISBANE_DECIDERS, join:BRISBANE_JOIN, sources:BRISBANE_SOURCES, county:'San Mateo', note:'Brisbane has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Brisbane has permitted 19 of its 1,588-home target for this cycle, 1.2%.',
+    ctaLinks:[
+      {label:'Planning', url:'https://www.brisbaneca.gov/224/Planning'},
+      {label:'2023 to 2031 Housing Element', url:'https://www.brisbaneca.gov/374/2023-to-2031-Housing-Element'},
+      {label:'Agendas and Minutes', url:'https://www.brisbaneca.gov/742/Agendas-and-Minutes'},
+    ]},
+  burlingame: {label:'Burlingame', center:{lat:37.5841,lng:-122.3661}, zoom:13, bbox:{minLat:37.539,maxLat:37.629,minLng:-122.421,maxLng:-122.311}, data:BURLINGAME_DATA, feed:BURLINGAME_FEED, deciders:BURLINGAME_DECIDERS, join:BURLINGAME_JOIN, sources:BURLINGAME_SOURCES, county:'San Mateo', note:'Burlingame has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Burlingame has permitted 957 of its 3,257-home target for this cycle, 29.4%.',
+    ctaLinks:[
+      {label:'Planning Division', url:'https://www.burlingame.org/1310/Planning-Division'},
+      {label:'Planning Projects', url:'https://www.burlingame.org/1092/Planning-Projects'},
+      {label:'Housing Element', url:'https://www.burlingame.org/1037/Housing-Element'},
+      {label:'Planning Commission Agendas & Minutes', url:'https://www.burlingame.org/1091/Planning-Commission-Agendas-Minutes'},
+    ]},
+  colma: {label:'Colma', center:{lat:37.6769,lng:-122.4553}, zoom:14, bbox:{minLat:37.632,maxLat:37.722,minLng:-122.510,maxLng:-122.400}, data:COLMA_DATA, feed:COLMA_FEED, deciders:COLMA_DECIDERS, join:COLMA_JOIN, sources:COLMA_SOURCES, county:'San Mateo', note:'Colma has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Colma has permitted 1 of its 202-home target for this cycle, 0.5%.',
+    ctaLinks:[
+      {label:'Planning Department', url:'https://www.colma.ca.gov/departments/planning/'},
+      {label:'Housing Element', url:'https://www.colma.ca.gov/housing-element/'},
+      {label:'Affordable Housing', url:'https://www.colma.ca.gov/affordable-housing/'},
+      {label:'City Council Agendas', url:'https://www.colma.ca.gov/city-council-meetings/'},
+    ]},
+  dalycity: {label:'Daly City', center:{lat:37.6879,lng:-122.4702}, zoom:12.5, bbox:{minLat:37.643,maxLat:37.733,minLng:-122.525,maxLng:-122.415}, data:DALYCITY_DATA, feed:DALYCITY_FEED, deciders:DALYCITY_DECIDERS, join:DALYCITY_JOIN, sources:DALYCITY_SOURCES, county:'San Mateo', note:'Daly City has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Daly City has permitted 263 of its 4,838-home target for this cycle, 5.4%.',
+    ctaLinks:[
+      {label:'Planning', url:'https://www.dalycity.org/208/Planning'},
+      {label:'Current Planning Projects', url:'https://www.dalycity.org/1019/Current-Planning-Projects'},
+      {label:'Housing Element (RHNA6)', url:'https://www.dalycity.org/1288/Housing-Element-RHNA6'},
+      {label:'Notifications for City Council Agendas', url:'https://www.dalycity.org/958/Notifications-for-City-Council-Agendas'},
+    ]},
+  eastpaloalto: {label:'East Palo Alto', center:{lat:37.4688,lng:-122.1411}, zoom:13.5, bbox:{minLat:37.424,maxLat:37.514,minLng:-122.196,maxLng:-122.086}, data:EASTPALOALTO_DATA, feed:EASTPALOALTO_FEED, deciders:EASTPALOALTO_DECIDERS, join:EASTPALOALTO_JOIN, sources:EASTPALOALTO_SOURCES, county:'San Mateo', note:'East Palo Alto has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: East Palo Alto has permitted 80 of its 829-home target for this cycle, 9.7%.',
+    ctaLinks:[
+      {label:'Planning', url:'https://www.cityofepa.org/planning'},
+      {label:'Community & Economic Development', url:'https://www.cityofepa.org/econdev'},
+      {label:'Housing', url:'https://www.cityofepa.org/housing'},
+      {label:'City Meetings', url:'https://www.cityofepa.org/agenda'},
+    ]},
+  fostercity: {label:'Foster City', center:{lat:37.5585,lng:-122.2711}, zoom:13, bbox:{minLat:37.514,maxLat:37.604,minLng:-122.326,maxLng:-122.216}, data:FOSTERCITY_DATA, feed:FOSTERCITY_FEED, deciders:FOSTERCITY_DECIDERS, join:FOSTERCITY_JOIN, sources:FOSTERCITY_SOURCES, county:'San Mateo', note:'Foster City has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Foster City has permitted 38 of its 1,896-home target for this cycle, 2.0%.',
+    ctaLinks:[
+      {label:'Planning Division', url:'https://www.fostercity.org/374/Planning-Division'},
+      {label:'Public Works Major Projects', url:'https://www.fostercity.org/1280/Public-Works-Major-Projects'},
+      {label:'Housing Element Update - Cycle 6', url:'https://www.fostercity.org/1001/Housing-Element-Update---Cycle-6'},
+      {label:'Agendas and Minutes', url:'https://www.fostercity.org/1215/Agendas-and-Minutes'},
+    ]},
+  halfmoonbay: {label:'Half Moon Bay', center:{lat:37.4636,lng:-122.4286}, zoom:12, bbox:{minLat:37.419,maxLat:37.509,minLng:-122.484,maxLng:-122.374}, data:HALFMOONBAY_DATA, feed:HALFMOONBAY_FEED, deciders:HALFMOONBAY_DECIDERS, join:HALFMOONBAY_JOIN, sources:HALFMOONBAY_SOURCES, county:'San Mateo', note:'Half Moon Bay has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Half Moon Bay has permitted 120 of its 480-home target for this cycle, 25.0%.',
+    ctaLinks:[
+      {label:'Planning Division FAQs', url:'https://www.halfmoonbay.gov/162/Planning-Division-FAQs'},
+      {label:'Planning Projects', url:'https://www.halfmoonbay.gov/648/Planning-Projects'},
+      {label:'Housing Element Update 2023-2031', url:'https://www.halfmoonbay.gov/775/Housing-Element-Update-2023-2031'},
+      {label:'Planning Commission Agendas', url:'https://www.halfmoonbay.gov/314/Planning-Commission-Agendas'},
+    ]},
+  hillsborough: {label:'Hillsborough', center:{lat:37.5741,lng:-122.3794}, zoom:13, bbox:{minLat:37.529,maxLat:37.619,minLng:-122.434,maxLng:-122.324}, data:HILLSBOROUGH_DATA, feed:HILLSBOROUGH_FEED, deciders:HILLSBOROUGH_DECIDERS, join:HILLSBOROUGH_JOIN, sources:HILLSBOROUGH_SOURCES, county:'San Mateo', note:'Hillsborough has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Hillsborough has permitted 153 of its 554-home target for this cycle, 27.6%.',
+    ctaLinks:[
+      {label:'Planning Division', url:'https://www.hillsborough.net/241/Planning-Division'},
+      {label:'General Plan & Housing Element', url:'https://www.hillsborough.net/267/General-Plan-Housing-Element'},
+      {label:'City Council Agendas & Minutes', url:'https://www.hillsborough.net/501/City-Council-Agendas-Minutes'},
+    ]},
+  menlopark: {label:'Menlo Park', center:{lat:37.453,lng:-122.1817}, zoom:13, bbox:{minLat:37.408,maxLat:37.498,minLng:-122.237,maxLng:-122.127}, data:MENLOPARK_DATA, feed:MENLOPARK_FEED, deciders:MENLOPARK_DECIDERS, join:MENLOPARK_JOIN, sources:MENLOPARK_SOURCES, county:'San Mateo', note:'Menlo Park has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Menlo Park has permitted 348 of its 2,946-home target for this cycle, 11.8%.',
+    ctaLinks:[
+      {label:'Community Development', url:'https://www.menlopark.gov/Government/Departments/Community-Development'},
+      {label:'Development projects', url:'https://www.menlopark.gov/Government/Departments/Community-Development/Projects'},
+      {label:'Housing resources', url:'https://www.menlopark.gov/Community/Community-resources/Housing-resources'},
+      {label:'Agendas and minutes', url:'https://www.menlopark.gov/Agendas-and-minutes'},
+    ]},
+  millbrae: {label:'Millbrae', center:{lat:37.5985,lng:-122.3872}, zoom:13.5, bbox:{minLat:37.553,maxLat:37.644,minLng:-122.442,maxLng:-122.332}, data:MILLBRAE_DATA, feed:MILLBRAE_FEED, deciders:MILLBRAE_DECIDERS, join:MILLBRAE_JOIN, sources:MILLBRAE_SOURCES, county:'San Mateo', note:'Millbrae has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Millbrae has permitted 403 of its 2,199-home target for this cycle, 18.3%.',
+    ctaLinks:[
+      {label:'Planning Division', url:'https://www.ci.millbrae.ca.us/177/Planning-Division'},
+      {label:'Active Development Projects', url:'https://www.ci.millbrae.ca.us/215/Active-Development-Projects'},
+      {label:'Certified Housing Element', url:'https://www.ci.millbrae.ca.us/269/Certified-Housing-Element'},
+      {label:'Agendas & Minutes', url:'https://www.ci.millbrae.ca.us/421/Agendas-Minutes'},
+    ]},
+  pacifica: {label:'Pacifica', center:{lat:37.6138,lng:-122.4869}, zoom:12, bbox:{minLat:37.569,maxLat:37.659,minLng:-122.542,maxLng:-122.432}, data:PACIFICA_DATA, feed:PACIFICA_FEED, deciders:PACIFICA_DECIDERS, join:PACIFICA_JOIN, sources:PACIFICA_SOURCES, county:'San Mateo', note:'Pacifica has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Pacifica has permitted 64 of its 1,892-home target for this cycle, 3.4%.',
+    ctaLinks:[
+      {label:'Planning Division', url:'https://www.cityofpacifica.org/departments/community-development/planning-division'},
+      {label:'Community Development', url:'https://www.cityofpacifica.org/departments/community-development'},
+      {label:'Housing Initiatives and Resources', url:'https://www.cityofpacifica.org/departments/community-development/affordable-housing'},
+      {label:'Committee / Commission Meeting Materials', url:'https://www.cityofpacifica.org/i-want-to/view/committee-commission-meeting-materials'},
+    ]},
+  portolavalley: {label:'Portola Valley', center:{lat:37.3841,lng:-122.2352}, zoom:13, bbox:{minLat:37.339,maxLat:37.429,minLng:-122.290,maxLng:-122.180}, data:PORTOLAVALLEY_DATA, feed:PORTOLAVALLEY_FEED, deciders:PORTOLAVALLEY_DECIDERS, join:PORTOLAVALLEY_JOIN, sources:PORTOLAVALLEY_SOURCES, county:'San Mateo', note:'Portola Valley has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Portola Valley has permitted 46 of its 253-home target for this cycle, 18.2%.',
+    ctaLinks:[
+      {label:'Planning & Building Department', url:'https://www.portolavalley.net/departments/planning-building-department'},
+    ]},
+  redwoodcity: {label:'Redwood City', center:{lat:37.4852,lng:-122.2364}, zoom:12.5, bbox:{minLat:37.440,maxLat:37.530,minLng:-122.291,maxLng:-122.181}, data:REDWOODCITY_DATA, feed:REDWOODCITY_FEED, deciders:REDWOODCITY_DECIDERS, join:REDWOODCITY_JOIN, sources:REDWOODCITY_SOURCES, county:'San Mateo', note:'Redwood City has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Redwood City has permitted 1,151 of its 4,588-home target for this cycle, 25.1%.',
+    ctaLinks:[
+      {label:'Planning Division', url:'https://www.redwoodcity.org/departments/community-development-department/planning-housing/planning-services'},
+      {label:'City Development Projects', url:'https://www.redwoodcity.org/city-hall/current-projects/development-projects'},
+      {label:'Housing Services', url:'https://www.redwoodcity.org/departments/community-development-and-transportation/housing-services'},
+      {label:'City Council Meetings, Agendas and Minutes', url:'https://www.redwoodcity.org/city-hall/city-council/city-council-meetings-agendas-and-minutes'},
+    ]},
+  sanbruno: {label:'San Bruno', center:{lat:37.6305,lng:-122.4111}, zoom:13, bbox:{minLat:37.585,maxLat:37.675,minLng:-122.466,maxLng:-122.356}, data:SANBRUNO_DATA, feed:SANBRUNO_FEED, deciders:SANBRUNO_DECIDERS, join:SANBRUNO_JOIN, sources:SANBRUNO_SOURCES, county:'San Mateo', note:'San Bruno has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: San Bruno has permitted 586 of its 3,165-home target for this cycle, 18.5%.',
+    ctaLinks:[
+      {label:'Planning Division', url:'https://www.sanbruno.ca.gov/222/Planning-Division'},
+      {label:'Planning Projects Dashboard', url:'https://www.sanbruno.ca.gov/1147/Planning-Projects-Dashboard'},
+      {label:'2023-2031 Housing Element', url:'https://www.sanbruno.ca.gov/568/2023-2031-Housing-Element'},
+      {label:'Agendas & Minutes', url:'https://www.sanbruno.ca.gov/129/Agendas-Minutes'},
+    ]},
+  sancarlos: {label:'San Carlos', center:{lat:37.5072,lng:-122.2605}, zoom:13, bbox:{minLat:37.462,maxLat:37.552,minLng:-122.316,maxLng:-122.205}, data:SANCARLOS_DATA, feed:SANCARLOS_FEED, deciders:SANCARLOS_DECIDERS, join:SANCARLOS_JOIN, sources:SANCARLOS_SOURCES, county:'San Mateo', note:'San Carlos has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: San Carlos has permitted 152 of its 2,735-home target for this cycle, 5.6%.',
+    ctaLinks:[
+      {label:'Planning Division', url:'https://www.cityofsancarlos.org/city_hall/departments_and_divisions/community_development/planning/index.php'},
+      {label:'Affordable Housing and Resources', url:'https://www.cityofsancarlos.org/city_hall/departments_and_divisions/community_development/housing/affordable_housing_and_resources/index.php'},
+    ]},
+  sanmateo: {label:'San Mateo', center:{lat:37.563,lng:-122.3255}, zoom:12.5, bbox:{minLat:37.518,maxLat:37.608,minLng:-122.381,maxLng:-122.270}, data:SANMATEO_DATA, feed:SANMATEO_FEED, deciders:SANMATEO_DECIDERS, join:SANMATEO_JOIN, sources:SANMATEO_SOURCES, county:'San Mateo', note:'San Mateo has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: San Mateo has permitted 559 of its 7,015-home target for this cycle, 8.0%.',
+    ctaLinks:[
+      {label:'Community Development', url:'https://www.cityofsanmateo.org/3591/Community-Development'},
+      {label:'Current Development Projects', url:'https://www.cityofsanmateo.org/3450/Current-Development-Projects'},
+      {label:'Housing Element', url:'https://www.cityofsanmateo.org/4480/Housing-Element'},
+      {label:'Agendas & Minutes', url:'https://www.cityofsanmateo.org/3448/Agendas-Minutes'},
+    ]},
+  southsanfrancisco: {label:'South San Francisco', center:{lat:37.6547,lng:-122.4077}, zoom:12.5, bbox:{minLat:37.610,maxLat:37.700,minLng:-122.463,maxLng:-122.353}, data:SOUTHSANFRANCISCO_DATA, feed:SOUTHSANFRANCISCO_FEED, deciders:SOUTHSANFRANCISCO_DECIDERS, join:SOUTHSANFRANCISCO_JOIN, sources:SOUTHSANFRANCISCO_SOURCES, county:'San Mateo', note:'South San Francisco has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: South San Francisco has permitted 1,487 of its 3,956-home target for this cycle, 37.6%.',
+    ctaLinks:[
+      {label:'Economic and Community Development', url:'https://www.ssfca.gov/Departments/Economic-and-Community-Development'},
+      {label:'Meeting Agendas', url:'https://ci-ssf-ca.legistar.com/Calendar.aspx'},
+    ]},
+  woodside: {label:'Woodside', center:{lat:37.4297,lng:-122.2539}, zoom:12, bbox:{minLat:37.385,maxLat:37.475,minLng:-122.309,maxLng:-122.199}, data:WOODSIDE_DATA, feed:WOODSIDE_FEED, deciders:WOODSIDE_DECIDERS, join:WOODSIDE_JOIN, sources:WOODSIDE_SOURCES, county:'San Mateo', note:'Woodside has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Woodside has permitted 96 of its 328-home target for this cycle, 29.3%.',
+    ctaLinks:[
+      {label:'Planning', url:'https://www.woodsideca.gov/214/Planning'},
+      {label:'Housing Element Review Process', url:'https://www.woodsideca.gov/352/Housing-Element-Review-Process'},
+      {label:'Agendas & Minutes', url:'https://www.woodsideca.gov/129/Agendas-Minutes'},
+    ]},
+  santaclara: {label:'Santa Clara', center:{lat:37.362,lng:-121.965}, zoom:12.3, bbox:{minLat:37.32,maxLat:37.42,minLng:-122.01,maxLng:-121.92}, county:'Santa Clara', data:SC_DATA, feed:SC_FEED, deciders:SC_DECIDERS, join:SC_JOIN, sources:SC_SOURCES, note:'The most complete city in this tracker: all 53 records come straight from Santa Clara\'s own development-activity GIS layer, the same source behind the city\'s public story map. Because that layer publishes a year rather than milestone dates, the change feed is coarser here than in the hand-researched cities.',
     ctaLinks:[
       {label:'Official Santa Clara development map (GIS)', url:'https://www.santaclaraca.gov/our-city/departments-a-f/community-development/planning-division/development-activity'},
       {label:'Projects Listing', url:'https://www.santaclaraca.gov/business-development/development-projects/projects-listing'},
@@ -3272,13 +3615,25 @@ function filtered(){
 }
 
 function renderCitySwitch(){
-  const orderedEntries = [['all', CITIES.all], ...Object.entries(CITIES).filter(([k])=>k!=='all')];
-  document.getElementById('citySwitch').innerHTML = orderedEntries.map(([key,c])=>
-    `<button class="city-tab${key===currentCity?' active':''}" data-city="${key}" aria-pressed="${key===currentCity}">${c.label} <span class="mono" style="opacity:.7">(${c.data.length})</span></button>`
-  ).join('');
+  const tab = ([key,c]) => `<button class="city-tab${key===currentCity?' active':''}" data-city="${key}" aria-pressed="${key===currentCity}">${c.label} <span class="mono" style="opacity:.7">(${c.data.length})</span></button>`;
+  // 33 cities is too many for one undifferentiated row, so they sit under their county.
+  const byCounty = (name) => Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===name);
+  document.getElementById('citySwitch').innerHTML =
+    tab(['all', CITIES.all])
+    + ['Santa Clara','San Mateo'].map(cty=>{
+        const rows = byCounty(cty);
+        if(!rows.length) return '';
+        return `<div class="city-group"><span class="city-group-label">${cty} County</span>${rows.map(tab).join('')}</div>`;
+      }).join('');
   document.querySelectorAll('.city-tab').forEach(btn=>{
     btn.addEventListener('click', ()=>{ switchCity(btn.getAttribute('data-city')); });
   });
+  // The kicker names the county you are actually looking at, not the one the site started in.
+  const kick = document.getElementById('npKickerCounty');
+  if(kick){
+    const cty = CITIES[currentCity] && CITIES[currentCity].county;
+    kick.textContent = cty ? cty + ' County' : 'Santa Clara & San Mateo Counties';
+  }
   document.getElementById('snapRow').innerHTML = `<span class="pill">Snapshot: Jul 24, 2026</span><span class="pill">${DATA().length} records shown for ${CITIES[currentCity].label}</span><span class="pill">Sample for demonstration - not each city's full active list</span>`;
   renderQuickLinks();
 }
@@ -3661,6 +4016,181 @@ function renderFeed(){
 // those were confirmed by loading each page in a browser and reading its title instead.
 // Palo Alto moved off cityofpaloalto.org to paloalto.gov - the old host no longer serves these.
 const OFFICIAL_LINKS = {
+  // ---- San Mateo County. Every URL below was fetched and answered 200. ----
+  atherton: [
+    {cat:'Planning Hub', title:'Planning', url:'https://www.athertonca.gov/199/Planning', note:'Official Atherton page.'},
+    {cat:'Development Projects', title:'Major Projects', url:'https://www.athertonca.gov/207/Major-Projects', note:'Official Atherton page.'},
+    {cat:'Housing', title:'2014-22 Housing Element Update', url:'https://www.athertonca.gov/356/2014-22-Housing-Element-Update', note:'Official Atherton page.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.athertonca.gov/208/General-Plan', note:'Official Atherton page.'},
+    {cat:'Zoning', title:'Zoning Map', url:'https://www.athertonca.gov/209/Zoning-Map', note:'Official Atherton page.'},
+    {cat:'Permits', title:'Permit Center', url:'https://www.athertonca.gov/715/Permit-Center', note:'Official Atherton page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.athertonca.gov/143/Planning-Commission', note:'Official Atherton page.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.athertonca.gov/641/Agendas-Minutes', note:'Official Atherton page.'},
+  ],
+  belmont: [
+    {cat:'Planning Hub', title:'Community Development', url:'https://www.belmont.gov/departments/community-development', note:'Official Belmont page.'},
+    {cat:'Development Projects', title:'Major Development Projects', url:'https://www.belmont.gov/departments/community-development/major-development-projects', note:'Official Belmont page.'},
+    {cat:'Housing', title:'Housing', url:'https://www.belmont.gov/departments/administrative-services/housing', note:'Official Belmont page.'},
+    {cat:'Land Use', title:'2035 General Plan', url:'https://www.belmont.gov/departments/community-development/2035-general-plan-update', note:'Official Belmont page.'},
+    {cat:'Zoning', title:'Zoning Ordinance', url:'https://www.belmont.gov/departments/community-development/zoning-ordinance', note:'Official Belmont page.'},
+    {cat:'Permits', title:'Permit Center', url:'https://www.belmont.gov/departments/community-development/permit-center', note:'Official Belmont page.'},
+    {cat:'Meetings', title:'Meetings, Agendas & Minutes', url:'https://www.belmont.gov/our-city/city-government/meetings-agendas-minutes', note:'Official Belmont page.'},
+    {cat:'Boards', title:'Commission Openings', url:'https://www.belmont.gov/services/participate/commission-openings', note:'Official Belmont page.'},
+  ],
+  brisbane: [
+    {cat:'Planning Hub', title:'Planning', url:'https://www.brisbaneca.gov/224/Planning', note:'Official Brisbane page.'},
+    {cat:'Housing', title:'2023 to 2031 Housing Element', url:'https://www.brisbaneca.gov/374/2023-to-2031-Housing-Element', note:'Official Brisbane page.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.brisbaneca.gov/273/General-Plan', note:'Official Brisbane page.'},
+    {cat:'Zoning', title:'Zoning Information', url:'https://www.brisbaneca.gov/266/Zoning-Information', note:'Official Brisbane page.'},
+    {cat:'Permits', title:'Building Permits', url:'https://www.brisbaneca.gov/258/Building-Permits', note:'Official Brisbane page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.brisbaneca.gov/533/Planning-Commission', note:'Official Brisbane page.'},
+    {cat:'Meetings', title:'Agendas and Minutes', url:'https://www.brisbaneca.gov/742/Agendas-and-Minutes', note:'Official Brisbane page.'},
+  ],
+  burlingame: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.burlingame.org/1310/Planning-Division', note:'Official Burlingame page.'},
+    {cat:'Development Projects', title:'Planning Projects', url:'https://www.burlingame.org/1092/Planning-Projects', note:'Official Burlingame page.'},
+    {cat:'Housing', title:'Housing Element', url:'https://www.burlingame.org/1037/Housing-Element', note:'Official Burlingame page.'},
+    {cat:'Land Use', title:'General Plan Update', url:'https://www.burlingame.org/1089/General-Plan-Update', note:'Official Burlingame page.'},
+    {cat:'Zoning', title:'Zoning Map', url:'https://www.burlingame.org/687/Zoning-Map', note:'Official Burlingame page.'},
+    {cat:'Permits', title:'Permit Center', url:'https://www.burlingame.org/580/Permit-Center', note:'Official Burlingame page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.burlingame.org/1003/Planning-Commission', note:'Official Burlingame page.'},
+    {cat:'Meetings', title:'Planning Commission Agendas & Minutes', url:'https://www.burlingame.org/1091/Planning-Commission-Agendas-Minutes', note:'Official Burlingame page.'},
+  ],
+  colma: [
+    {cat:'Planning Hub', title:'Planning Department', url:'https://www.colma.ca.gov/departments/planning/', note:'Official Colma page.'},
+    {cat:'Housing', title:'Housing Element', url:'https://www.colma.ca.gov/housing-element/', note:'Official Colma page.'},
+    {cat:'Housing', title:'Affordable Housing', url:'https://www.colma.ca.gov/affordable-housing/', note:'Official Colma page.'},
+    {cat:'Land Use', title:'2040 General Plan', url:'https://www.colma.ca.gov/2040-general-plan/', note:'Official Colma page.'},
+    {cat:'Zoning', title:'Zoning Ordinance', url:'https://www.colma.ca.gov/documents/cmc-5-03-zoning/', note:'Official Colma page.'},
+    {cat:'Land Use', title:'Plans and Studies', url:'https://www.colma.ca.gov/plans-and-studies/', note:'Official Colma page.'},
+    {cat:'Permits', title:'Forms & Handouts', url:'https://www.colma.ca.gov/permits-applications-3/', note:'Official Colma page.'},
+    {cat:'Meetings', title:'City Council Agendas', url:'https://www.colma.ca.gov/city-council-meetings/', note:'Official Colma page.'},
+  ],
+  dalycity: [
+    {cat:'Planning Hub', title:'Planning', url:'https://www.dalycity.org/208/Planning', note:'Official Daly City page.'},
+    {cat:'Development Projects', title:'Current Planning Projects', url:'https://www.dalycity.org/1019/Current-Planning-Projects', note:'Official Daly City page.'},
+    {cat:'Housing', title:'Housing Element (RHNA6)', url:'https://www.dalycity.org/1288/Housing-Element-RHNA6', note:'Official Daly City page.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.dalycity.org/1016/General-Plan', note:'Official Daly City page.'},
+    {cat:'Zoning', title:'Zoning Ordinance', url:'https://www.dalycity.org/1015/Zoning-Ordinance', note:'Official Daly City page.'},
+    {cat:'Permits', title:'Building Permits', url:'https://www.dalycity.org/862/Building-Permits', note:'Official Daly City page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.dalycity.org/369/Planning-Commission', note:'Official Daly City page.'},
+    {cat:'Meetings', title:'Notifications for City Council Agendas', url:'https://www.dalycity.org/958/Notifications-for-City-Council-Agendas', note:'Official Daly City page.'},
+  ],
+  eastpaloalto: [
+    {cat:'Planning Hub', title:'Planning', url:'https://www.cityofepa.org/planning', note:'Official East Palo Alto page.'},
+    {cat:'Planning Hub', title:'Community & Economic Development', url:'https://www.cityofepa.org/econdev', note:'Official East Palo Alto page.'},
+    {cat:'Housing', title:'Housing', url:'https://www.cityofepa.org/housing', note:'Official East Palo Alto page.'},
+    {cat:'Permits', title:'Permit Center', url:'https://www.cityofepa.org/building', note:'Official East Palo Alto page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.cityofepa.org/bc-pc', note:'Official East Palo Alto page.'},
+    {cat:'Boards', title:'Boards and Commissions', url:'https://www.cityofepa.org/bc', note:'Official East Palo Alto page.'},
+    {cat:'Meetings', title:'City Meetings', url:'https://www.cityofepa.org/agenda', note:'Official East Palo Alto page.'},
+  ],
+  fostercity: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.fostercity.org/374/Planning-Division', note:'Official Foster City page.'},
+    {cat:'Development Projects', title:'Public Works Major Projects', url:'https://www.fostercity.org/1280/Public-Works-Major-Projects', note:'Official Foster City page.'},
+    {cat:'Housing', title:'Housing Element Update - Cycle 6', url:'https://www.fostercity.org/1001/Housing-Element-Update---Cycle-6', note:'Official Foster City page.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.fostercity.org/1191/General-Plan', note:'Official Foster City page.'},
+    {cat:'Zoning', title:'Zoning Map', url:'https://www.fostercity.org/1180/Zoning-Map', note:'Official Foster City page.'},
+    {cat:'Permits', title:'Online Permit Center', url:'https://www.fostercity.org/1188/Online-Permit-Center', note:'Official Foster City page.'},
+    {cat:'Boards', title:'Planning Commission Public Notices', url:'https://www.fostercity.org/1208/Planning-Commission-Public-Notices', note:'Official Foster City page.'},
+    {cat:'Meetings', title:'Agendas and Minutes', url:'https://www.fostercity.org/1215/Agendas-and-Minutes', note:'Official Foster City page.'},
+  ],
+  halfmoonbay: [
+    {cat:'Planning Hub', title:'Planning Division FAQs', url:'https://www.halfmoonbay.gov/162/Planning-Division-FAQs', note:'Official Half Moon Bay page.'},
+    {cat:'Development Projects', title:'Planning Projects', url:'https://www.halfmoonbay.gov/648/Planning-Projects', note:'Official Half Moon Bay page.'},
+    {cat:'Housing', title:'Housing Element Update 2023-2031', url:'https://www.halfmoonbay.gov/775/Housing-Element-Update-2023-2031', note:'Official Half Moon Bay page.'},
+    {cat:'Land Use', title:'Long Range Planning / General Plan', url:'https://www.halfmoonbay.gov/153/Long-Range-Planning-General-Plan', note:'Official Half Moon Bay page.'},
+    {cat:'Permits', title:'Applying for a Building Permit', url:'https://www.halfmoonbay.gov/181/Applying-for-a-Building-Permit', note:'Official Half Moon Bay page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.halfmoonbay.gov/157/Planning-Commission', note:'Official Half Moon Bay page.'},
+    {cat:'Meetings', title:'Planning Commission Agendas', url:'https://www.halfmoonbay.gov/314/Planning-Commission-Agendas', note:'Official Half Moon Bay page.'},
+  ],
+  hillsborough: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.hillsborough.net/241/Planning-Division', note:'Official Hillsborough page.'},
+    {cat:'Housing', title:'General Plan & Housing Element', url:'https://www.hillsborough.net/267/General-Plan-Housing-Element', note:'Official Hillsborough page.'},
+    {cat:'Permits', title:'Building Permits', url:'https://www.hillsborough.net/140/Building-Permits', note:'Official Hillsborough page.'},
+    {cat:'Meetings', title:'City Council Agendas & Minutes', url:'https://www.hillsborough.net/501/City-Council-Agendas-Minutes', note:'Official Hillsborough page.'},
+  ],
+  menlopark: [
+    {cat:'Planning Hub', title:'Community Development', url:'https://www.menlopark.gov/Government/Departments/Community-Development', note:'Official Menlo Park page.'},
+    {cat:'Development Projects', title:'Development projects', url:'https://www.menlopark.gov/Government/Departments/Community-Development/Projects', note:'Official Menlo Park page.'},
+    {cat:'Housing', title:'Housing resources', url:'https://www.menlopark.gov/Community/Community-resources/Housing-resources', note:'Official Menlo Park page.'},
+    {cat:'Permits', title:'Building permits', url:'https://www.menlopark.gov/Government/Departments/Community-Development/Building', note:'Official Menlo Park page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.menlopark.gov/Government/Commissions/Planning-Commission', note:'Official Menlo Park page.'},
+    {cat:'Boards', title:'Housing Commission', url:'https://www.menlopark.gov/Government/Commissions/Housing-Commission', note:'Official Menlo Park page.'},
+    {cat:'Meetings', title:'Agendas and minutes', url:'https://www.menlopark.gov/Agendas-and-minutes', note:'Official Menlo Park page.'},
+  ],
+  millbrae: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.ci.millbrae.ca.us/177/Planning-Division', note:'Official Millbrae page.'},
+    {cat:'Development Projects', title:'Active Development Projects', url:'https://www.ci.millbrae.ca.us/215/Active-Development-Projects', note:'Official Millbrae page.'},
+    {cat:'Housing', title:'Certified Housing Element', url:'https://www.ci.millbrae.ca.us/269/Certified-Housing-Element', note:'Official Millbrae page.'},
+    {cat:'Land Use', title:'Millbrae 2040 General Plan', url:'https://www.ci.millbrae.ca.us/268/Millbrae-2040-General-Plan', note:'Official Millbrae page.'},
+    {cat:'Permits', title:'Building Permit', url:'https://www.ci.millbrae.ca.us/210/Building-Permit', note:'Official Millbrae page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.ci.millbrae.ca.us/387/Planning-Commission', note:'Official Millbrae page.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.ci.millbrae.ca.us/421/Agendas-Minutes', note:'Official Millbrae page.'},
+  ],
+  pacifica: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.cityofpacifica.org/departments/community-development/planning-division', note:'Official Pacifica page.'},
+    {cat:'Planning Hub', title:'Community Development', url:'https://www.cityofpacifica.org/departments/community-development', note:'Official Pacifica page.'},
+    {cat:'Housing', title:'Housing Initiatives and Resources', url:'https://www.cityofpacifica.org/departments/community-development/affordable-housing', note:'Official Pacifica page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.cityofpacifica.org/departments/community-development/planning-commission', note:'Official Pacifica page.'},
+    {cat:'Boards', title:'Commissions & Committees', url:'https://www.cityofpacifica.org/i-want-to/apply-for/commissions-committees', note:'Official Pacifica page.'},
+    {cat:'Meetings', title:'Committee / Commission Meeting Materials', url:'https://www.cityofpacifica.org/i-want-to/view/committee-commission-meeting-materials', note:'Official Pacifica page.'},
+    {cat:'Permits', title:'Permits and Licenses', url:'https://www.cityofpacifica.org/i-want-to/apply-for/permits-and-licenses', note:'Official Pacifica page.'},
+  ],
+  portolavalley: [
+    {cat:'Planning Hub', title:'Planning & Building Department', url:'https://www.portolavalley.net/departments/planning-building-department', note:'Official Portola Valley page.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.portolavalley.net/town-government/general-plan', note:'Official Portola Valley page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.portolavalley.net/town-government/planning-commission', note:'Official Portola Valley page.'},
+    {cat:'Boards', title:'Architectural & Site Control Commission', url:'https://www.portolavalley.net/town-government/architectural-site-control-commission', note:'Official Portola Valley page.'},
+    {cat:'Permits', title:'Applications and Checklists', url:'https://www.portolavalley.net/departments/planning-building-department/resource-center/applications-checklists', note:'Official Portola Valley page.'},
+  ],
+  redwoodcity: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.redwoodcity.org/departments/community-development-department/planning-housing/planning-services', note:'Official Redwood City page.'},
+    {cat:'Development Projects', title:'City Development Projects', url:'https://www.redwoodcity.org/city-hall/current-projects/development-projects', note:'Official Redwood City page.'},
+    {cat:'Housing', title:'Housing Services', url:'https://www.redwoodcity.org/departments/community-development-and-transportation/housing-services', note:'Official Redwood City page.'},
+    {cat:'Permits', title:'Apply for a Permit', url:'https://www.redwoodcity.org/departments/community-development-department/apply-for-a-permit-status-of-applications', note:'Official Redwood City page.'},
+    {cat:'Boards', title:'Boards, Commissions & Committees', url:'https://www.redwoodcity.org/departments/community-development-department/boards-committees-commissions', note:'Official Redwood City page.'},
+    {cat:'Meetings', title:'City Council Meetings, Agendas and Minutes', url:'https://www.redwoodcity.org/city-hall/city-council/city-council-meetings-agendas-and-minutes', note:'Official Redwood City page.'},
+  ],
+  sanbruno: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.sanbruno.ca.gov/222/Planning-Division', note:'Official San Bruno page.'},
+    {cat:'Development Projects', title:'Planning Projects Dashboard', url:'https://www.sanbruno.ca.gov/1147/Planning-Projects-Dashboard', note:'Official San Bruno page.'},
+    {cat:'Housing', title:'2023-2031 Housing Element', url:'https://www.sanbruno.ca.gov/568/2023-2031-Housing-Element', note:'Official San Bruno page.'},
+    {cat:'Land Use', title:'General Plan', url:'https://www.sanbruno.ca.gov/629/General-Plan', note:'Official San Bruno page.'},
+    {cat:'Permits', title:'Apply for a Building Permit', url:'https://www.sanbruno.ca.gov/273/Apply-for-a-Building-Permit', note:'Official San Bruno page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.sanbruno.ca.gov/563/Planning-Commission', note:'Official San Bruno page.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.sanbruno.ca.gov/129/Agendas-Minutes', note:'Official San Bruno page.'},
+  ],
+  sancarlos: [
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.cityofsancarlos.org/city_hall/departments_and_divisions/community_development/planning/index.php', note:'Official San Carlos page.'},
+    {cat:'Housing', title:'Affordable Housing and Resources', url:'https://www.cityofsancarlos.org/city_hall/departments_and_divisions/community_development/housing/affordable_housing_and_resources/index.php', note:'Official San Carlos page.'},
+    {cat:'Permits', title:'Permits', url:'https://www.cityofsancarlos.org/services/permits.php', note:'Official San Carlos page.'},
+    {cat:'Permits', title:'Permit Portal', url:'https://sancarlosca-energovweb.tylerhost.net/apps/selfservice#/home', note:'Official San Carlos page.'},
+    {cat:'Boards', title:'Boards and Commissions', url:'https://www.cityofsancarlos.org/city_hall/boards_and_commissions/index.php', note:'Official San Carlos page.'},
+    {cat:'Meetings', title:'City Council', url:'https://www.cityofsancarlos.org/city_hall/city_council/index.php', note:'Official San Carlos page.'},
+  ],
+  sanmateo: [
+    {cat:'Planning Hub', title:'Community Development', url:'https://www.cityofsanmateo.org/3591/Community-Development', note:'Official San Mateo page.'},
+    {cat:'Development Projects', title:'Current Development Projects', url:'https://www.cityofsanmateo.org/3450/Current-Development-Projects', note:'Official San Mateo page.'},
+    {cat:'Housing', title:'Housing Element', url:'https://www.cityofsanmateo.org/4480/Housing-Element', note:'Official San Mateo page.'},
+    {cat:'Land Use', title:'General Plan Update', url:'https://www.cityofsanmateo.org/4471/General-Plan-Update', note:'Official San Mateo page.'},
+    {cat:'Permits', title:'Online Permit Center', url:'https://www.cityofsanmateo.org/4299/Online-Permit-Center', note:'Official San Mateo page.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.cityofsanmateo.org/3448/Agendas-Minutes', note:'Official San Mateo page.'},
+  ],
+  southsanfrancisco: [
+    {cat:'Planning Hub', title:'Economic and Community Development', url:'https://www.ssfca.gov/Departments/Economic-and-Community-Development', note:'Official South San Francisco page.'},
+    {cat:'Permits', title:'Permit Center', url:'https://www.ssfca.gov/Departments/Economic-and-Community-Development/Permit-Center', note:'Official South San Francisco page.'},
+    {cat:'Boards', title:'Boards & Commissions', url:'https://www.ssfca.gov/Government/Boards-Commissions', note:'Official South San Francisco page.'},
+    {cat:'Boards', title:'Boards and Commissions Application', url:'https://www.ssfca.gov/Government/Boards-Commissions/Boards-and-Commissions-Application', note:'Official South San Francisco page.'},
+    {cat:'Meetings', title:'Meeting Agendas', url:'https://ci-ssf-ca.legistar.com/Calendar.aspx', note:'Official South San Francisco page.'},
+  ],
+  woodside: [
+    {cat:'Planning Hub', title:'Planning', url:'https://www.woodsideca.gov/214/Planning', note:'Official Woodside page.'},
+    {cat:'Housing', title:'Housing Element Review Process', url:'https://www.woodsideca.gov/352/Housing-Element-Review-Process', note:'Official Woodside page.'},
+    {cat:'Land Use', title:'General Plan 2012', url:'https://www.woodsideca.gov/318/General-Plan-2012', note:'Official Woodside page.'},
+    {cat:'Boards', title:'Planning Commission', url:'https://www.woodsideca.gov/280/Planning-Commission', note:'Official Woodside page.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.woodsideca.gov/129/Agendas-Minutes', note:'Official Woodside page.'},
+  ],
   morganhill: [
     {cat:'Planning Hub', title:'Development Services', url:'https://www.morganhill.ca.gov/151/Development-Services', note:'Planning, building, and engineering review.'},
     {cat:'Planning Hub', title:'Planning Documents, Maps and Data', url:'https://www.morganhill.ca.gov/662/Planning-Documents-Maps-and-Data', note:'The city\'s planning document and map library.'},
@@ -3984,13 +4514,39 @@ function haversineMi(lat1,lng1,lat2,lng2){
   return R*2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
 
+let onboardCityFilter = '';
 function renderOnboardCityBtns(){
-  const orderedEntries = [['all', CITIES.all], ...Object.entries(CITIES).filter(([k])=>k!=='all')];
-  document.getElementById('onboardCityBtns').innerHTML = orderedEntries.map(([key,c])=>
-    `<button type="button" class="onboard-city-btn${key===onboard.city?' active':''}" data-city="${key}">${c.label}</button>`
-  ).join('');
-  document.querySelectorAll('.onboard-city-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{ onboard.city = btn.getAttribute('data-city'); renderOnboardCityBtns(); refreshOnboardGate(); });
+  const q = onboardCityFilter.trim().toLowerCase();
+  // City names win outright. Matching the county too would make "san" match all 33,
+  // since it is inside both "Santa Clara" and "San Mateo" - so county is only a fallback
+  // for when nothing matched by name ("san mateo county", "peninsula-ish" typing).
+  const byLabel = ([k,c]) => c.label.toLowerCase().includes(q);
+  const anyLabel = q && Object.entries(CITIES).some(([k,c])=>k!=='all' && byLabel([k,c]));
+  const cty = (c) => ((c.county||'') + ' county').toLowerCase();  // so "san mateo county" matches too
+  const hit = ([k,c]) => !q || byLabel([k,c]) || (!anyLabel && cty(c).includes(q));
+  const btn = ([key,c]) => `<button type="button" class="onboard-city-btn${key===onboard.city?' active':''}" data-city="${key}">${c.label}</button>`;
+  const groups = ['Santa Clara','San Mateo'].map(cty=>{
+    const rows = Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===cty).filter(hit);
+    if(!rows.length) return '';
+    return `<div class="city-group"><span class="city-group-label">${cty} County</span>${rows.map(btn).join('')}</div>`;
+  }).join('');
+  const all = hit(['all', CITIES.all]) ? btn(['all', CITIES.all]) : '';
+  document.getElementById('onboardCityBtns').innerHTML =
+    `<input type="text" class="onboard-cityfilter" id="onboardCityFilterInput" placeholder="Type to find your city" value="${onboardCityFilter.replace(/"/g,'&quot;')}" />`
+    + all + groups
+    + ((all||groups) ? '' : `<div class="onboard-cityempty">No city here matches "${q.replace(/</g,'&lt;')}". This tracker covers Santa Clara and San Mateo counties.</div>`);
+  const f = document.getElementById('onboardCityFilterInput');
+  if(f){
+    f.addEventListener('input', ()=>{
+      onboardCityFilter = f.value;
+      const caret = f.selectionStart;
+      renderOnboardCityBtns();
+      const nf = document.getElementById('onboardCityFilterInput');
+      if(nf){ nf.focus(); try{ nf.setSelectionRange(caret, caret); }catch(e){} }
+    });
+  }
+  document.querySelectorAll('.onboard-city-btn').forEach(b=>{
+    b.addEventListener('click', ()=>{ onboard.city = b.getAttribute('data-city'); renderOnboardCityBtns(); refreshOnboardGate(); });
   });
 }
 function renderOnboardInterests(){
@@ -4055,7 +4611,8 @@ function useMyLocation(){
       renderOnboardCityBtns();
       setOnboardBusy(false, `You're actually in ${newLabel}, not ${oldLabel} - switched you there.`);
     } else if(!matchedCity){
-      setOnboardBusy(false, `Location found, but you're outside all cities this tracker covers (${Object.entries(CITIES).filter(([k])=>k!=='all').map(([,c])=>c.label).join(', ')}).`);
+      // Naming all 33 made this a paragraph. The counties say the same thing in a line.
+      setOnboardBusy(false, `Location found, but it is outside the area this tracker covers - the ${Object.keys(CITIES).filter(k=>k!=='all').length} cities and towns of Santa Clara and San Mateo counties. Pick a city above to look around anyway.`);
     } else {
       setOnboardBusy(false, 'Location found \u2713');
     }
@@ -4318,6 +4875,27 @@ const CITY_PHOTOS = {
   paloalto:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Palo_Alto_California_buildings_and_streets.jpg/1280px-Palo_Alto_California_buildings_and_streets.jpg', cap:'Downtown Palo Alto', lic:'CC0', by:'Tomwsulcer'},
   gilroy:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/USA-Gilroy-Strand_Theater.jpg/1280px-USA-Gilroy-Strand_Theater.jpg', cap:'The Strand Theater, downtown Gilroy', lic:'CC BY-SA 4.0', by:'Eugene Zelenko'},
   morganhill:{url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg/1280px-Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg', cap:'First and Monterey, Morgan Hill', lic:'CC BY-SA 4.0', by:'Cristiano Tom\u00e1s'},
+  // ---- San Mateo County. San Carlos has no Commons photograph that is actually San Carlos,
+  // California - the searches returned San Carlos City in the Philippines - so it has none.
+  atherton:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Holbrook-Palmer_Park_Atherton_California.jpg/1280px-Holbrook-Palmer_Park_Atherton_California.jpg', cap:'Holbrook-Palmer Park, Atherton', lic:'CC0', by:'LPS.1'},
+  belmont:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Belmont%2C_California_aerial_view%2C_February_2018.JPG/1280px-Belmont%2C_California_aerial_view%2C_February_2018.JPG', cap:'Belmont from the air', lic:'CC BY-SA 3.0', by:'Pi.1415926535'},
+  brisbane:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Brisbane%2C_CA_-_Visitacion_Avenue.jpg/1280px-Brisbane%2C_CA_-_Visitacion_Avenue.jpg', cap:'Visitacion Avenue, Brisbane', lic:'CC BY-SA 4.0', by:'Acj sf'},
+  burlingame:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Burlingame_downtown.JPG/1280px-Burlingame_downtown.JPG', cap:'Downtown Burlingame', lic:'CC BY-SA 3.0', by:'Wikimedia contributor'},
+  colma:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Town_of_Colma.jpg/1280px-Town_of_Colma.jpg', cap:'Town of Colma', lic:'CC BY-SA 3.0', by:'Mliu92'},
+  dalycity:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Westlake_Daly_City_aerial.jpg/1280px-Westlake_Daly_City_aerial.jpg', cap:'Westlake, Daly City', lic:'CC BY-SA 4.0', by:'Dicklyon'},
+  eastpaloalto:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/University_Circle_East_Palo_Alto.jpg/1280px-University_Circle_East_Palo_Alto.jpg', cap:'University Circle, East Palo Alto', lic:'CC0', by:'LPS.1'},
+  fostercity:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/City_Hall_Foster_City_May_2011.jpg/1280px-City_Hall_Foster_City_May_2011.jpg', cap:'Foster City Hall', lic:'CC BY-SA 4.0', by:'King of Hearts'},
+  halfmoonbay:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Downtown_Half_Moon_Bay.jpg/1280px-Downtown_Half_Moon_Bay.jpg', cap:'Downtown Half Moon Bay', lic:'Public domain', by:'Sallyrob'},
+  hillsborough:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Stra%C3%9Fe_im_Tobin_Clark_Estate.jpg/1280px-Stra%C3%9Fe_im_Tobin_Clark_Estate.jpg', cap:'Tobin Clark Estate, Hillsborough', lic:'CC BY-SA 4.0', by:'Olaf2'},
+  menlopark:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Downtown_Menlo_Park_California.jpg/1280px-Downtown_Menlo_Park_California.jpg', cap:'Downtown Menlo Park', lic:'CC0', by:'LPS.1'},
+  millbrae:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Millbrae_California.jpg/1280px-Millbrae_California.jpg', cap:'Millbrae', lic:'Public domain', by:'Serouj'},
+  pacifica:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Pacifica_Pier%2C_California.jpg/1280px-Pacifica_Pier%2C_California.jpg', cap:'Pacifica Pier', lic:'CC0', by:'Ekateriniia Vladinakova'},
+  portolavalley:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Morning_in_Portola_Valley%2C_California2.jpg/1280px-Morning_in_Portola_Valley%2C_California2.jpg', cap:'Morning in Portola Valley', lic:'CC BY 2.0', by:'Don Owens'},
+  redwoodcity:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Redwood_City%2C_California_Main_Downtown_Library_01_of_08.jpg/1280px-Redwood_City%2C_California_Main_Downtown_Library_01_of_08.jpg', cap:'Downtown library, Redwood City', lic:'CC BY-SA 4.0', by:'Jeanjung212'},
+  sanbruno:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/SanBruno.jpg/1280px-SanBruno.jpg', cap:'San Bruno', lic:'Public domain', by:'Robert E. Nylund'},
+  sanmateo:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Downtown_San_Mateo%2C_California_%2838562945445%29.jpg/1280px-Downtown_San_Mateo%2C_California_%2838562945445%29.jpg', cap:'Downtown San Mateo', lic:'CC BY-SA 2.0', by:'mliu92'},
+  southsanfrancisco:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/South_San_Francisco_aerial.jpg/1280px-South_San_Francisco_aerial.jpg', cap:'South San Francisco from the air', lic:'CC BY-SA 4.0', by:'Dicklyon'},
+  woodside:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Woodside_California_2004.jpg/1280px-Woodside_California_2004.jpg', cap:'Woodside', lic:'CC BY-SA 3.0', by:'Jawed'},
 };
 function cityPhoto(k){ return CITY_PHOTOS[k] || null; }
 function photoCredit(p){ return p ? (p.cap + ' &middot; ' + p.by + ', ' + p.lic + ', via Wikimedia Commons') : ''; }
@@ -5876,7 +6454,7 @@ function renderBank(){
 }
 
 
-// A strip of the thirteen city photographs across the top of the bank, so the page reads as
+// A strip of the city photographs across the top of the bank, so the page reads as
 // covering places rather than rows in a table.
 function renderBankMosaic(){
   const el = document.getElementById('bankMosaic');
@@ -7839,21 +8417,1869 @@ renderAuthNavState();
 
 // Generated from data/stats.js - Zillow Research + US Census ACS. See that file for provenance.
 const CITY_STATS = {
-  sunnyvale: {"population":153455,"medianIncome":181862,"medianGrossRent":3065,"meanCommuteMin":23.2,"transitSharePct":4.3,"renterSharePct":56.2,"medianYearBuilt":1975,"censusHomeValue":1816600,"zillowName":"Sunnyvale","homeValue":2050814,"rent":3899,"homeValueSeries":[{"year":"2021","value":1742337},{"year":"2022","value":2018276},{"year":"2023","value":1812393},{"year":"2024","value":2026853},{"year":"2025","value":2031676},{"year":"2026","value":2050814}],"rentSeries":[{"year":"2021","value":3041},{"year":"2022","value":3362},{"year":"2023","value":3335},{"year":"2024","value":3487},{"year":"2025","value":3622},{"year":"2026","value":3899}]},
-  cupertino: {"population":58886,"medianIncome":231139,"medianGrossRent":3501,"meanCommuteMin":24.8,"transitSharePct":1.1,"renterSharePct":38.7,"medianYearBuilt":1973,"censusHomeValue":2000001,"zillowName":"Cupertino","homeValue":3008438,"rent":4359,"homeValueSeries":[{"year":"2021","value":2352183},{"year":"2022","value":2817068},{"year":"2023","value":2504838},{"year":"2024","value":2858846},{"year":"2025","value":2915692},{"year":"2026","value":3008438}],"rentSeries":[{"year":"2021","value":3321},{"year":"2022","value":3710},{"year":"2023","value":3754},{"year":"2024","value":3880},{"year":"2025","value":4009},{"year":"2026","value":4359}]},
-  mountainview: {"population":82363,"medianIncome":179917,"medianGrossRent":2975,"meanCommuteMin":23.6,"transitSharePct":4.1,"renterSharePct":61.2,"medianYearBuilt":1974,"censusHomeValue":1927400,"zillowName":"Mountain View","homeValue":1962774,"rent":4416,"homeValueSeries":[{"year":"2021","value":1762957},{"year":"2022","value":2018566},{"year":"2023","value":1805245},{"year":"2024","value":1980622},{"year":"2025","value":1928206},{"year":"2026","value":1962774}],"rentSeries":[{"year":"2021","value":3495},{"year":"2022","value":3833},{"year":"2023","value":3821},{"year":"2024","value":3939},{"year":"2025","value":4032},{"year":"2026","value":4416}]},
-  milpitas: {"population":78216,"medianIncome":176822,"medianGrossRent":3112,"meanCommuteMin":26.4,"transitSharePct":2.4,"renterSharePct":40.7,"medianYearBuilt":1987,"censusHomeValue":1180000,"zillowName":"Milpitas","homeValue":1424179,"rent":3715,"homeValueSeries":[{"year":"2021","value":1194650},{"year":"2022","value":1406602},{"year":"2023","value":1283565},{"year":"2024","value":1463925},{"year":"2025","value":1444791},{"year":"2026","value":1424179}],"rentSeries":[{"year":"2021","value":2932},{"year":"2022","value":3262},{"year":"2023","value":3295},{"year":"2024","value":3331},{"year":"2025","value":3429},{"year":"2026","value":3715}]},
-  losaltos: {"population":30736,"medianIncome":250001,"medianGrossRent":3501,"meanCommuteMin":22.9,"transitSharePct":1.4,"renterSharePct":19.2,"medianYearBuilt":1964,"censusHomeValue":2000001,"zillowName":"Los Altos","homeValue":4601729,"rent":7837,"homeValueSeries":[{"year":"2021","value":3566636},{"year":"2022","value":4355235},{"year":"2023","value":3851085},{"year":"2024","value":4174999},{"year":"2025","value":4300426},{"year":"2026","value":4601729}],"rentSeries":[{"year":"2021","value":5528},{"year":"2022","value":5945},{"year":"2023","value":6097},{"year":"2024","value":6463},{"year":"2025","value":6631},{"year":"2026","value":7837}]},
-  saratoga: {"population":30335,"medianIncome":241348,"medianGrossRent":3501,"meanCommuteMin":27.2,"transitSharePct":1.1,"renterSharePct":13.4,"medianYearBuilt":1967,"censusHomeValue":2000001,"zillowName":"Saratoga","homeValue":4038070,"rent":6244,"homeValueSeries":[{"year":"2021","value":3090468},{"year":"2022","value":3769210},{"year":"2023","value":3404422},{"year":"2024","value":3773924},{"year":"2025","value":3890071},{"year":"2026","value":4038070}],"rentSeries":[{"year":"2021","value":4833},{"year":"2022","value":5061},{"year":"2023","value":5330},{"year":"2024","value":5911},{"year":"2025","value":5945},{"year":"2026","value":6244}]},
-  westsanjose: {"population":990054,"medianIncome":141565,"medianGrossRent":2617,"meanCommuteMin":28.1,"transitSharePct":2.8,"renterSharePct":44.1,"medianYearBuilt":1975,"censusHomeValue":1187800,"zillowName":"San Jose","homeValue":1391204,"rent":3527,"homeValueSeries":[{"year":"2021","value":1167162},{"year":"2022","value":1379685},{"year":"2023","value":1261707},{"year":"2024","value":1423045},{"year":"2025","value":1407324},{"year":"2026","value":1391204}],"rentSeries":[{"year":"2021","value":2819},{"year":"2022","value":3110},{"year":"2023","value":3134},{"year":"2024","value":3227},{"year":"2025","value":3330},{"year":"2026","value":3527}]},
-  santaclara: {"population":129239,"medianIncome":173670,"medianGrossRent":2985,"meanCommuteMin":23.1,"transitSharePct":2.5,"renterSharePct":58.8,"medianYearBuilt":1973,"censusHomeValue":1527900,"zillowName":"Santa Clara","homeValue":1680833,"rent":3935,"homeValueSeries":[{"year":"2021","value":1378395},{"year":"2022","value":1593938},{"year":"2023","value":1446945},{"year":"2024","value":1653683},{"year":"2025","value":1682983},{"year":"2026","value":1680833}],"rentSeries":[{"year":"2021","value":3043},{"year":"2022","value":3381},{"year":"2023","value":3436},{"year":"2024","value":3562},{"year":"2025","value":3665},{"year":"2026","value":3935}]},
-  losgatos: {"population":32773,"medianIncome":207891,"medianGrossRent":2969,"meanCommuteMin":27.8,"transitSharePct":0.5,"renterSharePct":37.5,"medianYearBuilt":1971,"censusHomeValue":2000001,"zillowName":"Los Gatos","homeValue":2628349,"rent":4256,"homeValueSeries":[{"year":"2021","value":2085374},{"year":"2022","value":2529169},{"year":"2023","value":2280686},{"year":"2024","value":2516411},{"year":"2025","value":2524032},{"year":"2026","value":2628349}],"rentSeries":[{"year":"2021","value":3258},{"year":"2022","value":3522},{"year":"2023","value":3682},{"year":"2024","value":3828},{"year":"2025","value":3997},{"year":"2026","value":4256}]},
-  campbell: {"population":42848,"medianIncome":147128,"medianGrossRent":2751,"meanCommuteMin":23.7,"transitSharePct":1.2,"renterSharePct":49.5,"medianYearBuilt":1972,"censusHomeValue":1550000,"zillowName":"Campbell","homeValue":1881250,"rent":3395,"homeValueSeries":[{"year":"2021","value":1456441},{"year":"2022","value":1706671},{"year":"2023","value":1563038},{"year":"2024","value":1786308},{"year":"2025","value":1831601},{"year":"2026","value":1881250}],"rentSeries":[{"year":"2021","value":2796},{"year":"2022","value":3039},{"year":"2023","value":3062},{"year":"2024","value":3132},{"year":"2025","value":3188},{"year":"2026","value":3395}]},
-  paloalto: {"population":67231,"medianIncome":220408,"medianGrossRent":3328,"meanCommuteMin":22.9,"transitSharePct":3.1,"renterSharePct":45.8,"medianYearBuilt":1963,"censusHomeValue":2000001,"zillowName":"Palo Alto","homeValue":3599324,"rent":4501,"homeValueSeries":[{"year":"2021","value":3091423},{"year":"2022","value":3563738},{"year":"2023","value":3179067},{"year":"2024","value":3403557},{"year":"2025","value":3442876},{"year":"2026","value":3599324}],"rentSeries":[{"year":"2021","value":3576},{"year":"2022","value":3828},{"year":"2023","value":3888},{"year":"2024","value":3998},{"year":"2025","value":4195},{"year":"2026","value":4501}]},
-  gilroy: {"zillowName":"Gilroy","homeValue":null,"rent":null,"homeValueSeries":[],"rentSeries":[],"population":58561,"medianIncome":131554,"medianGrossRent":2270,"meanCommuteMin":33.9,"transitSharePct":1.6,"renterSharePct":37.2,"medianYearBuilt":1990,"censusHomeValue":975800},
-  losaltoshills: {"zillowName":"Los Altos Hills","homeValue":null,"rent":null,"homeValueSeries":[],"rentSeries":[],"population":8367,"medianIncome":250001,"medianGrossRent":3501,"meanCommuteMin":27.7,"transitSharePct":1.2,"renterSharePct":5,"medianYearBuilt":1976,"censusHomeValue":2000001},
-  montesereno: {"zillowName":"Monte Sereno","homeValue":null,"rent":null,"homeValueSeries":[],"rentSeries":[],"population":3459,"medianIncome":250001,"medianGrossRent":2947,"meanCommuteMin":24.3,"transitSharePct":0.6,"renterSharePct":4.3,"medianYearBuilt":1964,"censusHomeValue":2000001},
-  morganhill: {"zillowName":"Morgan Hill","homeValue":null,"rent":null,"homeValueSeries":[],"rentSeries":[],"population":45152,"medianIncome":159758,"medianGrossRent":2275,"meanCommuteMin":34.8,"transitSharePct":1.7,"renterSharePct":27.7,"medianYearBuilt":1989,"censusHomeValue":1127600},
+ "sunnyvale": {
+  "population": 153455,
+  "medianIncome": 181862,
+  "medianGrossRent": 3065,
+  "meanCommuteMin": 23.2,
+  "transitSharePct": 4.3,
+  "renterSharePct": 56.2,
+  "medianYearBuilt": 1975,
+  "censusHomeValue": 1816600,
+  "zillowName": "Sunnyvale",
+  "homeValue": 2050814,
+  "rent": 3899,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1742337
+   },
+   {
+    "year": "2022",
+    "value": 2018276
+   },
+   {
+    "year": "2023",
+    "value": 1812393
+   },
+   {
+    "year": "2024",
+    "value": 2026853
+   },
+   {
+    "year": "2025",
+    "value": 2031676
+   },
+   {
+    "year": "2026",
+    "value": 2050814
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3041
+   },
+   {
+    "year": "2022",
+    "value": 3362
+   },
+   {
+    "year": "2023",
+    "value": 3335
+   },
+   {
+    "year": "2024",
+    "value": 3487
+   },
+   {
+    "year": "2025",
+    "value": 3622
+   },
+   {
+    "year": "2026",
+    "value": 3899
+   }
+  ]
+ },
+ "cupertino": {
+  "population": 58886,
+  "medianIncome": 231139,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 24.8,
+  "transitSharePct": 1.1,
+  "renterSharePct": 38.7,
+  "medianYearBuilt": 1973,
+  "censusHomeValue": 2000001,
+  "zillowName": "Cupertino",
+  "homeValue": 3008438,
+  "rent": 4359,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 2352183
+   },
+   {
+    "year": "2022",
+    "value": 2817068
+   },
+   {
+    "year": "2023",
+    "value": 2504838
+   },
+   {
+    "year": "2024",
+    "value": 2858846
+   },
+   {
+    "year": "2025",
+    "value": 2915692
+   },
+   {
+    "year": "2026",
+    "value": 3008438
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3321
+   },
+   {
+    "year": "2022",
+    "value": 3710
+   },
+   {
+    "year": "2023",
+    "value": 3754
+   },
+   {
+    "year": "2024",
+    "value": 3880
+   },
+   {
+    "year": "2025",
+    "value": 4009
+   },
+   {
+    "year": "2026",
+    "value": 4359
+   }
+  ]
+ },
+ "mountainview": {
+  "population": 82363,
+  "medianIncome": 179917,
+  "medianGrossRent": 2975,
+  "meanCommuteMin": 23.6,
+  "transitSharePct": 4.1,
+  "renterSharePct": 61.2,
+  "medianYearBuilt": 1974,
+  "censusHomeValue": 1927400,
+  "zillowName": "Mountain View",
+  "homeValue": 1962774,
+  "rent": 4416,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1762957
+   },
+   {
+    "year": "2022",
+    "value": 2018566
+   },
+   {
+    "year": "2023",
+    "value": 1805245
+   },
+   {
+    "year": "2024",
+    "value": 1980622
+   },
+   {
+    "year": "2025",
+    "value": 1928206
+   },
+   {
+    "year": "2026",
+    "value": 1962774
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3495
+   },
+   {
+    "year": "2022",
+    "value": 3833
+   },
+   {
+    "year": "2023",
+    "value": 3821
+   },
+   {
+    "year": "2024",
+    "value": 3939
+   },
+   {
+    "year": "2025",
+    "value": 4032
+   },
+   {
+    "year": "2026",
+    "value": 4416
+   }
+  ]
+ },
+ "milpitas": {
+  "population": 78216,
+  "medianIncome": 176822,
+  "medianGrossRent": 3112,
+  "meanCommuteMin": 26.4,
+  "transitSharePct": 2.4,
+  "renterSharePct": 40.7,
+  "medianYearBuilt": 1987,
+  "censusHomeValue": 1180000,
+  "zillowName": "Milpitas",
+  "homeValue": 1424179,
+  "rent": 3715,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1194650
+   },
+   {
+    "year": "2022",
+    "value": 1406602
+   },
+   {
+    "year": "2023",
+    "value": 1283565
+   },
+   {
+    "year": "2024",
+    "value": 1463925
+   },
+   {
+    "year": "2025",
+    "value": 1444791
+   },
+   {
+    "year": "2026",
+    "value": 1424179
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 2932
+   },
+   {
+    "year": "2022",
+    "value": 3262
+   },
+   {
+    "year": "2023",
+    "value": 3295
+   },
+   {
+    "year": "2024",
+    "value": 3331
+   },
+   {
+    "year": "2025",
+    "value": 3429
+   },
+   {
+    "year": "2026",
+    "value": 3715
+   }
+  ]
+ },
+ "losaltos": {
+  "population": 30736,
+  "medianIncome": 250001,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 22.9,
+  "transitSharePct": 1.4,
+  "renterSharePct": 19.2,
+  "medianYearBuilt": 1964,
+  "censusHomeValue": 2000001,
+  "zillowName": "Los Altos",
+  "homeValue": 4601729,
+  "rent": 7837,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 3566636
+   },
+   {
+    "year": "2022",
+    "value": 4355235
+   },
+   {
+    "year": "2023",
+    "value": 3851085
+   },
+   {
+    "year": "2024",
+    "value": 4174999
+   },
+   {
+    "year": "2025",
+    "value": 4300426
+   },
+   {
+    "year": "2026",
+    "value": 4601729
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 5528
+   },
+   {
+    "year": "2022",
+    "value": 5945
+   },
+   {
+    "year": "2023",
+    "value": 6097
+   },
+   {
+    "year": "2024",
+    "value": 6463
+   },
+   {
+    "year": "2025",
+    "value": 6631
+   },
+   {
+    "year": "2026",
+    "value": 7837
+   }
+  ]
+ },
+ "saratoga": {
+  "population": 30335,
+  "medianIncome": 241348,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 27.2,
+  "transitSharePct": 1.1,
+  "renterSharePct": 13.4,
+  "medianYearBuilt": 1967,
+  "censusHomeValue": 2000001,
+  "zillowName": "Saratoga",
+  "homeValue": 4038070,
+  "rent": 6244,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 3090468
+   },
+   {
+    "year": "2022",
+    "value": 3769210
+   },
+   {
+    "year": "2023",
+    "value": 3404422
+   },
+   {
+    "year": "2024",
+    "value": 3773924
+   },
+   {
+    "year": "2025",
+    "value": 3890071
+   },
+   {
+    "year": "2026",
+    "value": 4038070
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 4833
+   },
+   {
+    "year": "2022",
+    "value": 5061
+   },
+   {
+    "year": "2023",
+    "value": 5330
+   },
+   {
+    "year": "2024",
+    "value": 5911
+   },
+   {
+    "year": "2025",
+    "value": 5945
+   },
+   {
+    "year": "2026",
+    "value": 6244
+   }
+  ]
+ },
+ "westsanjose": {
+  "population": 990054,
+  "medianIncome": 141565,
+  "medianGrossRent": 2617,
+  "meanCommuteMin": 28.1,
+  "transitSharePct": 2.8,
+  "renterSharePct": 44.1,
+  "medianYearBuilt": 1975,
+  "censusHomeValue": 1187800,
+  "zillowName": "San Jose",
+  "homeValue": 1391204,
+  "rent": 3527,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1167162
+   },
+   {
+    "year": "2022",
+    "value": 1379685
+   },
+   {
+    "year": "2023",
+    "value": 1261707
+   },
+   {
+    "year": "2024",
+    "value": 1423045
+   },
+   {
+    "year": "2025",
+    "value": 1407324
+   },
+   {
+    "year": "2026",
+    "value": 1391204
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 2819
+   },
+   {
+    "year": "2022",
+    "value": 3110
+   },
+   {
+    "year": "2023",
+    "value": 3134
+   },
+   {
+    "year": "2024",
+    "value": 3227
+   },
+   {
+    "year": "2025",
+    "value": 3330
+   },
+   {
+    "year": "2026",
+    "value": 3527
+   }
+  ]
+ },
+ "santaclara": {
+  "population": 129239,
+  "medianIncome": 173670,
+  "medianGrossRent": 2985,
+  "meanCommuteMin": 23.1,
+  "transitSharePct": 2.5,
+  "renterSharePct": 58.8,
+  "medianYearBuilt": 1973,
+  "censusHomeValue": 1527900,
+  "zillowName": "Santa Clara",
+  "homeValue": 1680833,
+  "rent": 3935,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1378395
+   },
+   {
+    "year": "2022",
+    "value": 1593938
+   },
+   {
+    "year": "2023",
+    "value": 1446945
+   },
+   {
+    "year": "2024",
+    "value": 1653683
+   },
+   {
+    "year": "2025",
+    "value": 1682983
+   },
+   {
+    "year": "2026",
+    "value": 1680833
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3043
+   },
+   {
+    "year": "2022",
+    "value": 3381
+   },
+   {
+    "year": "2023",
+    "value": 3436
+   },
+   {
+    "year": "2024",
+    "value": 3562
+   },
+   {
+    "year": "2025",
+    "value": 3665
+   },
+   {
+    "year": "2026",
+    "value": 3935
+   }
+  ]
+ },
+ "losgatos": {
+  "population": 32773,
+  "medianIncome": 207891,
+  "medianGrossRent": 2969,
+  "meanCommuteMin": 27.8,
+  "transitSharePct": 0.5,
+  "renterSharePct": 37.5,
+  "medianYearBuilt": 1971,
+  "censusHomeValue": 2000001,
+  "zillowName": "Los Gatos",
+  "homeValue": 2628349,
+  "rent": 4256,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 2085374
+   },
+   {
+    "year": "2022",
+    "value": 2529169
+   },
+   {
+    "year": "2023",
+    "value": 2280686
+   },
+   {
+    "year": "2024",
+    "value": 2516411
+   },
+   {
+    "year": "2025",
+    "value": 2524032
+   },
+   {
+    "year": "2026",
+    "value": 2628349
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3258
+   },
+   {
+    "year": "2022",
+    "value": 3522
+   },
+   {
+    "year": "2023",
+    "value": 3682
+   },
+   {
+    "year": "2024",
+    "value": 3828
+   },
+   {
+    "year": "2025",
+    "value": 3997
+   },
+   {
+    "year": "2026",
+    "value": 4256
+   }
+  ]
+ },
+ "campbell": {
+  "population": 42848,
+  "medianIncome": 147128,
+  "medianGrossRent": 2751,
+  "meanCommuteMin": 23.7,
+  "transitSharePct": 1.2,
+  "renterSharePct": 49.5,
+  "medianYearBuilt": 1972,
+  "censusHomeValue": 1550000,
+  "zillowName": "Campbell",
+  "homeValue": 1881250,
+  "rent": 3395,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1456441
+   },
+   {
+    "year": "2022",
+    "value": 1706671
+   },
+   {
+    "year": "2023",
+    "value": 1563038
+   },
+   {
+    "year": "2024",
+    "value": 1786308
+   },
+   {
+    "year": "2025",
+    "value": 1831601
+   },
+   {
+    "year": "2026",
+    "value": 1881250
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 2796
+   },
+   {
+    "year": "2022",
+    "value": 3039
+   },
+   {
+    "year": "2023",
+    "value": 3062
+   },
+   {
+    "year": "2024",
+    "value": 3132
+   },
+   {
+    "year": "2025",
+    "value": 3188
+   },
+   {
+    "year": "2026",
+    "value": 3395
+   }
+  ]
+ },
+ "paloalto": {
+  "population": 67231,
+  "medianIncome": 220408,
+  "medianGrossRent": 3328,
+  "meanCommuteMin": 22.9,
+  "transitSharePct": 3.1,
+  "renterSharePct": 45.8,
+  "medianYearBuilt": 1963,
+  "censusHomeValue": 2000001,
+  "zillowName": "Palo Alto",
+  "homeValue": 3599324,
+  "rent": 4501,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 3091423
+   },
+   {
+    "year": "2022",
+    "value": 3563738
+   },
+   {
+    "year": "2023",
+    "value": 3179067
+   },
+   {
+    "year": "2024",
+    "value": 3403557
+   },
+   {
+    "year": "2025",
+    "value": 3442876
+   },
+   {
+    "year": "2026",
+    "value": 3599324
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3576
+   },
+   {
+    "year": "2022",
+    "value": 3828
+   },
+   {
+    "year": "2023",
+    "value": 3888
+   },
+   {
+    "year": "2024",
+    "value": 3998
+   },
+   {
+    "year": "2025",
+    "value": 4195
+   },
+   {
+    "year": "2026",
+    "value": 4501
+   }
+  ]
+ },
+ "gilroy": {
+  "zillowName": "Gilroy",
+  "homeValue": null,
+  "rent": null,
+  "homeValueSeries": [],
+  "rentSeries": [],
+  "population": 58561,
+  "medianIncome": 131554,
+  "medianGrossRent": 2270,
+  "meanCommuteMin": 33.9,
+  "transitSharePct": 1.6,
+  "renterSharePct": 37.2,
+  "medianYearBuilt": 1990,
+  "censusHomeValue": 975800
+ },
+ "losaltoshills": {
+  "zillowName": "Los Altos Hills",
+  "homeValue": null,
+  "rent": null,
+  "homeValueSeries": [],
+  "rentSeries": [],
+  "population": 8367,
+  "medianIncome": 250001,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 27.7,
+  "transitSharePct": 1.2,
+  "renterSharePct": 5,
+  "medianYearBuilt": 1976,
+  "censusHomeValue": 2000001
+ },
+ "montesereno": {
+  "zillowName": "Monte Sereno",
+  "homeValue": null,
+  "rent": null,
+  "homeValueSeries": [],
+  "rentSeries": [],
+  "population": 3459,
+  "medianIncome": 250001,
+  "medianGrossRent": 2947,
+  "meanCommuteMin": 24.3,
+  "transitSharePct": 0.6,
+  "renterSharePct": 4.3,
+  "medianYearBuilt": 1964,
+  "censusHomeValue": 2000001
+ },
+ "morganhill": {
+  "zillowName": "Morgan Hill",
+  "homeValue": null,
+  "rent": null,
+  "homeValueSeries": [],
+  "rentSeries": [],
+  "population": 45152,
+  "medianIncome": 159758,
+  "medianGrossRent": 2275,
+  "meanCommuteMin": 34.8,
+  "transitSharePct": 1.7,
+  "renterSharePct": 27.7,
+  "medianYearBuilt": 1989,
+  "censusHomeValue": 1127600
+ },
+ "atherton": {
+  "population": 7021,
+  "medianIncome": 250001,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 23.7,
+  "transitSharePct": 1.7,
+  "renterSharePct": 12.6,
+  "medianYearBuilt": 1960,
+  "censusHomeValue": 2000001,
+  "zillowName": "Atherton",
+  "homeValue": 8557851,
+  "rent": 16000,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 7445611
+   },
+   {
+    "year": "2022",
+    "value": 7592748
+   },
+   {
+    "year": "2023",
+    "value": 7348910
+   },
+   {
+    "year": "2024",
+    "value": 7512391
+   },
+   {
+    "year": "2025",
+    "value": 7980999
+   },
+   {
+    "year": "2026",
+    "value": 8557851
+   }
+  ]
+ },
+ "belmont": {
+  "population": 27505,
+  "medianIncome": 207609,
+  "medianGrossRent": 2894,
+  "meanCommuteMin": 29.5,
+  "transitSharePct": 4.4,
+  "renterSharePct": 44,
+  "medianYearBuilt": 1966,
+  "censusHomeValue": 2000001,
+  "zillowName": "Belmont",
+  "homeValue": 2284322,
+  "rent": 3550,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 2016510
+   },
+   {
+    "year": "2022",
+    "value": 2075163
+   },
+   {
+    "year": "2023",
+    "value": 2059647
+   },
+   {
+    "year": "2024",
+    "value": 2200058
+   },
+   {
+    "year": "2025",
+    "value": 2241946
+   },
+   {
+    "year": "2026",
+    "value": 2284322
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 2802
+   },
+   {
+    "year": "2022",
+    "value": 2892
+   },
+   {
+    "year": "2023",
+    "value": 3004
+   },
+   {
+    "year": "2024",
+    "value": 3090
+   },
+   {
+    "year": "2025",
+    "value": 3338
+   },
+   {
+    "year": "2026",
+    "value": 3550
+   }
+  ]
+ },
+ "brisbane": {
+  "population": 4718,
+  "medianIncome": 151593,
+  "medianGrossRent": 2634,
+  "meanCommuteMin": 29.5,
+  "transitSharePct": 6.6,
+  "renterSharePct": 39.5,
+  "medianYearBuilt": 1967,
+  "censusHomeValue": 1127200,
+  "zillowName": "Brisbane",
+  "homeValue": 1161800,
+  "rent": 3012,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1201288
+   },
+   {
+    "year": "2022",
+    "value": 1180479
+   },
+   {
+    "year": "2023",
+    "value": 1145175
+   },
+   {
+    "year": "2024",
+    "value": 1170173
+   },
+   {
+    "year": "2025",
+    "value": 1149431
+   },
+   {
+    "year": "2026",
+    "value": 1161800
+   }
+  ]
+ },
+ "burlingame": {
+  "population": 30526,
+  "medianIncome": 168832,
+  "medianGrossRent": 2643,
+  "meanCommuteMin": 31.3,
+  "transitSharePct": 9.2,
+  "renterSharePct": 49.5,
+  "medianYearBuilt": 1957,
+  "censusHomeValue": 2000001,
+  "zillowName": "Burlingame",
+  "homeValue": 2817833,
+  "rent": 3921,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 2469721
+   },
+   {
+    "year": "2022",
+    "value": 2500894
+   },
+   {
+    "year": "2023",
+    "value": 2454911
+   },
+   {
+    "year": "2024",
+    "value": 2570852
+   },
+   {
+    "year": "2025",
+    "value": 2672261
+   },
+   {
+    "year": "2026",
+    "value": 2817833
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3035
+   },
+   {
+    "year": "2022",
+    "value": 3243
+   },
+   {
+    "year": "2023",
+    "value": 3254
+   },
+   {
+    "year": "2024",
+    "value": 3401
+   },
+   {
+    "year": "2025",
+    "value": 3645
+   },
+   {
+    "year": "2026",
+    "value": 3921
+   }
+  ]
+ },
+ "colma": {
+  "population": 1441,
+  "medianIncome": 121488,
+  "medianGrossRent": 2152,
+  "meanCommuteMin": 29.3,
+  "transitSharePct": 9.6,
+  "renterSharePct": 53,
+  "medianYearBuilt": 1988,
+  "censusHomeValue": 1040900,
+  "zillowName": "Colma",
+  "homeValue": 1087359,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1158713
+   },
+   {
+    "year": "2022",
+    "value": 1127262
+   },
+   {
+    "year": "2023",
+    "value": 1108334
+   },
+   {
+    "year": "2024",
+    "value": 1113613
+   },
+   {
+    "year": "2025",
+    "value": 1089149
+   },
+   {
+    "year": "2026",
+    "value": 1087359
+   }
+  ]
+ },
+ "dalycity": {
+  "population": 102560,
+  "medianIncome": 119570,
+  "medianGrossRent": 2523,
+  "meanCommuteMin": 29.2,
+  "transitSharePct": 14.1,
+  "renterSharePct": 39.5,
+  "medianYearBuilt": 1965,
+  "censusHomeValue": 1092700,
+  "zillowName": "Daly City",
+  "homeValue": 1137024,
+  "rent": 2765,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1143451
+   },
+   {
+    "year": "2022",
+    "value": 1135336
+   },
+   {
+    "year": "2023",
+    "value": 1125592
+   },
+   {
+    "year": "2024",
+    "value": 1150760
+   },
+   {
+    "year": "2025",
+    "value": 1116624
+   },
+   {
+    "year": "2026",
+    "value": 1137024
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 2318
+   },
+   {
+    "year": "2022",
+    "value": 2427
+   },
+   {
+    "year": "2023",
+    "value": 2469
+   },
+   {
+    "year": "2024",
+    "value": 2469
+   },
+   {
+    "year": "2025",
+    "value": 2577
+   },
+   {
+    "year": "2026",
+    "value": 2765
+   }
+  ]
+ },
+ "eastpaloalto": {
+  "population": 29143,
+  "medianIncome": 104832,
+  "medianGrossRent": 2209,
+  "meanCommuteMin": 25.2,
+  "transitSharePct": 2,
+  "renterSharePct": 52.1,
+  "medianYearBuilt": 1963,
+  "censusHomeValue": 1124000,
+  "zillowName": "East Palo Alto",
+  "homeValue": 1016727,
+  "rent": 3603,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1118553
+   },
+   {
+    "year": "2022",
+    "value": 1073894
+   },
+   {
+    "year": "2023",
+    "value": 1023071
+   },
+   {
+    "year": "2024",
+    "value": 1061113
+   },
+   {
+    "year": "2025",
+    "value": 1027249
+   },
+   {
+    "year": "2026",
+    "value": 1016727
+   }
+  ]
+ },
+ "fostercity": {
+  "population": 32964,
+  "medianIncome": 193633,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 30.7,
+  "transitSharePct": 3.9,
+  "renterSharePct": 48.8,
+  "medianYearBuilt": 1976,
+  "censusHomeValue": 1774500,
+  "zillowName": "Foster City",
+  "homeValue": 1863228,
+  "rent": 4317,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1738282
+   },
+   {
+    "year": "2022",
+    "value": 1781768
+   },
+   {
+    "year": "2023",
+    "value": 1801034
+   },
+   {
+    "year": "2024",
+    "value": 1871290
+   },
+   {
+    "year": "2025",
+    "value": 1852022
+   },
+   {
+    "year": "2026",
+    "value": 1863228
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3322
+   },
+   {
+    "year": "2022",
+    "value": 3438
+   },
+   {
+    "year": "2023",
+    "value": 3482
+   },
+   {
+    "year": "2024",
+    "value": 3637
+   },
+   {
+    "year": "2025",
+    "value": 3853
+   },
+   {
+    "year": "2026",
+    "value": 4317
+   }
+  ]
+ },
+ "halfmoonbay": {
+  "population": 11454,
+  "medianIncome": 153199,
+  "medianGrossRent": 2299,
+  "meanCommuteMin": 31.3,
+  "transitSharePct": 0,
+  "renterSharePct": 27.2,
+  "medianYearBuilt": 1982,
+  "censusHomeValue": 1467000,
+  "zillowName": "Half Moon Bay",
+  "homeValue": 1547730,
+  "rent": 4661,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1413793
+   },
+   {
+    "year": "2022",
+    "value": 1457483
+   },
+   {
+    "year": "2023",
+    "value": 1467696
+   },
+   {
+    "year": "2024",
+    "value": 1513419
+   },
+   {
+    "year": "2025",
+    "value": 1538453
+   },
+   {
+    "year": "2026",
+    "value": 1547730
+   }
+  ]
+ },
+ "hillsborough": {
+  "population": 11122,
+  "medianIncome": 250001,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 27.6,
+  "transitSharePct": 1.9,
+  "renterSharePct": 7,
+  "medianYearBuilt": 1967,
+  "censusHomeValue": 2000001,
+  "zillowName": "Hillsborough",
+  "homeValue": 5524660,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 5068092
+   },
+   {
+    "year": "2022",
+    "value": 5126108
+   },
+   {
+    "year": "2023",
+    "value": 4973244
+   },
+   {
+    "year": "2024",
+    "value": 5005189
+   },
+   {
+    "year": "2025",
+    "value": 5221922
+   },
+   {
+    "year": "2026",
+    "value": 5524660
+   }
+  ]
+ },
+ "menlopark": {
+  "population": 32775,
+  "medianIncome": 206588,
+  "medianGrossRent": 3156,
+  "meanCommuteMin": 24.2,
+  "transitSharePct": 3,
+  "renterSharePct": 44.7,
+  "medianYearBuilt": 1962,
+  "censusHomeValue": 2000001,
+  "zillowName": "Menlo Park",
+  "homeValue": 2890071,
+  "rent": 4349,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 2540882
+   },
+   {
+    "year": "2022",
+    "value": 2574600
+   },
+   {
+    "year": "2023",
+    "value": 2558262
+   },
+   {
+    "year": "2024",
+    "value": 2669738
+   },
+   {
+    "year": "2025",
+    "value": 2787358
+   },
+   {
+    "year": "2026",
+    "value": 2890071
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3348
+   },
+   {
+    "year": "2022",
+    "value": 3462
+   },
+   {
+    "year": "2023",
+    "value": 3594
+   },
+   {
+    "year": "2024",
+    "value": 3749
+   },
+   {
+    "year": "2025",
+    "value": 3974
+   },
+   {
+    "year": "2026",
+    "value": 4349
+   }
+  ]
+ },
+ "millbrae": {
+  "population": 22589,
+  "medianIncome": 157567,
+  "medianGrossRent": 3401,
+  "meanCommuteMin": 28.8,
+  "transitSharePct": 9.1,
+  "renterSharePct": 36.8,
+  "medianYearBuilt": 1960,
+  "censusHomeValue": 1929700,
+  "zillowName": "Millbrae",
+  "homeValue": 2055633,
+  "rent": 3767,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1794801
+   },
+   {
+    "year": "2022",
+    "value": 1808388
+   },
+   {
+    "year": "2023",
+    "value": 1825554
+   },
+   {
+    "year": "2024",
+    "value": 1930958
+   },
+   {
+    "year": "2025",
+    "value": 1991877
+   },
+   {
+    "year": "2026",
+    "value": 2055633
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3001
+   },
+   {
+    "year": "2022",
+    "value": 3050
+   },
+   {
+    "year": "2023",
+    "value": 3300
+   },
+   {
+    "year": "2024",
+    "value": 3246
+   },
+   {
+    "year": "2025",
+    "value": 3511
+   },
+   {
+    "year": "2026",
+    "value": 3767
+   }
+  ]
+ },
+ "pacifica": {
+  "population": 37527,
+  "medianIncome": 156819,
+  "medianGrossRent": 3080,
+  "meanCommuteMin": 28.3,
+  "transitSharePct": 5.1,
+  "renterSharePct": 31.5,
+  "medianYearBuilt": 1966,
+  "censusHomeValue": 1211700,
+  "zillowName": "Pacifica",
+  "homeValue": 1276738,
+  "rent": 3582,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1278365
+   },
+   {
+    "year": "2022",
+    "value": 1279701
+   },
+   {
+    "year": "2023",
+    "value": 1266320
+   },
+   {
+    "year": "2024",
+    "value": 1300122
+   },
+   {
+    "year": "2025",
+    "value": 1263908
+   },
+   {
+    "year": "2026",
+    "value": 1276738
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 2982
+   },
+   {
+    "year": "2022",
+    "value": 3083
+   },
+   {
+    "year": "2023",
+    "value": 3107
+   },
+   {
+    "year": "2024",
+    "value": 3205
+   },
+   {
+    "year": "2025",
+    "value": 3436
+   },
+   {
+    "year": "2026",
+    "value": 3582
+   }
+  ]
+ },
+ "portolavalley": {
+  "population": 4329,
+  "medianIncome": 250001,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 27.5,
+  "transitSharePct": 0,
+  "renterSharePct": 16.3,
+  "medianYearBuilt": 1970,
+  "censusHomeValue": 2000001,
+  "zillowName": "Portola Valley",
+  "homeValue": 4313310,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 3685266
+   },
+   {
+    "year": "2022",
+    "value": 3711407
+   },
+   {
+    "year": "2023",
+    "value": 3671074
+   },
+   {
+    "year": "2024",
+    "value": 3805623
+   },
+   {
+    "year": "2025",
+    "value": 4134748
+   },
+   {
+    "year": "2026",
+    "value": 4313310
+   }
+  ]
+ },
+ "redwoodcity": {
+  "population": 82423,
+  "medianIncome": 150840,
+  "medianGrossRent": 2959,
+  "meanCommuteMin": 24.6,
+  "transitSharePct": 4,
+  "renterSharePct": 52.3,
+  "medianYearBuilt": 1968,
+  "censusHomeValue": 1838800,
+  "zillowName": "Redwood City",
+  "homeValue": 1893533,
+  "rent": 4077,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1741201
+   },
+   {
+    "year": "2022",
+    "value": 1777317
+   },
+   {
+    "year": "2023",
+    "value": 1756823
+   },
+   {
+    "year": "2024",
+    "value": 1832407
+   },
+   {
+    "year": "2025",
+    "value": 1849532
+   },
+   {
+    "year": "2026",
+    "value": 1893533
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3238
+   },
+   {
+    "year": "2022",
+    "value": 3339
+   },
+   {
+    "year": "2023",
+    "value": 3400
+   },
+   {
+    "year": "2024",
+    "value": 3545
+   },
+   {
+    "year": "2025",
+    "value": 3722
+   },
+   {
+    "year": "2026",
+    "value": 4077
+   }
+  ]
+ },
+ "sanbruno": {
+  "population": 42612,
+  "medianIncome": 135976,
+  "medianGrossRent": 2696,
+  "meanCommuteMin": 25.1,
+  "transitSharePct": 6.6,
+  "renterSharePct": 38.2,
+  "medianYearBuilt": 1961,
+  "censusHomeValue": 1199400,
+  "zillowName": "San Bruno",
+  "homeValue": 1308809,
+  "rent": 3338,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1191093
+   },
+   {
+    "year": "2022",
+    "value": 1216497
+   },
+   {
+    "year": "2023",
+    "value": 1232092
+   },
+   {
+    "year": "2024",
+    "value": 1290017
+   },
+   {
+    "year": "2025",
+    "value": 1284581
+   },
+   {
+    "year": "2026",
+    "value": 1308809
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 2734
+   },
+   {
+    "year": "2022",
+    "value": 2854
+   },
+   {
+    "year": "2023",
+    "value": 2947
+   },
+   {
+    "year": "2024",
+    "value": 3021
+   },
+   {
+    "year": "2025",
+    "value": 3167
+   },
+   {
+    "year": "2026",
+    "value": 3338
+   }
+  ]
+ },
+ "sancarlos": {
+  "population": 29797,
+  "medianIncome": 233333,
+  "medianGrossRent": 2802,
+  "meanCommuteMin": 25.4,
+  "transitSharePct": 3.7,
+  "renterSharePct": 31.8,
+  "medianYearBuilt": 1961,
+  "censusHomeValue": 2000001,
+  "zillowName": "San Carlos",
+  "homeValue": 2457746,
+  "rent": 4554,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 2163728
+   },
+   {
+    "year": "2022",
+    "value": 2213934
+   },
+   {
+    "year": "2023",
+    "value": 2169306
+   },
+   {
+    "year": "2024",
+    "value": 2312603
+   },
+   {
+    "year": "2025",
+    "value": 2381677
+   },
+   {
+    "year": "2026",
+    "value": 2457746
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3468
+   },
+   {
+    "year": "2022",
+    "value": 3732
+   },
+   {
+    "year": "2023",
+    "value": 3878
+   },
+   {
+    "year": "2024",
+    "value": 3896
+   },
+   {
+    "year": "2025",
+    "value": 4119
+   },
+   {
+    "year": "2026",
+    "value": 4554
+   }
+  ]
+ },
+ "sanmateo": {
+  "population": 103555,
+  "medianIncome": 152669,
+  "medianGrossRent": 3079,
+  "meanCommuteMin": 27.1,
+  "transitSharePct": 6.1,
+  "renterSharePct": 49.2,
+  "medianYearBuilt": 1964,
+  "censusHomeValue": 1563200,
+  "zillowName": "San Mateo",
+  "homeValue": 1685162,
+  "rent": 3821,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1585637
+   },
+   {
+    "year": "2022",
+    "value": 1590594
+   },
+   {
+    "year": "2023",
+    "value": 1563968
+   },
+   {
+    "year": "2024",
+    "value": 1649487
+   },
+   {
+    "year": "2025",
+    "value": 1646755
+   },
+   {
+    "year": "2026",
+    "value": 1685162
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3039
+   },
+   {
+    "year": "2022",
+    "value": 3139
+   },
+   {
+    "year": "2023",
+    "value": 3185
+   },
+   {
+    "year": "2024",
+    "value": 3316
+   },
+   {
+    "year": "2025",
+    "value": 3529
+   },
+   {
+    "year": "2026",
+    "value": 3821
+   }
+  ]
+ },
+ "southsanfrancisco": {
+  "population": 64487,
+  "medianIncome": 135909,
+  "medianGrossRent": 2833,
+  "meanCommuteMin": 27.2,
+  "transitSharePct": 8.5,
+  "renterSharePct": 39.2,
+  "medianYearBuilt": 1963,
+  "censusHomeValue": 1160100,
+  "zillowName": "South San Francisco",
+  "homeValue": 1235804,
+  "rent": 4088,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 1183337
+   },
+   {
+    "year": "2022",
+    "value": 1190343
+   },
+   {
+    "year": "2023",
+    "value": 1180158
+   },
+   {
+    "year": "2024",
+    "value": 1222412
+   },
+   {
+    "year": "2025",
+    "value": 1218233
+   },
+   {
+    "year": "2026",
+    "value": 1235804
+   }
+  ],
+  "rentSeries": [
+   {
+    "year": "2021",
+    "value": 3248
+   },
+   {
+    "year": "2022",
+    "value": 3386
+   },
+   {
+    "year": "2023",
+    "value": 3353
+   },
+   {
+    "year": "2024",
+    "value": 3466
+   },
+   {
+    "year": "2025",
+    "value": 3633
+   },
+   {
+    "year": "2026",
+    "value": 4088
+   }
+  ]
+ },
+ "woodside": {
+  "population": 5181,
+  "medianIncome": 250001,
+  "medianGrossRent": 3501,
+  "meanCommuteMin": 26.4,
+  "transitSharePct": 1.6,
+  "renterSharePct": 14.4,
+  "medianYearBuilt": 1966,
+  "censusHomeValue": 2000001,
+  "zillowName": "Woodside",
+  "homeValue": 3978315,
+  "homeValueSeries": [
+   {
+    "year": "2021",
+    "value": 3711119
+   },
+   {
+    "year": "2022",
+    "value": 3721009
+   },
+   {
+    "year": "2023",
+    "value": 3650328
+   },
+   {
+    "year": "2024",
+    "value": 3730486
+   },
+   {
+    "year": "2025",
+    "value": 3790313
+   },
+   {
+    "year": "2026",
+    "value": 3978315
+   }
+  ]
+ }
 };
 const STATS_SOURCE = {"label":"Zillow Research public data (ZHVI and ZORI), city level","url":"https://www.zillow.com/research/data/","asOf":"July 2026"};
 const CENSUS_SOURCE = {"label":"US Census American Community Survey, 5-year estimates","url":"https://www.census.gov/programs-surveys/acs","asOf":"2023 (ACS 5-year)"};
@@ -7958,21 +10384,741 @@ async function renderHearings(){
 
 // Generated from data/rhna.js - California HCD 6th Cycle RHNA Progress Report.
 const RHNA = {
-  campbell: {"vli":[42,752],"li":[43,434],"mod":[43,499],"above":[132,1292],"units":260,"target":2977,"pct":8.7},
-  cupertino: {"vli":[41,1193],"li":[41,687],"mod":[42,755],"above":[135,1953],"units":259,"target":4588,"pct":5.6},
-  gilroy: {"vli":[33,669],"li":[32,385],"mod":[32,200],"above":[309,519],"units":406,"target":1773,"pct":22.9},
-  losaltos: {"vli":[99,501],"li":[142,288],"mod":[117,326],"above":[248,843],"units":606,"target":1958,"pct":30.9},
-  losaltoshills: {"vli":[19,125],"li":[19,72],"mod":[58,82],"above":[19,210],"units":115,"target":489,"pct":23.5},
-  losgatos: {"vli":[43,537],"li":[36,310],"mod":[36,320],"above":[57,826],"units":172,"target":1993,"pct":8.6},
-  milpitas: {"vli":[59,1685],"li":[25,970],"mod":[59,1131],"above":[267,2927],"units":410,"target":6713,"pct":6.1},
-  montesereno: {"vli":[21,53],"li":[6,30],"mod":[3,31],"above":[24,79],"units":54,"target":193,"pct":28},
-  morganhill: {"vli":[65,262],"li":[0,151],"mod":[87,174],"above":[508,450],"units":660,"target":1037,"pct":63.6},
-  mountainview: {"vli":[259,2773],"li":[92,1597],"mod":[73,1885],"above":[502,4880],"units":926,"target":11135,"pct":8.3},
-  paloalto: {"vli":[41,1556],"li":[47,896],"mod":[81,1013],"above":[456,2621],"units":625,"target":6086,"pct":10.3},
-  santaclara: {"vli":[103,2872],"li":[241,1653],"mod":[137,1981],"above":[1063,5126],"units":1544,"target":11632,"pct":13.3},
-  saratoga: {"vli":[83,454],"li":[91,261],"mod":[81,278],"above":[200,719],"units":455,"target":1712,"pct":26.6},
-  sunnyvale: {"vli":[170,2968],"li":[115,1709],"mod":[173,2032],"above":[637,5257],"units":1095,"target":11966,"pct":9.2},
-  westsanjose: {"vli":[1971,15088],"li":[1945,8687],"mod":[2184,10711],"above":[1719,27714],"units":7819,"target":62200,"pct":12.6},
+ "campbell": {
+  "vli": [
+   42,
+   752
+  ],
+  "li": [
+   43,
+   434
+  ],
+  "mod": [
+   43,
+   499
+  ],
+  "above": [
+   132,
+   1292
+  ],
+  "units": 260,
+  "target": 2977,
+  "pct": 8.7
+ },
+ "cupertino": {
+  "vli": [
+   41,
+   1193
+  ],
+  "li": [
+   41,
+   687
+  ],
+  "mod": [
+   42,
+   755
+  ],
+  "above": [
+   135,
+   1953
+  ],
+  "units": 259,
+  "target": 4588,
+  "pct": 5.6
+ },
+ "gilroy": {
+  "vli": [
+   33,
+   669
+  ],
+  "li": [
+   32,
+   385
+  ],
+  "mod": [
+   32,
+   200
+  ],
+  "above": [
+   309,
+   519
+  ],
+  "units": 406,
+  "target": 1773,
+  "pct": 22.9
+ },
+ "losaltos": {
+  "vli": [
+   99,
+   501
+  ],
+  "li": [
+   142,
+   288
+  ],
+  "mod": [
+   117,
+   326
+  ],
+  "above": [
+   248,
+   843
+  ],
+  "units": 606,
+  "target": 1958,
+  "pct": 30.9
+ },
+ "losaltoshills": {
+  "vli": [
+   19,
+   125
+  ],
+  "li": [
+   19,
+   72
+  ],
+  "mod": [
+   58,
+   82
+  ],
+  "above": [
+   19,
+   210
+  ],
+  "units": 115,
+  "target": 489,
+  "pct": 23.5
+ },
+ "losgatos": {
+  "vli": [
+   43,
+   537
+  ],
+  "li": [
+   36,
+   310
+  ],
+  "mod": [
+   36,
+   320
+  ],
+  "above": [
+   57,
+   826
+  ],
+  "units": 172,
+  "target": 1993,
+  "pct": 8.6
+ },
+ "milpitas": {
+  "vli": [
+   59,
+   1685
+  ],
+  "li": [
+   25,
+   970
+  ],
+  "mod": [
+   59,
+   1131
+  ],
+  "above": [
+   267,
+   2927
+  ],
+  "units": 410,
+  "target": 6713,
+  "pct": 6.1
+ },
+ "montesereno": {
+  "vli": [
+   21,
+   53
+  ],
+  "li": [
+   6,
+   30
+  ],
+  "mod": [
+   3,
+   31
+  ],
+  "above": [
+   24,
+   79
+  ],
+  "units": 54,
+  "target": 193,
+  "pct": 28
+ },
+ "morganhill": {
+  "vli": [
+   65,
+   262
+  ],
+  "li": [
+   0,
+   151
+  ],
+  "mod": [
+   87,
+   174
+  ],
+  "above": [
+   508,
+   450
+  ],
+  "units": 660,
+  "target": 1037,
+  "pct": 63.6
+ },
+ "mountainview": {
+  "vli": [
+   259,
+   2773
+  ],
+  "li": [
+   92,
+   1597
+  ],
+  "mod": [
+   73,
+   1885
+  ],
+  "above": [
+   502,
+   4880
+  ],
+  "units": 926,
+  "target": 11135,
+  "pct": 8.3
+ },
+ "paloalto": {
+  "vli": [
+   41,
+   1556
+  ],
+  "li": [
+   47,
+   896
+  ],
+  "mod": [
+   81,
+   1013
+  ],
+  "above": [
+   456,
+   2621
+  ],
+  "units": 625,
+  "target": 6086,
+  "pct": 10.3
+ },
+ "santaclara": {
+  "vli": [
+   103,
+   2872
+  ],
+  "li": [
+   241,
+   1653
+  ],
+  "mod": [
+   137,
+   1981
+  ],
+  "above": [
+   1063,
+   5126
+  ],
+  "units": 1544,
+  "target": 11632,
+  "pct": 13.3
+ },
+ "saratoga": {
+  "vli": [
+   83,
+   454
+  ],
+  "li": [
+   91,
+   261
+  ],
+  "mod": [
+   81,
+   278
+  ],
+  "above": [
+   200,
+   719
+  ],
+  "units": 455,
+  "target": 1712,
+  "pct": 26.6
+ },
+ "sunnyvale": {
+  "vli": [
+   170,
+   2968
+  ],
+  "li": [
+   115,
+   1709
+  ],
+  "mod": [
+   173,
+   2032
+  ],
+  "above": [
+   637,
+   5257
+  ],
+  "units": 1095,
+  "target": 11966,
+  "pct": 9.2
+ },
+ "westsanjose": {
+  "vli": [
+   1971,
+   15088
+  ],
+  "li": [
+   1945,
+   8687
+  ],
+  "mod": [
+   2184,
+   10711
+  ],
+  "above": [
+   1719,
+   27714
+  ],
+  "units": 7819,
+  "target": 62200,
+  "pct": 12.6
+ },
+ "atherton": {
+  "vli": [
+   28,
+   94
+  ],
+  "li": [
+   15,
+   54
+  ],
+  "mod": [
+   8,
+   56
+  ],
+  "above": [
+   93,
+   144
+  ],
+  "units": 144,
+  "target": 348,
+  "pct": 41.4
+ },
+ "belmont": {
+  "vli": [
+   102,
+   488
+  ],
+  "li": [
+   98,
+   281
+  ],
+  "mod": [
+   25,
+   283
+  ],
+  "above": [
+   16,
+   733
+  ],
+  "units": 241,
+  "target": 1785,
+  "pct": 13.5
+ },
+ "brisbane": {
+  "vli": [
+   8,
+   317
+  ],
+  "li": [
+   4,
+   183
+  ],
+  "mod": [
+   4,
+   303
+  ],
+  "above": [
+   3,
+   785
+  ],
+  "units": 19,
+  "target": 1588,
+  "pct": 1.2
+ },
+ "burlingame": {
+  "vli": [
+   121,
+   863
+  ],
+  "li": [
+   79,
+   497
+  ],
+  "mod": [
+   39,
+   529
+  ],
+  "above": [
+   718,
+   1368
+  ],
+  "units": 957,
+  "target": 3257,
+  "pct": 29.4
+ },
+ "colma": {
+  "vli": [
+   0,
+   44
+  ],
+  "li": [
+   1,
+   25
+  ],
+  "mod": [
+   0,
+   37
+  ],
+  "above": [
+   0,
+   96
+  ],
+  "units": 1,
+  "target": 202,
+  "pct": 0.5
+ },
+ "dalycity": {
+  "vli": [
+   100,
+   1336
+  ],
+  "li": [
+   50,
+   769
+  ],
+  "mod": [
+   38,
+   762
+  ],
+  "above": [
+   75,
+   1971
+  ],
+  "units": 263,
+  "target": 4838,
+  "pct": 5.4
+ },
+ "eastpaloalto": {
+  "vli": [
+   25,
+   165
+  ],
+  "li": [
+   19,
+   95
+  ],
+  "mod": [
+   19,
+   159
+  ],
+  "above": [
+   17,
+   410
+  ],
+  "units": 80,
+  "target": 829,
+  "pct": 9.7
+ },
+ "fostercity": {
+  "vli": [
+   10,
+   520
+  ],
+  "li": [
+   21,
+   299
+  ],
+  "mod": [
+   5,
+   300
+  ],
+  "above": [
+   2,
+   777
+  ],
+  "units": 38,
+  "target": 1896,
+  "pct": 2
+ },
+ "halfmoonbay": {
+  "vli": [
+   58,
+   181
+  ],
+  "li": [
+   22,
+   104
+  ],
+  "mod": [
+   12,
+   54
+  ],
+  "above": [
+   28,
+   141
+  ],
+  "units": 120,
+  "target": 480,
+  "pct": 25
+ },
+ "hillsborough": {
+  "vli": [
+   45,
+   155
+  ],
+  "li": [
+   30,
+   89
+  ],
+  "mod": [
+   32,
+   87
+  ],
+  "above": [
+   46,
+   223
+  ],
+  "units": 153,
+  "target": 554,
+  "pct": 27.6
+ },
+ "menlopark": {
+  "vli": [
+   121,
+   740
+  ],
+  "li": [
+   72,
+   426
+  ],
+  "mod": [
+   63,
+   496
+  ],
+  "above": [
+   92,
+   1284
+  ],
+  "units": 348,
+  "target": 2946,
+  "pct": 11.8
+ },
+ "millbrae": {
+  "vli": [
+   18,
+   575
+  ],
+  "li": [
+   100,
+   331
+  ],
+  "mod": [
+   27,
+   361
+  ],
+  "above": [
+   258,
+   932
+  ],
+  "units": 403,
+  "target": 2199,
+  "pct": 18.3
+ },
+ "pacifica": {
+  "vli": [
+   19,
+   538
+  ],
+  "li": [
+   17,
+   310
+  ],
+  "mod": [
+   13,
+   291
+  ],
+  "above": [
+   15,
+   753
+  ],
+  "units": 64,
+  "target": 1892,
+  "pct": 3.4
+ },
+ "portolavalley": {
+  "vli": [
+   10,
+   73
+  ],
+  "li": [
+   19,
+   42
+  ],
+  "mod": [
+   8,
+   39
+  ],
+  "above": [
+   9,
+   99
+  ],
+  "units": 46,
+  "target": 253,
+  "pct": 18.2
+ },
+ "redwoodcity": {
+  "vli": [
+   198,
+   1115
+  ],
+  "li": [
+   232,
+   643
+  ],
+  "mod": [
+   76,
+   789
+  ],
+  "above": [
+   645,
+   2041
+  ],
+  "units": 1151,
+  "target": 4588,
+  "pct": 25.1
+ },
+ "sanbruno": {
+  "vli": [
+   56,
+   704
+  ],
+  "li": [
+   471,
+   405
+  ],
+  "mod": [
+   36,
+   573
+  ],
+  "above": [
+   23,
+   1483
+  ],
+  "units": 586,
+  "target": 3165,
+  "pct": 18.5
+ },
+ "sancarlos": {
+  "vli": [
+   17,
+   739
+  ],
+  "li": [
+   17,
+   425
+  ],
+  "mod": [
+   28,
+   438
+  ],
+  "above": [
+   90,
+   1133
+  ],
+  "units": 152,
+  "target": 2735,
+  "pct": 5.6
+ },
+ "sanmateo": {
+  "vli": [
+   85,
+   1777
+  ],
+  "li": [
+   80,
+   1023
+  ],
+  "mod": [
+   73,
+   1175
+  ],
+  "above": [
+   321,
+   3040
+  ],
+  "units": 559,
+  "target": 7015,
+  "pct": 8
+ },
+ "southsanfrancisco": {
+  "vli": [
+   101,
+   871
+  ],
+  "li": [
+   151,
+   502
+  ],
+  "mod": [
+   79,
+   720
+  ],
+  "above": [
+   1156,
+   1863
+  ],
+  "units": 1487,
+  "target": 3956,
+  "pct": 37.6
+ },
+ "woodside": {
+  "vli": [
+   21,
+   90
+  ],
+  "li": [
+   19,
+   52
+  ],
+  "mod": [
+   19,
+   52
+  ],
+  "above": [
+   37,
+   134
+  ],
+  "units": 96,
+  "target": 328,
+  "pct": 29.3
+ }
 };
 const RHNA_PERIOD = "01/31/2023 - 01/31/2031";
 const RHNA_SOURCE = {"label":"California HCD, 6th Cycle RHNA Progress Report","url":"https://data.ca.gov/dataset/rhna-progress-report","asOf":"August 2026"};
@@ -8375,7 +11521,7 @@ function renderHeroCalendar(){
 }
 
 
-// The hero photograph cycles through the thirteen cities on the same rhythm as the featured
+// The hero photograph cycles through the cities on the same rhythm as the featured
 // stories. Two layers, so one fades in over the other rather than the image snapping.
 let heroBgIdx = 0, heroBgWhich = 0, heroBgTimer = null;
 function heroBgOrder(){
@@ -8762,7 +11908,7 @@ function renderRailResources(){
 
   host.innerHTML =
     deciders.map(d=>row(d.name, 'Decides land use here', d.link, 'Board')).join('')
-    + join.map(b=>row(b.name, 'Accepting applicants', b.link, 'Join')).join('')
+    + join.map(b=>row(b.name, b.body || 'How to serve on this body', b.link, 'Join')).join('')
     + links.map(l=>row(l.label, 'Official city page', l.url, 'Link')).join('')
     + '<a class="rail-link" href="#" data-res-goto="resources">All '+city.label+' resources &rarr;</a>';
 

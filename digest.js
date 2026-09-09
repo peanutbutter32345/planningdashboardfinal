@@ -29,6 +29,27 @@ export const CITY_LABELS = {
   paloalto: 'Palo Alto',
   gilroy: 'Gilroy',
   morganhill: 'Morgan Hill',
+  // ---- San Mateo County ----
+  atherton: 'Atherton',
+  belmont: 'Belmont',
+  brisbane: 'Brisbane',
+  burlingame: 'Burlingame',
+  colma: 'Colma',
+  dalycity: 'Daly City',
+  eastpaloalto: 'East Palo Alto',
+  fostercity: 'Foster City',
+  halfmoonbay: 'Half Moon Bay',
+  hillsborough: 'Hillsborough',
+  menlopark: 'Menlo Park',
+  millbrae: 'Millbrae',
+  pacifica: 'Pacifica',
+  portolavalley: 'Portola Valley',
+  redwoodcity: 'Redwood City',
+  sanbruno: 'San Bruno',
+  sancarlos: 'San Carlos',
+  sanmateo: 'San Mateo',
+  southsanfrancisco: 'South San Francisco',
+  woodside: 'Woodside',
 };
 export function cityLabel(key) { return CITY_LABELS[key] || 'the South Bay'; }
 
