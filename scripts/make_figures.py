@@ -59,15 +59,29 @@ def trend(series, name, fmt):
     ax.fill_between(range(len(xs)), ys, min(ys) - (max(ys)-min(ys))*0.12,
                     color=INK, alpha=0.07)
     ax.set_xlim(-0.15, len(xs)-0.85)
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: fmt(v)))
     ax.locator_params(axis='y', nbins=4)
+    # One decimal collides when prices move in a narrow band (Redwood City read $1.9M, $1.9M,
+    # $1.8M, $1.8M), so add decimals until every tick label is distinct.
+    lo, hi = ax.get_ylim()
+    ticks = [t for t in ax.get_yticks() if lo <= t <= hi]
+    d = 1
+    while d < 3 and len({fmt(t, d) for t in ticks}) < len(ticks):
+        d += 1
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: fmt(v, d)))
     frame(ax)
     save(fig, name)
     return True
 
 def ranking(values, me, name, fmt, top=8):
-    rows = sorted([(k, v) for k, v in values.items() if v], key=lambda r: -r[1])[:top]
-    if len(rows) < 3:
+    ranked = sorted([(k, v) for k, v in values.items() if v], key=lambda r: -r[1])
+    rows = ranked[:top]
+    # The chart exists to show where *this* city sits. Taking the top eight alone left most
+    # cities out of their own chart (Sunnyvale's commute figure did not show Sunnyvale), so the
+    # city replaces the last slot when it falls outside the top eight.
+    mine = next((r for r in ranked if r[0] == me), None)
+    if mine and mine not in rows:
+        rows = rows[:top - 1] + [mine]
+    if len(rows) < 3 or not mine:
         return False
     rows.reverse()
     fig, ax = plt.subplots(figsize=(3.55, 1.75))
@@ -75,6 +89,11 @@ def ranking(values, me, name, fmt, top=8):
     vals = [r[1] for r in rows]
     colors = [INK if lbl == me else SOFT for lbl in labels]
     ax.barh(range(len(rows)), vals, color=colors, height=0.72)
+    # Print this city's own value at the end of its bar: a small town's bar (Woodside, 8 homes
+    # on a 15,000-home scale) is otherwise too thin to see.
+    i = labels.index(me)
+    ax.text(vals[i], i, ' ' + fmt(vals[i]), va='center', ha='left', fontsize=6.2,
+            color=INK, fontweight='bold')
     ax.set_yticks(range(len(rows)))
     ax.set_yticklabels(labels, fontsize=6.2)
     ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: fmt(v)))
@@ -106,8 +125,8 @@ def rhna_bars(r, name):
     return True
 
 data = json.load(open('/tmp/figdata.json'))['cities']
-money = lambda v: f'${v/1e6:.1f}M'
-rent = lambda v: f'${v/1000:.1f}k'
+money = lambda v, d=1: f'${v/1e6:.{d}f}M'
+rent = lambda v, d=1: f'${v/1000:.{d}f}k'
 plain = lambda v: f'{v:,.0f}'
 
 made = 0

@@ -584,7 +584,7 @@ export const NEWS_ARTICLES = [
     snippet:'May 17 May 18 May 19 May 20 May 21 May 22 May 23 These reports are compiled from publicly available information released by the Los Gatos-Monte Sereno Police Department. Prepared by Anika Kapasi',
     url:'https://losgatan.com/caller-reportedly-loses-handgun-at-hotel-on-east-main-street-police-blotter-may-3-23/' },
   { topic:'housing', city:'milpitas', title:'Milpitas City Council vote will raise rents and housing costs', source:'The Milpitas Beat', date:'2026-05-21',
-    image:'https://milpitasbeat.com/wp-content/uploads/2026/05/IMG_2290.heic',
+    image:null,
     snippet:'Opinion Written by: Joseph Weinstein Late this past Tuesday night, I received an outraged call from a friend whose kids cannot afford to buy a home in Milpitas. She suggested I watch the City Council Meeting; Item 15, a housing development was the agenda item. The Developer had worked with City Staff over a 7',
     url:'https://milpitasbeat.com/milpitas-city-council-vote-will-raise-rents-and-housing-costs/' },
   { topic:'housing', city:'gilroy', title:'Report shows Gilroy falling behind in housing numbers', source:'Gilroy Dispatch', date:'2026-03-25',
@@ -1116,7 +1116,7 @@ export const NEWS_ARTICLES = [
     "source": "Local News Matters",
     "date": "2024-04-11",
     "image": null,
-    "snippet": "Headline from Local News Matters. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOME1PSTloWE1FZzJtbzVLdVhJeDNhcHVaWjA4NGdLS3MxQ1ZzSG1YVWZnUTJjOEVJRDVmU3k3bzlhQWFkVElyTHkyUmMwSmZhTmNicGpwNWZSa0M0a3NOMWRNWGhfVUpxZUVYUEp0cGNqNlZJc3lVYUR2LV9kd0xjYV9DU3pNanI3bGphOVdmelo4cFdrMkF3dzVhMUFFeGZfQWgwR2RNeXptclQ2cTdKNWNNSks4WDZoYlg5cGNGT01qWnBZV1hoMW13?oc=5"
   },
   {
@@ -1126,7 +1126,7 @@ export const NEWS_ARTICLES = [
     "source": "San Mateo Daily Journal",
     "date": "2022-10-18",
     "image": null,
-    "snippet": "Headline from San Mateo Daily Journal. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPOVNHeGdfWVhTcjVZRHhvdUhRVlFxcDVyWlNCSTc4OFh3QWluenBZSU84OFVBYmJJQnA4aGNtU3lRZV9sYnFIM25pVS1DQ1A0X0t6RndBTTk3TDBURkw3U0VKcEd4Yy16NHpBTXpIcDgtWWtnZWJERDZXS2hDUkY2SDdodEtyV01Fb0J6Wmp3UFdneTFaUkVmUEtFcnRhUGtRVGxydlpTZkV4MVJmd0w0VnNxeFZGWnpYZ25peGxuSmo1QUJQMkpGd21tQU5TY19N?oc=5"
   },
   {
@@ -1136,7 +1136,7 @@ export const NEWS_ARTICLES = [
     "source": "KRON4",
     "date": "2018-05-06",
     "image": null,
-    "snippet": "Headline from KRON4. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOMmpXcm9YYjU5S2U4d1o2ZFZqYklINmtUbGZoejVoMUVYYkIzQVFCMDhQa0R3NVVJVU5XWjRwcldKYjdUY3lkSkhKcmh6MHZDVG9MRW1MS3NRUEsxdkhydnZOQVV0VG14MEpDVXN0ZzRSQnNJR3Z4MVBZUHkwM2t5NzJnQlZhS2_SAYwBQVVfeXFMTWFTWGhKeDlGTXluUU0yMXVtbU1uQTM4RTZFX1FwTGdYYnlnSjEtckUxUU9NaTVweTdBVlgxU21FamRyUzdjclJ5a2kwamd0TkJuMkV3WW9RVFFKQXpXRFRsZ2ZUbjRrS3JaR0Z2aHlzMHhlcUlPdGZZUXBma1F6dm1McHc3QXFDeUN1RUI?oc=5"
   },
   {
@@ -1146,7 +1146,7 @@ export const NEWS_ARTICLES = [
     "source": "San Francisco Chronicle",
     "date": "2018-05-05",
     "image": null,
-    "snippet": "Headline from San Francisco Chronicle. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQNm5JOXVqTjgwLXRJa0g4UmhYNzhqdkhqMDh0aUoxRzJjdjYxLVczU2dqU1dDWDhjSEkxMWtJVG1kdkh4anB4d2FZaWM1UXpmWFdaMHl3Z3A0N3hkT3FKZ0NzaTgwRzZibzhiUnpianlqQlN5d3hpX19EajJFNEZnR2VoWTdNRTlwN1hkdTd6d1VqUTRMdWtPMnVLMlR4a2xLYmZMRmtjUGxzZw?oc=5"
   },
   {
@@ -1156,7 +1156,7 @@ export const NEWS_ARTICLES = [
     "source": "East Bay Times",
     "date": "2008-04-18",
     "image": null,
-    "snippet": "Headline from East Bay Times. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBTQ2xmTHhGTU1MTDlDTFJmYVVGenlTT1JxX1RycXA3NGdzQjJZTzdqVmNsTzI1MU0zQUIwaDZ6QXpGb2RMZHVFRGxralhiU2I0ODhISnpGTFNvVWJLc0Q4TzhMdlRIdUdfUng2WXZhZzhPZmktZmVxQmx2TU5fd9IBgwFBVV95cUxPVWZSdGFScFZ1aTA2bXNjZmswRll1WTFjRHc3NXR1Ry1fb3U0dTFHTVZFYWV3R0JzZXBCY3h3Y3hPdFJBTkQwUEkyeGxWSVI2MmtOd1JhRGZUUjlNS1ByeWJYNTZtazcwY3NaYkZ2a0N1WnlObWZlQVFlclFnNjVHN2NSUQ?oc=5"
   },
   {
@@ -1186,7 +1186,7 @@ export const NEWS_ARTICLES = [
     "source": "CBS News",
     "date": "2024-08-06",
     "image": null,
-    "snippet": "Headline from CBS News. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPdDFlaXU0REVFNHRIREU4WF8zQzNPRjdpbC1MSEFjX2FVUkUxTGJCV2lmNUJDNUplQ2dqWGNyYmdZcVdtdzdtLVlRUnljOXJxclZIYWE4NFgtU1FiRE1mYlJobnFhQTNpWVR5SldtWGFVekRMNmhBTWFFSl9JTF9qXzBhdV9BaExNMUJmMVN0WGhNMi1VVDlLQkQ4SGdJdV9SZTRFQThNNVdRUEJjVmxXTm1pV19sNWpMM0NfVm4yZW9wSlNGZm03Rmo1YThDZ9IB0wFBVV95cUxNNk13LVRqRWNNdURnS2lkUHVTX2Ezb2FKbDhmTm5HMjdOa080OGRiLUFtRkZLem5mTXN2dDVacDdTQUczaGt5TWpTQW1jQkVVTzFfQnVnYzBiUUstT3AwVnlCRlBJc2tPZVlOYXlSbnFCc2l3VnZCQllXaEJjdU9iRWIwa0I1eXlHQmE1LWJkcmF5MGw4b0V5ZVFaMmwtd2o5NjU3OTdpbm9LejZOZ3NndnMwMHJNamRLR2RLTFV3S01rYU9jYVpCSWdveGlkMkxWcjJB?oc=5"
   },
   {
@@ -1206,7 +1206,7 @@ export const NEWS_ARTICLES = [
     "source": "San Francisco Chronicle",
     "date": "2022-01-11",
     "image": null,
-    "snippet": "Headline from San Francisco Chronicle. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOeTg1Q3JZR1dmQ3NsQ1Q5cEVhSC1UdnZYSWlUX2FxRmF0ZWE4c1RvcDg1dXRyOTE4VUZ4dUxIR29CLTFrZklHMVh4LWhaSTJBbHRPYml4eFVoZG9oQU56Q2ctSUgwMXdnVkRWR3FXYWQwamtmNU5rbnBOSEtFOFJPYjZNZ3RkSjZ3VmQ3T21lTFAyVDFjTzlnZkJuSXhvLWJUYzhjdWE2RQ?oc=5"
   },
   {
@@ -1216,7 +1216,7 @@ export const NEWS_ARTICLES = [
     "source": "abc7news.com",
     "date": "2020-02-04",
     "image": null,
-    "snippet": "Headline from abc7news.com. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQajE2aG8ybFZqTWpSZk44c2gyS1NpaW1FcWlDNzlBaFBfbVplN1VKSkt0U29XLWMzOEljMG5wQkgtM25uODJxcl9zbER1bDBrbVZLT1FUbXFKb1ZONU1pQmotWTBDWkdZaHJnemtKZC0xcVJjLTUzc1hpNTFGajFpTlNkVDlfbE41a2Y0TjFUWXRZMGZrVTFHRHJINi3SAaIBQVVfeXFMTmNsTWtzZ3VvcU5ibG1KMXNuNF9faFlxbDltcnRqaThTQlNQN05LOEwzTUcwMnNvSVdtUm15SWxEM3Q3b3JBbWl4RHA3UTl1MkpIeE9tbjZTTkhKQnNUcnNZYjlUb2xVMmJ4S1c1THRDUUV6QXdROXVtWFFkRVkzcWhvZ2dKWjlkZzlVRTU0NjFGQmc3Sm1XN05YSFpCVjZCOXJR?oc=5"
   },
   {
@@ -1226,7 +1226,7 @@ export const NEWS_ARTICLES = [
     "source": "abc7news.com",
     "date": "2018-07-29",
     "image": null,
-    "snippet": "Headline from abc7news.com. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOUTNJcnppQTV6TnAwelFOT0dJdnV5bVVLMFJNcnVGVWVpUmh3M1dDMkpGdFpkNW9FYm1MNk9iZmZjOE1NNXNWU3dxeHRNWDF2dEFsTWIyTld6UXN2TXNNSXkzQ2lJRXNVamFYSjk3alJHekpPRmlULURnWkpKbUtXZXdNMjk4WnhMellUWjF2UVZFZ3J6ZDBPN0VLa2ZjLVFhTElqSENEWWbSAa4BQVVfeXFMT0VpbnRkdkEzTXE0dUhLdXZwQlREd1NJRjNkbHV3UnRvWHZRakdvODJWc1BscFdTMl9YRnFIVnh3U0Z5QkxaUU5TMTN1LXVOaVk5VHhLU1h3TXhFaDRPYllQMjdkTUQ5dDV6QVJIX195NWY1SE5zTXdYaGVPMUlqOGhraFBYNUR1QzE3Y1FJYV8ybVVmR1RYUHFVR2sxU1l2Z1N2NDNITlhmemxpQlh3?oc=5"
   },
   {
@@ -1236,7 +1236,7 @@ export const NEWS_ARTICLES = [
     "source": "SFGATE",
     "date": "2009-03-02",
     "image": null,
-    "snippet": "Headline from SFGATE. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOTXY0aXNDejJsQTBuR2lVS2ZOMVpvenRseFprd2NrbnNwSENWWkI0Ql9EZVhCQVZjS2J2Z000emNmY3pCYUk0MkI1TV8xaml5Tjl6SHZ4d3lSVzBydDFZbEc1ZUxHWFp0a1JuOVNYTkw1Tk5pV1FZY3lnX0xRaXJ5SjN1bWU5elBnenp4SmRBVGhyNzM4allFNGFBTTJMdw?oc=5"
   },
   {
@@ -1496,7 +1496,7 @@ export const NEWS_ARTICLES = [
     "source": "School Construction News",
     "date": "2026-06-30",
     "image": null,
-    "snippet": "Headline from School Construction News. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQZWp1VGRCVU5UckhwVUswd1locFhQa1Fjd0JSTkRtb05CNTBMeVktSFFQRHBjd19IcHlkVWxOVy1KZGdZRTNaSnFtejVOcXkwNHJNVEtWVEhqWklsdUxFVVY0ajJhb1A2Zk5fREdzV1pBS2FPRXJFbWRMZ3pQWEFGZVlNYm5Ba0ZQVkhKamxRY25IRWMtaGRkZmhiRTgxQ0gySVRLMkFNU0dWZWdaUVdBano3dHBxdS1BMElCZlZvM0U1Mnk4T1FMQ1ZIN3I0dEF1YnF0NnBOcXlFZ241cTFyNjJoZUVHYkljM01WSUdUWEpkQWlBOGhnakVJZ3ZycEhibG1UbV93?oc=5"
   },
   {
@@ -1506,7 +1506,7 @@ export const NEWS_ARTICLES = [
     "source": "e-architect",
     "date": "2024-04-16",
     "image": null,
-    "snippet": "Headline from e-architect. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNNGRSelZWOXVESWFiazNLR2o3UXh3MnhaWXVaR21MRjJaUkdONVRfQ1RkMVA0djcxQ2gwblBLQ21UQjBBWWV1ZVA5M3VTeF9jQ1VaZ1N6TVBhcXQ5dGR4NEFLWnFyTzliNHVUWnI5VDBtNnFsS0FtR3BnaFp1emx0WTdHaURfek1mY3ljLQ?oc=5"
   },
   {
@@ -1516,7 +1516,7 @@ export const NEWS_ARTICLES = [
     "source": "San Mateo Daily Journal",
     "date": "2023-02-03",
     "image": null,
-    "snippet": "Headline from San Mateo Daily Journal. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQaXdUeXVFNkozZkRQRjVDWGFHTFo5ZmFzMk16ZXZibE00UFlOT2ZLa205bGx0RGt1eGppVnBac2RyNElQQmp4aXU1NTUxYTFHSVZ6OTJEUzNQNHNISWxGSjdhVnhVUDJfbFpfdFlsS1NSY0dBYVRRUjE1THhtLW1mTnEwdHRoVklOaDI2bjd6LU94R1V2dlVYLTJVME1Kamw3WTNlSDVzZjB5ak15SFFhWVJoQ0VRWjBRTHdrM05nZw?oc=5"
   },
   {
@@ -1526,7 +1526,7 @@ export const NEWS_ARTICLES = [
     "source": "San Mateo Daily Journal",
     "date": "2022-10-20",
     "image": null,
-    "snippet": "Headline from San Mateo Daily Journal. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPUF83YWdsTTZzV3dqdUFia1ZlckdlTDUtSEVTR2oxb3FMSmhYUjJTYzBhNC0zdzFxeU5YbzgtM2dMVFZFV04xaEtWVnFMWFJtbGVucFdha2VJZHV6ZUs3MzJ6eG1kZ3VTWi0wWGc5dTNrLU1FVHRoZ2g1VE5raDE0RXhHSmdPZ1dvbVF0V29SUFl5S1VJeThLazlWR2hNc0phejVoN2xtdGN6RHlTMG1zd2otTklQenJ3c3RWR3hFYw?oc=5"
   },
   {
@@ -1536,7 +1536,7 @@ export const NEWS_ARTICLES = [
     "source": "abc7news.com",
     "date": "2022-09-27",
     "image": null,
-    "snippet": "Headline from abc7news.com. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQSHluMlNzdWpqd0x5UXhVbU1sRV9LMWNLTFpQVVBCUGNFNWtjdVgyQ2ZORGRrZTc5ZDhDTUQyMVVDazlORHo0ODFfQ0g0dGVkRUFhaVh1THlmQzI0REtwZ2hLT1ByeVlXTVdHLVNPODBodVFSS3M4XzB1MmMzZ2ZCNzl0RFBDVWdOdlpEeS15b29TMWVMbG0zbTlOTWRMdzjSAaQBQVVfeXFMUGVFNHhxQkxIUk01cVJKRG5ueDc0RlU1UVUyTlVTWEVvSEJwQ045VFM0SHdoS2xPX2hrUDdqcHkyc2h0QW5DeUNya2xjVUNXSFRTc2JhTHZyWjRfVFluTUVqRFBJQUlyOEJSdGh5OU5MeDUwWHQwX3M3cFlkU25aaW9zc3RvTkQ1OEFza0xMSUw0RGZpblRKQ3FLd1hPel9GX0VRMFE?oc=5"
   },
   {
@@ -2386,7 +2386,7 @@ export const NEWS_ARTICLES = [
     "source": "The Almanac",
     "date": "2026-07-31",
     "image": null,
-    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOLWtMVmk1QURoN0VEOTI2Y3hoTzg2OUZ0RjJ1bXRkQi1qenVxRWZ6NnJDc2s4V092a1NUN0ZpSVAyaldVeTJOblJYdWowRTB1NFpVVGNmOEtZTE9oa0l6Z01hZFBDWHFKdWJHelJ0aXk1YmVLbVR2WENFSE1hTUZFRjJTWFhWOEdxUEZELUM5UVcwa19pR3dfMEZiNkJyejUxZFZndmV1VTZpMVU0QWdUVTB0dXg4V0F6UVE?oc=5"
   },
   {
@@ -2396,7 +2396,7 @@ export const NEWS_ARTICLES = [
     "source": "The Almanac",
     "date": "2026-06-26",
     "image": null,
-    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQTzkyNmZ3QlVwSkRDdHFlOENQTy1TT0QtaGNRRk5KdmY3VVV0U1RfclJBWmsxYndnS1lhYnF6Z3pLVkZ2aTlWY1VJUUJaWFlZNnV4STBwZUVEOERDdnRUREl1MUhKZENlcFN5SDlXWV91c0c2S1lqdjNzMDdpbmN5SUZWMFAweWxVMGJvYmFtVENqb3V3ZXM3RjZBdnhPcnpNRFhTMVNZNXFmdlNpaU1tbVk4aEFGcGNLNTE2Xzh3?oc=5"
   },
   {
@@ -2406,7 +2406,7 @@ export const NEWS_ARTICLES = [
     "source": "The Almanac",
     "date": "2025-11-19",
     "image": null,
-    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNM2ROVno2a0pFVUEySUlVcW9YQlRLcW13eU9iMWF3X2UyUzVqd21PNVpsR0U2bnNiZDdPU3hBNVlJb3hvZzNuaHhXQWpWVDBqV3l1QmdEb2dSSG1HX2lGclcxZEJ1ZE85WHBOVk9obGhYbm9iSFhxZnQ3Z3FMYkNTUFV0NWFwODNSUUxENWZVYXFiOEZZLWhwUHQ3Rmx0MnVtUHR6clVzTlVwMlRLTVhsZ01ybnNkMjRWc2lF?oc=5"
   },
   {
@@ -2416,7 +2416,7 @@ export const NEWS_ARTICLES = [
     "source": "The Almanac",
     "date": "2025-02-19",
     "image": null,
-    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOM2xoaDRhUk5DMjVLZmxwT19nRFZPRWlNQ1J2NXRZOXQ4OF9KM0UtVWhjWFpoLUQ4Mk84eGVBVHFIZldKOTlZc0F4NGpLU1l5RGtONVlrS0I1clh3aG9HQm9jRVJZRGh5WnRoU0k4cFJtNUFnTVptS2RlcGlhUXo3OHBsNHladzF6SHktYzRBQ1FocUFUb2VqZVhPT2xsUmIzNE1J?oc=5"
   },
   {
@@ -2426,7 +2426,7 @@ export const NEWS_ARTICLES = [
     "source": "The Almanac",
     "date": "2025-02-04",
     "image": null,
-    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQRzkyTEMxNXdTbHhfXzlnT3Rsc2RlQ1puR2tKbDRNaXAxS1ZXeS1ncXhjU2xNWGpyb3pBdnFrSUZ3V1pFZE5EQXRXaG9HWFFJVlQ4ZGxsRURISTJFYlB4cmpsb3pxWVVCSTViME0yTUtiOG8ybjRDazMtX2tyblBMOC1HM0xDalF6YURRV1lGUDNQMnRT?oc=5"
   },
   {
@@ -2436,7 +2436,7 @@ export const NEWS_ARTICLES = [
     "source": "The Almanac",
     "date": "2024-09-09",
     "image": null,
-    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPYXFfb1ZJcjFUTl9VMDh0eUZqakFWcEVaRUoxelB4S0ZLWXUzcVJwYkpvckpKMHoxcjhWeUhHZXBzVl9GeTlnbFZ0T2RJS2x5WEZKb3RjSXhsaDFmQmktWEg1WUh6d2FVcmd5cl93ZzlpZVFYaWNMcFJ6Szd3Q0R2LUprejR6VzRjcG91YXQ5Yy1fZnB4bTdXM3BuZmczamhwcUtDdEpQMWdTRVY1RW9yZW9pQUM5RnJR?oc=5"
   },
   {
@@ -2446,7 +2446,7 @@ export const NEWS_ARTICLES = [
     "source": "The Almanac",
     "date": "2024-08-08",
     "image": null,
-    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQQmVXYVBkcVRaUmhXc2dCUi1PQ0dNSXlRT2dMSHpFTWtrRUs4UW4wdmdSVGozY3E5dE5ySkxKVDhmM2NreFU1a3dxbEEwN0x6b19WLTIwdzh2bzZaa0xCYXYyNHRxQi15S2pVZjY4cF9DSXNKcTlQamhnb1RuUVNlNG5mZkF1aEoxWXpxbzdvTWhESEFZc3prQlZxeUR0N2plRUU4bEloWndhOU53UG1zcnFrOU9WR1FHV3Bfb05MSnFMZlkzQVZiajU2d1NsTUU?oc=5"
   },
   {
@@ -2456,7 +2456,7 @@ export const NEWS_ARTICLES = [
     "source": "The Almanac",
     "date": "2024-07-26",
     "image": null,
-    "snippet": "Headline from The Almanac. Open the article for the full report.",
+    "snippet": "",
     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVVFzUnJwWmJiekc1YVpMYzdoMENMSERULXRVWUg4NWZFc0NtZlZmSG9CM19NYXF0YnV4aGNfWDJVZzc5ZzJDd3hqR3U0d1I4Y29yS1FubmNKaWpKZjNMNkVlaGtER2lEdGZLaUhDMVI0clBUSWdLbFZqNUtCWUtiRUw5aUxYUkJqTkdCNXY0T1RaaTBDcGR1SUJNeE1ZbjRscXpqcVdSbWxpcXpUUXR4NGlibnV2aVJPZ256bjRVVUlFa0RQT0k0Zw?oc=5"
   }
 ];
