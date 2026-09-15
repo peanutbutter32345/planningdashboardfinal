@@ -690,11 +690,13 @@ function compactProject(p={}) {
 }
 const compactBoard = (b={}) => ({name:b.name || b.label, meets:clip(b.when, 80), link:b.link || b.url});
 
+// on_topic comes first so the model commits to a scope decision before writing anything.
 const outputSchema = {
   type:'object',
   additionalProperties:false,
-  required:['answer','resource_ids'],
+  required:['on_topic','answer','resource_ids'],
   properties:{
+    on_topic:{type:'boolean'},
     answer:{type:'string'},
     resource_ids:{type:'array',items:{type:'string'},maxItems:8}
   }
@@ -710,6 +712,14 @@ app.get('/api/sources', (req,res) => {
   res.json(city ? SOURCES.filter(s=>s.city===city) : SOURCES);
 });
 
+// Anything outside civic planning gets this fixed reply - the model's own text is never shown for it.
+const OFF_TOPIC_REPLY = "I can only help with planning and development in the cities this dashboard covers: projects, housing, zoning, permits, transportation, public works, environmental review, and how to take part in city meetings. Try asking about one of those.";
+// Plain attempts to rewrite the assistant's rules are refused before any model call (and free quota)
+// is spent. Deliberately narrow: "the" counts only before a qualifier ("the above rules"), so
+// "can I disregard the setback rules for an ADU?" and "can I ignore the rules for ADUs?" still get through.
+const INJECTION = /\b(ignore|disregard|forget|override)\s+(?:the\s+)?(?:(?:all|any|your|my|previous|prior|above|earlier|these|those|system)\s+){1,3}(instructions|rules|prompts?|guidelines)\b|\bsystem prompt\b|\byou are now\b|\bpretend (to be|you are)\b|\bjailbreak\b|\bdeveloper mode\b/i;
+const offTopic = (res, city) => res.json({answer:OFF_TOPIC_REPLY, resources:[], meta:{city, model, offTopic:true}});
+
 app.post('/api/ask', async (req, res) => {
   try {
     if (!LLM_API_KEY) {
@@ -722,6 +732,7 @@ app.post('/api/ask', async (req, res) => {
     if (question.length > 6000) return res.status(400).json({error:'Question is too long.'});
 
     const cityLabel = String(context.cityLabel || context.cityKey || '').trim();
+    if (INJECTION.test(question)) return offTopic(res, cityLabel);
     const candidateSources = rankSources(question, cityLabel).slice(0, 10);
     const candidateProjects = rankProjects(question, context.projects || []).slice(0, 12).map(compactProject);
     const history = cleanHistory(req.body?.history || []);
@@ -749,7 +760,7 @@ app.post('/api/ask', async (req, res) => {
     const ask = (format) => llm.chat.completions.create({
       model,
       messages: format.type === 'json_object'
-        ? [...messages, {role:'system', content:'Reply with a JSON object with exactly two keys: "answer" (string) and "resource_ids" (array of strings).'}]
+        ? [...messages, {role:'system', content:'Reply with a JSON object with exactly three keys: "on_topic" (boolean), "answer" (string) and "resource_ids" (array of strings).'}]
         : messages,
       max_completion_tokens: 900,
       ...(reasoningEffort ? {reasoning_effort: reasoningEffort} : {}),
@@ -769,6 +780,8 @@ app.post('/api/ask', async (req, res) => {
     let parsed;
     try { parsed = JSON.parse(outputText); }
     catch { parsed = {answer:outputText || 'No answer returned.', resource_ids:[]}; }
+    // Strict: only an explicit on_topic:true is answered. Unparseable output or a missing flag is refused too.
+    if (parsed.on_topic !== true) return offTopic(res, cityLabel);
 
     const allowed = new Map(candidateSources.map(s=>[s.id,s]));
     const resources = (Array.isArray(parsed.resource_ids) ? parsed.resource_ids : [])
