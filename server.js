@@ -16,16 +16,22 @@ dotenv.config();
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
-const model = process.env.OPENAI_MODEL || 'gpt-5-mini';
-const vectorStoreId = (process.env.OPENAI_VECTOR_STORE_ID || '').trim();
-const enableWebSearch = String(process.env.ENABLE_WEB_SEARCH || '').toLowerCase() === 'true';
+// "Ask a Question" runs on any OpenAI-compatible chat API. The default is Groq's free tier
+// (create a key at https://console.groq.com/keys). To use another provider, set LLM_BASE_URL and
+// LLM_MODEL - for example Google Gemini: https://generativelanguage.googleapis.com/v1beta/openai/
+const LLM_BASE_URL = (process.env.LLM_BASE_URL || 'https://api.groq.com/openai/v1').trim();
+const LLM_API_KEY = (process.env.LLM_API_KEY || process.env.GROQ_API_KEY || '').trim();
+const model = (process.env.LLM_MODEL || 'openai/gpt-oss-120b').trim();
+// gpt-oss models think before answering; 'low' keeps that short so answers stay fast and inside
+// the free plan's per-minute token budget. Models without reasoning must not be sent the field.
+const reasoningEffort = (process.env.LLM_REASONING_EFFORT ?? (/gpt-oss/.test(model) ? 'low' : '')).trim();
 const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 const RESEND_FROM = process.env.RESEND_FROM || 'South Bay Area Civic Dashboard <onboarding@resend.dev>';
 const CRON_SECRET = process.env.CRON_SECRET || '';
 const SITE_URL = process.env.SITE_URL || 'https://southbaydashboard.com';
 
-if (!process.env.OPENAI_API_KEY) {
-  console.warn('OPENAI_API_KEY is not set. The site will load, but /api/ask will return a configuration error.');
+if (!LLM_API_KEY) {
+  console.warn('LLM_API_KEY is not set. The site will load, but /api/ask will return a configuration error. Get a free key at https://console.groq.com/keys');
 }
 if (!process.env.DATABASE_URL) {
   console.warn('DATABASE_URL is not set. The site will load, but /api/register, /api/login, and /api/stars will return a configuration error.');
@@ -37,7 +43,8 @@ if (!CRON_SECRET) {
   console.warn('CRON_SECRET is not set. /api/cron/send-digests will refuse all requests until it is.');
 }
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'missing-key' });
+// The openai package is used only as a generic client for an OpenAI-compatible endpoint.
+const llm = new OpenAI({ apiKey: LLM_API_KEY || 'missing-key', baseURL: LLM_BASE_URL, maxRetries: 1, timeout: 30000 });
 
 // ---------------- DATABASE (Render Postgres) ----------------
 const { Pool } = pg;
@@ -666,8 +673,22 @@ function rankProjects(question, projects=[]) {
 
 function cleanHistory(history=[]) {
   if (!Array.isArray(history)) return [];
-  return history.slice(-8).filter(m => ['user','assistant'].includes(m?.role) && typeof m?.content === 'string').map(m => ({role:m.role, content:m.content.slice(0,6000)}));
+  return history.slice(-6).filter(m => ['user','assistant'].includes(m?.role) && typeof m?.content === 'string').map(m => ({role:m.role, content:m.content.slice(0,1200)}));
 }
+
+// Free plans cap tokens per minute (Groq: 8K for gpt-oss), and a whole project record - coordinates,
+// long notes, every field - made one Mountain View question ~7.5K tokens. Send only what answers use.
+const clip = (v, n) => (typeof v === 'string' && v.length > n ? v.slice(0, n - 1) + '…' : v);
+function compactProject(p={}) {
+  const out = {
+    address: p.addr || p.address || p.name, type: p.type, stage: p.stage, units: p.units, affordable_units: p.bmr,
+    file_number: p.fileNo || p.fileNumber, applicant: p.applicant, last_update: p.lastDate,
+    description: clip(p.desc || p.description, 260), latest_note: clip(p.lastNote, 220), caveat: clip(p.flag, 180)
+  };
+  for (const k of Object.keys(out)) if (out[k] === null || out[k] === undefined || out[k] === '') delete out[k];
+  return out;
+}
+const compactBoard = (b={}) => ({name:b.name || b.label, meets:clip(b.when, 80), link:b.link || b.url});
 
 const outputSchema = {
   type:'object',
@@ -680,7 +701,8 @@ const outputSchema = {
 };
 
 app.get('/api/health', (_req,res) => {
-  res.json({ok:true, model, fileSearch:Boolean(vectorStoreId), webSearch:enableWebSearch, sourceCount:SOURCES.length, database:Boolean(pool)});
+  let provider = LLM_BASE_URL; try { provider = new URL(LLM_BASE_URL).host; } catch {}
+  res.json({ok:true, model, provider, askConfigured:Boolean(LLM_API_KEY), sourceCount:SOURCES.length, database:Boolean(pool)});
 });
 
 app.get('/api/sources', (req,res) => {
@@ -690,8 +712,8 @@ app.get('/api/sources', (req,res) => {
 
 app.post('/api/ask', async (req, res) => {
   try {
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(503).json({error:'OPENAI_API_KEY is not configured on the server yet.'});
+    if (!LLM_API_KEY) {
+      return res.status(503).json({error:'The assistant is not set up on this server yet (LLM_API_KEY is missing).'});
     }
 
     const question = String(req.body?.question || '').trim();
@@ -700,56 +722,53 @@ app.post('/api/ask', async (req, res) => {
     if (question.length > 6000) return res.status(400).json({error:'Question is too long.'});
 
     const cityLabel = String(context.cityLabel || context.cityKey || '').trim();
-    const candidateSources = rankSources(question, cityLabel);
-    const candidateProjects = rankProjects(question, context.projects || []);
+    const candidateSources = rankSources(question, cityLabel).slice(0, 10);
+    const candidateProjects = rankProjects(question, context.projects || []).slice(0, 12).map(compactProject);
     const history = cleanHistory(req.body?.history || []);
 
-    const sourceIndex = candidateSources.map(s => ({id:s.id,title:s.title,category:s.category,note:s.note,url:s.url}));
+    const sourceIndex = candidateSources.map(s => ({id:s.id,title:s.title,category:s.category,note:clip(s.note,140)}));
     const civicContext = {
       selected_city: cityLabel,
       relevant_dashboard_projects: candidateProjects,
       dashboard_participation: {
-        deciders: Array.isArray(context.deciders) ? context.deciders.slice(0,12) : [],
-        boards: Array.isArray(context.boards) ? context.boards.slice(0,12) : [],
-        links: Array.isArray(context.links) ? context.links.slice(0,12) : []
+        deciders: Array.isArray(context.deciders) ? context.deciders.slice(0,8).map(compactBoard) : [],
+        boards: Array.isArray(context.boards) ? context.boards.slice(0,8).map(compactBoard) : [],
+        links: Array.isArray(context.links) ? context.links.slice(0,6).map(l => ({title:l.label || l.title, url:l.url})) : []
       },
       candidate_official_sources: sourceIndex
     };
 
-    const tools = [];
-    if (vectorStoreId) tools.push({type:'file_search', vector_store_ids:[vectorStoreId], max_num_results:8});
-    if (enableWebSearch) tools.push({type:'web_search'});
-
-    const input = [
+    const messages = [
+      {role:'system', content:SYSTEM_INSTRUCTIONS},
       ...history,
       {
         role:'user',
         content:`CURRENT CIVIC CONTEXT\n${JSON.stringify(civicContext)}\n\nQUESTION\n${question}\n\nReturn an answer plus only the IDs of the official candidate sources that are genuinely relevant. Do not invent source IDs.`
       }
     ];
-
-    const response = await openai.responses.create({
+    const ask = (format) => llm.chat.completions.create({
       model,
-      reasoning:{effort:'low'},
-      max_output_tokens:600,
-      instructions:SYSTEM_INSTRUCTIONS,
-      input,
-      tools,
-      text:{
-        format:{
-          type:'json_schema',
-          name:'south_bay_planning_answer',
-          description:'A civic-planning answer with IDs of supporting official resources.',
-          strict:true,
-          schema:outputSchema
-        }
-      },
-      store:false
+      messages: format.type === 'json_object'
+        ? [...messages, {role:'system', content:'Reply with a JSON object with exactly two keys: "answer" (string) and "resource_ids" (array of strings).'}]
+        : messages,
+      max_completion_tokens: 900,
+      ...(reasoningEffort ? {reasoning_effort: reasoningEffort} : {}),
+      response_format: format
     });
+    let completion;
+    try {
+      completion = await ask({type:'json_schema', json_schema:{name:'south_bay_planning_answer', strict:true, schema:outputSchema}});
+    } catch (err) {
+      // Providers or models without strict schemas reject the request; plain JSON mode still works.
+      if (Number(err?.status) === 400 && /response_format|json_schema|schema|structured/i.test(String(err?.message))) {
+        completion = await ask({type:'json_object'});
+      } else throw err;
+    }
+    const outputText = completion.choices?.[0]?.message?.content || '';
 
     let parsed;
-    try { parsed = JSON.parse(response.output_text); }
-    catch { parsed = {answer:response.output_text || 'No answer returned.', resource_ids:[]}; }
+    try { parsed = JSON.parse(outputText); }
+    catch { parsed = {answer:outputText || 'No answer returned.', resource_ids:[]}; }
 
     const allowed = new Map(candidateSources.map(s=>[s.id,s]));
     const resources = (Array.isArray(parsed.resource_ids) ? parsed.resource_ids : [])
@@ -763,11 +782,18 @@ app.post('/api/ask', async (req, res) => {
     res.json({
       answer:String(parsed.answer || '').trim() || 'No answer returned.',
       resources,
-      meta:{city:cityLabel, model, usedFileSearch:Boolean(vectorStoreId), usedWebSearch:enableWebSearch}
+      meta:{city:cityLabel, model}
     });
   } catch (error) {
     console.error(error);
     const status = Number(error?.status) || 500;
+    // Free plans cap requests and tokens per minute; 413 is Groq's answer to one over-large request.
+    if (status === 429 || status === 413) {
+      return res.status(429).json({error:'The free assistant is at its per-minute limit right now. Please try again in a minute.'});
+    }
+    if (status === 401 || status === 403) {
+      return res.status(503).json({error:'The assistant is not set up correctly on this server (the API key was rejected).'});
+    }
     res.status(status >= 400 && status < 600 ? status : 500).json({error:error?.message || 'Unable to answer the question.'});
   }
 });

@@ -7,12 +7,13 @@ services:
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
-      - key: OPENAI_API_KEY
+      # Free key from https://console.groq.com/keys - powers "Ask a Question".
+      - key: LLM_API_KEY
         sync: false
-      - key: OPENAI_MODEL
-        value: gpt-5-mini
-      - key: ENABLE_WEB_SEARCH
-        value: "false"
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b
+      - key: LLM_BASE_URL
+        value: https://api.groq.com/openai/v1
       # Postgres connection string. Without this, accounts, stars, and digests are all disabled.
       - key: DATABASE_URL
         sync: false

@@ -1,18 +1,17 @@
 # South Bay Planning AI
 
-This package contains the civic dashboard plus a server-side AI assistant for Mountain View, Sunnyvale, and Cupertino.
+This package contains the civic dashboard plus a server-side AI assistant for the cities it covers in Santa Clara and San Mateo counties.
 
 ## What is already wired
 
 - `public/index.html` — dashboard + dedicated **Ask a Question** page.
 - Left pane — conversational answer.
 - Right pane — only official resources relevant to the answer.
-- `/api/ask` — OpenAI Responses API endpoint.
+- `/api/ask` — chat endpoint on any OpenAI-compatible API; defaults to Groq's free tier.
 - Dashboard project records are sent as structured context automatically.
 - `data/sources.js` — consolidated official planning, development, GIS, housing, permit, transportation, CIP, CEQA, hearing, and project links.
 - Resource selection is constrained to known source IDs, so the model cannot invent source URLs.
-- Optional OpenAI File Search/vector store support.
-- Optional live web search switch.
+- No paid API needed: the assistant runs on a free Groq key by default.
 
 ## 1. Install Node.js
 
@@ -24,20 +23,24 @@ Use Node 20+.
 npm install
 ```
 
-## 3. Add your OpenAI key
+## 3. Add a free API key
 
-Copy `.env.example` to `.env`:
-
-```bash
-cp .env.example .env
-```
-
-Then edit `.env`:
+Create a free key at https://console.groq.com/keys, then create a file named `.env` in the project folder containing:
 
 ```text
-OPENAI_API_KEY=your_real_key_here
-OPENAI_MODEL=gpt-5
+LLM_API_KEY=your_groq_key_here
 ```
+
+That is all that is required. Optional settings, shown with their defaults:
+
+```text
+LLM_MODEL=openai/gpt-oss-120b
+LLM_BASE_URL=https://api.groq.com/openai/v1
+```
+
+Groq's free plan allows this model 30 requests and 8,000 tokens per minute, and 1,000 requests a day. The server trims each question's context to stay well inside that, and when the limit is reached the page shows "try again in a minute" instead of an error.
+
+Any other OpenAI-compatible provider works by changing `LLM_BASE_URL`, `LLM_MODEL` and `LLM_API_KEY` — for example Google Gemini, at `https://generativelanguage.googleapis.com/v1beta/openai/`. Google's terms say content sent on its free tier may be used to improve its products and read by human reviewers.
 
 Never put the API key in `public/index.html`.
 
@@ -55,7 +58,11 @@ http://localhost:3000
 
 Open the **Ask a Question** tab and ask a civic-planning question.
 
-## 5. Optional: add a large document knowledge base
+## 5. What the assistant knows
+
+It answers from the selected city's project records and the official source registry in `data/sources.js`, and it does not browse the web. The OpenAI File Search (vector store) and live web search options below relied on OpenAI's paid Responses API and no longer apply; `npm run vector:create` is unused.
+
+### (Retired) document knowledge base
 
 Put official source files into `knowledge/`, for example:
 
@@ -83,7 +90,7 @@ OPENAI_VECTOR_STORE_ID=vs_...
 
 Paste that into `.env` and restart the server. File Search is then enabled automatically.
 
-## 6. Optional live web search
+### (Retired) live web search
 
 Set:
 
@@ -118,7 +125,7 @@ The existing Ask page already renders `answer` on the left and `resources` on th
 
 - API credentials stay on the server in `.env`.
 - `.env` is gitignored.
-- The browser never receives the OpenAI key.
+- The browser never receives the API key.
 - The assistant can only expose resource URLs that are already in the server's approved source registry.
 
 ## Email briefings
@@ -193,7 +200,7 @@ timeout in the scheduler, or hit `/api/health` on a separate schedule to keep th
 1. Push this repository to GitHub. Do not commit `.env`.
 2. In Render, create a new Blueprint or Web Service from the repository.
 3. If using the included `render.yaml`, Render will use `npm install` and `npm start` automatically.
-4. Add `OPENAI_API_KEY` as a private environment variable in Render.
+4. Add `LLM_API_KEY` (your free Groq key) as a private environment variable in Render.
 5. Deploy. The same server serves the website and `/api/ask`, so no frontend API URL change is required.
 
-Default production model: `gpt-5-mini`, low reasoning effort, maximum 600 output tokens.
+Default production model: `openai/gpt-oss-120b` on Groq's free tier, low reasoning effort, at most 900 completion tokens.
