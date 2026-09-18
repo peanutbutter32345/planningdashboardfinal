@@ -204,3 +204,55 @@ timeout in the scheduler, or hit `/api/health` on a separate schedule to keep th
 5. Deploy. The same server serves the website and `/api/ask`, so no frontend API URL change is required.
 
 Default production model: `openai/gpt-oss-120b` on Groq's free tier, low reasoning effort, at most 900 completion tokens.
+
+## Future housing map
+
+Open the **Future Map** dashboard tab, or visit `/?view=futures`. It uses the existing dashboard city records and preserves the site's original styling. No API key or database is required for scenarios.
+
+- Choose an area and a year (2027–2040), then change financing, cost growth, delivery delay and policy uptake assumptions.
+- Explore housing heatmaps, individual projects, city price scenarios and flood exposure. Expand the map, switch to satellite imagery, or play through the years with the map's timeline.
+- Overlay FEMA flood zones, NOAA sea-level scenarios (1–6 feet, selected independently of the year), and California Energy Commission power plants and battery facilities. Facility capacity is not live generation or available grid capacity.
+- Adjust price growth, supply sensitivity, a hypothetical exposed-location discount, household electricity use and grid delays. Price outputs are city-level sensitivity scenarios; the exposed-location example is separate from the city price index. Estimated annual electricity demand is based on modeled homes and the chosen household usage.
+- Compare the reference and scenario on the map, timeline and searchable project table. The affordable layer retains unknown affordability as unknown.
+- The bill watchlist distinguishes enacted laws from the November 2026 bond decision. Official sources and a review date accompany each entry; this is a curated snapshot, not a live legislative feed.
+- Copy a scenario link to reproduce the settings, or export the full selected area's modeled records and assumptions to CSV. Search only filters the displayed table, not the area totals or CSV.
+
+`public/futures/model.js` contains the pure delivery model, policy metadata and approximate station centers. `spatial.js` handles flood screening, price sensitivity and electricity demand; `layers.js` loads public map layers. `app.js` connects them to the dashboard; `futures.css` styles only the new feature. The on-page methodology documents the coefficients and limitations.
+
+**Interpretation:** these are illustrative sensitivity estimates of reported gross project units, not a calibrated forecast, a count of net new homes, a rent forecast or a legal parcel-eligibility determination. The project sample includes stale records, built phases and potentially overlapping master plans. Station buffers cover a hand-curated subset of Caltrain/BART, not every qualifying transit stop. Policy acceleration assumptions are not estimates published by the legislature or HCD.
+
+### Public spatial data
+
+The checked-in snapshots in `public/futures/data/` let the simulator load without credentials:
+
+- FEMA NFHL: 2,786 high-hazard and 0.2% annual-chance polygons for Santa Clara and San Mateo counties, retrieved September 18, 2026. Geometries are generalized for display. Point screening uses project coordinates, not parcel boundaries; an unmatched point is not a finding of safety. [Official source](https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28).
+- CEC: 56 facility records, with 44 not flagged retired displayed. The source was updated June 12, 2026. [Official source](https://services3.arcgis.com/bWPjFyq029ChCGur/arcgis/rest/services/Power_Plant/FeatureServer/0).
+- MTC/ABAG: Census 2020 housing-unit totals for the 33 dashboard areas, used as stock denominators. West San Jose uses the citywide San Jose denominator. Existing dashboard July 2026 Zillow city values provide price anchors where available. [Housing-stock source](https://census.bayareametro.gov/housing-units).
+
+NOAA sea-level tiles are loaded from the public service at runtime. They show water-level scenarios, not year-specific predictions or storm forecasts. [NOAA viewer and limitations](https://coast.noaa.gov/slr).
+
+Refresh the snapshots deliberately, inspect the changed metadata and counts, then run tests:
+
+```bash
+node scripts/fetch-spatial-data.js energy
+node scripts/fetch-spatial-data.js flood
+node scripts/fetch-spatial-data.js housing
+npm test
+```
+
+Public services can be unavailable; layer status and errors appear in the simulator. The server compresses the larger map snapshots in transit. Updating spatial snapshots does not refresh the curated bill watchlist, project records or price anchors.
+
+### Keep project data consistent
+
+The embedded city datasets in `public/index.html` currently own the project facts. After changing them, run:
+
+```bash
+npm run sync:projects
+npm test
+```
+
+This regenerates `data/projects.js` so server-side answers, hearing matching and email briefings use the same facts as the dashboard. The consistency test fails if the copies diverge. Tests also cover scenario bounds, URL settings, spatial screening, unknown affordability, policy timing, concurrent hearing refreshes and partial upstream failures.
+
+### Local validation
+
+`npm test` does not require credentials. Browsing, the free map, scenarios and the bill watchlist work locally without credentials. End-to-end account, email and AI testing requires the corresponding `DATABASE_URL`, `RESEND_API_KEY` and `LLM_API_KEY` environment variables; do not commit them.

@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link rel="stylesheet" href="/futures/futures.css">
 <style>
   /* Any rule that sets display on an element also overrides the browser's [hidden] behaviour.
      That has now bitten twice - a closed menu sat over the page eating clicks, and the map
@@ -742,7 +743,7 @@
   .acct-draft-notes{margin-top:14px; padding-top:12px; border-top:1px solid var(--rule);}
   .acct-draft-notes p{font-size:12px; color:var(--text-soft); line-height:1.6; margin-bottom:5px;}
   /* ---- Sub-nav under the three top-level pages ---- */
-  .sub-nav{background:var(--paper-2); border-bottom:1px solid var(--rule); position:sticky; top:0; z-index:49;}
+  .sub-nav{padding-right:64px; background:var(--paper-2); border-bottom:1px solid var(--rule); position:sticky; top:0; z-index:49;}
   /* Account and Resource Bank are their own pages: the dashboard masthead and section
      tabs are hidden there rather than left sitting above the content. */
   body.page-account #siteHero, body.page-bank #siteHero, body.page-about #siteHero, body.page-timeline #siteHero,
@@ -1323,6 +1324,7 @@
 
     <div class="onboard-actions">
       <button class="btn" id="onboardSubmit" type="button">Show my area →</button>
+      <button class="btn secondary" id="onboardExplore" type="button">Explore without setup</button>
       <span class="onboard-req" id="onboardReq"></span>
     </div>
   </div>
@@ -1360,6 +1362,7 @@
 <nav class="sub-nav" id="subNav" aria-label="Dashboard sections">
   <div class="wrap sub-nav-inner" role="tablist">
     <button class="sub-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Overview</button>
+    <button class="sub-nav-tab" data-screen="futures" role="tab" aria-selected="false">Future Map</button>
     <button class="sub-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
     <button class="sub-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get Involved</button>
     <button class="sub-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
@@ -1437,6 +1440,54 @@
 </header>
 
 <main id="mainContent">
+<section id="screenFutures" class="screen futures" style="display:none" aria-labelledby="futureTitle">
+ <div class="fx-shell">
+  <div class="fx-heading"><div><div class="fx-eyebrow">HOUSING · POLICY · PLACE</div><h2 id="futureTitle">Future housing map</h2><p>Simulate housing delivery, flood exposure, energy demand and city-level home values.</p></div><div class="fx-head-actions"><span class="fx-badge">EXPERIMENTAL · MODEL v2.0</span><button class="fx-button" id="fxShare">Copy scenario link ↗</button></div></div>
+  <div class="fx-disclosure"><strong>A future you can explore, not a promise.</strong> Estimates use a sample of reported project units and illustrative assumptions. Delivery and price outputs are sensitivity scenarios, not predictions or parcel valuations. Flood and energy layers come from public agencies. <a href="#fxMethod">How this works ↓</a></div>
+  <div class="fx-workspace">
+   <aside class="fx-controls" aria-label="Scenario controls">
+    <div class="fx-panel-title"><span class="fx-number">01</span><h2>Shape the scenario</h2><button id="fxReset" class="fx-text-button">Reset</button></div>
+    <label class="fx-field" for="fxCity">Explore an area<select id="fxCity"></select></label>
+    <div class="fx-presets" aria-label="Scenario presets"><button data-preset="baseline" aria-pressed="true">Reference</button><button data-preset="momentum" aria-pressed="false">Momentum</button><button data-preset="headwinds" aria-pressed="false">Headwinds</button><button data-preset="coastal" aria-pressed="false">Coastal stress</button></div>
+    <p class="fx-tiny" id="fxPresetNote">Reference: unchanged financing and no extra policy acceleration.</p>
+    <div class="fx-slider"><label for="fxYear">Look ahead to <output id="fxYearOut" for="fxYear">2031</output></label><input id="fxYear" type="range" min="2027" max="2040" value="2031"><div class="fx-range-ends"><span>2027</span><button type="button" id="fxPlay" aria-pressed="false">▶ Play years</button><span>2040</span></div></div>
+    <div class="fx-divider"></div><div class="fx-label">MARKET CONDITIONS <span>Assumptions</span></div>
+    <div class="fx-slider"><label for="fxRate">Financing rate <output id="fxRateOut" for="fxRate">6.0%</output></label><input id="fxRate" type="range" min="3" max="10" value="6" step="0.25"><div class="fx-range-ends"><span>Easier financing</span><span>Tighter financing</span></div></div>
+    <div class="fx-slider"><label for="fxCosts">Annual construction cost growth <output id="fxCostsOut" for="fxCosts">3.0%</output></label><input id="fxCosts" type="range" min="-2" max="8" value="3" step="0.5"></div>
+    <div class="fx-slider"><label for="fxDelay">Delivery delay adjustment <output id="fxDelayOut" for="fxDelay">0 months</output></label><input id="fxDelay" type="range" min="-12" max="24" value="0" step="3"><div class="fx-range-ends"><span>12 months faster</span><span>24 months slower</span></div></div>
+    <details class="fx-assumptions"><summary>Price &amp; energy assumptions <span>Adjust ↓</span></summary>
+     <div class="fx-slider"><label for="fxPriceTrend">Annual home-value trend <output id="fxPriceTrendOut">2%</output></label><input id="fxPriceTrend" type="range" min="-5" max="8" step="0.5" value="2"></div>
+     <div class="fx-slider"><label for="fxElasticity">Supply–price sensitivity <output id="fxElasticityOut">1.0×</output></label><input id="fxElasticity" type="range" min="0" max="3" step="0.25" value="1"></div>
+     <div class="fx-slider"><label for="fxFloodDiscount">Exposed-location price discount <output id="fxFloodDiscountOut">0%</output></label><input id="fxFloodDiscount" type="range" min="0" max="30" step="1" value="0"></div>
+     <p class="fx-tiny">Discount applies only to an illustrative flood-exposed location, not every property in a city.</p>
+     <div class="fx-slider"><label for="fxEnergyUse">Electricity per delivered home <output id="fxEnergyUseOut">5,000 kWh/yr</output></label><input id="fxEnergyUse" type="range" min="2000" max="12000" step="500" value="5000"></div>
+     <div class="fx-slider"><label for="fxGridDelay">Additional grid connection delay <output id="fxGridDelayOut">0 months</output></label><input id="fxGridDelay" type="range" min="0" max="24" step="3" value="0"></div>
+     <p class="fx-tiny">All five inputs are assumptions. Plant capacity does not establish local grid availability.</p>
+    </details>
+    <div class="fx-divider"></div><div class="fx-label">POLICY ACCELERATION <a href="#fxBills">See bills ↓</a></div><p class="fx-tiny">Switch on hypothetical additional uptake. Existing laws are not being repealed when switched off.</p><div id="fxPolicyControls"></div>
+   </aside>
+   <div class="fx-main">
+    <div class="fx-metrics" id="fxMetrics" aria-live="polite" aria-atomic="true"></div>
+    <div class="fx-map-card" id="fxMapCard">
+     <div class="fx-atlas-bar"><div><span class="fx-atlas-dot"></span> SOUTH BAY <b>SCENARIO ATLAS</b></div><div><select id="fxBasemap" aria-label="Basemap"><option value="light">Light map</option><option value="satellite">Satellite</option></select><button id="fxExpand" aria-pressed="false">⛶ Expand map</button></div></div>
+     <div class="fx-map-toolbar"><div><span class="fx-label">SPATIAL OUTLOOK</span><h2 id="fxMapTitle">South Bay · 2031</h2></div><div class="fx-layer-buttons" aria-label="Map metric"><button data-layer="heat" aria-pressed="true">Heatmap</button><button data-layer="delivery" aria-pressed="false">Projects</button><button data-layer="prices" aria-pressed="false">Price outlook</button><button data-layer="exposure" aria-pressed="false">Flood exposure</button><button data-layer="change" aria-pressed="false">Change</button><button data-layer="affordable" aria-pressed="false">Affordable</button></div></div>
+     <div class="fx-overlay-controls"><label><input id="fxFlood" type="checkbox" checked><i class="fx-dot-flood"></i> FEMA flood zones</label><label><input id="fxEnergy" type="checkbox" checked><i class="fx-dot-energy"></i> Energy facilities</label><label for="fxSeaLevel">NOAA sea-level scenario <select id="fxSeaLevel"><option value="0">Off</option><option value="1">+1 ft</option><option value="2">+2 ft</option><option value="3">+3 ft</option><option value="4">+4 ft</option><option value="5">+5 ft</option><option value="6">+6 ft</option></select></label></div>
+     <div class="fx-map-wrap"><div id="futureMap" aria-label="Housing scenario map. Project details also available in the table below."></div><div class="fx-map-error" id="fxMapError" hidden>Map tiles could not load. The project markers and results below remain available.</div><div class="fx-map-caption"><span class="fx-map-pulse"></span><span id="fxMapCaption">Scenario outlook</span></div><div class="fx-map-readout" id="fxMapReadout"></div><div class="fx-time-controller"><button id="fxMapPlay" aria-label="Play map years" aria-pressed="false">▶</button><label for="fxMapYear">YEAR <output id="fxMapYearOut">2031</output></label><input id="fxMapYear" type="range" min="2027" max="2040" value="2031" aria-label="Map scenario year"></div><button class="fx-fit" id="fxFit" aria-label="Fit map to selected area">⌖ Fit area</button></div>
+     <div class="fx-map-footer"><div id="fxLegend"></div><label><input type="checkbox" id="fxTransit" checked> Station context · ½ mile</label></div>
+     <p class="fx-map-note" id="fxLayerNote">Heat shows the concentration of modeled delivery in the project sample. It is not a map of all housing.</p><div class="fx-data-status" id="fxDataStatus" role="status">Loading public spatial datasets…</div><div class="fx-sea-note" id="fxSeaNote" hidden>NOAA inundation above mean higher high water. A water-level scenario, not a prediction for the selected year; excludes storm surge and does not replace FEMA mapping.</div>
+    </div>
+    <div class="fx-impact-strip" id="fxImpacts" aria-live="polite"></div>
+    <div class="fx-analysis-row"><div class="fx-chart-card"><div class="fx-label">DELIVERY OVER TIME <span>Reported units · cumulative</span></div><div id="fxChart"></div><div class="fx-chart-key"><span><i class="fx-key-ref"></i>Reference</span><span><i class="fx-key-scenario"></i>Your scenario</span><span>Shading: sensitivity range</span></div></div><div class="fx-insight"><div class="fx-label">READING THE SIGNAL</div><h3 id="fxInsightTitle"></h3><p id="fxInsightText"></p><div id="fxCoverage"></div></div></div>
+   </div>
+  </div>
+  <section class="fx-bills" id="fxBills" aria-labelledby="fxBillsTitle"><div class="fx-section-heading"><div><div class="fx-eyebrow">THE POLICY WATCHLIST</div><h2 id="fxBillsTitle">Housing bills &amp; policy watchlist</h2><p>Enacted laws and an upcoming ballot decision, with their assumptions kept separate.</p></div><label class="fx-field" for="fxBillFilter">Show<select id="fxBillFilter"><option value="all">All policies</option><option value="pending">Upcoming decision</option><option value="enacted">Enacted laws</option></select></label></div><p class="fx-tiny" id="fxReviewed"></p><div class="fx-bill-grid" id="fxBillList"></div></section>
+  <section class="fx-projects" aria-labelledby="fxProjectsTitle"><div class="fx-section-heading"><div><div class="fx-eyebrow">BEHIND THE ESTIMATES</div><h2 id="fxProjectsTitle">Projected housing by project</h2><p id="fxTableSummary"></p></div><button class="fx-button" id="fxExport">Export scenario CSV ↓</button></div><div class="fx-table-tools"><label class="fx-field" for="fxSearch">Find a project<input type="search" id="fxSearch" placeholder="Address or city…"></label><label class="fx-field" for="fxSort">Sort by<select id="fxSort"><option value="expected">Estimated delivery</option><option value="delta">Change from reference</option><option value="units">Reported units</option></select></label></div><div class="fx-table-wrap"><table><thead><tr><th>Project / city</th><th>Stage</th><th>Reported units</th><th>Reference</th><th>Scenario <span id="fxTableYear">2031</span></th><th>Change</th><th>Record quality</th></tr></thead><tbody id="fxRows"></tbody></table></div><button class="fx-button fx-more" id="fxMore" hidden>Show more projects</button></section>
+  <details class="fx-method" id="fxMethod"><summary>Methodology, assumptions & data limitations <span>Read before using these estimates ↗</span></summary><div class="fx-method-grid"><div><h3>What the numbers mean</h3><p>This is a sensitivity model applied to the dashboard’s project sample, anchored to September 18, 2026. It estimates a share of reported gross project units potentially delivered by a selected year. Completed projects, unknown unit counts, non-housing records and unknown stages are excluded. It does not identify new developable parcels, deduplicate overlapping master plans, subtract demolished homes or separate already-built phases.</p><p>City comparisons reflect uneven sample coverage. Unknown affordability is not treated as zero; affordable totals include only disclosed counts. Old records may describe homes already delivered. The model flags records missing a status date or older than two years.</p></div><div><h3>A model you can inspect</h3><p>Reference delivery times: proposed 6 years, review 4.5, approved 3, construction 1.5. Long-run delivery shares: 55%, 70%, 85%, 95%. Delivery = reported units × stage share × (1 − 2<sup>−years elapsed / adjusted delivery time</sup>). Elapsed years use the selected year minus 2026.</p><p>Each percentage point of financing above 6% lengthens delivery time by 10%; each cost-growth point above 3% adds 4%. Delay adds months. Policy assumptions subtract at most 18 months combined, with a minimum delivery time of 6 months. These coefficients are illustrative, not fitted to historical outcomes. The range varies delivery time and realization; it is not a statistical confidence interval.</p></div><div><h3>Policy & geographic limits</h3><p>Policy switches test additional acceleration relative to the reference. Legal changes may already be reflected in project records. There is no causal estimate of each bill’s effect. The bond switch assumes approval and funding beginning in 2028; neither is guaranteed.</p><p>Transit proximity uses straight-line distance to hand-curated approximate centers for a subset of Caltrain and BART stations. VTA, BRT, station entrances, service frequency, zoning, local alternative plans, hazard exclusions and parcel boundaries are not modeled.</p><p>Station references: <a href="https://www.caltrain.com/stations" target="_blank" rel="noopener">Caltrain</a> · <a href="https://www.bart.gov/stations" target="_blank" rel="noopener">BART</a>. Bill sources are linked in each card. No automated bill-status feed is connected.</p></div></div></details>
+  <details class="fx-method" id="fxSpatialMethod"><summary>Flood, energy &amp; home-value methodology <span>Sources and limitations ↗</span></summary><div class="fx-method-grid"><div><h3>Real public layers</h3><p>FEMA National Flood Hazard Layer zones for Santa Clara and San Mateo counties were retrieved September 18, 2026. Blue areas are special flood hazard areas; purple areas have a 0.2% annual flood chance. Geometry is generalized to about 3 meters; point screening can be wrong near boundaries. A location with no match may still flood. This is not an insurance determination. <a href="https://msc.fema.gov/portal/home" target="_blank" rel="noopener">Check FEMA’s official map.</a></p><p>NOAA sea-level tiles are live public overlays, relative to mean higher high water. The chosen water level is independent of the simulated year. Blue depicts inundation depth; green depicts low-lying areas not directly connected to the ocean. <a href="https://coast.noaa.gov/slr" target="_blank" rel="noopener">NOAA viewer and caveats.</a></p></div><div><h3>Home-value sensitivity, not appraisal</h3><p>The observed baseline is the dashboard’s July 2026 citywide Zillow index. Reference value = baseline × (1 + assumed annual trend)<sup>years</sup>. The supply factor is exp(−sensitivity × extra modeled delivery / 2020 housing stock), capped between exp(−0.3) and exp(0.3). Housing stock comes from <a href="https://census.bayareametro.gov/housing-units" target="_blank" rel="noopener">MTC / ABAG’s Census 2020 DHC H3 data</a>. West San Jose uses citywide San Jose data.</p><p>All-area values are a 2020-stock-weighted average of city indexes where available, not Zillow’s regional index. A flood-exposed example applies your assumed discount to that index; it is not a price for a specific parcel. Interest rates influence modeled delivery only, not buyer demand directly. Gross project units, overlapping plans, stale stock, incomplete coverage and assumed elasticities limit every output. No statistical confidence is assigned to prices.</p></div><div><h3>Energy context</h3><p>Points show the California Energy Commission’s facilities not flagged as retired in its public snapshot, last updated June 12, 2026. Nameplate MW is not real-time generation, grid headroom, an outage forecast or a service territory. Battery MW describes power, not storage duration. No local home is assumed to be supplied by a nearby plant.</p><p>Modeled annual household demand = delivered units × your kWh/home/year assumption. Additional grid connection delay lengthens the housing-delivery assumption. Both are hypothetical. <a href="https://www.energy.ca.gov/data-reports/energy-maps-and-spatial-data" target="_blank" rel="noopener">CEC data and conditions of use.</a></p></div></div></details>
+  <div class="fx-status" id="fxStatus" role="status" aria-live="polite"></div>
+ </div>
+</section>
+
 <div id="screenTimeline" class="screen" style="display:none;">
   <div class="wrap">
 
@@ -2173,7 +2224,8 @@
 </footer>
 
 <script>
-const TODAY = new Date('2026-07-24T00:00:00');
+const TODAY = new Date();
+TODAY.setHours(0,0,0,0);
 const STAGES = [
   {key:'proposed',     label:'Proposed',            color:'#A3AC90'},
   {key:'review',       label:'Under Review',        color:'#87956B'},
@@ -5388,7 +5440,7 @@ const WOODSIDE_JOIN = [
 const WOODSIDE_SOURCES = ['City of Woodside official planning pages', 'California HCD 6th Cycle RHNA Progress Report', 'US Census ACS 5-year estimates and Zillow research data'];
 
 const CITIES = {
-  sunnyvale: {label:'Sunnyvale', center:{lat:37.383,lng:-122.020}, zoom:12, bbox:{minLat:37.34,maxLat:37.43,minLng:-122.06,maxLng:-121.97}, county:'Santa Clara', data:SV_DATA, feed:SV_FEED, deciders:SV_DECIDERS, join:SV_JOIN, sources:SV_SOURCES, note:'Sample of 9 records from a fuller ~30-project city dataset - see the full single-city Sunnyvale build for the complete version.',
+  sunnyvale: {label:'Sunnyvale', center:{lat:37.383,lng:-122.020}, zoom:12, bbox:{minLat:37.34,maxLat:37.43,minLng:-122.06,maxLng:-121.97}, county:'Santa Clara', data:SV_DATA, feed:SV_FEED, deciders:SV_DECIDERS, join:SV_JOIN, sources:SV_SOURCES, note:'A sample of Sunnyvale project records, not a complete active permit inventory. Check each record’s date and the city’s official project list.',
     ctaLinks:[
       {label:"Official Sunnyvale project map (GIS)", url:'https://gis.sunnyvale.ca.gov/portal/apps/webappviewer/index.html?id=2f1aa0291ad04119b9a7f886067976d8'},
       {label:"Apply for a board or commission", url:'https://www.sunnyvale.ca.gov/your-government/governance/boards-and-commissions/apply-for-boards-and-commissions'},
@@ -5402,7 +5454,7 @@ const CITIES = {
       {label:'Teen Commission application', url:'https://apps.cupertino.org/teencommission/userapplication.aspx'},
       {label:'Full meeting calendar', url:'https://cupertino.legistar.com/Calendar.aspx'},
     ]},
-  mountainview: {label:'Mountain View', center:{lat:37.386,lng:-122.083}, zoom:12.5, bbox:{minLat:37.35,maxLat:37.42,minLng:-122.12,maxLng:-122.03}, county:'Santa Clara', data:MV_DATA, feed:MV_FEED, deciders:MV_DECIDERS, join:MV_JOIN, sources:MV_SOURCES, note:'Smallest sample of the three (3 projects) - Mountain View publishes a much longer bi-monthly report; this is a representative slice, not the full list. Citywide, ~3,600 approved units and ~4,900 under-review units exist beyond this sample (Hoodline, Mar. 2026).',
+  mountainview: {label:'Mountain View', center:{lat:37.386,lng:-122.083}, zoom:12.5, bbox:{minLat:37.35,maxLat:37.42,minLng:-122.12,maxLng:-122.03}, county:'Santa Clara', data:MV_DATA, feed:MV_FEED, deciders:MV_DECIDERS, join:MV_JOIN, sources:MV_SOURCES, note:'A sample of Mountain View project records, including master plans that may overlap individual developments. See the city’s official active-project list for current status.',
     ctaLinks:[
       {label:'Official MV active projects (has email alerts!)', url:'https://www.mountainview.gov/our-city/departments/community-development/planning/active-projects'},
       {label:'Apply to an advisory body', url:'https://www.mountainview.gov/our-city/city-council/boards-commissions-and-committees'},
@@ -5687,6 +5739,7 @@ function renderQuickLinks(){
   const links = [
     {label:'View Your Area', action:()=>{ document.getElementById('onboardOverlay').style.display='flex'; }},
     {label:'Build a Get-Involved Plan', action:()=>showScreen('planner')},
+    {label:'Explore the future housing map', action:()=>showScreen('futures')},
     ...(c.ctaLinks||[]).slice(0,2).map(l=>({label:l.label, url:l.url})),
   ];
   document.getElementById('quickLinksRow').innerHTML = links.map((l,i)=>
@@ -5804,15 +5857,16 @@ async function tryLiveCupertinoData(){
 }
 function renderStats(){
   const list = DATA();
-  const devUnits = list.filter(d=>d.cat==='dev' && d.units).reduce((a,d)=>a+d.units,0);
-  const bmrKnown = list.filter(d=>d.bmr!==null && d.bmr!==undefined);
+  const housing = list.filter(d=>categoryOf(d)==='Housing');
+  const devUnits = housing.filter(d=>Number.isFinite(d.units)).reduce((a,d)=>a+d.units,0);
+  const bmrKnown = housing.filter(d=>Number.isFinite(d.bmr) && Number.isFinite(d.units) && d.units>0);
   const bmrUnits = bmrKnown.reduce((a,d)=>a+d.bmr,0);
   const bmrTotalOfKnown = bmrKnown.reduce((a,d)=>a+(d.units||0),0);
   const bmrShare = bmrTotalOfKnown ? Math.round(100*bmrUnits/bmrTotalOfKnown) : 0;
   const flagged = list.filter(d=>d.flag).length;
   const cards = [
     {k: devUnits.toLocaleString(), u:'Housing units tracked', sub:'In this sample for '+CITIES[currentCity].label},
-    {k: bmrShare+'%', u:'Affordable, where disclosed', sub: bmrKnown.length+' of '+list.filter(d=>d.cat==='dev').length+' records report a BMR split'},
+    {k: bmrKnown.length ? bmrShare+'%' : '—', u:'Affordable, where disclosed', sub: bmrKnown.length+' of '+housing.length+' housing records report a BMR split'},
     {k: flagged, u:'Records flagged', sub:'Stale, expired, inactive, or ambiguous status'},
     {k: list.filter(d=>d.stage==='construction'||d.stage==='approved').length, u:'Active right now', sub:'Approved or under construction'},
   ];
@@ -5925,7 +5979,8 @@ function buildMarkersForCurrentProvider(){
       marker.addTo(lMap);
       lMarkers[d.id]=marker;
     });
-    lMap.flyTo([CITIES[currentCity].center.lat, CITIES[currentCity].center.lng], CITIES[currentCity].zoom, {duration:0.5});
+    // A hidden map has zero dimensions: flyTo would divide by zero and produce NaN coordinates.
+    lMap.setView([CITIES[currentCity].center.lat, CITIES[currentCity].center.lng], CITIES[currentCity].zoom, {animate:false});
   }
   renderUserLocationMarker();
   renderCityBoundary();
@@ -5935,7 +5990,7 @@ function buildMarkersForCurrentProvider(){
 // Get one at console.cloud.google.com, enable "Maps JavaScript API", and
 // restrict it (Application restrictions -> HTTP referrers) to your exact
 // site URL before putting it here, since this file is public.
-const GOOGLE_MAPS_API_KEY = 'AIzaSyCyvdlePDWHkTr_4c2fSTB8D1DtWo0dpbI';
+const GOOGLE_MAPS_API_KEY = '';
 
 function initGoogleMapReal(){
   gMap = new google.maps.Map(document.getElementById('mapGoogle'), { center:CITIES[currentCity].center, zoom:CITIES[currentCity].zoom, mapTypeControl:false, streetViewControl:false, fullscreenControl:true });
@@ -5948,6 +6003,7 @@ function initGoogleMapReal(){
 }
 window.initGoogleMap = initGoogleMapReal;
 window.gm_authFailure = function(){
+  if(window.L){ initLeafletMap(); return; }
   document.getElementById('mapGoogle').style.display='none';
   document.getElementById('mapGate').style.display='block';
   document.getElementById('gateError').textContent = "The built-in map key didn't work - check that Maps JavaScript API is enabled and the key's referrer restriction matches this site's URL. You can paste a working key below in the meantime.";
@@ -5988,8 +6044,10 @@ function tileVoyager(lat, lng, z){
 }
 
 function initLeafletMap(){
+  if(!window.L){ document.getElementById('gateError').textContent='The map library could not load. Project records remain available below.'; document.getElementById('gateError').style.display='block'; return; }
+  if(lMap){ lMap.invalidateSize(); return; }
   lMap = L.map('map', {scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat, CITIES[currentCity].center.lng], CITIES[currentCity].zoom);
-  L.tileLayer(cartoTileUrl('{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'), {attribution:CARTO_ATTRIB, maxZoom:19}).addTo(lMap);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom:19}).addTo(lMap);
   mapProvider='leaflet';
   document.getElementById('mapGate').style.display='none';
   document.getElementById('mapLeafletWrap').style.display='block';
@@ -6043,7 +6101,7 @@ function flyTo(id){
 
 // ---------------- FEED / REGISTER / INVOLVED ----------------
 function renderFeed(){
-  const feed = CITIES[currentCity].feed;
+  const feed = [...CITIES[currentCity].feed].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   const list = feed.filter(f=>{
     const d = DATA().find(x=>x.id===f.id);
     if(!d) return true;
@@ -6521,6 +6579,7 @@ function renderInvolved(){
 document.getElementById('search').addEventListener('input', (e)=>{ state.q = e.target.value.trim(); renderAll(); });
 
 function switchCity(key){
+  if(!Object.hasOwn(CITIES, key)) return;
   currentCity = key;
   // Featured news leads with the selected city's stories, so it follows the tab.
   featuredPage = 0;
@@ -8653,7 +8712,7 @@ document.querySelectorAll('.sub-nav-tab').forEach(t=>{
   t.addEventListener('click', ()=> showScreen(t.getAttribute('data-screen')));
 });
 
-const SCREEN_IDS = {dashboard:'screenDashboard', timeline:'screenTimeline', yourarea:'screenYourArea', planner:'screenPlanner', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
+const SCREEN_IDS = {futures:'screenFutures', dashboard:'screenDashboard', timeline:'screenTimeline', yourarea:'screenYourArea', planner:'screenPlanner', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
 function scrollToScreen(name){
   const el = document.getElementById(SCREEN_IDS[name]);
   if(!el){ window.scrollTo({top:0, behavior:'smooth'}); return; }
@@ -8690,7 +8749,9 @@ function showScreen(name){
     applyPageChrome(owningPage);
   }
   scrollToScreen(name);
+  if(name === 'dashboard' && lMap) requestAnimationFrame(()=>lMap.invalidateSize());
   refreshCurrentScreen();
+  window.dispatchEvent(new CustomEvent('dashboard:screen', {detail:name}));
 }
 
 // ---------------- PLANNER ----------------
@@ -14773,6 +14834,20 @@ function applyDeepLink(){
   }
 }
 applyDeepLink();
+window.dashboardContext = {
+  cities: Object.fromEntries(Object.entries(CITIES).map(([key,c])=>[key,{label:c.label,center:c.center,zoom:c.zoom}])),
+  projects: Object.entries(CITIES).filter(([key])=>key!=='all').flatMap(([key,c])=>c.data.map(p=>({...p,city:key,cityLabel:c.label,sourceUrl:(c.ctaLinks[0]||{}).url||'https://www.hcd.ca.gov/'}))),
+  stats: CITY_STATS, statsSource: STATS_SOURCE,
+  showScreen
+};
+document.getElementById('onboardExplore').addEventListener('click',()=>{
+  document.getElementById('onboardOverlay').style.display='none';
+  showScreen('dashboard');
+});
+// Wait until all data and renderer state are initialized before drawing map markers.
+if(window.L && !mapProvider) initLeafletMap();
 </script>
+<script src="/vendor/leaflet-heat.js"></script>
+<script type="module" src="/futures/app.js"></script>
 </body>
 </html>

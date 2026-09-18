@@ -1,4 +1,6 @@
 import express from 'express';
+import compression from 'compression';
+import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
 import bcrypt from 'bcryptjs';
@@ -180,8 +182,10 @@ async function initDb() {
 }
 initDb().catch(err => console.error('Failed to initialize database tables:', err));
 
+// The public flood geometry and dashboard HTML compress substantially on mobile connections.
+app.use(compression());
 app.use(express.json({ limit: '4mb' }));
-app.use(express.static('public'));
+app.use(express.static(fileURLToPath(new URL('./public', import.meta.url))));
 
 // ---------------- AUTH HELPERS ----------------
 function requireDb(res) {
@@ -224,6 +228,7 @@ app.post('/api/register', async (req, res) => {
     res.json({ token, username });
   } catch (err) {
     console.error(err);
+    if (err.code === '23505') return res.status(409).json({ error: 'That username is already taken.' });
     res.status(500).json({ error: 'Could not create account. Please try again.' });
   }
 });
@@ -231,7 +236,7 @@ app.post('/api/register', async (req, res) => {
 app.post('/api/login', async (req, res) => {
   if (!requireDb(res)) return;
   const { username, password } = req.body || {};
-  if (!username || !password) return res.status(400).json({ error: 'Username and password are required.' });
+  if (!validUsername(username) || typeof password !== 'string' || !password || password.length > 200) return res.status(400).json({ error: 'Enter a valid username and password.' });
   try {
     const result = await pool.query('SELECT password_hash FROM users WHERE username = $1', [username]);
     if (!result.rows.length) return res.status(401).json({ error: 'Incorrect username or password.' });
@@ -1084,5 +1089,13 @@ app.get('/api/hearings', async (req, res) => {
 
 app.post('/api/cron/send-digests', runDigests);
 app.get('/api/cron/send-digests', runDigests);
+
+// Keep API errors JSON-shaped, including invalid JSON and oversized requests.
+app.use('/api', (_req, res) => res.status(404).json({ error: 'API route not found.' }));
+app.use((err, _req, res, _next) => {
+  const status = err.type === 'entity.parse.failed' ? 400 : err.type === 'entity.too.large' ? 413 : 500;
+  if(status === 500) console.error('Unhandled request error:', err.message);
+  res.status(status).json({error: status === 400 ? 'Request body must be valid JSON.' : status === 413 ? 'Request body is too large.' : 'The request could not be completed. Please try again.'});
+});
 
 app.listen(port, () => console.log(`South Bay Planning AI running at http://localhost:${port}`));

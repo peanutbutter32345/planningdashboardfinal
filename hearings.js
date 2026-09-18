@@ -33,6 +33,7 @@ const LAND_USE_ITEM = /\b(rezon\w*|use permit|development permit|subdivision|ten
 const DAYS_AHEAD = 45;
 const CACHE_MS = 6 * 60 * 60 * 1000;   // Legistar is slow and agendas move at most daily
 let cache = { at: 0, data: null };
+let inFlight = null;
 
 const STREET_WORDS = /\b(street|st|road|rd|avenue|ave|boulevard|blvd|drive|dr|court|ct|way|lane|ln|place|pl|circle|cir|terrace|ter|parkway|pkwy|real)\b\.?/gi;
 
@@ -89,16 +90,19 @@ function extractDetails(text) {
   };
 }
 
-async function getJson(url) {
-  const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+async function getJson(url, signal) {
+  const res = await fetch(url, { headers: { 'Accept': 'application/json' }, signal });
   if (!res.ok) throw new Error(`Legistar ${res.status} for ${url}`);
-  return res.json();
+  const data = await res.json();
+  if (!Array.isArray(data)) throw new Error("Invalid Legistar response");
+  return data;
 }
 
 async function fetchCity(cityKey, client, fromIso, toIso) {
+  const signal = AbortSignal.timeout(12000);
   const base = `https://webapi.legistar.com/v1/${client}`;
   const filter = encodeURIComponent(`EventDate ge datetime'${fromIso}' and EventDate le datetime'${toIso}'`);
-  const events = await getJson(`${base}/events?$filter=${filter}&$orderby=EventDate&$top=60`);
+  const events = await getJson(`${base}/events?$filter=${filter}&$orderby=EventDate&$top=60`, signal);
 
   const out = [];
   for (const ev of events) {
@@ -107,7 +111,7 @@ async function fetchCity(cityKey, client, fromIso, toIso) {
 
     let items = [];
     try {
-      items = await getJson(`${base}/events/${ev.EventId}/eventitems?AgendaNote=1&MinutesNote=0&Attachments=0`);
+      items = await getJson(`${base}/events/${ev.EventId}/eventitems?AgendaNote=1&MinutesNote=0&Attachments=0`, signal);
     } catch {
       // One unavailable agenda must not sink the whole refresh - the meeting itself is still
       // worth showing, just without its items.
@@ -153,12 +157,21 @@ async function fetchCity(cityKey, client, fromIso, toIso) {
  * Cached for six hours. Returns { generatedAt, days, cities, hearings, errors }.
  */
 export async function getHearings({ force = false } = {}) {
-  if (!force && cache.data && (Date.now() - cache.at) < CACHE_MS) return cache.data;
+  const ttl = cache.data?.errors?.length ? 60000 : CACHE_MS;
+  if (!force && cache.data && (Date.now() - cache.at) < ttl) return cache.data;
+  if (inFlight) return inFlight;
+  inFlight = refreshHearings();
+  try { return await inFlight; } finally { inFlight = null; }
+}
+
+async function refreshHearings() {
 
   const now = new Date();
   const to = new Date(now.getTime() + DAYS_AHEAD * 864e5);
-  const fromIso = now.toISOString().slice(0, 10);
-  const toIso = to.toISOString().slice(0, 10);
+  // Legistar dates are local meeting dates, not UTC dates.
+  const localDate = date => date.toLocaleDateString('en-CA', {timeZone:'America/Los_Angeles'});
+  const fromIso = localDate(now);
+  const toIso = localDate(to);
 
   const results = await Promise.allSettled(
     Object.entries(LEGISTAR_CITIES).map(([k, c]) => fetchCity(k, c, fromIso, toIso))
