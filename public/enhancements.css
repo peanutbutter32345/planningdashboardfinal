@@ -67,6 +67,14 @@
 .card-thumb{position:relative;}
 .map-thumb-credit{position:absolute;bottom:0;right:0;left:0;background:#ffffffde;padding:2px 6px;font-size:9px;color:#3E4F24;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 [hidden]{display:none!important;}
+.overview-map-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:12px;background:#F1F4EA;border:1px solid #C3CCB6;font-size:12px;}
+.overview-map-tools>span{flex:1 1 230px;}
+.overview-map-tools .btn{font-size:11px;padding:8px 10px;}
+#overviewLocationNotice{padding:12px;background:#F7F1DF;border:1px solid #C7B47D;font-size:12px;line-height:1.6;}
+#overviewLocationNotice a{color:#3E4F24;font-weight:700;}
+.map-shared-location{font-weight:700;padding:8px 0;color:#3E4F24;}
+.overview-count-label{border:0;background:none;box-shadow:none;color:white;font-weight:700;}
+.overview-count-label::before{display:none;}
 
 .fx-heading{padding:24px;background:linear-gradient(90deg,#F1F4EA 45%,#F1F4EAA6),url('/img/cities/sanfrancisco.jpg') right 45%/cover;border:1px solid #B9C3A8;border-bottom:3px solid #3E4F24;}
 .fx-heading h2{font-family:Georgia,serif;font-size:34px;letter-spacing:-.035em;}
