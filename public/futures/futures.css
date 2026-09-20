@@ -199,3 +199,9 @@
 
 .fx-mobile-controls{display:none}
 @media(max-width:760px){.fx-mobile-controls{display:block;width:100%;text-align:left;margin:0 0 16px}.fx-workspace .fx-controls{display:none}#fxViewMap[data-controls-open=true] .fx-controls{display:block}.fx-metrics{gap:8px}.fx-metric{padding:13px 10px}.fx-metric strong{font-size:23px}.fx-metric .fx-label{font-size:8px}}
+
+/* The 3D view sits over the Leaflet map, which keeps the card's height, and under the year
+   controller and readout (z-index 400-500) so those stay reachable while a reader flies around. */
+#futureMap3d{position:absolute;inset:0;z-index:1}
+#futureMap3d .maplibregl-ctrl-bottom-right{bottom:54px}
+.fx-atlas-bar button[aria-pressed="true"]{background:#87956b;color:#fff}

@@ -12,6 +12,7 @@ let state=shared?readScenario(location.search):{...DEFAULTS,...MAP_DEFAULTS,poli
 if(!Object.hasOwn(context.cities,state.city))state.city='all';
 let result,reference,rows=[],map,markers=new Map(),projectLayer,stationLayer,limit=20,selected=null,preset='baseline',toastTimer,initialized=false,publicLayers,heatLayer,priceLayer,baseLayer,labelLayer,baseKey,playTimer,expanded=false;
 let cityPrices=[];
+let threeD=null,threeDPending=false;
 let activeView='map';
 function showFutureView(view){
  const tabs=[...document.querySelectorAll('[data-fx-view]')];
@@ -119,6 +120,15 @@ function renderMap(fit=false){
  const legend=state.layer==='heat'?[['#e8bd55','Low'],['#eb8842','Modeled housing concentration'],['#a64749','High']]:state.layer==='prices'?[['#3E4F24','Lower than reference'],['#aab4ab','Unchanged'],['#bc784e','Higher than reference']]:state.layer==='exposure'?[['#1f82b2','Special flood hazard'],['#9472ba','0.2% annual chance'],['#aab4ab','No match ≠ no risk']]:state.layer==='delivery'?[['#A3AC90','<35% delivered'],['#67794A','35–65%'],['#3E4F24','≥65%']]:state.layer==='change'?[['#3E4F24','More delivery'],['#98a8b6','Unchanged'],['#ba7953','Less delivery']]:[['#3E4F24','≥50% affordable'],['#87956B','Some affordable'],['#d9dfe6','0 disclosed'],['#a5adb5','Unknown']];
  $('fxLegend').innerHTML=legend.map(([c,label])=>`<span><i style="background:${c}"></i>${label}</span>`).join('');
  if(!$('screenFutures').offsetParent||activeView!=='map')return;
+ // The 3D view draws the same rows as columns. Public flood and energy layers stay on the 2D map,
+ // which is why the note below says so rather than leaving a reader looking for them.
+ if(threeD){
+  threeD.update(rows.filter(validPoint),state);
+  $('fxMapTitle').textContent=cityLabel()+' · '+state.year;
+  $('fxLegend').innerHTML=[['#C8CDBC','Little of the project delivered by '+state.year],['#A3AC90','Part delivered'],['#67794A','Most delivered'],['#3E4F24','Nearly all delivered']].map(([c,label])=>`<span><i style="background:${c}"></i>${label}</span>`).join('')+'<span>Taller column = more modelled homes</span>';
+  $('fxLayerNote').textContent='3D: each column is one project, standing on its own coordinates. Taller means more homes modelled as delivered by '+state.year+' - the scale is the square root of that count, so thousand-home plans do not flatten the rest; colour is the share of the project\'s reported homes delivered. Grey buildings are real OpenStreetMap heights, the ground is public elevation data. Flood, energy and heatmap layers are on the 2D map.';
+  return;
+ }
  if(!initMap())return;
  publicLayers.apply(state);setBasemap();
  renderDataStatus();
@@ -165,7 +175,29 @@ function setBasemap(){
  baseLayer.on('load',()=>{if(document.querySelector('#futureMap .leaflet-tile-loaded'))$('fxMapError').hidden=true;});
 }
 function pausePlayback(){clearInterval(playTimer);playTimer=null;$('fxPlay').textContent='▶ Play years';$('fxPlay').setAttribute('aria-pressed','false');$('fxMapPlay').textContent='▶';$('fxMapPlay').setAttribute('aria-pressed','false');$('fxMapPlay').setAttribute('aria-label','Play map years');}
-function setExpanded(value){expanded=value;$('fxMapCard').classList.toggle('is-expanded',value);$('fxExpand').textContent=value?'✕ Close expanded map':'⛶ Expand map';$('fxExpand').setAttribute('aria-pressed',String(value));document.body.classList.toggle('fx-map-expanded',value);requestAnimationFrame(()=>map?.invalidateSize());}
+async function toggle3D(){
+ const button=$('fx3d');
+ if(threeD){threeD.destroy();threeD=null;$('futureMap3d').hidden=true;button.setAttribute('aria-pressed','false');button.textContent='\u25EB 3D view';renderMap(true);notify('Back to the 2D map, with the public flood and energy layers.');return;}
+ if(threeDPending)return;
+ threeDPending=true;button.textContent='Loading 3D\u2026';
+ try{
+  const {ThreeD}=await import('./three-d.js');
+  // Unhide first: MapLibre measures its container as it starts, and a hidden container gave it a
+  // zero-sized viewport, which left the camera wide and flat.
+  $('futureMap3d').hidden=false;
+  threeD=await ThreeD.mount($('futureMap3d'),{onSelect:id=>{selected=id;}});
+  button.setAttribute('aria-pressed','true');button.textContent='\u25A3 3D on';
+  threeD.update(rows.filter(validPoint),state);
+  threeD.focus();
+  renderMap();
+  notify('3D view, opened over the busiest cluster in '+cityLabel()+'. Column height is modelled delivery for '+state.year+' - drag the year slider to watch it change, right-drag (or two fingers) to tilt and turn, and press Fit area for the whole area.');
+ }catch(error){
+  $('futureMap3d').hidden=true;
+  button.textContent='\u25EB 3D view';
+  notify('The 3D view could not start \u2014 '+error.message+'. The 2D map is unaffected.');
+ }finally{threeDPending=false;}
+}
+function setExpanded(value){expanded=value;$('fxMapCard').classList.toggle('is-expanded',value);$('fxExpand').textContent=value?'✕ Close expanded map':'⛶ Expand map';$('fxExpand').setAttribute('aria-pressed',String(value));document.body.classList.toggle('fx-map-expanded',value);requestAnimationFrame(()=>{map?.invalidateSize();threeD?.resize();});}
 function buildCityPrices(){
  cityPrices=[];if(!publicLayers?.stock)return;
  for(const [key,c] of Object.entries(context.cities)){
@@ -221,7 +253,8 @@ function init(){
  document.querySelectorAll('[data-preset]').forEach(el=>el.addEventListener('click',()=>setPreset(el.dataset.preset)));
  document.querySelectorAll('[data-layer]').forEach(el=>el.addEventListener('click',()=>{state.layer=el.dataset.layer;if(state.layer==='exposure')state.flood=true;syncControls();renderMap();}));
  $('fxReset').addEventListener('click',()=>{pausePlayback();state={...DEFAULTS,...MAP_DEFAULTS,policies:[]};preset='baseline';selected=null;limit=20;$('fxSearch').value='';$('fxSort').value='expected';$('fxBillFilter').value='all';$('fxTransit').checked=true;if(map&&!map.hasLayer(stationLayer))stationLayer.addTo(map);update(true);});
- $('fxFit').addEventListener('click',fitMap);
+ $('fxFit').addEventListener('click',()=>threeD?threeD.fit():fitMap());
+ $('fx3d').addEventListener('click',toggle3D);
  $('fxTransit').addEventListener('change',e=>{if(map)e.target.checked?stationLayer.addTo(map):map.removeLayer(stationLayer);});
  $('fxBillFilter').addEventListener('change',renderBills);
  $('fxBillList').addEventListener('click',e=>{const b=e.target.closest('[data-bill]');if(b)togglePolicy(b.dataset.bill);});
