@@ -1,6 +1,6 @@
 # South Bay Planning AI
 
-This package contains the civic dashboard plus a server-side AI assistant for the cities it covers in Santa Clara and San Mateo counties.
+This package contains the civic dashboard plus a server-side AI assistant for the cities it covers across six Bay Area counties.
 
 ## What is already wired
 
@@ -256,3 +256,18 @@ This regenerates `data/projects.js` so server-side answers, hearing matching and
 ### Local validation
 
 `npm test` does not require credentials. Browsing, the free map, scenarios and the bill watchlist work locally without credentials. End-to-end account, email and AI testing requires the corresponding `DATABASE_URL`, `RESEND_API_KEY` and `LLM_API_KEY` environment variables; do not commit them.
+
+## Regional coverage and guest profiles
+
+The dashboard now contains 50 city/neighborhood profiles in six Bay Area counties. The 17 added cities are San Jose, San Francisco, Berkeley, Oakland, Albany, Emeryville, Alameda, Fremont, Newark, Union City, Hayward, San Leandro, El Cerrito, Richmond, Sausalito, Mill Valley and Tiburon. Existing Peninsula profiles already cover Daly City, Brisbane, South San Francisco and neighboring cities.
+
+- `public/data/regions.json` is the canonical source for the added cities' county, project sample, official links, dated updates, boards and ACS 2020–2024 statistics. Server modules read the same file. Missing counts and unverified locations remain unknown; project samples are not complete city inventories. Existing Census comparisons use 2023 estimates, as labeled in Statistics.
+- After editing regional data, run `node scripts/build-regional-data.js` and `npm run sync:projects`. Add `--census` to refresh the 17 profiles from Census Reporter. Optional `node scripts/geocode-regional-projects.js` obtains approximate address matches from the Census geocoder; it rejects ambiguous city matches. Regenerate the regional script and server projects afterward.
+- `public/data/meetings.json` supplies official agenda/recording directories for every area. Ten public Legistar feeds populate upcoming meetings, with per-city failures and official-link fallbacks. West San Jose shares the San Jose feed. These are published meeting schedules, not a claim that hearings are streaming live now.
+- All 50 city photos are served locally, with attribution in `public/data/city-photos.json` and `/photo-credits.html`. `scripts/refresh-city-photos.js` retrieves missing images and preserves their source credits. City images are contextual, not project-site photography.
+- The Overview uses Google Maps with the original restricted public browser key. A Google Maps embed handles localhost, blocked scripts and key/referrer failures. The embed can locate a selected address; simultaneous project markers require the Maps JavaScript API to be enabled for the deployed domain. Other map tools use public Esri basemaps and agency layers.
+- Spatial refresh scripts query six counties. The September 19 refresh returned 8,519 FEMA polygons in five counties (no matching San Francisco polygons), 167 CEC facilities, and 2020 housing-stock denominators for all 50 profiles. Absence of a flood polygon is not absence of risk.
+
+Visitors without a signed-in session automatically receive a device-only guest profile. `public/guest.js` stores their display name, stars, timeline, reminders, saved answers and preferences in `localStorage` under `sbpd_guest_v1`. No database or email configuration is required for guest features. An optional password uses a salted PBKDF2 verifier and a tab-session unlock flag; this is a convenience browser lock, not encryption or server authentication. Clearing browser storage removes the profile. Private browsing may discard it when the session ends.
+
+Full accounts continue to use the existing server authentication. Creating a new full account imports unlocked guest stars, timeline progress, reminders and city/topic preferences; a failed import leaves the original guest copy intact. Email delivery and synchronization between devices require a full account and the existing database/email environment variables. Guest data is not automatically imported when logging into an existing account.

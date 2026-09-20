@@ -15,7 +15,7 @@ let cityPrices=[];
 const money=value=>value==null?'—':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
 const compactMoney=value=>value==null?'—':value>=1e6?'$'+(value/1e6).toFixed(2)+'M':'$'+Math.round(value/1000)+'k';
 const controlKeys=['year','rate','costs','delay','gridDelay','priceTrend','elasticity','floodDiscount','energyUse'];
-const cityLabel=()=>state.city==='all'?'South Bay':context.cities[state.city].label;
+const cityLabel=()=>state.city==='all'?'Bay Area':context.cities[state.city].label;
 function notify(message){$('fxStatus').textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('fxStatus').textContent='',5000);}
 function projects(){return state.city==='all'?fullProjects:fullProjects.filter(p=>p.city===state.city);}
 function syncControls(){
@@ -173,10 +173,10 @@ function renderImpacts(){
 function renderDataStatus(){
  if(!publicLayers)return;
  const tag=(ready,error,label)=>`<span class="${error?'unavailable':ready?'ready':'loading'}">${ready?'●':error?'!':'◌'} ${label}${error?' unavailable':ready?'':' loading'}</span>`;
- $('fxDataStatus').innerHTML=tag(publicLayers.flood,publicLayers.errors.flood,'FEMA snapshot · Sep 18')+tag(publicLayers.energy,publicLayers.errors.energy,'CEC inventory · Jun 12')+tag(publicLayers.stock,publicLayers.errors.stock,'Census housing stock · 2020')+(state.seaLevel?`<span class="${publicLayers.errors.sea?'unavailable':''}">NOAA · ${publicLayers.errors.sea?'tiles unavailable':('+'+state.seaLevel+' ft above MHHW · independent of year')}</span>`:'');
+ $('fxDataStatus').innerHTML=tag(publicLayers.flood,publicLayers.errors.flood,'FEMA · '+(publicLayers.flood?.metadata?.counties?.length||6)+' counties')+tag(publicLayers.energy,publicLayers.errors.energy,'CEC · '+(publicLayers.energy?.features?.length||'…')+' facilities')+tag(publicLayers.stock,publicLayers.errors.stock,'Census housing stock · 2020')+(state.seaLevel?`<span class="${publicLayers.errors.sea?'unavailable':''}">NOAA · ${publicLayers.errors.sea?'tiles unavailable':('+'+state.seaLevel+' ft above MHHW · independent of year')}</span>`:'');
 }
 function init(){
- $('fxCity').innerHTML='<option value="all">All South Bay areas</option>'+Object.entries(context.cities).filter(([k])=>k!=='all').sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(([key,c])=>`<option value="${key}">${esc(c.label)}</option>`).join('');
+ $('fxCity').innerHTML='<option value="all">All Bay Area cities</option>'+Object.entries(context.cities).filter(([k])=>k!=='all').sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(([key,c])=>`<option value="${key}">${esc(c.label)}</option>`).join('');
  $('fxPolicyControls').innerHTML=POLICIES.filter(p=>p.months).map(p=>`<label class="fx-policy-control"><span><b>${p.code}</b><small>${p.tag} · ${p.kind==='pending'?'If approved':'Extra uptake'}</small></span><input type="checkbox" data-policy-toggle="${p.id}" aria-label="Test ${p.code} acceleration"></label>`).join('');
  $('fxReviewed').textContent=`Status checked September 18, 2026 · Curated watchlist, not every housing bill. Open the official source for subsequent changes.`;
  if(shared)preset=Object.keys(DEFAULTS).every(key=>JSON.stringify(state[key])===JSON.stringify(DEFAULTS[key]))?'baseline':'custom';

@@ -14,7 +14,7 @@ services:
         value: openai/gpt-oss-120b
       - key: LLM_BASE_URL
         value: https://api.groq.com/openai/v1
-      # Postgres connection string. Without this, accounts, stars, and digests are all disabled.
+      # Postgres connection string. Required for full accounts and email digests. Device-only guest profiles still work without it.
       - key: DATABASE_URL
         sync: false
       # Resend API key. Without this no digest email can be sent.

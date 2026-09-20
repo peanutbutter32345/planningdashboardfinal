@@ -1,3 +1,4 @@
+import {REGIONAL_CITIES} from './regional.js';
 export const SOURCES = [
   // ---------------- MOUNTAIN VIEW ----------------
   {id:'mv-active-projects',city:'Mountain View',category:'Development',title:'Active Development Projects',url:'https://www.mountainview.gov/our-city/departments/community-development/planning/active-projects',note:'Official city index and status report for active development projects.'},
@@ -195,3 +196,5 @@ export const SOURCES = [
   {id:'sar-environmental-programs',city:'Saratoga',category:'Environmental',title:'Environmental Programs',url:'https://www.saratoga.ca.us/487/Environmental-Programs',note:'Environmental review and sustainability programs.'},
   {id:'sar-agendas-minutes',city:'Saratoga',category:'Meetings',title:'Agendas & Minutes',url:'https://www.saratoga.ca.us/403/Agendas-Minutes',note:'Council and commission agendas and minutes.'},
 ];
+
+SOURCES.push(...Object.entries(REGIONAL_CITIES).flatMap(([city,c])=>c.resources.map((r,i)=>({id:city+'-regional-'+i,city:c.label,category:r.cat,title:r.title,url:r.url,note:r.note}))));

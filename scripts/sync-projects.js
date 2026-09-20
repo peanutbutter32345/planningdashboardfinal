@@ -2,12 +2,13 @@
 // snapshot aligned so Ask, hearings and email briefings see the same projects.
 import {readFileSync,writeFileSync} from 'node:fs';
 import vm from 'node:vm';
+import {REGIONAL_DATA} from '../data/regional.js';
 import {fileURLToPath} from 'node:url';
 export function dashboardProjects(){
  const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
  const start=html.indexOf('const STAGES ='),end=html.indexOf("let currentCity = 'sunnyvale';");
  if(start<0||end<=start)throw new Error('Dashboard data boundaries changed; update the extractor.');
- const records=vm.runInNewContext(html.slice(start,end)+';Object.entries(CITIES).flatMap(([city,c])=>c.data.map(p=>({...p,city})))',{}, {timeout:5000});
+ const records=vm.runInNewContext(html.slice(start,end)+';Object.entries(CITIES).flatMap(([city,c])=>c.data.map(p=>({...p,city})))',{window:{REGIONAL_DATA}}, {timeout:5000});
  if(!Array.isArray(records)||!records.length||records.some(p=>!p.id||!p.city||!p.type))throw new Error('Invalid project dataset');
  return JSON.parse(JSON.stringify(records));
 }

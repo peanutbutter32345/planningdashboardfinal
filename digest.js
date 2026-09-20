@@ -1,3 +1,4 @@
+import {REGIONAL_CITIES} from './data/regional.js';
 // Pure rendering for the email briefings. No database and no network access here on purpose -
 // everything takes plain data in and returns an HTML string, so the output can be previewed and
 // tested without a Postgres instance or a Resend key (see scripts/preview-digest.js).
@@ -51,6 +52,7 @@ export const CITY_LABELS = {
   southsanfrancisco: 'South San Francisco',
   woodside: 'Woodside',
 };
+Object.assign(CITY_LABELS,Object.fromEntries(Object.entries(REGIONAL_CITIES).map(([k,c])=>[k,c.label])));
 export function cityLabel(key) { return CITY_LABELS[key] || 'the South Bay'; }
 
 // Phrases rather than adjectives, so the footer reads as a sentence instead of "biweekly updates".

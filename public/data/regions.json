@@ -1,0 +1,2505 @@
+{
+  "reviewed": "2026-09-19",
+  "cities": {
+    "sanjose": {
+      "label": "San Jose",
+      "county": "Santa Clara",
+      "center": {
+        "lat": 37.3382,
+        "lng": -121.8863
+      },
+      "zoom": 11,
+      "bbox": {
+        "minLat": 37.2682,
+        "maxLat": 37.4082,
+        "minLng": -121.9663,
+        "maxLng": -121.80630000000001
+      },
+      "fips": "68000",
+      "planning": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects",
+      "meetings": "https://sanjose.legistar.com/Calendar.aspx",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "sanjose-downtown-west",
+          "addr": "Downtown West / Diridon Station",
+          "lat": 37.3327,
+          "lng": -121.902,
+          "cat": "dev",
+          "type": "Mixed Use",
+          "desc": "Approved May 25, 2021. The mixed-use plan includes 4,000 homes; the environmental envelope allows up to 5,900. Master plan, not a construction schedule.",
+          "units": 4000,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "approved",
+          "lastDate": "2021-05-25",
+          "lastNote": "Approved May 25, 2021. The mixed-use plan includes 4,000 homes; the environmental envelope allows up to 5,900. Master plan, not a construction schedule.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects/downtown-west-mixed-use-plan",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "sanjose",
+          "topic": "developments",
+          "title": "San Jose: latest official planning updates",
+          "date": "",
+          "url": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "sanjose",
+          "title": "Downtown West / Diridon Station — planning update",
+          "source": "Official city project update",
+          "date": "2021-05-25",
+          "url": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects/downtown-west-mixed-use-plan",
+          "topic": "housing",
+          "snippet": "Approved May 25, 2021. The mixed-use plan includes 4,000 homes; the environmental envelope allows up to 5,900. Master plan, not a construction schedule."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "San Jose development projects",
+          "url": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "San Jose agendas and meetings",
+          "url": "https://sanjose.legistar.com/Calendar.aspx",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "San Jose Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0668000/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "Downtown West / Diridon Station — official record",
+          "url": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects/downtown-west-mixed-use-plan",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 990138,
+        "medianIncome": 146427,
+        "medianGrossRent": 2669,
+        "renterSharePct": 44.199969563232386,
+        "medianYearBuilt": 1976,
+        "censusHomeValue": 1233200,
+        "meanCommuteMin": 27.261526864921613,
+        "transitSharePct": 2.389000683987748,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0668000/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of San Jose planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://sanjose.legistar.com/Calendar.aspx"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects"
+        }
+      ],
+      "join": []
+    },
+    "sanfrancisco": {
+      "label": "San Francisco",
+      "county": "San Francisco",
+      "center": {
+        "lat": 37.7749,
+        "lng": -122.4194
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.7049,
+        "maxLat": 37.8449,
+        "minLng": -122.4994,
+        "maxLng": -122.3394
+      },
+      "fips": "67000",
+      "planning": "https://sfplanning.org/major-development-projects",
+      "meetings": "https://sfgov.legistar.com/Calendar.aspx",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "sanfrancisco-stonestown",
+          "addr": "400 Winston Drive / Stonestown",
+          "lat": 37.727,
+          "lng": -122.476,
+          "cat": "dev",
+          "type": "Mixed Use",
+          "desc": "Stonestown redevelopment received final approval in summer 2024. The 2024 Housing Inventory reports 3,491 units. Multi-phase master plan.",
+          "units": 3491,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "approved",
+          "lastDate": "2024-08-24",
+          "lastNote": "Stonestown redevelopment received final approval in summer 2024. The 2024 Housing Inventory reports 3,491 units. Multi-phase master plan.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://sfplanning.org/es/node/2526",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "sanfrancisco",
+          "topic": "developments",
+          "title": "San Francisco: latest official planning updates",
+          "date": "",
+          "url": "https://sfplanning.org/major-development-projects",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "sanfrancisco",
+          "title": "400 Winston Drive / Stonestown — planning update",
+          "source": "Official city project update",
+          "date": "2024-08-24",
+          "url": "https://sfplanning.org/es/node/2526",
+          "topic": "housing",
+          "snippet": "Stonestown redevelopment received final approval in summer 2024. The 2024 Housing Inventory reports 3,491 units. Multi-phase master plan."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "San Francisco development projects",
+          "url": "https://sfplanning.org/major-development-projects",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "San Francisco agendas and meetings",
+          "url": "https://sfgov.legistar.com/Calendar.aspx",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "San Francisco Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0667000/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Housing",
+          "title": "Housing development pipeline",
+          "url": "https://sfplanning.org/es/node/827",
+          "note": "Quarterly housing production, pipeline stages and project data."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "400 Winston Drive / Stonestown — official record",
+          "url": "https://sfplanning.org/es/node/2526",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        },
+        {
+          "title": "Planning Commission",
+          "cat": "Boards",
+          "url": "https://sfplanning.org/planning-commission",
+          "note": "Official meeting notices, membership and participation information."
+        }
+      ],
+      "stats": {
+        "population": 830235,
+        "medianIncome": 140970,
+        "medianGrossRent": 2476,
+        "renterSharePct": 61.794378657581674,
+        "medianYearBuilt": 1946,
+        "censusHomeValue": 1394500,
+        "meanCommuteMin": 30.372058768691502,
+        "transitSharePct": 18.730113124694462,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0667000/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of San Francisco planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "Board of Supervisors",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://sfgov.legistar.com/Calendar.aspx"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://sfplanning.org/planning-commission"
+        }
+      ],
+      "join": []
+    },
+    "berkeley": {
+      "label": "Berkeley",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.8715,
+        "lng": -122.273
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.8015,
+        "maxLat": 37.9415,
+        "minLng": -122.353,
+        "maxLng": -122.193
+      },
+      "fips": "06000",
+      "planning": "https://berkeleyca.gov/construction-development/land-use-development",
+      "meetings": "https://berkeleyca.gov/your-government/boards-commissions/planning-commission",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "berkeley-north-bart",
+          "addr": "North Berkeley BART transit-oriented development",
+          "lat": 37.8739,
+          "lng": -122.2835,
+          "cat": "dev",
+          "type": "Mixed Use",
+          "desc": "Approved station redevelopment: 739 homes, including 381 affordable homes in the city’s compliance plan. Multiple phases; timing depends on funding and market conditions.",
+          "units": 739,
+          "bmr": 381,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "approved",
+          "lastDate": null,
+          "lastNote": "Approved station redevelopment: 739 homes, including 381 affordable homes in the city’s compliance plan. Multiple phases; timing depends on funding and market conditions.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://berkeleyca.gov/sites/default/files/documents/2024-06-25%20Item%2050%20Approval%20of%20the%20North%20Berkeley%20BART.pdf",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "id": "berkeley-ashby-bart",
+          "addr": "Ashby BART transit-oriented development",
+          "lat": 37.8528,
+          "lng": -122.2701,
+          "cat": "dev",
+          "type": "Mixed Use",
+          "desc": "Station-area housing planning and developer selection. East and west parking lots have separate development processes.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "proposed",
+          "lastDate": null,
+          "lastNote": "Station-area housing planning and developer selection. East and west parking lots have separate development processes.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://www.bart.gov/index.php/about/business/tod/ashby",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "berkeley",
+          "topic": "developments",
+          "title": "North Berkeley station walking and bicycling improvements",
+          "date": "2025-10-27",
+          "url": "https://www.bart.gov/news/articles/2025/news20251027",
+          "snippet": "BART describes access improvements accompanying planned housing at North Berkeley and Ashby stations.",
+          "source": "BART",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "berkeley",
+          "title": "North Berkeley BART transit-oriented development — planning update",
+          "source": "Official city project update",
+          "date": "",
+          "url": "https://berkeleyca.gov/sites/default/files/documents/2024-06-25%20Item%2050%20Approval%20of%20the%20North%20Berkeley%20BART.pdf",
+          "topic": "housing",
+          "snippet": "Approved station redevelopment: 739 homes, including 381 affordable homes in the city’s compliance plan. Multiple phases; timing depends on funding and market conditions."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Berkeley development projects",
+          "url": "https://berkeleyca.gov/construction-development/land-use-development",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Berkeley agendas and meetings",
+          "url": "https://berkeleyca.gov/your-government/boards-commissions/planning-commission",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Berkeley Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0606000/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Transportation",
+          "title": "Berkeley–El Cerrito corridor access plan",
+          "url": "https://www.bart.gov/about/planning/station-access/berkeley-elcerrito-corridor-plan",
+          "note": "Walking, rolling, cycling, transit and parking access around new station-area housing."
+        },
+        {
+          "cat": "Housing",
+          "title": "Affordable housing requirements",
+          "url": "https://berkeleyca.gov/construction-development/permits-design-parameters/design-parameters/affordable-housing",
+          "note": "City requirements for below-market homes and in-lieu fees."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "North Berkeley BART transit-oriented development — official record",
+          "url": "https://www.bart.gov/about/business/tod/north-berkeley",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "Ashby BART transit-oriented development — official record",
+          "url": "https://www.bart.gov/index.php/about/business/tod/ashby",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        },
+        {
+          "title": "City Council",
+          "cat": "Boards",
+          "url": "https://berkeleyca.gov/your-government/city-council/city-council-agendas",
+          "note": "Official meeting notices, membership and participation information."
+        }
+      ],
+      "stats": {
+        "population": 120257,
+        "medianIncome": 108092,
+        "medianGrossRent": 2133,
+        "renterSharePct": 55.80990771189137,
+        "medianYearBuilt": 1944,
+        "censusHomeValue": 1413900,
+        "meanCommuteMin": 27.760006473190202,
+        "transitSharePct": 12.36824685574622,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0606000/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Berkeley planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://berkeleyca.gov/your-government/city-council/city-council-agendas"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://berkeleyca.gov/your-government/boards-commissions/planning-commission"
+        }
+      ],
+      "join": []
+    },
+    "oakland": {
+      "label": "Oakland",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.8044,
+        "lng": -122.2712
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.7344,
+        "maxLat": 37.8744,
+        "minLng": -122.35119999999999,
+        "maxLng": -122.1912
+      },
+      "fips": "53000",
+      "planning": "https://www.oaklandca.gov/Planning-Building/Major-Development-Projects",
+      "meetings": "https://oakland.legistar.com/Calendar.aspx",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "oakland-brooklyn-parcel-n",
+          "addr": "Brooklyn Basin — Parcel N",
+          "lat": null,
+          "lng": null,
+          "cat": "dev",
+          "type": "Mixed Use",
+          "desc": "Residential proposal submitted in June 2025 requires a development-agreement amendment. An October 2025 advisory presentation was postponed. The larger master plan includes built phases, so its gross total is excluded here.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": null,
+          "lastNote": "Residential proposal submitted in June 2025 requires a development-agreement amendment. An October 2025 advisory presentation was postponed. The larger master plan includes built phases, so its gross total is excluded here.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check.",
+          "sourceUrl": "https://www.oaklandca.gov/Planning-Building/Major-Development-Projects/Brooklyn-Basin-Mixed-Use-Development",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "oakland",
+          "topic": "developments",
+          "title": "Oakland: latest official planning updates",
+          "date": "",
+          "url": "https://www.oaklandca.gov/Planning-Building/Major-Development-Projects",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "oakland",
+          "title": "Brooklyn Basin — Parcel N — planning update",
+          "source": "Official city project update",
+          "date": "",
+          "url": "https://www.oaklandca.gov/Planning-Building/Major-Development-Projects/Brooklyn-Basin-Mixed-Use-Development",
+          "topic": "housing",
+          "snippet": "Residential proposal submitted in June 2025 requires a development-agreement amendment. An October 2025 advisory presentation was postponed. The larger master plan includes built phases, so its gross total is excluded here."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Oakland development projects",
+          "url": "https://www.oaklandca.gov/Planning-Building/Major-Development-Projects",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Oakland agendas and meetings",
+          "url": "https://oakland.legistar.com/Calendar.aspx",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Oakland Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0653000/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "Brooklyn Basin — Parcel N — official record",
+          "url": "https://www.oaklandca.gov/Planning-Building/Major-Development-Projects/Brooklyn-Basin-Mixed-Use-Development",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 439418,
+        "medianIncome": 101600,
+        "medianGrossRent": 1979,
+        "renterSharePct": 57.66717256376569,
+        "medianYearBuilt": 1953,
+        "censusHomeValue": 929900,
+        "meanCommuteMin": 29.821917645803445,
+        "transitSharePct": 12.49384609352195,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0653000/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Oakland planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://oakland.legistar.com/Calendar.aspx"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.oaklandca.gov/Planning-Building/Major-Development-Projects"
+        }
+      ],
+      "join": []
+    },
+    "albany": {
+      "label": "Albany",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.8869,
+        "lng": -122.2977
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.8169,
+        "maxLat": 37.9569,
+        "minLng": -122.3777,
+        "maxLng": -122.21770000000001
+      },
+      "fips": "00674",
+      "planning": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects",
+      "meetings": "https://www.albanyca.gov/Government/Meetings-Agendas",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "albany-solano",
+          "addr": "1600 Solano Avenue",
+          "lat": 37.890974708262,
+          "lng": -122.284423779548,
+          "cat": "dev",
+          "type": "Residential",
+          "desc": "Proposed mixed-use project at Ordway and Solano, as listed on the city major-projects page.",
+          "units": 12,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "proposed",
+          "lastDate": null,
+          "lastNote": "Proposed mixed-use project at Ordway and Solano, as listed on the city major-projects page.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1600+Solano+Avenue%2C+Albany%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "albany-bowl",
+          "addr": "540 San Pablo Avenue / former Albany Bowl",
+          "lat": 37.896516959127,
+          "lng": -122.301137578767,
+          "cat": "dev",
+          "type": "Residential",
+          "desc": "Proposed mixed-use redevelopment of the former Albany Bowl site.",
+          "units": 207,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "proposed",
+          "lastDate": null,
+          "lastNote": "Proposed mixed-use redevelopment of the former Albany Bowl site.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=540+San+Pablo+Avenue%2C+Albany%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "albany-saha",
+          "addr": "Cleveland and Washington Avenues / SAHA",
+          "lat": null,
+          "lng": null,
+          "cat": "dev",
+          "type": "Residential",
+          "desc": "City-owned affordable housing site being developed with Satellite Affordable Housing Associates. City index lists 62 homes; verify current delivery status.",
+          "units": 62,
+          "bmr": 62,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": null,
+          "lastNote": "City-owned affordable housing site being developed with Satellite Affordable Housing Associates. City index lists 62 homes; verify current delivery status.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status. Map coordinates not verified.",
+          "sourceUrl": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "albany",
+          "topic": "developments",
+          "title": "Albany: latest official planning updates",
+          "date": "",
+          "url": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "albany",
+          "title": "1600 Solano Avenue — planning update",
+          "source": "Official city project update",
+          "date": "",
+          "url": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects",
+          "topic": "housing",
+          "snippet": "Proposed mixed-use project at Ordway and Solano, as listed on the city major-projects page."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Albany development projects",
+          "url": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Albany agendas and meetings",
+          "url": "https://www.albanyca.gov/Government/Meetings-Agendas",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Albany Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0600674/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 19414,
+        "medianIncome": 144107,
+        "medianGrossRent": 2445,
+        "renterSharePct": 46.861486043768835,
+        "medianYearBuilt": 1951,
+        "censusHomeValue": 1202200,
+        "meanCommuteMin": 30.759760246233597,
+        "transitSharePct": 11.526479750778815,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0600674/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Albany planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.albanyca.gov/Government/Meetings-Agendas"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects"
+        }
+      ],
+      "join": []
+    },
+    "emeryville": {
+      "label": "Emeryville",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.8313,
+        "lng": -122.2852
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.7613,
+        "maxLat": 37.9013,
+        "minLng": -122.3652,
+        "maxLng": -122.2052
+      },
+      "fips": "22594",
+      "planning": "https://www.emeryville.org/Development/Projects-Permitting/Major-Development-Projects",
+      "meetings": "https://emeryville.legistar.com/Calendar.aspx",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "emeryville-sutter",
+          "addr": "Sutter Hospital Medical Center / Emery Yards",
+          "lat": 37.838,
+          "lng": -122.287,
+          "cat": "dev",
+          "type": "Medical",
+          "desc": "Hospital proposal undergoing environmental analysis and public study sessions. The city lists an August 27, 2026 EIR scoping session.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": "2026-08-27",
+          "lastNote": "Hospital proposal undergoing environmental analysis and public study sessions. The city lists an August 27, 2026 EIR scoping session.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://www.emeryville.org/Development/Projects-Permitting/Major-Development-Projects/Sutter-Hospital-Medical-Center",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "emeryville",
+          "topic": "developments",
+          "title": "Emeryville: latest official planning updates",
+          "date": "",
+          "url": "https://www.emeryville.org/Development/Projects-Permitting/Major-Development-Projects",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "emeryville",
+          "title": "Sutter Hospital Medical Center / Emery Yards — planning update",
+          "source": "Official city project update",
+          "date": "2026-08-27",
+          "url": "https://www.emeryville.org/Development/Projects-Permitting/Major-Development-Projects/Sutter-Hospital-Medical-Center",
+          "topic": "housing",
+          "snippet": "Hospital proposal undergoing environmental analysis and public study sessions. The city lists an August 27, 2026 EIR scoping session."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Emeryville development projects",
+          "url": "https://www.emeryville.org/Development/Projects-Permitting/Major-Development-Projects",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Emeryville agendas and meetings",
+          "url": "https://emeryville.legistar.com/Calendar.aspx",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Emeryville Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0622594/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "Sutter Hospital Medical Center / Emery Yards — official record",
+          "url": "https://www.emeryville.org/Development/Projects-Permitting/Major-Development-Projects/Sutter-Hospital-Medical-Center",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 13081,
+        "medianIncome": 117092,
+        "medianGrossRent": 2936,
+        "renterSharePct": 75.77188058178108,
+        "medianYearBuilt": 1990,
+        "censusHomeValue": 604800,
+        "meanCommuteMin": 28.9,
+        "transitSharePct": 7.786648154575958,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0622594/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Emeryville planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://emeryville.legistar.com/Calendar.aspx"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.emeryville.org/Development/Projects-Permitting/Major-Development-Projects"
+        }
+      ],
+      "join": []
+    },
+    "alameda": {
+      "label": "Alameda",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.7652,
+        "lng": -122.2416
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.6952,
+        "maxLat": 37.8352,
+        "minLng": -122.3216,
+        "maxLng": -122.1616
+      },
+      "fips": "00562",
+      "planning": "https://www.alamedaca.gov/Departments/Planning-Building-and-Transportation/Planning-Division/Major-Planning-Projects",
+      "meetings": "https://alameda.legistar.com/Calendar.aspx",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "alameda-admirals",
+          "addr": "300 Mosley Avenue / Admirals Cove",
+          "lat": 37.789198874078,
+          "lng": -122.286638254716,
+          "cat": "dev",
+          "type": "Residential",
+          "desc": "Application for a seven-story multifamily building on 2.6 acres, separate from 150 existing townhomes.",
+          "units": 227,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": null,
+          "lastNote": "Application for a seven-story multifamily building on 2.6 acres, separate from 150 existing townhomes.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.alamedaca.gov/Departments/Planning-Building-and-Transportation/Planning-Division/Major-Planning-Projects",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=300+Mosley+Avenue%2C+Alameda%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "alameda-marina-wrap",
+          "addr": "Alameda Marina Wrap B",
+          "lat": null,
+          "lng": null,
+          "cat": "dev",
+          "type": "Residential",
+          "desc": "Development and design-review application for a 260-unit building. The separate 801-unit site-wide amendment is not added again.",
+          "units": 260,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": null,
+          "lastNote": "Development and design-review application for a 260-unit building. The separate 801-unit site-wide amendment is not added again.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status. Map coordinates not verified.",
+          "sourceUrl": "https://www.alamedaca.gov/Departments/Planning-Building-and-Transportation/Planning-Division/Major-Planning-Projects",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "alameda",
+          "topic": "developments",
+          "title": "Harbor Bay Landing preliminary application withdrawn",
+          "date": "2025-11-21",
+          "url": "https://www.alamedaca.gov/Departments/Planning-Building-and-Transportation/Planning-Division/Major-Planning-Projects",
+          "snippet": "The developer withdrew its preliminary application. The city says the developer is exploring alternatives, with no resubmission timeline.",
+          "source": "City of Alameda",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "alameda",
+          "title": "300 Mosley Avenue / Admirals Cove — planning update",
+          "source": "Official city project update",
+          "date": "",
+          "url": "https://www.alamedaca.gov/Departments/Planning-Building-and-Transportation/Planning-Division/Major-Planning-Projects",
+          "topic": "housing",
+          "snippet": "Application for a seven-story multifamily building on 2.6 acres, separate from 150 existing townhomes."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Alameda development projects",
+          "url": "https://www.alamedaca.gov/Departments/Planning-Building-and-Transportation/Planning-Division/Major-Planning-Projects",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Alameda agendas and meetings",
+          "url": "https://alameda.legistar.com/Calendar.aspx",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Alameda Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0600562/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 77238,
+        "medianIncome": 137697,
+        "medianGrossRent": 2474,
+        "renterSharePct": 49.33306655995732,
+        "medianYearBuilt": 1965,
+        "censusHomeValue": 1235700,
+        "meanCommuteMin": 31.64764566592912,
+        "transitSharePct": 10.007058269939613,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0600562/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Alameda planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://alameda.legistar.com/Calendar.aspx"
+        },
+        {
+          "name": "Planning Board",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.alamedaca.gov/Departments/Planning-Building-and-Transportation/Planning-Division/Major-Planning-Projects"
+        }
+      ],
+      "join": []
+    },
+    "fremont": {
+      "label": "Fremont",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.5483,
+        "lng": -121.9886
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.4783,
+        "maxLat": 37.6183,
+        "minLng": -122.0686,
+        "maxLng": -121.9086
+      },
+      "fips": "26000",
+      "planning": "https://www.fremont.gov/government/departments/planning",
+      "meetings": "https://www.fremont.gov/government/agenda-center",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "fremont-bart-tod",
+          "addr": "Fremont BART east parking lot",
+          "lat": 37.5574,
+          "lng": -121.9764,
+          "cat": "dev",
+          "type": "Mixed Use",
+          "desc": "BART issued a developer solicitation on April 28, 2026 for the east parking lot. No approved housing count is assumed.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "proposed",
+          "lastDate": "2026-04-28",
+          "lastNote": "BART issued a developer solicitation on April 28, 2026 for the east parking lot. No approved housing count is assumed.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://www.bart.gov/about/business/tod",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "id": "fremont-walnut-bikeway",
+          "addr": "Walnut Avenue: Paseo Padre Parkway to Fremont Boulevard",
+          "lat": 37.5485,
+          "lng": -121.9821,
+          "cat": "infra",
+          "type": "Transportation",
+          "desc": "Phase II bikeway and walking connections. The city page anticipated completion in summer 2026; completion has not been independently confirmed.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "construction",
+          "lastDate": null,
+          "lastNote": "Phase II bikeway and walking connections. The city page anticipated completion in summer 2026; completion has not been independently confirmed.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://www.fremont.gov/government/departments/public-works/public-works-projects/walnut-avenue-fremont-to-paseo-padre-project",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "fremont",
+          "topic": "developments",
+          "title": "2025 year-end city priorities report is available",
+          "date": "2026-01-30",
+          "url": "https://www.fremont.gov/Home/Components/News/News/1649/1067",
+          "snippet": "The city reports five completed affordable properties totaling 567 homes, alongside updates on safety, infrastructure and finances.",
+          "source": "City of Fremont",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "fremont",
+          "title": "Fremont BART east parking lot — planning update",
+          "source": "Official city project update",
+          "date": "2026-04-28",
+          "url": "https://www.bart.gov/about/business/tod",
+          "topic": "housing",
+          "snippet": "BART issued a developer solicitation on April 28, 2026 for the east parking lot. No approved housing count is assumed."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Fremont development projects",
+          "url": "https://www.fremont.gov/government/departments/planning",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Fremont agendas and meetings",
+          "url": "https://www.fremont.gov/government/agenda-center",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Fremont Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0626000/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Housing",
+          "title": "Housing Element and annual progress",
+          "url": "https://www.fremont.gov/government/departments/community-development/planning-building-permit-services/plans-maps-guidelines/general-plan/housing-element",
+          "note": "Housing needs, production progress and 2023–2031 programs."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "Fremont BART east parking lot — official record",
+          "url": "https://www.bart.gov/about/business/tod",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "Walnut Avenue: Paseo Padre Parkway to Fremont Boulevard — official record",
+          "url": "https://www.fremont.gov/government/departments/public-works/public-works-projects/walnut-avenue-fremont-to-paseo-padre-project",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        },
+        {
+          "title": "Planning Commission",
+          "cat": "Boards",
+          "url": "https://www.fremont.gov/government/departments/city-clerk/boards-commissions-committees/planning-commission",
+          "note": "Official meeting notices, membership and participation information."
+        }
+      ],
+      "stats": {
+        "population": 228295,
+        "medianIncome": 181506,
+        "medianGrossRent": 2933,
+        "renterSharePct": 39.165193327696215,
+        "medianYearBuilt": 1979,
+        "censusHomeValue": 1403800,
+        "meanCommuteMin": 30.331284153005466,
+        "transitSharePct": 3.7987203389088746,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0626000/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Fremont planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.fremont.gov/government/agenda-center"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.fremont.gov/government/departments/city-clerk/boards-commissions-committees/planning-commission"
+        }
+      ],
+      "join": []
+    },
+    "newark": {
+      "label": "Newark",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.5297,
+        "lng": -122.0402
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.4597,
+        "maxLat": 37.5997,
+        "minLng": -122.1202,
+        "maxLng": -121.9602
+      },
+      "fips": "50916",
+      "planning": "https://www.newarkca.gov/departments/community-development/planning-division/development-projects",
+      "meetings": "https://www.newarkca.gov/departments/council-meetings-agendas-minutes",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "newark-cedar-court",
+          "addr": "5545 Cedar Court",
+          "lat": 37.530387531172,
+          "lng": -122.006453910289,
+          "cat": "dev",
+          "type": "Housing",
+          "desc": "Application under review for 56 homes: 45 townhomes and 11 smaller units, replacing a motel.",
+          "units": 56,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": null,
+          "lastNote": "Application under review for 56 homes: 45 townhomes and 11 smaller units, replacing a motel.",
+          "fileNo": "DR2026-001 / TTM2026-001 / MUP2026-007",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.newarkca.gov/departments/community-development/planning-division/development-projects",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5545+Cedar+Court%2C+Newark%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "newark-casa-sharifan",
+          "addr": "6991 Thornton Avenue",
+          "lat": 37.530654507831,
+          "lng": -122.036814377402,
+          "cat": "dev",
+          "type": "Mixed Use",
+          "desc": "Five homes with ground-floor retail; the city lists the application as under review.",
+          "units": 5,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": null,
+          "lastNote": "Five homes with ground-floor retail; the city lists the application as under review.",
+          "fileNo": "DR2020-003 / MUP2023-010",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.newarkca.gov/departments/community-development/planning-division/development-projects",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=6991+Thornton+Avenue%2C+Newark%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "newark-lepakshi",
+          "addr": "6717–6825 Thornton Avenue",
+          "lat": null,
+          "lng": null,
+          "cat": "dev",
+          "type": "Housing",
+          "desc": "Approved August 13, 2024: 88 condominiums including 13 affordable homes.",
+          "units": 88,
+          "bmr": 13,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "approved",
+          "lastDate": "2024-08-13",
+          "lastNote": "Approved August 13, 2024: 88 condominiums including 13 affordable homes.",
+          "fileNo": "DR2022-003",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check.",
+          "sourceUrl": "https://www.newarkca.gov/departments/community-development/planning-division/development-projects",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "newark",
+          "topic": "developments",
+          "title": "Newark: latest official planning updates",
+          "date": "",
+          "url": "https://www.newarkca.gov/departments/community-development/planning-division/development-projects",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "newark",
+          "title": "6717–6825 Thornton Avenue — planning update",
+          "source": "Official city project update",
+          "date": "2024-08-13",
+          "url": "https://www.newarkca.gov/departments/community-development/planning-division/development-projects",
+          "topic": "housing",
+          "snippet": "Approved August 13, 2024: 88 condominiums including 13 affordable homes."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Newark development projects",
+          "url": "https://www.newarkca.gov/departments/community-development/planning-division/development-projects",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Newark agendas and meetings",
+          "url": "https://www.newarkca.gov/departments/council-meetings-agendas-minutes",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Newark Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0650916/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        },
+        {
+          "title": "Planning Commission",
+          "cat": "Boards",
+          "url": "https://www.newarkca.gov/departments/commissions-committees/planning-commission",
+          "note": "Official meeting notices, membership and participation information."
+        }
+      ],
+      "stats": {
+        "population": 46903,
+        "medianIncome": 169064,
+        "medianGrossRent": 2776,
+        "renterSharePct": 30.605822187254127,
+        "medianYearBuilt": 1975,
+        "censusHomeValue": 1142800,
+        "meanCommuteMin": 30.55766066709877,
+        "transitSharePct": 4.165227072056509,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0650916/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Newark planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.newarkca.gov/departments/council-meetings-agendas-minutes"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.newarkca.gov/departments/commissions-committees/planning-commission"
+        }
+      ],
+      "join": []
+    },
+    "unioncity": {
+      "label": "Union City",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.5934,
+        "lng": -122.0438
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.5234,
+        "maxLat": 37.6634,
+        "minLng": -122.1238,
+        "maxLng": -121.9638
+      },
+      "fips": "81204",
+      "planning": "https://www.unioncityca.gov/462/Station-East-Residential",
+      "meetings": "https://www.unioncityca.gov/AgendaCenter",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "unioncity-station-east",
+          "addr": "Station East residential / mixed-use plan",
+          "lat": 37.5914,
+          "lng": -122.019,
+          "cat": "dev",
+          "type": "Mixed Use",
+          "desc": "The master plan was reduced to 811 homes in July 2024. Two condominium phases received site-development approvals on September 4, 2025. Gross plan total includes multiple phases; affordable totals require phase-level review.",
+          "units": 811,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "approved",
+          "lastDate": "2025-09-04",
+          "lastNote": "The master plan was reduced to 811 homes in July 2024. Two condominium phases received site-development approvals on September 4, 2025. Gross plan total includes multiple phases; affordable totals require phase-level review.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://www.unioncityca.gov/462/Station-East-Residential",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "unioncity",
+          "topic": "developments",
+          "title": "Union City: latest official planning updates",
+          "date": "",
+          "url": "https://www.unioncityca.gov/462/Station-East-Residential",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "unioncity",
+          "title": "Station East residential / mixed-use plan — planning update",
+          "source": "Official city project update",
+          "date": "2025-09-04",
+          "url": "https://www.unioncityca.gov/462/Station-East-Residential",
+          "topic": "housing",
+          "snippet": "The master plan was reduced to 811 homes in July 2024. Two condominium phases received site-development approvals on September 4, 2025. Gross plan total includes multiple phases; affordable totals require phase-level review."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Union City development projects",
+          "url": "https://www.unioncityca.gov/462/Station-East-Residential",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Union City agendas and meetings",
+          "url": "https://www.unioncityca.gov/AgendaCenter",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Union City Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0681204/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 67464,
+        "medianIncome": 133715,
+        "medianGrossRent": 2713,
+        "renterSharePct": 35.32956685499059,
+        "medianYearBuilt": 1980,
+        "censusHomeValue": 1104900,
+        "meanCommuteMin": 31.886147124131508,
+        "transitSharePct": 3.761261917952007,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0681204/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Union City planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.unioncityca.gov/AgendaCenter"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.unioncityca.gov/462/Station-East-Residential"
+        }
+      ],
+      "join": []
+    },
+    "hayward": {
+      "label": "Hayward",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.6688,
+        "lng": -122.0808
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.5988,
+        "maxLat": 37.7388,
+        "minLng": -122.1608,
+        "maxLng": -122.0008
+      },
+      "fips": "33000",
+      "planning": "https://www.hayward-ca.gov/business/for-developers",
+      "meetings": "https://hayward.legistar.com/Calendar.aspx",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "hayward-city-center",
+          "addr": "City Center Drive — city-owned development site",
+          "lat": null,
+          "lng": null,
+          "cat": "dev",
+          "type": "Development opportunity",
+          "desc": "The city’s June 2, 2026 notice offers approximately 5.79 acres for acquisition or lease. An affordable-housing opportunity, with no approved unit count assumed.",
+          "units": null,
+          "bmr": null,
+          "stage": "proposed",
+          "lastDate": "2026-06-02",
+          "lastNote": "City-issued notice of availability; this is a land disposition opportunity, not an approved housing project.",
+          "fileNo": "",
+          "sourceUrl": "https://www.hayward-ca.gov/sites/default/files/2026-06/CMORE-Real-Estate-Updated-NOA-City-Center-Drive-2606.pdf",
+          "reviewed": "2026-09-19",
+          "flag": "Source reviewed September 19, 2026. Confirm current availability with the city."
+        }
+      ],
+      "news": [
+        {
+          "city": "hayward",
+          "topic": "developments",
+          "title": "Hayward: latest official planning updates",
+          "date": "",
+          "url": "https://www.hayward-ca.gov/business/for-developers",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "hayward",
+          "topic": "housing",
+          "title": "City Center Drive land offered for development",
+          "source": "City of Hayward",
+          "date": "2026-06-02",
+          "url": "https://www.hayward-ca.gov/sites/default/files/2026-06/CMORE-Real-Estate-Updated-NOA-City-Center-Drive-2606.pdf",
+          "snippet": "The city’s June 2, 2026 notice offers approximately 5.79 acres for acquisition or lease. An affordable-housing opportunity, with no approved unit count assumed."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Hayward development projects",
+          "url": "https://www.hayward-ca.gov/business/for-developers",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Hayward agendas and meetings",
+          "url": "https://hayward.legistar.com/Calendar.aspx",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Hayward Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0633000/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Permits",
+          "title": "Permits, plans and projects",
+          "url": "https://hayward-ca.gov/services/permits",
+          "note": "Permitting guidance, ADUs and development processes."
+        },
+        {
+          "cat": "Land Use",
+          "title": "General Plan and housing documents",
+          "url": "https://hayward-ca.gov/your-government/documents/planning-documents",
+          "note": "Long-range planning and the 2023–2031 Housing Element."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        },
+        {
+          "cat": "Housing",
+          "title": "Affordable Housing Dashboard",
+          "url": "https://hayward-ca.gov/your-government/departments/housing-division/affordable-housing-dashboard",
+          "note": "City map of affordable developments, funding and affordability levels."
+        },
+        {
+          "cat": "Housing",
+          "title": "Housing Element 2023–2031",
+          "url": "https://hayward-ca.gov/your-government/documents/general-plan/housing-element",
+          "note": "Adopted housing goals, inventory and implementation actions."
+        }
+      ],
+      "stats": {
+        "population": 158801,
+        "medianIncome": 113318,
+        "medianGrossRent": 2391,
+        "renterSharePct": 41.973766396002496,
+        "medianYearBuilt": 1972,
+        "censusHomeValue": 854400,
+        "meanCommuteMin": 32.292936430821776,
+        "transitSharePct": 4.271012876406773,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0633000/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Hayward planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://hayward.legistar.com/Calendar.aspx"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.hayward-ca.gov/business/for-developers"
+        }
+      ],
+      "join": []
+    },
+    "sanleandro": {
+      "label": "San Leandro",
+      "county": "Alameda",
+      "center": {
+        "lat": 37.7249,
+        "lng": -122.1561
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.6549,
+        "maxLat": 37.7949,
+        "minLng": -122.2361,
+        "maxLng": -122.0761
+      },
+      "fips": "68084",
+      "planning": "https://www.sanleandro.org/1300/Development-Activities",
+      "meetings": "https://sanleandro.legistar.com/Calendar.aspx",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "sanleandro-1388-bancroft",
+          "addr": "1388 Bancroft Avenue",
+          "lat": 37.726462034944,
+          "lng": -122.147426799055,
+          "cat": "dev",
+          "type": "Housing",
+          "desc": "School district workforce housing: 51 homes under entitlement review in the city’s May 2026 activity table.",
+          "units": 51,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": null,
+          "lastNote": "School district workforce housing: 51 homes under entitlement review in the city’s May 2026 activity table.",
+          "fileNo": "PLN26-0008",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://ca-sanleandro.civicplus.com/DocumentCenter/View/10059/Development-Activity-Map-and-Table-Combined_2603?bidId=Table-Combined_240209",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1388+Bancroft+Avenue%2C+San+Leandro%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "sanleandro-110-east-14th",
+          "addr": "110 East 14th Street",
+          "lat": 37.735836917144,
+          "lng": -122.163993689929,
+          "cat": "dev",
+          "type": "Housing",
+          "desc": "221 affordable homes approved under SB 35, per the May 2026 activity table.",
+          "units": 221,
+          "bmr": 221,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "approved",
+          "lastDate": null,
+          "lastNote": "221 affordable homes approved under SB 35, per the May 2026 activity table.",
+          "fileNo": "PLN20-0021",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://ca-sanleandro.civicplus.com/DocumentCenter/View/10059/Development-Activity-Map-and-Table-Combined_2603?bidId=Table-Combined_240209",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=110+East+14th+Street%2C+San+Leandro%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "sanleandro-15101-washington",
+          "addr": "15101 Washington Avenue",
+          "lat": 37.68915851639,
+          "lng": -122.139218909428,
+          "cat": "dev",
+          "type": "Housing",
+          "desc": "72 affordable homes with entitlement approval and building-permit review in the May 2026 activity table.",
+          "units": 72,
+          "bmr": 72,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "approved",
+          "lastDate": null,
+          "lastNote": "72 affordable homes with entitlement approval and building-permit review in the May 2026 activity table.",
+          "fileNo": "PLN21-0044",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://ca-sanleandro.civicplus.com/DocumentCenter/View/10059/Development-Activity-Map-and-Table-Combined_2603?bidId=Table-Combined_240209",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=15101+Washington+Avenue%2C+San+Leandro%2C+CA&benchmark=Public_AR_Current&format=json"
+        }
+      ],
+      "news": [
+        {
+          "city": "sanleandro",
+          "topic": "developments",
+          "title": "San Leandro: latest official planning updates",
+          "date": "",
+          "url": "https://www.sanleandro.org/1300/Development-Activities",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "sanleandro",
+          "title": "1388 Bancroft Avenue — planning update",
+          "source": "Official city project update",
+          "date": "",
+          "url": "https://ca-sanleandro.civicplus.com/DocumentCenter/View/10059/Development-Activity-Map-and-Table-Combined_2603?bidId=Table-Combined_240209",
+          "topic": "housing",
+          "snippet": "School district workforce housing: 51 homes under entitlement review in the city’s May 2026 activity table."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "San Leandro development projects",
+          "url": "https://www.sanleandro.org/1300/Development-Activities",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "San Leandro agendas and meetings",
+          "url": "https://sanleandro.legistar.com/Calendar.aspx",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "San Leandro Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0668084/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Land Use",
+          "title": "Long-range planning",
+          "url": "https://www.sanleandro.org/337/Long-Range-Planning",
+          "note": "General Plan, Bay Fair transit-oriented development and other adopted plans."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "1388 Bancroft Avenue — official record",
+          "url": "https://ca-sanleandro.civicplus.com/DocumentCenter/View/10059/Development-Activity-Map-and-Table-Combined_2603?bidId=Table-Combined_240209",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 87826,
+        "medianIncome": 101420,
+        "medianGrossRent": 2186,
+        "renterSharePct": 41.89925789715637,
+        "medianYearBuilt": 1959,
+        "censusHomeValue": 844200,
+        "meanCommuteMin": 31.15404223349164,
+        "transitSharePct": 8.024858757062146,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0668084/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of San Leandro planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://sanleandro.legistar.com/Calendar.aspx"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.sanleandro.org/1300/Development-Activities"
+        }
+      ],
+      "join": []
+    },
+    "elcerrito": {
+      "label": "El Cerrito",
+      "county": "Contra Costa",
+      "center": {
+        "lat": 37.9161,
+        "lng": -122.3108
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.8461,
+        "maxLat": 37.9861,
+        "minLng": -122.3908,
+        "maxLng": -122.2308
+      },
+      "fips": "21796",
+      "planning": "https://www.elcerrito.gov/198/New-Development",
+      "meetings": "https://www.elcerrito.gov/Archive.aspx",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "elcerrito-plaza-phase1",
+          "addr": "515 Richmond Street / Plaza BART Phase I",
+          "lat": 37.9028,
+          "lng": -122.2994,
+          "cat": "dev",
+          "type": "Residential",
+          "desc": "Construction began in November 2025 for the six-story affordable building; the city anticipates spring 2027 completion.",
+          "units": 69,
+          "bmr": 69,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "construction",
+          "lastDate": "2025-11-01",
+          "lastNote": "Construction began in November 2025 for the six-story affordable building; the city anticipates spring 2027 completion.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://www.elcerrito.gov/1381/Transit-Oriented-Development-TOD",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "id": "elcerrito-fairmount",
+          "addr": "6501 Fairmount Avenue",
+          "lat": 37.901202812262,
+          "lng": -122.300740232038,
+          "cat": "dev",
+          "type": "Residential",
+          "desc": "Proposed three-story development with 16 townhomes and 882 square feet of commercial space.",
+          "units": 16,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "proposed",
+          "lastDate": null,
+          "lastNote": "Proposed three-story development with 16 townhomes and 882 square feet of commercial space.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.elcerrito.gov/1574/6501-Fairmount",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=6501+Fairmount+Avenue%2C+El+Cerrito%2C+CA&benchmark=Public_AR_Current&format=json"
+        }
+      ],
+      "news": [
+        {
+          "city": "elcerrito",
+          "topic": "developments",
+          "title": "Affordable housing construction begins at El Cerrito Plaza",
+          "date": "2025-11-01",
+          "url": "https://www.elcerrito.gov/1381/Transit-Oriented-Development-TOD",
+          "snippet": "The first phase brings 69 affordable homes beside BART. The city identifies spring 2027 as the anticipated completion window.",
+          "source": "City of El Cerrito",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "elcerrito",
+          "title": "515 Richmond Street / Plaza BART Phase I — planning update",
+          "source": "Official city project update",
+          "date": "2025-11-01",
+          "url": "https://www.elcerrito.gov/1381/Transit-Oriented-Development-TOD",
+          "topic": "housing",
+          "snippet": "Construction began in November 2025 for the six-story affordable building; the city anticipates spring 2027 completion."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "El Cerrito development projects",
+          "url": "https://www.elcerrito.gov/198/New-Development",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "El Cerrito agendas and meetings",
+          "url": "https://www.elcerrito.gov/Archive.aspx",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "El Cerrito Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0621796/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "515 Richmond Street / Plaza BART Phase I — official record",
+          "url": "https://www.elcerrito.gov/1381/Transit-Oriented-Development-TOD",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "6501 Fairmount Avenue — official record",
+          "url": "https://www.elcerrito.gov/1574/6501-Fairmount",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 25994,
+        "medianIncome": 127876,
+        "medianGrossRent": 2548,
+        "renterSharePct": 41.36275505493491,
+        "medianYearBuilt": 1956,
+        "censusHomeValue": 1124400,
+        "meanCommuteMin": 33.25076385857704,
+        "transitSharePct": 15.329064919594998,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0621796/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of El Cerrito planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.elcerrito.gov/Archive.aspx"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.elcerrito.gov/198/New-Development"
+        }
+      ],
+      "join": []
+    },
+    "richmond": {
+      "label": "Richmond",
+      "county": "Contra Costa",
+      "center": {
+        "lat": 37.9358,
+        "lng": -122.3477
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.8658,
+        "maxLat": 38.0058,
+        "minLng": -122.4277,
+        "maxLng": -122.2677
+      },
+      "fips": "60620",
+      "planning": "https://www.ci.richmond.ca.us/2098/Planning-Division",
+      "meetings": "https://www.ci.richmond.ca.us/Archive.aspx?AMID=30",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "richmond-hilltop-horizon",
+          "addr": "Hilltop Mall / Hilltop Horizon",
+          "lat": null,
+          "lng": null,
+          "cat": "dev",
+          "type": "Specific Plan",
+          "desc": "Specific plan for approximately 143 acres around Hilltop Mall. Housing and commercial uses remain part of a planning process; this is not a funded construction commitment.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": "2025-09-16",
+          "lastNote": "Specific plan for approximately 143 acres around Hilltop Mall. Housing and commercial uses remain part of a planning process; this is not a funded construction commitment.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check.",
+          "sourceUrl": "https://hilltophorizon.com/",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "richmond",
+          "topic": "developments",
+          "title": "Richmond: latest official planning updates",
+          "date": "",
+          "url": "https://www.ci.richmond.ca.us/2098/Planning-Division",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "richmond",
+          "title": "Hilltop Mall / Hilltop Horizon — planning update",
+          "source": "Official city project update",
+          "date": "2025-09-16",
+          "url": "https://hilltophorizon.com/",
+          "topic": "housing",
+          "snippet": "Specific plan for approximately 143 acres around Hilltop Mall. Housing and commercial uses remain part of a planning process; this is not a funded construction commitment."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Richmond development projects",
+          "url": "https://www.ci.richmond.ca.us/2098/Planning-Division",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Richmond agendas and meetings",
+          "url": "https://www.ci.richmond.ca.us/Archive.aspx?AMID=30",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Richmond Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0660620/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "Hilltop Mall / Hilltop Horizon — official record",
+          "url": "https://hilltophorizon.com/",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 115505,
+        "medianIncome": 95391,
+        "medianGrossRent": 1960,
+        "renterSharePct": 45.29971082683919,
+        "medianYearBuilt": 1966,
+        "censusHomeValue": 668200,
+        "meanCommuteMin": 34.219491791278884,
+        "transitSharePct": 8.215159804203859,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0660620/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Richmond planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.ci.richmond.ca.us/Archive.aspx?AMID=30"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.ci.richmond.ca.us/2098/Planning-Division"
+        }
+      ],
+      "join": []
+    },
+    "sausalito": {
+      "label": "Sausalito",
+      "county": "Marin",
+      "center": {
+        "lat": 37.8591,
+        "lng": -122.4853
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.7891,
+        "maxLat": 37.9291,
+        "minLng": -122.5653,
+        "maxLng": -122.4053
+      },
+      "fips": "70364",
+      "planning": "https://www.sausalito.gov/departments/community-development/planning-building-project-status",
+      "meetings": "https://www.sausalito.gov/city-government/city-council/meetings-and-agendas",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "sausalito-bridgeway",
+          "addr": "1000 Bridgeway",
+          "lat": 37.858517307813,
+          "lng": -122.483041972882,
+          "cat": "dev",
+          "type": "Commercial",
+          "desc": "Conditional use and design-review application 2025-00055, submitted March 17, 2025; listed on the current planning project page.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": "2025-03-17",
+          "lastNote": "Conditional use and design-review application 2025-00055, submitted March 17, 2025; listed on the current planning project page.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.sausalito.gov/departments/community-development/planning-building-project-status",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1000+Bridgeway%2C+Sausalito%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "sausalito-ferry",
+          "addr": "Sausalito Ferry Landing improvements",
+          "lat": 37.8557,
+          "lng": -122.478,
+          "cat": "infra",
+          "type": "Transportation",
+          "desc": "The city records a ribbon-cutting ceremony on August 22, 2025 for the landside improvements.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "completed",
+          "lastDate": "2025-08-22",
+          "lastNote": "The city records a ribbon-cutting ceremony on August 22, 2025 for the landside improvements.",
+          "fileNo": "",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status.",
+          "sourceUrl": "https://www.sausalito.gov/city-government/hot-topics/ferry-landing",
+          "reviewed": "2026-09-19"
+        }
+      ],
+      "news": [
+        {
+          "city": "sausalito",
+          "topic": "developments",
+          "title": "Ferry landside improvements celebrated at ribbon cutting",
+          "date": "2025-08-22",
+          "url": "https://www.sausalito.gov/city-government/hot-topics/ferry-landing",
+          "snippet": "The city records completion of the ferry landing landside improvement project.",
+          "source": "City of Sausalito",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "sausalito",
+          "title": "Sausalito Ferry Landing improvements — planning update",
+          "source": "Official city project update",
+          "date": "2025-08-22",
+          "url": "https://www.sausalito.gov/city-government/hot-topics/ferry-landing",
+          "topic": "housing",
+          "snippet": "The city records a ribbon-cutting ceremony on August 22, 2025 for the landside improvements."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Sausalito development projects",
+          "url": "https://www.sausalito.gov/departments/community-development/planning-building-project-status",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Sausalito agendas and meetings",
+          "url": "https://www.sausalito.gov/city-government/city-council/meetings-and-agendas",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Sausalito Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0670364/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "Sausalito Ferry Landing improvements — official record",
+          "url": "https://www.sausalito.gov/city-government/hot-topics/ferry-landing",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 7141,
+        "medianIncome": 182357,
+        "medianGrossRent": 3501,
+        "renterSharePct": 40.39235412474849,
+        "medianYearBuilt": 1964,
+        "censusHomeValue": 1894600,
+        "meanCommuteMin": 30.031474820143885,
+        "transitSharePct": 5.59234731420162,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0670364/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Sausalito planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.sausalito.gov/city-government/city-council/meetings-and-agendas"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.sausalito.gov/departments/community-development/planning-building-project-status"
+        }
+      ],
+      "join": []
+    },
+    "millvalley": {
+      "label": "Mill Valley",
+      "county": "Marin",
+      "center": {
+        "lat": 37.906,
+        "lng": -122.545
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.836,
+        "maxLat": 37.976,
+        "minLng": -122.625,
+        "maxLng": -122.465
+      },
+      "fips": "47710",
+      "planning": "https://www.cityofmillvalley.gov/201/Planning-Building",
+      "meetings": "https://www.cityofmillvalley.gov/AgendaCenter",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "millvalley-hamilton",
+          "addr": "Bayfront Terrace — 1 Hamilton Drive",
+          "lat": 37.905534913457,
+          "lng": -122.571621391333,
+          "cat": "dev",
+          "type": "Residential",
+          "desc": "Reapproved January 12, 2026: 45 apartments including 44 income-restricted homes and one manager unit. The city is seeking construction funding; no completion date is assumed.",
+          "units": 45,
+          "bmr": 44,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "approved",
+          "lastDate": "2026-01-12",
+          "lastNote": "Reapproved January 12, 2026: 45 apartments including 44 income-restricted homes and one manager unit. The city is seeking construction funding; no completion date is assumed.",
+          "fileNo": "PL23-5167",
+          "flag": "Source reviewed September 19, 2026. Sample record; consult the city for current permit status. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://ceqanet.lci.ca.gov/2022120597/6",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1+Hamilton+Drive+affordable+housing%2C+Mill+Valley%2C+CA&benchmark=Public_AR_Current&format=json"
+        }
+      ],
+      "news": [
+        {
+          "city": "millvalley",
+          "topic": "developments",
+          "title": "Mill Valley: latest official planning updates",
+          "date": "",
+          "url": "https://www.cityofmillvalley.gov/201/Planning-Building",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "millvalley",
+          "title": "Bayfront Terrace — 1 Hamilton Drive — planning update",
+          "source": "Official city project update",
+          "date": "2026-01-12",
+          "url": "https://ceqanet.lci.ca.gov/2022120597/6",
+          "topic": "housing",
+          "snippet": "Reapproved January 12, 2026: 45 apartments including 44 income-restricted homes and one manager unit. The city is seeking construction funding; no completion date is assumed."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Mill Valley development projects",
+          "url": "https://www.cityofmillvalley.gov/201/Planning-Building",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Mill Valley agendas and meetings",
+          "url": "https://www.cityofmillvalley.gov/AgendaCenter",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Mill Valley Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0647710/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Development Projects",
+          "title": "1 Hamilton Drive affordable housing — official record",
+          "url": "https://www.cityofmillvalley.gov/DocumentCenter/View/7482/City-of-Mill-Valley-Profile-012624_Final?bidId=",
+          "note": "Project documents and the most recent city-published status."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 14012,
+        "medianIncome": 206212,
+        "medianGrossRent": 3278,
+        "renterSharePct": 33.77285513361463,
+        "medianYearBuilt": 1958,
+        "censusHomeValue": 2000001,
+        "meanCommuteMin": 24.8305954825462,
+        "transitSharePct": 1.600492459218221,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0647710/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Mill Valley planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.cityofmillvalley.gov/AgendaCenter"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.cityofmillvalley.gov/201/Planning-Building"
+        }
+      ],
+      "join": []
+    },
+    "tiburon": {
+      "label": "Tiburon",
+      "county": "Marin",
+      "center": {
+        "lat": 37.8735,
+        "lng": -122.4566
+      },
+      "zoom": 12,
+      "bbox": {
+        "minLat": 37.8035,
+        "maxLat": 37.9435,
+        "minLng": -122.53659999999999,
+        "maxLng": -122.3766
+      },
+      "fips": "78666",
+      "planning": "https://www.townoftiburon.gov/520/Projects-Under-Review",
+      "meetings": "https://www.townoftiburon.gov/266/Agendas-Minutes",
+      "reviewed": "2026-09-19",
+      "data": [
+        {
+          "id": "tiburon-1801-townhomes",
+          "addr": "1801 Tiburon Boulevard",
+          "lat": 37.873751433096,
+          "lng": -122.455973891769,
+          "cat": "dev",
+          "type": "Housing",
+          "desc": "Nine townhomes proposed through SB 684, including one moderate-income home. The town records a June 17, 2026 notice of incomplete application.",
+          "units": 9,
+          "bmr": 1,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": "2026-06-17",
+          "lastNote": "Nine townhomes proposed through SB 684, including one moderate-income home. The town records a June 17, 2026 notice of incomplete application.",
+          "fileNo": "SB6842025-001",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.townoftiburon.gov/520/Projects-Under-Review",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1801+Tiburon+Boulevard%2C+Tiburon%2C+CA&benchmark=Public_AR_Current&format=json"
+        },
+        {
+          "id": "tiburon-407-hilary",
+          "addr": "407 Hilary Drive",
+          "lat": 37.894491977681,
+          "lng": -122.482442742871,
+          "cat": "dev",
+          "type": "Housing",
+          "desc": "Replacement single-family home under design review; notice dated September 2, 2026. No net new home is counted.",
+          "units": null,
+          "bmr": null,
+          "applicant": "See official source",
+          "filed": null,
+          "stage": "review",
+          "lastDate": "2026-09-02",
+          "lastNote": "Replacement single-family home under design review; notice dated September 2, 2026. No net new home is counted.",
+          "fileNo": "DR2026-054",
+          "flag": "Source reviewed September 19, 2026. Sample record; dates describe the cited source, not a live permit check. Approximate address point from the US Census geocoder.",
+          "sourceUrl": "https://www.townoftiburon.gov/520/Projects-Under-Review",
+          "reviewed": "2026-09-19",
+          "locationAccuracy": "Approximate Census address match; not parcel geometry",
+          "geocodeSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=407+Hilary+Drive%2C+Tiburon%2C+CA&benchmark=Public_AR_Current&format=json"
+        }
+      ],
+      "news": [
+        {
+          "city": "tiburon",
+          "topic": "developments",
+          "title": "Tiburon: latest official planning updates",
+          "date": "",
+          "url": "https://www.townoftiburon.gov/520/Projects-Under-Review",
+          "snippet": "Explore the city’s project notices, reports and planning documents. Source reviewed September 19, 2026; the page may contain older records.",
+          "source": "Official planning resource",
+          "image": "",
+          "reviewed": "2026-09-19"
+        },
+        {
+          "city": "tiburon",
+          "title": "407 Hilary Drive — planning update",
+          "source": "Official city project update",
+          "date": "2026-09-02",
+          "url": "https://www.townoftiburon.gov/520/Projects-Under-Review",
+          "topic": "housing",
+          "snippet": "Replacement single-family home under design review; notice dated September 2, 2026. No net new home is counted."
+        }
+      ],
+      "resources": [
+        {
+          "cat": "Development Projects",
+          "title": "Tiburon development projects",
+          "url": "https://www.townoftiburon.gov/520/Projects-Under-Review",
+          "note": "Official planning and project information. Open the source for the latest status."
+        },
+        {
+          "cat": "Meetings",
+          "title": "Tiburon agendas and meetings",
+          "url": "https://www.townoftiburon.gov/266/Agendas-Minutes",
+          "note": "Official meeting dates, agenda packets and participation instructions."
+        },
+        {
+          "cat": "Statistics",
+          "title": "Tiburon Census profile",
+          "url": "https://censusreporter.org/profiles/16000US0678666/",
+          "note": "2020–2024 ACS 5-year demographic and housing estimates, via Census Reporter."
+        },
+        {
+          "cat": "Housing",
+          "title": "California housing data and progress",
+          "url": "https://www.hcd.ca.gov/planning-and-community-development/housing-open-data-tools",
+          "note": "State housing element, permitting and progress datasets."
+        }
+      ],
+      "stats": {
+        "population": 9012,
+        "medianIncome": 232969,
+        "medianGrossRent": 3501,
+        "renterSharePct": 25.128205128205128,
+        "medianYearBuilt": 1970,
+        "censusHomeValue": 2000001,
+        "meanCommuteMin": 29.17321016166282,
+        "transitSharePct": 4.102699841185813,
+        "homeValue": null,
+        "rent": null,
+        "homeValueSeries": [],
+        "rentSeries": [],
+        "asOf": "2020–2024 ACS 5-year",
+        "source": "https://censusreporter.org/profiles/16000US0678666/",
+        "sourceApi": "https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids=16000US0668000,16000US0667000,16000US0606000,16000US0653000,16000US0600674,16000US0622594,16000US0600562,16000US0626000,16000US0650916,16000US0681204,16000US0633000,16000US0668084,16000US0621796,16000US0660620,16000US0670364,16000US0647710,16000US0678666"
+      },
+      "note": "A sourced sample of Tiburon planning records, with official meeting links and 2020–2024 Census statistics. Review dates are shown on each record; this is not the city’s full active list.",
+      "deciders": [
+        {
+          "name": "City Council",
+          "when": "Check current agenda for dates, cancellations and comment instructions.",
+          "body": "Elected local governing body. Review the official agenda for housing, budgets and land-use decisions.",
+          "link": "https://www.townoftiburon.gov/266/Agendas-Minutes"
+        },
+        {
+          "name": "Planning Commission",
+          "when": "Check current agenda for dates and meeting location.",
+          "body": "Planning, zoning and development review. See the official city page for current membership and responsibilities.",
+          "link": "https://www.townoftiburon.gov/520/Projects-Under-Review"
+        }
+      ],
+      "join": []
+    }
+  }
+}

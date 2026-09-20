@@ -1,0 +1,54 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import '../public/guest.js';
+const {GuestStore}=globalThis.DashboardGuest;
+const memory=()=>{const m=new Map();return {getItem:k=>m.get(k)||null,setItem:(k,v)=>m.set(k,v),removeItem:k=>m.delete(k)};};
+const post=(data,method='POST')=>({method,body:JSON.stringify(data)});
+test('guest saves survive reload and preserve encoded item IDs',async()=>{
+ const storage=memory(),session=memory(),g=new GuestStore(storage,session);
+ assert.equal(g.unlocked,true);
+ const id='https://example.gov/project?a=1';
+ await g.request('/api/stars',post({itemType:'resource',itemId:id,itemData:{title:'Official record'}}));
+ await g.request('/api/timeline',post({itemKey:'berkeley:read',status:'done',note:'Read the proposal'},'PUT'));
+ await g.request('/api/account/preferences',post({homeCity:'berkeley',emailFrequency:'off',categories:['housing']},'PATCH'));
+ const reopened=new GuestStore(storage,memory());
+ assert.equal((await reopened.request('/api/stars')).stars.length,1);
+ assert.equal((await reopened.request('/api/timeline')).items[0].status,'done');
+ assert.equal((await reopened.request('/api/account/preferences')).homeCity,'berkeley');
+ await reopened.request('/api/stars/resource/'+encodeURIComponent(id),{method:'DELETE'});
+ assert.equal((await reopened.request('/api/stars')).stars.length,0);
+});
+test('optional guest lock hashes passwords and requires the old password for changes',async()=>{
+ const storage=memory(),session=memory(),g=new GuestStore(storage,session);
+ await g.update('Test Reader','test-password-only');
+ assert.equal(g.data.username,'Test Reader');
+ assert.ok(g.data.passwordHash);
+ assert.ok(!storage.getItem('sbpd_guest_v1').includes('test-password-only'));
+ g.lock();assert.equal(g.unlocked,false);
+ await assert.rejects(g.request('/api/stars'),/Unlock/);
+ await assert.rejects(g.unlock('wrong-password'),/incorrect/);
+ await g.unlock('test-password-only');
+ await assert.rejects(g.update('Test Reader','changed-test-password','wrong-password'),/incorrect/);
+ await g.update('Test Reader','changed-test-password','test-password-only');
+ const reopened=new GuestStore(storage,memory());assert.equal(reopened.unlocked,false);
+ await assert.rejects(reopened.unlock('test-password-only'),/incorrect/);
+ await reopened.unlock('changed-test-password');assert.equal(reopened.unlocked,true);
+});
+test('guest-only API routes never simulate server authentication or sending email',async()=>{
+ const g=new GuestStore(memory(),memory());
+ assert.equal(g.handles('/api/login'),false);assert.equal(g.handles('/api/register'),false);
+ assert.equal(g.handles('/api/chat'),false);assert.equal(g.handles('/api/reminders'),true);
+ await assert.rejects(g.request('/api/account/preferences',post({email:'test@example.com',emailFrequency:'weekly'},'PATCH')),/full account/);
+ await assert.rejects(g.request('/api/reminders/email',post({})),/full account/);
+ const {reminder}=await g.request('/api/reminders',post({kind:'board',refId:'berkeley:council',label:'Council meeting',city:'berkeley'}));
+ assert.equal(reminder.in_digest,false);
+ await g.request('/api/reminders/'+reminder.id,{method:'DELETE'});
+ assert.equal((await g.request('/api/reminders')).reminders.length,0);
+});
+test('missing or malformed local storage creates a usable guest profile',async()=>{
+ const broken={getItem:()=>'{broken',setItem:()=>{throw Error('blocked');}};
+ const g=new GuestStore(broken,memory());assert.equal(g.unlocked,true);assert.equal(g.persistent,false);
+ assert.deepEqual((await g.request('/api/stars')).stars,[]);
+ const partial=memory();partial.setItem('sbpd_guest_v1',JSON.stringify({version:1,username:'Incomplete'}));
+ const recovered=new GuestStore(partial,memory());assert.ok(Array.isArray(recovered.data.stars));
+});

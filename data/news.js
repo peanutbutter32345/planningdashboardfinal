@@ -1,3 +1,4 @@
+import {REGIONAL_CITIES} from './regional.js';
 export const NEWS_ARTICLES = [
   {
     "topic": "transportation",
@@ -2460,3 +2461,5 @@ export const NEWS_ARTICLES = [
     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVVFzUnJwWmJiekc1YVpMYzdoMENMSERULXRVWUg4NWZFc0NtZlZmSG9CM19NYXF0YnV4aGNfWDJVZzc5ZzJDd3hqR3U0d1I4Y29yS1FubmNKaWpKZjNMNkVlaGtER2lEdGZLaUhDMVI0clBUSWdLbFZqNUtCWUtiRUw5aUxYUkJqTkdCNXY0T1RaaTBDcGR1SUJNeE1ZbjRscXpqcVdSbWxpcXpUUXR4NGlibnV2aVJPZ256bjRVVUlFa0RQT0k0Zw?oc=5"
   }
 ];
+
+NEWS_ARTICLES.push(...Object.values(REGIONAL_CITIES).flatMap(c=>c.news));

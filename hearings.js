@@ -1,31 +1,13 @@
-// Upcoming public hearings, pulled from Legistar and matched against the projects this dashboard
-// already tracks.
-//
-// Five South Bay cities publish their agendas through Legistar's free public API. Their agenda
-// items carry the project address and permit number in the item text, which is what makes the
-// match possible:
-//
-//   Location: 1215 Bordeaux Dr. (APN: 110-25-017)
-//   File #: PLNG-2025-0582
-//
-// Everything here is read-only, unauthenticated, and cached, because a free Render instance
-// should not hit five external APIs on every page load.
-
+// Upcoming public meetings from verified public Legistar feeds. Each city also has an official meeting directory.
 import { PROJECTS } from './data/projects.js';
 
-// Dashboard city key -> Legistar client. Only these five respond; the rest of the South Bay
-// runs other agenda systems and is not covered.
-export const LEGISTAR_CITIES = {
-  sunnyvale: 'sunnyvaleca',
-  cupertino: 'cupertino',
-  mountainview: 'mountainview',
-  santaclara: 'santaclara',
-  westsanjose: 'sanjose',
-};
+import {readFileSync} from 'node:fs';
+export const MEETING_DIRECTORY=JSON.parse(readFileSync(new URL('./public/data/meetings.json',import.meta.url),'utf8'));
+export const LEGISTAR_CITIES=Object.fromEntries(Object.entries(MEETING_DIRECTORY).filter(([k,c])=>c.client&&!c.alias).map(([k,c])=>[k,c.client]));
 
 // Only bodies that actually decide land use. Pulling agenda items is one request per meeting,
 // so this keeps a refresh to a few dozen calls rather than several hundred.
-const RELEVANT_BODY = /planning|city council|town council|design review|architectural|zoning|housing|transportation|development/i;
+const RELEVANT_BODY = /planning|city council|town council|design review|architectural|zoning|housing|transportation|development|board of supervisors|land use|public works/i;
 
 // What a land-use agenda item looks like when the city doesn't use a "Location:" line.
 const LAND_USE_ITEM = /\b(rezon\w*|use permit|development permit|subdivision|tentative map|architectural review|design review|general plan amendment|specific plan|housing element|density bonus|variance|dwelling units?|apartments?|townhomes?|mixed[- ]use|builder'?s remedy|entitlement)\b/i;
@@ -66,7 +48,7 @@ function matchProjects(text, city) {
   const rawHay = String(text || '').toLowerCase();
   const hits = [];
   for (const p of PROJECTS) {
-    if (p.city !== city) continue;
+    if (p.city !== city && !(city==='sanjose' && p.city==='westsanjose')) continue;
     // A permit number is unambiguous, so try it first.
     if (p.fileNo && p.fileNo.length > 5 && rawHay.includes(String(p.fileNo).toLowerCase())) {
       hits.push({ id: p.id, addr: p.addr, on: 'file number' });
@@ -191,6 +173,7 @@ async function refreshHearings() {
     days: DAYS_AHEAD,
     cities: Object.keys(LEGISTAR_CITIES),
     hearings,
+    directory: MEETING_DIRECTORY,
     errors,
   };
   cache = { at: Date.now(), data };
@@ -199,5 +182,6 @@ async function refreshHearings() {
 
 // Hearings for one city, used by the email briefings.
 export function hearingsForCity(all, cityKey) {
-  return (all && all.hearings ? all.hearings : []).filter(h => h.city === cityKey);
+  const canonical=MEETING_DIRECTORY[cityKey]?.alias||cityKey;
+  return (all && all.hearings ? all.hearings : []).filter(h => h.city === canonical);
 }

@@ -1287,6 +1287,7 @@
   .ask-status{font-size:11px; color:var(--text-soft); margin-top:8px;}
 
 </style>
+<link rel="stylesheet" href="/enhancements.css">
 </head>
 <body>
 <a href="#mainContent" class="skip-link">Skip to main content</a>
@@ -1300,7 +1301,7 @@
       <span class="onboard-label">1. Which city? <em>(required)</em></span>
       <div class="onboard-citybtns" id="onboardCityBtns"></div>
       <div class="onboard-hint">Not sure? Skip this and just enter your address below - we'll figure out which city to show.</div>
-      <div class="onboard-account-hint">Want your saved projects to follow you across visits? <a href="#" id="onboardAccountLink">Create a free account</a> - you can also just explore first and sign up later.</div>
+      <div class="onboard-account-hint">Your guest profile saves projects in this browser. Want them on other devices? <a href="#" id="onboardAccountLink">Create a free account</a> — or explore now with your temporary guest profile.</div>
     </div>
 
     <div class="onboard-step">
@@ -1362,13 +1363,13 @@
 <nav class="sub-nav" id="subNav" aria-label="Dashboard sections">
   <div class="wrap sub-nav-inner" role="tablist">
     <button class="sub-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Overview</button>
-    <button class="sub-nav-tab" data-screen="futures" role="tab" aria-selected="false">Future Map</button>
     <button class="sub-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
     <button class="sub-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get Involved</button>
     <button class="sub-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
     <button class="sub-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
     <button class="sub-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
     <button class="sub-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
+    <button class="sub-nav-tab future-nav" data-screen="futures" role="tab" aria-selected="false"><span aria-hidden="true">◈</span> Future Map <span class="future-nav-tag">SIMULATE</span></button>
     <button class="sub-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
   </div>
 </nav>
@@ -1379,9 +1380,9 @@
   <div class="wrap">
     <div class="hero-copy">
       <div class="nameplate">
-        <div class="np-kicker"><span id="npKickerCounty">Santa Clara &amp; San Mateo Counties</span><i></i><span>Public planning records</span></div>
+        <div class="np-kicker"><span id="npKickerCounty">Six Bay Area counties</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1">South Bay</span><em class="np-l2">Civic Dashboard</em></h1>
-        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. Thirty-three cities across Santa Clara and San Mateo counties, from each city's own records.</p>
+        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. 50 city and neighborhood profiles across six Bay Area counties, with links to each city's own records.</p>
       </div>
     </div>
 
@@ -1483,7 +1484,7 @@
   <section class="fx-bills" id="fxBills" aria-labelledby="fxBillsTitle"><div class="fx-section-heading"><div><div class="fx-eyebrow">THE POLICY WATCHLIST</div><h2 id="fxBillsTitle">Housing bills &amp; policy watchlist</h2><p>Enacted laws and an upcoming ballot decision, with their assumptions kept separate.</p></div><label class="fx-field" for="fxBillFilter">Show<select id="fxBillFilter"><option value="all">All policies</option><option value="pending">Upcoming decision</option><option value="enacted">Enacted laws</option></select></label></div><p class="fx-tiny" id="fxReviewed"></p><div class="fx-bill-grid" id="fxBillList"></div></section>
   <section class="fx-projects" aria-labelledby="fxProjectsTitle"><div class="fx-section-heading"><div><div class="fx-eyebrow">BEHIND THE ESTIMATES</div><h2 id="fxProjectsTitle">Projected housing by project</h2><p id="fxTableSummary"></p></div><button class="fx-button" id="fxExport">Export scenario CSV ↓</button></div><div class="fx-table-tools"><label class="fx-field" for="fxSearch">Find a project<input type="search" id="fxSearch" placeholder="Address or city…"></label><label class="fx-field" for="fxSort">Sort by<select id="fxSort"><option value="expected">Estimated delivery</option><option value="delta">Change from reference</option><option value="units">Reported units</option></select></label></div><div class="fx-table-wrap"><table><thead><tr><th>Project / city</th><th>Stage</th><th>Reported units</th><th>Reference</th><th>Scenario <span id="fxTableYear">2031</span></th><th>Change</th><th>Record quality</th></tr></thead><tbody id="fxRows"></tbody></table></div><button class="fx-button fx-more" id="fxMore" hidden>Show more projects</button></section>
   <details class="fx-method" id="fxMethod"><summary>Methodology, assumptions & data limitations <span>Read before using these estimates ↗</span></summary><div class="fx-method-grid"><div><h3>What the numbers mean</h3><p>This is a sensitivity model applied to the dashboard’s project sample, anchored to September 18, 2026. It estimates a share of reported gross project units potentially delivered by a selected year. Completed projects, unknown unit counts, non-housing records and unknown stages are excluded. It does not identify new developable parcels, deduplicate overlapping master plans, subtract demolished homes or separate already-built phases.</p><p>City comparisons reflect uneven sample coverage. Unknown affordability is not treated as zero; affordable totals include only disclosed counts. Old records may describe homes already delivered. The model flags records missing a status date or older than two years.</p></div><div><h3>A model you can inspect</h3><p>Reference delivery times: proposed 6 years, review 4.5, approved 3, construction 1.5. Long-run delivery shares: 55%, 70%, 85%, 95%. Delivery = reported units × stage share × (1 − 2<sup>−years elapsed / adjusted delivery time</sup>). Elapsed years use the selected year minus 2026.</p><p>Each percentage point of financing above 6% lengthens delivery time by 10%; each cost-growth point above 3% adds 4%. Delay adds months. Policy assumptions subtract at most 18 months combined, with a minimum delivery time of 6 months. These coefficients are illustrative, not fitted to historical outcomes. The range varies delivery time and realization; it is not a statistical confidence interval.</p></div><div><h3>Policy & geographic limits</h3><p>Policy switches test additional acceleration relative to the reference. Legal changes may already be reflected in project records. There is no causal estimate of each bill’s effect. The bond switch assumes approval and funding beginning in 2028; neither is guaranteed.</p><p>Transit proximity uses straight-line distance to hand-curated approximate centers for a subset of Caltrain and BART stations. VTA, BRT, station entrances, service frequency, zoning, local alternative plans, hazard exclusions and parcel boundaries are not modeled.</p><p>Station references: <a href="https://www.caltrain.com/stations" target="_blank" rel="noopener">Caltrain</a> · <a href="https://www.bart.gov/stations" target="_blank" rel="noopener">BART</a>. Bill sources are linked in each card. No automated bill-status feed is connected.</p></div></div></details>
-  <details class="fx-method" id="fxSpatialMethod"><summary>Flood, energy &amp; home-value methodology <span>Sources and limitations ↗</span></summary><div class="fx-method-grid"><div><h3>Real public layers</h3><p>FEMA National Flood Hazard Layer zones for Santa Clara and San Mateo counties were retrieved September 18, 2026. Blue areas are special flood hazard areas; purple areas have a 0.2% annual flood chance. Geometry is generalized to about 3 meters; point screening can be wrong near boundaries. A location with no match may still flood. This is not an insurance determination. <a href="https://msc.fema.gov/portal/home" target="_blank" rel="noopener">Check FEMA’s official map.</a></p><p>NOAA sea-level tiles are live public overlays, relative to mean higher high water. The chosen water level is independent of the simulated year. Blue depicts inundation depth; green depicts low-lying areas not directly connected to the ocean. <a href="https://coast.noaa.gov/slr" target="_blank" rel="noopener">NOAA viewer and caveats.</a></p></div><div><h3>Home-value sensitivity, not appraisal</h3><p>The observed baseline is the dashboard’s July 2026 citywide Zillow index. Reference value = baseline × (1 + assumed annual trend)<sup>years</sup>. The supply factor is exp(−sensitivity × extra modeled delivery / 2020 housing stock), capped between exp(−0.3) and exp(0.3). Housing stock comes from <a href="https://census.bayareametro.gov/housing-units" target="_blank" rel="noopener">MTC / ABAG’s Census 2020 DHC H3 data</a>. West San Jose uses citywide San Jose data.</p><p>All-area values are a 2020-stock-weighted average of city indexes where available, not Zillow’s regional index. A flood-exposed example applies your assumed discount to that index; it is not a price for a specific parcel. Interest rates influence modeled delivery only, not buyer demand directly. Gross project units, overlapping plans, stale stock, incomplete coverage and assumed elasticities limit every output. No statistical confidence is assigned to prices.</p></div><div><h3>Energy context</h3><p>Points show the California Energy Commission’s facilities not flagged as retired in its public snapshot, last updated June 12, 2026. Nameplate MW is not real-time generation, grid headroom, an outage forecast or a service territory. Battery MW describes power, not storage duration. No local home is assumed to be supplied by a nearby plant.</p><p>Modeled annual household demand = delivered units × your kWh/home/year assumption. Additional grid connection delay lengthens the housing-delivery assumption. Both are hypothetical. <a href="https://www.energy.ca.gov/data-reports/energy-maps-and-spatial-data" target="_blank" rel="noopener">CEC data and conditions of use.</a></p></div></div></details>
+  <details class="fx-method" id="fxSpatialMethod"><summary>Flood, energy &amp; home-value methodology <span>Sources and limitations ↗</span></summary><div class="fx-method-grid"><div><h3>Real public layers</h3><p>The FEMA snapshot queries Santa Clara, San Mateo, Alameda, Contra Costa, Marin and San Francisco counties. It was refreshed September 19, 2026 and returned hazard polygons for five counties; no San Francisco polygons were returned by this query. Blue areas are special flood hazard areas; purple areas have a 0.2% annual flood chance. Geometry is generalized to about 3 meters; point screening can be wrong near boundaries. A location with no match may still flood. This is not an insurance determination. <a href="https://msc.fema.gov/portal/home" target="_blank" rel="noopener">Check FEMA’s official map.</a></p><p>NOAA sea-level tiles are live public overlays, relative to mean higher high water. The chosen water level is independent of the simulated year. Blue depicts inundation depth; green depicts low-lying areas not directly connected to the ocean. <a href="https://coast.noaa.gov/slr" target="_blank" rel="noopener">NOAA viewer and caveats.</a></p></div><div><h3>Home-value sensitivity, not appraisal</h3><p>The observed baseline is the dashboard’s July 2026 citywide Zillow index. Reference value = baseline × (1 + assumed annual trend)<sup>years</sup>. The supply factor is exp(−sensitivity × extra modeled delivery / 2020 housing stock), capped between exp(−0.3) and exp(0.3). Housing stock comes from <a href="https://census.bayareametro.gov/housing-units" target="_blank" rel="noopener">MTC / ABAG’s Census 2020 DHC H3 data</a>. West San Jose uses citywide San Jose data.</p><p>All-area values are a 2020-stock-weighted average of city indexes where available, not Zillow’s regional index. A flood-exposed example applies your assumed discount to that index; it is not a price for a specific parcel. Interest rates influence modeled delivery only, not buyer demand directly. Gross project units, overlapping plans, stale stock, incomplete coverage and assumed elasticities limit every output. No statistical confidence is assigned to prices.</p></div><div><h3>Energy context</h3><p>Points show the California Energy Commission’s facilities not flagged as retired in its public snapshot, last updated June 12, 2026. Nameplate MW is not real-time generation, grid headroom, an outage forecast or a service territory. Battery MW describes power, not storage duration. No local home is assumed to be supplied by a nearby plant.</p><p>Modeled annual household demand = delivered units × your kWh/home/year assumption. Additional grid connection delay lengthens the housing-delivery assumption. Both are hypothetical. <a href="https://www.energy.ca.gov/data-reports/energy-maps-and-spatial-data" target="_blank" rel="noopener">CEC data and conditions of use.</a></p></div></div></details>
   <div class="fx-status" id="fxStatus" role="status" aria-live="polite"></div>
  </div>
 </section>
@@ -1671,7 +1672,7 @@
   <div class="wrap">
     <div class="planner-shell">
       <h2>Statistics</h2>
-      <p class="section-note">Housing costs and development activity across the South Bay, with <span id="statsCityName">your city</span> marked. Market figures are citywide indexes from Zillow's public research data; pipeline figures are counted from the records in this dashboard.</p>
+      <p class="section-note">Housing costs and development activity across the Bay Area, with <span id="statsCityName">your city</span> marked. Market figures are citywide indexes from Zillow's public research data; pipeline figures are counted from the records in this dashboard.</p>
       <div id="statsContent"></div>
       <p class="section-note" id="statsSource" style="margin-top:22px;"></p>
     </div>
@@ -1793,8 +1794,10 @@
 
       <div id="accountLoggedOut">
         <h2>Account</h2>
+        <div id="guestUnlock" class="guest-settings" hidden><h3>Unlock your guest profile</h3><form id="guestUnlockForm"><label>Guest password<input id="guestUnlockPassword" type="password" autocomplete="current-password" required></label><button class="btn" type="submit">Unlock</button></form><p id="guestUnlockStatus" role="status"></p></div>
+        <button class="btn secondary" id="guestBack" type="button">Back to guest profile</button>
         <div id="accountPromptReason" style="display:none;"></div>
-        <p class="section-note">Create a free account to star projects, news, boards, and resources - they'll show up here so you can find them again later. Just a username and password, no email required.</p>
+        <p class="section-note">Create a free account to sync your guest profile’s saved projects, timeline and reminders across devices. Just a username and password; email is optional.</p>
         <div class="auth-tabs">
           <button class="auth-tab active" id="authTabLogin" type="button">Log in</button>
           <button class="auth-tab" id="authTabSignup" type="button">Create account</button>
@@ -1820,6 +1823,7 @@
       </div>
 
       <div id="accountLoggedIn" class="acct-shell" style="display:none;">
+        <div class="acct-masthead" id="acctMasthead"></div>
         <aside class="acct-rail" aria-label="Account sections">
          <div class="acct-rail-inner">
           <div class="acct-who">
@@ -1846,8 +1850,8 @@
 
         <div class="acct-main">
           <section class="acct-panel" data-panel="overview">
-            <div class="acct-masthead" id="acctMasthead"></div>
             <h2>Overview</h2>
+            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your temporary guest profile</h3><p>Your saved items, timeline and preferences stay in this browser. Clearing browser data removes them. Create an account to sync across devices and use email summaries.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Save guest profile</button></form><p>A guest password adds a browser lock; it does not encrypt local saved data.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Create full account</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
             <p class="section-note" id="acctOverviewNote"></p>
             <div class="acct-tiles" id="acctTiles"></div>
             <div class="acct-sec-h">Next hearings in your city</div>
@@ -2133,18 +2137,19 @@
         <div id="officialMapBar"></div>
         <div class="map-shell map-pos">
           <div id="mapGate">
-            <h3>Google Maps unavailable</h3>
-            <p>The site's built-in map key isn't working right now. Paste your own free key to load Google Maps, or use the free OpenStreetMap view below.</p>
-            <div class="key-row">
+            <h3>Loading Google Maps…</h3>
+            <p>Explore the area and select a project from the register below.</p>
+            <div class="key-row" hidden>
               <label for="gmapsKey" class="sr-only">Google Maps API key</label>
               <input id="gmapsKey" type="text" placeholder="Paste your Google Maps API key…" autocomplete="off" />
               <button class="btn" id="loadGoogleBtn">Load Google Maps</button>
               <button class="btn secondary" id="useFreeMapBtn">Use free map instead</button>
             </div>
             <div class="gate-error" id="gateError">That key didn't work - check that the <b>Maps JavaScript API</b> is enabled and billing is set up on this key, then try again.</div>
-            <div class="gate-links">Don't have one? <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" rel="noopener">Get a free key →</a></div>
-            <div class="gate-note">Your key stays in your browser only - never sent to us or stored.</div>
+            <div class="gate-links" hidden>Don't have one? <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" rel="noopener">Get a free key →</a></div>
+            <div class="gate-note" hidden>Your key stays in your browser only - never sent to us or stored.</div>
           </div>
+          <div id="mapGoogleEmbed" hidden></div>
           <div id="mapGoogle" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div>
           <div id="mapLeafletWrap"><span class="map-provider-tag">Free map - OpenStreetMap</span><div id="map" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div></div>
         </div>
@@ -2184,7 +2189,7 @@
       <h3>Browse</h3>
       <ul class="footer-links">
         <li><a href="#" data-goto-screen="dashboard">Project register</a></li>
-        <li><a href="#" data-goto-screen="hearings">Upcoming hearings</a></li>
+        <li><a href="#" data-goto-screen="planner" data-open-hearings>Upcoming hearings</a></li>
         <li><a href="#" data-goto-screen="statistics">Statistics</a></li>
         <li><a href="#" data-goto-screen="housing">Housing</a></li>
         <li><a href="#" data-goto-screen="transportation">Transportation</a></li>
@@ -2211,7 +2216,8 @@
         <li><a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener">US Census ACS</a> &mdash; commute, income, tenure</li>
         <li><a href="https://data.ca.gov/dataset/rhna-progress-report" target="_blank" rel="noopener">California HCD</a> &mdash; housing targets</li>
         <li><a href="https://webapi.legistar.com/" target="_blank" rel="noopener">Legistar</a> &mdash; meeting agendas</li>
-        <li><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &mdash; geocoding</li>
+        <li><a href="/photo-credits.html" target="_blank" rel="noopener">City photo credits</a></li>
+          <li><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &mdash; geocoding</li>
       </ul>
     </div>
   </div>
@@ -2223,6 +2229,10 @@
   </div>
 </footer>
 
+<script src="/data/regions.js"></script>
+<script src="/data/city-photos.js"></script>
+<script src="/data/meetings.js"></script>
+<script src="/guest.js"></script>
 <script>
 const TODAY = new Date();
 TODAY.setHours(0,0,0,0);
@@ -5652,14 +5662,19 @@ const CITIES = {
       {label:'Apply for a board or commission', url:'https://www.santaclaraca.gov/our-city/government/boards-commissions/interest-form'},
     ]},
 };
+// Additional Bay Area profiles share the same rendering and data contracts.
+for(const [key,c] of Object.entries(window.REGIONAL_DATA?.cities||{})){
+ CITIES[key]={...c,feed:c.data.filter(p=>p.lastDate).map(p=>({date:p.lastDate,id:p.id,title:p.addr,body:p.lastNote,stage:p.stage})),sources:[c.planning,c.stats.source],ctaLinks:c.resources.map(r=>({label:r.title,url:r.url}))};
+}
+const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
 let currentCity = 'sunnyvale';
 
 // "All Cities" - a real aggregation of every tracked city's data, not a separate dataset.
 // Built after all individual cities above are defined so it can safely reference them.
 CITIES.all = {
   label: 'All Cities',
-  center: {lat: 37.34, lng: -122.02},
-  zoom: 10.3,
+  center: {lat: 37.67, lng: -122.22},
+  zoom: 9,
   bbox: {
     minLat: Math.min(...Object.values(CITIES).map(c=>c.bbox.minLat)),
     maxLat: Math.max(...Object.values(CITIES).map(c=>c.bbox.maxLat)),
@@ -5684,12 +5699,15 @@ let state = {q:'', stage:'all', cat:'all'};
 // Auth/starring state - declared here (not at script bottom) because renderAll() below
 // calls projectCardHtml() -> starButtonHtml() -> isStarred(), which reads these.
 let authToken = localStorage.getItem('sbpd_token') || null;
-let authUsername = localStorage.getItem('sbpd_username') || null;
-let starredMap = new Map();
+const guestProfile = new DashboardGuest.GuestStore(localStorage,sessionStorage);
+let authUsername = authToken ? localStorage.getItem('sbpd_username') : guestProfile.data.username;
+let guestAuthForm=false;
+let starredMap = new Map(!authToken && guestProfile.unlocked ? guestProfile.data.stars.map(s=>[s.item_type+':'+s.item_id,s.item_data]) : []);
 // Declared here rather than with the rest of the reminder code: the board cards read it during
 // the first render, which happens before that block is evaluated.
 let remItems = [];
-function isLoggedIn(){ return Boolean(authToken); }
+function isLoggedIn(){ return Boolean(authToken)||guestProfile.unlocked; }
+function isGuest(){return !authToken;}
 function starKey(type,id){ return type+':'+id; }
 function isStarred(type,id){ return starredMap.has(starKey(type,id)); }
 function starButtonHtml(itemType, itemId, itemData){
@@ -5716,7 +5734,7 @@ function renderCitySwitch(){
   const byCounty = (name) => Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===name);
   document.getElementById('citySwitch').innerHTML =
     tab(['all', CITIES.all])
-    + ['Santa Clara','San Mateo'].map(cty=>{
+    + COUNTY_NAMES.map(cty=>{
         const rows = byCounty(cty);
         if(!rows.length) return '';
         return `<div class="city-group"><span class="city-group-label">${cty} County</span>${rows.map(tab).join('')}</div>`;
@@ -5724,7 +5742,7 @@ function renderCitySwitch(){
   document.querySelectorAll('.city-tab').forEach(btn=>{
     btn.addEventListener('click', ()=>{ switchCity(btn.getAttribute('data-city')); });
   });
-  document.getElementById('snapRow').innerHTML = `<span class="pill">Snapshot: Jul 24, 2026</span><span class="pill">${DATA().length} records shown for ${CITIES[currentCity].label}</span><span class="pill">Sample for demonstration - not each city's full active list</span>`;
+  document.getElementById('snapRow').innerHTML = `<span class="pill">Records: dated individually</span><span class="pill">${DATA().length} records shown for ${CITIES[currentCity].label}</span><span class="pill">Sample for demonstration - not each city's full active list</span>`;
   renderQuickLinks();
 }
 function renderQuickLinks(){
@@ -5831,7 +5849,7 @@ async function tryLiveCupertinoData(){
         url: a.URL || null,
         editedDate: a.last_edited_date ? new Date(a.last_edited_date).toISOString().slice(0,10) : null,
       };
-    }).filter(d => typeof d.lat === 'number' && typeof d.lng === 'number' && isFinite(d.lat) && isFinite(d.lng));
+    }).filter(d => typeof d.lat === 'number' && typeof d.lng === 'number' && Number.isFinite(d.lat) && Number.isFinite(d.lng));
     liveMarkers = {};
     live.forEach(d=>{
       const st = STAGE_MAP[d.stage] || STAGE_MAP.proposed;
@@ -5957,16 +5975,17 @@ function renderCityBoundary(){
   }
 }
 function buildMarkersForCurrentProvider(){
+  if(mapProvider==='google-embed'){showGoogleEmbed();return;}
   clearMarkers();
   if(mapProvider==='google' && gMap){
-    DATA().forEach(d=>{
+    DATA().filter(d=>Number.isFinite(d.lat)&&Number.isFinite(d.lng)).forEach(d=>{
       const marker = new google.maps.Marker({ position:{lat:d.lat,lng:d.lng}, map:gMap, icon:markerIconGoogle(d), title:d.addr });
       marker.addListener('click', ()=>{ gInfoWindow.setContent(popupHtmlPlain(d)); gInfoWindow.open(gMap, marker); });
       gMarkers[d.id]=marker;
     });
     gMap.setCenter(CITIES[currentCity].center); gMap.setZoom(CITIES[currentCity].zoom);
   } else if(mapProvider==='leaflet' && lMap){
-    DATA().forEach(d=>{
+    DATA().filter(d=>Number.isFinite(d.lat)&&Number.isFinite(d.lng)).forEach(d=>{
       const color = CAT_MAP[categoryOf(d)].color;
       let marker;
       if(d.cat==='infra'){
@@ -5990,7 +6009,7 @@ function buildMarkersForCurrentProvider(){
 // Get one at console.cloud.google.com, enable "Maps JavaScript API", and
 // restrict it (Application restrictions -> HTTP referrers) to your exact
 // site URL before putting it here, since this file is public.
-const GOOGLE_MAPS_API_KEY = '';
+const GOOGLE_MAPS_API_KEY = 'AIzaSyCyvdlePDWHkTr_4c2fSTB8D1DtWo0dpbI';
 
 function initGoogleMapReal(){
   gMap = new google.maps.Map(document.getElementById('mapGoogle'), { center:CITIES[currentCity].center, zoom:CITIES[currentCity].zoom, mapTypeControl:false, streetViewControl:false, fullscreenControl:true });
@@ -5998,27 +6017,27 @@ function initGoogleMapReal(){
   mapProvider='google';
   document.getElementById('mapGate').style.display='none';
   document.getElementById('mapGoogle').style.display='block';
+  document.getElementById('mapGoogleEmbed').hidden=true;document.getElementById('mapLeafletWrap').style.display='none';
   renderLegend();
   buildMarkersForCurrentProvider();
 }
 window.initGoogleMap = initGoogleMapReal;
-window.gm_authFailure = function(){
-  if(window.L){ initLeafletMap(); return; }
-  document.getElementById('mapGoogle').style.display='none';
-  document.getElementById('mapGate').style.display='block';
-  document.getElementById('gateError').textContent = "The built-in map key didn't work - check that Maps JavaScript API is enabled and the key's referrer restriction matches this site's URL. You can paste a working key below in the meantime.";
-  document.getElementById('gateError').style.display='block';
-};
+window.gm_authFailure = function(){ showGoogleEmbed(); };
+function showGoogleEmbed(project){
+ mapProvider='google-embed';
+ document.getElementById('mapGate').style.display='none';document.getElementById('mapGoogle').style.display='none';document.getElementById('mapLeafletWrap').style.display='none';
+ const host=document.getElementById('mapGoogleEmbed');host.hidden=false;
+ const query=project?project.addr+', '+(CITIES[cityOfProject(project.id)]||CITIES[currentCity]).label+', CA':CITIES[currentCity].label==='All Cities'?'San Francisco Bay Area':CITIES[currentCity].label+', CA';
+ host.innerHTML='<iframe title="Google Maps — '+escapeHtml(query)+'" src="https://maps.google.com/maps?q='+encodeURIComponent(query)+'&z='+(project?16:Math.round(CITIES[currentCity].zoom))+'&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="google-map-note">Google Maps · Select a project below to locate its address. <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(query)+'" target="_blank" rel="noopener">Open Google Maps ↗</a></div>';
+ renderLegend();
+}
 function loadGoogleMapsWithKey(key){
+  if(['localhost','127.0.0.1'].includes(location.hostname)){queueMicrotask(()=>showGoogleEmbed());return;}
   document.getElementById('gateError').style.display='none';
   const s = document.createElement('script');
   s.src = 'https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(key)+'&callback=initGoogleMap&v=weekly';
   s.async = true; s.defer = true;
-  s.onerror = function(){
-    document.getElementById('gateError').textContent = "Couldn't load the Google Maps script - check the key and network.";
-    document.getElementById('gateError').style.display = 'block';
-    document.getElementById('loadGoogleBtn').textContent = 'Load Google Maps';
-  };
+  s.onerror = function(){ showGoogleEmbed(); };
   document.head.appendChild(s);
 }
 function loadGoogleMaps(){
@@ -6027,20 +6046,16 @@ function loadGoogleMaps(){
   document.getElementById('loadGoogleBtn').textContent='Loading…';
   loadGoogleMapsWithKey(key);
 }
-// CARTO basemap key. Public by design - it travels in the tile URL that every browser fetches.
-const CARTO_KEY = 'cb1_2yfl_1_7d3d28857fa3499697a194fe';
-const CARTO_ATTRIB = '&copy; OpenStreetMap contributors &copy; CARTO';
-// CARTO takes the key as `key`, not `api_key`. With the wrong name it answers 200 with a PNG
-// that is the "API KEY REQUIRED" watermark, so status and content-type prove nothing here.
-function cartoTileUrl(path){ return 'https://' + path + '?key=' + CARTO_KEY; }
+const MAP_TILE_URL='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
+const CARTO_ATTRIB='Tiles &copy; Esri — Esri, HERE, Garmin, USGS, OpenStreetMap contributors';
 // Voyager reads as a place; Positron is the flat backdrop the dashboard map plots onto.
 function tileVoyager(lat, lng, z){
   z = z || 16;
-  if(!isFinite(lat) || !isFinite(lng)) return null;
+  if(!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
   const n = Math.pow(2, z);
   const x = Math.floor((lng + 180) / 360 * n);
   const y = Math.floor((1 - Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI) / 2 * n);
-  return cartoTileUrl('a.basemaps.cartocdn.com/rastertiles/voyager/'+z+'/'+x+'/'+y+'@2x.png');
+  return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/'+z+'/'+y+'/'+x;
 }
 
 function initLeafletMap(){
@@ -6085,6 +6100,9 @@ function updateMapVisibility(){
 function flyTo(id){
   const d = DATA().find(x=>x.id===id);
   if(!d) return;
+  if(mapProvider==='google-embed' || !Number.isFinite(d.lat) || !Number.isFinite(d.lng)){
+    showGoogleEmbed(d); document.getElementById('explore').scrollIntoView({behavior:'smooth',block:'start'}); return;
+  }
   if(mapProvider==='google' && gMap){
     gMap.panTo({lat:d.lat,lng:d.lng}); gMap.setZoom(15);
     const m = gMarkers[id];
@@ -6498,6 +6516,7 @@ const OFFICIAL_LINKS = {
 // Which city a project belongs to. The inline city arrays imply it by membership rather than
 // carrying a city field, so it is resolved by id once and cached - the record's own d.city is
 // undefined here, which is why the first attempt at this silently produced no links at all.
+for(const [key,c] of Object.entries(window.REGIONAL_DATA?.cities||{})) OFFICIAL_LINKS[key]=c.resources;
 let PROJECT_CITY = null;
 function cityOfProject(id){
   if(!PROJECT_CITY){
@@ -6524,8 +6543,9 @@ function projectCardHtml(d){
   const expiresBit = d.expires ? `<span>expires <b>${fmtDate(d.expires)}</b></span>` : '';
   const starData = {title:d.addr, desc:d.desc + ' (' + st.label + ')'};
   const thumb = tileVoyager(d.lat, d.lng);
+  const photo = (window.LOCAL_CITY_PHOTOS||{})[cityOfProject(d.id)||currentCity] || {url:'/img/hero.avif',cap:'Bay Area city context',by:'ZuperB',lic:'Public domain'};
   return `<div class="card" data-project-id="${d.id}" style="border-top-color:${c.color}">
-      ${thumb ? `<div class="card-thumb"><img src="${thumb}" alt="Map of the area around ${d.addr}" loading="lazy" onerror="this.style.visibility='hidden'" /></div>` : ''}
+      ${thumb ? `<div class="card-thumb"><img src="${thumb}" alt="Map of the area around ${d.addr}" loading="lazy" onerror="imgFallback(this,cityOfProject('${d.id}'));" /><span class="map-thumb-credit">Map: Esri, HERE, Garmin, USGS</span></div>` : `<div class="card-thumb"><img src="${photo.url}" alt="${escapeHtml(photo.cap)}" loading="lazy"><span class="map-thumb-credit">${photoCredit(photo)}</span></div>`}
       <div class="row1"><div><div class="addr">${d.addr}</div><div class="type">${d.type}</div><div class="cattag" style="margin-top:4px;"><i style="background:${c.color}"></i>${c.label}</div></div>
       <div style="display:flex; align-items:flex-start; gap:6px;">${starButtonHtml('project', d.id, starData)}<span class="stamp" style="background:${st.color}; border-color:${st.color}">${st.label}</span></div></div>
       <div class="desc">${d.desc}</div>
@@ -6533,7 +6553,7 @@ function projectCardHtml(d){
       <div class="meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
       <div class="meta" style="color:var(--text);">${d.lastNote}</div>
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
-      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">City record &#8599;</a>`:'';})()}<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
+      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">City record &#8599;</a>`:'';})()}<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
     </div>`;
 }
 function renderRegister(){
@@ -6635,7 +6655,7 @@ function renderOnboardCityBtns(){
   const cty = (c) => ((c.county||'') + ' county').toLowerCase();  // so "san mateo county" matches too
   const hit = ([k,c]) => !q || byLabel([k,c]) || (!anyLabel && cty(c).includes(q));
   const btn = ([key,c]) => `<button type="button" class="onboard-city-btn${key===onboard.city?' active':''}" data-city="${key}">${c.label}</button>`;
-  const groups = ['Santa Clara','San Mateo'].map(cty=>{
+  const groups = COUNTY_NAMES.map(cty=>{
     const rows = Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===cty).filter(hit);
     if(!rows.length) return '';
     return `<div class="city-group"><span class="city-group-label">${cty} County</span>${rows.map(btn).join('')}</div>`;
@@ -6644,7 +6664,7 @@ function renderOnboardCityBtns(){
   document.getElementById('onboardCityBtns').innerHTML =
     `<input type="text" class="onboard-cityfilter" id="onboardCityFilterInput" placeholder="Type to find your city" value="${onboardCityFilter.replace(/"/g,'&quot;')}" />`
     + all + groups
-    + ((all||groups) ? '' : `<div class="onboard-cityempty">No city here matches "${q.replace(/</g,'&lt;')}". This tracker covers Santa Clara and San Mateo counties.</div>`);
+    + ((all||groups) ? '' : `<div class="onboard-cityempty">No city here matches "${q.replace(/</g,'&lt;')}". This tracker covers the Peninsula, South Bay, East Bay, San Francisco and nearby Marin cities.</div>`);
   const f = document.getElementById('onboardCityFilterInput');
   if(f){
     f.addEventListener('input', ()=>{
@@ -6722,7 +6742,7 @@ function useMyLocation(){
       setOnboardBusy(false, `You're actually in ${newLabel}, not ${oldLabel} - switched you there.`);
     } else if(!matchedCity){
       // Naming all 33 made this a paragraph. The counties say the same thing in a line.
-      setOnboardBusy(false, `Location found, but it is outside the area this tracker covers - the ${Object.keys(CITIES).filter(k=>k!=='all').length} cities and towns of Santa Clara and San Mateo counties. Pick a city above to look around anyway.`);
+      setOnboardBusy(false, `Location found, but it is outside the area this tracker covers - the ${Object.keys(CITIES).filter(k=>k!=='all').length} cities and towns covered across the Bay Area. Pick a city above to look around anyway.`);
     } else {
       setOnboardBusy(false, 'Location found \u2713');
     }
@@ -6939,7 +6959,9 @@ document.getElementById('onboardAddr').addEventListener('input', ()=>{
 document.getElementById('onboardAccountLink').addEventListener('click', (e)=>{
   e.preventDefault();
   document.getElementById('onboardOverlay').style.display = 'none';
+  guestAuthForm=isGuest();
   showScreen('account');
+  if(isGuest())document.getElementById('authTabSignup').click();
 });
 document.getElementById('editAreaBtn').addEventListener('click', ()=>{ document.getElementById('onboardOverlay').style.display='flex'; });
 
@@ -7008,8 +7030,9 @@ const CITY_PHOTOS = {
   woodside:{url:'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Woodside_California_2004.jpg/1280px-Woodside_California_2004.jpg', cap:'Woodside', lic:'CC BY-SA 3.0', by:'Jawed'},
   sancarlos: {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Northbound_train_at_San_Carlos_station%2C_November_2018.JPG/1280px-Northbound_train_at_San_Carlos_station%2C_November_2018.JPG', cap:'Caltrain at the historic San Carlos station', lic:'CC BY-SA 3.0', by:'Pi.1415926535'},
 };
+Object.assign(CITY_PHOTOS, window.LOCAL_CITY_PHOTOS || {});
 function cityPhoto(k){ return CITY_PHOTOS[k] || null; }
-function photoCredit(p){ return p ? (p.cap + ' &middot; ' + p.by + ', ' + p.lic + ', via Wikimedia Commons') : ''; }
+function photoCredit(p){ return p ? [p.cap,p.by,p.lic,'via Wikimedia Commons'].map(escapeHtml).join(' · ') : ''; }
 
 
 
@@ -7258,12 +7281,12 @@ function renderTopicMap(topicKey, cap, categoryKey){
   let m = topicMaps[cap];
   if(!m){
     m = topicMaps[cap] = {map:L.map('topicMap'+cap, {scrollWheelZoom:false}).setView([c.center.lat, c.center.lng], c.zoom||12)};
-    L.tileLayer(cartoTileUrl('{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'),
+    L.tileLayer(MAP_TILE_URL,
       {attribution:CARTO_ATTRIB, subdomains:'abcd', maxZoom:19}).addTo(m.map);
     m.layer = L.layerGroup().addTo(m.map);
   }
   m.layer.clearLayers();
-  const rows = (c.data||[]).filter(d=> categoryOf(d)===categoryKey && isFinite(d.lat) && isFinite(d.lng));
+  const rows = (c.data||[]).filter(d=> categoryOf(d)===categoryKey && Number.isFinite(d.lat) && Number.isFinite(d.lng));
   const pts = [];
   rows.forEach(d=>{
     const st = STAGE_MAP[d.stage] || {label:d.stage||'', color:'#8A8A8A'};
@@ -7637,7 +7660,7 @@ function yaCandidates(){
 
   Object.keys(CITIES).filter(k=>k!=='all').forEach(ck=>{
     (CITIES[ck].data||[]).forEach(p=>{
-      if(!isFinite(p.lat) || !isFinite(p.lng)) return;
+      if(!Number.isFinite(p.lat) || !Number.isFinite(p.lng)) return;
       out.project.push({type:'project', id:p.id, label:p.addr || p.id,
         sub:[CITIES[ck].label, p.stage, p.units ? p.units+' homes' : null].filter(Boolean).join(' · '),
         lat:p.lat, lng:p.lng, city:ck});
@@ -7702,7 +7725,7 @@ function ensureYaMap(){
   const c = CITIES[currentCity !== 'all' ? currentCity : 'sunnyvale'];
   yaMap = L.map('yaMap', {scrollWheelZoom:false})
     .setView([c.center.lat, c.center.lng], c.zoom || 12);
-  L.tileLayer(cartoTileUrl('{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'),
+  L.tileLayer(MAP_TILE_URL,
     {attribution:CARTO_ATTRIB, subdomains:'abcd', maxZoom:19}).addTo(yaMap);
   yaLayer = L.layerGroup().addTo(yaMap);
   return yaMap;
@@ -7715,7 +7738,7 @@ function renderYaMap(){
   if(!m || !yaLayer) return;
   yaLayer.clearLayers();
   yaPins.forEach(p=>{
-    if(!isFinite(p.lat) || !isFinite(p.lng)) return;
+    if(!Number.isFinite(p.lat) || !Number.isFinite(p.lng)) return;
     const col = YA_PIN_COLOR[p.type] || '#3E4F24';
     L.circleMarker([p.lat, p.lng], {radius:7, color:'#fff', weight:2, fillColor:col, fillOpacity:1})
       .bindPopup('<b>'+escapeHtml(p.label)+'</b><br>'+escapeHtml(p.sub||'')
@@ -7728,7 +7751,7 @@ function renderYaMap(){
 function yaFitPins(){
   const m = ensureYaMap();
   if(!m) return;
-  const pts = yaPins.filter(p=>isFinite(p.lat)&&isFinite(p.lng)).map(p=>[p.lat,p.lng]);
+  const pts = yaPins.filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng)).map(p=>[p.lat,p.lng]);
   if(!pts.length) return;
   if(pts.length === 1) m.setView(pts[0], 15);
   else m.fitBounds(pts, {padding:[30,30]});
@@ -7932,11 +7955,11 @@ function figureImage(city, metric){
 // Slippy-map tile covering a set of coordinates, so a project card shows where it actually is.
 function tileFor(lat, lng, z){
   z = z || 15;
-  if(!isFinite(lat) || !isFinite(lng)) return null;
+  if(!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
   const n = Math.pow(2, z);
   const x = Math.floor((lng + 180) / 360 * n);
   const y = Math.floor((1 - Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI) / 2 * n);
-  return cartoTileUrl('a.basemaps.cartocdn.com/light_all/'+z+'/'+x+'/'+y+'@2x.png');
+  return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/'+z+'/'+y+'/'+x;
 }
 function cityImage(city){ return (CITY_PHOTOS[city]||{}).url || null; }
 // A story picture that is missing or fails to load falls back to the city's photograph, and only
@@ -7944,7 +7967,7 @@ function cityImage(city){ return (CITY_PHOTOS[city]||{}).url || null; }
 function imgFallback(img, city){
   const alt = cityImage(city);
   if(alt && img.dataset.fb !== '1'){ img.dataset.fb = '1'; img.src = alt; }
-  else { img.style.visibility = 'hidden'; }
+  else if(img.dataset.fb !== '2'){ img.dataset.fb='2'; img.src='/img/hero.avif'; img.alt='Bay Area landscape'; } else { img.style.visibility='hidden'; }
 }
 // A chart if one exists for this city, otherwise the city itself.
 function figureOrCity(city, metric){
@@ -8067,10 +8090,10 @@ function tkBuildStations(){
     key:'fig:rent:'+city, kind:'figure', title:'What it costs to live here',
     big:'$'+(st.rent||st.medianGrossRent||0).toLocaleString(), label:'Figure',
     image:figureOrCity(city,'rent').image, imageFit:figureOrCity(city,'rent').fit,
-    meta:c.label+' · typical asking rent',
+    meta:c.label+(st.rent?' · typical asking rent':' · Census median gross rent'),
     body:'Median household income here is $'+(st.medianIncome||0).toLocaleString()+', and '
       +Math.round(st.renterSharePct||0)+'% of households rent.',
-    src:{l:'Zillow research data and the US Census', u:'https://www.zillow.com/research/data/'}});
+    src:{l:st.rent?'Zillow research data':'US Census ACS via Census Reporter',u:st.rent?'https://www.zillow.com/research/data/':st.source||'https://www.census.gov/programs-surveys/acs'}});
   if(topics.includes('transit') && st) figs.push({
     key:'fig:commute:'+city, kind:'figure', title:'How people get to work',
     big:(st.meanCommuteMin||0)+' min', label:'Figure',
@@ -8212,9 +8235,8 @@ function renderTrack(){
       +     items.map(s=>{
               const i = list.indexOf(s);
               const stt = (tkState.get(s.key)||{}).status || 'todo';
-              const img = s.image
-                ? '<span class="tk-st-img'+(s.imageFit==='contain'?' tk-st-img-fit':'')+'" style="background-image:url(\''+s.image+'\')"></span>'
-                : '<span class="tk-st-icon">'+(s.big || TK_KIND_ICON[s.kind] || '')+'</span>';
+              const photoCity=s.city||city;
+              const img='<img class="tk-st-img'+(s.imageFit==='contain'?' tk-st-img-fit':'')+'" src="'+escapeHtml(s.image||cityImage(photoCity)||'/img/hero.avif')+'" alt="'+escapeHtml(s.imageFit==='contain'?'Chart for '+s.title:(CITIES[photoCity]?.label||'Bay Area')+' context image')+'" loading="lazy" onerror="imgFallback(this,\''+photoCity+'\')">';
               return '<button type="button" class="tk-st tk-'+stt+(tkOpen===s.key?' open':'')+'" data-tkst="'+escapeHtml(s.key)+'">'
                 + '<span class="tk-st-n">'+(i+1)+'</span>'
                 + img
@@ -10254,6 +10276,8 @@ const NEWS_ARTICLES = [
     snippet:'',
     url:'https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVVFzUnJwWmJiekc1YVpMYzdoMENMSERULXRVWUg4NWZFc0NtZlZmSG9CM19NYXF0YnV4aGNfWDJVZzc5ZzJDd3hqR3U0d1I4Y29yS1FubmNKaWpKZjNMNkVlaGtER2lEdGZLaUhDMVI0clBUSWdLbFZqNUtCWUtiRUw5aUxYUkJqTkdCNXY0T1RaaTBDcGR1SUJNeE1ZbjRscXpqcVdSbWxpcXpUUXR4NGlibnV2aVJPZ256bjRVVUlFa0RQT0k0Zw?oc=5' }
 ];
+NEWS_ARTICLES.push(...Object.values(window.REGIONAL_DATA?.cities||{}).flatMap(c=>c.news));
+
 function renderTopicNews(topicKey, cap){
   const el = document.getElementById('topicNews'+cap);
   if(!el) return;
@@ -10348,7 +10372,7 @@ function renderResources(){
     const starData = {title:it.name, desc:it.body, url:it.url};
     return `<div class="res-card">
       ${starButtonHtml('resource', id, starData)}
-      <div class="res-thumb" style="background:${color};">
+      <div class="res-thumb" style="background:${color};background-image:linear-gradient(#21320b70,#21320bdd),url('${cityImage(currentCity)||'/img/hero.avif'}');background-size:cover;background-position:center;">
         <span class="res-thumb-cat">${it.cat}</span>
         ${domain ? `<span class="res-thumb-domain">${domain}</span>` : ''}
       </div>
@@ -10369,6 +10393,7 @@ function renderResources(){
 // earlier in the script, before renderAll() runs - see the note near "let state = ...".
 
 async function apiCall(path, options={}){
+  if(!authToken && guestProfile.handles(path))return guestProfile.request(path,options,Object.entries(CITIES).filter(([k])=>k!=='all').map(([value,c])=>({value,label:c.label})));
   const headers = Object.assign({'Content-Type':'application/json'}, options.headers||{});
   if(authToken) headers.Authorization = 'Bearer '+authToken;
   const res = await fetch(path, Object.assign({}, options, {headers}));
@@ -10412,14 +10437,20 @@ function renderPrefsCategories(){
   });
 }
 
+function resetAccountMemory(){
+  tkSaveTimers.forEach(clearTimeout);tkSaveTimers.clear();
+  tkState=new Map();tkProfile={city:'',topics:[],stake:'',time:'',experience:''};tkProfileLoaded=false;
+  yaPins=[];remItems=[];
+}
 function setAuthSession(token, username){
-  authToken = token; authUsername = username;
+  resetAccountMemory();
+  authToken = token; authUsername = username;guestAuthForm=false;starredMap=new Map();tkProfileLoaded=false;yaPins=[];remItems=[];
   localStorage.setItem('sbpd_token', token);
   localStorage.setItem('sbpd_username', username);
 }
 function clearAuthSession(){
-  tkProfileLoaded = false;
-  authToken = null; authUsername = null; starredMap = new Map();
+  resetAccountMemory();
+  authToken = null; authUsername = guestProfile.data.username; starredMap = new Map(guestProfile.unlocked?guestProfile.data.stars.map(s=>[starKey(s.item_type,s.item_id),s.item_data]):[]);yaPins=[];remItems=[];
   localStorage.removeItem('sbpd_token');
   localStorage.removeItem('sbpd_username');
 }
@@ -10577,13 +10608,13 @@ async function renderAcctOverview(){
         const res = await fetch('/api/hearings');
         acctHearingsCache = await res.json();
       }
-      const list = (acctHearingsCache.hearings||[]).filter(h=> h.city===city).slice(0,4);
+      const list = (acctHearingsCache.hearings||[]).filter(h=> h.city===(window.MEETING_DIRECTORY?.[city]?.alias||city)).slice(0,4);
       hh.innerHTML = list.length ? list.map(h=>
           '<div class="acct-hearing"><div class="d">'+(h.dateLabel||h.date||'')+'</div>'
         + '<h4>'+(h.body||h.name||'Public meeting')+'</h4>'
         + (h.agendaUrl ? '<a class="res-link" href="'+h.agendaUrl+'" target="_blank" rel="noopener">Agenda &#8594;</a>' : '')
         + '</div>').join('')
-        : '<div class="starred-empty">No upcoming hearings published for '+c.label+' right now. The Hearings tab shows the whole region.</div>';
+        : '<div class="starred-empty">No upcoming hearings published for '+c.label+' right now.</div>'+meetingDirectoryHtml(city);
     }catch(err){
       hh.innerHTML = '<div class="starred-empty">Couldn’t load hearings just now.</div>';
     }
@@ -11059,7 +11090,8 @@ async function renderAccountPage(){
   const loggedOut = document.getElementById('accountLoggedOut');
   const loggedIn = document.getElementById('accountLoggedIn');
   const reasonEl = document.getElementById('accountPromptReason');
-  if(!isLoggedIn()){
+  document.getElementById('guestUnlock').hidden=!!authToken||guestProfile.unlocked;
+  if(!isLoggedIn()||guestAuthForm){
     loggedOut.style.display='block'; loggedIn.style.display='none';
     if(reasonEl){
       if(window.pendingLoginReason){ reasonEl.textContent = window.pendingLoginReason; reasonEl.style.display='block'; window.pendingLoginReason = null; }
@@ -11067,10 +11099,16 @@ async function renderAccountPage(){
     }
     return;
   }
-  loggedOut.style.display='none'; loggedIn.style.display='block';
+  loggedOut.style.display='none'; loggedIn.style.display='grid';
   document.getElementById('accountUsername').textContent = authUsername;
+  document.getElementById('logoutBtn').textContent=isGuest()?'Switch to login':'Log out';
+  document.getElementById('guestSettings').hidden=!isGuest();
+  if(isGuest()){document.getElementById('guestUsername').value=guestProfile.data.username;document.getElementById('guestCurrentWrap').hidden=!guestProfile.data.passwordHash;document.getElementById('guestLock').hidden=!guestProfile.data.passwordHash;}
+  // Load the saved city before drawing its masthead.
   try{
     const prefs = await apiGetPreferences();
+    document.getElementById('prefsCity').innerHTML='<option value="">No city preference</option>'+COUNTY_NAMES.map(county=>'<optgroup label="'+escapeHtml(county)+' County">'+Object.entries(CITIES).filter(([k,c])=>k!=='all'&&c.county===county).map(([k,c])=>'<option value="'+k+'">'+escapeHtml(c.label)+'</option>').join('')+'</optgroup>').join('');
+    document.getElementById('prefsStatus').textContent=isGuest()?'Guest profiles save city and topic preferences on this device. Email delivery requires a full account.':'';
     document.getElementById('prefsEmail').value = prefs.email || '';
     document.getElementById('prefsFrequency').value = prefs.emailFrequency || 'off';
     document.getElementById('prefsCity').value = prefs.homeCity || '';
@@ -11079,6 +11117,7 @@ async function renderAccountPage(){
   } catch(err){
     document.getElementById('prefsStatus').textContent = "Couldn't load your email preferences: " + err.message;
   }
+  renderAcctOverview();
   await loadReminders();
   renderAcctSideCounts();
   showAcctPanel(acctPanel);
@@ -11119,6 +11158,14 @@ async function renderAccountPage(){
   }
 }
 
+document.getElementById('guestProfileForm').addEventListener('submit',async e=>{
+ e.preventDefault();const out=document.getElementById('guestProfileStatus');
+ try{await guestProfile.update(document.getElementById('guestUsername').value.trim(),document.getElementById('guestNewPassword').value,document.getElementById('guestCurrentPassword').value);authUsername=guestProfile.data.username;document.getElementById('guestNewPassword').value='';document.getElementById('guestCurrentPassword').value='';await renderAccountPage();out.textContent=guestProfile.persistent?'Saved on this device.':'Browser storage is unavailable; this profile is temporary until the page closes.';}catch(err){out.textContent=err.message;}
+});
+document.getElementById('guestUnlockForm').addEventListener('submit',async e=>{e.preventDefault();try{await guestProfile.unlock(document.getElementById('guestUnlockPassword').value);document.getElementById('guestUnlockPassword').value='';guestAuthForm=false;await renderAccountPage();}catch(err){document.getElementById('guestUnlockStatus').textContent=err.message;}});
+document.getElementById('guestLock').addEventListener('click',()=>{guestProfile.lock();resetAccountMemory();starredMap.clear();renderAccountPage();});
+document.getElementById('guestBack').addEventListener('click',()=>{guestAuthForm=false;renderAccountPage();});
+for(const [id,tab] of [['guestCreateAccount','authTabSignup'],['guestSignIn','authTabLogin']])document.getElementById(id).addEventListener('click',()=>{guestAuthForm=true;renderAccountPage();document.getElementById(tab).click();});
 // Auth tab switching
 document.getElementById('authTabLogin').addEventListener('click', ()=>{
   document.getElementById('authTabLogin').classList.add('active');
@@ -11156,7 +11203,12 @@ document.getElementById('signupForm').addEventListener('submit', async (e)=>{
   const password = document.getElementById('signupPassword').value;
   try{
     const data = await apiRegister(username, password);
+    const guestItems=guestProfile.unlocked?structuredClone(guestProfile.data):null;
     setAuthSession(data.token, data.username);
+    if(guestItems){
+      try{for(const st of guestItems.stars)await apiAddStar(st.item_type,st.item_id,st.item_data);for(const it of guestItems.timeline)await apiCall('/api/timeline',{method:'PUT',body:JSON.stringify({itemKey:it.item_key,status:it.status,note:it.note})});for(const r of guestItems.reminders)await apiCall('/api/reminders',{method:'POST',body:JSON.stringify({kind:r.kind,refId:r.ref_id,label:r.label,detail:r.detail,url:r.url,city:r.city})});await apiSavePreferences(null,'off',guestItems.preferences.homeCity,guestItems.preferences.categories);}
+      catch(err){document.getElementById('accountSyncStatus').textContent='Account created. Some guest items could not sync; they remain saved in your guest profile on this device.';}
+    }
     renderAccountPage();
   } catch(err){
     errEl.textContent = err.message;
@@ -11164,6 +11216,7 @@ document.getElementById('signupForm').addEventListener('submit', async (e)=>{
 });
 
 document.getElementById('logoutBtn').addEventListener('click', ()=>{
+  if(isGuest()){guestAuthForm=true;renderAccountPage();return;}
   clearAuthSession();
   renderAccountPage();
 });
@@ -13057,6 +13110,7 @@ const CITY_STATS = {
   ]
  }
 };
+Object.assign(CITY_STATS, Object.fromEntries(Object.entries(window.REGIONAL_DATA?.cities||{}).map(([k,c])=>[k,c.stats])));
 const STATS_SOURCE = {"label":"Zillow Research public data (ZHVI and ZORI), city level","url":"https://www.zillow.com/research/data/","asOf":"July 2026"};
 const CENSUS_SOURCE = {"label":"US Census American Community Survey, 5-year estimates","url":"https://www.census.gov/programs-surveys/acs","asOf":"2023 (ACS 5-year)"};
 
@@ -13067,9 +13121,9 @@ const CENSUS_SOURCE = {"label":"US Census American Community Survey, 5-year esti
 let hearingsCache = null;
 let hearingsScope = 'city';   // 'city' or 'all'
 
-function daysUntil(iso){
-  const d = new Date(iso + 'T12:00:00');
-  return Math.round((d - new Date(new Date().toDateString())) / 864e5);
+function daysUntil(iso, now=new Date()){
+  const today=now.toLocaleDateString('en-CA',{timeZone:'America/Los_Angeles'});
+  return Math.round((Date.parse(iso+'T00:00:00Z')-Date.parse(today+'T00:00:00Z'))/864e5);
 }
 function whenLabel(n){
   if(n < 0) return 'past';
@@ -13085,22 +13139,22 @@ function prettyDate(iso){
 function hearingCard(h){
   const n = daysUntil(h.date);
   const soon = n <= 7 ? ' soon' : '';
-  const matched = h.matters.filter(m=>m.projects.length);
-  const other = h.matters.filter(m=>!m.projects.length);
+  const matched = (h.matters||[]).filter(m=>(m.projects||[]).length);
+  const other = (h.matters||[]).filter(m=>!(m.projects||[]).length);
 
   const projectLinks = matched.map(m=>m.projects.map(p=>
     '<a class="hearing-proj" href="'+location.pathname+'?project='+encodeURIComponent(p.id)+'">'+p.addr+'</a>'
   ).join('')).join('');
 
   const otherItems = other.slice(0,4).map(m=>
-    '<li>'+(m.location ? '<b>'+m.location+'</b> &middot; ' : '')+m.title.slice(0,120)+'</li>').join('');
+    '<li>'+(m.location ? '<b>'+escapeHtml(m.location)+'</b> &middot; ' : '')+escapeHtml((m.title||'').slice(0,120))+'</li>').join('');
 
   return '<div class="hearing'+soon+'">'
     + '<div class="hearing-when"><span class="d">'+prettyDate(h.date)+'</span>'
       + '<span class="c">'+whenLabel(n)+(h.time ? ' &middot; '+h.time : '')+'</span></div>'
     + '<div class="hearing-body">'
-      + '<div class="hearing-body-h">'+h.body+'<span class="city">'+(CITIES[h.city]?CITIES[h.city].label:h.city)+'</span></div>'
-      + (h.location ? '<div class="hearing-loc">'+h.location+'</div>' : '')
+      + '<div class="hearing-body-h">'+escapeHtml(h.body)+'<span class="city">'+(CITIES[h.city]?CITIES[h.city].label:h.city)+'</span></div>'
+      + (h.location ? '<div class="hearing-loc">'+escapeHtml(h.location)+'</div>' : '')
       + (projectLinks ? '<div class="hearing-projs"><span class="lab">Tracked projects on this agenda</span>'+projectLinks+'</div>' : '')
       + (otherItems ? '<ul class="hearing-items">'+otherItems+'</ul>' : '')
       + (!h.agendaPublished ? '<div class="hearing-note">Agenda not posted yet. Cities usually publish about a week ahead.</div>' : '')
@@ -13108,54 +13162,32 @@ function hearingCard(h){
     + '</div></div>';
 }
 
-function renderHearingsList(){
-  const host = document.getElementById('hearingsContent');
-  if(!host || !hearingsCache) return;
-  const all = hearingsCache.hearings || [];
-  const covered = (hearingsCache.cities || []).includes(currentCity);
-  const list = (hearingsScope === 'city' && covered) ? all.filter(h=>h.city===currentCity) : all;
-
-  let head = '<div class="stat-toolbar"><span class="lab">Show</span>'
-    + '<button type="button" class="stat-chip" data-scope="city" aria-pressed="'+(hearingsScope==='city')+'">'
-      + (CITIES[currentCity] ? CITIES[currentCity].label : 'This city') + '</button>'
-    + '<button type="button" class="stat-chip" data-scope="all" aria-pressed="'+(hearingsScope==='all')+'">All covered cities</button>'
-    + '</div>';
-
-  let body;
-  if(!covered && hearingsScope === 'city'){
-    body = '<div class="empty">'+(CITIES[currentCity]?CITIES[currentCity].label:'This city')
-      + ' does not publish agendas through Legistar, so its meetings can\'t be pulled automatically yet. '
-      + 'Switch to all covered cities, or use the official links on the Resources tab.</div>';
-  } else if(!list.length){
-    body = '<div class="empty">No land-use meetings scheduled in the next '+(hearingsCache.days||45)+' days.</div>';
-  } else {
-    body = '<div class="hearing-list">' + list.map(hearingCard).join('') + '</div>';
-  }
-  host.innerHTML = head + body;
-
-  host.querySelectorAll('.stat-chip').forEach(b=>b.addEventListener('click', ()=>{
-    hearingsScope = b.getAttribute('data-scope'); renderHearingsList();
-  }));
-
-  const covLabels = (hearingsCache.cities||[]).map(c=>CITIES[c]?CITIES[c].label:c).join(', ');
-  document.getElementById('hearingsFoot').innerHTML =
-    'Pulled from the Legistar public API for ' + covLabels + '. '
-    + 'Other South Bay cities run different agenda systems and are not covered yet. '
-    + (hearingsCache.generatedAt ? 'Last refreshed ' + new Date(hearingsCache.generatedAt).toLocaleString() + '.' : '');
+function meetingDirectoryHtml(scope='all'){
+ const directory=window.MEETING_DIRECTORY||{};
+ const cities=Object.entries(directory).filter(([k])=>scope==='all'||k===scope);
+ return '<div class="meeting-directory">'+cities.map(([k,c])=>'<article class="meeting-city"><small>'+escapeHtml(c.county)+' County · '+(c.client?'Live feed available':'Official meeting directory')+'</small><h4>'+escapeHtml(c.label)+'</h4>'+c.links.map(l=>'<a href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.title)+' ↗</a>').join('')+'</article>').join('')+'</div>';
 }
-
+function renderHearingsList(){
+ const host=document.getElementById('hearingsContent');if(!host||!hearingsCache)return;
+ const city=window.MEETING_DIRECTORY?.[currentCity]?.alias||currentCity;
+ const scope=hearingsScope==='all'||currentCity==='all'?'all':city;
+ const all=hearingsCache.hearings||[];
+ const list=all.filter(h=>scope==='all'||h.city===scope);
+ const errors=(hearingsCache.errors||[]).filter(e=>scope==='all'||e.city===scope);
+ const covered=(hearingsCache.cities||[]).includes(city);
+ const header='<div class="stat-toolbar"><span class="lab">Show</span><button class="stat-chip" data-scope="city" aria-pressed="'+(hearingsScope==='city')+'">'+escapeHtml(CITIES[currentCity].label)+'</button><button class="stat-chip" data-scope="all" aria-pressed="'+(hearingsScope==='all')+'">Across the Bay Area</button><button class="stat-chip" id="refreshHearings">Refresh</button></div>';
+ const note=errors.length?'Some meeting feeds are unavailable. Use the official agenda links below to confirm dates.':!covered&&scope!=='all'?'This city uses a different agenda system. Open its official calendar below for current dates and participation details.':!list.length?'No upcoming meetings were returned by the connected feeds. Check the official calendar; an empty feed does not mean no meetings.':'Upcoming meetings from city-published feeds. Check the agenda for cancellations and public-comment instructions.';
+ host.innerHTML=header+'<div class="meeting-status">'+escapeHtml(note)+'</div>'+(list.length?'<div class="hearing-list">'+list.map(hearingCard).join('')+'</div>':'')+'<h3 style="margin-top:24px">Official calendars, agendas & recordings</h3>'+meetingDirectoryHtml(scope==='all'?'all':currentCity);
+ host.querySelectorAll('[data-scope]').forEach(b=>b.addEventListener('click',()=>{hearingsScope=b.dataset.scope;renderHearingsList();}));
+ document.getElementById('refreshHearings').addEventListener('click',()=>{hearingsCache=null;renderHearings();});
+ document.getElementById('hearingsFoot').textContent='Live connections: '+(hearingsCache.cities||[]).length+' cities. Official meeting directories: '+Object.keys(window.MEETING_DIRECTORY||{}).length+' areas. '+(hearingsCache.generatedAt?'Feed refreshed '+new Date(hearingsCache.generatedAt).toLocaleString()+'.':'');
+}
 async function renderHearings(){
-  const host = document.getElementById('hearingsContent');
-  if(!host) return;
-  if(hearingsCache){ renderHearingsList(); return; }
-  host.innerHTML = '<div class="empty">Loading upcoming meetings...</div>';
-  try{
-    const r = await fetch('/api/hearings');
-    hearingsCache = await r.json();
-    renderHearingsList();
-  } catch(err){
-    host.innerHTML = '<div class="empty">Could not load upcoming meetings: ' + err.message + '</div>';
-  }
+ const host=document.getElementById('hearingsContent');if(!host)return;
+ if(hearingsCache){renderHearingsList();return;}
+ host.innerHTML='<div class="meeting-status">Loading live meetings… Official calendars are ready below.</div>'+meetingDirectoryHtml(currentCity);
+ try{const r=await fetch('/api/hearings',{signal:AbortSignal.timeout(18000)});if(!r.ok)throw Error('Meeting service unavailable');hearingsCache=await r.json();renderHearingsList();}
+ catch(err){host.innerHTML='<div class="meeting-status">Live meetings are temporarily unavailable. Use the official calendars below.</div>'+meetingDirectoryHtml(currentCity);}
 }
 
 // Generated from data/rhna.js - California HCD 6th Cycle RHNA Progress Report.
@@ -13978,6 +14010,7 @@ function statsCityKeys(){ return Object.keys(CITY_STATS); }
 function median(a){ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y); return s[Math.floor(s.length/2)]; }
 
 function cityFacts(key){
+  if(!CITIES[key]) return null;
   const rows = (CITIES[key] ? CITIES[key].data : []);
   const active = rows.filter(d=>d.stage!=='completed');
   const withUnits = active.filter(d=>d.units);
@@ -13987,8 +14020,8 @@ function cityFacts(key){
   const byType = {}; active.forEach(d=>{ byType[d.type]=(byType[d.type]||0)+(d.units||0); });
   return {
     projects: active.length,
-    units: active.reduce((n,d)=>n+(d.units||0),0),
-    bmr: active.reduce((n,d)=>n+(d.bmr||0),0),
+    units: withUnits.length ? active.reduce((n,d)=>n+(d.units||0),0) : null,
+    bmr: active.some(d=>Number.isFinite(d.bmr)) ? active.reduce((n,d)=>n+(d.bmr||0),0) : null,
     unitsKnown: withUnits.length,
     medianUnits: median(withUnits.map(d=>d.units)),
     biggest: withUnits.length ? withUnits.reduce((a,b)=>a.units>b.units?a:b) : null,
@@ -14017,6 +14050,7 @@ function metricCatalog(){
   return [
     {id:'homeValue',    topic:'housing',   label:'Typical home value',   tag:'Zillow',  get:stat('homeValue'),      fmt:fmtMoney, dir:'hi'},
     {id:'rent',         topic:'housing',   label:'Typical asking rent',  tag:'Zillow',  get:stat('rent'),           fmt:fmtRent,  dir:'hi'},
+    {id:'censusValue', topic:'housing', label:'Median owner home value', tag:'Census', get:stat('censusHomeValue'), fmt:fmtMoney, dir:'hi'},
     {id:'grossRent',    topic:'housing',   label:'Median gross rent',    tag:'Census',  get:stat('medianGrossRent'),fmt:fmtRent,  dir:'hi'},
     {id:'renterShare',  topic:'housing',   label:'Households renting',   tag:'Census',  get:stat('renterSharePct'), fmt:n=>n.toFixed(0)+'%', dir:'hi'},
     {id:'yearBuilt',    topic:'housing',   label:'Median year built',    tag:'Census',  get:stat('medianYearBuilt'),fmt:n=>String(Math.round(n)), dir:'hi'},
@@ -14034,14 +14068,14 @@ function metricCatalog(){
     {id:'rhnaAffordable',topic:'pipeline', label:'Affordable homes permitted', tag:'State', get:(c)=>{ const r=RHNA[c]; return r ? r.vli[0]+r.li[0] : null; }, fmt:fmtInt, dir:'lo'},
     {id:'income',       topic:'people',    label:'Median household income', tag:'Census', get:stat('medianIncome'), fmt:fmtMoney, dir:'hi'},
     {id:'population',   topic:'people',    label:'Population',           tag:'Census',  get:stat('population'),     fmt:fmtInt,   dir:'lo'},
-    {id:'priceToRent',  topic:'people',    label:'Price to rent ratio',  tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.rent) ? s.homeValue/(s.rent*12) : null; }, fmt:n=>n.toFixed(0)+'x', dir:'hi'},
-    {id:'incomeToPrice',topic:'people',    label:'Home value vs income', tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.medianIncome) ? s.homeValue/s.medianIncome : null; }, fmt:n=>n.toFixed(1)+'x', dir:'hi'},
+    {id:'priceToRent',  topic:'people',    label:'Price to rent ratio',  tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.rent && s.homeValue) ? s.homeValue/(s.rent*12) : null; }, fmt:n=>n.toFixed(0)+'x', dir:'hi'},
+    {id:'incomeToPrice',topic:'people',    label:'Home value vs income', tag:'Derived', get:(c)=>{ const s=CITY_STATS[c]; return (s && s.medianIncome && s.homeValue) ? s.homeValue/s.medianIncome : null; }, fmt:n=>n.toFixed(1)+'x', dir:'hi'},
   ];
 }
 
 const TOPICS = [
   {id:'all', label:'Everything'}, {id:'housing', label:'Housing'},
-  {id:'transport', label:'Transport'}, {id:'pipeline', label:'Being built'},
+  {id:'transportation', label:'Transport'}, {id:'pipeline', label:'Being built'},
   {id:'people', label:'People and cost'},
 ];
 
@@ -14072,9 +14106,9 @@ function statCard(metric, me){
   const r = rankOf(metric, me);
   let rankHtml = '';
   if(r){
-    const pct = Math.round((val - r.med)/r.med*100);
+    const pct = r.med ? Math.round((val - r.med)/r.med*100) : null;
     const cls = Math.abs(pct) <= 2 ? '' : (pct > 0 ? ' hi' : ' lo');
-    const word = Math.abs(pct) <= 2 ? 'level with the median'
+    const word = pct===null ? 'regional comparison' : Math.abs(pct) <= 2 ? 'level with the median'
                : (pct > 0 ? '+'+pct+'% vs median' : pct+'% vs median');
     rankHtml = '<span class="rank'+cls+'">#'+r.pos+' of '+r.of+' &middot; '+word+'</span>';
   }
@@ -14105,6 +14139,7 @@ function statCard(metric, me){
   return '<div class="metric-wrap">' + starButtonHtml('statistic', starId, starData)
     + '<button type="button" class="metric-card" data-metric="'+metric.id+'" aria-label="Rank cities by '+metric.label+'">'
     + '<span class="head">'+metric.label+'<span class="tag">'+metric.tag+'</span></span>'
+    + '<span class="metric-photo"><img src="'+escapeHtml(cityImage(me)||'/img/hero.avif')+'" alt="'+escapeHtml(CITIES[me].label)+' city context" loading="lazy" onerror="imgFallback(this,\''+me+'\')"><span>'+escapeHtml(CITIES[me].county)+' County · '+escapeHtml(metric.topic)+'</span></span>'
     + '<span class="body">'
     + '<span class="k">'+metric.fmt(val)+'</span>'
     + (sub ? '<span class="s">'+sub+'</span>' : '')
@@ -14131,8 +14166,8 @@ function renderStatistics(){
   document.getElementById('statsCityName').textContent = CITIES[me] ? CITIES[me].label : 'your city';
 
   const all = metricCatalog();
-  const shown = all.filter(m=>statsTopic==='all' || m.topic===statsTopic);
-  if(!statsMetric || !all.some(m=>m.id===statsMetric && (statsTopic==='all'||m.topic===statsTopic))){
+  const shown = all.filter(m=>(statsTopic==='all' || m.topic===statsTopic)&&m.get(me)!=null);
+  if(!statsMetric || !shown.some(m=>m.id===statsMetric)){
     statsMetric = (shown[0]||all[0]).id;
   }
   const active = all.find(m=>m.id===statsMetric);
@@ -14141,14 +14176,15 @@ function renderStatistics(){
     '<div class="stat-toolbar"><span class="lab">Show</span>'
     + TOPICS.map(t=>'<button type="button" class="stat-chip" data-topic="'+t.id+'" aria-pressed="'+(statsTopic===t.id)+'">'+t.label+'</button>').join('')
     + '</div>'
+    + '<div class="stat-city-source">'+escapeHtml(CITY_STATS[me]?.asOf||'Existing city snapshots; see source dates below')+' · <a href="'+escapeHtml(CITY_STATS[me]?.source||STATS_SOURCE.url)+'" target="_blank" rel="noopener">Data source ↗</a> · '+photoCredit(cityPhoto(me))+'</div>'
     + '<div class="stat-grid">' + shown.map(m=>statCard(m, me)).join('') + '</div>'
     + (RHNA[me] ? rhnaSection(me) : '')
-    + '<div class="stat-sec"><h3>'+active.label+' across the South Bay</h3>'
+    + '<div class="stat-sec"><h3>'+active.label+' across the Bay Area</h3>'
     + '<div class="sub">Click any card above to rank by that number, or any row below to jump to that city.</div>'
     + statBars(active, me) + '</div>'
     + '<div class="stat-foot">'
     + 'Home value and asking rent: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, '+STATS_SOURCE.asOf+'. '
-    + 'Population, income, commute, tenure and housing age: <a href="'+CENSUS_SOURCE.url+'" target="_blank" rel="noopener">'+CENSUS_SOURCE.label+'</a>, '+CENSUS_SOURCE.asOf+'. '
+    + 'Population, income, commute, tenure and housing age: <a href="'+CENSUS_SOURCE.url+'" target="_blank" rel="noopener">'+CENSUS_SOURCE.label+'</a>, '+CENSUS_SOURCE.asOf+' for existing profiles; 2020–2024 ACS for the 17 added cities. Compare source years when interpreting ranks. '
     + 'Housing target progress: <a href="'+RHNA_SOURCE.url+'" target="_blank" rel="noopener">'+RHNA_SOURCE.label+'</a>, '+RHNA_SOURCE.asOf+'. '
     + 'Pipeline figures are counted from this dashboard\'s own records and reflect what each city publishes.'
     + '</div>';
@@ -14215,22 +14251,22 @@ function renderHeroMap(){
   }
   const c = CITIES[currentCity !== 'all' ? currentCity : 'sunnyvale'];
   if(!heroMap){
-    heroMap = L.map('heroMap', {scrollWheelZoom:false, zoomControl:false, attributionControl:false})
+    heroMap = L.map('heroMap', {scrollWheelZoom:false, zoomControl:false, attributionControl:true})
       .setView([c.center.lat, c.center.lng], 11);
-    L.tileLayer(cartoTileUrl('{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'),
-      {subdomains:'abcd', maxZoom:19}).addTo(heroMap);
+    L.tileLayer(MAP_TILE_URL,
+      {maxZoom:19,attribution:CARTO_ATTRIB}).addTo(heroMap);
     heroLayer = L.layerGroup().addTo(heroMap);
   }
   heroLayer.clearLayers();
   (yaPins||[]).forEach(p=>{
-    if(!isFinite(p.lat) || !isFinite(p.lng)) return;
+    if(!Number.isFinite(p.lat) || !Number.isFinite(p.lng)) return;
     L.circleMarker([p.lat,p.lng], {radius:5, color:'#fff', weight:2,
       fillColor:(YA_PIN_COLOR[p.type]||'#3E4F24'), fillOpacity:1})
       .bindPopup('<b>'+escapeHtml(p.label)+'</b>').addTo(heroLayer);
   });
   const cnt = document.getElementById('heroMapCount');
   if(cnt) cnt.textContent = (yaPins||[]).length ? (yaPins.length + ' pinned') : 'nothing pinned';
-  const pts = (yaPins||[]).filter(p=>isFinite(p.lat)&&isFinite(p.lng)).map(p=>[p.lat,p.lng]);
+  const pts = (yaPins||[]).filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng)).map(p=>[p.lat,p.lng]);
   if(pts.length > 1) heroMap.fitBounds(pts, {padding:[24,24]});
   else if(pts.length === 1) heroMap.setView(pts[0], 13);
   else heroMap.setView([c.center.lat, c.center.lng], 11);
@@ -14240,7 +14276,7 @@ function renderHeroMap(){
   const add = document.getElementById('heroMapAdd');
   if(add){
     const cand = (CITIES[currentCity!=='all'?currentCity:'sunnyvale'].data||[])
-      .filter(p=>isFinite(p.lat)&&isFinite(p.lng))
+      .filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng))
       .filter(p=>!yaPins.some(x=>x.type==='project'&&x.id===p.id))
       .slice(0,6);
     add.innerHTML = cand.length
@@ -14274,14 +14310,14 @@ function renderHeroCalendar(){
   for(let i=0; i<3 && out.length<8; i++){
     const d = new Date(now.getFullYear(), now.getMonth()+i, 1);
     giMonthEvents(d.getFullYear(), d.getMonth())
-      .filter(e=> e.city === ck)
+      .filter(e=> e.city === ck || e.city === window.MEETING_DIRECTORY?.[ck]?.alias)
       .filter(e=> new Date(d.getFullYear(), d.getMonth(), e.day) >= today)
       .sort((a,b)=> a.day-b.day)
       .forEach(e=> out.push(Object.assign({y:d.getFullYear(), m:d.getMonth()}, e)));
   }
   const rows = out.slice(0, 8);
   const cnt = document.getElementById('heroCalCount');
-  if(cnt) cnt.textContent = rows.length ? rows.length+' coming up' : 'nothing scheduled';
+  if(cnt) cnt.textContent = rows.length ? rows.length+' coming up' : 'official calendar';
   host.innerHTML = rows.length ? rows.map(e=>{
     const ref = 'cal:'+e.city+':'+e.name+':'+e.y+'-'+String(e.m+1).padStart(2,'0')+'-'+String(e.day).padStart(2,'0');
     const on = (typeof remHas === 'function') && remHas('hearing', ref);
@@ -14292,7 +14328,7 @@ function renderHeroCalendar(){
       +   '<span>'+(e.time ? e.time+' &middot; ' : '')+(e.confirmed ? 'confirmed' : 'recurring')+'</span></span>'
       + '<button type="button" class="hc-add'+(on?' on':'')+'" data-caladd="'+pay+'">'+(on?'&#10003;':'Add')+'</button>'
       + '</div>';
-  }).join('') : '<div class="empty">No meetings published for '+CITIES[ck].label+' in the next three months.</div>';
+  }).join('') : '<div class="empty">No dates loaded for '+CITIES[ck].label+'. Check the official calendar for current meetings.</div>'+meetingDirectoryHtml(ck);
   if(typeof wireCalendarActions === 'function') wireCalendarActions(host);
 }
 
@@ -14410,6 +14446,7 @@ document.querySelectorAll('[data-signup]').forEach(el=>{
   el.addEventListener('click', (e)=>{
     e.preventDefault();
     document.getElementById('onboardOverlay').style.display = 'none';
+    if(isGuest()){guestAuthForm=true;document.getElementById('authTabSignup').click();}else acctPanel='email';
     showScreen('account');
     // Scroll to the form itself. Scrolling to the top of the page just showed the hero again,
     // so the screen switch happened but looked like nothing had.
@@ -14423,7 +14460,7 @@ document.querySelectorAll('[data-signup]').forEach(el=>{
         const y = target.getBoundingClientRect().top + window.scrollY - navH - 8;
         window.scrollTo({top:Math.max(0, y), behavior:'smooth'});
       }
-      const first = document.querySelector('#accountLoggedOut input, #prefsEmail');
+      const first = document.getElementById(isGuest()?'signupUsername':'prefsEmail');
       if(first) setTimeout(()=>first.focus({preventScroll:true}), 450);
     }, 420);
   });
@@ -14459,8 +14496,8 @@ function railSlides(){
       href:'statistics', cta:'Compare rents'});
   }
   if(s && s.meanCommuteMin){
-    out.push({k:s.meanCommuteMin+' min', l:'Average commute, '+label,
-      s: s.transitSharePct ? '<b>'+s.transitSharePct+'%</b> of commuters take transit.' : 'One-way travel time to work.',
+    out.push({k:s.meanCommuteMin.toFixed(1)+' min', l:'Average commute, '+label,
+      s: s.transitSharePct ? '<b>'+s.transitSharePct.toFixed(1)+'%</b> of commuters take transit.' : 'One-way travel time to work.',
       fig:'commute',
       href:'statistics', cta:'See the gradient'});
   }
@@ -14785,6 +14822,7 @@ function renderFooter(){
   document.querySelectorAll('[data-goto-screen]').forEach(a=>a.addEventListener('click', e=>{
     e.preventDefault();
     showScreen(a.getAttribute('data-goto-screen'));
+    if(a.hasAttribute('data-open-hearings')){giTab='hearings';renderGetInvolved();}
   }));
 }
 renderFooter();
@@ -14836,16 +14874,18 @@ function applyDeepLink(){
 applyDeepLink();
 window.dashboardContext = {
   cities: Object.fromEntries(Object.entries(CITIES).map(([key,c])=>[key,{label:c.label,center:c.center,zoom:c.zoom}])),
-  projects: Object.entries(CITIES).filter(([key])=>key!=='all').flatMap(([key,c])=>c.data.map(p=>({...p,city:key,cityLabel:c.label,sourceUrl:(c.ctaLinks[0]||{}).url||'https://www.hcd.ca.gov/'}))),
+  projects: Object.entries(CITIES).filter(([key])=>key!=='all').flatMap(([key,c])=>c.data.map(p=>({...p,city:key,cityLabel:c.label,sourceUrl:p.sourceUrl||(c.ctaLinks[0]||{}).url||'https://www.hcd.ca.gov/'}))),
   stats: CITY_STATS, statsSource: STATS_SOURCE,
   showScreen
 };
 document.getElementById('onboardExplore').addEventListener('click',()=>{
   document.getElementById('onboardOverlay').style.display='none';
+  guestProfile.data.explored=true;guestProfile.save();
   showScreen('dashboard');
 });
+if(guestProfile.data.explored)document.getElementById('onboardOverlay').style.display='none';
 // Wait until all data and renderer state are initialized before drawing map markers.
-if(window.L && !mapProvider) initLeafletMap();
+if(!GOOGLE_MAPS_API_KEY && !mapProvider) showGoogleEmbed();
 </script>
 <script src="/vendor/leaflet-heat.js"></script>
 <script type="module" src="/futures/app.js"></script>

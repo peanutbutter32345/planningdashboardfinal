@@ -1,3 +1,4 @@
+import {REGIONAL_CITIES} from './regional.js';
 export const BOARDS = [
   {
     "name": "Planning Commission",
@@ -455,3 +456,5 @@ export const BOARDS = [
     "id": "gilroy:Boards, Commissions &amp; Committees"
   }
 ];
+
+BOARDS.push(...Object.entries(REGIONAL_CITIES).flatMap(([city,c])=>[...c.deciders.map(b=>({...b,city,boardType:'decider',id:city+':'+b.name})),...c.join.map(b=>({...b,city,boardType:'join',id:city+':'+b.name}))]));

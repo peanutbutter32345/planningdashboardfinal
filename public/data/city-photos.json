@@ -1,0 +1,402 @@
+{
+  "sunnyvale": {
+    "url": "/img/cities/sunnyvale.jpg",
+    "cap": "Murphy Street, downtown Sunnyvale",
+    "lic": "CC BY-SA 3.0",
+    "by": "Coolcaesar",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Murphystreetsunnyvale.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Murphystreetsunnyvale.jpg"
+  },
+  "cupertino": {
+    "url": "/img/cities/cupertino.jpg",
+    "cap": "Public park, Cupertino",
+    "lic": "CC0",
+    "by": "Tomwsulcer",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Public_park_in_Cupertino_California_with_trees_and_walkway.JPG/1280px-Public_park_in_Cupertino_California_with_trees_and_walkway.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Public_park_in_Cupertino_California_with_trees_and_walkway.JPG"
+  },
+  "mountainview": {
+    "url": "/img/cities/mountainview.jpg",
+    "cap": "Castro Street, Mountain View",
+    "lic": "CC BY-SA 3.0",
+    "by": "Runner1928",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Castro_Street_Mountain_View_sidewalk.jpg/1280px-Castro_Street_Mountain_View_sidewalk.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Castro_Street_Mountain_View_sidewalk.jpg"
+  },
+  "milpitas": {
+    "url": "/img/cities/milpitas.jpg",
+    "cap": "Milpitas and the eastern hills",
+    "lic": "Public domain",
+    "by": "Milpitas guy",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Milpitas_mtns2.JPG/1280px-Milpitas_mtns2.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Milpitas_mtns2.JPG"
+  },
+  "losaltos": {
+    "url": "/img/cities/losaltos.jpg",
+    "cap": "Main Street, Los Altos",
+    "lic": "CC BY-SA 3.0",
+    "by": "Coolcaesar",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Los_Altos_Main_Street_2.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Los_Altos_Main_Street_2.jpg"
+  },
+  "saratoga": {
+    "url": "/img/cities/saratoga.jpg",
+    "cap": "Saratoga Village Library",
+    "lic": "Public domain",
+    "by": "Los Gatos Star",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/69/Saratoga_Village_Library.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Saratoga_Village_Library.jpg"
+  },
+  "westsanjose": {
+    "url": "/img/cities/westsanjose.jpg",
+    "cap": "The San Jose skyline",
+    "lic": "CC BY 2.0",
+    "by": "Michael, San Jose",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/San_Jose_California_Skyline.jpg/1280px-San_Jose_California_Skyline.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:San_Jose_California_Skyline.jpg"
+  },
+  "santaclara": {
+    "url": "/img/cities/santaclara.jpg",
+    "cap": "743 Franklin Street, Santa Clara",
+    "lic": "CC BY-SA 4.0",
+    "by": "Eugene Zelenko",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/USA-Santa_Clara-743_Franklin_Street-1.jpg/1280px-USA-Santa_Clara-743_Franklin_Street-1.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:USA-Santa_Clara-743_Franklin_Street-1.jpg"
+  },
+  "losgatos": {
+    "url": "/img/cities/losgatos.jpg",
+    "cap": "Hotel Los Gatos",
+    "lic": "CC BY-SA 4.0",
+    "by": "Ramkumar Menon",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Hotel_Los_Gatos.jpg/1280px-Hotel_Los_Gatos.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Hotel_Los_Gatos.jpg"
+  },
+  "campbell": {
+    "url": "/img/cities/campbell.jpg",
+    "cap": "Downtown Campbell",
+    "lic": "Public domain",
+    "by": "Brianvdb",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/DowntownCampbellVTA030406.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:DowntownCampbellVTA030406.jpg"
+  },
+  "paloalto": {
+    "url": "/img/cities/paloalto.jpg",
+    "cap": "Downtown Palo Alto",
+    "lic": "CC0",
+    "by": "Tomwsulcer",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Palo_Alto_California_buildings_and_streets.jpg/1280px-Palo_Alto_California_buildings_and_streets.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Palo_Alto_California_buildings_and_streets.jpg"
+  },
+  "gilroy": {
+    "url": "/img/cities/gilroy.jpg",
+    "cap": "The Strand Theater, downtown Gilroy",
+    "lic": "CC BY-SA 4.0",
+    "by": "Eugene Zelenko",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/USA-Gilroy-Strand_Theater.jpg/1280px-USA-Gilroy-Strand_Theater.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:USA-Gilroy-Strand_Theater.jpg"
+  },
+  "atherton": {
+    "url": "/img/cities/atherton.jpg",
+    "cap": "Holbrook-Palmer Park, Atherton",
+    "lic": "CC0",
+    "by": "LPS.1",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Holbrook-Palmer_Park_Atherton_California.jpg/1280px-Holbrook-Palmer_Park_Atherton_California.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Holbrook-Palmer_Park_Atherton_California.jpg"
+  },
+  "belmont": {
+    "url": "/img/cities/belmont.jpg",
+    "cap": "Belmont from the air",
+    "lic": "CC BY-SA 3.0",
+    "by": "Pi.1415926535",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Belmont%2C_California_aerial_view%2C_February_2018.JPG/1280px-Belmont%2C_California_aerial_view%2C_February_2018.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Belmont%2C_California_aerial_view%2C_February_2018.JPG"
+  },
+  "brisbane": {
+    "url": "/img/cities/brisbane.jpg",
+    "cap": "Visitacion Avenue, Brisbane",
+    "lic": "CC BY-SA 4.0",
+    "by": "Acj sf",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Brisbane%2C_CA_-_Visitacion_Avenue.jpg/1280px-Brisbane%2C_CA_-_Visitacion_Avenue.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Brisbane%2C_CA_-_Visitacion_Avenue.jpg"
+  },
+  "burlingame": {
+    "url": "/img/cities/burlingame.jpg",
+    "cap": "Downtown Burlingame",
+    "lic": "CC BY-SA 3.0",
+    "by": "Wikimedia contributor",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Burlingame_downtown.JPG/1280px-Burlingame_downtown.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Burlingame_downtown.JPG"
+  },
+  "colma": {
+    "url": "/img/cities/colma.jpg",
+    "cap": "Town of Colma",
+    "lic": "CC BY-SA 3.0",
+    "by": "Mliu92",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Town_of_Colma.jpg/1280px-Town_of_Colma.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Town_of_Colma.jpg"
+  },
+  "dalycity": {
+    "url": "/img/cities/dalycity.jpg",
+    "cap": "Westlake, Daly City",
+    "lic": "CC BY-SA 4.0",
+    "by": "Dicklyon",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Westlake_Daly_City_aerial.jpg/1280px-Westlake_Daly_City_aerial.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Westlake_Daly_City_aerial.jpg"
+  },
+  "eastpaloalto": {
+    "url": "/img/cities/eastpaloalto.jpg",
+    "cap": "University Circle, East Palo Alto",
+    "lic": "CC0",
+    "by": "LPS.1",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/University_Circle_East_Palo_Alto.jpg/1280px-University_Circle_East_Palo_Alto.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:University_Circle_East_Palo_Alto.jpg"
+  },
+  "fostercity": {
+    "url": "/img/cities/fostercity.jpg",
+    "cap": "Foster City Hall",
+    "lic": "CC BY-SA 4.0",
+    "by": "King of Hearts",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/City_Hall_Foster_City_May_2011.jpg/1280px-City_Hall_Foster_City_May_2011.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:City_Hall_Foster_City_May_2011.jpg"
+  },
+  "halfmoonbay": {
+    "url": "/img/cities/halfmoonbay.jpg",
+    "cap": "Downtown Half Moon Bay",
+    "lic": "Public domain",
+    "by": "Sallyrob",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Downtown_Half_Moon_Bay.jpg/1280px-Downtown_Half_Moon_Bay.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Downtown_Half_Moon_Bay.jpg"
+  },
+  "hillsborough": {
+    "url": "/img/cities/hillsborough.jpg",
+    "cap": "Tobin Clark Estate, Hillsborough",
+    "lic": "CC BY-SA 4.0",
+    "by": "Olaf2",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Stra%C3%9Fe_im_Tobin_Clark_Estate.jpg/1280px-Stra%C3%9Fe_im_Tobin_Clark_Estate.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Stra%C3%9Fe_im_Tobin_Clark_Estate.jpg"
+  },
+  "menlopark": {
+    "url": "/img/cities/menlopark.jpg",
+    "cap": "Downtown Menlo Park",
+    "lic": "CC0",
+    "by": "LPS.1",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Downtown_Menlo_Park_California.jpg/1280px-Downtown_Menlo_Park_California.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Downtown_Menlo_Park_California.jpg"
+  },
+  "millbrae": {
+    "url": "/img/cities/millbrae.jpg",
+    "cap": "Millbrae",
+    "lic": "Public domain",
+    "by": "Serouj",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Millbrae_California.jpg/1280px-Millbrae_California.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Millbrae_California.jpg"
+  },
+  "pacifica": {
+    "url": "/img/cities/pacifica.jpg",
+    "cap": "Pacifica Pier",
+    "lic": "CC0",
+    "by": "Ekateriniia Vladinakova",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Pacifica_Pier%2C_California.jpg/1280px-Pacifica_Pier%2C_California.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pacifica_Pier%2C_California.jpg"
+  },
+  "portolavalley": {
+    "url": "/img/cities/portolavalley.jpg",
+    "cap": "Morning in Portola Valley",
+    "lic": "CC BY 2.0",
+    "by": "Don Owens",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Morning_in_Portola_Valley%2C_California2.jpg/1280px-Morning_in_Portola_Valley%2C_California2.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Morning_in_Portola_Valley%2C_California2.jpg"
+  },
+  "redwoodcity": {
+    "url": "/img/cities/redwoodcity.jpg",
+    "cap": "Downtown library, Redwood City",
+    "lic": "CC BY-SA 4.0",
+    "by": "Jeanjung212",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Redwood_City%2C_California_Main_Downtown_Library_01_of_08.jpg/1280px-Redwood_City%2C_California_Main_Downtown_Library_01_of_08.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Redwood_City%2C_California_Main_Downtown_Library_01_of_08.jpg"
+  },
+  "sanbruno": {
+    "url": "/img/cities/sanbruno.jpg",
+    "cap": "San Bruno",
+    "lic": "Public domain",
+    "by": "Robert E. Nylund",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/SanBruno.jpg/1280px-SanBruno.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:SanBruno.jpg"
+  },
+  "sanmateo": {
+    "url": "/img/cities/sanmateo.jpg",
+    "cap": "Downtown San Mateo",
+    "lic": "CC BY-SA 2.0",
+    "by": "mliu92",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Downtown_San_Mateo%2C_California_%2838562945445%29.jpg/1280px-Downtown_San_Mateo%2C_California_%2838562945445%29.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Downtown_San_Mateo%2C_California_%2838562945445%29.jpg"
+  },
+  "southsanfrancisco": {
+    "url": "/img/cities/southsanfrancisco.jpg",
+    "cap": "South San Francisco from the air",
+    "lic": "CC BY-SA 4.0",
+    "by": "Dicklyon",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/South_San_Francisco_aerial.jpg/1280px-South_San_Francisco_aerial.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:South_San_Francisco_aerial.jpg"
+  },
+  "woodside": {
+    "url": "/img/cities/woodside.jpg",
+    "cap": "Woodside",
+    "lic": "CC BY-SA 3.0",
+    "by": "Jawed",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Woodside_California_2004.jpg/1280px-Woodside_California_2004.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Woodside_California_2004.jpg"
+  },
+  "sanjose": {
+    "url": "/img/cities/sanjose.jpg",
+    "cap": "San Jose · city view",
+    "by": "Payton Chung",
+    "lic": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Valencia_Hotel,_Santana_Row_(cropped).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Valencia_Hotel%2C_Santana_Row_%28cropped%29.jpg/1280px-Valencia_Hotel%2C_Santana_Row_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "sanfrancisco": {
+    "url": "/img/cities/sanfrancisco.jpg",
+    "cap": "San Francisco · city view",
+    "by": "Craig Howell from San Carlos, CA, USA",
+    "lic": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Zeppelin-ride-020100925-195_(5029394846).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeppelin-ride-020100925-195_%285029394846%29.jpg/1280px-Zeppelin-ride-020100925-195_%285029394846%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "berkeley": {
+    "url": "/img/cities/berkeley.jpg",
+    "cap": "Berkeley · city view",
+    "by": "pedrik",
+    "lic": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Berkeley_cityscape.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Berkeley_cityscape.jpg/1280px-Berkeley_cityscape.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "oakland": {
+    "url": "/img/cities/oakland.png",
+    "cap": "Oakland · city view",
+    "by": "Robert Hsiao",
+    "lic": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lake_Merritt_2022-06-16.png",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Lake_Merritt_2022-06-16.png/1280px-Lake_Merritt_2022-06-16.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "albany": {
+    "url": "/img/cities/albany.jpg",
+    "cap": "Albany · city view",
+    "by": "Das osmnezz",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Albanyca.jpeg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Albanyca.jpeg/1280px-Albanyca.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "emeryville": {
+    "url": "/img/cities/emeryville.jpg",
+    "cap": "Emeryville · city view",
+    "by": "Wikimedia Commons contributors",
+    "lic": "CC BY-SA 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Emeryfromhilton.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/Emeryfromhilton.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "alameda": {
+    "url": "/img/cities/alameda.jpg",
+    "cap": "Alameda · city view",
+    "by": "Sanfranman59",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:St._Joseph%27s_Basilica_(Alameda,_CA)_(cropped).JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/St._Joseph%27s_Basilica_%28Alameda%2C_CA%29_%28cropped%29.JPG/1280px-St._Joseph%27s_Basilica_%28Alameda%2C_CA%29_%28cropped%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "fremont": {
+    "url": "/img/cities/fremont.jpg",
+    "cap": "Fremont · city view",
+    "by": "Oleg Alexandrov",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mission_Peak_over_Lake_Elizabeth,_in_Fremont,_California_(cropped).JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Mission_Peak_over_Lake_Elizabeth%2C_in_Fremont%2C_California_%28cropped%29.JPG/1280px-Mission_Peak_over_Lake_Elizabeth%2C_in_Fremont%2C_California_%28cropped%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "newark": {
+    "url": "/img/cities/newark.jpg",
+    "cap": "Newark · city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Silliman_Activity_and_Family_Aquatic_Center.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Silliman_Activity_and_Family_Aquatic_Center.jpg/1280px-Silliman_Activity_and_Family_Aquatic_Center.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "unioncity": {
+    "url": "/img/cities/unioncity.jpg",
+    "cap": "Union City · city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Union_City_BART_Station.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Union_City_BART_Station.jpg/1280px-Union_City_BART_Station.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "hayward": {
+    "url": "/img/cities/hayward.jpg",
+    "cap": "Hayward · city view",
+    "by": "Mercurywoodrose",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hayward_City_Hall_number_3_front.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Hayward_City_Hall_number_3_front.jpg/1280px-Hayward_City_Hall_number_3_front.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "sanleandro": {
+    "url": "/img/cities/sanleandro.jpg",
+    "cap": "San Leandro · city view",
+    "by": "Sanfranman59",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Casa_Peralta_(San_Leandro,_CA).JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Casa_Peralta_%28San_Leandro%2C_CA%29.JPG/1280px-Casa_Peralta_%28San_Leandro%2C_CA%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "elcerrito": {
+    "url": "/img/cities/elcerrito.jpg",
+    "cap": "El Cerrito · city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cerrito_Theater_San_Pablo_Avenue_(cropped).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Cerrito_Theater_San_Pablo_Avenue_%28cropped%29.jpg/1280px-Cerrito_Theater_San_Pablo_Avenue_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "richmond": {
+    "url": "/img/cities/richmond.jpg",
+    "cap": "Richmond · city view",
+    "by": "Dicklyon",
+    "lic": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Richmond_California_aerial_(cropped).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Richmond_California_aerial_%28cropped%29.jpg/1280px-Richmond_California_aerial_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "sausalito": {
+    "url": "/img/cities/sausalito.jpg",
+    "cap": "Sausalito · city view",
+    "by": "en:User:Squirrel 22",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Sausalito.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Sausalito.jpg/1280px-Sausalito.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "millvalley": {
+    "url": "/img/cities/millvalley.jpg",
+    "cap": "Mill Valley · city view",
+    "by": "SWENOWENSON",
+    "lic": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mill.Valley.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/Mill.Valley.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "morganhill": {
+    "url": "/img/cities/morganhill.jpg",
+    "cap": "First and Monterey, Morgan Hill",
+    "lic": "CC BY-SA 4.0",
+    "by": "Cristiano Tomás",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg/1280px-Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg"
+  },
+  "sancarlos": {
+    "url": "/img/cities/sancarlos.jpg",
+    "cap": "Caltrain at the historic San Carlos station",
+    "lic": "CC BY-SA 3.0",
+    "by": "Pi.1415926535",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Northbound_train_at_San_Carlos_station%2C_November_2018.JPG/1280px-Northbound_train_at_San_Carlos_station%2C_November_2018.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Northbound_train_at_San_Carlos_station%2C_November_2018.JPG"
+  },
+  "tiburon": {
+    "url": "/img/cities/tiburon.jpg",
+    "cap": "Tiburon · city view",
+    "by": "Rich Shelton",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:TiburonDowntown.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/TiburonDowntown.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  }
+}

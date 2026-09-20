@@ -1,3 +1,4 @@
+import {REGIONAL_CITIES} from './regional.js';
 // Market statistics, pulled from Zillow's public research data (files.zillowstatic.com).
 //
 //   homeValue  ZHVI, smoothed & seasonally adjusted, all homes 33rd-67th percentile
@@ -242,3 +243,5 @@ export const CENSUS_SOURCE = {
   url: 'https://www.census.gov/programs-surveys/acs',
   asOf: '2023 (ACS 5-year)',
 };
+
+Object.assign(CITY_STATS,Object.fromEntries(Object.entries(REGIONAL_CITIES).map(([k,c])=>[k,c.stats])));
