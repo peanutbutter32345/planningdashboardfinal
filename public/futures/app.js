@@ -123,7 +123,7 @@ function renderMap(fit=false){
  // The 3D view draws the same rows as columns. Public flood and energy layers stay on the 2D map,
  // which is why the note below says so rather than leaving a reader looking for them.
  if(threeD){
-  threeD.update(rows.filter(validPoint),state);
+  threeD.update(rows.filter(validPoint).map(point3d));
   $('fxMapTitle').textContent=cityLabel()+' · '+state.year;
   $('fxLegend').innerHTML=[['#C8CDBC','Little of the project delivered by '+state.year],['#A3AC90','Part delivered'],['#67794A','Most delivered'],['#3E4F24','Nearly all delivered']].map(([c,label])=>`<span><i style="background:${c}"></i>${label}</span>`).join('')+'<span>Taller column = more modelled homes</span>';
   $('fxLayerNote').textContent='3D: each column is one project, standing on its own coordinates. Taller means more homes modelled as delivered by '+state.year+' - the scale is the square root of that count, so thousand-home plans do not flatten the rest; colour is the share of the project\'s reported homes delivered. Grey buildings are real OpenStreetMap heights, the ground is public elevation data. Flood, energy and heatmap layers are on the 2D map.';
@@ -175,6 +175,13 @@ function setBasemap(){
  baseLayer.on('load',()=>{if(document.querySelector('#futureMap .leaflet-tile-loaded'))$('fxMapError').hidden=true;});
 }
 function pausePlayback(){clearInterval(playTimer);playTimer=null;$('fxPlay').textContent='▶ Play years';$('fxPlay').setAttribute('aria-pressed','false');$('fxMapPlay').textContent='▶';$('fxMapPlay').setAttribute('aria-pressed','false');$('fxMapPlay').setAttribute('aria-label','Play map years');}
+// The shared 3D view takes plain points, not scenario rows: height is the homes this scenario
+// delivers by the selected year, colour the share of that project's reported homes.
+function point3d(p){
+ return {id:p.id,lat:p.lat,lng:p.lng,label:p.addr,sub:p.cityLabel,
+  value:Math.max(0,p.expected||0),tone:p.units?Math.min(1,p.expected/p.units):0,
+  detail:fmt(p.expected)+' of '+fmt(p.units)+' reported homes modelled as delivered by '+state.year};
+}
 async function toggle3D(){
  const button=$('fx3d');
  if(threeD){threeD.destroy();threeD=null;$('futureMap3d').hidden=true;button.setAttribute('aria-pressed','false');button.textContent='\u25EB 3D view';renderMap(true);notify('Back to the 2D map, with the public flood and energy layers.');return;}
@@ -185,12 +192,11 @@ async function toggle3D(){
   // Unhide first: MapLibre measures its container as it starts, and a hidden container gave it a
   // zero-sized viewport, which left the camera wide and flat.
   $('futureMap3d').hidden=false;
-  threeD=await ThreeD.mount($('futureMap3d'),{onSelect:id=>{selected=id;}});
+  threeD=await ThreeD.mount($('futureMap3d'),{onSelect:id=>{selected=id;},fullscreenTarget:$('fxMapCard')});
   button.setAttribute('aria-pressed','true');button.textContent='\u25A3 3D on';
-  threeD.update(rows.filter(validPoint),state);
-  threeD.focus();
+  threeD.update(rows.filter(validPoint).map(point3d),{focus:true});
   renderMap();
-  notify('3D view, opened over the busiest cluster in '+cityLabel()+'. Column height is modelled delivery for '+state.year+' - drag the year slider to watch it change, right-drag (or two fingers) to tilt and turn, and press Fit area for the whole area.');
+  notify('3D view, opened over the busiest cluster in '+cityLabel()+'. Column height is modelled delivery for '+state.year+' - drag the year slider to watch it change, right-drag (or two fingers) to tilt and turn, press Fit area for the whole area, and use the ⤢ button on the map for full screen.');
  }catch(error){
   $('futureMap3d').hidden=true;
   button.textContent='\u25EB 3D view';
@@ -259,7 +265,7 @@ function init(){
  $('fxBillFilter').addEventListener('change',renderBills);
  $('fxBillList').addEventListener('click',e=>{const b=e.target.closest('[data-bill]');if(b)togglePolicy(b.dataset.bill);});
  $('fxSearch').addEventListener('input',()=>{limit=20;renderTable();});$('fxSort').addEventListener('change',renderTable);$('fxMore').addEventListener('click',()=>{limit+=20;renderTable();});
- $('fxRows').addEventListener('click',e=>{const b=e.target.closest('[data-project]');if(!b)return;const row=rows.find(p=>p.id===b.dataset.project);showFutureView('map');if(map&&row){if(state.layer==='prices'){state.layer='delivery';syncControls();renderMap();}selected=row.id;map.setView([row.lat,row.lng],15,{animate:false});markers.get(row.id)?.openPopup();$('futureMap').scrollIntoView({block:'center',behavior:'smooth'});}else notify('Map unavailable. Use the project register for the city source.');});
+ $('fxRows').addEventListener('click',e=>{const b=e.target.closest('[data-project]');if(!b)return;const row=rows.find(p=>p.id===b.dataset.project);showFutureView('map');if(threeD&&row){threeD.flyTo(row.lat,row.lng);selected=row.id;$('futureMap3d').scrollIntoView({block:'center',behavior:'smooth'});}else if(map&&row){if(state.layer==='prices'){state.layer='delivery';syncControls();renderMap();}selected=row.id;map.setView([row.lat,row.lng],15,{animate:false});markers.get(row.id)?.openPopup();$('futureMap').scrollIntoView({block:'center',behavior:'smooth'});}else notify('Map unavailable. Use the project register for the city source.');});
  $('fxShare').addEventListener('click',async()=>{const url=new URL(location.href);url.search=scenarioQuery(state);url.hash='';try{await navigator.clipboard.writeText(url.href);notify('Scenario link copied. It includes your area, year and assumptions.');}catch{const status=$('fxStatus');status.replaceChildren();const label=document.createElement('label');label.textContent='Copy this scenario link: ';const input=document.createElement('input');input.value=url.href;input.readOnly=true;label.append(input);status.append(label);input.select();}});
  $('fxExport').addEventListener('click',exportCsv);
  for(const [id,key] of [['fxFlood','flood'],['fxEnergy','energy']])$(id).addEventListener('change',e=>{state[key]=e.target.checked;renderMap();});

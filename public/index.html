@@ -143,6 +143,15 @@
   #mapGoogle{display:none;} #mapLeafletWrap{display:none;}
   .map-provider-tag{position:absolute; z-index:5; margin:10px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700; background:rgba(30,30,30,0.85); color:#fff; padding:4px 9px; border-radius:2px;}
   .map-pos{position:relative;}
+  /* The 3D canvas covers the 2D map, which keeps the shell's height. Both overview overlays
+     (the gate, the provider tag) sit above it, so it stays under them at z-index 1. */
+  #map3d{position:absolute; inset:0; z-index:1;}
+  #yaMap3d{position:absolute; inset:0; z-index:1;}
+  .map-shell.has-3d, .ya-map-wrap.has-3d{min-height:480px;}
+  .map-shell:fullscreen, .ya-map-wrap:fullscreen{background:#e7ebe3;}
+  .map-shell:fullscreen #map, .map-shell:fullscreen #mapGoogle, .ya-map-wrap:fullscreen .ya-map{height:100%;}
+  .map-shell:fullscreen #mapLeafletWrap{height:100%;}
+  .overview-map-tools button[aria-pressed="true"], .ya-map-actions button[aria-pressed="true"]{background:var(--ink); color:#fff;}
   .legend{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; font-size:11px; color:var(--text-soft); font-family:'Open Sans',sans-serif;}
   .legend span{display:inline-flex; align-items:center; gap:6px;}
   .legend i{width:9px;height:9px;border-radius:50%; display:inline-block;}
@@ -925,7 +934,7 @@
     flex-wrap:wrap; border-bottom:1px solid var(--rule); padding-bottom:9px; margin-bottom:12px;}
   .ya-map-head h3{font-size:17px; color:var(--ink);}
   .ya-map-head .section-note{margin:3px 0 0;}
-  .ya-map-actions{display:flex; gap:7px;}
+  .ya-map-actions{display:flex; gap:7px; flex-wrap:wrap;}   /* four buttons now - they wrap on a phone */
   .ya-map-actions .btn{font-size:12px; padding:7px 12px;}
   .ya-map-wrap{position:relative; z-index:0; isolation:isolate; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
   .ya-map{height:380px; background:#EDEFE6;}
@@ -1588,12 +1597,15 @@
           </div>
           <div class="ya-map-actions">
             <button type="button" class="btn secondary" id="yaAddOpen">Add to map</button>
+            <button type="button" class="btn secondary" id="ya3d" aria-pressed="false">&#9707; 3D view</button>
+            <button type="button" class="btn secondary" id="yaFullscreen" aria-pressed="false">&#9974; Full screen</button>
             <button type="button" class="btn secondary" id="yaFit">Fit to pins</button>
           </div>
         </div>
         <div class="ya-split">
         <div class="ya-map-wrap">
           <div id="yaMap" class="ya-map"></div>
+          <div id="yaMap3d" hidden aria-label="Three-dimensional map of your pinned places."></div>
           <div class="ya-map-empty" id="yaMapEmpty" hidden>
             <b>Nothing pinned yet.</b>
             <p>Use <b>Add to map</b> to drop the projects you are following, the boards that decide them, or a figure you want to remember.</p>
@@ -2166,8 +2178,9 @@
           <div id="mapGoogleEmbed" hidden></div>
           <div id="mapGoogle" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div>
           <div id="mapLeafletWrap"><span class="map-provider-tag">Map: Esri, HERE, Garmin, USGS, OpenStreetMap</span><div id="map" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div></div>
+          <div id="map3d" hidden aria-label="Three-dimensional map of projects. Every project is also listed as text in the Project register section below."></div>
         </div>
-        <div class="overview-map-tools"><span id="overviewMapStatus" role="status" aria-live="polite"></span><button type="button" class="btn secondary" id="fitOverviewMap">Fit all points</button><button type="button" class="btn secondary" id="retryOverviewGoogle" hidden>Switch to Google Maps</button></div>
+        <div class="overview-map-tools"><span id="overviewMapStatus" role="status" aria-live="polite"></span><button type="button" class="btn secondary" id="overview3d" aria-pressed="false">&#9707; 3D view</button><button type="button" class="btn secondary" id="overviewFullscreen" aria-pressed="false">&#9974; Full screen</button><button type="button" class="btn secondary" id="fitOverviewMap">Fit all points</button><button type="button" class="btn secondary" id="retryOverviewGoogle" hidden>Switch to Google Maps</button></div>
         <div id="overviewLocationNotice" role="status" hidden></div>
         <div class="legend" id="legend"></div>
       </div>
@@ -6043,6 +6056,7 @@ function buildMarkersForCurrentProvider(){
 function fitOverviewMap(){
   const host=document.getElementById('screenDashboard');
   if(!host.offsetWidth)return;
+  if(overview3D){overview3D.update(overviewPoints(),{fit:true});return;}
   const points=filtered().filter(OverviewMapUtils.validPoint),c=CITIES[currentCity];
   if(mapProvider==='google'&&gMap){
     google.maps.event.trigger(gMap,'resize');
@@ -6126,6 +6140,121 @@ function ensureOverviewMap(){
   const toGoogle=document.getElementById('retryOverviewGoogle');
   if(toGoogle)toGoogle.hidden=!(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE');
 }
+/* ---- 3D and full screen, shared with the Future Map ----
+   The same module the Future Map uses draws these two maps: it takes plain points, so each map
+   only has to say what a point is worth (height), what colour it is, and what its popup reads.
+   Nothing is downloaded until a reader presses 3D. */
+const THREE_D_MODULE='/futures/three-d.js';
+const STAGE_TONE={proposed:.15, review:.4, approved:.7, construction:.9, completed:1};
+let overview3D=null, ya3D=null, threeDBusy=false;
+
+function overviewPoints(){
+  return filtered().filter(d=>Number.isFinite(d.lat)&&Number.isFinite(d.lng)).map(d=>{
+    const city=CITIES[cityOfProject(d.id)||currentCity];
+    return {id:d.id, lat:d.lat, lng:d.lng, label:d.addr,
+      sub:(city?city.label+' \u00b7 ':'')+d.type,
+      value:d.units||0, tone:STAGE_TONE[d.stage]??.3,
+      // Roads, parks and civic works publish no unit count. They still belong on the map, so they
+      // stand at a fixed height and the popup says why they are not taller.
+      height:d.units?undefined:45,
+      detail:(d.units?d.units.toLocaleString()+' units \u00b7 ':'no unit count published \u00b7 ')+(STAGE_MAP[d.stage]?.label||d.stage)};
+  });
+}
+function yaPoints(){
+  return yaPins.filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng)).map((p,i)=>({
+    id:p.type+':'+i, lat:p.lat, lng:p.lng, label:p.label, sub:p.sub||'',
+    // Pins are things a reader chose to follow, not quantities, so every one stands the same
+    // height and keeps the colour it has in the 2D map.
+    value:0, height:70, radius:24, color:YA_PIN_COLOR[p.type]||'#3E4F24',
+    detail:p.approx?'Pinned at the city centre - no coordinates published.':''}));
+}
+
+// One toggle for both maps: mount on first press, tear down on the second, and always leave the
+// 2D map exactly as it was.
+async function toggle3D({button, host, target, points, get, set, onSelect=()=>{}, hide=()=>{}, show=()=>{}, note=''}){
+  const current=get();
+  if(current){current.destroy();set(null);host.hidden=true;target?.classList.remove('has-3d');show();button.setAttribute('aria-pressed','false');button.innerHTML='&#9707; 3D view';return;}
+  if(threeDBusy)return;
+  threeDBusy=true;const label=button.innerHTML;button.textContent='Loading 3D\u2026';
+  try{
+    const {ThreeD}=await import(THREE_D_MODULE);
+    // Unhide first: MapLibre measures its container as it starts, and a hidden container gives it
+    // a zero-sized viewport, which leaves the camera wide and flat.
+    host.hidden=false;
+    // The shell's height normally comes from the 2D map inside it, and on the overview that map
+    // may not have started yet. A floor on the wrapper keeps 3D from opening into a 100px strip.
+    target?.classList.add('has-3d');
+    const view=await ThreeD.mount(host,{onSelect,fullscreenTarget:target,
+      center:[CITIES[currentCity].center.lng,CITIES[currentCity].center.lat],zoom:CITIES[currentCity].zoom||12});
+    set(view);hide();
+    view.update(points(),{focus:true});
+    button.setAttribute('aria-pressed','true');button.innerHTML='&#9635; 3D on';
+    if(note)alertless3D(button,note);
+  }catch(error){
+    host.hidden=true;target?.classList.remove('has-3d');button.innerHTML=label;
+    alertless3D(button,'3D could not start \u2014 '+error.message);
+  }finally{threeDBusy=false;}
+}
+function alertless3D(button,message){
+  const status=button.closest('.overview-map-tools')?.querySelector('#overviewMapStatus')||document.getElementById('overviewMapStatus');
+  if(status)status.textContent=message;
+}
+function refresh3D(){
+  overview3D?.update(overviewPoints());
+  ya3D?.update(yaPoints());
+}
+// Full screen works for whichever renderer is showing, so the button does not change meaning when
+// a reader turns 3D on.
+function toggleMapFullscreen(target,button){
+  if(document.fullscreenElement){document.exitFullscreen?.();return;}
+  fullscreenButton=button;
+  const request=target.requestFullscreen||target.webkitRequestFullscreen;
+  if(!request){alertless3D(button,'This browser will not allow full screen here.');return;}
+  // Some browsers reject the promise and some throw outright, and an embedded viewer can refuse
+  // outright on policy. Either way the reader gets a sentence, not a dead button.
+  try{
+    Promise.resolve(request.call(target)).catch(error=>alertless3D(button,'Full screen was refused: '+error.message));
+  }catch(error){alertless3D(button,'Full screen was refused: '+error.message);}
+}
+let fullscreenButton=null;
+document.addEventListener('fullscreenchange',()=>{
+  const on=Boolean(document.fullscreenElement);
+  for(const id of ['overviewFullscreen','yaFullscreen']){
+    const button=document.getElementById(id);
+    if(!button)continue;
+    const active=on&&button===fullscreenButton;
+    button.setAttribute('aria-pressed',String(active));
+    button.innerHTML=active?'&#9974; Exit full screen':'&#9974; Full screen';
+  }
+  if(!on)fullscreenButton=null;
+  // Every renderer has to be told its box changed.
+  setTimeout(()=>{try{lMap?.invalidateSize();}catch{}try{yaMap?.invalidateSize();}catch{}overview3D?.resize();ya3D?.resize();},120);
+});
+document.getElementById('overview3d').addEventListener('click',()=>toggle3D({
+  button:document.getElementById('overview3d'),
+  host:document.getElementById('map3d'),
+  target:document.querySelector('#explore .map-shell'),
+  points:overviewPoints,
+  get:()=>overview3D,set:v=>{overview3D=v;},
+  // The 2D map keeps its box - it is what gives the shell its height, and the 3D canvas is
+  // positioned over it - so it is hidden with visibility rather than taken out of the flow.
+  hide:()=>{document.getElementById('mapLeafletWrap').style.visibility='hidden';document.getElementById('mapGoogle').style.visibility='hidden';},
+  show:()=>{document.getElementById('mapLeafletWrap').style.visibility='';document.getElementById('mapGoogle').style.visibility='';setTimeout(()=>{try{lMap?.invalidateSize();}catch{}},60);},
+  onSelect:id=>{const card=document.querySelector('[data-project-id="'+CSS.escape(id)+'"]');if(card)card.scrollIntoView({block:'center',behavior:'smooth'});},
+  note:'3D map: column height is the reported unit count, colour is the stage. Right-drag (or two fingers) to tilt and turn.'
+}));
+document.getElementById('overviewFullscreen').addEventListener('click',()=>toggleMapFullscreen(document.querySelector('#explore .map-shell'),document.getElementById('overviewFullscreen')));
+document.getElementById('ya3d').addEventListener('click',()=>toggle3D({
+  button:document.getElementById('ya3d'),
+  host:document.getElementById('yaMap3d'),
+  target:document.querySelector('.ya-map-wrap'),
+  points:yaPoints,
+  get:()=>ya3D,set:v=>{ya3D=v;},
+  hide:()=>{document.getElementById('yaMap').style.visibility='hidden';},
+  show:()=>{document.getElementById('yaMap').style.visibility='';setTimeout(()=>{try{yaMap?.invalidateSize();}catch{}},60);}
+}));
+document.getElementById('yaFullscreen').addEventListener('click',()=>toggleMapFullscreen(document.querySelector('.ya-map-wrap'),document.getElementById('yaFullscreen')));
+
 function renderLegend(){
   let html = CATEGORIES.map(c=>`<span><i style="background:${c.color}"></i>${c.label}</span>`).join('');
   html += `<span><i class="dia" style="background:#5F7640"></i>Diamond = public works</span>`;
@@ -6134,6 +6263,7 @@ function renderLegend(){
   document.getElementById('legend').innerHTML = html;
 }
 function updateMapVisibility(){
+  if(overview3D)overview3D.update(overviewPoints());
   if(!mapProvider)return;
   const list=filtered(),visible=new Set(list.map(d=>d.id));
   const markers=mapProvider==='google'?gMarkers:lMarkers;
@@ -6675,6 +6805,9 @@ document.getElementById('search').addEventListener('input', (e)=>{ state.q = e.t
 
 function switchCity(key){
   if(!Object.hasOwn(CITIES, key)) return;
+  // A reader who changes city with 3D open should be taken there, not left hovering over the
+  // city they just left.
+  if(overview3D&&key!==currentCity)setTimeout(()=>overview3D?.update(overviewPoints(),{focus:true}),0);
   if(key!=='all'){setCountyScope('');cityBrowseCounty=CITIES[key].county;}
   currentCity = key;
   railResourcePage=0;
@@ -7829,9 +7962,11 @@ function renderYaMap(){
       .addTo(yaLayer);
   });
   setTimeout(()=>{ try{ m.invalidateSize(); }catch(e){} }, 60);
+  ya3D?.update(yaPoints());
 }
 
 function yaFitPins(){
+  if(ya3D){ya3D.update(yaPoints(),{fit:true});return;}
   const m = ensureYaMap();
   if(!m) return;
   const pts = yaPins.filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng)).map(p=>[p.lat,p.lng]);
