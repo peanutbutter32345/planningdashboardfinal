@@ -804,6 +804,10 @@
   #giSearch:focus{outline:none; border-color:var(--ink);}
   .gi-count{font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-bottom:10px;}
   .gi-boardlist{display:grid; gap:9px;}
+  .pager-items.gi-boardlist{grid-template-columns:minmax(0,1fr); gap:9px;}
+  .pager-fill-note{grid-column:1/-1; margin:6px 0 0; padding-top:14px; border-top:1px solid #dce2d3;
+    font:600 11.5px 'Open Sans',sans-serif; letter-spacing:.06em; text-transform:uppercase; color:#778169;}
+  .card-city{color:var(--ink); font-weight:700;}
   .gi-board{position:relative; display:flex; gap:14px; justify-content:space-between; align-items:flex-start;
     flex-wrap:wrap; background:#fff; border:1px solid var(--rule); border-radius:2px; padding:13px 15px;}
   .gi-board-main{flex:1 1 320px; min-width:0;}
@@ -2147,7 +2151,7 @@
         <div id="officialMapBar"></div>
         <div class="map-shell map-pos">
           <div id="mapGate">
-            <h3>Loading Google Maps…</h3>
+            <h3>Loading the map…</h3>
             <p>Explore the area and select a project from the register below.</p>
             <div class="key-row" hidden>
               <label for="gmapsKey" class="sr-only">Google Maps API key</label>
@@ -2161,9 +2165,9 @@
           </div>
           <div id="mapGoogleEmbed" hidden></div>
           <div id="mapGoogle" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div>
-          <div id="mapLeafletWrap"><span class="map-provider-tag">Free map - OpenStreetMap</span><div id="map" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div></div>
+          <div id="mapLeafletWrap"><span class="map-provider-tag">Map: Esri, HERE, Garmin, USGS, OpenStreetMap</span><div id="map" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div></div>
         </div>
-        <div class="overview-map-tools"><span id="overviewMapStatus" role="status" aria-live="polite"></span><button type="button" class="btn secondary" id="fitOverviewMap">Fit all points</button><button type="button" class="btn secondary" id="retryOverviewGoogle" hidden>Retry Google Maps</button></div>
+        <div class="overview-map-tools"><span id="overviewMapStatus" role="status" aria-live="polite"></span><button type="button" class="btn secondary" id="fitOverviewMap">Fit all points</button><button type="button" class="btn secondary" id="retryOverviewGoogle" hidden>Switch to Google Maps</button></div>
         <div id="overviewLocationNotice" role="status" hidden></div>
         <div class="legend" id="legend"></div>
       </div>
@@ -6104,7 +6108,7 @@ function tileVoyager(lat, lng, z){
 function initLeafletMap(){
   if(!window.L){document.getElementById('gateError').textContent='Map unavailable. Project records and city links remain below.';document.getElementById('gateError').style.display='block';return;}
   document.getElementById('mapGate').style.display='none';document.getElementById('mapGoogle').style.display='none';document.getElementById('mapGoogleEmbed').hidden=true;document.getElementById('mapLeafletWrap').style.display='block';
-  if(!lMap){lMap=L.map('map',{scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat,CITIES[currentCity].center.lng],CITIES[currentCity].zoom);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',maxZoom:19}).addTo(lMap);}
+  if(!lMap){lMap=L.map('map',{scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat,CITIES[currentCity].center.lng],CITIES[currentCity].zoom);L.tileLayer(MAP_TILE_URL,{attribution:CARTO_ATTRIB,maxZoom:19}).addTo(lMap);}
   mapProvider='leaflet';renderLegend();buildMarkersForCurrentProvider();
 }
 document.getElementById('fitOverviewMap').addEventListener('click',fitOverviewMap);
@@ -6113,10 +6117,14 @@ document.getElementById('loadGoogleBtn').addEventListener('click', loadGoogleMap
 document.getElementById('useFreeMapBtn').addEventListener('click', initLeafletMap);
 
 // Start the map as it approaches the viewport, after the setup dialog is complete.
+// The overview used to open in Google Maps whenever a key was configured, so it was the one map on
+// the site that did not look like the others. It now opens on the same Esri basemap as the topic,
+// your-area and hero maps; Google stays one button away.
 function ensureOverviewMap(){
   if(mapProvider||googleLoadPending||document.getElementById('onboardOverlay').style.display!=='none')return;
-  if(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE')loadGoogleMapsWithKey(GOOGLE_MAPS_API_KEY);
-  else initLeafletMap();
+  initLeafletMap();
+  const toGoogle=document.getElementById('retryOverviewGoogle');
+  if(toGoogle)toGoogle.hidden=!(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE');
 }
 function renderLegend(){
   let html = CATEGORIES.map(c=>`<span><i style="background:${c.color}"></i>${c.label}</span>`).join('');
@@ -6608,6 +6616,14 @@ function projectCardHtml(d){
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
       <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':'City record'} &#8599;</a>`:'';})()}<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
     </div>`;
+}
+// Cards borrowed from other cities to finish a short section. The card itself only shows an
+// address, so the city name is printed beside the project type - nobody should have to guess
+// whether a record is local.
+function regionCardHtml(d){
+  const label=CITIES[d._sourceCity]?.label;
+  if(!label) return projectCardHtml(d);
+  return projectCardHtml(d).replace('<div class="type">','<div class="type"><b class="card-city">'+escapeHtml(label)+'</b> &middot; ');
 }
 function renderRegister(){
   const list = filtered();
@@ -7486,7 +7502,7 @@ function renderGiBoards(){
 
   const host = document.getElementById('giBoardList');
   if(!host) return;
-  host.innerHTML = rows.length ? rows.map(b=>{
+  const boardRowHtml = b=>{
     const id = b.city+':'+b.name;
     const sched = parseSchedule(b.when);
     const starData = {title:b.name+' ('+b.cityLabel+')', desc:b.body+' '+b.when, url:b.url, city:b.city};
@@ -7504,9 +7520,13 @@ function renderGiBoards(){
       + '</div>'
       + (b.url ? '<a class="gi-open" href="'+b.url+'" target="_blank" rel="noopener">Open &#8599;</a>' : '')
       + '</div>';
-  }).join('') : '<div class="empty">No boards match that.</div>';
-  wireBoardActions(host);
-  if(typeof wireStarButtons === 'function') wireStarButtons(host);
+  };
+  // The board list runs to a hundred-odd rows across every city, which buried the calendar below
+  // it. It is paged like the other collections, five boards to a page.
+  DashboardBrowse.mountPager(host, rows, boardRowHtml, {
+    label:'Boards', gridClass:'gi-boardlist', key:'gi:'+giCity+':'+giCat+':'+giQuery.trim().toLowerCase(),
+    onRender:el=>{ wireBoardActions(el); if(typeof wireStarButtons === 'function') wireStarButtons(el); }
+  });
 }
 
 // ---- The calendar ----
@@ -10346,7 +10366,7 @@ function renderTopicNews(topicKey, cap){
   if(!el) return;
   const scope=topicViewState[topicKey].scope;
   const list = NEWS_ARTICLES.filter(a=>a.topic===topicKey&&(scope==='region'||(currentCity==='all'?(!activeCounty||CITIES[a.city]?.county===activeCounty):a.city===currentCity))).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-  DashboardBrowse.mountPager(el,list,a=>{
+  const newsCardHtml = a => {
     const starData = {title:a.title, desc:a.snippet, url:a.url};
     return `
     <article class="news-card">
@@ -10360,7 +10380,16 @@ function renderTopicNews(topicKey, cap){
         <div class="news-date">${fmtDate(a.date)}</div>
       </div>
     </a></article>`;
-  },{label:'Articles',key:topicKey+':'+currentCity+':'+activeCounty+':'+scope,gridClass:'news-grid'});
+  };
+  // Same rule as the project register: a short local feed is finished out with coverage of this
+  // topic elsewhere in the Bay Area. Each card already names its city, so nothing needs relabelling.
+  const shown=new Set(list.map(a=>a.url));
+  const pad=scope==='region'?null:{
+    items:NEWS_ARTICLES.filter(a=>a.topic===topicKey&&!shown.has(a.url)).sort((a,b)=>(b.date||'').localeCompare(a.date||'')),
+    render:newsCardHtml,
+    note:'Across the Bay Area \u2014 the same topic in other cities',
+    noteEmpty:'No coverage on file for '+(CITIES[currentCity]?.label||'this area')+' \u2014 here is this topic across the Bay Area'};
+  DashboardBrowse.mountPager(el,list,newsCardHtml,{label:'Articles',key:topicKey+':'+currentCity+':'+activeCounty+':'+scope,gridClass:'news-grid',pad});
 }
 // Official links relevant to this topic, for the city being viewed. Categories come from the
 // verified OFFICIAL_LINKS registry; nothing here is generated.
@@ -10405,7 +10434,18 @@ function renderTopicPage(topicKey, categoryKey){
   if(view.tab==='guide'){renderTopicLaws(topicKey,cap);const rhna=document.getElementById('topicRhna'+cap);if(rhna)rhna.innerHTML=RHNA[currentCity]?rhnaSection(currentCity):'';return;}
   const list=(view.scope==='region'?BAY_AREA_VIEW.data:DATA()).filter(d=>categoryOf(d)===categoryKey);
   document.getElementById('topicCityHead'+cap).textContent=view.scope==='region'?'Across the Bay Area':'In '+CITIES[currentCity].label;
-  DashboardBrowse.mountPager(document.getElementById('topicCityGrid'+cap),list,projectCardHtml,{label:'Projects',key:topicKey+':'+currentCity+':'+activeCounty+':'+view.scope,onRender:host=>{
+  // Smaller cities hold only a handful of records in a category. Rather than end the section on a
+  // half-empty row, the rest of the page is filled with the same category from other Bay Area
+  // cities, newest filings first, under a heading that says exactly what they are.
+  const pad=view.scope==='region'?null:{
+    items:BAY_AREA_VIEW.data.filter(d=>categoryOf(d)===categoryKey&&d._sourceCity!==currentCity)
+      // Neighbours first - a Woodside reader is better served by San Mateo County - then newest.
+      .sort((a,b)=>(CITIES[b._sourceCity].county===CITIES[currentCity].county)-(CITIES[a._sourceCity].county===CITIES[currentCity].county)
+        ||String(b.filed||'').localeCompare(String(a.filed||''))),
+    render:regionCardHtml,
+    note:'Across the Bay Area \u2014 the same category in other cities',
+    noteEmpty:'Nothing is on file in '+CITIES[currentCity].label+' for this category \u2014 here is the same category across the Bay Area'};
+  DashboardBrowse.mountPager(document.getElementById('topicCityGrid'+cap),list,projectCardHtml,{label:'Projects',key:topicKey+':'+currentCity+':'+activeCounty+':'+view.scope,pad,onRender:host=>{
     host.querySelectorAll('.locate-btn').forEach(btn=>btn.onclick=()=>{const id=btn.dataset.id,owner=Object.keys(CITIES).find(k=>k!=='all'&&CITIES[k].data.some(d=>d.id===id));if(owner&&owner!==currentCity)switchCity(owner);showScreen('dashboard');flyTo(id);});
   }});
 }
