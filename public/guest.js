@@ -47,6 +47,21 @@
    }else throw Error('This action requires a full account.');
    this.save();if(!this.persistent)throw Error('Browser storage is unavailable. Changes are kept only until this page closes.');return result;
   }
+  /* A guest is a user of the site, so the server is told one exists: an id, the name we generated
+     and the place they chose, and nothing else. It is worth one call when the profile is new, when
+     the name or city changes, and once a day after that - not on every page load. */
+  syncState(now=Date.now()){
+   const d=this.data,payload={guestId:d.id,username:d.username,homeCity:d.preferences?.homeCity||null};
+   const last=d.serverSync||null;
+   const changed=!last||last.username!==payload.username||last.homeCity!==payload.homeCity;
+   const stale=!last||!(now-Number(last.at)<24*60*60*1000);
+   return {payload,due:changed||stale};
+  }
+  markSynced(now=Date.now()){
+   const {payload}=this.syncState(now);
+   this.data.serverSync={at:now,username:payload.username,homeCity:payload.homeCity};
+   this.save();
+  }
  }
  root.DashboardGuest={GuestStore};
 })(globalThis);
