@@ -4332,7 +4332,7 @@
     "city": "Larkspur",
     "category": "Meetings",
     "title": "Larkspur meeting agendas and participation",
-    "url": "http://www.larkspur.ca.gov/288/Agendas-and-Minutes",
+    "url": "https://www.larkspur.ca.gov/288/Agendas-and-Minutes",
     "note": "Check the published agenda for dates, cancellations, video and public comment instructions."
   },
   {
@@ -4356,7 +4356,7 @@
     "city": "Larkspur",
     "category": "Housing",
     "title": "Larkspur housing policy resources",
-    "url": "https://livinginlarkspur.com/",
+    "url": "https://larkspur.ca.gov/",
     "note": "Official local housing programs and policy information."
   },
   {
@@ -4364,7 +4364,7 @@
     "city": "Larkspur",
     "category": "City News",
     "title": "Larkspur official news and notices",
-    "url": "http://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
+    "url": "https://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
     "note": "City-published updates. Open the source for the latest announcements."
   },
   {
@@ -5244,7 +5244,7 @@
     "city": "Cloverdale",
     "category": "Meetings",
     "title": "Cloverdale meeting agendas and participation",
-    "url": "http://www.cloverdale.net/agendacenter",
+    "url": "https://www.cloverdale.net/agendacenter",
     "note": "Check the published agenda for dates, cancellations, video and public comment instructions."
   },
   {

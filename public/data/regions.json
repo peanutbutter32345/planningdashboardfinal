@@ -5302,7 +5302,7 @@
       "fips": "40438",
       "censusSlug": "larkspur",
       "planning": "https://www.larkspur.ca.gov/",
-      "meetings": "http://www.larkspur.ca.gov/288/Agendas-and-Minutes",
+      "meetings": "https://www.larkspur.ca.gov/288/Agendas-and-Minutes",
       "website": "https://www.larkspur.ca.gov/",
       "reviewed": "2026-09-20",
       "coverage": "directory",
@@ -5334,7 +5334,7 @@
         {
           "cat": "Meetings",
           "title": "Larkspur meeting agendas and participation",
-          "url": "http://www.larkspur.ca.gov/288/Agendas-and-Minutes",
+          "url": "https://www.larkspur.ca.gov/288/Agendas-and-Minutes",
           "note": "Check the published agenda for dates, cancellations, video and public comment instructions."
         },
         {
@@ -5352,13 +5352,13 @@
         {
           "cat": "Housing",
           "title": "Larkspur housing policy resources",
-          "url": "https://livinginlarkspur.com/",
+          "url": "https://larkspur.ca.gov/",
           "note": "Official local housing programs and policy information."
         },
         {
           "cat": "City News",
           "title": "Larkspur official news and notices",
-          "url": "http://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
+          "url": "https://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
           "note": "City-published updates. Open the source for the latest announcements."
         }
       ],
@@ -5380,7 +5380,7 @@
           "snippet": "Read city-published announcements and notices at the source. Meeting dates and project decisions should be checked against the current agenda.",
           "source": "Official city resource",
           "date": "",
-          "url": "http://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
+          "url": "https://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
           "reviewed": "2026-09-20"
         }
       ],
@@ -5390,7 +5390,7 @@
           "name": "Council meetings",
           "when": "Check the official agenda for the next meeting and participation instructions.",
           "body": "Local government decisions, public hearings, budgets and land-use items.",
-          "link": "http://www.larkspur.ca.gov/288/Agendas-and-Minutes"
+          "link": "https://www.larkspur.ca.gov/288/Agendas-and-Minutes"
         },
         {
           "name": "Planning & development",
@@ -7506,7 +7506,7 @@
       "fips": "14190",
       "censusSlug": "cloverdale",
       "planning": "https://www.cloverdale.net/73/Planning-Community-Development-Departmen",
-      "meetings": "http://www.cloverdale.net/agendacenter",
+      "meetings": "https://www.cloverdale.net/agendacenter",
       "website": "https://www.cloverdale.net/",
       "reviewed": "2026-09-20",
       "coverage": "directory",
@@ -7538,7 +7538,7 @@
         {
           "cat": "Meetings",
           "title": "Cloverdale meeting agendas and participation",
-          "url": "http://www.cloverdale.net/agendacenter",
+          "url": "https://www.cloverdale.net/agendacenter",
           "note": "Check the published agenda for dates, cancellations, video and public comment instructions."
         },
         {
@@ -7594,7 +7594,7 @@
           "name": "Council meetings",
           "when": "Check the official agenda for the next meeting and participation instructions.",
           "body": "Local government decisions, public hearings, budgets and land-use items.",
-          "link": "http://www.cloverdale.net/agendacenter"
+          "link": "https://www.cloverdale.net/agendacenter"
         },
         {
           "name": "Planning & development",

@@ -4,8 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Bay Civic Dashboard</title>
-<!-- Inline so it costs no extra request, and stops the browser 404ing on /favicon.ico -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%233E4F24'/%3E%3Cpath d='M7 22V13l5-4 5 4v9z' fill='%23fff'/%3E%3Crect x='19' y='15' width='6' height='7' fill='%23F0C86A'/%3E%3C/svg%3E">
+<!-- The site mark: three towers of different heights on the bay shore, under the sun. The SVG is
+     the icon browsers show in a tab; scripts/make_icon.py rasterises the same drawing for the
+     phone home-screen icon. -->
+<link rel="icon" type="image/svg+xml" href="/img/logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/icon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/icon-180.png">
+<meta name="theme-color" content="#2E3B1C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -455,6 +460,17 @@
   /* Left rail: signup plus a rotating figure, mirroring Featured News on the right. */
   .hero-rail{flex:1 1 0; max-width:none; min-width:280px; display:flex; flex-direction:column; gap:11px;}
   .rail-card{background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  /* The menu is dark, so this panel is lettered for a dark ground rather than the page's. */
+  .nav-identity{display:flex; gap:10px; align-items:center; padding:10px 12px; margin-top:6px;
+    border-top:1px solid rgba(255,255,255,.2); cursor:default; user-select:none;}
+  .nav-identity img{width:64px; height:40px; object-fit:cover; border-radius:2px; flex:0 0 auto;
+    background:#EDEFE6;}
+  .nav-identity-text{display:flex; flex-direction:column; gap:2px; min-width:0;}
+  .nav-identity b{font-family:'Open Sans',sans-serif; font-size:11.5px; color:#fff; font-weight:700;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .nav-identity span{font-family:'Open Sans',sans-serif; font-size:11px; color:#C8D2B8; line-height:1.4;}
+  .res-row-flat{cursor:default;}
+  .res-row-flat:hover{background:none;}
   .rail-head{background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;}
   .rail-body{padding:11px 13px 12px;}
   .rail-signup p{margin:0 0 10px; font-size:12.5px; color:var(--text-soft); line-height:1.55;}
@@ -498,8 +514,11 @@
   .hc-add:hover{border-color:var(--ink); color:var(--ink);}
   .hc-add.on{background:var(--ink); border-color:var(--ink); color:#fff;}
   .hero-projlist{flex:1 1 auto;}
-  .hero-rail > .rail-card:nth-child(2){flex:1 1 auto; display:flex; flex-direction:column;}
-  .hero-rail > .rail-card:nth-child(2) .rail-body{flex:1 1 auto; overflow:auto;}
+  /* The resources card used to stretch to the height of the rail, which left a tall white void
+     under three rows of links - worst while the reader has no city chosen and the card is on its
+     own. It is as tall as its contents now. */
+  .hero-rail > .rail-card:nth-child(2){flex:0 1 auto; display:flex; flex-direction:column; min-height:0;}
+  .hero-rail > .rail-card:nth-child(2) .rail-body{flex:0 1 auto; min-height:0;}
   .featured-news{display:flex; flex-direction:column;}
   .featured-groups{flex:1 1 auto;}
   .hero-citypick{padding:0 11px 4px;}
@@ -1372,6 +1391,16 @@
     <button class="page-nav-tab" data-page="account" role="menuitem">Your Account</button>
     <button class="page-nav-tab" data-page="bank" role="menuitem">Resource Bank</button>
     <button class="page-nav-tab" data-page="about" role="menuitem">About</button>
+    <!-- Not a menu item: a reminder of who is signed in and which place the dashboard is set to.
+         Nothing here is clickable, and it is hidden from the menu's accessibility tree so it does
+         not read as a sixth destination. -->
+    <div class="nav-identity" id="navIdentity" role="presentation" hidden>
+      <img id="navIdentityImg" alt="" loading="lazy">
+      <div class="nav-identity-text">
+        <b id="navIdentityName"></b>
+        <span id="navIdentityPlace"></span>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -6079,14 +6108,14 @@ function initGoogleMapReal(){
   document.getElementById('mapGate').style.display='none';
   document.getElementById('mapGoogle').style.display='block';
   document.getElementById('mapGoogleEmbed').hidden=true;document.getElementById('mapLeafletWrap').style.display='none';
-  document.getElementById('retryOverviewGoogle').hidden=true;
+
   if(!gMap){gMap=new google.maps.Map(document.getElementById('mapGoogle'),{center:CITIES[currentCity].center,zoom:CITIES[currentCity].zoom,mapTypeControl:false,streetViewControl:false,fullscreenControl:true});gInfoWindow=new google.maps.InfoWindow();}
-  mapProvider='google';renderLegend();buildMarkersForCurrentProvider();
+  mapProvider='google';syncMapProviderButton();renderLegend();buildMarkersForCurrentProvider();
 }
 window.initGoogleMap=initGoogleMapReal;
 function overviewMapFallback(){
   clearTimeout(googleLoadTimer);googleLoadPending=false;
-  initLeafletMap();document.getElementById('retryOverviewGoogle').hidden=false;
+  initLeafletMap();syncMapProviderButton();
   document.getElementById('overviewMapStatus').textContent+=' · Google Maps unavailable; showing the project map.';
 }
 window.gm_authFailure=overviewMapFallback;
@@ -6123,22 +6152,31 @@ function initLeafletMap(){
   if(!window.L){document.getElementById('gateError').textContent='Map unavailable. Project records and city links remain below.';document.getElementById('gateError').style.display='block';return;}
   document.getElementById('mapGate').style.display='none';document.getElementById('mapGoogle').style.display='none';document.getElementById('mapGoogleEmbed').hidden=true;document.getElementById('mapLeafletWrap').style.display='block';
   if(!lMap){lMap=L.map('map',{scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat,CITIES[currentCity].center.lng],CITIES[currentCity].zoom);L.tileLayer(MAP_TILE_URL,{attribution:CARTO_ATTRIB,maxZoom:19}).addTo(lMap);}
-  mapProvider='leaflet';renderLegend();buildMarkersForCurrentProvider();
+  mapProvider='leaflet';syncMapProviderButton();renderLegend();buildMarkersForCurrentProvider();
 }
 document.getElementById('fitOverviewMap').addEventListener('click',fitOverviewMap);
-document.getElementById('retryOverviewGoogle').addEventListener('click',()=>loadGoogleMapsWithKey(GOOGLE_MAPS_API_KEY));
+document.getElementById('retryOverviewGoogle').addEventListener('click',()=>{
+  if(mapProvider==='google')initLeafletMap();else loadGoogleMapsWithKey(GOOGLE_MAPS_API_KEY);
+});
 document.getElementById('loadGoogleBtn').addEventListener('click', loadGoogleMaps);
 document.getElementById('useFreeMapBtn').addEventListener('click', initLeafletMap);
 
 // Start the map as it approaches the viewport, after the setup dialog is complete.
-// The overview used to open in Google Maps whenever a key was configured, so it was the one map on
-// the site that did not look like the others. It now opens on the same Esri basemap as the topic,
-// your-area and hero maps; Google stays one button away.
+// The overview opens in Google Maps when a key is configured, and on the free Esri basemap
+// otherwise. Either way the button below the map switches to the other one, so a reader is never
+// stuck with the provider that happened to load.
 function ensureOverviewMap(){
   if(mapProvider||googleLoadPending||document.getElementById('onboardOverlay').style.display!=='none')return;
-  initLeafletMap();
-  const toGoogle=document.getElementById('retryOverviewGoogle');
-  if(toGoogle)toGoogle.hidden=!(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE');
+  if(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE')loadGoogleMapsWithKey(GOOGLE_MAPS_API_KEY);
+  else initLeafletMap();
+}
+// One button, two directions: it always offers the provider the reader is not looking at.
+function syncMapProviderButton(){
+  const button=document.getElementById('retryOverviewGoogle');
+  if(!button)return;
+  const hasKey=Boolean(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE');
+  button.hidden=!hasKey&&mapProvider!=='google';
+  button.textContent=mapProvider==='google'?'Switch to the free map':'Switch to Google Maps';
 }
 /* ---- 3D and full screen, shared with the Future Map ----
    The same module the Future Map uses draws these two maps: it takes plain points, so each map
@@ -8905,10 +8943,35 @@ function applyPageChrome(page){
   if(sub) sub.hidden = (page !== 'dashboard');
 }
 
+// A guest profile is a real reader with a real name, so the panel says that name whether or not
+// they have created an account. It shows the place they picked during setup, with a photograph of
+// it, and it is deliberately inert - it tells you what you chose, it does not change it.
+function renderNavIdentity(){
+  const panel=document.getElementById('navIdentity');
+  if(!panel)return;
+  const name=(typeof authUsername!=='undefined'&&authUsername)||guestProfile?.data?.username||'';
+  const city=CITIES[currentCity];
+  const viewingCounty=currentCity==='all';
+  const place=viewingCounty?(activeCounty?activeCounty+' County':'The whole Bay Area'):city?.label||'';
+  if(!name&&!place){panel.hidden=true;return;}
+  // A county view has no photograph of its own, so it borrows one from a city inside it.
+  const photoCity=viewingCounty
+    ? (DashboardBrowse.citiesIn(CITIES,activeCounty).find(([key])=>cityImage(key))||[])[0]
+    : currentCity;
+  const src=cityImage(photoCity)||'/img/hero.avif';
+  const image=document.getElementById('navIdentityImg');
+  if(image.getAttribute('src')!==src){image.src=src;image.alt='';}
+  document.getElementById('navIdentityName').textContent=name?'Signed in as '+name:'Your dashboard';
+  document.getElementById('navIdentityPlace').textContent=viewingCounty
+    ? place
+    : place+(city?.county?' \u00b7 '+city.county+' County':'');
+  panel.hidden=false;
+}
 function setNavMenu(open){
   const btn = document.getElementById('navToggle');
   const menu = document.getElementById('navMenu');
   if(!btn || !menu) return;
+  if(open)renderNavIdentity();
   menu.hidden = !open;
   btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -14957,9 +15020,11 @@ function renderRailResources(){
   if(cityEl) cityEl.textContent = city ? city.label : '';
   if(!city){ host.innerHTML = ''; return; }
 
-  const deciders = (city.deciders || []).slice(0, 2);
-  const join = (city.join || []).slice(0, 1);
-  const links = (city.ctaLinks || []).slice(0, 1);
+  // Enough rows to fill the card. Cities publish between two and six of these; whatever they
+  // have is what shows.
+  const deciders = (city.deciders || []).slice(0, 3);
+  const join = (city.join || []).slice(0, 2);
+  const links = (city.ctaLinks || []).slice(0, 3);
 
   // One drawn mark per kind. There is no honest photograph of "the Planning Commission", and a
   // stock image would imply one exists, so these are figures rather than pictures.
@@ -14976,12 +15041,17 @@ function renderRailResources(){
       + '<path d="M6 30 L15 10 L25 20 L34 8 L34 32 Z" fill="#5F7640"/>'
       + '<circle cx="15" cy="10" r="3" fill="#3E4F24"/><circle cx="25" cy="20" r="3" fill="#3E4F24"/></svg>',
   };
-  const row = (name, note, href, tag) =>
-    '<a class="res-row" href="'+(href || '#')+'"'+(href ? ' target="_blank" rel="noopener"' : '')+'>'
+  // A row with no published link is not a link: rendering it as one gave a row that looked
+  // clickable and did nothing but jump the page to the top.
+  const row = (name, note, href, tag) => {
+    const open = href ? '<a class="res-row" href="'+escapeHtml(href)+'" target="_blank" rel="noopener">' : '<div class="res-row res-row-flat">';
+    return open
     + '<span class="rail-thumb">'+(THUMB[tag] || '')+'</span>'
     + '<span class="res-body"><span class="res-name">'+name.replace(/&amp;/g,'&')+'</span>'
     + (note ? '<span class="res-note">'+note+'</span>' : '')
-    + '<span class="res-tag">'+tag+'</span></span></a>';
+    + '<span class="res-tag">'+tag+(href ? '' : ' \u00b7 no link published')+'</span></span>'
+    + (href ? '</a>' : '</div>');
+  };
 
   host.innerHTML =
     deciders.map(d=>row(d.name, 'Decides land use here', d.link, 'Board')).join('')
