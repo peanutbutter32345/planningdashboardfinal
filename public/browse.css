@@ -23,3 +23,5 @@
 .city-browse-results .city-tab.active,.city-browse-results .city-tab.active:hover{background:#3e4f24;color:#fff;border-color:#8f9f72}
 .news-card-link{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit}
 .topic-links.collection-pager{display:block}.collection-pager .topic-links{display:grid}
+
+.county-resource-pager{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 0 0;border-top:1px solid #dce2d3;margin-top:10px;color:#5c6c46;font-size:10px}.county-resource-pager button{background:#f1f4e9;border:1px solid #acb99a;color:#3e4f24;padding:7px 12px;cursor:pointer;min-height:36px}.county-resource-pager button:hover{background:#e4ecd7}

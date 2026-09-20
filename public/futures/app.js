@@ -12,6 +12,16 @@ let state=shared?readScenario(location.search):{...DEFAULTS,...MAP_DEFAULTS,poli
 if(!Object.hasOwn(context.cities,state.city))state.city='all';
 let result,reference,rows=[],map,markers=new Map(),projectLayer,stationLayer,limit=20,selected=null,preset='baseline',toastTimer,initialized=false,publicLayers,heatLayer,priceLayer,baseLayer,labelLayer,baseKey,playTimer,expanded=false;
 let cityPrices=[];
+let activeView='map';
+function showFutureView(view){
+ const tabs=[...document.querySelectorAll('[data-fx-view]')];
+ if(!tabs.some(tab=>tab.dataset.fxView===view))return;
+ activeView=view;
+ tabs.forEach(tab=>{const selected=tab.dataset.fxView===view;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;$(tab.getAttribute('aria-controls')).hidden=!selected;});
+ pausePlayback();
+ if(view==='map'){renderMap();requestAnimationFrame(()=>map?.invalidateSize());}
+ else {if(map)clearHeat();if(view==='outlook'){renderImpacts();renderChart();}if(view==='policies')renderBills();if(view==='projects')renderTable();}
+}
 const money=value=>value==null?'—':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
 const compactMoney=value=>value==null?'—':value>=1e6?'$'+(value/1e6).toFixed(2)+'M':'$'+Math.round(value/1000)+'k';
 const controlKeys=['year','rate','costs','delay','gridDelay','priceTrend','elasticity','floodDiscount','energyUse'];
@@ -20,6 +30,8 @@ function notify(message){$('fxStatus').textContent=message;clearTimeout(toastTim
 function projects(){return state.city==='all'?fullProjects:fullProjects.filter(p=>p.city===state.city);}
 function syncControls(){
  $('fxCity').value=state.city;
+ $('fxLayerSelect').value=state.layer;
+ $('fxScenarioSummary').textContent=cityLabel()+' · '+state.year+' scenario';
  for(const key of controlKeys)$('fx'+key[0].toUpperCase()+key.slice(1)).value=state[key];
  $('fxYearOut').textContent=state.year;$('fxMapYearOut').textContent=state.year;$('fxMapYear').value=state.year;
  $('fxGridDelayOut').textContent=state.gridDelay+' months';
@@ -43,7 +55,11 @@ function update(fit=false){
  reference=estimateProjects(projects(),{...DEFAULTS,year:state.year});
  const base=new Map(reference.rows.map(p=>[p.id,p]));
  rows=result.rows.map(p=>({...p,baseline:base.get(p.id).expected,delta:p.expected-base.get(p.id).expected}));
- buildCityPrices();syncControls();renderMetrics();renderImpacts();renderChart();renderMap(fit);renderBills();renderTable();
+ buildCityPrices();syncControls();renderMetrics();
+ if(activeView==='map')renderMap(fit);
+ if(activeView==='outlook'){renderImpacts();renderChart();}
+ if(activeView==='policies')renderBills();
+ if(activeView==='projects')renderTable();
  if(selected&&!rows.some(p=>p.id===selected))selected=null;
  if(selected&&markers.has(selected))markers.get(selected).openPopup();
 }
@@ -102,7 +118,7 @@ function fitMap(){if(!map)return;const mapped=rows.filter(validPoint);if(mapped.
 function renderMap(fit=false){
  const legend=state.layer==='heat'?[['#e8bd55','Low'],['#eb8842','Modeled housing concentration'],['#a64749','High']]:state.layer==='prices'?[['#3E4F24','Lower than reference'],['#aab4ab','Unchanged'],['#bc784e','Higher than reference']]:state.layer==='exposure'?[['#1f82b2','Special flood hazard'],['#9472ba','0.2% annual chance'],['#aab4ab','No match ≠ no risk']]:state.layer==='delivery'?[['#A3AC90','<35% delivered'],['#67794A','35–65%'],['#3E4F24','≥65%']]:state.layer==='change'?[['#3E4F24','More delivery'],['#98a8b6','Unchanged'],['#ba7953','Less delivery']]:[['#3E4F24','≥50% affordable'],['#87956B','Some affordable'],['#d9dfe6','0 disclosed'],['#a5adb5','Unknown']];
  $('fxLegend').innerHTML=legend.map(([c,label])=>`<span><i style="background:${c}"></i>${label}</span>`).join('');
- if(!$('screenFutures').offsetParent)return;
+ if(!$('screenFutures').offsetParent||activeView!=='map')return;
  if(!initMap())return;
  publicLayers.apply(state);setBasemap();
  renderDataStatus();
@@ -183,6 +199,18 @@ function renderDataStatus(){
  $('fxDataStatus').innerHTML=tag(publicLayers.flood,publicLayers.errors.flood,'FEMA · '+(publicLayers.flood?.metadata?.counties?.length||'…')+' counties')+tag(publicLayers.energy,publicLayers.errors.energy,'CEC · '+(publicLayers.energy?.features?.length||'…')+' facilities')+tag(publicLayers.stock,publicLayers.errors.stock,'Census housing stock · 2020')+(state.seaLevel?`<span class="${publicLayers.errors.sea?'unavailable':''}">NOAA · ${publicLayers.errors.sea?'tiles unavailable':('+'+state.seaLevel+' ft above MHHW · independent of year')}</span>`:'');
 }
 function init(){
+ $('fxToggleControls').addEventListener('click',()=>{
+  const open=$('fxToggleControls').getAttribute('aria-expanded')!=='true';
+  $('fxToggleControls').setAttribute('aria-expanded',String(open));$('fxViewMap').dataset.controlsOpen=String(open);
+  $('fxToggleControls').textContent=open?'Close scenario controls ↑':'Adjust this scenario ↓';
+ });
+ const tabs=[...document.querySelectorAll('[data-fx-view]')];
+ tabs.forEach((tab,i)=>{
+  tab.addEventListener('click',()=>showFutureView(tab.dataset.fxView));
+  tab.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const n=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[n].click();tabs[n].focus();});
+ });
+ document.querySelectorAll('a[href="#fxBills"]').forEach(a=>a.addEventListener('click',()=>showFutureView('policies')));
+ $('fxLayerSelect').addEventListener('change',e=>{state.layer=e.target.value;if(state.layer==='exposure')state.flood=true;syncControls();renderMap();});
  $('fxCity').innerHTML='<option value="all">All Bay Area cities</option>'+Object.entries(context.cities).filter(([k])=>k!=='all').sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(([key,c])=>`<option value="${key}">${esc(c.label)}</option>`).join('');
  $('fxPolicyControls').innerHTML=POLICIES.filter(p=>p.months).map(p=>`<label class="fx-policy-control"><span><b>${p.code}</b><small>${p.tag} · ${p.kind==='pending'?'If approved':'Extra uptake'}</small></span><input type="checkbox" data-policy-toggle="${p.id}" aria-label="Test ${p.code} acceleration"></label>`).join('');
  $('fxReviewed').textContent=`Status checked September 18, 2026 · Curated watchlist, not every housing bill. Open the official source for subsequent changes.`;
@@ -198,7 +226,7 @@ function init(){
  $('fxBillFilter').addEventListener('change',renderBills);
  $('fxBillList').addEventListener('click',e=>{const b=e.target.closest('[data-bill]');if(b)togglePolicy(b.dataset.bill);});
  $('fxSearch').addEventListener('input',()=>{limit=20;renderTable();});$('fxSort').addEventListener('change',renderTable);$('fxMore').addEventListener('click',()=>{limit+=20;renderTable();});
- $('fxRows').addEventListener('click',e=>{const b=e.target.closest('[data-project]');if(!b)return;const row=rows.find(p=>p.id===b.dataset.project);if(map&&row){if(state.layer==='prices'){state.layer='delivery';syncControls();renderMap();}selected=row.id;map.setView([row.lat,row.lng],15,{animate:false});markers.get(row.id)?.openPopup();$('futureMap').scrollIntoView({block:'center',behavior:'smooth'});}else notify('Map unavailable. Use the project register for the city source.');});
+ $('fxRows').addEventListener('click',e=>{const b=e.target.closest('[data-project]');if(!b)return;const row=rows.find(p=>p.id===b.dataset.project);showFutureView('map');if(map&&row){if(state.layer==='prices'){state.layer='delivery';syncControls();renderMap();}selected=row.id;map.setView([row.lat,row.lng],15,{animate:false});markers.get(row.id)?.openPopup();$('futureMap').scrollIntoView({block:'center',behavior:'smooth'});}else notify('Map unavailable. Use the project register for the city source.');});
  $('fxShare').addEventListener('click',async()=>{const url=new URL(location.href);url.search=scenarioQuery(state);url.hash='';try{await navigator.clipboard.writeText(url.href);notify('Scenario link copied. It includes your area, year and assumptions.');}catch{const status=$('fxStatus');status.replaceChildren();const label=document.createElement('label');label.textContent='Copy this scenario link: ';const input=document.createElement('input');input.value=url.href;input.readOnly=true;label.append(input);status.append(label);input.select();}});
  $('fxExport').addEventListener('click',exportCsv);
  for(const [id,key] of [['fxFlood','flood'],['fxEnergy','energy']])$(id).addEventListener('change',e=>{state[key]=e.target.checked;renderMap();});

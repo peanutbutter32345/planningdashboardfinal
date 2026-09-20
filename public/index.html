@@ -1328,6 +1328,7 @@
 
     <div class="onboard-actions">
       <button class="btn" id="onboardSubmit" type="button">Open my dashboard →</button>
+      <button class="btn secondary" id="onboardExplore" type="button">Explore without setup →</button><p class="onboard-hint">No area selected? Explore starts in Santa Clara County. Your guest profile is already created.</p>
       <span class="onboard-req" id="onboardReq"></span>
     </div>
   </div>
@@ -1371,7 +1372,7 @@
     <button class="sub-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
     <button class="sub-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
     <button class="sub-nav-tab" data-screen="statistics" role="tab" aria-selected="false">Statistics</button>
-    <button class="sub-nav-tab future-nav" data-screen="futures" role="tab" aria-selected="false"><span aria-hidden="true">◈</span> Future Map <span class="future-nav-tag">SIMULATE</span></button>
+    <button class="sub-nav-tab" data-screen="futures" role="tab" aria-selected="false">Future Map</button>
     <button class="sub-nav-tab" data-screen="ask" role="tab" aria-selected="false">Ask a Question</button>
   </div>
 </nav>
@@ -1446,18 +1447,25 @@
 <section id="screenFutures" class="screen futures" style="display:none" aria-labelledby="futureTitle">
  <div class="fx-shell">
   <div class="fx-heading"><div><div class="fx-eyebrow">HOUSING · POLICY · PLACE</div><h2 id="futureTitle">Future housing map</h2><p>Simulate housing delivery, flood exposure, energy demand and city-level home values.</p></div><div class="fx-head-actions"><span class="fx-badge">EXPERIMENTAL · MODEL v2.0</span><button class="fx-button" id="fxShare">Copy scenario link ↗</button></div></div>
-  <div class="fx-disclosure"><strong>A future you can explore, not a promise.</strong> Estimates use a sample of reported project units and illustrative assumptions. Delivery and price outputs are sensitivity scenarios, not predictions or parcel valuations. Flood and energy layers come from public agencies. <a href="#fxMethod">How this works ↓</a></div>
+  <div class="fx-disclosure"><strong>Explore a scenario.</strong> Delivery and home values are illustrative estimates, not predictions or property valuations. Public flood and energy layers provide context. <a href="#fxMethod">How this works ↓</a></div>
+  <div class="fx-view-tabs" role="tablist" aria-label="Future Map views">
+   <button id="fxTabMap" role="tab" data-fx-view="map" aria-selected="true" aria-controls="fxViewMap">Map</button>
+   <button id="fxTabOutlook" role="tab" data-fx-view="outlook" aria-selected="false" aria-controls="fxViewOutlook" tabindex="-1">Results</button>
+   <button id="fxTabPolicies" role="tab" data-fx-view="policies" aria-selected="false" aria-controls="fxViewPolicies" tabindex="-1">Bills &amp; policies</button>
+   <button id="fxTabProjects" role="tab" data-fx-view="projects" aria-selected="false" aria-controls="fxViewProjects" tabindex="-1">Project details</button>
+  </div><p id="fxScenarioSummary" class="fx-scenario-summary" role="status"></p><div id="fxViewMap" role="tabpanel" aria-labelledby="fxTabMap"><button type="button" id="fxToggleControls" class="fx-button fx-mobile-controls" aria-expanded="false" aria-controls="fxScenarioControls">Adjust this scenario ↓</button>
   <div class="fx-workspace">
-   <aside class="fx-controls" aria-label="Scenario controls">
+   <aside class="fx-controls" id="fxScenarioControls" aria-label="Scenario controls">
     <div class="fx-panel-title"><span class="fx-number">01</span><h2>Shape the scenario</h2><button id="fxReset" class="fx-text-button">Reset</button></div>
     <label class="fx-field" for="fxCity">Explore an area<select id="fxCity"></select></label>
     <div class="fx-presets" aria-label="Scenario presets"><button data-preset="baseline" aria-pressed="true">Reference</button><button data-preset="momentum" aria-pressed="false">Momentum</button><button data-preset="headwinds" aria-pressed="false">Headwinds</button><button data-preset="coastal" aria-pressed="false">Coastal stress</button></div>
     <p class="fx-tiny" id="fxPresetNote">Reference: unchanged financing and no extra policy acceleration.</p>
     <div class="fx-slider"><label for="fxYear">Look ahead to <output id="fxYearOut" for="fxYear">2031</output></label><input id="fxYear" type="range" min="2027" max="2040" value="2031"><div class="fx-range-ends"><span>2027</span><button type="button" id="fxPlay" aria-pressed="false">▶ Play years</button><span>2040</span></div></div>
-    <div class="fx-divider"></div><div class="fx-label">MARKET CONDITIONS <span>Assumptions</span></div>
+    <details class="fx-control-group"><summary>Financing &amp; construction</summary>
     <div class="fx-slider"><label for="fxRate">Financing rate <output id="fxRateOut" for="fxRate">6.0%</output></label><input id="fxRate" type="range" min="3" max="10" value="6" step="0.25"><div class="fx-range-ends"><span>Easier financing</span><span>Tighter financing</span></div></div>
     <div class="fx-slider"><label for="fxCosts">Annual construction cost growth <output id="fxCostsOut" for="fxCosts">3.0%</output></label><input id="fxCosts" type="range" min="-2" max="8" value="3" step="0.5"></div>
     <div class="fx-slider"><label for="fxDelay">Delivery delay adjustment <output id="fxDelayOut" for="fxDelay">0 months</output></label><input id="fxDelay" type="range" min="-12" max="24" value="0" step="3"><div class="fx-range-ends"><span>12 months faster</span><span>24 months slower</span></div></div>
+</details>
     <details class="fx-assumptions"><summary>Price &amp; energy assumptions <span>Adjust ↓</span></summary>
      <div class="fx-slider"><label for="fxPriceTrend">Annual home-value trend <output id="fxPriceTrendOut">2%</output></label><input id="fxPriceTrend" type="range" min="-5" max="8" step="0.5" value="2"></div>
      <div class="fx-slider"><label for="fxElasticity">Supply–price sensitivity <output id="fxElasticityOut">1.0×</output></label><input id="fxElasticity" type="range" min="0" max="3" step="0.25" value="1"></div>
@@ -1467,24 +1475,28 @@
      <div class="fx-slider"><label for="fxGridDelay">Additional grid connection delay <output id="fxGridDelayOut">0 months</output></label><input id="fxGridDelay" type="range" min="0" max="24" step="3" value="0"></div>
      <p class="fx-tiny">All five inputs are assumptions. Plant capacity does not establish local grid availability.</p>
     </details>
-    <div class="fx-divider"></div><div class="fx-label">POLICY ACCELERATION <a href="#fxBills">See bills ↓</a></div><p class="fx-tiny">Switch on hypothetical additional uptake. Existing laws are not being repealed when switched off.</p><div id="fxPolicyControls"></div>
+    <details class="fx-control-group"><summary>Policy assumptions</summary>    <div class="fx-label">POLICY ACCELERATION <a href="#fxBills">See bills ↓</a></div><p class="fx-tiny">Switch on hypothetical additional uptake. Existing laws are not being repealed when switched off.</p><div id="fxPolicyControls"></div></details>
    </aside>
    <div class="fx-main">
     <div class="fx-metrics" id="fxMetrics" aria-live="polite" aria-atomic="true"></div>
     <div class="fx-map-card" id="fxMapCard">
      <div class="fx-atlas-bar"><div><span class="fx-atlas-dot"></span> BAY AREA <b>SCENARIO ATLAS</b></div><div><select id="fxBasemap" aria-label="Basemap"><option value="light">Light map</option><option value="satellite">Satellite</option></select><button id="fxExpand" aria-pressed="false">⛶ Expand map</button></div></div>
-     <div class="fx-map-toolbar"><div><span class="fx-label">SPATIAL OUTLOOK</span><h2 id="fxMapTitle">Bay Area · 2031</h2></div><div class="fx-layer-buttons" aria-label="Map metric"><button data-layer="heat" aria-pressed="true">Heatmap</button><button data-layer="delivery" aria-pressed="false">Projects</button><button data-layer="prices" aria-pressed="false">Price outlook</button><button data-layer="exposure" aria-pressed="false">Flood exposure</button><button data-layer="change" aria-pressed="false">Change</button><button data-layer="affordable" aria-pressed="false">Affordable</button></div></div>
-     <div class="fx-overlay-controls"><label><input id="fxFlood" type="checkbox" checked><i class="fx-dot-flood"></i> FEMA flood zones</label><label><input id="fxEnergy" type="checkbox" checked><i class="fx-dot-energy"></i> Energy facilities</label><label for="fxSeaLevel">NOAA sea-level scenario <select id="fxSeaLevel"><option value="0">Off</option><option value="1">+1 ft</option><option value="2">+2 ft</option><option value="3">+3 ft</option><option value="4">+4 ft</option><option value="5">+5 ft</option><option value="6">+6 ft</option></select></label></div>
-     <div class="fx-map-wrap"><div id="futureMap" aria-label="Housing scenario map. Project details also available in the table below."></div><div class="fx-map-error" id="fxMapError" hidden>Map tiles could not load. The project markers and results below remain available.</div><div class="fx-map-caption"><span class="fx-map-pulse"></span><span id="fxMapCaption">Scenario outlook</span></div><div class="fx-map-readout" id="fxMapReadout"></div><div class="fx-time-controller"><button id="fxMapPlay" aria-label="Play map years" aria-pressed="false">▶</button><label for="fxMapYear">YEAR <output id="fxMapYearOut">2031</output></label><input id="fxMapYear" type="range" min="2027" max="2040" value="2031" aria-label="Map scenario year"></div><button class="fx-fit" id="fxFit" aria-label="Fit map to selected area">⌖ Fit area</button></div>
+     <div class="fx-map-toolbar"><div><span class="fx-label">SPATIAL OUTLOOK</span><h2 id="fxMapTitle">Bay Area · 2031</h2></div><label class="fx-map-view-select" for="fxLayerSelect">Show on map<select id="fxLayerSelect"><option value="heat">Housing heatmap</option><option value="delivery">Housing projects</option><option value="prices">Home-value scenario</option><option value="exposure">Flood exposure</option><option value="change">Change from reference</option><option value="affordable">Affordable housing</option></select></label></div>
+<details class="fx-public-layer-settings"><summary>Public layers · flood, energy &amp; sea level</summary>     <div class="fx-overlay-controls"><label><input id="fxFlood" type="checkbox" checked><i class="fx-dot-flood"></i> FEMA flood zones</label><label><input id="fxEnergy" type="checkbox" checked><i class="fx-dot-energy"></i> Energy facilities</label><label for="fxSeaLevel">NOAA sea-level scenario <select id="fxSeaLevel"><option value="0">Off</option><option value="1">+1 ft</option><option value="2">+2 ft</option><option value="3">+3 ft</option><option value="4">+4 ft</option><option value="5">+5 ft</option><option value="6">+6 ft</option></select></label></div>
+</details>
+     <div class="fx-map-wrap"><div id="futureMap" aria-label="Housing scenario map. A table is available in the Project details tab."></div><div class="fx-map-error" id="fxMapError" hidden>Map tiles could not load. The project markers and results below remain available.</div><div class="fx-map-caption"><span class="fx-map-pulse"></span><span id="fxMapCaption">Scenario outlook</span></div><div class="fx-map-readout" id="fxMapReadout"></div><div class="fx-time-controller"><button id="fxMapPlay" aria-label="Play map years" aria-pressed="false">▶</button><label for="fxMapYear">YEAR <output id="fxMapYearOut">2031</output></label><input id="fxMapYear" type="range" min="2027" max="2040" value="2031" aria-label="Map scenario year"></div><button class="fx-fit" id="fxFit" aria-label="Fit map to selected area">⌖ Fit area</button></div>
      <div class="fx-map-footer"><div id="fxLegend"></div><label><input type="checkbox" id="fxTransit" checked> Station context · ½ mile</label></div>
      <p class="fx-map-note" id="fxLayerNote">Heat shows the concentration of modeled delivery in the project sample. It is not a map of all housing.</p><div class="fx-data-status" id="fxDataStatus" role="status">Loading public spatial datasets…</div><div class="fx-sea-note" id="fxSeaNote" hidden>NOAA inundation above mean higher high water. A water-level scenario, not a prediction for the selected year; excludes storm surge and does not replace FEMA mapping.</div>
     </div>
-    <div class="fx-impact-strip" id="fxImpacts" aria-live="polite"></div>
-    <div class="fx-analysis-row"><div class="fx-chart-card"><div class="fx-label">DELIVERY OVER TIME <span>Reported units · cumulative</span></div><div id="fxChart"></div><div class="fx-chart-key"><span><i class="fx-key-ref"></i>Reference</span><span><i class="fx-key-scenario"></i>Your scenario</span><span>Shading: sensitivity range</span></div></div><div class="fx-insight"><div class="fx-label">READING THE SIGNAL</div><h3 id="fxInsightTitle"></h3><p id="fxInsightText"></p><div id="fxCoverage"></div></div></div>
+
    </div>
   </div>
+</div><div id="fxViewOutlook" class="fx-view-panel" role="tabpanel" aria-labelledby="fxTabOutlook" hidden>    <div class="fx-impact-strip" id="fxImpacts" aria-live="polite"></div>
+    <div class="fx-analysis-row"><div class="fx-chart-card"><div class="fx-label">DELIVERY OVER TIME <span>Reported units · cumulative</span></div><div id="fxChart"></div><div class="fx-chart-key"><span><i class="fx-key-ref"></i>Reference</span><span><i class="fx-key-scenario"></i>Your scenario</span><span>Shading: sensitivity range</span></div></div><div class="fx-insight"><div class="fx-label">READING THE SIGNAL</div><h3 id="fxInsightTitle"></h3><p id="fxInsightText"></p><div id="fxCoverage"></div></div></div></div><div id="fxViewPolicies" class="fx-view-panel" role="tabpanel" aria-labelledby="fxTabPolicies" hidden>
   <section class="fx-bills" id="fxBills" aria-labelledby="fxBillsTitle"><div class="fx-section-heading"><div><div class="fx-eyebrow">THE POLICY WATCHLIST</div><h2 id="fxBillsTitle">Housing bills &amp; policy watchlist</h2><p>Enacted laws and an upcoming ballot decision, with their assumptions kept separate.</p></div><label class="fx-field" for="fxBillFilter">Show<select id="fxBillFilter"><option value="all">All policies</option><option value="pending">Upcoming decision</option><option value="enacted">Enacted laws</option></select></label></div><p class="fx-tiny" id="fxReviewed"></p><div class="fx-bill-grid" id="fxBillList"></div></section>
+</div><div id="fxViewProjects" class="fx-view-panel" role="tabpanel" aria-labelledby="fxTabProjects" hidden>
   <section class="fx-projects" aria-labelledby="fxProjectsTitle"><div class="fx-section-heading"><div><div class="fx-eyebrow">BEHIND THE ESTIMATES</div><h2 id="fxProjectsTitle">Projected housing by project</h2><p id="fxTableSummary"></p></div><button class="fx-button" id="fxExport">Export scenario CSV ↓</button></div><div class="fx-table-tools"><label class="fx-field" for="fxSearch">Find a project<input type="search" id="fxSearch" placeholder="Address or city…"></label><label class="fx-field" for="fxSort">Sort by<select id="fxSort"><option value="expected">Estimated delivery</option><option value="delta">Change from reference</option><option value="units">Reported units</option></select></label></div><div class="fx-table-wrap"><table><thead><tr><th>Project / city</th><th>Stage</th><th>Reported units</th><th>Reference</th><th>Scenario <span id="fxTableYear">2031</span></th><th>Change</th><th>Record quality</th></tr></thead><tbody id="fxRows"></tbody></table></div><button class="fx-button fx-more" id="fxMore" hidden>Show more projects</button></section>
+</div>
   <details class="fx-method" id="fxMethod"><summary>Methodology, assumptions & data limitations <span>Read before using these estimates ↗</span></summary><div class="fx-method-grid"><div><h3>What the numbers mean</h3><p>This is a sensitivity model applied to the dashboard’s project sample, anchored to September 18, 2026. It estimates a share of reported gross project units potentially delivered by a selected year. Completed projects, unknown unit counts, non-housing records and unknown stages are excluded. It does not identify new developable parcels, deduplicate overlapping master plans, subtract demolished homes or separate already-built phases.</p><p>City comparisons reflect uneven sample coverage. Unknown affordability is not treated as zero; affordable totals include only disclosed counts. Old records may describe homes already delivered. The model flags records missing a status date or older than two years.</p></div><div><h3>A model you can inspect</h3><p>Reference delivery times: proposed 6 years, review 4.5, approved 3, construction 1.5. Long-run delivery shares: 55%, 70%, 85%, 95%. Delivery = reported units × stage share × (1 − 2<sup>−years elapsed / adjusted delivery time</sup>). Elapsed years use the selected year minus 2026.</p><p>Each percentage point of financing above 6% lengthens delivery time by 10%; each cost-growth point above 3% adds 4%. Delay adds months. Policy assumptions subtract at most 18 months combined, with a minimum delivery time of 6 months. These coefficients are illustrative, not fitted to historical outcomes. The range varies delivery time and realization; it is not a statistical confidence interval.</p></div><div><h3>Policy & geographic limits</h3><p>Policy switches test additional acceleration relative to the reference. Legal changes may already be reflected in project records. There is no causal estimate of each bill’s effect. The bond switch assumes approval and funding beginning in 2028; neither is guaranteed.</p><p>Transit proximity uses straight-line distance to hand-curated approximate centers for a subset of Caltrain and BART stations. VTA, BRT, station entrances, service frequency, zoning, local alternative plans, hazard exclusions and parcel boundaries are not modeled.</p><p>Station references: <a href="https://www.caltrain.com/stations" target="_blank" rel="noopener">Caltrain</a> · <a href="https://www.bart.gov/stations" target="_blank" rel="noopener">BART</a>. Bill sources are linked in each card. No automated bill-status feed is connected.</p></div></div></details>
   <details class="fx-method" id="fxSpatialMethod"><summary>Flood, energy &amp; home-value methodology <span>Sources and limitations ↗</span></summary><div class="fx-method-grid"><div><h3>Real public layers</h3><p>The FEMA snapshot queries all nine Bay Area counties. The September 19, 2026 refresh returned 13,603 hazard polygons across eight counties; no San Francisco polygons were returned by this query. Blue areas are special flood hazard areas; purple areas have a 0.2% annual flood chance. Geometry is generalized to about 3 meters; point screening can be wrong near boundaries. A location with no match may still flood. This is not an insurance determination. <a href="https://msc.fema.gov/portal/home" target="_blank" rel="noopener">Check FEMA’s official map.</a></p><p>NOAA sea-level tiles are live public overlays, relative to mean higher high water. The chosen water level is independent of the simulated year. Blue depicts inundation depth; green depicts low-lying areas not directly connected to the ocean. <a href="https://coast.noaa.gov/slr" target="_blank" rel="noopener">NOAA viewer and caveats.</a></p></div><div><h3>Home-value sensitivity, not appraisal</h3><p>The observed baseline is the dashboard’s July 2026 citywide Zillow index. Reference value = baseline × (1 + assumed annual trend)<sup>years</sup>. The supply factor is exp(−sensitivity × extra modeled delivery / 2020 housing stock), capped between exp(−0.3) and exp(0.3). Housing stock comes from <a href="https://census.bayareametro.gov/housing-units" target="_blank" rel="noopener">MTC / ABAG’s Census 2020 DHC H3 data</a>. West San Jose uses citywide San Jose data.</p><p>All-area values are a 2020-stock-weighted average of city indexes where available, not Zillow’s regional index. A flood-exposed example applies your assumed discount to that index; it is not a price for a specific parcel. Interest rates influence modeled delivery only, not buyer demand directly. Gross project units, overlapping plans, stale stock, incomplete coverage and assumed elasticities limit every output. No statistical confidence is assigned to prices.</p></div><div><h3>Energy context</h3><p>Points show the California Energy Commission’s facilities not flagged as retired in its public snapshot, last updated June 12, 2026. Nameplate MW is not real-time generation, grid headroom, an outage forecast or a service territory. Battery MW describes power, not storage duration. No local home is assumed to be supplied by a nearby plant.</p><p>Modeled annual household demand = delivered units × your kWh/home/year assumption. Additional grid connection delay lengthens the housing-delivery assumption. Both are hypothetical. <a href="https://www.energy.ca.gov/data-reports/energy-maps-and-spatial-data" target="_blank" rel="noopener">CEC data and conditions of use.</a></p></div></div></details>
   <div class="fx-status" id="fxStatus" role="status" aria-live="polite"></div>
@@ -6649,6 +6661,7 @@ function switchCity(key){
   if(!Object.hasOwn(CITIES, key)) return;
   if(key!=='all'){setCountyScope('');cityBrowseCounty=CITIES[key].county;}
   currentCity = key;
+  railResourcePage=0;
   // Featured news leads with the selected city's stories, so it follows the tab.
   featuredPage = 0;
   if(typeof renderFeaturedNews === 'function'){ preloadFeaturedImages(); renderFeaturedNews(); }
@@ -6898,6 +6911,7 @@ async function submitOnboard(){
     showScreen('dashboard');
   }
   applyDeepLink();
+  setNavMenu(true);
 }
 // Offer the eight nearest tracked cities when a geocoded address falls outside their bounds.
 function showCityChooser(lat, lng, placeLabel){
@@ -6999,6 +7013,11 @@ document.getElementById('onboardAddr').addEventListener('input', ()=>{
   document.getElementById('onboardGeoStatus').textContent = "We'll match a typed address to the nearest known projects - for a precise pin, \"use my current location\" instead.";
 });
 document.getElementById('onboardSubmit').addEventListener('click', submitOnboard);
+document.getElementById('onboardExplore').addEventListener('click',async()=>{
+  if(isGuest()&&guestProfile.unlocked&&!await saveGuestName(document.getElementById('onboardUsername'),'onboardGuestStatus'))return;
+  onboard.county=onboard.county||'Santa Clara';onboard.city=CITIES[onboard.city]?.county===onboard.county?onboard.city:null;onboard.userLoc=null;onboardCityFilter='';document.getElementById('onboardAddr').value='';
+  finishOnboard();renderOnboardCityBtns();refreshOnboardGate();document.getElementById('onboardOverlay').style.display='none';showScreen('dashboard');setNavMenu(true);
+});
 // The note says where pressing it will land you, so typing an address has to refresh it.
 document.getElementById('onboardAddr').addEventListener('input', ()=>{
   if(typeof refreshOnboardGate === 'function') refreshOnboardGate();
@@ -8771,7 +8790,7 @@ if(navToggleBtn){
 // Click anywhere else, or press Escape, to dismiss it.
 document.addEventListener('click', (e)=>{
   const nav = document.querySelector('.page-nav');
-  if(nav && !nav.contains(e.target)) setNavMenu(false);
+  if(nav && !nav.contains(e.target)&&!e.target.closest('#onboardOverlay')) setNavMenu(false);
 });
 document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') setNavMenu(false); });
 document.querySelectorAll('.sub-nav-tab').forEach(t=>{
@@ -14316,16 +14335,20 @@ function renderHeroMap(){
     heroLayer = L.layerGroup().addTo(heroMap);
   }
   heroLayer.clearLayers();
-  (yaPins||[]).forEach(p=>{
+  if(currentCity==='all')DashboardBrowse.citiesIn(CITIES,activeCounty).forEach(([key,city])=>{
+    L.circleMarker([city.center.lat,city.center.lng],{radius:6,color:'#fff',weight:2,fillColor:'#3e4f24',fillOpacity:.9}).bindTooltip(escapeHtml(city.label)+' · '+city.data.length+' tracked records').on('click',()=>switchCity(key)).addTo(heroLayer);
+  });
+  (yaPins||[]).filter(p=>currentCity!=='all'||!activeCounty||CITIES[p.city]?.county===activeCounty).forEach(p=>{
     if(!Number.isFinite(p.lat) || !Number.isFinite(p.lng)) return;
     L.circleMarker([p.lat,p.lng], {radius:5, color:'#fff', weight:2,
       fillColor:(YA_PIN_COLOR[p.type]||'#3E4F24'), fillOpacity:1})
       .bindPopup('<b>'+escapeHtml(p.label)+'</b>').addTo(heroLayer);
   });
   const cnt = document.getElementById('heroMapCount');
-  if(cnt) cnt.textContent = (yaPins||[]).length ? (yaPins.length + ' pinned') : 'nothing pinned';
+  if(cnt)cnt.textContent=currentCity==='all'?(activeCounty||'Bay Area')+' · '+DashboardBrowse.citiesIn(CITIES,activeCounty).length+' areas':(yaPins||[]).length?(yaPins.length+' pinned'):'nothing pinned';
   const pts = (yaPins||[]).filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng)).map(p=>[p.lat,p.lng]);
-  if(pts.length > 1) heroMap.fitBounds(pts, {padding:[24,24]});
+  if(currentCity==='all')heroMap.fitBounds([[c.bbox.minLat,c.bbox.minLng],[c.bbox.maxLat,c.bbox.maxLng]],{padding:[20,20]});
+  else if(pts.length > 1) heroMap.fitBounds(pts, {padding:[24,24]});
   else if(pts.length === 1) heroMap.setView(pts[0], 13);
   else heroMap.setView([c.center.lat, c.center.lng], 11);
   setTimeout(()=>{ try{ heroMap.invalidateSize(); }catch(e){} }, 80);
@@ -14534,6 +14557,7 @@ document.querySelectorAll('[data-signup]').forEach(el=>{
 // the Census, target progress from the state, and the commissions a reader can actually join.
 // Same 5s cadence and pause behaviour as Featured News, so the two sides of the hero move together.
 const RAIL_INTERVAL = 5000;
+let railResourcePage=0;
 let railPage = 0;
 let railTimer = null;
 
@@ -14752,12 +14776,12 @@ function renderRailResources(){
   const host = document.getElementById('railResources');
   const cityEl = document.getElementById('resourceCity');
   if(!host) return;
-  const c = currentCity;
+  const countyCities=DashboardBrowse.citiesIn(CITIES,activeCounty);
+  const c=currentCity==='all'?countyCities[railResourcePage%countyCities.length]?.[0]:currentCity;
   const city = CITIES[c];
   if(cityEl) cityEl.textContent = city ? city.label : '';
   if(!city){ host.innerHTML = ''; return; }
 
-  if(c==='all'){host.innerHTML='<p class="section-note">Choose a city in '+escapeHtml(CITIES.all.label)+' to see its boards, official planning records and local resources.</p>';return;}
   const deciders = (city.deciders || []).slice(0, 2);
   const join = (city.join || []).slice(0, 1);
   const links = (city.ctaLinks || []).slice(0, 1);
@@ -14788,10 +14812,12 @@ function renderRailResources(){
     deciders.map(d=>row(d.name, 'Decides land use here', d.link, 'Board')).join('')
     + join.map(b=>row(b.name, b.body || 'How to serve on this body', b.link, 'Join')).join('')
     + links.map(l=>row(l.label, 'Official city page', l.url, 'Link')).join('')
-    + '<a class="rail-link" href="#" data-res-goto="resources">All '+city.label+' resources &rarr;</a>';
+    + '<a class="rail-link" href="#" data-res-goto="resources">All '+city.label+' resources &rarr;</a>'
+    + (currentCity==='all'?'<div class="county-resource-pager"><button type="button" data-resource-step="-1" aria-label="Previous city resources">←</button><span>'+escapeHtml(activeCounty||'Bay Area')+' · '+(railResourcePage%countyCities.length+1)+' / '+countyCities.length+'</span><button type="button" data-resource-step="1" aria-label="Next city resources">→</button></div>':'');
+  host.querySelectorAll('[data-resource-step]').forEach(b=>b.onclick=()=>{railResourcePage=(railResourcePage+Number(b.dataset.resourceStep)+countyCities.length)%countyCities.length;renderRailResources();});
 
   const more = host.querySelector('[data-res-goto]');
-  if(more) more.addEventListener('click', (e)=>{ e.preventDefault(); showScreen('resources'); });
+  if(more) more.addEventListener('click', (e)=>{ e.preventDefault();if(currentCity==='all')switchCity(c);showScreen('resources'); });
 }
 
 function renderRail(){
@@ -14827,7 +14853,7 @@ function advanceRail(){
     if(railAlternating()){
       // Swap which card is showing; only advance the figure when figures come back around.
       railFace = 1 - railFace;
-      if(railFace === 0) railPage++;
+      if(railFace === 0) railPage++;else railResourcePage++;
       applyRailMode();
     } else {
       railPage++;
@@ -14851,6 +14877,9 @@ startRail();
   card.addEventListener('focusin', pause);
   card.addEventListener('mouseleave', startRail);
   card.addEventListener('focusout', startRail);
+  const resources=document.getElementById('railResources');
+  resources.addEventListener('mouseenter',pause);resources.addEventListener('focusin',pause);
+  resources.addEventListener('mouseleave',startRail);resources.addEventListener('focusout',startRail);
   document.addEventListener('visibilitychange', ()=> document.hidden ? pause() : startRail());
 })();
 
@@ -14959,6 +14988,7 @@ if(DashboardBrowse.setupValid(savedSetup,COUNTY_NAMES)){
 }
 renderOnboardCityBtns();renderOnboardInterests();
 applyDeepLink();
+setNavMenu(true);
 // Keep keyboard focus and background scrolling inside the first-visit dialog.
 (function(){
  const overlay=document.getElementById('onboardOverlay');let lastFocus;
