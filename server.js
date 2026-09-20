@@ -289,6 +289,7 @@ app.post('/api/guest', async (req, res) => {
     if (!guestCreationAllowed(req.ip)) return res.status(429).json({ error: 'Too many new profiles from this address.' });
     const stored = await insertGuest(guestId, username, city);
     if (!stored) return res.status(500).json({ error: 'Could not record this profile.' });
+    communityCache = { at: 0, body: null };   // a new person just arrived; let the count say so
     res.json({ ok: true, created: true, kind: 'guest' });
   } catch (err) {
     console.error('Guest profile sync failed:', err.message);
@@ -1125,6 +1126,28 @@ async function runDigests(req, res) {
 // ---------------- ADMIN STATS ----------------
 // Behind the same shared secret as the cron run. Returns counts only - no addresses, no
 // usernames - so a leaked URL exposes totals rather than anyone's contact details.
+// How many people use the dashboard. Public, because it is the sort of number a civic site should
+// be willing to state out loud, and it carries no detail about anyone: three totals and nothing
+// else. Cached for five minutes so a busy page does not count the table on every load.
+let communityCache = { at: 0, body: null };
+app.get('/api/community', async (_req, res) => {
+  if (!pool) return res.json({ ok: false, users: null });
+  if (communityCache.body && Date.now() - communityCache.at < 5 * 60_000) return res.json(communityCache.body);
+  try {
+    const totals = await pool.query(`SELECT
+        count(*)::int AS users,
+        count(*) FILTER (WHERE kind = 'account')::int AS registered,
+        count(*) FILTER (WHERE kind = 'guest')::int AS guests
+      FROM users`);
+    const body = { ok: true, ...totals.rows[0], updatedAt: new Date().toISOString() };
+    communityCache = { at: Date.now(), body };
+    res.json(body);
+  } catch (err) {
+    console.error('Community count failed:', err.message);
+    res.json({ ok: false, users: null });
+  }
+});
+
 app.get('/api/admin/stats', async (req, res) => {
   const provided = req.headers['x-cron-secret'] || req.query.secret;
   if (!CRON_SECRET || provided !== CRON_SECRET) return res.status(401).json({ error: 'Invalid or missing cron secret.' });
