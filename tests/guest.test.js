@@ -73,3 +73,25 @@ test('missing or malformed local storage creates a usable guest profile',async()
  const partial=memory();partial.setItem('sbpd_guest_v1',JSON.stringify({version:1,username:'Incomplete'}));
  const recovered=new GuestStore(partial,memory());assert.ok(Array.isArray(recovered.data.stars));
 });
+
+test('a guest profile syncs once, again when it changes, and again a day later',()=>{
+ const storage=memory(),g=new GuestStore(storage,memory());
+ const t0=Date.UTC(2026,8,20,12,0,0);
+ const first=g.syncState(t0);
+ assert.equal(first.due,true);                                   // never sent before
+ assert.equal(first.payload.guestId,g.data.id);
+ assert.equal(first.payload.username,g.data.username);
+ g.markSynced(t0);
+ assert.equal(g.syncState(t0+60_000).due,false);                 // not on every page load
+ assert.equal(g.syncState(t0+25*3600_000).due,true);             // a day later, still here
+ g.markSynced(t0);
+ g.data.preferences.homeCity='concord';
+ assert.equal(g.syncState(t0+60_000).due,true);                  // they chose a place
+ g.markSynced(t0);
+ g.data.username='Chosen Name';
+ assert.equal(g.syncState(t0+60_000).due,true);                  // they renamed themselves
+ assert.equal(g.syncState(t0+60_000).payload.homeCity,'concord');
+ // The sync record survives a reload, so a returning visitor is not re-counted.
+ g.markSynced(t0);
+ assert.equal(new GuestStore(storage,memory()).syncState(t0+60_000).due,false);
+});
