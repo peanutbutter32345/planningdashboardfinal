@@ -13,8 +13,9 @@
  function setupValid(setup,counties){return Boolean(setup&&counties.includes(setup.county));}
  function swipeDirection(start,end){const dx=end.x-start.x,dy=end.y-start.y;return Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5?(dx<0?1:-1):0;}
  // A page holds whole rows of the grid, not a fixed count: three cards on a desktop row meant one
- // row per page (Housing read "1 / 48"). Four rows fill a screen; anything shorter needs no pager.
- const ROWS_PER_PAGE=4;
+ // row per page (Housing read "1 / 48"). Five rows make a section worth reading; anything shorter
+ // needs no pager, and `pad` below fills the leftover rows instead of leaving a half-empty page.
+ const ROWS_PER_PAGE=5;
  function columnsOf(el){
   const raw=getComputedStyle(el).gridTemplateColumns||'';
   const repeated=raw.match(/repeat\((\d+)/);           // hidden screens report the unresolved value
@@ -23,22 +24,32 @@
   if(tracks.length)return tracks.length;
   return matchMedia('(max-width: 680px)').matches?1:3;
  }
- function mountPager(host,items,render,{label='Records',key='',gridClass='register-grid',onRender=()=>{}}={}){
+ function mountPager(host,items,render,{label='Records',key='',gridClass='register-grid',pad=null,onRender=()=>{}}={}){
   host._pagerCleanup?.();
   let index=host.dataset.pageKey===key?Number(host.dataset.pageIndex)||0:0;
   host.dataset.pageKey=key;
-  host.classList.add('collection-pager');host.classList.remove('register-grid','news-grid');
+  host.classList.add('collection-pager');host.classList.remove('register-grid','news-grid',...gridClass.split(/\s+/).filter(Boolean));
   host.innerHTML='<div class="pager-toolbar"><span class="pager-count" role="status" aria-live="polite"></span><div class="pager-controls"><button type="button" class="btn secondary" data-page-prev aria-label="Previous page of '+label+'">←</button><span class="pager-position"></span><button type="button" class="btn secondary" data-page-next aria-label="Next page of '+label+'">→</button></div></div><div class="pager-items '+gridClass+'" tabindex="0" aria-label="'+label+'; use left and right arrow keys to change page"></div><p class="pager-hint">Swipe or use the arrows to explore.</p>';
   const content=host.querySelector('.pager-items'),prev=host.querySelector('[data-page-prev]'),next=host.querySelector('[data-page-next]');
   const toolbar=host.querySelector('.pager-toolbar'),hint=host.querySelector('.pager-hint');
   const size=()=>Math.max(1,columnsOf(content)*ROWS_PER_PAGE);
   let renderedSize=size();
   function draw(){const p=page(items,index,size());index=p.index;renderedSize=size();host.dataset.pageIndex=index;
-   content.innerHTML=p.items.length?p.items.map(render).join(''):'<div class="empty">No records in this view. Try the Bay Area view or another city.</div>';
+   // One page means the whole collection is on screen: no controls, no swipe hint.
+   const single=p.pages<=1;
+   // A small city can hold fewer records than fill the screen. When there is no second page, the
+   // leftover rows are filled from `pad` under a heading that says where those records come from,
+   // so a short section still reads as a full section and nothing is passed off as local.
+   const room=single&&pad?size()-(p.items.length||0):0;
+   const extra=room>0?pad.items.slice(0,room):[];
+   // With nothing local to show, the filled rows are the whole section, so they carry the note that
+   // says so rather than an empty-state message the reader would then have to reconcile with them.
+   const empty=p.items.length?'':(extra.length?'':'<div class="empty">No records in this view. Try the Bay Area view or another city.</div>');
+   content.innerHTML=(p.items.length?p.items.map(render).join(''):empty)
+    +(extra.length?'<p class="pager-fill-note">'+(p.items.length?pad.note:pad.noteEmpty||pad.note)+'</p>'+extra.map(pad.render).join(''):'');
    host.querySelector('.pager-count').textContent=p.total?p.start+'–'+p.end+' of '+p.total.toLocaleString()+' '+label.toLowerCase():'No '+label.toLowerCase();
    host.querySelector('.pager-position').textContent=(index+1)+' / '+p.pages;prev.disabled=index===0;next.disabled=index===p.pages-1;
-   // One page means the whole collection is on screen: no controls, no swipe hint.
-   const single=p.pages<=1;toolbar.hidden=single;hint.hidden=single;
+   toolbar.hidden=single;hint.hidden=single;
    onRender(content);
   }
   function move(delta){const nextIndex=page(items,index+delta,size()).index;if(nextIndex!==index){index=nextIndex;draw();}}
