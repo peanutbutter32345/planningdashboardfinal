@@ -1,3 +1,4 @@
+import {readFileSync} from 'node:fs';
 import {REGIONAL_CITIES} from './regional.js';
 export const NEWS_ARTICLES = [
   {
@@ -2463,3 +2464,7 @@ export const NEWS_ARTICLES = [
 ];
 
 NEWS_ARTICLES.push(...Object.values(REGIONAL_CITIES).flatMap(c=>c.news));
+
+NEWS_ARTICLES.push(...JSON.parse(readFileSync(new URL('../public/data/housing-records.json',import.meta.url))).news);
+
+NEWS_ARTICLES.push(...JSON.parse(readFileSync(new URL('../public/data/city-news.json',import.meta.url))));

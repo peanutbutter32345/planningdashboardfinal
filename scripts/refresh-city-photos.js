@@ -4,6 +4,7 @@ const html=readFileSync('public/index.html','utf8');
 const original=vm.runInNewContext(html.slice(html.indexOf('const CITY_PHOTOS ='),html.indexOf('Object.assign(CITY_PHOTOS,'))+';CITY_PHOTOS');
 const regions=JSON.parse(readFileSync('public/data/regions.json','utf8'));
 const headers={'User-Agent':'SouthBayDashboard/1.0 (https://southbaydashboard.com; city imagery with attribution)'};
+const PHOTO_OVERRIDES={vacaville:'Pena Adobe - Vacaville, CA.JPG'};
 const clean=s=>String(s||'').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&');
 mkdirSync('public/img/cities',{recursive:true});
 let photos={};try{photos=JSON.parse(readFileSync('public/data/city-photos.json'));}catch{}
@@ -15,11 +16,12 @@ for(const key of keys){
   let p=original[key];
   if(!p){
    const label=regions.cities[key].label;const title=label==='San Francisco'?label:label+', California';
-   const j=await(await get('https://en.wikipedia.org/w/api.php?action=query&titles='+encodeURIComponent(title)+'&prop=pageimages&piprop=thumbnail%7Cname&pithumbsize=1000&format=json')).json();
-   const page=Object.values(j.query.pages)[0];if(!page.thumbnail)throw Error('No city photo');
-   const cj=await(await get('https://commons.wikimedia.org/w/api.php?action=query&titles='+encodeURIComponent('File:'+page.pageimage)+'&prop=imageinfo&iiprop=url%7Cextmetadata&format=json')).json();
+   const j=await(await get('https://en.wikipedia.org/w/api.php?action=query&redirects=1&titles='+encodeURIComponent(title)+'&prop=pageimages&piprop=thumbnail%7Cname&pithumbsize=1000&format=json')).json();
+   const page=Object.values(j.query.pages)[0];if(!page.thumbnail&&!PHOTO_OVERRIDES[key])throw Error('No city photo');
+   const filename=PHOTO_OVERRIDES[key]||page.pageimage;
+   const cj=await(await get('https://commons.wikimedia.org/w/api.php?action=query&redirects=1&titles='+encodeURIComponent('File:'+filename)+'&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1200&format=json')).json();
    const info=Object.values(cj.query.pages)[0].imageinfo?.[0];const meta=info?.extmetadata||{};
-   p={url:page.thumbnail.source,cap:label+' · city view',by:clean(meta.Artist?.value)||'Wikimedia Commons contributors',lic:clean(meta.LicenseShortName?.value)||'See source license',source:info?.descriptionurl||'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(page.pageimage)};
+   p={url:PHOTO_OVERRIDES[key]?(info?.thumburl||info?.url):page.thumbnail.source,cap:label+' · city view',by:clean(meta.Artist?.value)||'Wikimedia Commons contributors',lic:clean(meta.LicenseShortName?.value)||'See source license',source:info?.descriptionurl||'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(filename)};
   }
   const r=await get(p.url);const type=r.headers.get('content-type');if(!type?.startsWith('image/'))throw Error('Not an image');
   const ext=type.includes('png')?'png':type.includes('webp')?'webp':'jpg';

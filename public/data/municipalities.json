@@ -1,0 +1,1219 @@
+{
+  "scope": "101 incorporated cities and towns in the nine-county Bay Area. West San Jose is a separate existing neighborhood profile.",
+  "source": "https://census.bayareametro.gov/cities-counties",
+  "coordinatesSource": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_06.txt",
+  "cities": [
+    {
+      "key": "sanfrancisco",
+      "label": "San Francisco",
+      "county": "San Francisco",
+      "censusSlug": "san_francisco",
+      "website": "https://www.sf.gov/",
+      "fips": "67000",
+      "center": {
+        "lat": 37.727239,
+        "lng": -123.032229
+      }
+    },
+    {
+      "key": "alameda",
+      "label": "Alameda",
+      "county": "Alameda",
+      "censusSlug": "alameda",
+      "website": "https://www.alamedaca.gov",
+      "fips": "00562",
+      "center": {
+        "lat": 37.741911,
+        "lng": -122.259914
+      }
+    },
+    {
+      "key": "albany",
+      "label": "Albany",
+      "county": "Alameda",
+      "censusSlug": "albany",
+      "website": "https://www.albanyca.org",
+      "fips": "00674",
+      "center": {
+        "lat": 37.89065,
+        "lng": -122.318116
+      }
+    },
+    {
+      "key": "berkeley",
+      "label": "Berkeley",
+      "county": "Alameda",
+      "censusSlug": "berkeley",
+      "website": "https://www.cityofberkeley.info/",
+      "fips": "06000",
+      "center": {
+        "lat": 37.865673,
+        "lng": -122.298725
+      }
+    },
+    {
+      "key": "dublin",
+      "label": "Dublin",
+      "county": "Alameda",
+      "censusSlug": "dublin",
+      "website": "https://www.ci.dublin.ca.us/",
+      "fips": "20018",
+      "center": {
+        "lat": 37.716137,
+        "lng": -121.896229
+      }
+    },
+    {
+      "key": "emeryville",
+      "label": "Emeryville",
+      "county": "Alameda",
+      "censusSlug": "emeryville",
+      "website": "https://www.ci.emeryville.ca.us/",
+      "fips": "22594",
+      "center": {
+        "lat": 37.838473,
+        "lng": -122.301682
+      }
+    },
+    {
+      "key": "fremont",
+      "label": "Fremont",
+      "county": "Alameda",
+      "censusSlug": "fremont",
+      "website": "https://www.fremont.gov/",
+      "fips": "26000",
+      "center": {
+        "lat": 37.49446,
+        "lng": -121.94115
+      }
+    },
+    {
+      "key": "hayward",
+      "label": "Hayward",
+      "county": "Alameda",
+      "censusSlug": "hayward",
+      "website": "https://www.hayward-ca.gov/",
+      "fips": "33000",
+      "center": {
+        "lat": 37.626826,
+        "lng": -122.104015
+      }
+    },
+    {
+      "key": "livermore",
+      "label": "Livermore",
+      "county": "Alameda",
+      "censusSlug": "livermore",
+      "website": "https://www.cityoflivermore.net/",
+      "fips": "41992",
+      "center": {
+        "lat": 37.686977,
+        "lng": -121.759781
+      }
+    },
+    {
+      "key": "newark",
+      "label": "Newark",
+      "county": "Alameda",
+      "censusSlug": "newark",
+      "website": "https://www.newark.org/",
+      "fips": "50916",
+      "center": {
+        "lat": 37.504253,
+        "lng": -122.03191
+      }
+    },
+    {
+      "key": "oakland",
+      "label": "Oakland",
+      "county": "Alameda",
+      "censusSlug": "oakland",
+      "website": "https://www.oaklandca.gov/",
+      "fips": "53000",
+      "center": {
+        "lat": 37.769846,
+        "lng": -122.22569
+      }
+    },
+    {
+      "key": "piedmont",
+      "label": "Piedmont",
+      "county": "Alameda",
+      "censusSlug": "piedmont",
+      "website": "https://www.ci.piedmont.ca.us",
+      "fips": "56938",
+      "center": {
+        "lat": 37.822545,
+        "lng": -122.230024
+      }
+    },
+    {
+      "key": "pleasanton",
+      "label": "Pleasanton",
+      "county": "Alameda",
+      "censusSlug": "pleasanton",
+      "website": "https://www.cityofpleasantonca.gov/",
+      "fips": "57792",
+      "center": {
+        "lat": 37.667185,
+        "lng": -121.88123
+      }
+    },
+    {
+      "key": "sanleandro",
+      "label": "San Leandro",
+      "county": "Alameda",
+      "censusSlug": "san_leandro",
+      "website": "https://www.ci.san-leandro.ca.us",
+      "fips": "68084",
+      "center": {
+        "lat": 37.703368,
+        "lng": -122.163036
+      }
+    },
+    {
+      "key": "unioncity",
+      "label": "Union City",
+      "county": "Alameda",
+      "censusSlug": "union_city",
+      "website": "https://www.unioncity.org/",
+      "fips": "81204",
+      "center": {
+        "lat": 37.602759,
+        "lng": -122.01884
+      }
+    },
+    {
+      "key": "antioch",
+      "label": "Antioch",
+      "county": "Contra Costa",
+      "censusSlug": "antioch",
+      "website": "https://www.antiochca.gov/",
+      "fips": "02252",
+      "center": {
+        "lat": 37.978336,
+        "lng": -121.796064
+      }
+    },
+    {
+      "key": "brentwood",
+      "label": "Brentwood",
+      "county": "Contra Costa",
+      "censusSlug": "brentwood",
+      "website": "https://www.brentwoodca.gov/",
+      "fips": "08142",
+      "center": {
+        "lat": 37.935578,
+        "lng": -121.71897
+      }
+    },
+    {
+      "key": "clayton",
+      "label": "Clayton",
+      "county": "Contra Costa",
+      "censusSlug": "clayton",
+      "website": "https://ci.clayton.ca.us/",
+      "fips": "13882",
+      "center": {
+        "lat": 37.940322,
+        "lng": -121.930075
+      }
+    },
+    {
+      "key": "concord",
+      "label": "Concord",
+      "county": "Contra Costa",
+      "censusSlug": "concord",
+      "website": "https://www.ci.concord.ca.us",
+      "fips": "16000",
+      "center": {
+        "lat": 37.972184,
+        "lng": -122.001587
+      }
+    },
+    {
+      "key": "danville",
+      "label": "Danville",
+      "county": "Contra Costa",
+      "censusSlug": "danville",
+      "website": "https://www.ci.danville.ca.us",
+      "fips": "17988",
+      "center": {
+        "lat": 37.812142,
+        "lng": -121.969824
+      }
+    },
+    {
+      "key": "elcerrito",
+      "label": "El Cerrito",
+      "county": "Contra Costa",
+      "censusSlug": "el_cerrito",
+      "website": "https://www.el-cerrito.org/",
+      "fips": "21796",
+      "center": {
+        "lat": 37.919574,
+        "lng": -122.302519
+      }
+    },
+    {
+      "key": "hercules",
+      "label": "Hercules",
+      "county": "Contra Costa",
+      "censusSlug": "hercules",
+      "website": "https://www.ci.hercules.ca.us/",
+      "fips": "33308",
+      "center": {
+        "lat": 38.021427,
+        "lng": -122.288929
+      }
+    },
+    {
+      "key": "lafayette",
+      "label": "Lafayette",
+      "county": "Contra Costa",
+      "censusSlug": "lafayette",
+      "website": "https://www.lovelafayette.org/",
+      "fips": "39122",
+      "center": {
+        "lat": 37.891004,
+        "lng": -122.119529
+      }
+    },
+    {
+      "key": "martinez",
+      "label": "Martinez",
+      "county": "Contra Costa",
+      "censusSlug": "martinez",
+      "website": "https://www.cityofmartinez.org/",
+      "fips": "46114",
+      "center": {
+        "lat": 37.998116,
+        "lng": -122.114419
+      }
+    },
+    {
+      "key": "moraga",
+      "label": "Moraga",
+      "county": "Contra Costa",
+      "censusSlug": "moraga",
+      "website": "https://www.moraga.ca.us",
+      "fips": "49187",
+      "center": {
+        "lat": 37.845693,
+        "lng": -122.123217
+      }
+    },
+    {
+      "key": "oakley",
+      "label": "Oakley",
+      "county": "Contra Costa",
+      "censusSlug": "oakley",
+      "website": "https://www.ci.oakley.ca.us",
+      "fips": "53070",
+      "center": {
+        "lat": 37.996149,
+        "lng": -121.693624
+      }
+    },
+    {
+      "key": "orinda",
+      "label": "Orinda",
+      "county": "Contra Costa",
+      "censusSlug": "orinda",
+      "website": "https://www.cityoforinda.org/",
+      "fips": "54232",
+      "center": {
+        "lat": 37.88161,
+        "lng": -122.168595
+      }
+    },
+    {
+      "key": "pinole",
+      "label": "Pinole",
+      "county": "Contra Costa",
+      "censusSlug": "pinole",
+      "website": "https://www.ci.pinole.ca.us/",
+      "fips": "57288",
+      "center": {
+        "lat": 38.001702,
+        "lng": -122.318488
+      }
+    },
+    {
+      "key": "pittsburg",
+      "label": "Pittsburg",
+      "county": "Contra Costa",
+      "censusSlug": "pittsburg",
+      "website": "https://www.ci.pittsburg.ca.us",
+      "fips": "57456",
+      "center": {
+        "lat": 38.01769,
+        "lng": -121.900395
+      }
+    },
+    {
+      "key": "pleasanthill",
+      "label": "Pleasant Hill",
+      "county": "Contra Costa",
+      "censusSlug": "pleasant_hill",
+      "website": "https://www.ci.pleasant-hill.ca.us",
+      "fips": "57764",
+      "center": {
+        "lat": 37.954163,
+        "lng": -122.075772
+      }
+    },
+    {
+      "key": "richmond",
+      "label": "Richmond",
+      "county": "Contra Costa",
+      "censusSlug": "richmond",
+      "website": "https://www.ci.richmond.ca.us",
+      "fips": "60620",
+      "center": {
+        "lat": 37.952278,
+        "lng": -122.360609
+      }
+    },
+    {
+      "key": "sanpablo",
+      "label": "San Pablo",
+      "county": "Contra Costa",
+      "censusSlug": "san_pablo",
+      "website": "https://www.sanpabloca.gov/",
+      "fips": "68294",
+      "center": {
+        "lat": 37.962861,
+        "lng": -122.342581
+      }
+    },
+    {
+      "key": "sanramon",
+      "label": "San Ramon",
+      "county": "Contra Costa",
+      "censusSlug": "san_ramon",
+      "website": "https://www.ci.san-ramon.ca.us",
+      "fips": "68378",
+      "center": {
+        "lat": 37.765258,
+        "lng": -121.931987
+      }
+    },
+    {
+      "key": "walnutcreek",
+      "label": "Walnut Creek",
+      "county": "Contra Costa",
+      "censusSlug": "walnut_creek",
+      "website": "https://www.walnut-creek.org/",
+      "fips": "83346",
+      "center": {
+        "lat": 37.902666,
+        "lng": -122.040479
+      }
+    },
+    {
+      "key": "belvedere",
+      "label": "Belvedere",
+      "county": "Marin",
+      "censusSlug": "belvedere",
+      "website": "https://www.cityofbelvedere.org/",
+      "fips": "05164",
+      "center": {
+        "lat": 37.873567,
+        "lng": -122.470995
+      }
+    },
+    {
+      "key": "cortemadera",
+      "label": "Corte Madera",
+      "county": "Marin",
+      "censusSlug": "corte_madera",
+      "website": "https://www.cortemadera.gov/",
+      "fips": "16462",
+      "center": {
+        "lat": 37.931846,
+        "lng": -122.507738
+      }
+    },
+    {
+      "key": "fairfax",
+      "label": "Fairfax",
+      "county": "Marin",
+      "censusSlug": "fairfax",
+      "website": "https://www.townoffairfax.org/",
+      "fips": "23168",
+      "center": {
+        "lat": 37.988532,
+        "lng": -122.595208
+      }
+    },
+    {
+      "key": "larkspur",
+      "label": "Larkspur",
+      "county": "Marin",
+      "censusSlug": "larkspur",
+      "website": "https://www.ci.larkspur.ca.us/",
+      "fips": "40438",
+      "center": {
+        "lat": 37.940544,
+        "lng": -122.530229
+      }
+    },
+    {
+      "key": "millvalley",
+      "label": "Mill Valley",
+      "county": "Marin",
+      "censusSlug": "mill_valley",
+      "website": "https://www.cityofmillvalley.org",
+      "fips": "47710",
+      "center": {
+        "lat": 37.908122,
+        "lng": -122.542325
+      }
+    },
+    {
+      "key": "novato",
+      "label": "Novato",
+      "county": "Marin",
+      "censusSlug": "novato",
+      "website": "https://novato.org/",
+      "fips": "52582",
+      "center": {
+        "lat": 38.085087,
+        "lng": -122.548272
+      }
+    },
+    {
+      "key": "ross",
+      "label": "Ross",
+      "county": "Marin",
+      "censusSlug": "ross",
+      "website": "https://www.townofross.org/",
+      "fips": "62980",
+      "center": {
+        "lat": 37.963821,
+        "lng": -122.561614
+      }
+    },
+    {
+      "key": "sananselmo",
+      "label": "San Anselmo",
+      "county": "Marin",
+      "censusSlug": "san_anselmo",
+      "website": "https://www.townofsananselmo.org",
+      "fips": "64434",
+      "center": {
+        "lat": 37.982117,
+        "lng": -122.569921
+      }
+    },
+    {
+      "key": "sanrafael",
+      "label": "San Rafael",
+      "county": "Marin",
+      "censusSlug": "san_rafael",
+      "website": "https://www.cityofsanrafael.org",
+      "fips": "68364",
+      "center": {
+        "lat": 37.981003,
+        "lng": -122.50693
+      }
+    },
+    {
+      "key": "sausalito",
+      "label": "Sausalito",
+      "county": "Marin",
+      "censusSlug": "sausalito",
+      "website": "https://www.sausalito.gov/",
+      "fips": "70364",
+      "center": {
+        "lat": 37.858369,
+        "lng": -122.491844
+      }
+    },
+    {
+      "key": "tiburon",
+      "label": "Tiburon",
+      "county": "Marin",
+      "censusSlug": "tiburon",
+      "website": "https://www.townoftiburon.org/",
+      "fips": "78666",
+      "center": {
+        "lat": 37.886768,
+        "lng": -122.462619
+      }
+    },
+    {
+      "key": "americancanyon",
+      "label": "American Canyon",
+      "county": "Napa",
+      "censusSlug": "american_canyon",
+      "website": "https://www.cityofamericancanyon.org",
+      "fips": "01640",
+      "center": {
+        "lat": 38.179033,
+        "lng": -122.259602
+      }
+    },
+    {
+      "key": "calistoga",
+      "label": "Calistoga",
+      "county": "Napa",
+      "censusSlug": "calistoga",
+      "website": "https://www.ci.calistoga.ca.us/",
+      "fips": "09892",
+      "center": {
+        "lat": 38.581408,
+        "lng": -122.582696
+      }
+    },
+    {
+      "key": "napa",
+      "label": "Napa",
+      "county": "Napa",
+      "censusSlug": "napa",
+      "website": "https://www.cityofnapa.org/",
+      "fips": "50258",
+      "center": {
+        "lat": 38.297872,
+        "lng": -122.300741
+      }
+    },
+    {
+      "key": "sthelena",
+      "label": "St. Helena",
+      "county": "Napa",
+      "censusSlug": "st_helena",
+      "website": "https://www.ci.st-helena.ca.us",
+      "fips": "64140",
+      "center": {
+        "lat": 38.512806,
+        "lng": -122.468076
+      }
+    },
+    {
+      "key": "yountville",
+      "label": "Yountville",
+      "county": "Napa",
+      "censusSlug": "yountville",
+      "website": "https://www.townofyountville.com",
+      "fips": "86930",
+      "center": {
+        "lat": 38.393512,
+        "lng": -122.365536
+      }
+    },
+    {
+      "key": "atherton",
+      "label": "Atherton",
+      "county": "San Mateo",
+      "censusSlug": "atherton",
+      "website": "https://www.ci.atherton.ca.us",
+      "fips": "03092",
+      "center": {
+        "lat": 37.457072,
+        "lng": -122.201058
+      }
+    },
+    {
+      "key": "belmont",
+      "label": "Belmont",
+      "county": "San Mateo",
+      "censusSlug": "belmont",
+      "website": "https://www.belmont.gov",
+      "fips": "05108",
+      "center": {
+        "lat": 37.514398,
+        "lng": -122.294475
+      }
+    },
+    {
+      "key": "brisbane",
+      "label": "Brisbane",
+      "county": "San Mateo",
+      "censusSlug": "brisbane",
+      "website": "https://brisbaneca.org/",
+      "fips": "08310",
+      "center": {
+        "lat": 37.67575,
+        "lng": -122.383302
+      }
+    },
+    {
+      "key": "burlingame",
+      "label": "Burlingame",
+      "county": "San Mateo",
+      "censusSlug": "burlingame",
+      "website": "https://www.burlingame.org",
+      "fips": "09066",
+      "center": {
+        "lat": 37.589952,
+        "lng": -122.363342
+      }
+    },
+    {
+      "key": "colma",
+      "label": "Colma",
+      "county": "San Mateo",
+      "censusSlug": "colma",
+      "website": "https://www.colma.ca.gov",
+      "fips": "14736",
+      "center": {
+        "lat": 37.676697,
+        "lng": -122.452821
+      }
+    },
+    {
+      "key": "dalycity",
+      "label": "Daly City",
+      "county": "San Mateo",
+      "censusSlug": "daly_city",
+      "website": "https://www.dalycity.org/",
+      "fips": "17918",
+      "center": {
+        "lat": 37.701684,
+        "lng": -122.464968
+      }
+    },
+    {
+      "key": "eastpaloalto",
+      "label": "East Palo Alto",
+      "county": "San Mateo",
+      "censusSlug": "east_palo_alto",
+      "website": "https://www.ci.east-palo-alto.ca.us",
+      "fips": "20956",
+      "center": {
+        "lat": 37.46778,
+        "lng": -122.13255
+      }
+    },
+    {
+      "key": "fostercity",
+      "label": "Foster City",
+      "county": "San Mateo",
+      "censusSlug": "foster_city",
+      "website": "https://www.fostercity.org",
+      "fips": "25338",
+      "center": {
+        "lat": 37.56482,
+        "lng": -122.250782
+      }
+    },
+    {
+      "key": "halfmoonbay",
+      "label": "Half Moon Bay",
+      "county": "San Mateo",
+      "censusSlug": "half_moon_bay",
+      "website": "https://www.half-moon-bay.ca.us",
+      "fips": "31708",
+      "center": {
+        "lat": 37.467319,
+        "lng": -122.440485
+      }
+    },
+    {
+      "key": "hillsborough",
+      "label": "Hillsborough",
+      "county": "San Mateo",
+      "censusSlug": "hillsborough",
+      "website": "https://www.hillsborough.net",
+      "fips": "33798",
+      "center": {
+        "lat": 37.557206,
+        "lng": -122.358541
+      }
+    },
+    {
+      "key": "menlopark",
+      "label": "Menlo Park",
+      "county": "San Mateo",
+      "censusSlug": "menlo_park",
+      "website": "https://menlopark.gov/",
+      "fips": "46870",
+      "center": {
+        "lat": 37.479731,
+        "lng": -122.148055
+      }
+    },
+    {
+      "key": "millbrae",
+      "label": "Millbrae",
+      "county": "San Mateo",
+      "censusSlug": "millbrae",
+      "website": "https://www.ci.millbrae.ca.us",
+      "fips": "47486",
+      "center": {
+        "lat": 37.59897,
+        "lng": -122.401991
+      }
+    },
+    {
+      "key": "pacifica",
+      "label": "Pacifica",
+      "county": "San Mateo",
+      "censusSlug": "pacifica",
+      "website": "https://www.cityofpacifica.org",
+      "fips": "54806",
+      "center": {
+        "lat": 37.606598,
+        "lng": -122.47723
+      }
+    },
+    {
+      "key": "portolavalley",
+      "label": "Portola Valley",
+      "county": "San Mateo",
+      "censusSlug": "portola_valley",
+      "website": "https://www.portolavalley.net",
+      "fips": "58380",
+      "center": {
+        "lat": 37.365191,
+        "lng": -122.232724
+      }
+    },
+    {
+      "key": "redwoodcity",
+      "label": "Redwood City",
+      "county": "San Mateo",
+      "censusSlug": "redwood_city",
+      "website": "https://www.redwoodcity.org/",
+      "fips": "60102",
+      "center": {
+        "lat": 37.515274,
+        "lng": -122.213672
+      }
+    },
+    {
+      "key": "sanbruno",
+      "label": "San Bruno",
+      "county": "San Mateo",
+      "censusSlug": "san_bruno",
+      "website": "https://www.sanbruno.ca.gov",
+      "fips": "65028",
+      "center": {
+        "lat": 37.62556,
+        "lng": -122.431397
+      }
+    },
+    {
+      "key": "sancarlos",
+      "label": "San Carlos",
+      "county": "San Mateo",
+      "censusSlug": "san_carlos",
+      "website": "https://www.cityofsancarlos.org/",
+      "fips": "65070",
+      "center": {
+        "lat": 37.499034,
+        "lng": -122.267572
+      }
+    },
+    {
+      "key": "sanmateo",
+      "label": "San Mateo",
+      "county": "San Mateo",
+      "censusSlug": "san_mateo",
+      "website": "https://www.cityofsanmateo.org/",
+      "fips": "68252",
+      "center": {
+        "lat": 37.56031,
+        "lng": -122.3106
+      }
+    },
+    {
+      "key": "southsanfrancisco",
+      "label": "South San Francisco",
+      "county": "San Mateo",
+      "censusSlug": "south_san_francisco",
+      "website": "https://www.ssf.net/",
+      "fips": "73262",
+      "center": {
+        "lat": 37.655104,
+        "lng": -122.376234
+      }
+    },
+    {
+      "key": "woodside",
+      "label": "Woodside",
+      "county": "San Mateo",
+      "censusSlug": "woodside",
+      "website": "https://www.woodsidetown.org",
+      "fips": "86440",
+      "center": {
+        "lat": 37.42215,
+        "lng": -122.258593
+      }
+    },
+    {
+      "key": "campbell",
+      "label": "Campbell",
+      "county": "Santa Clara",
+      "censusSlug": "campbell",
+      "website": "https://www.ci.campbell.ca.us",
+      "fips": "10345",
+      "center": {
+        "lat": 37.280244,
+        "lng": -121.953296
+      }
+    },
+    {
+      "key": "cupertino",
+      "label": "Cupertino",
+      "county": "Santa Clara",
+      "censusSlug": "cupertino",
+      "website": "https://www.cupertino.org",
+      "fips": "17610",
+      "center": {
+        "lat": 37.3194,
+        "lng": -122.044957
+      }
+    },
+    {
+      "key": "gilroy",
+      "label": "Gilroy",
+      "county": "Santa Clara",
+      "censusSlug": "gilroy",
+      "website": "https://www.ci.gilroy.ca.us",
+      "fips": "29504",
+      "center": {
+        "lat": 37.006407,
+        "lng": -121.585321
+      }
+    },
+    {
+      "key": "losaltos",
+      "label": "Los Altos",
+      "county": "Santa Clara",
+      "censusSlug": "los_altos",
+      "website": "https://www.losaltosca.gov/",
+      "fips": "43280",
+      "center": {
+        "lat": 37.368431,
+        "lng": -122.09657
+      }
+    },
+    {
+      "key": "losaltoshills",
+      "label": "Los Altos Hills",
+      "county": "Santa Clara",
+      "censusSlug": "los_altos_hills",
+      "website": "https://www.losaltoshills.ca.gov",
+      "fips": "43294",
+      "center": {
+        "lat": 37.366808,
+        "lng": -122.13865
+      }
+    },
+    {
+      "key": "losgatos",
+      "label": "Los Gatos",
+      "county": "Santa Clara",
+      "censusSlug": "los_gatos",
+      "website": "https://www.losgatosca.gov/",
+      "fips": "44112",
+      "center": {
+        "lat": 37.229944,
+        "lng": -121.956874
+      }
+    },
+    {
+      "key": "milpitas",
+      "label": "Milpitas",
+      "county": "Santa Clara",
+      "censusSlug": "milpitas",
+      "website": "https://www.ci.milpitas.ca.gov",
+      "fips": "47766",
+      "center": {
+        "lat": 37.433136,
+        "lng": -121.890934
+      }
+    },
+    {
+      "key": "montesereno",
+      "label": "Monte Sereno",
+      "county": "Santa Clara",
+      "censusSlug": "monte_sereno",
+      "website": "https://www.montesereno.org",
+      "fips": "48956",
+      "center": {
+        "lat": 37.24041,
+        "lng": -121.988235
+      }
+    },
+    {
+      "key": "morganhill",
+      "label": "Morgan Hill",
+      "county": "Santa Clara",
+      "censusSlug": "morgan_hill",
+      "website": "https://www.morgan-hill.ca.gov",
+      "fips": "49278",
+      "center": {
+        "lat": 37.132495,
+        "lng": -121.641891
+      }
+    },
+    {
+      "key": "mountainview",
+      "label": "Mountain View",
+      "county": "Santa Clara",
+      "censusSlug": "mountain_view",
+      "website": "https://www.mountainview.gov",
+      "fips": "49670",
+      "center": {
+        "lat": 37.399686,
+        "lng": -122.079269
+      }
+    },
+    {
+      "key": "paloalto",
+      "label": "Palo Alto",
+      "county": "Santa Clara",
+      "censusSlug": "palo_alto",
+      "website": "https://www.cityofpaloalto.org/",
+      "fips": "55282",
+      "center": {
+        "lat": 37.39652,
+        "lng": -122.143088
+      }
+    },
+    {
+      "key": "sanjose",
+      "label": "San Jose",
+      "county": "Santa Clara",
+      "censusSlug": "san_jose",
+      "website": "https://www.sanjoseca.gov",
+      "fips": "68000",
+      "center": {
+        "lat": 37.296011,
+        "lng": -121.814552
+      }
+    },
+    {
+      "key": "santaclara",
+      "label": "Santa Clara",
+      "county": "Santa Clara",
+      "censusSlug": "santa_clara",
+      "website": "https://santaclaraca.gov/",
+      "fips": "69084",
+      "center": {
+        "lat": 37.364621,
+        "lng": -121.967973
+      }
+    },
+    {
+      "key": "saratoga",
+      "label": "Saratoga",
+      "county": "Santa Clara",
+      "censusSlug": "saratoga",
+      "website": "https://www.saratoga.ca.us/",
+      "fips": "70280",
+      "center": {
+        "lat": 37.268326,
+        "lng": -122.02622
+      }
+    },
+    {
+      "key": "sunnyvale",
+      "label": "Sunnyvale",
+      "county": "Santa Clara",
+      "censusSlug": "sunnyvale",
+      "website": "https://sunnyvale.ca.gov/",
+      "fips": "77000",
+      "center": {
+        "lat": 37.385797,
+        "lng": -122.026316
+      }
+    },
+    {
+      "key": "benicia",
+      "label": "Benicia",
+      "county": "Solano",
+      "censusSlug": "benicia",
+      "website": "https://www.ci.benicia.ca.us",
+      "fips": "05290",
+      "center": {
+        "lat": 38.072733,
+        "lng": -122.155169
+      }
+    },
+    {
+      "key": "dixon",
+      "label": "Dixon",
+      "county": "Solano",
+      "censusSlug": "dixon",
+      "website": "https://www.ci.dixon.ca.us",
+      "fips": "19402",
+      "center": {
+        "lat": 38.447512,
+        "lng": -121.824223
+      }
+    },
+    {
+      "key": "fairfield",
+      "label": "Fairfield",
+      "county": "Solano",
+      "censusSlug": "fairfield",
+      "website": "https://www.fairfield.ca.gov/",
+      "fips": "23182",
+      "center": {
+        "lat": 38.261965,
+        "lng": -122.032389
+      }
+    },
+    {
+      "key": "riovista",
+      "label": "Rio Vista",
+      "county": "Solano",
+      "censusSlug": "rio_vista",
+      "website": "https://www.riovistacity.com/",
+      "fips": "60984",
+      "center": {
+        "lat": 38.176672,
+        "lng": -121.703406
+      }
+    },
+    {
+      "key": "suisuncity",
+      "label": "Suisun City",
+      "county": "Solano",
+      "censusSlug": "suisun_city",
+      "website": "https://www.suisun.com",
+      "fips": "75630",
+      "center": {
+        "lat": 38.248334,
+        "lng": -122.010066
+      }
+    },
+    {
+      "key": "vacaville",
+      "label": "Vacaville",
+      "county": "Solano",
+      "censusSlug": "vacaville",
+      "website": "https://www.ci.vacaville.ca.us/",
+      "fips": "81554",
+      "center": {
+        "lat": 38.358621,
+        "lng": -121.968601
+      }
+    },
+    {
+      "key": "vallejo",
+      "label": "Vallejo",
+      "county": "Solano",
+      "censusSlug": "vallejo",
+      "website": "https://www.ci.vallejo.ca.us",
+      "fips": "81666",
+      "center": {
+        "lat": 38.106909,
+        "lng": -122.262339
+      }
+    },
+    {
+      "key": "cloverdale",
+      "label": "Cloverdale",
+      "county": "Sonoma",
+      "censusSlug": "cloverdale",
+      "website": "https://www.cloverdale.net",
+      "fips": "14190",
+      "center": {
+        "lat": 38.794795,
+        "lng": -123.014703
+      }
+    },
+    {
+      "key": "cotati",
+      "label": "Cotati",
+      "county": "Sonoma",
+      "censusSlug": "cotati",
+      "website": "https://www.cotaticity.org/",
+      "fips": "16560",
+      "center": {
+        "lat": 38.328492,
+        "lng": -122.710049
+      }
+    },
+    {
+      "key": "healdsburg",
+      "label": "Healdsburg",
+      "county": "Sonoma",
+      "censusSlug": "healdsburg",
+      "website": "https://www.ci.healdsburg.ca.us",
+      "fips": "33056",
+      "center": {
+        "lat": 38.622526,
+        "lng": -122.865133
+      }
+    },
+    {
+      "key": "petaluma",
+      "label": "Petaluma",
+      "county": "Sonoma",
+      "censusSlug": "petaluma",
+      "website": "https://www.cityofpetaluma.net",
+      "fips": "56784",
+      "center": {
+        "lat": 38.242251,
+        "lng": -122.628769
+      }
+    },
+    {
+      "key": "rohnertpark",
+      "label": "Rohnert Park",
+      "county": "Sonoma",
+      "censusSlug": "rohnert_park",
+      "website": "https://www.ci.rohnert-park.ca.us",
+      "fips": "62546",
+      "center": {
+        "lat": 38.347617,
+        "lng": -122.700896
+      }
+    },
+    {
+      "key": "santarosa",
+      "label": "Santa Rosa",
+      "county": "Sonoma",
+      "censusSlug": "santa_rosa",
+      "website": "https://www.srcity.org/",
+      "fips": "70098",
+      "center": {
+        "lat": 38.445824,
+        "lng": -122.706181
+      }
+    },
+    {
+      "key": "sebastopol",
+      "label": "Sebastopol",
+      "county": "Sonoma",
+      "censusSlug": "sebastopol",
+      "website": "https://www.ci.sebastopol.ca.us",
+      "fips": "70770",
+      "center": {
+        "lat": 38.400003,
+        "lng": -122.827586
+      }
+    },
+    {
+      "key": "sonoma",
+      "label": "Sonoma",
+      "county": "Sonoma",
+      "censusSlug": "sonoma",
+      "website": "https://www.sonomacity.org",
+      "fips": "72646",
+      "center": {
+        "lat": 38.290331,
+        "lng": -122.459831
+      }
+    },
+    {
+      "key": "windsor",
+      "label": "Windsor",
+      "county": "Sonoma",
+      "censusSlug": "windsor",
+      "website": "https://www.townofwindsor.com/",
+      "fips": "85922",
+      "center": {
+        "lat": 38.542099,
+        "lng": -122.808613
+      }
+    }
+  ]
+}

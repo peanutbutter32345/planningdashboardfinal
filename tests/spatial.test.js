@@ -29,8 +29,8 @@ test('grid delay reduces delivery; energy demand follows delivered homes, not lo
 });
 test('public snapshots have complete unique flood features, energy provenance and positive stock',()=>{
  const load=name=>JSON.parse(readFileSync(new URL('../public/futures/data/'+name,import.meta.url)));
- const flood=load('flood.geojson');assert.equal(flood.features.length,flood.metadata.count);assert.equal(new Set(flood.features.map(f=>f.properties.OBJECTID)).size,flood.features.length);assert.ok(flood.features.every(f=>['06081C','06085C','06001C','06013C','06075C','06041C'].includes(f.properties.DFIRM_ID)));
+ const flood=load('flood.geojson');assert.equal(flood.features.length,flood.metadata.count);assert.equal(new Set(flood.features.map(f=>f.properties.OBJECTID)).size,flood.features.length);assert.ok(flood.features.every(f=>['06081C','06085C','06001C','06013C','06075C','06041C','06055C','06095C','06097C'].includes(f.properties.DFIRM_ID)));
  const energy=load('energy.geojson');assert.ok(energy.features.length>40);assert.ok(energy.metadata.source.includes('FeatureServer'));assert.ok(energy.features.every(f=>Number.isFinite(f.properties.Capacity_Latest)));
- const stock=load('housing-stock.json');assert.equal(Object.keys(stock.cities).length,50);assert.equal(stock.cities.sunnyvale.units,61272);assert.ok(Object.values(stock.cities).every(c=>c.units>0&&c.year===2020));
+ const stock=load('housing-stock.json');assert.equal(Object.keys(stock.cities).length,102);assert.equal(stock.cities.sunnyvale.units,61272);assert.ok(Object.values(stock.cities).every(c=>c.units>0&&c.year===2020));
  const index=hazardIndex(flood),housing=estimateProjects(PROJECTS).rows;const hits=housing.filter(p=>screenFlood(p,index).level==='high');assert.ok(hits.length>0&&hits.length<housing.length);
 });

@@ -1,10 +1,12 @@
 /* Device-only guest persistence; never supplies a server auth token. */
 (function(root){
  const KEY='sbpd_guest_v1';
+ const NOUNS=['cookie','willow','otter','acorn','sequoia','pebble','poppy','heron','sunbeam','mango','fern','harbor','meadow','cypress','walnut','kiwi','cedar','comet','sparrow','orchid','maple','tidepool','avocado','badger','juniper','dolphin','clover','apricot','redwood','raven','biscuit','tulip'];
+ function randomUsername(){const n=crypto.getRandomValues(new Uint32Array(2));return NOUNS[n[0]%NOUNS.length]+String(n[1]%10000).padStart(4,'0');}
  const encode=bytes=>Array.from(bytes,x=>x.toString(16).padStart(2,'0')).join('');
  async function verifier(password,salt){const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);return encode(new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:new TextEncoder().encode(salt),iterations:210000},key,256)));}
  class GuestStore{
-  constructor(storage,session){this.storage=storage;this.session=session;this.persistent=true;let d;try{d=JSON.parse(storage.getItem(KEY));}catch{}this.data=d&&d.version===1&&typeof d.id==='string'&&typeof d.username==='string'&&['stars','timeline','reminders','history'].every(k=>Array.isArray(d[k]))&&d.preferences&&typeof d.preferences==='object'?d:{version:1,id:crypto.randomUUID(),username:'Guest',stars:[],timeline:[],reminders:[],history:[],preferences:{email:null,emailFrequency:'off',homeCity:null,categories:[]}};this.save();}
+  constructor(storage,session){this.storage=storage;this.session=session;this.persistent=true;let d;try{d=JSON.parse(storage.getItem(KEY));}catch{}this.data=d&&d.version===1&&typeof d.id==='string'&&typeof d.username==='string'&&['stars','timeline','reminders','history'].every(k=>Array.isArray(d[k]))&&d.preferences&&typeof d.preferences==='object'?d:{version:1,id:crypto.randomUUID(),username:randomUsername(),stars:[],timeline:[],reminders:[],history:[],preferences:{email:null,emailFrequency:'off',homeCity:null,categories:[]}};if(this.data.username==='Guest')this.data.username=randomUsername();this.save();}
   save(){try{this.storage.setItem(KEY,JSON.stringify(this.data));}catch{this.persistent=false;}}
   get unlocked(){if(!this.data.passwordHash)return true;try{return this.session.getItem(KEY)===this.data.id;}catch{return false;}}
   lock(){try{this.session.removeItem(KEY);}catch{}}

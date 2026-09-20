@@ -249,7 +249,7 @@
   },
   "sanjose": {
     "url": "/img/cities/sanjose.jpg",
-    "cap": "San Jose · city view",
+    "cap": "San Jose \u00b7 city view",
     "by": "Payton Chung",
     "lic": "CC BY 2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Valencia_Hotel,_Santana_Row_(cropped).jpg",
@@ -257,7 +257,7 @@
   },
   "sanfrancisco": {
     "url": "/img/cities/sanfrancisco.jpg",
-    "cap": "San Francisco · city view",
+    "cap": "San Francisco \u00b7 city view",
     "by": "Craig Howell from San Carlos, CA, USA",
     "lic": "CC BY 2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Zeppelin-ride-020100925-195_(5029394846).jpg",
@@ -265,7 +265,7 @@
   },
   "berkeley": {
     "url": "/img/cities/berkeley.jpg",
-    "cap": "Berkeley · city view",
+    "cap": "Berkeley \u00b7 city view",
     "by": "pedrik",
     "lic": "CC BY 2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Berkeley_cityscape.jpg",
@@ -273,7 +273,7 @@
   },
   "oakland": {
     "url": "/img/cities/oakland.png",
-    "cap": "Oakland · city view",
+    "cap": "Oakland \u00b7 city view",
     "by": "Robert Hsiao",
     "lic": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Lake_Merritt_2022-06-16.png",
@@ -281,7 +281,7 @@
   },
   "albany": {
     "url": "/img/cities/albany.jpg",
-    "cap": "Albany · city view",
+    "cap": "Albany \u00b7 city view",
     "by": "Das osmnezz",
     "lic": "CC0",
     "source": "https://commons.wikimedia.org/wiki/File:Albanyca.jpeg",
@@ -289,7 +289,7 @@
   },
   "emeryville": {
     "url": "/img/cities/emeryville.jpg",
-    "cap": "Emeryville · city view",
+    "cap": "Emeryville \u00b7 city view",
     "by": "Wikimedia Commons contributors",
     "lic": "CC BY-SA 2.5",
     "source": "https://commons.wikimedia.org/wiki/File:Emeryfromhilton.jpg",
@@ -297,7 +297,7 @@
   },
   "alameda": {
     "url": "/img/cities/alameda.jpg",
-    "cap": "Alameda · city view",
+    "cap": "Alameda \u00b7 city view",
     "by": "Sanfranman59",
     "lic": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:St._Joseph%27s_Basilica_(Alameda,_CA)_(cropped).JPG",
@@ -305,7 +305,7 @@
   },
   "fremont": {
     "url": "/img/cities/fremont.jpg",
-    "cap": "Fremont · city view",
+    "cap": "Fremont \u00b7 city view",
     "by": "Oleg Alexandrov",
     "lic": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Mission_Peak_over_Lake_Elizabeth,_in_Fremont,_California_(cropped).JPG",
@@ -313,7 +313,7 @@
   },
   "newark": {
     "url": "/img/cities/newark.jpg",
-    "cap": "Newark · city view",
+    "cap": "Newark \u00b7 city view",
     "by": "LPS.1",
     "lic": "CC0",
     "source": "https://commons.wikimedia.org/wiki/File:Silliman_Activity_and_Family_Aquatic_Center.jpg",
@@ -321,7 +321,7 @@
   },
   "unioncity": {
     "url": "/img/cities/unioncity.jpg",
-    "cap": "Union City · city view",
+    "cap": "Union City \u00b7 city view",
     "by": "LPS.1",
     "lic": "CC0",
     "source": "https://commons.wikimedia.org/wiki/File:Union_City_BART_Station.jpg",
@@ -329,7 +329,7 @@
   },
   "hayward": {
     "url": "/img/cities/hayward.jpg",
-    "cap": "Hayward · city view",
+    "cap": "Hayward \u00b7 city view",
     "by": "Mercurywoodrose",
     "lic": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Hayward_City_Hall_number_3_front.jpg",
@@ -337,7 +337,7 @@
   },
   "sanleandro": {
     "url": "/img/cities/sanleandro.jpg",
-    "cap": "San Leandro · city view",
+    "cap": "San Leandro \u00b7 city view",
     "by": "Sanfranman59",
     "lic": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Casa_Peralta_(San_Leandro,_CA).JPG",
@@ -345,7 +345,7 @@
   },
   "elcerrito": {
     "url": "/img/cities/elcerrito.jpg",
-    "cap": "El Cerrito · city view",
+    "cap": "El Cerrito \u00b7 city view",
     "by": "LPS.1",
     "lic": "CC0",
     "source": "https://commons.wikimedia.org/wiki/File:Cerrito_Theater_San_Pablo_Avenue_(cropped).jpg",
@@ -353,7 +353,7 @@
   },
   "richmond": {
     "url": "/img/cities/richmond.jpg",
-    "cap": "Richmond · city view",
+    "cap": "Richmond \u00b7 city view",
     "by": "Dicklyon",
     "lic": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Richmond_California_aerial_(cropped).jpg",
@@ -361,7 +361,7 @@
   },
   "sausalito": {
     "url": "/img/cities/sausalito.jpg",
-    "cap": "Sausalito · city view",
+    "cap": "Sausalito \u00b7 city view",
     "by": "en:User:Squirrel 22",
     "lic": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:Sausalito.jpg",
@@ -369,7 +369,7 @@
   },
   "millvalley": {
     "url": "/img/cities/millvalley.jpg",
-    "cap": "Mill Valley · city view",
+    "cap": "Mill Valley \u00b7 city view",
     "by": "SWENOWENSON",
     "lic": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Mill.Valley.jpg",
@@ -379,7 +379,7 @@
     "url": "/img/cities/morganhill.jpg",
     "cap": "First and Monterey, Morgan Hill",
     "lic": "CC BY-SA 4.0",
-    "by": "Cristiano Tomás",
+    "by": "Cristiano Tom\u00e1s",
     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg/1280px-Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg",
     "source": "https://commons.wikimedia.org/wiki/File:Downtown_Morgan_Hill_%281st_%26_Monterey%29.jpg"
   },
@@ -393,10 +393,426 @@
   },
   "tiburon": {
     "url": "/img/cities/tiburon.jpg",
-    "cap": "Tiburon · city view",
+    "cap": "Tiburon \u00b7 city view",
     "by": "Rich Shelton",
     "lic": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:TiburonDowntown.jpg",
     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/TiburonDowntown.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "dublin": {
+    "url": "/img/cities/dublin.jpg",
+    "cap": "Dublin \u00b7 city view",
+    "by": "Original uploader was Walkiped at en.wikipedia",
+    "lic": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dublin,CAPublicLibrary11-26-04.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Dublin%2CCAPublicLibrary11-26-04.jpg/1280px-Dublin%2CCAPublicLibrary11-26-04.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "livermore": {
+    "url": "/img/cities/livermore.jpg",
+    "cap": "Livermore \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Downtown_Livermore_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Downtown_Livermore_California.jpg/1280px-Downtown_Livermore_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "piedmont": {
+    "url": "/img/cities/piedmont.jpg",
+    "cap": "Piedmont \u00b7 city view",
+    "by": "Sanfranman59",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wetmore_House_(Piedmont,_CA).JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Wetmore_House_%28Piedmont%2C_CA%29.JPG/1280px-Wetmore_House_%28Piedmont%2C_CA%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "pleasanton": {
+    "url": "/img/cities/pleasanton.jpg",
+    "cap": "Pleasanton \u00b7 city view",
+    "by": "Kiddo27",
+    "lic": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Downtown_Pleasanton,_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Downtown_Pleasanton%2C_California.jpg/1280px-Downtown_Pleasanton%2C_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "antioch": {
+    "url": "/img/cities/antioch.jpg",
+    "cap": "Antioch \u00b7 city view",
+    "by": "Pi.1415926535",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Antioch_aerial_view,_August_2018_(cropped).JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Antioch_aerial_view%2C_August_2018_%28cropped%29.JPG/1280px-Antioch_aerial_view%2C_August_2018_%28cropped%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "brentwood": {
+    "url": "/img/cities/brentwood.jpg",
+    "cap": "Brentwood \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Downtown_Brentwood_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Downtown_Brentwood_California.jpg/1280px-Downtown_Brentwood_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "clayton": {
+    "url": "/img/cities/clayton.jpg",
+    "cap": "Clayton \u00b7 city view",
+    "by": "Boereck 14:52, 27 July 2006 (UTC)",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Parts_Of_Clayton,_CA.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Parts_Of_Clayton%2C_CA.jpg/1280px-Parts_Of_Clayton%2C_CA.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "concord": {
+    "url": "/img/cities/concord.jpg",
+    "cap": "Concord \u00b7 city view",
+    "by": "Geraoma",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Todos_Santos_Plaza_(Concord,_California)_Dec_2009.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Todos_Santos_Plaza_%28Concord%2C_California%29_Dec_2009.jpg/1280px-Todos_Santos_Plaza_%28Concord%2C_California%29_Dec_2009.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "danville": {
+    "url": "/img/cities/danville.jpg",
+    "cap": "Danville \u00b7 city view",
+    "by": "Agwatkin",
+    "lic": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:580_Danville_04272021_paigegreen.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/580_Danville_04272021_paigegreen.jpg/1280px-580_Danville_04272021_paigegreen.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "hercules": {
+    "url": "/img/cities/hercules.jpg",
+    "cap": "Hercules \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Refugio_Valley_Park_Hercules_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Refugio_Valley_Park_Hercules_California.jpg/1280px-Refugio_Valley_Park_Hercules_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "lafayette": {
+    "url": "/img/cities/lafayette.jpg",
+    "cap": "Lafayette \u00b7 city view",
+    "by": "Stacey Baca",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lafayette,_CA.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Lafayette%2C_CA.jpg/1280px-Lafayette%2C_CA.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "martinez": {
+    "url": "/img/cities/martinez.jpg",
+    "cap": "Martinez \u00b7 city view",
+    "by": "Federico Pizano",
+    "lic": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Carquinez_Regional_Shoreline_(cropped).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Carquinez_Regional_Shoreline_%28cropped%29.jpg/1280px-Carquinez_Regional_Shoreline_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "moraga": {
+    "url": "/img/cities/moraga.jpg",
+    "cap": "Moraga \u00b7 city view",
+    "by": "en:User:JD Lisa",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Moraga_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Moraga_California.jpg/1280px-Moraga_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "oakley": {
+    "url": "/img/cities/oakley.jpg",
+    "cap": "Oakley \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:City_Hall_Oakley_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/City_Hall_Oakley_California.jpg/1280px-City_Hall_Oakley_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "orinda": {
+    "url": "/img/cities/orinda.jpg",
+    "cap": "Orinda \u00b7 city view",
+    "by": "Erica Fischer",
+    "lic": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Orinda_(7866755256)_(cropped).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Orinda_%287866755256%29_%28cropped%29.jpg/1280px-Orinda_%287866755256%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "pinole": {
+    "url": "/img/cities/pinole.jpg",
+    "cap": "Pinole \u00b7 city view",
+    "by": "Fashionbaby90",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:DowntownPinole_(cropped).jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c7/DowntownPinole_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "pittsburg": {
+    "url": "/img/cities/pittsburg.jpg",
+    "cap": "Pittsburg \u00b7 city view",
+    "by": "Thomas Savage",
+    "lic": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pittsburg_Boardwalk.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/71/Pittsburg_Boardwalk.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "pleasanthill": {
+    "url": "/img/cities/pleasanthill.jpg",
+    "cap": "Pleasant Hill \u00b7 city view",
+    "by": "Danstone360",
+    "lic": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pleasant_Hill_CA_City_Hall.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/53/Pleasant_Hill_CA_City_Hall.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "sanpablo": {
+    "url": "/img/cities/sanpablo.jpg",
+    "cap": "San Pablo \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Welcome_Sign_San_Pablo_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Welcome_Sign_San_Pablo_California.jpg/1280px-Welcome_Sign_San_Pablo_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "sanramon": {
+    "url": "/img/cities/sanramon.jpg",
+    "cap": "San Ramon \u00b7 city view",
+    "by": "FASTILY",
+    "lic": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:San_Ramon_Waterfall_Park_1_2016-05-15.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/San_Ramon_Waterfall_Park_1_2016-05-15.jpg/1280px-San_Ramon_Waterfall_Park_1_2016-05-15.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "walnutcreek": {
+    "url": "/img/cities/walnutcreek.jpg",
+    "cap": "Walnut Creek \u00b7 city view",
+    "by": "Utilizer",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Shell_Ridge_Open_Space_-_Walnut_Creek,_California.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Shell_Ridge_Open_Space_-_Walnut_Creek%2C_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "belvedere": {
+    "url": "/img/cities/belvedere.jpg",
+    "cap": "Belvedere \u00b7 city view",
+    "by": "Brocken Inaglory",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Belvedere_around_San_Francisco_Yacht_Club.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Belvedere_around_San_Francisco_Yacht_Club.jpg/1280px-Belvedere_around_San_Francisco_Yacht_Club.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "cortemadera": {
+    "url": "/img/cities/cortemadera.jpg",
+    "cap": "Corte Madera \u00b7 city view",
+    "by": "Mx. Granger",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Town_Center_at_Corte_Madera_2.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Town_Center_at_Corte_Madera_2.jpg/1280px-Town_Center_at_Corte_Madera_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "fairfax": {
+    "url": "/img/cities/fairfax.jpg",
+    "cap": "Fairfax \u00b7 city view",
+    "by": "ERobson at English Wikipedia",
+    "lic": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:DowntownFairfaxCAShot1.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/81/DowntownFairfaxCAShot1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "larkspur": {
+    "url": "/img/cities/larkspur.jpg",
+    "cap": "Larkspur \u00b7 city view",
+    "by": "Sanfranman59",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Larkspur_City_Hall_400_Magnolia_Ave_Larkspur_CA_3-21-2010_1-56-19_PM.JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Larkspur_City_Hall_400_Magnolia_Ave_Larkspur_CA_3-21-2010_1-56-19_PM.JPG/1280px-Larkspur_City_Hall_400_Magnolia_Ave_Larkspur_CA_3-21-2010_1-56-19_PM.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "novato": {
+    "url": "/img/cities/novato.jpg",
+    "cap": "Novato \u00b7 city view",
+    "by": "Binksternet",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Hamilton_AFB_HQ.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Hamilton_AFB_HQ.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "ross": {
+    "url": "/img/cities/ross.jpg",
+    "cap": "Ross \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Post_Office_Ross_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Post_Office_Ross_California.jpg/1280px-Post_Office_Ross_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "sananselmo": {
+    "url": "/img/cities/sananselmo.jpg",
+    "cap": "San Anselmo \u00b7 city view",
+    "by": "Pi.1415926535",
+    "lic": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:San_Anselmo_from_Mount_Tam,_February_2026.JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/San_Anselmo_from_Mount_Tam%2C_February_2026.JPG/1280px-San_Anselmo_from_Mount_Tam%2C_February_2026.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "sanrafael": {
+    "url": "/img/cities/sanrafael.jpg",
+    "cap": "San Rafael \u00b7 city view",
+    "by": "Rose Vekony",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mission_San_Rafael2_(cropped).jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Mission_San_Rafael2_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "americancanyon": {
+    "url": "/img/cities/americancanyon.jpg",
+    "cap": "American Canyon \u00b7 city view",
+    "by": "Cullen328 Jim Heaphy",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:American_Canyon_Gateway.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/American_Canyon_Gateway.jpg/1280px-American_Canyon_Gateway.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "calistoga": {
+    "url": "/img/cities/calistoga.jpg",
+    "cap": "Calistoga \u00b7 city view",
+    "by": "Oleg Alexandrov",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Castello_di_Amorosa_courtyard_2_(cropped).JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Castello_di_Amorosa_courtyard_2_%28cropped%29.JPG/1280px-Castello_di_Amorosa_courtyard_2_%28cropped%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "napa": {
+    "url": "/img/cities/napa.jpg",
+    "cap": "Napa \u00b7 city view",
+    "by": "Oleg Alexandrov",
+    "lic": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:City_of_Napa_by_the_Napa_River_(cropped).JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/City_of_Napa_by_the_Napa_River_%28cropped%29.JPG/1280px-City_of_Napa_by_the_Napa_River_%28cropped%29.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "sthelena": {
+    "url": "/img/cities/sthelena.jpg",
+    "cap": "St. Helena \u00b7 city view",
+    "by": "Sanfranman59",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Greystone_Cellars,_2555_Main_St.,_St._Helena,_CA_10-16-2011_2-58-32_PM.JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Greystone_Cellars%2C_2555_Main_St.%2C_St._Helena%2C_CA_10-16-2011_2-58-32_PM.JPG/1280px-Greystone_Cellars%2C_2555_Main_St.%2C_St._Helena%2C_CA_10-16-2011_2-58-32_PM.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "yountville": {
+    "url": "/img/cities/yountville.jpg",
+    "cap": "Yountville \u00b7 city view",
+    "by": "California Health and Human Services Agency",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Veterans_Home_of_California_Yountville_(cropped).jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Veterans_Home_of_California_Yountville_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "losaltoshills": {
+    "url": "/img/cities/losaltoshills.jpg",
+    "cap": "Los Altos Hills \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Westwind_Community_Barn_Los_Altos_Hills.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Westwind_Community_Barn_Los_Altos_Hills.jpg/1280px-Westwind_Community_Barn_Los_Altos_Hills.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "montesereno": {
+    "url": "/img/cities/montesereno.jpg",
+    "cap": "Monte Sereno \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Post_Office_and_City_Hall_Monte_Sereno.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Post_Office_and_City_Hall_Monte_Sereno.jpg/1280px-Post_Office_and_City_Hall_Monte_Sereno.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "benicia": {
+    "url": "/img/cities/benicia.jpg",
+    "cap": "Benicia \u00b7 city view",
+    "by": "Leonard G.",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:CABeniciaCapitol0152.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/CABeniciaCapitol0152.jpg/1280px-CABeniciaCapitol0152.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "dixon": {
+    "url": "/img/cities/dixon.jpg",
+    "cap": "Dixon \u00b7 city view",
+    "by": "Dcoetzee",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Dixon,_California.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Aerial_view_of_Dixon%2C_California.jpg/1280px-Aerial_view_of_Dixon%2C_California.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "fairfield": {
+    "url": "/img/cities/fairfield.jpg",
+    "cap": "Fairfield \u00b7 city view",
+    "by": "Missvain",
+    "lic": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fairfield_Arch_-_April_2023_-_Sarah_Stierch_01_(cropped).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Fairfield_Arch_-_April_2023_-_Sarah_Stierch_01_%28cropped%29.jpg/1280px-Fairfield_Arch_-_April_2023_-_Sarah_Stierch_01_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "riovista": {
+    "url": "/img/cities/riovista.jpg",
+    "cap": "Rio Vista \u00b7 city view",
+    "by": "Missvain",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rio_Vista_-_August_2025_-_Sarah_Stierch_03.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Rio_Vista_-_August_2025_-_Sarah_Stierch_03.jpg/1280px-Rio_Vista_-_August_2025_-_Sarah_Stierch_03.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "suisuncity": {
+    "url": "/img/cities/suisuncity.jpg",
+    "cap": "Suisun City \u00b7 city view",
+    "by": "LPS.1",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Suisun_City_Marina_and_City_Hall.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Suisun_City_Marina_and_City_Hall.jpg/1280px-Suisun_City_Marina_and_City_Hall.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "vallejo": {
+    "url": "/img/cities/vallejo.jpg",
+    "cap": "Vallejo \u00b7 city view",
+    "by": "Sanfranman59",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Vallejo_City_Hall_and_County_Building_Branch,_734_Marin_St.,_Vallejo,_CA_4-21-2013_2-17-21_PM.JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Vallejo_City_Hall_and_County_Building_Branch%2C_734_Marin_St.%2C_Vallejo%2C_CA_4-21-2013_2-17-21_PM.JPG/1280px-Vallejo_City_Hall_and_County_Building_Branch%2C_734_Marin_St.%2C_Vallejo%2C_CA_4-21-2013_2-17-21_PM.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "cloverdale": {
+    "url": "/img/cities/cloverdale.jpg",
+    "cap": "Cloverdale \u00b7 city view",
+    "by": "Smallbones",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gould_Shaw_Cloverdale_CA.JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Gould_Shaw_Cloverdale_CA.JPG/1280px-Gould_Shaw_Cloverdale_CA.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "cotati": {
+    "url": "/img/cities/cotati.jpg",
+    "cap": "Cotati \u00b7 city view",
+    "by": "Goldenrowley",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Photo-CA-cotati.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/14/Photo-CA-cotati.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "healdsburg": {
+    "url": "/img/cities/healdsburg.jpg",
+    "cap": "Healdsburg \u00b7 city view",
+    "by": "Sanfranman59",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Healdsburg_Carnegie_Library,_221_Matheson_St.,_Healdsburg,_CA_7-3-2010_4-29-17_PM.JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Healdsburg_Carnegie_Library%2C_221_Matheson_St.%2C_Healdsburg%2C_CA_7-3-2010_4-29-17_PM.JPG/1280px-Healdsburg_Carnegie_Library%2C_221_Matheson_St.%2C_Healdsburg%2C_CA_7-3-2010_4-29-17_PM.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "petaluma": {
+    "url": "/img/cities/petaluma.jpg",
+    "cap": "Petaluma \u00b7 city view",
+    "by": "Colin Marquardt, Colin Marquardt",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Petaluma_CA_Church_(cropped).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Petaluma_CA_Church_%28cropped%29.jpg/1280px-Petaluma_CA_Church_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "rohnertpark": {
+    "url": "/img/cities/rohnertpark.jpg",
+    "cap": "Rohnert Park \u00b7 city view",
+    "by": "Stepheng3",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:RohnertParkTFCSign_12399.png",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/RohnertParkTFCSign_12399.png/1280px-RohnertParkTFCSign_12399.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "santarosa": {
+    "url": "/img/cities/santarosa.jpg",
+    "cap": "Santa Rosa \u00b7 city view",
+    "by": "Wulfnoth of English Wikipedia",
+    "lic": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Santa_Rosa_Post_Office,_Downtown_Santa_Rosa,2.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Old_Santa_Rosa_Post_Office%2C_Downtown_Santa_Rosa%2C2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "sebastopol": {
+    "url": "/img/cities/sebastopol.jpg",
+    "cap": "Sebastopol \u00b7 city view",
+    "by": "Stephen Gold",
+    "lic": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:SebastopolMainStreetEdit2722.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SebastopolMainStreetEdit2722.jpg/1280px-SebastopolMainStreetEdit2722.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "sonoma": {
+    "url": "/img/cities/sonoma.jpg",
+    "cap": "Sonoma \u00b7 city view",
+    "by": "Cullen328",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sonoma_City_Hall_(cropped).jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Sonoma_City_Hall_%28cropped%29.jpg/1280px-Sonoma_City_Hall_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "windsor": {
+    "url": "/img/cities/windsor.jpg",
+    "cap": "Windsor \u00b7 city view",
+    "by": "Missvain",
+    "lic": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Windsor_-_September_2024_-_Sarah_Stierch.jpg",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Windsor_-_September_2024_-_Sarah_Stierch.jpg/1280px-Windsor_-_September_2024_-_Sarah_Stierch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+  },
+  "vacaville": {
+    "url": "/img/cities/vacaville.jpg",
+    "cap": "Vacaville \u00b7 city view",
+    "by": "Brian Irwin",
+    "lic": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pena_Adobe_-_Vacaville,_CA.JPG",
+    "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Pena_Adobe_-_Vacaville%2C_CA.JPG/1280px-Pena_Adobe_-_Vacaville%2C_CA.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   }
 }

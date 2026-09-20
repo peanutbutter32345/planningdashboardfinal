@@ -1,0 +1,380 @@
+{
+  "dublin": {
+    "label": "Dublin",
+    "county": "Alameda",
+    "website": "https://www.dublin.ca.gov/",
+    "meetings": "https://www.dublin.ca.gov/1604/Meetings-Agendas-Minutes-Video-on-Demand",
+    "news": "https://www.dublin.ca.gov/CivicAlerts.aspx?CID=1",
+    "planning": "https://www.dublin.ca.gov/174/Development-Activity"
+  },
+  "livermore": {
+    "label": "Livermore",
+    "county": "Alameda",
+    "website": "https://www.livermoreca.gov/",
+    "meetings": "https://www.livermoreca.gov/departments/city-clerk/city-council-meeting-calendar-agendas",
+    "planning": "https://www.livermoreca.gov/departments/city-clerk/advisory-bodies/planning-commission"
+  },
+  "piedmont": {
+    "label": "Piedmont",
+    "county": "Alameda",
+    "website": "https://www.ci.piedmont.ca.us/",
+    "planning": "https://www.piedmont.ca.gov/services___departments/planning___building/about_planning_",
+    "meetings": "https://www.piedmont.ca.gov/government/city_council/meeting_information___agendas",
+    "news": "https://www.ci.piedmont.ca.us/news/news_archive"
+  },
+  "pleasanton": {
+    "label": "Pleasanton",
+    "county": "Alameda",
+    "website": "https://www.cityofpleasantonca.gov/",
+    "meetings": "https://www.cityofpleasantonca.gov/our-government/mayor-city-council/city-council-meetings/",
+    "news": "https://www.cityofpleasantonca.gov/news/",
+    "housing": "https://www.cityofpleasantonca.gov/our-government/housing/"
+  },
+  "antioch": {
+    "label": "Antioch",
+    "county": "Contra Costa",
+    "website": "https://www.antiochca.gov/",
+    "planning": "https://www.antiochca.gov/902/Planning-Commission",
+    "meetings": "https://www.antiochca.gov/AgendaCenter"
+  },
+  "brentwood": {
+    "label": "Brentwood",
+    "county": "Contra Costa",
+    "website": "https://www.brentwoodca.gov/",
+    "planning": "https://www.brentwoodca.gov/government/boards-commissions/planning-commission",
+    "meetings": "https://pub-brentwood.escribemeetings.com/"
+  },
+  "clayton": {
+    "label": "Clayton",
+    "county": "Contra Costa",
+    "website": "https://www.claytonca.gov/",
+    "meetings": "https://www.claytonca.gov/AgendaCenter",
+    "planning": "https://www.claytonca.gov/183/Planning"
+  },
+  "concord": {
+    "label": "Concord",
+    "county": "Contra Costa",
+    "website": "https://www.cityofconcord.org/",
+    "planning": "https://www.cityofconcord.org/401/Planning-Commission",
+    "meetings": "https://www.cityofconcord.org/965/Public-Meetings-and-Agendas",
+    "news": "https://www.cityofconcord.org/CivicAlerts.aspx?CID=5",
+    "housing": "https://www.cityofconcord.org/309/Housing-Community-Services"
+  },
+  "danville": {
+    "label": "Danville",
+    "county": "Contra Costa",
+    "website": "https://www.danville.ca.gov/",
+    "planning": "https://danville.ca.gov/281/Planning-Commission",
+    "meetings": "https://www.danville.ca.gov/129/Meetings-Agendas-Minutes"
+  },
+  "hercules": {
+    "label": "Hercules",
+    "county": "Contra Costa",
+    "website": "https://www.herculesca.gov/",
+    "meetings": "https://hercules.legistar.com/"
+  },
+  "lafayette": {
+    "label": "Lafayette",
+    "county": "Contra Costa",
+    "website": "https://www.lovelafayette.org/",
+    "meetings": "https://www.lovelafayette.org/city-hall/city-council/general-info-about-public-meetings"
+  },
+  "martinez": {
+    "label": "Martinez",
+    "county": "Contra Costa",
+    "website": "https://www.cityofmartinez.org/",
+    "planning": "https://www.cityofmartinez.org/departments/planning/general-plan-update/past-meetings",
+    "meetings": "https://www.cityofmartinez.org/government/city-clerk/notices-and-publications"
+  },
+  "moraga": {
+    "label": "Moraga",
+    "county": "Contra Costa",
+    "website": "https://www.moraga.ca.us/",
+    "meetings": "https://www.moraga.ca.us/AgendaCenter"
+  },
+  "oakley": {
+    "label": "Oakley",
+    "county": "Contra Costa",
+    "website": "https://www.oakleyca.gov",
+    "planning": "https://www.oakleyca.gov/240/Notices-of-Public-Hearings-Work-Sessions",
+    "meetings": "https://www.oakleyca.gov/DocumentCenter"
+  },
+  "orinda": {
+    "label": "Orinda",
+    "county": "Contra Costa",
+    "website": "https://www.cityoforinda.gov/",
+    "planning": "https://www.cityoforinda.gov/153/Planning-Department",
+    "meetings": "https://www.cityoforinda.gov/610/",
+    "news": "https://www.cityoforinda.gov/CivicAlerts.aspx?CID=1&sort=date",
+    "housing": "https://www.cityoforinda.gov/154/Housing-Element"
+  },
+  "pinole": {
+    "label": "Pinole",
+    "county": "Contra Costa",
+    "website": "https://www.pinole.gov/",
+    "planning": "https://www.pinole.gov/departments/planning/",
+    "meetings": "https://www.pinole.gov/city-government/city-council/meeting-agendas/",
+    "news": "https://www.pinole.gov/our-community/news/"
+  },
+  "pittsburg": {
+    "label": "Pittsburg",
+    "county": "Contra Costa",
+    "website": "https://www.pittsburgca.gov/",
+    "planning": "https://www.pittsburgca.gov/services/community-development/planning",
+    "meetings": "https://www.pittsburgca.gov/government/agendas-minutes"
+  },
+  "pleasanthill": {
+    "label": "Pleasant Hill",
+    "county": "Contra Costa",
+    "website": "https://www.phillca.gov/",
+    "meetings": "https://www.phillca.gov/277/Agendas",
+    "news": "https://www.phillca.gov/CivicAlerts.aspx?CID=8"
+  },
+  "sanpablo": {
+    "label": "San Pablo",
+    "county": "Contra Costa",
+    "website": "https://www.sanpabloca.gov/",
+    "news": "https://www.sanpabloca.gov/CivicAlerts.aspx?CID=14",
+    "housing": "https://www.sanpabloca.gov/2739/Housing",
+    "meetings": "https://sanpablo.legistar.com/Calendar.aspx"
+  },
+  "sanramon": {
+    "label": "San Ramon",
+    "county": "Contra Costa",
+    "website": "https://www.sanramon.ca.gov/",
+    "planning": "https://www.sanramon.ca.gov/our_city/boards_committees_commissions/planning_commission",
+    "meetings": "https://www.sanramon.ca.gov/our_city/city_council/council_meetings_agendas_minutes",
+    "news": "https://www.sanramon.ca.gov/our_city/citynews",
+    "housing": "https://www.sanramon.ca.gov/residents/housing"
+  },
+  "walnutcreek": {
+    "label": "Walnut Creek",
+    "county": "Contra Costa",
+    "website": "https://www.walnutcreekca.gov/",
+    "meetings": "https://www.walnutcreekca.gov/government/public-meeting-agendas-and-videos/public-meeting-schedule"
+  },
+  "belvedere": {
+    "label": "Belvedere",
+    "county": "Marin",
+    "website": "https://www.cityofbelvedere.org/",
+    "planning": "https://www.cityofbelvedere.org/departments/planning-building/",
+    "meetings": "https://www.cityofbelvedere.org/departments/public-meetings/",
+    "news": "https://www.cityofbelvedere.org/news"
+  },
+  "cortemadera": {
+    "label": "Corte Madera",
+    "county": "Marin",
+    "website": "https://www.cortemadera.gov/",
+    "planning": "https://www.cortemadera.gov/189/Planning-Commission",
+    "meetings": "https://www.cortemadera.gov/681/One-Stop-Shortcut-Page-for-Public-Meetin",
+    "news": "https://www.cortemadera.gov/CivicAlerts.aspx?CID=1,8,10,9,6,7,5"
+  },
+  "fairfax": {
+    "label": "Fairfax",
+    "county": "Marin",
+    "website": "https://townoffairfaxca.gov/",
+    "meetings": "https://www.townoffairfaxca.gov/departments/meetings-agendas/",
+    "news": "https://townoffairfaxca.gov/news"
+  },
+  "larkspur": {
+    "label": "Larkspur",
+    "county": "Marin",
+    "website": "https://www.larkspur.ca.gov/",
+    "meetings": "http://www.larkspur.ca.gov/288/Agendas-and-Minutes",
+    "news": "http://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
+    "housing": "https://livinginlarkspur.com/"
+  },
+  "novato": {
+    "label": "Novato",
+    "county": "Marin",
+    "website": "https://www.novato.gov/",
+    "planning": "https://www.novato.gov/government/community-development/planning-division",
+    "meetings": "https://www.novato.gov/government/city-council"
+  },
+  "ross": {
+    "label": "Ross",
+    "county": "Marin",
+    "website": "https://www.townofrossca.gov/",
+    "meetings": "https://www.townofrossca.gov/meetings?field_microsite_tid_1=27"
+  },
+  "sananselmo": {
+    "label": "San Anselmo",
+    "county": "Marin",
+    "website": "https://www.sananselmo.gov/",
+    "meetings": "https://www.sananselmo.gov/1613/Town-of-San-Anselmo-Meetings-and-Agendas",
+    "news": "https://www.sananselmo.gov/CivicAlerts.aspx?CID=7,15,1,9,13,11,2,3,6"
+  },
+  "sanrafael": {
+    "label": "San Rafael",
+    "county": "Marin",
+    "website": "https://www.cityofsanrafael.org/",
+    "planning": "https://www.cityofsanrafael.org/major-planning-projects-2025/",
+    "news": "https://www.cityofsanrafael.org/news/",
+    "meetings": "https://www.cityofsanrafael.org/departments/public-meetings/"
+  },
+  "americancanyon": {
+    "label": "American Canyon",
+    "county": "Napa",
+    "website": "https://www.americancanyon.gov/",
+    "meetings": "https://www.americancanyon.gov/Work/Local-Government/City-Hall/City-Clerk/Meetings-Agendas",
+    "planning": "https://www.americancanyon.gov/Work/Community-Infrastructure-Development/Community-Development/Planning-Zoning/Project-Application-Process",
+    "news": "https://www.americancanyon.gov/Work/Local-Government/Mayor-City-Council/City-Council-Community-Updates"
+  },
+  "calistoga": {
+    "label": "Calistoga",
+    "county": "Napa",
+    "website": "https://www.calistogaca.gov/",
+    "meetings": "https://calistoga.civicweb.net/filepro/documents/"
+  },
+  "napa": {
+    "label": "Napa",
+    "county": "Napa",
+    "website": "https://www.cityofnapa.org/",
+    "news": "https://www.cityofnapa.org/CivicAlerts.aspx?CID=5",
+    "meetings": "https://napacity.legistar.com/calendar.aspx"
+  },
+  "sthelena": {
+    "label": "St. Helena",
+    "county": "Napa",
+    "website": "https://www.cityofsthelena.gov/",
+    "planning": "https://www.cityofsthelena.gov/CivicAlerts.aspx?AID=145",
+    "meetings": "https://www.cityofsthelena.gov/963",
+    "news": "https://www.cityofsthelena.gov/CivicAlerts.aspx?AID=30"
+  },
+  "yountville": {
+    "label": "Yountville",
+    "county": "Napa",
+    "website": "https://www.townofyountville.gov/",
+    "meetings": "https://townofyountville.primegov.com/public/portal?fromiframe=1",
+    "news": "https://www.townofyountville.gov/CivicAlerts.aspx?CID=1,9,25,24,7,11"
+  },
+  "losaltoshills": {
+    "label": "Los Altos Hills",
+    "county": "Santa Clara",
+    "website": "https://www.losaltoshills.ca.gov/",
+    "planning": "https://www.losaltoshills.ca.gov/178/Planning-Department",
+    "meetings": "https://www.losaltoshills.ca.gov/506/CITY-COUNCIL-AGENDAS-MINUTES-CIVICCLERK",
+    "housing": "https://los-altos-hills-ca.civilspace.io/en/categories/housing-element-programs"
+  },
+  "montesereno": {
+    "label": "Monte Sereno",
+    "county": "Santa Clara",
+    "website": "https://www.montesereno.org/",
+    "meetings": "https://montesereno.civicweb.net/portal/",
+    "news": "https://www.montesereno.org/CivicAlerts.aspx?CID=4,1"
+  },
+  "benicia": {
+    "label": "Benicia",
+    "county": "Solano",
+    "website": "https://www.ci.benicia.ca.us/",
+    "planning": "https://www.ci.benicia.ca.us/index.asp?SEC=76C85352-5B0D-4669-90D5-15916BDB9EB5",
+    "meetings": "https://www.ci.benicia.ca.us/agendas",
+    "housing": "https://www.ci.benicia.ca.us/housing"
+  },
+  "dixon": {
+    "label": "Dixon",
+    "county": "Solano",
+    "website": "https://www.cityofdixonca.gov/",
+    "meetings": "https://dixon-ca.granicus.com/ViewPublisher.php?view_id=6"
+  },
+  "fairfield": {
+    "label": "Fairfield",
+    "county": "Solano",
+    "website": "https://www.fairfield.ca.gov/",
+    "planning": "https://www.fairfield.ca.gov/government/city-commissions-and-committees/planning-commission",
+    "meetings": "https://www.fairfield.ca.gov/government/city-council/city-council-meetings"
+  },
+  "riovista": {
+    "label": "Rio Vista",
+    "county": "Solano",
+    "website": "https://www.riovistacity.com/",
+    "meetings": "https://www.riovistacity.com/meetings/recent"
+  },
+  "suisuncity": {
+    "label": "Suisun City",
+    "county": "Solano",
+    "website": "https://www.suisun.com/",
+    "meetings": "https://www.suisun.com/Government/City-Council/Agendas",
+    "planning": "https://www.suisun.com/Government/City-Clerk/Public-Notices/City-Council-Public-Hearing-Notices"
+  },
+  "vacaville": {
+    "label": "Vacaville",
+    "county": "Solano",
+    "website": "https://www.cityofvacaville.gov/",
+    "meetings": "https://www.cityofvacaville.gov/government/agendas-and-minutes"
+  },
+  "vallejo": {
+    "label": "Vallejo",
+    "county": "Solano",
+    "website": "https://www.ci.vallejo.ca.us/",
+    "planning": "https://www.ci.vallejo.ca.us/residents/volunteer_resources/planning_a_community_clean-_up_",
+    "meetings": "https://vallejoca.portal.civicclerk.com/",
+    "housing": "https://www.ci.vallejo.ca.us/our_city/departments_divisions/housing_community_development"
+  },
+  "cloverdale": {
+    "label": "Cloverdale",
+    "county": "Sonoma",
+    "website": "https://www.cloverdale.net/",
+    "planning": "https://www.cloverdale.net/73/Planning-Community-Development-Departmen",
+    "meetings": "http://www.cloverdale.net/agendacenter",
+    "news": "https://www.cloverdale.net/CivicAlerts.aspx?CID=1"
+  },
+  "cotati": {
+    "label": "Cotati",
+    "county": "Sonoma",
+    "website": "https://www.cotaticity.gov/",
+    "news": "https://www.cotaticity.gov/CivicAlerts.aspx?CID=6",
+    "housing": "https://www.cotaticity.gov/211/Housing",
+    "meetings": "https://www.cotaticity.gov/1553/City-Council-and-Commission-Meeting-Info"
+  },
+  "healdsburg": {
+    "label": "Healdsburg",
+    "county": "Sonoma",
+    "website": "https://healdsburg.gov/",
+    "planning": "https://healdsburg.gov/348/Planning-Building",
+    "meetings": "https://healdsburg.gov/1181/Agendas-and-Minutes"
+  },
+  "petaluma": {
+    "label": "Petaluma",
+    "county": "Sonoma",
+    "website": "https://cityofpetaluma.org/",
+    "meetings": "https://cityofpetaluma.org/meetings/"
+  },
+  "rohnertpark": {
+    "label": "Rohnert Park",
+    "county": "Sonoma",
+    "website": "https://www.rpcity.ca.gov/",
+    "planning": "https://www.rpcity.org/748/Public-Notices-Ordinances",
+    "meetings": "https://www.rpcity.ca.gov/129",
+    "news": "https://www.rpcity.ca.gov/CivicAlerts.aspx?CID=10,11,12,8,13,14,1,15,6,16,18,19&sort=date"
+  },
+  "santarosa": {
+    "label": "Santa Rosa",
+    "county": "Sonoma",
+    "website": "https://www.srcity.org/",
+    "planning": "https://www.srcity.org/1253/Planning-Process",
+    "meetings": "https://www.srcity.org/1375/Council-Meeting-Agendas-Minutes-Videos"
+  },
+  "sebastopol": {
+    "label": "Sebastopol",
+    "county": "Sonoma",
+    "website": "https://www.cityofsebastopol.gov/",
+    "news": "https://www.cityofsebastopol.gov/news/",
+    "housing": "https://www.cityofsebastopol.gov/our-community/housing-homelessness/",
+    "meetings": "https://www.cityofsebastopol.gov/meetings/",
+    "planning": "https://www.cityofsebastopol.gov/our-community/buildingprojects/"
+  },
+  "sonoma": {
+    "label": "Sonoma",
+    "county": "Sonoma",
+    "website": "https://www.sonomacity.org/",
+    "news": "https://www.sonomacity.org/news",
+    "meetings": "https://www.sonomacity.org/calendar"
+  },
+  "windsor": {
+    "label": "Windsor",
+    "county": "Sonoma",
+    "website": "https://www.townofwindsor.ca.gov/",
+    "meetings": "https://www.townofwindsor.ca.gov/721/Agendas-Minutes-Videos"
+  }
+}

@@ -91,6 +91,13 @@ function initMap(){
  STATIONS.forEach(s=>{L.circle([s.lat,s.lng],{radius:804.672,color:'#8296b7',weight:1,fillOpacity:.055,dashArray:'3 5',interactive:false}).addTo(stationLayer);L.circleMarker([s.lat,s.lng],{radius:3,color:'#fff',weight:1,fillColor:'#7A6636',fillOpacity:1}).bindTooltip(esc(s.name)+' · approximate center').addTo(stationLayer);});
  return true;
 }
+// Hidden tabs have a zero-sized canvas. Avoid drawing or retaining animation frames there.
+function clearHeat(){if(!heatLayer)return;L.Util.cancelAnimFrame(heatLayer._frame);heatLayer._frame=null;map.removeLayer(heatLayer);heatLayer=null;}
+function createHeat(points,options){
+ const layer=L.heatLayer(points,options),redraw=layer._redraw;
+ layer._redraw=function(){if(!this._map||!this._canvas?.width||!this._canvas?.height||!this._map.getContainer().offsetWidth){this._frame=null;return;}return redraw.call(this);};
+ return layer;
+}
 function fitMap(){if(!map)return;const mapped=rows.filter(validPoint);if(mapped.length)map.fitBounds(mapped.map(p=>[p.lat,p.lng]),{padding:[45,45],maxZoom:13,animate:false});else {const c=context.cities[state.city];map.setView([c.center.lat,c.center.lng],c.zoom||10);}}
 function renderMap(fit=false){
  const legend=state.layer==='heat'?[['#e8bd55','Low'],['#eb8842','Modeled housing concentration'],['#a64749','High']]:state.layer==='prices'?[['#3E4F24','Lower than reference'],['#aab4ab','Unchanged'],['#bc784e','Higher than reference']]:state.layer==='exposure'?[['#1f82b2','Special flood hazard'],['#9472ba','0.2% annual chance'],['#aab4ab','No match ≠ no risk']]:state.layer==='delivery'?[['#A3AC90','<35% delivered'],['#67794A','35–65%'],['#3E4F24','≥65%']]:state.layer==='change'?[['#3E4F24','More delivery'],['#98a8b6','Unchanged'],['#ba7953','Less delivery']]:[['#3E4F24','≥50% affordable'],['#87956B','Some affordable'],['#d9dfe6','0 disclosed'],['#a5adb5','Unknown']];
@@ -100,10 +107,10 @@ function renderMap(fit=false){
  publicLayers.apply(state);setBasemap();
  renderDataStatus();
  projectLayer.clearLayers();markers.clear();priceLayer.clearLayers();
- if(heatLayer){map.removeLayer(heatLayer);heatLayer=null;}
+ clearHeat();
  const layerNotes={heat:'Heat shows concentration of modeled gross delivery in the project sample; it is not a map of all homes. Intensity is comparable over time at the same zoom.',prices:'City-centered markers show a modeled city index, not prices for nearby parcels. Color shows the change from the same-year reference.',exposure:'Project points screened against generalized FEMA polygons. A no-match result does not establish low risk. NOAA water levels do not alter FEMA classifications.'};
  $('fxLayerNote').textContent=layerNotes[state.layer]||'Dots are project locations; size reflects modeled units. Station rings are approximate context, not legal eligibility.';
- if(state.layer==='heat'&&window.L.heatLayer){heatLayer=L.heatLayer(rows.filter(validPoint).map(p=>[p.lat,p.lng,p.expected]),{radius:32,blur:24,max:700,maxZoom:11,minOpacity:.08,gradient:{.15:'#83a889',.4:'#d8c25a',.65:'#ee963f',.85:'#d96349',1:'#9d4051'}}).addTo(map);}
+ if(state.layer==='heat'&&window.L.heatLayer){heatLayer=createHeat(rows.filter(validPoint).map(p=>[p.lat,p.lng,p.expected]),{radius:32,blur:24,max:700,maxZoom:11,minOpacity:.08,gradient:{.15:'#83a889',.4:'#d8c25a',.65:'#ee963f',.85:'#d96349',1:'#9d4051'}}).addTo(map);}
  if(state.layer==='prices'){if(!cityPrices.length)$('fxMapCaption').textContent=publicLayers.stock?'No city-price baseline for this area':'City price baselines loading…';renderPriceMarkers();requestAnimationFrame(()=>{map.invalidateSize();if(fit)fitMap();});return;}
  [...rows].sort((a,b)=>b.units-a.units).filter(validPoint).forEach(p=>{
   const value=state.layer==='change'?Math.abs(p.delta):state.layer==='affordable'?(p.affordable??0):p.expected;
@@ -129,7 +136,7 @@ function exportCsv(){
  const cell=value=>'"'+String(value??'').replace(/^[=+\-@\t\r]/,'\t$&').replace(/"/g,'""')+'"';
  const header=['project_id','city','address','stage','reported_gross_units','reference_delivery','scenario_delivery','low_sensitivity','high_sensitivity','disclosed_affordable_delivery','delta','last_status_date','near_approximate_station','year','financing_rate_assumption','cost_growth_assumption','delay_months','grid_delay_months','price_trend_pct','supply_price_sensitivity','exposed_location_discount_pct','kwh_per_home_year','fema_screen','city_index_observed_2026','city_index_scenario','city_index_reference','noaa_sea_level_ft','policy_assumptions','as_of','model_version'];
  const csv=[header,...rows.map(p=>[p.id,p.cityLabel,p.addr,p.stage,p.units,Math.round(p.baseline),Math.round(p.expected),Math.round(p.low),Math.round(p.high),p.affordable===null?'Unknown':Math.round(p.affordable),Math.round(p.delta),p.lastDate||'Unknown',p.nearTransit,state.year,state.rate,state.costs,state.delay,state.gridDelay,state.priceTrend,state.elasticity,state.floodDiscount,state.energyUse,publicLayers?.risk(p).level||'unknown',cityPrices.find(c=>c.key===p.city)?.observed??'Unknown',cityPrices.find(c=>c.key===p.city)?Math.round(cityPrices.find(c=>c.key===p.city).scenario):'Unknown',cityPrices.find(c=>c.key===p.city)?Math.round(cityPrices.find(c=>c.key===p.city).reference):'Unknown',state.seaLevel,state.policies.join(';'),AS_OF,MODEL_VERSION])].map(row=>row.map(cell).join(',')).join('\r\n');
- const url=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`south-bay-scenario-${state.city}-${state.year}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('Scenario exported with its assumptions and data date.');
+ const url=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`bay-civic-scenario-${state.city}-${state.year}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('Scenario exported with its assumptions and data date.');
 }
 function setBasemap(){
  if(!map||baseKey===state.basemap)return;
@@ -146,7 +153,7 @@ function setExpanded(value){expanded=value;$('fxMapCard').classList.toggle('is-e
 function buildCityPrices(){
  cityPrices=[];if(!publicLayers?.stock)return;
  for(const [key,c] of Object.entries(context.cities)){
-  if(key==='all'||(state.city!=='all'&&state.city!==key))continue;
+  if(key==='all'||(state.city==='all'&&key==='westsanjose')||(state.city!=='all'&&state.city!==key))continue;
   const records=rows.filter(p=>p.city===key),stock=publicLayers.stock.cities[key];
   const value=priceScenario({homeValue:context.stats[key]?.homeValue,stock:stock?.units,deltaUnits:records.reduce((n,p)=>n+p.delta,0),year:state.year,trend:state.priceTrend,elasticity:state.elasticity});
   if(value)cityPrices.push({...value,key,label:c.label,center:c.center,stock:stock.units,records:records.length});
@@ -173,7 +180,7 @@ function renderImpacts(){
 function renderDataStatus(){
  if(!publicLayers)return;
  const tag=(ready,error,label)=>`<span class="${error?'unavailable':ready?'ready':'loading'}">${ready?'●':error?'!':'◌'} ${label}${error?' unavailable':ready?'':' loading'}</span>`;
- $('fxDataStatus').innerHTML=tag(publicLayers.flood,publicLayers.errors.flood,'FEMA · '+(publicLayers.flood?.metadata?.counties?.length||6)+' counties')+tag(publicLayers.energy,publicLayers.errors.energy,'CEC · '+(publicLayers.energy?.features?.length||'…')+' facilities')+tag(publicLayers.stock,publicLayers.errors.stock,'Census housing stock · 2020')+(state.seaLevel?`<span class="${publicLayers.errors.sea?'unavailable':''}">NOAA · ${publicLayers.errors.sea?'tiles unavailable':('+'+state.seaLevel+' ft above MHHW · independent of year')}</span>`:'');
+ $('fxDataStatus').innerHTML=tag(publicLayers.flood,publicLayers.errors.flood,'FEMA · '+(publicLayers.flood?.metadata?.counties?.length||'…')+' counties')+tag(publicLayers.energy,publicLayers.errors.energy,'CEC · '+(publicLayers.energy?.features?.length||'…')+' facilities')+tag(publicLayers.stock,publicLayers.errors.stock,'Census housing stock · 2020')+(state.seaLevel?`<span class="${publicLayers.errors.sea?'unavailable':''}">NOAA · ${publicLayers.errors.sea?'tiles unavailable':('+'+state.seaLevel+' ft above MHHW · independent of year')}</span>`:'');
 }
 function init(){
  $('fxCity').innerHTML='<option value="all">All Bay Area cities</option>'+Object.entries(context.cities).filter(([k])=>k!=='all').sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(([key,c])=>`<option value="${key}">${esc(c.label)}</option>`).join('');
@@ -205,7 +212,7 @@ function init(){
  document.addEventListener('visibilitychange',()=>{if(document.hidden)pausePlayback();});
 
  document.querySelector('.fx-disclosure a').addEventListener('click',()=>{$('fxMethod').open=true;});
- window.addEventListener('dashboard:screen',e=>{if(e.detail==='futures'){update(!initialized);initialized=true;}else pausePlayback();});
+ window.addEventListener('dashboard:screen',e=>{if(e.detail==='futures'){update(!initialized);initialized=true;}else {pausePlayback();if(map)clearHeat();}});
  update();
  if(shared){$('onboardOverlay').style.display='none';context.showScreen('futures');}
 }

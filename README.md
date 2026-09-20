@@ -1,6 +1,6 @@
-# South Bay Planning AI
+# Bay Civic Dashboard
 
-This package contains the civic dashboard plus a server-side AI assistant for the cities it covers across six Bay Area counties.
+This package contains the civic dashboard plus a server-side AI assistant for the cities it covers across all nine Bay Area counties.
 
 ## What is already wired
 
@@ -140,7 +140,7 @@ Each briefing is ordered the same way:
 1. **What you're following** — every starred project, board, and article; changed ones first.
 2. **In {your city}** — Housing · Transportation · Other development · In the news ·
    Who decides and when they meet · Ways to get involved.
-3. **Around the rest of the South Bay** — projects that moved, plus recent regional news.
+3. **Around the rest of the Bay Area** — projects that moved, plus recent regional news.
 4. **Official {your city} links** — the city's own planning, permit, and GIS pages.
 
 Every project title links to `?project=<id>` on the dashboard, which switches to that city, filters
@@ -167,7 +167,7 @@ That writes `preview-welcome.html` (first send), `preview-update.html` (things c
 ```text
 DATABASE_URL=postgres://...
 RESEND_API_KEY=re_...
-RESEND_FROM=South Bay Planning <updates@your-verified-domain.com>
+RESEND_FROM=Bay Civic Dashboard <updates@your-verified-domain.com>
 CRON_SECRET=<a long random string>
 SITE_URL=https://your-site.com
 ```
@@ -259,15 +259,37 @@ This regenerates `data/projects.js` so server-side answers, hearing matching and
 
 ## Regional coverage and guest profiles
 
-The dashboard now contains 50 city/neighborhood profiles in six Bay Area counties. The 17 added cities are San Jose, San Francisco, Berkeley, Oakland, Albany, Emeryville, Alameda, Fremont, Newark, Union City, Hayward, San Leandro, El Cerrito, Richmond, Sausalito, Mill Valley and Tiburon. Existing Peninsula profiles already cover Daly City, Brisbane, South San Francisco and neighboring cities.
+The dashboard covers all **101 incorporated cities and towns in the nine Bay Area counties**, plus the existing West San Jose neighborhood profile. The visible name is **Bay Civic Dashboard**; the domain remains `southbaydashboard.com`.
 
-- `public/data/regions.json` is the canonical source for the added cities' county, project sample, official links, dated updates, boards and ACS 2020–2024 statistics. Server modules read the same file. Missing counts and unverified locations remain unknown; project samples are not complete city inventories. Existing Census comparisons use 2023 estimates, as labeled in Statistics.
-- After editing regional data, run `node scripts/build-regional-data.js` and `npm run sync:projects`. Add `--census` to refresh the 17 profiles from Census Reporter. Optional `node scripts/geocode-regional-projects.js` obtains approximate address matches from the Census geocoder; it rejects ambiguous city matches. Regenerate the regional script and server projects afterward.
-- `public/data/meetings.json` supplies official agenda/recording directories for every area. Ten public Legistar feeds populate upcoming meetings, with per-city failures and official-link fallbacks. West San Jose shares the San Jose feed. These are published meeting schedules, not a claim that hearings are streaming live now.
-- All 50 city photos are served locally, with attribution in `public/data/city-photos.json` and `/photo-credits.html`. `scripts/refresh-city-photos.js` retrieves missing images and preserves their source credits. City images are contextual, not project-site photography.
-- The Overview uses Google Maps with the original restricted public browser key. A Google Maps embed handles localhost, blocked scripts and key/referrer failures. The embed can locate a selected address; simultaneous project markers require the Maps JavaScript API to be enabled for the deployed domain. Other map tools use public Esri basemaps and agency layers.
-- Spatial refresh scripts query six counties. The September 19 refresh returned 8,519 FEMA polygons in five counties (no matching San Francisco polygons), 167 CEC facilities, and 2020 housing-stock denominators for all 50 profiles. Absence of a flood polygon is not absence of risk.
+- `public/data/municipalities.json` records official MTC/ABAG coverage and Census geography identifiers. All 102 profiles have locally served photography, official resources and meeting links. `public/data/regions.json` supplies the 69 expanded profiles and their 2020–2024 ACS estimates; existing profiles retain their labeled Census vintage.
+- `public/data/housing-records.json` imports city-reported HCD APR Tables A and A2, updated September 18, 2026. Every municipality has a housing sample with map points. Up to 25 distinct addresses per municipality emphasize larger records, with completed examples retained. The combined dashboard has 2,833 records after matching-address duplicates are removed. Annual permit, entitlement and completion totals use **all** source rows, separately from the map sample. Most reports cover 2025; Clayton's latest available report in the import is 2024. Issued permits are approvals, not assumed construction starts. Coordinates require a high source match score and proximity to the city; unresolved addresses remain explicitly unlocated.
+- `public/housing-data.js` merges the supplemental records while preserving existing researched records at matching addresses. `npm run sync:projects` produces the backend project and official-source copies, keeping Ask, hearings and email briefings consistent with the browser. Source lookup accepts both city keys and display names.
+- `public/data/city-news.json` adds publisher headlines and official city updates for every municipality, linking to the source. Headlines obtained through public Google News RSS link through to the publisher; full articles are not copied. HCD annual activity updates are labeled separately as city-reported data updates. Resources are not presented as freshly published journalism.
+- `public/data/market-data.json` adds exact city-and-county Zillow index matches for the established July 2026 baseline. Values cover 100 municipalities and rents cover 84; West San Jose additionally uses the San Jose citywide proxy. Missing series remain unavailable. Census owner values are shown as a separate measure.
+- `public/data/meetings.json` supplies official agenda/recording directories for 102 profiles. Fourteen public Legistar feeds populate upcoming meetings, with per-city failures and official-link fallbacks. West San Jose shares San Jose's feed. These are published schedules, not a claim that hearings are streaming live now.
+- All 102 city photos have attribution in `public/data/city-photos.json` and `/photo-credits.html`. Shared photo headers extend the established olive-and-paper design to all sections; statistic cards use distinct regional images. Photographs provide place context, not project renderings.
+- Overview retains Google Maps as its primary map. If the key/referrer or network blocks Google, the fallback preserves **all located projects**. Shared coordinates open every record at that location; unknown addresses open a separate search without replacing the map. Counts and a Fit all points action make coverage explicit. Project cards load in batches of 60 while all filtered points remain mapped.
+- Spatial snapshots query all nine counties. The September 19 refresh returned 13,603 FEMA polygons across eight counties (no matching San Francisco polygons), 255 CEC facilities, and 2020 housing stock for all 102 profiles. No matching flood polygon does not establish low risk. Heatmap rendering pauses safely when its tab is hidden.
 
-Visitors without a signed-in session automatically receive a device-only guest profile. `public/guest.js` stores their display name, stars, timeline, reminders, saved answers and preferences in `localStorage` under `sbpd_guest_v1`. No database or email configuration is required for guest features. An optional password uses a salted PBKDF2 verifier and a tab-session unlock flag; this is a convenience browser lock, not encryption or server authentication. Clearing browser storage removes the profile. Private browsing may discard it when the session ends.
+Refresh the public snapshots:
+
+```sh
+node scripts/expand-bay-area.js
+node scripts/build-regional-data.js --census
+node scripts/import-hcd-housing.js
+node scripts/refresh-city-news.js
+python3 scripts/refresh-market-data.py
+node scripts/refresh-city-photos.js
+node scripts/build-photo-credits.js
+node scripts/fetch-spatial-data.js flood
+node scripts/fetch-spatial-data.js energy
+node scripts/fetch-spatial-data.js housing
+npm run sync:projects
+npm test
+```
+
+The import scripts retain source URLs and reporting periods. HCD years and the market baseline are explicit snapshot choices in their respective scripts. Review those choices before advancing to a new reporting cycle.
+
+Visitors without a signed-in session automatically receive a device-only guest profile with a persistent random noun plus four digits, such as `cookie0736`. Custom usernames are preserved. `public/guest.js` stores their display name, stars, timeline, reminders, saved answers and preferences in `localStorage` under `sbpd_guest_v1`. No database or email configuration is required for guest features. An optional password uses a salted PBKDF2 verifier and a tab-session unlock flag; this is a convenience browser lock, not encryption or server authentication. Clearing browser storage removes the profile. Private browsing may discard it when the session ends.
 
 Full accounts continue to use the existing server authentication. Creating a new full account imports unlocked guest stars, timeline progress, reminders and city/topic preferences; a failed import leaves the original guest copy intact. Email delivery and synchronization between devices require a full account and the existing database/email environment variables. Guest data is not automatically imported when logging into an existing account.

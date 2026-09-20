@@ -22,8 +22,8 @@
 .google-map-note a{color:var(--ink);font-weight:700;}
 .key-row[hidden],.gate-links[hidden],.gate-note[hidden]{display:none!important;}
 #statsContent .stat-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:18px;}
-#statsContent .metric-wrap{display:flex;min-width:0;}
-#statsContent .metric-card{width:100%;height:100%;text-align:left;padding:0;cursor:pointer;box-shadow:0 2px 7px #23350E0A;}
+#statsContent .metric-wrap{display:flex;flex-direction:column;min-width:0;}
+#statsContent .metric-card{width:100%;flex:1;text-align:left;padding:0;cursor:pointer;box-shadow:0 2px 7px #23350E0A;}
 #statsContent .metric-card:hover{transform:translateY(-4px);border-color:#7D905E;box-shadow:0 9px 20px #23350E20;}
 #statsContent .metric-card .head{min-height:47px;padding-right:42px;}
 #statsContent .metric-card .body{display:flex;flex-direction:column;align-items:flex-start;min-height:180px;width:100%;box-sizing:border-box;gap:4px;}
@@ -75,6 +75,18 @@
 .map-shared-location{font-weight:700;padding:8px 0;color:#3E4F24;}
 .overview-count-label{border:0;background:none;box-shadow:none;color:white;font-weight:700;}
 .overview-count-label::before{display:none;}
+.section-masthead{position:relative;min-height:180px;box-sizing:border-box;margin:24px 0;padding:28px 30px 34px;border:1px solid #BBC5AC;border-bottom:3px solid #3E4F24;background:linear-gradient(90deg,#F1F4EA 26%,#F1F4EAD9 62%,#F1F4EA75),var(--section-photo) right 48%/cover;overflow:hidden;}
+.section-masthead-copy{max-width:72%;position:relative;z-index:1;}
+.section-eyebrow{font-size:10px;font-weight:800;letter-spacing:.16em;color:#5D6555;margin-bottom:13px;}
+.section-masthead h2{font-family:Georgia,serif!important;font-size:34px!important;line-height:1.15;letter-spacing:-.035em;margin:0 0 14px!important;color:#1A1A1A!important;font-weight:700;}
+.section-masthead p{font-size:14px!important;line-height:1.65!important;color:#5A6252!important;margin:0!important;max-width:72ch;}
+.section-photo-credit{position:absolute;bottom:8px;right:12px;max-width:70%;font-size:9px;color:#354429;background:#F1F4EADB;padding:3px 6px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.section-photo-credit:hover{text-decoration:underline;}
+#screenStatistics .metric-photo{height:124px;}
+#screenStatistics .metric-photo img{filter:saturate(.88);}
+.metric-photo-credit{display:block;padding:5px 12px;color:#68765A;font-size:9px;line-height:1.4;text-decoration:none;background:#F4F6EF;}
+.metric-photo-credit:hover{text-decoration:underline;}
+@media(max-width:700px){.section-masthead{padding:22px 20px 36px;background:linear-gradient(90deg,#F1F4EAF5,#F1F4EAD6),var(--section-photo) center/cover;}.section-masthead-copy{max-width:100%;}.section-masthead h2{font-size:29px!important;}.section-photo-credit{max-width:90%;}}
 
 .fx-heading{padding:24px;background:linear-gradient(90deg,#F1F4EA 45%,#F1F4EAA6),url('/img/cities/sanfrancisco.jpg') right 45%/cover;border:1px solid #B9C3A8;border-bottom:3px solid #3E4F24;}
 .fx-heading h2{font-family:Georgia,serif;font-size:34px;letter-spacing:-.035em;}
@@ -89,3 +101,24 @@
 .util-links a{margin-left:0;}
 #utilAccount{display:inline-block;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom;}
 @media(max-width:700px){.util-links{justify-content:center;}#utilAccount{max-width:120px;}}
+
+.city-browse-tools{display:flex;align-items:end;flex-wrap:wrap;gap:14px;width:100%;margin-bottom:14px;}
+.city-browse-tools label{display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:white;min-width:180px;}
+.city-browse-tools input,.city-browse-tools select{font:inherit;font-size:13px;padding:11px 12px;background:#fff;border:1px solid #9AA780;color:#3E4F24;min-width:0;}
+#cityBrowseCount{font-size:11px;color:#E6EBD9;padding:10px 0;}
+.city-browse-results{width:100%;max-height:340px;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#9AA780 #253616;scrollbar-width:thin;padding-right:8px;}
+.city-browse-results .city-group{margin-bottom:16px;}
+#cityBrowseEmpty{color:white;}
+.directory-welcome{grid-column:1/-1;display:grid;grid-template-columns:minmax(200px,1fr) 2fr;border:1px solid var(--rule);background:#F3F5ED;}
+.directory-welcome>img{height:100%;max-height:300px;min-height:230px;width:100%;object-fit:cover;}
+.directory-welcome>div{padding:24px;}.directory-welcome h3{font:700 27px Georgia,serif;margin:12px 0;}.directory-welcome p{font-size:13px;line-height:1.7;}.directory-welcome a{color:var(--ink);}.directory-welcome .btn{font-size:12px;}
+.directory-stat{grid-column:1/-1;}
+#bankCityChips{max-height:180px;overflow:auto;display:block;}
+@media(max-width:600px){.city-browse-tools label{flex:1 1 100%;}.directory-welcome{grid-template-columns:1fr;}.directory-welcome>img{height:180px;min-height:180px;}}
+
+.register-more{grid-column:1/-1;justify-self:center;margin:18px;}
+/* Constrain the map and picker to the available width on small screens. */
+.ya-split{grid-template-columns:minmax(0,1fr);}
+.ya-split:has(.ya-picker:not([hidden])){grid-template-columns:repeat(2,minmax(0,1fr));}
+.ya-split>*{min-width:0;max-width:100%;box-sizing:border-box;}
+@media(max-width:900px){.ya-split:has(.ya-picker:not([hidden])){grid-template-columns:minmax(0,1fr);}}

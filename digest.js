@@ -361,7 +361,7 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
   const title = isFirst ? 'Your dashboard is set up' : `Your ${cityLabel(homeCity)} planning briefing`;
   return {
     subject: isFirst
-      ? 'Your South Bay civic dashboard is set up'
+      ? 'Your Bay Civic Dashboard is set up'
       : `Your ${cityLabel(homeCity)} planning briefing`,
     html: shell({
       title,

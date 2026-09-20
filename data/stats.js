@@ -1,3 +1,4 @@
+import {readFileSync} from 'node:fs';
 import {REGIONAL_CITIES} from './regional.js';
 // Market statistics, pulled from Zillow's public research data (files.zillowstatic.com).
 //
@@ -245,3 +246,5 @@ export const CENSUS_SOURCE = {
 };
 
 Object.assign(CITY_STATS,Object.fromEntries(Object.entries(REGIONAL_CITIES).map(([k,c])=>[k,c.stats])));
+
+for(const [key,values] of Object.entries(JSON.parse(readFileSync(new URL('../public/data/market-data.json',import.meta.url))).cities))CITY_STATS[key]={...CITY_STATS[key],...values};

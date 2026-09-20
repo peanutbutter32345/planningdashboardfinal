@@ -1,3 +1,4 @@
+import {readFileSync} from 'node:fs';
 import {REGIONAL_CITIES} from './regional.js';
 export const SOURCES = [
   // ---------------- MOUNTAIN VIEW ----------------
@@ -198,3 +199,14 @@ export const SOURCES = [
 ];
 
 SOURCES.push(...Object.entries(REGIONAL_CITIES).flatMap(([city,c])=>c.resources.map((r,i)=>({id:city+'-regional-'+i,city:c.label,category:r.cat,title:r.title,url:r.url,note:r.note}))));
+
+// Keep Ask's catalog aligned with the official links shown in every city profile.
+const sharedSources=JSON.parse(readFileSync(new URL('./official-sources.json',import.meta.url)));
+const sourceKeys=new Set(SOURCES.map(s=>s.city+':'+s.url));
+for(const source of sharedSources){const key=source.city+':'+source.url;if(!sourceKeys.has(key)){SOURCES.push(source);sourceKeys.add(key);}}
+const sourceLabels=JSON.parse(readFileSync(new URL('../public/data/municipalities.json',import.meta.url))).cities;
+export function sourcesForCity(value=''){
+ const city=String(value).trim();if(!city||city.toLowerCase()==='all')return SOURCES;
+ const label=city.toLowerCase()==='westsanjose'?'West San Jose':sourceLabels.find(c=>c.key===city.toLowerCase()||c.label.toLowerCase()===city.toLowerCase())?.label||city;
+ return SOURCES.filter(s=>s.city===label);
+}

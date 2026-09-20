@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>South Bay Area Civic Dashboard</title>
+<title>Bay Civic Dashboard</title>
 <!-- Inline so it costs no extra request, and stops the browser 404ing on /favicon.ico -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%233E4F24'/%3E%3Cpath d='M7 22V13l5-4 5 4v9z' fill='%23fff'/%3E%3Crect x='19' y='15' width='6' height='7' fill='%23F0C86A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1380,9 +1380,9 @@
   <div class="wrap">
     <div class="hero-copy">
       <div class="nameplate">
-        <div class="np-kicker"><span id="npKickerCounty">Six Bay Area counties</span><i></i><span>Public planning records</span></div>
-        <h1><span class="np-l1">South Bay</span><em class="np-l2">Civic Dashboard</em></h1>
-        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. 50 city and neighborhood profiles across six Bay Area counties, with links to each city's own records.</p>
+        <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
+        <h1><span class="np-l1">Bay</span><em class="np-l2">Civic Dashboard</em></h1>
+        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. 101 cities and towns across nine Bay Area counties, plus West San Jose, with links to each city's own records.</p>
       </div>
     </div>
 
@@ -1470,8 +1470,8 @@
    <div class="fx-main">
     <div class="fx-metrics" id="fxMetrics" aria-live="polite" aria-atomic="true"></div>
     <div class="fx-map-card" id="fxMapCard">
-     <div class="fx-atlas-bar"><div><span class="fx-atlas-dot"></span> SOUTH BAY <b>SCENARIO ATLAS</b></div><div><select id="fxBasemap" aria-label="Basemap"><option value="light">Light map</option><option value="satellite">Satellite</option></select><button id="fxExpand" aria-pressed="false">⛶ Expand map</button></div></div>
-     <div class="fx-map-toolbar"><div><span class="fx-label">SPATIAL OUTLOOK</span><h2 id="fxMapTitle">South Bay · 2031</h2></div><div class="fx-layer-buttons" aria-label="Map metric"><button data-layer="heat" aria-pressed="true">Heatmap</button><button data-layer="delivery" aria-pressed="false">Projects</button><button data-layer="prices" aria-pressed="false">Price outlook</button><button data-layer="exposure" aria-pressed="false">Flood exposure</button><button data-layer="change" aria-pressed="false">Change</button><button data-layer="affordable" aria-pressed="false">Affordable</button></div></div>
+     <div class="fx-atlas-bar"><div><span class="fx-atlas-dot"></span> BAY AREA <b>SCENARIO ATLAS</b></div><div><select id="fxBasemap" aria-label="Basemap"><option value="light">Light map</option><option value="satellite">Satellite</option></select><button id="fxExpand" aria-pressed="false">⛶ Expand map</button></div></div>
+     <div class="fx-map-toolbar"><div><span class="fx-label">SPATIAL OUTLOOK</span><h2 id="fxMapTitle">Bay Area · 2031</h2></div><div class="fx-layer-buttons" aria-label="Map metric"><button data-layer="heat" aria-pressed="true">Heatmap</button><button data-layer="delivery" aria-pressed="false">Projects</button><button data-layer="prices" aria-pressed="false">Price outlook</button><button data-layer="exposure" aria-pressed="false">Flood exposure</button><button data-layer="change" aria-pressed="false">Change</button><button data-layer="affordable" aria-pressed="false">Affordable</button></div></div>
      <div class="fx-overlay-controls"><label><input id="fxFlood" type="checkbox" checked><i class="fx-dot-flood"></i> FEMA flood zones</label><label><input id="fxEnergy" type="checkbox" checked><i class="fx-dot-energy"></i> Energy facilities</label><label for="fxSeaLevel">NOAA sea-level scenario <select id="fxSeaLevel"><option value="0">Off</option><option value="1">+1 ft</option><option value="2">+2 ft</option><option value="3">+3 ft</option><option value="4">+4 ft</option><option value="5">+5 ft</option><option value="6">+6 ft</option></select></label></div>
      <div class="fx-map-wrap"><div id="futureMap" aria-label="Housing scenario map. Project details also available in the table below."></div><div class="fx-map-error" id="fxMapError" hidden>Map tiles could not load. The project markers and results below remain available.</div><div class="fx-map-caption"><span class="fx-map-pulse"></span><span id="fxMapCaption">Scenario outlook</span></div><div class="fx-map-readout" id="fxMapReadout"></div><div class="fx-time-controller"><button id="fxMapPlay" aria-label="Play map years" aria-pressed="false">▶</button><label for="fxMapYear">YEAR <output id="fxMapYearOut">2031</output></label><input id="fxMapYear" type="range" min="2027" max="2040" value="2031" aria-label="Map scenario year"></div><button class="fx-fit" id="fxFit" aria-label="Fit map to selected area">⌖ Fit area</button></div>
      <div class="fx-map-footer"><div id="fxLegend"></div><label><input type="checkbox" id="fxTransit" checked> Station context · ½ mile</label></div>
@@ -1484,7 +1484,7 @@
   <section class="fx-bills" id="fxBills" aria-labelledby="fxBillsTitle"><div class="fx-section-heading"><div><div class="fx-eyebrow">THE POLICY WATCHLIST</div><h2 id="fxBillsTitle">Housing bills &amp; policy watchlist</h2><p>Enacted laws and an upcoming ballot decision, with their assumptions kept separate.</p></div><label class="fx-field" for="fxBillFilter">Show<select id="fxBillFilter"><option value="all">All policies</option><option value="pending">Upcoming decision</option><option value="enacted">Enacted laws</option></select></label></div><p class="fx-tiny" id="fxReviewed"></p><div class="fx-bill-grid" id="fxBillList"></div></section>
   <section class="fx-projects" aria-labelledby="fxProjectsTitle"><div class="fx-section-heading"><div><div class="fx-eyebrow">BEHIND THE ESTIMATES</div><h2 id="fxProjectsTitle">Projected housing by project</h2><p id="fxTableSummary"></p></div><button class="fx-button" id="fxExport">Export scenario CSV ↓</button></div><div class="fx-table-tools"><label class="fx-field" for="fxSearch">Find a project<input type="search" id="fxSearch" placeholder="Address or city…"></label><label class="fx-field" for="fxSort">Sort by<select id="fxSort"><option value="expected">Estimated delivery</option><option value="delta">Change from reference</option><option value="units">Reported units</option></select></label></div><div class="fx-table-wrap"><table><thead><tr><th>Project / city</th><th>Stage</th><th>Reported units</th><th>Reference</th><th>Scenario <span id="fxTableYear">2031</span></th><th>Change</th><th>Record quality</th></tr></thead><tbody id="fxRows"></tbody></table></div><button class="fx-button fx-more" id="fxMore" hidden>Show more projects</button></section>
   <details class="fx-method" id="fxMethod"><summary>Methodology, assumptions & data limitations <span>Read before using these estimates ↗</span></summary><div class="fx-method-grid"><div><h3>What the numbers mean</h3><p>This is a sensitivity model applied to the dashboard’s project sample, anchored to September 18, 2026. It estimates a share of reported gross project units potentially delivered by a selected year. Completed projects, unknown unit counts, non-housing records and unknown stages are excluded. It does not identify new developable parcels, deduplicate overlapping master plans, subtract demolished homes or separate already-built phases.</p><p>City comparisons reflect uneven sample coverage. Unknown affordability is not treated as zero; affordable totals include only disclosed counts. Old records may describe homes already delivered. The model flags records missing a status date or older than two years.</p></div><div><h3>A model you can inspect</h3><p>Reference delivery times: proposed 6 years, review 4.5, approved 3, construction 1.5. Long-run delivery shares: 55%, 70%, 85%, 95%. Delivery = reported units × stage share × (1 − 2<sup>−years elapsed / adjusted delivery time</sup>). Elapsed years use the selected year minus 2026.</p><p>Each percentage point of financing above 6% lengthens delivery time by 10%; each cost-growth point above 3% adds 4%. Delay adds months. Policy assumptions subtract at most 18 months combined, with a minimum delivery time of 6 months. These coefficients are illustrative, not fitted to historical outcomes. The range varies delivery time and realization; it is not a statistical confidence interval.</p></div><div><h3>Policy & geographic limits</h3><p>Policy switches test additional acceleration relative to the reference. Legal changes may already be reflected in project records. There is no causal estimate of each bill’s effect. The bond switch assumes approval and funding beginning in 2028; neither is guaranteed.</p><p>Transit proximity uses straight-line distance to hand-curated approximate centers for a subset of Caltrain and BART stations. VTA, BRT, station entrances, service frequency, zoning, local alternative plans, hazard exclusions and parcel boundaries are not modeled.</p><p>Station references: <a href="https://www.caltrain.com/stations" target="_blank" rel="noopener">Caltrain</a> · <a href="https://www.bart.gov/stations" target="_blank" rel="noopener">BART</a>. Bill sources are linked in each card. No automated bill-status feed is connected.</p></div></div></details>
-  <details class="fx-method" id="fxSpatialMethod"><summary>Flood, energy &amp; home-value methodology <span>Sources and limitations ↗</span></summary><div class="fx-method-grid"><div><h3>Real public layers</h3><p>The FEMA snapshot queries Santa Clara, San Mateo, Alameda, Contra Costa, Marin and San Francisco counties. It was refreshed September 19, 2026 and returned hazard polygons for five counties; no San Francisco polygons were returned by this query. Blue areas are special flood hazard areas; purple areas have a 0.2% annual flood chance. Geometry is generalized to about 3 meters; point screening can be wrong near boundaries. A location with no match may still flood. This is not an insurance determination. <a href="https://msc.fema.gov/portal/home" target="_blank" rel="noopener">Check FEMA’s official map.</a></p><p>NOAA sea-level tiles are live public overlays, relative to mean higher high water. The chosen water level is independent of the simulated year. Blue depicts inundation depth; green depicts low-lying areas not directly connected to the ocean. <a href="https://coast.noaa.gov/slr" target="_blank" rel="noopener">NOAA viewer and caveats.</a></p></div><div><h3>Home-value sensitivity, not appraisal</h3><p>The observed baseline is the dashboard’s July 2026 citywide Zillow index. Reference value = baseline × (1 + assumed annual trend)<sup>years</sup>. The supply factor is exp(−sensitivity × extra modeled delivery / 2020 housing stock), capped between exp(−0.3) and exp(0.3). Housing stock comes from <a href="https://census.bayareametro.gov/housing-units" target="_blank" rel="noopener">MTC / ABAG’s Census 2020 DHC H3 data</a>. West San Jose uses citywide San Jose data.</p><p>All-area values are a 2020-stock-weighted average of city indexes where available, not Zillow’s regional index. A flood-exposed example applies your assumed discount to that index; it is not a price for a specific parcel. Interest rates influence modeled delivery only, not buyer demand directly. Gross project units, overlapping plans, stale stock, incomplete coverage and assumed elasticities limit every output. No statistical confidence is assigned to prices.</p></div><div><h3>Energy context</h3><p>Points show the California Energy Commission’s facilities not flagged as retired in its public snapshot, last updated June 12, 2026. Nameplate MW is not real-time generation, grid headroom, an outage forecast or a service territory. Battery MW describes power, not storage duration. No local home is assumed to be supplied by a nearby plant.</p><p>Modeled annual household demand = delivered units × your kWh/home/year assumption. Additional grid connection delay lengthens the housing-delivery assumption. Both are hypothetical. <a href="https://www.energy.ca.gov/data-reports/energy-maps-and-spatial-data" target="_blank" rel="noopener">CEC data and conditions of use.</a></p></div></div></details>
+  <details class="fx-method" id="fxSpatialMethod"><summary>Flood, energy &amp; home-value methodology <span>Sources and limitations ↗</span></summary><div class="fx-method-grid"><div><h3>Real public layers</h3><p>The FEMA snapshot queries all nine Bay Area counties. The September 19, 2026 refresh returned 13,603 hazard polygons across eight counties; no San Francisco polygons were returned by this query. Blue areas are special flood hazard areas; purple areas have a 0.2% annual flood chance. Geometry is generalized to about 3 meters; point screening can be wrong near boundaries. A location with no match may still flood. This is not an insurance determination. <a href="https://msc.fema.gov/portal/home" target="_blank" rel="noopener">Check FEMA’s official map.</a></p><p>NOAA sea-level tiles are live public overlays, relative to mean higher high water. The chosen water level is independent of the simulated year. Blue depicts inundation depth; green depicts low-lying areas not directly connected to the ocean. <a href="https://coast.noaa.gov/slr" target="_blank" rel="noopener">NOAA viewer and caveats.</a></p></div><div><h3>Home-value sensitivity, not appraisal</h3><p>The observed baseline is the dashboard’s July 2026 citywide Zillow index. Reference value = baseline × (1 + assumed annual trend)<sup>years</sup>. The supply factor is exp(−sensitivity × extra modeled delivery / 2020 housing stock), capped between exp(−0.3) and exp(0.3). Housing stock comes from <a href="https://census.bayareametro.gov/housing-units" target="_blank" rel="noopener">MTC / ABAG’s Census 2020 DHC H3 data</a>. West San Jose uses citywide San Jose data.</p><p>All-area values are a 2020-stock-weighted average of city indexes where available, not Zillow’s regional index. A flood-exposed example applies your assumed discount to that index; it is not a price for a specific parcel. Interest rates influence modeled delivery only, not buyer demand directly. Gross project units, overlapping plans, stale stock, incomplete coverage and assumed elasticities limit every output. No statistical confidence is assigned to prices.</p></div><div><h3>Energy context</h3><p>Points show the California Energy Commission’s facilities not flagged as retired in its public snapshot, last updated June 12, 2026. Nameplate MW is not real-time generation, grid headroom, an outage forecast or a service territory. Battery MW describes power, not storage duration. No local home is assumed to be supplied by a nearby plant.</p><p>Modeled annual household demand = delivered units × your kWh/home/year assumption. Additional grid connection delay lengthens the housing-delivery assumption. Both are hypothetical. <a href="https://www.energy.ca.gov/data-reports/energy-maps-and-spatial-data" target="_blank" rel="noopener">CEC data and conditions of use.</a></p></div></div></details>
   <div class="fx-status" id="fxStatus" role="status" aria-live="polite"></div>
  </div>
 </section>
@@ -1604,7 +1604,7 @@
   <div class="wrap">
     <div class="planner-shell">
       <h2>Get involved</h2>
-      <p class="section-note">Every board and commission across the South Bay, when they meet, and which of those meetings are actually confirmed on an agenda.</p>
+      <p class="section-note">City boards and commissions across the Bay Area, when they meet, and which of those meetings are actually confirmed on an agenda.</p>
 
       <div class="gi-tabs" id="giTabs"></div>
 
@@ -1716,7 +1716,7 @@
       <div class="topic-links" id="topicLinksHousing"></div>
       <div class="topic-section-h" id="topicCityHeadHousing"></div>
       <div class="register-grid" id="topicCityGridHousing"></div>
-      <div class="topic-section-h">Across the South Bay</div>
+      <div class="topic-section-h">Across the Bay Area</div>
       <div id="topicRegionHousing"></div>
     </div>
   </div>
@@ -1749,7 +1749,7 @@
       <div class="topic-links" id="topicLinksDevelopments"></div>
       <div class="topic-section-h" id="topicCityHeadDevelopments"></div>
       <div class="register-grid" id="topicCityGridDevelopments"></div>
-      <div class="topic-section-h">Across the South Bay</div>
+      <div class="topic-section-h">Across the Bay Area</div>
       <div id="topicRegionDevelopments"></div>
     </div>
   </div>
@@ -1781,7 +1781,7 @@
       <div class="topic-links" id="topicLinksTransportation"></div>
       <div class="topic-section-h" id="topicCityHeadTransportation"></div>
       <div class="register-grid" id="topicCityGridTransportation"></div>
-      <div class="topic-section-h">Across the South Bay</div>
+      <div class="topic-section-h">Across the Bay Area</div>
       <div id="topicRegionTransportation"></div>
     </div>
   </div>
@@ -1956,7 +1956,7 @@
                   <option value="woodside">Woodside</option>
                 </optgroup>
               </select>
-              <div class="auth-hint">Your city's news comes right after anything you've starred, ahead of the rest of the South Bay.</div>
+              <div class="auth-hint">Your city's news comes right after anything you've starred, ahead of the rest of the Bay Area.</div>
               <label for="prefsFrequency" class="onboard-label" style="margin-top:12px;">How often</label>
               <select id="prefsFrequency">
                 <option value="off">Off</option>
@@ -1973,7 +1973,7 @@
             <ol class="acct-steps">
               <li><b>What you're following</b> - every starred project, board and article, with anything that changed marked and sorted first.</li>
               <li><b>In your city</b> - housing, transportation, other development, news, and who decides it.</li>
-              <li><b>Around the South Bay</b> - projects that moved elsewhere, plus regional coverage.</li>
+              <li><b>Around the Bay Area</b> - projects that moved elsewhere, plus regional coverage.</li>
               <li><b>Official links</b> - your city's own planning, permit and GIS pages.</li>
             </ol>
             <p class="acct-fineprint">Nothing in the briefing is model-generated. Status text is quoted from the record, and the summary line is assembled from counts.</p>
@@ -2025,7 +2025,7 @@
     <div class="bank-mosaic" id="bankMosaic" aria-hidden="true"></div>
     <div class="bank-hero">
       <h2>Resource bank</h2>
-      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all thirty-three cities.</p>
+      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all 101 Bay Area cities and towns, plus West San Jose.</p>
       <div class="bank-searchwrap">
         <input id="bankSearch" type="search" placeholder="Search anything: an address, a commission, &ldquo;builder&rsquo;s remedy&rdquo;, &ldquo;housing element&rdquo;, a street name&hellip;" autocomplete="off" aria-label="Search the resource bank" />
         <div class="bank-count" id="bankCount"></div>
@@ -2052,7 +2052,7 @@
       </div>
 
       
-      <p>This site collects what is being built across the South Bay and when the meetings that decide it take place. All of it is public information already. It is spread across thirty-three city websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
+      <p>This site collects what is being built across the Bay Area and when the meetings that decide it take place. All of it is public information already. It is spread across city and county websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
 
       <h4>Where the data comes from</h4>
       <div class="bank-sources" id="bankSources"></div>
@@ -2060,13 +2060,13 @@
 
       <h4>How records are handled</h4>
       <p>Project statuses are quoted from the source. Counts are worked out from those records. Nothing on this site is written for you.</p>
-      <p>Where a city publishes no usable project data, that city's register is left empty. Morgan Hill is the current example: its news, boards, official links and housing numbers are here, but it has no project list.</p>
+      <p>Directory profiles have official resources, meeting links and Census estimates. They show no project totals until a verified inventory has been imported. An empty register is a coverage gap, not evidence that no development is underway.</p>
 
       <h4>How current it is</h4>
       <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Each project shows the city's own file number and links to the register it came from, where that number can be looked up.</p>
 
       <h4>What it covers</h4>
-      <p>Thirty-three cities: all thirteen this site started with in Santa Clara County and the South Bay, plus all twenty cities and towns of San Mateo County.</p>
+      <p>All 101 incorporated cities and towns across the nine Bay Area counties, plus a separate West San Jose neighborhood profile. Every area has official resources, a meeting directory and a local photograph. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
       <div class="about-mosaic" id="aboutMosaic"></div>
 
       <p class="about-credits" id="aboutCredits"></p>
@@ -2225,13 +2225,17 @@
   </div>
   <div class="footer-bottom">
     <div class="wrap">
-      <span>South Bay Area Civic Dashboard</span>
+      <span>Bay Civic Dashboard</span>
       <span>An independent, student-built prototype. Not an official government product.</span>
     </div>
   </div>
 </footer>
 
 <script src="/data/regions.js"></script>
+<script src="/data/market-data.js"></script>
+<script src="/data/housing-records.js"></script>
+<script src="/data/city-news.js"></script>
+<script src="/housing-data.js"></script>
 <script src="/data/city-photos.js"></script>
 <script src="/data/meetings.js"></script>
 <script src="/guest.js"></script>
@@ -5667,8 +5671,9 @@ const CITIES = {
 };
 // Additional Bay Area profiles share the same rendering and data contracts.
 for(const [key,c] of Object.entries(window.REGIONAL_DATA?.cities||{})){
- CITIES[key]={...c,feed:c.data.filter(p=>p.lastDate).map(p=>({date:p.lastDate,id:p.id,title:p.addr,body:p.lastNote,stage:p.stage})),sources:[c.planning,c.stats.source],ctaLinks:c.resources.map(r=>({label:r.title,url:r.url}))};
+ CITIES[key]={...c,data:[...c.data],feed:c.data.filter(p=>p.lastDate).map(p=>({date:p.lastDate,id:p.id,title:p.addr,body:p.lastNote,stage:p.stage})),sources:[c.planning,c.stats.source],ctaLinks:c.resources.map(r=>({label:r.title,url:r.url}))};
 }
+DashboardHousing.merge(CITIES,window.HOUSING_RECORDS);
 const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
 let currentCity = 'sunnyvale';
 
@@ -5699,6 +5704,7 @@ function fmtDate(dateStr){ if(!dateStr) return '-'; const d=new Date(dateStr+'T0
 function freshnessLabel(item){ const ds=daysSince(item.lastDate); if(ds===null) return 'No dated status logged'; if(ds<0) return 'Dated in the future (check record)'; if(ds<30) return ds+' days since last activity'; if(ds<365) return Math.round(ds/30)+' mo since last activity'; return (ds/365).toFixed(1)+' yrs since last activity'; }
 
 let state = {q:'', stage:'all', cat:'all'};
+let registerLimit=60,registerScope='';
 // Auth/starring state - declared here (not at script bottom) because renderAll() below
 // calls projectCardHtml() -> starButtonHtml() -> isStarred(), which reads these.
 let authToken = localStorage.getItem('sbpd_token') || null;
@@ -5731,21 +5737,22 @@ function filtered(){
   });
 }
 
+let cityBrowseQuery='',cityBrowseCounty='';
 function renderCitySwitch(){
-  const tab = ([key,c]) => `<button class="city-tab${key===currentCity?' active':''}" data-city="${key}" aria-pressed="${key===currentCity}">${c.label} <span class="mono" style="opacity:.7">(${c.data.length})</span></button>`;
-  // 33 cities is too many for one undifferentiated row, so they sit under their county.
-  const byCounty = (name) => Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===name);
-  document.getElementById('citySwitch').innerHTML =
-    tab(['all', CITIES.all])
-    + COUNTY_NAMES.map(cty=>{
-        const rows = byCounty(cty);
-        if(!rows.length) return '';
-        return `<div class="city-group"><span class="city-group-label">${cty} County</span>${rows.map(tab).join('')}</div>`;
-      }).join('');
-  document.querySelectorAll('.city-tab').forEach(btn=>{
-    btn.addEventListener('click', ()=>{ switchCity(btn.getAttribute('data-city')); });
-  });
-  document.getElementById('snapRow').innerHTML = `<span class="pill">Records: dated individually</span><span class="pill">${DATA().length} records shown for ${CITIES[currentCity].label}</span><span class="pill">Sample for demonstration - not each city's full active list</span>`;
+  const tab = ([key,c]) => `<button class="city-tab${key===currentCity?' active':''}" data-city="${key}" aria-pressed="${key===currentCity}">${c.label} <span class="mono">${c.coverage==='directory'?'Guide':'('+c.data.length+')'}</span></button>`;
+  const host=document.getElementById('citySwitch');
+  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search 101 cities and towns…" value="${escapeHtml(cityBrowseQuery)}"></label><label>County<select id="cityBrowseCounty"><option value="">All nine counties</option>${COUNTY_NAMES.map(c=>`<option${cityBrowseCounty===c?' selected':''}>${c}</option>`).join('')}</select></label><span id="cityBrowseCount" role="status"></span></div>`
+    +tab(['all',CITIES.all])+'<div class="city-browse-results">'+COUNTY_NAMES.map(county=>`<div class="city-group" data-county="${county}"><span class="city-group-label">${county} County</span>${Object.entries(CITIES).filter(([k,c])=>k!=='all'&&c.county===county).sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(tab).join('')}</div>`).join('')+'<p id="cityBrowseEmpty" hidden>No matching city. Try a different name or county.</p></div>';
+  function filterCities(){
+    let total=0;
+    host.querySelectorAll('.city-group').forEach(group=>{let count=0;group.querySelectorAll('[data-city]').forEach(btn=>{btn.hidden=Boolean((cityBrowseCounty&&group.dataset.county!==cityBrowseCounty)||!CITIES[btn.dataset.city].label.toLowerCase().includes(cityBrowseQuery.toLowerCase().trim()));if(!btn.hidden)count++;});group.hidden=!count;total+=count;});
+    document.getElementById('cityBrowseCount').textContent=total+' area'+(total===1?'':'s')+' · Numbers show sampled project records';document.getElementById('cityBrowseEmpty').hidden=total>0;
+  }
+  document.getElementById('cityBrowseSearch').addEventListener('input',e=>{cityBrowseQuery=e.target.value;filterCities();});
+  document.getElementById('cityBrowseCounty').addEventListener('change',e=>{cityBrowseCounty=e.target.value;filterCities();});
+  host.querySelectorAll('[data-city]').forEach(btn=>btn.addEventListener('click',()=>switchCity(btn.dataset.city)));
+  filterCities();
+  document.getElementById('snapRow').innerHTML=CITIES[currentCity].coverage==='directory'?'<span class="pill">Official sources & Census statistics</span><span class="pill">Project inventory not yet imported</span>':`<span class="pill">Records: dated individually</span><span class="pill">${DATA().length} records tracked for ${CITIES[currentCity].label}</span><span class="pill">Researched sample · not each city’s full active list</span>`;
   renderQuickLinks();
 }
 function renderQuickLinks(){
@@ -5754,7 +5761,7 @@ function renderQuickLinks(){
   const bar = document.getElementById('officialMapBar');
   if(bar){
     bar.innerHTML = officialMap
-      ? `<div class="official-map-bar"><span>This is our tracker. For the city's own live GIS map:</span><a href="${officialMap.url}" target="_blank" rel="noopener">${officialMap.label} &#8599;</a></div>`
+      ? `<div class="official-map-bar"><span>This is our tracker. Open the city's official planning source:</span><a href="${officialMap.url}" target="_blank" rel="noopener">${officialMap.label} &#8599;</a></div>`
       : '';
   }
   const links = [
@@ -5877,6 +5884,7 @@ async function tryLiveCupertinoData(){
   document.getElementById('tryLiveBtn').addEventListener('click', tryLiveCupertinoData);
 }
 function renderStats(){
+  if(CITIES[currentCity].coverage==='directory'){document.getElementById('statGrid').innerHTML='<div class="stat-card directory-stat"><div class="u">City guide available</div><div class="sub">Open Statistics for Census estimates, Resources for official planning records, and Get Involved for meeting agendas. Project totals will appear when an inventory is imported.</div></div>';return;}
   const list = DATA();
   const housing = list.filter(d=>categoryOf(d)==='Housing');
   const devUnits = housing.filter(d=>Number.isFinite(d.units)).reduce((a,d)=>a+d.units,0);
@@ -5889,7 +5897,7 @@ function renderStats(){
     {k: devUnits.toLocaleString(), u:'Housing units tracked', sub:'In this sample for '+CITIES[currentCity].label},
     {k: bmrKnown.length ? bmrShare+'%' : '—', u:'Affordable, where disclosed', sub: bmrKnown.length+' of '+housing.length+' housing records report a BMR split'},
     {k: flagged, u:'Records flagged', sub:'Stale, expired, inactive, or ambiguous status'},
-    {k: list.filter(d=>d.stage==='construction'||d.stage==='approved').length, u:'Active right now', sub:'Approved or under construction'},
+    {k: list.filter(d=>d.stage==='construction'||d.stage==='approved').length, u:'Approved or building', sub:'Last reported status · check record dates'},
   ];
   document.getElementById('statGrid').innerHTML = cards.map(c=>`<div class="stat-card"><div class="k">${c.k}</div><div class="u">${c.u}</div><div class="sub">${c.sub}</div></div>`).join('');
 }
@@ -6146,8 +6154,8 @@ function renderFeed(){
     return true;
   });
   const el = document.getElementById('feed');
-  if(!list.length){ el.innerHTML='<div class="empty">No change-feed entries match the current filters.</div>'; return; }
-  el.innerHTML = list.map(f=>{
+  if(!list.length){const c=CITIES[currentCity];el.innerHTML=c.coverage==='directory'?`<div class="empty">Project updates have not yet been imported. <a href="${escapeHtml(c.planning)}" target="_blank" rel="noopener">Read ${escapeHtml(c.label)}’s official planning notices ↗</a></div>`:'<div class="empty">No change-feed entries match the current filters.</div>';return;}
+  el.innerHTML = list.slice(0,80).map(f=>{
     const d = DATA().find(x=>x.id===f.id);
     const color = d ? STAGE_MAP[d.stage].color : '#333';
     return `<div class="feed-item" data-id="${f.id}"><div class="fd-date">${fmtDate(f.date)}</div><div class="fd-title">${f.title}</div><div class="fd-body">${f.body}</div>${d?`<span class="fd-tag" style="background:${color}">${STAGE_MAP[d.stage].label}</span>`:''}</div>`;
@@ -6570,7 +6578,7 @@ function projectCardHtml(d){
       <div class="meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
       <div class="meta" style="color:var(--text);">${d.lastNote}</div>
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
-      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">City record &#8599;</a>`:'';})()}<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
+      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':'City record'} &#8599;</a>`:'';})()}<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
     </div>`;
 }
 function renderRegister(){
@@ -6578,8 +6586,14 @@ function renderRegister(){
   document.getElementById('registerCount').textContent = list.length+' of '+DATA().length+' records shown';
   document.getElementById('visCount').textContent = list.length+' matching this filter';
   const el = document.getElementById('registerGrid');
-  if(!list.length){ el.innerHTML='<div class="empty">Nothing matches - try clearing a filter.</div>'; return; }
-  el.innerHTML = list.map(projectCardHtml).join('');
+  if(!list.length){
+    const c=CITIES[currentCity],photo=CITY_PHOTOS[currentCity];
+    el.innerHTML=c.coverage==='directory'?`<article class="directory-welcome">${photo?`<img src="${escapeHtml(photo.url)}" alt="${escapeHtml(photo.cap)}" loading="lazy">`:''}<div><span class="eyebrow">${escapeHtml(c.county)} County</span><h3>Explore ${escapeHtml(c.label)}</h3><p>Official planning sources, meeting agendas and Census statistics are ready. A verified project inventory has not yet been imported. This does not mean no development is underway.</p><a class="btn" href="${escapeHtml(c.planning)}" target="_blank" rel="noopener">Planning & development ↗</a> <a class="btn secondary" href="${escapeHtml(c.meetings)}" target="_blank" rel="noopener">Meetings & agendas ↗</a><p><a href="/photo-credits.html">Photo credits ↗</a></p></div></article>`:'<div class="empty">Nothing matches — try clearing a filter.</div>';return;
+  }
+  const scope=currentCity+JSON.stringify(state);if(scope!==registerScope){registerLimit=60;registerScope=scope;}
+  document.getElementById('registerCount').textContent=Math.min(list.length,registerLimit)+' of '+list.length+' matching records displayed';
+  el.innerHTML = list.slice(0,registerLimit).map(projectCardHtml).join('')+(list.length>registerLimit?`<button class="btn register-more" type="button">Show ${Math.min(60,list.length-registerLimit)} more records (${list.length-registerLimit} remaining)</button>`:'');
+  el.querySelector('.register-more')?.addEventListener('click',()=>{registerLimit+=60;renderRegister();});
   el.querySelectorAll('.locate-btn').forEach(btn=> btn.addEventListener('click', ()=>flyTo(btn.getAttribute('data-id'))));
 }
 function renderInvolved(){
@@ -6681,7 +6695,7 @@ function renderOnboardCityBtns(){
   document.getElementById('onboardCityBtns').innerHTML =
     `<input type="text" class="onboard-cityfilter" id="onboardCityFilterInput" placeholder="Type to find your city" value="${onboardCityFilter.replace(/"/g,'&quot;')}" />`
     + all + groups
-    + ((all||groups) ? '' : `<div class="onboard-cityempty">No city here matches "${q.replace(/</g,'&lt;')}". This tracker covers the Peninsula, South Bay, East Bay, San Francisco and nearby Marin cities.</div>`);
+    + ((all||groups) ? '' : `<div class="onboard-cityempty">No city here matches "${q.replace(/</g,'&lt;')}". Search cities and towns across all nine Bay Area counties.</div>`);
   const f = document.getElementById('onboardCityFilterInput');
   if(f){
     f.addEventListener('input', ()=>{
@@ -7578,7 +7592,7 @@ function icsFor(d){
   const end = new Date(dt.getTime() + 2*60*60*1000);
   const fmt = x => x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(x.getHours())+pad(x.getMinutes())+'00';
   const esc = t => String(t||'').replace(/([,;\\])/g,'\\$1').replace(/\n/g,'\\n');
-  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//South Bay Area Civic Dashboard//EN','BEGIN:VEVENT',
+  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Bay Civic Dashboard//EN','BEGIN:VEVENT',
     'UID:'+encodeURIComponent(d.ref)+'@southbaydashboard',
     'DTSTAMP:'+fmt(new Date()), 'DTSTART:'+fmt(dt), 'DTEND:'+fmt(end),
     'SUMMARY:'+esc(d.name+' - '+d.cityLabel),
@@ -10293,7 +10307,7 @@ const NEWS_ARTICLES = [
     snippet:'',
     url:'https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVVFzUnJwWmJiekc1YVpMYzdoMENMSERULXRVWUg4NWZFc0NtZlZmSG9CM19NYXF0YnV4aGNfWDJVZzc5ZzJDd3hqR3U0d1I4Y29yS1FubmNKaWpKZjNMNkVlaGtER2lEdGZLaUhDMVI0clBUSWdLbFZqNUtCWUtiRUw5aUxYUkJqTkdCNXY0T1RaaTBDcGR1SUJNeE1ZbjRscXpqcVdSbWxpcXpUUXR4NGlibnV2aVJPZ256bjRVVUlFa0RQT0k0Zw?oc=5' }
 ];
-NEWS_ARTICLES.push(...Object.values(window.REGIONAL_DATA?.cities||{}).flatMap(c=>c.news));
+NEWS_ARTICLES.push(...Object.values(window.REGIONAL_DATA?.cities||{}).flatMap(c=>c.news),...(window.HOUSING_RECORDS?.news||[]),...(window.CITY_NEWS||[]));
 
 function renderTopicNews(topicKey, cap){
   const el = document.getElementById('topicNews'+cap);
@@ -10729,7 +10743,7 @@ function renderAcctStats(){
       // Rank 1 is the top of whichever direction the metric reads as "more".
       const better = vals.filter(x=> m.dir==='lo' ? x < v : x > v).length + 1;
       return acctTile(m.fmt ? m.fmt(v) : v, m.label,
-        vals.length ? ('#'+better+' of '+vals.length+' South Bay cities') : '');
+        vals.length ? ('#'+better+' of '+vals.length+' Bay Area cities') : '');
     }).join('') : '<div class="empty">No comparable statistics for this city yet.</div>';
   }
   const rh = document.getElementById('acctStatRhna');
@@ -13128,6 +13142,7 @@ const CITY_STATS = {
  }
 };
 Object.assign(CITY_STATS, Object.fromEntries(Object.entries(window.REGIONAL_DATA?.cities||{}).map(([k,c])=>[k,c.stats])));
+for(const [key,values] of Object.entries(window.MARKET_DATA?.cities||{}))CITY_STATS[key]={...CITY_STATS[key],...values};
 const STATS_SOURCE = {"label":"Zillow Research public data (ZHVI and ZORI), city level","url":"https://www.zillow.com/research/data/","asOf":"July 2026"};
 const CENSUS_SOURCE = {"label":"US Census American Community Survey, 5-year estimates","url":"https://www.census.gov/programs-surveys/acs","asOf":"2023 (ACS 5-year)"};
 
@@ -13995,7 +14010,7 @@ function rhnaSection(city){
       + '<div class="rhna-big">'+r.pct+'<span class="pc">%</span></div>'
       + '<div class="rhna-note">'
         + '<b>'+label+' has permitted '+r.units.toLocaleString()+' of '+r.target.toLocaleString()+' homes</b> so far this cycle, '
-        + 'ranking #'+pos+' of '+ranked.length+' in the South Bay. '
+        + 'ranking #'+pos+' of '+ranked.length+' in the Bay Area. '
         + 'About '+onPace+'% of the cycle has elapsed, so the city is '
         + (behind ? '<b>behind pace</b>' : '<b>at or ahead of pace</b>') + '.'
         + (br ? ' <b>'+br+'</b> project'+(br===1?'':'s')+' tracked here '+(br===1?'has':'have')+' invoked Builder\'s Remedy.' : '')
@@ -14023,11 +14038,11 @@ function fmtPct(n){ return (n > 0 ? '+' : '') + n.toFixed(0) + '%'; }
 function statsLabelOf(k){ return CITIES[k] ? CITIES[k].label : (CITY_STATS[k] ? CITY_STATS[k].zillowName : k); }
 // Cities the dashboard has no project records for still appear in the rankings when they carry
 // market or census figures - they just cannot show pipeline numbers.
-function statsCityKeys(){ return Object.keys(CITY_STATS); }
+function statsCityKeys(){ return Object.keys(CITY_STATS).filter(k=>k!=='westsanjose'); }
 function median(a){ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y); return s[Math.floor(s.length/2)]; }
 
 function cityFacts(key){
-  if(!CITIES[key]) return null;
+  if(!CITIES[key]||CITIES[key].coverage==='directory') return null;
   const rows = (CITIES[key] ? CITIES[key].data : []);
   const active = rows.filter(d=>d.stage!=='completed');
   const withUnits = active.filter(d=>d.units);
@@ -14063,8 +14078,12 @@ function growth(series){
 // statistic means adding one entry here rather than touching three places.
 function metricCatalog(){
   const stat = k => (c) => (CITY_STATS[c] ? CITY_STATS[c][k] : null);
+  const annual=k=>(c)=>window.HOUSING_RECORDS?.activity[c]?.[k]??null;
   const fact = k => (c) => { const f = cityFacts(c); return f ? f[k] : null; };
   return [
+    {id:'aprPermitted',topic:'pipeline',label:'Homes permitted · annual',tag:'HCD',get:annual('permitted'),fmt:fmtInt,dir:'hi'},
+    {id:'aprCompleted',topic:'pipeline',label:'Homes completed · annual',tag:'HCD',get:annual('completed'),fmt:fmtInt,dir:'hi'},
+    {id:'aprEntitled',topic:'pipeline',label:'Homes entitled · annual',tag:'HCD',get:annual('entitled'),fmt:fmtInt,dir:'hi'},
     {id:'homeValue',    topic:'housing',   label:'Typical home value',   tag:'Zillow',  get:stat('homeValue'),      fmt:fmtMoney, dir:'hi'},
     {id:'rent',         topic:'housing',   label:'Typical asking rent',  tag:'Zillow',  get:stat('rent'),           fmt:fmtRent,  dir:'hi'},
     {id:'censusValue', topic:'housing', label:'Median owner home value', tag:'Census', get:stat('censusHomeValue'), fmt:fmtMoney, dir:'hi'},
@@ -14116,8 +14135,11 @@ function rankOf(metric, me){
   return pos ? {pos, of:vals.length, med:median(vals.map(x=>x.v))} : null;
 }
 
+const METRIC_PHOTOS={aprPermitted:'napa',aprCompleted:'santarosa',aprEntitled:'walnutcreek',homeValue:'dalycity',rent:'berkeley',censusValue:'belmont',grossRent:'emeryville',renterShare:'sanfrancisco',yearBuilt:'sanleandro',commute:'sancarlos',transitShare:'unioncity',transport:'campbell',units:'richmond',bmr:'albany',projects:'sanjose',medianUnits:'southsanfrancisco',construction:'paloalto',medianYears:'santaclara',rhnaPct:'hayward',rhnaTarget:'mountainview',rhnaAffordable:'redwoodcity',income:'menlopark',population:'oakland',priceToRent:'burlingame',incomeToPrice:'sunnyvale'};
+function metricPhoto(metric){return CITY_PHOTOS[METRIC_PHOTOS[metric.id]]||CITY_PHOTOS.sanfrancisco;}
 function statCard(metric, me){
   const val = metric.get(me);
+  const photo=metricPhoto(metric);
   if(val == null) return '';
   const s = CITY_STATS[me];
   const r = rankOf(metric, me);
@@ -14145,6 +14167,7 @@ function statCard(metric, me){
   if(metric.id==='rhnaPct' && RHNA[me]) sub = RHNA[me].units.toLocaleString()+' of '+RHNA[me].target.toLocaleString()+' homes permitted this cycle.';
   if(metric.id==='rhnaTarget') sub = 'State allocation for '+RHNA_PERIOD+'.';
   if(metric.id==='rhnaAffordable' && RHNA[me]) sub = 'Very low plus low income, against a target of <b>'+(RHNA[me].vli[1]+RHNA[me].li[1]).toLocaleString()+'</b>.';
+  if(metric.id.startsWith('apr')) sub='All city-reported '+window.HOUSING_RECORDS.activity[me].year+' APR rows; separate from the dashboard’s limited project sample.';
   if(metric.id==='transitShare') sub = 'Share of commuters using public transit.';
   if(metric.id==='commute')     sub = 'Average one-way travel time to work.';
   if(metric.id==='builderRemedy') sub = 'Applications arguing local zoning does not apply.';
@@ -14156,12 +14179,12 @@ function statCard(metric, me){
   return '<div class="metric-wrap">' + starButtonHtml('statistic', starId, starData)
     + '<button type="button" class="metric-card" data-metric="'+metric.id+'" aria-label="Rank cities by '+metric.label+'">'
     + '<span class="head">'+metric.label+'<span class="tag">'+metric.tag+'</span></span>'
-    + '<span class="metric-photo"><img src="'+escapeHtml(cityImage(me)||'/img/hero.avif')+'" alt="'+escapeHtml(CITIES[me].label)+' city context" loading="lazy" onerror="imgFallback(this,\''+me+'\')"><span>'+escapeHtml(CITIES[me].county)+' County · '+escapeHtml(metric.topic)+'</span></span>'
+    + '<span class="metric-photo"><img src="'+escapeHtml(photo.url)+'" alt="'+escapeHtml(photo.cap)+' — regional context for '+escapeHtml(metric.label)+'" loading="lazy"><span>'+escapeHtml(metric.topic)+' · Bay Area context</span></span>'
     + '<span class="body">'
     + '<span class="k">'+metric.fmt(val)+'</span>'
     + (sub ? '<span class="s">'+sub+'</span>' : '')
     + rankHtml + spark
-    + '</span></button></div>';
+    + '</span></button><a class="metric-photo-credit" href="/photo-credits.html">'+escapeHtml(photo.cap)+' · '+escapeHtml(photo.by)+' · '+escapeHtml(photo.lic)+'</a></div>';
 }
 
 function statBars(metric, me){
@@ -14201,8 +14224,9 @@ function renderStatistics(){
     + statBars(active, me) + '</div>'
     + '<div class="stat-foot">'
     + 'Home value and asking rent: <a href="'+STATS_SOURCE.url+'" target="_blank" rel="noopener">'+STATS_SOURCE.label+'</a>, '+STATS_SOURCE.asOf+'. '
-    + 'Population, income, commute, tenure and housing age: <a href="'+CENSUS_SOURCE.url+'" target="_blank" rel="noopener">'+CENSUS_SOURCE.label+'</a>, '+CENSUS_SOURCE.asOf+' for existing profiles; 2020–2024 ACS for the 17 added cities. Compare source years when interpreting ranks. '
+    + 'Population, income, commute, tenure and housing age: <a href="'+CENSUS_SOURCE.url+'" target="_blank" rel="noopener">'+CENSUS_SOURCE.label+'</a>, '+CENSUS_SOURCE.asOf+' for existing profiles; 2020–2024 ACS for the expanded regional profiles. Compare source years when interpreting ranks. West San Jose’s citywide proxy is excluded from regional rankings. '
     + 'Housing target progress: <a href="'+RHNA_SOURCE.url+'" target="_blank" rel="noopener">'+RHNA_SOURCE.label+'</a>, '+RHNA_SOURCE.asOf+'. '
+    + 'Annual housing activity: <a href="https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard" target="_blank" rel="noopener">California HCD city-reported APR data</a>, 2024–2025 reports, updated September 18, 2026. Milestones are historical; issued permits do not confirm construction starts. '
     + 'Pipeline figures are counted from this dashboard\'s own records and reflect what each city publishes.'
     + '</div>';
 
@@ -14906,5 +14930,6 @@ if(!GOOGLE_MAPS_API_KEY && !mapProvider) showGoogleEmbed();
 </script>
 <script src="/vendor/leaflet-heat.js"></script>
 <script type="module" src="/futures/app.js"></script>
+<script src="/site-visuals.js"></script>
 </body>
 </html>

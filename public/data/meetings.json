@@ -778,5 +778,789 @@
         "url": "https://www.townoftiburon.gov/266/Agendas-Minutes"
       }
     ]
+  },
+  "dublin": {
+    "label": "Dublin",
+    "county": "Alameda",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.dublin.ca.gov/1604/Meetings-Agendas-Minutes-Video-on-Demand"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.dublin.ca.gov/174/Development-Activity"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "livermore": {
+    "label": "Livermore",
+    "county": "Alameda",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.livermoreca.gov/departments/city-clerk/city-council-meeting-calendar-agendas"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.livermoreca.gov/departments/city-clerk/advisory-bodies/planning-commission"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "piedmont": {
+    "label": "Piedmont",
+    "county": "Alameda",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.piedmont.ca.gov/government/city_council/meeting_information___agendas"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.piedmont.ca.gov/services___departments/planning___building/about_planning_"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "pleasanton": {
+    "label": "Pleasanton",
+    "county": "Alameda",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityofpleasantonca.gov/our-government/mayor-city-council/city-council-meetings/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofpleasantonca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "antioch": {
+    "label": "Antioch",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.antiochca.gov/AgendaCenter"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.antiochca.gov/902/Planning-Commission"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "brentwood": {
+    "label": "Brentwood",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://pub-brentwood.escribemeetings.com/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.brentwoodca.gov/government/boards-commissions/planning-commission"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "clayton": {
+    "label": "Clayton",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.claytonca.gov/AgendaCenter"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.claytonca.gov/183/Planning"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "concord": {
+    "label": "Concord",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityofconcord.org/965/Public-Meetings-and-Agendas"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofconcord.org/401/Planning-Commission"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "danville": {
+    "label": "Danville",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.danville.ca.gov/129/Meetings-Agendas-Minutes"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://danville.ca.gov/281/Planning-Commission"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "hercules": {
+    "label": "Hercules",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://hercules.legistar.com/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.herculesca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "client": "hercules"
+  },
+  "lafayette": {
+    "label": "Lafayette",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.lovelafayette.org/city-hall/city-council/general-info-about-public-meetings"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.lovelafayette.org/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "martinez": {
+    "label": "Martinez",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityofmartinez.org/government/city-clerk/notices-and-publications"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofmartinez.org/departments/planning/general-plan-update/past-meetings"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "moraga": {
+    "label": "Moraga",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.moraga.ca.us/AgendaCenter"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.moraga.ca.us/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "oakley": {
+    "label": "Oakley",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.oakleyca.gov/DocumentCenter"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.oakleyca.gov/240/Notices-of-Public-Hearings-Work-Sessions"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "orinda": {
+    "label": "Orinda",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityoforinda.gov/610/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityoforinda.gov/153/Planning-Department"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "pinole": {
+    "label": "Pinole",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.pinole.gov/city-government/city-council/meeting-agendas/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.pinole.gov/departments/planning/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "pittsburg": {
+    "label": "Pittsburg",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.pittsburgca.gov/government/agendas-minutes"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.pittsburgca.gov/services/community-development/planning"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "pleasanthill": {
+    "label": "Pleasant Hill",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.phillca.gov/277/Agendas"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.phillca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "sanpablo": {
+    "label": "San Pablo",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://sanpablo.legistar.com/Calendar.aspx"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.sanpabloca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "client": "sanpablo"
+  },
+  "sanramon": {
+    "label": "San Ramon",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.sanramon.ca.gov/our_city/city_council/council_meetings_agendas_minutes"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.sanramon.ca.gov/our_city/boards_committees_commissions/planning_commission"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "walnutcreek": {
+    "label": "Walnut Creek",
+    "county": "Contra Costa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.walnutcreekca.gov/government/public-meeting-agendas-and-videos/public-meeting-schedule"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.walnutcreekca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "belvedere": {
+    "label": "Belvedere",
+    "county": "Marin",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityofbelvedere.org/departments/public-meetings/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofbelvedere.org/departments/planning-building/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "cortemadera": {
+    "label": "Corte Madera",
+    "county": "Marin",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cortemadera.gov/681/One-Stop-Shortcut-Page-for-Public-Meetin"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cortemadera.gov/189/Planning-Commission"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "fairfax": {
+    "label": "Fairfax",
+    "county": "Marin",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.townoffairfaxca.gov/departments/meetings-agendas/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://townoffairfaxca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "larkspur": {
+    "label": "Larkspur",
+    "county": "Marin",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "http://www.larkspur.ca.gov/288/Agendas-and-Minutes"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.larkspur.ca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "novato": {
+    "label": "Novato",
+    "county": "Marin",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.novato.gov/government/city-council"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.novato.gov/government/community-development/planning-division"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "ross": {
+    "label": "Ross",
+    "county": "Marin",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.townofrossca.gov/meetings?field_microsite_tid_1=27"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.townofrossca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "sananselmo": {
+    "label": "San Anselmo",
+    "county": "Marin",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.sananselmo.gov/1613/Town-of-San-Anselmo-Meetings-and-Agendas"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.sananselmo.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "sanrafael": {
+    "label": "San Rafael",
+    "county": "Marin",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityofsanrafael.org/departments/public-meetings/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofsanrafael.org/major-planning-projects-2025/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "americancanyon": {
+    "label": "American Canyon",
+    "county": "Napa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.americancanyon.gov/Work/Local-Government/City-Hall/City-Clerk/Meetings-Agendas"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.americancanyon.gov/Work/Community-Infrastructure-Development/Community-Development/Planning-Zoning/Project-Application-Process"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "calistoga": {
+    "label": "Calistoga",
+    "county": "Napa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://calistoga.civicweb.net/filepro/documents/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.calistogaca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "napa": {
+    "label": "Napa",
+    "county": "Napa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://napacity.legistar.com/calendar.aspx"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofnapa.org/"
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "client": "napacity"
+  },
+  "sthelena": {
+    "label": "St. Helena",
+    "county": "Napa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityofsthelena.gov/963"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofsthelena.gov/CivicAlerts.aspx?AID=145"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "yountville": {
+    "label": "Yountville",
+    "county": "Napa",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://townofyountville.primegov.com/public/portal?fromiframe=1"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.townofyountville.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "losaltoshills": {
+    "label": "Los Altos Hills",
+    "county": "Santa Clara",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.losaltoshills.ca.gov/506/CITY-COUNCIL-AGENDAS-MINUTES-CIVICCLERK"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.losaltoshills.ca.gov/178/Planning-Department"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "montesereno": {
+    "label": "Monte Sereno",
+    "county": "Santa Clara",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://montesereno.civicweb.net/portal/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.montesereno.org/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "benicia": {
+    "label": "Benicia",
+    "county": "Solano",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.ci.benicia.ca.us/agendas"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.ci.benicia.ca.us/index.asp?SEC=76C85352-5B0D-4669-90D5-15916BDB9EB5"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "dixon": {
+    "label": "Dixon",
+    "county": "Solano",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://dixon-ca.granicus.com/ViewPublisher.php?view_id=6"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofdixonca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "fairfield": {
+    "label": "Fairfield",
+    "county": "Solano",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.fairfield.ca.gov/government/city-council/city-council-meetings"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.fairfield.ca.gov/government/city-commissions-and-committees/planning-commission"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "riovista": {
+    "label": "Rio Vista",
+    "county": "Solano",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.riovistacity.com/meetings/recent"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.riovistacity.com/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "suisuncity": {
+    "label": "Suisun City",
+    "county": "Solano",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.suisun.com/Government/City-Council/Agendas"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.suisun.com/Government/City-Clerk/Public-Notices/City-Council-Public-Hearing-Notices"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "vacaville": {
+    "label": "Vacaville",
+    "county": "Solano",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityofvacaville.gov/government/agendas-and-minutes"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofvacaville.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "vallejo": {
+    "label": "Vallejo",
+    "county": "Solano",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://vallejoca.portal.civicclerk.com/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.ci.vallejo.ca.us/residents/volunteer_resources/planning_a_community_clean-_up_"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "cloverdale": {
+    "label": "Cloverdale",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "http://www.cloverdale.net/agendacenter"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cloverdale.net/73/Planning-Community-Development-Departmen"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "cotati": {
+    "label": "Cotati",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cotaticity.gov/1553/City-Council-and-Commission-Meeting-Info"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cotaticity.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "healdsburg": {
+    "label": "Healdsburg",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://healdsburg.gov/1181/Agendas-and-Minutes"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://healdsburg.gov/348/Planning-Building"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "petaluma": {
+    "label": "Petaluma",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://cityofpetaluma.org/meetings/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://cityofpetaluma.org/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "rohnertpark": {
+    "label": "Rohnert Park",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.rpcity.ca.gov/129"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.rpcity.org/748/Public-Notices-Ordinances"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "santarosa": {
+    "label": "Santa Rosa",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.srcity.org/1375/Council-Meeting-Agendas-Minutes-Videos"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.srcity.org/1253/Planning-Process"
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "client": "santa-rosa"
+  },
+  "sebastopol": {
+    "label": "Sebastopol",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.cityofsebastopol.gov/meetings/"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.cityofsebastopol.gov/our-community/buildingprojects/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "sonoma": {
+    "label": "Sonoma",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.sonomacity.org/calendar"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.sonomacity.org/"
+      }
+    ],
+    "reviewed": "2026-09-20"
+  },
+  "windsor": {
+    "label": "Windsor",
+    "county": "Sonoma",
+    "links": [
+      {
+        "title": "Meeting agendas and participation",
+        "url": "https://www.townofwindsor.ca.gov/721/Agendas-Minutes-Videos"
+      },
+      {
+        "title": "Planning and public notices",
+        "url": "https://www.townofwindsor.ca.gov/"
+      }
+    ],
+    "reviewed": "2026-09-20"
   }
 }

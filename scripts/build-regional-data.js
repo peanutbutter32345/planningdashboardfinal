@@ -27,16 +27,23 @@ for(const [key,label,county,lat,lng,fips,planning,meetings] of rows){
 }
 const headers={'User-Agent':'SouthBayDashboard/1.0 (https://southbaydashboard.com; public civic data)'};
 if(process.argv.includes('--census')){
- const ids=rows.map(r=>'16000US06'+r[5]);
+ const entries=Object.entries(data.cities);
+ for(let offset=0;offset<entries.length;offset+=20){
+ const batch=entries.slice(offset,offset+20);
+ const ids=batch.map(([,c])=>'16000US06'+c.fips);
  const url='https://api.censusreporter.org/1.0/data/show/acs2024_5yr?table_ids=B01003,B19013,B25064,B25003,B25035,B25077,B08301,B08013&geo_ids='+ids.join(',');
  const res=await fetch(url,{headers,signal:AbortSignal.timeout(45000)});if(!res.ok)throw Error('ACS '+res.status);const json=await res.json();
- for(const [key,label,,, ,fips] of rows){
+ for(const [key,{label,fips}] of batch){
   const id='16000US06'+fips;const d=json.data[id];const name=json.geography[id].name;
   if(!name.toLowerCase().includes(label.toLowerCase()))throw Error('Wrong Census geography '+key+' '+name);
   const v=(table,col)=>{const x=d[table].estimate[table+col];return typeof x==='number'&&x>=0?x:null;};
-  const commuters=v('B08301','001')-v('B08301','021');
-  data.cities[key].stats={population:v('B01003','001'),medianIncome:v('B19013','001'),medianGrossRent:v('B25064','001'),renterSharePct:v('B25003','003')/v('B25003','001')*100,medianYearBuilt:v('B25035','001'),censusHomeValue:v('B25077','001'),meanCommuteMin:commuters>0?v('B08013','001')/commuters:null,transitSharePct:v('B08301','010')/v('B08301','001')*100,homeValue:null,rent:null,homeValueSeries:[],rentSeries:[],asOf:'2020–2024 ACS 5-year',source:'https://censusreporter.org/profiles/'+id+'/',sourceApi:url};
+  const ratio=(n,d)=>n!==null&&d!==null&&d>0?n/d:null;
+  const share=(n,d)=>{const x=ratio(n,d);return x===null?null:x*100;};
+  const total=v('B08301','001'),home=v('B08301','021');
+  const commuters=total!==null&&home!==null?total-home:null;
+  data.cities[key].stats={population:v('B01003','001'),medianIncome:v('B19013','001'),medianGrossRent:v('B25064','001'),renterSharePct:share(v('B25003','003'),v('B25003','001')),medianYearBuilt:v('B25035','001'),censusHomeValue:v('B25077','001'),meanCommuteMin:ratio(v('B08013','001'),commuters),transitSharePct:share(v('B08301','010'),v('B08301','001')),homeValue:null,rent:null,homeValueSeries:[],rentSeries:[],asOf:'2020–2024 ACS 5-year',source:'https://censusreporter.org/profiles/'+id+'/',sourceApi:url};
   console.log(key,name,data.cities[key].stats.population);
+ }
  }
 }
 writeFileSync(output,JSON.stringify(data,null,2)+'\n');
