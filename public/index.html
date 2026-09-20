@@ -7203,7 +7203,7 @@ document.getElementById('onboardSubmit').addEventListener('click', submitOnboard
 document.getElementById('onboardExplore').addEventListener('click',async()=>{
   if(isGuest()&&guestProfile.unlocked&&!await saveGuestName(document.getElementById('onboardUsername'),'onboardGuestStatus'))return;
   onboard.county=onboard.county||'Santa Clara';onboard.city=CITIES[onboard.city]?.county===onboard.county?onboard.city:null;onboard.userLoc=null;onboardCityFilter='';document.getElementById('onboardAddr').value='';
-  finishOnboard();renderOnboardCityBtns();refreshOnboardGate();document.getElementById('onboardOverlay').style.display='none';showScreen('dashboard');setNavMenu(true);
+  finishOnboard();renderOnboardCityBtns();refreshOnboardGate();document.getElementById('onboardOverlay').style.display='none';showScreen('dashboard');setNavMenu(true);syncGuestProfile();
 });
 // The note says where pressing it will land you, so typing an address has to refresh it.
 document.getElementById('onboardAddr').addEventListener('input', ()=>{
@@ -10695,8 +10695,27 @@ async function apiCall(path, options={}){
   return data;
 }
 
-async function apiRegister(username, password){ return apiCall('/api/register', {method:'POST', body:JSON.stringify({username,password})}); }
+// The guest id travels with a registration so the server renames the row this visitor already
+// has rather than creating a second one for the same person.
+async function apiRegister(username, password){ return apiCall('/api/register', {method:'POST', body:JSON.stringify({username,password,guestId:guestProfile?.data?.id})}); }
 async function apiLogin(username, password){ return apiCall('/api/login', {method:'POST', body:JSON.stringify({username,password})}); }
+/* Every unique visitor counts as a user, whether or not they ever sign up. This tells the server
+   that this device's profile exists - its id, the name we generated for it, and the city it picked.
+   It is the only thing a guest sends us; their saved items, timeline and reminders stay on the
+   device. Failure is silent by design: someone offline, or blocking the request, still gets the
+   whole dashboard. */
+let guestSyncInFlight=false;
+async function syncGuestProfile(){
+  if(guestSyncInFlight||authToken||!guestProfile?.unlocked)return;
+  const {payload,due}=guestProfile.syncState();
+  if(!due)return;
+  guestSyncInFlight=true;
+  try{
+    const response=await fetch('/api/guest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(response.ok)guestProfile.markSynced();
+  }catch{}
+  finally{guestSyncInFlight=false;}
+}
 async function apiGetStars(){ return apiCall('/api/stars'); }
 async function apiAddStar(itemType, itemId, itemData){ return apiCall('/api/stars', {method:'POST', body:JSON.stringify({itemType,itemId,itemData})}); }
 async function apiRemoveStar(itemType, itemId){ return apiCall('/api/stars/'+encodeURIComponent(itemType)+'/'+encodeURIComponent(itemId), {method:'DELETE'}); }
@@ -15234,6 +15253,8 @@ if(DashboardBrowse.setupValid(savedSetup,COUNTY_NAMES)){
 renderOnboardCityBtns();renderOnboardInterests();
 applyDeepLink();
 setNavMenu(true);
+// Record this visitor as a user once the page is up, and again when they finish choosing a place.
+syncGuestProfile();
 // Keep keyboard focus and background scrolling inside the first-visit dialog.
 (function(){
  const overlay=document.getElementById('onboardOverlay');let lastFocus;

@@ -74,6 +74,23 @@ async function initDb() {
   // "all of them", so anyone who subscribed before this existed keeps getting a full briefing
   // rather than having their email silently narrowed.
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS categories TEXT;`);
+  // Every unique visitor is a user. Someone who never signs up still gets a profile on their own
+  // device - a name we generated rather than one they chose - and that profile is recorded here
+  // as kind 'guest'. It holds no password: the device is the only credential, and guest data
+  // itself stays in that browser. A guest who later creates an account keeps the same row, so
+  // nobody is counted twice.
+  // Wrapped on its own: this migration runs against a database that already holds real accounts,
+  // and if it ever fails the tables below it must still be created rather than skipped.
+  try {
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS kind TEXT NOT NULL DEFAULT 'account';`);
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS guest_id TEXT;`);
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_seen_at TIMESTAMPTZ;`);
+    await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_guest_id_key ON users (guest_id) WHERE guest_id IS NOT NULL;`);
+    // Guests have no password, so the column can no longer be NOT NULL. Accounts keep theirs.
+    await pool.query(`ALTER TABLE users ALTER COLUMN password_hash DROP NOT NULL;`);
+  } catch (err) {
+    console.error('Guest-profile migration failed; guest counting is off until it succeeds:', err.message);
+  }
   // Biweekly and monthly are the only cadences now - move anyone on daily/weekly to the closest
   // one still offered, rather than leaving them on a frequency the Account page can't display.
   await pool.query(`UPDATE users SET email_frequency = 'biweekly' WHERE email_frequency IN ('daily','weekly');`);
@@ -211,18 +228,92 @@ async function authMiddleware(req, res, next) {
 
 function validUsername(u) { return typeof u === 'string' && /^[a-zA-Z0-9_]{3,20}$/.test(u); }
 function validPassword(p) { return typeof p === 'string' && p.length >= 8 && p.length <= 200; }
+// A guest id is the UUID the browser generated for its own profile; a guest display name is what
+// the profile page allows, which is wider than a registered username (spaces are allowed).
+const validGuestId = id => typeof id === 'string' && /^[0-9a-fA-F-]{16,64}$/.test(id);
+const validGuestName = n => typeof n === 'string' && /^[a-zA-Z0-9_ ]{3,30}$/.test(n);
+
+// New guest rows are the one thing here an anonymous caller can create, so a script pointed at the
+// endpoint could otherwise inflate the count. This caps *new* ids per address per hour; returning
+// visitors updating their own row are never blocked. Nothing about the address is stored - the
+// counter lives in memory and dies with the process.
+const guestCreationsByIp = new Map();
+const GUEST_NEW_PER_HOUR = 30;
+function guestCreationAllowed(ip) {
+  const now = Date.now(), seen = guestCreationsByIp.get(ip);
+  if (!seen || now > seen.resetAt) { guestCreationsByIp.set(ip, { count: 1, resetAt: now + 3600_000 }); return true; }
+  if (seen.count >= GUEST_NEW_PER_HOUR) return false;
+  seen.count++;
+  return true;
+}
+// Guest names are a noun and four digits, so two devices can land on the same one. The name is
+// only a label here - the guest_id is the identity - so a clash takes a short suffix rather than
+// rejecting a perfectly real visitor.
+async function insertGuest(guestId, username, homeCity) {
+  for (const candidate of [username, username + '-' + guestId.slice(0, 4), username + '-' + guestId.slice(0, 8)]) {
+    try {
+      const row = await pool.query(
+        `INSERT INTO users (username, password_hash, kind, guest_id, home_city, last_seen_at)
+         VALUES ($1, NULL, 'guest', $2, $3, now()) RETURNING username`,
+        [candidate, guestId, homeCity || null]);
+      return row.rows[0].username;
+    } catch (err) {
+      if (err.code !== '23505') throw err;                      // 23505 = unique violation
+      const taken = await pool.query('SELECT username FROM users WHERE guest_id = $1', [guestId]);
+      if (taken.rows.length) return taken.rows[0].username;     // another tab got there first
+    }
+  }
+  return null;
+}
+
+// Called by the browser when it has a guest profile: it records that visitor as a user. Idempotent
+// on guest_id, so a hundred page loads are still one user.
+app.post('/api/guest', async (req, res) => {
+  if (!requireDb(res)) return;
+  const { guestId, username, homeCity } = req.body || {};
+  if (!validGuestId(guestId) || !validGuestName(username)) return res.status(400).json({ error: 'Invalid guest profile.' });
+  const city = typeof homeCity === 'string' && homeCity.length <= 60 ? homeCity : null;
+  try {
+    const existing = await pool.query(`SELECT username, kind FROM users WHERE guest_id = $1`, [guestId]);
+    if (existing.rows.length) {
+      // An upgraded account keeps its chosen username; only a still-guest row follows the label.
+      await pool.query(
+        `UPDATE users SET last_seen_at = now(),
+                          home_city = COALESCE($2, home_city),
+                          username = CASE WHEN kind = 'guest' AND $3 <> username
+                                          AND NOT EXISTS (SELECT 1 FROM users u2 WHERE u2.username = $3)
+                                     THEN $3 ELSE username END
+         WHERE guest_id = $1`, [guestId, city, username]);
+      return res.json({ ok: true, created: false, kind: existing.rows[0].kind });
+    }
+    if (!guestCreationAllowed(req.ip)) return res.status(429).json({ error: 'Too many new profiles from this address.' });
+    const stored = await insertGuest(guestId, username, city);
+    if (!stored) return res.status(500).json({ error: 'Could not record this profile.' });
+    res.json({ ok: true, created: true, kind: 'guest' });
+  } catch (err) {
+    console.error('Guest profile sync failed:', err.message);
+    res.status(500).json({ error: 'Could not record this profile.' });
+  }
+});
 
 // ---------------- AUTH ROUTES ----------------
 app.post('/api/register', async (req, res) => {
   if (!requireDb(res)) return;
-  const { username, password } = req.body || {};
+  const { username, password, guestId } = req.body || {};
   if (!validUsername(username)) return res.status(400).json({ error: 'Username must be 3-20 characters: letters, numbers, underscore only.' });
   if (!validPassword(password)) return res.status(400).json({ error: 'Password must be at least 8 characters.' });
   try {
     const existing = await pool.query('SELECT 1 FROM users WHERE username = $1', [username]);
     if (existing.rows.length) return res.status(409).json({ error: 'That username is already taken.' });
     const hash = await bcrypt.hash(password, 10);
-    await pool.query('INSERT INTO users (username, password_hash) VALUES ($1, $2)', [username, hash]);
+    // This visitor already counts as a user. Signing up renames that row and gives it a password;
+    // it does not create a second one, so the account total never double-counts a person.
+    const upgraded = validGuestId(guestId)
+      ? await pool.query(`UPDATE users SET username = $1, password_hash = $2, kind = 'account', last_seen_at = now()
+                          WHERE guest_id = $3 AND kind = 'guest' RETURNING id`, [username, hash, guestId])
+      : { rows: [] };
+    if (!upgraded.rows.length)
+      await pool.query('INSERT INTO users (username, password_hash) VALUES ($1, $2)', [username, hash]);
     const token = crypto.randomBytes(32).toString('hex');
     await pool.query('INSERT INTO sessions (token, username) VALUES ($1, $2)', [token, username]);
     res.json({ token, username });
@@ -239,7 +330,8 @@ app.post('/api/login', async (req, res) => {
   if (!validUsername(username) || typeof password !== 'string' || !password || password.length > 200) return res.status(400).json({ error: 'Enter a valid username and password.' });
   try {
     const result = await pool.query('SELECT password_hash FROM users WHERE username = $1', [username]);
-    if (!result.rows.length) return res.status(401).json({ error: 'Incorrect username or password.' });
+    // No password means a device profile, not an account: there is nothing to sign in to.
+    if (!result.rows.length || !result.rows[0].password_hash) return res.status(401).json({ error: 'Incorrect username or password.' });
     const ok = await bcrypt.compare(password, result.rows[0].password_hash);
     if (!ok) return res.status(401).json({ error: 'Incorrect username or password.' });
     const token = crypto.randomBytes(32).toString('hex');
@@ -1041,6 +1133,9 @@ app.get('/api/admin/stats', async (req, res) => {
     const [totals, byFreq, byCity, recent, stars] = await Promise.all([
       pool.query(`SELECT
           count(*)::int AS accounts,
+          count(*) FILTER (WHERE kind = 'account')::int AS registered,
+          count(*) FILTER (WHERE kind = 'guest')::int AS guests,
+          count(*) FILTER (WHERE last_seen_at > now() - interval '30 days')::int AS seen_last_30_days,
           count(email)::int AS with_email,
           count(*) FILTER (WHERE email_frequency <> 'off')::int AS subscribed,
           count(*) FILTER (WHERE last_digest_sent_at IS NOT NULL)::int AS ever_emailed,
@@ -1048,7 +1143,7 @@ app.get('/api/admin/stats', async (req, res) => {
           max(created_at) AS latest_signup
         FROM users`),
       pool.query(`SELECT email_frequency AS frequency, count(*)::int AS n
-                  FROM users GROUP BY 1 ORDER BY 2 DESC`),
+                  FROM users WHERE kind = 'account' GROUP BY 1 ORDER BY 2 DESC`),
       pool.query(`SELECT coalesce(home_city,'(not set)') AS city, count(*)::int AS n
                   FROM users GROUP BY 1 ORDER BY 2 DESC`),
       pool.query(`SELECT count(*)::int AS n FROM users WHERE created_at > now() - interval '7 days'`),
@@ -1056,6 +1151,12 @@ app.get('/api/admin/stats', async (req, res) => {
     ]);
     res.json({
       ok: true,
+      // `users` is every unique visitor. `registered` is the subset who chose a username and a
+      // password; `guests` are the rest, each a real person on a real device.
+      users: totals.rows[0].accounts,
+      registered: totals.rows[0].registered,
+      guests: totals.rows[0].guests,
+      seenLast30Days: totals.rows[0].seen_last_30_days,
       accounts: totals.rows[0].accounts,
       withEmail: totals.rows[0].with_email,
       subscribed: totals.rows[0].subscribed,
