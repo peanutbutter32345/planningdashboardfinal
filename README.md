@@ -170,11 +170,29 @@ RESEND_API_KEY=re_...
 RESEND_FROM=The Bay Civic Dashboard <updates@your-verified-domain.com>
 CRON_SECRET=<a long random string>
 SITE_URL=https://your-site.com
+ADMIN_USERNAMES=<your account username>
 ```
 
 `RESEND_FROM` matters: the default `onboarding@resend.dev` only delivers to the email address on
 your own Resend account, so real subscribers will silently receive nothing until you verify a
 domain in Resend and set this.
+
+### Seeing how many people use the site
+
+Every unique visitor is a user: someone who signs up, and someone who only ever browses with the
+guest profile their browser made. Both are rows in `users`, told apart by `kind`, and a guest who
+later signs up keeps their original row rather than becoming a second person.
+
+Set `ADMIN_USERNAMES` to your own account username (comma-separated for more than one) and the
+total appears on your account page. Nobody else can read it - for any other reader the request
+answers 404. From a terminal, the same figures come back with the cron secret:
+
+```bash
+curl -s "https://your-site.com/api/community" -H "x-cron-secret: YOUR_CRON_SECRET"
+```
+
+`/api/admin/stats`, behind the same secret, adds the breakdown by city, by email frequency, how
+many were seen in the last 30 days, and when the first and latest signups were.
 
 ### Scheduling with cron-job.org
 

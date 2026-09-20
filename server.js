@@ -1126,11 +1126,27 @@ async function runDigests(req, res) {
 // ---------------- ADMIN STATS ----------------
 // Behind the same shared secret as the cron run. Returns counts only - no addresses, no
 // usernames - so a leaked URL exposes totals rather than anyone's contact details.
-// How many people use the dashboard. Public, because it is the sort of number a civic site should
-// be willing to state out loud, and it carries no detail about anyone: three totals and nothing
-// else. Cached for five minutes so a busy page does not count the table on every load.
+// How many people use the dashboard, for the site's owner alone. Two ways to ask: signed in as a
+// username listed in ADMIN_USERNAMES, or with the same shared secret the cron run uses, so it can
+// be read from a terminal as well as from the account page. Anyone else gets 404 - not 403, which
+// would confirm the endpoint is there.
+const ADMIN_USERNAMES = (process.env.ADMIN_USERNAMES || '').split(',').map(n => n.trim().toLowerCase()).filter(Boolean);
+if (!ADMIN_USERNAMES.length) console.warn('ADMIN_USERNAMES is not set. The usage count is readable only with the cron secret until it is.');
 let communityCache = { at: 0, body: null };
-app.get('/api/community', async (_req, res) => {
+app.get('/api/community', async (req, res) => {
+  const secret = req.headers['x-cron-secret'] || req.query.secret;
+  const bySecret = Boolean(CRON_SECRET && secret === CRON_SECRET);
+  let byAccount = false;
+  if (!bySecret && pool) {
+    const token = (req.headers.authorization || '').replace(/^Bearer /, '');
+    if (token && ADMIN_USERNAMES.length) {
+      try {
+        const session = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
+        byAccount = session.rows.length && ADMIN_USERNAMES.includes(session.rows[0].username.toLowerCase());
+      } catch { byAccount = false; }
+    }
+  }
+  if (!bySecret && !byAccount) return res.status(404).json({ error: 'API route not found.' });
   if (!pool) return res.json({ ok: false, users: null });
   if (communityCache.body && Date.now() - communityCache.at < 5 * 60_000) return res.json(communityCache.body);
   try {
