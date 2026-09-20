@@ -480,8 +480,8 @@
     border-radius:2px; font-family:'Open Sans',sans-serif; font-size:13px;}
   .guest-signin input:focus{outline:none; border-color:var(--ink);}
   .guest-signin-note{font-size:11.5px; margin:10px 0 0;}
-  .community-count{font-family:'Open Sans',sans-serif; font-size:11.5px; color:var(--text-soft);
-    margin:10px 0 0;}
+  .community-count{font-family:'Open Sans',sans-serif; font-size:11px; color:var(--text-soft);
+    line-height:1.5; margin:10px 0 0; padding-top:10px; border-top:1px solid var(--rule);}
   .res-row-flat{cursor:default;}
   .res-row-flat:hover{background:none;}
   .rail-head{background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;}
@@ -1880,7 +1880,7 @@
           <p class="guest-signin-note">What you star, plan and pin as a guest is kept in this browser, so it does not follow you to another device and it goes if you clear your browsing data. An account below carries it everywhere and can email you a briefing.</p>
         </section>
         <p class="section-note">Create a free account to sync your guest profile’s saved projects, timeline and reminders across devices. Just a username and password; email is optional.</p>
-        <p class="community-count" id="communityCount" role="status"></p>
+
         <div class="auth-tabs">
           <button class="auth-tab active" id="authTabLogin" type="button">Log in</button>
           <button class="auth-tab" id="authTabSignup" type="button">Create account</button>
@@ -1916,6 +1916,9 @@
               <div class="acct-sub" id="acctHomeCityLabel">No city set</div>
             </div>
           </div>
+          <!-- Usage, for the site's owner only. The server decides who that is (ADMIN_USERNAMES);
+               for everyone else the request 404s and this stays empty and hidden. -->
+          <p class="community-count" id="communityCount" role="status" hidden></p>
           <nav class="acct-nav" role="tablist">
             <button type="button" class="acct-navbtn active" data-acct="overview" role="tab">Overview<span class="acct-badge" id="acctBadgeOverview"></span></button>
             <button type="button" class="acct-navbtn" data-acct="email" role="tab">Stay Updated With Email Summaries<span class="acct-badge" id="acctBadgeEmail"></span></button>
@@ -2135,8 +2138,6 @@
       </div>
 
       
-      <p class="community-count" id="communityCountAbout" role="status"></p>
-
       <p>This site collects what is being built across the Bay Area and when the meetings that decide it take place. All of it is public information already. It is spread across city and county websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
 
       <h4>Where the data comes from</h4>
@@ -9063,7 +9064,7 @@ function showScreen(name){
   // A bad name used to blank the page: every screen hid and none matched.
   if(!name || !SCREEN_IDS[name]) return;
   currentScreen = name;
-  if(name==='about'||name==='account')renderCommunityCount();
+
   Object.entries(SCREEN_IDS).forEach(([key,id])=>{
     const el = document.getElementById(id);
     if(el) el.style.display = (key===name) ? 'block' : 'none';
@@ -11433,19 +11434,22 @@ function renderAuthNavState(){
 
 /* The site counts everyone who uses it, so it can say how many that is. Three totals, nothing
    about anybody. A server without a database, or an older one, simply says nothing. */
+/* How many people use the site. Only the owner sees this: the request carries their session, and
+   the server answers it for nobody else, so an ordinary reader's copy stays empty and hidden. */
 let communityCountText='';
 async function renderCommunityCount(){
-  const targets=[...document.querySelectorAll('.community-count')];
-  if(!targets.length)return;
+  const el=document.getElementById('communityCount');
+  if(!el||!authToken)return;
   if(!communityCountText){
     try{
-      const data=await (await fetch('/api/community')).json();
+      const data=await apiCall('/api/community');
       if(!data.ok||!data.users)return;
       communityCountText=data.users.toLocaleString()+' '+(data.users===1?'person uses':'people use')+' this dashboard \u2014 '
         +data.registered.toLocaleString()+' with an account, '+data.guests.toLocaleString()+' as guests. Everyone who opens it counts, whether or not they sign up.';
-    }catch{ return; }
+    }catch{ return; }   // a reader who is not the owner gets a 404 here, and nothing is shown
   }
-  targets.forEach(el=>{el.textContent=communityCountText;});
+  el.textContent=communityCountText;
+  el.hidden=false;
 }
 
 async function renderAccountPage(){
@@ -11460,7 +11464,6 @@ async function renderAccountPage(){
     const locked=!authToken&&!guestProfile.unlocked;
     document.getElementById('guestSignInPanel').hidden=Boolean(authToken)||locked;
     document.getElementById('guestNameInput').value=guestProfile.data.username||'';
-    renderCommunityCount();
     if(reasonEl){
       if(window.pendingLoginReason){ reasonEl.textContent = window.pendingLoginReason; reasonEl.style.display='block'; window.pendingLoginReason = null; }
       else { reasonEl.style.display='none'; }
@@ -11469,6 +11472,7 @@ async function renderAccountPage(){
   }
   loggedOut.style.display='none'; loggedIn.style.display='grid';
   document.getElementById('accountUsername').textContent = authUsername;
+  renderCommunityCount();
   document.getElementById('logoutBtn').textContent=isGuest()?'Switch to login':'Log out';
   document.getElementById('guestSettings').hidden=!isGuest();
   if(isGuest()){document.getElementById('guestUsername').value=guestProfile.data.username;document.getElementById('guestCurrentWrap').hidden=!guestProfile.data.passwordHash;document.getElementById('guestLock').hidden=!guestProfile.data.passwordHash;}
