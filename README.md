@@ -1,4 +1,4 @@
-# Bay Civic Dashboard
+# The Bay Civic Dashboard
 
 This package contains the civic dashboard plus a server-side AI assistant for the cities it covers across all nine Bay Area counties.
 
@@ -167,7 +167,7 @@ That writes `preview-welcome.html` (first send), `preview-update.html` (things c
 ```text
 DATABASE_URL=postgres://...
 RESEND_API_KEY=re_...
-RESEND_FROM=Bay Civic Dashboard <updates@your-verified-domain.com>
+RESEND_FROM=The Bay Civic Dashboard <updates@your-verified-domain.com>
 CRON_SECRET=<a long random string>
 SITE_URL=https://your-site.com
 ```
@@ -259,7 +259,7 @@ This regenerates `data/projects.js` so server-side answers, hearing matching and
 
 ## Regional coverage and guest profiles
 
-The dashboard covers all **101 incorporated cities and towns in the nine Bay Area counties**, plus the existing West San Jose neighborhood profile. The visible name is **Bay Civic Dashboard**; the domain remains `southbaydashboard.com`.
+The dashboard covers all **101 incorporated cities and towns in the nine Bay Area counties**, plus the existing West San Jose neighborhood profile. The visible name is **The Bay Civic Dashboard**; the domain remains `southbaydashboard.com`.
 
 - `public/data/municipalities.json` records official MTC/ABAG coverage and Census geography identifiers. All 102 profiles have locally served photography, official resources and meeting links. `public/data/regions.json` supplies the 69 expanded profiles and their 2020–2024 ACS estimates; existing profiles retain their labeled Census vintage.
 - `public/data/housing-records.json` imports city-reported HCD APR Tables A and A2, updated September 18, 2026. Every municipality has a housing sample with map points. Up to 25 distinct addresses per municipality emphasize larger records, with completed examples retained. The combined dashboard has 2,833 records after matching-address duplicates are removed. Annual permit, entitlement and completion totals use **all** source rows, separately from the map sample. Most reports cover 2025; Clayton's latest available report in the import is 2024. Issued permits are approvals, not assumed construction starts. Coordinates require a high source match score and proximity to the city; unresolved addresses remain explicitly unlocated.
@@ -293,3 +293,10 @@ The import scripts retain source URLs and reporting periods. HCD years and the m
 Visitors without a signed-in session automatically receive a device-only guest profile with a persistent random noun plus four digits, such as `cookie0736`. Custom usernames are preserved. `public/guest.js` stores their display name, stars, timeline, reminders, saved answers and preferences in `localStorage` under `sbpd_guest_v1`. No database or email configuration is required for guest features. An optional password uses a salted PBKDF2 verifier and a tab-session unlock flag; this is a convenience browser lock, not encryption or server authentication. Clearing browser storage removes the profile. Private browsing may discard it when the session ends.
 
 Full accounts continue to use the existing server authentication. Creating a new full account imports unlocked guest stars, timeline progress, reminders and city/topic preferences; a failed import leaves the original guest copy intact. Email delivery and synchronization between devices require a full account and the existing database/email environment variables. Guest data is not automatically imported when logging into an existing account.
+
+
+### County browsing and first visits
+
+First-time visitors receive a device-local guest profile immediately, with a noun and four-digit username. Username edits save automatically. Setup requires one of the nine counties; a city search, street address and interests are optional. County-only views filter the project register, map, topic news and city comparisons. The county directory previews city names on hover or keyboard focus and expands the selectable list on click/tap. Existing profiles and saved items are preserved.
+
+Housing, Developments and Transportation use separate Projects, News, Map & sources and Field guide views. Collections render three records per page on desktop and one on narrow screens, with arrow buttons, keyboard navigation and touch swipes. Topic maps initialize only when opened, the overview map waits until needed, and offscreen hero rotations pause.

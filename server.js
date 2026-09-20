@@ -28,7 +28,7 @@ const model = (process.env.LLM_MODEL || 'openai/gpt-oss-120b').trim();
 // the free plan's per-minute token budget. Models without reasoning must not be sent the field.
 const reasoningEffort = (process.env.LLM_REASONING_EFFORT ?? (/gpt-oss/.test(model) ? 'low' : '')).trim();
 const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
-const RESEND_FROM = process.env.RESEND_FROM || 'Bay Civic Dashboard <onboarding@resend.dev>';
+const RESEND_FROM = process.env.RESEND_FROM || 'The Bay Civic Dashboard <onboarding@resend.dev>';
 const CRON_SECRET = process.env.CRON_SECRET || '';
 const SITE_URL = process.env.SITE_URL || 'https://southbaydashboard.com';
 
@@ -374,7 +374,7 @@ function reminderHtml(rows, username) {
     </td></tr>`).join('');
   return `<div style="max-width:600px; margin:0 auto; font-family:Georgia,serif; color:#2A2A2A;">
     <div style="border-bottom:3px solid #2F3B1E; padding-bottom:10px; margin-bottom:6px;">
-      <div style="font:700 11px/1.4 Arial,sans-serif; letter-spacing:.09em; text-transform:uppercase; color:#8A927F;">Bay Civic Dashboard</div>
+      <div style="font:700 11px/1.4 Arial,sans-serif; letter-spacing:.09em; text-transform:uppercase; color:#8A927F;">The Bay Civic Dashboard</div>
       <div style="font:700 22px/1.2 Georgia,serif; color:#2F3B1E; margin-top:4px;">Your reminders</div>
     </div>
     <p style="font:400 13px/1.7 Georgia,serif; color:#5A6350;">You asked to keep these, ${esc(username)}. Meeting times are as the city published them; check the agenda before you go.</p>
@@ -1098,4 +1098,4 @@ app.use((err, _req, res, _next) => {
   res.status(status).json({error: status === 400 ? 'Request body must be valid JSON.' : status === 413 ? 'Request body is too large.' : 'The request could not be completed. Please try again.'});
 });
 
-app.listen(port, () => console.log(`Bay Civic Dashboard running at http://localhost:${port}`));
+app.listen(port, () => console.log(`The Bay Civic Dashboard running at http://localhost:${port}`));

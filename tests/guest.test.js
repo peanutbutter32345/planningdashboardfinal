@@ -27,6 +27,18 @@ test('guest saves survive reload and preserve encoded item IDs',async()=>{
  await reopened.request('/api/stars/resource/'+encodeURIComponent(id),{method:'DELETE'});
  assert.equal((await reopened.request('/api/stars')).stars.length,0);
 });
+test('county-only setup and automatic name changes survive a new browser session',async()=>{
+ const storage=memory(),g=new GuestStore(storage,memory());
+ const id=g.data.id;
+ g.data.setup={county:'Alameda',city:null,interests:[],wantInvolved:true};g.save();
+ await g.update('otter2026');
+ const reopened=new GuestStore(storage,memory());
+ assert.equal(reopened.data.id,id);
+ assert.equal(reopened.data.username,'otter2026');
+ assert.deepEqual(reopened.data.setup,{county:'Alameda',city:null,interests:[],wantInvolved:true});
+ await assert.rejects(reopened.update('!'),/3–30/);
+ assert.equal(new GuestStore(storage,memory()).data.username,'otter2026');
+});
 test('optional guest lock hashes passwords and requires the old password for changes',async()=>{
  const storage=memory(),session=memory(),g=new GuestStore(storage,session);
  await g.update('Test Reader','test-password-only');

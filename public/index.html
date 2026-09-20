@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bay Civic Dashboard</title>
+<title>The Bay Civic Dashboard</title>
 <!-- Inline so it costs no extra request, and stops the browser 404ing on /favicon.ico -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%233E4F24'/%3E%3Cpath d='M7 22V13l5-4 5 4v9z' fill='%23fff'/%3E%3Crect x='19' y='15' width='6' height='7' fill='%23F0C86A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1288,20 +1288,23 @@
 
 </style>
 <link rel="stylesheet" href="/enhancements.css">
+<link rel="stylesheet" href="/browse.css">
 </head>
 <body>
 <a href="#mainContent" class="skip-link">Skip to main content</a>
 
 <div class="onboard-overlay" id="onboardOverlay" role="dialog" aria-modal="true" aria-labelledby="onboardHeading">
   <div class="onboard-card">
-    <h2 id="onboardHeading">Let's set up your view</h2>
-    <p class="sub">Tell us where you are and what you care about - we'll build a personal view of what's happening nearby.</p>
+    <div class="onboard-eyebrow">THE BAY CIVIC DASHBOARD · WELCOME</div><h2 id="onboardHeading">Make the Bay your own.</h2>
+    <p class="sub">Choose a county to explore projects, news and public meetings. Add a city or location whenever you like.</p>
 
+    <div class="onboard-profile" id="onboardGuestProfile"><label for="onboardUsername">Your guest username</label><input id="onboardUsername" minlength="3" maxlength="30" autocomplete="nickname" aria-describedby="onboardGuestStatus"><p id="onboardGuestStatus" role="status">Already created. Your name and saved items are saved automatically on this device.</p></div>
     <div class="onboard-step">
-      <span class="onboard-label">1. Which city? <em>(required)</em></span>
+      <label class="onboard-label" for="onboardCounty">1. Choose your county <em>(required)</em></label>
+      <select id="onboardCounty" class="onboard-county-select" required><option value="">Select a Bay Area county…</option></select>
       <div class="onboard-citybtns" id="onboardCityBtns"></div>
-      <div class="onboard-hint">Not sure? Skip this and just enter your address below - we'll figure out which city to show.</div>
-      <div class="onboard-account-hint">Your guest profile saves projects in this browser. Want them on other devices? <a href="#" id="onboardAccountLink">Create a free account</a> — or explore now with your temporary guest profile.</div>
+      <div class="onboard-hint">A county is all you need. Search for a city to narrow your view.</div>
+      <div class="onboard-account-hint">Your guest profile is ready—no signup or save button needed. For access across devices, <a href="#" id="onboardAccountLink">create a free account</a>.</div>
     </div>
 
     <div class="onboard-step">
@@ -1319,13 +1322,12 @@
     </div>
 
     <div class="onboard-step">
-      <span class="onboard-label">3. What are you interested in? <em>(required)</em></span>
+      <span class="onboard-label">3. Your interests <em>(optional)</em></span>
       <div class="onboard-interests" id="onboardInterests"></div>
     </div>
 
     <div class="onboard-actions">
-      <button class="btn" id="onboardSubmit" type="button">Show my area →</button>
-      <button class="btn secondary" id="onboardExplore" type="button">Explore without setup</button>
+      <button class="btn" id="onboardSubmit" type="button">Open my dashboard →</button>
       <span class="onboard-req" id="onboardReq"></span>
     </div>
   </div>
@@ -1381,8 +1383,8 @@
     <div class="hero-copy">
       <div class="nameplate">
         <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
-        <h1><span class="np-l1">Bay</span><em class="np-l2">Civic Dashboard</em></h1>
-        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. 101 cities and towns across nine Bay Area counties, plus West San Jose, with links to each city's own records.</p>
+        <h1><span class="np-l1">The Bay</span><em class="np-l2">Civic Dashboard</em></h1>
+        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. 101 cities and towns across nine Bay Area counties.</p>
       </div>
     </div>
 
@@ -1693,7 +1695,16 @@
   <div class="wrap">
     <div class="planner-shell">
       <h2>Housing</h2>
-      <div class="topic-article" id="topicArticleHousing">
+<div class="topic-navigation" role="tablist" aria-label="Housing views"><button type="button" role="tab" id="topicTabHousingprojects" data-topic-view="projects" aria-controls="topicPanelHousingprojects" aria-selected="true" tabindex="0">Projects</button><button type="button" role="tab" id="topicTabHousingnews" data-topic-view="news" aria-controls="topicPanelHousingnews" aria-selected="false" tabindex="-1">News</button><button type="button" role="tab" id="topicTabHousingmap" data-topic-view="map" aria-controls="topicPanelHousingmap" aria-selected="false" tabindex="-1">Map & sources</button><button type="button" role="tab" id="topicTabHousingguide" data-topic-view="guide" aria-controls="topicPanelHousingguide" aria-selected="false" tabindex="-1">Field guide</button></div><label class="topic-scope">Explore <select id="topicScopeHousing"><option value="local">Your selected area</option><option value="region">Across the Bay Area</option></select></label><section class="topic-panel" id="topicPanelHousingprojects" role="tabpanel" aria-labelledby="topicTabHousingprojects" >      <div class="topic-section-h" id="topicCityHeadHousing"></div>
+      <div class="register-grid" id="topicCityGridHousing"></div>
+</section><section class="topic-panel" id="topicPanelHousingnews" role="tabpanel" aria-labelledby="topicTabHousingnews" hidden>      <div class="topic-section-h">Recent News</div>
+      <div class="news-grid" id="topicNewsHousing"></div>
+</section><section class="topic-panel" id="topicPanelHousingmap" role="tabpanel" aria-labelledby="topicTabHousingmap" hidden>      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountHousing"></span></div>
+      <div class="topic-map-wrap"><div class="topic-map" id="topicMapHousing"></div></div>
+      <div class="topic-legend" id="topicLegendHousing"></div>
+      <div class="topic-section-h" id="topicLinksHeadHousing"></div>
+      <div class="topic-links" id="topicLinksHousing"></div>
+</section><section class="topic-panel" id="topicPanelHousingguide" role="tabpanel" aria-labelledby="topicTabHousingguide" hidden>      <div class="topic-article" id="topicArticleHousing">
         <h3>How a housing project actually gets built</h3>
         <p>Every project in this tracker moves through the same five stages, no matter which city: <b>Proposed</b> (an early filing, sometimes just a preliminary application), <b>Under Review</b> (staff and commissions checking it against zoning, environmental rules, and the general plan), <b>Approved</b> (a Planning Commission or City Council vote), <b>Under Construction</b>, and <b>Completed</b>. A project can sit in "Under Review" for years, or move in months, depending on its complexity and how much community input it draws.</p>
         <h3>Why so many projects mention "SB330," "Builder's Remedy," or "SB35"</h3>
@@ -1704,20 +1715,10 @@
         <p>Housing projects are decided by each city's Planning Commission first, with City Council as the final word on appeals. See the Get Involved section below for exact meeting schedules and how to submit public comment on a specific project.</p>
       </div>
       <div id="topicRhnaHousing"></div>
-      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountHousing"></span></div>
-      <div class="topic-map-wrap"><div class="topic-map" id="topicMapHousing"></div></div>
-      <div class="topic-legend" id="topicLegendHousing"></div>
       <div class="topic-section-h">The laws behind these records</div>
       <p class="section-note">Most of what happens on this page is driven by a handful of state laws. Each one links to its own text.</p>
       <div class="law-list" id="topicLawsHousing"></div>
-      <div class="topic-section-h">Recent News</div>
-      <div class="news-grid" id="topicNewsHousing"></div>
-      <div class="topic-section-h" id="topicLinksHeadHousing"></div>
-      <div class="topic-links" id="topicLinksHousing"></div>
-      <div class="topic-section-h" id="topicCityHeadHousing"></div>
-      <div class="register-grid" id="topicCityGridHousing"></div>
-      <div class="topic-section-h">Across the Bay Area</div>
-      <div id="topicRegionHousing"></div>
+</section>
     </div>
   </div>
 </div>
@@ -1727,7 +1728,16 @@
     <div class="planner-shell">
       <h2>Developments</h2>
       <p class="section-note">Commercial, industrial, office, hotel, and retail projects - separate from housing.</p>
-      <div class="topic-article" id="topicArticleDevelopments">
+<div class="topic-navigation" role="tablist" aria-label="Developments views"><button type="button" role="tab" id="topicTabDevelopmentsprojects" data-topic-view="projects" aria-controls="topicPanelDevelopmentsprojects" aria-selected="true" tabindex="0">Projects</button><button type="button" role="tab" id="topicTabDevelopmentsnews" data-topic-view="news" aria-controls="topicPanelDevelopmentsnews" aria-selected="false" tabindex="-1">News</button><button type="button" role="tab" id="topicTabDevelopmentsmap" data-topic-view="map" aria-controls="topicPanelDevelopmentsmap" aria-selected="false" tabindex="-1">Map & sources</button><button type="button" role="tab" id="topicTabDevelopmentsguide" data-topic-view="guide" aria-controls="topicPanelDevelopmentsguide" aria-selected="false" tabindex="-1">Field guide</button></div><label class="topic-scope">Explore <select id="topicScopeDevelopments"><option value="local">Your selected area</option><option value="region">Across the Bay Area</option></select></label><section class="topic-panel" id="topicPanelDevelopmentsprojects" role="tabpanel" aria-labelledby="topicTabDevelopmentsprojects" >      <div class="topic-section-h" id="topicCityHeadDevelopments"></div>
+      <div class="register-grid" id="topicCityGridDevelopments"></div>
+</section><section class="topic-panel" id="topicPanelDevelopmentsnews" role="tabpanel" aria-labelledby="topicTabDevelopmentsnews" hidden>      <div class="topic-section-h">Recent News</div>
+      <div class="news-grid" id="topicNewsDevelopments"></div>
+</section><section class="topic-panel" id="topicPanelDevelopmentsmap" role="tabpanel" aria-labelledby="topicTabDevelopmentsmap" hidden>      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountDevelopments"></span></div>
+      <div class="topic-map-wrap"><div class="topic-map" id="topicMapDevelopments"></div></div>
+      <div class="topic-legend" id="topicLegendDevelopments"></div>
+      <div class="topic-section-h" id="topicLinksHeadDevelopments"></div>
+      <div class="topic-links" id="topicLinksDevelopments"></div>
+</section><section class="topic-panel" id="topicPanelDevelopmentsguide" role="tabpanel" aria-labelledby="topicTabDevelopmentsguide" hidden>      <div class="topic-article" id="topicArticleDevelopments">
         <h3>What counts as a "development" here, versus housing</h3>
         <p>This page covers everything that isn't primarily housing: office and R&amp;D campuses, hotels, retail centers, industrial and storage buildings, and mixed-use projects where the commercial portion is the main story. Mixed-use projects with a significant residential component are tracked under Housing instead - a project can appear in both places if it genuinely has both.</p>
         <h3>Why office/R&amp;D projects matter to the housing conversation</h3>
@@ -1737,20 +1747,10 @@
         <h3>Development Agreements</h3>
         <p>For large projects, cities sometimes negotiate a formal Development Agreement - a contract that locks in the project's entitlements for a set number of years (often 20-30) in exchange for public benefits like parkland, infrastructure funding, or affordable housing. Google's Middlefield Park and North Bayshore master plans in Mountain View are both governed by long-term Development Agreements.</p>
       </div>
-      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountDevelopments"></span></div>
-      <div class="topic-map-wrap"><div class="topic-map" id="topicMapDevelopments"></div></div>
-      <div class="topic-legend" id="topicLegendDevelopments"></div>
       <div class="topic-section-h">The laws behind these records</div>
       <p class="section-note">Most of what happens on this page is driven by a handful of state laws. Each one links to its own text.</p>
       <div class="law-list" id="topicLawsDevelopments"></div>
-      <div class="topic-section-h">Recent News</div>
-      <div class="news-grid" id="topicNewsDevelopments"></div>
-      <div class="topic-section-h" id="topicLinksHeadDevelopments"></div>
-      <div class="topic-links" id="topicLinksDevelopments"></div>
-      <div class="topic-section-h" id="topicCityHeadDevelopments"></div>
-      <div class="register-grid" id="topicCityGridDevelopments"></div>
-      <div class="topic-section-h">Across the Bay Area</div>
-      <div id="topicRegionDevelopments"></div>
+</section>
     </div>
   </div>
 </div>
@@ -1759,7 +1759,16 @@
   <div class="wrap">
     <div class="planner-shell">
       <h2>Transportation</h2>
-      <div class="topic-article" id="topicArticleTransportation">
+<div class="topic-navigation" role="tablist" aria-label="Transportation views"><button type="button" role="tab" id="topicTabTransportationprojects" data-topic-view="projects" aria-controls="topicPanelTransportationprojects" aria-selected="true" tabindex="0">Projects</button><button type="button" role="tab" id="topicTabTransportationnews" data-topic-view="news" aria-controls="topicPanelTransportationnews" aria-selected="false" tabindex="-1">News</button><button type="button" role="tab" id="topicTabTransportationmap" data-topic-view="map" aria-controls="topicPanelTransportationmap" aria-selected="false" tabindex="-1">Map & sources</button><button type="button" role="tab" id="topicTabTransportationguide" data-topic-view="guide" aria-controls="topicPanelTransportationguide" aria-selected="false" tabindex="-1">Field guide</button></div><label class="topic-scope">Explore <select id="topicScopeTransportation"><option value="local">Your selected area</option><option value="region">Across the Bay Area</option></select></label><section class="topic-panel" id="topicPanelTransportationprojects" role="tabpanel" aria-labelledby="topicTabTransportationprojects" >      <div class="topic-section-h" id="topicCityHeadTransportation"></div>
+      <div class="register-grid" id="topicCityGridTransportation"></div>
+</section><section class="topic-panel" id="topicPanelTransportationnews" role="tabpanel" aria-labelledby="topicTabTransportationnews" hidden>      <div class="topic-section-h">Recent News</div>
+      <div class="news-grid" id="topicNewsTransportation"></div>
+</section><section class="topic-panel" id="topicPanelTransportationmap" role="tabpanel" aria-labelledby="topicTabTransportationmap" hidden>      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountTransportation"></span></div>
+      <div class="topic-map-wrap"><div class="topic-map" id="topicMapTransportation"></div></div>
+      <div class="topic-legend" id="topicLegendTransportation"></div>
+      <div class="topic-section-h" id="topicLinksHeadTransportation"></div>
+      <div class="topic-links" id="topicLinksTransportation"></div>
+</section><section class="topic-panel" id="topicPanelTransportationguide" role="tabpanel" aria-labelledby="topicTabTransportationguide" hidden>      <div class="topic-article" id="topicArticleTransportation">
         <h3>The kinds of projects tracked here</h3>
         <p>Transportation covers road and highway changes, Caltrain and light rail infrastructure, bike and pedestrian improvements, and grade separations (where a road or path is rerouted above or below train tracks to remove a dangerous crossing). Unlike housing, most of these are public works projects run directly by the city or a regional agency, not private developers.</p>
         <h3>Why "VMT" replaced "LOS" in project reviews</h3>
@@ -1769,24 +1778,13 @@
         <h3>Vision Zero</h3>
         <p>Many cities in this tracker have adopted <b>Vision Zero</b> - a policy goal of eliminating all traffic deaths and severe injuries by a target year, usually through street redesigns (protected bike lanes, shorter crossings, slower design speeds) rather than relying on driver behavior alone. Bicycle and pedestrian projects tracked here are often justified directly by Vision Zero commitments.</p>
       </div>
-      <div class="topic-section-h">Where these are<span class="topic-map-count" id="topicMapCountTransportation"></span></div>
-      <div class="topic-map-wrap"><div class="topic-map" id="topicMapTransportation"></div></div>
-      <div class="topic-legend" id="topicLegendTransportation"></div>
       <div class="topic-section-h">The laws behind these records</div>
       <p class="section-note">Most of what happens on this page is driven by a handful of state laws. Each one links to its own text.</p>
       <div class="law-list" id="topicLawsTransportation"></div>
-      <div class="topic-section-h">Recent News</div>
-      <div class="news-grid" id="topicNewsTransportation"></div>
-      <div class="topic-section-h" id="topicLinksHeadTransportation"></div>
-      <div class="topic-links" id="topicLinksTransportation"></div>
-      <div class="topic-section-h" id="topicCityHeadTransportation"></div>
-      <div class="register-grid" id="topicCityGridTransportation"></div>
-      <div class="topic-section-h">Across the Bay Area</div>
-      <div id="topicRegionTransportation"></div>
+</section>
     </div>
   </div>
 </div>
-
 
 <div id="screenAccount" class="screen" style="display:none;">
   <div class="wrap">
@@ -1851,7 +1849,7 @@
         <div class="acct-main">
           <section class="acct-panel" data-panel="overview">
             <h2>Overview</h2>
-            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your temporary guest profile</h3><p>Your saved items, timeline and preferences stay in this browser. Clearing browser data removes them. Create an account to sync across devices and use email summaries.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Save guest profile</button></form><p>A guest password adds a browser lock; it does not encrypt local saved data.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Create full account</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
+            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your temporary guest profile</h3><p>Your guest profile is created automatically. Your name saves as you type; saved items, timeline and preferences stay in this browser. Clearing browser data removes them. Create an account to sync across devices and use email summaries.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Update guest password</button></form><p>A guest password adds a browser lock; it does not encrypt local saved data.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Create full account</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
             <p class="section-note" id="acctOverviewNote"></p>
             <div class="acct-tiles" id="acctTiles"></div>
             <div class="acct-sec-h">Next hearings in your city</div>
@@ -2025,7 +2023,7 @@
     <div class="bank-mosaic" id="bankMosaic" aria-hidden="true"></div>
     <div class="bank-hero">
       <h2>Resource bank</h2>
-      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all 101 Bay Area cities and towns, plus West San Jose.</p>
+      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all 101 Bay Area cities and towns.</p>
       <div class="bank-searchwrap">
         <input id="bankSearch" type="search" placeholder="Search anything: an address, a commission, &ldquo;builder&rsquo;s remedy&rdquo;, &ldquo;housing element&rdquo;, a street name&hellip;" autocomplete="off" aria-label="Search the resource bank" />
         <div class="bank-count" id="bankCount"></div>
@@ -2225,7 +2223,7 @@
   </div>
   <div class="footer-bottom">
     <div class="wrap">
-      <span>Bay Civic Dashboard</span>
+      <span>The Bay Civic Dashboard</span>
       <span>An independent, student-built prototype. Not an official government product.</span>
     </div>
   </div>
@@ -2239,6 +2237,7 @@
 <script src="/data/city-photos.js"></script>
 <script src="/data/meetings.js"></script>
 <script src="/guest.js"></script>
+<script src="/browse.js"></script>
 <script src="/overview-map-utils.js"></script>
 <script>
 const TODAY = new Date();
@@ -5698,6 +5697,18 @@ CITIES.all = {
   note: `Showing all ${Object.values(CITIES).reduce((a,c)=>a+c.data.length,0)} tracked projects across all ${Object.keys(CITIES).length} cities at once. Pick a specific city above for its Get Involved board and official links.`,
 };
 
+const BAY_AREA_VIEW=CITIES.all;
+let activeCounty='';
+function setCountyScope(county){
+  activeCounty=COUNTY_NAMES.includes(county)?county:'';
+  if(!activeCounty){CITIES.all=BAY_AREA_VIEW;return;}
+  const entries=DashboardBrowse.citiesIn(CITIES,activeCounty),cities=entries.map(([,c])=>c);
+  const bbox={minLat:Math.min(...cities.map(c=>c.bbox.minLat)),maxLat:Math.max(...cities.map(c=>c.bbox.maxLat)),minLng:Math.min(...cities.map(c=>c.bbox.minLng)),maxLng:Math.max(...cities.map(c=>c.bbox.maxLng))};
+  CITIES.all={...BAY_AREA_VIEW,label:activeCounty+' County',county:activeCounty,bbox,center:{lat:(bbox.minLat+bbox.maxLat)/2,lng:(bbox.minLng+bbox.maxLng)/2},zoom:10,
+    data:BAY_AREA_VIEW.data.filter(p=>CITIES[p._sourceCity].county===activeCounty),feed:BAY_AREA_VIEW.feed.filter(p=>CITIES[p._sourceCity].county===activeCounty),
+    note:'Showing tracked records in '+activeCounty+' County. Select a city for its local boards and official resources.'};
+}
+
 // ---------------- HELPERS ----------------
 function daysSince(dateStr){ if(!dateStr) return null; const d=new Date(dateStr+'T00:00:00'); return Math.round((TODAY-d)/86400000); }
 function fmtDate(dateStr){ if(!dateStr) return '-'; const d=new Date(dateStr+'T00:00:00'); return d.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}); }
@@ -5739,20 +5750,24 @@ function filtered(){
 
 let cityBrowseQuery='',cityBrowseCounty='';
 function renderCitySwitch(){
-  const tab = ([key,c]) => `<button class="city-tab${key===currentCity?' active':''}" data-city="${key}" aria-pressed="${key===currentCity}">${c.label} <span class="mono">${c.coverage==='directory'?'Guide':'('+c.data.length+')'}</span></button>`;
   const host=document.getElementById('citySwitch');
-  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search 101 cities and towns…" value="${escapeHtml(cityBrowseQuery)}"></label><label>County<select id="cityBrowseCounty"><option value="">All nine counties</option>${COUNTY_NAMES.map(c=>`<option${cityBrowseCounty===c?' selected':''}>${c}</option>`).join('')}</select></label><span id="cityBrowseCount" role="status"></span></div>`
-    +tab(['all',CITIES.all])+'<div class="city-browse-results">'+COUNTY_NAMES.map(county=>`<div class="city-group" data-county="${county}"><span class="city-group-label">${county} County</span>${Object.entries(CITIES).filter(([k,c])=>k!=='all'&&c.county===county).sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(tab).join('')}</div>`).join('')+'<p id="cityBrowseEmpty" hidden>No matching city. Try a different name or county.</p></div>';
-  function filterCities(){
-    let total=0;
-    host.querySelectorAll('.city-group').forEach(group=>{let count=0;group.querySelectorAll('[data-city]').forEach(btn=>{btn.hidden=Boolean((cityBrowseCounty&&group.dataset.county!==cityBrowseCounty)||!CITIES[btn.dataset.city].label.toLowerCase().includes(cityBrowseQuery.toLowerCase().trim()));if(!btn.hidden)count++;});group.hidden=!count;total+=count;});
-    document.getElementById('cityBrowseCount').textContent=total+' area'+(total===1?'':'s')+' · Numbers show sampled project records';document.getElementById('cityBrowseEmpty').hidden=total>0;
+  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search 101 cities and towns…" value="${escapeHtml(cityBrowseQuery)}"></label><span>Choose a county, then a city</span><button class="city-tab" id="browseAllCities" aria-pressed="${currentCity==='all'&&!activeCounty}">All Bay Area</button></div><div class="county-strip" aria-label="Bay Area counties">${COUNTY_NAMES.map((county,i)=>{const cities=DashboardBrowse.citiesIn(CITIES,county);return `<div class="county-option"><button class="county-button" data-county="${county}" aria-expanded="${county===cityBrowseCounty}" aria-controls="countyCities" aria-describedby="countyPreview${i}">${county}<small>${cities.length} ↗</small></button><div class="county-preview" id="countyPreview${i}" role="tooltip"><strong>${county} County</strong>${cities.map(([,c])=>c.label).join(' · ')}<span>Click to browse these cities</span></div></div>`;}).join('')}</div><div id="countyCities" class="city-browse-results" aria-live="polite"></div>`;
+  const results=document.getElementById('countyCities');
+  function renderResults(){
+    const q=cityBrowseQuery.trim();
+    const rows=DashboardBrowse.citiesIn(CITIES,q?'':cityBrowseCounty,q);
+    results.innerHTML=!q&&!cityBrowseCounty?'':`<div class="city-group"><span class="city-group-label">${q?'Search results':cityBrowseCounty+' County'} · ${rows.length} areas</span>${rows.map(([key,c])=>`<button class="city-tab${key===currentCity?' active':''}" data-city="${key}" aria-pressed="${key===currentCity}">${c.label} <span class="mono">(${c.data.length})</span></button>`).join('')||'<p>No matching city. Try another name.</p>'}</div>`;
+    results.querySelectorAll('[data-city]').forEach(btn=>btn.addEventListener('click',()=>switchCity(btn.dataset.city)));
   }
-  document.getElementById('cityBrowseSearch').addEventListener('input',e=>{cityBrowseQuery=e.target.value;filterCities();});
-  document.getElementById('cityBrowseCounty').addEventListener('change',e=>{cityBrowseCounty=e.target.value;filterCities();});
-  host.querySelectorAll('[data-city]').forEach(btn=>btn.addEventListener('click',()=>switchCity(btn.dataset.city)));
-  filterCities();
-  document.getElementById('snapRow').innerHTML=CITIES[currentCity].coverage==='directory'?'<span class="pill">Official sources & Census statistics</span><span class="pill">Project inventory not yet imported</span>':`<span class="pill">Records: dated individually</span><span class="pill">${DATA().length} records tracked for ${CITIES[currentCity].label}</span><span class="pill">Researched sample · not each city’s full active list</span>`;
+  document.getElementById('cityBrowseSearch').addEventListener('input',e=>{cityBrowseQuery=e.target.value;renderResults();});
+  host.querySelectorAll('[data-county]').forEach(btn=>btn.addEventListener('click',()=>{
+    const county=btn.dataset.county;cityBrowseCounty=cityBrowseCounty===county?'':county;cityBrowseQuery='';
+    if(cityBrowseCounty){setCountyScope(county);switchCity('all');}else renderCitySwitch();
+    document.querySelector('.county-button[data-county="'+county+'"]')?.focus({preventScroll:true});
+  }));
+  document.getElementById('browseAllCities').addEventListener('click',()=>{cityBrowseCounty='';cityBrowseQuery='';setCountyScope('');switchCity('all');});
+  renderResults();
+  document.getElementById('snapRow').innerHTML=`<span class="pill">Records: dated individually</span><span class="pill">${DATA().length} records tracked for ${CITIES[currentCity].label}</span><span class="pill">Researched sample · not each city’s full active list</span>`;
   renderQuickLinks();
 }
 function renderQuickLinks(){
@@ -6085,10 +6100,11 @@ document.getElementById('retryOverviewGoogle').addEventListener('click',()=>load
 document.getElementById('loadGoogleBtn').addEventListener('click', loadGoogleMaps);
 document.getElementById('useFreeMapBtn').addEventListener('click', initLeafletMap);
 
-// Auto-load Google Maps for every visitor if a real key has been baked in above.
-// If it's still the placeholder, fall back to showing the manual "paste a key" gate.
-if(GOOGLE_MAPS_API_KEY && GOOGLE_MAPS_API_KEY !== 'YOUR_API_KEY_HERE'){
-  loadGoogleMapsWithKey(GOOGLE_MAPS_API_KEY);
+// Start the map as it approaches the viewport, after the setup dialog is complete.
+function ensureOverviewMap(){
+  if(mapProvider||googleLoadPending||document.getElementById('onboardOverlay').style.display!=='none')return;
+  if(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE')loadGoogleMapsWithKey(GOOGLE_MAPS_API_KEY);
+  else initLeafletMap();
 }
 function renderLegend(){
   let html = CATEGORIES.map(c=>`<span><i style="background:${c.color}"></i>${c.label}</span>`).join('');
@@ -6631,6 +6647,7 @@ document.getElementById('search').addEventListener('input', (e)=>{ state.q = e.t
 
 function switchCity(key){
   if(!Object.hasOwn(CITIES, key)) return;
+  if(key!=='all'){setCountyScope('');cityBrowseCounty=CITIES[key].county;}
   currentCity = key;
   // Featured news leads with the selected city's stories, so it follows the tab.
   featuredPage = 0;
@@ -6642,7 +6659,6 @@ function switchCity(key){
   if(typeof renderRail === 'function'){ railPage = 0; railFace = 0; renderRail(); renderRailResources(); applyRailMode(); }
   state = {q:'', stage:'all', cat:'all'};
   document.getElementById('search').value = '';
-  renderCitySwitch();
   renderAll();
   refreshCurrentScreen();
   if(mapProvider) buildMarkersForCurrentProvider();
@@ -6657,10 +6673,9 @@ function renderAll(){
   renderInvolved();
   updateMapVisibility();
 }
-renderAll();
 
 // ================= ONBOARDING / YOUR AREA =================
-const onboard = { city:'sunnyvale', interests:new Set(['Housing','Transportation','Building','Civic']), wantInvolved:true, userLoc:null };
+const onboard = { county:'', city:null, interests:new Set(['Housing','Transportation','Building','Civic']), wantInvolved:true, userLoc:null };
 const INTEREST_OPTIONS = [
   {key:'Housing', label:'Housing developments'},
   {key:'Transportation', label:'Transportation & infrastructure'},
@@ -6677,38 +6692,20 @@ function haversineMi(lat1,lng1,lat2,lng2){
 
 let onboardCityFilter = '';
 function renderOnboardCityBtns(){
-  const q = onboardCityFilter.trim().toLowerCase();
-  // City names win outright. Matching the county too would make "san" match all 33,
-  // since it is inside both "Santa Clara" and "San Mateo" - so county is only a fallback
-  // for when nothing matched by name ("san mateo county", "peninsula-ish" typing).
-  const byLabel = ([k,c]) => c.label.toLowerCase().includes(q);
-  const anyLabel = q && Object.entries(CITIES).some(([k,c])=>k!=='all' && byLabel([k,c]));
-  const cty = (c) => ((c.county||'') + ' county').toLowerCase();  // so "san mateo county" matches too
-  const hit = ([k,c]) => !q || byLabel([k,c]) || (!anyLabel && cty(c).includes(q));
-  const btn = ([key,c]) => `<button type="button" class="onboard-city-btn${key===onboard.city?' active':''}" data-city="${key}">${c.label}</button>`;
-  const groups = COUNTY_NAMES.map(cty=>{
-    const rows = Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===cty).filter(hit);
-    if(!rows.length) return '';
-    return `<div class="city-group"><span class="city-group-label">${cty} County</span>${rows.map(btn).join('')}</div>`;
-  }).join('');
-  const all = hit(['all', CITIES.all]) ? btn(['all', CITIES.all]) : '';
-  document.getElementById('onboardCityBtns').innerHTML =
-    `<input type="text" class="onboard-cityfilter" id="onboardCityFilterInput" placeholder="Type to find your city" value="${onboardCityFilter.replace(/"/g,'&quot;')}" />`
-    + all + groups
-    + ((all||groups) ? '' : `<div class="onboard-cityempty">No city here matches "${q.replace(/</g,'&lt;')}". Search cities and towns across all nine Bay Area counties.</div>`);
-  const f = document.getElementById('onboardCityFilterInput');
-  if(f){
-    f.addEventListener('input', ()=>{
-      onboardCityFilter = f.value;
-      const caret = f.selectionStart;
-      renderOnboardCityBtns();
-      const nf = document.getElementById('onboardCityFilterInput');
-      if(nf){ nf.focus(); try{ nf.setSelectionRange(caret, caret); }catch(e){} }
-    });
+  if(onboard.city&&CITIES[onboard.city]?.county)onboard.county=CITIES[onboard.city].county;
+  const countySelect=document.getElementById('onboardCounty');
+  countySelect.innerHTML='<option value="">Select a Bay Area county…</option>'+COUNTY_NAMES.map(c=>`<option${c===onboard.county?' selected':''}>${c}</option>`).join('');
+  const host=document.getElementById('onboardCityBtns');
+  host.innerHTML=`<label class="onboard-label" for="onboardCityFilterInput">Search for a city <em>(optional)</em></label><input type="search" class="onboard-cityfilter" id="onboardCityFilterInput" placeholder="${onboard.county?'Search cities in '+onboard.county:'Select a county first'}" value="${escapeHtml(onboardCityFilter)}" ${onboard.county?'':'disabled'} autocomplete="off"><div class="onboard-selected" id="onboardSelected"></div><div class="onboard-search-results" id="onboardCityResults" aria-live="polite"></div>`;
+  function drawResults(){
+    const q=onboardCityFilter.trim(),results=document.getElementById('onboardCityResults');
+    const matches=q?DashboardBrowse.citiesIn(CITIES,onboard.county,q):[];
+    results.innerHTML=!q?'':matches.map(([key,c])=>`<button type="button" class="onboard-city-btn" data-city="${key}">${c.label}</button>`).join('')||'<div class="onboard-cityempty">No matching city in this county.</div>';
+    document.getElementById('onboardSelected').textContent=onboard.city?'Selected: '+CITIES[onboard.city].label:onboard.county?'Your view: all of '+onboard.county+' County':'';
+    results.querySelectorAll('[data-city]').forEach(b=>b.onclick=()=>{onboard.city=b.dataset.city;onboardCityFilter=CITIES[onboard.city].label;renderOnboardCityBtns();refreshOnboardGate();});
   }
-  document.querySelectorAll('.onboard-city-btn').forEach(b=>{
-    b.addEventListener('click', ()=>{ onboard.city = b.getAttribute('data-city'); renderOnboardCityBtns(); refreshOnboardGate(); });
-  });
+  document.getElementById('onboardCityFilterInput').oninput=e=>{onboardCityFilter=e.target.value;onboard.city=null;drawResults();refreshOnboardGate();};
+  drawResults();
 }
 function renderOnboardInterests(){
   document.getElementById('onboardInterests').innerHTML = INTEREST_OPTIONS.map(opt=>
@@ -6718,7 +6715,7 @@ function renderOnboardInterests(){
   ).join('') + `<label class="onboard-check${onboard.wantInvolved?' checked':''}" data-key="involved">
       <input type="checkbox" ${onboard.wantInvolved?'checked':''} /> Meetings &amp; how to get involved
     </label>`;
-  document.querySelectorAll('.onboard-check').forEach(label=>{
+  document.querySelectorAll('#onboardInterests .onboard-check').forEach(label=>{
     label.addEventListener('click', (e)=>{
       e.preventDefault();
       const key = label.getAttribute('data-key');
@@ -6731,10 +6728,9 @@ function renderOnboardInterests(){
   refreshOnboardGate();
 }
 
-// City and interests drive every other screen, so they are required. A location is not - the
-// site works city-wide without one.
+// A known county is enough; a city, street address and interests are optional.
 function onboardComplete(){
-  return Boolean(onboard.city && onboard.interests && onboard.interests.size > 0);
+  return DashboardBrowse.setupValid(onboard,COUNTY_NAMES) && (!isGuest() || !guestProfile.unlocked || /^[a-zA-Z0-9_ ]{3,30}$/.test(document.getElementById('onboardUsername').value.trim()));
 }
 function refreshOnboardGate(){
   const btn = document.getElementById('onboardSubmit');
@@ -6747,15 +6743,15 @@ function refreshOnboardGate(){
   if(note){
     note.textContent = ok ? (document.getElementById('onboardAddr').value.trim()
         ? 'Ready. We will centre on that address.'
-        : 'Ready. No address needed - you will land on the city view, and can add one later.')
-      : (!onboard.city ? 'Pick a city to continue.' : 'Pick at least one thing you are interested in.');
+        : 'Ready to explore '+(onboard.city?CITIES[onboard.city].label:onboard.county+' County')+'. Your choices are remembered on this device.')
+      : (!onboard.county ? 'Choose a county to continue. A city and address are optional.' : 'Use 3–30 letters, numbers, spaces or underscores for your username.');
   }
 }
 
 function setOnboardBusy(busy, msg){
   const submitBtn = document.getElementById('onboardSubmit');
   const geoBtn = document.getElementById('onboardGeoBtn');
-  submitBtn.disabled = busy; geoBtn.disabled = busy;
+  submitBtn.disabled = busy || !onboardComplete(); geoBtn.disabled = busy;
   submitBtn.style.opacity = busy ? '0.6' : '1';
   if(msg !== undefined) document.getElementById('onboardGeoStatus').textContent = msg;
 }
@@ -6767,7 +6763,7 @@ function useMyLocation(){
     onboard.userLoc = { lat:pos.coords.latitude, lng:pos.coords.longitude, label:'Your current location' };
     const matchedCity = cityContainingPoint(onboard.userLoc.lat, onboard.userLoc.lng);
     if(matchedCity && matchedCity !== onboard.city){
-      const oldLabel = CITIES[onboard.city].label, newLabel = CITIES[matchedCity].label;
+      const oldLabel = (CITIES[onboard.city]?.label||'your selected county'), newLabel = CITIES[matchedCity].label;
       onboard.city = matchedCity;
       renderOnboardCityBtns();
       setOnboardBusy(false, `You're actually in ${newLabel}, not ${oldLabel} - switched you there.`);
@@ -6844,6 +6840,8 @@ function matchTypedAddress(text){
   return null;
 }
 async function submitOnboard(){
+  if(!onboardComplete()){refreshOnboardGate();return;}
+  if(isGuest()&&guestProfile.unlocked && !await saveGuestName(document.getElementById('onboardUsername'),'onboardGuestStatus'))return;
   const text = document.getElementById('onboardAddr').value.trim();
   if(text && !onboard.userLoc){
     setOnboardBusy(true, 'Looking up that address…');
@@ -6852,7 +6850,7 @@ async function submitOnboard(){
       onboard.userLoc = { lat:result.lat, lng:result.lng, label:text, source:'geocoded' };
       if(result.matchedCity){
         if(result.matchedCity !== onboard.city){
-          const oldCityLabel = CITIES[onboard.city].label, newCityLabel = CITIES[result.matchedCity].label;
+          const oldCityLabel = (CITIES[onboard.city]?.label||'your selected county'), newCityLabel = CITIES[result.matchedCity].label;
           onboard.city = result.matchedCity;
           renderOnboardCityBtns();
           setOnboardBusy(false, `Found "${text}" - that's actually in ${newCityLabel}, not ${oldCityLabel}, so we switched you there.`);
@@ -6890,8 +6888,7 @@ async function submitOnboard(){
   }
   // The address is optional. Without one there is nothing to centre "Your area" on, so the
   // city view is what makes sense - everything there works city-wide.
-  if(currentCity !== onboard.city) switchCity(onboard.city);
-  else renderUserLocationMarker();
+  finishOnboard();
   document.getElementById('onboardOverlay').style.display = 'none';
   if(onboard.userLoc){
     renderYourArea();
@@ -6900,17 +6897,16 @@ async function submitOnboard(){
     showPage('dashboard');
     showScreen('dashboard');
   }
+  applyDeepLink();
 }
-// Shown when a real, successfully-geocoded address falls outside all three tracked cities.
-// Presents the three tracked cities sorted by actual distance from where the person really is,
-// so the choice is informed rather than arbitrary.
+// Offer the eight nearest tracked cities when a geocoded address falls outside their bounds.
 function showCityChooser(lat, lng, placeLabel){
   document.getElementById('cityChooserLabel').textContent = `You're near ${placeLabel} - which city's projects do you want to track?`;
   const ranked = Object.entries(CITIES).filter(([key])=>key!=='all').map(([key,c])=>({
     key, label:c.label, dist: haversineMi(lat, lng, c.center.lat, c.center.lng)
   })).sort((a,b)=>a.dist-b.dist);
   const btnsEl = document.getElementById('cityChooserBtns');
-  btnsEl.innerHTML = ranked.map(c=>
+  btnsEl.innerHTML = ranked.slice(0,8).map(c=>
     `<button type="button" class="city-choice-btn" data-city="${c.key}">${c.label} <span class="dist">${c.dist.toFixed(0)} mi away</span></button>`
   ).join('');
   btnsEl.querySelectorAll('.city-choice-btn').forEach(btn=>{
@@ -6918,8 +6914,7 @@ function showCityChooser(lat, lng, placeLabel){
       onboard.city = btn.getAttribute('data-city');
       document.getElementById('cityChooserStep').style.display = 'none';
       renderOnboardCityBtns();
-      if(currentCity !== onboard.city) switchCity(onboard.city);
-      else renderUserLocationMarker();
+      finishOnboard();
       document.getElementById('onboardOverlay').style.display = 'none';
       renderYourArea();
       showScreen('yourarea');
@@ -6977,6 +6972,27 @@ function renderYourArea(){
   }
 }
 
+function finishOnboard(){
+  if(onboard.city)onboard.county=CITIES[onboard.city].county;
+  guestProfile.data.setup={county:onboard.county,city:onboard.city,interests:[...onboard.interests],wantInvolved:onboard.wantInvolved,userLoc:onboard.userLoc};
+  guestProfile.data.explored=true;
+  if(isGuest()&&guestProfile.unlocked){guestProfile.data.preferences.homeCity=onboard.city;guestProfile.data.preferences.homeCounty=onboard.county;guestProfile.data.preferences.categories=[...onboard.interests];}
+  guestProfile.save();cityBrowseCounty=onboard.county;
+  setCountyScope(onboard.city?'':onboard.county);switchCity(onboard.city||'all');
+}
+async function saveGuestName(input,statusId){
+  if(!isGuest()||!guestProfile.unlocked)return true;
+  const status=document.getElementById(statusId);
+  try{await guestProfile.update(input.value.trim());authUsername=guestProfile.data.username;for(const id of ['onboardUsername','guestUsername']){const field=document.getElementById(id);if(field!==input)field.value=authUsername;}renderAuthNavState();document.getElementById('accountUsername').textContent=authUsername;status.textContent=guestProfile.persistent?'Saved automatically on this device.':'Browser storage is unavailable; changes last until this page closes.';input.removeAttribute('aria-invalid');return true;}
+  catch(err){status.textContent=err.message;input.setAttribute('aria-invalid','true');return false;}
+}
+function wireGuestName(input,statusId){let timer;input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(()=>saveGuestName(input,statusId),450);refreshOnboardGate();});input.addEventListener('blur',()=>{clearTimeout(timer);saveGuestName(input,statusId);});}
+document.getElementById('onboardUsername').value=authUsername||guestProfile.data.username;
+document.getElementById('onboardGuestProfile').hidden=!isGuest();
+document.getElementById('onboardUsername').disabled=!guestProfile.unlocked;
+wireGuestName(document.getElementById('onboardUsername'),'onboardGuestStatus');
+wireGuestName(document.getElementById('guestUsername'),'guestProfileStatus');
+document.getElementById('onboardCounty').addEventListener('change',e=>{onboard.county=e.target.value;onboard.city=null;onboard.userLoc=null;onboardCityFilter='';renderOnboardCityBtns();refreshOnboardGate();});
 document.getElementById('onboardGeoBtn').addEventListener('click', useMyLocation);
 document.getElementById('onboardAddr').addEventListener('input', ()=>{
   onboard.userLoc = null;
@@ -6989,6 +7005,8 @@ document.getElementById('onboardAddr').addEventListener('input', ()=>{
 });
 document.getElementById('onboardAccountLink').addEventListener('click', (e)=>{
   e.preventDefault();
+  if(!onboardComplete()){refreshOnboardGate();document.getElementById('onboardCounty').focus();return;}
+  finishOnboard();
   document.getElementById('onboardOverlay').style.display = 'none';
   guestAuthForm=isGuest();
   showScreen('account');
@@ -7302,13 +7320,8 @@ const topicMaps = {};
 function renderTopicMap(topicKey, cap, categoryKey){
   const el = document.getElementById('topicMap'+cap);
   if(!el || typeof L === 'undefined') return;
-  if(!el.offsetWidth){
-    renderTopicMap._t = renderTopicMap._t || {};
-    renderTopicMap._t[cap] = (renderTopicMap._t[cap]||0) + 1;
-    if(renderTopicMap._t[cap] < 20) setTimeout(()=>renderTopicMap(topicKey, cap, categoryKey), 250);
-    return;
-  }
-  const c = CITIES[currentCity !== 'all' ? currentCity : 'sunnyvale'];
+  if(!el.offsetWidth)return;
+  const c = CITIES[currentCity];
   let m = topicMaps[cap];
   if(!m){
     m = topicMaps[cap] = {map:L.map('topicMap'+cap, {scrollWheelZoom:false}).setView([c.center.lat, c.center.lng], c.zoom||12)};
@@ -7592,7 +7605,7 @@ function icsFor(d){
   const end = new Date(dt.getTime() + 2*60*60*1000);
   const fmt = x => x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(x.getHours())+pad(x.getMinutes())+'00';
   const esc = t => String(t||'').replace(/([,;\\])/g,'\\$1').replace(/\n/g,'\\n');
-  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Bay Civic Dashboard//EN','BEGIN:VEVENT',
+  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//The Bay Civic Dashboard//EN','BEGIN:VEVENT',
     'UID:'+encodeURIComponent(d.ref)+'@southbaydashboard',
     'DTSTAMP:'+fmt(new Date()), 'DTSTART:'+fmt(dt), 'DTEND:'+fmt(end),
     'SUMMARY:'+esc(d.name+' - '+d.cityLabel),
@@ -7753,7 +7766,7 @@ function ensureYaMap(){
     }
     return null;
   }
-  const c = CITIES[currentCity !== 'all' ? currentCity : 'sunnyvale'];
+  const c = CITIES[currentCity];
   yaMap = L.map('yaMap', {scrollWheelZoom:false})
     .setView([c.center.lat, c.center.lng], c.zoom || 12);
   L.tileLayer(MAP_TILE_URL,
@@ -8802,7 +8815,7 @@ function showScreen(name){
     applyPageChrome(owningPage);
   }
   scrollToScreen(name);
-  if(name === 'dashboard') requestAnimationFrame(fitOverviewMap);
+  if(name === 'dashboard') requestAnimationFrame(()=>{ensureOverviewMap();fitOverviewMap();});
   refreshCurrentScreen();
   window.dispatchEvent(new CustomEvent('dashboard:screen', {detail:name}));
 }
@@ -10312,13 +10325,14 @@ NEWS_ARTICLES.push(...Object.values(window.REGIONAL_DATA?.cities||{}).flatMap(c=
 function renderTopicNews(topicKey, cap){
   const el = document.getElementById('topicNews'+cap);
   if(!el) return;
-  const list = NEWS_ARTICLES.filter(a=> a.topic===topicKey);
-  if(!list.length){ el.innerHTML = '<div class="empty">No recent articles collected for this topic yet.</div>'; return; }
-  el.innerHTML = list.map(a=>{
+  const scope=topicViewState[topicKey].scope;
+  const list = NEWS_ARTICLES.filter(a=>a.topic===topicKey&&(scope==='region'||(currentCity==='all'?(!activeCounty||CITIES[a.city]?.county===activeCounty):a.city===currentCity))).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  DashboardBrowse.mountPager(el,list,a=>{
     const starData = {title:a.title, desc:a.snippet, url:a.url};
     return `
-    <a class="news-card" href="${a.url}" target="_blank" rel="noopener">
+    <article class="news-card">
       ${starButtonHtml('news', a.url, starData)}
+      <a class="news-card-link" href="${a.url}" target="_blank" rel="noopener">
       <img src="${a.image || cityImage(a.city) || ''}" loading="lazy" alt="" onerror="imgFallback(this,'${a.city}')" />
       <div class="news-body">
         <div class="news-meta">${a.source} - ${CITIES[a.city] ? CITIES[a.city].label : 'Regional'}</div>
@@ -10326,8 +10340,8 @@ function renderTopicNews(topicKey, cap){
         <p>${a.snippet}</p>
         <div class="news-date">${fmtDate(a.date)}</div>
       </div>
-    </a>`;
-  }).join('');
+    </a></article>`;
+  },{label:'Articles',key:topicKey+':'+currentCity+':'+activeCounty+':'+scope,gridClass:'news-grid'});
 }
 // Official links relevant to this topic, for the city being viewed. Categories come from the
 // verified OFFICIAL_LINKS registry; nothing here is generated.
@@ -10341,50 +10355,40 @@ function renderTopicLinks(topicKey, cap){
   const host = document.getElementById('topicLinks'+cap);
   if(!host) return;
   const cats = TOPIC_LINK_CATS[topicKey] || [];
-  const links = (OFFICIAL_LINKS[currentCity]||[]).filter(l=> cats.includes(l.cat));
+  const links = (currentCity==='all'?DashboardBrowse.citiesIn(CITIES,activeCounty).flatMap(([key,c])=>(OFFICIAL_LINKS[key]||[]).filter(l=>cats.includes(l.cat)).slice(0,1).map(l=>({...l,title:c.label+' · '+l.title}))):(OFFICIAL_LINKS[currentCity]||[]).filter(l=>cats.includes(l.cat)));
   if(!links.length){ if(head) head.textContent=''; host.innerHTML=''; return; }
   if(head) head.textContent = 'Official '+CITIES[currentCity].label+' links';
-  host.innerHTML = links.map(l=>
+  DashboardBrowse.mountPager(host,links,l=>
     '<a class="topic-link" href="'+l.url+'" target="_blank" rel="noopener">'
     + '<span class="tl-cat">'+l.cat+'</span>'
     + '<span class="tl-title">'+l.title+'</span>'
     + '<span class="tl-note">'+l.note+'</span>'
-    + '<span class="tl-dom">'+domainOf(l.url)+' &#8599;</span></a>').join('');
+    + '<span class="tl-dom">'+domainOf(l.url)+' &#8599;</span></a>',{label:'Sources',key:topicKey+':'+currentCity+':'+activeCounty,gridClass:'topic-links'});
 }
+const topicViewState={};
 function renderTopicPage(topicKey, categoryKey){
-  const cap = topicKey.charAt(0).toUpperCase()+topicKey.slice(1);
-  renderTopicNews(topicKey, cap);
-  renderTopicLaws(topicKey, cap);
-  renderTopicMap(topicKey, cap, categoryKey);
-  renderTopicLinks(topicKey, cap);
-  const rhnaHost = document.getElementById('topicRhna'+cap);
-  if(rhnaHost) rhnaHost.innerHTML = RHNA[currentCity] ? rhnaSection(currentCity) : '';
-  const cityList = DATA().filter(d=> categoryOf(d)===categoryKey);
-  const cHead = document.getElementById('topicCityHead'+cap);
-  const cGrid = document.getElementById('topicCityGrid'+cap);
-  if(cHead) cHead.textContent = 'In '+CITIES[currentCity].label+' ('+cityList.length+')';
-  if(cGrid) cGrid.innerHTML = cityList.length ? cityList.map(projectCardHtml).join('') : '<div class="empty">No '+categoryKey.toLowerCase()+' records for '+CITIES[currentCity].label+' in this sample.</div>';
-
-  const regionEl = document.getElementById('topicRegion'+cap);
-  if(regionEl){
-    regionEl.innerHTML = Object.keys(CITIES).filter(k=>k!=='all').map(cityKey=>{
-      const list = CITIES[cityKey].data.filter(d=> categoryOf(d)===categoryKey);
-      if(!list.length) return '';
-      return `<div class="topic-region-city">
-        <h4>${CITIES[cityKey].label} <span class="cnt">${list.length} record${list.length===1?'':'s'}</span></h4>
-        <div class="register-grid">${list.map(projectCardHtml).join('')}</div>
-      </div>`;
-    }).join('');
-  }
-  document.querySelectorAll('#screen'+cap+' .locate-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const id = btn.getAttribute('data-id');
-      const owningCity = Object.keys(CITIES).filter(k=>k!=='all').find(k=> CITIES[k].data.some(d=>d.id===id));
-      if(owningCity && owningCity!==currentCity){ switchCity(owningCity); }
-      showScreen('dashboard');
-      flyTo(id);
-    });
+  const cap=topicKey.charAt(0).toUpperCase()+topicKey.slice(1),screen=document.getElementById('screen'+cap);
+  const view=topicViewState[topicKey]||(topicViewState[topicKey]={tab:'projects',scope:'local'});
+  const scopeSelect=document.getElementById('topicScope'+cap);
+  scopeSelect.options[0].textContent=CITIES[currentCity].label;scopeSelect.value=view.scope;
+  scopeSelect.onchange=()=>{view.scope=scopeSelect.value;renderTopicPage(topicKey,categoryKey);};
+  scopeSelect.parentElement.hidden=!['projects','news'].includes(view.tab);
+  const tabs=[...screen.querySelectorAll('[data-topic-view]')];
+  tabs.forEach((button,i)=>{
+    const selected=button.dataset.topicView===view.tab;
+    button.setAttribute('aria-selected',String(selected));button.tabIndex=selected?0:-1;
+    document.getElementById('topicPanel'+cap+button.dataset.topicView).hidden=!selected;
+    button.onclick=()=>{view.tab=button.dataset.topicView;renderTopicPage(topicKey,categoryKey);};
+    button.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const n=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[n].click();tabs[n].focus();};
   });
+  if(view.tab==='news'){renderTopicNews(topicKey,cap);return;}
+  if(view.tab==='map'){renderTopicMap(topicKey,cap,categoryKey);renderTopicLinks(topicKey,cap);return;}
+  if(view.tab==='guide'){renderTopicLaws(topicKey,cap);const rhna=document.getElementById('topicRhna'+cap);if(rhna)rhna.innerHTML=RHNA[currentCity]?rhnaSection(currentCity):'';return;}
+  const list=(view.scope==='region'?BAY_AREA_VIEW.data:DATA()).filter(d=>categoryOf(d)===categoryKey);
+  document.getElementById('topicCityHead'+cap).textContent=view.scope==='region'?'Across the Bay Area':'In '+CITIES[currentCity].label;
+  DashboardBrowse.mountPager(document.getElementById('topicCityGrid'+cap),list,projectCardHtml,{label:'Projects',key:topicKey+':'+currentCity+':'+activeCounty+':'+view.scope,onRender:host=>{
+    host.querySelectorAll('.locate-btn').forEach(btn=>btn.onclick=()=>{const id=btn.dataset.id,owner=Object.keys(CITIES).find(k=>k!=='all'&&CITIES[k].data.some(d=>d.id===id));if(owner&&owner!==currentCity)switchCity(owner);showScreen('dashboard');flyTo(id);});
+  }});
 }
 function renderResources(){
   const c = CITIES[currentCity];
@@ -10538,7 +10542,7 @@ function acctCity(){
   const home = document.getElementById('prefsCity');
   const v = home && home.value;
   if(v && CITIES[v]) return v;
-  return (currentCity && currentCity !== 'all') ? currentCity : 'sunnyvale';
+  return CITIES[currentCity] ? currentCity : 'all';
 }
 
 function showAcctPanel(name){
@@ -10595,9 +10599,12 @@ function renderAcctSideCounts(){
 async function renderAcctOverview(){
   const city = acctCity();
   const c = CITIES[city];
+  const inScope=key=>city==='all'?(!activeCounty||CITIES[key]?.county===activeCounty):key===city;
+  const localNews=NEWS_ARTICLES.filter(a=>inScope(a.city));
+  const localLinks=city==='all'?DashboardBrowse.citiesIn(CITIES,activeCounty).flatMap(([key])=>OFFICIAL_LINKS[key]||[]):OFFICIAL_LINKS[city]||[];
   const s = starCounts();
   const projects = c.data.length;
-  const news = NEWS_ARTICLES.filter(a=>a.city===city).length;
+  const news = localNews.length;
   const r = RHNA[city];
 
   const note = document.getElementById('acctOverviewNote');
@@ -10605,7 +10612,7 @@ async function renderAcctOverview(){
 
   const mast = document.getElementById('acctMasthead');
   if(mast){
-    const ph = cityPhoto(city);
+    const ph = cityPhoto(city==='all'?DashboardBrowse.citiesIn(CITIES,activeCounty)[0]?.[0]:city);
     mast.innerHTML =
         (ph ? '<img class="acct-mast-img" src="'+ph.url+'" alt="'+escapeHtml(ph.cap)+'" loading="lazy" onerror="this.style.display=\'none\'" />' : '')
       + '<div class="acct-mast-body">'
@@ -10613,9 +10620,9 @@ async function renderAcctOverview(){
       +   '<div class="acct-mast-city">'+c.label+'</div>'
       +   '<div class="acct-mast-facts">'
       +     '<span><b>'+c.data.length+'</b> tracked projects</span>'
-      +     '<span><b>'+NEWS_ARTICLES.filter(a=>a.city===city).length+'</b> articles</span>'
-      +     '<span><b>'+(c.deciders.length + c.join.length)+'</b> boards</span>'
-      +     '<span><b>'+((OFFICIAL_LINKS[city]||[]).length)+'</b> official links</span>'
+      +     '<span><b>'+localNews.length+'</b> articles</span>'
+      +     (city!=='all'?'<span><b>'+(c.deciders.length + c.join.length)+'</b> boards</span>':'')
+      +     '<span><b>'+localLinks.length+'</b> official links</span>'
       +     (RHNA[city] ? '<span><b>'+RHNA[city].pct+'%</b> of housing target</span>' : '')
       +   '</div>'
       + '</div>'
@@ -10639,7 +10646,7 @@ async function renderAcctOverview(){
         const res = await fetch('/api/hearings');
         acctHearingsCache = await res.json();
       }
-      const list = (acctHearingsCache.hearings||[]).filter(h=> h.city===(window.MEETING_DIRECTORY?.[city]?.alias||city)).slice(0,4);
+      const list = (acctHearingsCache.hearings||[]).filter(h=>city==='all'?inScope(h.city):h.city===(window.MEETING_DIRECTORY?.[city]?.alias||city)).slice(0,4);
       hh.innerHTML = list.length ? list.map(h=>
           '<div class="acct-hearing"><div class="d">'+(h.dateLabel||h.date||'')+'</div>'
         + '<h4>'+(h.body||h.name||'Public meeting')+'</h4>'
@@ -10652,7 +10659,7 @@ async function renderAcctOverview(){
   }
 
   const ng = document.getElementById('acctOverviewNews');
-  if(ng) ng.innerHTML = acctNewsCards(NEWS_ARTICLES.filter(a=>a.city===city).slice(0,3), 'No articles collected for '+c.label+' yet.');
+  if(ng) ng.innerHTML = acctNewsCards(localNews.slice(0,3), 'No articles collected for '+c.label+' yet.');
 }
 
 function acctNewsCards(list, emptyMsg){
@@ -11112,6 +11119,7 @@ document.querySelectorAll('.acct-navbtn').forEach(b=>{
 
 function renderAuthNavState(){
   // Account moved out of the top nav into the utility strip.
+  document.getElementById('onboardGuestProfile').hidden=!isGuest();
   const link = document.getElementById('utilAccount');
   if(link) link.textContent = isLoggedIn() ? authUsername : 'Your account';
 }
@@ -14199,7 +14207,18 @@ function statBars(metric, me){
     + '<span class="val">'+metric.fmt(e.value)+'</span></div>').join('') + '</div>';
 }
 
+function renderRegionalStatistics(){
+ const host=document.getElementById('statsContent'),keys=DashboardBrowse.citiesIn(CITIES,activeCounty).filter(([k])=>k!=='westsanjose');
+ const metrics=metricCatalog().filter(m=>keys.some(([k])=>m.get(k)!=null));
+ const metric=metrics.find(m=>m.id===statsMetric)||metrics[0];statsMetric=metric.id;
+ document.getElementById('statsCityName').textContent='individual cities';
+ host.innerHTML='<div class="topic-scope"><label for="countyStatsMetric">Compare '+escapeHtml(CITIES.all.label)+'</label><select id="countyStatsMetric">'+metrics.map(m=>'<option value="'+m.id+'"'+(m.id===metric.id?' selected':'')+'>'+m.label+'</option>').join('')+'</select></div><p class="section-note">Each card shows a city’s own figure. Select a city for its complete profile and source dates.</p><div id="countyStatsCards"></div>';
+ const rows=keys.filter(([k])=>metric.get(k)!=null).sort((a,b)=>metric.get(b[0])-metric.get(a[0]));
+ DashboardBrowse.mountPager(document.getElementById('countyStatsCards'),rows,([k,c])=>'<article class="news-card"><img src="'+cityImage(k)+'" alt="'+escapeHtml(c.label)+'" loading="lazy"><div class="news-body"><div class="news-meta">'+escapeHtml(c.county)+' County</div><h3>'+escapeHtml(c.label)+'</h3><h4>'+metric.fmt(metric.get(k))+'</h4><p>'+metric.label+'</p><button type="button" class="btn secondary" data-stats-city="'+k+'">Explore city statistics →</button></div></article>',{label:'Cities',key:activeCounty+':'+metric.id,onRender:el=>el.querySelectorAll('[data-stats-city]').forEach(b=>b.onclick=()=>switchCity(b.dataset.statsCity))});
+ document.getElementById('countyStatsMetric').onchange=e=>{statsMetric=e.target.value;renderRegionalStatistics();};
+}
 function renderStatistics(){
+  if(currentCity==='all'){renderRegionalStatistics();return;}
   const host = document.getElementById('statsContent');
   if(!host) return;
   const me = currentCity === 'all' ? 'sunnyvale' : currentCity;
@@ -14257,8 +14276,9 @@ let featuredTimer = null;
 function featuredArticles(){
   // Newest first, and prefer the current city's news so the panel is locally relevant.
   const sorted = [...NEWS_ARTICLES].sort((a,b)=> String(b.date).localeCompare(String(a.date)));
-  const local = sorted.filter(a=> a.city === currentCity);
-  const rest  = sorted.filter(a=> a.city !== currentCity);
+  const isLocal=a=>currentCity==='all'?(!activeCounty||CITIES[a.city]?.county===activeCounty):a.city===currentCity;
+  const local = sorted.filter(isLocal);
+  const rest = sorted.filter(a=>!isLocal(a));
   return [...local, ...rest];
 }
 
@@ -14268,13 +14288,10 @@ function renderRailCityPicker(){
   const sel = document.getElementById('railCitySelect');
   const now = document.getElementById('railCityNow');
   if(!sel) return;
-  const keys = Object.keys(CITIES).filter(k=>k!=='all');
-  if(sel.options.length !== keys.length){
-    sel.innerHTML = keys.map(k=>'<option value="'+k+'">'+CITIES[k].label+'</option>').join('');
-    sel.addEventListener('change', ()=>{ switchCity(sel.value); });
-  }
-  if(currentCity !== 'all') sel.value = currentCity;
-  if(now) now.textContent = currentCity === 'all' ? 'all cities' : '';
+  const keys=DashboardBrowse.citiesIn(CITIES,currentCity==='all'?activeCounty:'').map(([k])=>k);
+  sel.innerHTML='<option value="all">'+CITIES.all.label+'</option>'+keys.map(k=>'<option value="'+k+'">'+CITIES[k].label+'</option>').join('');
+  sel.value=currentCity;sel.onchange=()=>switchCity(sel.value);
+  if(now)now.textContent=currentCity==='all'?'COUNTY & CITY VIEW':'';
 }
 
 let heroMap = null, heroLayer = null;
@@ -14290,7 +14307,7 @@ function renderHeroMap(){
     if(renderHeroMap._tries++ < 20) setTimeout(renderHeroMap, 250);
     return;
   }
-  const c = CITIES[currentCity !== 'all' ? currentCity : 'sunnyvale'];
+  const c = CITIES[currentCity];
   if(!heroMap){
     heroMap = L.map('heroMap', {scrollWheelZoom:false, zoomControl:false, attributionControl:true})
       .setView([c.center.lat, c.center.lng], 11);
@@ -14316,7 +14333,7 @@ function renderHeroMap(){
   // A few one-press things to put on it, from this city.
   const add = document.getElementById('heroMapAdd');
   if(add){
-    const cand = (CITIES[currentCity!=='all'?currentCity:'sunnyvale'].data||[])
+    const cand = DATA()
       .filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng))
       .filter(p=>!yaPins.some(x=>x.type==='project'&&x.id===p.id))
       .slice(0,6);
@@ -14326,8 +14343,8 @@ function renderHeroMap(){
           + escapeHtml((p.addr||p.id).length>22 ? (p.addr||p.id).slice(0,21)+'…' : (p.addr||p.id)) + '</button>').join('')
       : '<span class="hero-map-lab">All the nearby projects are on your map.</span>';
     add.querySelectorAll('[data-heroadd]').forEach(b=> b.addEventListener('click', ()=>{
-      const ck = currentCity!=='all'?currentCity:'sunnyvale';
-      const p = (CITIES[ck].data||[]).find(x=>x.id===b.getAttribute('data-heroadd'));
+      const p = DATA().find(x=>x.id===b.getAttribute('data-heroadd'));
+      const ck=p?._sourceCity||currentCity;
       if(!p) return;
       yaTogglePin({type:'project', id:p.id, label:p.addr||p.id,
         sub:[CITIES[ck].label, p.stage].filter(Boolean).join(' · '), lat:p.lat, lng:p.lng, city:ck});
@@ -14343,7 +14360,7 @@ function renderHeroCalendar(){
   const host = document.getElementById('heroCalList');
   if(!host) return;
   if(typeof giMonthEvents !== 'function'){ setTimeout(renderHeroCalendar, 300); return; }
-  const ck = currentCity !== 'all' ? currentCity : 'sunnyvale';
+  const ck = currentCity;
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const out = [];
@@ -14351,7 +14368,7 @@ function renderHeroCalendar(){
   for(let i=0; i<3 && out.length<8; i++){
     const d = new Date(now.getFullYear(), now.getMonth()+i, 1);
     giMonthEvents(d.getFullYear(), d.getMonth())
-      .filter(e=> e.city === ck || e.city === window.MEETING_DIRECTORY?.[ck]?.alias)
+      .filter(e=>ck==='all'?(!activeCounty||CITIES[e.city]?.county===activeCounty):(e.city===ck||e.city===window.MEETING_DIRECTORY?.[ck]?.alias))
       .filter(e=> new Date(d.getFullYear(), d.getMonth(), e.day) >= today)
       .sort((a,b)=> a.day-b.day)
       .forEach(e=> out.push(Object.assign({y:d.getFullYear(), m:d.getMonth()}, e)));
@@ -14369,7 +14386,7 @@ function renderHeroCalendar(){
       +   '<span>'+(e.time ? e.time+' &middot; ' : '')+(e.confirmed ? 'confirmed' : 'recurring')+'</span></span>'
       + '<button type="button" class="hc-add'+(on?' on':'')+'" data-caladd="'+pay+'">'+(on?'&#10003;':'Add')+'</button>'
       + '</div>';
-  }).join('') : '<div class="empty">No dates loaded for '+CITIES[ck].label+'. Check the official calendar for current meetings.</div>'+meetingDirectoryHtml(ck);
+  }).join('') : '<div class="empty">No dates loaded for '+CITIES[ck].label+'. Check the official calendar for current meetings.</div>'+(ck==='all'?DashboardBrowse.citiesIn(CITIES,activeCounty).slice(0,3).map(([k,c])=>'<a class="rail-link" href="'+(window.MEETING_DIRECTORY?.[k]?.links?.find(l=>/calendar|agenda/i.test(l.title))?.url||c.ctaLinks?.[0]?.url||'#')+'" target="_blank" rel="noopener">'+c.label+' official records ↗</a>').join(''):meetingDirectoryHtml(ck));
   if(typeof wireCalendarActions === 'function') wireCalendarActions(host);
 }
 
@@ -14403,10 +14420,14 @@ function paintHeroBg(){
   };
   img.src = ph.url;
 }
+function heroIsVisible(){
+ const hero=document.getElementById('siteHero');
+ return !document.hidden&&document.getElementById('onboardOverlay').style.display==='none'&&hero.getBoundingClientRect().bottom>0&&hero.getBoundingClientRect().top<innerHeight;
+}
 function startHeroBgRotation(){
   paintHeroBg();
   clearInterval(heroBgTimer);
-  heroBgTimer = setInterval(()=>{ heroBgIdx++; paintHeroBg(); }, 7000);
+  heroBgTimer = setInterval(()=>{if(heroIsVisible()){heroBgIdx++;paintHeroBg();}},7000);
 }
 
 function renderFeaturedNews(){
@@ -14443,6 +14464,7 @@ function renderFeaturedNews(){
 }
 
 function advanceFeatured(){
+  if(!heroIsVisible())return;
   const cards = document.getElementById('featuredCards');
   if(!cards) return;
   cards.classList.add('fading');
@@ -14457,7 +14479,7 @@ function startFeaturedRotation(){
 // The panel replaces its markup on every rotation, so a fresh <img> would restart its download
 // and never finish inside the 5s window. Warming the cache once up front keeps re-renders instant.
 function preloadFeaturedImages(){
-  featuredArticles().slice(0, FEATURED_MAX_PAGES * FEATURED_PER_PAGE)
+  featuredArticles().slice(featuredPage*FEATURED_PER_PAGE,(featuredPage+1)*FEATURED_PER_PAGE)
     .forEach(a=>{ if(a.image){ const i = new Image(); i.src = a.image; } });
 }
 
@@ -14516,11 +14538,12 @@ let railPage = 0;
 let railTimer = null;
 
 function railSlides(){
-  const c = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  const c = currentCity;
   const s = (typeof CITY_STATS !== 'undefined') ? CITY_STATS[c] : null;
   const r = (typeof RHNA !== 'undefined') ? RHNA[c] : null;
   const label = CITIES[c] ? CITIES[c].label : c;
   const out = [];
+  if(c==='all')out.push({k:CITIES.all.data.length.toLocaleString(),l:'Tracked projects · '+label,s:'Dated source records from '+DashboardBrowse.citiesIn(CITIES,activeCounty).length+' areas.',href:'housing',cta:'Explore projects'});
 
   if(s && s.homeValue){
     const g = s.homeValueSeries && s.homeValueSeries.length > 1
@@ -14729,11 +14752,12 @@ function renderRailResources(){
   const host = document.getElementById('railResources');
   const cityEl = document.getElementById('resourceCity');
   if(!host) return;
-  const c = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  const c = currentCity;
   const city = CITIES[c];
   if(cityEl) cityEl.textContent = city ? city.label : '';
   if(!city){ host.innerHTML = ''; return; }
 
+  if(c==='all'){host.innerHTML='<p class="section-note">Choose a city in '+escapeHtml(CITIES.all.label)+' to see its boards, official planning records and local resources.</p>';return;}
   const deciders = (city.deciders || []).slice(0, 2);
   const join = (city.join || []).slice(0, 1);
   const links = (city.ctaLinks || []).slice(0, 1);
@@ -14778,7 +14802,7 @@ function renderRail(){
   if(!all.length){ host.innerHTML = ''; return; }
   railPage = railPage % all.length;
   const v = all[railPage];
-  const city = currentCity === 'all' ? 'sunnyvale' : currentCity;
+  const city = currentCity;
   const fig = v.fig && (FIGURES_AVAILABLE[city]||[]).indexOf(v.fig) !== -1 ? '/img/figures/'+city+'-'+v.fig+'.svg' : null;
   // No chart for this city and metric (Zillow publishes no rent series for ten of them): show the
   // city in the same box instead, so the panel keeps one height as it rotates.
@@ -14795,6 +14819,7 @@ function renderRail(){
 }
 
 function advanceRail(){
+  if(!heroIsVisible())return;
   const host = document.getElementById('railRotator');
   if(!host) return;
   host.classList.add('fading');
@@ -14876,6 +14901,7 @@ function applyDeepLink(){
   const projectId = params.get('project');
   const cityKey = params.get('city');
   if(!projectId && !cityKey) return;
+  if(!DashboardBrowse.setupValid(guestProfile.data.setup,COUNTY_NAMES))return;
 
   // Someone arriving from an email already told us what they want to see - don't make them sit
   // through the "let's set up your view" wizard first.
@@ -14912,21 +14938,39 @@ function applyDeepLink(){
     history.replaceState({}, '', location.pathname);
   }
 }
-applyDeepLink();
 window.dashboardContext = {
   cities: Object.fromEntries(Object.entries(CITIES).map(([key,c])=>[key,{label:c.label,center:c.center,zoom:c.zoom}])),
   projects: Object.entries(CITIES).filter(([key])=>key!=='all').flatMap(([key,c])=>c.data.map(p=>({...p,city:key,cityLabel:c.label,sourceUrl:p.sourceUrl||(c.ctaLinks[0]||{}).url||'https://www.hcd.ca.gov/'}))),
   stats: CITY_STATS, statsSource: STATS_SOURCE,
   showScreen
 };
-document.getElementById('onboardExplore').addEventListener('click',()=>{
+// Restore a completed setup; old guest preferences migrate without creating a new profile.
+const savedSetup=guestProfile.data.setup;
+if(DashboardBrowse.setupValid(savedSetup,COUNTY_NAMES)){
+  onboard.county=savedSetup.county;onboard.city=CITIES[savedSetup.city]?.county===savedSetup.county?savedSetup.city:null;
+  onboard.interests=new Set((savedSetup.interests||[]).filter(k=>INTEREST_OPTIONS.some(o=>o.key===k)));
+  onboard.wantInvolved=savedSetup.wantInvolved!==false;onboard.userLoc=savedSetup.userLoc||null;
+  cityBrowseCounty=onboard.county;setCountyScope(onboard.city?'':onboard.county);switchCity(onboard.city||'all');
   document.getElementById('onboardOverlay').style.display='none';
-  guestProfile.data.explored=true;guestProfile.save();
-  showScreen('dashboard');
-});
-if(guestProfile.data.explored)document.getElementById('onboardOverlay').style.display='none';
+}else if(guestProfile.data.explored){
+  const previous=guestProfile.data.preferences.homeCity;
+  onboard.city=CITIES[previous]&&previous!=='all'?previous:currentCity;onboard.county=CITIES[onboard.city]?.county||'Santa Clara';
+  finishOnboard();document.getElementById('onboardOverlay').style.display='none';
+}
+renderOnboardCityBtns();renderOnboardInterests();
+applyDeepLink();
+// Keep keyboard focus and background scrolling inside the first-visit dialog.
+(function(){
+ const overlay=document.getElementById('onboardOverlay');let lastFocus;
+ function sync(){const open=overlay.style.display!=='none';document.body.style.overflow=open?'hidden':'';
+  for(const el of document.body.children)if(el!==overlay&&!['SCRIPT','STYLE'].includes(el.tagName))el.inert=open;
+  if(open){lastFocus=document.activeElement;document.getElementById('onboardCounty').focus({preventScroll:true});}else if(lastFocus?.isConnected)lastFocus.focus({preventScroll:true});
+ }
+ overlay.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...overlay.querySelectorAll('a,button,input,select,[tabindex]')].filter(el=>!el.disabled&&el.tabIndex>=0&&el.getBoundingClientRect().width);const first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+ new MutationObserver(sync).observe(overlay,{attributes:true,attributeFilter:['style']});sync();
+})();
 // Wait until all data and renderer state are initialized before drawing map markers.
-if(!GOOGLE_MAPS_API_KEY && !mapProvider) showGoogleEmbed();
+new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))ensureOverviewMap();},{rootMargin:'250px'}).observe(document.querySelector('.map-shell'));
 </script>
 <script src="/vendor/leaflet-heat.js"></script>
 <script type="module" src="/futures/app.js"></script>
