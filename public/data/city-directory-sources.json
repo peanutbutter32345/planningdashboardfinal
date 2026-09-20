@@ -180,9 +180,9 @@
     "label": "Larkspur",
     "county": "Marin",
     "website": "https://www.larkspur.ca.gov/",
-    "meetings": "http://www.larkspur.ca.gov/288/Agendas-and-Minutes",
-    "news": "http://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
-    "housing": "https://livinginlarkspur.com/"
+    "meetings": "https://www.larkspur.ca.gov/288/Agendas-and-Minutes",
+    "news": "https://www.larkspur.ca.gov/CivicAlerts.aspx?CID=13,10,9,1,15,8,5,6,7,11,12,14",
+    "housing": "https://larkspur.ca.gov/"
   },
   "novato": {
     "label": "Novato",
@@ -316,7 +316,7 @@
     "county": "Sonoma",
     "website": "https://www.cloverdale.net/",
     "planning": "https://www.cloverdale.net/73/Planning-Community-Development-Departmen",
-    "meetings": "http://www.cloverdale.net/agendacenter",
+    "meetings": "https://www.cloverdale.net/agendacenter",
     "news": "https://www.cloverdale.net/CivicAlerts.aspx?CID=1"
   },
   "cotati": {

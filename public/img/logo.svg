@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="The Bay Civic Dashboard">
+  <title>The Bay Civic Dashboard</title>
+  <rect width="32" height="32" rx="6" fill="#2E3B1C"/>
+  <circle cx="24.6" cy="7.4" r="2.6" fill="#F0C86A"/>
+  <rect x="5.5" y="12" width="5" height="11" fill="#CBD4BA"/>
+  <rect x="13.5" y="7.5" width="5" height="15.5" fill="#FFFFFF"/>
+  <rect x="21.5" y="14.5" width="5" height="8.5" fill="#CBD4BA"/>
+  <path d="M0 24.5c5.5 0 5.5-3 11-3s5.5 3 11 3 6-1.6 10-1.6V32H0z" fill="#5F7640"/>
+</svg>
