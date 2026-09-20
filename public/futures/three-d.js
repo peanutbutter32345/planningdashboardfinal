@@ -1,4 +1,4 @@
-/* An optional 3D view of the scenario, over the same rows the 2D map draws.
+/* The 3D view shared by the Future Map, the overview map and Your Area.
  *
  * Everything it uses is free and keyless, so nothing here adds a bill or an account:
  *   - MapLibre GL JS (BSD-3) from the CDN this site already loads Leaflet from;
@@ -6,24 +6,27 @@
  *     OpenStreetMap holds, already styled as a `building-3d` extrusion layer;
  *   - the public AWS terrarium elevation tiles for the hills the Peninsula is built on.
  *
- * None of it is fetched until a reader presses the 3D button, so the Future Map costs a reader
- * who never opens 3D exactly what it did before.
+ * None of it is fetched until a reader presses a 3D button, so a reader who never opens 3D pays
+ * nothing for it.
  *
- * Each project is a column standing on its own coordinates. Column height is the modelled number
- * of homes delivered by the selected year, so dragging the year slider grows the columns: that
- * growth is the model's output, not an animation played over it.
+ * Callers hand over plain points, not their own record shapes:
+ *   {id, lat, lng, label, sub, value, tone, color?, height?, radius?, detail?}
+ * `value` drives the height of the column, `tone` (0-1) its colour along the ramp below, and
+ * `color` overrides that ramp where a caller already has its own colour code for a point.
  */
 const CDN = 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.6.1/';
 const STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 const TERRAIN_TILES = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png';
-// Height grows with the square root of the modelled homes, not in proportion to them: San Jose
-// holds several thousand-home plans, and at any honest linear scale every one of them pinned to
-// the ceiling while the 40-home infills vanished. Square root keeps the order intact - a taller
-// column is always more homes - and keeps the whole range on screen at once. The map note says so.
+// Height grows with the square root of `value`, not in proportion to it: San Jose holds several
+// thousand-home plans, and at any honest linear scale every one of them pinned to the ceiling
+// while the 40-home infills vanished. Square root keeps the order intact - a taller column is
+// always more - and keeps the whole range on screen at once. Each map's note says so.
 const HEIGHT_SCALE = 6;
 const MIN_HEIGHT = 8;
 const MAX_HEIGHT = 420;
-const SOURCE = 'fx-projects-3d';
+const SOURCE = 'fx-points-3d';
+const RAMP = ['interpolate', ['linear'], ['get', 'tone'],
+ 0, '#C8CDBC', 0.35, '#A3AC90', 0.65, '#67794A', 1, '#3E4F24'];
 
 let loader = null;
 function loadLibrary(){
@@ -51,8 +54,11 @@ function webglAvailable(){
  }catch{ return false; }
 }
 
-// A column is a short polygon ring around the project's own point. Metres are converted to degrees
-// at this latitude so a column is round on the ground rather than stretched north-south.
+const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const placed = points => points.filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lng));
+
+// A column is a short polygon ring around the point itself. Metres are converted to degrees at
+// this latitude so a column is round on the ground rather than stretched north-south.
 function ring(lat, lng, metres, sides = 14){
  const dLat = metres / 111320;
  const dLng = metres / (111320 * Math.max(0.2, Math.cos(lat * Math.PI / 180)));
@@ -64,46 +70,41 @@ function ring(lat, lng, metres, sides = 14){
  return [points];
 }
 
-function columns(rows){
+function columns(points){
  return {
   type: 'FeatureCollection',
-  features: rows.map(p => {
-   const homes = Math.max(0, p.expected || 0);
-   const share = p.units ? Math.min(1, homes / p.units) : 0;
-   // Footprint grows with the size of the project, so a 12-home infill does not read as a tower.
-   const radius = Math.max(16, Math.min(70, 14 + Math.sqrt(p.units || homes || 1) * 1.7));
-   return {
-    type: 'Feature',
-    id: p.id,
-    properties: {
-     id: p.id, addr: p.addr, city: p.cityLabel, stage: p.stage,
-     units: p.units || 0, homes: Math.round(homes), share,
-     height: Math.min(MAX_HEIGHT, MIN_HEIGHT + Math.sqrt(homes) * HEIGHT_SCALE),
-    },
-    geometry: { type: 'Polygon', coordinates: ring(p.lat, p.lng, radius) },
+  features: points.map(p => {
+   const value = Math.max(0, Number(p.value) || 0);
+   const height = p.height ?? Math.min(MAX_HEIGHT, MIN_HEIGHT + Math.sqrt(value) * HEIGHT_SCALE);
+   const radius = p.radius ?? Math.max(16, Math.min(70, 14 + Math.sqrt(Math.max(value, 1)) * 1.7));
+   const properties = {
+    id: String(p.id ?? ''), label: p.label || '', sub: p.sub || '', detail: p.detail || '',
+    tone: Math.max(0, Math.min(1, Number(p.tone) || 0)), height,
    };
+   if(p.color) properties.color = p.color;
+   return { type: 'Feature', id: properties.id, properties,
+    geometry: { type: 'Polygon', coordinates: ring(p.lat, p.lng, radius) } };
   }),
  };
 }
 
-// Where the modelled homes actually are. Fitting every project in a big city lands the camera at
-// about zoom 11, where columns are hairlines - so 3D opens over the heaviest cluster instead, and
+// Where the points actually are. Fitting every record in a big city lands the camera at about
+// zoom 11, where columns are hairlines - so 3D opens over the heaviest cluster instead, and
 // Fit area is still there for the whole picture.
-function busiest(rows){
+function busiest(points){
  let best = null, bestWeight = -1;
- for(const anchor of rows){
+ for(const anchor of points){
   let weight = 0;
-  for(const other of rows){
+  for(const other of points){
    const dx = (other.lng - anchor.lng) * 88, dy = (other.lat - anchor.lat) * 111;   // km, near 37N
-   if(dx * dx + dy * dy <= 4) weight += Math.max(1, other.expected || 0);           // within 2 km
+   if(dx * dx + dy * dy <= 4) weight += Math.max(1, Number(other.value) || 0);      // within 2 km
   }
   if(weight > bestWeight){ bestWeight = weight; best = anchor; }
  }
  return best;
 }
 
-function bounds(rows, maplibregl){
- const points = rows.filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lng));
+function boundsOf(points, maplibregl){
  if(!points.length) return null;
  const box = new maplibregl.LngLatBounds();
  points.forEach(p => box.extend([p.lng, p.lat]));
@@ -111,18 +112,20 @@ function bounds(rows, maplibregl){
 }
 
 export const ThreeD = {
- async mount(container, { onSelect = () => {} } = {}){
+ /* container: the element the canvas goes in.
+    fullscreenTarget: the element the fullscreen button should blow up (the whole map card,
+    usually, so the year slider and legend come with it). */
+ async mount(container, { onSelect = () => {}, fullscreenTarget = null, center = [-122.19, 37.43], zoom = 12.4 } = {}){
   if(!webglAvailable()) throw Error('this browser has WebGL turned off');
   const maplibregl = await loadLibrary();
   const map = new maplibregl.Map({
-   container,
-   style: STYLE_URL,
-   center: [-122.19, 37.43],
-   zoom: 12.4, pitch: 62, bearing: -18,
+   container, style: STYLE_URL, center, zoom,
+   pitch: 62, bearing: -18, maxPitch: 80,
    attributionControl: { compact: true },
-   maxPitch: 80,
   });
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'bottom-right');
+  map.addControl(new maplibregl.FullscreenControl(
+   fullscreenTarget ? { container: fullscreenTarget } : {}), 'top-right');
   const popup = new maplibregl.Popup({ closeButton: true, maxWidth: '260px' });
 
   // Wait for the style to parse, not for the first frame: a browser that has the tab in the
@@ -144,19 +147,15 @@ export const ThreeD = {
    'fog-ground-blend': 0.6, 'sky-horizon-blend': 0.7, 'horizon-fog-blend': 0.5 });
 
   map.addSource(SOURCE, { type: 'geojson', data: columns([]) });
-  // Colour is the share of the project's reported homes the model delivers by this year.
-  const shade = ['interpolate', ['linear'], ['get', 'share'],
-   0, '#C8CDBC', 0.35, '#A3AC90', 0.65, '#67794A', 1, '#3E4F24'];
-  // A 40 m column is a fraction of a pixel when the whole county is on screen, so below the zoom
-  // where columns become legible the same projects are drawn as dots and hand over as you descend.
+  const paintColor = ['case', ['has', 'color'], ['get', 'color'], RAMP];
+  // A 40 m column is a fraction of a pixel when a whole county is on screen, so below the zoom
+  // where columns become legible the same points are drawn as dots, and hand over as you descend.
   map.addLayer({
    id: 'fx-dots', type: 'circle', source: SOURCE, maxzoom: 12.5,
    paint: {
-    'circle-color': shade,
-    'circle-opacity': 0.9,
-    'circle-stroke-width': 0.9,
-    'circle-stroke-color': '#ffffff',
-    'circle-radius': ['interpolate', ['linear'], ['get', 'homes'], 0, 3, 100, 7, 700, 16],
+    'circle-color': paintColor, 'circle-opacity': 0.9,
+    'circle-stroke-width': 0.9, 'circle-stroke-color': '#ffffff',
+    'circle-radius': ['interpolate', ['linear'], ['get', 'height'], 8, 3.5, 120, 8, 420, 15],
    },
   });
   map.addLayer({
@@ -165,24 +164,26 @@ export const ThreeD = {
     'fill-extrusion-height': ['get', 'height'],
     'fill-extrusion-base': 0,
     'fill-extrusion-opacity': 0.92,
-    'fill-extrusion-color': shade,
-    // The transition is what makes a column grow when the year slider moves.
+    'fill-extrusion-color': paintColor,
+    // The transition is what makes a column grow when the scenario year moves.
     'fill-extrusion-height-transition': { duration: 700, delay: 0 },
     'fill-extrusion-color-transition': { duration: 700, delay: 0 },
    },
   });
+  // Real buildings step back when the reader is looking at a whole city, so the columns stay
+  // readable; they come back in as the reader zooms into a neighbourhood.
+  if(map.getLayer('building-3d')) map.setPaintProperty('building-3d', 'fill-extrusion-opacity',
+   ['interpolate', ['linear'], ['zoom'], 14, 0.45, 16, 0.85]);
 
-  for(const layer of ['fx-columns', 'fx-dots']) map.on('click', layer, e => {
-   const f = e.features?.[0]; if(!f) return;
-   const p = f.properties;
-   onSelect(p.id);
-   popup.setLngLat(e.lngLat).setHTML(
-    '<div style="font:13px/1.4 system-ui,sans-serif"><b>' + p.addr + '</b><br>' + p.city +
-    '<br><b>' + Number(p.homes).toLocaleString() + '</b> of ' + Number(p.units).toLocaleString() +
-    ' reported homes modelled as delivered<br><span style="opacity:.7">Column height = modelled homes</span></div>'
-   ).addTo(map);
-  });
   for(const layer of ['fx-columns', 'fx-dots']){
+   map.on('click', layer, e => {
+    const p = e.features?.[0]?.properties; if(!p) return;
+    onSelect(p.id);
+    popup.setLngLat(e.lngLat).setHTML(
+     '<div style="font:13px/1.45 system-ui,sans-serif"><b>' + esc(p.label) + '</b>' +
+     (p.sub ? '<br>' + esc(p.sub) : '') +
+     (p.detail ? '<br>' + esc(p.detail) : '') + '</div>').addTo(map);
+   });
    map.on('mouseenter', layer, () => { map.getCanvas().style.cursor = 'pointer'; });
    map.on('mouseleave', layer, () => { map.getCanvas().style.cursor = ''; });
   }
@@ -190,32 +191,33 @@ export const ThreeD = {
   let current = [];
   return {
    map,
-   update(rows, state, { fit = false } = {}){
+   count(){ return current.length; },
+   update(points, { fit = false, focus = false } = {}){
     map.resize();   // the card changes height when the reader expands it or turns the phone
-    current = rows.filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lng));
+    current = placed(points);
     map.getSource(SOURCE)?.setData(columns(current));
-    // Real buildings step back when the reader is looking at a whole city, so the columns stay
-    // readable; they come back in as the reader zooms into a neighbourhood.
-    if(map.getLayer('building-3d')) map.setPaintProperty('building-3d', 'fill-extrusion-opacity',
-     ['interpolate', ['linear'], ['zoom'], 14, 0.45, 16, 0.85]);
-    if(fit) this.fit();
+    if(focus) this.focus(); else if(fit) this.fit();
     return current.length;
    },
    focus(){
     const anchor = busiest(current);
-    // 14.3 rather than 13.6: real OpenStreetMap buildings only extrude from zoom 14, and the
+    // 14.3 rather than 13: real OpenStreetMap buildings only extrude from zoom 14, and the
     // columns mean more standing among the blocks they would be built in.
     if(anchor) map.easeTo({ center: [anchor.lng, anchor.lat], zoom: 14.3, pitch: 62, duration: 1100 });
     else this.fit();
    },
    fit(){
-    const box = bounds(current, window.maplibregl);
+    const box = boundsOf(current, window.maplibregl);
     if(!box) return;
     // fitBounds drops the camera flat, and a flat 3D map is just a slower 2D map. Ask it where it
-    // would put the camera, then fly there keeping the tilt - and stop at a zoom where columns read.
+    // would put the camera, then fly there keeping the tilt.
     const camera = map.cameraForBounds(box, { padding: 70, maxZoom: 14.2, bearing: map.getBearing() });
     if(camera) map.easeTo({ ...camera, pitch: 62, duration: 900 });
     else map.easeTo({ center: box.getCenter(), zoom: 13, pitch: 62, duration: 900 });
+   },
+   flyTo(lat, lng){
+    if(Number.isFinite(lat) && Number.isFinite(lng))
+     map.easeTo({ center: [lng, lat], zoom: 15.4, pitch: 62, duration: 900 });
    },
    resize(){ map.resize(); },
    destroy(){ popup.remove(); map.remove(); },
