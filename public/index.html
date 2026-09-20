@@ -469,6 +469,19 @@
   .nav-identity b{font-family:'Open Sans',sans-serif; font-size:11.5px; color:#fff; font-weight:700;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .nav-identity span{font-family:'Open Sans',sans-serif; font-size:11px; color:#C8D2B8; line-height:1.4;}
+  .guest-signin{border:1px solid var(--rule); border-left:3px solid var(--ink); border-radius:2px;
+    padding:15px 16px; margin:14px 0 18px; background:#F7F9F2;}
+  .guest-signin h3{font-size:15px; color:var(--ink); margin:0 0 6px;}
+  .guest-signin p{font-size:12.5px; color:var(--text-soft); line-height:1.55; margin:0 0 10px;}
+  .guest-signin form{display:flex; flex-wrap:wrap; gap:8px; align-items:flex-end;}
+  .guest-signin label{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); width:100%;}
+  .guest-signin input{flex:1 1 190px; padding:9px 10px; border:1.5px solid var(--rule);
+    border-radius:2px; font-family:'Open Sans',sans-serif; font-size:13px;}
+  .guest-signin input:focus{outline:none; border-color:var(--ink);}
+  .guest-signin-note{font-size:11.5px; margin:10px 0 0;}
+  .community-count{font-family:'Open Sans',sans-serif; font-size:11.5px; color:var(--text-soft);
+    margin:10px 0 0;}
   .res-row-flat{cursor:default;}
   .res-row-flat:hover{background:none;}
   .rail-head{background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;}
@@ -1852,7 +1865,22 @@
         <div id="guestUnlock" class="guest-settings" hidden><h3>Unlock your guest profile</h3><form id="guestUnlockForm"><label>Guest password<input id="guestUnlockPassword" type="password" autocomplete="current-password" required></label><button class="btn" type="submit">Unlock</button></form><p id="guestUnlockStatus" role="status"></p></div>
         <button class="btn secondary" id="guestBack" type="button">Back to guest profile</button>
         <div id="accountPromptReason" style="display:none;"></div>
+        <!-- A guest needs no password. They are a user of the site like anyone else; the only
+             difference is where their saved items live and who picked their name. -->
+        <section class="guest-signin" id="guestSignInPanel">
+          <h3>Continue with just your name</h3>
+          <p>No password, no email. You are already signed in on this device as a guest — you can keep the name we gave you or choose your own.</p>
+          <form id="guestNameForm">
+            <label for="guestNameInput">Your name</label>
+            <input id="guestNameInput" type="text" autocomplete="nickname" minlength="3" maxlength="30" pattern="[a-zA-Z0-9_ ]+" required>
+            <button class="btn" type="submit">Continue as this name</button>
+          </form>
+          <div class="auth-hint">3–30 characters: letters, numbers, spaces or underscores.</div>
+          <p class="auth-error" id="guestNameStatus" role="status"></p>
+          <p class="guest-signin-note">What you star, plan and pin as a guest is kept in this browser, so it does not follow you to another device and it goes if you clear your browsing data. An account below carries it everywhere and can email you a briefing.</p>
+        </section>
         <p class="section-note">Create a free account to sync your guest profile’s saved projects, timeline and reminders across devices. Just a username and password; email is optional.</p>
+        <p class="community-count" id="communityCount" role="status"></p>
         <div class="auth-tabs">
           <button class="auth-tab active" id="authTabLogin" type="button">Log in</button>
           <button class="auth-tab" id="authTabSignup" type="button">Create account</button>
@@ -2107,6 +2135,8 @@
       </div>
 
       
+      <p class="community-count" id="communityCountAbout" role="status"></p>
+
       <p>This site collects what is being built across the Bay Area and when the meetings that decide it take place. All of it is public information already. It is spread across city and county websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
 
       <h4>Where the data comes from</h4>
@@ -9033,6 +9063,7 @@ function showScreen(name){
   // A bad name used to blank the page: every screen hid and none matched.
   if(!name || !SCREEN_IDS[name]) return;
   currentScreen = name;
+  if(name==='about'||name==='account')renderCommunityCount();
   Object.entries(SCREEN_IDS).forEach(([key,id])=>{
     const el = document.getElementById(id);
     if(el) el.style.display = (key===name) ? 'block' : 'none';
@@ -11400,6 +11431,23 @@ function renderAuthNavState(){
   if(link) link.textContent = isLoggedIn() ? authUsername : 'Your account';
 }
 
+/* The site counts everyone who uses it, so it can say how many that is. Three totals, nothing
+   about anybody. A server without a database, or an older one, simply says nothing. */
+let communityCountText='';
+async function renderCommunityCount(){
+  const targets=[...document.querySelectorAll('.community-count')];
+  if(!targets.length)return;
+  if(!communityCountText){
+    try{
+      const data=await (await fetch('/api/community')).json();
+      if(!data.ok||!data.users)return;
+      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'person uses':'people use')+' this dashboard \u2014 '
+        +data.registered.toLocaleString()+' with an account, '+data.guests.toLocaleString()+' as guests. Everyone who opens it counts, whether or not they sign up.';
+    }catch{ return; }
+  }
+  targets.forEach(el=>{el.textContent=communityCountText;});
+}
+
 async function renderAccountPage(){
   renderAuthNavState();
   const loggedOut = document.getElementById('accountLoggedOut');
@@ -11408,6 +11456,11 @@ async function renderAccountPage(){
   document.getElementById('guestUnlock').hidden=!!authToken||guestProfile.unlocked;
   if(!isLoggedIn()||guestAuthForm){
     loggedOut.style.display='block'; loggedIn.style.display='none';
+    // A locked guest profile needs its password before the name field means anything.
+    const locked=!authToken&&!guestProfile.unlocked;
+    document.getElementById('guestSignInPanel').hidden=Boolean(authToken)||locked;
+    document.getElementById('guestNameInput').value=guestProfile.data.username||'';
+    renderCommunityCount();
     if(reasonEl){
       if(window.pendingLoginReason){ reasonEl.textContent = window.pendingLoginReason; reasonEl.style.display='block'; window.pendingLoginReason = null; }
       else { reasonEl.style.display='none'; }
@@ -11479,6 +11532,23 @@ document.getElementById('guestProfileForm').addEventListener('submit',async e=>{
 });
 document.getElementById('guestUnlockForm').addEventListener('submit',async e=>{e.preventDefault();try{await guestProfile.unlock(document.getElementById('guestUnlockPassword').value);document.getElementById('guestUnlockPassword').value='';guestAuthForm=false;await renderAccountPage();}catch(err){document.getElementById('guestUnlockStatus').textContent=err.message;}});
 document.getElementById('guestLock').addEventListener('click',()=>{guestProfile.lock();resetAccountMemory();starredMap.clear();renderAccountPage();});
+// Signing in as a guest is just choosing the name you are already known by on this device, so it
+// saves the name, tells the server this reader exists, and drops straight into the profile.
+document.getElementById('guestNameForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const input=document.getElementById('guestNameInput'),status=document.getElementById('guestNameStatus');
+  const name=input.value.trim();
+  try{
+    if(name!==guestProfile.data.username)await guestProfile.update(name);
+    authUsername=guestProfile.data.username;
+    for(const id of ['onboardUsername','guestUsername']){const field=document.getElementById(id);if(field)field.value=authUsername;}
+    status.textContent='';
+    guestAuthForm=false;
+    await syncGuestProfile();
+    await renderAccountPage();
+    renderNavIdentity();
+  }catch(err){status.textContent=err.message;}
+});
 document.getElementById('guestBack').addEventListener('click',()=>{guestAuthForm=false;renderAccountPage();});
 for(const [id,tab] of [['guestCreateAccount','authTabSignup'],['guestSignIn','authTabLogin']])document.getElementById(id).addEventListener('click',()=>{guestAuthForm=true;renderAccountPage();document.getElementById(tab).click();});
 // Auth tab switching
