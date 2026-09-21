@@ -504,12 +504,9 @@
   .nl-issue-btn[aria-current="true"] b, .nl-issue-btn[aria-current="true"] span{color:#fff;}
   .nl-method{font-size:10.5px; color:var(--text-soft); line-height:1.55; margin-top:14px;}
   /* A paper tone rather than white, so an issue reads as a printed sheet on the page. */
-  /* The tint sits behind the whole screen instead of a negatively margined wrap, which pushed the
-     page 14px wider than the phone. */
-  #screenNewsletter{background:#F2F3ED;}
   .nl-shell{padding:26px 0 40px;}
-  .nl-issue{background:#FBFBF7; border:1px solid var(--rule); padding:30px 34px 34px; min-width:0;
-    box-shadow:0 1px 3px #2e3b1c12;}
+  /* The sheet itself is a light grey; the page around it stays as it was. */
+  .nl-issue{background:#F0F1EC; border:1px solid var(--rule); padding:30px 34px 34px; min-width:0;}
   .nl-mast-date{font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:.06em;
     text-transform:uppercase; color:var(--text-soft); margin-top:4px;}
   .nl-toc{display:flex; flex-wrap:wrap; gap:7px; align-items:center; margin-top:13px;}
@@ -1613,7 +1610,7 @@
   <div class="nav-menu" id="navMenu" role="menu" hidden>
     <button class="page-nav-tab active" data-page="dashboard" role="menuitem">Dashboard</button>
     <button class="page-nav-tab" data-page="timeline" role="menuitem">Timeline</button>
-    <button class="page-nav-tab" data-page="archive" role="menuitem">Newsletter archive</button>
+    <button class="page-nav-tab" data-page="archive" role="menuitem">Newsletter Archive</button>
     <button class="page-nav-tab" data-page="bank" role="menuitem">Resource Bank</button>
     <button class="page-nav-tab" data-page="account" role="menuitem">Your Account</button>
     <button class="page-nav-tab" data-page="about" role="menuitem">About</button>
@@ -1718,7 +1715,7 @@
     <div class="arc-head">
       <div>
         <div class="arc-kicker">Every issue, oldest to newest</div>
-        <h2 id="arcTitle">Newsletter archive</h2>
+        <h2 id="arcTitle">Newsletter Archive</h2>
         <p>Each issue covers the period since the one before it. Open one to read it, or have it sent to your inbox.</p>
       </div>
       <div class="arc-signup">
