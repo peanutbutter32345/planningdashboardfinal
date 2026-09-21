@@ -548,6 +548,59 @@
   .nl-sources ol{margin:0; padding-left:18px; columns:2; column-gap:26px;}
   .nl-sources li{font-size:11px; color:var(--text-soft); line-height:1.5; margin-bottom:5px; break-inside:avoid;}
   .nl-loading{font-size:13px; color:var(--text-soft);}
+  .nl-hero{margin:0 0 18px;}
+  .nl-hero img{width:100%; height:230px; object-fit:cover; display:block; border-radius:2px;}
+  .nl-hero figcaption, .nl-chart figcaption{font-family:'Open Sans',sans-serif; font-size:11px;
+    color:var(--text-soft); margin-top:6px; line-height:1.5;}
+  .nl-credit{display:block; font-size:10px; color:var(--text-soft); margin-top:2px;}
+  .nl-lead{border:1px solid var(--rule); border-left:4px solid var(--ink); padding:16px 18px; margin:18px 0 6px;
+    background:#F9FBF5;}
+  .nl-lead-tag{font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--text-soft); margin-bottom:7px;}
+  .nl-lead img{width:100%; max-height:240px; object-fit:cover; display:block; margin-bottom:11px; border-radius:2px;}
+  .nl-lead h4{font-family:Georgia,'Times New Roman',serif; font-size:23px; line-height:1.25; color:var(--ink);
+    margin-bottom:5px; text-transform:none; letter-spacing:0;}
+  .nl-lead h4 a{color:inherit;}
+  .nl-lead p{font-size:13.5px; line-height:1.65; margin-top:8px;}
+  .nl-verified{font-family:'Roboto Mono',monospace; font-size:10px; color:var(--text-soft); margin-top:6px;}
+  .nl-items li.nl-item-img{display:grid; grid-template-columns:104px minmax(0,1fr); gap:11px; align-items:start;}
+  .nl-items li.nl-item-img img{width:104px; height:70px; object-fit:cover; border-radius:2px;}
+  .nl-chart{margin:14px 0 4px;}
+  .nl-chart svg{width:100%; height:auto; display:block;}
+  .nl-axis{font-family:'Roboto Mono',monospace; font-size:9px; fill:#7A7F72;}
+  .nl-bars{display:grid; gap:5px;}
+  .nl-bar-row{display:grid; grid-template-columns:120px minmax(0,1fr) 34px; gap:9px; align-items:center;
+    font-family:'Open Sans',sans-serif; font-size:11px; color:var(--text);}
+  .nl-bar-track{background:#EEF1E7; height:11px; border-radius:1px; overflow:hidden;}
+  .nl-bar-track i{display:block; height:100%; background:var(--ink);}
+  .nl-bar-n{font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--text-soft); text-align:right;}
+  .nl-jump{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 10px;}
+  .nl-jump a{display:inline-flex; align-items:center; gap:5px; border:1px solid var(--rule); border-radius:2px;
+    padding:5px 9px; font-family:'Open Sans',sans-serif; font-size:11px; color:var(--ink); text-decoration:none;}
+  .nl-jump a:hover{background:var(--ink); color:#fff;}
+  .nl-jump i{font-family:'Roboto Mono',monospace; font-size:9.5px; font-style:normal; color:var(--text-soft);}
+  .nl-jump a:hover i{color:#D7E0C6;}
+  .nl-county{border-top:1px solid var(--rule); padding:10px 0;}
+  .nl-county summary{cursor:pointer; display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+    font-family:'Open Sans',sans-serif; font-size:13px; color:var(--ink);}
+  .nl-county summary span{font-size:10.5px; color:var(--text-soft);}
+  .nl-county.quiet summary b{color:var(--text-soft); font-weight:600;}
+  .nl-county-body{padding-top:8px;}
+  .nl-watch{list-style:none; margin:6px 0 0; padding:0; display:grid; gap:9px; counter-reset:watch;}
+  .nl-watch li{display:grid; grid-template-columns:150px minmax(0,1fr); gap:12px; border-left:2px solid var(--ink);
+    padding:4px 0 4px 12px;}
+  .nl-watch b{font-family:'Roboto Mono',monospace; font-size:11px; color:var(--ink); letter-spacing:.02em;}
+  .nl-watch span{font-size:12.5px; color:var(--text); line-height:1.6;}
+  .nl-sub{color:var(--text-soft); font-size:11px;}
+  .nl-sources h4{font-family:'Open Sans',sans-serif; font-size:11px; font-weight:800; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--ink); margin-bottom:9px;}
+  @media (max-width:700px){
+    .nl-watch li{grid-template-columns:1fr; gap:2px;}
+    .nl-items li.nl-item-img{grid-template-columns:76px minmax(0,1fr);}
+    .nl-items li.nl-item-img img{width:76px; height:56px;}
+    .nl-hero img{height:170px;}
+    .nl-bar-row{grid-template-columns:92px minmax(0,1fr) 28px; font-size:10px;}
+  }
   @media (max-width:900px){
     .nl-layout{grid-template-columns:1fr;}
     .nl-archive{position:static;}
@@ -1580,13 +1633,13 @@
     <div class="nl-masthead">
       <div class="nl-mast-kicker">Published monthly &middot; Nine Bay Area counties</div>
       <h2 id="nlTitle">The Bay Civic Dashboard Newsletter</h2>
-      <p>Each issue is written from the record as it stood at the end of its month. An issue from last November contains what had been published by last November and nothing that came later, so the back issues read the way the Bay Area actually looked at the time.</p>
+
     </div>
     <div class="nl-layout">
       <aside class="nl-archive" aria-label="All issues">
         <div class="nl-archive-head">All issues</div>
         <div id="nlIssueList"></div>
-        <p class="nl-method" id="nlMethod"></p>
+
       </aside>
       <article class="nl-issue" id="nlIssue" aria-live="polite">
         <p class="nl-loading">Loading the archive&hellip;</p>
@@ -6441,7 +6494,6 @@ async function renderNewsletter(){
   const data=await loadNewsletter();
   if(!data)return;
   const list=document.getElementById('nlIssueList');
-  document.getElementById('nlMethod').textContent=data.method;
   if(!newsletterIssue)newsletterIssue=data.issues[0]?.id;
   list.innerHTML=data.issues.map(issue=>
     '<button type="button" class="nl-issue-btn" data-issue="'+issue.id+'" aria-current="'+(issue.id===newsletterIssue)+'">'
@@ -6453,49 +6505,117 @@ async function renderNewsletter(){
   });
   document.getElementById('nlIssue').innerHTML=newsletterIssueHtml(data.issues.find(i=>i.id===newsletterIssue)||data.issues[0]);
 }
-function newsletterItemsHtml(items){
+function nlDate(item){ return item.monthOnly?item.date.slice(0,7).replace(/(\d{4})-(\d{2})/,(m,y,mo)=>['January','February','March','April','May','June','July','August','September','October','November','December'][Number(mo)-1]+' '+y):fmtDate(item.date); }
+function newsletterItemsHtml(items,withImages){
   if(!items||!items.length)return '';
   return '<ul class="nl-items">'+items.map(item=>
-    '<li><div class="nl-item-head">'+(item.url?'<a href="'+escapeHtml(item.url)+'" target="_blank" rel="noopener">'+escapeHtml(item.title)+' &#8599;</a>':escapeHtml(item.title))+'</div>'
-    +'<div class="nl-item-meta">'+[item.city,fmtDate(item.date),item.source].filter(Boolean).map(escapeHtml).join(' &middot; ')+'</div>'
-    +(item.snippet?'<p>'+escapeHtml(item.snippet)+'</p>':'')+'</li>').join('')+'</ul>';
+    '<li'+(withImages&&item.image?' class="nl-item-img"':'')+'>'
+    +(withImages&&item.image?'<img src="'+escapeHtml(item.image)+'" alt="" loading="lazy" onerror="this.closest(\'li\').classList.remove(\'nl-item-img\');this.remove();">':'')
+    +'<div><div class="nl-item-head">'+(item.url?'<a href="'+escapeHtml(item.url)+'" target="_blank" rel="noopener">'+escapeHtml(item.title)+' &#8599;</a>':escapeHtml(item.title))+'</div>'
+    +'<div class="nl-item-meta">'+[item.city,nlDate(item),item.source].filter(Boolean).map(escapeHtml).join(' &middot; ')+'</div>'
+    +(item.snippet?'<p>'+escapeHtml(item.snippet)+'</p>':'')
+    +(item.verified?'<p class="nl-verified">Checked: '+escapeHtml(item.verified)+'</p>':'')
+    +'</div></li>').join('')+'</ul>';
 }
-function newsletterSectionHtml(section){
+function newsletterStatsHtml(stats){
+  if(!stats||!stats.length)return '';
+  return '<div class="nl-numbers">'+stats.map(stat=>
+    '<div class="nl-number"><b>'+escapeHtml(stat.value)+'</b><span>'+escapeHtml(stat.label)+'</span><i>'+escapeHtml(stat.vintage)+'</i></div>').join('')+'</div>';
+}
+// Two small charts drawn straight from the issue's own numbers: the market years it was allowed to
+// know, and where the month's record actually came from.
+function newsletterMarketChart(series){
+  if(!series||series.length<2)return '';
+  const w=560,h=150,pad={l:52,r:12,t:12,b:24};
+  const values=series.map(p=>p.value),min=Math.min(...values)*0.97,max=Math.max(...values)*1.03;
+  const x=i=>pad.l+(i/(series.length-1))*(w-pad.l-pad.r);
+  const y=v=>pad.t+(1-(v-min)/(max-min))*(h-pad.t-pad.b);
+  const line=series.map((p,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(p.value).toFixed(1)).join(' ');
+  const area=line+' L'+x(series.length-1).toFixed(1)+' '+(h-pad.b)+' L'+pad.l+' '+(h-pad.b)+' Z';
+  const money=v=>'$'+(v/1e6).toFixed(2)+'M';
+  return '<figure class="nl-chart"><svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Median typical home value by year: '
+    +series.map(p=>p.year+' '+money(p.value)).join(', ')+'">'
+    +'<path d="'+area+'" fill="#3E4F24" opacity=".08"></path>'
+    +'<path d="'+line+'" fill="none" stroke="#3E4F24" stroke-width="2"></path>'
+    +series.map((p,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(p.value).toFixed(1)+'" r="3" fill="#3E4F24"><title>'+p.year+': '+money(p.value)+'</title></circle>').join('')
+    +'<text x="4" y="'+(pad.t+8)+'" class="nl-axis">'+money(max)+'</text>'
+    +'<text x="4" y="'+(h-pad.b)+'" class="nl-axis">'+money(min)+'</text>'
+    +series.map((p,i)=>'<text x="'+x(i).toFixed(1)+'" y="'+(h-6)+'" class="nl-axis" text-anchor="middle">'+p.year+'</text>').join('')
+    +'</svg><figcaption>Median typical home value across the tracked cities, by Zillow index year available to this issue.</figcaption></figure>';
+}
+function newsletterCountyChart(bars){
+  const rows=(bars||[]).filter(b=>b.items||b.homes);
+  if(!rows.length)return '';
+  const max=Math.max(...rows.map(b=>b.items))||1;
+  return '<figure class="nl-chart"><div class="nl-bars">'+rows.map(b=>
+    '<div class="nl-bar-row"><span>'+escapeHtml(b.county)+'</span>'
+    +'<span class="nl-bar-track"><i style="width:'+Math.max(2,(b.items/max)*100).toFixed(1)+'%"></i></span>'
+    +'<span class="nl-bar-n">'+b.items+'</span></div>').join('')
+    +'</div><figcaption>Published items this issue, by county. Coverage is not activity: it reflects which newsrooms and city pages filed.</figcaption></figure>';
+}
+function newsletterSectionHtml(section,issue){
   const title=section.title||(section.county+' County');
   const paragraphs=(section.paragraphs||[]).map(p=>'<p>'+escapeHtml(p)+'</p>').join('');
+  if(section.kind==='county'){
+    return '<details class="nl-county'+(section.quiet?' quiet':'')+'" id="nl-county-'+escapeHtml(section.county.replace(/\s+/g,'-'))+'"'+(section.quiet?'':' open')+'>'
+      +'<summary><b>'+escapeHtml(section.county)+' County</b><span>'+(section.items.length?section.items.length+' item'+(section.items.length===1?'':'s'):'nothing published')+'</span></summary>'
+      +'<div class="nl-county-body">'+paragraphs+newsletterItemsHtml(section.items,true)+'</div></details>';
+  }
   let body='';
   if(section.kind==='spotlight'){
     body='<div class="nl-spotlights">'+section.spotlights.map(spot=>
-      '<div class="nl-spot"><h5>'+escapeHtml(spot.city)+'</h5><div class="nl-spot-county">'+escapeHtml(spot.county)+' County &middot; '
+      '<div class="nl-spot">'+(spot.photo?'<img src="'+escapeHtml(spot.photo.url)+'" alt="'+escapeHtml(spot.photo.caption||spot.city)+'" loading="lazy">':'')
+      +'<div class="nl-spot-body"><h5>'+escapeHtml(spot.city)+'</h5><div class="nl-spot-county">'+escapeHtml(spot.county)+' County &middot; '
       +spot.mentions+' item'+(spot.mentions===1?'':'s')+' in the year</div>'
       +(spot.facts.length?'<ul>'+spot.facts.map(f=>'<li>'+escapeHtml(f)+'</li>').join('')+'</ul>':'')
       +(spot.pipeline.length?'<ul>'+spot.pipeline.map(p=>'<li>'+escapeHtml(p.title)+' &mdash; '+p.units.toLocaleString()+' homes, '+escapeHtml(p.status)+'</li>').join('')+'</ul>':'')
-      +(spot.latest?'<p style="font-size:12px;margin-top:8px;color:var(--text-soft);line-height:1.5;">Latest: <a href="'+escapeHtml(spot.latest.url)+'" target="_blank" rel="noopener">'+escapeHtml(spot.latest.title)+'</a> ('+escapeHtml(spot.latest.source)+', '+fmtDate(spot.latest.date)+')</p>':'')
-      +'</div>').join('')+'</div>';
-  }else if(section.kind==='housing'&&section.records){
-    body='<table class="nl-table"><thead><tr><th>Development</th><th>Where</th><th>Homes</th><th>Reported status</th></tr></thead><tbody>'
-      +section.records.map(r=>'<tr><td><b>'+(r.url?'<a href="'+escapeHtml(r.url)+'" target="_blank" rel="noopener">'+escapeHtml(r.title)+'</a>':escapeHtml(r.title))+'</b></td>'
-      +'<td>'+escapeHtml(r.city)+'<br><span style="color:var(--text-soft);font-size:11px;">'+escapeHtml(r.county)+' County</span></td>'
-      +'<td><b>'+r.units.toLocaleString()+'</b>'+(r.bmr?'<br><span style="color:var(--text-soft);font-size:11px;">'+r.bmr.toLocaleString()+' affordable</span>':'')+'</td>'
-      +'<td>'+escapeHtml(r.status||'')+'<br><span style="color:var(--text-soft);font-size:11px;">'+fmtDate(r.date)+'</span></td></tr>').join('')
-      +'</tbody></table>';
-  }else body=newsletterItemsHtml(section.items);
-  return '<section class="nl-section'+(section.quiet?' quiet':'')+'"><h4>'+escapeHtml(title)+'</h4>'+paragraphs+body+'</section>';
+      +(spot.latest?'<p class="nl-spot-latest">Latest: <a href="'+escapeHtml(spot.latest.url)+'" target="_blank" rel="noopener">'+escapeHtml(spot.latest.title)+'</a> ('+escapeHtml(spot.latest.source)+', '+fmtDate(spot.latest.date)+')</p>':'')
+      +(spot.photo?'<p class="nl-credit">Photo: '+escapeHtml(spot.photo.by)+' &middot; '+escapeHtml(spot.photo.licence)+'</p>':'')
+      +'</div></div>').join('')+'</div>';
+  }else if(section.kind==='watch'){
+    body='<ol class="nl-watch">'+(section.watch||[]).map(w=>
+      '<li><b>'+escapeHtml(w.when)+'</b><span>'+escapeHtml(w.what)+'</span></li>').join('')+'</ol>'
+      +((section.notYet||[]).length?'<div class="nl-blind"><h4>Not published yet, so not in this issue</h4><ul>'
+        +section.notYet.map(b=>'<li>'+escapeHtml(b)+'</li>').join('')+'</ul></div>':'');
+  }else if(section.kind==='housing'){
+    body=newsletterStatsHtml(section.stats)+newsletterMarketChart(issue.charts&&issue.charts.market)
+      +(section.records&&section.records.length?'<table class="nl-table"><thead><tr><th>Development</th><th>Where</th><th>Homes</th><th>Reported status</th></tr></thead><tbody>'
+        +section.records.map(r=>'<tr><td><b>'+(r.url?'<a href="'+escapeHtml(r.url)+'" target="_blank" rel="noopener">'+escapeHtml(r.title)+'</a>':escapeHtml(r.title))+'</b></td>'
+        +'<td>'+escapeHtml(r.city)+'<br><span class="nl-sub">'+escapeHtml(r.county)+' County</span></td>'
+        +'<td><b>'+r.units.toLocaleString()+'</b>'+(r.bmr?'<br><span class="nl-sub">'+r.bmr.toLocaleString()+' affordable</span>':'')+'</td>'
+        +'<td>'+escapeHtml(r.status||'')+'<br><span class="nl-sub">'+fmtDate(r.date)+'</span></td></tr>').join('')+'</tbody></table>':'')
+      +newsletterItemsHtml(section.items,true);
+  }else if(section.kind==='transport'){
+    body=newsletterStatsHtml(section.stats)+newsletterItemsHtml(section.items,true);
+  }else body=newsletterItemsHtml(section.items,section.kind==='brief');
+  return '<section class="nl-section nl-'+section.kind+'"><h4>'+escapeHtml(title)+'</h4>'+paragraphs+body+'</section>';
 }
 function newsletterIssueHtml(issue){
   if(!issue)return '';
+  const counties=issue.sections.filter(s=>s.kind==='county');
+  const ordered=[...issue.sections.filter(s=>['brief','threads','housing','transport'].includes(s.kind))];
+  const rest=issue.sections.filter(s=>['spotlight','boards','watch'].includes(s.kind));
   return '<div class="nl-issue-head"><div class="nl-dateline">Issue '+issue.number+' &middot; '+escapeHtml(issue.dateline)+'</div>'
     +'<h3>'+escapeHtml(issue.month)+'</h3>'
-    +'<div class="nl-dateline">'+issue.counts.news+' published reports &middot; '+issue.counts.projects+' city records'
+    +'<div class="nl-dateline">'+issue.counts.news+' published reports &middot; '+issue.counts.regional+' regional decisions &middot; '+issue.counts.projects+' city records'
     +(issue.counts.aprReleased?' &middot; '+issue.counts.aprReleased.toLocaleString()+' state records released':'')+'</div></div>'
+    +(issue.hero?'<figure class="nl-hero"><img src="'+escapeHtml(issue.hero.url)+'" alt="'+escapeHtml(issue.hero.caption||issue.hero.city)+'" loading="lazy">'
+      +'<figcaption>'+escapeHtml(issue.hero.city)+' &mdash; '+escapeHtml(issue.hero.caption||'')+'<span class="nl-credit">Photo: '+escapeHtml(issue.hero.by||'')+' &middot; '+escapeHtml(issue.hero.licence||'')+'</span></figcaption></figure>':'')
     +'<div class="nl-lede">'+issue.lede.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</div>'
-    +issue.sections.map(newsletterSectionHtml).join('')
-    +(issue.stats.length?'<section class="nl-section"><h4>By the numbers</h4><div class="nl-numbers">'
-      +issue.stats.map(stat=>'<div class="nl-number"><b>'+escapeHtml(stat.value)+'</b><span>'+escapeHtml(stat.label)+'</span><i>'+escapeHtml(stat.vintage)+'</i></div>').join('')
-      +'</div></section>':'')
-    +(issue.blind.length?'<section class="nl-blind"><h4>What this issue could not know</h4><ul>'
-      +issue.blind.map(b=>'<li>'+escapeHtml(b)+'</li>').join('')+'</ul></section>':'')
-    +(issue.sources.length?'<section class="nl-sources"><h4 style="font-family:\'Open Sans\',sans-serif;font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);margin-bottom:9px;">Sources in this issue</h4><ol>'
+    +(issue.lead?'<section class="nl-lead"><div class="nl-lead-tag">The lead</div>'
+      +(issue.lead.image?'<img src="'+escapeHtml(issue.lead.image)+'" alt="" loading="lazy" onerror="this.remove()">':'')
+      +'<h4>'+(issue.lead.url?'<a href="'+escapeHtml(issue.lead.url)+'" target="_blank" rel="noopener">'+escapeHtml(issue.lead.title)+' &#8599;</a>':escapeHtml(issue.lead.title))+'</h4>'
+      +'<div class="nl-item-meta">'+escapeHtml(issue.lead.source)+' &middot; '+nlDate(issue.lead)+(issue.lead.city?' &middot; '+escapeHtml(issue.lead.city):'')+'</div>'
+      +(issue.lead.summary?'<p>'+escapeHtml(issue.lead.summary)+'</p>':'')
+      +(issue.lead.verified?'<p class="nl-verified">Checked: '+escapeHtml(issue.lead.verified)+'</p>':'')+'</section>':'')
+    +ordered.map(s=>newsletterSectionHtml(s,issue)).join('')
+    +(counties.length?'<section class="nl-section"><h4>County by county</h4>'
+      +'<nav class="nl-jump" aria-label="Jump to a county">'+counties.map(cty=>
+        '<a href="#nl-county-'+escapeHtml(cty.county.replace(/\s+/g,'-'))+'">'+escapeHtml(cty.county)+'<i>'+(cty.items.length||0)+'</i></a>').join('')+'</nav>'
+      +newsletterCountyChart(issue.charts&&issue.charts.counties)
+      +counties.map(s=>newsletterSectionHtml(s,issue)).join('')+'</section>':'')
+    +rest.map(s=>newsletterSectionHtml(s,issue)).join('')
+    +(issue.sources.length?'<section class="nl-sources"><h4>Sources in this issue</h4><ol>'
       +issue.sources.map(src=>'<li><a href="'+escapeHtml(src.url)+'" target="_blank" rel="noopener">'+escapeHtml(src.label||src.url)+'</a>'+(src.date?' &middot; '+fmtDate(src.date):'')+'</li>').join('')
       +'</ol></section>':'');
 }

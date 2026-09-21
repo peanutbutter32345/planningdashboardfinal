@@ -179,9 +179,20 @@ domain in Resend and set this.
 
 ### The newsletter
 
-`node scripts/build-newsletter.mjs` writes `public/data/newsletter.json`: one issue a month, newest
-first, read from the Newsletter tab. Re-run it after refreshing news, housing records or market
-data.
+`node scripts/build-newsletter.mjs` writes `public/data/newsletter.json`: eighteen issues, one a
+month from April 2025, newest first, read from the Newsletter tab. Re-run it after refreshing news,
+housing records or market data.
+
+Each issue is an article: a photograph, a lead story, the month in brief, housing and development
+with its statistics and a chart of the market years that issue was allowed to know, transportation,
+county by county, cities in focus, who decides, and what to watch next. Datelines fall between the
+23rd and the 30th - drawn from the month's own characters, so rebuilding never moves a published
+issue - and an issue covers the ground since the previous dateline rather than the calendar month,
+so nothing falls down the gap.
+
+`data/newsletter-research.json` carries events researched outside this site's datasets - state laws,
+regional funding, the decisions cities then work inside - each with the date it was published and
+the source it was checked against.
 
 Each issue is fixed at the end of its month and may contain only what had been **published** by
 then - not everything that had happened by then. Every source carries its own availability date:
