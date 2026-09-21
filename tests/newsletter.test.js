@@ -96,7 +96,8 @@ test('state and federal releases only appear once they had been published', () =
 
 test('every issue is a full article: lead, the four topic sections, nine counties and sources', () => {
   for (const issue of issues) {
-    assert.ok(issue.lede.length >= 2, `${issue.id} has a thin lede`);
+    const ledeWords = issue.lede.filter(b => b.kind === 'para').map(b => b.spans.map(sp => sp.v).join('')).join(' ').split(/\s+/).length;
+    assert.ok(ledeWords >= 45, `${issue.id} has a thin lede of ${ledeWords} words`);
     assert.ok(issue.hero && issue.hero.url.startsWith('/img/cities/'), `${issue.id} has no hero photograph`);
     assert.ok(issue.lead && issue.lead.title, `${issue.id} has no lead story`);
     const kinds = issue.sections.map(s => s.kind);
@@ -128,6 +129,8 @@ test('issues are written as prose, with links inside sentences rather than a lis
   for (const issue of issues) {
     const paragraphs = [...issue.lede, ...issue.sections.flatMap(s => s.blocks || [])].filter(b => b.kind === 'para');
     assert.ok(paragraphs.length >= 12, `${issue.id} has only ${paragraphs.length} paragraphs`);
+    const sizes = paragraphs.map(b => b.spans.map(sp => sp.v).join('').split(/\s+/).length).sort((a, b) => a - b);
+    assert.ok(sizes[Math.floor(sizes.length / 2)] >= 45, `${issue.id} has a median paragraph of ${sizes[Math.floor(sizes.length / 2)]} words`);
     const words = paragraphs.map(b => b.spans.map(s => s.v).join('')).join(' ').split(/\s+/).length;
     assert.ok(words >= 700, `${issue.id} runs to only ${words} words`);
     for (const block of paragraphs) {
