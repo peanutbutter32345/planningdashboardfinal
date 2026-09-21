@@ -1,6 +1,7 @@
 import express from 'express';
 import compression from 'compression';
 import { fileURLToPath } from 'node:url';
+import { readFileSync } from 'node:fs';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
 import bcrypt from 'bcryptjs';
@@ -906,6 +907,54 @@ app.post('/api/ask', async (req, res) => {
       return res.status(503).json({error:'The assistant is not set up correctly on this server (the API key was rejected).'});
     }
     res.status(status >= 400 && status < 600 ? status : 500).json({error:error?.message || 'Unable to answer the question.'});
+  }
+});
+
+// ---------------- NEWSLETTER ----------------
+// Sends one issue of the newsletter to the address on the reader's own account. The issue itself
+// is the file the site already serves, rendered down to headings, paragraphs and links.
+let newsletterFile = null;
+function newsletterIssues() {
+  if (!newsletterFile) newsletterFile = JSON.parse(readFileSync(fileURLToPath(new URL('./public/data/newsletter.json', import.meta.url)), 'utf8'));
+  return newsletterFile.issues;
+}
+function issueEmailHtml(issue) {
+  const esc = v => String(v ?? '').replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  const spans = list => (list || []).map(sp => sp.t === 'link' && sp.url
+    ? `<a href="${esc(sp.url)}" style="color:#3E4F24">${esc(sp.v)}</a>` : esc(sp.v)).join('');
+  const blocks = list => (list || []).map(b => b.kind === 'para'
+    ? `<p style="font:15px/1.65 Georgia,serif;color:#2b2b2b;margin:0 0 14px">${spans(b.spans)}</p>`
+    : b.kind === 'image' ? `<img src="${esc(b.url)}" alt="" width="560" style="width:100%;max-width:560px;border-radius:2px;margin:0 0 14px">` : '').join('');
+  const body = issue.sections.map(section => {
+    const title = section.title || `${section.county} County`;
+    const inner = blocks(section.blocks)
+      + (section.watch || []).map(w => `<p style="font:14px/1.6 Georgia,serif;margin:0 0 10px"><b>${esc(w.when)}</b><br>${esc(w.what)}</p>`).join('');
+    return inner ? `<h2 style="font:700 13px/1.4 'Helvetica Neue',Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#3E4F24;margin:26px 0 10px">${esc(title)}</h2>${inner}` : '';
+  }).join('');
+  return `<div style="max-width:600px;margin:0 auto;padding:22px">
+    <div style="border-bottom:3px double #3E4F24;padding-bottom:12px;margin-bottom:18px">
+      <div style="font:700 10px/1.4 'Helvetica Neue',Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7A7F72">The Bay Civic Dashboard Newsletter</div>
+      <h1 style="font:400 30px/1.15 Georgia,serif;color:#3E4F24;margin:6px 0 4px">${esc(issue.month)}</h1>
+      <div style="font:11px/1.4 'Helvetica Neue',Arial,sans-serif;color:#7A7F72">Issue ${issue.number} &middot; ${esc(issue.dateline)}</div>
+    </div>
+    ${issue.hero ? `<img src="${SITE_URL}${esc(issue.hero.url)}" alt="" width="560" style="width:100%;max-width:560px;border-radius:2px;margin-bottom:16px">` : ''}
+    ${blocks(issue.lede)}${body}
+    <p style="font:11px/1.5 'Helvetica Neue',Arial,sans-serif;color:#7A7F72;border-top:1px solid #dce2d3;padding-top:12px;margin-top:26px">
+      Every issue and its sources: <a href="${SITE_URL}/" style="color:#3E4F24">${esc(SITE_URL)}</a>
+    </p></div>`;
+}
+app.post('/api/newsletter/email', authMiddleware, async (req, res) => {
+  const issue = newsletterIssues().find(i => i.id === (req.body || {}).issue);
+  if (!issue) return res.status(404).json({ error: 'That issue is not in the archive.' });
+  try {
+    const row = await pool.query('SELECT email FROM users WHERE username = $1', [req.username]);
+    const to = row.rows[0]?.email;
+    if (!to) return res.status(400).json({ error: 'Add an email address on your account page first, then try again.' });
+    await sendEmail(to, `The Bay Civic Dashboard: ${issue.month}`, issueEmailHtml(issue));
+    res.json({ ok: true, to });
+  } catch (err) {
+    console.error('Newsletter send failed:', err.message);
+    res.status(502).json({ error: 'The email could not be sent from this server.' });
   }
 });
 

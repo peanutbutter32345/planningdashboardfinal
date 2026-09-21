@@ -269,7 +269,9 @@ function issueFor(monthId, number, previousIssueDate) {
 
   const lede = blocksOf(
     para(
-      t(`${opens(totalPublic, 'item', 'items')} reached the public record across the nine counties in ${monthName(monthId)}`),
+      // The opening word carries a drop cap on the page, so the sentence starts on the month
+      // instead of a two-digit number the browser would split in half.
+      t(`${monthName(monthId)} brought ${plural(totalPublic, 'item', 'items')} onto the public record across the nine counties`),
       housingCount ? t(`, ${housingCount} of them about housing or development`) : null,
       aprNew.length ? t(`, along with ${aprNew.length.toLocaleString('en-US')} records released with the state annual reports`) : null,
       t('. '),
@@ -539,8 +541,11 @@ for (let [y, m] = START.split('-').map(Number); `${y}-${String(m).padStart(2, '0
   months.push(`${y}-${String(m).padStart(2, '0')}`);
   if (++m > 12) { m = 1; y++; }
 }
+const today = new Date().toISOString().slice(0, 10);
 let previous = null;
 const issues = months.map((id, i) => { const issue = issueFor(id, i + 1, previous); previous = issue.date; return issue; })
+  // An issue whose dateline has not arrived has not been sent, so it is not in the archive.
+  .filter(issue => issue.date <= today)
   .reverse();   // newest first
 writeFileSync(new URL('public/data/newsletter.json', ROOT), JSON.stringify({
   generated: new Date().toISOString(),
