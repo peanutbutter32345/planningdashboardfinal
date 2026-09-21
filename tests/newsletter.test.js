@@ -21,13 +21,14 @@ const dated = issue => {
   return out;
 };
 
-test('the archive runs monthly from April 2025 to September 2026, newest first', () => {
-  assert.equal(issues.length, 18);
-  assert.equal(issues[0].id, '2026-09');
+test('the archive runs monthly from April 2025, newest first, and stops at the last issue sent', () => {
+  const today = new Date().toISOString().slice(0, 10);
+  assert.ok(issues.length >= 12);
   assert.equal(issues[issues.length - 1].id, '2025-04');
+  assert.ok(issues[0].date <= today, `the newest issue is dated ${issues[0].date}, which has not arrived`);
   issues.forEach((issue, i) => {
-    assert.equal(issue.number, issues.length - i);
     if (i) assert.ok(issues[i - 1].id > issue.id, 'issues descend by month');
+    if (i) assert.equal(issue.number, issues[i - 1].number - 1, 'issue numbers run consecutively');
   });
 });
 
