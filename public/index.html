@@ -522,8 +522,13 @@
   .nl-items .nl-item-meta{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); margin-top:2px;}
   .nl-items p{font-size:12.5px; color:var(--text-soft); margin:4px 0 0; line-height:1.55;}
   .nl-items a{color:var(--ink);}
-  .nl-spotlights{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:14px; margin-top:6px;}
-  .nl-spot{border:1px solid var(--rule); border-top:3px solid var(--ink); padding:12px 13px;}
+  .nl-spotlights{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:14px; margin-top:6px;
+    align-items:start;}
+  /* Every picture in an issue is cropped to a fixed band. Without a height the browser drew each
+     photograph at its natural size and a three-card row became three storeys tall. */
+  .nl-spot img{width:100%; height:150px; object-fit:cover; display:block; border-bottom:1px solid var(--rule);}
+  .nl-spot-body{padding:11px 13px;}
+  .nl-spot{border:1px solid var(--rule); border-top:3px solid var(--ink); overflow:hidden;}
   .nl-spot h5{font-family:Georgia,'Times New Roman',serif; font-size:18px; color:var(--ink); margin-bottom:2px;}
   .nl-spot .nl-spot-county{font-family:'Open Sans',sans-serif; font-size:10px; letter-spacing:.09em;
     text-transform:uppercase; color:var(--text-soft);}
@@ -544,6 +549,41 @@
   .nl-sources{margin-top:22px; border-top:1px solid var(--rule); padding-top:12px;}
   .nl-sources ol{margin:0; padding-left:18px; columns:2; column-gap:26px;}
   .nl-sources li{font-size:11px; color:var(--text-soft); line-height:1.5; margin-bottom:5px; break-inside:avoid;}
+  .arc-shell{padding:26px 0 44px;}
+  .arc-head{display:flex; flex-wrap:wrap; gap:22px; justify-content:space-between; align-items:flex-start;
+    border-bottom:3px double var(--ink); padding-bottom:18px; margin-bottom:18px;}
+  .arc-kicker{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--text-soft);}
+  .arc-head h2{font-family:Georgia,'Times New Roman',serif; font-size:36px; color:var(--ink); margin:6px 0 8px;}
+  .arc-head > div:first-child p{font-size:13px; color:var(--text-soft); line-height:1.6; max-width:56ch;}
+  .arc-signup{border:1px solid var(--rule); border-left:3px solid var(--ink); background:#F7F9F2;
+    padding:14px 16px; min-width:250px; flex:0 1 300px;}
+  .arc-signup b{display:block; font-family:'Open Sans',sans-serif; font-size:12px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink); margin-bottom:5px;}
+  .arc-signup p{font-size:12px; color:var(--text-soft); line-height:1.55; margin-bottom:10px;}
+  .arc-tools{display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; margin-bottom:18px;}
+  .arc-field{display:flex; flex-direction:column; gap:4px; font-family:'Open Sans',sans-serif; font-size:10px;
+    font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--text-soft);}
+  .arc-field input, .arc-field select{padding:9px 10px; border:1.5px solid var(--rule); border-radius:2px;
+    font-family:'Open Sans',sans-serif; font-size:13px; letter-spacing:0; text-transform:none; color:var(--text);
+    background:#fff; min-width:200px;}
+  .arc-field input:focus, .arc-field select:focus{outline:none; border-color:var(--ink);}
+  .arc-count{font-family:'Open Sans',sans-serif; font-size:11.5px; color:var(--text-soft); padding-bottom:10px;}
+  .arc-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:18px;}
+  .arc-card{border:1px solid var(--rule); background:#fff; display:flex; flex-direction:column; overflow:hidden;}
+  .arc-card img{width:100%; height:140px; object-fit:cover; display:block;}
+  .arc-card-body{padding:13px 15px 15px; display:flex; flex-direction:column; gap:6px; flex:1 1 auto;}
+  .arc-card .arc-date{font-family:'Roboto Mono',monospace; font-size:10px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--text-soft);}
+  .arc-card h3{font-family:Georgia,'Times New Roman',serif; font-size:21px; color:var(--ink);}
+  .arc-card p{font-size:12.5px; color:var(--text-soft); line-height:1.55; flex:1 1 auto;}
+  .arc-card-meta{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft);}
+  .arc-card-actions{display:flex; flex-wrap:wrap; gap:7px; margin-top:4px;}
+  .arc-card-actions .btn{font-size:11px; padding:7px 11px;}
+  .arc-status{font-size:12.5px; color:var(--text-soft); margin-top:14px;}
+  .nl-issue-more{margin-top:4px;}
+  .nl-issue-more b{color:var(--ink);}
+  @media (max-width:640px){ .arc-head h2{font-size:28px;} .arc-field input, .arc-field select{min-width:0; width:100%;} .arc-field{flex:1 1 100%;} }
   .nl-loading{font-size:13px; color:var(--text-soft);}
   .nl-section p{font-size:14.5px; line-height:1.75; color:var(--text); margin:0 0 13px;}
   .nl-lede p{font-size:16px; line-height:1.7;}
@@ -551,10 +591,10 @@
     text-decoration-thickness:1px; text-decoration-color:#A9B79A;}
   .nl-section p a:hover, .nl-lede p a:hover{text-decoration-color:var(--ink); background:#EEF1E7;}
   .nl-figure{margin:16px 0;}
-  .nl-figure img{width:100%; max-height:330px; object-fit:cover; display:block; border-radius:2px;}
+  .nl-figure img{width:100%; height:300px; object-fit:cover; display:block; border-radius:2px;}
   .nl-figure figcaption{font-family:'Open Sans',sans-serif; font-size:11.5px; color:var(--text-soft);
     margin-top:6px; line-height:1.5;}
-  .nl-lead-figure img{max-height:380px;}
+  .nl-lead-figure img{height:340px;}
   .nl-quote{border-left:3px solid var(--ink); margin:16px 0; padding:4px 0 4px 16px;
     font-family:Georgia,'Times New Roman',serif; font-size:17px; line-height:1.55; color:var(--ink);}
   .nl-quote cite{display:block; font-family:'Open Sans',sans-serif; font-size:11px; font-style:normal;
@@ -1537,12 +1577,15 @@
     <div class="marquee" id="signupMarquee" aria-hidden="true">
       <div class="marquee-track">
         <button type="button" class="marquee-item" data-signup>Sign up for email recaps</button>
+        <button type="button" class="marquee-item" data-open-newsletter>Read this month's newsletter</button>
         <button type="button" class="marquee-item" data-signup>Sign up for email recaps</button>
+        <button type="button" class="marquee-item" data-open-newsletter>Read this month's newsletter</button>
         <button type="button" class="marquee-item" data-signup>Sign up for email recaps</button>
-        <button type="button" class="marquee-item" data-signup>Sign up for email recaps</button>
+        <button type="button" class="marquee-item" data-open-newsletter>Read this month's newsletter</button>
       </div>
     </div>
-    <a href="#" class="util-signup" data-signup>Sign up for email recaps</a>
+    <a href="#" class="util-signup" data-signup>Email recaps</a>
+    <a href="#" class="util-signup" data-open-newsletter>Newsletter</a>
   </div>
 </div>
 
@@ -1553,8 +1596,9 @@
   <div class="nav-menu" id="navMenu" role="menu" hidden>
     <button class="page-nav-tab active" data-page="dashboard" role="menuitem">Dashboard</button>
     <button class="page-nav-tab" data-page="timeline" role="menuitem">Timeline</button>
-    <button class="page-nav-tab" data-page="account" role="menuitem">Your Account</button>
+    <button class="page-nav-tab" data-page="archive" role="menuitem">Newsletter archive</button>
     <button class="page-nav-tab" data-page="bank" role="menuitem">Resource Bank</button>
+    <button class="page-nav-tab" data-page="account" role="menuitem">Your Account</button>
     <button class="page-nav-tab" data-page="about" role="menuitem">About</button>
     <!-- Not a menu item: a reminder of who is signed in and which place the dashboard is set to.
          Nothing here is clickable, and it is hidden from the menu's accessibility tree so it does
@@ -1652,6 +1696,30 @@
 </header>
 
 <main id="mainContent">
+<section id="screenArchive" class="screen" style="display:none" aria-labelledby="arcTitle">
+  <div class="wrap arc-shell">
+    <div class="arc-head">
+      <div>
+        <div class="arc-kicker">Every issue, oldest to newest</div>
+        <h2 id="arcTitle">Newsletter archive</h2>
+        <p>Each issue covers the period since the one before it. Open one to read it, or have it sent to your inbox.</p>
+      </div>
+      <div class="arc-signup">
+        <b>Get it by email</b>
+        <p>One issue a month, to the address on your account.</p>
+        <button type="button" class="btn" data-signup>Sign up for the list</button>
+      </div>
+    </div>
+    <div class="arc-tools">
+      <label class="arc-field" for="arcSearch">Search issues<input id="arcSearch" type="search" placeholder="City, county, publisher, month..." autocomplete="off"></label>
+      <label class="arc-field" for="arcYear">Year<select id="arcYear"><option value="">Every year</option></select></label>
+      <span class="arc-count" id="arcCount" role="status"></span>
+    </div>
+    <div class="arc-grid" id="arcGrid"></div>
+    <p class="arc-status" id="arcStatus" role="status"></p>
+  </div>
+</section>
+
 <section id="screenNewsletter" class="screen" style="display:none" aria-labelledby="nlTitle">
   <div class="wrap nl-shell">
     <div class="nl-masthead">
@@ -1661,7 +1729,7 @@
     </div>
     <div class="nl-layout">
       <aside class="nl-archive" aria-label="All issues">
-        <div class="nl-archive-head">All issues</div>
+        <div class="nl-archive-head">Recent issues</div>
         <div id="nlIssueList"></div>
 
       </aside>
@@ -6519,10 +6587,15 @@ async function renderNewsletter(){
   if(!data)return;
   const list=document.getElementById('nlIssueList');
   if(!newsletterIssue)newsletterIssue=data.issues[0]?.id;
-  list.innerHTML=data.issues.map(issue=>
+  // The tab carries the last four issues; everything older lives in the archive.
+  const recent=data.issues.slice(0,4);
+  if(!recent.some(i=>i.id===newsletterIssue))newsletterIssue=recent[0]?.id;
+  list.innerHTML=recent.map(issue=>
     '<button type="button" class="nl-issue-btn" data-issue="'+issue.id+'" aria-current="'+(issue.id===newsletterIssue)+'">'
     +'<b>'+escapeHtml(issue.month)+'</b><span>Issue '+issue.number+' &middot; '
     +issue.counts.sources.toLocaleString()+' source'+(issue.counts.sources===1?'':'s')+'</span></button>').join('');
+  list.insertAdjacentHTML('beforeend','<button type="button" class="nl-issue-btn nl-issue-more" data-page="archive"><b>All issues &rarr;</b><span>'+data.issues.length+' in the archive</span></button>');
+  list.querySelector('[data-page="archive"]').onclick=()=>showScreen('archive');
   list.querySelectorAll('[data-issue]').forEach(button=>button.onclick=()=>{
     newsletterIssue=button.dataset.issue;renderNewsletter();
     document.getElementById('nlIssue').scrollIntoView({block:'start',behavior:'smooth'});
@@ -6590,6 +6663,60 @@ function newsletterCountyChart(bars){
     +'<span class="nl-bar-n">'+b.items+'</span></div>').join('')
     +'</div><figcaption>Published items this issue, by county. Counts reflect which newsrooms and city pages published during the period.</figcaption></figure>';
 }
+/* The archive: every issue that has gone out, with a picture, what it led on, and a way to have
+   it sent over. Reading one hands off to the Newsletter tab. */
+let archiveQuery='',archiveYear='';
+async function renderArchive(){
+  const data=await loadNewsletter();
+  const grid=document.getElementById('arcGrid');
+  if(!data||!grid)return;
+  const years=[...new Set(data.issues.map(i=>i.id.slice(0,4)))].sort().reverse();
+  const yearSelect=document.getElementById('arcYear');
+  if(yearSelect.options.length<=1)yearSelect.insertAdjacentHTML('beforeend',years.map(y=>'<option value="'+y+'">'+y+'</option>').join(''));
+  const q=archiveQuery.trim().toLowerCase();
+  const matches=data.issues.filter(issue=>{
+    if(archiveYear&&issue.id.slice(0,4)!==archiveYear)return false;
+    if(!q)return true;
+    const hay=[issue.month,issue.dateline,issue.lead&&issue.lead.title,issue.hero&&issue.hero.city,
+      ...issue.sources.slice(0,40).map(src=>src.label)].filter(Boolean).join(' ').toLowerCase();
+    return hay.includes(q);
+  });
+  document.getElementById('arcCount').textContent=matches.length+' of '+data.issues.length+' issues';
+  grid.innerHTML=matches.map(issue=>
+    '<article class="arc-card">'
+    +(issue.hero?'<img src="'+escapeHtml(issue.hero.url)+'" alt="'+escapeHtml(issue.hero.caption||issue.hero.city)+'" loading="lazy">':'')
+    +'<div class="arc-card-body"><div class="arc-date">Issue '+issue.number+' &middot; '+escapeHtml(issue.dateline)+'</div>'
+    +'<h3>'+escapeHtml(issue.month)+'</h3>'
+    +'<p>'+escapeHtml(issue.lead?issue.lead.title:'')+'</p>'
+    +'<div class="arc-card-meta">'+issue.counts.news+' reports &middot; '+issue.counts.sources+' sources</div>'
+    +'<div class="arc-card-actions"><button type="button" class="btn" data-read="'+issue.id+'">Read</button>'
+    +'<button type="button" class="btn secondary" data-email="'+issue.id+'">Email it to me</button></div>'
+    +'</div></article>').join('')||'<p class="arc-status">No issue matches that.</p>';
+  grid.querySelectorAll('[data-read]').forEach(b=>b.onclick=()=>{
+    newsletterIssue=b.dataset.read;showScreen('newsletter');renderNewsletter();
+  });
+  grid.querySelectorAll('[data-email]').forEach(b=>b.onclick=()=>emailIssue(b.dataset.email,b));
+}
+// Sending an issue needs somewhere to send it, so a reader without an account is taken to the
+// signup form with the issue remembered.
+async function emailIssue(id,button){
+  const status=document.getElementById('arcStatus');
+  if(!authToken){
+    status.textContent='Create an account with an email address and the issue will be sent there.';
+    document.querySelector('.arc-signup [data-signup]').click();
+    return;
+  }
+  const label=button.textContent;button.textContent='Sending...';button.disabled=true;
+  try{
+    const result=await apiCall('/api/newsletter/email',{method:'POST',body:JSON.stringify({issue:id})});
+    status.textContent='Sent to '+result.to+'.';
+  }catch(error){
+    status.textContent=error.message;
+  }finally{button.textContent=label;button.disabled=false;}
+}
+document.getElementById('arcSearch').addEventListener('input',e=>{archiveQuery=e.target.value;renderArchive();});
+document.getElementById('arcYear').addEventListener('change',e=>{archiveYear=e.target.value;renderArchive();});
+
 function newsletterSectionHtml(section,issue){
   const title=section.title||(section.county+' County');
   if(section.kind==='county'){
@@ -9380,7 +9507,7 @@ document.querySelectorAll('.sub-nav-tab').forEach(t=>{
   t.addEventListener('click', ()=> showScreen(t.getAttribute('data-screen')));
 });
 
-const SCREEN_IDS = {newsletter:'screenNewsletter', futures:'screenFutures', dashboard:'screenDashboard', timeline:'screenTimeline', yourarea:'screenYourArea', planner:'screenPlanner', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
+const SCREEN_IDS = {archive:'screenArchive', newsletter:'screenNewsletter', futures:'screenFutures', dashboard:'screenDashboard', timeline:'screenTimeline', yourarea:'screenYourArea', planner:'screenPlanner', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
 function scrollToScreen(name){
   const el = document.getElementById(SCREEN_IDS[name]);
   if(!el){ window.scrollTo({top:0, behavior:'smooth'}); return; }
@@ -9399,6 +9526,7 @@ function showScreen(name){
   if(!name || !SCREEN_IDS[name]) return;
   currentScreen = name;
   if(name==='newsletter')renderNewsletter();
+  if(name==='archive')renderArchive();
 
   Object.entries(SCREEN_IDS).forEach(([key,id])=>{
     const el = document.getElementById(id);
@@ -15194,6 +15322,12 @@ if(typeof startHeroBgRotation === 'function') startHeroBgRotation();
 
 // Every signup call-out (scrolling banner and its static fallback) lands on the Account page,
 // which is where the email address and city preference live.
+// The strip along the top offers both things a reader can subscribe to.
+document.querySelectorAll('[data-open-newsletter]').forEach(el=>el.addEventListener('click',e=>{
+  e.preventDefault();
+  document.getElementById('onboardOverlay').style.display='none';
+  showScreen('newsletter');
+}));
 document.querySelectorAll('[data-signup]').forEach(el=>{
   el.addEventListener('click', (e)=>{
     e.preventDefault();
