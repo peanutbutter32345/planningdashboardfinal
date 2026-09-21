@@ -94,13 +94,13 @@ test('state and federal releases only appear once they had been published', () =
   }
 });
 
-test('every issue is a full article: lead, housing, transport, nine counties, what to watch, sources', () => {
+test('every issue is a full article: lead, the four topic sections, nine counties and sources', () => {
   for (const issue of issues) {
     assert.ok(issue.lede.length >= 2, `${issue.id} has a thin lede`);
     assert.ok(issue.hero && issue.hero.url.startsWith('/img/cities/'), `${issue.id} has no hero photograph`);
     assert.ok(issue.lead && issue.lead.title, `${issue.id} has no lead story`);
     const kinds = issue.sections.map(s => s.kind);
-    for (const required of ['housing', 'transport', 'boards', 'watch']) {
+    for (const required of ['housing', 'developments', 'transport', 'watch']) {
       assert.ok(kinds.includes(required), `${issue.id} is missing its ${required} section`);
     }
     assert.equal(issue.sections.filter(s => s.kind === 'county').length, 9);
@@ -140,12 +140,53 @@ test('issues are written as prose, with links inside sentences rather than a lis
   }
 });
 
+// The prose written here has a house style: no em dashes, no staged run-ups, no closers that
+// repeat the point, nothing that reads as though it were assembled after the fact. Spans marked q
+// are a publisher's own words and are left exactly as they were written.
+const written = issue => [...issue.lede, ...issue.sections.flatMap(s => s.blocks || [])]
+  .filter(b => b.kind === 'para').flatMap(b => b.spans)
+  .filter(sp => sp.t === 'text' && !sp.q).map(sp => sp.v).join(' ');
+
+test('the written prose keeps to the house style', () => {
+  const tells = [
+    /—/, /–/,                                        // em and en dashes as connectors
+    /\bit'?s not just\b/i, /\bisn'?t just\b/i, /\bnot only\b.*\bbut\b/i,
+    /\bat its core\b/i, /\blet'?s dive\b/i, /\bthat is the real\b/i,
+    /\brather than evidence\b/i, /\bworth saying plainly\b/i,
+    /\bdelve\b/i, /\btestament\b/i, /\blandscape\b/i, /\bshowcas/i, /\bboasts\b/i,
+    /\bpivotal\b/i, /\bthe future looks\b/i, /\bexperts believe\b/i,
+    /\bthis dashboard\b/i, /\bthis issue could not\b/i, /\bnot published yet\b/i,
+  ];
+  for (const issue of issues) {
+    const text = written(issue);
+    for (const tell of tells) assert.ok(!tell.test(text), `${issue.id} contains ${tell}: ${(text.match(tell) || [])[0]}`);
+  }
+});
+
+test('an issue runs overview, housing, developments, transportation, counties, then what to look for', () => {
+  for (const issue of issues) {
+    const kinds = issue.sections.map(s => s.kind);
+    const order = ['overview', 'housing', 'developments', 'transport', 'county', 'watch'];
+    const seen = kinds.filter(k => order.includes(k));
+    let at = -1;
+    for (const kind of seen) {
+      const rank = order.indexOf(kind);
+      assert.ok(rank >= at, `${issue.id} puts ${kind} out of order`);
+      at = rank;
+    }
+    for (const required of ['overview', 'housing', 'transport', 'watch']) {
+      assert.ok(kinds.includes(required), `${issue.id} is missing ${required}`);
+    }
+    assert.ok(!issue.sections.some(s => (s.notYet || []).length), `${issue.id} still carries a not-published-yet box`);
+  }
+});
+
 test('counties with nothing published are said to be quiet rather than left out', () => {
   const quiet = issues.flatMap(i => i.sections.filter(s => s.kind === 'county' && s.quiet));
   assert.ok(quiet.length, 'expected at least one quiet county across the archive');
   quiet.forEach(section => {
     // The county still gets its standing profile; the quiet note closes it.
-    assert.ok(/absence of reporting/.test(prose(section)), section.county);
+    assert.ok(/Nothing was published/.test(prose(section)), section.county);
     assert.equal(section.count, 0);
   });
 });
