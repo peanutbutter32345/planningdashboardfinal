@@ -207,106 +207,203 @@ function issueFor(monthId, number, previousIssueDate) {
   const hero = photo ? { url: photo.url, caption: photo.cap, by: photo.by, licence: photo.lic,
                          source: photo.source, city: labelOf(focusKey || 'sanfrancisco') } : null;
 
-  // ---- the lede: what a reader needs in three sentences
-  const topics = t => news.filter(n => n.topic === t).length;
-  const marketNow = bayMarket(asOf, 'value');
-  const lede = [];
-  const totalPublic = news.length + projects.length + aprNew.length + regional.length;
-  lede.push(`${plural(totalPublic, 'item', 'items')} entered the public record across the nine Bay Area counties in ${monthName(monthId)}${
-    totalPublic ? `: ${[[topics('housing') + projects.filter(p => p.topic === 'housing').length, 'housing'],
-                        [topics('developments'), 'development'],
-                        [topics('transportation') + projects.filter(p => p.topic === 'transportation').length, 'transportation'],
-                        [topics('civic'), 'civic']]
-      .filter(([n]) => n > 0).map(([n, label]) => `${n} ${label}`).join(', ')}${
-      aprNew.length ? `, and ${plural(aprNew.length, 'housing record', 'housing records')} released with the state annual reports` : ''}.` : '.'}`);
-  if (lead) lede.push(`${lead.scope === 'state' ? 'The month\'s decision came from Sacramento' : lead.scope === 'region' ? 'The month\'s decision was regional' : `The month's decision was local, in ${lead.city}`}: ${lead.title.replace(/\.$/, '')} (${lead.source}, ${lead.monthOnly ? monthName(lead.date.slice(0, 7)) : fmtDate(lead.date)}).`);
-  if (marketNow) lede.push(`Of the ${municipalities.cities.length} jurisdictions this dashboard tracks, ${marketNow.cities} had a published Zillow index; their median typical home stood at ${money(marketNow.median)} in the ${marketNow.year} index, the most recent available when this issue went out.`);
-  const biggest = [...aprNew, ...aprInMonth, ...projects].filter(p => p.units).sort((a, b) => b.units - a.units)[0];
-  if (biggest) lede.push(`The largest single development on the record this month was ${biggest.title} in ${labelOf(biggest.city)}, ${plural(biggest.units, 'home', 'homes')} reported at the ${biggest.stage === 'completed' ? 'completion' : biggest.stage} stage.`);
+  // ---- writing helpers -------------------------------------------------------------------
+  // Paragraphs are spans rather than HTML strings, so a link can sit inside a sentence without the
+  // generator ever emitting markup: the page escapes each span when it draws it.
+  const t = v => (v ? { t: 'text', v } : null);
+  const link = (v, url) => (url ? { t: 'link', v, url } : t(v));
+  // flat(Infinity): helpers like cited() return their own arrays of spans, and a single level of
+  // flattening left those nested and silently unrendered.
+  const para = (...spans) => { const list = spans.flat(Infinity).filter(s => s && s.t); return list.length ? { kind: 'para', spans: list } : null; };
+  const image = (url, caption, credit) => (url ? { kind: 'image', url, caption, credit } : null);
+  const quote = (text, who) => ({ kind: 'quote', text, who });
+  const blocksOf = (...items) => items.flat().filter(Boolean);
+  const when = r => (r.monthOnly ? monthName(r.date.slice(0, 7)) : fmtDate(r.date));
+  const cited = r => [t(' ('), link(r.source, r.url), t(`, ${when(r)}).`)];
+  const list = values => values.length <= 1 ? (values[0] || '')
+    : values.length === 2 ? `${values[0]} and ${values[1]}`
+    : `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
+  const pct = (now, before) => `${Math.abs(((now / before) - 1) * 100).toFixed(1)}%`;
+  // Source summaries arrive clipped to a character count, which leaves sentences hanging. Cut back
+  // to the last full stop instead, and drop the fragment if there isn't one.
+  const trim = (text, max = 320) => {
+    const clean = String(text || '').replace(/\s+/g, ' ').trim();
+    if (!clean) return '';
+    const cut = clean.length > max ? clean.slice(0, max) : clean;
+    const stop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('." '), cut.lastIndexOf('! '), cut.lastIndexOf('? '));
+    if (clean.length > max) return stop > 60 ? cut.slice(0, stop + 1) : '';
+    return /[.!?"]$/.test(cut) ? cut : cut + '.';
+  };
 
-  // =================================================================== 1. the big things
-  const briefParas = [];
+  // ---- the lede
+  const topics = k => news.filter(n => n.topic === k).length;
+  const marketNow = bayMarket(asOf, 'value');
+  const bayRent = bayMarket(asOf, 'rent');
+  const totalPublic = news.length + projects.length + aprNew.length + regional.length;
+  const housingCount = topics('housing') + topics('developments') + projects.filter(p => p.topic === 'housing').length;
+  const activeCounties = COUNTIES.filter(c => [...news, ...projects, ...aprNew].some(r => r.county === c));
+  const silent = COUNTIES.filter(c => !activeCounties.includes(c));
+
+  const lede = blocksOf(
+    para(
+      t(`${monthName(monthId)} brought `), t(`${plural(totalPublic, 'item', 'items')} onto the public record across the nine counties`),
+      housingCount ? t(`, ${housingCount} of them about housing or development`) : null,
+      aprNew.length ? t(`, and a wave of ${aprNew.length.toLocaleString('en-US')} records released with the state's annual reports`) : null,
+      t('. '),
+      lead ? [t(lead.scope === 'state' ? 'The decision that mattered most came from Sacramento: ' : lead.scope === 'region' ? 'The decision that mattered most was regional: ' : `The decision that mattered most was local, in ${lead.city}: `),
+             link(lead.title.replace(/\.$/, ''), lead.url), cited({ source: lead.source, url: lead.url, date: lead.date, monthOnly: lead.monthOnly })] : null,
+    ),
+    marketNow ? para(
+      t(`Underneath all of it sits the same number the region has been arguing about for a decade. The median typical home across the ${marketNow.cities} tracked cities with a published index stood at ${money(marketNow.median)} in Zillow's ${marketNow.year} reading`),
+      bayRent ? t(`, with median asking rent at ${money(bayRent.median)}`) : null,
+      t('. That is the middle of a very wide spread, and almost every decision described below is an attempt to move some part of it.'),
+    ) : null,
+  );
+
+  // =================================================================== 1. what happened
+  const briefBlocks = [];
   if (regional.length) {
-    briefParas.push(`${plural(regional.length, 'decision', 'decisions')} above the level of any single city landed in ${monthName(monthId)}. ${regional.map(r => `${r.title} (${r.source}, ${r.monthOnly ? monthName(r.date.slice(0, 7)) : fmtDate(r.date)})`).join('. ')}.`);
+    const first = regional[0];
+    briefBlocks.push(para(
+      t(regional.length === 1 ? 'One decision this period was taken above the level of any city. ' : `${plural(regional.length, 'decision was', 'decisions were')} taken above the level of any city this period. `),
+      link(first.title.replace(/\.$/, ''), first.url), t('. '), t(trim(first.snippet)), cited(first),
+    ));
+    regional.slice(1).forEach(r => briefBlocks.push(para(link(r.title.replace(/\.$/, ''), r.url), t('. '), t(trim(r.snippet)), cited(r))));
   }
   if (releases.length) {
-    const totals = releases.reduce((a, r) => ({ permitted: a.permitted + (r.permitted || 0), completed: a.completed + (r.completed || 0), entitled: a.entitled + (r.entitled || 0), proposed: a.proposed + (r.proposed || 0) }), { permitted: 0, completed: 0, entitled: 0, proposed: 0 });
-    briefParas.push(`California's Department of Housing and Community Development published the ${releases[0].year} annual progress reports this month: ${plural(releases.length, 'jurisdiction', 'jurisdictions')} in the nine counties reporting ${totals.permitted.toLocaleString('en-US')} homes permitted, ${totals.entitled.toLocaleString('en-US')} entitled and ${totals.completed.toLocaleString('en-US')} completed in that reporting year. These are the cities' own submissions, not an independent count, and a permit is not a finished home.`);
+    const totals = releases.reduce((a, r) => ({ permitted: a.permitted + (r.permitted || 0), completed: a.completed + (r.completed || 0), entitled: a.entitled + (r.entitled || 0) }), { permitted: 0, completed: 0, entitled: 0 });
+    const top = [...releases].sort((a, b) => (b.permitted || 0) - (a.permitted || 0)).slice(0, 3);
+    briefBlocks.push(para(
+      t(`The state's housing paperwork also landed. California's Department of Housing and Community Development published the ${releases[0].year} annual progress reports this period, and with them ${plural(releases.length, 'jurisdiction\'s', 'jurisdictions\'')} own account of what it built: ${totals.permitted.toLocaleString('en-US')} homes permitted across the nine counties, ${totals.entitled.toLocaleString('en-US')} entitled, ${totals.completed.toLocaleString('en-US')} finished. `),
+      t(`${list(top.map(r => `${labelOf(r.city)} (${(r.permitted || 0).toLocaleString('en-US')} permitted)`))} reported the most. These are cities marking their own homework, filed once a year, and a permit is a long way from a key in a door.`),
+    ));
   }
-  const busiest = COUNTIES.map(c => ({ county: c, n: [...news, ...projects, ...aprNew].filter(r => r.county === c).length })).sort((a, b) => b.n - a.n);
-  const silent = busiest.filter(b => b.n === 0).map(b => b.county);
-  if (busiest[0]?.n) briefParas.push(`${busiest[0].county} County accounted for the most of the local record, with ${plural(busiest[0].n, 'item', 'items')}.${silent.length ? ` ${silent.join(', ')} produced nothing this dashboard could verify: an absence of published reporting rather than evidence that nothing happened.` : ' Every county produced something.'}`);
-  if (briefParas.length) sections.push({ kind: 'brief', title: 'The month in brief', paragraphs: briefParas,
-    items: regional.map(r => ({ city: r.city ? labelOf(r.city) : (r.scope === 'state' ? 'California' : 'Bay Area'),
-      date: r.date, monthOnly: r.monthOnly, title: r.title, snippet: r.snippet, source: r.source, url: r.url, verified: r.verified })) });
+  if (activeCounties.length) {
+    const busiest = COUNTIES.map(c => ({ c, n: [...news, ...projects, ...aprNew].filter(r => r.county === c).length })).sort((a, b) => b.n - a.n).filter(r => r.n);
+    briefBlocks.push(para(
+      t(`Geographically the record was lopsided, as it usually is. ${busiest[0].c} County produced ${plural(busiest[0].n, 'item', 'items')}`),
+      busiest[1] ? t(`, ${busiest[1].c} ${busiest[1].n}`) : null,
+      silent.length ? t(`, while ${list(silent)} produced nothing this dashboard could verify. That last part is worth saying plainly: it means no published record reached us, not that those counties stood still.`)
+        : t('. Every county produced something.'),
+    ));
+  }
+  if (briefBlocks.length) sections.push({ kind: 'brief', title: 'What happened', blocks: briefBlocks });
 
-  if (threads.length) sections.push({ kind: 'threads', title: 'Still in play',
-    paragraphs: ['Decisions taken earlier that still set the terms this month.'],
-    items: threads.map(r => ({ city: r.city ? labelOf(r.city) : (r.scope === 'state' ? 'California' : 'Bay Area'),
-      date: r.date, monthOnly: r.monthOnly, title: r.title, snippet: r.snippet, source: r.source, url: r.url })) });
+  const told = new Set();
+  if (threads.length) {
+    const threadBlocks = [para(t(`${threads.length === 1 ? 'One decision' : `${threads.length === 2 ? 'Two' : 'Three'} decisions`} taken earlier ${threads.length === 1 ? 'was' : 'were'} still setting what cities could and could not do this period.`))];
+    threads.forEach(r => {
+      told.add(r.url);
+      threadBlocks.push(para(link(r.title.replace(/\.$/, ''), r.url), t(', '), t(when(r)), t('. '), t(trim(r.snippet)), t(' '), t(`(${r.source}.)`)));
+    });
+    sections.push({ kind: 'threads', title: 'Still in play', blocks: threadBlocks });
+  }
 
   // =================================================================== 2. housing and development
-  const housingParas = [];
   const housingStats = [];
-  const bayRent = bayMarket(asOf, 'rent');
+  const housingBlocks = [];
   if (marketNow) {
-    const priorYear = municipalities.cities.map(c => (CITY_STATS[c.key]?.homeValueSeries || []).find(pt => Number(pt.year) === Number(marketNow.year) - 1)).filter(Boolean).map(pt => pt.value).sort((a, b) => a - b);
-    const prior = priorYear.length ? priorYear[Math.floor(priorYear.length / 2)] : null;
-    housingParas.push(`Prices first, because they frame everything else. The median typical home across the tracked cities stood at ${money(marketNow.median)} in Zillow's ${marketNow.year} index${prior ? `, ${Math.abs(((marketNow.median / prior) - 1) * 100).toFixed(1)}% ${marketNow.median >= prior ? 'above' : 'below'} the same index a year earlier` : ''}${bayRent ? `, with median asking rent at ${money(bayRent.median)}` : ''}. That is a regional middle: ${(() => {
-      const ranked = municipalities.cities.map(c => ({ label: c.label, v: zillowAt(c.key, asOf, 'value')?.value })).filter(r => r.v).sort((a, b) => b.v - a.v);
-      return ranked.length ? `${ranked[0].label} at ${money(ranked[0].v)} and ${ranked[ranked.length - 1].label} at ${money(ranked[ranked.length - 1].v)} are the ends of it` : 'the spread across cities is wide';
-    })()}.`);
-    housingStats.push({ label: 'Median typical home, tracked cities', value: money(marketNow.median), vintage: `Zillow ZHVI, ${marketNow.year} index`, source: 'https://www.zillow.com/research/data/' });
-    if (bayRent) housingStats.push({ label: 'Median asking rent, tracked cities', value: money(bayRent.median), vintage: `Zillow ZORI, ${bayRent.year} index`, source: 'https://www.zillow.com/research/data/' });
+    const priorValues = municipalities.cities.map(c => (CITY_STATS[c.key]?.homeValueSeries || []).find(pt => Number(pt.year) === Number(marketNow.year) - 1)?.value).filter(Boolean).sort((a, b) => a - b);
+    const prior = priorValues.length ? priorValues[Math.floor(priorValues.length / 2)] : null;
+    const ranked = municipalities.cities.map(c => ({ label: c.label, v: zillowAt(c.key, asOf, 'value')?.value })).filter(r => r.v).sort((a, b) => b.v - a.v);
+    housingBlocks.push(para(
+      t('Start with prices, because every argument in this section is downstream of them. '),
+      t(`The median typical home across the tracked cities was ${money(marketNow.median)} in the ${marketNow.year} index`),
+      prior ? t(`, ${pct(marketNow.median, prior)} ${marketNow.median >= prior ? 'above' : 'below'} the same reading a year before`) : null,
+      t(`. The average conceals the point: ${ranked[0].label} sits at ${money(ranked[0].v)} and ${ranked[ranked.length - 1].label} at ${money(ranked[ranked.length - 1].v)}, a gap of ${(ranked[0].v / ranked[ranked.length - 1].v).toFixed(1)} to one between two places an hour apart. A household priced out of the first is not shopping in the second; it is leaving.`),
+    ));
+    housingStats.push({ label: 'Median typical home, tracked cities', value: money(marketNow.median), vintage: `Zillow ZHVI, ${marketNow.year}`, source: 'https://www.zillow.com/research/data/' });
+    if (bayRent) housingStats.push({ label: 'Median asking rent', value: money(bayRent.median), vintage: `Zillow ZORI, ${bayRent.year}`, source: 'https://www.zillow.com/research/data/' });
   }
   if (pipeline.length) {
     const units = pipeline.reduce((a, p) => a + p.units, 0);
-    const byStage = ['proposed', 'review', 'approved', 'construction'].map(st => [st, pipeline.filter(p => p.stage === st).length]).filter(([, n]) => n);
-    housingParas.push(`Counting every record published up to this issue and not reported as finished, ${plural(pipeline.length, 'development', 'developments')} carrying ${units.toLocaleString('en-US')} reported homes ${were(pipeline.length)} somewhere between application and construction${byStage.length ? ` - ${byStage.map(([st, n]) => `${n} ${st}`).join(', ')}` : ''}. That is a count of paperwork, not of homes anyone can move into: a single master plan can carry thousands of units and take a decade.`);
-    housingStats.push({ label: 'Homes in published, unfinished developments', value: units.toLocaleString('en-US'), vintage: `${pipeline.length.toLocaleString('en-US')} records published to ${fmtDate(asOf)}`, source: 'https://data.ca.gov/dataset/housing-element-annual-progress-report-apr-data-by-jurisdiction-and-year' });
+    const STAGE_WORDS = { proposed: 'proposed', review: 'under review', approved: 'approved', construction: 'under construction' };
+    const stages = Object.keys(STAGE_WORDS).map(st => ({ st: STAGE_WORDS[st], n: pipeline.filter(p => p.stage === st).length })).filter(r => r.n);
+    const biggestOpen = pipeline[0];
+    housingBlocks.push(para(
+      t(`Against that, the supply actually moving. Counting every record published up to this issue and not reported as finished, ${plural(pipeline.length, 'development carries', 'developments carry')} ${units.toLocaleString('en-US')} reported homes`),
+      stages.length ? t(` — ${list(stages.map(r => `${r.n.toLocaleString('en-US')} ${r.st}`))}`) : null,
+      t('. The largest of them, '), link(biggestOpen.title, biggestOpen.url), t(` in ${labelOf(biggestOpen.city)}, accounts for ${plural(biggestOpen.units, 'home', 'homes')} on its own, which is the trouble with counting this way: one master plan can carry a decade of construction and a whole county's numbers with it.`),
+    ));
+    housingStats.push({ label: 'Homes in unfinished published developments', value: units.toLocaleString('en-US'), vintage: `${pipeline.length.toLocaleString('en-US')} records to ${fmtDate(asOf)}`, source: 'https://data.ca.gov/dataset/housing-element-annual-progress-report-apr-data-by-jurisdiction-and-year' });
   }
   if (asOf >= RHNA_PROGRESS) {
     const rows = Object.entries(RHNA).filter(([, r]) => r.target);
     const target = rows.reduce((a, [, r]) => a + r.target, 0), built = rows.reduce((a, [, r]) => a + r.units, 0);
-    const behind = rows.map(([k, r]) => ({ k, pct: r.pct })).sort((a, b) => a.pct - b.pct);
-    housingParas.push(`Against the state's own yardstick, the ${rows.length} cities with a published 6th cycle progress row had permitted ${built.toLocaleString('en-US')} of ${target.toLocaleString('en-US')} allocated homes, ${((built / target) * 100).toFixed(1)}% of the way through a cycle that runs to 2031. The spread is the story: ${labelOf(behind[behind.length - 1].k)} at ${behind[behind.length - 1].pct}% and ${labelOf(behind[0].k)} at ${behind[0].pct}%.`);
-    housingStats.push({ label: '6th cycle homes permitted, cities with a progress row', value: `${built.toLocaleString('en-US')} of ${target.toLocaleString('en-US')}`, vintage: 'HCD 6th Cycle RHNA Progress Report, August 2026', source: 'https://data.ca.gov/dataset/rhna-progress-report' });
+    const sorted = rows.map(([k, r]) => ({ k, pct: r.pct })).sort((a, b) => a.pct - b.pct);
+    housingBlocks.push(para(
+      t(`The state keeps its own scoreboard, and it is not flattering. The ${rows.length} cities here with a published 6th cycle progress row had permitted ${built.toLocaleString('en-US')} of ${target.toLocaleString('en-US')} allocated homes — ${((built / target) * 100).toFixed(1)}% of a cycle that ends in 2031, with rather less than ${((built / target) * 100).toFixed(0)}% of the time left to run. ${labelOf(sorted[sorted.length - 1].k)} leads at ${sorted[sorted.length - 1].pct}%; ${labelOf(sorted[0].k)} sits at ${sorted[0].pct}%.`),
+    ));
+    housingStats.push({ label: '6th cycle homes permitted', value: `${built.toLocaleString('en-US')} of ${target.toLocaleString('en-US')}`, vintage: 'HCD RHNA progress, August 2026', source: 'https://data.ca.gov/dataset/rhna-progress-report' });
   }
   const housingNews = news.filter(n => n.topic === 'housing' || n.topic === 'developments');
-  const housingRecords = [...aprNew, ...aprInMonth].filter(p => p.units).sort((a, b) => b.units - a.units).slice(0, 8)
-    .map(p => ({ city: labelOf(p.city), county: p.county, title: p.title, units: p.units, bmr: p.bmr,
-                 status: p.reportedStatus || p.stage, date: p.date, source: p.source, url: p.url }));
-  if (!housingParas.length) housingParas.push(`No housing or development record reached this dashboard between ${fmtDate(from)} and ${fmtDate(asOf)}. The market figures below are the only housing numbers this issue can stand behind.`);
-  sections.push({
-    kind: 'housing', title: 'Housing and development', paragraphs: housingParas, stats: housingStats,
-    records: housingRecords,
-    items: housingNews.map(r => ({ city: labelOf(r.city), county: r.county, date: r.date, title: r.title, snippet: r.snippet.slice(0, 280), source: r.source, url: r.url, image: r.image || '' })),
-  });
+  if (housingNews.length) {
+    const featured = housingNews.slice(0, 4);
+    const withImage = featured.find(n => n.image) || housingNews.find(n => n.image);
+    housingBlocks.push(para(t(`Down at street level, ${plural(housingNews.length, 'housing story', 'housing stories')} reached the record${housingNews.length > featured.length ? `, and ${featured.length === 1 ? 'one is' : `${['', 'one', 'two', 'three', 'four'][featured.length]} are`} worth the space` : ''}.`)));
+    const openers = ['In', 'Over in', 'In', 'Meanwhile in'];
+    featured.forEach((n, i) => {
+      told.add(n.url);
+      housingBlocks.push(para(
+        t(`${openers[i % openers.length]} ${labelOf(n.city)}, `), link(n.title.replace(/\.$/, ''), n.url), t('. '),
+        n.snippet ? t(`${trim(n.snippet)} `) : null,
+        t(`(${n.source}, ${fmtDate(n.date)}.)`),
+      ));
+      if (withImage && n.url === withImage.url) housingBlocks.push(image(withImage.image, `${labelOf(withImage.city)}: ${withImage.title}`, withImage.source));
+    });
+    if (withImage && !featured.some(n => n.url === withImage.url)) housingBlocks.push(image(withImage.image, `${labelOf(withImage.city)}: ${withImage.title}`, withImage.source));
+  }
+  const housingRecords = [...aprNew, ...aprInMonth].filter(p => p.units).sort((a, b) => b.units - a.units).slice(0, 5)
+    .map(p => ({ city: labelOf(p.city), county: p.county, title: p.title, units: p.units, bmr: p.bmr, status: p.reportedStatus || p.stage, date: p.date, source: p.source, url: p.url }));
+  if (housingRecords.length) housingBlocks.push(para(t(`The five largest developments on the record this period, by the number of homes each city reported to the state, are set out below. A reported milestone is one step — an application, an entitlement, a permit, a completion — and the unit count may describe a single phase of something much larger.`)));
+  if (!housingBlocks.length) housingBlocks.push(para(t(`No housing or development record reached this dashboard between ${fmtDate(from)} and ${fmtDate(asOf)}.`)));
+  sections.push({ kind: 'housing', title: 'Housing and development', blocks: housingBlocks, stats: housingStats, records: housingRecords, chart: 'market' });
 
   // =================================================================== 3. transportation
-  const transitParas = [];
   const transitStats = [];
+  const transitBlocks = [];
   const transitResearch = [...regional, ...threads].filter(r => r.topic === 'transportation');
   const transitNews = [...news.filter(n => n.topic === 'transportation'), ...projects.filter(p => p.topic === 'transportation')];
-  if (transitResearch.length) transitParas.push(`${transitResearch[0].title} (${transitResearch[0].source}, ${transitResearch[0].monthOnly ? monthName(transitResearch[0].date.slice(0, 7)) : fmtDate(transitResearch[0].date)}). ${transitResearch[0].snippet}`);
+  const freshTransit = transitResearch.filter(r => !told.has(r.url));
+  if (freshTransit.length) {
+    const r = freshTransit[0];
+    transitBlocks.push(para(t('The region\'s transport story this period ran through '), link(r.title.replace(/\.$/, ''), r.url), t('. '), t(trim(r.snippet)), cited(r)));
+    freshTransit.slice(1).forEach(other => { told.add(other.url); transitBlocks.push(para(link(other.title.replace(/\.$/, ''), other.url), t('. '), t(trim(other.snippet)), cited(other))); });
+    told.add(r.url);
+  } else if (transitResearch.length) {
+    const r = transitResearch[0];
+    transitBlocks.push(para(t('The funding argument described above - '), link(r.title.replace(/\.$/, ''), r.url), t(' - is the backdrop to everything that follows here.')));
+  }
   if (asOf >= ACS_2020_2024) {
     const commutes = municipalities.cities.map(c => ({ label: c.label, v: CITY_STATS[c.key]?.meanCommuteMin })).filter(r => r.v).sort((a, b) => a.v - b.v);
-    const transit = municipalities.cities.map(c => CITY_STATS[c.key]?.transitSharePct).filter(Boolean).sort((a, b) => a - b);
+    const shares = municipalities.cities.map(c => ({ label: c.label, v: CITY_STATS[c.key]?.transitSharePct })).filter(r => r.v).sort((a, b) => b.v - a.v);
     if (commutes.length) {
       const median = commutes[Math.floor(commutes.length / 2)];
-      transitParas.push(`The census puts the median one-way commute across these cities at ${median.v.toFixed(1)} minutes, from ${commutes[0].v.toFixed(1)} in ${commutes[0].label} to ${commutes[commutes.length - 1].v.toFixed(1)} in ${commutes[commutes.length - 1].label}${transit.length ? `, with a median ${transit[Math.floor(transit.length / 2)].toFixed(1)}% of workers commuting by public transport` : ''}. Those are five-year averages, so they move slowly and they lag.`);
-      transitStats.push({ label: 'Median one-way commute', value: `${median.v.toFixed(1)} min`, vintage: '2020–2024 ACS 5-year', source: 'https://www.census.gov/programs-surveys/acs' });
-      if (transit.length) transitStats.push({ label: 'Median share commuting by transit', value: `${transit[Math.floor(transit.length / 2)].toFixed(1)}%`, vintage: '2020–2024 ACS 5-year', source: 'https://www.census.gov/programs-surveys/acs' });
+      transitBlocks.push(para(
+        t(`What that funding argument is actually about shows up in the census. The median one-way commute across these cities is ${median.v.toFixed(1)} minutes, from ${commutes[0].v.toFixed(1)} in ${commutes[0].label} to ${commutes[commutes.length - 1].v.toFixed(1)} in ${commutes[commutes.length - 1].label}`),
+        shares.length ? t(`, and the share of workers using public transport runs from ${shares[0].v.toFixed(1)}% in ${shares[0].label} down to almost nothing in the outer suburbs`) : null,
+        t('. These are five-year averages, so they move slowly and they lag — but they are the closest thing to a measure of whether any of this is working.'),
+      ));
+      transitStats.push({ label: 'Median one-way commute', value: `${median.v.toFixed(1)} min`, vintage: '2020–2024 ACS', source: 'https://www.census.gov/programs-surveys/acs' });
+      if (shares.length) transitStats.push({ label: 'Highest transit share', value: `${shares[0].v.toFixed(1)}%`, vintage: `${shares[0].label}, 2020–2024 ACS`, source: 'https://www.census.gov/programs-surveys/acs' });
     }
   }
-  if (transitNews.length) transitParas.push(`${plural(transitNews.length, 'transportation item', 'transportation items')} reached the record locally this month${transitNews.length ? `, in ${[...new Set(transitNews.map(t => labelOf(t.city)))].slice(0, 5).join(', ')}` : ''}.`);
-  if (!transitParas.length) transitParas.push(`Nothing on transportation reached the record this period. The commute and transit-share figures this dashboard holds come from the census and move slowly, so an empty month says nothing about how the system ran.`);
-  sections.push({
-    kind: 'transport', title: 'Transportation', paragraphs: transitParas, stats: transitStats,
-    items: [...transitResearch.slice(1), ...transitNews].map(r => ({ city: r.city ? labelOf(r.city) : 'Bay Area', county: r.county, date: r.date, monthOnly: r.monthOnly, title: r.title, snippet: (r.snippet || '').slice(0, 280), source: r.source, url: r.url, image: r.image || '' })),
-  });
+  if (transitNews.length) {
+    const featured = transitNews.slice(0, 3);
+    transitBlocks.push(para(t(`Locally, ${plural(transitNews.length, 'transport item', 'transport items')} reached the record this period.`)));
+    featured.forEach(n => {
+      told.add(n.url);
+      transitBlocks.push(para(t(`In ${labelOf(n.city)}, `), link(n.title.replace(/\.$/, ''), n.url), t('. '),
+        n.snippet ? t(`${trim(n.snippet)} `) : null, t(`(${n.source}, ${fmtDate(n.date)}.)`)));
+    });
+    const img = transitNews.find(n => n.image);
+    if (img) transitBlocks.push(image(img.image, `${labelOf(img.city)}: ${img.title}`, img.source));
+  }
+  if (!transitBlocks.length) transitBlocks.push(para(t('Nothing on transport reached the record this period. The commute figures this dashboard holds come from the census and move slowly, so a quiet month says nothing about how the system actually ran.')));
+  sections.push({ kind: 'transport', title: 'Transportation', blocks: transitBlocks, stats: transitStats });
 
   // =================================================================== 4. county by county
+  const countySections = [];
   for (const county of COUNTIES) {
     const cNews = news.filter(n => n.county === county);
     const cProjects = projects.filter(p => p.county === county);
@@ -314,29 +411,39 @@ function issueFor(monthId, number, previousIssueDate) {
     const cReleases = releases.filter(r => r.county === county);
     const market = countyMarket(county, asOf, 'value');
     const rent = countyMarket(county, asOf, 'rent');
-    const paragraphs = [];
     const tracked = citiesInCounty(county).length;
     const yearHere = yearNews.filter(n => n.county === county).length;
     const pipeHere = pipeline.filter(p => p.county === county);
     const rhnaHere = citiesInCounty(county).map(c => RHNA[c.key]).filter(Boolean);
+    const items = [...cNews, ...cProjects];
+    const blocks = [];
 
-    paragraphs.push(`${plural(tracked, 'jurisdiction', 'jurisdictions')} tracked here${yearHere ? `, ${plural(yearHere, 'published report', 'published reports')} in the last twelve months` : ', and no published report in the last twelve months'}${market ? `. Median typical home ${money(market.median)} (${market.year} index)${rent ? `, median asking rent ${money(rent.median)}` : ''}` : ''}.`);
-    if (rhnaHere.length) {
-      const target = rhnaHere.reduce((a, r) => a + r.target, 0);
-      paragraphs.push(`${rhnaHere.length === 1 ? 'One of its cities carries' : `${rhnaHere.length} of its cities carry`} a 6th cycle housing allocation on this dashboard, ${target.toLocaleString('en-US')} homes between them for the 2023-2031 cycle${asOf >= RHNA_PROGRESS ? `, of which ${rhnaHere.reduce((a, r) => a + r.units, 0).toLocaleString('en-US')} had been permitted by HCD's August 2026 progress file` : '; progress against it is not published in a file this issue can quote'}.`);
-    }
+    blocks.push(para(
+      t(`${county} County brings ${plural(tracked, 'jurisdiction', 'jurisdictions')} to this dashboard`),
+      market ? t(`, where the median typical home runs ${money(market.median)}${rent ? ` and the median asking rent ${money(rent.median)}` : ''}`) : null,
+      yearHere ? t(`. ${plural(yearHere, 'published report has', 'published reports have')} come out of it in the last twelve months`) : t('. Nothing has been published out of it in the last twelve months'),
+      rhnaHere.length ? t(`, and ${rhnaHere.length === 1 ? 'one of its cities carries' : `${rhnaHere.length} of its cities carry`} a 6th cycle allocation totalling ${rhnaHere.reduce((a, r) => a + r.target, 0).toLocaleString('en-US')} homes${asOf >= RHNA_PROGRESS ? `, ${rhnaHere.reduce((a, r) => a + r.units, 0).toLocaleString('en-US')} of them permitted so far` : ''}`) : null,
+      t('.'),
+    ));
     if (cReleases.length) {
-      const t = cReleases.reduce((a, r) => ({ p: a.p + (r.permitted || 0), c: a.c + (r.completed || 0) }), { p: 0, c: 0 });
-      paragraphs.push(`Its ${plural(cReleases.length, 'jurisdiction', 'jurisdictions')} reported ${t.p.toLocaleString('en-US')} homes permitted and ${t.c.toLocaleString('en-US')} completed in the ${cReleases[0].year} reporting year.`);
+      const tot = cReleases.reduce((a, r) => ({ p: a.p + (r.permitted || 0), c: a.c + (r.completed || 0) }), { p: 0, c: 0 });
+      blocks.push(para(t(`In their ${cReleases[0].year} filings its cities claimed ${tot.p.toLocaleString('en-US')} homes permitted and ${tot.c.toLocaleString('en-US')} completed.`),
+        cApr.length ? t(` The largest records to surface with them were ${list(cApr.slice(0, 2).map(p => `${p.title} in ${labelOf(p.city)} (${plural(p.units, 'home', 'homes')}, ${p.reportedStatus || p.stage})`))}.`) : null));
     }
-    if (cApr.length) paragraphs.push(`${plural(cApr.length, 'record', 'records')} from its cities became public with the annual reports, the largest ${cApr.slice(0, 3).map(p => `${p.title} in ${labelOf(p.city)} (${plural(p.units, 'home', 'homes')}, ${p.reportedStatus || p.stage})`).join('; ')}.`);
-    if (pipeHere.length) paragraphs.push(`${plural(pipeHere.length, 'published development', 'published developments')} ${were(pipeHere.length)} on the record and not reported finished, carrying ${pipeHere.reduce((a, p) => a + p.units, 0).toLocaleString('en-US')} reported homes; the largest was ${pipeHere[0].title} in ${labelOf(pipeHere[0].city)} at ${plural(pipeHere[0].units, 'home', 'homes')}.`);
-    const items = [...cNews, ...cProjects].map(r => ({ city: labelOf(r.city), date: r.date, title: r.title,
-      snippet: (r.snippet || '').slice(0, 260), source: r.source, url: r.url, topic: r.topic, image: r.image || '' }));
+    if (items.length) {
+      items.slice(0, 4).forEach((r, i) => blocks.push(para(
+        t(i === 0 ? `This period in ${labelOf(r.city)}: ` : `In ${labelOf(r.city)}, `), link(r.title.replace(/\.$/, ''), r.url), t('. '),
+        r.snippet ? t(`${trim(r.snippet, 260)} `) : null, t(`(${r.source}, ${fmtDate(r.date)}.)`),
+      )));
+      const img = items.find(r => r.image);
+      if (img) blocks.push(image(img.image, `${labelOf(img.city)}: ${img.title}`, img.source));
+    }
+    if (pipeHere.length) blocks.push(para(t(`${plural(pipeHere.length, 'published development', 'published developments')} in the county ${were(pipeHere.length)} on the books and unfinished, carrying ${pipeHere.reduce((a, p) => a + p.units, 0).toLocaleString('en-US')} reported homes between them; the biggest is `), link(pipeHere[0].title, pipeHere[0].url), t(` in ${labelOf(pipeHere[0].city)} at ${plural(pipeHere[0].units, 'home', 'homes')}.`)));
     const quiet = !items.length && !cApr.length && !cReleases.length;
-    if (quiet) paragraphs.push(`No published record from ${county} County's ${tracked} jurisdictions reached this dashboard in ${monthName(monthId)}. That is an absence of reporting, not evidence that nothing happened.`);
-    sections.push({ kind: 'county', county, tracked, quiet, paragraphs, items });
+    if (quiet) blocks.push(para(t(`Nothing else was published out of ${county} County between ${fmtDate(from)} and ${fmtDate(asOf)} — an absence of reporting rather than evidence of stillness.`)));
+    countySections.push({ kind: 'county', county, tracked, quiet, count: items.length, blocks });
   }
+  countySections.forEach(section => sections.push(section));
 
   // =================================================================== 5. cities in focus
   const cityTally = new Map();
@@ -346,43 +453,46 @@ function issueFor(monthId, number, previousIssueDate) {
     const rhna = RHNA[key];
     const local = pipeline.filter(p => p.city === key);
     const latest = [...yearNews].filter(x => x.city === key).sort((a, b) => b.date.localeCompare(a.date))[0];
-    const facts = [];
-    if (value) facts.push(`typical home ${money(value.value)} (Zillow ${value.year})`);
-    if (rentNow) facts.push(`typical rent ${money(rentNow.value)}`);
-    if (CITY_STATS[key]?.population && asOf >= ACS_2020_2024) facts.push(`${CITY_STATS[key].population.toLocaleString('en-US')} residents (2020–2024 ACS)`);
-    if (rhna) facts.push(`6th cycle allocation ${rhna.target.toLocaleString('en-US')} homes${asOf >= RHNA_PROGRESS ? `, ${rhna.pct}% permitted` : ''}`);
-    return { city: labelOf(key), county: countyOf(key), mentions: n, facts,
+    const sentences = [];
+    sentences.push(`${labelOf(key)} has been in the record ${plural(n, 'time', 'times')} in the past year, more than almost anywhere else in ${countyOf(key)} County.`);
+    if (value) sentences.push(`A typical home there runs ${money(value.value)}${rentNow ? `, a typical asking rent ${money(rentNow.value)}` : ''}${CITY_STATS[key]?.population && asOf >= ACS_2020_2024 ? `, among ${CITY_STATS[key].population.toLocaleString('en-US')} residents` : ''}.`);
+    if (rhna) sentences.push(`Its 6th cycle allocation is ${rhna.target.toLocaleString('en-US')} homes${asOf >= RHNA_PROGRESS ? `, ${rhna.pct}% of it permitted so far` : ', and no progress file this issue can quote'}.`);
+    if (local.length) sentences.push(`${plural(local.length, 'development is', 'developments are')} on its books unfinished, led by ${local[0].title} at ${plural(local[0].units, 'home', 'homes')}.`);
+    return { city: labelOf(key), county: countyOf(key), mentions: n, text: sentences.join(' '),
       photo: photos[key] ? { url: photos[key].url, by: photos[key].by, licence: photos[key].lic, caption: photos[key].cap } : null,
-      pipeline: local.slice(0, 3).map(p => ({ title: p.title, units: p.units, status: p.reportedStatus || p.stage, date: p.date, url: p.url, source: p.source })),
-      latest: latest ? { title: latest.title, date: latest.date, source: latest.source, url: latest.url, snippet: latest.snippet.slice(0, 220) } : null };
+      latest: latest ? { title: latest.title, date: latest.date, source: latest.source, url: latest.url } : null };
   });
   if (spotlights.length) sections.push({ kind: 'spotlight', title: 'Cities in focus', spotlights });
 
   // =================================================================== 6. who decides
-  const boardItems = news.filter(n => /commission|council|board|hearing|meeting|agenda|vote|approv/i.test(n.title + ' ' + n.snippet))
-    .map(r => ({ city: labelOf(r.city), county: r.county, title: r.title, date: r.date, source: r.source, url: r.url }));
-  sections.push({ kind: 'boards', title: 'Who decides, and where',
-    paragraphs: [`Land use in every one of these ${municipalities.cities.length} jurisdictions is decided in public by a planning commission and a city or town council. Agendas are posted before each meeting and public comment is taken at it. Nothing in this newsletter is a decision; anything still pending is decided at one of those meetings.`],
-    items: boardItems });
+  const boardItems = news.filter(n => /commission|council|board|hearing|meeting|agenda|vote|approv/i.test(n.title + ' ' + n.snippet));
+  sections.push({ kind: 'boards', title: 'Who decides, and where', blocks: blocksOf(
+    para(t(`None of this happens in a newsletter. Land use in all ${municipalities.cities.length} of these jurisdictions is decided in public, by a planning commission and then a city or town council, on an agenda posted days beforehand and at a meeting where anyone may speak.`),
+      boardItems.length ? t(` ${plural(boardItems.length, 'item', 'items')} this period turned on exactly that kind of meeting`) : null,
+      boardItems.length ? t(', including ') : null,
+      ...(boardItems.length ? boardItems.slice(0, 3).flatMap((n, i, arr) => [link(n.title.replace(/\.$/, ''), n.url), t(` in ${labelOf(n.city)}${i === arr.length - 1 ? '.' : '; '}`)]) : [t('.')]),
+    ),
+    para(t('If something below matters to you, the meeting is the place it is decided — not the article about it, and not this page.')),
+  ) });
 
   // =================================================================== 7. what to watch
   const watch = [];
   const [yearNum, monthNum] = monthId.split('-').map(Number);
   const nextApril = `${monthNum >= 4 ? yearNum + 1 : yearNum}-04-01`;
-  watch.push({ when: fmtDate(nextApril), what: `Cities file their ${monthNum >= 4 ? yearNum : yearNum - 1} housing annual reports with HCD. Table A2 of those filings is what this dashboard's project records are built from, and it reaches data.ca.gov in the months after.` });
-  if (asOf >= '2025-10-10' && asOf < '2026-07-01') watch.push({ when: 'July 1, 2026', what: 'SB 79\'s upzoning provisions take effect near major transit stops in Alameda, Contra Costa, San Francisco, San Mateo and Santa Clara counties. Cities can conform, exclude parcels, or adopt an alternative transit-oriented plan before then.' });
-  if (asOf >= '2025-10-13' && asOf < '2026-11-03') watch.push({ when: 'November 3, 2026', what: `Voters in the five SB 63 counties decide the regional transit sales tax - a half cent, a full cent in San Francisco, about $980 million a year for 14 years${asOf >= '2026-05-26' ? '. It qualified by citizens\' initiative in May, so it passes on a simple majority' : ''}.` });
-  if (monthId === '2026-03') watch.push({ when: 'March 19 and 25, 2026', what: 'ABAG and MTC vote on adopting the final Plan Bay Area 2050+.' });
-  if (asOf < ACS_2020_2024) watch.push({ when: 'December 2025', what: 'The Census Bureau releases the 2020–2024 American Community Survey five-year estimates, the next refresh of commute, income and tenure figures for every city here.' });
+  watch.push({ when: fmtDate(nextApril), what: `Cities file their ${monthNum >= 4 ? yearNum : yearNum - 1} housing annual reports with HCD. Table A2 of those filings is where this dashboard's project records come from, and it reaches data.ca.gov in the months after.` });
+  if (asOf >= '2025-10-10' && asOf < '2026-07-01') watch.push({ when: 'July 1, 2026', what: 'SB 79\'s upzoning provisions take effect near major transit stops in Alameda, Contra Costa, San Francisco, San Mateo and Santa Clara counties. Cities can conform, exclude parcels or adopt an alternative transit-oriented plan before then — and the ones that do nothing get the state\'s standards by default.' });
+  if (asOf >= '2025-10-13' && asOf < '2026-11-03') watch.push({ when: 'November 3, 2026', what: `Voters in the five SB 63 counties decide the regional transit sales tax — a half cent, a full cent in San Francisco, about $980 million a year for 14 years${asOf >= '2026-05-26' ? '. It qualified by citizens\' initiative in May, so it needs a simple majority rather than two thirds' : ''}.` });
+  if (monthId === '2026-03' && asOf < '2026-03-25') watch.push({ when: 'March 19 and 25, 2026', what: 'ABAG and MTC vote on adopting the final Plan Bay Area 2050+, the long-range plan every local housing and transport decision is measured against.' });
+  if (asOf < ACS_2020_2024) watch.push({ when: 'December 2025', what: 'The Census Bureau releases the 2020–2024 American Community Survey five-year estimates — the next refresh of commute, income and tenure figures for every city here.' });
   const nextZillow = municipalities.cities.flatMap(c => (CITY_STATS[c.key]?.homeValueSeries || []).map(pt => pt.year)).filter(y => zillowPointAvailable(y) > asOf).sort()[0];
-  if (nextZillow) watch.push({ when: `August ${nextZillow}`, what: `Zillow's ${nextZillow} index lands, the next comparable annual reading of home values and rents in these cities.` });
+  if (nextZillow) watch.push({ when: `August ${nextZillow}`, what: `Zillow's ${nextZillow} index lands, the next comparable annual reading of values and rents in these cities.` });
   const notYet = [];
-  const nextApr = Object.entries(APR_PUBLISHED).find(([, when]) => when > asOf);
+  const nextApr = Object.entries(APR_PUBLISHED).find(([, w]) => w > asOf);
   if (nextApr) notYet.push(`The ${nextApr[0]} state housing annual reports, filed the April after that reporting year.`);
   if (asOf < ACS_2020_2024) notYet.push('The 2020–2024 American Community Survey five-year estimates.');
   if (asOf < RHNA_PROGRESS) notYet.push('HCD\'s August 2026 update of the 6th cycle RHNA progress file; allocations adopted in 2021 and 2022 are quoted instead.');
   if (nextZillow) notYet.push(`Zillow index values from ${nextZillow} onward.`);
-  sections.push({ kind: 'watch', title: 'What to watch', paragraphs: ['Dates already on the calendar when this issue went out.'], watch, notYet });
+  sections.push({ kind: 'watch', title: 'What to watch', blocks: [para(t('Dates already on the calendar when this issue went out.'))], watch, notYet });
 
   // ---- charts the issue can honestly draw
   const marketYears = [...new Set(municipalities.cities.flatMap(c => (CITY_STATS[c.key]?.homeValueSeries || []).map(pt => pt.year)))]
