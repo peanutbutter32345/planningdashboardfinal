@@ -6,6 +6,8 @@ const letter = JSON.parse(readFileSync(new URL('../public/data/newsletter.json',
 const research = JSON.parse(readFileSync(new URL('../data/newsletter-research.json', import.meta.url), 'utf8'));
 const issues = letter.issues;
 const statsOf = issue => issue.sections.flatMap(s => s.stats || []);
+const prose = section => (section.blocks || []).filter(b => b.kind === 'para')
+  .map(b => b.spans.map(sp => sp.v).join('')).join(' ');
 const dated = issue => {
   const out = [];
   for (const section of issue.sections) {
@@ -122,11 +124,28 @@ test('the run of issues leaves no gap between one dateline and the next', () => 
   });
 });
 
+test('issues are written as prose, with links inside sentences rather than a list of them', () => {
+  for (const issue of issues) {
+    const paragraphs = [...issue.lede, ...issue.sections.flatMap(s => s.blocks || [])].filter(b => b.kind === 'para');
+    assert.ok(paragraphs.length >= 12, `${issue.id} has only ${paragraphs.length} paragraphs`);
+    const words = paragraphs.map(b => b.spans.map(s => s.v).join('')).join(' ').split(/\s+/).length;
+    assert.ok(words >= 700, `${issue.id} runs to only ${words} words`);
+    for (const block of paragraphs) {
+      // A paragraph that is nothing but a link is a list entry wearing a paragraph's clothes.
+      const text = block.spans.filter(s => s.t === 'text').map(s => s.v).join('').trim();
+      assert.ok(text.length > 20, `${issue.id} has a paragraph that is only a link`);
+    }
+    // Citations belong inside sentences and in the drawer at the bottom, not as bare lists.
+    assert.ok(!issue.sections.some(s => Array.isArray(s.items) && s.items.length), `${issue.id} still renders a bare item list`);
+  }
+});
+
 test('counties with nothing published are said to be quiet rather than left out', () => {
   const quiet = issues.flatMap(i => i.sections.filter(s => s.kind === 'county' && s.quiet));
   assert.ok(quiet.length, 'expected at least one quiet county across the archive');
   quiet.forEach(section => {
-    assert.ok(section.paragraphs.some(p => /No published record/.test(p)), section.county);
-    assert.equal(section.items.length, 0);
+    // The county still gets its standing profile; the quiet note closes it.
+    assert.ok(/absence of reporting/.test(prose(section)), section.county);
+    assert.equal(section.count, 0);
   });
 });
