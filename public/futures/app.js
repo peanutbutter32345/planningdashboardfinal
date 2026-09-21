@@ -1,6 +1,6 @@
 import {PublicLayers} from './layers.js';
 import {priceScenario,annualElectricityGWh} from './spatial.js';
-import {AS_OF,BASE_YEAR,DEFAULTS,MAP_DEFAULTS,MODEL_VERSION,POLICIES,STATIONS,normalizeSettings,estimateProjects,validPoint,readScenario,scenarioQuery} from './model.js';
+import {AS_OF,BASE_YEAR,DEFAULTS,MAP_DEFAULTS,MODEL_VERSION,POLICIES,STATIONS,normalizeSettings,estimateProjects,priceMarkerSize,validPoint,readScenario,scenarioQuery} from './model.js';
 const $=id=>document.getElementById(id);
 const context=window.dashboardContext;
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -104,6 +104,11 @@ function initMap(){
  publicLayers=new PublicLayers(map,()=>{update();},notify);
  publicLayers.load();
  priceLayer=L.layerGroup().addTo(map);
+ // The price layer labels a hundred cities. At regional zoom those labels cover each other and the
+ // map underneath, so the marker shrinks as the reader zooms out and grows back on the way in.
+ const trackZoom=()=>{ $('futureMap').dataset.zoom=map.getZoom().toFixed(1); };
+ map.on('zoomend',()=>{ trackZoom(); if(state.layer==='prices'&&activeView==='map') renderPriceMarkers(); });
+ trackZoom();
  stationLayer=L.layerGroup().addTo(map);projectLayer=L.layerGroup().addTo(map);
  STATIONS.forEach(s=>{L.circle([s.lat,s.lng],{radius:804.672,color:'#8296b7',weight:1,fillOpacity:.055,dashArray:'3 5',interactive:false}).addTo(stationLayer);L.circleMarker([s.lat,s.lng],{radius:3,color:'#fff',weight:1,fillColor:'#7A6636',fillOpacity:1}).bindTooltip(esc(s.name)+' · approximate center').addTo(stationLayer);});
  return true;
@@ -134,7 +139,7 @@ function renderMap(fit=false){
  renderDataStatus();
  projectLayer.clearLayers();markers.clear();priceLayer.clearLayers();
  clearHeat();
- const layerNotes={heat:'Heat shows concentration of modeled gross delivery in the project sample; it is not a map of all homes. Intensity is comparable over time at the same zoom.',prices:'City-centered markers show a modeled city index, not prices for nearby parcels. Color shows the change from the same-year reference.',exposure:'Project points screened against generalized FEMA polygons. A no-match result does not establish low risk. NOAA water levels do not alter FEMA classifications.'};
+ const layerNotes={heat:'Heat shows concentration of modeled gross delivery in the project sample; it is not a map of all homes. Intensity is comparable over time at the same zoom.',prices:'One marker per city, placed at its centre, showing a modeled city index. Zoom in for the city name and the change from the same-year reference; hover a marker at this zoom for the same figures. These are city indexes, and they do not price nearby parcels.',exposure:'Project points screened against generalized FEMA polygons. A no-match result does not establish low risk. NOAA water levels do not alter FEMA classifications.'};
  $('fxLayerNote').textContent=layerNotes[state.layer]||'Dots are project locations; size reflects modeled units. Station rings are approximate context, not legal eligibility.';
  if(state.layer==='heat'&&window.L.heatLayer){heatLayer=createHeat(rows.filter(validPoint).map(p=>[p.lat,p.lng,p.expected]),{radius:32,blur:24,max:700,maxZoom:11,minOpacity:.08,gradient:{.15:'#83a889',.4:'#d8c25a',.65:'#ee963f',.85:'#d96349',1:'#9d4051'}}).addTo(map);}
  if(state.layer==='prices'){if(!cityPrices.length)$('fxMapCaption').textContent=publicLayers.stock?'No city-price baseline for this area':'City price baselines loading…';renderPriceMarkers();requestAnimationFrame(()=>{map.invalidateSize();if(fit)fitMap();});return;}
@@ -214,8 +219,19 @@ function buildCityPrices(){
  }
 }
 function renderPriceMarkers(){
+ priceLayer.clearLayers();
+ const size=priceMarkerSize(map.getZoom());
  for(const c of cityPrices){const color=Math.abs(c.percent)<.005?'#6f7e72':c.percent<0?'#3E4F24':'#a95c38';
- L.marker([c.center.lat,c.center.lng],{pane:'fxPrices',icon:L.divIcon({className:'fx-price-marker',html:`<span style="--price-color:${color}"><small>${esc(c.label)}</small><b>${compactMoney(c.scenario)}</b><em>${c.percent>0?'+':''}${c.percent.toFixed(1)}% vs ref.</em></span>`,iconSize:[100,55],iconAnchor:[50,28]}),title:c.label+' modeled city index'}).bindPopup(`<div class="fx-popup"><small>${esc(c.label)} · CITY INDEX SENSITIVITY</small><h3>${money(c.scenario)} in ${state.year}</h3><p>Observed July 2026: ${money(c.observed)}<br>Same-year reference: ${money(c.reference)}<br>Supply scenario: ${c.percent.toFixed(2)}%</p>${state.floodDiscount?`<p>Illustrative exposed location: <b>${money(c.scenario*(1-state.floodDiscount/100))}</b><br><small>${state.floodDiscount}% user-assumed discount; not a property valuation.</small></p>`:''}<small>${fmt(c.stock)} homes in the 2020 stock denominator; ${c.records} modeled project records. Values are not parcel-specific.${c.key==='westsanjose'?' Uses citywide San Jose price and housing stock.':''}</small></div>`).addTo(priceLayer);
+ const label=`${esc(c.label)} · ${compactMoney(c.scenario)} · ${c.percent>0?'+':''}${c.percent.toFixed(1)}% vs reference`;
+ const marker=size==='dot'
+  ? L.circleMarker([c.center.lat,c.center.lng],{pane:'fxPrices',radius:5,color:'#fff',weight:1.2,fillColor:color,fillOpacity:.92})
+      .bindTooltip(label,{direction:'top',className:'fx-price-tip'})
+  : L.marker([c.center.lat,c.center.lng],{pane:'fxPrices',icon:size==='chip'
+      ? L.divIcon({className:'fx-price-marker fx-price-chip',html:`<span style="--price-color:${color}"><b>${compactMoney(c.scenario)}</b></span>`,iconSize:[56,22],iconAnchor:[28,11]})
+      : L.divIcon({className:'fx-price-marker',html:`<span style="--price-color:${color}"><small>${esc(c.label)}</small><b>${compactMoney(c.scenario)}</b><em>${c.percent>0?'+':''}${c.percent.toFixed(1)}% vs ref.</em></span>`,iconSize:[100,55],iconAnchor:[50,28]}),
+      title:label});
+ if(size==='chip')marker.bindTooltip(label,{direction:'top',className:'fx-price-tip'});
+ marker.bindPopup(`<div class="fx-popup"><small>${esc(c.label)} · CITY INDEX SENSITIVITY</small><h3>${money(c.scenario)} in ${state.year}</h3><p>Observed July 2026: ${money(c.observed)}<br>Same-year reference: ${money(c.reference)}<br>Supply scenario: ${c.percent.toFixed(2)}%</p>${state.floodDiscount?`<p>Illustrative exposed location: <b>${money(c.scenario*(1-state.floodDiscount/100))}</b><br><small>${state.floodDiscount}% user-assumed discount; not a property valuation.</small></p>`:''}<small>${fmt(c.stock)} homes in the 2020 stock denominator; ${c.records} modeled project records. Values are not parcel-specific.${c.key==='westsanjose'?' Uses citywide San Jose price and housing stock.':''}</small></div>`).addTo(priceLayer);
  }
 }
 function renderImpacts(){

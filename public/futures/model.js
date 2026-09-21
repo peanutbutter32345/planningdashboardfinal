@@ -71,3 +71,13 @@ export function scenarioQuery(state){
  const s=normalizeSettings(state);
  return new URLSearchParams({...s,policies:s.policies.join(','),view:'futures',area:state.city||'all',layer:state.layer||'heat',flood:state.flood===false?'0':'1',energy:state.energy===false?'0':'1',seaLevel:state.seaLevel||0,basemap:state.basemap||'light'}).toString();
 }
+
+// How much of a city's price marker to draw at a given zoom. A hundred labelled cards at regional
+// zoom cover each other and the map under them, so the marker is a dot until the reader is close
+// enough for the labels to have room.
+export function priceMarkerSize(zoom){
+ if(!Number.isFinite(zoom))return 'dot';
+ if(zoom>=11.5)return 'card';
+ if(zoom>=10.2)return 'chip';
+ return 'dot';
+}

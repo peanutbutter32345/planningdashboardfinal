@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {DEFAULTS,MAP_DEFAULTS,POLICIES,STATIONS,normalizeSettings,distanceKm,projectEstimate,estimateProjects,readScenario,scenarioQuery} from '../public/futures/model.js';
+import {DEFAULTS,MAP_DEFAULTS,POLICIES,STATIONS,normalizeSettings,distanceKm,projectEstimate,estimateProjects,priceMarkerSize,readScenario,scenarioQuery} from '../public/futures/model.js';
 import {PROJECTS} from '../data/projects.js';
 const project={id:'one',city:'sunnyvale',type:'Residential',stage:'review',units:100,bmr:20,lat:37.3785,lng:-122.0308,lastDate:'2026-09-01'};
 test('reference settings survive missing, invalid and hostile URL inputs',()=>{
@@ -55,4 +55,18 @@ test('real dataset respects bounds, monotonic time, uncertainty and reproducibil
 test('aggregation deduplicates IDs within a city but preserves separate-city records',()=>{
  const result=estimateProjects([project,project,{...project,city:'other'}]);assert.equal(result.rows.length,2);assert.equal(result.units,200);
  assert.deepEqual(estimateProjects([]).rows,[]);
+});
+
+test('a city price marker shrinks to a dot when the whole region is on screen',()=>{
+ // Regional zooms: one card per city covered the map and each other.
+ assert.equal(priceMarkerSize(8),'dot');
+ assert.equal(priceMarkerSize(9.5),'dot');
+ assert.equal(priceMarkerSize(10),'dot');
+ // County zoom shows the value alone.
+ assert.equal(priceMarkerSize(10.2),'chip');
+ assert.equal(priceMarkerSize(11.4),'chip');
+ // Close enough for the labels to have room.
+ assert.equal(priceMarkerSize(11.5),'card');
+ assert.equal(priceMarkerSize(14),'card');
+ assert.equal(priceMarkerSize(undefined),'dot');
 });
