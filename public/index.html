@@ -993,9 +993,9 @@
   .sub-nav{padding-right:64px; background:var(--paper-2); border-bottom:1px solid var(--rule); position:sticky; top:0; z-index:49;}
   /* Account and Resource Bank are their own pages: the dashboard masthead and section
      tabs are hidden there rather than left sitting above the content. */
-  body.page-account #siteHero, body.page-bank #siteHero, body.page-about #siteHero, body.page-timeline #siteHero,
-  body.page-account .sub-nav, body.page-bank .sub-nav, body.page-about .sub-nav, body.page-timeline .sub-nav{display:none;}
-  body.page-account #mainContent, body.page-bank #mainContent, body.page-about #mainContent,
+  body.page-account #siteHero, body.page-archive #siteHero, body.page-bank #siteHero, body.page-about #siteHero, body.page-timeline #siteHero,
+  body.page-account .sub-nav, body.page-archive .sub-nav, body.page-bank .sub-nav, body.page-about .sub-nav, body.page-timeline .sub-nav{display:none;}
+  body.page-account #mainContent, body.page-archive #mainContent, body.page-bank #mainContent, body.page-about #mainContent,
   body.page-timeline #mainContent{padding-top:8px;}
   .sub-nav-inner{display:flex; gap:0; padding:0 12px; align-items:stretch; overflow-x:auto;
     scrollbar-width:none; -ms-overflow-style:none;}
@@ -6610,9 +6610,7 @@ async function renderNewsletter(){
     '<button type="button" class="nl-issue-btn" data-issue="'+issue.id+'" aria-current="'+(issue.id===newsletterIssue)+'">'
     +'<b>'+escapeHtml(issue.month)+'</b><span>Issue '+issue.number+' &middot; '
     +issue.counts.sources.toLocaleString()+' source'+(issue.counts.sources===1?'':'s')+'</span></button>').join('');
-  const archiveBtn=document.getElementById('nlArchiveBtn');
-  archiveBtn.textContent='Newsletter Archive ('+data.issues.length+') \u2192';
-  archiveBtn.onclick=()=>showScreen('archive');
+  document.getElementById('nlArchiveBtn').textContent='Newsletter Archive ('+data.issues.length+') \u2192';
   list.querySelectorAll('[data-issue]').forEach(button=>button.onclick=()=>{
     newsletterIssue=button.dataset.issue;renderNewsletter();
     document.getElementById('nlIssue').scrollIntoView({block:'start',behavior:'smooth'});
@@ -6733,6 +6731,7 @@ async function emailIssue(id,button){
     status.textContent=error.message;
   }finally{button.textContent=label;button.disabled=false;}
 }
+document.getElementById('nlArchiveBtn').addEventListener('click',()=>showScreen('archive'));
 document.getElementById('arcSearch').addEventListener('input',e=>{archiveQuery=e.target.value;renderArchive();});
 document.getElementById('arcYear').addEventListener('change',e=>{archiveYear=e.target.value;renderArchive();});
 
@@ -9466,12 +9465,12 @@ function renderBankExamples(){
 // The existing screens all live under Dashboard; the sub-nav is hidden on the other two.
 let currentPage = 'dashboard';
 document.body.classList.add('page-dashboard');
-const PAGE_DEFAULT_SCREEN = {dashboard:'dashboard', timeline:'timeline', account:'account', bank:'bank', about:'about'};
+const PAGE_DEFAULT_SCREEN = {dashboard:'dashboard', timeline:'timeline', archive:'archive', account:'account', bank:'bank', about:'about'};
 
 function applyPageChrome(page){
   // A body class drives what the dashboard-only furniture does, so Account and Resource Bank
   // read as their own pages instead of appearing under the masthead.
-  document.body.classList.remove('page-dashboard','page-timeline','page-account','page-bank','page-about');
+  document.body.classList.remove('page-dashboard','page-timeline','page-archive','page-account','page-bank','page-about');
   document.body.classList.add('page-'+page);
   const sub = document.getElementById('subNav');
   if(sub) sub.hidden = (page !== 'dashboard');
