@@ -6588,7 +6588,7 @@ function newsletterCountyChart(bars){
     '<div class="nl-bar-row"><span>'+escapeHtml(b.county)+'</span>'
     +'<span class="nl-bar-track"><i style="width:'+Math.max(2,(b.items/max)*100).toFixed(1)+'%"></i></span>'
     +'<span class="nl-bar-n">'+b.items+'</span></div>').join('')
-    +'</div><figcaption>Published items this issue, by county. Coverage is not activity: it reflects which newsrooms and city pages filed.</figcaption></figure>';
+    +'</div><figcaption>Published items this issue, by county. Counts reflect which newsrooms and city pages published during the period.</figcaption></figure>';
 }
 function newsletterSectionHtml(section,issue){
   const title=section.title||(section.county+' County');

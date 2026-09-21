@@ -235,6 +235,26 @@ function issueFor(monthId, number, previousIssueDate) {
     if (/[.!?"]$/.test(cut)) return cut;
     return cut.replace(/\s+\S*$/, '') + '...';
   };
+  // Stories are gathered into one paragraph rather than one paragraph each, so a section reads as
+  // a few substantial blocks.
+  const storyRun = (items, opener) => para(
+    opener ? t(opener + ' ') : null,
+    ...items.flatMap((n, i) => [
+      t(`${['In', 'Over in', 'Also in', 'And in'][i % 4]} ${labelOf(n.city)}, `),
+      link(String(n.title).replace(/\.$/, ''), n.url), t('. '),
+      trim(n.snippet, 260) ? qt(`${trim(n.snippet, 260)} `) : null,
+      t(`(${n.source}, ${fmtDate(n.date)}.)${i < items.length - 1 ? ' ' : ''}`),
+    ]),
+  );
+  // Fold spans onto the end of the previous paragraph, so a section holds a few thick blocks
+  // instead of many thin ones.
+  const append = (blocks, spans) => {
+    const last = blocks[blocks.length - 1];
+    const extra = [spans].flat(Infinity).filter(x => x && x.t);
+    if (!extra.length) return;
+    if (last && last.kind === 'para') blocks[blocks.length - 1] = { kind: 'para', spans: [...last.spans, ...extra] };
+    else blocks.push({ kind: 'para', spans: extra });
+  };
   // A sentence should not open on a numeral.
   const WORDS = ['no', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
   const opens = (n, singular, plural_) => `${n < 10 ? WORDS[n] : n.toLocaleString('en-US')} ${n === 1 ? singular : plural_}`;
@@ -256,12 +276,12 @@ function issueFor(monthId, number, previousIssueDate) {
       lead ? [t(lead.scope === 'state' ? 'The largest of them came from Sacramento. ' : lead.scope === 'region' ? 'The largest of them was regional. ' : `The largest of them was local, in ${lead.city}. `),
               link(lead.title.replace(/\.$/, ''), lead.url), cited({ source: lead.source, url: lead.url, date: lead.date, monthOnly: lead.monthOnly })] : null,
     ),
-    marketNow ? para(
-      t(`Zillow publishes an index for ${marketNow.cities} of the region's ${municipalities.cities.length} cities and towns. The median typical home among them is ${money(marketNow.median)} in the ${marketNow.year} reading`),
-      bayRent ? t(`, and the median asking rent ${money(bayRent.median)}`) : null,
-      t('.'),
-    ) : null,
   );
+  if (marketNow) append(lede, [
+    t(` Zillow publishes an index for ${marketNow.cities} of the region's ${municipalities.cities.length} cities and towns. The median typical home among them is ${money(marketNow.median)} in the ${marketNow.year} reading`),
+    bayRent ? t(`, and the median asking rent ${money(bayRent.median)}`) : null,
+    t('.'),
+  ]);
 
   // =================================================================== 1. what happened
   const briefBlocks = [];
@@ -271,36 +291,37 @@ function issueFor(monthId, number, previousIssueDate) {
       t(`${opens(regional.length, 'decision', 'decisions')} this period ${were(regional.length)} taken above the level of any single city. `),
       link(first.title.replace(/\.$/, ''), first.url), t('. '), qt(trim(first.snippet)), cited(first),
     ));
-    regional.slice(1).forEach(r => briefBlocks.push(para(link(r.title.replace(/\.$/, ''), r.url), t('. '), qt(trim(r.snippet)), cited(r))));
+    if (regional.length > 1) briefBlocks.push(para(...regional.slice(1).flatMap((r, i) => [
+      link(r.title.replace(/\.$/, ''), r.url), t('. '), qt(trim(r.snippet)), cited(r), t(i < regional.length - 2 ? ' ' : ''),
+    ])));
   }
   if (releases.length) {
     const totals = releases.reduce((a, r) => ({ permitted: a.permitted + (r.permitted || 0), completed: a.completed + (r.completed || 0), entitled: a.entitled + (r.entitled || 0) }), { permitted: 0, completed: 0, entitled: 0 });
     const top = [...releases].sort((a, b) => (b.permitted || 0) - (a.permitted || 0)).slice(0, 3);
     briefBlocks.push(para(
-      t(`California's Department of Housing and Community Development published the ${releases[0].year} annual progress reports this period. Across ${plural(releases.length, 'jurisdiction', 'jurisdictions')} in the nine counties the filings report ${totals.permitted.toLocaleString('en-US')} homes permitted, ${totals.entitled.toLocaleString('en-US')} entitled and ${totals.completed.toLocaleString('en-US')} completed in that reporting year. ${list(top.map(r => `${labelOf(r.city)} reported ${(r.permitted || 0).toLocaleString('en-US')} permits`))}. Cities compile these figures themselves once a year, and a permit allows construction to start rather than recording a finished home.`),
+      t(`California's Department of Housing and Community Development published the ${releases[0].year} annual progress reports this period. Across ${plural(releases.length, 'jurisdiction', 'jurisdictions')} in the nine counties the filings report ${totals.permitted.toLocaleString('en-US')} homes permitted, ${totals.entitled.toLocaleString('en-US')} entitled and ${totals.completed.toLocaleString('en-US')} completed in that reporting year. ${list(top.map(r => `${labelOf(r.city)} reported ${(r.permitted || 0).toLocaleString('en-US')} permits`))}. Cities compile these figures themselves once a year, and a permit records permission to build.`),
     ));
   }
   const busiest = COUNTIES.map(c => ({ c, n: [...news, ...projects, ...aprNew].filter(r => r.county === c).length })).sort((a, b) => b.n - a.n).filter(r => r.n);
-  if (busiest.length) {
-    briefBlocks.push(para(
-      t(`${busiest[0].c} County produced ${plural(busiest[0].n, 'item', 'items')} this period, more than anywhere else`),
-      busiest[1] ? t(`, with ${busiest[1].c} next at ${busiest[1].n}`) : null,
-      t('. '),
-      silent.length ? t(`${list(silent)} published nothing in the same window.`) : t('Every county published something.'),
-    ));
-  }
+  const geography = busiest.length ? [
+    t(`${busiest[0].c} County produced ${plural(busiest[0].n, 'item', 'items')} this period, more than anywhere else`),
+    busiest[1] ? t(`, with ${busiest[1].c} next at ${busiest[1].n}`) : null,
+    t('. '),
+    silent.length ? t(`${list(silent)} published nothing in the same window. `) : t('Every county published something. '),
+  ] : null;
+
   const told = new Set();
   if (threads.length) {
-    briefBlocks.push(para(t(`${opens(threads.length, 'earlier decision is', 'earlier decisions are')} still setting what cities can do.`)));
-    threads.forEach(r => {
+    briefBlocks.push(para(t(`${opens(threads.length, 'earlier decision is', 'earlier decisions are')} still setting what cities can do. `), ...threads.flatMap((r, i) => {
       told.add(r.url);
-      briefBlocks.push(para(link(r.title.replace(/\.$/, ''), r.url), t(', '), t(when(r)), t('. '), qt(trim(r.snippet)), t(` (${r.source}.)`)));
-    });
+      return [link(r.title.replace(/\.$/, ''), r.url), t(', '), t(when(r)), t('. '), qt(trim(r.snippet)), t(` (${r.source}.)${i < threads.length - 1 ? ' ' : ''}`)];
+    })));
   }
   const boardItems = news.filter(n => /commission|council|board|hearing|meeting|agenda|vote|approv/i.test(n.title + ' ' + n.snippet));
   briefBlocks.push(para(
+    geography || null,
     t(`Land use in all ${municipalities.cities.length} of these jurisdictions is decided in public, by a planning commission and then a city or town council, on an agenda posted days beforehand at a meeting where anyone may speak.`),
-    boardItems.length ? t(` ${plural(boardItems.length, 'item', 'items')} this period turned on that kind of meeting, including `) : null,
+    boardItems.length ? t(`${opens(boardItems.length, 'item', 'items')} this period turned on that kind of meeting, including `) : null,
     ...(boardItems.length ? boardItems.slice(0, 3).flatMap((n, i, arr) => [link(n.title.replace(/\.$/, ''), n.url), t(` in ${labelOf(n.city)}${i === arr.length - 1 ? '.' : ', '}`)]) : []),
   ));
   if (briefBlocks.length) sections.push({ kind: 'overview', title: 'Overview', blocks: briefBlocks });
@@ -325,11 +346,11 @@ function issueFor(monthId, number, previousIssueDate) {
     const STAGE_WORDS = { proposed: 'proposed', review: 'under review', approved: 'approved', construction: 'under construction' };
     const stages = Object.keys(STAGE_WORDS).map(st => ({ st: STAGE_WORDS[st], n: pipeline.filter(p => p.stage === st).length })).filter(r => r.n);
     const biggestOpen = pipeline[0];
-    housingBlocks.push(para(
-      t(`Published records that are not yet reported as finished add up to ${plural(pipeline.length, 'development', 'developments')} carrying ${units.toLocaleString('en-US')} reported homes`),
+    append(housingBlocks, para(
+      t(` Published records that are not yet reported as finished add up to ${plural(pipeline.length, 'development', 'developments')} carrying ${units.toLocaleString('en-US')} reported homes`),
       stages.length ? t(`: ${list(stages.map(r => `${r.n.toLocaleString('en-US')} ${r.st}`))}`) : null,
       t('. The largest is '), link(biggestOpen.title, biggestOpen.url), t(` in ${labelOf(biggestOpen.city)} at ${plural(biggestOpen.units, 'home', 'homes')}, so a single master plan can account for much of a county's total.`),
-    ));
+    ).spans);
     housingStats.push({ label: 'Homes in unfinished published developments', value: units.toLocaleString('en-US'), vintage: `${pipeline.length.toLocaleString('en-US')} records to ${fmtDate(asOf)}`, source: 'https://data.ca.gov/dataset/housing-element-annual-progress-report-apr-data-by-jurisdiction-and-year' });
   }
   if (asOf >= RHNA_PROGRESS) {
@@ -345,18 +366,10 @@ function issueFor(monthId, number, previousIssueDate) {
   if (housingNews.length) {
     const featured = housingNews.slice(0, 4);
     const withImage = featured.find(n => n.image) || housingNews.find(n => n.image);
-    housingBlocks.push(para(t(`${opens(housingNews.length, 'housing story', 'housing stories')} came out of the cities themselves${housingNews.length > featured.length ? `, and ${featured.length} of them are set out here` : ''}.`)));
-    const openers = ['In', 'Over in', 'In', 'Also in'];
-    featured.forEach((n, i) => {
-      told.add(n.url);
-      housingBlocks.push(para(
-        t(`${openers[i % openers.length]} ${labelOf(n.city)}, `), link(n.title.replace(/\.$/, ''), n.url), t('. '),
-        n.snippet ? qt(`${trim(n.snippet)} `) : null,
-        t(`(${n.source}, ${fmtDate(n.date)}.)`),
-      ));
-      if (withImage && n.url === withImage.url) housingBlocks.push(image(withImage.image, `${labelOf(withImage.city)}: ${withImage.title}`, withImage.source));
-    });
-    if (withImage && !featured.some(n => n.url === withImage.url)) housingBlocks.push(image(withImage.image, `${labelOf(withImage.city)}: ${withImage.title}`, withImage.source));
+    featured.forEach(n => told.add(n.url));
+    housingBlocks.push(storyRun(featured.slice(0, 2), `${opens(housingNews.length, 'housing story', 'housing stories')} came out of the cities themselves${housingNews.length > featured.length ? `, and ${featured.length} of them are set out here` : ''}.`));
+    if (featured.length > 2) housingBlocks.push(storyRun(featured.slice(2)));
+    if (withImage) housingBlocks.push(image(withImage.image, `${labelOf(withImage.city)}: ${withImage.title}`, withImage.source));
   }
   if (!housingBlocks.length) housingBlocks.push(para(t(`No housing record was published between ${fmtDate(from)} and ${fmtDate(asOf)}.`)));
   sections.push({ kind: 'housing', title: 'Housing', blocks: housingBlocks, stats: housingStats, chart: 'market' });
@@ -377,12 +390,8 @@ function issueFor(monthId, number, previousIssueDate) {
   }
   if (devNews.length) {
     const featured = devNews.slice(0, 3);
-    devBlocks.push(para(t(`${opens(devNews.length, 'development story', 'development stories')} came out of the cities this period.`)));
-    featured.forEach((n, i) => {
-      told.add(n.url);
-      devBlocks.push(para(t(`${i === 0 ? 'In' : 'Over in'} ${labelOf(n.city)}, `), link(n.title.replace(/\.$/, ''), n.url), t('. '),
-        n.snippet ? qt(`${trim(n.snippet)} `) : null, t(`(${n.source}, ${fmtDate(n.date)}.)`)));
-    });
+    featured.forEach(n => told.add(n.url));
+    devBlocks.push(storyRun(featured, `${opens(devNews.length, 'development story', 'development stories')} came out of the cities this period.`));
     const img = devNews.find(n => n.image);
     if (img) devBlocks.push(image(img.image, `${labelOf(img.city)}: ${img.title}`, img.source));
   }
@@ -408,23 +417,19 @@ function issueFor(monthId, number, previousIssueDate) {
     const shares = municipalities.cities.map(c => ({ label: c.label, v: CITY_STATS[c.key]?.transitSharePct })).filter(r => r.v).sort((a, b) => b.v - a.v);
     if (commutes.length) {
       const median = commutes[Math.floor(commutes.length / 2)];
-      transitBlocks.push(para(
-        t(`Census figures put the median one-way commute across these cities at ${median.v.toFixed(1)} minutes, ranging from ${commutes[0].v.toFixed(1)} in ${commutes[0].label} to ${commutes[commutes.length - 1].v.toFixed(1)} in ${commutes[commutes.length - 1].label}`),
+      append(transitBlocks, para(
+        t(` Census figures put the median one-way commute across these cities at ${median.v.toFixed(1)} minutes, ranging from ${commutes[0].v.toFixed(1)} in ${commutes[0].label} to ${commutes[commutes.length - 1].v.toFixed(1)} in ${commutes[commutes.length - 1].label}`),
         shares.length ? t(`. The share of workers commuting by public transport peaks at ${shares[0].v.toFixed(1)}% in ${shares[0].label} and falls close to zero in the outer suburbs`) : null,
         t('. These are five-year averages and they lag.'),
-      ));
+      ).spans);
       transitStats.push({ label: 'Median one-way commute', value: `${median.v.toFixed(1)} min`, vintage: '2020–2024 ACS', source: 'https://www.census.gov/programs-surveys/acs' });
       if (shares.length) transitStats.push({ label: 'Highest transit share', value: `${shares[0].v.toFixed(1)}%`, vintage: `${shares[0].label}, 2020–2024 ACS`, source: 'https://www.census.gov/programs-surveys/acs' });
     }
   }
   if (transitNews.length) {
     const featured = transitNews.slice(0, 3);
-    transitBlocks.push(para(t(`${opens(transitNews.length, 'transport item', 'transport items')} came out of the cities this period.`)));
-    featured.forEach(n => {
-      told.add(n.url);
-      transitBlocks.push(para(t(`In ${labelOf(n.city)}, `), link(n.title.replace(/\.$/, ''), n.url), t('. '),
-        n.snippet ? qt(`${trim(n.snippet)} `) : null, t(`(${n.source}, ${fmtDate(n.date)}.)`)));
-    });
+    featured.forEach(n => told.add(n.url));
+    transitBlocks.push(storyRun(featured, `${opens(transitNews.length, 'transport item', 'transport items')} came out of the cities this period.`));
     const img = transitNews.find(n => n.image);
     if (img) transitBlocks.push(image(img.image, `${labelOf(img.city)}: ${img.title}`, img.source));
   }
@@ -455,20 +460,22 @@ function issueFor(monthId, number, previousIssueDate) {
     ));
     if (cReleases.length) {
       const tot = cReleases.reduce((a, r) => ({ p: a.p + (r.permitted || 0), c: a.c + (r.completed || 0) }), { p: 0, c: 0 });
-      blocks.push(para(t(`In their ${cReleases[0].year} filings its cities reported ${tot.p.toLocaleString('en-US')} homes permitted and ${tot.c.toLocaleString('en-US')} completed.`),
-        cApr.length ? t(` The largest records to surface with them were ${list(cApr.slice(0, 2).map(p => `${p.title} in ${labelOf(p.city)} at ${plural(p.units, 'home', 'homes')}, ${p.reportedStatus || p.stage}`))}.`) : null));
+      blocks[0] = para(blocks[0].spans, [
+        t(` In their ${cReleases[0].year} filings its cities reported ${tot.p.toLocaleString('en-US')} homes permitted and ${tot.c.toLocaleString('en-US')} completed.`),
+        cApr.length ? t(` The largest records to surface with them were ${list(cApr.slice(0, 2).map(p => `${p.title} in ${labelOf(p.city)} at ${plural(p.units, 'home', 'homes')}, ${p.reportedStatus || p.stage}`))}.`) : null,
+      ]);
     }
     if (items.length) {
-      items.slice(0, 4).forEach((r, i) => blocks.push(para(
-        t(i === 0 ? `This period in ${labelOf(r.city)}: ` : `In ${labelOf(r.city)}, `), link(r.title.replace(/\.$/, ''), r.url), t('. '),
-        r.snippet ? qt(`${trim(r.snippet, 260)} `) : null, t(`(${r.source}, ${fmtDate(r.date)}.)`),
-      )));
+      blocks.push(storyRun(items.slice(0, 4)));
       const img = items.find(r => r.image);
       if (img) blocks.push(image(img.image, `${labelOf(img.city)}: ${img.title}`, img.source));
     }
-    if (pipeHere.length) blocks.push(para(t(`${opens(pipeHere.length, 'published development', 'published developments')} in the county ${were(pipeHere.length)} on the books and unfinished, carrying ${pipeHere.reduce((a, p) => a + p.units, 0).toLocaleString('en-US')} reported homes between them. The largest is `), link(pipeHere[0].title, pipeHere[0].url), t(` in ${labelOf(pipeHere[0].city)} at ${plural(pipeHere[0].units, 'home', 'homes')}.`)));
+    if (pipeHere.length) {
+      const pipeSpans = [t(` ${opens(pipeHere.length, 'published development', 'published developments')} in the county ${were(pipeHere.length)} on the books and unfinished, carrying ${pipeHere.reduce((a, p) => a + p.units, 0).toLocaleString('en-US')} reported homes between them. The largest is `), link(pipeHere[0].title, pipeHere[0].url), t(` in ${labelOf(pipeHere[0].city)} at ${plural(pipeHere[0].units, 'home', 'homes')}.`)];
+      blocks[0] = para(blocks[0].spans, pipeSpans);
+    }
     const quiet = !items.length && !cApr.length && !cReleases.length;
-    if (quiet) blocks.push(para(t(`Nothing was published out of ${county} County between ${fmtDate(from)} and ${fmtDate(asOf)}.`)));
+    if (quiet) append(blocks, t(` Nothing was published out of ${county} County between ${fmtDate(from)} and ${fmtDate(asOf)}.`));
     sections.push({ kind: 'county', county, tracked, quiet, count: items.length, blocks });
   }
 
@@ -501,7 +508,7 @@ function issueFor(monthId, number, previousIssueDate) {
   if (asOf < ACS_2020_2024) watch.push({ when: 'December 2025', what: 'The Census Bureau releases the 2020-2024 American Community Survey five-year estimates, which refresh commute, income and tenure figures for every city here.' });
   const nextZillow = municipalities.cities.flatMap(c => (CITY_STATS[c.key]?.homeValueSeries || []).map(pt => pt.year)).filter(y => zillowPointAvailable(y) > asOf).sort()[0];
   if (nextZillow) watch.push({ when: `August ${nextZillow}`, what: `Zillow publishes its ${nextZillow} index, the next comparable annual reading of values and rents in these cities.` });
-  sections.push({ kind: 'watch', title: 'What to look for', blocks: [para(t('Dates already set when this issue went out.'))], watch });
+  sections.push({ kind: 'watch', title: 'What to look for', blocks: [], watch });
 
   // ---- charts the issue can honestly draw
   const marketYears = [...new Set(municipalities.cities.flatMap(c => (CITY_STATS[c.key]?.homeValueSeries || []).map(pt => pt.year)))]
