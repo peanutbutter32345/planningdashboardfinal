@@ -1,0 +1,150 @@
+{
+  "purpose": "Regional and statewide events that shaped Bay Area planning, researched outside this site's own datasets so the newsletter is not limited to what the dashboard happens to collect. Every item carries the date it was published or decided and the source it was checked against. A date of seven characters means the source gives the month but not the day; the issue treats it as available at the end of that month.",
+  "checked": "2026-09-20",
+  "items": [
+    {
+      "date": "2025-04-29", "scope": "state", "topic": "housing",
+      "title": "Builder's remedy bill SB 457 fails to advance from the Senate Housing Committee",
+      "outlet": "Office of Senator Josh Becker",
+      "url": "https://sd13.senate.ca.gov/index.php/news/press-release/april-29-2025/bill-to-protect-cities-misuse-builders-remedy-fails-to-advance",
+      "summary": "A measure to narrow how the builder's remedy can be used against cities that miss their housing element deadlines did not clear its first policy committee, leaving the remedy's reach unchanged for Bay Area cities out of compliance.",
+      "verified": "press release dated April 29, 2025"
+    },
+    {
+      "date": "2025-06-25", "scope": "region", "topic": "transportation",
+      "title": "State budget carries a $750 million loan for BART, Muni, AC Transit and Caltrain",
+      "outlet": "Metropolitan Transportation Commission",
+      "url": "https://mtc.ca.gov/news/report-commission-june-25-2025",
+      "summary": "The Legislature's budget included a $750 million loan intended as bridge funding for four Bay Area operators facing deficits, ahead of any regional revenue measure.",
+      "verified": "MTC report to the Commission dated June 25, 2025"
+    },
+    {
+      "date": "2025-07-14", "scope": "region", "topic": "transportation",
+      "title": "Sacramento gave Bay Area transit a lifeline, but transit is not out of the woods",
+      "outlet": "SPUR",
+      "url": "https://www.spur.org/news/2025-07-14/sacramento-gave-bay-area-transit-lifeline-transit-not-out-woods",
+      "summary": "An assessment of what the state loan does and does not solve: it defers service cuts without addressing the operating shortfall that follows the loan's repayment.",
+      "verified": "SPUR article dated July 14, 2025"
+    },
+    {
+      "date": "2025-09-05", "scope": "region", "topic": "transportation",
+      "title": "The $750 million loan for Bay Area transit stalls",
+      "outlet": "The San Francisco Standard",
+      "url": "https://sfstandard.com/2025/09/05/transit-bay-area-san-francisco-deficit-gavin-newsom-bart-muni/",
+      "summary": "With the loan not yet executed, operators that had planned around it faced the prospect of returning to service-cut scenarios.",
+      "verified": "article dated September 5, 2025 in its URL and byline"
+    },
+    {
+      "date": "2025-09-12", "scope": "region", "topic": "transportation",
+      "title": "Newsom finalises the $750 million loan to Bay Area transit agencies",
+      "outlet": "ABC7 News",
+      "url": "https://abc7news.com/post/governor-gavin-newsom-approves-750-million-loan-bay-area-public-transit/17787280/",
+      "summary": "The state finalised the loan before the end of the legislative session, steadying BART, Muni, AC Transit and Caltrain into the next fiscal year.",
+      "verified": "reported September 12, 2025"
+    },
+    {
+      "date": "2025-10-10", "scope": "state", "topic": "housing",
+      "title": "Governor signs SB 79, allowing denser housing near transit",
+      "outlet": "Holland & Knight",
+      "url": "https://www.hklaw.com/en/insights/publications/2025/10/california-gov-gavin-newsom-signs-sb-79",
+      "summary": "SB 79 makes qualifying housing an allowed use near major transit stops, with state-set height, density and floor-area standards. In the Bay Area it reaches Alameda, Contra Costa, San Francisco, San Mateo and Santa Clara counties. Its principal upzoning provisions take effect 1 July 2026.",
+      "verified": "law firm alert dated October 2025, signing date October 10, 2025"
+    },
+    {
+      "date": "2025-10-13", "scope": "region", "topic": "transportation",
+      "title": "Governor signs SB 63, the Connect Bay Area Act, clearing a 2026 transit tax measure",
+      "outlet": "The San Francisco Standard",
+      "url": "https://sfstandard.com/2025/10/13/bay-area-transit-tax-ballot-measure-2026/",
+      "summary": "SB 63 authorises a sales tax measure for the November 2026 ballot in Alameda, Contra Costa, San Francisco, San Mateo and Santa Clara counties: a half cent in four counties and a full cent in San Francisco, projected at about $980 million a year for 14 years.",
+      "verified": "article dated October 13, 2025"
+    },
+    {
+      "date": "2025-10-22", "scope": "region", "topic": "transportation",
+      "title": "What the Connect Bay Area Act actually authorises",
+      "outlet": "SPUR",
+      "url": "https://www.spur.org/news/2025-10-22/connect-bay-area-act-authorizes-regional-tax-measure-save-transit",
+      "summary": "An explainer on the two routes to the ballot - action by the new Public Transit Revenue Measure District, or a citizens' initiative needing signatures by mid-2026 and only a simple majority to pass.",
+      "verified": "SPUR article dated October 22, 2025"
+    },
+    {
+      "date": "2025-12-02", "scope": "city", "city": "sanfrancisco", "county": "San Francisco", "topic": "housing",
+      "title": "San Francisco supervisors approve the Family Zoning Plan, 7-4",
+      "outlet": "KQED",
+      "url": "https://www.kqed.org/news/12065708/san-francisco-supervisors-pass-rezoning-plan-making-way-for-taller-denser-housing",
+      "summary": "The rezoning of large parts of the city's west and north sides passed on a 7-4 vote. It is the central implementation step of a housing element that plans for more than 82,000 homes by 2031, roughly 36,000 of them from this rezoning.",
+      "verified": "reported December 2, 2025"
+    },
+    {
+      "date": "2026-03-09", "scope": "region", "topic": "civic",
+      "title": "MTC and ABAG release the proposed final Plan Bay Area 2050+",
+      "outlet": "Metropolitan Transportation Commission",
+      "url": "https://mtc.ca.gov/news/mtc-abag-release-proposed-final-plan-bay-area-2050",
+      "summary": "The proposed final long-range plan was published ahead of adoption votes scheduled for 19 March at ABAG and 25 March at MTC.",
+      "verified": "release dated Monday, March 9, 2026, quoting both meeting dates"
+    },
+    {
+      "date": "2026-03-25", "scope": "region", "topic": "civic",
+      "title": "Plan Bay Area 2050+ adopted by ABAG and MTC",
+      "outlet": "Plan Bay Area",
+      "url": "https://planbayarea.org/finalplan",
+      "summary": "ABAG adopted the plan on 19 March 2026 and MTC followed on 25 March, after nearly three years of analysis and public comment. It is the regional long-range plan for land use and transportation that local housing and transport decisions are measured against.",
+      "verified": "adoption dates stated on the final plan page"
+    },
+    {
+      "date": "2026-04", "scope": "state", "topic": "housing",
+      "title": "Cities scramble to comply with, or fight, SB 79",
+      "outlet": "CalMatters",
+      "url": "https://calmatters.org/housing/2026/04/sb-79-implementation/",
+      "summary": "With the law's provisions three months away, cities weighed exclusion ordinances, alternative transit-oriented development plans and hybrids of the two.",
+      "verified": "CalMatters piece dated April 2026 in its URL"
+    },
+    {
+      "date": "2026-05-26", "scope": "region", "topic": "transportation",
+      "title": "Regional transit sales tax gathers enough signatures for the November ballot",
+      "outlet": "Pleasanton Weekly",
+      "url": "https://www.pleasantonweekly.com/election/2026/05/26/transit-regional-sales-tax-measure-receives-enough-signatures-for-november-ballot/",
+      "summary": "Organisers reported 305,895 signatures across the five counties, well past the roughly 186,000 required, qualifying the measure for the 3 November 2026 ballot by the citizens' initiative route - which means it passes on a simple majority.",
+      "verified": "article dated May 26, 2026"
+    },
+    {
+      "date": "2026-06-11", "scope": "region", "topic": "transportation",
+      "title": "BART adopts an FY27 budget with $18 million in cuts",
+      "outlet": "BART",
+      "url": "https://www.bart.gov/news/articles/2026/news20260611",
+      "summary": "The board adopted a budget carrying $18 million in reductions and a smaller headcount, holding service while the November measure is pending.",
+      "verified": "BART news item dated June 11, 2026"
+    },
+    {
+      "date": "2026-06", "scope": "state", "topic": "housing",
+      "title": "Tracking SB 79 implementation before the train leaves the station",
+      "outlet": "Holland & Knight",
+      "url": "https://www.hklaw.com/en/insights/publications/2026/06/tracking-sb-79-implementation-before-the-train-leaves-the-station",
+      "summary": "A survey of how cities were preparing for 1 July: conforming ordinances, parcel exclusions, and alternative plans, with MTC publishing a regional map of the transit zones the law reaches.",
+      "verified": "insight dated June 2026 in its URL"
+    },
+    {
+      "date": "2026-06", "scope": "region", "topic": "civic",
+      "title": "Two tax measures, one ballot: San Francisco parcel tax and the regional sales tax move forward",
+      "outlet": "Greenberg Traurig",
+      "url": "https://www.gtlaw.com/en/insights/2026/6/2-tax-measures-1-ballot-san-francisco-parcel-tax-regional-sales-tax-move-forward",
+      "summary": "San Francisco voters face a Muni parcel tax alongside the regional sales tax in November, a combination with consequences for how each is campaigned for.",
+      "verified": "insight dated June 2026 in its URL"
+    },
+    {
+      "date": "2026-07-01", "scope": "state", "topic": "housing",
+      "title": "SB 79's upzoning provisions take effect",
+      "outlet": "Association of Bay Area Governments",
+      "url": "https://abag.ca.gov/our-work/housing/regional-housing-technical-assistance/senate-bill-79-2025",
+      "summary": "From 1 July, qualifying housing near major transit stops is an allowed use at state-set densities in the counties the law covers, whatever local zoning says, unless a city has adopted a conforming or alternative plan.",
+      "verified": "effective date stated by ABAG and by the signing analyses"
+    },
+    {
+      "date": "2026-04-03", "scope": "region", "topic": "transportation",
+      "title": "A rearview look at Bay Area public transit in 2025",
+      "outlet": "Pleasanton Weekly",
+      "url": "https://www.pleasantonweekly.com/transportation/2026/04/03/a-rearview-mirror-look-at-bay-area-public-transit-in-2025/",
+      "summary": "Six of the region's largest operators posted their strongest average monthly ridership since March 2020 during 2025, while still trailing 2019: BART averaged about 4.6 million monthly trips, roughly half its pre-pandemic level.",
+      "verified": "article dated April 3, 2026"
+    }
+  ]
+}
