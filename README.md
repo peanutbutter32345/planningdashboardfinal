@@ -177,6 +177,29 @@ ADMIN_USERNAMES=<your account username>
 your own Resend account, so real subscribers will silently receive nothing until you verify a
 domain in Resend and set this.
 
+### The newsletter
+
+`node scripts/build-newsletter.mjs` writes `public/data/newsletter.json`: one issue a month, newest
+first, read from the Newsletter tab. Re-run it after refreshing news, housing records or market
+data.
+
+Each issue is fixed at the end of its month and may contain only what had been **published** by
+then - not everything that had happened by then. Every source carries its own availability date:
+
+| Source | Available from |
+| --- | --- |
+| News article | its publication date |
+| Curated city record | the date the city posted it |
+| HCD annual report row | June of the year after its reporting year, once Table A2 is on data.ca.gov |
+| Zillow ZHVI / ZORI | 20 August of each series year, since each point is that year's 31 July value |
+| ACS 2020-2024 5-year | 11 December 2025, its release |
+| RHNA 6th cycle progress | August 2026, the vintage of the file this site carries |
+| RHNA allocation target | already public; allocations were adopted in 2021-2022 |
+
+So the October 2025 issue quotes the 2025 Zillow index and no ACS, no RHNA progress and no 2025
+annual reports, and it says so in its own "What this issue could not know" box. `tests/newsletter.test.js`
+enforces all of it, including that no issue cites a source dated after itself.
+
 ### Seeing how many people use the site
 
 Every unique visitor is a user: someone who signs up, and someone who only ever browses with the
