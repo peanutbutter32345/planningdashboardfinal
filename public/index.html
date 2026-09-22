@@ -845,7 +845,9 @@
   #heroPaperCard{flex:0 0 auto;}
   #heroPaperCard .rail-body{padding:0;}
   .fp-page-compact{padding:14px 16px 12px; border:0;}
-  .fp-page-compact .fp-nameplate{font-size:20px; letter-spacing:0.04em;}
+  /* A masthead has to outweigh the headline underneath it, not the other way around - at 20px it
+     read as a small caption next to a two-line 17px headline, even though it was centered. */
+  .fp-page-compact .fp-nameplate{font-size:28px; letter-spacing:0.02em;}
   .fp-page-compact .fp-dateline{font-size:8.5px;}
   .fp-page-compact .fp-hero{width:38%; max-width:150px; margin-left:14px;}
   .fp-page-compact .fp-hero img{height:110px;}
