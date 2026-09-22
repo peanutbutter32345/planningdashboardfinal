@@ -15302,9 +15302,11 @@ function renderStatistics(){
 }
 
 // ================= FEATURED NEWS =================
-// Two stories beside the hero copy, cycling every 5 seconds. Pauses while the reader is hovering
-// or tabbing through it, so a link never moves out from under the cursor mid-click.
-const FEATURED_PER_PAGE = 4;
+// One story per topic - Housing, Development, Transportation - cycling every 5 seconds. Pauses
+// while the reader is hovering or tabbing through it, so a link never moves out from under the
+// cursor mid-click. Kept at exactly one each rather than favoring any topic with a second slot,
+// so the three sections read as one balanced row instead of a lopsided one.
+const FEATURED_PER_PAGE = 3;
 const FEATURED_INTERVAL = 5000;
 // Cap the rotation. With 30+ articles the dot row becomes unreadable and a story you glimpsed
 // takes over a minute to come back around.
@@ -15491,8 +15493,8 @@ function renderFeaturedNews(){
     // One from this page's slice where possible, then top up from the wider pool.
     const mine = slice.filter(a=>a.topic===g.id);
     const extra = pool.filter(a=>a.topic===g.id && !mine.includes(a));
-    // Two fewer overall: housing keeps a pair, the other two carry one each.
-    const items = mine.concat(extra).slice(0, g.id === 'housing' ? 2 : 1);
+    // Exactly one per topic, so the three groups stay the same length as each other.
+    const items = mine.concat(extra).slice(0, 1);
     if(!items.length) return '';
     return `<div class="fgroup"><div class="fgroup-h">${g.l}</div>` + items.map(a=>`
       <a class="fcard" href="${a.url}" target="_blank" rel="noopener">
