@@ -413,7 +413,11 @@
   .nameplate{background:transparent; color:#fff; padding:6px 0 2px; border-radius:0;
     max-width:none; margin:0; border-left:none; box-shadow:none;}
   /* Both lines in one face and one colour, so it reads as a single name. */
-  .nameplate h1{display:flex; flex-direction:column; line-height:.96;
+  /* Centered as a masthead - the kicker, the title and the lede all line up on the same axis,
+     the way a real newspaper's own nameplate sits centered above its own strap line. */
+  .nameplate{text-align:center;}
+  .nameplate .np-kicker{justify-content:center;}
+  .nameplate h1{display:flex; flex-direction:column; align-items:center; line-height:.96;
     font-family:'Times New Roman', Times, serif; font-weight:700; letter-spacing:-.5px;}
   .np-l1, .np-l2{display:block; color:#fff;}
   .np-l2{font-style:normal;}
@@ -421,7 +425,7 @@
   .nameplate .np-kicker i{background:#9BA98A;}
   .nameplate h1{color:#fff;}
   .nameplate h1 em{color:#fff;}
-  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin-top:11px; max-width:62ch; text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin:11px auto 0; max-width:62ch; text-shadow:0 1px 2px rgba(0,0,0,.35);}
   @media (max-width:640px){ .nameplate{padding:16px 18px 18px;} .np-lede{font-size:13px;} }
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
     font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#14532D; margin-bottom:6px;}
@@ -460,6 +464,13 @@
   /* Left rail: signup plus a rotating figure, mirroring Featured News on the right. */
   .hero-rail{flex:1 1 0; max-width:none; min-width:280px; display:flex; flex-direction:column; gap:11px;}
   .rail-card{background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  /* Local Figures and Local Resources are fixed-length content - a chart, a handful of links - so
+     this column always ran shorter than Your City and Featured News once those had more to say,
+     leaving the stretched flex box empty at the bottom (the dark hero showing through under Get
+     the briefing, not a card). The signup card absorbs that leftover height instead of leaving it
+     bare, so the column's white content actually reaches as far down as its neighbours do. */
+  .rail-signup{flex:1 1 auto; display:flex; flex-direction:column;}
+  .rail-signup .rail-body{flex:1 1 auto; display:flex; flex-direction:column; justify-content:center;}
   /* The menu is dark, so this panel is lettered for a dark ground rather than the page's. */
   .nav-identity{display:flex; gap:10px; align-items:center; padding:10px 12px; margin-top:6px;
     border-top:1px solid rgba(255,255,255,.2); cursor:default; user-select:none;}
