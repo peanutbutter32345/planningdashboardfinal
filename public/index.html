@@ -412,14 +412,17 @@
   /* The title reads as a masthead block rather than floating text over the photo. */
   .nameplate{background:transparent; color:#fff; padding:6px 0 2px; border-radius:0;
     max-width:none; margin:0; border-left:none; box-shadow:none;}
-  /* Both lines in one face and one colour, so it reads as a single name. */
+  /* One face and one colour, so it reads as a single name - and one line, the way a nameplate
+     is actually set, rather than the two stacked words it was before. */
   /* Centered as a masthead - the kicker, the title and the lede all line up on the same axis,
      the way a real newspaper's own nameplate sits centered above its own strap line. */
   .nameplate{text-align:center;}
   .nameplate .np-kicker{justify-content:center;}
-  .nameplate h1{display:flex; flex-direction:column; align-items:center; line-height:.96;
+  .nameplate h1{display:flex; flex-direction:row; flex-wrap:nowrap; align-items:baseline;
+    justify-content:center; line-height:.96; white-space:nowrap;
     font-family:'Times New Roman', Times, serif; font-weight:700; letter-spacing:-.5px;}
-  .np-l1, .np-l2{display:block; color:#fff;}
+  .np-l1, .np-l2{display:inline-block; color:#fff;}
+  .np-l1::after{content:'\00a0';}
   .np-l2{font-style:normal;}
   .nameplate .np-kicker{color:#CBD6BC;}
   .nameplate .np-kicker i{background:#9BA98A;}
@@ -464,13 +467,6 @@
   /* Left rail: signup plus a rotating figure, mirroring Featured News on the right. */
   .hero-rail{flex:1 1 0; max-width:none; min-width:280px; display:flex; flex-direction:column; gap:11px;}
   .rail-card{background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
-  /* Local Figures and Local Resources are fixed-length content - a chart, a handful of links - so
-     this column always ran shorter than Your City and Featured News once those had more to say,
-     leaving the stretched flex box empty at the bottom (the dark hero showing through under Get
-     the briefing, not a card). The signup card absorbs that leftover height instead of leaving it
-     bare, so the column's white content actually reaches as far down as its neighbours do. */
-  .rail-signup{flex:1 1 auto; display:flex; flex-direction:column;}
-  .rail-signup .rail-body{flex:1 1 auto; display:flex; flex-direction:column; justify-content:center;}
   /* The menu is dark, so this panel is lettered for a dark ground rather than the page's. */
   .nav-identity{display:flex; gap:10px; align-items:center; padding:10px 12px; margin-top:6px;
     border-top:1px solid rgba(255,255,255,.2); cursor:default; user-select:none;}
@@ -848,14 +844,19 @@
   /* The third column now stacks two cards - this month's paper, then Featured News - the same
      way the first column stacks Local Figures, Local Resources and Get the briefing. */
   .hero-rail-news{flex:1 1 0; max-width:none; min-width:300px; display:flex; flex-direction:column; gap:11px;}
-  .featured-news{flex:1 1 auto; max-width:none; min-width:0; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
+  .featured-news{flex:0 0 auto; max-width:none; min-width:0; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
   /* This card takes roughly the top half of the column - the same front page the archive shows,
      just without the section teasers, at sizes cut down to fit a rail card instead of a full
      page. It keeps the cream newsprint tone so it still reads as a clipping, not another white
      dashboard panel. */
-  #heroPaperCard{flex:0 0 auto;}
-  #heroPaperCard .rail-body{padding:0;}
-  .fp-page-compact{padding:14px 16px 12px; border:0;}
+  /* This is the card that grows to fill whatever the column has left over - Local Resources and
+     Featured News are both fixed-length lists, so the newsletter clipping is the one piece of
+     content here that can honestly hold more room without turning into blank space, the way
+     stretching an unrelated signup card did before. */
+  #heroPaperCard{flex:1 1 auto; display:flex; flex-direction:column;}
+  #heroPaperCard .rail-body{padding:0; flex:1 1 auto; display:flex; flex-direction:column;}
+  .fp-page-compact{padding:14px 16px 12px; border:0; flex:1 1 auto; display:flex;
+    flex-direction:column; justify-content:center;}
   /* A masthead has to outweigh the headline underneath it, not the other way around - at 20px it
      read as a small caption next to a two-line 17px headline, even though it was centered. */
   .fp-page-compact .fp-nameplate{font-size:28px; letter-spacing:0.02em;}
@@ -865,7 +866,7 @@
   .fp-page-compact .fp-headline h3{font-size:17px; -webkit-line-clamp:3; display:-webkit-box;
     -webkit-box-orient:vertical; overflow:hidden;}
   .fp-page-compact .fp-lede{font-size:12.5px; line-height:1.55; columns:1; column-width:auto;
-    display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;}
+    display:-webkit-box; -webkit-line-clamp:8; -webkit-box-orient:vertical; overflow:hidden;}
   .fp-page-compact .fp-lede::first-letter{font-size:32px; padding:1px 4px 0 0;}
   .hp-foot{display:flex; align-items:center; justify-content:space-between; gap:8px;
     clear:both; border-top:1px solid #d8d2bf; margin:0 16px; padding:9px 0;}
