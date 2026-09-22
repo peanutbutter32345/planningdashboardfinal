@@ -1262,6 +1262,38 @@ app.get('/api/admin/stats', async (req, res) => {
   }
 });
 
+// Per-user list, for the site's owner alone. Same two ways in as /api/community (cron secret or
+// an ADMIN_USERNAMES session), 404 on failure so a leaked URL doesn't confirm the route exists.
+// Never returns password_hash or session tokens - just enough to see who's using the site.
+app.get('/api/admin/users', async (req, res) => {
+  const secret = req.headers['x-cron-secret'] || req.query.secret;
+  const bySecret = Boolean(CRON_SECRET && secret === CRON_SECRET);
+  let byAccount = false;
+  if (!bySecret && pool) {
+    const token = (req.headers.authorization || '').replace(/^Bearer /, '');
+    if (token && ADMIN_USERNAMES.length) {
+      try {
+        const session = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
+        byAccount = session.rows.length && ADMIN_USERNAMES.includes(session.rows[0].username.toLowerCase());
+      } catch { byAccount = false; }
+    }
+  }
+  if (!bySecret && !byAccount) return res.status(404).json({ error: 'API route not found.' });
+  if (!requireDb(res)) return;
+  try {
+    const limit = Math.min(parseInt(req.query.limit, 10) || 500, 2000);
+    const result = await pool.query(
+      `SELECT username, kind, email, home_city, email_frequency, created_at, last_seen_at
+       FROM users ORDER BY created_at DESC NULLS LAST LIMIT $1`,
+      [limit]
+    );
+    res.json({ ok: true, count: result.rows.length, users: result.rows });
+  } catch (err) {
+    console.error('Admin users list failed:', err.message);
+    res.status(500).json({ error: 'Could not read users: ' + err.message });
+  }
+});
+
 // ---------------- UPCOMING HEARINGS ----------------
 // Read-only and unauthenticated: it exposes nothing but public meeting agendas. The six-hour
 // cache lives in hearings.js so repeated page loads don't hit Legistar five times over.
