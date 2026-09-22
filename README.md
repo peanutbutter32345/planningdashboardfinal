@@ -1,4 +1,4 @@
-# The Bay Civic Dashboard
+# The Bay Dashboard
 
 This package contains the civic dashboard plus a server-side AI assistant for the cities it covers across all nine Bay Area counties.
 
@@ -167,7 +167,7 @@ That writes `preview-welcome.html` (first send), `preview-update.html` (things c
 ```text
 DATABASE_URL=postgres://...
 RESEND_API_KEY=re_...
-RESEND_FROM=The Bay Civic Dashboard <updates@your-verified-domain.com>
+RESEND_FROM=The Bay Dashboard <updates@your-verified-domain.com>
 CRON_SECRET=<a long random string>
 SITE_URL=https://your-site.com
 ADMIN_USERNAMES=<your account username>
@@ -311,7 +311,7 @@ This regenerates `data/projects.js` so server-side answers, hearing matching and
 
 ## Regional coverage and guest profiles
 
-The dashboard covers all **101 incorporated cities and towns in the nine Bay Area counties**, plus the existing West San Jose neighborhood profile. The visible name is **The Bay Civic Dashboard**; the domain remains `southbaydashboard.com`.
+The dashboard covers all **101 incorporated cities and towns in the nine Bay Area counties**, plus the existing West San Jose neighborhood profile. The visible name is **The Bay Dashboard**; the domain remains `southbaydashboard.com`.
 
 - `public/data/municipalities.json` records official MTC/ABAG coverage and Census geography identifiers. All 102 profiles have locally served photography, official resources and meeting links. `public/data/regions.json` supplies the 69 expanded profiles and their 2020–2024 ACS estimates; existing profiles retain their labeled Census vintage.
 - `public/data/housing-records.json` imports city-reported HCD APR Tables A and A2, updated September 18, 2026. Every municipality has a housing sample with map points. Up to 25 distinct addresses per municipality emphasize larger records, with completed examples retained. The combined dashboard has 2,833 records after matching-address duplicates are removed. Annual permit, entitlement and completion totals use **all** source rows, separately from the map sample. Most reports cover 2025; Clayton's latest available report in the import is 2024. Issued permits are approvals, not assumed construction starts. Coordinates require a high source match score and proximity to the city; unresolved addresses remain explicitly unlocated.
