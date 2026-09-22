@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Bay Civic Dashboard</title>
+<title>The Bay Dashboard</title>
 <!-- The site mark: three towers of different heights on the bay shore, under the sun. The SVG is
      the icon browsers show in a tab; scripts/make_icon.py rasterises the same drawing for the
      phone home-screen icon. -->
@@ -602,8 +602,10 @@
   .fp-wrap{margin:0 0 26px;}
   .fp-page{background:#F7F4EA; border:1px solid #d8d2bf; padding:22px 26px 20px; color:#1c1a14;}
   .fp-masthead{border-bottom:4px double #1c1a14; padding-bottom:8px; margin-bottom:12px;}
+  /* "The Bay Dashboard" is three words shorter than the old name, so it needs more spread to
+     still read as a full masthead banner rather than a small word floating in the middle. */
   .fp-nameplate{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800;
-    font-size:clamp(26px,4.2vw,44px); letter-spacing:-0.01em; text-align:center; color:#1c1a14;}
+    font-size:clamp(30px,4.8vw,50px); letter-spacing:0.02em; text-align:center; color:#1c1a14;}
   .fp-dateline{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
     font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.07em;
     text-transform:uppercase; color:#4a4636; margin-top:6px; border-top:1px solid #b9b295;
@@ -843,7 +845,7 @@
   #heroPaperCard{flex:0 0 auto;}
   #heroPaperCard .rail-body{padding:0;}
   .fp-page-compact{padding:14px 16px 12px; border:0;}
-  .fp-page-compact .fp-nameplate{font-size:15px;}
+  .fp-page-compact .fp-nameplate{font-size:20px; letter-spacing:0.04em;}
   .fp-page-compact .fp-dateline{font-size:8.5px;}
   .fp-page-compact .fp-hero{width:38%; max-width:150px; margin-left:14px;}
   .fp-page-compact .fp-hero img{height:110px;}
@@ -1722,7 +1724,7 @@
     <div class="hero-copy">
       <div class="nameplate">
         <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
-        <h1><span class="np-l1">The Bay</span><em class="np-l2">Civic Dashboard</em></h1>
+        <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
         <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. 101 cities and towns across nine Bay Area counties.</p>
       </div>
     </div>
@@ -1819,7 +1821,7 @@
   <div class="wrap nl-shell">
     <div class="nl-masthead">
       <div class="nl-mast-kicker">Published monthly &middot; Nine Bay Area counties</div>
-      <h2 id="nlTitle">The Bay Civic Dashboard Newsletter</h2>
+      <h2 id="nlTitle">The Bay Dashboard Newsletter</h2>
       <div class="nl-mast-date" id="nlMastDate" role="status"></div>
       <nav class="nl-toc" id="nlToc" aria-label="Jump to a section"></nav>
     </div>
@@ -2650,7 +2652,7 @@
   </div>
   <div class="footer-bottom">
     <div class="wrap">
-      <span>The Bay Civic Dashboard</span>
+      <span>The Bay Dashboard</span>
       <span>An independent, student-built prototype. Not an official government product.</span>
     </div>
   </div>
@@ -6802,7 +6804,7 @@ function frontpageHtml(issue,{compact=false}={}){
     teasers='<div class="fp-columns">'+frontpageTeaser(housing)+frontpageTeaser(dev)+frontpageTeaser(transport)+'</div>';
   }
   return '<div class="fp-page'+(compact?' fp-page-compact':'')+'">'
-    +'<div class="fp-masthead"><div class="fp-nameplate">The Bay Civic Dashboard</div>'
+    +'<div class="fp-masthead"><div class="fp-nameplate">The Bay Dashboard</div>'
     +'<div class="fp-dateline"><span>'+escapeHtml(issue.dateline)+'</span><span>Vol. 1, No. '+issue.number+'</span><span>Nine Bay Area Counties</span></div></div>'
     +(issue.hero?'<figure class="fp-hero"><img src="'+escapeHtml(issue.hero.url)+'" alt="'+escapeHtml(issue.hero.caption||issue.hero.city)+'" loading="lazy"><figcaption>'+escapeHtml(issue.hero.city)+'</figcaption></figure>':'')
     +'<div class="fp-headline"><h3>'+(issue.lead?escapeHtml(issue.lead.title):escapeHtml(issue.month))+'</h3>'
@@ -8533,7 +8535,7 @@ function icsFor(d){
   const end = new Date(dt.getTime() + 2*60*60*1000);
   const fmt = x => x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(x.getHours())+pad(x.getMinutes())+'00';
   const esc = t => String(t||'').replace(/([,;\\])/g,'\\$1').replace(/\n/g,'\\n');
-  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//The Bay Civic Dashboard//EN','BEGIN:VEVENT',
+  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//The Bay Dashboard//EN','BEGIN:VEVENT',
     'UID:'+encodeURIComponent(d.ref)+'@southbaydashboard',
     'DTSTAMP:'+fmt(new Date()), 'DTSTART:'+fmt(dt), 'DTEND:'+fmt(end),
     'SUMMARY:'+esc(d.name+' - '+d.cityLabel),
