@@ -749,7 +749,7 @@
   .rail-link:hover{text-decoration:underline;}
   @media (max-width:860px){
     .hero-panels{flex-direction:column; margin:34px 0 0;}
-    .hero-rail, .featured-news{flex:0 0 auto; width:100%; min-width:0;}
+    .hero-rail, .hero-rail-news, .featured-news{flex:0 0 auto; width:100%; min-width:0;}
   }
   @media (max-width:640px){ .hero-rail{flex:0 0 auto; max-width:none; width:100%;} }
 
@@ -832,7 +832,37 @@
   @media (max-width:860px){ .hero-map{order:0;} }
   .hero-panels{display:flex; gap:20px; align-items:stretch; margin:30px 0 0;}
   /* Stays beside the copy wherever there's room - it only drops below on genuinely narrow phones. */
-  .featured-news{flex:1 1 0; max-width:none; min-width:300px; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
+  /* The third column now stacks two cards - this month's paper, then Featured News - the same
+     way the first column stacks Local Figures, Local Resources and Get the briefing. */
+  .hero-rail-news{flex:1 1 0; max-width:none; min-width:300px; display:flex; flex-direction:column; gap:11px;}
+  .featured-news{flex:1 1 auto; max-width:none; min-width:0; background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
+  /* This card takes roughly the top half of the column - the same front page the archive shows,
+     just without the section teasers, at sizes cut down to fit a rail card instead of a full
+     page. It keeps the cream newsprint tone so it still reads as a clipping, not another white
+     dashboard panel. */
+  #heroPaperCard{flex:0 0 auto;}
+  #heroPaperCard .rail-body{padding:0;}
+  .fp-page-compact{padding:14px 16px 12px; border:0;}
+  .fp-page-compact .fp-nameplate{font-size:15px;}
+  .fp-page-compact .fp-dateline{font-size:8.5px;}
+  .fp-page-compact .fp-hero{width:38%; max-width:150px; margin-left:14px;}
+  .fp-page-compact .fp-hero img{height:110px;}
+  .fp-page-compact .fp-headline h3{font-size:17px; -webkit-line-clamp:3; display:-webkit-box;
+    -webkit-box-orient:vertical; overflow:hidden;}
+  .fp-page-compact .fp-lede{font-size:12.5px; line-height:1.55; columns:1; column-width:auto;
+    display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;}
+  .fp-page-compact .fp-lede::first-letter{font-size:32px; padding:1px 4px 0 0;}
+  .hp-foot{display:flex; align-items:center; justify-content:space-between; gap:8px;
+    clear:both; border-top:1px solid #d8d2bf; margin:0 16px; padding:9px 0;}
+  .hp-step{display:flex; align-items:center; gap:6px;}
+  .hp-step button{background:#fff; border:1px solid var(--rule); border-radius:2px; width:22px; height:22px;
+    font-size:12px; line-height:1; cursor:pointer; color:var(--ink); padding:0;}
+  .hp-step button:disabled{opacity:.3; cursor:default;}
+  .hp-step button:not(:disabled):hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .hp-step span{font-family:'Open Sans',sans-serif; font-size:10px; color:var(--text-soft); min-width:64px; text-align:center;}
+  .hp-archive{font-family:'Open Sans',sans-serif; font-size:11.5px; font-weight:700; color:var(--ink);
+    text-decoration:none; white-space:nowrap;}
+  .hp-archive:hover{text-decoration:underline;}
   .featured-head{display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:#fff; padding:10px 15px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase;}
   .featured-dots{display:flex; gap:5px;}
   .featured-dots i{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.35); display:block; transition:background .3s;}
@@ -1652,7 +1682,7 @@
   <div class="nav-menu" id="navMenu" role="menu" hidden>
     <button class="page-nav-tab active" data-page="dashboard" role="menuitem">Dashboard</button>
     <button class="page-nav-tab" data-page="timeline" role="menuitem">Timeline</button>
-    <button class="page-nav-tab" data-page="archive" role="menuitem">Newspaper Archive</button>
+    <button class="page-nav-tab" data-page="archive" role="menuitem">Newsletter Archive</button>
     <button class="page-nav-tab" data-page="bank" role="menuitem">Resource Bank</button>
     <button class="page-nav-tab" data-page="account" role="menuitem">Your Account</button>
     <button class="page-nav-tab" data-page="about" role="menuitem">About</button>
@@ -1735,13 +1765,19 @@
         <a href="#" class="rail-editmore" data-goto-screen="planner">See the whole calendar &rarr;</a>
       </aside>
 
-      <aside class="featured-news" id="featuredNews" aria-label="Featured news">
-        <div class="featured-head">
-          <span>Featured news</span>
-          <span class="featured-dots" id="featuredDots"></span>
+      <div class="hero-rail hero-rail-news" aria-label="This month's newspaper and featured news">
+        <div class="rail-card" id="heroPaperCard" hidden>
+          <div class="rail-head">This month's paper</div>
+          <div class="rail-body" id="heroPaperBody"></div>
         </div>
-        <div class="featured-groups" id="featuredCards"></div>
-      </aside>
+        <aside class="featured-news" id="featuredNews" aria-label="Featured news">
+          <div class="featured-head">
+            <span>Featured news</span>
+            <span class="featured-dots" id="featuredDots"></span>
+          </div>
+          <div class="featured-groups" id="featuredCards"></div>
+        </aside>
+      </div>
     </div>
     <div class="hero-credit">Background: El Camino Real at Mathilda Avenue, Sunnyvale &middot; photo by ZuperB, public domain, via <a href="https://commons.wikimedia.org/wiki/File:El_camino_and_mathilda.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></div>
     <div class="city-switch" id="citySwitch"></div>
@@ -1757,7 +1793,7 @@
     <div class="arc-head">
       <div>
         <div class="arc-kicker">Every issue, oldest to newest</div>
-        <h2 id="arcTitle">Newspaper Archive</h2>
+        <h2 id="arcTitle">Newsletter Archive</h2>
         <p>Each issue covers the period since the one before it. Open one to read it, or have it sent to your inbox.</p>
       </div>
       <div class="arc-signup">
@@ -1791,7 +1827,7 @@
       <aside class="nl-archive" aria-label="All issues">
         <div class="nl-archive-head">Recent issues</div>
         <div id="nlIssueList"></div>
-        <button type="button" class="btn secondary nl-archive-btn" id="nlArchiveBtn">Newspaper Archive &rarr;</button>
+        <button type="button" class="btn secondary nl-archive-btn" id="nlArchiveBtn">Newsletter Archive &rarr;</button>
 
       </aside>
       <article class="nl-issue" id="nlIssue" aria-live="polite">
@@ -6674,7 +6710,7 @@ async function renderNewsletter(){
     '<button type="button" class="nl-issue-btn" data-issue="'+issue.id+'" aria-current="'+(issue.id===newsletterIssue)+'">'
     +'<b>'+escapeHtml(issue.month)+'</b><span>Issue '+issue.number+' &middot; '
     +issue.counts.sources.toLocaleString()+' source'+(issue.counts.sources===1?'':'s')+'</span></button>').join('');
-  document.getElementById('nlArchiveBtn').textContent='Newspaper Archive ('+data.issues.length+') \u2192';
+  document.getElementById('nlArchiveBtn').textContent='Newsletter Archive ('+data.issues.length+') \u2192';
   list.querySelectorAll('[data-issue]').forEach(button=>button.onclick=()=>{
     newsletterIssue=button.dataset.issue;renderNewsletter();
     document.getElementById('nlIssue').scrollIntoView({block:'start',behavior:'smooth'});
@@ -6753,36 +6789,42 @@ function frontpageTeaser(section){
   if(!para)return '';
   return '<div class="fp-col"><h4>'+escapeHtml(section.title||'')+'</h4><p>'+nlSpans(para.spans)+'</p></div>';
 }
-function frontpageHtml(issue){
+// `compact` drops the three section teasers, for a spot like the hero widget that only has room
+// for the masthead, photo, headline and lede - the same front page, just the top half of it.
+function frontpageHtml(issue,{compact=false}={}){
   if(!issue)return '<p class="nl-loading">No issue to show.</p>';
-  const housing=issue.sections.find(s=>s.kind==='housing');
-  const dev=issue.sections.find(s=>s.kind==='developments');
-  const transport=issue.sections.find(s=>s.kind==='transport');
   const ledeFirst=issue.lede.find(b=>b.kind==='para');
-  return '<div class="fp-page">'
+  let teasers='';
+  if(!compact){
+    const housing=issue.sections.find(s=>s.kind==='housing');
+    const dev=issue.sections.find(s=>s.kind==='developments');
+    const transport=issue.sections.find(s=>s.kind==='transport');
+    teasers='<div class="fp-columns">'+frontpageTeaser(housing)+frontpageTeaser(dev)+frontpageTeaser(transport)+'</div>';
+  }
+  return '<div class="fp-page'+(compact?' fp-page-compact':'')+'">'
     +'<div class="fp-masthead"><div class="fp-nameplate">The Bay Civic Dashboard</div>'
     +'<div class="fp-dateline"><span>'+escapeHtml(issue.dateline)+'</span><span>Vol. 1, No. '+issue.number+'</span><span>Nine Bay Area Counties</span></div></div>'
     +(issue.hero?'<figure class="fp-hero"><img src="'+escapeHtml(issue.hero.url)+'" alt="'+escapeHtml(issue.hero.caption||issue.hero.city)+'" loading="lazy"><figcaption>'+escapeHtml(issue.hero.city)+'</figcaption></figure>':'')
     +'<div class="fp-headline"><h3>'+(issue.lead?escapeHtml(issue.lead.title):escapeHtml(issue.month))+'</h3>'
     +(ledeFirst?'<p class="fp-lede">'+nlSpans(ledeFirst.spans)+'</p>':'')+'</div>'
-    +'<div class="fp-columns">'+frontpageTeaser(housing)+frontpageTeaser(dev)+frontpageTeaser(transport)+'</div>'
+    +teasers
     +'</div>';
 }
-// A reader can step back three issues from the current one here - the front page is a way to
-// browse recent months quickly; the full run of everything older is the grid below.
+// The three-month ceiling belongs to the hero's copy of this widget, not this one - this is the
+// archive itself, so a reader can step back through every issue that has ever gone out.
 let archiveFrontIndex=0;
 function renderArchiveFrontpage(){
   const data=newsletterData;
   const host=document.getElementById('arcFrontpage');
   if(!data||!host||!data.issues.length)return;
-  const maxBack=Math.min(3,data.issues.length-1);
+  const maxBack=data.issues.length-1;
   archiveFrontIndex=Math.max(0,Math.min(archiveFrontIndex,maxBack));
   const issue=data.issues[archiveFrontIndex];
   const monthsBack=archiveFrontIndex===0?'This month':archiveFrontIndex+' month'+(archiveFrontIndex>1?'s':'')+' back';
   host.innerHTML=frontpageHtml(issue)
     +'<div class="fp-stepper">'
     +'<button type="button" id="arcFpPrev" class="btn secondary"'+(archiveFrontIndex>=maxBack?' disabled':'')+'>&larr; Go back a month</button>'
-    +'<span class="fp-stepper-label">'+monthsBack+'</span>'
+    +'<span class="fp-stepper-label">'+monthsBack+' &middot; '+(archiveFrontIndex+1)+' of '+data.issues.length+'</span>'
     +'<button type="button" id="arcFpNext" class="btn secondary"'+(archiveFrontIndex<=0?' disabled':'')+'>Forward a month &rarr;</button>'
     +'<button type="button" id="arcFpRead" class="btn">Read this issue</button>'
     +'</div>';
@@ -6790,6 +6832,37 @@ function renderArchiveFrontpage(){
   if(prev)prev.onclick=()=>{archiveFrontIndex++;renderArchiveFrontpage();};
   if(next)next.onclick=()=>{archiveFrontIndex--;renderArchiveFrontpage();};
   if(read)read.onclick=()=>{newsletterIssue=issue.id;showScreen('newsletter');renderNewsletter();};
+}
+// This copy sits above Featured News, in the same white rail-card style as its neighbours, and
+// only ever looks back three months - it is a glance at recent issues, not a reading room.
+// Anything older is the Newsletter Archive's own job, where the same stepper has no such ceiling.
+let heroPaperIndex=0;
+async function renderHeroPaper(){
+  const data=await loadNewsletter();
+  const card=document.getElementById('heroPaperCard'),body=document.getElementById('heroPaperBody');
+  if(!data||!card||!body||!data.issues.length)return;
+  const maxBack=Math.min(3,data.issues.length-1);
+  heroPaperIndex=Math.max(0,Math.min(heroPaperIndex,maxBack));
+  const issue=data.issues[heroPaperIndex];
+  const monthsBack=heroPaperIndex===0?'This month':heroPaperIndex+' month'+(heroPaperIndex>1?'s':'')+' back';
+  card.hidden=false;
+  // The same front page the archive shows, just the top half of it - masthead, photo, headline,
+  // lede - wrapped in the stepper that keeps this copy to the last three months.
+  body.innerHTML=frontpageHtml(issue,{compact:true})
+    +'<div class="hp-foot"><div class="hp-step">'
+    +'<button type="button" id="hpPrev" aria-label="An earlier month"'+(heroPaperIndex>=maxBack?' disabled':'')+'>&larr;</button>'
+    +'<span>'+monthsBack+'</span>'
+    +'<button type="button" id="hpNext" aria-label="A more recent month"'+(heroPaperIndex<=0?' disabled':'')+'>&rarr;</button>'
+    +'</div><a class="hp-archive" href="#" id="hpArchive">Full archive &rarr;</a></div>';
+  const prev=document.getElementById('hpPrev'),next=document.getElementById('hpNext'),
+    archiveLink=document.getElementById('hpArchive');
+  if(prev)prev.onclick=()=>{heroPaperIndex++;renderHeroPaper();};
+  if(next)next.onclick=()=>{heroPaperIndex--;renderHeroPaper();};
+  // Reading the issue itself, or paging further back than three months, both hand off to the
+  // places built for that: the full article, and the unrestricted archive.
+  const headline=body.querySelector('.fp-headline h3');
+  if(headline&&issue.lead){headline.style.cursor='pointer';headline.onclick=()=>{newsletterIssue=issue.id;showScreen('newsletter');renderNewsletter();};}
+  if(archiveLink)archiveLink.onclick=(e)=>{e.preventDefault();showPage('archive');};
 }
 /* The archive: every issue that has gone out, with a picture, what it led on, and a way to have
    it sent over. Reading one hands off to the Newsletter tab. */
@@ -15966,6 +16039,10 @@ syncGuestProfile();
 })();
 // Wait until all data and renderer state are initialized before drawing map markers.
 new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))ensureOverviewMap();},{rootMargin:'250px'}).observe(document.querySelector('.map-shell'));
+// This month's paper is above the fold on every visit, unlike the archive and newsletter screens
+// (which only load their copy of this file when opened), so it fetches it itself right away
+// rather than waiting for a screen change that may never come.
+renderHeroPaper();
 </script>
 <script src="/vendor/leaflet-heat.js"></script>
 <script type="module" src="/futures/app.js"></script>
