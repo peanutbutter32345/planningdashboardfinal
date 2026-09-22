@@ -602,8 +602,11 @@
   .fp-wrap{margin:0 0 26px;}
   .fp-page{background:#F7F4EA; border:1px solid #d8d2bf; padding:22px 26px 20px; color:#1c1a14;}
   .fp-masthead{border-bottom:4px double #1c1a14; padding-bottom:8px; margin-bottom:12px;}
-  .fp-nameplate{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800;
-    font-size:clamp(26px,4.2vw,44px); letter-spacing:-0.01em; text-align:center; color:#1c1a14;}
+  /* A classic newspaper masthead: Times New Roman, wider tracking so the name stretches across
+     the banner the way an actual front page's nameplate does, rather than sitting as one tight
+     compact word in the middle. */
+  .fp-nameplate{font-family:'Times New Roman',Times,Georgia,serif; font-weight:700;
+    font-size:clamp(28px,4.6vw,48px); letter-spacing:0.01em; text-align:center; color:#1c1a14;}
   .fp-dateline{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
     font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.07em;
     text-transform:uppercase; color:#4a4636; margin-top:6px; border-top:1px solid #b9b295;
@@ -843,7 +846,7 @@
   #heroPaperCard{flex:0 0 auto;}
   #heroPaperCard .rail-body{padding:0;}
   .fp-page-compact{padding:14px 16px 12px; border:0;}
-  .fp-page-compact .fp-nameplate{font-size:15px;}
+  .fp-page-compact .fp-nameplate{font-size:19px; letter-spacing:0.03em;}
   .fp-page-compact .fp-dateline{font-size:8.5px;}
   .fp-page-compact .fp-hero{width:38%; max-width:150px; margin-left:14px;}
   .fp-page-compact .fp-hero img{height:110px;}
