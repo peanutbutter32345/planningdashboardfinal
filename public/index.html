@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Bay Civic Dashboard</title>
+<title>The Bay Dashboard</title>
 <!-- The site mark: three towers of different heights on the bay shore, under the sun. The SVG is
      the icon browsers show in a tab; scripts/make_icon.py rasterises the same drawing for the
      phone home-screen icon. -->
@@ -412,9 +412,11 @@
   /* The title reads as a masthead block rather than floating text over the photo. */
   .nameplate{background:transparent; color:#fff; padding:6px 0 2px; border-radius:0;
     max-width:none; margin:0; border-left:none; box-shadow:none;}
-  /* Both lines in one face and one colour, so it reads as a single name. */
+  /* Both lines in one face and one colour, so it reads as a single name. Same family and weight
+     as .hero h1 above - this rule has equal specificity and comes later, so it was quietly
+     overriding that one back to a plain Times New Roman before this. */
   .nameplate h1{display:flex; flex-direction:column; line-height:.96;
-    font-family:'Times New Roman', Times, serif; font-weight:700; letter-spacing:-.5px;}
+    font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800; letter-spacing:-.5px;}
   .np-l1, .np-l2{display:block; color:#fff;}
   .np-l2{font-style:normal;}
   .nameplate .np-kicker{color:#CBD6BC;}
@@ -600,6 +602,36 @@
   /* A literal front page: cream newsprint, black rules, a nameplate banner, and columns under a
      headline, so this reads as a paper rather than another article view. */
   .fp-wrap{margin:0 0 26px;}
+  /* A small clipping of the same front page, pinned in the hero. Its own opaque card, so it reads
+     clearly regardless of which city photo is behind the banner. */
+  .hero-paper{background:#F7F4EA; border:1px solid #d8d2bf; box-shadow:0 8px 22px rgba(0,0,0,.28);
+    padding:14px 16px 12px; color:#1c1a14;}
+  .hp-masthead{border-bottom:2px solid #1c1a14; padding-bottom:6px; margin-bottom:8px;
+    display:flex; justify-content:space-between; align-items:baseline; gap:8px;}
+  .hp-name{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800; font-size:14px;
+    letter-spacing:-.01em; white-space:nowrap;}
+  .hp-date{font-family:'Open Sans',sans-serif; font-size:9px; font-weight:700; letter-spacing:.06em;
+    text-transform:uppercase; color:#6b6650; white-space:nowrap;}
+  .hp-headline{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800; font-size:16.5px;
+    line-height:1.22; color:#161409; margin:0 0 6px; display:-webkit-box; -webkit-line-clamp:2;
+    -webkit-box-orient:vertical; overflow:hidden;}
+  .hp-headline a{color:inherit; text-decoration:none;}
+  .hp-headline a:hover{text-decoration:underline;}
+  .hp-teaser{font-family:Georgia,'Times New Roman',serif; font-size:12px; line-height:1.5;
+    color:#3a3626; margin:0 0 10px; display:-webkit-box; -webkit-line-clamp:2;
+    -webkit-box-orient:vertical; overflow:hidden;}
+  .hp-foot{display:flex; align-items:center; justify-content:space-between; gap:8px;
+    border-top:1px solid #cfc8b0; padding-top:8px;}
+  .hp-step{display:flex; align-items:center; gap:6px;}
+  .hp-step button{background:none; border:1px solid #b9b295; border-radius:2px; width:22px; height:22px;
+    font-size:12px; line-height:1; cursor:pointer; color:#1c1a14; padding:0;}
+  .hp-step button:disabled{opacity:.3; cursor:default;}
+  .hp-step button:not(:disabled):hover{background:#1c1a14; color:#F7F4EA; border-color:#1c1a14;}
+  .hp-step span{font-family:'Open Sans',sans-serif; font-size:9.5px; color:#6b6650; min-width:64px;
+    text-align:center;}
+  .hp-archive{font-family:'Open Sans',sans-serif; font-size:11px; font-weight:700; color:#1c1a14;
+    text-decoration:none; white-space:nowrap;}
+  .hp-archive:hover{text-decoration:underline;}
   .fp-page{background:#F7F4EA; border:1px solid #d8d2bf; padding:22px 26px 20px; color:#1c1a14;}
   .fp-masthead{border-bottom:4px double #1c1a14; padding-bottom:8px; margin-bottom:12px;}
   .fp-nameplate{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800;
@@ -754,7 +786,14 @@
   @media (max-width:640px){ .hero-rail{flex:0 0 auto; max-width:none; width:100%;} }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
-  .hero-copy{max-width:none; margin:0 -12px;}
+  /* Room for the newspaper preview beside the nameplate: a row on wide screens, so the card sits
+     to the right of the title at the same height; a stack below ~860px, where there isn't enough
+     width left over once the headline's own vw-sized text is accounted for. */
+  .hero-copy{max-width:none; margin:0 -12px; display:flex; align-items:flex-start;
+    justify-content:space-between; gap:26px; flex-wrap:wrap;}
+  .hero-copy .nameplate{flex:1 1 380px; min-width:0; max-width:640px;}
+  .hero-paper{flex:0 0 auto; width:min(360px, 100%); align-self:center;}
+  @media (max-width:860px){ .hero-copy{flex-direction:column;} .hero-paper{width:100%; max-width:420px;} }
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
   /* Three columns in the hero: the rail, your map, the news. */
@@ -1692,9 +1731,10 @@
     <div class="hero-copy">
       <div class="nameplate">
         <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
-        <h1><span class="np-l1">The Bay</span><em class="np-l2">Civic Dashboard</em></h1>
+        <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
         <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. 101 cities and towns across nine Bay Area counties.</p>
       </div>
+      <div class="hero-paper" id="heroPaper" aria-label="This month's newspaper" hidden></div>
     </div>
 
     <div class="hero-panels">
@@ -1783,7 +1823,7 @@
   <div class="wrap nl-shell">
     <div class="nl-masthead">
       <div class="nl-mast-kicker">Published monthly &middot; Nine Bay Area counties</div>
-      <h2 id="nlTitle">The Bay Civic Dashboard Newsletter</h2>
+      <h2 id="nlTitle">The Bay Dashboard Newsletter</h2>
       <div class="nl-mast-date" id="nlMastDate" role="status"></div>
       <nav class="nl-toc" id="nlToc" aria-label="Jump to a section"></nav>
     </div>
@@ -2614,7 +2654,7 @@
   </div>
   <div class="footer-bottom">
     <div class="wrap">
-      <span>The Bay Civic Dashboard</span>
+      <span>The Bay Dashboard</span>
       <span>An independent, student-built prototype. Not an official government product.</span>
     </div>
   </div>
@@ -6760,7 +6800,7 @@ function frontpageHtml(issue){
   const transport=issue.sections.find(s=>s.kind==='transport');
   const ledeFirst=issue.lede.find(b=>b.kind==='para');
   return '<div class="fp-page">'
-    +'<div class="fp-masthead"><div class="fp-nameplate">The Bay Civic Dashboard</div>'
+    +'<div class="fp-masthead"><div class="fp-nameplate">The Bay Dashboard</div>'
     +'<div class="fp-dateline"><span>'+escapeHtml(issue.dateline)+'</span><span>Vol. 1, No. '+issue.number+'</span><span>Nine Bay Area Counties</span></div></div>'
     +(issue.hero?'<figure class="fp-hero"><img src="'+escapeHtml(issue.hero.url)+'" alt="'+escapeHtml(issue.hero.caption||issue.hero.city)+'" loading="lazy"><figcaption>'+escapeHtml(issue.hero.city)+'</figcaption></figure>':'')
     +'<div class="fp-headline"><h3>'+(issue.lead?escapeHtml(issue.lead.title):escapeHtml(issue.month))+'</h3>'
@@ -6768,21 +6808,21 @@ function frontpageHtml(issue){
     +'<div class="fp-columns">'+frontpageTeaser(housing)+frontpageTeaser(dev)+frontpageTeaser(transport)+'</div>'
     +'</div>';
 }
-// A reader can step back three issues from the current one here - the front page is a way to
-// browse recent months quickly; the full run of everything older is the grid below.
+// The three-month ceiling belongs to the hero's copy of this widget, not this one - this is the
+// archive itself, so a reader can step back through every issue that has ever gone out.
 let archiveFrontIndex=0;
 function renderArchiveFrontpage(){
   const data=newsletterData;
   const host=document.getElementById('arcFrontpage');
   if(!data||!host||!data.issues.length)return;
-  const maxBack=Math.min(3,data.issues.length-1);
+  const maxBack=data.issues.length-1;
   archiveFrontIndex=Math.max(0,Math.min(archiveFrontIndex,maxBack));
   const issue=data.issues[archiveFrontIndex];
   const monthsBack=archiveFrontIndex===0?'This month':archiveFrontIndex+' month'+(archiveFrontIndex>1?'s':'')+' back';
   host.innerHTML=frontpageHtml(issue)
     +'<div class="fp-stepper">'
     +'<button type="button" id="arcFpPrev" class="btn secondary"'+(archiveFrontIndex>=maxBack?' disabled':'')+'>&larr; Go back a month</button>'
-    +'<span class="fp-stepper-label">'+monthsBack+'</span>'
+    +'<span class="fp-stepper-label">'+monthsBack+' &middot; '+(archiveFrontIndex+1)+' of '+data.issues.length+'</span>'
     +'<button type="button" id="arcFpNext" class="btn secondary"'+(archiveFrontIndex<=0?' disabled':'')+'>Forward a month &rarr;</button>'
     +'<button type="button" id="arcFpRead" class="btn">Read this issue</button>'
     +'</div>';
@@ -6790,6 +6830,38 @@ function renderArchiveFrontpage(){
   if(prev)prev.onclick=()=>{archiveFrontIndex++;renderArchiveFrontpage();};
   if(next)next.onclick=()=>{archiveFrontIndex--;renderArchiveFrontpage();};
   if(read)read.onclick=()=>{newsletterIssue=issue.id;showScreen('newsletter');renderNewsletter();};
+}
+// This copy sits in the hero, beside the nameplate, and only ever looks back three months - it is
+// a glance at recent issues, not a reading room. Anything older is the Newspaper Archive's own
+// job, where the same stepper has no such ceiling.
+let heroPaperIndex=0;
+async function renderHeroPaper(){
+  const data=await loadNewsletter();
+  const host=document.getElementById('heroPaper');
+  if(!data||!host||!data.issues.length)return;
+  const maxBack=Math.min(3,data.issues.length-1);
+  heroPaperIndex=Math.max(0,Math.min(heroPaperIndex,maxBack));
+  const issue=data.issues[heroPaperIndex];
+  const headline=issue.lead?issue.lead.title:issue.month;
+  const teaser=(issue.lede.find(b=>b.kind==='para')?.spans||[]).map(sp=>sp.v).join('');
+  const monthsBack=heroPaperIndex===0?'This month':heroPaperIndex+' month'+(heroPaperIndex>1?'s':'')+' back';
+  host.hidden=false;
+  host.innerHTML='<div class="hp-masthead"><span class="hp-name">THE BAY DASHBOARD</span><span class="hp-date">'+escapeHtml(issue.dateline)+'</span></div>'
+    +'<div class="hp-headline">'+(issue.lead&&issue.lead.url?'<a href="#" data-hp-read>'+escapeHtml(headline)+'</a>':escapeHtml(headline))+'</div>'
+    +(teaser?'<p class="hp-teaser">'+escapeHtml(teaser)+'</p>':'')
+    +'<div class="hp-foot"><div class="hp-step">'
+    +'<button type="button" id="hpPrev" aria-label="An earlier month"'+(heroPaperIndex>=maxBack?' disabled':'')+'>&larr;</button>'
+    +'<span>'+monthsBack+'</span>'
+    +'<button type="button" id="hpNext" aria-label="A more recent month"'+(heroPaperIndex<=0?' disabled':'')+'>&rarr;</button>'
+    +'</div><a class="hp-archive" href="#" id="hpArchive">Full archive &rarr;</a></div>';
+  const prev=document.getElementById('hpPrev'),next=document.getElementById('hpNext'),
+    archiveLink=document.getElementById('hpArchive'),readLink=host.querySelector('[data-hp-read]');
+  if(prev)prev.onclick=()=>{heroPaperIndex++;renderHeroPaper();};
+  if(next)next.onclick=()=>{heroPaperIndex--;renderHeroPaper();};
+  // Opening the issue itself, or paging further back than three months, both hand off to the
+  // places built for that: the full article, and the unrestricted archive.
+  if(readLink)readLink.onclick=(e)=>{e.preventDefault();newsletterIssue=issue.id;showScreen('newsletter');renderNewsletter();};
+  if(archiveLink)archiveLink.onclick=(e)=>{e.preventDefault();showPage('archive');};
 }
 /* The archive: every issue that has gone out, with a picture, what it led on, and a way to have
    it sent over. Reading one hands off to the Newsletter tab. */
@@ -8460,7 +8532,7 @@ function icsFor(d){
   const end = new Date(dt.getTime() + 2*60*60*1000);
   const fmt = x => x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(x.getHours())+pad(x.getMinutes())+'00';
   const esc = t => String(t||'').replace(/([,;\\])/g,'\\$1').replace(/\n/g,'\\n');
-  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//The Bay Civic Dashboard//EN','BEGIN:VEVENT',
+  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//The Bay Dashboard//EN','BEGIN:VEVENT',
     'UID:'+encodeURIComponent(d.ref)+'@southbaydashboard',
     'DTSTAMP:'+fmt(new Date()), 'DTSTART:'+fmt(dt), 'DTEND:'+fmt(end),
     'SUMMARY:'+esc(d.name+' - '+d.cityLabel),
@@ -15964,6 +16036,10 @@ syncGuestProfile();
 })();
 // Wait until all data and renderer state are initialized before drawing map markers.
 new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))ensureOverviewMap();},{rootMargin:'250px'}).observe(document.querySelector('.map-shell'));
+// The hero's newspaper clipping is above the fold on every visit, unlike the archive and
+// newsletter screens (which only load their copy of this file when opened), so it fetches it
+// itself right away rather than waiting for a screen change that may never come.
+renderHeroPaper();
 </script>
 <script src="/vendor/leaflet-heat.js"></script>
 <script type="module" src="/futures/app.js"></script>
