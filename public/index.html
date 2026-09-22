@@ -6719,10 +6719,14 @@ async function renderNewsletter(){
   if(!data)return;
   const list=document.getElementById('nlIssueList');
   if(!newsletterIssue)newsletterIssue=data.issues[0]?.id;
-  // The tab carries the last four issues; everything older lives in the archive.
+  // The tab carries the last four issues; everything older lives in the archive. The archive can
+  // still hand an older issue straight to this tab, so an explicitly chosen one is added to the
+  // row and opened - dropping it here is what made every older "Read" show the newest issue.
   const recent=data.issues.slice(0,4);
-  if(!recent.some(i=>i.id===newsletterIssue))newsletterIssue=recent[0]?.id;
-  list.innerHTML=recent.map(issue=>
+  const chosen=data.issues.find(i=>i.id===newsletterIssue);
+  if(!chosen)newsletterIssue=recent[0]?.id;
+  const listed=chosen&&!recent.includes(chosen)?recent.concat([chosen]):recent;
+  list.innerHTML=listed.map(issue=>
     '<button type="button" class="nl-issue-btn" data-issue="'+issue.id+'" aria-current="'+(issue.id===newsletterIssue)+'">'
     +'<b>'+escapeHtml(issue.month)+'</b><span>Issue '+issue.number+' &middot; '
     +issue.counts.sources.toLocaleString()+' source'+(issue.counts.sources===1?'':'s')+'</span></button>').join('');
@@ -7587,6 +7591,9 @@ function switchCity(key){
   featuredPage = 0;
   if(typeof renderFeaturedNews === 'function'){ preloadFeaturedImages(); renderFeaturedNews(); }
   if(typeof renderRailCityPicker === 'function') renderRailCityPicker();
+  // The nav strip is on screen the whole time, not just while the menu is being opened, so it has
+  // to follow the city here or it keeps naming whichever one the page booted with.
+  if(typeof renderNavIdentity === 'function') renderNavIdentity();
   if(typeof renderHeroMap === 'function') yaLoad().then(renderHeroMap).catch(()=>renderHeroMap());
   if(typeof renderHeroCalendar === 'function') renderHeroCalendar();
   if(typeof startHeroBgRotation === 'function'){ heroBgIdx = 0; startHeroBgRotation(); }
@@ -16040,7 +16047,11 @@ if(DashboardBrowse.setupValid(savedSetup,COUNTY_NAMES)){
 }
 renderOnboardCityBtns();renderOnboardInterests();
 applyDeepLink();
-setNavMenu(true);
+// Closed on load. The menu is a dropdown that sits over the page, and opening it here put a
+// black panel across the masthead on every visit - on a phone it covered the title outright -
+// only for the reader's first click anywhere to close it again. Finishing setup still opens it,
+// which is where showing someone the pages actually helps.
+setNavMenu(false);
 // Record this visitor as a user once the page is up, and again when they finish choosing a place.
 syncGuestProfile();
 // Keep keyboard focus and background scrolling inside the first-visit dialog.
