@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/img/icon-180.png">
 <meta name="theme-color" content="#2E3B1C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Inter:wght@500;600;700&family=Bitter:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <link rel="stylesheet" href="/futures/futures.css">
@@ -65,8 +65,8 @@
   .hero-bg.on{opacity:1;}
   /* A scrim, heavier at the left where the words are, so the text stays legible on any photo. */
   .hero::after{content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(100deg, rgba(16,22,12,.90) 0%, rgba(16,22,12,.78) 34%,
-      rgba(16,22,12,.46) 62%, rgba(16,22,12,.30) 100%);}
+    background:linear-gradient(100deg, rgba(20,28,15,.95) 0%, rgba(20,28,15,.92) 34%,
+      rgba(20,28,15,.86) 62%, rgba(20,28,15,.78) 100%);}
   .hero > .wrap{position:relative; z-index:2;}
   .hero-credit{display:block; position:relative; z-index:2; font-size:10.5px; color:#B9C2AF;
     margin-top:14px; line-height:1.5;}
@@ -75,8 +75,8 @@
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);}
   /* Sized in vw and locked to one line. The vw factor was measured against the rendered text
      width rather than guessed, so the title fills the measure without ever wrapping. */
-  .hero h1{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:clamp(20px, 5.5vw, 82px);
-    font-weight:600; letter-spacing:-0.035em; line-height:1.02; max-width:none; white-space:nowrap;}
+  .hero h1{font-family:'Bitter',Georgia,'Times New Roman',serif; font-size:clamp(20px, 5.5vw, 82px);
+    font-weight:800; letter-spacing:-0.01em; line-height:1.0; max-width:none; white-space:nowrap;}
   .hero h1 em{font-style:normal; color:#000;}
   .hero p.lede{max-width:70ch; font-size:15.5px; color:var(--text-soft); margin-top:12px;}
 
@@ -597,6 +597,48 @@
   .arc-card-actions{display:flex; flex-wrap:wrap; gap:7px; margin-top:4px;}
   .arc-card-actions .btn{font-size:11px; padding:7px 11px;}
   .arc-status{font-size:12.5px; color:var(--text-soft); margin-top:14px;}
+  /* A literal front page: cream newsprint, black rules, a nameplate banner, and columns under a
+     headline, so this reads as a paper rather than another article view. */
+  .fp-wrap{margin:0 0 26px;}
+  .fp-page{background:#F7F4EA; border:1px solid #d8d2bf; padding:22px 26px 20px; color:#1c1a14;}
+  .fp-masthead{border-bottom:4px double #1c1a14; padding-bottom:8px; margin-bottom:12px;}
+  .fp-nameplate{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800;
+    font-size:clamp(26px,4.2vw,44px); letter-spacing:-0.01em; text-align:center; color:#1c1a14;}
+  .fp-dateline{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
+    font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.07em;
+    text-transform:uppercase; color:#4a4636; margin-top:6px; border-top:1px solid #b9b295;
+    padding-top:6px;}
+  .fp-hero{margin:0 0 12px; float:right; width:44%; max-width:340px; margin-left:18px;}
+  .fp-hero img{width:100%; height:200px; object-fit:cover; display:block; filter:grayscale(.15) contrast(1.05);
+    border:1px solid #1c1a14;}
+  .fp-hero figcaption{font-family:'Open Sans',sans-serif; font-size:10px; color:#6b6650; margin-top:4px;}
+  .fp-headline h3{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800;
+    font-size:clamp(22px,3.4vw,34px); line-height:1.08; margin:0 0 8px; color:#161409;}
+  .fp-lede{font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:1.65;
+    column-width:230px; column-gap:22px; column-rule:1px solid #cfc8b0;}
+  .fp-lede::first-letter{float:left; font-family:'Bitter',Georgia,serif; font-weight:800;
+    font-size:56px; line-height:.82; padding:3px 6px 0 0; color:#161409;}
+  .fp-columns{clear:both; display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    border-top:2px solid #1c1a14; margin-top:14px; padding-top:12px;}
+  .fp-col{padding:0 16px; border-left:1px solid #cfc8b0;}
+  .fp-col:first-child{border-left:0; padding-left:0;}
+  .fp-col h4{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800;
+    letter-spacing:.1em; text-transform:uppercase; color:#4a4636; margin-bottom:6px;
+    border-bottom:1px solid #1c1a14; padding-bottom:4px;}
+  .fp-col p{font-family:Georgia,'Times New Roman',serif; font-size:12.5px; line-height:1.55;
+    color:#232014;}
+  .fp-stepper{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:14px;}
+  .fp-stepper-label{font-family:'Open Sans',sans-serif; font-size:11.5px; color:var(--text-soft);
+    flex:1 1 auto; text-align:center;}
+  @media (max-width:640px){
+    .fp-hero{float:none; width:100%; max-width:none; margin-left:0;}
+    .fp-lede{column-width:auto; columns:1;}
+    .fp-columns{grid-template-columns:1fr; gap:14px;}
+    .fp-col{border-left:0; padding-left:0; border-top:1px solid #cfc8b0; padding-top:10px;}
+    .fp-col:first-child{border-top:0; padding-top:0;}
+    .fp-stepper{justify-content:center;}
+    .fp-stepper-label{order:3; width:100%;}
+  }
   @media (max-width:640px){ .arc-head h2{font-size:28px;} .arc-field input, .arc-field select{min-width:0; width:100%;} .arc-field{flex:1 1 100%;} }
   .nl-loading{font-size:13px; color:var(--text-soft);}
   .nl-section p{font-size:14.5px; line-height:1.75; color:var(--text); margin:0 0 13px;}
@@ -1610,7 +1652,7 @@
   <div class="nav-menu" id="navMenu" role="menu" hidden>
     <button class="page-nav-tab active" data-page="dashboard" role="menuitem">Dashboard</button>
     <button class="page-nav-tab" data-page="timeline" role="menuitem">Timeline</button>
-    <button class="page-nav-tab" data-page="archive" role="menuitem">Newsletter Archive</button>
+    <button class="page-nav-tab" data-page="archive" role="menuitem">Newspaper Archive</button>
     <button class="page-nav-tab" data-page="bank" role="menuitem">Resource Bank</button>
     <button class="page-nav-tab" data-page="account" role="menuitem">Your Account</button>
     <button class="page-nav-tab" data-page="about" role="menuitem">About</button>
@@ -1715,7 +1757,7 @@
     <div class="arc-head">
       <div>
         <div class="arc-kicker">Every issue, oldest to newest</div>
-        <h2 id="arcTitle">Newsletter Archive</h2>
+        <h2 id="arcTitle">Newspaper Archive</h2>
         <p>Each issue covers the period since the one before it. Open one to read it, or have it sent to your inbox.</p>
       </div>
       <div class="arc-signup">
@@ -1723,6 +1765,9 @@
         <p>One issue a month, to the address on your account.</p>
         <button type="button" class="btn" data-signup>Sign up for the list</button>
       </div>
+    </div>
+    <div class="fp-wrap" id="arcFrontpage" aria-label="This month's front page">
+      <p class="nl-loading">Loading the front page&hellip;</p>
     </div>
     <div class="arc-tools">
       <label class="arc-field" for="arcSearch">Search issues<input id="arcSearch" type="search" placeholder="City, county, publisher, month..." autocomplete="off"></label>
@@ -1746,7 +1791,7 @@
       <aside class="nl-archive" aria-label="All issues">
         <div class="nl-archive-head">Recent issues</div>
         <div id="nlIssueList"></div>
-        <button type="button" class="btn secondary nl-archive-btn" id="nlArchiveBtn">Newsletter Archive &rarr;</button>
+        <button type="button" class="btn secondary nl-archive-btn" id="nlArchiveBtn">Newspaper Archive &rarr;</button>
 
       </aside>
       <article class="nl-issue" id="nlIssue" aria-live="polite">
@@ -6399,7 +6444,26 @@ function initGoogleMapReal(){
 
   if(!gMap){gMap=new google.maps.Map(document.getElementById('mapGoogle'),{center:CITIES[currentCity].center,zoom:CITIES[currentCity].zoom,mapTypeControl:false,streetViewControl:false,fullscreenControl:true});gInfoWindow=new google.maps.InfoWindow();}
   mapProvider='google';syncMapProviderButton();renderLegend();buildMarkersForCurrentProvider();
+  // Google renders grey or misaligned tiles when the container's size isn't settled the instant
+  // the map is built - and this container was hidden a moment earlier (display:none), which is
+  // exactly the case that trips it up. Force a resize once the browser has actually painted the
+  // new layout, and once more after web fonts finish (a late font swap shifts everything above
+  // the map and leaves the tiles stale otherwise).
+  // The very first load races showScreen('dashboard')'s own fitOverviewMap() call, which ran
+  // one animation frame earlier while this script was still loading - so it saw no gMap and did
+  // nothing. Finish that job now that the map actually exists.
+  requestAnimationFrame(()=>{google.maps.event.trigger(gMap,'resize');fitOverviewMap();});
+  document.fonts?.ready?.then(()=>{if(gMap)google.maps.event.trigger(gMap,'resize');}).catch(()=>{});
 }
+// Any resize of the window can leave the Google map's internal canvas out of step with its box,
+// since Google only measures its container when told to - Leaflet and the 3D map both re-measure
+// on their own, but Google needs this nudge kept alive for the page's whole lifetime.
+let googleResizeTimer=0;
+window.addEventListener('resize',()=>{
+  if(!gMap)return;
+  clearTimeout(googleResizeTimer);
+  googleResizeTimer=setTimeout(()=>{if(gMap)google.maps.event.trigger(gMap,'resize');},150);
+});
 window.initGoogleMap=initGoogleMapReal;
 function overviewMapFallback(){
   clearTimeout(googleLoadTimer);googleLoadPending=false;
@@ -6610,7 +6674,7 @@ async function renderNewsletter(){
     '<button type="button" class="nl-issue-btn" data-issue="'+issue.id+'" aria-current="'+(issue.id===newsletterIssue)+'">'
     +'<b>'+escapeHtml(issue.month)+'</b><span>Issue '+issue.number+' &middot; '
     +issue.counts.sources.toLocaleString()+' source'+(issue.counts.sources===1?'':'s')+'</span></button>').join('');
-  document.getElementById('nlArchiveBtn').textContent='Newsletter Archive ('+data.issues.length+') \u2192';
+  document.getElementById('nlArchiveBtn').textContent='Newspaper Archive ('+data.issues.length+') \u2192';
   list.querySelectorAll('[data-issue]').forEach(button=>button.onclick=()=>{
     newsletterIssue=button.dataset.issue;renderNewsletter();
     document.getElementById('nlIssue').scrollIntoView({block:'start',behavior:'smooth'});
@@ -6680,6 +6744,53 @@ function newsletterCountyChart(bars){
     +'<span class="nl-bar-n">'+b.items+'</span></div>').join('')
     +'</div><figcaption>Published items this issue, by county. Counts reflect which newsrooms and city pages published during the period.</figcaption></figure>';
 }
+/* A single issue laid out like the front page of a paper - a nameplate, a lead headline over
+   its photograph, and three section teasers below the fold - rather than the plainer article
+   view the Newsletter tab uses for actually reading one. */
+function frontpageTeaser(section){
+  if(!section)return '';
+  const para=(section.blocks||[]).find(b=>b.kind==='para');
+  if(!para)return '';
+  return '<div class="fp-col"><h4>'+escapeHtml(section.title||'')+'</h4><p>'+nlSpans(para.spans)+'</p></div>';
+}
+function frontpageHtml(issue){
+  if(!issue)return '<p class="nl-loading">No issue to show.</p>';
+  const housing=issue.sections.find(s=>s.kind==='housing');
+  const dev=issue.sections.find(s=>s.kind==='developments');
+  const transport=issue.sections.find(s=>s.kind==='transport');
+  const ledeFirst=issue.lede.find(b=>b.kind==='para');
+  return '<div class="fp-page">'
+    +'<div class="fp-masthead"><div class="fp-nameplate">The Bay Civic Dashboard</div>'
+    +'<div class="fp-dateline"><span>'+escapeHtml(issue.dateline)+'</span><span>Vol. 1, No. '+issue.number+'</span><span>Nine Bay Area Counties</span></div></div>'
+    +(issue.hero?'<figure class="fp-hero"><img src="'+escapeHtml(issue.hero.url)+'" alt="'+escapeHtml(issue.hero.caption||issue.hero.city)+'" loading="lazy"><figcaption>'+escapeHtml(issue.hero.city)+'</figcaption></figure>':'')
+    +'<div class="fp-headline"><h3>'+(issue.lead?escapeHtml(issue.lead.title):escapeHtml(issue.month))+'</h3>'
+    +(ledeFirst?'<p class="fp-lede">'+nlSpans(ledeFirst.spans)+'</p>':'')+'</div>'
+    +'<div class="fp-columns">'+frontpageTeaser(housing)+frontpageTeaser(dev)+frontpageTeaser(transport)+'</div>'
+    +'</div>';
+}
+// A reader can step back three issues from the current one here - the front page is a way to
+// browse recent months quickly; the full run of everything older is the grid below.
+let archiveFrontIndex=0;
+function renderArchiveFrontpage(){
+  const data=newsletterData;
+  const host=document.getElementById('arcFrontpage');
+  if(!data||!host||!data.issues.length)return;
+  const maxBack=Math.min(3,data.issues.length-1);
+  archiveFrontIndex=Math.max(0,Math.min(archiveFrontIndex,maxBack));
+  const issue=data.issues[archiveFrontIndex];
+  const monthsBack=archiveFrontIndex===0?'This month':archiveFrontIndex+' month'+(archiveFrontIndex>1?'s':'')+' back';
+  host.innerHTML=frontpageHtml(issue)
+    +'<div class="fp-stepper">'
+    +'<button type="button" id="arcFpPrev" class="btn secondary"'+(archiveFrontIndex>=maxBack?' disabled':'')+'>&larr; Go back a month</button>'
+    +'<span class="fp-stepper-label">'+monthsBack+'</span>'
+    +'<button type="button" id="arcFpNext" class="btn secondary"'+(archiveFrontIndex<=0?' disabled':'')+'>Forward a month &rarr;</button>'
+    +'<button type="button" id="arcFpRead" class="btn">Read this issue</button>'
+    +'</div>';
+  const prev=document.getElementById('arcFpPrev'),next=document.getElementById('arcFpNext'),read=document.getElementById('arcFpRead');
+  if(prev)prev.onclick=()=>{archiveFrontIndex++;renderArchiveFrontpage();};
+  if(next)next.onclick=()=>{archiveFrontIndex--;renderArchiveFrontpage();};
+  if(read)read.onclick=()=>{newsletterIssue=issue.id;showScreen('newsletter');renderNewsletter();};
+}
 /* The archive: every issue that has gone out, with a picture, what it led on, and a way to have
    it sent over. Reading one hands off to the Newsletter tab. */
 let archiveQuery='',archiveYear='';
@@ -6687,6 +6798,7 @@ async function renderArchive(){
   const data=await loadNewsletter();
   const grid=document.getElementById('arcGrid');
   if(!data||!grid)return;
+  renderArchiveFrontpage();
   const years=[...new Set(data.issues.map(i=>i.id.slice(0,4)))].sort().reverse();
   const yearSelect=document.getElementById('arcYear');
   if(yearSelect.options.length<=1)yearSelect.insertAdjacentHTML('beforeend',years.map(y=>'<option value="'+y+'">'+y+'</option>').join(''));
@@ -9579,7 +9691,8 @@ function showScreen(name){
     t.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
   // Keep the top-level tabs honest when something switches screens directly.
-  const owningPage = name==='account' ? 'account' : name==='bank' ? 'bank' : name==='about' ? 'about' : name==='timeline' ? 'timeline' : 'dashboard';
+  const SCREEN_TO_PAGE = Object.fromEntries(Object.entries(PAGE_DEFAULT_SCREEN).map(([page,screen])=>[screen,page]));
+  const owningPage = SCREEN_TO_PAGE[name] || 'dashboard';
   if(owningPage !== currentPage){
     currentPage = owningPage;
     document.querySelectorAll('.page-nav-tab').forEach(t=>{
