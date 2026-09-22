@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="The Bay Dashboard">
-  <title>The Bay Dashboard</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="The Bay Civic Dashboard">
+  <title>The Bay Civic Dashboard</title>
   <!-- A folded paper map: rounded tile, a road grid printed on it, a dog-eared corner, a location
        pin marking a spot on it, and BAY set across the middle so the mark reads at a glance. -->
   <rect width="32" height="32" rx="6" fill="#2E3B1C"/>
