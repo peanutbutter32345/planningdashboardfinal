@@ -29,23 +29,23 @@
     if(method==='DELETE'){const [type,id]=path.slice('/api/stars/'.length).split('/').map(decodeURIComponent);d.stars=d.stars.filter(x=>!(x.item_type===type&&x.item_id===id));}
    }else if(path==='/api/account/preferences'){
     if(method==='GET')return {...d.preferences,cities};
-    if(b.email||b.emailFrequency&&b.emailFrequency!=='off')throw Error('Create a full account to enable email summaries. Your guest profile stays on this device.');
+    if(b.email||b.emailFrequency&&b.emailFrequency!=='off')throw Error('Add a password to your profile to enable email summaries. Your guest profile stays on this device until then.');
     d.preferences={...d.preferences,...b,email:null,emailFrequency:'off'};
    }else if(path==='/api/timeline'){
     if(method==='GET')return {items:d.timeline};
     if(method==='PUT'){d.timeline=d.timeline.filter(x=>x.item_key!==b.itemKey);d.timeline.push({item_key:b.itemKey,status:b.status,note:b.note});}
-   }else if(path==='/api/reminders/email'){throw Error('Email reminders require a full account. Your reminder is saved on this device.');
+   }else if(path==='/api/reminders/email'){throw Error('Email reminders need a password on your profile. Your reminder is saved on this device either way.');
    }else if(path.startsWith('/api/reminders')){
     if(method==='GET')return {reminders:d.reminders};
     const id=path.split('/').pop();
     if(method==='POST'){const row={id:crypto.randomUUID(),kind:b.kind,ref_id:b.refId,label:b.label,detail:b.detail,url:b.url,city:b.city,in_digest:false,created_at:new Date().toISOString()};d.reminders=d.reminders.filter(x=>!(x.kind===b.kind&&x.ref_id===b.refId));d.reminders.push(row);result={reminder:row};}
     if(method==='DELETE')d.reminders=d.reminders.filter(x=>x.id!==id);
-    if(method==='PATCH')throw Error('Email digest settings require a full account.');
+    if(method==='PATCH')throw Error('Email digest settings need a password on your profile.');
    }else if(path.startsWith('/api/chat/history')){
     if(method==='GET')return {history:d.history};
     if(method==='POST'){const row={...b,id:crypto.randomUUID(),created_at:new Date().toISOString()};d.history.unshift(row);result={id:row.id};}
     if(method==='DELETE')d.history=path==='/api/chat/history'?[]:d.history.filter(x=>x.id!==path.split('/').pop());
-   }else throw Error('This action requires a full account.');
+   }else throw Error('This needs a password on your profile.');
    this.save();if(!this.persistent)throw Error('Browser storage is unavailable. Changes are kept only until this page closes.');return result;
   }
   /* A guest is a user of the site, so the server is told one exists: an id, the name we generated

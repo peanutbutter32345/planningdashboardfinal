@@ -59,8 +59,8 @@ test('guest-only API routes never simulate server authentication or sending emai
  const g=new GuestStore(memory(),memory());
  assert.equal(g.handles('/api/login'),false);assert.equal(g.handles('/api/register'),false);
  assert.equal(g.handles('/api/chat'),false);assert.equal(g.handles('/api/reminders'),true);
- await assert.rejects(g.request('/api/account/preferences',post({email:'test@example.com',emailFrequency:'weekly'},'PATCH')),/full account/);
- await assert.rejects(g.request('/api/reminders/email',post({})),/full account/);
+ await assert.rejects(g.request('/api/account/preferences',post({email:'test@example.com',emailFrequency:'weekly'},'PATCH')),/password/);
+ await assert.rejects(g.request('/api/reminders/email',post({})),/password/);
  const {reminder}=await g.request('/api/reminders',post({kind:'board',refId:'berkeley:council',label:'Council meeting',city:'berkeley'}));
  assert.equal(reminder.in_digest,false);
  await g.request('/api/reminders/'+reminder.id,{method:'DELETE'});

@@ -1198,20 +1198,22 @@ async function runDigests(req, res) {
 const ADMIN_USERNAMES = (process.env.ADMIN_USERNAMES || '').split(',').map(n => n.trim().toLowerCase()).filter(Boolean);
 if (!ADMIN_USERNAMES.length) console.warn('ADMIN_USERNAMES is not set. The usage count is readable only with the cron secret until it is.');
 let communityCache = { at: 0, body: null };
-app.get('/api/community', async (req, res) => {
+// Shared by every admin-only route below: a cron secret works everywhere, or a session token
+// for one of the usernames in ADMIN_USERNAMES - the same rule /api/community always used, now
+// applied consistently instead of each route re-deriving it (and, for stats, not having it at all).
+async function isAdminRequest(req) {
   const secret = req.headers['x-cron-secret'] || req.query.secret;
-  const bySecret = Boolean(CRON_SECRET && secret === CRON_SECRET);
-  let byAccount = false;
-  if (!bySecret && pool) {
-    const token = (req.headers.authorization || '').replace(/^Bearer /, '');
-    if (token && ADMIN_USERNAMES.length) {
-      try {
-        const session = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
-        byAccount = session.rows.length && ADMIN_USERNAMES.includes(session.rows[0].username.toLowerCase());
-      } catch { byAccount = false; }
-    }
-  }
-  if (!bySecret && !byAccount) return res.status(404).json({ error: 'API route not found.' });
+  if (CRON_SECRET && secret === CRON_SECRET) return true;
+  if (!pool) return false;
+  const token = (req.headers.authorization || '').replace(/^Bearer /, '');
+  if (!token || !ADMIN_USERNAMES.length) return false;
+  try {
+    const session = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
+    return Boolean(session.rows.length && ADMIN_USERNAMES.includes(session.rows[0].username.toLowerCase()));
+  } catch { return false; }
+}
+app.get('/api/community', async (req, res) => {
+  if (!(await isAdminRequest(req))) return res.status(404).json({ error: 'API route not found.' });
   if (!pool) return res.json({ ok: false, users: null });
   if (communityCache.body && Date.now() - communityCache.at < 5 * 60_000) return res.json(communityCache.body);
   try {
@@ -1230,8 +1232,7 @@ app.get('/api/community', async (req, res) => {
 });
 
 app.get('/api/admin/stats', async (req, res) => {
-  const provided = req.headers['x-cron-secret'] || req.query.secret;
-  if (!CRON_SECRET || provided !== CRON_SECRET) return res.status(401).json({ error: 'Invalid or missing cron secret.' });
+  if (!(await isAdminRequest(req))) return res.status(404).json({ error: 'API route not found.' });
   if (!requireDb(res)) return;
   try {
     const [totals, byFreq, byCity, recent, stars] = await Promise.all([
@@ -1282,19 +1283,7 @@ app.get('/api/admin/stats', async (req, res) => {
 // an ADMIN_USERNAMES session), 404 on failure so a leaked URL doesn't confirm the route exists.
 // Never returns password_hash or session tokens - just enough to see who's using the site.
 app.get('/api/admin/users', async (req, res) => {
-  const secret = req.headers['x-cron-secret'] || req.query.secret;
-  const bySecret = Boolean(CRON_SECRET && secret === CRON_SECRET);
-  let byAccount = false;
-  if (!bySecret && pool) {
-    const token = (req.headers.authorization || '').replace(/^Bearer /, '');
-    if (token && ADMIN_USERNAMES.length) {
-      try {
-        const session = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
-        byAccount = session.rows.length && ADMIN_USERNAMES.includes(session.rows[0].username.toLowerCase());
-      } catch { byAccount = false; }
-    }
-  }
-  if (!bySecret && !byAccount) return res.status(404).json({ error: 'API route not found.' });
+  if (!(await isAdminRequest(req))) return res.status(404).json({ error: 'API route not found.' });
   if (!requireDb(res)) return;
   try {
     const limit = Math.min(parseInt(req.query.limit, 10) || 500, 2000);
