@@ -185,3 +185,93 @@ export function hearingsForCity(all, cityKey) {
   const canonical=MEETING_DIRECTORY[cityKey]?.alias||cityKey;
   return (all && all.hearings ? all.hearings : []).filter(h => h.city === canonical);
 }
+
+// ---------------- RECENT (PAST) MEETINGS ----------------
+// For the "Summarize Recent Meetings" feature: what already happened, not what's upcoming.
+// Kept separate from getHearings() above because it reads MinutesNote (vote outcomes), which
+// only exists once a meeting has actually occurred, and is cached per city rather than in bulk
+// since a reader only ever asks about one city at a time.
+const RECENT_DAYS_BACK = 30;
+const RECENT_CACHE_MS = 3 * 60 * 60 * 1000;
+const recentCache = new Map(); // canonical city key -> {at, data}
+
+async function fetchRecentCity(client, fromIso, toIso) {
+  const signal = AbortSignal.timeout(12000);
+  const base = `https://webapi.legistar.com/v1/${client}`;
+  const filter = encodeURIComponent(`EventDate ge datetime'${fromIso}' and EventDate le datetime'${toIso}'`);
+  const events = await getJson(`${base}/events?$filter=${filter}&$orderby=EventDate desc&$top=30`, signal);
+
+  const out = [];
+  // Legistar can list the same meeting twice - a reschedule keeps the old row alongside the new
+  // one, or the same event surfaces under more than one committee alias - so a reader never sees
+  // one meeting reported as though it were two.
+  const seenEvents = new Set();
+  for (const ev of events) {
+    if (seenEvents.has(ev.EventId)) continue;
+    seenEvents.add(ev.EventId);
+
+    const body = ev.EventBodyName || '';
+    if (!RELEVANT_BODY.test(body)) continue;
+    // Legistar lists cancelled meetings alongside real ones - nothing to summarize there.
+    if (/cancel/i.test(ev.EventAgendaStatusName || '')) continue;
+
+    let items = [];
+    try {
+      items = await getJson(`${base}/events/${ev.EventId}/eventitems?AgendaNote=1&MinutesNote=1&Attachments=0`, signal);
+    } catch {
+      // One unavailable set of minutes must not sink the whole meeting - it's still worth
+      // listing by date and body, just without its items.
+    }
+
+    const seenMatters = new Set();
+    const matters = items
+      .map(it => ({
+        title: (it.EventItemTitle || '').trim().split('\n')[0].slice(0, 220),
+        action: (it.EventItemActionName || '').trim(),
+      }))
+      .filter(m => {
+        // Legistar repeats an item under more than one agenda section (e.g. both a summary
+        // block and the full text) often enough that a raw list reads like the meeting covered
+        // the same thing twice.
+        if (m.title.length <= 30 || seenMatters.has(m.title)) return false;
+        seenMatters.add(m.title);
+        return true;
+      });
+
+    out.push({
+      body,
+      date: (ev.EventDate || '').slice(0, 10),
+      time: ev.EventTime || null,
+      location: ev.EventLocation || null,
+      agendaUrl: ev.EventInSiteURL || null,
+      minutesUrl: ev.EventMinutesFile || null,
+      matters,
+    });
+  }
+  return out;
+}
+
+/**
+ * Meetings a single city actually held in the last RECENT_DAYS_BACK days, with whatever vote
+ * outcomes Legistar has published. Returns {supported:false} for a city with no Legistar feed
+ * configured at all, rather than throwing.
+ */
+export async function getRecentMeetings(cityKey, { force = false } = {}) {
+  const canonical = MEETING_DIRECTORY[cityKey]?.alias || cityKey;
+  const client = LEGISTAR_CITIES[canonical];
+  if (!client) return { supported: false, cityKey: canonical, days: RECENT_DAYS_BACK, meetings: [] };
+
+  const cached = recentCache.get(canonical);
+  if (!force && cached && (Date.now() - cached.at) < RECENT_CACHE_MS) return cached.data;
+
+  const now = new Date();
+  const from = new Date(now.getTime() - RECENT_DAYS_BACK * 864e5);
+  const localDate = date => date.toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
+
+  const meetings = await fetchRecentCity(client, localDate(from), localDate(now));
+  meetings.sort((a, b) => b.date.localeCompare(a.date));
+
+  const data = { supported: true, cityKey: canonical, generatedAt: new Date().toISOString(), days: RECENT_DAYS_BACK, meetings };
+  recentCache.set(canonical, { at: Date.now(), data });
+  return data;
+}

@@ -261,7 +261,10 @@
   /* ---- Page nav ---- */
   /* Three top-level pages behind a hamburger at the top right. It floats over the page and
      reserves no width of its own, so nothing below has to make room for it. */
-  .page-nav{position:fixed; top:10px; right:14px; z-index:120; background:transparent; border:none;}
+  /* Above the onboarding overlay (z-index:3000) - an open menu should stay visible and usable
+     even if something later opens the "your area" setup overlay on top of the page, rather than
+     silently vanishing underneath it while still technically open. */
+  .page-nav{position:fixed; top:10px; right:14px; z-index:3100; background:transparent; border:none;}
   .nav-toggle{display:flex; flex-direction:column; justify-content:center; gap:4px;
     width:40px; height:40px; padding:0 9px; cursor:pointer; border:none; border-radius:2px;
     background:#000; box-shadow:0 1px 4px rgba(0,0,0,.28);}
@@ -1625,6 +1628,51 @@
   .ask-scope{font-family:'Roboto Mono',monospace; font-size:11px; color:var(--ink); background:var(--paper-2); border:1px solid var(--rule); padding:8px 9px; border-radius:2px; margin-top:10px;}
   .ask-status{font-size:11px; color:var(--text-soft); margin-top:8px;}
 
+  .ms-controls{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:18px 0 6px;}
+  .ms-controls select{font-family:'Open Sans',sans-serif; font-size:13px; padding:9px 10px; border:1.5px solid var(--ink); border-radius:2px; background:#fff; color:var(--ink); min-width:220px;}
+  .ms-summary{background:#fff; border:1px solid var(--rule); border-top:4px solid var(--ink); border-radius:2px; padding:20px 22px; font-size:14px; line-height:1.7; white-space:pre-wrap; margin-top:16px;}
+  .ms-actions{display:flex; align-items:center; gap:10px; margin:14px 0 26px; flex-wrap:wrap;}
+  .ms-meeting-list{display:flex; flex-direction:column; gap:10px;}
+  .ms-meeting{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:12px 14px;}
+  .ms-meeting-head{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; font-family:'Open Sans',sans-serif; font-weight:700; font-size:12.5px;}
+  .ms-meeting-loc{margin:4px 0 0; font-size:12px; color:var(--text-soft);}
+  .ms-meeting-items{margin:8px 0 0; padding-left:18px; font-size:12.5px; color:var(--text-soft); line-height:1.6;}
+  .ms-meeting-details{margin-top:8px;}
+  .ms-meeting-details summary{font-family:'Open Sans',sans-serif; font-size:11.5px; font-weight:700; color:var(--ink); cursor:pointer; list-style:none;}
+  .ms-meeting-details summary::-webkit-details-marker{display:none;}
+  .ms-meeting-details summary::before{content:'▸ '; font-size:10px;}
+  .ms-meeting-details[open] summary::before{content:'▾ '; }
+  .ms-meeting-details .ms-meeting-items{margin-top:6px;}
+  .ms-layout{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr); gap:18px; align-items:start; margin-top:8px;}
+  @media (max-width:900px){.ms-layout{grid-template-columns:1fr;}}
+  .ms-side{background:#fff; border:1px solid var(--rule); border-top:4px solid var(--ink); border-radius:2px; overflow:hidden;}
+  .ms-side-photo{display:block; width:100%; height:150px; object-fit:cover; background:var(--paper-2);}
+  .ms-side-cap{display:block; font-size:10.5px; color:var(--text-soft); padding:6px 14px 0; text-align:right;}
+  .ms-side h3{font-size:13px; margin:16px 14px 8px; letter-spacing:.02em;}
+  .ms-side-links{display:flex; flex-direction:column; padding:0 14px 16px;}
+  .ms-side-links a{font-size:12.5px; font-weight:700; padding:8px 0; border-bottom:1px solid var(--rule);}
+  .ms-side-links a:last-child{border-bottom:none;}
+
+  .ms-loading{display:flex; gap:14px; align-items:flex-start; margin:14px 0; padding:16px 18px; background:#fff; border:1px solid var(--rule); border-radius:2px;}
+  .ms-loading-spinner{flex:0 0 auto; width:20px; height:20px; margin-top:2px; border:3px solid var(--rule); border-top-color:var(--ink); border-radius:50%; animation:ms-spin .8s linear infinite;}
+  @keyframes ms-spin{to{transform:rotate(360deg);}}
+  .ms-loading-steps{list-style:none; margin:0; padding:0; font-size:12.5px; color:var(--text-soft); display:flex; flex-direction:column; gap:6px;}
+  .ms-loading-steps li{position:relative; padding-left:18px; transition:color .2s;}
+  .ms-loading-steps li::before{content:'○'; position:absolute; left:0; top:0; font-size:10px;}
+  .ms-loading-steps li.done{color:var(--ink);}
+  .ms-loading-steps li.done::before{content:'●';}
+  .ms-loading-steps li.active{color:var(--ink); font-weight:700;}
+  .ms-loading-steps li.active::before{content:'●'; animation:ms-pulse 1s ease-in-out infinite;}
+  @keyframes ms-pulse{50%{opacity:.3;}}
+
+  .ms-categories{display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px; margin:18px 0;}
+  .ms-cat-box{background:var(--paper-2); border:1px solid var(--rule); border-radius:2px; padding:14px 16px;}
+  .ms-cat-box h3{font-size:11.5px; text-transform:uppercase; letter-spacing:.07em; margin:0 0 10px; color:var(--ink);}
+  .ms-cat-box ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .ms-cat-box li{font-size:12.5px; line-height:1.5; border-bottom:1px solid var(--rule); padding-bottom:9px;}
+  .ms-cat-box li:last-child{border-bottom:none; padding-bottom:0;}
+  .ms-cat-item-meta{display:block; font-size:10.5px; color:var(--text-soft); margin-top:2px;}
+
 </style>
 <link rel="stylesheet" href="/enhancements.css">
 <link rel="stylesheet" href="/browse.css">
@@ -1637,13 +1685,13 @@
     <div class="onboard-eyebrow">THE BAY CIVIC DASHBOARD · WELCOME</div><h2 id="onboardHeading">Make the Bay your own.</h2>
     <p class="sub">Choose a county to explore projects, news and public meetings. Add a city or location whenever you like.</p>
 
-    <div class="onboard-profile" id="onboardGuestProfile"><label for="onboardUsername">Your guest username</label><input id="onboardUsername" minlength="3" maxlength="30" autocomplete="nickname" aria-describedby="onboardGuestStatus"><p id="onboardGuestStatus" role="status">Already created. Your name and saved items are saved automatically on this device.</p></div>
+    <div class="onboard-profile" id="onboardGuestProfile"><label for="onboardUsername">Choose a username <em>(required)</em></label><input id="onboardUsername" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Pick a username" required aria-describedby="onboardGuestStatus"><p id="onboardGuestStatus" role="status">3-30 letters, numbers, spaces or underscores. Saved on this device only, no signup needed.</p></div>
     <div class="onboard-step">
       <label class="onboard-label" for="onboardCounty">1. Choose your county <em>(required)</em></label>
       <select id="onboardCounty" class="onboard-county-select" required><option value="">Select a Bay Area county…</option></select>
       <div class="onboard-citybtns" id="onboardCityBtns"></div>
       <div class="onboard-hint">A county is all you need. Search for a city to narrow your view.</div>
-      <div class="onboard-account-hint">Your guest profile is ready—no signup or save button needed. For access across devices, <a href="#" id="onboardAccountLink">create a free account</a>.</div>
+      <div class="onboard-account-hint">Your username and choices stay on this device, no signup needed. For access across devices and email updates, <a href="#" id="onboardAccountLink">create a free account</a>.</div>
     </div>
 
     <div class="onboard-step">
@@ -1667,7 +1715,7 @@
 
     <div class="onboard-actions">
       <button class="btn" id="onboardSubmit" type="button">Open my dashboard →</button>
-      <button class="btn secondary" id="onboardExplore" type="button">Explore without setup →</button><p class="onboard-hint">No area selected? Explore starts in Santa Clara County. Your guest profile is already created.</p>
+      <button class="btn secondary" id="onboardExplore" type="button">Explore without setup →</button><p class="onboard-hint">No area selected? Explore starts in Santa Clara County. A username is still required above.</p>
       <span class="onboard-req" id="onboardReq"></span>
     </div>
   </div>
@@ -1721,6 +1769,7 @@
     <button class="sub-nav-tab active" data-screen="dashboard" role="tab" aria-selected="true">Overview</button>
     <button class="sub-nav-tab" data-screen="yourarea" role="tab" aria-selected="false">Your Area</button>
     <button class="sub-nav-tab" data-screen="planner" role="tab" aria-selected="false">Get Involved</button>
+    <button class="sub-nav-tab" data-screen="meetingSummary" role="tab" aria-selected="false">Summarize Meetings</button>
     <button class="sub-nav-tab" data-screen="housing" role="tab" aria-selected="false">Housing</button>
     <button class="sub-nav-tab" data-screen="developments" role="tab" aria-selected="false">Developments</button>
     <button class="sub-nav-tab" data-screen="transportation" role="tab" aria-selected="false">Transportation</button>
@@ -2094,6 +2143,53 @@
   </div>
 </div>
 
+<div id="screenMeetingSummary" class="screen" style="display:none;">
+  <div class="wrap">
+    <div class="planner-shell">
+      <h2>Summarize recent meetings</h2>
+      <p class="section-note">Pick a city and get a plain-language summary of what its council, planning commission, and related boards actually did in the last 30 days - built from each city's own published agendas and minutes, not a general web search.</p>
+
+      <div class="ms-controls">
+        <label for="msCitySelect" class="onboard-label">City</label>
+        <select id="msCitySelect"></select>
+        <button class="btn" id="msSummarize" type="button">Summarize recent meetings</button>
+      </div>
+
+      <div id="msStatus" class="section-note" role="status" aria-live="polite"></div>
+      <div class="ms-loading" id="msLoading" hidden>
+        <div class="ms-loading-spinner" aria-hidden="true"></div>
+        <ul class="ms-loading-steps" id="msLoadingSteps"></ul>
+      </div>
+
+      <div class="ms-layout">
+        <div class="ms-main">
+          <div id="msResult" style="display:none;">
+            <div class="ms-summary" id="msSummaryText"></div>
+            <div class="ms-actions">
+              <button class="btn secondary" id="msEmail" type="button">Email this summary</button>
+              <button class="btn secondary" id="msCopy" type="button">Copy summary</button>
+              <span id="msActionStatus" class="section-note" role="status" aria-live="polite"></span>
+            </div>
+            <div class="ms-categories" id="msCategories" hidden>
+              <div class="ms-cat-box" data-cat="housing" hidden><h3>Housing</h3><ul></ul></div>
+              <div class="ms-cat-box" data-cat="developments" hidden><h3>Development</h3><ul></ul></div>
+              <div class="ms-cat-box" data-cat="transportation" hidden><h3>Transportation</h3><ul></ul></div>
+            </div>
+            <h3 id="msMeetingsTitle" style="display:none;">Meetings referenced</h3>
+            <div id="msMeetingList" class="ms-meeting-list"></div>
+          </div>
+        </div>
+        <aside class="ms-side" id="msSide" hidden>
+          <img class="ms-side-photo" id="msSidePhoto" alt="" loading="lazy">
+          <a class="ms-side-cap" id="msSideCap" href="/photo-credits.html">Photo credits ↗</a>
+          <h3>Official links</h3>
+          <div class="ms-side-links" id="msSideLinks"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="screenStatistics" class="screen" style="display:none;">
   <div class="wrap">
     <div class="planner-shell">
@@ -2223,7 +2319,7 @@
              difference is where their saved items live and who picked their name. -->
         <section class="guest-signin" id="guestSignInPanel">
           <h3>Continue with just your name</h3>
-          <p>No password, no email. You are already signed in on this device as a guest — you can keep the name we gave you or choose your own.</p>
+          <p>No password, no email. You are already signed in on this device as a guest, under the username you chose. You can change it any time.</p>
           <form id="guestNameForm">
             <label for="guestNameInput">Your name</label>
             <input id="guestNameInput" type="text" autocomplete="nickname" minlength="3" maxlength="30" pattern="[a-zA-Z0-9_ ]+" required>
@@ -2291,7 +2387,7 @@
         <div class="acct-main">
           <section class="acct-panel" data-panel="overview">
             <h2>Overview</h2>
-            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your temporary guest profile</h3><p>Your guest profile is created automatically. Your name saves as you type; saved items, timeline and preferences stay in this browser. Clearing browser data removes them. Create an account to sync across devices and use email summaries.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Update guest password</button></form><p>A guest password adds a browser lock; it does not encrypt local saved data.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Create full account</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
+            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your guest profile</h3><p>This profile lives on this device only. Your name saves as you type; saved items, timeline and preferences stay in this browser. Clearing browser data removes them. Create an account below to sync across devices and use email summaries.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Update guest password</button></form><p>A guest password only locks this device's saved data behind a PIN, so someone else using this browser cannot change it. It is not an account: it does not sync anywhere and it will not enable email. Use "Create full account" below for that.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Create full account</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
             <p class="section-note" id="acctOverviewNote"></p>
             <div class="acct-tiles" id="acctTiles"></div>
             <div class="acct-sec-h">Next hearings in your city</div>
@@ -2548,7 +2644,7 @@
             <div class="ask-resources-head">
               <h3>Sources &amp; resources</h3>
               <p>Official pages, project records, maps, reports, and other references used for the answer.</p>
-              <div class="ask-scope" id="askScopeCity">City: —</div>
+              <div class="ask-scope" id="askScopeCity">City: N/A</div>
             </div>
             <div class="ask-resource-list" id="askResourceList">
               <div class="ask-resource-empty">Ask a question and supporting links will appear here.</div>
@@ -6353,7 +6449,7 @@ function renderStats(){
   const flagged = list.filter(d=>d.flag).length;
   const cards = [
     {k: devUnits.toLocaleString(), u:'Housing units tracked', sub:'In this sample for '+CITIES[currentCity].label},
-    {k: bmrKnown.length ? bmrShare+'%' : '—', u:'Affordable, where disclosed', sub: bmrKnown.length+' of '+housing.length+' housing records report a BMR split'},
+    {k: bmrKnown.length ? bmrShare+'%' : 'N/A', u:'Affordable, where disclosed', sub: bmrKnown.length+' of '+housing.length+' housing records report a BMR split'},
     {k: flagged, u:'Records flagged', sub:'Stale, expired, inactive, or ambiguous status'},
     {k: list.filter(d=>d.stage==='construction'||d.stage==='approved').length, u:'Approved or building', sub:'Last reported status · check record dates'},
   ];
@@ -6634,7 +6730,7 @@ async function toggle3D({button, host, target, points, get, set, onSelect=()=>{}
     if(note)alertless3D(button,note);
   }catch(error){
     host.hidden=true;target?.classList.remove('has-3d');button.innerHTML=label;
-    alertless3D(button,'3D could not start \u2014 '+error.message);
+    alertless3D(button,'3D could not start - '+error.message);
   }finally{threeDBusy=false;}
 }
 function alertless3D(button,message){
@@ -7427,7 +7523,7 @@ const OFFICIAL_LINKS = {
     {cat:'Boards', title:'Planning Commission', url:'https://www.losgatosca.gov/189/Planning-Commission', note:'Decides most land use applications in town.'},
     {cat:'Boards', title:'Development Review Committee', url:'https://www.losgatosca.gov/188/Development-Review-Committee', note:'Staff-level review body for smaller applications.'},
     {cat:'Planning Hub', title:'Planning Documents', url:'https://www.losgatosca.gov/198/Planning-Documents', note:'Applications, handouts, and submittal requirements.'},
-    {cat:'Housing', title:'General Plan — Housing Element', url:'https://www.losgatosca.gov/1735/General-Plan---Housing-Element', note:'State-required housing plan and site inventory.'},
+    {cat:'Housing', title:'General Plan - Housing Element', url:'https://www.losgatosca.gov/1735/General-Plan---Housing-Element', note:'State-required housing plan and site inventory.'},
     {cat:'Land Use', title:'North 40 Specific Plan Area', url:'https://www.losgatosca.gov/1729/North-40-Specific-Plan-Area', note:'The town’s largest planned development area.'},
     {cat:'GIS', title:'GIS / Mapping', url:'https://www.losgatosca.gov/1513/GIS', note:'Town mapping tools and parcel data.'},
     {cat:'Permits', title:'Monthly Issued Permits', url:'https://www.losgatosca.gov/1014/Monthly-Issued-Permits', note:'Running list of building permits issued each month.'},
@@ -7538,7 +7634,7 @@ function renderRegister(){
   const el = document.getElementById('registerGrid');
   if(!list.length){
     const c=CITIES[currentCity],photo=CITY_PHOTOS[currentCity];
-    el.innerHTML=c.coverage==='directory'?`<article class="directory-welcome">${photo?`<img src="${escapeHtml(photo.url)}" alt="${escapeHtml(photo.cap)}" loading="lazy">`:''}<div><span class="eyebrow">${escapeHtml(c.county)} County</span><h3>Explore ${escapeHtml(c.label)}</h3><p>Official planning sources, meeting agendas and Census statistics are ready. A verified project inventory has not yet been imported. This does not mean no development is underway.</p><a class="btn" href="${escapeHtml(c.planning)}" target="_blank" rel="noopener">Planning & development ↗</a> <a class="btn secondary" href="${escapeHtml(c.meetings)}" target="_blank" rel="noopener">Meetings & agendas ↗</a><p><a href="/photo-credits.html">Photo credits ↗</a></p></div></article>`:'<div class="empty">Nothing matches — try clearing a filter.</div>';return;
+    el.innerHTML=c.coverage==='directory'?`<article class="directory-welcome">${photo?`<img src="${escapeHtml(photo.url)}" alt="${escapeHtml(photo.cap)}" loading="lazy">`:''}<div><span class="eyebrow">${escapeHtml(c.county)} County</span><h3>Explore ${escapeHtml(c.label)}</h3><p>Official planning sources, meeting agendas and Census statistics are ready. A verified project inventory has not yet been imported. This does not mean no development is underway.</p><a class="btn" href="${escapeHtml(c.planning)}" target="_blank" rel="noopener">Planning & development ↗</a> <a class="btn secondary" href="${escapeHtml(c.meetings)}" target="_blank" rel="noopener">Meetings & agendas ↗</a><p><a href="/photo-credits.html">Photo credits ↗</a></p></div></article>`:'<div class="empty">Nothing matches - try clearing a filter.</div>';return;
   }
   const scope=currentCity+JSON.stringify(state);if(scope!==registerScope){registerLimit=60;registerScope=scope;}
   document.getElementById('registerCount').textContent=Math.min(list.length,registerLimit)+' of '+list.length+' matching records displayed';
@@ -7681,11 +7777,13 @@ function refreshOnboardGate(){
   btn.disabled = !ok;
   btn.style.opacity = ok ? '1' : '0.55';
   btn.style.cursor = ok ? 'pointer' : 'not-allowed';
+  const usernameOk = !isGuest() || !guestProfile.unlocked || /^[a-zA-Z0-9_ ]{3,30}$/.test(document.getElementById('onboardUsername').value.trim());
   if(note){
     note.textContent = ok ? (document.getElementById('onboardAddr').value.trim()
         ? 'Ready. We will centre on that address.'
         : 'Ready to explore '+(onboard.city?CITIES[onboard.city].label:onboard.county+' County')+'. Your choices are remembered on this device.')
-      : (!onboard.county ? 'Choose a county to continue. A city and address are optional.' : 'Use 3–30 letters, numbers, spaces or underscores for your username.');
+      : (!usernameOk ? 'Choose a username to continue: 3-30 letters, numbers, spaces or underscores.'
+        : 'Choose a county to continue. A city and address are optional.');
   }
 }
 
@@ -7975,6 +8073,7 @@ function refreshCurrentScreen(){
   else if(currentScreen==='bank'){ renderBankMosaic(); renderBankExamples(); renderBank(); }
   else if(currentScreen==='about'){ renderBankSources(); renderAboutMosaic(); }
   else if(currentScreen==='ask') renderAskContext();
+  else if(currentScreen==='meetingSummary') renderMeetingSummaryScreen();
   else if(currentScreen==='housing') renderTopicPage('housing','Housing');
   else if(currentScreen==='developments') renderTopicPage('developments','Building');
   else if(currentScreen==='transportation') renderTopicPage('transportation','Transportation');
@@ -8959,12 +9058,43 @@ function tileFor(lat, lng, z){
   return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/'+z+'/'+y+'/'+x;
 }
 function cityImage(city){ return (CITY_PHOTOS[city]||{}).url || null; }
-// A story picture that is missing or fails to load falls back to the city's photograph, and only
-// then goes blank - it keeps its box either way, so a row of cards stays the same height.
+// True if some other still-visible article image on the page is already showing this exact URL.
+// Two unrelated story cards should never end up looking like reposts of each other just because
+// one card's own picture failed to load and fell back to a shared city or regional photo.
+function imgInUse(url, exceptEl){
+  if(!url) return false;
+  const full = new URL(url, location.href).href;
+  return Array.from(document.querySelectorAll('img[data-article-img]')).some(o =>
+    o !== exceptEl && o.src === full && o.style.visibility !== 'hidden');
+}
+// Chosen once, synchronously, while a list of cards is being built - so two cards in the same
+// list never even start out pointing at the same picture (this is what actually happens for a
+// couple of real story pairs: an outlet republishes one rendering across a groundbreaking story
+// and its topping-out follow-up).
+function articleImageSrc(a, usedInList){
+  for (const url of [a.image, cityImage(a.city)]) {
+    if (url && !usedInList.has(url)) { usedInList.add(url); return url; }
+  }
+  return '';
+}
+// A story picture that is missing or fails to load falls back to the city's photograph, then a
+// generic regional photo, and only then goes blank - it keeps its box either way, so a row of
+// cards stays the same height. Skips any tier that's already showing elsewhere on the page right
+// now, for pictures that only turn out broken after the page has already rendered.
 function imgFallback(img, city){
-  const alt = cityImage(city);
-  if(alt && img.dataset.fb !== '1'){ img.dataset.fb = '1'; img.src = alt; }
-  else if(img.dataset.fb !== '2'){ img.dataset.fb='2'; img.src='/img/hero.avif'; img.alt='Bay Area landscape'; } else { img.style.visibility='hidden'; }
+  const tiers = [cityImage(city), '/img/hero.avif'];
+  let i = Number(img.dataset.fb || '0');
+  for (; i < tiers.length; i++) {
+    const candidate = tiers[i];
+    if (candidate && !imgInUse(candidate, img)) {
+      img.dataset.fb = String(i + 1);
+      img.src = candidate;
+      if (i === 1) img.alt = 'Bay Area landscape';
+      return;
+    }
+  }
+  img.dataset.fb = String(tiers.length + 1);
+  img.style.visibility = 'hidden';
 }
 // A chart if one exists for this city, otherwise the city itself.
 function figureOrCity(city, metric){
@@ -9464,7 +9594,7 @@ function buildBankIndex(){
       cityKeys.forEach(ck=>{
         const v = typeof m.get === 'function' ? m.get(ck) : undefined;
         if(v === undefined || v === null || (typeof v === 'number' && isNaN(v))) return;
-        out.push({ type:'statistic', city:ck, title:m.label+' — '+CITIES[ck].label,
+        out.push({ type:'statistic', city:ck, title:m.label+' - '+CITIES[ck].label,
           sub:(m.fmt ? m.fmt(v) : v) + (m.tag ? ' · '+m.tag : ''),
           body:m.label+' '+(m.topic||'')+' '+(m.tag||'')+' statistic number data',
           action:{label:'See in Statistics', kind:'stats', id:m.id, city:ck} });
@@ -9476,7 +9606,7 @@ function buildBankIndex(){
   cityKeys.forEach(ck=>{
     const r = RHNA[ck];
     if(!r) return;
-    out.push({ type:'statistic', city:ck, title:'Housing target progress — '+CITIES[ck].label,
+    out.push({ type:'statistic', city:ck, title:'Housing target progress - '+CITIES[ck].label,
       sub:r.pct+'% permitted · '+r.units.toLocaleString()+' of '+r.target.toLocaleString(),
       body:'RHNA regional housing needs allocation target housing element builder’s remedy compliance state target',
       action:{label:'See in Statistics', kind:'stats', id:'rhna', city:ck} });
@@ -9746,17 +9876,20 @@ if(navToggleBtn){
     setNavMenu(document.getElementById('navMenu').hidden);
   });
 }
-// Click anywhere else, or press Escape, to dismiss it.
+// Click anywhere else, or press Escape, to dismiss it. A click that opens the "your area" setup
+// overlay - even from a button elsewhere on the page, like "Change" or "View your area" - should
+// not also silently close this menu; the menu should only ever close from an explicit close.
 document.addEventListener('click', (e)=>{
   const nav = document.querySelector('.page-nav');
-  if(nav && !nav.contains(e.target)&&!e.target.closest('#onboardOverlay')) setNavMenu(false);
+  const overlayOpen = document.getElementById('onboardOverlay')?.style.display === 'flex';
+  if(nav && !nav.contains(e.target) && !e.target.closest('#onboardOverlay') && !overlayOpen) setNavMenu(false);
 });
 document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') setNavMenu(false); });
 document.querySelectorAll('.sub-nav-tab').forEach(t=>{
   t.addEventListener('click', ()=> showScreen(t.getAttribute('data-screen')));
 });
 
-const SCREEN_IDS = {archive:'screenArchive', newsletter:'screenNewsletter', futures:'screenFutures', dashboard:'screenDashboard', timeline:'screenTimeline', yourarea:'screenYourArea', planner:'screenPlanner', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
+const SCREEN_IDS = {archive:'screenArchive', newsletter:'screenNewsletter', futures:'screenFutures', dashboard:'screenDashboard', timeline:'screenTimeline', yourarea:'screenYourArea', planner:'screenPlanner', meetingSummary:'screenMeetingSummary', statistics:'screenStatistics', resources:'screenResources', ask:'screenAsk', housing:'screenHousing', developments:'screenDevelopments', transportation:'screenTransportation', account:'screenAccount', bank:'screenBank', about:'screenAbout'};
 function scrollToScreen(name){
   const el = document.getElementById(SCREEN_IDS[name]);
   if(!el){ window.scrollTo({top:0, behavior:'smooth'}); return; }
@@ -10095,7 +10228,7 @@ async function sendAskQuestion(){
     loading.remove();
     const message = err && err.message ? err.message : 'Unknown request error';
     addAskMessage('Could not get an answer: ' + message,'error');
-    status.textContent='Request failed — see the message above.';
+    status.textContent='Request failed - see the message above.';
     console.error('Ask API error:',err);
   }finally{
     button.disabled=false;
@@ -10111,6 +10244,204 @@ document.querySelectorAll('#askSuggestions .ask-chip').forEach(btn=>{
     document.getElementById('askInput').value=btn.textContent.trim();
     document.getElementById('askInput').focus();
   });
+});
+
+// ---------------- SUMMARIZE RECENT MEETINGS ----------------
+let msCityPopulated = false;
+let msLastResult = null;
+function populateMsCitySelect(){
+  const select = document.getElementById('msCitySelect');
+  if(!select) return;
+  if(!msCityPopulated){
+    select.innerHTML = COUNTY_NAMES.map(county =>
+      '<optgroup label="'+escapeHtml(county)+' County">'
+        + Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===county)
+          .map(([k,c])=>'<option value="'+k+'">'+escapeHtml(c.label)+'</option>').join('')
+        + '</optgroup>'
+    ).join('');
+    msCityPopulated = true;
+  }
+  if(currentCity!=='all') select.value = currentCity;
+}
+function renderMeetingSummaryScreen(){
+  populateMsCitySelect();
+  renderMsSide(document.getElementById('msCitySelect').value);
+}
+// The city's own photo and its real official links (meeting calendar, boards, GIS maps - whatever
+// this city has) fill the sidebar from the moment a city is picked, not just after summarizing,
+// so the page never sits there looking empty while a reader decides whether to press the button.
+function renderMsSide(cityKey){
+  const side = document.getElementById('msSide');
+  if(!side) return;
+  const city = CITIES[cityKey];
+  if(!city){ side.hidden = true; return; }
+  const photo = CITY_PHOTOS[cityKey];
+  const photoEl = document.getElementById('msSidePhoto');
+  const capEl = document.getElementById('msSideCap');
+  photoEl.style.display = photo ? 'block' : 'none';
+  capEl.style.display = photo ? 'block' : 'none';
+  if(photo){ photoEl.src = photo.url; photoEl.alt = photo.cap || city.label; }
+  const links = (city.ctaLinks||[]).slice(0,6);
+  document.getElementById('msSideLinks').innerHTML = links.length
+    ? links.map(l=>'<a href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.label)+'</a>').join('')
+    : '<div class="ms-meeting-items">No official links on file for '+escapeHtml(city.label)+' yet.</div>';
+  side.hidden = false;
+}
+function renderMsMeetings(meetings, source){
+  const list = document.getElementById('msMeetingList');
+  const title = document.getElementById('msMeetingsTitle');
+  if(!meetings || !meetings.length){
+    list.innerHTML=''; title.style.display='none'; return;
+  }
+  const fromWeb = source==='websearch';
+  title.textContent = fromWeb ? 'Sources found' : 'Meetings referenced';
+  title.style.display='block';
+  // Collapsed by default - a page with every item on every meeting open at once ran very long,
+  // so only the meeting itself (date, body, location) shows up front; its items are one click
+  // away rather than always on screen.
+  list.innerHTML = meetings.map(m=>{
+    const matters = (m.matters||[]).slice(0,10);
+    const items = matters.map(x=>
+      '<li>'+escapeHtml(x.title)+(x.action?' <em>['+escapeHtml(x.action)+']</em>':'')+'</li>'
+    ).join('');
+    const when = escapeHtml(m.date||'undated')+(m.time?' at '+escapeHtml(m.time):'');
+    const itemWord = fromWeb ? 'excerpt' : 'agenda item';
+    return '<div class="ms-meeting"><div class="ms-meeting-head"><span>'+when+' - '+escapeHtml(m.body)+'</span>'
+      + (m.agendaUrl?'<a href="'+escapeHtml(m.agendaUrl)+'" target="_blank" rel="noopener">'+(fromWeb?'Source ↗':'Agenda ↗')+'</a>':'')
+      + '</div>'
+      + (m.location?'<div class="ms-meeting-loc">'+escapeHtml(m.location)+'</div>':'')
+      + (items
+          ? '<details class="ms-meeting-details"><summary>'+matters.length+' '+itemWord+(matters.length===1?'':'s')+'</summary><ul class="ms-meeting-items">'+items+'</ul></details>'
+          : '<div class="ms-meeting-items">'+(fromWeb?'No excerpt available.':'No agenda items on file.')+'</div>')
+      + '</div>';
+  }).join('');
+}
+// Housing / Development / Transportation - the same three topics used in Featured News on the
+// Overview page. Only a category with at least one genuinely matching item gets a box; an empty
+// box would just be noise, and most meetings won't touch all three anyway.
+const MS_CATEGORY_LABELS = [['housing','Housing'],['developments','Development'],['transportation','Transportation']];
+function renderMsCategories(meetings){
+  const host = document.getElementById('msCategories');
+  const buckets = {housing:[], developments:[], transportation:[]};
+  const seen = new Set();
+  (meetings||[]).forEach(m => (m.matters||[]).forEach(x => {
+    if(!x.category || !buckets[x.category]) return;
+    const key = x.category+'|'+x.title;
+    if(seen.has(key)) return;
+    seen.add(key);
+    buckets[x.category].push(x);
+  }));
+  let any = false;
+  MS_CATEGORY_LABELS.forEach(([cat])=>{
+    const box = host.querySelector('[data-cat="'+cat+'"]');
+    const items = buckets[cat];
+    box.hidden = !items.length;
+    if(!items.length) return;
+    any = true;
+    box.querySelector('ul').innerHTML = items.slice(0,6).map(it=>
+      '<li>'+escapeHtml(it.title)+(it.action?' <em>['+escapeHtml(it.action)+']</em>':'')
+      + '<span class="ms-cat-item-meta">'+escapeHtml(it.date||'')+' &middot; '+escapeHtml(it.body||'')+'</span></li>'
+    ).join('');
+  });
+  host.hidden = !any;
+}
+// A loading state that actually shows what's happening, rather than a bare spinner - each step
+// lights up in turn and the last one keeps pulsing (real network time varies) until the response
+// lands, at which point stopMsLoading clears all of this regardless of how far it got.
+function msLoadingSteps(cityLabel){
+  return ['Finding '+cityLabel+"'s official meeting records", 'Reading recent agendas and minutes',
+    'Checking for duplicate items', 'Writing the summary'];
+}
+let msLoadingTimer = null;
+function startMsLoading(cityLabel){
+  const host = document.getElementById('msLoading');
+  const stepsEl = document.getElementById('msLoadingSteps');
+  stepsEl.innerHTML = msLoadingSteps(cityLabel).map((s,i)=>'<li'+(i===0?' class="active"':'')+'>'+escapeHtml(s)+'</li>').join('');
+  host.hidden = false;
+  let i = 0;
+  clearInterval(msLoadingTimer);
+  msLoadingTimer = setInterval(()=>{
+    const items = stepsEl.querySelectorAll('li');
+    if(i >= items.length - 1) return;
+    items[i].classList.replace('active','done');
+    i++;
+    items[i].classList.add('active');
+  }, 1100);
+}
+function stopMsLoading(){
+  clearInterval(msLoadingTimer); msLoadingTimer = null;
+  document.getElementById('msLoading').hidden = true;
+}
+async function runMeetingSummary(){
+  const select = document.getElementById('msCitySelect');
+  const button = document.getElementById('msSummarize');
+  const status = document.getElementById('msStatus');
+  const result = document.getElementById('msResult');
+  const cityKey = select.value;
+  const cityLabel = CITIES[cityKey] ? CITIES[cityKey].label : cityKey;
+  if(!cityKey) return;
+
+  button.disabled = true;
+  result.style.display = 'none';
+  status.textContent = '';
+  startMsLoading(cityLabel);
+  try{
+    const res = await fetch('/api/meetings/summary', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({cityKey, cityLabel})
+    });
+    let data = {};
+    try{ data = await res.json(); } catch { throw new Error('Server returned HTTP '+res.status+' without valid JSON.'); }
+    if(!res.ok) throw new Error(data.error || ('Request failed ('+res.status+')'));
+
+    if(!data.supported){
+      status.textContent = data.note || (cityLabel+' does not have a structured meeting feed connected yet - see the Get Involved tab for its official meeting links.');
+      return;
+    }
+    msLastResult = {cityKey, cityLabel, summary:data.summary, meetings:data.meetings||[], source:data.source};
+    document.getElementById('msSummaryText').textContent = data.summary || 'No summary returned.';
+    renderMsCategories(data.meetings);
+    renderMsMeetings(data.meetings, data.source);
+    result.style.display = 'block';
+    const updated = data.generatedAt ? 'Last updated '+new Date(data.generatedAt).toLocaleString() : '';
+    const caveat = data.source==='websearch' ? 'Based on news coverage found by web search, not the city’s official agenda system - verify dates and outcomes before acting on them.' : '';
+    status.textContent = data.note || [caveat, updated].filter(Boolean).join(' ');
+    document.getElementById('msActionStatus').textContent = '';
+  }catch(err){
+    status.textContent = 'Could not summarize recent meetings: ' + (err && err.message ? err.message : 'Unknown error');
+    console.error('Meeting summary error:', err);
+  }finally{
+    stopMsLoading();
+    button.disabled = false;
+  }
+}
+document.getElementById('msSummarize').addEventListener('click', runMeetingSummary);
+document.getElementById('msCitySelect').addEventListener('change', e => renderMsSide(e.target.value));
+document.getElementById('msCopy').addEventListener('click', async ()=>{
+  const status = document.getElementById('msActionStatus');
+  if(!msLastResult || !msLastResult.summary){ status.textContent='Nothing to copy yet.'; return; }
+  try{
+    await navigator.clipboard.writeText('Recent meetings - '+msLastResult.cityLabel+'\n\n'+msLastResult.summary);
+    status.textContent = 'Copied ✓';
+  }catch(err){
+    status.textContent = "Couldn't copy automatically - select the summary above and copy manually.";
+  }
+});
+document.getElementById('msEmail').addEventListener('click', async ()=>{
+  const status = document.getElementById('msActionStatus');
+  if(!msLastResult || !msLastResult.summary){ status.textContent='Summarize a city first.'; return; }
+  if(!authToken){ status.textContent='Log in and add an email under Your Account first.'; return; }
+  const btn = document.getElementById('msEmail');
+  btn.disabled = true;
+  status.textContent = 'Sending…';
+  try{
+    const r = await apiCall('/api/meetings/summary/email', {method:'POST', body:JSON.stringify({cityKey:msLastResult.cityKey, cityLabel:msLastResult.cityLabel})});
+    status.textContent = 'Sent to ' + (r.to || 'your email') + ' ✓';
+  }catch(err){
+    status.textContent = 'Could not send that email: ' + (err && err.message ? err.message : 'Unknown error');
+  }finally{
+    btn.disabled = false;
+  }
 });
 
 // ---------------- RESOURCES PAGE ----------------
@@ -10295,7 +10626,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/housing-development-could-loom-over-los-gatos-backyards/' },
   { topic:'developments', city:'losgatos', title:'Silicon Valley town may be tied up in building rules', source:'San José Spotlight', date:'2023-07-25',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2021/10/18174648/North-40-1-scaled-e1685144650888-1200x630.jpg',
-    snippet:'Hundreds of new apartments could soon spring up in Los Gatos, as town officials continue revising plans to increase housing. Regulators still haven’t approved Los Gatos’ “housing element”—the state-mandated plan that lays out how towns and cities will help accommodate the state\'s affordable housing goals. But builders are still pushing ahead.',
+    snippet:'Hundreds of new apartments could soon spring up in Los Gatos, as town officials continue revising plans to increase housing. Regulators still haven’t approved Los Gatos’ “housing element” - the state-mandated plan that lays out how towns and cities will help accommodate the state\'s affordable housing goals. But builders are still pushing ahead.',
     url:'https://sanjosespotlight.com/silicon-valley-town-los-gatos-may-be-tied-up-in-building-rules-california-builders-remedy-housing-element/' },
   { topic:'housing', city:'campbell', title:'Campbell council closes housing development loophole', source:'San José Spotlight', date:'2026-04-25',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/04/23184224/Campbell-city-council-21-Apr-26-scaled-e1777070285500-1200x630.jpg',
@@ -10367,7 +10698,7 @@ const NEWS_ARTICLES = [
     url:'https://morganhilltimes.com/vta-asks-public-to-weigh-in-on-southwest-gilroy-road-extension/' },
   { topic:'transportation', city:'losgatos', title:'A new Bear Creek Road parking lot is now under construction', source:'The Los Gatan', date:'2026-08-05',
     image:'https://losgatan.com/wp-content/uploads/sites/32/2026/08/Parking-Lot-photo-scaled.jpeg',
-    snippet:'A 44-space parking lot—with room for an additional eight horse trailers—is being built by Midpeninsula Regional Open Space District on Bear Creek Road to increase access to hiking and equestrian trails. Joseph J. Albanese Inc. won the contract with a bid of $1,904,963. Construction started in late May. The Grand Openin',
+    snippet:'A 44-space parking lot - with room for an additional eight horse trailers - is being built by Midpeninsula Regional Open Space District on Bear Creek Road to increase access to hiking and equestrian trails. Joseph J. Albanese Inc. won the contract with a bid of $1,904,963. Construction started in late May. The Grand Openin',
     url:'https://losgatan.com/a-new-bear-creek-road-parking-lot-is-now-under-construction/' },
   { topic:'transportation', city:'morganhill', title:'Valley Water awards nearly $2B construction contract for Anderson Dam retrofit', source:'Morgan Hill Times', date:'2026-08-04',
     image:'https://morganhilltimes.com/wp-content/uploads/sites/18/2026/08/Anderson-Dam.jpg',
@@ -10403,7 +10734,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2026/06/a-new-joint-proposal-could-bring-almost-450-homes-to-3550-n-first-street-in-san-jose.html' },
   { topic:'developments', city:'losgatos', title:'Planning Commission passes a mosque CUP with additional restrictions', source:'The Los Gatan', date:'2026-05-28',
     image:'https://losgatan.com/wp-content/uploads/sites/32/2026/05/Joe-reads.jpeg',
-    snippet:'A few weeks back, Planning Commission unanimously supported a CUP modification for the West Valley Muslim Association’s Farley Road mosque—concerning a proposed extension of hours for prayer and formalizing other regulations. Both the Islamic organization and a neighborhood group found things to dislike in the text. Af',
+    snippet:'A few weeks back, Planning Commission unanimously supported a CUP modification for the West Valley Muslim Association’s Farley Road mosque - concerning a proposed extension of hours for prayer and formalizing other regulations. Both the Islamic organization and a neighborhood group found things to dislike in the text. Af',
     url:'https://losgatan.com/pc-passes-a-mosque-cup-with-additional-restrictions/' },
   { topic:'developments', city:'losgatos', title:'Caller reportedly loses handgun at hotel on East Main Street (Police Blotter, May 17-23)', source:'The Los Gatan', date:'2026-05-28',
     image:'https://losgatan.com/wp-content/uploads/sites/32/2021/09/Los-Gatos-Monte-Sereno-Police.jpg',
@@ -10439,7 +10770,7 @@ const NEWS_ARTICLES = [
     url:'https://morganhilltimes.com/construction-begins-on-65-unit-affordable-housing-project-in-morgan-hill/' },
   { topic:'developments', city:'morganhill', title:'Santa Clara County breaks ground on Children’s Advocacy Center in Morgan Hill', source:'Morgan Hill Times', date:'2026-02-16',
     image:'https://morganhilltimes.com/wp-content/uploads/sites/18/2026/02/santa-clara-county-seal-1-1-1-1.jpg',
-    snippet:'The County of Santa Clara will soon begin construction of a new Children’s Advocacy Center at Valley Health Center in Morgan Hill. The CAC is expected to open in early 2027 at the former site of De Paul Health Center. It will bring together investigative and support services—including medical, prosecutorial and forensi',
+    snippet:'The County of Santa Clara will soon begin construction of a new Children’s Advocacy Center at Valley Health Center in Morgan Hill. The CAC is expected to open in early 2027 at the former site of De Paul Health Center. It will bring together investigative and support services - including medical, prosecutorial and forensi',
     url:'https://morganhilltimes.com/santa-clara-county-breaks-ground-on-childrens-advocacy-center-in-morgan-hill/' },
   { topic:'housing', city:'losgatos', title:'Letters: Flock Safety concerns raised; LGCA member defends his position on housing development', source:'The Los Gatan', date:'2026-02-05',
     image:'https://losgatan.com/wp-content/uploads/sites/32/2023/09/letter-to-the-editor2.jpeg',
@@ -10463,7 +10794,7 @@ const NEWS_ARTICLES = [
     url:'https://morganhilltimes.com/vta-approves-design-contract-for-coyote-valley-wildlife-crossing/' },
   { topic:'housing', city:'losgatos', title:'Did Los Gatos’ Housing Element suddenly fall out of compliance?', source:'The Los Gatan', date:'2025-12-18',
     image:'https://losgatan.com/wp-content/uploads/sites/32/2025/12/Capri-Fruitstand-various-angles1.jpg',
-    snippet:'The developer behind the 119-unit, 13-story “Capri Fruitstand” proposal for 14288 Capri Dr.—which includes 24 units of affordable housing—has renewed its legal claim that the Town of Los Gatos has been taking illegal steps to block residential development in this corner of Silicon Valley. In Los Gatos LLC’s “second ame',
+    snippet:'The developer behind the 119-unit, 13-story “Capri Fruitstand” proposal for 14288 Capri Dr. - which includes 24 units of affordable housing - has renewed its legal claim that the Town of Los Gatos has been taking illegal steps to block residential development in this corner of Silicon Valley. In Los Gatos LLC’s “second ame',
     url:'https://losgatan.com/did-los-gatos-housing-element-suddenly-fall-out-of-compliance/' },
   { topic:'developments', city:'morganhill', title:'After public outcry, Santa Clara County supervisors order revisions to rural zoning proposal', source:'Morgan Hill Times', date:'2025-12-02',
     image:'https://morganhilltimes.com/wp-content/uploads/sites/18/2025/12/GuglielmoWinery.jpg',
@@ -10479,7 +10810,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2025/11/meeting-scheduled-today-for-residential-development-at-1325-lick-avenue-in-san-jose.html' },
   { topic:'housing', city:'gilroy', title:'Betabel node developer changes plans from commercial to housing', source:'Gilroy Dispatch', date:'2025-11-04',
     image:'https://gilroydispatch.com/wp-content/uploads/sites/17/2025/11/BetabelHousing.jpg',
-    snippet:'The owner of a 23-acre property on Highway 101—where the Betabel Commercial Development proposal has been the subject of an environmental study and lawsuit—recently filed an application to change plans to allow hundreds of new homes. Property owner McDowell Family Trust and architect Henry Ruhnke in June submitted an a',
+    snippet:'The owner of a 23-acre property on Highway 101 - where the Betabel Commercial Development proposal has been the subject of an environmental study and lawsuit - recently filed an application to change plans to allow hundreds of new homes. Property owner McDowell Family Trust and architect Henry Ruhnke in June submitted an a',
     url:'https://gilroydispatch.com/betabel-node-developer-changes-plans-from-commercial-to-housing/' },
   { topic:'housing', city:'mountainview', title:'Builders Remedy Application Approved For 296 Tyrella Avenue, Mountain View', source:'SF YIMBY', date:'2025-10-01',
     image:'https://sfyimby.com/wp-content/uploads/2025/09/296-Tyrella-Avenue-aerial-view-illustration-by-Berry-and-Associates.jpg',
@@ -10519,7 +10850,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2025/04/developers-pivot-to-affordable-housing-for-1197-lick-avenue-san-jose.html' },
   { topic:'transportation', city:'losgatos', title:'Bike and pedestrian infrastructure celebrated in Los Gatos with opening of Hwy 9 bridge', source:'The Los Gatan', date:'2025-04-24',
     image:'https://losgatan.com/wp-content/uploads/sites/32/2025/04/Pushing-woman-in-wheelchair.jpg',
-    snippet:'On an overcast spring day—20 years after planning began—a new prefabricated pedestrian, bicycle and ADA-compliant bridge was dedicated at Highway 9. It links Highway 9 to the Los Gatos Creek Trailhead, and is located beside an existing bridge. At this brief dedication were the visionaries who saw the need for a safe wa',
+    snippet:'On an overcast spring day - 20 years after planning began - a new prefabricated pedestrian, bicycle and ADA-compliant bridge was dedicated at Highway 9. It links Highway 9 to the Los Gatos Creek Trailhead, and is located beside an existing bridge. At this brief dedication were the visionaries who saw the need for a safe wa',
     url:'https://losgatan.com/bike-and-pedestrian-infrastructure-celebrated-in-los-gatos-with-opening-of-hwy-9-bridge/' },
   { topic:'transportation', city:'milpitas', title:'Milpitas receives total of $5 million in grants for traffic and pedestrian safety', source:'The Milpitas Beat', date:'2025-03-08',
     image:'https://milpitasbeat.com/wp-content/uploads/2025/03/Latest-Milpitas-Election-Results.png',
@@ -10937,7 +11268,7 @@ const NEWS_ARTICLES = [
     image:'https://www.almanacnews.com/wp-content/uploads/2026/09/Almanac_LaurelSchoolUpperCampus_2026_Web-01-scaled.jpg',
     snippet:'School board races across the Midpeninsula will have returning incumbents and newcomers joining next year, but only two school districts will have candidates on the Nov. 3 general election ballot.',
     url:'https://www.almanacnews.com/education/2026/09/03/school-board-candidates-running-for-menlo-park-and-sequoia-districts/' },
-  { topic:'developments', city:'menlopark', title:'Looking to trim deficit, Menlo Park plans to hike child care center’s tuition — again', source:'The Almanac', date:'2026-09-01',
+  { topic:'developments', city:'menlopark', title:'Looking to trim deficit, Menlo Park plans to hike child care center’s tuition - again', source:'The Almanac', date:'2026-09-01',
     image:'https://www.almanacnews.com/wp-content/uploads/2024/09/IMG_7813-scaled.jpg',
     snippet:'Menlo Park parents are facing higher fees at a city-run childcare program, part of the City Council’s measures to end a structural deficit.',
     url:'https://www.almanacnews.com/menlo-park/2026/09/01/looking-to-trim-deficit-menlo-park-plans-to-hike-child-care-centers-tuition-again/' },
@@ -11309,13 +11640,14 @@ function renderTopicNews(topicKey, cap){
   if(!el) return;
   const scope=topicViewState[topicKey].scope;
   const list = NEWS_ARTICLES.filter(a=>a.topic===topicKey&&(scope==='region'||(currentCity==='all'?(!activeCounty||CITIES[a.city]?.county===activeCounty):a.city===currentCity))).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  const usedImgs = new Set();
   const newsCardHtml = a => {
     const starData = {title:a.title, desc:a.snippet, url:a.url};
     return `
     <article class="news-card">
       ${starButtonHtml('news', a.url, starData)}
       <a class="news-card-link" href="${a.url}" target="_blank" rel="noopener">
-      <img src="${a.image || cityImage(a.city) || ''}" loading="lazy" alt="" onerror="imgFallback(this,'${a.city}')" />
+      <img src="${articleImageSrc(a, usedImgs)}" data-article-img loading="lazy" alt="" onerror="imgFallback(this,'${a.city}')" />
       <div class="news-body">
         <div class="news-meta">${a.source} - ${CITIES[a.city] ? CITIES[a.city].label : 'Regional'}</div>
         <h4>${a.title}</h4>
@@ -11330,8 +11662,8 @@ function renderTopicNews(topicKey, cap){
   const pad=scope==='region'?null:{
     items:NEWS_ARTICLES.filter(a=>a.topic===topicKey&&!shown.has(a.url)).sort((a,b)=>(b.date||'').localeCompare(a.date||'')),
     render:newsCardHtml,
-    note:'Across the Bay Area \u2014 the same topic in other cities',
-    noteEmpty:'No coverage on file for '+(CITIES[currentCity]?.label||'this area')+' \u2014 here is this topic across the Bay Area'};
+    note:'Across the Bay Area - the same topic in other cities',
+    noteEmpty:'No coverage on file for '+(CITIES[currentCity]?.label||'this area')+' - here is this topic across the Bay Area'};
   DashboardBrowse.mountPager(el,list,newsCardHtml,{label:'Articles',key:topicKey+':'+currentCity+':'+activeCounty+':'+scope,gridClass:'news-grid',pad});
 }
 // Official links relevant to this topic, for the city being viewed. Categories come from the
@@ -11386,8 +11718,8 @@ function renderTopicPage(topicKey, categoryKey){
       .sort((a,b)=>(CITIES[b._sourceCity].county===CITIES[currentCity].county)-(CITIES[a._sourceCity].county===CITIES[currentCity].county)
         ||String(b.filed||'').localeCompare(String(a.filed||''))),
     render:regionCardHtml,
-    note:'Across the Bay Area \u2014 the same category in other cities',
-    noteEmpty:'Nothing is on file in '+CITIES[currentCity].label+' for this category \u2014 here is the same category across the Bay Area'};
+    note:'Across the Bay Area - the same category in other cities',
+    noteEmpty:'Nothing is on file in '+CITIES[currentCity].label+' for this category - here is the same category across the Bay Area'};
   DashboardBrowse.mountPager(document.getElementById('topicCityGrid'+cap),list,projectCardHtml,{label:'Projects',key:topicKey+':'+currentCity+':'+activeCounty+':'+view.scope,pad,onRender:host=>{
     host.querySelectorAll('.locate-btn').forEach(btn=>btn.onclick=()=>{const id=btn.dataset.id,owner=Object.keys(CITIES).find(k=>k!=='all'&&CITIES[k].data.some(d=>d.id===id));if(owner&&owner!==currentCity)switchCity(owner);showScreen('dashboard');flyTo(id);});
   }});
@@ -11451,7 +11783,7 @@ async function apiLogin(username, password){ return apiCall('/api/login', {metho
    whole dashboard. */
 let guestSyncInFlight=false;
 async function syncGuestProfile(){
-  if(guestSyncInFlight||authToken||!guestProfile?.unlocked)return;
+  if(guestSyncInFlight||authToken||!guestProfile?.unlocked||!guestProfile?.data?.username)return;
   const {payload,due}=guestProfile.syncState();
   if(!due)return;
   guestSyncInFlight=true;
@@ -11685,11 +12017,12 @@ async function renderAcctOverview(){
 
 function acctNewsCards(list, emptyMsg){
   if(!list.length) return '<div class="empty">'+emptyMsg+'</div>';
+  const usedImgs = new Set();
   return list.map(a=>{
     const starData = {title:a.title, desc:a.snippet, url:a.url};
     return '<a class="news-card" href="'+a.url+'" target="_blank" rel="noopener">'
       + starButtonHtml('news', a.url, starData)
-      + '<img src="'+(a.image || cityImage(a.city) || '')+'" loading="lazy" alt="" onerror="imgFallback(this,\''+a.city+'\')" />'
+      + '<img src="'+articleImageSrc(a, usedImgs)+'" data-article-img loading="lazy" alt="" onerror="imgFallback(this,\''+a.city+'\')" />'
       + '<div class="news-body"><div class="news-meta">'+a.source+' - '+(CITIES[a.city]?CITIES[a.city].label:'Regional')+'</div>'
       + '<h4>'+a.title+'</h4><p>'+a.snippet+'</p>'
       + '<div class="news-date">'+fmtDate(a.date)+'</div></div></a>';
@@ -12157,7 +12490,7 @@ async function renderCommunityCount(){
     try{
       const data=await apiCall('/api/community');
       if(!data.ok||!data.users)return;
-      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'person uses':'people use')+' this dashboard \u2014 '
+      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'person uses':'people use')+' this dashboard - '
         +data.registered.toLocaleString()+' with an account, '+data.guests.toLocaleString()+' as guests. Everyone who opens it counts, whether or not they sign up.';
     }catch{ return; }   // a reader who is not the owner gets a 404 here, and nothing is shown
   }
@@ -12331,11 +12664,11 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
   try{
     const result = await apiSavePreferences(email || null, emailFrequency, homeCity || null, [...prefsCategories]);
     if(result && result.welcomeSent){
-      statusEl.textContent = 'Saved \u2713 \u2014 a recap is on its way to your inbox now.';
+      statusEl.textContent = 'Saved \u2713 - a recap is on its way to your inbox now.';
     } else if(result && result.welcomeError){
       // Say why nothing arrived. A silent "Saved" makes a misconfigured sender domain look
       // like the email feature is simply broken.
-      statusEl.textContent = 'Saved \u2713 \u2014 but no email went out: ' + result.welcomeError;
+      statusEl.textContent = 'Saved \u2713 - but no email went out: ' + result.welcomeError;
     } else {
       statusEl.textContent = 'Saved \u2713';
     }
@@ -15250,7 +15583,7 @@ function statCard(metric, me){
   return '<div class="metric-wrap">' + starButtonHtml('statistic', starId, starData)
     + '<button type="button" class="metric-card" data-metric="'+metric.id+'" aria-label="Rank cities by '+metric.label+'">'
     + '<span class="head">'+metric.label+'<span class="tag">'+metric.tag+'</span></span>'
-    + '<span class="metric-photo"><img src="'+escapeHtml(photo.url)+'" alt="'+escapeHtml(photo.cap)+' — regional context for '+escapeHtml(metric.label)+'" loading="lazy"><span>'+escapeHtml(metric.topic)+' · Bay Area context</span></span>'
+    + '<span class="metric-photo"><img src="'+escapeHtml(photo.url)+'" alt="'+escapeHtml(photo.cap)+' - regional context for '+escapeHtml(metric.label)+'" loading="lazy"><span>'+escapeHtml(metric.topic)+' · Bay Area context</span></span>'
     + '<span class="body">'
     + '<span class="k">'+metric.fmt(val)+'</span>'
     + (sub ? '<span class="s">'+sub+'</span>' : '')
@@ -15520,6 +15853,7 @@ function renderFeaturedNews(){
   const GROUPS = [{id:'housing', l:'Housing'}, {id:'developments', l:'Development'},
                   {id:'transportation', l:'Transportation'}];
   const pool = featuredArticles();
+  const usedImgs = new Set();
   cards.innerHTML = GROUPS.map(g=>{
     // One from this page's slice where possible, then top up from the wider pool.
     const mine = slice.filter(a=>a.topic===g.id);
@@ -15529,7 +15863,7 @@ function renderFeaturedNews(){
     if(!items.length) return '';
     return `<div class="fgroup"><div class="fgroup-h">${g.l}</div>` + items.map(a=>`
       <a class="fcard" href="${a.url}" target="_blank" rel="noopener">
-        <img src="${a.image || cityImage(a.city) || ''}" alt="" onerror="imgFallback(this,'${a.city}')">
+        <img src="${articleImageSrc(a, usedImgs)}" data-article-img alt="" onerror="imgFallback(this,'${a.city}')">
         <div class="fbody">
           <div class="ftitle">${a.title}</div>
           <div class="fmeta">${a.source} &middot; ${CITIES[a.city] ? CITIES[a.city].label : a.city}</div>
