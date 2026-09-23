@@ -147,9 +147,15 @@ function boardRows(items, changed = new Set()) {
 // Thumbnail on the left, text on the right. Nested tables rather than flex or grid, because
 // Outlook's rendering engine ignores both. Fixed width/height attributes on the <img> keep the
 // layout intact in clients that block images until the reader allows them.
-function newsRows(items, changed = new Set()) {
+// usedImages is shared across every newsRows() call in one digest - "what you follow", the home
+// city's sections, and the rest of the region can all draw from the same article pool (a starred
+// piece surfacing again under its city, or two different articles that share a source photo), so
+// without it the same picture can appear more than once in one email.
+function newsRows(items, changed = new Set(), usedImages = new Set()) {
   return items.map(a => {
-    const thumb = a.image ? `
+    const showImage = a.image && !usedImages.has(a.image);
+    if (showImage) usedImages.add(a.image);
+    const thumb = showImage ? `
       <td width="96" valign="top" style="padding-right:12px;">
         <a href="${a.url}"><img src="${a.image}" width="96" height="64" alt=""
            style="width:96px; height:64px; object-fit:cover; display:block; border:0; border-radius:3px; background:#E3E7DB;"></a>
@@ -276,6 +282,8 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
   const starredProjects = PROJECTS.filter(p => stars.projects.has(p.id));
   const starredBoards = BOARDS.filter(b => stars.boards.has(b.id));
   const starredNews = NEWS_ARTICLES.filter(a => stars.news.has(a.url));
+  // Shared across every newsRows() call below, so the same photo never shows twice in one email.
+  const usedImages = new Set();
 
   const changeCount = ch.projects.size + ch.boards.size + ch.news.size;
   const starredChangeCount =
@@ -302,7 +310,7 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
     body += section("What you're following",
       projectRows([...starredProjects].sort(changedFirst(ch.projects, 'id')), ch.projects)
       + boardRows([...starredBoards].sort(changedFirst(ch.boards, 'id')), ch.boards)
-      + newsRows([...starredNews].sort(changedFirst(ch.news, 'url')), ch.news));
+      + newsRows([...starredNews].sort(changedFirst(ch.news, 'url')), ch.news, usedImages));
   }
 
   // 2. The reader's own city, one block per category they subscribed to, in their order.
@@ -321,7 +329,7 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
       const projects = cityProjects.filter(cat.project).sort(changedFirstBy(ch.projects, 'id')).slice(0, cat.cap);
       const news = cityNews.filter(cat.news).sort(changedFirstBy(ch.news, 'url')).slice(0, 3);
       const boards = cityBoards.filter(cat.board).slice(0, 2);
-      const rows = projectRows(projects, ch.projects) + newsRows(news, ch.news) + boardRows(boards, ch.boards);
+      const rows = projectRows(projects, ch.projects) + newsRows(news, ch.news, usedImages) + boardRows(boards, ch.boards);
       cityBody += subsection(cat.label, rows);
     }
 
@@ -348,7 +356,7 @@ export function buildBriefing({ username, homeCity, frequency, stars, changed, s
   if (elsewhereChanged.length || elsewhereNews.length) {
     body += heading(homeCity ? 'Around the rest of the South Bay' : 'Around the South Bay')
       + subsection(elsewhereChanged.length ? 'Projects that moved' : '', projectRows(elsewhereChanged, ch.projects))
-      + subsection(elsewhereNews.length ? 'In the news' : '', newsRows(elsewhereNews, ch.news));
+      + subsection(elsewhereNews.length ? 'In the news' : '', newsRows(elsewhereNews, ch.news, usedImages));
   }
 
   if (!homeCity) {

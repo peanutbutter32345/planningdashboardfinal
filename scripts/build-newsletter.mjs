@@ -183,6 +183,13 @@ function issueFor(monthId, number, previousIssueDate) {
   const remember = item => { if (item.url && !sources.has(item.url)) sources.set(item.url, { label: item.source, url: item.url, date: item.date }); };
   [...regional, ...threads, ...news, ...projects, ...aprNew.slice(0, 40), ...aprInMonth.slice(0, 40)].forEach(remember);
 
+  // Every picture chosen anywhere in this issue - the lead, each topic section, each county -
+  // goes in here the moment it's picked, so a later section's "first story with an image" search
+  // never lands on a photo the reader already saw higher up the same issue.
+  const usedImages = new Set();
+  const pickImage = url => Boolean(url) && !usedImages.has(url);
+  const claimImage = url => { if (url) usedImages.add(url); return url; };
+
   // ---- the lead: the month's biggest regional decision, or failing that its biggest local story
   // What leads: a decision above the cities if there was one, otherwise the local story that most
   // reads like news - something was decided, it is described at length, and it carries a picture.
@@ -190,14 +197,15 @@ function issueFor(monthId, number, previousIssueDate) {
   const leadScore = n => (DECISION.test(n.title) ? 3 : 0) + (n.image ? 2 : 0) + Math.min(3, (n.snippet || '').length / 120)
     + (n.topic === 'housing' || n.topic === 'developments' ? 1 : 0);
   const leadSource = regional[0] || [...news].sort((a, b) => leadScore(b) - leadScore(a))[0] || news[0];
-  const leadNews = news.find(n => n.image) || null;
+  const leadNews = news.find(n => pickImage(n.image)) || null;
+  const leadOwnImage = leadSource.kind === 'news' && pickImage(leadSource.image);
   const lead = leadSource ? {
     title: leadSource.title, source: leadSource.source, url: leadSource.url,
     date: leadSource.date, monthOnly: Boolean(leadSource.monthOnly),
     summary: leadSource.snippet, scope: leadSource.scope || (leadSource.city ? 'city' : 'region'),
     city: leadSource.city ? labelOf(leadSource.city) : '', verified: leadSource.verified || '',
-    image: leadSource.kind === 'news' && leadSource.image ? leadSource.image : (leadNews ? leadNews.image : ''),
-    imageCredit: leadSource.kind === 'news' && leadSource.image ? leadSource.source : (leadNews ? leadNews.source : ''),
+    image: claimImage(leadOwnImage ? leadSource.image : (leadNews ? leadNews.image : '')),
+    imageCredit: leadOwnImage ? leadSource.source : (leadNews ? leadNews.source : ''),
   } : null;
 
   // ---- the photograph at the top: the place the month was mostly about
@@ -367,11 +375,11 @@ function issueFor(monthId, number, previousIssueDate) {
   const housingNews = news.filter(n => n.topic === 'housing');
   if (housingNews.length) {
     const featured = housingNews.slice(0, 4);
-    const withImage = featured.find(n => n.image) || housingNews.find(n => n.image);
+    const withImage = featured.find(n => pickImage(n.image)) || housingNews.find(n => pickImage(n.image));
     featured.forEach(n => told.add(n.url));
     housingBlocks.push(storyRun(featured.slice(0, 2), `${opens(housingNews.length, 'housing story', 'housing stories')} came out of the cities themselves${housingNews.length > featured.length ? `, and ${featured.length} of them are set out here` : ''}.`));
     if (featured.length > 2) housingBlocks.push(storyRun(featured.slice(2)));
-    if (withImage) housingBlocks.push(image(withImage.image, `${labelOf(withImage.city)}: ${withImage.title}`, withImage.source));
+    if (withImage) housingBlocks.push(image(claimImage(withImage.image), `${labelOf(withImage.city)}: ${withImage.title}`, withImage.source));
   }
   if (!housingBlocks.length) housingBlocks.push(para(t(`No housing record was published between ${fmtDate(from)} and ${fmtDate(asOf)}.`)));
   sections.push({ kind: 'housing', title: 'Housing', blocks: housingBlocks, stats: housingStats, chart: 'market' });
@@ -394,8 +402,8 @@ function issueFor(monthId, number, previousIssueDate) {
     const featured = devNews.slice(0, 3);
     featured.forEach(n => told.add(n.url));
     devBlocks.push(storyRun(featured, `${opens(devNews.length, 'development story', 'development stories')} came out of the cities this period.`));
-    const img = devNews.find(n => n.image);
-    if (img) devBlocks.push(image(img.image, `${labelOf(img.city)}: ${img.title}`, img.source));
+    const img = devNews.find(n => pickImage(n.image));
+    if (img) devBlocks.push(image(claimImage(img.image), `${labelOf(img.city)}: ${img.title}`, img.source));
   }
   if (!devBlocks.length) devBlocks.push(para(t(`No commercial or mixed-use development record was published between ${fmtDate(from)} and ${fmtDate(asOf)}.`)));
   sections.push({ kind: 'developments', title: 'Developments', blocks: devBlocks, records: devRecords });
@@ -432,8 +440,8 @@ function issueFor(monthId, number, previousIssueDate) {
     const featured = transitNews.slice(0, 3);
     featured.forEach(n => told.add(n.url));
     transitBlocks.push(storyRun(featured, `${opens(transitNews.length, 'transport item', 'transport items')} came out of the cities this period.`));
-    const img = transitNews.find(n => n.image);
-    if (img) transitBlocks.push(image(img.image, `${labelOf(img.city)}: ${img.title}`, img.source));
+    const img = transitNews.find(n => pickImage(n.image));
+    if (img) transitBlocks.push(image(claimImage(img.image), `${labelOf(img.city)}: ${img.title}`, img.source));
   }
   if (!transitBlocks.length) transitBlocks.push(para(t('No transport decision was published this period. The commute figures below come from the census and change slowly.')));
   sections.push({ kind: 'transport', title: 'Transportation', blocks: transitBlocks, stats: transitStats });
@@ -469,8 +477,8 @@ function issueFor(monthId, number, previousIssueDate) {
     }
     if (items.length) {
       blocks.push(storyRun(items.slice(0, 4)));
-      const img = items.find(r => r.image);
-      if (img) blocks.push(image(img.image, `${labelOf(img.city)}: ${img.title}`, img.source));
+      const img = items.find(r => pickImage(r.image));
+      if (img) blocks.push(image(claimImage(img.image), `${labelOf(img.city)}: ${img.title}`, img.source));
     }
     if (pipeHere.length) {
       const pipeSpans = [t(` ${opens(pipeHere.length, 'published development', 'published developments')} in the county ${were(pipeHere.length)} on the books and unfinished, carrying ${pipeHere.reduce((a, p) => a + p.units, 0).toLocaleString('en-US')} reported homes between them. The largest is `), link(pipeHere[0].title, pipeHere[0].url), t(` in ${labelOf(pipeHere[0].city)} at ${plural(pipeHere[0].units, 'home', 'homes')}.`)];
