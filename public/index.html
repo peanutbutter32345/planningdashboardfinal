@@ -92,9 +92,11 @@
   .pill{font-family:'Open Sans',sans-serif; font-size:11.5px; padding:5px 10px; border:1px solid var(--rule); border-radius:2px; color:var(--text-soft); background:#fff;}
 
   .funnel{margin-top:20px; display:flex; gap:3px; border-radius:2px; overflow:hidden; border:1px solid var(--rule); background:var(--rule);}
-  .funnel-seg{flex:1 1 0; padding:12px 10px; cursor:pointer; border-right:1px solid rgba(255,255,255,0.4); border-top:none; border-bottom:none; border-left:none; text-align:left; font-family:inherit; display:block;}
+  .funnel-seg{flex:1 1 0; padding:12px 10px; cursor:pointer; border-right:1px solid rgba(255,255,255,0.4); border-top:none; border-bottom:none; border-left:none; text-align:left; font-family:inherit; display:block; position:relative;
+    background-size:220% 100%; background-position:0% 50%;
+    transition:background-position .4s ease, transform .18s ease, box-shadow .18s ease;}
   .funnel-seg:last-child{border-right:none;}
-  .funnel-seg:hover:not(.empty){filter:brightness(1.08);}
+  .funnel-seg:hover:not(.empty){background-position:100% 50%; transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,.28); z-index:1;}
   .funnel-seg.empty{opacity:.42; cursor:default;}
   .funnel-seg.active{outline:2px solid #1A1A1A; outline-offset:-2px;}
   .funnel-seg .n{display:block; font-size:20px; font-weight:800; color:#fff;}
@@ -139,6 +141,7 @@
   .btn:hover{background:var(--ink-2); border-color:var(--ink-2);}
   .btn:disabled{opacity:0.55; cursor:not-allowed;}
   .btn:disabled:hover{background:var(--ink);}
+  .ms-inline-btn{padding:4px 10px; font-size:11.5px; vertical-align:middle; margin-left:4px;}
   .btn.secondary{background:#fff; color:var(--ink);}
   .btn.secondary:hover{background:var(--paper-2);}
   .gate-links{margin-top:10px; font-size:11.5px; color:var(--text-soft);}
@@ -1022,6 +1025,16 @@
   .acct-tile .l{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.05em;
     text-transform:uppercase; color:var(--text-soft); margin-top:5px;}
   .acct-tile .s{font-size:11.5px; color:var(--text-soft); margin-top:4px; line-height:1.45;}
+  .admin-breakdown{display:flex; flex-direction:column; gap:6px;}
+  .admin-breakdown-row{display:flex; align-items:center; gap:10px; font-size:12.5px;}
+  .admin-breakdown-row .lab{flex:0 0 140px; color:var(--text-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .admin-breakdown-row .bar-wrap{flex:1; background:var(--paper-2); border-radius:2px; overflow:hidden; height:14px;}
+  .admin-breakdown-row .bar{height:100%; background:var(--ink); border-radius:2px;}
+  .admin-breakdown-row .n{flex:0 0 34px; text-align:right; font-family:var(--mono); font-weight:700;}
+  .admin-user-table{width:100%; border-collapse:collapse; font-size:12px; margin-top:10px;}
+  .admin-user-table th{text-align:left; font-family:'Open Sans',sans-serif; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-soft); border-bottom:1px solid var(--rule); padding:6px 8px;}
+  .admin-user-table td{padding:6px 8px; border-bottom:1px solid var(--rule); white-space:nowrap;}
+  .admin-user-table tr:last-child td{border-bottom:none;}
   .acct-boardlist{display:grid; gap:10px;}
   .acct-board{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:12px 14px;
     display:flex; gap:14px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;}
@@ -1652,6 +1665,9 @@
   .ms-side-links{display:flex; flex-direction:column; padding:0 14px 16px;}
   .ms-side-links a{font-size:12.5px; font-weight:700; padding:8px 0; border-bottom:1px solid var(--rule);}
   .ms-side-links a:last-child{border-bottom:none;}
+  .ms-fallback{background:#fff; border:1px solid var(--rule); border-top:4px solid var(--ink); border-radius:2px; padding:20px 22px; margin-top:16px;}
+  .ms-fallback-text{font-size:14px; line-height:1.6; margin:0 0 14px;}
+  .ms-fallback-links{display:flex; flex-wrap:wrap; gap:10px;}
 
   .ms-loading{display:flex; gap:14px; align-items:flex-start; margin:14px 0; padding:16px 18px; background:#fff; border:1px solid var(--rule); border-radius:2px;}
   .ms-loading-spinner{flex:0 0 auto; width:20px; height:20px; margin-top:2px; border:3px solid var(--rule); border-top-color:var(--ink); border-radius:50%; animation:ms-spin .8s linear infinite;}
@@ -2165,7 +2181,11 @@
         <div class="ms-main">
           <div id="msResult" style="display:none;">
             <div class="ms-summary" id="msSummaryText"></div>
-            <div class="ms-actions">
+            <div class="ms-fallback" id="msFallback" hidden>
+              <p class="ms-fallback-text" id="msFallbackText"></p>
+              <div class="ms-fallback-links" id="msFallbackLinks"></div>
+            </div>
+            <div class="ms-actions" id="msActionsBar">
               <button class="btn secondary" id="msEmail" type="button">Email this summary</button>
               <button class="btn secondary" id="msCopy" type="button">Copy summary</button>
               <span id="msActionStatus" class="section-note" role="status" aria-live="polite"></span>
@@ -2379,6 +2399,7 @@
             <button type="button" class="acct-navbtn" data-acct="resources" role="tab">Saved resources<span class="acct-badge" id="acctBadgeResources"></span></button>
             <button type="button" class="acct-navbtn" data-acct="chat" role="tab">Chat history<span class="acct-badge" id="acctBadgeChat"></span></button>
             <button type="button" class="acct-navbtn" data-acct="saved" role="tab">Saved<span class="acct-badge" id="acctBadgeSaved"></span></button>
+            <button type="button" class="acct-navbtn" data-acct="admin" role="tab" id="acctNavAdmin" hidden>Admin</button>
           </nav>
           <button class="btn secondary acct-logout" id="logoutBtn" type="button">Log out</button>
          </div>
@@ -2387,7 +2408,7 @@
         <div class="acct-main">
           <section class="acct-panel" data-panel="overview">
             <h2>Overview</h2>
-            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your guest profile</h3><p>This profile lives on this device only. Your name saves as you type; saved items, timeline and preferences stay in this browser. Clearing browser data removes them. Create an account below to sync across devices and use email summaries.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Update guest password</button></form><p>A guest password only locks this device's saved data behind a PIN, so someone else using this browser cannot change it. It is not an account: it does not sync anywhere and it will not enable email. Use "Create full account" below for that.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Create full account</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
+            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your guest profile</h3><p>This profile lives on this device only. Your name saves as you type; saved items, timeline and preferences stay in this browser. Clearing browser data removes them. Create an account below to sync across devices and use email summaries.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Update guest password</button></form><p>The password above only locks this device's saved data behind a PIN, so someone else using this browser cannot change it - it does not sync anywhere and it will not enable email. Use "Add a password" below for that: same username, same saved items, just carried by a real account instead of this device.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Add a password</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
             <p class="section-note" id="acctOverviewNote"></p>
             <div class="acct-tiles" id="acctTiles"></div>
             <div class="acct-sec-h">Next hearings in your city</div>
@@ -2548,6 +2569,17 @@
             <h2>Saved</h2>
             <p class="section-note">Everything you've starred, grouped by type. Starred items always lead your email briefing.</p>
             <div id="starredContent"></div>
+          </section>
+          <section class="acct-panel" data-panel="admin" hidden>
+            <h2>Admin</h2>
+            <p class="section-note">Visible only to the accounts listed in this server's ADMIN_USERNAMES. Nobody else can reach this panel or the API routes behind it.</p>
+            <div class="acct-tiles" id="adminTiles"></div>
+            <div class="acct-sec-h">Signups by city</div>
+            <div id="adminByCity" class="admin-breakdown"></div>
+            <div class="acct-sec-h">Email frequency</div>
+            <div id="adminByFrequency" class="admin-breakdown"></div>
+            <div class="acct-sec-h">Recent users</div>
+            <div id="adminUserTableWrap"><button class="btn secondary" id="adminLoadUsers" type="button">Load user list</button></div>
           </section>
         </div>
       </div>
@@ -2782,11 +2814,11 @@
 const TODAY = new Date();
 TODAY.setHours(0,0,0,0);
 const STAGES = [
-  {key:'proposed',     label:'Proposed',            color:'#A3AC90'},
-  {key:'review',       label:'Under Review',        color:'#87956B'},
-  {key:'approved',     label:'Approved',            color:'#67794A'},
-  {key:'construction', label:'Under Construction',  color:'#4E6330'},
-  {key:'completed',    label:'Completed',           color:'#3E4F24'},
+  {key:'proposed',     label:'Proposed',            color:'#A3AC90', light:'#B7BEA8', dark:'#858D76'},
+  {key:'review',       label:'Under Review',        color:'#87956B', light:'#A1AC8B', dark:'#6E7A57'},
+  {key:'approved',     label:'Approved',            color:'#67794A', light:'#889671', dark:'#54633C'},
+  {key:'construction', label:'Under Construction',  color:'#4E6330', light:'#74855D', dark:'#3F5127'},
+  {key:'completed',    label:'Completed',           color:'#3E4F24', light:'#687554', dark:'#32401D'},
 ];
 const STAGE_MAP = Object.fromEntries(STAGES.map(s=>[s.key,s]));
 const CATEGORIES = [
@@ -6267,6 +6299,24 @@ let starredMap = new Map(!authToken && guestProfile.unlocked ? guestProfile.data
 let remItems = [];
 function isLoggedIn(){ return Boolean(authToken)||guestProfile.unlocked; }
 function isGuest(){return !authToken;}
+// The one place that knows how to get a guest to the "add a password" step, so every blocked
+// email action can offer the same working button instead of a dead end.
+function goToAddPassword(){
+  showScreen('account');
+  guestAuthForm = true;
+  renderAccountPage();
+  document.getElementById('authTabSignup')?.click();
+}
+// Turns a blocked-on-guest error into inline text plus a real button, instead of just prose
+// telling someone what they can't do yet. Only offered when the error is actually about needing
+// a password - an ordinary network failure gets no button, since there's nothing to click for that.
+function emailBlockedHtml(message){
+  const offerCta = isGuest() && /password/i.test(message);
+  return escapeHtml(message) + (offerCta ? ' <button type="button" class="btn secondary ms-inline-btn" data-add-password>Add a password</button>' : '');
+}
+function wireAddPasswordButtons(container){
+  container?.querySelectorAll('[data-add-password]').forEach(b=>b.addEventListener('click', goToAddPassword));
+}
 function starKey(type,id){ return type+':'+id; }
 function isStarred(type,id){ return starredMap.has(starKey(type,id)); }
 function starButtonHtml(itemType, itemId, itemData){
@@ -6346,7 +6396,7 @@ function renderFunnel(){
     const n=DATA().filter(d=>d.stage===s.key).length;
     const isActive = state.stage===s.key;
     const empty = n === 0;
-    return `<button type="button" class="funnel-seg${isActive?' active':''}${empty?' empty':''}" style="background:${s.color}" data-stage="${s.key}" aria-pressed="${isActive}"${empty?' disabled aria-disabled="true" title="No records at this stage"':''}><span class="n">${n}</span><span class="l">${s.label}</span></button>`;
+    return `<button type="button" class="funnel-seg${isActive?' active':''}${empty?' empty':''}" style="background-image:linear-gradient(120deg, ${s.light} 0%, ${s.color} 45%, ${s.dark} 100%)" data-stage="${s.key}" aria-pressed="${isActive}"${empty?' disabled aria-disabled="true" title="No records at this stage"':''}><span class="n">${n}</span><span class="l">${s.label}</span></button>`;
   }).join('');
   el.querySelectorAll('.funnel-seg').forEach(seg=>{
     seg.addEventListener('click', ()=>{ const st=seg.getAttribute('data-stage'); state.stage=(state.stage===st)?'all':st; renderAll(); });
@@ -8231,7 +8281,9 @@ async function remSend(id){
   try{
     const r = await apiCall('/api/reminders/email', {method:'POST', body:JSON.stringify(id ? {id} : {})});
     say('Sent to ' + (r.to || 'your address') + '.');
-  }catch(err){ say(err.message); }
+  }catch(err){
+    if(st){ st.innerHTML = emailBlockedHtml(err.message); wireAddPasswordButtons(st); } else say(err.message);
+  }
 }
 
 
@@ -10372,6 +10424,30 @@ function stopMsLoading(){
   clearInterval(msLoadingTimer); msLoadingTimer = null;
   document.getElementById('msLoading').hidden = true;
 }
+// A city with no automatic summary still gets something useful in the main panel instead of a
+// dead-end status line: a plain explanation plus that city's own official links, right where the
+// summary would otherwise be.
+function renderMsFallback(cityKey, cityLabel, reason){
+  document.getElementById('msSummaryText').style.display = 'none';
+  document.getElementById('msActionsBar').style.display = 'none';
+  document.getElementById('msCategories').hidden = true;
+  document.getElementById('msMeetingsTitle').style.display = 'none';
+  document.getElementById('msMeetingList').innerHTML = '';
+  document.getElementById('msFallbackText').textContent = reason;
+  const links = (CITIES[cityKey]?.ctaLinks || []).slice(0,6);
+  document.getElementById('msFallbackLinks').innerHTML = links.length
+    ? links.map(l=>'<a class="btn secondary" href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.label)+'</a>').join('')
+    : '<p class="section-note">No official links on file for '+escapeHtml(cityLabel)+' yet - try the Get Involved tab.</p>';
+  document.getElementById('msFallback').hidden = false;
+  document.getElementById('msResult').style.display = 'block';
+}
+// Restores the normal summary layout after a fallback render, so a later successful city doesn't
+// stay stuck with the summary and actions hidden.
+function resetMsResultLayout(){
+  document.getElementById('msSummaryText').style.display = '';
+  document.getElementById('msActionsBar').style.display = '';
+  document.getElementById('msFallback').hidden = true;
+}
 async function runMeetingSummary(){
   const select = document.getElementById('msCitySelect');
   const button = document.getElementById('msSummarize');
@@ -10395,9 +10471,12 @@ async function runMeetingSummary(){
     if(!res.ok) throw new Error(data.error || ('Request failed ('+res.status+')'));
 
     if(!data.supported){
-      status.textContent = data.note || (cityLabel+' does not have a structured meeting feed connected yet - see the Get Involved tab for its official meeting links.');
+      const reason = data.note || (cityLabel+' does not have a structured meeting feed connected yet, so no automatic summary is available.');
+      renderMsFallback(cityKey, cityLabel, reason);
+      msLastResult = null;
       return;
     }
+    resetMsResultLayout();
     msLastResult = {cityKey, cityLabel, summary:data.summary, meetings:data.meetings||[], source:data.source};
     document.getElementById('msSummaryText').textContent = data.summary || 'No summary returned.';
     renderMsCategories(data.meetings);
@@ -10430,7 +10509,11 @@ document.getElementById('msCopy').addEventListener('click', async ()=>{
 document.getElementById('msEmail').addEventListener('click', async ()=>{
   const status = document.getElementById('msActionStatus');
   if(!msLastResult || !msLastResult.summary){ status.textContent='Summarize a city first.'; return; }
-  if(!authToken){ status.textContent='Log in and add an email under Your Account first.'; return; }
+  if(!authToken){
+    status.innerHTML = emailBlockedHtml('Add a password to your profile to email this summary.');
+    wireAddPasswordButtons(status);
+    return;
+  }
   const btn = document.getElementById('msEmail');
   btn.disabled = true;
   status.textContent = 'Sending…';
@@ -10438,7 +10521,8 @@ document.getElementById('msEmail').addEventListener('click', async ()=>{
     const r = await apiCall('/api/meetings/summary/email', {method:'POST', body:JSON.stringify({cityKey:msLastResult.cityKey, cityLabel:msLastResult.cityLabel})});
     status.textContent = 'Sent to ' + (r.to || 'your email') + ' ✓';
   }catch(err){
-    status.textContent = 'Could not send that email: ' + (err && err.message ? err.message : 'Unknown error');
+    status.innerHTML = 'Could not send that email: ' + emailBlockedHtml(err && err.message ? err.message : 'Unknown error');
+    wireAddPasswordButtons(status);
   }finally{
     btn.disabled = false;
   }
@@ -12498,6 +12582,57 @@ async function renderCommunityCount(){
   el.hidden=false;
 }
 
+// Same reasoning as renderCommunityCount above: the request only succeeds for an account listed
+// in the server's ADMIN_USERNAMES, so an ordinary reader's tab just never appears. Stats are
+// fetched once and cached for the session; the full user list is loaded on demand since it can
+// run to hundreds of rows and most admin visits only want the summary.
+let adminStatsCache = null;
+function admBar(rows, total){
+  return rows.map(([label,n])=>{
+    const pct = total ? Math.round(n/total*100) : 0;
+    return '<div class="admin-breakdown-row"><span class="lab">'+escapeHtml(label)+'</span>'
+      + '<span class="bar-wrap"><span class="bar" style="width:'+pct+'%"></span></span>'
+      + '<span class="n">'+n.toLocaleString()+'</span></div>';
+  }).join('');
+}
+function renderAdminStats(data){
+  document.getElementById('adminTiles').innerHTML = [
+    acctTile(data.users.toLocaleString(), 'Total users', data.seenLast30Days.toLocaleString()+' seen in the last 30 days'),
+    acctTile(data.registered.toLocaleString(), 'Registered accounts', data.guests.toLocaleString()+' guests'),
+    acctTile(data.withEmail.toLocaleString(), 'With an email on file', data.subscribed.toLocaleString()+' subscribed to a digest'),
+    acctTile(data.everEmailed.toLocaleString(), 'Ever emailed', data.signedUpLast7Days.toLocaleString()+' signed up in the last 7 days'),
+  ].join('');
+  const cityRows = Object.entries(data.byCity).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  document.getElementById('adminByCity').innerHTML = cityRows.length ? admBar(cityRows, data.users) : '<p class="section-note">No home city on file yet.</p>';
+  const freqRows = Object.entries(data.byFrequency).sort((a,b)=>b[1]-a[1]);
+  document.getElementById('adminByFrequency').innerHTML = freqRows.length ? admBar(freqRows, data.registered) : '<p class="section-note">No registered accounts yet.</p>';
+}
+async function renderAdminAccess(){
+  const nav = document.getElementById('acctNavAdmin');
+  if(!nav || !authToken) return;
+  if(!adminStatsCache){
+    try{ adminStatsCache = await apiCall('/api/admin/stats'); }
+    catch{ return; }   // 404 for anyone not in ADMIN_USERNAMES - the tab just never shows up
+  }
+  if(!adminStatsCache || !adminStatsCache.ok) return;
+  nav.hidden = false;
+  renderAdminStats(adminStatsCache);
+}
+document.getElementById('adminLoadUsers')?.addEventListener('click', async ()=>{
+  const wrap = document.getElementById('adminUserTableWrap');
+  wrap.textContent = 'Loading…';
+  try{
+    const data = await apiCall('/api/admin/users?limit=500');
+    const rows = data.users || [];
+    wrap.innerHTML = '<p class="section-note">'+rows.length.toLocaleString()+' most recent, newest first.</p>'
+      + '<table class="admin-user-table"><thead><tr><th>Username</th><th>Kind</th><th>Email</th><th>Home city</th><th>Frequency</th><th>Joined</th><th>Last seen</th></tr></thead><tbody>'
+      + rows.map(u=>'<tr><td>'+escapeHtml(u.username||'')+'</td><td>'+escapeHtml(u.kind||'')+'</td><td>'+escapeHtml(u.email||'')+'</td><td>'+escapeHtml(u.home_city||'')+'</td><td>'+escapeHtml(u.email_frequency||'')+'</td><td>'+(u.created_at?new Date(u.created_at).toLocaleDateString():'')+'</td><td>'+(u.last_seen_at?new Date(u.last_seen_at).toLocaleDateString():'')+'</td></tr>').join('')
+      + '</tbody></table>';
+  }catch(err){
+    wrap.textContent = "Couldn't load the user list: " + err.message;
+  }
+});
+
 async function renderAccountPage(){
   renderAuthNavState();
   const loggedOut = document.getElementById('accountLoggedOut');
@@ -12519,6 +12654,7 @@ async function renderAccountPage(){
   loggedOut.style.display='none'; loggedIn.style.display='grid';
   document.getElementById('accountUsername').textContent = authUsername;
   renderCommunityCount();
+  renderAdminAccess();
   document.getElementById('logoutBtn').textContent=isGuest()?'Switch to login':'Log out';
   document.getElementById('guestSettings').hidden=!isGuest();
   if(isGuest()){document.getElementById('guestUsername').value=guestProfile.data.username;document.getElementById('guestCurrentWrap').hidden=!guestProfile.data.passwordHash;document.getElementById('guestLock').hidden=!guestProfile.data.passwordHash;}
@@ -12526,7 +12662,7 @@ async function renderAccountPage(){
   try{
     const prefs = await apiGetPreferences();
     document.getElementById('prefsCity').innerHTML='<option value="">No city preference</option>'+COUNTY_NAMES.map(county=>'<optgroup label="'+escapeHtml(county)+' County">'+Object.entries(CITIES).filter(([k,c])=>k!=='all'&&c.county===county).map(([k,c])=>'<option value="'+k+'">'+escapeHtml(c.label)+'</option>').join('')+'</optgroup>').join('');
-    document.getElementById('prefsStatus').textContent=isGuest()?'Guest profiles save city and topic preferences on this device. Email delivery requires a full account.':'';
+    document.getElementById('prefsStatus').textContent=isGuest()?'Guest profiles save city and topic preferences on this device. Email delivery needs a password on your profile.':'';
     document.getElementById('prefsEmail').value = prefs.email || '';
     document.getElementById('prefsFrequency').value = prefs.emailFrequency || 'off';
     document.getElementById('prefsCity').value = prefs.homeCity || '';
@@ -12673,7 +12809,8 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
       statusEl.textContent = 'Saved \u2713';
     }
   } catch(err){
-    statusEl.textContent = "Couldn't save: " + err.message;
+    statusEl.innerHTML = "Couldn't save: " + emailBlockedHtml(err.message);
+    wireAddPasswordButtons(statusEl);
   }
 });
 
@@ -16388,11 +16525,14 @@ if(DashboardBrowse.setupValid(savedSetup,COUNTY_NAMES)){
 }
 renderOnboardCityBtns();renderOnboardInterests();
 applyDeepLink();
-// Closed on load. The menu is a dropdown that sits over the page, and opening it here put a
-// black panel across the masthead on every visit - on a phone it covered the title outright -
-// only for the reader's first click anywhere to close it again. Finishing setup still opens it,
-// which is where showing someone the pages actually helps.
-setNavMenu(false);
+// Open by default on wider screens for a returning reader, where the dropdown has room and
+// doesn't sit over anything. Closed by default on a narrow one - opening it there put a black
+// panel across the masthead, covering the title outright, on every single visit. A fresh visitor
+// who still has the welcome overlay up gets it closed regardless of width, so it isn't floating
+// above that modal; finishing setup opens it explicitly, which is where showing someone the pages
+// actually helps.
+const onboardStillShowing = document.getElementById('onboardOverlay').style.display !== 'none';
+setNavMenu(!onboardStillShowing && window.matchMedia('(min-width: 641px)').matches);
 // Record this visitor as a user once the page is up, and again when they finish choosing a place.
 syncGuestProfile();
 // Keep keyboard focus and background scrolling inside the first-visit dialog.
