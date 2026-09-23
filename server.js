@@ -13,7 +13,7 @@ import { PROJECTS } from './data/projects.js';
 import { NEWS_ARTICLES } from './data/news.js';
 import { BOARDS } from './data/boards.js';
 import { buildBriefing, CITY_LABELS, cityLabel } from './digest.js';
-import { getHearings } from './hearings.js';
+import { getHearings, getRecentMeetings } from './hearings.js';
 
 dotenv.config();
 
@@ -28,8 +28,21 @@ const model = (process.env.LLM_MODEL || 'openai/gpt-oss-120b').trim();
 // gpt-oss models think before answering; 'low' keeps that short so answers stay fast and inside
 // the free plan's per-minute token budget. Models without reasoning must not be sent the field.
 const reasoningEffort = (process.env.LLM_REASONING_EFFORT ?? (/gpt-oss/.test(model) ? 'low' : '')).trim();
+// Reasoning tokens are drawn from the same max_completion_tokens budget as the answer itself, so
+// a higher effort needs a bigger budget or the model can spend it all thinking and return nothing
+// (finish_reason 'length' with empty content). completionBudget(base) scales the budget for
+// whichever effort is configured; base is what a low-effort, non-reasoning answer needs.
+function completionBudget(base) {
+  if (reasoningEffort === 'high') return base + 2400;
+  if (reasoningEffort === 'medium') return base + 1200;
+  return base;
+}
 const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 const RESEND_FROM = process.env.RESEND_FROM || 'The Bay Dashboard <onboarding@resend.dev>';
+// Only used to summarize recent meetings for a city with no Legistar feed configured - the
+// Legistar path above needs no key and is preferred whenever it's available. Free tier at
+// https://tavily.com.
+const TAVILY_API_KEY = (process.env.TAVILY_API_KEY || '').trim();
 const CRON_SECRET = process.env.CRON_SECRET || '';
 const SITE_URL = process.env.SITE_URL || 'https://southbaydashboard.com';
 
@@ -44,6 +57,9 @@ if (!RESEND_API_KEY) {
 }
 if (!CRON_SECRET) {
   console.warn('CRON_SECRET is not set. /api/cron/send-digests will refuse all requests until it is.');
+}
+if (!TAVILY_API_KEY) {
+  console.warn('TAVILY_API_KEY is not set. Cities with no Legistar meeting feed will say so instead of falling back to a web search. Get a free key at https://tavily.com');
 }
 
 // The openai package is used only as a generic client for an OpenAI-compatible endpoint.
@@ -861,7 +877,7 @@ app.post('/api/ask', async (req, res) => {
       messages: format.type === 'json_object'
         ? [...messages, {role:'system', content:'Reply with a JSON object with exactly three keys: "on_topic" (boolean), "answer" (string) and "resource_ids" (array of strings).'}]
         : messages,
-      max_completion_tokens: 900,
+      max_completion_tokens: completionBudget(900),
       ...(reasoningEffort ? {reasoning_effort: reasoningEffort} : {}),
       response_format: format
     });
@@ -892,7 +908,7 @@ app.post('/api/ask', async (req, res) => {
     }
 
     res.json({
-      answer:String(parsed.answer || '').trim() || 'No answer returned.',
+      answer:stripEmDash(String(parsed.answer || '').trim()) || 'No answer returned.',
       resources,
       meta:{city:cityLabel, model}
     });
@@ -1305,6 +1321,220 @@ app.get('/api/hearings', async (req, res) => {
     console.error('Hearings fetch failed:', err.message);
     // A Legistar outage must not take the panel down - the page renders without it.
     res.status(200).json({ generatedAt: new Date().toISOString(), hearings: [], errors: [{ error: err.message }] });
+  }
+});
+
+// ---------------- SUMMARIZE RECENT MEETINGS ----------------
+function meetingsDigestText(meetings) {
+  return meetings.slice(0, 8).map(m => {
+    const items = m.matters.slice(0, 8)
+      .map(x => `  - ${x.title}${x.action ? ` [${x.action}]` : ''}`).join('\n');
+    const when = m.date + (m.time ? ` at ${m.time}` : '') + (m.location ? ` (${m.location})` : '');
+    return `${when} - ${m.body}\n${items || '  (no agenda items on file for this meeting)'}`;
+  }).join('\n\n');
+}
+// Shared by both prompts below - keeps the generated text reading like a plain human summary
+// rather than typical model output.
+const PLAIN_STYLE = 'Never use an em dash character; use a period or comma instead. Do not open with "Certainly" or similar filler, and do not close with a restated summary. Avoid stock phrases like "it\'s important to note" or "in conclusion". Plain text, no markdown headers or bullet characters.';
+const MEETING_SUMMARY_SYSTEM = `You summarize recent local government meetings (city council, planning commission, and related boards) for a resident who could not attend. Be factual and concise, and use only what is in the agenda data given - never invent outcomes, dates, votes, or items that are not present in the data. Group related items by topic when useful (housing, zoning, transportation, budget, etc). Note anything a resident might want to act on, such as an appeal window or a related item coming up again. ${PLAIN_STYLE} 200-350 words.`;
+// Web search results are secondary coverage, not the agenda itself, so this prompt is stricter
+// about hedging than MEETING_SUMMARY_SYSTEM above.
+const MEETING_SUMMARY_WEBSEARCH_SYSTEM = `You summarize recent local government meetings (city council, planning commission, and related boards) for a resident, using only the web search results given - news coverage and search snippets, not official agendas or minutes. Say explicitly that this is based on news coverage, not the official agenda, and may be incomplete. Never state a date, vote count, or outcome as certain unless a snippet plainly says so - hedge ("reportedly", "according to coverage") rather than invent specifics. ${PLAIN_STYLE} 150-300 words.`;
+
+async function tavilySearch(query, cityLabel, { maxResults = 6, days = 30 } = {}) {
+  const res = await fetch('https://api.tavily.com/search', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ api_key: TAVILY_API_KEY, query, search_depth: 'basic', topic: 'news', days, max_results: maxResults, include_answer: false }),
+    signal: AbortSignal.timeout(12000)
+  });
+  if (!res.ok) throw new Error(`Tavily search failed (${res.status})`);
+  const data = await res.json();
+  const results = Array.isArray(data.results) ? data.results : [];
+  // A generic news search for "<city> council" pulls in stories that only mention the city in
+  // passing, or occasionally a different city's meeting entirely - keep only hits that actually
+  // name this city, so a reader isn't handed another town's meeting by mistake.
+  const needle = cityLabel.toLowerCase();
+  const relevant = results.filter(r => `${r.title || ''} ${r.content || ''}`.toLowerCase().includes(needle));
+  // The same story can come back more than once (syndication, or a near-identical headline from
+  // a wire pickup) - one URL, and one exact headline, should only ever show up once.
+  const seenUrls = new Set(), seenTitles = new Set();
+  return relevant.filter(r => {
+    const url = (r.url || '').trim(), title = (r.title || '').trim().toLowerCase();
+    if ((url && seenUrls.has(url)) || (title && seenTitles.has(title))) return false;
+    if (url) seenUrls.add(url);
+    if (title) seenTitles.add(title);
+    return true;
+  });
+}
+// Tavily's published_date isn't ISO (e.g. "Fri, 28 Aug 2026 00:00:00 GMT"), so it has to be
+// parsed rather than string-sliced, or the date shown is just a truncated fragment.
+function toIsoDate(raw) {
+  const t = raw ? Date.parse(raw) : NaN;
+  return Number.isNaN(t) ? '' : new Date(t).toISOString().slice(0, 10);
+}
+// Normalized into the same {date, body, agendaUrl, matters} shape as a Legistar meeting, so the
+// same rendering (on screen and in email) works for both sources.
+function webSearchHitsAsMeetings(hits) {
+  return hits.map(r => ({
+    date: toIsoDate(r.published_date),
+    body: r.title || 'Untitled',
+    agendaUrl: r.url || null,
+    matters: r.content ? [{ title: String(r.content).slice(0, 300), action: '' }] : []
+  }));
+}
+function webSearchDigestText(meetings) {
+  return meetings.map(m => `${m.date || 'undated'} - ${m.body}\n  ${m.matters[0]?.title || ''}\n  ${m.agendaUrl || ''}`).join('\n\n');
+}
+
+// A system prompt asking the model to skip em dashes is usually enough, but not always - this
+// is the deterministic backstop so one doesn't slip through anyway.
+function stripEmDash(text) { return text.replace(/\s*—\s*/g, ' - '); }
+
+// How long the model reasons before answering varies call to call, so 'high' effort can
+// occasionally spend the whole token budget thinking and return no answer at all
+// (finish_reason 'length', empty content) even with completionBudget's extra headroom. One retry
+// at 'medium' - which reasons less - almost always leaves room, so a busy night doesn't turn into
+// a page full of "No summary returned."
+async function completeText(messages, baseTokens) {
+  const attempt = (effort, tokens) => llm.chat.completions.create({
+    model, messages, max_completion_tokens: tokens,
+    ...(effort ? { reasoning_effort: effort } : {})
+  }).then(c => stripEmDash(c.choices?.[0]?.message?.content?.trim() || ''));
+
+  let content = await attempt(reasoningEffort || undefined, completionBudget(baseTokens));
+  if (!content && reasoningEffort === 'high') content = await attempt('medium', baseTokens + 1200);
+  return content;
+}
+
+// Sorts agenda items into the same three topics used everywhere else on the dashboard (Featured
+// News, the topic tabs). Procedural boilerplate - minutes approvals, public comment periods,
+// committee reports - matches nothing here and is left out of the category boxes on purpose;
+// only items that genuinely read as housing, development or transportation business show up.
+const MEETING_CATEGORY_RULES = [
+  ['housing', /\b(housing|dwelling|apartments?|residences?|residential|\bBMR\b|density bonus|\bADUs?\b|accessory dwelling|affordable|rezon\w*|tenant|homeless|shelter)\b/i],
+  ['transportation', /\b(transit|transportation|traffic|roadway|sidewalks?|bike|bicycle|pedestrian|caltrain|\bVMT\b|parking|crossing|signal|intersection|paving|slurry seal|corridor|resurfacing|bridge)\b/i],
+  ['developments', /\b(commercial|office|retail|mixed[- ]use|industrial|hotel|design review|site plan|use permit|entitlement|specific plan|general plan amendment|variance|architectural review|subdivision|tentative map)\b/i],
+];
+function categorizeMatter(title) {
+  for (const [cat, re] of MEETING_CATEGORY_RULES) if (re.test(title)) return cat;
+  return null;
+}
+function withMatterCategories(meetings) {
+  return meetings.map(m => ({ ...m, matters: m.matters.map(x => ({ ...x, category: categorizeMatter(x.title) })) }));
+}
+
+// Shared by the on-screen summary and the emailed one, so a reader gets the same text either way.
+async function summarizeRecentMeetings(cityKey, cityLabel, { force = false } = {}) {
+  const recent = await getRecentMeetings(cityKey, { force });
+  if (recent.supported) recent.meetings = withMatterCategories(recent.meetings);
+
+  if (recent.supported) {
+    if (!recent.meetings.length) {
+      return {
+        supported: true, source: 'legistar', meetings: [], cityLabel, days: recent.days, generatedAt: recent.generatedAt,
+        summary: `No ${cityLabel} planning, council, or related meetings were found in the last ${recent.days} days.`
+      };
+    }
+    if (!LLM_API_KEY) {
+      return {
+        supported: true, source: 'legistar', meetings: recent.meetings, cityLabel, days: recent.days, generatedAt: recent.generatedAt,
+        summary: '', note: 'AI summary is not configured on this server (LLM_API_KEY is missing); the raw recent meetings are listed below instead.'
+      };
+    }
+    const summary = await completeText([
+      { role: 'system', content: MEETING_SUMMARY_SYSTEM },
+      { role: 'user', content: `Recent meetings for ${cityLabel} (last ${recent.days} days):\n\n${meetingsDigestText(recent.meetings)}` }
+    ], 700) || 'No summary returned.';
+    return { supported: true, source: 'legistar', summary, meetings: recent.meetings, cityLabel, days: recent.days, generatedAt: recent.generatedAt };
+  }
+
+  // This city has no Legistar feed configured. Fall back to a web search only if one is set up -
+  // otherwise say so plainly rather than guessing.
+  if (!TAVILY_API_KEY) {
+    return { supported: false, source: null, summary: '', meetings: [], cityLabel, days: recent.days };
+  }
+  let hits;
+  try {
+    hits = await tavilySearch(`${cityLabel} city council OR planning commission meeting`, cityLabel);
+  } catch (err) {
+    return {
+      supported: false, source: 'websearch', summary: '', meetings: [], cityLabel, days: recent.days,
+      note: 'Web search is configured but the request failed: ' + err.message
+    };
+  }
+  if (!hits.length) {
+    return {
+      supported: true, source: 'websearch', meetings: [], cityLabel, days: 30, generatedAt: new Date().toISOString(),
+      summary: `No recent news coverage of ${cityLabel} council or planning meetings was found.`
+    };
+  }
+  const meetings = withMatterCategories(webSearchHitsAsMeetings(hits));
+  if (!LLM_API_KEY) {
+    return {
+      supported: true, source: 'websearch', meetings, cityLabel, days: 30, generatedAt: new Date().toISOString(),
+      summary: '', note: 'AI summary is not configured on this server; the raw search results are listed below instead.'
+    };
+  }
+  const summary = await completeText([
+    { role: 'system', content: MEETING_SUMMARY_WEBSEARCH_SYSTEM },
+    { role: 'user', content: `Recent web coverage of ${cityLabel} meetings:\n\n${webSearchDigestText(meetings)}` }
+  ], 600) || 'No summary returned.';
+  return { supported: true, source: 'websearch', summary, meetings, cityLabel, days: 30, generatedAt: new Date().toISOString() };
+}
+
+// Read-only and unauthenticated, same as /api/hearings - it only ever reads public agendas.
+app.post('/api/meetings/summary', async (req, res) => {
+  try {
+    const cityKey = String(req.body?.cityKey || '').trim();
+    const cityLabel = String(req.body?.cityLabel || cityKey).trim();
+    if (!cityKey) return res.status(400).json({ error: 'City is required.' });
+    const result = await summarizeRecentMeetings(cityKey, cityLabel, { force: req.body?.force === true });
+    res.json(result);
+  } catch (err) {
+    console.error('Meeting summary failed:', err.message);
+    const status = Number(err?.status) === 429 ? 429 : 500;
+    res.status(status).json({ error: status === 429
+      ? 'The free assistant is at its per-minute limit right now. Please try again in a minute.'
+      : 'Could not summarize recent meetings: ' + err.message });
+  }
+});
+
+function meetingSummaryEmailHtml(cityLabel, days, summary) {
+  const esc = v => String(v ?? '').replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  return `<div style="max-width:600px;margin:0 auto;padding:22px;font-family:Georgia,serif;color:#2b2b2b">
+    <div style="border-bottom:3px double #3E4F24;padding-bottom:12px;margin-bottom:18px">
+      <div style="font:700 10px/1.4 'Helvetica Neue',Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7A7F72">The Bay Dashboard</div>
+      <h1 style="font:400 26px/1.15 Georgia,serif;color:#3E4F24;margin:6px 0 4px">Recent meetings: ${esc(cityLabel)}</h1>
+      <div style="font:11px/1.4 'Helvetica Neue',Arial,sans-serif;color:#7A7F72">Last ${esc(days)} days</div>
+    </div>
+    <p style="font:15px/1.65 Georgia,serif;white-space:pre-wrap;margin:0">${esc(summary)}</p>
+    <p style="font:11px/1.5 'Helvetica Neue',Arial,sans-serif;color:#7A7F72;border-top:1px solid #dce2d3;padding-top:12px;margin-top:26px">
+      Sent because you pressed "Email this summary" on the dashboard. Manage this under Your Account.
+      <br>${SITE_URL}</p></div>`;
+}
+app.post('/api/meetings/summary/email', authMiddleware, async (req, res) => {
+  try {
+    const cityKey = String(req.body?.cityKey || '').trim();
+    const cityLabel = String(req.body?.cityLabel || cityKey).trim();
+    if (!cityKey) return res.status(400).json({ error: 'City is required.' });
+    if (!RESEND_API_KEY) return res.status(503).json({ error: 'Email is not configured on the server yet.' });
+
+    const u = await pool.query('SELECT email FROM users WHERE username = $1', [req.username]);
+    const to = u.rows[0] && u.rows[0].email;
+    if (!to) return res.status(400).json({ error: 'Add an email address under Your Account first.' });
+
+    // Regenerated server-side from the city, rather than trusting summary text from the request,
+    // so the email always reflects what the agendas actually say.
+    const result = await summarizeRecentMeetings(cityKey, cityLabel);
+    if (!result.supported) return res.status(400).json({ error: result.note || `No meeting feed is configured for ${cityLabel} yet.` });
+    if (!result.summary) return res.status(503).json({ error: result.note || 'No summary is available to send yet.' });
+
+    await sendEmail(to, `Recent meetings - ${cityLabel}`, meetingSummaryEmailHtml(cityLabel, result.days, result.summary));
+    res.json({ ok: true, to });
+  } catch (err) {
+    console.error('Meeting summary email failed:', err.message);
+    res.status(502).json({ error: 'The email could not be sent: ' + err.message });
   }
 });
 

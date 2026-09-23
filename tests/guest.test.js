@@ -4,14 +4,14 @@ import '../public/guest.js';
 const {GuestStore}=globalThis.DashboardGuest;
 const memory=()=>{const m=new Map();return {getItem:k=>m.get(k)||null,setItem:(k,v)=>m.set(k,v),removeItem:k=>m.delete(k)};};
 const post=(data,method='POST')=>({method,body:JSON.stringify(data)});
-test('guest noun-and-four-digit names persist and respect a custom username',async()=>{
+test('a new guest profile starts with no username and requires one be chosen',async()=>{
  const storage=memory(),g=new GuestStore(storage,memory());
- assert.match(g.data.username,/^[a-z]+\d{4}$/);
- assert.equal(new GuestStore(storage,memory()).data.username,g.data.username);
+ assert.equal(g.data.username,'');
+ assert.equal(new GuestStore(storage,memory()).data.username,'');
  await g.update('My Custom Name');
  assert.equal(new GuestStore(storage,memory()).data.username,'My Custom Name');
  const old={...g.data,username:'Guest'};storage.setItem('sbpd_guest_v1',JSON.stringify(old));
- assert.match(new GuestStore(storage,memory()).data.username,/^[a-z]+\d{4}$/);
+ assert.equal(new GuestStore(storage,memory()).data.username,'');
 });
 test('guest saves survive reload and preserve encoded item IDs',async()=>{
  const storage=memory(),session=memory(),g=new GuestStore(storage,session);

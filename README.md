@@ -4,12 +4,12 @@ This package contains the civic dashboard plus a server-side AI assistant for th
 
 ## What is already wired
 
-- `public/index.html` — dashboard + dedicated **Ask a Question** page.
-- Left pane — conversational answer.
-- Right pane — only official resources relevant to the answer.
-- `/api/ask` — chat endpoint on any OpenAI-compatible API; defaults to Groq's free tier.
+- `public/index.html` - dashboard + dedicated **Ask a Question** page.
+- Left pane - conversational answer.
+- Right pane - only official resources relevant to the answer.
+- `/api/ask` - chat endpoint on any OpenAI-compatible API; defaults to Groq's free tier.
 - Dashboard project records are sent as structured context automatically.
-- `data/sources.js` — consolidated official planning, development, GIS, housing, permit, transportation, CIP, CEQA, hearing, and project links.
+- `data/sources.js` - consolidated official planning, development, GIS, housing, permit, transportation, CIP, CEQA, hearing, and project links.
 - Resource selection is constrained to known source IDs, so the model cannot invent source URLs.
 - No paid API needed: the assistant runs on a free Groq key by default.
 
@@ -40,7 +40,7 @@ LLM_BASE_URL=https://api.groq.com/openai/v1
 
 Groq's free plan allows this model 30 requests and 8,000 tokens per minute, and 1,000 requests a day. The server trims each question's context to stay well inside that, and when the limit is reached the page shows "try again in a minute" instead of an error.
 
-Any other OpenAI-compatible provider works by changing `LLM_BASE_URL`, `LLM_MODEL` and `LLM_API_KEY` — for example Google Gemini, at `https://generativelanguage.googleapis.com/v1beta/openai/`. Google's terms say content sent on its free tier may be used to improve its products and read by human reviewers.
+Any other OpenAI-compatible provider works by changing `LLM_BASE_URL`, `LLM_MODEL` and `LLM_API_KEY` - for example Google Gemini, at `https://generativelanguage.googleapis.com/v1beta/openai/`. Google's terms say content sent on its free tier may be used to improve its products and read by human reviewers.
 
 Never put the API key in `public/index.html`.
 
@@ -131,24 +131,24 @@ The existing Ask page already renders `answer` on the left and `resources` on th
 ## Email briefings
 
 Every send is a **standing briefing, not a change alert**. A quiet week still produces a full
-email — the point is to keep readers aware of housing, transportation, development, and the boards
+email - the point is to keep readers aware of housing, transportation, development, and the boards
 that decide them, whether or not anything moved. Anything that *has* changed since the reader's
 last email is marked **Updated** and sorts to the top of its section.
 
 Each briefing is ordered the same way:
 
-1. **What you're following** — every starred project, board, and article; changed ones first.
-2. **In {your city}** — Housing · Transportation · Other development · In the news ·
+1. **What you're following** - every starred project, board, and article; changed ones first.
+2. **In {your city}** - Housing · Transportation · Other development · In the news ·
    Who decides and when they meet · Ways to get involved.
-3. **Around the rest of the Bay Area** — projects that moved, plus recent regional news.
-4. **Official {your city} links** — the city's own planning, permit, and GIS pages.
+3. **Around the rest of the Bay Area** - projects that moved, plus recent regional news.
+4. **Official {your city} links** - the city's own planning, permit, and GIS pages.
 
 Every project title links to `?project=<id>` on the dashboard, which switches to that city, filters
 to that record, and highlights it. Board titles link to the city's own board page, and articles
 link to the source.
 
 Nothing here is model-generated. Status text is quoted verbatim from the data files, and the one
-summary sentence is assembled from integer counts — a model in that position could hallucinate a
+summary sentence is assembled from integer counts - a model in that position could hallucinate a
 project's status, and people may act on this.
 
 Rendering lives in `digest.js` as pure functions: no database, no network. Preview every variant
@@ -232,15 +232,15 @@ many were seen in the last 30 days, and when the first and latest signups were.
 
 Render's own cron jobs are a paid service type, so on the free plan use an external scheduler.
 
-- **URL** — `https://your-site.com/api/cron/send-digests?secret=YOUR_CRON_SECRET`
-- **Method** — GET or POST; both work. (Passing the secret as the `x-cron-secret` header instead of
+- **URL** - `https://your-site.com/api/cron/send-digests?secret=YOUR_CRON_SECRET`
+- **Method** - GET or POST; both work. (Passing the secret as the `x-cron-secret` header instead of
   a query parameter keeps it out of the scheduler's logs, if your scheduler supports headers.)
-- **Schedule** — once a day. Run it daily no matter what frequencies your users pick: the endpoint
+- **Schedule** - once a day. Run it daily no matter what frequencies your users pick: the endpoint
   checks everyone on each run and only emails whoever is actually due.
 
 A successful run returns JSON like `{"ok":true,"checked":4,"due":2,"sent":1,"skipped":1,"failed":0}`.
 `skipped` means the user was due but nothing had changed, so no email was sent and their clock was
-left alone — the next run still compares against their last real email.
+left alone - the next run still compares against their last real email.
 
 A `401` means the secret is missing or wrong. A `503` means `DATABASE_URL` isn't set.
 
