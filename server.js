@@ -108,6 +108,14 @@ async function initDb() {
   } catch (err) {
     console.error('Guest-profile migration failed; guest counting is off until it succeeds:', err.message);
   }
+  // Case only affects how a name displays - "Alice" and "alice" must not become two different
+  // accounts. Uniqueness is enforced on the lowercased value while each row keeps whatever case
+  // the person actually chose, so it still displays the way they typed it.
+  try {
+    await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_username_lower_key ON users (lower(username));`);
+  } catch (err) {
+    console.error('Case-insensitive username migration failed - two accounts differing only in case may still be possible until it succeeds:', err.message);
+  }
   // Biweekly and monthly are the only cadences now - move anyone on daily/weekly to the closest
   // one still offered, rather than leaving them on a frequency the Account page can't display.
   await pool.query(`UPDATE users SET email_frequency = 'biweekly' WHERE email_frequency IN ('daily','weekly');`);
@@ -321,7 +329,10 @@ app.post('/api/register', async (req, res) => {
   if (!validUsername(username)) return res.status(400).json({ error: 'Username must be 3-20 characters: letters, numbers, underscore only.' });
   if (!validPassword(password)) return res.status(400).json({ error: 'Password must be at least 8 characters.' });
   try {
-    const existing = await pool.query('SELECT 1 FROM users WHERE username = $1', [username]);
+    // Case-insensitive: "Alice" and "alice" read as the same name to a person, so they must not
+    // both be takeable. The unique index on lower(username) is the real guarantee against a race
+    // between two simultaneous signups; this is just the fast, friendly check ahead of it.
+    const existing = await pool.query('SELECT 1 FROM users WHERE lower(username) = lower($1)', [username]);
     if (existing.rows.length) return res.status(409).json({ error: 'That username is already taken.' });
     const hash = await bcrypt.hash(password, 10);
     // This visitor already counts as a user. Signing up renames that row and gives it a password;
@@ -347,14 +358,17 @@ app.post('/api/login', async (req, res) => {
   const { username, password } = req.body || {};
   if (!validUsername(username) || typeof password !== 'string' || !password || password.length > 200) return res.status(400).json({ error: 'Enter a valid username and password.' });
   try {
-    const result = await pool.query('SELECT password_hash FROM users WHERE username = $1', [username]);
+    // Matches lower(username) so signing up as "Alice" and logging in as "alice" both work - the
+    // row's own stored casing (not what was typed) is what every downstream table's FK expects.
+    const result = await pool.query('SELECT username, password_hash FROM users WHERE lower(username) = lower($1)', [username]);
     // No password means a device profile, not an account: there is nothing to sign in to.
     if (!result.rows.length || !result.rows[0].password_hash) return res.status(401).json({ error: 'Incorrect username or password.' });
     const ok = await bcrypt.compare(password, result.rows[0].password_hash);
     if (!ok) return res.status(401).json({ error: 'Incorrect username or password.' });
+    const actualUsername = result.rows[0].username;
     const token = crypto.randomBytes(32).toString('hex');
-    await pool.query('INSERT INTO sessions (token, username) VALUES ($1, $2)', [token, username]);
-    res.json({ token, username });
+    await pool.query('INSERT INTO sessions (token, username) VALUES ($1, $2)', [token, actualUsername]);
+    res.json({ token, username: actualUsername });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Could not log in. Please try again.' });

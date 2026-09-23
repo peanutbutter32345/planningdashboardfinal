@@ -20,7 +20,7 @@ async function one(city){
    if(title.split(/\s+/).length>25)title=title.split(/\s+/).slice(0,24).join(' ')+'…';
    const topic=/hous|apartmen|affordable|\badu\b|rent|homes/i.test(title)?'housing':/transit|rail|bus|bike|transport|street|traffic/i.test(title)?'transportation':/develop|building|construct|zoning/i.test(title)?'developments':'civic';
    articles.push({city:city.key,topic,title,snippet:'Reporting from '+publisher+'. Open the original story through Google News for the full reporting and publication context.',source:publisher,date:published.toISOString().slice(0,10),url:link,kind:'reporting',feed:url,reviewed:new Date().toISOString().slice(0,10)});
-   if(++count===3)break;
+   if(++count===6)break;
   }
   console.log(city.label,count);
  }catch(e){failures.push(city.key);articles.push(...previous.filter(n=>n.city===city.key&&n.kind==='reporting'));console.log(city.label,'retained previous headlines:',e.message);}

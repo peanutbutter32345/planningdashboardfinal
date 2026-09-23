@@ -7,13 +7,22 @@ services:
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
-      # Free key from https://console.groq.com/keys - powers "Ask a Question".
+      # Free key from https://console.groq.com/keys - powers "Ask a Question" and meeting summaries.
       - key: LLM_API_KEY
         sync: false
       - key: LLM_MODEL
         value: openai/gpt-oss-120b
       - key: LLM_BASE_URL
         value: https://api.groq.com/openai/v1
+      # How much the model reasons before answering - low/medium/high. Higher is slower and uses
+      # more of the free plan's per-minute budget; omit to default to low.
+      - key: LLM_REASONING_EFFORT
+        sync: false
+      # Free key from https://tavily.com - lets "Summarize recent meetings" fall back to a web
+      # search for the cities with no Legistar feed configured (Milpitas among them). Without this,
+      # those cities just say so instead of summarizing.
+      - key: TAVILY_API_KEY
+        sync: false
       # Postgres connection string. Required for full accounts and email digests. Device-only guest profiles still work without it.
       - key: DATABASE_URL
         sync: false

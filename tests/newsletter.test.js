@@ -194,3 +194,24 @@ test('counties with nothing published are said to be quiet rather than left out'
     assert.equal(section.count, 0);
   });
 });
+
+// Several sections can independently reach for "the first story with a picture" from
+// overlapping pools of the same month's articles - without coordination, the lead, a topic
+// section and a county roundup can all pick the exact same photo in one issue.
+test('no issue reuses the same picture in two places', () => {
+  for (const issue of issues) {
+    const picks = [];
+    if (issue.hero) picks.push(['hero', issue.hero.url]);
+    if (issue.lead && issue.lead.image) picks.push(['lead', issue.lead.image]);
+    for (const section of issue.sections) {
+      for (const block of section.blocks || []) {
+        if (block.kind === 'image') picks.push([section.title || section.kind, block.url]);
+      }
+    }
+    const seenAt = new Map();
+    for (const [where, url] of picks) {
+      assert.ok(!seenAt.has(url), `${issue.id}: "${url}" used in both ${seenAt.get(url)} and ${where}`);
+      seenAt.set(url, where);
+    }
+  }
+});
