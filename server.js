@@ -8,7 +8,7 @@ import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import pg from 'pg';
 import { SOURCES, sourcesForCity } from './data/sources.js';
-import { SYSTEM_INSTRUCTIONS } from './instructions.js';
+import { SYSTEM_INSTRUCTIONS, PLAIN_STYLE } from './instructions.js';
 import { PROJECTS } from './data/projects.js';
 import { NEWS_ARTICLES } from './data/news.js';
 import { BOARDS } from './data/boards.js';
@@ -1399,11 +1399,19 @@ function meetingsDigestText(meetings) {
 }
 // Shared by both prompts below - keeps the generated text reading like a plain human summary
 // rather than typical model output.
-const PLAIN_STYLE = 'Never use an em dash character; use a period or comma instead. Do not open with "Certainly" or similar filler, and do not close with a restated summary. Avoid stock phrases like "it\'s important to note" or "in conclusion". Plain text, no markdown headers or bullet characters.';
-const MEETING_SUMMARY_SYSTEM = `You summarize recent local government meetings (city council, planning commission, and related boards) for a resident who could not attend. Be factual and concise, and use only what is in the agenda data given - never invent outcomes, dates, votes, or items that are not present in the data. Group related items by topic when useful (housing, zoning, transportation, budget, etc). Note anything a resident might want to act on, such as an appeal window or a related item coming up again. ${PLAIN_STYLE} 200-350 words.`;
+
+const MEETING_SUMMARY_SYSTEM = `You summarize recent local government meetings (city council, planning commission, and related boards) for a resident who could not attend. Be factual and concise, and use only what is in the agenda data given - never invent outcomes, dates, votes, or items that are not present in the data. Group related items by topic when useful (housing, zoning, transportation, budget, etc). Note anything a resident might want to act on, such as an appeal window or a related item coming up again. 
+
+${PLAIN_STYLE}
+
+Write 200-350 words.`;
 // Web search results are secondary coverage, not the agenda itself, so this prompt is stricter
 // about hedging than MEETING_SUMMARY_SYSTEM above.
-const MEETING_SUMMARY_WEBSEARCH_SYSTEM = `You summarize recent local government meetings (city council, planning commission, and related boards) for a resident, using only the web search results given - news coverage and search snippets, not official agendas or minutes. Say explicitly that this is based on news coverage, not the official agenda, and may be incomplete. Never state a date, vote count, or outcome as certain unless a snippet plainly says so - hedge ("reportedly", "according to coverage") rather than invent specifics. ${PLAIN_STYLE} 150-300 words.`;
+const MEETING_SUMMARY_WEBSEARCH_SYSTEM = `You summarize recent local government meetings (city council, planning commission, and related boards) for a resident, using only the web search results given - news coverage and search snippets, not official agendas or minutes. Say explicitly that this is based on news coverage, not the official agenda, and may be incomplete. Never state a date, vote count, or outcome as certain unless a snippet plainly says so - hedge ("reportedly", "according to coverage") rather than invent specifics. 
+
+${PLAIN_STYLE}
+
+Write 150-300 words.`;
 
 async function tavilySearch(query, cityLabel, { maxResults = 6, days = 30 } = {}) {
   const res = await fetch('https://api.tavily.com/search', {
