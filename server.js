@@ -19,6 +19,16 @@ dotenv.config();
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
+// Render serves this behind one load balancer, so without this every request looks like it came
+// from that balancer: req.ip was the same string for the whole internet, which put every new
+// visitor in one shared rate-limit bucket and would have recorded one address for everybody.
+// The count is 1 because there is exactly one proxy in front - raising it would let a caller put
+// whatever they liked in X-Forwarded-For and be believed.
+app.set('trust proxy', 1);
+// The address and browser a request arrived from. Kept so the site's owner can see who is
+// actually using it and spot one machine registering repeatedly.
+const clientIp = req => (req.ip || req.socket?.remoteAddress || '').replace(/^::ffff:/, '').slice(0, 45) || null;
+const clientAgent = req => (req.headers['user-agent'] || '').slice(0, 300) || null;
 // "Ask a Question" runs on any OpenAI-compatible chat API. The default is Groq's free tier
 // (create a key at https://console.groq.com/keys). To use another provider, set LLM_BASE_URL and
 // LLM_MODEL - for example Google Gemini: https://generativelanguage.googleapis.com/v1beta/openai/
@@ -107,6 +117,16 @@ async function initDb() {
     await pool.query(`ALTER TABLE users ALTER COLUMN password_hash DROP NOT NULL;`);
   } catch (err) {
     console.error('Guest-profile migration failed; guest counting is off until it succeeds:', err.message);
+  }
+  // Where each person reached the site from. signup_ip is the address they first arrived at and
+  // never changes; last_ip and last_user_agent follow them. Kept for the owner's own view of who
+  // is using the site and to make repeat registrations from one machine visible.
+  try {
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS signup_ip TEXT;`);
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_ip TEXT;`);
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_user_agent TEXT;`);
+  } catch (err) {
+    console.error('Visitor-origin migration failed; addresses are not being recorded:', err.message);
   }
   // Case only affects how a name displays - "Alice" and "alice" must not become two different
   // accounts. Uniqueness is enforced on the lowercased value while each row keeps whatever case
@@ -260,8 +280,8 @@ const validGuestName = n => typeof n === 'string' && /^[a-zA-Z0-9_ ]{3,30}$/.tes
 
 // New guest rows are the one thing here an anonymous caller can create, so a script pointed at the
 // endpoint could otherwise inflate the count. This caps *new* ids per address per hour; returning
-// visitors updating their own row are never blocked. Nothing about the address is stored - the
-// counter lives in memory and dies with the process.
+// visitors updating their own row are never blocked. The counter itself lives in memory and dies
+// with the process - the address on the row is what persists.
 const guestCreationsByIp = new Map();
 const GUEST_NEW_PER_HOUR = 30;
 function guestCreationAllowed(ip) {
@@ -271,16 +291,39 @@ function guestCreationAllowed(ip) {
   seen.count++;
   return true;
 }
+// Nothing stood between a script and an unlimited run of password guesses. Failures are counted
+// per address and per account name, so one machine working through a list is stopped and so is a
+// spread-out attempt on a single account. A correct password clears the count, which keeps a
+// person who mistyped theirs a few times from being locked out of their own account.
+const loginFailures = new Map();
+const LOGIN_MAX_FAILURES = 10;
+const LOGIN_WINDOW_MS = 15 * 60_000;
+function loginBlocked(keys) {
+  const now = Date.now();
+  return keys.some(k => { const f = loginFailures.get(k); return f && now < f.resetAt && f.count >= LOGIN_MAX_FAILURES; });
+}
+function noteLoginFailure(keys) {
+  const now = Date.now();
+  for (const k of keys) {
+    const f = loginFailures.get(k);
+    if (!f || now > f.resetAt) loginFailures.set(k, { count: 1, resetAt: now + LOGIN_WINDOW_MS });
+    else f.count++;
+  }
+  // The map would otherwise grow for every address that ever guessed wrong.
+  if (loginFailures.size > 5000) for (const [k, f] of loginFailures) if (now > f.resetAt) loginFailures.delete(k);
+}
+function clearLoginFailures(keys) { for (const k of keys) loginFailures.delete(k); }
 // Guest names are a noun and four digits, so two devices can land on the same one. The name is
 // only a label here - the guest_id is the identity - so a clash takes a short suffix rather than
 // rejecting a perfectly real visitor.
-async function insertGuest(guestId, username, homeCity) {
+async function insertGuest(guestId, username, homeCity, ip, agent) {
   for (const candidate of [username, username + '-' + guestId.slice(0, 4), username + '-' + guestId.slice(0, 8)]) {
     try {
       const row = await pool.query(
-        `INSERT INTO users (username, password_hash, kind, guest_id, home_city, last_seen_at)
-         VALUES ($1, NULL, 'guest', $2, $3, now()) RETURNING username`,
-        [candidate, guestId, homeCity || null]);
+        `INSERT INTO users (username, password_hash, kind, guest_id, home_city, last_seen_at,
+                            signup_ip, last_ip, last_user_agent)
+         VALUES ($1, NULL, 'guest', $2, $3, now(), $4, $4, $5) RETURNING username`,
+        [candidate, guestId, homeCity || null, ip || null, agent || null]);
       return row.rows[0].username;
     } catch (err) {
       if (err.code !== '23505') throw err;                      // 23505 = unique violation
@@ -304,15 +347,17 @@ app.post('/api/guest', async (req, res) => {
       // An upgraded account keeps its chosen username; only a still-guest row follows the label.
       await pool.query(
         `UPDATE users SET last_seen_at = now(),
+                          last_ip = COALESCE($4, last_ip),
+                          last_user_agent = COALESCE($5, last_user_agent),
                           home_city = COALESCE($2, home_city),
                           username = CASE WHEN kind = 'guest' AND $3 <> username
                                           AND NOT EXISTS (SELECT 1 FROM users u2 WHERE u2.username = $3)
                                      THEN $3 ELSE username END
-         WHERE guest_id = $1`, [guestId, city, username]);
+         WHERE guest_id = $1`, [guestId, city, username, clientIp(req), clientAgent(req)]);
       return res.json({ ok: true, created: false, kind: existing.rows[0].kind });
     }
-    if (!guestCreationAllowed(req.ip)) return res.status(429).json({ error: 'Too many new profiles from this address.' });
-    const stored = await insertGuest(guestId, username, city);
+    if (!guestCreationAllowed(clientIp(req))) return res.status(429).json({ error: 'Too many new profiles from this address.' });
+    const stored = await insertGuest(guestId, username, city, clientIp(req), clientAgent(req));
     if (!stored) return res.status(500).json({ error: 'Could not record this profile.' });
     communityCache = { at: 0, body: null };   // a new person just arrived; let the count say so
     res.json({ ok: true, created: true, kind: 'guest' });
@@ -337,14 +382,22 @@ app.post('/api/register', async (req, res) => {
     const hash = await bcrypt.hash(password, 10);
     // This visitor already counts as a user. Signing up renames that row and gives it a password;
     // it does not create a second one, so the account total never double-counts a person.
+    const ip = clientIp(req), agent = clientAgent(req);
     const upgraded = validGuestId(guestId)
-      ? await pool.query(`UPDATE users SET username = $1, password_hash = $2, kind = 'account', last_seen_at = now()
-                          WHERE guest_id = $3 AND kind = 'guest' RETURNING id`, [username, hash, guestId])
+      ? await pool.query(`UPDATE users SET username = $1, password_hash = $2, kind = 'account', last_seen_at = now(),
+                                 last_ip = COALESCE($4, last_ip), last_user_agent = COALESCE($5, last_user_agent),
+                                 signup_ip = COALESCE(signup_ip, $4)
+                          WHERE guest_id = $3 AND kind = 'guest' RETURNING id`, [username, hash, guestId, ip, agent])
       : { rows: [] };
     if (!upgraded.rows.length)
-      await pool.query('INSERT INTO users (username, password_hash) VALUES ($1, $2)', [username, hash]);
+      await pool.query(`INSERT INTO users (username, password_hash, last_seen_at, signup_ip, last_ip, last_user_agent)
+                        VALUES ($1, $2, now(), $3, $3, $4)`, [username, hash, ip, agent]);
     const token = crypto.randomBytes(32).toString('hex');
     await pool.query('INSERT INTO sessions (token, username) VALUES ($1, $2)', [token, username]);
+    // A guest turning into an account changes the registered/guest split, and arriving for the
+    // first time changes the total. Without this the owner's own count sat stale for five minutes
+    // after every signup, which is exactly when someone is most likely to be watching it.
+    communityCache = { at: 0, body: null };
     res.json({ token, username });
   } catch (err) {
     console.error(err);
@@ -357,17 +410,24 @@ app.post('/api/login', async (req, res) => {
   if (!requireDb(res)) return;
   const { username, password } = req.body || {};
   if (!validUsername(username) || typeof password !== 'string' || !password || password.length > 200) return res.status(400).json({ error: 'Enter a valid username and password.' });
+  const ip = clientIp(req), agent = clientAgent(req);
+  const attemptKeys = ['ip:' + ip, 'user:' + String(username).toLowerCase()];
+  if (loginBlocked(attemptKeys)) return res.status(429).json({ error: 'Too many failed attempts. Wait 15 minutes and try again.' });
   try {
     // Matches lower(username) so signing up as "Alice" and logging in as "alice" both work - the
     // row's own stored casing (not what was typed) is what every downstream table's FK expects.
     const result = await pool.query('SELECT username, password_hash FROM users WHERE lower(username) = lower($1)', [username]);
     // No password means a device profile, not an account: there is nothing to sign in to.
-    if (!result.rows.length || !result.rows[0].password_hash) return res.status(401).json({ error: 'Incorrect username or password.' });
+    if (!result.rows.length || !result.rows[0].password_hash) { noteLoginFailure(attemptKeys); return res.status(401).json({ error: 'Incorrect username or password.' }); }
     const ok = await bcrypt.compare(password, result.rows[0].password_hash);
-    if (!ok) return res.status(401).json({ error: 'Incorrect username or password.' });
+    if (!ok) { noteLoginFailure(attemptKeys); return res.status(401).json({ error: 'Incorrect username or password.' }); }
+    clearLoginFailures(attemptKeys);
     const actualUsername = result.rows[0].username;
     const token = crypto.randomBytes(32).toString('hex');
     await pool.query('INSERT INTO sessions (token, username) VALUES ($1, $2)', [token, actualUsername]);
+    await pool.query(`UPDATE users SET last_seen_at = now(), last_ip = COALESCE($2, last_ip),
+                             last_user_agent = COALESCE($3, last_user_agent) WHERE username = $1`,
+      [actualUsername, ip, agent]);
     res.json({ token, username: actualUsername });
   } catch (err) {
     console.error(err);
@@ -1302,7 +1362,8 @@ app.get('/api/admin/users', async (req, res) => {
   try {
     const limit = Math.min(parseInt(req.query.limit, 10) || 500, 2000);
     const result = await pool.query(
-      `SELECT username, kind, email, home_city, email_frequency, created_at, last_seen_at
+      `SELECT username, kind, email, home_city, email_frequency, created_at, last_seen_at,
+              signup_ip, last_ip, last_user_agent
        FROM users ORDER BY created_at DESC NULLS LAST LIMIT $1`,
       [limit]
     );
@@ -1552,4 +1613,5 @@ app.use((err, _req, res, _next) => {
   res.status(status).json({error: status === 400 ? 'Request body must be valid JSON.' : status === 413 ? 'Request body is too large.' : 'The request could not be completed. Please try again.'});
 });
 
-app.listen(port, () => console.log(`The Bay Dashboard running at http://localhost:${port}`));
+// Exported so the auth tests can shut the listener down; nothing in the app itself uses it.
+export const server = app.listen(port, () => console.log(`The Bay Dashboard running at http://localhost:${port}`));
