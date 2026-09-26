@@ -232,6 +232,35 @@
   .empty{padding:26px; text-align:center; color:var(--text-soft); font-family:'Open Sans',sans-serif; font-size:12px;}
 
   /* ---- Onboarding overlay ---- */
+  /* ---- One project, in full ---- */
+  .proj-sheet-back{position:fixed; inset:0; z-index:2900; background:rgba(20,20,20,.72); display:flex; align-items:flex-start; justify-content:center; padding:32px 20px; overflow-y:auto;}
+  .proj-sheet-back[hidden]{display:none;}
+  .proj-sheet{position:relative; background:#fff; width:100%; max-width:700px; margin:auto; border-radius:2px; border-top:5px solid var(--ink); box-shadow:0 10px 36px rgba(0,0,0,.34); padding:26px 30px 30px;}
+  .proj-sheet-x{position:absolute; top:8px; right:10px; width:32px; height:32px; border:none; background:transparent; font-size:26px; line-height:1; color:var(--text-soft); cursor:pointer; border-radius:2px;}
+  .proj-sheet-x:hover{background:#EFF1E8; color:var(--ink);}
+  .ps-eyebrow{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-soft);}
+  .proj-sheet h2{font-size:25px; line-height:1.2; margin:4px 0 9px; padding-right:34px;}
+  .ps-stamps{display:flex; gap:7px; flex-wrap:wrap; align-items:center; margin-bottom:15px;}
+  .ps-lede{font-size:14.5px; line-height:1.65; margin:0 0 18px;}
+  .ps-sec{border-top:1px solid var(--rule); padding-top:14px; margin-top:16px;}
+  .ps-sec > h3{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-soft); margin:0 0 9px;}
+  .ps-facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:11px 18px;}
+  .ps-fact b{display:block; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-soft);}
+  .ps-fact span{font-size:14px;}
+  .ps-note{font-size:13px; line-height:1.6; color:var(--text); margin:0;}
+  .ps-caveat{background:#FBF6E8; border-left:4px solid #B08A2E; padding:10px 13px; font-size:12.5px; line-height:1.6; margin:12px 0 0;}
+  .ps-links{display:flex; flex-wrap:wrap; gap:8px;}
+  .ps-board{border-bottom:1px solid var(--rule); padding:9px 0;}
+  .ps-board:last-child{border-bottom:none;}
+  .ps-board b{font-size:13.5px;}
+  .ps-board span{display:block; font-size:12px; color:var(--text-soft); margin-top:2px;}
+  .ps-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;}
+  @media(max-width:620px){ .proj-sheet{padding:22px 18px 24px;} .proj-sheet h2{font-size:21px;} }
+  /* The whole card opens the record, so it has to look like it does. */
+  .card{cursor:pointer;}
+  .card .star-btn, .card .card-src, .card .locate-btn{cursor:pointer;}
+  .card:hover{box-shadow:0 2px 10px rgba(0,0,0,.09);}
+  .card-more{background:none; border:none; padding:0; font:inherit; font-size:11px; font-weight:700; color:var(--blue); cursor:pointer; text-decoration:underline;}
   .onboard-overlay{position:fixed; inset:0; z-index:3000; background:rgba(20,20,20,0.75); display:flex; align-items:center; justify-content:center; padding:24px; overflow-y:auto;}
   .onboard-card{background:#fff; border-radius:2px; max-width:560px; width:100%; padding:32px; box-shadow:0 8px 30px rgba(0,0,0,0.3); margin:auto; border-top:5px solid var(--ink);}
   .onboard-card h2{font-size:22px; color:#1A1A1A; margin-bottom:6px;}
@@ -2803,6 +2832,16 @@
     </div>
   </div>
 </footer>
+
+<!-- Everything the record actually says about one project, opened from its card. The card has
+     room for a headline and a status; this has room for the paperwork, where the coordinates
+     came from, who decides it, and what the record does not tell you. -->
+<div class="proj-sheet-back" id="projSheet" hidden role="dialog" aria-modal="true" aria-labelledby="projSheetAddr">
+  <article class="proj-sheet">
+    <button type="button" class="proj-sheet-x" id="projSheetClose" aria-label="Close">&times;</button>
+    <div id="projSheetBody"></div>
+  </article>
+</div>
 
 <script src="/data/regions.js"></script>
 <script src="/data/market-data.js"></script>
@@ -7670,7 +7709,7 @@ function projectCardHtml(d){
       <div class="meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
       <div class="meta" style="color:var(--text);">${d.lastNote}</div>
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
-      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':'City record'} &#8599;</a>`:'';})()}<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
+      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':'City record'} &#8599;</a>`:'';})()}<button class="card-more" data-more="${d.id}">Learn more</button><button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
     </div>`;
 }
 // Cards borrowed from other cities to finish a short section. The card itself only shows an
@@ -7681,6 +7720,156 @@ function regionCardHtml(d){
   if(!label) return projectCardHtml(d);
   return projectCardHtml(d).replace('<div class="type">','<div class="type"><b class="card-city">'+escapeHtml(label)+'</b> &middot; ');
 }
+/* ---- One project, in full ----
+   A card has room for an address and a status. Everything else the record holds - the file and
+   parcel numbers, where the coordinates came from and how good they are, which board decides it,
+   and the several things the record deliberately does not claim - goes here. Nothing is composed
+   for this view: every line is a field of the record or a link to the body that published it. */
+let projSheetReturnFocus = null;
+function findProject(id){
+  for(const key of Object.keys(CITIES)){
+    if(key==='all') continue;
+    const hit=(CITIES[key].data||[]).find(d=>d.id===id);
+    if(hit) return {record:hit, cityKey:key, city:CITIES[key]};
+  }
+  return null;
+}
+function psFact(label, value){
+  return value===null||value===undefined||value===''
+    ? '' : '<div class="ps-fact"><b>'+escapeHtml(label)+'</b><span>'+value+'</span></div>';
+}
+function projectSheetHtml(record, cityKey, city){
+  const stage=STAGE_MAP[record.stage]||{label:record.stage,color:'#777'};
+  const cat=CAT_MAP[categoryOf(record)]||{label:'',color:'#777'};
+  const hcd=record.sourceType==='hcd-apr';
+  const located=Number.isFinite(record.lat)&&Number.isFinite(record.lng);
+
+  const facts=[
+    psFact('Type', escapeHtml(record.type||'')),
+    psFact('Homes reported', record.units?record.units.toLocaleString():null),
+    psFact('Of those, affordable', record.bmr===null||record.bmr===undefined?null:record.bmr.toLocaleString()),
+    psFact('Applicant', escapeHtml(record.applicant||'')),
+    psFact('File number', record.fileNo?'<span class="mono">'+escapeHtml(record.fileNo)+'</span>':null),
+    psFact('Parcel (APN)', record.apn?'<span class="mono">'+escapeHtml(record.apn)+'</span>':null),
+    psFact('Application filed', record.filed?fmtDate(record.filed):null),
+    psFact('Last dated activity', record.lastDate?fmtDate(record.lastDate):null),
+    psFact('Reported as', escapeHtml(record.reportedStatus||'')),
+    psFact('Reporting year', record.reportYear||null),
+  ].join('');
+
+  // Boards are per city, not per project: these are the bodies that decide land use here, which
+  // is the honest thing to say rather than naming one as "the" hearing for this address.
+  const boards=[...(city.deciders||[])].slice(0,3).map(b=>
+    '<div class="ps-board"><b>'+(b.link?'<a href="'+escapeHtml(b.link)+'" target="_blank" rel="noopener">'+escapeHtml(String(b.name).replace(/&amp;/g,'&'))+' &#8599;</a>':escapeHtml(String(b.name).replace(/&amp;/g,'&')))+'</b>'
+    +'<span>'+escapeHtml(String(b.when||'').replace(/&amp;/g,'&'))+'</span></div>').join('');
+
+  // Full-coverage cities keep their official links in ctaLinks; the directory-only ones have
+  // planning and meetings instead. Take whichever this city actually has.
+  const sourceHref=record.sourceUrl||(citySourceLink(cityKey)||{}).url||city.planning;
+  // ctaLinks run from the city's project map down to things like a youth commission application,
+  // which is a fine link and nothing to do with this address. Keep the ones about land use.
+  const aboutProjects = /project|planning|development|permit|housing|pipeline|tracker|\bmap\b|GIS/i;
+  const official=[
+    ...(city.planning?[{label:city.label+' planning', url:city.planning}]:[]),
+    ...(city.ctaLinks||[]).filter(l=>aboutProjects.test(l.label)),
+  ].slice(0, 2);
+  const links=[
+    sourceHref?'<a class="btn secondary" href="'+escapeHtml(sourceHref)+'" target="_blank" rel="noopener">'+(hcd?'The source record at HCD':'The city\'s record')+' &#8599;</a>':'',
+    ...official.map(l=>'<a class="btn secondary" href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(String(l.label).replace(/&amp;/g,'&'))+' &#8599;</a>'),
+  ].filter(Boolean).join('');
+
+  return '<div class="ps-eyebrow">'+escapeHtml(city.label)+' &middot; '+escapeHtml(city.county)+' County</div>'
+    +'<h2 id="projSheetAddr">'+escapeHtml(record.addr||record.id)+'</h2>'
+    +'<div class="ps-stamps">'
+      +'<span class="stamp" style="background:'+stage.color+';border-color:'+stage.color+'">'+escapeHtml(stage.label)+'</span>'
+      +'<span class="cattag"><i style="background:'+cat.color+'"></i>'+escapeHtml(cat.label)+'</span>'
+      +'<span class="fresh">'+freshnessLabel(record)+'</span>'
+    +'</div>'
+    // Every HCD description carries the same four sentences of caveat. "Where this comes from"
+    // below says all of it properly, so repeating it at the top just buries the one line that
+    // actually describes this address.
+    +(()=>{
+      const lede=String(record.desc||'').split(/\s*Annual \d{4} city submission to California HCD/)[0].trim();
+      return lede?'<p class="ps-lede">'+escapeHtml(lede.replace(/\.$/,''))+'.</p>':'';
+    })()
+
+    +'<section class="ps-sec"><h3>What the record says</h3><div class="ps-facts">'+facts+'</div></section>'
+
+    +(record.lastNote?'<section class="ps-sec"><h3>Where it stands</h3><p class="ps-note">'+escapeHtml(record.lastNote)+'</p></section>':'')
+
+    +(record.flag?'<section class="ps-sec"><h3>Worth knowing</h3><p class="ps-caveat">'+escapeHtml(record.flag)+'</p></section>':'')
+
+    +'<section class="ps-sec"><h3>Where this comes from</h3>'
+      +'<p class="ps-note">'+(hcd
+        ? 'This is '+escapeHtml(city.label)+'&rsquo;s own '+escapeHtml(String(record.reportYear||''))+' submission to the California Department of Housing and Community Development, published as '+escapeHtml(record.sourceLabel||'an annual progress report')+'. It is what the city reported once a year, not a live permit status, and the homes counted may be one phase of something larger. A permit being issued does not mean anything has been built.'
+        : 'Compiled from '+escapeHtml(city.label)+'&rsquo;s published planning records and meeting agendas. Dates are the ones in the public file, so a record can be accurate and still be out of date if the city has not posted anything since.')
+      +'</p><div class="ps-links" style="margin-top:11px;">'+links+'</div></section>'
+
+    +'<section class="ps-sec"><h3>On the map</h3><p class="ps-note">'
+      +(located
+        ? 'Placed at '+record.lat.toFixed(5)+', '+record.lng.toFixed(5)+'.'
+          +(record.locationSource?' '+escapeHtml(record.locationSource[0].toUpperCase()+record.locationSource.slice(1))+'.':'')
+          +(Number.isFinite(record.geocodeScore)&&record.geocodeScore<100?' The match scored '+record.geocodeScore+' out of 100, so treat the pin as the block rather than the building.':'')
+        : 'No coordinates were published for this record, so it is not on the map. It has not been given the city centre instead, because that would put it somewhere it is not.')
+      +'</p></section>'
+
+    +(boards?'<section class="ps-sec"><h3>Who decides land use in '+escapeHtml(city.label)+'</h3>'+boards+'</section>':'')
+
+    +'<div class="ps-actions">'
+      +(located?'<button type="button" class="btn" id="psLocate">Show me on the map</button>':'')
+      +'<button type="button" class="btn secondary" id="psPin">Keep this on my map</button>'
+    +'</div>';
+}
+function openProjectSheet(id){
+  const found=findProject(id);
+  if(!found) return;
+  const back=document.getElementById('projSheet');
+  document.getElementById('projSheetBody').innerHTML=projectSheetHtml(found.record, found.cityKey, found.city);
+  projSheetReturnFocus=document.activeElement;
+  back.hidden=false;
+  document.body.style.overflow='hidden';
+  document.getElementById('projSheetClose').focus();
+
+  document.getElementById('psLocate')?.addEventListener('click',()=>{
+    closeProjectSheet();
+    if(found.cityKey!==currentCity&&currentCity!=='all') switchCity(found.cityKey);
+    showScreen('dashboard'); flyTo(id);
+  });
+  const pin=document.getElementById('psPin');
+  if(pin){
+    const isPinned=()=>typeof yaHasPin==='function'&&yaHasPin('project',id);
+    const label=()=>{pin.textContent=isPinned()?'On your map ✓':'Keep this on my map';};
+    label();
+    pin.addEventListener('click',()=>{
+      const r=found.record;
+      yaTogglePin({type:'project', id, label:r.addr||id,
+        sub:[found.city.label, (STAGE_MAP[r.stage]||{}).label].filter(Boolean).join(' · '),
+        lat:r.lat, lng:r.lng, city:found.cityKey});
+      label();
+    });
+  }
+}
+function closeProjectSheet(){
+  const back=document.getElementById('projSheet');
+  if(!back||back.hidden) return;
+  back.hidden=true;
+  document.body.style.overflow='';
+  projSheetReturnFocus?.focus?.();
+  projSheetReturnFocus=null;
+}
+document.getElementById('projSheetClose').addEventListener('click', closeProjectSheet);
+document.getElementById('projSheet').addEventListener('click', e=>{ if(e.target.id==='projSheet') closeProjectSheet(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeProjectSheet(); });
+// One listener for every card on the page, wherever it was drawn - the register, the topic pages
+// and the resource bank all use the same markup, and all of them should open the same record.
+document.addEventListener('click', e=>{
+  const more=e.target.closest('[data-more]');
+  if(more){ e.preventDefault(); e.stopPropagation(); openProjectSheet(more.getAttribute('data-more')); return; }
+  const card=e.target.closest('.card[data-project-id]');
+  // A click on something that already does its own thing is not a click on the card.
+  if(card && !e.target.closest('a, button, input, label, select')) openProjectSheet(card.getAttribute('data-project-id'));
+});
+
 function renderRegister(){
   const list = filtered();
   document.getElementById('registerCount').textContent = list.length+' of '+DATA().length+' records shown';
