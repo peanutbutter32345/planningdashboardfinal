@@ -1804,7 +1804,7 @@
       <div class="nameplate">
         <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
-        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. 101 cities and towns across nine Bay Area counties.</p>
+        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. <span class="city-count">101</span> cities and towns across nine Bay Area counties.</p>
       </div>
     </div>
 
@@ -2593,7 +2593,7 @@
     <div class="bank-mosaic" id="bankMosaic" aria-hidden="true"></div>
     <div class="bank-hero">
       <h2>Resource bank</h2>
-      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all 101 Bay Area cities and towns.</p>
+      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all <span class="city-count">101</span> Bay Area cities and towns.</p>
       <div class="bank-searchwrap">
         <input id="bankSearch" type="search" placeholder="Search anything: an address, a commission, &ldquo;builder&rsquo;s remedy&rdquo;, &ldquo;housing element&rdquo;, a street name&hellip;" autocomplete="off" aria-label="Search the resource bank" />
         <div class="bank-count" id="bankCount"></div>
@@ -6231,7 +6231,7 @@ const CITIES = {
       {label:'Housing Element Review Process', url:'https://www.woodsideca.gov/352/Housing-Element-Review-Process'},
       {label:'Agendas & Minutes', url:'https://www.woodsideca.gov/129/Agendas-Minutes'},
     ]},
-  santaclara: {label:'Santa Clara', center:{lat:37.362,lng:-121.965}, zoom:12.3, bbox:{minLat:37.32,maxLat:37.42,minLng:-122.01,maxLng:-121.92}, county:'Santa Clara', data:SC_DATA, feed:SC_FEED, deciders:SC_DECIDERS, join:SC_JOIN, sources:SC_SOURCES, note:'The most complete city in this tracker: all 53 records come straight from Santa Clara\'s own development-activity GIS layer, the same source behind the city\'s public story map. Because that layer publishes a year rather than milestone dates, the change feed is coarser here than in the hand-researched cities.',
+  santaclara: {label:'Santa Clara', center:{lat:37.362,lng:-121.965}, zoom:12.3, bbox:{minLat:37.32,maxLat:37.42,minLng:-122.01,maxLng:-121.92}, county:'Santa Clara', data:SC_DATA, feed:SC_FEED, deciders:SC_DECIDERS, join:SC_JOIN, sources:SC_SOURCES, note:'Most of these records come straight from Santa Clara\'s own development-activity GIS layer, the same source behind the city\'s public story map, and the rest from the city\'s annual filing to HCD. Because that layer publishes a year rather than milestone dates, the change feed is coarser here than in the hand-researched cities.',
     ctaLinks:[
       {label:'Official Santa Clara development map (GIS)', url:'https://www.santaclaraca.gov/our-city/departments-a-f/community-development/planning-division/development-activity'},
       {label:'Projects Listing', url:'https://www.santaclaraca.gov/business-development/development-projects/projects-listing'},
@@ -6245,6 +6245,10 @@ for(const [key,c] of Object.entries(window.REGIONAL_DATA?.cities||{})){
 }
 DashboardHousing.merge(CITIES,window.HOUSING_RECORDS);
 const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
+// Counted here, before the "All Cities" aggregate below joins the object, so this is the number
+// of real places. It is written into the page rather than typed into it: the figure was 101 in
+// three separate sentences and a hundred and second city had already been added.
+const CITY_COUNT=Object.keys(CITIES).length;
 let currentCity = 'sunnyvale';
 
 // "All Cities" - a real aggregation of every tracked city's data, not a separate dataset.
@@ -6265,7 +6269,7 @@ CITIES.all = {
   join: [],
   sources: ['Combined from every city\'s own sources - switch to a specific city to see its individual source list.'],
   ctaLinks: [],
-  note: `Showing all ${Object.values(CITIES).reduce((a,c)=>a+c.data.length,0)} tracked projects across all ${Object.keys(CITIES).length} cities at once. Pick a specific city above for its Get Involved board and official links.`,
+  note: `Showing all ${Object.values(CITIES).reduce((a,c)=>a+c.data.length,0)} tracked projects across all ${CITY_COUNT} cities at once. Pick a specific city above for its Get Involved board and official links.`,
 };
 
 const BAY_AREA_VIEW=CITIES.all;
@@ -6340,7 +6344,7 @@ function filtered(){
 let cityBrowseQuery='',cityBrowseCounty='';
 function renderCitySwitch(){
   const host=document.getElementById('citySwitch');
-  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search 101 cities and towns…" value="${escapeHtml(cityBrowseQuery)}"></label><span>Choose a county, then a city</span><button class="city-tab" id="browseAllCities" aria-pressed="${currentCity==='all'&&!activeCounty}">All Bay Area</button></div><div class="county-strip" aria-label="Bay Area counties">${COUNTY_NAMES.map((county,i)=>{const cities=DashboardBrowse.citiesIn(CITIES,county);return `<div class="county-option"><button class="county-button" data-county="${county}" aria-expanded="${county===cityBrowseCounty}" aria-controls="countyCities" aria-describedby="countyPreview${i}">${county}<small>${cities.length} ↗</small></button><div class="county-preview" id="countyPreview${i}" role="tooltip"><strong>${county} County</strong>${cities.map(([,c])=>c.label).join(' · ')}<span>Click to browse these cities</span></div></div>`;}).join('')}</div><div id="countyCities" class="city-browse-results" aria-live="polite"></div>`;
+  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search ${CITY_COUNT} cities and towns…" value="${escapeHtml(cityBrowseQuery)}"></label><span>Choose a county, then a city</span><button class="city-tab" id="browseAllCities" aria-pressed="${currentCity==='all'&&!activeCounty}">All Bay Area</button></div><div class="county-strip" aria-label="Bay Area counties">${COUNTY_NAMES.map((county,i)=>{const cities=DashboardBrowse.citiesIn(CITIES,county);return `<div class="county-option"><button class="county-button" data-county="${county}" aria-expanded="${county===cityBrowseCounty}" aria-controls="countyCities" aria-describedby="countyPreview${i}">${county}<small>${cities.length} ↗</small></button><div class="county-preview" id="countyPreview${i}" role="tooltip"><strong>${county} County</strong>${cities.map(([,c])=>c.label).join(' · ')}<span>Click to browse these cities</span></div></div>`;}).join('')}</div><div id="countyCities" class="city-browse-results" aria-live="polite"></div>`;
   const results=document.getElementById('countyCities');
   function renderResults(){
     const q=cityBrowseQuery.trim();
@@ -16457,6 +16461,9 @@ function renderFooter(){
     if(a.hasAttribute('data-open-hearings')){giTab='hearings';renderGetInvolved();}
   }));
 }
+// The city count appears in three sentences of static copy. Written in rather than typed, so
+// adding a city cannot leave them saying a number that stopped being true.
+document.querySelectorAll('.city-count').forEach(el=>{el.textContent=CITY_COUNT;});
 renderFooter();
 
 // ================= EMAIL DEEP LINKS =================
