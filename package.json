@@ -9,7 +9,8 @@
     "vector:create": "node scripts/create-vector-store.js",
     "digest:preview": "node scripts/preview-digest.js",
     "test": "node --test tests/*.test.js",
-    "sync:projects": "node scripts/sync-projects.js"
+    "sync:projects": "node scripts/sync-projects.js",
+    "check:links": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

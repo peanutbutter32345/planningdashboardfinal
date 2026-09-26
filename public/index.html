@@ -4148,7 +4148,7 @@ const GIL_DECIDERS = [
 ];
 const GIL_JOIN = [
   {name:'Community Development Department', when:'See the department page', body:'Runs current planning and maintains the development activity list these records come from.', cat:'Housing', link:'https://www.cityofgilroy.org/167/Community-Development'},
-  {name:'Boards, Commissions &amp; Committees', when:'See the city page for openings', body:'Where residents apply to serve on the bodies that review development.', cat:'Civic', link:'https://www.cityofgilroy.org/165/Boards-Commissions-Committees'},
+  {name:'Boards, Commissions &amp; Committees', when:'See the city page for openings', body:'Where residents apply to serve on the bodies that review development.', cat:'Civic', link:'https://www.cityofgilroy.org/148/Boards-Commissions-Committees'},
 ];
 const GIL_SOURCES = ['City of Gilroy - Development Activity Projects and individual project pages', 'City of Gilroy - Current Planning and Development Project List', 'Coordinates geocoded from published addresses via OpenStreetMap Nominatim'];
 
@@ -6116,13 +6116,13 @@ const CITIES = {
   losgatos: {label:'Los Gatos', center:{lat:37.2358,lng:-121.9624}, zoom:13, bbox:{minLat:37.20,maxLat:37.28,minLng:-122.00,maxLng:-121.93}, county:'Santa Clara', data:LG_DATA, feed:LG_FEED, deciders:LG_DECIDERS, join:LG_JOIN, sources:LG_SOURCES, note:'Every record here is an SB 330 housing application from the Town\'s own tracker, so this is the housing pipeline specifically rather than a general project list. Most carry Builder\'s Remedy, which Los Gatos is contesting in court - the flag on each card explains what that means.',
     ctaLinks:[
       {label:'Town SB 330 application tracker', url:'https://www.losgatosca.gov/2875/Senate-Bill-SB-330'},
-      {label:'Pending Planning Projects', url:'https://www.losgatosca.gov/2370/Pending-Planning-Projects'},
+      {label:'Pending Planning Projects', url:'https://www.losgatosca.gov/2216/Pending-Planning-Projects'},
       {label:'Community Development', url:'https://www.losgatosca.gov/46/Community-Development'},
     ]},
   campbell: {label:'Campbell', center:{lat:37.2872,lng:-121.9500}, zoom:13, bbox:{minLat:37.26,maxLat:37.31,minLng:-121.98,maxLng:-121.92}, county:'Santa Clara', data:CAM_DATA, feed:CAM_FEED, deciders:CAM_DECIDERS, join:CAM_JOIN, sources:CAM_SOURCES, note:'Campbell publishes current Public Works projects but not a machine-readable housing pipeline, so this city covers infrastructure and civic projects rather than development applications. Housing filings for Campbell are not tracked here yet.',
     ctaLinks:[
       {label:'Public Works project updates', url:'https://www.campbellca.gov/563/Project-Updates'},
-      {label:'Community Development', url:'https://www.campbellca.gov/151/Community-Development'},
+      {label:'Community Development', url:'https://www.campbellca.gov/1350/Community-Development'},
     ]},
   paloalto: {label:'Palo Alto', center:{lat:37.4300,lng:-122.1400}, zoom:12.5, bbox:{minLat:37.38,maxLat:37.47,minLng:-122.20,maxLng:-122.09}, county:'Santa Clara', data:PA_DATA, feed:PA_FEED, deciders:PA_DECIDERS, join:PA_JOIN, sources:PA_SOURCES, note:'These come from the housing pipeline layer behind Palo Alto\'s public housing dashboard, which is a Housing Element site inventory snapshot rather than a live permit feed. Statuses therefore lag the counter, and this is the housing pipeline specifically, not every application in the city.',
     ctaLinks:[
@@ -6134,7 +6134,7 @@ const CITIES = {
     ctaLinks:[
       {label:'Development Activity Projects', url:'https://www.cityofgilroy.org/298/Development-Activity-Projects'},
       {label:'Planning Division', url:'https://www.cityofgilroy.org/269/Planning'},
-      {label:'Boards & Commissions', url:'https://www.cityofgilroy.org/165/Boards-Commissions-Committees'},
+      {label:'Boards & Commissions', url:'https://www.cityofgilroy.org/148/Boards-Commissions-Committees'},
     ]},
   morganhill: {label:'Morgan Hill', center:{lat:37.1305,lng:-121.6544}, zoom:12.5, bbox:{minLat:37.09,maxLat:37.18,minLng:-121.71,maxLng:-121.60}, county:'Santa Clara', data:MH_DATA, feed:MH_FEED, deciders:MH_DECIDERS, join:MH_JOIN, sources:MH_SOURCES, note:'Morgan Hill has no public machine-readable project pipeline, so there is no project register here yet - the one available scrape returned City Hall\'s address for every record and was discarded rather than published. News, boards, official links and state housing-target progress are real. Morgan Hill has permitted 63.6% of its state housing target, the highest rate of any city tracked here.',
     ctaLinks:[
@@ -6231,7 +6231,7 @@ const CITIES = {
       {label:'Planning Division', url:'https://www.cityofpacifica.org/departments/community-development/planning-division'},
       {label:'Community Development', url:'https://www.cityofpacifica.org/departments/community-development'},
       {label:'Housing Initiatives and Resources', url:'https://www.cityofpacifica.org/departments/community-development/affordable-housing'},
-      {label:'Committee / Commission Meeting Materials', url:'https://www.cityofpacifica.org/i-want-to/view/committee-commission-meeting-materials'},
+      {label:'Committee / Commission Meeting Materials', url:'https://www.cityofpacifica.org/government/commissions-committees'},
     ]},
   portolavalley: {label:'Portola Valley', center:{lat:37.3841,lng:-122.2352}, zoom:13, bbox:{minLat:37.339,maxLat:37.429,minLng:-122.290,maxLng:-122.180}, data:PORTOLAVALLEY_DATA, feed:PORTOLAVALLEY_FEED, deciders:PORTOLAVALLEY_DECIDERS, join:PORTOLAVALLEY_JOIN, sources:PORTOLAVALLEY_SOURCES, county:'San Mateo', note:'Portola Valley has no public machine-readable project pipeline this build can read, so there is no project register here yet. Its boards, official links and state housing numbers are real: Portola Valley has permitted 46 of its 253-home target for this cycle, 18.2%.',
     ctaLinks:[
@@ -7443,7 +7443,7 @@ const OFFICIAL_LINKS = {
     {cat:'Housing', title:'Housing Initiatives and Resources', url:'https://www.cityofpacifica.org/departments/community-development/affordable-housing', note:'Official Pacifica page.'},
     {cat:'Boards', title:'Planning Commission', url:'https://www.cityofpacifica.org/departments/community-development/planning-commission', note:'Official Pacifica page.'},
     {cat:'Boards', title:'Commissions & Committees', url:'https://www.cityofpacifica.org/i-want-to/apply-for/commissions-committees', note:'Official Pacifica page.'},
-    {cat:'Meetings', title:'Committee / Commission Meeting Materials', url:'https://www.cityofpacifica.org/i-want-to/view/committee-commission-meeting-materials', note:'Official Pacifica page.'},
+    {cat:'Meetings', title:'Committee / Commission Meeting Materials', url:'https://www.cityofpacifica.org/government/commissions-committees', note:'Official Pacifica page.'},
     {cat:'Permits', title:'Permits and Licenses', url:'https://www.cityofpacifica.org/i-want-to/apply-for/permits-and-licenses', note:'Official Pacifica page.'},
   ],
   portolavalley: [
@@ -7488,7 +7488,7 @@ const OFFICIAL_LINKS = {
   ],
   southsanfrancisco: [
     {cat:'Planning Hub', title:'Economic and Community Development', url:'https://www.ssfca.gov/Departments/Economic-and-Community-Development', note:'Official South San Francisco page.'},
-    {cat:'Permits', title:'Permit Center', url:'https://www.ssfca.gov/Departments/Economic-and-Community-Development/Permit-Center', note:'Official South San Francisco page.'},
+    {cat:'Permits', title:'Permit Center', url:'https://www.ssfca.gov/Services/Permit-Center', note:'Official South San Francisco page.'},
     {cat:'Boards', title:'Boards & Commissions', url:'https://www.ssfca.gov/Government/Boards-Commissions', note:'Official South San Francisco page.'},
     {cat:'Boards', title:'Boards and Commissions Application', url:'https://www.ssfca.gov/Government/Boards-Commissions/Boards-and-Commissions-Application', note:'Official South San Francisco page.'},
     {cat:'Meetings', title:'Meeting Agendas', url:'https://ci-ssf-ca.legistar.com/Calendar.aspx', note:'Official South San Francisco page.'},
@@ -7602,7 +7602,7 @@ const OFFICIAL_LINKS = {
     {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.sanjoseca.gov/your-government/agendas-minutes', note:'City Council and committee agendas and minutes.'},
   ],
   gilroy: [
-    {cat:'Planning Hub', title:'Planning Division', url:'https://www.cityofgilroy.org/193/Planning-Division', note:'Current and long-range planning for the city.'},
+    {cat:'Planning Hub', title:'Planning Division', url:'https://www.cityofgilroy.org/269/Planning', note:'Current and long-range planning for the city.'},
     {cat:'Development Projects', title:'Development Activity Projects', url:'https://www.cityofgilroy.org/298/Development-Activity-Projects', note:'The city’s own index of active development applications.'},
     {cat:'Planning Hub', title:'Community Development Department', url:'https://www.cityofgilroy.org/167/Community-Development', note:'Planning, building, and code enforcement.'},
     {cat:'Permits', title:'Development Services', url:'https://www.cityofgilroy.org/212/Development-Services', note:'Permit intake and development review.'},
@@ -7614,10 +7614,10 @@ const OFFICIAL_LINKS = {
     {cat:'Housing', title:'Affordable Housing Policy', url:'https://www.cityofgilroy.org/1000/Affordable-Housing-Policy', note:'Inclusionary requirements and affordable housing rules.'},
     {cat:'Housing', title:'Housing Legislation', url:'https://www.cityofgilroy.org/1056/Housing-Legislation', note:'How state housing laws apply in Gilroy.'},
     {cat:'Land Use', title:'Long Range Planning Projects', url:'https://www.cityofgilroy.org/1098/Long-Range-Planning-Projects', note:'Specific plans and policy updates in progress.'},
-    {cat:'Zoning', title:'Zoning Code Update', url:'https://www.cityofgilroy.org/1004/Zoning-Code-Update', note:'The in-progress rewrite of the city’s zoning code.'},
+    {cat:'Zoning', title:'Zoning Ordinance', url:'https://www.codepublishing.com/CA/Gilroy/', note:'The city’s adopted zoning code, as published.'},
     {cat:'Permits', title:'Development Impact Fees', url:'https://www.cityofgilroy.org/235/Development-Impact-Fees', note:'What a project pays toward roads, parks, and facilities.'},
-    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.cityofgilroy.org/1151/Agendas-Minutes', note:'Council, Planning Commission, and committee agendas.'},
-    {cat:'Boards', title:'Boards, Commissions & Committees', url:'https://www.cityofgilroy.org/1150/Boards-Commissions-Committees', note:'Bodies you can apply to serve on.'},
+    {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.cityofgilroy.org/965/Agendas-Minutes', note:'Council, Planning Commission, and committee agendas.'},
+    {cat:'Boards', title:'Boards, Commissions & Committees', url:'https://www.cityofgilroy.org/148/Boards-Commissions-Committees', note:'Bodies you can apply to serve on.'},
     {cat:'Environmental', title:'Environmental Programs', url:'https://www.cityofgilroy.org/302/Environmental-Programs', note:'Environmental review and sustainability programs.'},
   ],
   milpitas: [
@@ -7666,7 +7666,7 @@ const OFFICIAL_LINKS = {
     {cat:'Meetings', title:'Agendas & Minutes', url:'https://www.losaltosca.gov/129/Agendas-Minutes', note:'Council and commission agendas and minutes.'},
   ],
   campbell: [
-    {cat:'Planning Hub', title:'Community Development Department', url:'https://www.campbellca.gov/151/Community-Development', note:'Planning, building, and housing for the city.'},
+    {cat:'Planning Hub', title:'Community Development Department', url:'https://www.campbellca.gov/1350/Community-Development', note:'Planning, building, and housing for the city.'},
     {cat:'Development Projects', title:'Planning Applications', url:'https://www.campbellca.gov/1051/Planning-Applications', note:'Applications currently filed and under review.'},
     {cat:'Permits', title:'Permit Center', url:'https://www.campbellca.gov/1050/Permits-Center', note:'Permit intake, plan check, and inspection.'},
     {cat:'Land Use', title:'General Plan', url:'https://www.campbellca.gov/1083/General-Plan', note:'Long-range land use and policy framework.'},
