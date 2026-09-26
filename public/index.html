@@ -6894,18 +6894,34 @@ document.getElementById('yaFullscreen').addEventListener('click',()=>toggleMapFu
    Issues are built by scripts/build-newsletter.mjs from the same sourced records the rest of the
    dashboard uses, and each one is fixed at the end of its month: it contains what had been
    published by then and nothing later. The archive is every issue, newest first. */
-let newsletterData=null,newsletterIssue=null,newsletterPending=false;
-async function loadNewsletter(){
-  if(newsletterData||newsletterPending)return newsletterData;
-  newsletterPending=true;
-  try{
-    const response=await fetch('/data/newsletter.json');
-    if(!response.ok)throw Error('The archive could not be loaded ('+response.status+').');
-    newsletterData=await response.json();
-  }catch(error){
-    document.getElementById('nlIssue').innerHTML='<p class="nl-loading">'+escapeHtml(error.message)+' The rest of the dashboard is unaffected.</p>';
-  }finally{newsletterPending=false;}
-  return newsletterData;
+/* The archive comes in two files. The index is the masthead material for every issue - dateline,
+   photo, headline, lede, counts - and is what the hero front page, the issue buttons and the
+   archive grid are made of. The full file carries the sections and the source lists, which is
+   nearly all of the weight and none of it is read until someone opens an issue. Loading the whole
+   thing on every visit meant parsing 813 KB to draw one front page. */
+let newsletterData=null,newsletterFull=null,newsletterIssue=null;
+let newsletterPending=null,newsletterFullPending=null;
+function nlFailed(message){
+  const host=document.getElementById('nlIssue');
+  if(host)host.innerHTML='<p class="nl-loading">'+escapeHtml(message)+' The rest of the dashboard is unaffected.</p>';
+}
+// Both loaders keep the in-flight promise rather than a boolean, so two callers racing on the
+// first page load wait on one request instead of one of them getting null.
+function loadNewsletter(){
+  if(newsletterData)return Promise.resolve(newsletterData);
+  if(!newsletterPending)newsletterPending=fetch('/data/newsletter-index.json')
+    .then(r=>{ if(!r.ok)throw Error('The archive could not be loaded ('+r.status+').'); return r.json(); })
+    .then(d=>{ newsletterData=d; return d; })
+    .catch(e=>{ nlFailed(e.message); newsletterPending=null; return null; });
+  return newsletterPending;
+}
+function loadNewsletterFull(){
+  if(newsletterFull)return Promise.resolve(newsletterFull);
+  if(!newsletterFullPending)newsletterFullPending=fetch('/data/newsletter.json')
+    .then(r=>{ if(!r.ok)throw Error('The issue could not be loaded ('+r.status+').'); return r.json(); })
+    .then(d=>{ newsletterFull=d; return d; })
+    .catch(e=>{ nlFailed(e.message); newsletterFullPending=null; return null; });
+  return newsletterFullPending;
 }
 async function renderNewsletter(){
   const data=await loadNewsletter();
@@ -6929,7 +6945,12 @@ async function renderNewsletter(){
     document.getElementById('nlIssue').scrollIntoView({block:'start',behavior:'smooth'});
   });
   const host=document.getElementById('nlIssue');
-  const issue=data.issues.find(i=>i.id===newsletterIssue)||data.issues[0];
+  // The buttons above came from the index. The issue itself is the sections and the sources, so
+  // reading one is the point at which the full archive is worth fetching.
+  host.innerHTML='<p class="nl-loading">Opening the issue\u2026</p>';
+  const fullData=await loadNewsletterFull();
+  if(!fullData)return;
+  const issue=fullData.issues.find(i=>i.id===newsletterIssue)||fullData.issues[0];
   host.innerHTML=newsletterIssueHtml(issue);
   renderNewsletterToc(issue);
   const filter=host.querySelector('#nlFind');
@@ -7026,8 +7047,9 @@ function frontpageHtml(issue,{compact=false}={}){
 // The three-month ceiling belongs to the hero's copy of this widget, not this one - this is the
 // archive itself, so a reader can step back through every issue that has ever gone out.
 let archiveFrontIndex=0;
-function renderArchiveFrontpage(){
-  const data=newsletterData;
+async function renderArchiveFrontpage(){
+  // Non-compact front pages carry the three section teasers, which only the full file has.
+  const data=await loadNewsletterFull();
   const host=document.getElementById('arcFrontpage');
   if(!data||!host||!data.issues.length)return;
   const maxBack=data.issues.length-1;
@@ -7093,7 +7115,7 @@ async function renderArchive(){
     if(archiveYear&&issue.id.slice(0,4)!==archiveYear)return false;
     if(!q)return true;
     const hay=[issue.month,issue.dateline,issue.lead&&issue.lead.title,issue.hero&&issue.hero.city,
-      ...issue.sources.slice(0,40).map(src=>src.label)].filter(Boolean).join(' ').toLowerCase();
+      ...(issue.sourceLabels||[])].filter(Boolean).join(' ').toLowerCase();
     return hay.includes(q);
   });
   document.getElementById('arcCount').textContent=matches.length+' of '+data.issues.length+' issues';

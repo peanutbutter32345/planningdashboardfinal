@@ -247,7 +247,22 @@ initDb().catch(err => console.error('Failed to initialize database tables:', err
 // The public flood geometry and dashboard HTML compress substantially on mobile connections.
 app.use(compression());
 app.use(express.json({ limit: '4mb' }));
-app.use(express.static(fileURLToPath(new URL('./public', import.meta.url))));
+// Everything was served with max-age=0, so a returning reader spent a round trip revalidating
+// every file before it could be used - about a dozen of them, in series, before the page could
+// draw. On a phone that is most of the wait. None of these filenames carry a content hash, so
+// none can be cached forever; each gets the longest window that cannot serve a stale answer.
+app.use(express.static(fileURLToPath(new URL('./public', import.meta.url)), {
+  setHeaders(res, path) {
+    // The shell names all the other files, so it has to be the one that is always fresh.
+    if (path.endsWith('.html')) return res.setHeader('Cache-Control', 'no-cache');
+    // Pinned library builds and photographs: the bytes behind these names do not change.
+    if (/\/(vendor|img)\//.test(path)) return res.setHeader('Cache-Control', 'public, max-age=604800');
+    // Records refresh on a schedule. Ten minutes of reuse, then a background revalidation that
+    // the reader never waits on.
+    if (/\/data\//.test(path)) return res.setHeader('Cache-Control', 'public, max-age=600, stale-while-revalidate=86400');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+  },
+}));
 
 // ---------------- AUTH HELPERS ----------------
 function requireDb(res) {
