@@ -1035,6 +1035,10 @@
   .admin-user-table th{text-align:left; font-family:'Open Sans',sans-serif; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-soft); border-bottom:1px solid var(--rule); padding:6px 8px;}
   .admin-user-table td{padding:6px 8px; border-bottom:1px solid var(--rule); white-space:nowrap;}
   .admin-user-table tr:last-child td{border-bottom:none;}
+  /* Nine columns of real data does not fit a phone, and squeezing it makes every one unreadable. */
+  #adminUserTableWrap{overflow-x:auto;}
+  .admin-user-table .mono{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:11px;}
+  .admin-ip-note{margin-left:5px; font-size:10px; color:var(--text-soft); font-style:italic;}
   .acct-boardlist{display:grid; gap:10px;}
   .acct-board{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:12px 14px;
     display:flex; gap:14px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;}
@@ -1698,7 +1702,7 @@
 
 <div class="onboard-overlay" id="onboardOverlay" role="dialog" aria-modal="true" aria-labelledby="onboardHeading">
   <div class="onboard-card">
-    <div class="onboard-eyebrow">THE BAY CIVIC DASHBOARD · WELCOME</div><h2 id="onboardHeading">Make the Bay your own.</h2>
+    <div class="onboard-eyebrow">THE BAY DASHBOARD · WELCOME</div><h2 id="onboardHeading">Make the Bay your own.</h2>
     <p class="sub">Choose a county to explore projects, news and public meetings. Add a city or location whenever you like.</p>
 
     <div class="onboard-profile" id="onboardGuestProfile"><label for="onboardUsername">Choose a username <em>(required)</em></label><input id="onboardUsername" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Pick a username" required aria-describedby="onboardGuestStatus"><p id="onboardGuestStatus" role="status">3-30 letters, numbers, spaces or underscores. Saved on this device only, no signup needed.</p></div>
@@ -12618,15 +12622,41 @@ async function renderAdminAccess(){
   nav.hidden = false;
   renderAdminStats(adminStatsCache);
 }
+// A raw user agent is 150 unreadable characters in a table cell. This reduces it to the two
+// things worth scanning a column for - what they were on, and what they browsed with.
+function deviceLabel(ua){
+  if(!ua) return '';
+  const os = /iPhone/.test(ua) ? 'iPhone' : /iPad/.test(ua) ? 'iPad' : /Android/.test(ua) ? 'Android'
+    : /Mac OS X/.test(ua) ? 'Mac' : /Windows/.test(ua) ? 'Windows' : /Linux/.test(ua) ? 'Linux' : '';
+  // Order matters: every one of these also says "Safari", and most also say "Chrome".
+  const browser = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox\//.test(ua) ? 'Firefox'
+    : /Chrome\//.test(ua) ? 'Chrome' : /Safari\//.test(ua) ? 'Safari'
+    : /bot|crawl|spider|curl|python|wget/i.test(ua) ? 'Bot or script' : '';
+  return [os, browser].filter(Boolean).join(' · ') || 'Unrecognised';
+}
 document.getElementById('adminLoadUsers')?.addEventListener('click', async ()=>{
   const wrap = document.getElementById('adminUserTableWrap');
   wrap.textContent = 'Loading…';
   try{
     const data = await apiCall('/api/admin/users?limit=500');
     const rows = data.users || [];
-    wrap.innerHTML = '<p class="section-note">'+rows.length.toLocaleString()+' most recent, newest first.</p>'
-      + '<table class="admin-user-table"><thead><tr><th>Username</th><th>Kind</th><th>Email</th><th>Home city</th><th>Frequency</th><th>Joined</th><th>Last seen</th></tr></thead><tbody>'
-      + rows.map(u=>'<tr><td>'+escapeHtml(u.username||'')+'</td><td>'+escapeHtml(u.kind||'')+'</td><td>'+escapeHtml(u.email||'')+'</td><td>'+escapeHtml(u.home_city||'')+'</td><td>'+escapeHtml(u.email_frequency||'')+'</td><td>'+(u.created_at?new Date(u.created_at).toLocaleDateString():'')+'</td><td>'+(u.last_seen_at?new Date(u.last_seen_at).toLocaleDateString():'')+'</td></tr>').join('')
+    const ips = rows.map(u=>u.last_ip).filter(Boolean);
+    const repeated = new Set(ips.filter((ip,i)=>ips.indexOf(ip)!==i));
+    wrap.innerHTML = '<p class="section-note">'+rows.length.toLocaleString()+' most recent, newest first.'
+      + (repeated.size?' '+repeated.size+(repeated.size===1?' address appears':' addresses appear')+' on more than one row, marked below.':'')+'</p>'
+      + '<table class="admin-user-table"><thead><tr><th>Username</th><th>Kind</th><th>Email</th><th>Home city</th><th>Frequency</th><th>Address</th><th>Device</th><th>Joined</th><th>Last seen</th></tr></thead><tbody>'
+      + rows.map(u=>{
+          const ip = u.last_ip || u.signup_ip || '';
+          const moved = u.signup_ip && u.last_ip && u.signup_ip !== u.last_ip;
+          return '<tr><td>'+escapeHtml(u.username||'')+'</td><td>'+escapeHtml(u.kind||'')+'</td><td>'+escapeHtml(u.email||'')+'</td>'
+            +'<td>'+escapeHtml(u.home_city||'')+'</td><td>'+escapeHtml(u.email_frequency||'')+'</td>'
+            +'<td class="mono">'+(ip?escapeHtml(ip)+(repeated.has(u.last_ip)?' <b title="This address is on more than one row">&#9679;</b>':'')
+              +(moved?'<span class="admin-ip-note" title="Signed up from '+escapeHtml(u.signup_ip)+'">moved</span>':'')
+              :'<span class="admin-ip-note">not recorded</span>')+'</td>'
+            +'<td>'+escapeHtml(deviceLabel(u.last_user_agent))+'</td>'
+            +'<td>'+(u.created_at?new Date(u.created_at).toLocaleDateString():'')+'</td>'
+            +'<td>'+(u.last_seen_at?new Date(u.last_seen_at).toLocaleDateString():'')+'</td></tr>';
+        }).join('')
       + '</tbody></table>';
   }catch(err){
     wrap.textContent = "Couldn't load the user list: " + err.message;
