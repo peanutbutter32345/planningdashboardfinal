@@ -555,10 +555,20 @@ const issues = months.map((id, i) => { const issue = issueFor(id, i + 1, previou
   // An issue whose dateline has not arrived has not been sent, so it is not in the archive.
   .filter(issue => issue.date <= today)
   .reverse();   // newest first
-writeFileSync(new URL('public/data/newsletter.json', ROOT), JSON.stringify({
-  generated: new Date().toISOString(),
-  method: 'Each issue contains only material that had been published by the last day of its month. Sources carry their own availability dates: news by publication, city records by the date the city posted them, HCD annual report rows by the release of that reporting year, Zillow by the month it published, ACS by its December release, RHNA progress by its August 2026 vintage.',
-  issues,
-}, null, 1));
+const METHOD = 'Each issue contains only material that had been published by the last day of its month. Sources carry their own availability dates: news by publication, city records by the date the city posted them, HCD annual report rows by the release of that reporting year, Zillow by the month it published, ACS by its December release, RHNA progress by its August 2026 vintage.';
+const generated = new Date().toISOString();
+// The full archive, read when someone actually opens an issue. Written without indentation: a
+// space per line of a 600 KB file is a quarter of the file.
+writeFileSync(new URL('public/data/newsletter.json', ROOT), JSON.stringify({ generated, method: METHOD, issues }));
+// What the front page, the hero card and the archive grid need, which is the masthead material
+// and nothing else. Every page load used to parse all seventeen issues in full - 813 KB of it -
+// to draw one front page. This is the same seventeen issues at about a twentieth of the size.
+// sections and sources are the weight and neither is read until an issue is opened; the source
+// labels the archive search matches on come along in a flat list so that still works.
+const index = issues.map(({ id, number, month, date, dateline, hero, lead, lede, counts, sources }) => ({
+  id, number, month, date, dateline, hero, lead, lede, counts,
+  sourceLabels: (sources || []).slice(0, 40).map(s => s.label).filter(Boolean),
+}));
+writeFileSync(new URL('public/data/newsletter-index.json', ROOT), JSON.stringify({ generated, method: METHOD, issues: index }));
 console.log(`${issues.length} issues, ${issues[0].month} back to ${issues[issues.length - 1].month}`);
 issues.slice().reverse().forEach(i => console.log(` ${i.id}  news ${String(i.counts.news).padStart(3)}  city records ${String(i.counts.projects).padStart(2)}  APR released ${String(i.counts.aprReleased).padStart(4)}  sources ${i.counts.sources}`));

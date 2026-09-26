@@ -215,3 +215,28 @@ test('no issue reuses the same picture in two places', () => {
     }
   }
 });
+
+// The index is what every visit loads; the full archive is only fetched when an issue is opened.
+// If the two ever disagree about which issues exist, the archive grid lists an issue that cannot
+// be opened, so they are checked against each other here rather than at a reader's expense.
+test('the newsletter index matches the full archive it stands in for', () => {
+  const fullFile = JSON.parse(readFileSync(new URL('../public/data/newsletter.json', import.meta.url)));
+  const indexFile = JSON.parse(readFileSync(new URL('../public/data/newsletter-index.json', import.meta.url)));
+  assert.deepEqual(indexFile.issues.map(i => i.id), fullFile.issues.map(i => i.id),
+    'Run scripts/build-newsletter.mjs so both files are written together.');
+  for (const [n, light] of indexFile.issues.entries()) {
+    const heavy = fullFile.issues[n];
+    for (const key of ['number', 'month', 'date', 'dateline'])
+      assert.equal(light[key], heavy[key], `${light.id} disagrees on ${key}`);
+    assert.deepEqual(light.lead, heavy.lead, `${light.id} disagrees on its lead story`);
+    assert.deepEqual(light.counts, heavy.counts, `${light.id} disagrees on its counts`);
+    // The front page and the archive card are drawn from these alone.
+    assert.ok(light.lede && light.lede.length, `${light.id} has no lede for the front page`);
+    assert.ok(Array.isArray(light.sourceLabels), `${light.id} has no source labels for archive search`);
+    // The weight must not have crept back into the file every visit loads.
+    assert.equal(light.sections, undefined, `${light.id} carries sections in the index`);
+    assert.equal(light.sources, undefined, `${light.id} carries full sources in the index`);
+  }
+  const indexBytes = readFileSync(new URL('../public/data/newsletter-index.json', import.meta.url)).length;
+  assert.ok(indexBytes < 120_000, `The index is ${Math.round(indexBytes / 1024)} KB; it is loaded on every visit and should stay small.`);
+});
