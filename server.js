@@ -407,7 +407,14 @@ app.post('/api/register', async (req, res) => {
     // Case-insensitive: "Alice" and "alice" read as the same name to a person, so they must not
     // both be takeable. The unique index on lower(username) is the real guarantee against a race
     // between two simultaneous signups; this is just the fast, friendly check ahead of it.
-    const existing = await pool.query('SELECT 1 FROM users WHERE lower(username) = lower($1)', [username]);
+    // Someone adding a password to the name they are already using must not be refused by their
+    // own row. Everyone else holding that name still blocks it, including another device's
+    // name-only profile. The sentinels keep a null guest_id from matching a null parameter, which
+    // would otherwise let an unidentified caller walk past a name that is genuinely taken.
+    const existing = await pool.query(
+      `SELECT 1 FROM users WHERE lower(username) = lower($1)
+         AND coalesce(guest_id, '~no-guest~') <> coalesce($2, '~no-caller~')`,
+      [username, validGuestId(guestId) ? guestId : null]);
     if (existing.rows.length) return res.status(409).json({ error: 'That username is already taken.' });
     const hash = await bcrypt.hash(password, 10);
     // This visitor already counts as a user. Signing up renames that row and gives it a password;

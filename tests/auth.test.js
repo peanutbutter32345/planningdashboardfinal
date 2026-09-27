@@ -227,3 +227,35 @@ test('adding a password marks the name as theirs and keeps the address they arri
   assert.equal(row.last_ip, '198.51.100.81');
   assert.equal(await findUser('Kestrel 7781'), undefined, 'and it is the same row, not a second one');
 });
+
+// Adding a password to the name you are already using is the ordinary path from a name-only
+// account to a full one, and it was refused by the account's own row: "that username is already
+// taken", taken by you. Anyone setting ADMIN_USERNAMES to the name they already use hit it.
+test('you can add a password to the name you are already using', async () => {
+  const guestId = uuid(11);
+  await call('/api/guest', { method: 'POST', body: { guestId, username: 'claimsown', namePicked: true }, ip: '198.51.100.90' });
+  const res = await json(await call('/api/register', { method: 'POST',
+    body: { username: 'claimsown', password: 'password123', guestId }, ip: '198.51.100.90' }));
+  assert.equal(res.status, 200, 'your own row must not block you');
+  assert.equal(res.body.username, 'claimsown');
+  const rows = (await adminUsers()).filter(u => u.username.toLowerCase() === 'claimsown');
+  assert.equal(rows.length, 1, 'and it stays one row');
+  assert.equal(rows[0].kind, 'account');
+});
+
+test('a name someone else is already using is still refused', async () => {
+  await call('/api/guest', { method: 'POST', body: { guestId: uuid(12), username: 'takenbyother', namePicked: true } });
+  // A different device, with a different guest id, must not be able to take it.
+  const other = await call('/api/register', { method: 'POST',
+    body: { username: 'takenbyother', password: 'password123', guestId: uuid(13) } });
+  assert.equal(other.status, 409);
+  // Nor an anonymous caller that supplies no guest id at all.
+  assert.equal((await call('/api/register', { method: 'POST',
+    body: { username: 'TAKENBYOTHER', password: 'password123' } })).status, 409);
+});
+
+test('a registered name cannot be taken again in any casing', async () => {
+  await call('/api/register', { method: 'POST', body: { username: 'ownersname', password: 'password123' } });
+  for (const attempt of ['ownersname', 'OwnersName', 'OWNERSNAME'])
+    assert.equal((await call('/api/register', { method: 'POST', body: { username: attempt, password: 'attacker123' } })).status, 409, attempt);
+});
