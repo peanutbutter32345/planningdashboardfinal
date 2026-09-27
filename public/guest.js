@@ -1,6 +1,13 @@
 /* Device-only guest persistence; never supplies a server auth token. */
 (function(root){
  const KEY='sbpd_guest_v1';
+ /* Pressing "Explore without setup" should let someone in, not hand them a form. They get a name
+    straight away and everything on the site works under it. The name is a label, not a
+    credential - the profile id below is what identifies the device - so it can be anything, and
+    it is meant to be changed. namePicked records whether a person chose it or we did, which is
+    what the email flow checks before putting a made-up name on a real account. */
+ const NAME_WORDS=['Heron','Otter','Egret','Quail','Finch','Kestrel','Plover','Pelican','Poppy','Cedar','Alder','Willow','Laurel','Juniper','Madrone','Manzanita','Sequoia','Lupine','Sorrel','Bayberry'];
+ const generateUsername=()=>NAME_WORDS[Math.floor(Math.random()*NAME_WORDS.length)]+' '+(Math.floor(Math.random()*9000)+1000);
  const encode=bytes=>Array.from(bytes,x=>x.toString(16).padStart(2,'0')).join('');
  async function verifier(password,salt){const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);return encode(new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:new TextEncoder().encode(salt),iterations:210000},key,256)));}
  class GuestStore{
@@ -13,14 +20,31 @@
   lock(){try{this.session.removeItem(KEY);}catch{}}
   async unlock(password){if(this.data.passwordHash&&await verifier(password,this.data.passwordSalt)!==this.data.passwordHash)throw Error('That guest password is incorrect.');this.session.setItem(KEY,this.data.id);}
   async update(username,password,currentPassword=''){
-   if(!this.unlocked)throw Error('Unlock this guest profile first.');
+   if(!this.unlocked)throw Error('Unlock this account on this device first.');
    if(!/^[a-zA-Z0-9_ ]{3,30}$/.test(username))throw Error('Use 3–30 letters, numbers, spaces or underscores.');
    if(password){if(password.length<8||password.length>200)throw Error('Use a password between 8 and 200 characters.');if(this.data.passwordHash)await this.unlock(currentPassword);const salt=encode(crypto.getRandomValues(new Uint8Array(16)));this.data.passwordHash=await verifier(password,salt);this.data.passwordSalt=salt;this.session.setItem(KEY,this.data.id);}
-   this.data.username=username;this.save();
+   this.data.username=username;this.data.namePicked=true;this.save();
+  }
+  /* Called when someone explores without filling anything in. A device that already has a name
+     keeps it, including one typed long before this existed. */
+  ensureUsername(){
+   if(!this.data.username){this.data.username=generateUsername();this.data.namePicked=false;this.save();}
+   return this.data.username;
+  }
+  /* A name we invented is fine for reading the site under. It is not fine on an account that
+     sends email to a real address, so the upgrade asks for one they chose. */
+  get nameWasGenerated(){return this.data.namePicked===false;}
+  /* Anything that sends email needs an account with a password behind it, and a name the person
+     chose - "Heron 1100" should not be what arrives in someone's inbox. Say which of the two is
+     missing rather than the same sentence for both. */
+  emailBlocker(){
+   return this.nameWasGenerated
+    ? 'Email needs a password, and a name you picked rather than the one we gave you. Both are on the Account page, and your saved items come with you.'
+    : 'Email needs a password on your account. Add one on the Account page and your saved items come with you.';
   }
   handles(path){return /^\/api\/(stars(?:\/|$)|account\/preferences$|timeline$|reminders(?:\/|$)|chat\/history(?:\/|$))/.test(path);}
   async request(path,options={},cities=[]){
-   if(!this.unlocked)throw Error('Unlock your guest profile in Account to access saved items.');
+   if(!this.unlocked)throw Error('Unlock your account in the Account page to reach your saved items.');
    const method=options.method||'GET',b=options.body?JSON.parse(options.body):{},d=this.data;
    let result={ok:true};
    if(path.startsWith('/api/stars')){
@@ -29,23 +53,23 @@
     if(method==='DELETE'){const [type,id]=path.slice('/api/stars/'.length).split('/').map(decodeURIComponent);d.stars=d.stars.filter(x=>!(x.item_type===type&&x.item_id===id));}
    }else if(path==='/api/account/preferences'){
     if(method==='GET')return {...d.preferences,cities};
-    if(b.email||b.emailFrequency&&b.emailFrequency!=='off')throw Error('Add a password to your profile to enable email summaries. Your guest profile stays on this device until then.');
+    if(b.email||b.emailFrequency&&b.emailFrequency!=='off')throw Error(this.emailBlocker());
     d.preferences={...d.preferences,...b,email:null,emailFrequency:'off'};
    }else if(path==='/api/timeline'){
     if(method==='GET')return {items:d.timeline};
     if(method==='PUT'){d.timeline=d.timeline.filter(x=>x.item_key!==b.itemKey);d.timeline.push({item_key:b.itemKey,status:b.status,note:b.note});}
-   }else if(path==='/api/reminders/email'){throw Error('Email reminders need a password on your profile. Your reminder is saved on this device either way.');
+   }else if(path==='/api/reminders/email'){throw Error('Email reminders need a password on your account. The reminder is saved on this device either way.');
    }else if(path.startsWith('/api/reminders')){
     if(method==='GET')return {reminders:d.reminders};
     const id=path.split('/').pop();
     if(method==='POST'){const row={id:crypto.randomUUID(),kind:b.kind,ref_id:b.refId,label:b.label,detail:b.detail,url:b.url,city:b.city,in_digest:false,created_at:new Date().toISOString()};d.reminders=d.reminders.filter(x=>!(x.kind===b.kind&&x.ref_id===b.refId));d.reminders.push(row);result={reminder:row};}
     if(method==='DELETE')d.reminders=d.reminders.filter(x=>x.id!==id);
-    if(method==='PATCH')throw Error('Email digest settings need a password on your profile.');
+    if(method==='PATCH')throw Error('Email digest settings need a password on your account.');
    }else if(path.startsWith('/api/chat/history')){
     if(method==='GET')return {history:d.history};
     if(method==='POST'){const row={...b,id:crypto.randomUUID(),created_at:new Date().toISOString()};d.history.unshift(row);result={id:row.id};}
     if(method==='DELETE')d.history=path==='/api/chat/history'?[]:d.history.filter(x=>x.id!==path.split('/').pop());
-   }else throw Error('This needs a password on your profile.');
+   }else throw Error('This needs a password on your account.');
    this.save();if(!this.persistent)throw Error('Browser storage is unavailable. Changes are kept only until this page closes.');return result;
   }
   /* A guest is a user of the site, so the server is told one exists: an id, the name we generated

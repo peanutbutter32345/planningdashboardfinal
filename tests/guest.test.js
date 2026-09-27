@@ -95,3 +95,51 @@ test('a guest profile syncs once, again when it changes, and again a day later',
  g.markSynced(t0);
  assert.equal(new GuestStore(storage,memory()).syncState(t0+60_000).due,false);
 });
+
+// Exploring without setup should let someone in rather than hand them a form. They get a name,
+// and it is a real account from that moment: everything on the site works under it, with no
+// password anywhere until an email address is involved.
+test('exploring without setup names the reader and leaves the name changeable',async()=>{
+ const storage=memory(),g=new GuestStore(storage,memory());
+ assert.equal(g.data.username,'','nothing is assumed before they act');
+ const given=g.ensureUsername();
+ assert.match(given,/^[A-Za-z]+ \d{4}$/);
+ assert.equal(g.nameWasGenerated,true);
+ assert.equal(g.ensureUsername(),given,'a second visit must not rename them');
+ assert.equal(new GuestStore(storage,memory()).data.username,given,'and it survives a reload');
+ await g.update('Maria Lopez');
+ assert.equal(g.nameWasGenerated,false,'choosing a name clears the generated mark');
+ assert.equal(new GuestStore(storage,memory()).nameWasGenerated,false);
+});
+test('a name that was typed long before this existed is never overwritten',async()=>{
+ const storage=memory(),g=new GuestStore(storage,memory());
+ await g.update('Chosen Earlier');
+ delete g.data.namePicked; g.save();                  // a profile saved by an older build
+ const returning=new GuestStore(storage,memory());
+ assert.equal(returning.ensureUsername(),'Chosen Earlier');
+ assert.equal(returning.nameWasGenerated,false,'an unmarked name counts as theirs, not ours');
+});
+test('a name is enough for everything except email',async()=>{
+ const g=new GuestStore(memory(),memory());
+ g.ensureUsername();
+ // The things a reader actually does, none of which may ask for a password.
+ await g.request('/api/stars',post({itemType:'project',itemId:'sv-1',itemData:{}}));
+ assert.equal((await g.request('/api/stars')).stars.length,1);
+ await g.request('/api/timeline',post({itemKey:'k',status:'done',note:''},'PUT'));
+ assert.equal((await g.request('/api/timeline')).items.length,1);
+ await g.request('/api/account/preferences',post({homeCity:'berkeley',categories:['Housing']},'PATCH'));
+ assert.equal((await g.request('/api/account/preferences')).homeCity,'berkeley');
+});
+test('email asks for a password, and for a name we did not invent',async()=>{
+ const g=new GuestStore(memory(),memory());
+ g.ensureUsername();
+ await assert.rejects(
+  ()=>g.request('/api/account/preferences',post({email:'me@example.com',emailFrequency:'biweekly'},'PATCH')),
+  /name you picked/,'a generated name must not end up on a real address');
+ await g.update('Maria Lopez');
+ await assert.rejects(
+  ()=>g.request('/api/account/preferences',post({email:'me@example.com',emailFrequency:'biweekly'},'PATCH')),
+  /password/,'once the name is theirs, only the password is outstanding');
+ const blocker=g.emailBlocker();
+ assert.ok(!/name you picked/.test(blocker),'and the message stops asking for a name they gave');
+});
