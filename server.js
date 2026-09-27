@@ -121,6 +121,14 @@ async function initDb() {
   // Where each person reached the site from. signup_ip is the address they first arrived at and
   // never changes; last_ip and last_user_agent follow them. Kept for the owner's own view of who
   // is using the site and to make repeat registrations from one machine visible.
+  // Whether this person chose their own name or we generated one when they pressed Explore.
+  // Null for anyone who arrived before this was recorded, which is not the same as false - we do
+  // not know, and guessing would put "we picked it" against names people chose themselves.
+  try {
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS name_chosen BOOLEAN;`);
+  } catch (err) {
+    console.error('Name-origin migration failed:', err.message);
+  }
   try {
     await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS signup_ip TEXT;`);
     await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS last_ip TEXT;`);
@@ -260,7 +268,11 @@ app.use(express.static(fileURLToPath(new URL('./public', import.meta.url)), {
     // Records refresh on a schedule. Ten minutes of reuse, then a background revalidation that
     // the reader never waits on.
     if (/\/data\//.test(path)) return res.setHeader('Cache-Control', 'public, max-age=600, stale-while-revalidate=86400');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
+    // The page's own scripts and stylesheets revalidate every time. None of them carry a content
+    // hash, so a plain max-age would let a deploy serve the new HTML - which is never cached -
+    // alongside an hour-old script, and the two would disagree about what exists. Revalidating
+    // costs one conditional request that almost always comes back 304 with no body.
+    res.setHeader('Cache-Control', 'no-cache');
   },
 }));
 
@@ -331,14 +343,15 @@ function clearLoginFailures(keys) { for (const k of keys) loginFailures.delete(k
 // Guest names are a noun and four digits, so two devices can land on the same one. The name is
 // only a label here - the guest_id is the identity - so a clash takes a short suffix rather than
 // rejecting a perfectly real visitor.
-async function insertGuest(guestId, username, homeCity, ip, agent) {
+async function insertGuest(guestId, username, homeCity, ip, agent, nameChosen) {
   for (const candidate of [username, username + '-' + guestId.slice(0, 4), username + '-' + guestId.slice(0, 8)]) {
     try {
       const row = await pool.query(
         `INSERT INTO users (username, password_hash, kind, guest_id, home_city, last_seen_at,
-                            signup_ip, last_ip, last_user_agent)
-         VALUES ($1, NULL, 'guest', $2, $3, now(), $4, $4, $5) RETURNING username`,
-        [candidate, guestId, homeCity || null, ip || null, agent || null]);
+                            signup_ip, last_ip, last_user_agent, name_chosen)
+         VALUES ($1, NULL, 'guest', $2, $3, now(), $4, $4, $5, $6) RETURNING username`,
+        [candidate, guestId, homeCity || null, ip || null, agent || null,
+         typeof nameChosen === 'boolean' ? nameChosen : null]);
       return row.rows[0].username;
     } catch (err) {
       if (err.code !== '23505') throw err;                      // 23505 = unique violation
@@ -353,7 +366,8 @@ async function insertGuest(guestId, username, homeCity, ip, agent) {
 // on guest_id, so a hundred page loads are still one user.
 app.post('/api/guest', async (req, res) => {
   if (!requireDb(res)) return;
-  const { guestId, username, homeCity } = req.body || {};
+  const { guestId, username, homeCity, namePicked } = req.body || {};
+  const nameChosen = typeof namePicked === 'boolean' ? namePicked : null;
   if (!validGuestId(guestId) || !validGuestName(username)) return res.status(400).json({ error: 'Invalid guest profile.' });
   const city = typeof homeCity === 'string' && homeCity.length <= 60 ? homeCity : null;
   try {
@@ -365,14 +379,15 @@ app.post('/api/guest', async (req, res) => {
                           last_ip = COALESCE($4, last_ip),
                           last_user_agent = COALESCE($5, last_user_agent),
                           home_city = COALESCE($2, home_city),
+                          name_chosen = COALESCE($6, name_chosen),
                           username = CASE WHEN kind = 'guest' AND $3 <> username
                                           AND NOT EXISTS (SELECT 1 FROM users u2 WHERE u2.username = $3)
                                      THEN $3 ELSE username END
-         WHERE guest_id = $1`, [guestId, city, username, clientIp(req), clientAgent(req)]);
+         WHERE guest_id = $1`, [guestId, city, username, clientIp(req), clientAgent(req), nameChosen]);
       return res.json({ ok: true, created: false, kind: existing.rows[0].kind });
     }
     if (!guestCreationAllowed(clientIp(req))) return res.status(429).json({ error: 'Too many new profiles from this address.' });
-    const stored = await insertGuest(guestId, username, city, clientIp(req), clientAgent(req));
+    const stored = await insertGuest(guestId, username, city, clientIp(req), clientAgent(req), nameChosen);
     if (!stored) return res.status(500).json({ error: 'Could not record this profile.' });
     communityCache = { at: 0, body: null };   // a new person just arrived; let the count say so
     res.json({ ok: true, created: true, kind: 'guest' });
@@ -401,12 +416,12 @@ app.post('/api/register', async (req, res) => {
     const upgraded = validGuestId(guestId)
       ? await pool.query(`UPDATE users SET username = $1, password_hash = $2, kind = 'account', last_seen_at = now(),
                                  last_ip = COALESCE($4, last_ip), last_user_agent = COALESCE($5, last_user_agent),
-                                 signup_ip = COALESCE(signup_ip, $4)
+                                 signup_ip = COALESCE(signup_ip, $4), name_chosen = true
                           WHERE guest_id = $3 AND kind = 'guest' RETURNING id`, [username, hash, guestId, ip, agent])
       : { rows: [] };
     if (!upgraded.rows.length)
-      await pool.query(`INSERT INTO users (username, password_hash, last_seen_at, signup_ip, last_ip, last_user_agent)
-                        VALUES ($1, $2, now(), $3, $3, $4)`, [username, hash, ip, agent]);
+      await pool.query(`INSERT INTO users (username, password_hash, last_seen_at, signup_ip, last_ip, last_user_agent, name_chosen)
+                        VALUES ($1, $2, now(), $3, $3, $4, true)`, [username, hash, ip, agent]);
     const token = crypto.randomBytes(32).toString('hex');
     await pool.query('INSERT INTO sessions (token, username) VALUES ($1, $2)', [token, username]);
     // A guest turning into an account changes the registered/guest split, and arriving for the
@@ -1377,7 +1392,7 @@ app.get('/api/admin/users', async (req, res) => {
   try {
     const limit = Math.min(parseInt(req.query.limit, 10) || 500, 2000);
     const result = await pool.query(
-      `SELECT username, kind, email, home_city, email_frequency, created_at, last_seen_at,
+      `SELECT username, kind, name_chosen, email, home_city, email_frequency, created_at, last_seen_at,
               signup_ip, last_ip, last_user_agent
        FROM users ORDER BY created_at DESC NULLS LAST LIMIT $1`,
       [limit]

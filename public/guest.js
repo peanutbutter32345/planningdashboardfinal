@@ -76,15 +76,17 @@
      and the place they chose, and nothing else. It is worth one call when the profile is new, when
      the name or city changes, and once a day after that - not on every page load. */
   syncState(now=Date.now()){
-   const d=this.data,payload={guestId:d.id,username:d.username,homeCity:d.preferences?.homeCity||null};
+   const d=this.data,payload={guestId:d.id,username:d.username,homeCity:d.preferences?.homeCity||null,
+    namePicked:d.namePicked===undefined?null:Boolean(d.namePicked)};
    const last=d.serverSync||null;
-   const changed=!last||last.username!==payload.username||last.homeCity!==payload.homeCity;
+   const changed=!last||last.username!==payload.username||last.homeCity!==payload.homeCity
+    ||last.namePicked!==payload.namePicked;
    const stale=!last||!(now-Number(last.at)<24*60*60*1000);
    return {payload,due:changed||stale};
   }
   markSynced(now=Date.now()){
    const {payload}=this.syncState(now);
-   this.data.serverSync={at:now,username:payload.username,homeCity:payload.homeCity};
+   this.data.serverSync={at:now,username:payload.username,homeCity:payload.homeCity,namePicked:payload.namePicked};
    this.save();
   }
  }

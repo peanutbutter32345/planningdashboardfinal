@@ -12810,8 +12810,11 @@ async function renderCommunityCount(){
     try{
       const data=await apiCall('/api/community');
       if(!data.ok||!data.users)return;
-      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'person uses':'people use')+' this dashboard - '
-        +data.registered.toLocaleString()+' with an account, '+data.guests.toLocaleString()+' as guests. Everyone who opens it counts, whether or not they sign up.';
+      // Everyone who opens the site has an account, so there is no "them and the real users" split
+      // to report. What is worth saying is how many have added a password, since that is what
+      // carries an account off one device.
+      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'person uses':'people use')+' this dashboard, '
+        +data.registered.toLocaleString()+' of them with a password. Everyone who opens it counts.';
     }catch{ return; }   // a reader who is not the owner gets a 404 here, and nothing is shown
   }
   el.textContent=communityCountText;
@@ -12834,7 +12837,7 @@ function admBar(rows, total){
 function renderAdminStats(data){
   document.getElementById('adminTiles').innerHTML = [
     acctTile(data.users.toLocaleString(), 'Total users', data.seenLast30Days.toLocaleString()+' seen in the last 30 days'),
-    acctTile(data.registered.toLocaleString(), 'Registered accounts', data.guests.toLocaleString()+' guests'),
+    acctTile(data.registered.toLocaleString(), 'Have a password', data.guests.toLocaleString()+' using a name alone'),
     acctTile(data.withEmail.toLocaleString(), 'With an email on file', data.subscribed.toLocaleString()+' subscribed to a digest'),
     acctTile(data.everEmailed.toLocaleString(), 'Ever emailed', data.signedUpLast7Days.toLocaleString()+' signed up in the last 7 days'),
   ].join('');
@@ -12853,6 +12856,15 @@ async function renderAdminAccess(){
   if(!adminStatsCache || !adminStatsCache.ok) return;
   nav.hidden = false;
   renderAdminStats(adminStatsCache);
+}
+// Everyone here is an account. The only thing worth distinguishing is whether the name beside it
+// is one the person chose or one we handed them when they pressed Explore, which is a note on the
+// name rather than a class of user. Anyone who arrived before this was recorded gets nothing said
+// about them, because we do not know.
+function nameOriginHtml(u){
+  if(u.name_chosen === false) return '<span class="admin-ip-note" title="Generated when they explored without setting up">ours</span>';
+  if(u.name_chosen === true) return '<span class="admin-ip-note" title="They typed this name">theirs</span>';
+  return '';
 }
 // A raw user agent is 150 unreadable characters in a table cell. This reduces it to the two
 // things worth scanning a column for - what they were on, and what they browsed with.
@@ -12876,11 +12888,11 @@ document.getElementById('adminLoadUsers')?.addEventListener('click', async ()=>{
     const repeated = new Set(ips.filter((ip,i)=>ips.indexOf(ip)!==i));
     wrap.innerHTML = '<p class="section-note">'+rows.length.toLocaleString()+' most recent, newest first.'
       + (repeated.size?' '+repeated.size+(repeated.size===1?' address appears':' addresses appear')+' on more than one row, marked below.':'')+'</p>'
-      + '<table class="admin-user-table"><thead><tr><th>Username</th><th>Kind</th><th>Email</th><th>Home city</th><th>Frequency</th><th>Address</th><th>Device</th><th>Joined</th><th>Last seen</th></tr></thead><tbody>'
+      + '<table class="admin-user-table"><thead><tr><th>Name</th><th>Email</th><th>Home city</th><th>Frequency</th><th>Address</th><th>Device</th><th>Joined</th><th>Last seen</th></tr></thead><tbody>'
       + rows.map(u=>{
           const ip = u.last_ip || u.signup_ip || '';
           const moved = u.signup_ip && u.last_ip && u.signup_ip !== u.last_ip;
-          return '<tr><td>'+escapeHtml(u.username||'')+'</td><td>'+escapeHtml(u.kind||'')+'</td><td>'+escapeHtml(u.email||'')+'</td>'
+          return '<tr><td>'+escapeHtml(u.username||'')+nameOriginHtml(u)+'</td><td>'+escapeHtml(u.email||'')+'</td>'
             +'<td>'+escapeHtml(u.home_city||'')+'</td><td>'+escapeHtml(u.email_frequency||'')+'</td>'
             +'<td class="mono">'+(ip?escapeHtml(ip)+(repeated.has(u.last_ip)?' <b title="This address is on more than one row">&#9679;</b>':'')
               +(moved?'<span class="admin-ip-note" title="Signed up from '+escapeHtml(u.signup_ip)+'">moved</span>':'')
