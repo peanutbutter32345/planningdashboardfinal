@@ -1734,7 +1734,7 @@
     <div class="onboard-eyebrow">THE BAY DASHBOARD · WELCOME</div><h2 id="onboardHeading">Make the Bay your own.</h2>
     <p class="sub">Choose a county to explore projects, news and public meetings. Add a city or location whenever you like.</p>
 
-    <div class="onboard-profile" id="onboardGuestProfile"><label for="onboardUsername">Choose a username <em>(required)</em></label><input id="onboardUsername" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Pick a username" required aria-describedby="onboardGuestStatus"><p id="onboardGuestStatus" role="status">3-30 letters, numbers, spaces or underscores. Saved on this device only, no signup needed.</p></div>
+    <div class="onboard-profile" id="onboardGuestProfile"><label for="onboardUsername">What should we call you? <em>(optional)</em></label><input id="onboardUsername" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Leave blank and we will pick one" aria-describedby="onboardGuestStatus"><p id="onboardGuestStatus" role="status">This name is your account. No password and no email needed, and you can change it later.</p></div>
     <div class="onboard-step">
       <label class="onboard-label" for="onboardCounty">1. Choose your county <em>(required)</em></label>
       <select id="onboardCounty" class="onboard-county-select" required><option value="">Select a Bay Area county…</option></select>
@@ -1764,7 +1764,7 @@
 
     <div class="onboard-actions">
       <button class="btn" id="onboardSubmit" type="button">Open my dashboard →</button>
-      <button class="btn secondary" id="onboardExplore" type="button">Explore without setup →</button><p class="onboard-hint">No area selected? Explore starts in Santa Clara County. A username is still required above.</p>
+      <button class="btn secondary" id="onboardExplore" type="button">Explore without setup →</button><p class="onboard-hint">No area selected? Explore starts in Santa Clara County, and we will pick a name for you. You can change it whenever you like.</p>
       <span class="onboard-req" id="onboardReq"></span>
     </div>
   </div>
@@ -2365,14 +2365,14 @@
 
       <div id="accountLoggedOut">
         <h2>Account</h2>
-        <div id="guestUnlock" class="guest-settings" hidden><h3>Unlock your guest profile</h3><form id="guestUnlockForm"><label>Guest password<input id="guestUnlockPassword" type="password" autocomplete="current-password" required></label><button class="btn" type="submit">Unlock</button></form><p id="guestUnlockStatus" role="status"></p></div>
+        <div id="guestUnlock" class="guest-settings" hidden><h3>Unlock your account on this device</h3><form id="guestUnlockForm"><label>Guest password<input id="guestUnlockPassword" type="password" autocomplete="current-password" required></label><button class="btn" type="submit">Unlock</button></form><p id="guestUnlockStatus" role="status"></p></div>
         <button class="btn secondary" id="guestBack" type="button">Back to guest profile</button>
         <div id="accountPromptReason" style="display:none;"></div>
         <!-- A guest needs no password. They are a user of the site like anyone else; the only
              difference is where their saved items live and who picked their name. -->
         <section class="guest-signin" id="guestSignInPanel">
-          <h3>Continue with just your name</h3>
-          <p>No password, no email. You are already signed in on this device as a guest, under the username you chose. You can change it any time.</p>
+          <h3>You are signed in as this name</h3>
+          <p>No password, no email. The name below is your account on this device, and everything on the site works under it. Change it here whenever you like.</p>
           <form id="guestNameForm">
             <label for="guestNameInput">Your name</label>
             <input id="guestNameInput" type="text" autocomplete="nickname" minlength="3" maxlength="30" pattern="[a-zA-Z0-9_ ]+" required>
@@ -2380,9 +2380,9 @@
           </form>
           <div class="auth-hint">3–30 characters: letters, numbers, spaces or underscores.</div>
           <p class="auth-error" id="guestNameStatus" role="status"></p>
-          <p class="guest-signin-note">What you star, plan and pin as a guest is kept in this browser, so it does not follow you to another device and it goes if you clear your browsing data. An account below carries it everywhere and can email you a briefing.</p>
+          <p class="guest-signin-note">What you star, plan and pin is kept in this browser, so it stays on this device and goes if you clear your browsing data. Adding a password below carries all of it to any device you sign in on, and is what lets us email you a briefing.</p>
         </section>
-        <p class="section-note">Create a free account to sync your guest profile’s saved projects, timeline and reminders across devices. Just a username and password; email is optional.</p>
+        <p class="section-note" id="upgradeNote">Adding a password carries your saved projects, timeline and reminders to any device you sign in on. Email is optional even then.</p>
 
         <div class="auth-tabs">
           <button class="auth-tab active" id="authTabLogin" type="button">Log in</button>
@@ -2441,7 +2441,7 @@
         <div class="acct-main">
           <section class="acct-panel" data-panel="overview">
             <h2>Overview</h2>
-            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your guest profile</h3><p>This profile lives on this device only. Your name saves as you type; saved items, timeline and preferences stay in this browser. Clearing browser data removes them. Create an account below to sync across devices and use email summaries.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Update guest password</button></form><p>The password above only locks this device's saved data behind a PIN, so someone else using this browser cannot change it - it does not sync anywhere and it will not enable email. Use "Add a password" below for that: same username, same saved items, just carried by a real account instead of this device.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Add a password</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
+            <p id="accountSyncStatus" role="status"></p><div id="guestSettings" class="guest-settings" hidden><h3>Your account</h3><p>Your name is your account here. Everything on the site works under it, with nothing else to set up. It is kept on this device, so saved items, your timeline and your preferences live in this browser and clearing browser data removes them. Two things need more than a name: reaching your account from another device, and anything sent to you by email. Both need a password, and an email address needs a name you chose rather than the one we picked.</p><form id="guestProfileForm"><label>Display name<input id="guestUsername" minlength="3" maxlength="30" autocomplete="nickname" required></label><label>New guest password (optional)<input id="guestNewPassword" type="password" minlength="8" maxlength="200" autocomplete="new-password"></label><label id="guestCurrentWrap" hidden>Current guest password<input id="guestCurrentPassword" type="password" autocomplete="current-password"></label><button class="btn" type="submit">Update guest password</button></form><p>That password is a lock on this browser, for a shared computer: it stops someone else here opening your saved items. It does not travel anywhere and it does not enable email. "Add a password" below is the one that does, and it carries the same saved items over.</p><div class="guest-actions"><button class="btn secondary" type="button" id="guestCreateAccount">Add a password</button><button class="btn secondary" type="button" id="guestSignIn">Log in to an account</button><button class="btn secondary" type="button" id="guestLock">Lock guest profile</button></div><p id="guestProfileStatus" role="status"></p></div>
             <p class="section-note" id="acctOverviewNote"></p>
             <div class="acct-tiles" id="acctTiles"></div>
             <div class="acct-sec-h">Next hearings in your city</div>
@@ -8036,7 +8036,14 @@ function renderOnboardInterests(){
 
 // A known county is enough; a city, street address and interests are optional.
 function onboardComplete(){
-  return DashboardBrowse.setupValid(onboard,COUNTY_NAMES) && (!isGuest() || !guestProfile.unlocked || /^[a-zA-Z0-9_ ]{3,30}$/.test(document.getElementById('onboardUsername').value.trim()));
+  // A name is no longer something to be gated on: an empty box means we pick one. Only a name
+  // that has been typed and is unusable should hold the button.
+  return DashboardBrowse.setupValid(onboard,COUNTY_NAMES) && usernameBoxAcceptable();
+}
+function usernameBoxAcceptable(){
+  if(!isGuest()||!guestProfile.unlocked)return true;
+  const typed=document.getElementById('onboardUsername').value.trim();
+  return !typed || /^[a-zA-Z0-9_ ]{3,30}$/.test(typed);
 }
 function refreshOnboardGate(){
   const btn = document.getElementById('onboardSubmit');
@@ -8046,12 +8053,12 @@ function refreshOnboardGate(){
   btn.disabled = !ok;
   btn.style.opacity = ok ? '1' : '0.55';
   btn.style.cursor = ok ? 'pointer' : 'not-allowed';
-  const usernameOk = !isGuest() || !guestProfile.unlocked || /^[a-zA-Z0-9_ ]{3,30}$/.test(document.getElementById('onboardUsername').value.trim());
+  const usernameOk = usernameBoxAcceptable();
   if(note){
     note.textContent = ok ? (document.getElementById('onboardAddr').value.trim()
         ? 'Ready. We will centre on that address.'
         : 'Ready to explore '+(onboard.city?CITIES[onboard.city].label:onboard.county+' County')+'. Your choices are remembered on this device.')
-      : (!usernameOk ? 'Choose a username to continue: 3-30 letters, numbers, spaces or underscores.'
+      : (!usernameOk ? 'That name will not work: 3-30 letters, numbers, spaces or underscores. Leave it blank and we will pick one.'
         : 'Choose a county to continue. A city and address are optional.');
   }
 }
@@ -8149,7 +8156,11 @@ function matchTypedAddress(text){
 }
 async function submitOnboard(){
   if(!onboardComplete()){refreshOnboardGate();return;}
-  if(isGuest()&&guestProfile.unlocked && !await saveGuestName(document.getElementById('onboardUsername'),'onboardGuestStatus'))return;
+  if(isGuest()&&guestProfile.unlocked){
+    const typed=document.getElementById('onboardUsername').value.trim();
+    if(typed){ if(!await saveGuestName(document.getElementById('onboardUsername'),'onboardGuestStatus'))return; }
+    else { guestProfile.ensureUsername(); authUsername=guestProfile.data.username; renderAuthNavState(); }
+  }
   const text = document.getElementById('onboardAddr').value.trim();
   if(text && !onboard.userLoc){
     setOnboardBusy(true, 'Looking up that address…');
@@ -8309,7 +8320,13 @@ document.getElementById('onboardAddr').addEventListener('input', ()=>{
 });
 document.getElementById('onboardSubmit').addEventListener('click', submitOnboard);
 document.getElementById('onboardExplore').addEventListener('click',async()=>{
-  if(isGuest()&&guestProfile.unlocked&&!await saveGuestName(document.getElementById('onboardUsername'),'onboardGuestStatus'))return;
+  // The whole point of this button is to skip the form. If they typed a name, keep it; if not,
+  // give them one and let them in. It is on the Account page whenever they want to change it.
+  if(isGuest()&&guestProfile.unlocked){
+    const typed=document.getElementById('onboardUsername').value.trim();
+    if(typed){ if(!await saveGuestName(document.getElementById('onboardUsername'),'onboardGuestStatus'))return; }
+    else { guestProfile.ensureUsername(); authUsername=guestProfile.data.username; renderAuthNavState(); }
+  }
   onboard.county=onboard.county||'Santa Clara';onboard.city=CITIES[onboard.city]?.county===onboard.county?onboard.city:null;onboard.userLoc=null;onboardCityFilter='';document.getElementById('onboardAddr').value='';
   finishOnboard();renderOnboardCityBtns();refreshOnboardGate();document.getElementById('onboardOverlay').style.display='none';showScreen('dashboard');setNavMenu(true);syncGuestProfile();
 });
@@ -12890,6 +12907,20 @@ async function renderAccountPage(){
     const locked=!authToken&&!guestProfile.unlocked;
     document.getElementById('guestSignInPanel').hidden=Boolean(authToken)||locked;
     document.getElementById('guestNameInput').value=guestProfile.data.username||'';
+    // A registered username allows no spaces, so a name we generated ("Heron 1100") cannot
+    // simply be carried over. Offer it with the space closed up rather than leaving the field
+    // blank, and say why the name is changing so it does not look like a mistake.
+    const signup=document.getElementById('signupUsername');
+    const note=document.getElementById('upgradeNote');
+    // A name they chose is worth carrying over. A name we invented is not, and prefilling it
+    // would sit oddly under a note asking them to pick one, so that field starts empty.
+    if(signup&&!authToken&&!signup.value&&!guestProfile.nameWasGenerated){
+      const carried=(guestProfile.data.username||'').replace(/[^a-zA-Z0-9_]/g,'').slice(0,20);
+      if(carried.length>=3)signup.value=carried;
+    }
+    if(note)note.textContent=guestProfile.nameWasGenerated
+      ? 'We picked your current name, so choose one you want here. A password carries your saved projects, timeline and reminders to any device you sign in on, and is what lets us email you.'
+      : 'Adding a password carries your saved projects, timeline and reminders to any device you sign in on. Email is optional even then.';
     if(reasonEl){
       if(window.pendingLoginReason){ reasonEl.textContent = window.pendingLoginReason; reasonEl.style.display='block'; window.pendingLoginReason = null; }
       else { reasonEl.style.display='none'; }
