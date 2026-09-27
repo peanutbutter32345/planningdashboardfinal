@@ -185,3 +185,45 @@ test('a guest id that is not a guest id is refused', async () => {
   for (const guestId of ['', 'short', "' OR 1=1--", 'x'.repeat(200)])
     assert.equal((await call('/api/guest', { method: 'POST', body: { guestId, username: 'Otter 1234' } })).status, 400);
 });
+
+// Everyone who opens the site gets a row with the address and device it came from, whether or not
+// they ever add a password. The only thing separating them is whether the name beside them is one
+// they chose, which is recorded rather than guessed.
+test('a reader who never signs up is still recorded with address and device', async () => {
+  const guestId = uuid(7);
+  await call('/api/guest', { method: 'POST', body: { guestId, username: 'Quail 2760', homeCity: 'berkeley', namePicked: false },
+    ip: '198.51.100.70', agent: IPHONE });
+  const row = await findUser('Quail 2760');
+  assert.equal(row.signup_ip, '198.51.100.70');
+  assert.equal(row.last_ip, '198.51.100.70');
+  assert.match(row.last_user_agent, /iPhone/);
+  assert.equal(row.name_chosen, false, 'we picked this name, and that is recorded');
+});
+
+test('a name the reader typed is marked as theirs', async () => {
+  await call('/api/guest', { method: 'POST', body: { guestId: uuid(8), username: 'Jordan R', homeCity: 'oakland', namePicked: true },
+    ip: '198.51.100.71', agent: IPHONE });
+  assert.equal((await findUser('Jordan R')).name_chosen, true);
+});
+
+test('a reader from before this was recorded is left unknown, not guessed', async () => {
+  // An older build sends no flag. Defaulting to false would put "we picked it" against a name
+  // somebody chose themselves, which is worse than saying nothing.
+  await call('/api/guest', { method: 'POST', body: { guestId: uuid(9), username: 'Older One', homeCity: 'napa' },
+    ip: '198.51.100.72', agent: IPHONE });
+  assert.equal((await findUser('Older One')).name_chosen, null);
+});
+
+test('adding a password marks the name as theirs and keeps the address they arrived at', async () => {
+  const guestId = uuid(10);
+  await call('/api/guest', { method: 'POST', body: { guestId, username: 'Kestrel 7781', namePicked: false },
+    ip: '198.51.100.80', agent: IPHONE });
+  assert.equal((await findUser('Kestrel 7781')).name_chosen, false);
+  await call('/api/register', { method: 'POST', body: { username: 'heronperson', password: 'password123', guestId },
+    ip: '198.51.100.81', agent: IPHONE });
+  const row = await findUser('heronperson');
+  assert.equal(row.name_chosen, true, 'they typed this one');
+  assert.equal(row.signup_ip, '198.51.100.80', 'the address they first arrived at is kept');
+  assert.equal(row.last_ip, '198.51.100.81');
+  assert.equal(await findUser('Kestrel 7781'), undefined, 'and it is the same row, not a second one');
+});
