@@ -3573,11 +3573,11 @@ const SC_DATA = [
   units:1600, bmr:null, applicant:'Hunter/Storm', filed:null, stage:'approved',
   lastDate:null, lastNote:'City of Santa Clara development activity layer lists this project in 3 sections: Approved, Approved, one Completed.', fileNo:null, flag:null},
 {id:'sc-gateway-village-essex-property', addr:'3610 & 3700 El Camino Real', lat:37.35087, lng:-121.99796, cat:'dev', type:'Residential',
-  desc:'Leading edge urban village featuring 476 apartment homes, 108K prime retail, live work units nestled among quixotic landscaping.',
+  desc:'476 apartments with live-work units and about 108,000 sq ft of retail.',
   units:476, bmr:null, applicant:'Essex Property Trust', filed:null, stage:'completed',
   lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Completed. Site area about 12.6 acres.', fileNo:null, flag:null},
 {id:'sc-gateway-village-essex-property-2', addr:'3680 El Camino Real', lat:37.35149, lng:-121.99798, cat:'dev', type:'Residential',
-  desc:'Leading edge urban village featuring 476 apartment homes, 108K prime retail, live work units nestled among quixotic landscaping.',
+  desc:'476 apartments with live-work units and about 108,000 sq ft of retail.',
   units:476, bmr:null, applicant:'Essex Property Trust', filed:null, stage:'approved',
   lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 12.6 acres.', fileNo:null, flag:null},
 {id:'sc-great-america-parkway-tasman', addr:'2901 Tasman Drive', lat:37.40456, lng:-121.979, cat:'dev', type:'Industrial',
@@ -9695,13 +9695,13 @@ function renderTkPanel(list){
     body = (s.image ? '<img class="tk-p-img'+(s.imageFit==='contain'?' tk-p-fit':'')+'" src="'+s.image+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'" />' : '')
       + '<div class="tk-p-meta">'+escapeHtml(s.meta)+(CITIES[s.city]?' · '+CITIES[s.city].label:'')+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
-      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
       + '<a class="btn tk-p-cta" href="'+s.url+'" target="_blank" rel="noopener">Read it at '+domainOf(s.url)+' &#8599;</a>';
   } else if(s.kind === 'figure'){
     body = '<div class="tk-p-meta">'+escapeHtml(s.meta)+'</div>'
       + '<div class="tk-p-big">'+s.big+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
-      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
       + (s.src && s.src.u ? '<a class="tk-p-src" href="'+s.src.u+'" target="_blank" rel="noopener">'+escapeHtml(s.src.l)+' &#8599;</a>'
                           : (s.src ? '<div class="tk-p-src">'+escapeHtml(s.src.l)+'</div>' : ''));
   } else if(s.kind === 'quiz'){
@@ -9714,7 +9714,7 @@ function renderTkPanel(list){
   } else if(s.kind === 'write'){
     body = '<div class="tk-p-meta">'+escapeHtml(s.meta)+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
-      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
       + '<label class="tk-lab" for="tkWriteWhat">What is it about?</label>'
       + '<input id="tkWriteWhat" type="text" placeholder="e.g. the apartments proposed on Oak Road" />'
       + '<label class="tk-lab" for="tkWritePts">Your reasons, one per line</label>'
@@ -9734,7 +9734,7 @@ function renderTkPanel(list){
   } else {
     body = '<div class="tk-p-meta">'+escapeHtml(s.meta||'')+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
-      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
       + (s.url ? '<a class="btn tk-p-cta" href="'+s.url+'" target="_blank" rel="noopener">'+(s.cta||'Open')+' &#8599;</a>' : '')
       + boardActionsHtml(tkProfile.city || acctCity(), s.title, s.meta||'', s.url||'');
   }
@@ -9861,7 +9861,10 @@ function buildBankIndex(){
   // News.
   NEWS_ARTICLES.forEach(a=>{
     out.push({ type:'news', city:a.city, title:a.title,
-      sub:a.source+' · '+fmtDate(a.date), body:a.snippet+' '+a.topic, url:a.url, date:a.date });
+      // The publisher belongs in the searchable text in its own right. It used to be reachable
+      // only because every snippet began "Reporting from <publisher>", so dropping that sentence
+      // would otherwise have made publishers unsearchable.
+      sub:a.source+' · '+fmtDate(a.date), body:[a.snippet,a.topic,a.source].filter(Boolean).join(' '), url:a.url, date:a.date });
   });
 
   // Official documents and tools.
@@ -10846,7 +10849,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/santa-clara-county-housing-gets-approved-but-not-built/' },
   { topic:'transportation', city:'sunnyvale', title:'Silicon Valley cities work with transit agency on safer route to school', source:'San José Spotlight', date:'2024-04-10',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/04/09160800/PXL_20240409_194336345.MP_-1200x630.jpg',
-    snippet:'A partnership between multiple cities and a Silicon Valley transit agency is going to construct a long-needed safer route for students biking and walking to school. The Homestead Safe Routes to School project aims to make traveling to school easier for students attending Cupertino Middle School, Homestead High School and West Valley Elementary School by...',
+    snippet:'A partnership between multiple cities and a Silicon Valley transit agency is going to construct a long-needed safer route for students biking and walking to school.',
     url:'https://sanjosespotlight.com/silicon-valley-cities-work-with-transit-agency-on-safer-route-to-school/' },
   { topic:'transportation', city:'cupertino', title:'Silicon Valley cities get funding for ride-share service', source:'San José Spotlight', date:'2024-11-05',
     image:'https://sanjosespotlight.com/wp-content/uploads/2024/03/SV-Hopper-1-1200x630.png',
@@ -10894,7 +10897,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/mountain-view-approves-four-story-condo-development/' },
   { topic:'housing', city:'mountainview', title:'Mountain View approves 8-story affordable housing development', source:'San José Spotlight', date:'2024-12-19',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/12/19150736/Screen-Shot-2024-12-19-at-3.06.45-PM.png',
-    snippet:'Making some tradeoffs to get more homes built, Mountain View backed an affordable housing development that will support lower-income residents, but will have very few parking spaces for them. CRP Affordable Housing is proposing to build an eight-story apartment complex at 334 San Antonio Road, replacing a Valero gas station and auto repair shop. The City Council...',
+    snippet:'Making some tradeoffs to get more homes built, Mountain View backed an affordable housing development that will support lower-income residents, but will have very few parking spaces for them. CRP Affordable Housing is proposing to build an eight-story apartment complex at 334 San Antonio Road, replacing a Valero gas station and auto repair shop.',
     url:'https://sanjosespotlight.com/mountain-view-approves-8-story-affordable-housing-development/' },
   { topic:'housing', city:'mountainview', title:'6-story housing approved to replace Mountain View’s historic Chase Bank', source:'San José Spotlight', date:'2025-11-24',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/11/24105134/Screenshot-2025-11-18-212327-scaled-1-1200x630.jpg',
@@ -10910,11 +10913,11 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/mountain-view-backs-plan-for-more-housing-south-of-el-camino-real/' },
   { topic:'housing', city:'mountainview', title:'Mountain View approves 8-story condos after parkland fee dispute', source:'San José Spotlight', date:'2026-05-04',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/02165756/Mountain-View-Castor-1200x630.png',
-    snippet:'A developer’s plan to build an eight-story condominium complex at a prominent gateway to downtown Mountain View got the greenlight Tuesday evening after a legal dispute over parkland fees threatened to derail the project earlier this year. In a split 4-2 vote, the City Council approved a 140-unit condominium project with nearly 10,000 square feet of ground floor retail...',
+    snippet:'A developer’s plan to build an eight-story condominium complex at a prominent gateway to downtown Mountain View got the greenlight Tuesday evening after a legal dispute over parkland fees threatened to derail the project earlier this year.',
     url:'https://sanjosespotlight.com/mountain-view-approves-8-story-condos-after-parkland-fee-dispute/' },
   { topic:'housing', city:'santaclara', title:'How Santa Clara County divvied up its housing bond dollars', source:'San José Spotlight', date:'2024-12-30',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/09/19101033/IMG_7371-1200x630.jpg',
-    snippet:'A $950 million affordable housing bond has helped build thousands of affordable homes across Santa Clara County, though its efforts have focused on some parts of the region more than others. Measure A, passed by voters in 2016, has helped fund the construction of 5,135 new homes and smashed the county’s goal of 4,800 in...',
+    snippet:'A $950 million affordable housing bond has helped build thousands of affordable homes across Santa Clara County, though its efforts have focused on some parts of the region more than others.',
     url:'https://sanjosespotlight.com/how-santa-clara-county-divvied-up-its-housing-bond-dollars/' },
   { topic:'housing', city:'cupertino', title:'Views of SB 9 vary among Silicon Valley cities', source:'San José Spotlight', date:'2022-01-24',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2019/12/19203519/Screenshot-2019-12-06-at-6.25.45-PM-1-1200x630.jpg',
@@ -10954,7 +10957,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/campbell-council-closes-housing-development-loophole/' },
   { topic:'developments', city:'campbell', title:'Campbell office park could flip into large housing development', source:'San José Spotlight', date:'2025-02-06',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/01/30160607/PXL_20250130_182826457-1200x630.jpg',
-    snippet:'Campbell’s Technology Parkway could become home to one of the city’s largest developments in recent years. The Campbell Planning Commission initiated the community feedback process Jan. 28 for a proposed 290-home development located between 635 and 695 Campbell Technology Parkway. Campbell-based Bay West Development submitted the site’s plans in 2023, including 27 single-family homes and...',
+    snippet:'Campbell’s Technology Parkway could become home to one of the city’s largest developments in recent years. The Campbell Planning Commission initiated the community feedback process Jan. 28 for a proposed 290-home development located between 635 and 695 Campbell Technology Parkway.',
     url:'https://sanjosespotlight.com/campbell-office-park-to-flip-into-large-housing-development/' },
   { topic:'housing', city:'paloalto', title:'Palo Alto City Council approves 8-story housing complex', source:'San José Spotlight', date:'2026-08-18',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/08/18095052/Palo-Alto-8-story-dev-rendering-Embarcadero-1200x630.webp',
@@ -10970,11 +10973,11 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/palo-alto-leaders-approve-183-apartment-complex/' },
   { topic:'housing', city:'paloalto', title:'Palo Alto approves 368-apartment complex on El Camino Real', source:'San José Spotlight', date:'2025-07-25',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/23162028/Screen-Shot-2025-07-23-at-4.19.57-PM.png',
-    snippet:'One of Palo Alto’s largest and most ambitious housing projects, a 368-apartment complex proposed for the former site of The Fish Market on El Camino Real, has received the green light from the city, clearing the way for construction to begin. The proposal from Acclaim Companies for 3150 El Camino Real exemplifies more than any...',
+    snippet:'One of Palo Alto’s largest and most ambitious housing projects, a 368-apartment complex proposed for the former site of The Fish Market on El Camino Real, has received the green light from the city, clearing the way for construction to begin.',
     url:'https://sanjosespotlight.com/palo-alto-approves-368-apartment-complex-on-el-camino-real/' },
   { topic:'developments', city:'paloalto', title:'Palo Alto downtown aims to raise heights, spur residential growth', source:'San José Spotlight', date:'2025-07-28',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/28104727/PA_DOWNTOWN_Mar2025_WEB_16-1200x630.jpg',
-    snippet:'As Palo Alto leaders forge a new strategy for increasing housing in the downtown neighborhood, one edge of the 90-acre planning area is emerging as a promising site for a future residential boom. Downtown has seen virtually no residential growth over the past decade, even as other areas have experienced an influx of proposals. The...',
+    snippet:'As Palo Alto leaders forge a new strategy for increasing housing in the downtown neighborhood, one edge of the 90-acre planning area is emerging as a promising site for a future residential boom. Downtown has seen virtually no residential growth over the past decade, even as other areas have experienced an influx of proposals.',
     url:'https://sanjosespotlight.com/palo-alto-downtown-aims-to-raise-heights-spur-residential-growth/' },
   { topic:'housing', city:'paloalto', title:'Palo Alto seeks \'pro-housing\' designation after resisting growth', source:'San José Spotlight', date:'2026-05-29',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/29122515/Palo-Alto-Embarcadero-1200x630.webp',
@@ -10990,7 +10993,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/palo-alto-breaks-ground-on-large-housing-project-at-former-fish-market-site/' },
   { topic:'developments', city:'paloalto', title:'Palo Alto Town & Country Village looks to construct apartment buildings', source:'San José Spotlight', date:'2025-11-19',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/11/17094907/TownCountry3-1200x630.jpg',
-    snippet:'After fiercely opposing a recently approved development with 10 condominiums on an adjacent lot, the owners of Town & Country Village are now looking to build a pair of seven-story apartment buildings on a parking lot next to the shopping center. Real estate investor Ellis Partners, which bought the property in 2004, filed a pre-application...',
+    snippet:'After fiercely opposing a recently approved development with 10 condominiums on an adjacent lot, the owners of Town & Country Village are now looking to build a pair of seven-story apartment buildings on a parking lot next to the shopping center.',
     url:'https://sanjosespotlight.com/palo-alto-town-country-village-looks-to-construct-apartment-buildings/' },
   { topic:'developments', city:'paloalto', title:'Preliminary Permits For 4146 El Camino Real, Palo Alto', source:'SF YIMBY', date:'2026-09-03',
     image:'https://sfyimby.com/wp-content/uploads/2026/09/4146-El-Camino-Real-front-elevation-illustration-by-SDG-Architects.jpg',
@@ -11190,7 +11193,7 @@ const NEWS_ARTICLES = [
     url:'https://milpitasbeat.com/2-adults-and-2-children-found-dead-at-turing-apartment-in-milpitas/' },
   { topic:'developments', city:'morganhill', title:'SB330 Filed for Residences at 600 West Edmundson Avenue, Morgan Hill', source:'SF YIMBY', date:'2024-12-01',
     image:'https://sfyimby.com/wp-content/uploads/2024/04/600-West-Edmundson-Avenue-farm-style-home-image-by-Bassenian-Lagoni-Architecture-Planning.jpg',
-    snippet:'A preliminary application has been filed seeking the approval of a new residential project proposed for development at 600 West Edmundson Avenue in Morgan Hill, Santa Clara County. The project proposal includes the development of...',
+    snippet:'A preliminary application has been filed seeking the approval of a new residential project proposed for development at 600 West Edmundson Avenue in Morgan Hill, Santa Clara County.',
     url:'https://sfyimby.com/2024/12/sb330-filed-for-residences-at-600-west-edmundson-avenue-morgan-hill.html' },
   { topic:'housing', city:'morganhill', title:'Housing options expand for ag sector', source:'Morgan Hill Times', date:'2024-11-30',
     image:'https://morganhilltimes.com/wp-content/uploads/sites/18/2024/11/RoyalOaks_GrandOpening.jpg',
@@ -11354,7 +11357,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2023/09/construction-tops-out-for-belmont-village-senior-living-san-ramon.html' },
   { topic:'developments', city:'belmont', title:'Office-Research Project Planned At 2 Davis Drive, Belmont, San Mateo County', source:'SF YIMBY', date:'2023-08-28',
     image:'https://sfyimby.com/wp-content/uploads/2023/08/2-Davis-Drive.jpg',
-    snippet:'A new mixed-use project has been proposed for development at 2 Davis Drive in Belmont, San Mateo County. The project proposal includes the development of a four-story mixed-use building offering spaces for office and research…',
+    snippet:'A new mixed-use project has been proposed for development at 2 Davis Drive in Belmont, San Mateo County.',
     url:'https://sfyimby.com/2023/08/office-research-project-planned-at-2-davis-drive-belmont-san-mateo-county.html' },
   { topic:'developments', city:'brisbane', title:'Brisbane’s award-winning Little Green Cyclo hosts weekend pop-ups and introduces new Vietnamese coffee flavors', source:'The Almanac', date:'2025-05-27',
     image:'https://www.almanacnews.com/wp-content/uploads/2025/05/QM1-scaled-1.jpg',
@@ -11394,7 +11397,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2024/08/topping-out-for-1766-el-camino-real-burlingame.html' },
   { topic:'housing', city:'burlingame', title:'Concrete Rising for Affordable Housing in Burlingame', source:'SF YIMBY', date:'2024-08-30',
     image:'https://sfyimby.com/wp-content/uploads/2023/02/Eucalyptus-Grove-at-1875-California-Drive-rendering-by-Studio-T-Square.jpg',
-    snippet:'Construction is moving quickly for Eucalyptus Grove, the growing affordable housing complex at 1875 California Street in Burlingame, San Mateo County. Concrete is already surpassing the third floor on the future eight-story building overlooking the…',
+    snippet:'Construction is moving quickly for Eucalyptus Grove, the growing affordable housing complex at 1875 California Street in Burlingame, San Mateo County.',
     url:'https://sfyimby.com/2024/08/concrete-rising-for-affordable-housing-in-burlingame.html' },
   { topic:'transportation', city:'burlingame', title:'Meeting Today for 1499 Old Bayshore Highway, Burlingame', source:'SF YIMBY', date:'2024-04-08',
     image:'https://sfyimby.com/wp-content/uploads/2024/04/1499-Old-Bayshore-Highway-aerial-view-rendering-by-DGA.jpg',
@@ -11618,7 +11621,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2026/06/updated-plans-for-laurel-landing-menlo-park.html' },
   { topic:'developments', city:'menlopark', title:'Significantly Modified Masterplan Revealed For Parkline, Menlo Park', source:'SF YIMBY', date:'2026-06-25',
     image:'https://sfyimby.com/wp-content/uploads/2026/06/Parkline-offices-rendering-by-SOM.jpg',
-    snippet:'Updated plans have been filed for the proposed redevelopment of the former SRI campus around 333 Ravenswood Avenue in Menlo Park, San Mateo County. The modified master plan significantly reduces office capacity and moderately increases…',
+    snippet:'Updated plans have been filed for the proposed redevelopment of the former SRI campus around 333 Ravenswood Avenue in Menlo Park, San Mateo County.',
     url:'https://sfyimby.com/2026/06/significantly-modified-masterplan-revealed-for-parkline-menlo-park.html' },
   { topic:'housing', city:'menlopark', title:'Updated Plans Filed For USGS Campus Redevelopment, Menlo Park', source:'SF YIMBY', date:'2026-06-19',
     image:'https://sfyimby.com/wp-content/uploads/2026/06/345-Middlefield-Road-pedestrian-view-from-Redwood-Meadow-rendering-by-Gensler-scaled.jpg',
@@ -11786,7 +11789,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2023/04/shop-designed-youtube-hq-construction-underway-in-san-bruno-san-mateo-county.html' },
   { topic:'transportation', city:'sanbruno', title:'New Affordable Housing Community Inaugurated At 3300 College Road, San Bruno', source:'SF YIMBY', date:'2023-02-07',
     image:'https://sfyimby.com/wp-content/uploads/2023/02/3300-College-Road.jpg',
-    snippet:'A new affordable housing community has been opened at 3300 College Road in San Bruno. The project proposal includes the construction of a three-story building offering affordable units, amenities, and onsite parking. In partnership with…',
+    snippet:'A new affordable housing community has been opened at 3300 College Road in San Bruno. The project proposal includes the construction of a three-story building offering affordable units, amenities, and onsite parking.',
     url:'https://sfyimby.com/2023/02/new-affordable-housing-community-inaugurated-at-3300-college-road-san-bruno.html' },
   { topic:'transportation', city:'sanbruno', title:'Meeting Today for Tanforan Mall Redevelopment Project in San Bruno', source:'SF YIMBY', date:'2022-10-25',
     image:'https://sfyimby.com/wp-content/uploads/2022/10/Tanforan-Mall-Redevelopment-as-seen-from-the-San-Bruno-BART-entrance-rendering-by-Gensler.jpg',
@@ -12343,8 +12346,11 @@ function acctNewsCards(list, emptyMsg){
     return '<a class="news-card" href="'+a.url+'" target="_blank" rel="noopener">'
       + starButtonHtml('news', a.url, starData)
       + '<img src="'+articleImageSrc(a, usedImgs)+'" data-article-img loading="lazy" alt="" onerror="imgFallback(this,\''+a.city+'\')" />'
-      + '<div class="news-body"><div class="news-meta">'+a.source+' - '+(CITIES[a.city]?CITIES[a.city].label:'Regional')+'</div>'
-      + '<h4>'+a.title+'</h4><p>'+a.snippet+'</p>'
+      + '<div class="news-body"><div class="news-meta">'+escapeHtml(a.source)+' - '+escapeHtml(CITIES[a.city]?CITIES[a.city].label:'Regional')+'</div>'
+      // Headlines and summaries arrive from publisher feeds, so they are escaped like any other
+      // outside text. Most headlines have no summary, and an empty <p> left a gap under the
+      // title that read as a missing sentence.
+      + '<h4>'+escapeHtml(a.title)+'</h4>'+(a.snippet?'<p>'+escapeHtml(a.snippet)+'</p>':'')
       + '<div class="news-date">'+fmtDate(a.date)+'</div></div></a>';
   }).join('');
 }

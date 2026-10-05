@@ -148,7 +148,7 @@ export const NEWS_ARTICLES = [
     "source": "San José Spotlight",
     "date": "2024-04-10",
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/04/09160800/PXL_20240409_194336345.MP_-1200x630.jpg",
-    "snippet": "A partnership between multiple cities and a Silicon Valley transit agency is going to construct a long-needed safer route for students biking and walking to school. The Homestead Safe Routes to School project aims to make traveling to school easier for students attending Cupertino Middle School, Homestead High School and West Valley Elementary School by...",
+    "snippet": "A partnership between multiple cities and a Silicon Valley transit agency is going to construct a long-needed safer route for students biking and walking to school.",
     "url": "https://sanjosespotlight.com/silicon-valley-cities-work-with-transit-agency-on-safer-route-to-school/"
   },
   {
@@ -268,7 +268,7 @@ export const NEWS_ARTICLES = [
     "source": "San José Spotlight",
     "date": "2024-12-19",
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/12/19150736/Screen-Shot-2024-12-19-at-3.06.45-PM.png",
-    "snippet": "Making some tradeoffs to get more homes built, Mountain View backed an affordable housing development that will support lower-income residents, but will have very few parking spaces for them. CRP Affordable Housing is proposing to build an eight-story apartment complex at 334 San Antonio Road, replacing a Valero gas station and auto repair shop. The City Council...",
+    "snippet": "Making some tradeoffs to get more homes built, Mountain View backed an affordable housing development that will support lower-income residents, but will have very few parking spaces for them. CRP Affordable Housing is proposing to build an eight-story apartment complex at 334 San Antonio Road, replacing a Valero gas station and auto repair shop.",
     "url": "https://sanjosespotlight.com/mountain-view-approves-8-story-affordable-housing-development/"
   },
   {
@@ -308,7 +308,7 @@ export const NEWS_ARTICLES = [
     "source": "San José Spotlight",
     "date": "2026-05-04",
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/02165756/Mountain-View-Castor-1200x630.png",
-    "snippet": "A developer’s plan to build an eight-story condominium complex at a prominent gateway to downtown Mountain View got the greenlight Tuesday evening after a legal dispute over parkland fees threatened to derail the project earlier this year. In a split 4-2 vote, the City Council approved a 140-unit condominium project with nearly 10,000 square feet of ground floor retail...",
+    "snippet": "A developer’s plan to build an eight-story condominium complex at a prominent gateway to downtown Mountain View got the greenlight Tuesday evening after a legal dispute over parkland fees threatened to derail the project earlier this year.",
     "url": "https://sanjosespotlight.com/mountain-view-approves-8-story-condos-after-parkland-fee-dispute/"
   },
   {
@@ -318,7 +318,7 @@ export const NEWS_ARTICLES = [
     "source": "San José Spotlight",
     "date": "2024-12-30",
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/09/19101033/IMG_7371-1200x630.jpg",
-    "snippet": "A $950 million affordable housing bond has helped build thousands of affordable homes across Santa Clara County, though its efforts have focused on some parts of the region more than others. Measure A, passed by voters in 2016, has helped fund the construction of 5,135 new homes and smashed the county’s goal of 4,800 in...",
+    "snippet": "A $950 million affordable housing bond has helped build thousands of affordable homes across Santa Clara County, though its efforts have focused on some parts of the region more than others.",
     "url": "https://sanjosespotlight.com/how-santa-clara-county-divvied-up-its-housing-bond-dollars/"
   },
   {
@@ -418,7 +418,7 @@ export const NEWS_ARTICLES = [
     "source": "San José Spotlight",
     "date": "2025-02-06",
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/01/30160607/PXL_20250130_182826457-1200x630.jpg",
-    "snippet": "Campbell’s Technology Parkway could become home to one of the city’s largest developments in recent years. The Campbell Planning Commission initiated the community feedback process Jan. 28 for a proposed 290-home development located between 635 and 695 Campbell Technology Parkway. Campbell-based Bay West Development submitted the site’s plans in 2023, including 27 single-family homes and...",
+    "snippet": "Campbell’s Technology Parkway could become home to one of the city’s largest developments in recent years. The Campbell Planning Commission initiated the community feedback process Jan. 28 for a proposed 290-home development located between 635 and 695 Campbell Technology Parkway.",
     "url": "https://sanjosespotlight.com/campbell-office-park-to-flip-into-large-housing-development/"
   },
   {
@@ -458,7 +458,7 @@ export const NEWS_ARTICLES = [
     "source": "San José Spotlight",
     "date": "2025-07-25",
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/23162028/Screen-Shot-2025-07-23-at-4.19.57-PM.png",
-    "snippet": "One of Palo Alto’s largest and most ambitious housing projects, a 368-apartment complex proposed for the former site of The Fish Market on El Camino Real, has received the green light from the city, clearing the way for construction to begin. The proposal from Acclaim Companies for 3150 El Camino Real exemplifies more than any...",
+    "snippet": "One of Palo Alto’s largest and most ambitious housing projects, a 368-apartment complex proposed for the former site of The Fish Market on El Camino Real, has received the green light from the city, clearing the way for construction to begin.",
     "url": "https://sanjosespotlight.com/palo-alto-approves-368-apartment-complex-on-el-camino-real/"
   },
   {
@@ -468,7 +468,7 @@ export const NEWS_ARTICLES = [
     "source": "San José Spotlight",
     "date": "2025-07-28",
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/28104727/PA_DOWNTOWN_Mar2025_WEB_16-1200x630.jpg",
-    "snippet": "As Palo Alto leaders forge a new strategy for increasing housing in the downtown neighborhood, one edge of the 90-acre planning area is emerging as a promising site for a future residential boom. Downtown has seen virtually no residential growth over the past decade, even as other areas have experienced an influx of proposals. The...",
+    "snippet": "As Palo Alto leaders forge a new strategy for increasing housing in the downtown neighborhood, one edge of the 90-acre planning area is emerging as a promising site for a future residential boom. Downtown has seen virtually no residential growth over the past decade, even as other areas have experienced an influx of proposals.",
     "url": "https://sanjosespotlight.com/palo-alto-downtown-aims-to-raise-heights-spur-residential-growth/"
   },
   {
@@ -508,7 +508,7 @@ export const NEWS_ARTICLES = [
     "source": "San José Spotlight",
     "date": "2025-11-19",
     "image": "https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/11/17094907/TownCountry3-1200x630.jpg",
-    "snippet": "After fiercely opposing a recently approved development with 10 condominiums on an adjacent lot, the owners of Town & Country Village are now looking to build a pair of seven-story apartment buildings on a parking lot next to the shopping center. Real estate investor Ellis Partners, which bought the property in 2004, filed a pre-application...",
+    "snippet": "After fiercely opposing a recently approved development with 10 condominiums on an adjacent lot, the owners of Town & Country Village are now looking to build a pair of seven-story apartment buildings on a parking lot next to the shopping center.",
     "url": "https://sanjosespotlight.com/palo-alto-town-country-village-looks-to-construct-apartment-buildings/"
   },
 
@@ -715,7 +715,7 @@ export const NEWS_ARTICLES = [
     url:'https://milpitasbeat.com/2-adults-and-2-children-found-dead-at-turing-apartment-in-milpitas/' },
   { topic:'developments', city:'morganhill', title:'SB330 Filed for Residences at 600 West Edmundson Avenue, Morgan Hill', source:'SF YIMBY', date:'2024-12-01',
     image:'https://sfyimby.com/wp-content/uploads/2024/04/600-West-Edmundson-Avenue-farm-style-home-image-by-Bassenian-Lagoni-Architecture-Planning.jpg',
-    snippet:'A preliminary application has been filed seeking the approval of a new residential project proposed for development at 600 West Edmundson Avenue in Morgan Hill, Santa Clara County. The project proposal includes the development of...',
+    snippet:'A preliminary application has been filed seeking the approval of a new residential project proposed for development at 600 West Edmundson Avenue in Morgan Hill, Santa Clara County.',
     url:'https://sfyimby.com/2024/12/sb330-filed-for-residences-at-600-west-edmundson-avenue-morgan-hill.html' },
   { topic:'housing', city:'morganhill', title:'Housing options expand for ag sector', source:'Morgan Hill Times', date:'2024-11-30',
     image:'https://morganhilltimes.com/wp-content/uploads/sites/18/2024/11/RoyalOaks_GrandOpening.jpg',
@@ -968,7 +968,7 @@ export const NEWS_ARTICLES = [
     "source": "SF YIMBY",
     "date": "2023-08-28",
     "image": "https://sfyimby.com/wp-content/uploads/2023/08/2-Davis-Drive.jpg",
-    "snippet": "A new mixed-use project has been proposed for development at 2 Davis Drive in Belmont, San Mateo County. The project proposal includes the development of a four-story mixed-use building offering spaces for office and research…",
+    "snippet": "A new mixed-use project has been proposed for development at 2 Davis Drive in Belmont, San Mateo County.",
     "url": "https://sfyimby.com/2023/08/office-research-project-planned-at-2-davis-drive-belmont-san-mateo-county.html"
   },
   {
@@ -1068,7 +1068,7 @@ export const NEWS_ARTICLES = [
     "source": "SF YIMBY",
     "date": "2024-08-30",
     "image": "https://sfyimby.com/wp-content/uploads/2023/02/Eucalyptus-Grove-at-1875-California-Drive-rendering-by-Studio-T-Square.jpg",
-    "snippet": "Construction is moving quickly for Eucalyptus Grove, the growing affordable housing complex at 1875 California Street in Burlingame, San Mateo County. Concrete is already surpassing the third floor on the future eight-story building overlooking the…",
+    "snippet": "Construction is moving quickly for Eucalyptus Grove, the growing affordable housing complex at 1875 California Street in Burlingame, San Mateo County.",
     "url": "https://sfyimby.com/2024/08/concrete-rising-for-affordable-housing-in-burlingame.html"
   },
   {
@@ -1628,7 +1628,7 @@ export const NEWS_ARTICLES = [
     "source": "SF YIMBY",
     "date": "2026-06-25",
     "image": "https://sfyimby.com/wp-content/uploads/2026/06/Parkline-offices-rendering-by-SOM.jpg",
-    "snippet": "Updated plans have been filed for the proposed redevelopment of the former SRI campus around 333 Ravenswood Avenue in Menlo Park, San Mateo County. The modified master plan significantly reduces office capacity and moderately increases…",
+    "snippet": "Updated plans have been filed for the proposed redevelopment of the former SRI campus around 333 Ravenswood Avenue in Menlo Park, San Mateo County.",
     "url": "https://sfyimby.com/2026/06/significantly-modified-masterplan-revealed-for-parkline-menlo-park.html"
   },
   {
@@ -2048,7 +2048,7 @@ export const NEWS_ARTICLES = [
     "source": "SF YIMBY",
     "date": "2023-02-07",
     "image": "https://sfyimby.com/wp-content/uploads/2023/02/3300-College-Road.jpg",
-    "snippet": "A new affordable housing community has been opened at 3300 College Road in San Bruno. The project proposal includes the construction of a three-story building offering affordable units, amenities, and onsite parking. In partnership with…",
+    "snippet": "A new affordable housing community has been opened at 3300 College Road in San Bruno. The project proposal includes the construction of a three-story building offering affordable units, amenities, and onsite parking.",
     "url": "https://sfyimby.com/2023/02/new-affordable-housing-community-inaugurated-at-3300-college-road-san-bruno.html"
   },
   {
