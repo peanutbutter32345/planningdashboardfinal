@@ -147,6 +147,11 @@
   .gate-links{margin-top:10px; font-size:11.5px; color:var(--text-soft);}
   .gate-note{margin-top:12px; font-size:11px; color:var(--text-soft); border-top:1px solid var(--rule); padding-top:10px;}
   .gate-error{margin-top:10px; font-size:12px; color:var(--flag); background:#FBEAE9; border-left:3px solid var(--flag); padding:7px 9px; border-radius:2px; display:none;}
+  /* Shown in place of a map when Leaflet could not be fetched. Centred in the container it
+     replaces, so the panel keeps its shape instead of collapsing or showing an empty box. */
+  .map-unavailable{display:flex; align-items:center; justify-content:center; height:100%; margin:0;
+    padding:18px; box-sizing:border-box; text-align:center; font-size:12.5px; color:var(--text-soft);
+    background:var(--paper-2); border:1px solid var(--paper-3); border-radius:2px;}
   #mapGoogle, #map{height:480px; width:100%; background:var(--paper-2);}
   #mapGoogle{display:none;} #mapLeafletWrap{display:none;}
   .map-provider-tag{position:absolute; z-index:5; margin:10px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700; background:rgba(30,30,30,0.85); color:#fff; padding:4px 9px; border-radius:2px;}
@@ -8658,9 +8663,20 @@ function renderTopicLaws(topicKey, cap){
 
 // ---- A map of just this topic's records, for the city being viewed ----
 const topicMaps = {};
+// Leaflet comes from a CDN, so a blocked or filtered network leaves these containers empty. The
+// overview map and the futures map both say so and point at the records underneath; these three
+// used to return quietly and leave a bordered box with nothing in it. Writes the note once, and
+// only when the container is genuinely empty, so it can never land on top of a drawn map.
+function noteMapUnavailable(el){
+  if(!el || el.dataset.mapNote === 'set' || el.children.length) return;
+  el.dataset.mapNote = 'set';
+  el.innerHTML = '<p class="map-unavailable">Map unavailable. The records it plots are listed below.</p>';
+}
+
 function renderTopicMap(topicKey, cap, categoryKey){
   const el = document.getElementById('topicMap'+cap);
-  if(!el || typeof L === 'undefined') return;
+  if(!el) return;
+  if(typeof L === 'undefined'){ noteMapUnavailable(el); return; }
   if(!el.offsetWidth)return;
   const c = CITIES[currentCity];
   let m = topicMaps[cap];
@@ -9094,7 +9110,8 @@ function yaTogglePin(item){
 
 let yaMapWatch = null;
 function ensureYaMap(){
-  if(yaMap || typeof L === 'undefined') return yaMap;
+  if(yaMap) return yaMap;
+  if(typeof L === 'undefined'){ noteMapUnavailable(document.getElementById('yaMap')); return yaMap; }
   const el = document.getElementById('yaMap');
   if(!el) return null;
   // The screen can still be laid out at zero width when this first runs. Rather than give up
@@ -16133,7 +16150,8 @@ function renderRailCityPicker(){
 let heroMap = null, heroLayer = null;
 function renderHeroMap(){
   const card = document.getElementById('heroMapCard');
-  if(!card || typeof L === 'undefined') return;
+  if(!card) return;
+  if(typeof L === 'undefined'){ noteMapUnavailable(document.getElementById('heroMap')); return; }
   const el = document.getElementById('heroMap');
   if(!el) return;
   // The hero is often not laid out yet on the first pass, and Leaflet cannot size itself into a
@@ -16858,7 +16876,19 @@ new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))ensureOv
 // rather than waiting for a screen change that may never come.
 renderHeroPaper();
 </script>
-<script src="/vendor/leaflet-heat.js"></script>
+<script>
+// The heat plugin extends Leaflet and assumes L is already there, so loading it unconditionally
+// threw "L is not defined" on any network where the Leaflet CDN is blocked, filtered or simply
+// slow - a corporate proxy or a content blocker is enough. Every map in this app already checks
+// for Leaflet and falls back to the records underneath; this script tag was the one thing that
+// did not, and its uncaught error was the first entry in the console. The futures view tests
+// window.L.heatLayer before using it, so arriving a moment later is fine.
+if (window.L) {
+  var heatPlugin = document.createElement('script');
+  heatPlugin.src = '/vendor/leaflet-heat.js';
+  document.head.appendChild(heatPlugin);
+}
+</script>
 <script type="module" src="/futures/app.js"></script>
 <script src="/site-visuals.js"></script>
 </body>
