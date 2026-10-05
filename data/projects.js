@@ -30776,7 +30776,7 @@ export const PROJECTS = [
   },
   {
     "id": "oakland-brooklyn-parcel-n",
-    "addr": "Brooklyn Basin — Parcel N",
+    "addr": "Brooklyn Basin, Parcel N",
     "lat": null,
     "lng": null,
     "cat": "dev",
@@ -34349,7 +34349,7 @@ export const PROJECTS = [
   },
   {
     "id": "newark-lepakshi",
-    "addr": "6717–6825 Thornton Avenue",
+    "addr": "6717-6825 Thornton Avenue",
     "lat": null,
     "lng": null,
     "cat": "dev",
@@ -35791,7 +35791,7 @@ export const PROJECTS = [
   },
   {
     "id": "hayward-city-center",
-    "addr": "City Center Drive — city-owned development site",
+    "addr": "City Center Drive, city-owned development site",
     "lat": null,
     "lng": null,
     "cat": "dev",
@@ -39404,7 +39404,7 @@ export const PROJECTS = [
   },
   {
     "id": "millvalley-hamilton",
-    "addr": "Bayfront Terrace — 1 Hamilton Drive",
+    "addr": "Bayfront Terrace, 1 Hamilton Drive",
     "lat": 37.905534913457,
     "lng": -122.571621391333,
     "cat": "dev",

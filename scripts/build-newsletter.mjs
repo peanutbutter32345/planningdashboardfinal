@@ -193,7 +193,12 @@ function issueFor(monthId, number, previousIssueDate) {
   // ---- the lead: the month's biggest regional decision, or failing that its biggest local story
   // What leads: a decision above the cities if there was one, otherwise the local story that most
   // reads like news - something was decided, it is described at length, and it carries a picture.
-  const DECISION = /\b(approv|adopt|pass(?:es|ed)?|vote[ds]?|reject|certif|sign(?:s|ed)?|break ground|entitl|rezon|permit|commission|council)/i;
+  // Decision verbs only. "commission" and "council" were in here as bare words, so any story
+  // that merely mentioned one scored as a decision: that is how "Newly appointed Atherton
+  // Council member says she's ready to listen" came to lead the September issue ahead of every
+  // approval in the region. The verbs below already catch a council that actually decided
+  // something, because the headline says what it did.
+  const DECISION = /\b(approv|adopt|pass(?:es|ed)?|vote[ds]?|reject|certif|sign(?:s|ed)?|break ground|entitl|rezon|permit)/i;
   const leadScore = n => (DECISION.test(n.title) ? 3 : 0) + (n.image ? 2 : 0) + Math.min(3, (n.snippet || '').length / 120)
     + (n.topic === 'housing' || n.topic === 'developments' ? 1 : 0);
   const leadSource = regional[0] || [...news].sort((a, b) => leadScore(b) - leadScore(a))[0] || news[0];
@@ -204,6 +209,9 @@ function issueFor(monthId, number, previousIssueDate) {
     date: leadSource.date, monthOnly: Boolean(leadSource.monthOnly),
     summary: leadSource.snippet, scope: leadSource.scope || (leadSource.city ? 'city' : 'region'),
     city: leadSource.city ? labelOf(leadSource.city) : '', verified: leadSource.verified || '',
+    // Whether this item is a decision at all, so the sentence introducing it can say so without
+    // calling a personnel notice or a court filing a decision.
+    decision: DECISION.test(leadSource.title),
     image: claimImage(leadOwnImage ? leadSource.image : (leadNews ? leadNews.image : '')),
     imageCredit: leadOwnImage ? leadSource.source : (leadNews ? leadNews.source : ''),
   } : null;
@@ -226,33 +234,71 @@ function issueFor(monthId, number, previousIssueDate) {
   const image = (url, caption, credit) => (url ? { kind: 'image', url, caption, credit } : null);
   const blocksOf = (...items) => items.flat().filter(Boolean);
   const when = r => (r.monthOnly ? monthName(r.date.slice(0, 7)) : fmtDate(r.date));
-  const cited = r => [t(' ('), link(r.source, r.url), t(`, ${when(r)}.)`)];
+  // No leading space. The span before this one ends a sentence and already carries its space, so
+  // a space here produced "tabled.  (The Los Gatan" whenever the excerpt between them came back
+  // empty - which it now does whenever a publisher's summary has no complete sentence in it.
+  const cited = r => [t('('), link(r.source, r.url), t(`, ${when(r)}.)`)];
+  // An excerpt that exists carries the single space before the citation; an empty one adds none.
+  const spaced = v => (v ? `${v} ` : '');
   const list = values => values.length <= 1 ? (values[0] || '')
     : values.length === 2 ? `${values[0]} and ${values[1]}`
     : `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
   const pct = (now, before) => `${Math.abs(((now / before) - 1) * 100).toFixed(1)}%`;
   // Publishers' summaries often arrive already clipped, sometimes mid-word. Cut back to the last
   // finished sentence; if there isn't one, end on a whole word.
+  // A period after one of these is not the end of a sentence. Without this, "file to run by
+  // Oct. 10, no election will be held" was cut after "Oct." and the issue printed "Unless
+  // write-in candidates file to run by Oct." as though that were the whole thought.
+  const ABBREVIATION = /(?:\b(?:Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec|Mon|Tue|Wed|Thu|Fri|Sat|Sun|Mr|Mrs|Ms|Dr|Gov|Sen|Rep|St|Ave|Blvd|Rd|Dr|No|Inc|Corp|Co|Jr|Sr|vs|approx|est|sq|ft|Calif|U\.S|a\.m|p\.m)\.)$/i;
+  // Credits and captions that publishers leave inside an excerpt. They are about the picture
+  // beside the article, so in a paragraph of prose they read as a fragment: the September issue
+  // carried "Photo by Magali Gauthier." in the middle of a Redwood City story.
+  const stripCaptions = text => String(text || '')
+    .replace(/\(?\s*(?:photo|photos|image|picture|pictured|video|courtesy|credit)\s*(?:by|:|courtesy of)[^.)]{0,80}[.)]?/gi, ' ')
+    .replace(/\b(?:file photo|staff photo|getty images|associated press)\b\.?/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
   const trim = (text, max = 320) => {
-    const clean = String(text || '').replace(/\s+/g, ' ').trim();
+    const clean = stripCaptions(String(text || '').replace(/\s+/g, ' ').trim());
     if (!clean) return '';
     const cut = clean.length > max ? clean.slice(0, max) : clean;
-    const stop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('." '), cut.lastIndexOf('! '), cut.lastIndexOf('? '));
-    if (stop > 60) return cut.slice(0, stop + 1);
+    // Walk back through sentence ends, skipping any that belong to an abbreviation.
+    let search = cut;
+    for (;;) {
+      const stop = Math.max(search.lastIndexOf('. '), search.lastIndexOf('." '),
+                            search.lastIndexOf('! '), search.lastIndexOf('? '));
+      if (stop <= 60) break;
+      const head = search.slice(0, stop + 1);
+      if (ABBREVIATION.test(head.trim())) { search = search.slice(0, stop); continue; }
+      return head;
+    }
     if (clean.length > max) return '';
-    if (/[.!?"]$/.test(cut)) return cut;
-    return cut.replace(/\s+\S*$/, '') + '...';
+    if (/[.!?"]$/.test(cut) && !ABBREVIATION.test(cut.trim())) return cut;
+    // Nothing complete to end on. An excerpt is a quotation, so rather than inventing an ending
+    // the whole thing is dropped; the headline and the link still carry the story.
+    return '';
   };
   // Stories are gathered into one paragraph rather than one paragraph each, so a section reads as
   // a few substantial blocks.
   const storyRun = (items, opener) => para(
     opener ? t(opener + ' ') : null,
-    ...items.flatMap((n, i) => [
-      t(`${['In', 'Over in', 'Also in', 'And in'][i % 4]} ${labelOf(n.city)}, `),
-      link(String(n.title).replace(/\.$/, ''), n.url), t('. '),
-      trim(n.snippet, 260) ? qt(`${trim(n.snippet, 260)} `) : null,
-      t(`(${n.source}, ${fmtDate(n.date)}.)${i < items.length - 1 ? ' ' : ''}`),
-    ]),
+    ...items.flatMap((n, i) => {
+      // A headline that already names its own city makes the geographic opener redundant. The
+      // September issue read "In Portola Valley, Portola Valley will hold election" and "Over in
+      // Atherton, Newly appointed Atherton Council member says she's ready to listen". Where the
+      // title names the place, the title carries it and the opener is dropped.
+      const place = labelOf(n.city);
+      const titled = String(n.title).replace(/\.$/, '');
+      const alreadyNamed = new RegExp('\\b' + place.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(titled);
+      const excerpt = trim(n.snippet, 260);
+      return [
+        alreadyNamed ? null : t(`${['In', 'Over in', 'Also in', 'And in'][i % 4]} ${place}, `),
+        link(titled, n.url), t('. '),
+        excerpt ? qt(`${excerpt} `) : null,
+        t(`(${n.source}, ${fmtDate(n.date)}.)${i < items.length - 1 ? ' ' : ''}`),
+      ];
+    }),
   );
   // Fold spans onto the end of the previous paragraph, so a section holds a few thick blocks
   // instead of many thin ones.
@@ -283,8 +329,19 @@ function issueFor(monthId, number, previousIssueDate) {
       housingCount ? t(`, ${housingCount} of them about housing or development`) : null,
       aprNew.length ? t(`, along with ${aprNew.length.toLocaleString('en-US')} records released with the state annual reports`) : null,
       t('. '),
-      lead ? [t(lead.scope === 'state' ? 'The largest of them came from Sacramento. ' : lead.scope === 'region' ? 'The largest of them was regional. ' : `The largest of them was local, in ${lead.city}. `),
-              link(lead.title.replace(/\.$/, ''), lead.url), cited({ source: lead.source, url: lead.url, date: lead.date, monthOnly: lead.monthOnly })] : null,
+      // "The largest of them" measured nothing: these are records, not quantities. The sentence
+      // says what the item is, and only calls it a decision when it is one.
+      lead ? [t(lead.decision
+            ? (lead.scope === 'state' ? "The month's main decision came from Sacramento. "
+             : lead.scope === 'region' ? "The month's main decision was regional. "
+             : `The month's main decision was local, in ${lead.city}. `)
+            : (lead.scope === 'state' ? "The month's biggest story came from Sacramento. "
+             : lead.scope === 'region' ? "The month's biggest story was regional. "
+             : `The month's biggest story came from ${lead.city}. `)),
+              // Every other block closes the headline before its citation; this one did not, so
+              // the issue read "...ready to listen, learn (The Almanac, August 26, 2026.)".
+              link(lead.title.replace(/\.$/, ''), lead.url), t('. '),
+              cited({ source: lead.source, url: lead.url, date: lead.date, monthOnly: lead.monthOnly })] : null,
     ),
   );
   if (marketNow) append(lede, [
@@ -299,10 +356,10 @@ function issueFor(monthId, number, previousIssueDate) {
     const first = regional[0];
     briefBlocks.push(para(
       t(`${opens(regional.length, 'decision', 'decisions')} this period ${were(regional.length)} taken above the level of any single city. `),
-      link(first.title.replace(/\.$/, ''), first.url), t('. '), qt(trim(first.snippet)), cited(first),
+      link(first.title.replace(/\.$/, ''), first.url), t('. '), qt(spaced(trim(first.snippet))), cited(first),
     ));
     if (regional.length > 1) briefBlocks.push(para(...regional.slice(1).flatMap((r, i) => [
-      link(r.title.replace(/\.$/, ''), r.url), t('. '), qt(trim(r.snippet)), cited(r), t(i < regional.length - 2 ? ' ' : ''),
+      link(r.title.replace(/\.$/, ''), r.url), t('. '), qt(spaced(trim(r.snippet))), cited(r), t(i < regional.length - 2 ? ' ' : ''),
     ])));
   }
   if (releases.length) {
@@ -417,7 +474,7 @@ function issueFor(monthId, number, previousIssueDate) {
   if (freshTransit.length) {
     freshTransit.forEach((r, i) => {
       told.add(r.url);
-      transitBlocks.push(para(t(i === 0 ? 'The main transport item this period was ' : ''), link(r.title.replace(/\.$/, ''), r.url), t('. '), qt(trim(r.snippet)), cited(r)));
+      transitBlocks.push(para(t(i === 0 ? 'The main transport item this period was ' : ''), link(r.title.replace(/\.$/, ''), r.url), t('. '), qt(spaced(trim(r.snippet))), cited(r)));
     });
   } else if (transitResearch.length) {
     transitBlocks.push(para(t('The funding decision described above, '), link(transitResearch[0].title.replace(/\.$/, ''), transitResearch[0].url), t(', remains the backdrop to local transport work.')));

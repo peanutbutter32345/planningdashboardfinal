@@ -55,7 +55,7 @@
         },
         {
           "city": "sanjose",
-          "title": "Downtown West / Diridon Station — planning update",
+          "title": "Downtown West / Diridon Station: planning update",
           "source": "Official city project update",
           "date": "2021-05-25",
           "url": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects/downtown-west-mixed-use-plan",
@@ -183,7 +183,7 @@
         },
         {
           "city": "sanfrancisco",
-          "title": "400 Winston Drive / Stonestown — planning update",
+          "title": "400 Winston Drive / Stonestown: planning update",
           "source": "Official city project update",
           "date": "2024-08-24",
           "url": "https://sfplanning.org/es/node/2526",
@@ -343,7 +343,7 @@
         },
         {
           "city": "berkeley",
-          "title": "North Berkeley BART transit-oriented development — planning update",
+          "title": "North Berkeley BART transit-oriented development: planning update",
           "source": "Official city project update",
           "date": "",
           "url": "https://berkeleyca.gov/sites/default/files/documents/2024-06-25%20Item%2050%20Approval%20of%20the%20North%20Berkeley%20BART.pdf",
@@ -462,7 +462,7 @@
       "data": [
         {
           "id": "oakland-brooklyn-parcel-n",
-          "addr": "Brooklyn Basin — Parcel N",
+          "addr": "Brooklyn Basin, Parcel N",
           "lat": null,
           "lng": null,
           "cat": "dev",
@@ -495,7 +495,7 @@
         },
         {
           "city": "oakland",
-          "title": "Brooklyn Basin — Parcel N — planning update",
+          "title": "Brooklyn Basin, Parcel N: planning update",
           "source": "Official city project update",
           "date": "",
           "url": "https://www.oaklandca.gov/Planning-Building/Major-Development-Projects/Brooklyn-Basin-Mixed-Use-Development",
@@ -667,7 +667,7 @@
         },
         {
           "city": "albany",
-          "title": "1600 Solano Avenue — planning update",
+          "title": "1600 Solano Avenue: planning update",
           "source": "Official city project update",
           "date": "",
           "url": "https://www.albanyca.gov/Departments/Community-Development/Planning-Zoning/Major-Projects",
@@ -789,7 +789,7 @@
         },
         {
           "city": "emeryville",
-          "title": "Sutter Hospital Medical Center / Emery Yards — planning update",
+          "title": "Sutter Hospital Medical Center / Emery Yards: planning update",
           "source": "Official city project update",
           "date": "2026-08-27",
           "url": "https://www.emeryville.org/Development/Projects-Permitting/Major-Development-Projects/Sutter-Hospital-Medical-Center",
@@ -939,7 +939,7 @@
         },
         {
           "city": "alameda",
-          "title": "300 Mosley Avenue / Admirals Cove — planning update",
+          "title": "300 Mosley Avenue / Admirals Cove: planning update",
           "source": "Official city project update",
           "date": "",
           "url": "https://www.alamedaca.gov/Departments/Planning-Building-and-Transportation/Planning-Division/Major-Planning-Projects",
@@ -1081,7 +1081,7 @@
         },
         {
           "city": "fremont",
-          "title": "Fremont BART east parking lot — planning update",
+          "title": "Fremont BART east parking lot: planning update",
           "source": "Official city project update",
           "date": "2026-04-28",
           "url": "https://www.bart.gov/about/business/tod",
@@ -1238,7 +1238,7 @@
         },
         {
           "id": "newark-lepakshi",
-          "addr": "6717–6825 Thornton Avenue",
+          "addr": "6717-6825 Thornton Avenue",
           "lat": null,
           "lng": null,
           "cat": "dev",
@@ -1271,7 +1271,7 @@
         },
         {
           "city": "newark",
-          "title": "6717–6825 Thornton Avenue — planning update",
+          "title": "6717–6825 Thornton Avenue: planning update",
           "source": "Official city project update",
           "date": "2024-08-13",
           "url": "https://www.newarkca.gov/departments/community-development/planning-division/development-projects",
@@ -1399,7 +1399,7 @@
         },
         {
           "city": "unioncity",
-          "title": "Station East residential / mixed-use plan — planning update",
+          "title": "Station East residential / mixed-use plan: planning update",
           "source": "Official city project update",
           "date": "2025-09-04",
           "url": "https://www.unioncityca.gov/462/Station-East-Residential",
@@ -1488,7 +1488,7 @@
       "data": [
         {
           "id": "hayward-city-center",
-          "addr": "City Center Drive — city-owned development site",
+          "addr": "City Center Drive, city-owned development site",
           "lat": null,
           "lng": null,
           "cat": "dev",
@@ -1711,7 +1711,7 @@
         },
         {
           "city": "sanleandro",
-          "title": "1388 Bancroft Avenue — planning update",
+          "title": "1388 Bancroft Avenue: planning update",
           "source": "Official city project update",
           "date": "",
           "url": "https://ca-sanleandro.civicplus.com/DocumentCenter/View/10059/Development-Activity-Map-and-Table-Combined_2603?bidId=Table-Combined_240209",
@@ -1867,7 +1867,7 @@
         },
         {
           "city": "elcerrito",
-          "title": "515 Richmond Street / Plaza BART Phase I — planning update",
+          "title": "515 Richmond Street / Plaza BART Phase I: planning update",
           "source": "Official city project update",
           "date": "2025-11-01",
           "url": "https://www.elcerrito.gov/1381/Transit-Oriented-Development-TOD",
@@ -2001,7 +2001,7 @@
         },
         {
           "city": "richmond",
-          "title": "Hilltop Mall / Hilltop Horizon — planning update",
+          "title": "Hilltop Mall / Hilltop Horizon: planning update",
           "source": "Official city project update",
           "date": "2025-09-16",
           "url": "https://hilltophorizon.com/",
@@ -2151,7 +2151,7 @@
         },
         {
           "city": "sausalito",
-          "title": "Sausalito Ferry Landing improvements — planning update",
+          "title": "Sausalito Ferry Landing improvements: planning update",
           "source": "Official city project update",
           "date": "2025-08-22",
           "url": "https://www.sausalito.gov/city-government/hot-topics/ferry-landing",
@@ -2246,7 +2246,7 @@
       "data": [
         {
           "id": "millvalley-hamilton",
-          "addr": "Bayfront Terrace — 1 Hamilton Drive",
+          "addr": "Bayfront Terrace, 1 Hamilton Drive",
           "lat": 37.905534913457,
           "lng": -122.571621391333,
           "cat": "dev",
@@ -2281,7 +2281,7 @@
         },
         {
           "city": "millvalley",
-          "title": "Bayfront Terrace — 1 Hamilton Drive — planning update",
+          "title": "Bayfront Terrace, 1 Hamilton Drive: planning update",
           "source": "Official city project update",
           "date": "2026-01-12",
           "url": "https://ceqanet.lci.ca.gov/2022120597/6",
@@ -2433,7 +2433,7 @@
         },
         {
           "city": "tiburon",
-          "title": "407 Hilary Drive — planning update",
+          "title": "407 Hilary Drive: planning update",
           "source": "Official city project update",
           "date": "2026-09-02",
           "url": "https://www.townoftiburon.gov/520/Projects-Under-Review",
