@@ -618,6 +618,14 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
 const REMINDER_KINDS = ['board', 'plan', 'project', 'hearing'];
 const REMINDERS_MAX = 60;
 
+// A row id from the URL or the body. These columns are SERIAL, so handing Postgres "abc" raised
+// "invalid input syntax for type integer" and the route answered 500, reporting a server fault
+// for what is a malformed request. Returns null for anything that is not a positive whole number.
+function rowId(raw) {
+  const n = Number(raw);
+  return Number.isInteger(n) && n > 0 && n <= Number.MAX_SAFE_INTEGER ? n : null;
+}
+
 function reminderHtml(rows, username) {
   const esc = t => String(t == null ? '' : t)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -680,9 +688,11 @@ app.post('/api/reminders', authMiddleware, async (req, res) => {
 app.patch('/api/reminders/:id', authMiddleware, async (req, res) => {
   const { inDigest } = req.body || {};
   if (typeof inDigest !== 'boolean') return res.status(400).json({ error: 'inDigest must be true or false.' });
+  const id = rowId(req.params.id);
+  if (!id) return res.status(400).json({ error: 'That reminder reference is not valid.' });
   try {
     await pool.query('UPDATE reminders SET in_digest = $1 WHERE id = $2 AND username = $3',
-      [inDigest, req.params.id, req.username]);
+      [inDigest, id, req.username]);
     res.json({ ok: true });
   } catch (err) {
     console.error(err);
@@ -691,8 +701,10 @@ app.patch('/api/reminders/:id', authMiddleware, async (req, res) => {
 });
 
 app.delete('/api/reminders/:id', authMiddleware, async (req, res) => {
+  const id = rowId(req.params.id);
+  if (!id) return res.status(400).json({ error: 'That reminder reference is not valid.' });
   try {
-    await pool.query('DELETE FROM reminders WHERE id = $1 AND username = $2', [req.params.id, req.username]);
+    await pool.query('DELETE FROM reminders WHERE id = $1 AND username = $2', [id, req.username]);
     res.json({ ok: true });
   } catch (err) {
     console.error(err);
@@ -709,7 +721,11 @@ app.post('/api/reminders/email', authMiddleware, async (req, res) => {
     if (!email) return res.status(400).json({ error: 'Add an email address under Your Account first.' });
     if (!RESEND_API_KEY) return res.status(503).json({ error: 'Email is not configured on the server yet.' });
 
-    const only = req.body && req.body.id;
+    const asked = req.body && req.body.id;
+    const only = asked == null || asked === '' ? null : rowId(asked);
+    if (asked != null && asked !== '' && !only) {
+      return res.status(400).json({ error: 'That reminder reference is not valid.' });
+    }
     const rows = only
       ? (await pool.query('SELECT * FROM reminders WHERE id = $1 AND username = $2', [only, req.username])).rows
       : (await pool.query('SELECT * FROM reminders WHERE username = $1 ORDER BY created_at DESC', [req.username])).rows;
@@ -818,9 +834,11 @@ app.post('/api/chat/history', authMiddleware, async (req, res) => {
 });
 
 app.delete('/api/chat/history/:id', authMiddleware, async (req, res) => {
+  const id = rowId(req.params.id);
+  if (!id) return res.status(400).json({ error: 'That saved answer reference is not valid.' });
   try {
     // The username predicate is what stops one account deleting another's rows.
-    await pool.query('DELETE FROM chat_history WHERE id = $1 AND username = $2', [req.params.id, req.username]);
+    await pool.query('DELETE FROM chat_history WHERE id = $1 AND username = $2', [id, req.username]);
     res.json({ ok: true });
   } catch (err) {
     console.error(err);
@@ -851,10 +869,39 @@ app.get('/api/stars', authMiddleware, async (req, res) => {
   }
 });
 
+// The five things the dashboard puts a star on. Anything else is a client that has drifted from
+// the server, and storing it would put a row in the table that nothing can ever display.
+const STAR_TYPES = ['project', 'board', 'news', 'resource', 'statistic'];
+// A news item's id is its URL, and a Google News link runs past 950 characters, so this has to
+// clear that comfortably rather than looking like a generous round number.
+const STAR_ID_MAX = 1200;
+const STAR_DATA_MAX = 4000;
+// Reminders cap at 60 and saved answers at 100. Stars had no cap at all, so one account could
+// add rows until the table was the problem.
+const STARS_MAX = 500;
+
 app.post('/api/stars', authMiddleware, async (req, res) => {
   const { itemType, itemId, itemData } = req.body || {};
   if (!itemType || !itemId) return res.status(400).json({ error: 'itemType and itemId are required.' });
+  if (!STAR_TYPES.includes(itemType)) return res.status(400).json({ error: 'Unknown item type.' });
+  if (typeof itemId !== 'string' || itemId.length > STAR_ID_MAX) {
+    return res.status(400).json({ error: 'That item reference is too long to save.' });
+  }
+  if (itemData != null && JSON.stringify(itemData).length > STAR_DATA_MAX) {
+    return res.status(400).json({ error: 'That item carries too much detail to save.' });
+  }
   try {
+    // Counted before the insert, and only for a star that is new: re-starring something already
+    // saved is an update and must keep working at the cap.
+    const existing = await pool.query(
+      'SELECT 1 FROM stars WHERE username = $1 AND item_type = $2 AND item_id = $3',
+      [req.username, itemType, itemId]);
+    if (!existing.rows.length) {
+      const count = await pool.query('SELECT COUNT(*)::int AS n FROM stars WHERE username = $1', [req.username]);
+      if (count.rows[0].n >= STARS_MAX) {
+        return res.status(400).json({ error: `You can save up to ${STARS_MAX} items. Remove one to add another.` });
+      }
+    }
     await pool.query(
       `INSERT INTO stars (username, item_type, item_id, item_data) VALUES ($1, $2, $3, $4)
        ON CONFLICT (username, item_type, item_id) DO UPDATE SET item_data = $4`,
