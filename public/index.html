@@ -99,8 +99,10 @@
   .funnel-seg:hover:not(.empty){background-position:100% 50%; transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,.28); z-index:1;}
   .funnel-seg.empty{opacity:.42; cursor:default;}
   .funnel-seg.active{outline:2px solid #1A1A1A; outline-offset:-2px;}
-  .funnel-seg .n{display:block; font-size:20px; font-weight:800; color:#fff;}
-  .funnel-seg .l{display:block; font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:rgba(255,255,255,0.92); margin-top:2px; font-weight:600;}
+  /* --seg-ink is set per segment from the stage's ink, so a light stage gets dark text. The
+     fallback keeps white for anything rendered before the variable is set. */
+  .funnel-seg .n{display:block; font-size:20px; font-weight:800; color:var(--seg-ink, #fff);}
+  .funnel-seg .l{display:block; font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--seg-ink, #fff); opacity:.92; margin-top:2px; font-weight:600;}
 
   .stats{padding:30px 0 8px;}
   .stat-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;}
@@ -190,6 +192,13 @@
   .card-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
   .card{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:15px; display:flex; flex-direction:column; gap:7px; border-top:3px solid var(--ink);}
   .card .row1{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+  /* The status badge sets white-space:nowrap so it never breaks mid-word. A flex item defaults to
+     min-width:auto, so the address column next to it refused to shrink and pushed the badge off
+     the right edge instead, which scrolled the whole page sideways at tablet widths. Letting the
+     text column shrink keeps the badge inside; the address wraps, which is what it should do. */
+  .card .row1 > div:first-child{min-width:0; flex:1 1 auto;}
+  .card .row1 > div:last-child{flex:0 0 auto;}
+  .card .addr, .card .type{overflow-wrap:anywhere;}
   .card .addr{font-weight:700; font-size:15px; color:#1A1A1A; line-height:1.3;}
   .card .type{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.03em; margin-top:2px; font-weight:600;}
   .card .desc{font-size:12.3px; color:var(--text-soft); flex-grow:1;}
@@ -1327,7 +1336,7 @@
   .ya-picker{margin-top:12px; border:1px solid var(--ink); border-radius:2px; background:#fff; padding:14px 16px;}
   .ya-picker-head{display:flex; justify-content:space-between; align-items:center;
     font-family:'Open Sans',sans-serif; font-size:13px; font-weight:800; color:var(--ink); margin-bottom:9px;}
-  .ya-picker-x{background:none; border:none; font-size:21px; line-height:1; cursor:pointer; color:var(--text-soft);}
+  .ya-picker-x{background:none; border:none; font-size:21px; line-height:1; cursor:pointer; color:var(--text-soft); min-width:32px; min-height:32px; display:inline-flex; align-items:center; justify-content:center;}
   #yaPickSearch{width:100%; padding:9px 11px; border:1.5px solid var(--rule); border-radius:2px;
     font-family:'Open Sans',sans-serif; font-size:13px; margin:8px 0 10px;}
   #yaPickSearch:focus{outline:none; border-color:var(--ink);}
@@ -1568,7 +1577,13 @@
   .starred-empty{padding:30px 20px; text-align:center; color:var(--text-soft); font-size:13px; background:var(--paper-2); border-radius:2px;}
 
   /* ---- Star button (used on project/news/board cards and resource links) ---- */
-  .star-btn{background:none; border:none; cursor:pointer; font-size:19px; line-height:1; padding:2px 4px; color:#C9B458; flex-shrink:0;}
+  /* 25x23 before this, which is under the 24px minimum a target needs and fiddly to hit on a
+     phone next to a link that opens the article. The glyph is unchanged; only the area around
+     it grows, and it stays inline so the card layout is unaffected. */
+  .star-btn{background:none; border:none; cursor:pointer; font-size:19px; line-height:1; padding:2px 4px; color:#C9B458; flex-shrink:0;
+    min-width:32px; min-height:32px; display:inline-flex; align-items:center; justify-content:center;}
+  /* The month steppers next to the hero paper were 22x22, also under the minimum. */
+  .hp-step button{min-width:32px; min-height:32px;}
   .star-btn[aria-pressed="false"]{color:#B5B5B5;}
   .star-btn:hover{color:#C9B458;}
   .card .row1{align-items:flex-start;}
@@ -2862,13 +2877,20 @@
 const TODAY = new Date();
 TODAY.setHours(0,0,0,0);
 const STAGES = [
-  {key:'proposed',     label:'Proposed',            color:'#A3AC90', light:'#B7BEA8', dark:'#858D76'},
-  {key:'review',       label:'Under Review',        color:'#87956B', light:'#A1AC8B', dark:'#6E7A57'},
-  {key:'approved',     label:'Approved',            color:'#67794A', light:'#889671', dark:'#54633C'},
-  {key:'construction', label:'Under Construction',  color:'#4E6330', light:'#74855D', dark:'#3F5127'},
-  {key:'completed',    label:'Completed',           color:'#3E4F24', light:'#687554', dark:'#32401D'},
+  // `ink` is the text colour that stays readable on `color` when it is used as a badge. The two
+  // lightest stages take dark ink: white on #A3AC90 is 2.37:1 and on #87956B is 3.21:1, both
+  // well under the 4.5:1 that 10px text needs, and the stage badges are 10px. Darkening the two
+  // swatches instead would have flattened the light-to-dark ramp, which is what tells a reader
+  // at a glance how far along a project is. Dark ink on them measures 7.34:1 and 5.42:1.
+  {key:'proposed',     label:'Proposed',            color:'#A3AC90', light:'#B7BEA8', dark:'#858D76', ink:'#1A1A1A'},
+  {key:'review',       label:'Under Review',        color:'#87956B', light:'#A1AC8B', dark:'#6E7A57', ink:'#1A1A1A'},
+  {key:'approved',     label:'Approved',            color:'#67794A', light:'#889671', dark:'#54633C', ink:'#FFFFFF'},
+  {key:'construction', label:'Under Construction',  color:'#4E6330', light:'#74855D', dark:'#3F5127', ink:'#FFFFFF'},
+  {key:'completed',    label:'Completed',           color:'#3E4F24', light:'#687554', dark:'#32401D', ink:'#FFFFFF'},
 ];
 const STAGE_MAP = Object.fromEntries(STAGES.map(s=>[s.key,s]));
+// One place that knows how a stage badge is painted, so the seven call sites cannot drift.
+const stampStyle = st => `background:${st.color}; border-color:${st.color}; color:${st.ink}`;
 const CATEGORIES = [
   {key:'Housing',        label:'Housing',                          color:'#3E4F24'},
   {key:'Building',       label:'Commercial & Industrial',          color:'#8C9481'},
@@ -6455,7 +6477,19 @@ function renderFunnel(){
     const n=DATA().filter(d=>d.stage===s.key).length;
     const isActive = state.stage===s.key;
     const empty = n === 0;
-    return `<button type="button" class="funnel-seg${isActive?' active':''}${empty?' empty':''}" style="background-image:linear-gradient(120deg, ${s.light} 0%, ${s.color} 45%, ${s.dark} 100%)" data-stage="${s.key}" aria-pressed="${isActive}"${empty?' disabled aria-disabled="true" title="No records at this stage"':''}><span class="n">${n}</span><span class="l">${s.label}</span></button>`;
+    // The label and count sit directly on this gradient, so the ink has to be readable against
+    // every stop of it, not just the middle. White on the Proposed ramp measured 1.92:1 at the
+    // light end, which is close to invisible. The two light stages take dark ink, and their
+    // gradient stops one step earlier (light to color, rather than through dark) so the dark ink
+    // clears 4.5:1 across the whole sweep, including where hover slides it. The three dark
+    // stages keep white, which they already passed on.
+    // Each ramp spans one step of the stage's own three-tone scale, chosen so the ink clears
+    // 4.5:1 against both ends. White needed the darker half: on the old light-to-dark sweep it
+    // measured 3.16:1 over the Approved light tone and 4.00:1 over Under Construction's.
+    const ramp = s.ink === '#FFFFFF'
+      ? `${s.color} 0%, ${s.color} 20%, ${s.dark} 100%`
+      : `${s.light} 0%, ${s.light} 20%, ${s.color} 100%`;
+    return `<button type="button" class="funnel-seg${isActive?' active':''}${empty?' empty':''}" style="background-image:linear-gradient(120deg, ${ramp}); --seg-ink:${s.ink}" data-stage="${s.key}" aria-pressed="${isActive}"${empty?' disabled aria-disabled="true" title="No records at this stage"':''}><span class="n">${n}</span><span class="l">${s.label}</span></button>`;
   }).join('');
   el.querySelectorAll('.funnel-seg').forEach(seg=>{
     seg.addEventListener('click', ()=>{ const st=seg.getAttribute('data-stage'); state.stage=(state.stage===st)?'all':st; renderAll(); });
@@ -6530,7 +6564,7 @@ async function tryLiveCupertinoData(){
         const marker = new google.maps.Marker({ position:{lat:d.lat,lng:d.lng}, map:gMap,
           icon:{path:google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, scale:5, fillColor:'#44572A', fillOpacity:1, strokeColor:'#fff', strokeWeight:1.5, rotation:180},
           title:'[LIVE] '+d.addr });
-        marker.addListener('click', ()=>{ gInfoWindow.setContent(`<div class="infowin"><b><span class="live-badge">LIVE</span>${d.addr}</b><span class="stamp" style="background:${st.color};border-color:${st.color}">${st.label}</span><div class="desc">${d.notes||d.name}</div>${d.editedDate?`<div class="meta">Last edited (city record): ${d.editedDate}</div>`:''}${d.url?`<div class="meta"><a href="${d.url}" target="_blank" rel="noopener">City project page &#8594;</a></div>`:''}</div>`); gInfoWindow.open(gMap, marker); });
+        marker.addListener('click', ()=>{ gInfoWindow.setContent(`<div class="infowin"><b><span class="live-badge">LIVE</span>${d.addr}</b><span class="stamp" style="${stampStyle(st)}">${st.label}</span><div class="desc">${d.notes||d.name}</div>${d.editedDate?`<div class="meta">Last edited (city record): ${d.editedDate}</div>`:''}${d.url?`<div class="meta"><a href="${d.url}" target="_blank" rel="noopener">City project page &#8594;</a></div>`:''}</div>`); gInfoWindow.open(gMap, marker); });
         liveMarkers[d.id] = marker;
       } else if(mapProvider==='leaflet' && lMap){
         const marker = L.circleMarker([d.lat,d.lng], {radius:6, color:'#fff', weight:1.5, fillColor:'#44572A', fillOpacity:0.95});
@@ -6579,7 +6613,7 @@ function markerIconGoogle(d){
 function popupHtmlPlain(d){
   const st = STAGE_MAP[d.stage]; const c = CAT_MAP[categoryOf(d)];
   return `<div class="infowin"><b>${d.addr}</b>
-    <span class="stamp" style="background:${st.color};border-color:${st.color}">${st.label}</span>
+    <span class="stamp" style="${stampStyle(st)}">${st.label}</span>
     <span class="cattag" style="margin-left:8px;"><i style="background:${c.color}"></i>${c.label}</span>
     <div class="desc">${d.desc}</div>
     <div class="meta">${d.units?d.units.toLocaleString()+' units':'no housing units'}${d.bmr?' · '+d.bmr+' affordable':''}</div>
@@ -7327,7 +7361,7 @@ function renderFeed(){
   el.innerHTML = list.slice(0,80).map(f=>{
     const d = DATA().find(x=>x.id===f.id);
     const color = d ? STAGE_MAP[d.stage].color : '#333';
-    return `<div class="feed-item" data-id="${f.id}"><div class="fd-date">${fmtDate(f.date)}</div><div class="fd-title">${f.title}</div><div class="fd-body">${f.body}</div>${d?`<span class="fd-tag" style="background:${color}">${STAGE_MAP[d.stage].label}</span>`:''}</div>`;
+    return `<div class="feed-item" data-id="${f.id}"><div class="fd-date">${fmtDate(f.date)}</div><div class="fd-title">${f.title}</div><div class="fd-body">${f.body}</div>${d?`<span class="fd-tag" style="${stampStyle(STAGE_MAP[d.stage])}">${STAGE_MAP[d.stage].label}</span>`:''}</div>`;
   }).join('');
   el.querySelectorAll('.feed-item').forEach(item=> item.addEventListener('click', ()=>flyTo(item.getAttribute('data-id'))));
 }
@@ -7741,7 +7775,7 @@ function projectCardHtml(d){
   return `<div class="card" data-project-id="${d.id}" style="border-top-color:${c.color}">
       ${thumb ? `<div class="card-thumb"><img src="${thumb}" alt="Map of the area around ${d.addr}" loading="lazy" onerror="imgFallback(this,cityOfProject('${d.id}'));" /><span class="map-thumb-credit">Map: Esri, HERE, Garmin, USGS</span></div>` : `<div class="card-thumb"><img src="${photo.url}" alt="${escapeHtml(photo.cap)}" loading="lazy"><span class="map-thumb-credit">${photoCredit(photo)}</span></div>`}
       <div class="row1"><div><div class="addr">${d.addr}</div><div class="type">${d.type}</div><div class="cattag" style="margin-top:4px;"><i style="background:${c.color}"></i>${c.label}</div></div>
-      <div style="display:flex; align-items:flex-start; gap:6px;">${starButtonHtml('project', d.id, starData)}<span class="stamp" style="background:${st.color}; border-color:${st.color}">${st.label}</span></div></div>
+      <div style="display:flex; align-items:flex-start; gap:6px;">${starButtonHtml('project', d.id, starData)}<span class="stamp" style="${stampStyle(st)}">${st.label}</span></div></div>
       <div class="desc">${d.desc}</div>
       <div class="meta">${unitsBit}${bmrBit}${expiresBit}</div>
       <div class="meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
@@ -7819,7 +7853,7 @@ function projectSheetHtml(record, cityKey, city){
   return '<div class="ps-eyebrow">'+escapeHtml(city.label)+' &middot; '+escapeHtml(city.county)+' County</div>'
     +'<h2 id="projSheetAddr">'+escapeHtml(record.addr||record.id)+'</h2>'
     +'<div class="ps-stamps">'
-      +'<span class="stamp" style="background:'+stage.color+';border-color:'+stage.color+'">'+escapeHtml(stage.label)+'</span>'
+      +'<span class="stamp" style="'+stampStyle(stage)+'">'+escapeHtml(stage.label)+'</span>'
       +'<span class="cattag"><i style="background:'+cat.color+'"></i>'+escapeHtml(cat.label)+'</span>'
       +'<span class="fresh">'+freshnessLabel(record)+'</span>'
     +'</div>'
@@ -8278,7 +8312,7 @@ function renderYourArea(){
           <div class="addr">${d.addr}</div>
           <div class="desc">${d.desc}</div>
           <div class="ya-tags">
-            <span class="stamp" style="background:${st.color};border-color:${st.color}">${st.label}</span>
+            <span class="stamp" style="${stampStyle(st)}">${st.label}</span>
             <span class="cattag"><i style="background:${c.color}"></i>${c.label}</span>
           </div>
         </div>
@@ -10390,7 +10424,7 @@ function generatePlan(){
     const projects = s.projects ? `<div class="plan-projects">${s.projects.map(({d,dist})=>`
       <a class="plan-project" href="?project=${encodeURIComponent(d.id)}">
         <span class="addr">${d.addr}</span>
-        <span class="stamp" style="background:${STAGE_MAP[d.stage].color}; border-color:${STAGE_MAP[d.stage].color}">${STAGE_MAP[d.stage].label}</span>
+        <span class="stamp" style="${stampStyle(STAGE_MAP[d.stage])}">${STAGE_MAP[d.stage].label}</span>
         ${dist!==null ? `<span class="dist">${dist.toFixed(1)} mi away</span>` : ''}
       </a>`).join('')}</div>` : '';
     const link = s.link
