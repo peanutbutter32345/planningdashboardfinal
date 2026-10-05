@@ -1656,6 +1656,25 @@ function withMatterCategories(meetings) {
 }
 
 // Shared by the on-screen summary and the emailed one, so a reader gets the same text either way.
+// A generated summary, kept per city. The agendas behind it are themselves cached for six hours
+// in hearings.js, so regenerating the prose on every request spent a model call to retell the
+// same meetings. Keyed on the agenda text, so a refreshed agenda writes a new summary rather
+// than serving the old one, and `force` still goes straight to the model.
+const meetingSummaryCache = new Map();
+const MEETING_SUMMARY_TTL_MS = 6 * 60 * 60_000;
+function cachedSummary(key, fingerprint) {
+  const hit = meetingSummaryCache.get(key);
+  if (!hit || hit.fingerprint !== fingerprint || Date.now() > hit.expiresAt) return null;
+  return hit.summary;
+}
+function cacheSummary(key, fingerprint, summary) {
+  if (!summary) return;
+  meetingSummaryCache.set(key, { fingerprint, summary, expiresAt: Date.now() + MEETING_SUMMARY_TTL_MS });
+  if (meetingSummaryCache.size > 400) {
+    for (const [k, v] of meetingSummaryCache) if (Date.now() > v.expiresAt) meetingSummaryCache.delete(k);
+  }
+}
+
 async function summarizeRecentMeetings(cityKey, cityLabel, { force = false } = {}) {
   const recent = await getRecentMeetings(cityKey, { force });
   if (recent.supported) recent.meetings = withMatterCategories(recent.meetings);
@@ -1673,10 +1692,13 @@ async function summarizeRecentMeetings(cityKey, cityLabel, { force = false } = {
         summary: '', note: 'AI summary is not configured on this server (LLM_API_KEY is missing); the raw recent meetings are listed below instead.'
       };
     }
-    const summary = await completeText([
+    const agendaText = meetingsDigestText(recent.meetings);
+    const reuse = force ? null : cachedSummary('legistar:' + cityKey, agendaText);
+    const summary = reuse || (await completeText([
       { role: 'system', content: MEETING_SUMMARY_SYSTEM },
-      { role: 'user', content: `Recent meetings for ${cityLabel} (last ${recent.days} days):\n\n${meetingsDigestText(recent.meetings)}` }
-    ], 700) || 'No summary returned.';
+      { role: 'user', content: `Recent meetings for ${cityLabel} (last ${recent.days} days):\n\n${agendaText}` }
+    ], 700) || 'No summary returned.');
+    if (!reuse && summary !== 'No summary returned.') cacheSummary('legistar:' + cityKey, agendaText, summary);
     return { supported: true, source: 'legistar', summary, meetings: recent.meetings, cityLabel, days: recent.days, generatedAt: recent.generatedAt };
   }
 
@@ -1707,10 +1729,13 @@ async function summarizeRecentMeetings(cityKey, cityLabel, { force = false } = {
       summary: '', note: 'AI summary is not configured on this server; the raw search results are listed below instead.'
     };
   }
-  const summary = await completeText([
+  const coverageText = webSearchDigestText(meetings);
+  const reuseWeb = force ? null : cachedSummary('websearch:' + cityKey, coverageText);
+  const summary = reuseWeb || (await completeText([
     { role: 'system', content: MEETING_SUMMARY_WEBSEARCH_SYSTEM },
-    { role: 'user', content: `Recent web coverage of ${cityLabel} meetings:\n\n${webSearchDigestText(meetings)}` }
-  ], 600) || 'No summary returned.';
+    { role: 'user', content: `Recent web coverage of ${cityLabel} meetings:\n\n${coverageText}` }
+  ], 600) || 'No summary returned.');
+  if (!reuseWeb && summary !== 'No summary returned.') cacheSummary('websearch:' + cityKey, coverageText, summary);
   return { supported: true, source: 'websearch', summary, meetings, cityLabel, days: 30, generatedAt: new Date().toISOString() };
 }
 
@@ -1720,7 +1745,15 @@ app.post('/api/meetings/summary', async (req, res) => {
     const cityKey = String(req.body?.cityKey || '').trim();
     const cityLabel = String(req.body?.cityLabel || cityKey).trim();
     if (!cityKey) return res.status(400).json({ error: 'City is required.' });
-    const result = await summarizeRecentMeetings(cityKey, cityLabel, { force: req.body?.force === true });
+    // Unauthenticated, and a cache miss costs a model call, so it shares the assistant's
+    // per-address budget. Whether this particular request will miss is not knowable until the
+    // agendas have been fetched, so every request counts; the cache is what keeps the model
+    // calls down, and this is what keeps one address from driving the requests.
+    const force = req.body?.force === true;
+    if (!askAllowed(clientIp(req))) {
+      return res.status(429).json({ error: 'That is a lot of summaries in a short time. Wait a few minutes and try again.' });
+    }
+    const result = await summarizeRecentMeetings(cityKey, cityLabel, { force });
     res.json(result);
   } catch (err) {
     console.error('Meeting summary failed:', err.message);

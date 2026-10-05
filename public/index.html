@@ -2667,7 +2667,7 @@
       <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Each project shows the city's own file number and links to the register it came from, where that number can be looked up.</p>
 
       <h4>What it covers</h4>
-      <p>All 101 incorporated cities and towns across the nine Bay Area counties, plus a separate West San Jose neighborhood profile. Every area has official resources, a meeting directory and a local photograph. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
+      <p>All <span class="city-count">101</span> incorporated cities and towns across the nine Bay Area counties, plus a separate West San Jose neighborhood profile. Every area has official resources, a meeting directory and a local photograph. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
       <div class="about-mosaic" id="aboutMosaic"></div>
 
       <p class="about-credits" id="aboutCredits"></p>
@@ -6292,6 +6292,13 @@ const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
 // of real places. It is written into the page rather than typed into it: the figure was 101 in
 // three separate sentences and a hundred and second city had already been added.
 const CITY_COUNT=Object.keys(CITIES).length;
+// West San Jose is a neighborhood profile, not an incorporated city, so a sentence that says
+// "cities and towns" must not count it. The .city-count spans were filled with CITY_COUNT, so
+// the page read "102 cities and towns across nine Bay Area counties" while the About section
+// correctly said 101 cities plus a West San Jose profile. Anything added later that is not an
+// incorporated city belongs in this list.
+const NON_CITY_AREAS=['westsanjose'];
+const INCORPORATED_CITY_COUNT=Object.keys(CITIES).filter(k=>!NON_CITY_AREAS.includes(k)).length;
 let currentCity = 'sunnyvale';
 
 // "All Cities" - a real aggregation of every tracked city's data, not a separate dataset.
@@ -16753,7 +16760,9 @@ function renderFooter(){
 }
 // The city count appears in three sentences of static copy. Written in rather than typed, so
 // adding a city cannot leave them saying a number that stopped being true.
-document.querySelectorAll('.city-count').forEach(el=>{el.textContent=CITY_COUNT;});
+document.querySelectorAll('.city-count').forEach(el=>{el.textContent=INCORPORATED_CITY_COUNT;});
+// Every area the dashboard holds a profile for, including the West San Jose neighborhood.
+document.querySelectorAll('.area-count').forEach(el=>{el.textContent=CITY_COUNT;});
 renderFooter();
 
 // ================= EMAIL DEEP LINKS =================
