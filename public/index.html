@@ -105,8 +105,13 @@
   .funnel-seg .l{display:block; font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--seg-ink, #fff); opacity:.92; margin-top:2px; font-weight:600;}
 
   .stats{padding:30px 0 8px;}
-  .stat-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;}
-  @media (max-width:900px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
+  /* Scoped to its own section. The Statistics screen reuses the class name .stat-grid for a
+     three-column grid of metric cards, and because that rule is written later in this stylesheet
+     it was winning here too: the overview's four cards laid out three across, leaving the fourth
+     alone on a row with three quarters of it empty. auto-fit also means the row stays filled if a
+     card is ever added or dropped. */
+  .stats .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px;}
+  @media (max-width:900px){ .stats .stat-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} }
   .stat-card{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:16px 16px 14px; border-top:3px solid var(--ink);}
   .stat-card .k{font-size:25px; font-weight:800; color:#1A1A1A;}
   .stat-card .u{font-family:'Open Sans',sans-serif; font-size:11px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.03em; margin-top:5px; font-weight:700;}
@@ -539,7 +544,11 @@
   .community-count{font-family:'Open Sans',sans-serif; font-size:11px; color:var(--text-soft);
     line-height:1.5; margin:10px 0 0; padding-top:10px; border-top:1px solid var(--rule);}
   /* ---- Newsletter ---- */
-  .nl-shell{padding:26px 0 40px;}
+  /* Only the vertical padding. The shorthand set the horizontal padding to 0, which overrode
+     the 22px gutter .wrap puts on the same element, so the newsletter masthead and its sidebar
+     sat flush against the window edge while every other screen kept its margin. Writing the two
+     axes separately also keeps the 16px gutter .wrap switches to on a phone. */
+  .nl-shell{padding-top:26px; padding-bottom:40px;}
   .nl-masthead{border-bottom:3px double var(--ink); padding-bottom:16px; margin-bottom:22px;}
   .nl-mast-kicker{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800;
     letter-spacing:.18em; text-transform:uppercase; color:var(--text-soft);}
@@ -560,7 +569,7 @@
   .nl-issue-btn[aria-current="true"] b, .nl-issue-btn[aria-current="true"] span{color:#fff;}
   .nl-method{font-size:10.5px; color:var(--text-soft); line-height:1.55; margin-top:14px;}
   /* A paper tone rather than white, so an issue reads as a printed sheet on the page. */
-  .nl-shell{padding:26px 0 40px;}
+  .nl-shell{padding-top:26px; padding-bottom:40px;}
   /* The sheet itself is a light grey; the page around it stays as it was. */
   .nl-issue{background:#F0F1EC; border:1px solid var(--rule); padding:30px 34px 34px; min-width:0;}
   .nl-mast-date{font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:.06em;
@@ -621,7 +630,9 @@
   .nl-sources{margin-top:22px; border-top:1px solid var(--rule); padding-top:12px;}
   .nl-sources ol{margin:0; padding-left:18px; columns:2; column-gap:26px;}
   .nl-sources li{font-size:11px; color:var(--text-soft); line-height:1.5; margin-bottom:5px; break-inside:avoid;}
-  .arc-shell{padding:26px 0 44px;}
+  /* Vertical only, like .nl-shell: this sits on the same element as .wrap, and the shorthand's
+     0 replaced the side gutter, so the archive's masthead touched the window edge. */
+  .arc-shell{padding-top:26px; padding-bottom:44px;}
   .arc-head{display:flex; flex-wrap:wrap; gap:22px; justify-content:space-between; align-items:flex-start;
     border-bottom:3px double var(--ink); padding-bottom:18px; margin-bottom:18px;}
   .arc-kicker{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.18em;
@@ -6758,10 +6769,24 @@ window.addEventListener('resize',()=>{
   googleResizeTimer=setTimeout(()=>{if(gMap)google.maps.event.trigger(gMap,'resize');},150);
 });
 window.initGoogleMap=initGoogleMapReal;
+// Reached from three places for one failure: Google's own auth callback, the script tag's
+// onerror, and a twelve second timeout. Each of them appended the same sentence, so the status
+// line read "Google Maps unavailable; showing the project map." twice over, behind a separator
+// with nothing in front of it when the counts had not been written yet.
+let overviewFallbackDone=false;
 function overviewMapFallback(){
   clearTimeout(googleLoadTimer);googleLoadPending=false;
+  if(overviewFallbackDone)return;
+  overviewFallbackDone=true;
   initLeafletMap();syncMapProviderButton();
-  document.getElementById('overviewMapStatus').textContent+=' · Google Maps unavailable; showing the project map.';
+  // Only worth saying when there is in fact a project map to fall back to. With Leaflet blocked
+  // as well, initLeafletMap has already said that the map library could not be loaded, and
+  // promising a fallback that is not there would contradict it.
+  if(!window.L)return;
+  const status=document.getElementById('overviewMapStatus');
+  const note='Google Maps unavailable; showing the project map.';
+  if(status.textContent.includes(note))return;
+  status.textContent=status.textContent.trim()?status.textContent+' · '+note:note;
 }
 window.gm_authFailure=overviewMapFallback;
 function loadGoogleMapsWithKey(key){
@@ -6782,7 +6807,7 @@ function loadGoogleMaps(){
   loadGoogleMapsWithKey(key);
 }
 const MAP_TILE_URL='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
-const CARTO_ATTRIB='Tiles &copy; Esri — Esri, HERE, Garmin, USGS, OpenStreetMap contributors';
+const CARTO_ATTRIB='Tiles &copy; Esri: Esri, HERE, Garmin, USGS, OpenStreetMap contributors';
 // Voyager reads as a place; Positron is the flat backdrop the dashboard map plots onto.
 function tileVoyager(lat, lng, z){
   z = z || 16;
@@ -6794,7 +6819,17 @@ function tileVoyager(lat, lng, z){
 }
 
 function initLeafletMap(){
-  if(!window.L){document.getElementById('gateError').textContent='Map unavailable. Project records and city links remain below.';document.getElementById('gateError').style.display='block';return;}
+  if(!window.L){
+    // The panel keeps its "Loading the map..." heading underneath, so a reader was told the map
+    // was both loading and unavailable at the same time. Once it has failed, nothing is loading.
+    const gate=document.getElementById('mapGate'), heading=gate&&gate.querySelector('h3');
+    if(heading)heading.textContent='Map unavailable';
+    const lede=gate&&gate.querySelector('p');
+    if(lede)lede.textContent='Select a project from the register below.';
+    document.getElementById('gateError').textContent='The map library could not be loaded on this connection. Every record it plots is listed below.';
+    document.getElementById('gateError').style.display='block';
+    return;
+  }
   document.getElementById('mapGate').style.display='none';document.getElementById('mapGoogle').style.display='none';document.getElementById('mapGoogleEmbed').hidden=true;document.getElementById('mapLeafletWrap').style.display='block';
   if(!lMap){lMap=L.map('map',{scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat,CITIES[currentCity].center.lng],CITIES[currentCity].zoom);L.tileLayer(MAP_TILE_URL,{attribution:CARTO_ATTRIB,maxZoom:19}).addTo(lMap);}
   mapProvider='leaflet';syncMapProviderButton();renderLegend();buildMarkersForCurrentProvider();
