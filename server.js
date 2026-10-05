@@ -249,8 +249,11 @@ async function initDb() {
     );
   `);
   console.log('Database tables ready.');
+  await purgeExpiredSessions();
 }
 initDb().catch(err => console.error('Failed to initialize database tables:', err));
+// Once a day while the process is up. Unreferenced so it never holds the process open on its own.
+if (pool) setInterval(purgeExpiredSessions, 24 * 60 * 60_000).unref();
 
 // The public flood geometry and dashboard HTML compress substantially on mobile connections.
 app.use(compression());
@@ -282,13 +285,34 @@ function requireDb(res) {
   return true;
 }
 
+// A token used to be accepted forever: the sessions table recorded created_at and nothing ever
+// read it, so a token copied off an old machine stayed valid for the life of the account and the
+// table only ever grew. Ninety days is long enough that a regular reader is not asked to log in
+// again for the sake of it, and short enough that an abandoned token stops working.
+const SESSION_TTL_DAYS = Number(process.env.SESSION_TTL_DAYS || 90);
+
+// Rows past their life, cleared on a schedule rather than on every request. Expiry is enforced by
+// the query in authMiddleware, so a row still sitting here is already refused.
+async function purgeExpiredSessions() {
+  if (!pool) return;
+  try {
+    const gone = await pool.query(
+      `DELETE FROM sessions WHERE created_at < now() - ($1 || ' days')::interval`, [SESSION_TTL_DAYS]);
+    if (gone.rowCount) console.log(`Cleared ${gone.rowCount} expired session${gone.rowCount === 1 ? '' : 's'}.`);
+  } catch (err) {
+    console.error('Could not clear expired sessions:', err.message);
+  }
+}
+
 async function authMiddleware(req, res, next) {
   if (!requireDb(res)) return;
   const authHeader = req.headers.authorization || '';
   const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
   if (!token) return res.status(401).json({ error: 'Not logged in.' });
   try {
-    const result = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
+    const result = await pool.query(
+      `SELECT username FROM sessions WHERE token = $1 AND created_at > now() - ($2 || ' days')::interval`,
+      [token, SESSION_TTL_DAYS]);
     if (!result.rows.length) return res.status(401).json({ error: 'Session expired or invalid. Please log in again.' });
     req.username = result.rows[0].username;
     next();
@@ -546,16 +570,24 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     values.push(req.username);
     await pool.query(`UPDATE users SET ${fields.join(', ')} WHERE username = $${i}`, values);
 
-    // Saving a real address + a live frequency sends an immediate welcome recap, so the user sees
-    // what they signed up for right away instead of waiting for the next scheduled run.
-    const after = await pool.query('SELECT email, email_frequency, home_city, categories FROM users WHERE username = $1', [req.username]);
+    // Signing up for the briefing sends an immediate recap, so the reader sees what they signed
+    // up for instead of waiting for the next scheduled run. Only on the way in, though: this
+    // fired on every save, so changing a city or unticking a category re-sent an email titled
+    // "Your profile on The Bay Dashboard is ready". It also left last_digest_sent_at null, so
+    // the next cron run read the reader as new and sent the setup briefing a third time. A
+    // successful recap now records itself, which is what both this route and runDigests use to
+    // tell a new subscriber from an existing one.
+    const after = await pool.query(
+      'SELECT email, email_frequency, home_city, categories, last_digest_sent_at FROM users WHERE username = $1',
+      [req.username]);
     const u = after.rows[0];
+    const subscribing = Boolean(u.email) && u.email_frequency !== 'off' && !u.last_digest_sent_at;
     let welcomeSent = false;
     let welcomeError = null;
-    if (!u.email) {
-      welcomeError = 'No email address saved, so nothing was sent.';
-    } else if (u.email_frequency === 'off') {
-      welcomeError = 'Updates are set to Off, so nothing was sent.';
+    if (!subscribing) {
+      // Nothing to report. An address left blank or updates set to Off is the reader's own
+      // choice, and an existing subscriber is not owed another setup email; the client shows
+      // a plain "Saved" when neither field comes back.
     } else if (!RESEND_API_KEY) {
       welcomeError = 'The server has no RESEND_API_KEY configured, so no email can be sent.';
     } else {
@@ -563,6 +595,9 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
         await sendWelcomeRecap({ username: req.username, email: u.email, homeCity: u.home_city,
                                  frequency: u.email_frequency, categories: parseCategories(u.categories) });
         welcomeSent = true;
+        // Only after it actually went. A failed send leaves this null so the reader's next save
+        // can try again rather than silently never sending one.
+        await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [req.username]);
       } catch (err) {
         // A failed welcome must not fail the save - preferences are already persisted. Surfacing
         // the reason matters though: silently showing "Saved" for a failed send makes a
@@ -1319,7 +1354,11 @@ async function isAdminRequest(req) {
   const token = (req.headers.authorization || '').replace(/^Bearer /, '');
   if (!token || !ADMIN_USERNAMES.length) return false;
   try {
-    const session = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
+    // Same expiry as every other route. This read its own session row and skipped the age check,
+    // so an old token refused everywhere else still opened the admin counts.
+    const session = await pool.query(
+      `SELECT username FROM sessions WHERE token = $1 AND created_at > now() - ($2 || ' days')::interval`,
+      [token, SESSION_TTL_DAYS]);
     return Boolean(session.rows.length && ADMIN_USERNAMES.includes(session.rows[0].username.toLowerCase()));
   } catch { return false; }
 }
