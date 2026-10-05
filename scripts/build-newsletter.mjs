@@ -26,6 +26,10 @@ import { NEWS_ARTICLES } from '../data/news.js';
 import { CITY_STATS } from '../data/stats.js';
 import { RHNA } from '../data/rhna.js';
 import { REGIONAL_CITIES } from '../data/regional.js';
+// The same address key the dashboard reconciles its records with, so a figure printed in an
+// issue and a figure shown on the site count the same way.
+import '../public/housing-data.js';
+const { addressKey } = globalThis.DashboardHousing;
 
 const ROOT = new URL('..', import.meta.url);
 const read = p => JSON.parse(readFileSync(new URL(p, ROOT), 'utf8'));
@@ -174,9 +178,19 @@ function issueFor(monthId, number, previousIssueDate) {
   const yearNews = newsItems.filter(inWindow);
   const yearProjects = [...curated, ...aprRecords].filter(inWindow);
   // Everything a city had published before this issue and not reported as finished.
-  const pipeline = [...curated, ...aprRecords]
-    .filter(r => published(r) && r.date <= asOf && r.units && r.stage !== 'completed')
-    .sort((a, b) => b.units - a.units);
+  // Curated city records and the state annual reports both describe the same sites, and the
+  // dashboard reconciles them before counting. This list did not, so one address filed in both
+  // sources appeared twice: 1,792 records carrying "76,796 reported homes" when 1,766 distinct
+  // addresses carry 74,973. Collapsed on the same address key the dashboard uses, keeping the
+  // larger count where two filings disagree.
+  const pipelineByAddress = new Map();
+  for (const r of [...curated, ...aprRecords]) {
+    if (!(published(r) && r.date <= asOf && r.units && r.stage !== 'completed')) continue;
+    const id = `${r.city}|${addressKey(r.title)}`;
+    const held = pipelineByAddress.get(id);
+    if (!held || r.units > held.units) pipelineByAddress.set(id, r);
+  }
+  const pipeline = [...pipelineByAddress.values()].sort((a, b) => b.units - a.units);
 
   const sections = [];
   const sources = new Map();

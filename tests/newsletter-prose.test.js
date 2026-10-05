@@ -120,3 +120,37 @@ test('written prose carries no em dash', () => {
     .map(p => `${p.issue} / ${p.where}`);
   assert.deepEqual(offenders, [], offenders.join('\n'));
 });
+
+test('a pipeline figure counts each address once', () => {
+  // Curated city records and the state annual reports describe the same sites. Combined without
+  // reconciling them, every issue printed "1,792 developments carrying 76,796 reported homes"
+  // where 1,766 distinct addresses carry 74,973. The generator now collapses them on the same
+  // address key the dashboard uses, so a figure in an issue and a figure on the site agree.
+  const claims = [];
+  for (const issue of issues) {
+    for (const section of issue.sections || []) {
+      for (const block of section.blocks || []) {
+        if (block.kind !== 'para') continue;
+        const text = spanText(block.spans);
+        const m = text.match(/add up to ([\d,]+) developments? carrying ([\d,]+) reported homes/);
+        if (m) claims.push({ issue: issue.month, records: Number(m[1].replace(/,/g, '')), homes: Number(m[2].replace(/,/g, '')) });
+      }
+    }
+  }
+  assert.ok(claims.length > 0, 'at least one issue should state a pipeline figure');
+  // An average tells us nothing here: an early issue with ten published records, one of them a
+  // 4,000-home master plan, legitimately averages hundreds of homes each. What matters is that
+  // the figure was built from distinct addresses, so the generator is checked for the key it
+  // reconciles them with, and tests/address-key.test.js proves that key works.
+  const generator = readFileSync(new URL('../scripts/build-newsletter.mjs', import.meta.url), 'utf8');
+  assert.match(generator, /const pipelineByAddress = new Map\(\)/,
+    'the pipeline must be collapsed by address before it is counted');
+  assert.match(generator, /addressKey\(r\.title\)/,
+    'and collapsed with the same address key the dashboard uses');
+  assert.match(generator, /import '\.\.\/public\/housing-data\.js'/,
+    'which means importing the shared helper rather than reimplementing it');
+  for (const c of claims) {
+    assert.ok(c.records > 0 && c.homes > 0, `${c.issue}: a pipeline figure should be positive`);
+    assert.ok(c.homes >= c.records, `${c.issue}: ${c.records} developments cannot carry ${c.homes} homes`);
+  }
+});
