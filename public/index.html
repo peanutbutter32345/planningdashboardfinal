@@ -6584,10 +6584,12 @@ function renderStats(){
   if(CITIES[currentCity].coverage==='directory'){document.getElementById('statGrid').innerHTML='<div class="stat-card directory-stat"><div class="u">City guide available</div><div class="sub">Open Statistics for Census estimates, Resources for official planning records, and Get Involved for meeting agendas. Project totals will appear when an inventory is imported.</div></div>';return;}
   const list = DATA();
   const housing = list.filter(d=>categoryOf(d)==='Housing');
-  const devUnits = housing.filter(d=>Number.isFinite(d.units)).reduce((a,d)=>a+d.units,0);
+  // Counted one address at a time. Eleven addresses carry two records apiece, the same project
+  // filed at two stages, and adding both reported 1,049 homes that do not exist.
+  const devUnits = DashboardHousing.sumUnits(housing);
   const bmrKnown = housing.filter(d=>Number.isFinite(d.bmr) && Number.isFinite(d.units) && d.units>0);
-  const bmrUnits = bmrKnown.reduce((a,d)=>a+d.bmr,0);
-  const bmrTotalOfKnown = bmrKnown.reduce((a,d)=>a+(d.units||0),0);
+  const bmrUnits = DashboardHousing.sumUnits(bmrKnown, 'bmr');
+  const bmrTotalOfKnown = DashboardHousing.sumUnits(bmrKnown);
   const bmrShare = bmrTotalOfKnown ? Math.round(100*bmrUnits/bmrTotalOfKnown) : 0;
   const flagged = list.filter(d=>d.flag).length;
   const cards = [
@@ -15945,7 +15947,7 @@ function cityFacts(key){
   const byType = {}; active.forEach(d=>{ byType[d.type]=(byType[d.type]||0)+(d.units||0); });
   return {
     projects: active.length,
-    units: withUnits.length ? active.reduce((n,d)=>n+(d.units||0),0) : null,
+    units: withUnits.length ? DashboardHousing.sumUnits(active) : null,
     bmr: active.some(d=>Number.isFinite(d.bmr)) ? active.reduce((n,d)=>n+(d.bmr||0),0) : null,
     unitsKnown: withUnits.length,
     medianUnits: median(withUnits.map(d=>d.units)),
@@ -16486,7 +16488,7 @@ function railSlides(){
       href:'planner', cta:'Build a plan'});
   }
   const active = (CITIES[c] ? CITIES[c].data : []).filter(d=>d.stage!=='completed');
-  const units = active.reduce((n,d)=>n+(d.units||0),0);
+  const units = DashboardHousing.sumUnits(active);
   if(units){
     out.push({k:units.toLocaleString(), l:'Homes in the pipeline, '+label,
       s:'Across <b>'+active.length+'</b> active projects tracked here.',
