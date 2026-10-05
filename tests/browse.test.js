@@ -50,10 +50,14 @@ test('county views retain every matching map record and restore the full Bay dat
  const housing=JSON.parse(fs.readFileSync(new URL('../public/data/housing-records.json',import.meta.url)));
  const context=vm.createContext({window:{REGIONAL_DATA,HOUSING_RECORDS:housing},DashboardHousing:globalThis.DashboardHousing,DashboardBrowse:globalThis.DashboardBrowse});
  vm.runInContext(html.slice(html.indexOf('const STAGES ='),html.indexOf('// ---------------- HELPERS ----------------')),context);
- const result=vm.runInContext(`(()=>{const total=CITIES.all.data.length;setCountyScope('Alameda');const rows=CITIES.all.data;const county={label:CITIES.all.label,count:rows.length,expected:Object.values(CITIES).filter(c=>c!==CITIES.all&&c.county==='Alameda').reduce((n,c)=>n+c.data.length,0),onlyLocal:rows.every(p=>CITIES[p._sourceCity].county==='Alameda')};setCountyScope('San Francisco');const sf=CITIES.all.data.length===CITIES.sanfrancisco.data.length;setCountyScope('');return {total,county,sf,restored:CITIES.all.data.length};})()`,context);
+ const result=vm.runInContext(`(()=>{const total=CITIES.all.data.length;const everyCity=Object.values(CITIES).filter(c=>c!==CITIES.all).reduce((n,c)=>n+c.data.length,0);setCountyScope('Alameda');const rows=CITIES.all.data;const county={label:CITIES.all.label,count:rows.length,expected:Object.values(CITIES).filter(c=>c!==CITIES.all&&c.county==='Alameda').reduce((n,c)=>n+c.data.length,0),onlyLocal:rows.every(p=>CITIES[p._sourceCity].county==='Alameda')};setCountyScope('San Francisco');const sf=CITIES.all.data.length===CITIES.sanfrancisco.data.length;setCountyScope('');return {total,everyCity,county,sf,restored:CITIES.all.data.length};})()`,context);
  assert.equal(result.county.label,'Alameda County');
  assert.equal(result.county.count,result.county.expected);
  assert.ok(result.county.onlyLocal&&result.sf);
- assert.equal(result.total,2833);
+ // Derived rather than typed. This read 2833 until the address key stopped fusing distinct
+ // addresses and 32 real HCD records came back, and a figure written into a test goes stale the
+ // same way a figure written into a sentence does.
+ assert.equal(result.total,result.everyCity,'the aggregate must hold every city\'s records');
+ assert.ok(result.total>2000,'the aggregate should hold the whole Bay Area dataset');
  assert.equal(result.restored,result.total);
 });

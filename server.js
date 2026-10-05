@@ -249,8 +249,11 @@ async function initDb() {
     );
   `);
   console.log('Database tables ready.');
+  await purgeExpiredSessions();
 }
 initDb().catch(err => console.error('Failed to initialize database tables:', err));
+// Once a day while the process is up. Unreferenced so it never holds the process open on its own.
+if (pool) setInterval(purgeExpiredSessions, 24 * 60 * 60_000).unref();
 
 // The public flood geometry and dashboard HTML compress substantially on mobile connections.
 app.use(compression());
@@ -282,13 +285,34 @@ function requireDb(res) {
   return true;
 }
 
+// A token used to be accepted forever: the sessions table recorded created_at and nothing ever
+// read it, so a token copied off an old machine stayed valid for the life of the account and the
+// table only ever grew. Ninety days is long enough that a regular reader is not asked to log in
+// again for the sake of it, and short enough that an abandoned token stops working.
+const SESSION_TTL_DAYS = Number(process.env.SESSION_TTL_DAYS || 90);
+
+// Rows past their life, cleared on a schedule rather than on every request. Expiry is enforced by
+// the query in authMiddleware, so a row still sitting here is already refused.
+async function purgeExpiredSessions() {
+  if (!pool) return;
+  try {
+    const gone = await pool.query(
+      `DELETE FROM sessions WHERE created_at < now() - ($1 || ' days')::interval`, [SESSION_TTL_DAYS]);
+    if (gone.rowCount) console.log(`Cleared ${gone.rowCount} expired session${gone.rowCount === 1 ? '' : 's'}.`);
+  } catch (err) {
+    console.error('Could not clear expired sessions:', err.message);
+  }
+}
+
 async function authMiddleware(req, res, next) {
   if (!requireDb(res)) return;
   const authHeader = req.headers.authorization || '';
   const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
   if (!token) return res.status(401).json({ error: 'Not logged in.' });
   try {
-    const result = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
+    const result = await pool.query(
+      `SELECT username FROM sessions WHERE token = $1 AND created_at > now() - ($2 || ' days')::interval`,
+      [token, SESSION_TTL_DAYS]);
     if (!result.rows.length) return res.status(401).json({ error: 'Session expired or invalid. Please log in again.' });
     req.username = result.rows[0].username;
     next();
@@ -546,16 +570,24 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     values.push(req.username);
     await pool.query(`UPDATE users SET ${fields.join(', ')} WHERE username = $${i}`, values);
 
-    // Saving a real address + a live frequency sends an immediate welcome recap, so the user sees
-    // what they signed up for right away instead of waiting for the next scheduled run.
-    const after = await pool.query('SELECT email, email_frequency, home_city, categories FROM users WHERE username = $1', [req.username]);
+    // Signing up for the briefing sends an immediate recap, so the reader sees what they signed
+    // up for instead of waiting for the next scheduled run. Only on the way in, though: this
+    // fired on every save, so changing a city or unticking a category re-sent an email titled
+    // "Your profile on The Bay Dashboard is ready". It also left last_digest_sent_at null, so
+    // the next cron run read the reader as new and sent the setup briefing a third time. A
+    // successful recap now records itself, which is what both this route and runDigests use to
+    // tell a new subscriber from an existing one.
+    const after = await pool.query(
+      'SELECT email, email_frequency, home_city, categories, last_digest_sent_at FROM users WHERE username = $1',
+      [req.username]);
     const u = after.rows[0];
+    const subscribing = Boolean(u.email) && u.email_frequency !== 'off' && !u.last_digest_sent_at;
     let welcomeSent = false;
     let welcomeError = null;
-    if (!u.email) {
-      welcomeError = 'No email address saved, so nothing was sent.';
-    } else if (u.email_frequency === 'off') {
-      welcomeError = 'Updates are set to Off, so nothing was sent.';
+    if (!subscribing) {
+      // Nothing to report. An address left blank or updates set to Off is the reader's own
+      // choice, and an existing subscriber is not owed another setup email; the client shows
+      // a plain "Saved" when neither field comes back.
     } else if (!RESEND_API_KEY) {
       welcomeError = 'The server has no RESEND_API_KEY configured, so no email can be sent.';
     } else {
@@ -563,6 +595,9 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
         await sendWelcomeRecap({ username: req.username, email: u.email, homeCity: u.home_city,
                                  frequency: u.email_frequency, categories: parseCategories(u.categories) });
         welcomeSent = true;
+        // Only after it actually went. A failed send leaves this null so the reader's next save
+        // can try again rather than silently never sending one.
+        await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [req.username]);
       } catch (err) {
         // A failed welcome must not fail the save - preferences are already persisted. Surfacing
         // the reason matters though: silently showing "Saved" for a failed send makes a
@@ -582,6 +617,14 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
 // ---------------- REMINDERS ----------------
 const REMINDER_KINDS = ['board', 'plan', 'project', 'hearing'];
 const REMINDERS_MAX = 60;
+
+// A row id from the URL or the body. These columns are SERIAL, so handing Postgres "abc" raised
+// "invalid input syntax for type integer" and the route answered 500, reporting a server fault
+// for what is a malformed request. Returns null for anything that is not a positive whole number.
+function rowId(raw) {
+  const n = Number(raw);
+  return Number.isInteger(n) && n > 0 && n <= Number.MAX_SAFE_INTEGER ? n : null;
+}
 
 function reminderHtml(rows, username) {
   const esc = t => String(t == null ? '' : t)
@@ -645,9 +688,11 @@ app.post('/api/reminders', authMiddleware, async (req, res) => {
 app.patch('/api/reminders/:id', authMiddleware, async (req, res) => {
   const { inDigest } = req.body || {};
   if (typeof inDigest !== 'boolean') return res.status(400).json({ error: 'inDigest must be true or false.' });
+  const id = rowId(req.params.id);
+  if (!id) return res.status(400).json({ error: 'That reminder reference is not valid.' });
   try {
     await pool.query('UPDATE reminders SET in_digest = $1 WHERE id = $2 AND username = $3',
-      [inDigest, req.params.id, req.username]);
+      [inDigest, id, req.username]);
     res.json({ ok: true });
   } catch (err) {
     console.error(err);
@@ -656,8 +701,10 @@ app.patch('/api/reminders/:id', authMiddleware, async (req, res) => {
 });
 
 app.delete('/api/reminders/:id', authMiddleware, async (req, res) => {
+  const id = rowId(req.params.id);
+  if (!id) return res.status(400).json({ error: 'That reminder reference is not valid.' });
   try {
-    await pool.query('DELETE FROM reminders WHERE id = $1 AND username = $2', [req.params.id, req.username]);
+    await pool.query('DELETE FROM reminders WHERE id = $1 AND username = $2', [id, req.username]);
     res.json({ ok: true });
   } catch (err) {
     console.error(err);
@@ -674,7 +721,11 @@ app.post('/api/reminders/email', authMiddleware, async (req, res) => {
     if (!email) return res.status(400).json({ error: 'Add an email address under Your Account first.' });
     if (!RESEND_API_KEY) return res.status(503).json({ error: 'Email is not configured on the server yet.' });
 
-    const only = req.body && req.body.id;
+    const asked = req.body && req.body.id;
+    const only = asked == null || asked === '' ? null : rowId(asked);
+    if (asked != null && asked !== '' && !only) {
+      return res.status(400).json({ error: 'That reminder reference is not valid.' });
+    }
     const rows = only
       ? (await pool.query('SELECT * FROM reminders WHERE id = $1 AND username = $2', [only, req.username])).rows
       : (await pool.query('SELECT * FROM reminders WHERE username = $1 ORDER BY created_at DESC', [req.username])).rows;
@@ -783,9 +834,11 @@ app.post('/api/chat/history', authMiddleware, async (req, res) => {
 });
 
 app.delete('/api/chat/history/:id', authMiddleware, async (req, res) => {
+  const id = rowId(req.params.id);
+  if (!id) return res.status(400).json({ error: 'That saved answer reference is not valid.' });
   try {
     // The username predicate is what stops one account deleting another's rows.
-    await pool.query('DELETE FROM chat_history WHERE id = $1 AND username = $2', [req.params.id, req.username]);
+    await pool.query('DELETE FROM chat_history WHERE id = $1 AND username = $2', [id, req.username]);
     res.json({ ok: true });
   } catch (err) {
     console.error(err);
@@ -816,10 +869,39 @@ app.get('/api/stars', authMiddleware, async (req, res) => {
   }
 });
 
+// The five things the dashboard puts a star on. Anything else is a client that has drifted from
+// the server, and storing it would put a row in the table that nothing can ever display.
+const STAR_TYPES = ['project', 'board', 'news', 'resource', 'statistic'];
+// A news item's id is its URL, and a Google News link runs past 950 characters, so this has to
+// clear that comfortably rather than looking like a generous round number.
+const STAR_ID_MAX = 1200;
+const STAR_DATA_MAX = 4000;
+// Reminders cap at 60 and saved answers at 100. Stars had no cap at all, so one account could
+// add rows until the table was the problem.
+const STARS_MAX = 500;
+
 app.post('/api/stars', authMiddleware, async (req, res) => {
   const { itemType, itemId, itemData } = req.body || {};
   if (!itemType || !itemId) return res.status(400).json({ error: 'itemType and itemId are required.' });
+  if (!STAR_TYPES.includes(itemType)) return res.status(400).json({ error: 'Unknown item type.' });
+  if (typeof itemId !== 'string' || itemId.length > STAR_ID_MAX) {
+    return res.status(400).json({ error: 'That item reference is too long to save.' });
+  }
+  if (itemData != null && JSON.stringify(itemData).length > STAR_DATA_MAX) {
+    return res.status(400).json({ error: 'That item carries too much detail to save.' });
+  }
   try {
+    // Counted before the insert, and only for a star that is new: re-starring something already
+    // saved is an update and must keep working at the cap.
+    const existing = await pool.query(
+      'SELECT 1 FROM stars WHERE username = $1 AND item_type = $2 AND item_id = $3',
+      [req.username, itemType, itemId]);
+    if (!existing.rows.length) {
+      const count = await pool.query('SELECT COUNT(*)::int AS n FROM stars WHERE username = $1', [req.username]);
+      if (count.rows[0].n >= STARS_MAX) {
+        return res.status(400).json({ error: `You can save up to ${STARS_MAX} items. Remove one to add another.` });
+      }
+    }
     await pool.query(
       `INSERT INTO stars (username, item_type, item_id, item_data) VALUES ($1, $2, $3, $4)
        ON CONFLICT (username, item_type, item_id) DO UPDATE SET item_data = $4`,
@@ -946,6 +1028,26 @@ const OFF_TOPIC_REPLY = "I can only help with planning and development in the ci
 const INJECTION = /\b(ignore|disregard|forget|override)\s+(?:the\s+)?(?:(?:all|any|your|my|previous|prior|above|earlier|these|those|system)\s+){1,3}(instructions|rules|prompts?|guidelines)\b|\bsystem prompt\b|\byou are now\b|\bpretend (to be|you are)\b|\bjailbreak\b|\bdeveloper mode\b/i;
 const offTopic = (res, city) => res.json({answer:OFF_TOPIC_REPLY, resources:[], meta:{city, model, offTopic:true}});
 
+// Asking a question costs a call to the model provider, and the free plans this runs on cap tokens
+// per minute for the whole site rather than per visitor. Nothing stood between a script and that
+// quota: a loop pointed at /api/ask would spend it and leave every real reader looking at "the
+// free assistant is at its per-minute limit", which the route below already knows how to say.
+// Signing in is not required to ask, so the limit is per address, like the guest and login limits.
+// Generous enough for a reader working through a topic, and counted only when a question actually
+// reaches the model - a refusal for scope or length is not charged against anyone.
+const askCountsByIp = new Map();
+const ASK_PER_WINDOW = 20;
+const ASK_WINDOW_MS = 10 * 60_000;
+function askAllowed(ip) {
+  const now = Date.now(), seen = askCountsByIp.get(ip);
+  if (!seen || now > seen.resetAt) { askCountsByIp.set(ip, { count: 1, resetAt: now + ASK_WINDOW_MS }); return true; }
+  if (seen.count >= ASK_PER_WINDOW) return false;
+  seen.count++;
+  // The map would otherwise hold a row for every address that ever asked.
+  if (askCountsByIp.size > 5000) for (const [k, v] of askCountsByIp) if (now > v.resetAt) askCountsByIp.delete(k);
+  return true;
+}
+
 app.post('/api/ask', async (req, res) => {
   try {
     if (!LLM_API_KEY) {
@@ -959,6 +1061,10 @@ app.post('/api/ask', async (req, res) => {
 
     const cityLabel = String(context.cityLabel || context.cityKey || '').trim();
     if (INJECTION.test(question)) return offTopic(res, cityLabel);
+    // After the cheap refusals above, so a question that never reaches the model is never counted.
+    if (!askAllowed(clientIp(req))) {
+      return res.status(429).json({error:'That is a lot of questions in a short time. Wait a few minutes and ask again.'});
+    }
     const candidateSources = rankSources(question, cityLabel).slice(0, 10);
     const candidateProjects = rankProjects(question, context.projects || []).slice(0, 12).map(compactProject);
     const history = cleanHistory(req.body?.history || []);
@@ -1103,58 +1209,70 @@ async function sendEmail(to, subject, html) {
 // what's stored in the database. First-ever run just seeds the tables silently - it does not
 // treat "every project" as a change, since that would blast every subscriber on day one.
 async function syncSnapshotsAndGetChanges() {
-  const existingCount = await pool.query('SELECT COUNT(*) FROM project_snapshots');
-  const isFirstRun = Number(existingCount.rows[0].count) === 0;
+  // One read per table, then the comparison in memory, then only the writes that are needed.
+  // This used to issue a SELECT for every single record and an INSERT or UPDATE after it: with
+  // 2,800 projects, 900 articles and 460 boards that is over four thousand round trips in series,
+  // inside the HTTP request the scheduler is waiting on. A slow database turned a digest run into
+  // a platform timeout, which cut the run off before anyone's email was sent.
+  //
+  // Writes go through the primary key with ON CONFLICT, so a record added between the read and
+  // the write lands as an update instead of raising a duplicate key.
+  const seedIfEmpty = count => (Number(count) === 0 ? new Date(0) : new Date());
 
+  // --- projects ---
+  const projectRows = await pool.query('SELECT project_id, stage, last_note, flag FROM project_snapshots');
+  const projectsBefore = new Map(projectRows.rows.map(r => [r.project_id, r]));
+  const projectStamp = seedIfEmpty(projectRows.rows.length);
   for (const p of PROJECTS) {
-    const existing = await pool.query('SELECT stage, last_note, flag FROM project_snapshots WHERE project_id = $1', [p.id]);
-    if (!existing.rows.length) {
+    const row = projectsBefore.get(p.id);
+    if (!row) {
       await pool.query(
-        `INSERT INTO project_snapshots (project_id, stage, last_note, flag, addr, city, updated_at) VALUES ($1,$2,$3,$4,$5,$6, $7)`,
-        [p.id, p.stage, p.lastNote, p.flag, p.addr, p.city, isFirstRun ? new Date(0) : new Date()]
-      );
-    } else {
-      const row = existing.rows[0];
-      const changed = row.stage !== p.stage || row.last_note !== p.lastNote || row.flag !== p.flag;
-      if (changed) {
-        await pool.query(
-          `UPDATE project_snapshots SET stage=$1, last_note=$2, flag=$3, updated_at=now() WHERE project_id=$4`,
-          [p.stage, p.lastNote, p.flag, p.id]
-        );
-      }
+        `INSERT INTO project_snapshots (project_id, stage, last_note, flag, addr, city, updated_at)
+         VALUES ($1,$2,$3,$4,$5,$6,$7)
+         ON CONFLICT (project_id) DO UPDATE
+           SET stage=EXCLUDED.stage, last_note=EXCLUDED.last_note, flag=EXCLUDED.flag,
+               addr=EXCLUDED.addr, city=EXCLUDED.city, updated_at=EXCLUDED.updated_at`,
+        [p.id, p.stage, p.lastNote, p.flag, p.addr, p.city, projectStamp]);
+    } else if (row.stage !== p.stage || row.last_note !== p.lastNote || row.flag !== p.flag) {
+      await pool.query(
+        `UPDATE project_snapshots SET stage=$1, last_note=$2, flag=$3, updated_at=now() WHERE project_id=$4`,
+        [p.stage, p.lastNote, p.flag, p.id]);
     }
   }
 
-  const existingNewsCount = await pool.query('SELECT COUNT(*) FROM news_seen');
-  const isFirstNewsRun = Number(existingNewsCount.rows[0].count) === 0;
+  // --- news ---
+  const newsRows = await pool.query('SELECT url FROM news_seen');
+  const newsBefore = new Set(newsRows.rows.map(r => r.url));
+  const newsStamp = seedIfEmpty(newsRows.rows.length);
   for (const a of NEWS_ARTICLES) {
-    const existing = await pool.query('SELECT 1 FROM news_seen WHERE url = $1', [a.url]);
-    if (!existing.rows.length) {
-      await pool.query(
-        `INSERT INTO news_seen (url, title, first_seen_at) VALUES ($1,$2,$3)`,
-        [a.url, a.title, isFirstNewsRun ? new Date(0) : new Date()]
-      );
-    }
+    if (newsBefore.has(a.url)) continue;
+    await pool.query(
+      `INSERT INTO news_seen (url, title, first_seen_at) VALUES ($1,$2,$3)
+       ON CONFLICT (url) DO NOTHING`,
+      [a.url, a.title, newsStamp]);
+    // Two records can carry the same URL, so without this the second one inserts again on the
+    // next run and the article reads as new a second time.
+    newsBefore.add(a.url);
   }
 
-  const existingBoardsCount = await pool.query('SELECT COUNT(*) FROM board_snapshots');
-  const isFirstBoardsRun = Number(existingBoardsCount.rows[0].count) === 0;
+  // --- boards ---
+  const boardRows = await pool.query('SELECT board_id, when_text, body FROM board_snapshots');
+  const boardsBefore = new Map(boardRows.rows.map(r => [r.board_id, r]));
+  const boardStamp = seedIfEmpty(boardRows.rows.length);
   for (const b of BOARDS) {
-    const existing = await pool.query('SELECT when_text, body FROM board_snapshots WHERE board_id = $1', [b.id]);
-    if (!existing.rows.length) {
+    const row = boardsBefore.get(b.id);
+    if (!row) {
       await pool.query(
-        `INSERT INTO board_snapshots (board_id, name, when_text, body, city, board_type, updated_at) VALUES ($1,$2,$3,$4,$5,$6,$7)`,
-        [b.id, b.name, b.when, b.body, b.city, b.boardType, isFirstBoardsRun ? new Date(0) : new Date()]
-      );
-    } else {
-      const row = existing.rows[0];
-      const changed = row.when_text !== b.when || row.body !== b.body;
-      if (changed) {
-        await pool.query(
-          `UPDATE board_snapshots SET when_text=$1, body=$2, updated_at=now() WHERE board_id=$3`,
-          [b.when, b.body, b.id]
-        );
-      }
+        `INSERT INTO board_snapshots (board_id, name, when_text, body, city, board_type, updated_at)
+         VALUES ($1,$2,$3,$4,$5,$6,$7)
+         ON CONFLICT (board_id) DO UPDATE
+           SET name=EXCLUDED.name, when_text=EXCLUDED.when_text, body=EXCLUDED.body,
+               city=EXCLUDED.city, board_type=EXCLUDED.board_type, updated_at=EXCLUDED.updated_at`,
+        [b.id, b.name, b.when, b.body, b.city, b.boardType, boardStamp]);
+    } else if (row.when_text !== b.when || row.body !== b.body) {
+      await pool.query(
+        `UPDATE board_snapshots SET when_text=$1, body=$2, updated_at=now() WHERE board_id=$3`,
+        [b.when, b.body, b.id]);
     }
   }
 }
@@ -1319,7 +1437,11 @@ async function isAdminRequest(req) {
   const token = (req.headers.authorization || '').replace(/^Bearer /, '');
   if (!token || !ADMIN_USERNAMES.length) return false;
   try {
-    const session = await pool.query('SELECT username FROM sessions WHERE token = $1', [token]);
+    // Same expiry as every other route. This read its own session row and skipped the age check,
+    // so an old token refused everywhere else still opened the admin counts.
+    const session = await pool.query(
+      `SELECT username FROM sessions WHERE token = $1 AND created_at > now() - ($2 || ' days')::interval`,
+      [token, SESSION_TTL_DAYS]);
     return Boolean(session.rows.length && ADMIN_USERNAMES.includes(session.rows[0].username.toLowerCase()));
   } catch { return false; }
 }
@@ -1534,6 +1656,25 @@ function withMatterCategories(meetings) {
 }
 
 // Shared by the on-screen summary and the emailed one, so a reader gets the same text either way.
+// A generated summary, kept per city. The agendas behind it are themselves cached for six hours
+// in hearings.js, so regenerating the prose on every request spent a model call to retell the
+// same meetings. Keyed on the agenda text, so a refreshed agenda writes a new summary rather
+// than serving the old one, and `force` still goes straight to the model.
+const meetingSummaryCache = new Map();
+const MEETING_SUMMARY_TTL_MS = 6 * 60 * 60_000;
+function cachedSummary(key, fingerprint) {
+  const hit = meetingSummaryCache.get(key);
+  if (!hit || hit.fingerprint !== fingerprint || Date.now() > hit.expiresAt) return null;
+  return hit.summary;
+}
+function cacheSummary(key, fingerprint, summary) {
+  if (!summary) return;
+  meetingSummaryCache.set(key, { fingerprint, summary, expiresAt: Date.now() + MEETING_SUMMARY_TTL_MS });
+  if (meetingSummaryCache.size > 400) {
+    for (const [k, v] of meetingSummaryCache) if (Date.now() > v.expiresAt) meetingSummaryCache.delete(k);
+  }
+}
+
 async function summarizeRecentMeetings(cityKey, cityLabel, { force = false } = {}) {
   const recent = await getRecentMeetings(cityKey, { force });
   if (recent.supported) recent.meetings = withMatterCategories(recent.meetings);
@@ -1551,10 +1692,13 @@ async function summarizeRecentMeetings(cityKey, cityLabel, { force = false } = {
         summary: '', note: 'AI summary is not configured on this server (LLM_API_KEY is missing); the raw recent meetings are listed below instead.'
       };
     }
-    const summary = await completeText([
+    const agendaText = meetingsDigestText(recent.meetings);
+    const reuse = force ? null : cachedSummary('legistar:' + cityKey, agendaText);
+    const summary = reuse || (await completeText([
       { role: 'system', content: MEETING_SUMMARY_SYSTEM },
-      { role: 'user', content: `Recent meetings for ${cityLabel} (last ${recent.days} days):\n\n${meetingsDigestText(recent.meetings)}` }
-    ], 700) || 'No summary returned.';
+      { role: 'user', content: `Recent meetings for ${cityLabel} (last ${recent.days} days):\n\n${agendaText}` }
+    ], 700) || 'No summary returned.');
+    if (!reuse && summary !== 'No summary returned.') cacheSummary('legistar:' + cityKey, agendaText, summary);
     return { supported: true, source: 'legistar', summary, meetings: recent.meetings, cityLabel, days: recent.days, generatedAt: recent.generatedAt };
   }
 
@@ -1585,10 +1729,13 @@ async function summarizeRecentMeetings(cityKey, cityLabel, { force = false } = {
       summary: '', note: 'AI summary is not configured on this server; the raw search results are listed below instead.'
     };
   }
-  const summary = await completeText([
+  const coverageText = webSearchDigestText(meetings);
+  const reuseWeb = force ? null : cachedSummary('websearch:' + cityKey, coverageText);
+  const summary = reuseWeb || (await completeText([
     { role: 'system', content: MEETING_SUMMARY_WEBSEARCH_SYSTEM },
-    { role: 'user', content: `Recent web coverage of ${cityLabel} meetings:\n\n${webSearchDigestText(meetings)}` }
-  ], 600) || 'No summary returned.';
+    { role: 'user', content: `Recent web coverage of ${cityLabel} meetings:\n\n${coverageText}` }
+  ], 600) || 'No summary returned.');
+  if (!reuseWeb && summary !== 'No summary returned.') cacheSummary('websearch:' + cityKey, coverageText, summary);
   return { supported: true, source: 'websearch', summary, meetings, cityLabel, days: 30, generatedAt: new Date().toISOString() };
 }
 
@@ -1598,7 +1745,15 @@ app.post('/api/meetings/summary', async (req, res) => {
     const cityKey = String(req.body?.cityKey || '').trim();
     const cityLabel = String(req.body?.cityLabel || cityKey).trim();
     if (!cityKey) return res.status(400).json({ error: 'City is required.' });
-    const result = await summarizeRecentMeetings(cityKey, cityLabel, { force: req.body?.force === true });
+    // Unauthenticated, and a cache miss costs a model call, so it shares the assistant's
+    // per-address budget. Whether this particular request will miss is not knowable until the
+    // agendas have been fetched, so every request counts; the cache is what keeps the model
+    // calls down, and this is what keeps one address from driving the requests.
+    const force = req.body?.force === true;
+    if (!askAllowed(clientIp(req))) {
+      return res.status(429).json({ error: 'That is a lot of summaries in a short time. Wait a few minutes and try again.' });
+    }
+    const result = await summarizeRecentMeetings(cityKey, cityLabel, { force });
     res.json(result);
   } catch (err) {
     console.error('Meeting summary failed:', err.message);
