@@ -1028,6 +1028,26 @@ const OFF_TOPIC_REPLY = "I can only help with planning and development in the ci
 const INJECTION = /\b(ignore|disregard|forget|override)\s+(?:the\s+)?(?:(?:all|any|your|my|previous|prior|above|earlier|these|those|system)\s+){1,3}(instructions|rules|prompts?|guidelines)\b|\bsystem prompt\b|\byou are now\b|\bpretend (to be|you are)\b|\bjailbreak\b|\bdeveloper mode\b/i;
 const offTopic = (res, city) => res.json({answer:OFF_TOPIC_REPLY, resources:[], meta:{city, model, offTopic:true}});
 
+// Asking a question costs a call to the model provider, and the free plans this runs on cap tokens
+// per minute for the whole site rather than per visitor. Nothing stood between a script and that
+// quota: a loop pointed at /api/ask would spend it and leave every real reader looking at "the
+// free assistant is at its per-minute limit", which the route below already knows how to say.
+// Signing in is not required to ask, so the limit is per address, like the guest and login limits.
+// Generous enough for a reader working through a topic, and counted only when a question actually
+// reaches the model - a refusal for scope or length is not charged against anyone.
+const askCountsByIp = new Map();
+const ASK_PER_WINDOW = 20;
+const ASK_WINDOW_MS = 10 * 60_000;
+function askAllowed(ip) {
+  const now = Date.now(), seen = askCountsByIp.get(ip);
+  if (!seen || now > seen.resetAt) { askCountsByIp.set(ip, { count: 1, resetAt: now + ASK_WINDOW_MS }); return true; }
+  if (seen.count >= ASK_PER_WINDOW) return false;
+  seen.count++;
+  // The map would otherwise hold a row for every address that ever asked.
+  if (askCountsByIp.size > 5000) for (const [k, v] of askCountsByIp) if (now > v.resetAt) askCountsByIp.delete(k);
+  return true;
+}
+
 app.post('/api/ask', async (req, res) => {
   try {
     if (!LLM_API_KEY) {
@@ -1041,6 +1061,10 @@ app.post('/api/ask', async (req, res) => {
 
     const cityLabel = String(context.cityLabel || context.cityKey || '').trim();
     if (INJECTION.test(question)) return offTopic(res, cityLabel);
+    // After the cheap refusals above, so a question that never reaches the model is never counted.
+    if (!askAllowed(clientIp(req))) {
+      return res.status(429).json({error:'That is a lot of questions in a short time. Wait a few minutes and ask again.'});
+    }
     const candidateSources = rankSources(question, cityLabel).slice(0, 10);
     const candidateProjects = rankProjects(question, context.projects || []).slice(0, 12).map(compactProject);
     const history = cleanHistory(req.body?.history || []);
@@ -1185,58 +1209,70 @@ async function sendEmail(to, subject, html) {
 // what's stored in the database. First-ever run just seeds the tables silently - it does not
 // treat "every project" as a change, since that would blast every subscriber on day one.
 async function syncSnapshotsAndGetChanges() {
-  const existingCount = await pool.query('SELECT COUNT(*) FROM project_snapshots');
-  const isFirstRun = Number(existingCount.rows[0].count) === 0;
+  // One read per table, then the comparison in memory, then only the writes that are needed.
+  // This used to issue a SELECT for every single record and an INSERT or UPDATE after it: with
+  // 2,800 projects, 900 articles and 460 boards that is over four thousand round trips in series,
+  // inside the HTTP request the scheduler is waiting on. A slow database turned a digest run into
+  // a platform timeout, which cut the run off before anyone's email was sent.
+  //
+  // Writes go through the primary key with ON CONFLICT, so a record added between the read and
+  // the write lands as an update instead of raising a duplicate key.
+  const seedIfEmpty = count => (Number(count) === 0 ? new Date(0) : new Date());
 
+  // --- projects ---
+  const projectRows = await pool.query('SELECT project_id, stage, last_note, flag FROM project_snapshots');
+  const projectsBefore = new Map(projectRows.rows.map(r => [r.project_id, r]));
+  const projectStamp = seedIfEmpty(projectRows.rows.length);
   for (const p of PROJECTS) {
-    const existing = await pool.query('SELECT stage, last_note, flag FROM project_snapshots WHERE project_id = $1', [p.id]);
-    if (!existing.rows.length) {
+    const row = projectsBefore.get(p.id);
+    if (!row) {
       await pool.query(
-        `INSERT INTO project_snapshots (project_id, stage, last_note, flag, addr, city, updated_at) VALUES ($1,$2,$3,$4,$5,$6, $7)`,
-        [p.id, p.stage, p.lastNote, p.flag, p.addr, p.city, isFirstRun ? new Date(0) : new Date()]
-      );
-    } else {
-      const row = existing.rows[0];
-      const changed = row.stage !== p.stage || row.last_note !== p.lastNote || row.flag !== p.flag;
-      if (changed) {
-        await pool.query(
-          `UPDATE project_snapshots SET stage=$1, last_note=$2, flag=$3, updated_at=now() WHERE project_id=$4`,
-          [p.stage, p.lastNote, p.flag, p.id]
-        );
-      }
+        `INSERT INTO project_snapshots (project_id, stage, last_note, flag, addr, city, updated_at)
+         VALUES ($1,$2,$3,$4,$5,$6,$7)
+         ON CONFLICT (project_id) DO UPDATE
+           SET stage=EXCLUDED.stage, last_note=EXCLUDED.last_note, flag=EXCLUDED.flag,
+               addr=EXCLUDED.addr, city=EXCLUDED.city, updated_at=EXCLUDED.updated_at`,
+        [p.id, p.stage, p.lastNote, p.flag, p.addr, p.city, projectStamp]);
+    } else if (row.stage !== p.stage || row.last_note !== p.lastNote || row.flag !== p.flag) {
+      await pool.query(
+        `UPDATE project_snapshots SET stage=$1, last_note=$2, flag=$3, updated_at=now() WHERE project_id=$4`,
+        [p.stage, p.lastNote, p.flag, p.id]);
     }
   }
 
-  const existingNewsCount = await pool.query('SELECT COUNT(*) FROM news_seen');
-  const isFirstNewsRun = Number(existingNewsCount.rows[0].count) === 0;
+  // --- news ---
+  const newsRows = await pool.query('SELECT url FROM news_seen');
+  const newsBefore = new Set(newsRows.rows.map(r => r.url));
+  const newsStamp = seedIfEmpty(newsRows.rows.length);
   for (const a of NEWS_ARTICLES) {
-    const existing = await pool.query('SELECT 1 FROM news_seen WHERE url = $1', [a.url]);
-    if (!existing.rows.length) {
-      await pool.query(
-        `INSERT INTO news_seen (url, title, first_seen_at) VALUES ($1,$2,$3)`,
-        [a.url, a.title, isFirstNewsRun ? new Date(0) : new Date()]
-      );
-    }
+    if (newsBefore.has(a.url)) continue;
+    await pool.query(
+      `INSERT INTO news_seen (url, title, first_seen_at) VALUES ($1,$2,$3)
+       ON CONFLICT (url) DO NOTHING`,
+      [a.url, a.title, newsStamp]);
+    // Two records can carry the same URL, so without this the second one inserts again on the
+    // next run and the article reads as new a second time.
+    newsBefore.add(a.url);
   }
 
-  const existingBoardsCount = await pool.query('SELECT COUNT(*) FROM board_snapshots');
-  const isFirstBoardsRun = Number(existingBoardsCount.rows[0].count) === 0;
+  // --- boards ---
+  const boardRows = await pool.query('SELECT board_id, when_text, body FROM board_snapshots');
+  const boardsBefore = new Map(boardRows.rows.map(r => [r.board_id, r]));
+  const boardStamp = seedIfEmpty(boardRows.rows.length);
   for (const b of BOARDS) {
-    const existing = await pool.query('SELECT when_text, body FROM board_snapshots WHERE board_id = $1', [b.id]);
-    if (!existing.rows.length) {
+    const row = boardsBefore.get(b.id);
+    if (!row) {
       await pool.query(
-        `INSERT INTO board_snapshots (board_id, name, when_text, body, city, board_type, updated_at) VALUES ($1,$2,$3,$4,$5,$6,$7)`,
-        [b.id, b.name, b.when, b.body, b.city, b.boardType, isFirstBoardsRun ? new Date(0) : new Date()]
-      );
-    } else {
-      const row = existing.rows[0];
-      const changed = row.when_text !== b.when || row.body !== b.body;
-      if (changed) {
-        await pool.query(
-          `UPDATE board_snapshots SET when_text=$1, body=$2, updated_at=now() WHERE board_id=$3`,
-          [b.when, b.body, b.id]
-        );
-      }
+        `INSERT INTO board_snapshots (board_id, name, when_text, body, city, board_type, updated_at)
+         VALUES ($1,$2,$3,$4,$5,$6,$7)
+         ON CONFLICT (board_id) DO UPDATE
+           SET name=EXCLUDED.name, when_text=EXCLUDED.when_text, body=EXCLUDED.body,
+               city=EXCLUDED.city, board_type=EXCLUDED.board_type, updated_at=EXCLUDED.updated_at`,
+        [b.id, b.name, b.when, b.body, b.city, b.boardType, boardStamp]);
+    } else if (row.when_text !== b.when || row.body !== b.body) {
+      await pool.query(
+        `UPDATE board_snapshots SET when_text=$1, body=$2, updated_at=now() WHERE board_id=$3`,
+        [b.when, b.body, b.id]);
     }
   }
 }
