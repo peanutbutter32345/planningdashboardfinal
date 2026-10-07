@@ -7,6 +7,7 @@ import OpenAI from 'openai';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import pg from 'pg';
+import { visitorIp } from './visitor-ip.js';
 import { SOURCES, sourcesForCity } from './data/sources.js';
 import { SYSTEM_INSTRUCTIONS, PLAIN_STYLE } from './instructions.js';
 import { PROJECTS } from './data/projects.js';
@@ -27,7 +28,7 @@ const port = Number(process.env.PORT || 3000);
 app.set('trust proxy', 1);
 // The address and browser a request arrived from. Kept so the site's owner can see who is
 // actually using it and spot one machine registering repeatedly.
-const clientIp = req => (req.ip || req.socket?.remoteAddress || '').replace(/^::ffff:/, '').slice(0, 45) || null;
+const clientIp = visitorIp;
 const clientAgent = req => (req.headers['user-agent'] || '').slice(0, 300) || null;
 // "Ask a Question" runs on any OpenAI-compatible chat API. The default is Groq's free tier
 // (create a key at https://console.groq.com/keys). To use another provider, set LLM_BASE_URL and
@@ -81,6 +82,7 @@ const pool = process.env.DATABASE_URL
   ? new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
   : null;
 
+let guestSchemaReady = false;
 async function initDb() {
   if (!pool) return;
   await pool.query(`
@@ -115,6 +117,7 @@ async function initDb() {
     await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_guest_id_key ON users (guest_id) WHERE guest_id IS NOT NULL;`);
     // Guests have no password, so the column can no longer be NOT NULL. Accounts keep theirs.
     await pool.query(`ALTER TABLE users ALTER COLUMN password_hash DROP NOT NULL;`);
+    guestSchemaReady = true;
   } catch (err) {
     console.error('Guest-profile migration failed; guest counting is off until it succeeds:', err.message);
   }
@@ -251,7 +254,10 @@ async function initDb() {
   console.log('Database tables ready.');
   await purgeExpiredSessions();
 }
-initDb().catch(err => console.error('Failed to initialize database tables:', err));
+const databaseReady = initDb().then(() => Boolean(pool)).catch(err => {
+  console.error('Failed to initialize database tables:', err);
+  return false;
+});
 // Once a day while the process is up. Unreferenced so it never holds the process open on its own.
 if (pool) setInterval(purgeExpiredSessions, 24 * 60 * 60_000).unref();
 
@@ -278,6 +284,15 @@ app.use(express.static(fileURLToPath(new URL('./public', import.meta.url)), {
     res.setHeader('Cache-Control', 'no-cache');
   },
 }));
+
+// Keep first arrivals during startup from racing the table migrations.
+app.use('/api', async (_req, res, next) => {
+  if (pool && !await databaseReady) {
+    res.set('Retry-After', '5');
+    return res.status(503).json({ error: 'The database is temporarily unavailable. Please retry.' });
+  }
+  next();
+});
 
 // ---------------- AUTH HELPERS ----------------
 function requireDb(res) {
@@ -368,7 +383,7 @@ function clearLoginFailures(keys) { for (const k of keys) loginFailures.delete(k
 // only a label here - the guest_id is the identity - so a clash takes a short suffix rather than
 // rejecting a perfectly real visitor.
 async function insertGuest(guestId, username, homeCity, ip, agent, nameChosen) {
-  for (const candidate of [username, username + '-' + guestId.slice(0, 4), username + '-' + guestId.slice(0, 8)]) {
+  for (const candidate of [username, username + '-' + guestId.slice(0, 4), username + '-' + guestId.slice(0, 8), username + '-' + guestId]) {
     try {
       const row = await pool.query(
         `INSERT INTO users (username, password_hash, kind, guest_id, home_city, last_seen_at,
@@ -390,6 +405,10 @@ async function insertGuest(guestId, username, homeCity, ip, agent, nameChosen) {
 // on guest_id, so a hundred page loads are still one user.
 app.post('/api/guest', async (req, res) => {
   if (!requireDb(res)) return;
+  if (!guestSchemaReady) {
+    res.set('Retry-After', '5');
+    return res.status(503).json({ error: 'Profile registration is temporarily unavailable. Please retry.' });
+  }
   const { guestId, username, homeCity, namePicked } = req.body || {};
   const nameChosen = typeof namePicked === 'boolean' ? namePicked : null;
   if (!validGuestId(guestId) || !validGuestName(username)) return res.status(400).json({ error: 'Invalid guest profile.' });
@@ -402,18 +421,23 @@ app.post('/api/guest', async (req, res) => {
         `UPDATE users SET last_seen_at = now(),
                           last_ip = COALESCE($4, last_ip),
                           last_user_agent = COALESCE($5, last_user_agent),
-                          home_city = COALESCE($2, home_city),
-                          name_chosen = COALESCE($6, name_chosen),
+                          home_city = CASE WHEN kind = 'guest' THEN $2 ELSE home_city END,
+                          name_chosen = CASE WHEN kind = 'guest' THEN COALESCE($6, name_chosen) ELSE name_chosen END,
                           username = CASE WHEN kind = 'guest' AND $3 <> username
-                                          AND NOT EXISTS (SELECT 1 FROM users u2 WHERE u2.username = $3)
+                                          AND NOT EXISTS (SELECT 1 FROM users u2 WHERE lower(u2.username) = lower($3)
+                                                          AND coalesce(u2.guest_id, '') <> $1)
                                      THEN $3 ELSE username END
          WHERE guest_id = $1`, [guestId, city, username, clientIp(req), clientAgent(req), nameChosen]);
       return res.json({ ok: true, created: false, kind: existing.rows[0].kind });
     }
-    if (!guestCreationAllowed(clientIp(req))) return res.status(429).json({ error: 'Too many new profiles from this address.' });
+    const ip = clientIp(req);
+    if (!guestCreationAllowed(ip)) {
+      const remaining = Math.max(1, Math.ceil((guestCreationsByIp.get(ip).resetAt - Date.now()) / 1000));
+      res.set('Retry-After', String(remaining));
+      return res.status(429).json({ error: 'Too many new profiles from this address. Registration will retry.' });
+    }
     const stored = await insertGuest(guestId, username, city, clientIp(req), clientAgent(req), nameChosen);
     if (!stored) return res.status(500).json({ error: 'Could not record this profile.' });
-    communityCache = { at: 0, body: null };   // a new person just arrived; let the count say so
     res.json({ ok: true, created: true, kind: 'guest' });
   } catch (err) {
     console.error('Guest profile sync failed:', err.message);
@@ -427,43 +451,64 @@ app.post('/api/register', async (req, res) => {
   const { username, password, guestId } = req.body || {};
   if (!validUsername(username)) return res.status(400).json({ error: 'Username must be 3-20 characters: letters, numbers, underscore only.' });
   if (!validPassword(password)) return res.status(400).json({ error: 'Password must be at least 8 characters.' });
+  let client;
   try {
-    // Case-insensitive: "Alice" and "alice" read as the same name to a person, so they must not
-    // both be takeable. The unique index on lower(username) is the real guarantee against a race
-    // between two simultaneous signups; this is just the fast, friendly check ahead of it.
-    // Someone adding a password to the name they are already using must not be refused by their
-    // own row. Everyone else holding that name still blocks it, including another device's
-    // name-only profile. The sentinels keep a null guest_id from matching a null parameter, which
-    // would otherwise let an unidentified caller walk past a name that is genuinely taken.
-    const existing = await pool.query(
-      `SELECT 1 FROM users WHERE lower(username) = lower($1)
-         AND coalesce(guest_id, '~no-guest~') <> coalesce($2, '~no-caller~')`,
-      [username, validGuestId(guestId) ? guestId : null]);
-    if (existing.rows.length) return res.status(409).json({ error: 'That username is already taken.' });
     const hash = await bcrypt.hash(password, 10);
-    // This visitor already counts as a user. Signing up renames that row and gives it a password;
-    // it does not create a second one, so the account total never double-counts a person.
-    const ip = clientIp(req), agent = clientAgent(req);
-    const upgraded = validGuestId(guestId)
-      ? await pool.query(`UPDATE users SET username = $1, password_hash = $2, kind = 'account', last_seen_at = now(),
-                                 last_ip = COALESCE($4, last_ip), last_user_agent = COALESCE($5, last_user_agent),
-                                 signup_ip = COALESCE(signup_ip, $4), name_chosen = true
-                          WHERE guest_id = $3 AND kind = 'guest' RETURNING id`, [username, hash, guestId, ip, agent])
-      : { rows: [] };
-    if (!upgraded.rows.length)
-      await pool.query(`INSERT INTO users (username, password_hash, last_seen_at, signup_ip, last_ip, last_user_agent, name_chosen)
-                        VALUES ($1, $2, now(), $3, $3, $4, true)`, [username, hash, ip, agent]);
+    client = await pool.connect();
+    await client.query('BEGIN');
+    const deviceId = validGuestId(guestId) ? guestId : null;
+    const own = deviceId ? await client.query(
+      'SELECT username, kind, password_hash FROM users WHERE guest_id = $1 FOR UPDATE', [deviceId]) : { rows: [] };
+    let sessionUsername = username;
+    if (own.rows[0]?.kind === 'account') {
+      const account = own.rows[0];
+      // A lost response can be retried using the same credentials. The password must still
+      // match, so a browser id alone never grants access to a password account.
+      if (account.username.toLowerCase() !== username.toLowerCase() || !await bcrypt.compare(password, account.password_hash)) {
+        await client.query('ROLLBACK');
+        return res.status(409).json({ error: 'This profile already has a password. Please log in.' });
+      }
+      sessionUsername = account.username;
+    } else {
+      // Case-insensitive: "Alice" and "alice" read as the same name to a person, so they must not
+      // both be takeable. The unique index on lower(username) is the real guarantee against a race
+      // between two simultaneous signups; this is just the fast, friendly check ahead of it.
+      // Someone adding a password to the name they are already using must not be refused by their
+      // own row. Everyone else holding that name still blocks it, including another device's
+      // name-only profile. The sentinels keep a null guest_id from matching a null parameter, which
+      // would otherwise let an unidentified caller walk past a name that is genuinely taken.
+      const existing = await client.query(
+        `SELECT 1 FROM users WHERE lower(username) = lower($1)
+           AND coalesce(guest_id, '~no-guest~') <> coalesce($2, '~no-caller~')`,
+        [username, validGuestId(guestId) ? guestId : null]);
+      if (existing.rows.length) {
+        await client.query('ROLLBACK');
+        return res.status(409).json({ error: 'That username is already taken.' });
+      }
+      // This visitor already counts as a user. Signing up renames that row and gives it a password;
+      // it does not create a second one, so the account total never double-counts a person.
+      const ip = clientIp(req), agent = clientAgent(req);
+      const upgraded = validGuestId(guestId)
+        ? await client.query(`UPDATE users SET username = $1, password_hash = $2, kind = 'account', last_seen_at = now(),
+                                   last_ip = COALESCE($4, last_ip), last_user_agent = COALESCE($5, last_user_agent),
+                                   signup_ip = COALESCE(signup_ip, $4), name_chosen = true
+                            WHERE guest_id = $3 AND kind = 'guest' RETURNING id`, [username, hash, guestId, ip, agent])
+        : { rows: [] };
+      if (!upgraded.rows.length)
+        await client.query(`INSERT INTO users (username, password_hash, last_seen_at, signup_ip, last_ip, last_user_agent, name_chosen, guest_id)
+                            VALUES ($1, $2, now(), $3, $3, $4, true, $5)`, [username, hash, ip, agent, deviceId]);
+    }
     const token = crypto.randomBytes(32).toString('hex');
-    await pool.query('INSERT INTO sessions (token, username) VALUES ($1, $2)', [token, username]);
-    // A guest turning into an account changes the registered/guest split, and arriving for the
-    // first time changes the total. Without this the owner's own count sat stale for five minutes
-    // after every signup, which is exactly when someone is most likely to be watching it.
-    communityCache = { at: 0, body: null };
-    res.json({ token, username });
+    await client.query('INSERT INTO sessions (token, username) VALUES ($1, $2)', [token, sessionUsername]);
+    await client.query('COMMIT');
+    res.json({ token, username: sessionUsername });
   } catch (err) {
+    if (client) await client.query('ROLLBACK').catch(() => {});
     console.error(err);
     if (err.code === '23505') return res.status(409).json({ error: 'That username is already taken.' });
     res.status(500).json({ error: 'Could not create account. Please try again.' });
+  } finally {
+    client?.release();
   }
 });
 
@@ -1010,9 +1055,10 @@ const outputSchema = {
   }
 };
 
-app.get('/api/health', (_req,res) => {
+app.get('/api/health', async (_req,res) => {
   let provider = LLM_BASE_URL; try { provider = new URL(LLM_BASE_URL).host; } catch {}
-  res.json({ok:true, model, provider, askConfigured:Boolean(LLM_API_KEY), sourceCount:SOURCES.length, database:Boolean(pool)});
+  res.json({ok:true, model, provider, askConfigured:Boolean(LLM_API_KEY), sourceCount:SOURCES.length,
+    database:Boolean(pool), databaseReady:await databaseReady, guestRegistrationReady:guestSchemaReady});
 });
 
 app.get('/api/sources', (req,res) => {
@@ -1426,7 +1472,6 @@ async function runDigests(req, res) {
 // would confirm the endpoint is there.
 const ADMIN_USERNAMES = (process.env.ADMIN_USERNAMES || '').split(',').map(n => n.trim().toLowerCase()).filter(Boolean);
 if (!ADMIN_USERNAMES.length) console.warn('ADMIN_USERNAMES is not set. The usage count is readable only with the cron secret until it is.');
-let communityCache = { at: 0, body: null };
 // Shared by every admin-only route below: a cron secret works everywhere, or a session token
 // for one of the usernames in ADMIN_USERNAMES - the same rule /api/community always used, now
 // applied consistently instead of each route re-deriving it (and, for stats, not having it at all).
@@ -1446,9 +1491,9 @@ async function isAdminRequest(req) {
   } catch { return false; }
 }
 app.get('/api/community', async (req, res) => {
+  res.set('Cache-Control', 'private, no-store');
   if (!(await isAdminRequest(req))) return res.status(404).json({ error: 'API route not found.' });
   if (!pool) return res.json({ ok: false, users: null });
-  if (communityCache.body && Date.now() - communityCache.at < 5 * 60_000) return res.json(communityCache.body);
   try {
     const totals = await pool.query(`SELECT
         count(*)::int AS users,
@@ -1456,7 +1501,6 @@ app.get('/api/community', async (req, res) => {
         count(*) FILTER (WHERE kind = 'guest')::int AS guests
       FROM users`);
     const body = { ok: true, ...totals.rows[0], updatedAt: new Date().toISOString() };
-    communityCache = { at: Date.now(), body };
     res.json(body);
   } catch (err) {
     console.error('Community count failed:', err.message);
@@ -1465,6 +1509,7 @@ app.get('/api/community', async (req, res) => {
 });
 
 app.get('/api/admin/stats', async (req, res) => {
+  res.set('Cache-Control', 'private, no-store');
   if (!(await isAdminRequest(req))) return res.status(404).json({ error: 'API route not found.' });
   if (!requireDb(res)) return;
   try {
@@ -1489,8 +1534,8 @@ app.get('/api/admin/stats', async (req, res) => {
     ]);
     res.json({
       ok: true,
-      // `users` is every unique visitor. `registered` is the subset who chose a username and a
-      // password; `guests` are the rest, each a real person on a real device.
+      // Count stored browser profiles and password accounts. A profile id prevents retry
+      // duplicates, but multiple devices and cleared storage cannot identify one person.
       users: totals.rows[0].accounts,
       registered: totals.rows[0].registered,
       guests: totals.rows[0].guests,
@@ -1516,17 +1561,34 @@ app.get('/api/admin/stats', async (req, res) => {
 // an ADMIN_USERNAMES session), 404 on failure so a leaked URL doesn't confirm the route exists.
 // Never returns password_hash or session tokens - just enough to see who's using the site.
 app.get('/api/admin/users', async (req, res) => {
+  res.set('Cache-Control', 'private, no-store');
   if (!(await isAdminRequest(req))) return res.status(404).json({ error: 'API route not found.' });
   if (!requireDb(res)) return;
   try {
-    const limit = Math.min(parseInt(req.query.limit, 10) || 500, 2000);
-    const result = await pool.query(
-      `SELECT username, kind, name_chosen, email, home_city, email_frequency, created_at, last_seen_at,
-              signup_ip, last_ip, last_user_agent
-       FROM users ORDER BY created_at DESC NULLS LAST LIMIT $1`,
-      [limit]
-    );
-    res.json({ ok: true, count: result.rows.length, users: result.rows });
+    const limit = Math.max(1, Math.min(parseInt(req.query.limit, 10) || 100, 2000));
+    const before = req.query.before;
+    if (before !== undefined && (!/^\d+$/.test(before) || !Number.isSafeInteger(Number(before)) || Number(before) < 1)) {
+      return res.status(400).json({ error: 'Invalid user-list cursor.' });
+    }
+    const search = typeof req.query.q === 'string' ? req.query.q.trim().slice(0, 100) : '';
+    const pattern = '%' + search.replace(/[\\%_]/g, '\\$&') + '%';
+    const filter = search ? `WHERE (username ILIKE $1 OR COALESCE(email, '') ILIKE $1)` : '';
+    const values = search ? [pattern] : [];
+    let where = filter;
+    if (before !== undefined) {
+      values.push(Number(before));
+      where += (where ? ' AND ' : 'WHERE ') + `id < $${values.length}`;
+    }
+    values.push(limit + 1);
+    const [result, totals] = await Promise.all([
+      pool.query(`SELECT id, username, kind, name_chosen, email, home_city, email_frequency, created_at, last_seen_at,
+                         signup_ip, last_ip, last_user_agent
+                  FROM users ${where} ORDER BY id DESC LIMIT $${values.length}`, values),
+      pool.query(`SELECT count(*)::int AS total FROM users ${filter}`, search ? [pattern] : []),
+    ]);
+    const users = result.rows.slice(0, limit);
+    res.json({ ok: true, count: users.length, total: totals.rows[0].total, users,
+      nextCursor: result.rows.length > limit ? users.at(-1).id : null });
   } catch (err) {
     console.error('Admin users list failed:', err.message);
     res.status(500).json({ error: 'Could not read users: ' + err.message });
