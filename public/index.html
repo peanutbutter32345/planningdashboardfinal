@@ -1091,6 +1091,10 @@
   .admin-user-table tr:last-child td{border-bottom:none;}
   /* Nine columns of real data does not fit a phone, and squeezing it makes every one unreadable. */
   #adminUserTableWrap{overflow-x:auto;}
+  .admin-user-controls{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin:12px 0;}
+  .admin-user-controls label{display:grid;gap:5px;flex:1 1 220px;}
+  .admin-user-controls input{padding:9px;border:1px solid var(--rule);font:inherit;width:100%;}
+  #adminMoreUsers{margin-top:12px;}
   .admin-user-table .mono{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:11px;}
   .admin-ip-note{margin-left:5px; font-size:10px; color:var(--text-soft); font-style:italic;}
   .acct-boardlist{display:grid; gap:10px;}
@@ -2642,8 +2646,15 @@
             <div id="adminByCity" class="admin-breakdown"></div>
             <div class="acct-sec-h">Email frequency</div>
             <div id="adminByFrequency" class="admin-breakdown"></div>
-            <div class="acct-sec-h">Recent users</div>
-            <div id="adminUserTableWrap"><button class="btn secondary" id="adminLoadUsers" type="button">Load user list</button></div>
+            <div class="acct-sec-h">User list</div>
+            <form id="adminUserSearchForm" class="admin-user-controls">
+              <label for="adminUserSearch">Find a name or email<input id="adminUserSearch" type="search" maxlength="100" autocomplete="off"></label>
+              <button class="btn secondary" type="submit">Search users</button>
+              <button class="btn secondary" id="adminLoadUsers" type="button">Refresh counts and users</button>
+            </form>
+            <p class="section-note" id="adminUserListStatus" role="status">Load the list to browse every stored profile. Profiles that never reached the server are recovered when that browser revisits.</p>
+            <div id="adminUserTableWrap"></div>
+            <button class="btn secondary" id="adminMoreUsers" type="button" hidden>Load more users</button>
           </section>
         </div>
       </div>
@@ -6381,9 +6392,16 @@ let state = {q:'', stage:'all', cat:'all'};
 let registerLimit=60,registerScope='';
 // Auth/starring state - declared here (not at script bottom) because renderAll() below
 // calls projectCardHtml() -> starButtonHtml() -> isStarred(), which reads these.
-let authToken = localStorage.getItem('sbpd_token') || null;
-const guestProfile = new DashboardGuest.GuestStore(localStorage,sessionStorage);
-let authUsername = authToken ? localStorage.getItem('sbpd_username') : guestProfile.data.username;
+const profileStorage=DashboardGuest.browserStorage(()=>localStorage);
+const profileSession=DashboardGuest.browserStorage(()=>sessionStorage);
+function storedProfileValue(key){try{return profileStorage.getItem(key);}catch{return null;}}
+let authToken = storedProfileValue('sbpd_token') || null;
+let accountSessionVersion=0;
+const guestProfile = new DashboardGuest.GuestStore(profileStorage,profileSession);
+let authUsername = authToken ? storedProfileValue('sbpd_username') : guestProfile.data.username;
+// Start registration before any of the map or page renderers can fail or delay it.
+const guestSync=new DashboardGuest.GuestSync(guestProfile,{active:()=>!authToken});
+guestSync.sync();
 let guestAuthForm=false;
 let starredMap = new Map(!authToken && guestProfile.unlocked ? guestProfile.data.stars.map(s=>[s.item_type+':'+s.item_id,s.item_data]) : []);
 // Declared here rather than with the rest of the reminder code: the board cards read it during
@@ -8380,13 +8398,13 @@ function finishOnboard(){
   guestProfile.data.setup={county:onboard.county,city:onboard.city,interests:[...onboard.interests],wantInvolved:onboard.wantInvolved,userLoc:onboard.userLoc};
   guestProfile.data.explored=true;
   if(isGuest()&&guestProfile.unlocked){guestProfile.data.preferences.homeCity=onboard.city;guestProfile.data.preferences.homeCounty=onboard.county;guestProfile.data.preferences.categories=[...onboard.interests];}
-  guestProfile.save();cityBrowseCounty=onboard.county;
+  guestProfile.save();syncGuestProfile();cityBrowseCounty=onboard.county;
   setCountyScope(onboard.city?'':onboard.county);switchCity(onboard.city||'all');
 }
 async function saveGuestName(input,statusId){
   if(!isGuest()||!guestProfile.unlocked)return true;
   const status=document.getElementById(statusId);
-  try{await guestProfile.update(input.value.trim());authUsername=guestProfile.data.username;for(const id of ['onboardUsername','guestUsername']){const field=document.getElementById(id);if(field!==input)field.value=authUsername;}renderAuthNavState();document.getElementById('accountUsername').textContent=authUsername;status.textContent=guestProfile.persistent?'Saved automatically on this device.':'Browser storage is unavailable; changes last until this page closes.';input.removeAttribute('aria-invalid');return true;}
+  try{if(input.value.trim()!==guestProfile.data.username)await guestProfile.update(input.value.trim());authUsername=guestProfile.data.username;for(const id of ['onboardUsername','guestUsername']){const field=document.getElementById(id);if(field!==input)field.value=authUsername;}renderAuthNavState();document.getElementById('accountUsername').textContent=authUsername;status.textContent=guestProfile.persistent?'Saved automatically on this device.':'Browser storage is unavailable; changes last until this page closes.';input.removeAttribute('aria-invalid');syncGuestProfile();return true;}
   catch(err){status.textContent=err.message;input.setAttribute('aria-invalid','true');return false;}
 }
 function wireGuestName(input,statusId){let timer;input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(()=>saveGuestName(input,statusId),450);refreshOnboardGate();});input.addEventListener('blur',()=>{clearTimeout(timer);saveGuestName(input,statusId);});}
@@ -12199,18 +12217,12 @@ async function apiLogin(username, password){ return apiCall('/api/login', {metho
    It is the only thing a guest sends us; their saved items, timeline and reminders stay on the
    device. Failure is silent by design: someone offline, or blocking the request, still gets the
    whole dashboard. */
-let guestSyncInFlight=false;
-async function syncGuestProfile(){
-  if(guestSyncInFlight||authToken||!guestProfile?.unlocked||!guestProfile?.data?.username)return;
-  const {payload,due}=guestProfile.syncState();
-  if(!due)return;
-  guestSyncInFlight=true;
-  try{
-    const response=await fetch('/api/guest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    if(response.ok)guestProfile.markSynced();
-  }catch{}
-  finally{guestSyncInFlight=false;}
+function syncGuestProfile(){
+  return guestSync.sync();
 }
+window.addEventListener('online',syncGuestProfile);
+window.addEventListener('focus',syncGuestProfile);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncGuestProfile();});
 async function apiGetStars(){ return apiCall('/api/stars'); }
 async function apiAddStar(itemType, itemId, itemData){ return apiCall('/api/stars', {method:'POST', body:JSON.stringify({itemType,itemId,itemData})}); }
 async function apiRemoveStar(itemType, itemId){ return apiCall('/api/stars/'+encodeURIComponent(itemType)+'/'+encodeURIComponent(itemId), {method:'DELETE'}); }
@@ -12249,16 +12261,23 @@ function resetAccountMemory(){
   yaPins=[];remItems=[];
 }
 function setAuthSession(token, username){
-  resetAccountMemory();
+  accountSessionVersion++;resetAccountMemory();
   authToken = token; authUsername = username;guestAuthForm=false;starredMap=new Map();tkProfileLoaded=false;yaPins=[];remItems=[];
-  localStorage.setItem('sbpd_token', token);
-  localStorage.setItem('sbpd_username', username);
+  try{profileStorage.setItem('sbpd_token',token);profileStorage.setItem('sbpd_username',username);}
+  catch{document.getElementById('accountSyncStatus').textContent='Signed in for this visit. Browser storage is unavailable, so you will need to log in again next time.';}
+  adminStatsCache=null;adminStatsAt=0;communityCountText='';communityCountAt=0;
+  adminUserRows=[];adminUserCursor=null;adminUserQuery='';
+  document.getElementById('acctNavAdmin').hidden=true;
+  document.getElementById('adminUserTableWrap').textContent='';
 }
 function clearAuthSession(){
-  resetAccountMemory();
+  accountSessionVersion++;resetAccountMemory();
   authToken = null; authUsername = guestProfile.data.username; starredMap = new Map(guestProfile.unlocked?guestProfile.data.stars.map(s=>[starKey(s.item_type,s.item_id),s.item_data]):[]);yaPins=[];remItems=[];
-  localStorage.removeItem('sbpd_token');
-  localStorage.removeItem('sbpd_username');
+  try{profileStorage.removeItem('sbpd_token');profileStorage.removeItem('sbpd_username');}catch{}
+  adminStatsCache=null;adminStatsAt=0;communityCountText='';communityCountAt=0;
+  adminUserRows=[];adminUserCursor=null;adminUserQuery='';
+  document.getElementById('acctNavAdmin').hidden=true;
+  document.getElementById('adminUserTableWrap').textContent='';
 }
 
 // Event delegation - handles every star button on the page, including ones added after this script ran.
@@ -12903,19 +12922,22 @@ function renderAuthNavState(){
    about anybody. A server without a database, or an older one, simply says nothing. */
 /* How many people use the site. Only the owner sees this: the request carries their session, and
    the server answers it for nobody else, so an ordinary reader's copy stays empty and hidden. */
-let communityCountText='';
-async function renderCommunityCount(){
+let communityCountText='',communityCountAt=0;
+async function renderCommunityCount(force=false){
   const el=document.getElementById('communityCount');
   if(!el||!authToken)return;
-  if(!communityCountText){
+  const session=accountSessionVersion;
+  if(force||!communityCountText||Date.now()-communityCountAt>30000){
     try{
       const data=await apiCall('/api/community');
+      if(session!==accountSessionVersion)return;
       if(!data.ok||!data.users)return;
       // Everyone who opens the site has an account, so there is no "them and the real users" split
       // to report. What is worth saying is how many have added a password, since that is what
       // carries an account off one device.
-      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'person uses':'people use')+' this dashboard, '
-        +data.registered.toLocaleString()+' of them with a password. Everyone who opens it counts.';
+      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'profile recorded':'profiles recorded')+', '
+        +data.registered.toLocaleString()+' with a password. Counted by saved browser profile or account.';
+      communityCountAt=Date.now();
     }catch{ return; }   // a reader who is not the owner gets a 404 here, and nothing is shown
   }
   el.textContent=communityCountText;
@@ -12924,9 +12946,9 @@ async function renderCommunityCount(){
 
 // Same reasoning as renderCommunityCount above: the request only succeeds for an account listed
 // in the server's ADMIN_USERNAMES, so an ordinary reader's tab just never appears. Stats are
-// fetched once and cached for the session; the full user list is loaded on demand since it can
+// refreshed after 30 seconds or on demand; the full user list is paged since it can
 // run to hundreds of rows and most admin visits only want the summary.
-let adminStatsCache = null;
+let adminStatsCache = null,adminStatsAt=0;
 function admBar(rows, total){
   return rows.map(([label,n])=>{
     const pct = total ? Math.round(n/total*100) : 0;
@@ -12947,11 +12969,12 @@ function renderAdminStats(data){
   const freqRows = Object.entries(data.byFrequency).sort((a,b)=>b[1]-a[1]);
   document.getElementById('adminByFrequency').innerHTML = freqRows.length ? admBar(freqRows, data.registered) : '<p class="section-note">No registered accounts yet.</p>';
 }
-async function renderAdminAccess(){
+async function renderAdminAccess(force=false){
   const nav = document.getElementById('acctNavAdmin');
   if(!nav || !authToken) return;
-  if(!adminStatsCache){
-    try{ adminStatsCache = await apiCall('/api/admin/stats'); }
+  const session=accountSessionVersion;
+  if(force||!adminStatsCache||Date.now()-adminStatsAt>30000){
+    try{const data=await apiCall('/api/admin/stats');if(session!==accountSessionVersion)return;adminStatsCache=data;adminStatsAt=Date.now();}
     catch{ return; }   // 404 for anyone not in ADMIN_USERNAMES - the tab just never shows up
   }
   if(!adminStatsCache || !adminStatsCache.ok) return;
@@ -12963,7 +12986,7 @@ async function renderAdminAccess(){
 // name rather than a class of user. Anyone who arrived before this was recorded gets nothing said
 // about them, because we do not know.
 function nameOriginHtml(u){
-  if(u.name_chosen === false) return '<span class="admin-ip-note" title="Generated when they explored without setting up">ours</span>';
+  if(u.name_chosen === false) return '<span class="admin-ip-note" title="Generated on their first visit">ours</span>';
   if(u.name_chosen === true) return '<span class="admin-ip-note" title="They typed this name">theirs</span>';
   return '';
 }
@@ -12979,15 +13002,28 @@ function deviceLabel(ua){
     : /bot|crawl|spider|curl|python|wget/i.test(ua) ? 'Bot or script' : '';
   return [os, browser].filter(Boolean).join(' · ') || 'Unrecognised';
 }
-document.getElementById('adminLoadUsers')?.addEventListener('click', async ()=>{
+let adminUserRows=[],adminUserCursor=null,adminUserTotal=0,adminUserQuery='',adminUsersLoading=false;
+async function loadAdminUsers(more=false){
+  if(adminUsersLoading)return;
+  const session=accountSessionVersion;
   const wrap = document.getElementById('adminUserTableWrap');
-  wrap.textContent = 'Loading…';
+  const status=document.getElementById('adminUserListStatus');
+  const moreButton=document.getElementById('adminMoreUsers');
+  adminUsersLoading=true;moreButton.disabled=true;
+  const controls=[...document.querySelectorAll('#adminUserSearchForm input, #adminUserSearchForm button'),document.getElementById('adminLoadUsers')];
+  controls.forEach(el=>{if(el)el.disabled=true;});
+  status.textContent='Loading users…';
   try{
-    const data = await apiCall('/api/admin/users?limit=500');
-    const rows = data.users || [];
+    const params=new URLSearchParams({limit:'100',q:adminUserQuery});
+    if(more&&adminUserCursor)params.set('before',adminUserCursor);
+    const data = await apiCall('/api/admin/users?'+params);
+    if(session!==accountSessionVersion)return;
+    adminUserRows=more?adminUserRows.concat(data.users||[]):data.users||[];
+    adminUserCursor=data.nextCursor;adminUserTotal=data.total;
+    const rows = adminUserRows;
     const ips = rows.map(u=>u.last_ip).filter(Boolean);
     const repeated = new Set(ips.filter((ip,i)=>ips.indexOf(ip)!==i));
-    wrap.innerHTML = '<p class="section-note">'+rows.length.toLocaleString()+' most recent, newest first.'
+    wrap.innerHTML = '<p class="section-note">'+rows.length.toLocaleString()+' of '+adminUserTotal.toLocaleString()+' matching profiles, newest first.'
       + (repeated.size?' '+repeated.size+(repeated.size===1?' address appears':' addresses appear')+' on more than one row, marked below.':'')+'</p>'
       + '<table class="admin-user-table"><thead><tr><th>Name</th><th>Email</th><th>Home city</th><th>Frequency</th><th>Address</th><th>Device</th><th>Joined</th><th>Last seen</th></tr></thead><tbody>'
       + rows.map(u=>{
@@ -13003,10 +13039,21 @@ document.getElementById('adminLoadUsers')?.addEventListener('click', async ()=>{
             +'<td>'+(u.last_seen_at?new Date(u.last_seen_at).toLocaleDateString():'')+'</td></tr>';
         }).join('')
       + '</tbody></table>';
+    moreButton.hidden=!adminUserCursor;
+    status.textContent=rows.length.toLocaleString()+' of '+adminUserTotal.toLocaleString()+' matching profiles displayed.';
   }catch(err){
-    wrap.textContent = "Couldn't load the user list: " + err.message;
+    if(session===accountSessionVersion)status.textContent = "Couldn't load the user list: " + err.message;
   }
+  finally{adminUsersLoading=false;moreButton.disabled=false;controls.forEach(el=>{if(el)el.disabled=false;});}
+}
+document.getElementById('adminLoadUsers')?.addEventListener('click',async()=>{
+  adminUserQuery=document.getElementById('adminUserSearch').value.trim();
+  await Promise.all([renderAdminAccess(true),renderCommunityCount(true),loadAdminUsers()]);
 });
+document.getElementById('adminUserSearchForm')?.addEventListener('submit',e=>{
+  e.preventDefault();adminUserQuery=document.getElementById('adminUserSearch').value.trim();loadAdminUsers();
+});
+document.getElementById('adminMoreUsers')?.addEventListener('click',()=>loadAdminUsers(true));
 
 async function renderAccountPage(){
   renderAuthNavState();
