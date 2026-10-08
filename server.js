@@ -8,6 +8,7 @@ import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import pg from 'pg';
 import { visitorIp } from './visitor-ip.js';
+import { initSiteContent, registerSiteContent } from './site-content.js';
 import { SOURCES, sourcesForCity } from './data/sources.js';
 import { SYSTEM_INSTRUCTIONS, PLAIN_STYLE } from './instructions.js';
 import { PROJECTS } from './data/projects.js';
@@ -251,6 +252,9 @@ async function initDb() {
       updated_at TIMESTAMPTZ DEFAULT now()
     );
   `);
+  // Optional content management must not prevent account registration from starting.
+  try { await initSiteContent(pool); }
+  catch (err) { console.error('Advisor/media storage unavailable:', err.message); }
   console.log('Database tables ready.');
   await purgeExpiredSessions();
 }
@@ -1490,6 +1494,7 @@ async function isAdminRequest(req) {
     return Boolean(session.rows.length && ADMIN_USERNAMES.includes(session.rows[0].username.toLowerCase()));
   } catch { return false; }
 }
+registerSiteContent(app, {pool, isAdminRequest});
 app.get('/api/community', async (req, res) => {
   res.set('Cache-Control', 'private, no-store');
   if (!(await isAdminRequest(req))) return res.status(404).json({ error: 'API route not found.' });
