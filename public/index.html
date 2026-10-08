@@ -466,14 +466,10 @@
   /* The title reads as a masthead block rather than floating text over the photo. */
   .nameplate{background:transparent; color:#fff; padding:6px 0 2px; border-radius:0;
     max-width:none; margin:0; border-left:none; box-shadow:none;}
-  /* One face and one colour, so it reads as a single name - and one line, the way a nameplate
-     is actually set, rather than the two stacked words it was before. */
-  /* Centered as a masthead - the kicker, the title and the lede all line up on the same axis,
-     the way a real newspaper's own nameplate sits centered above its own strap line. */
-  .nameplate{text-align:center;}
-  .nameplate .np-kicker{justify-content:center;}
+  .nameplate{text-align:left; min-width:0;}
+  .nameplate .np-kicker{justify-content:flex-start;}
   .nameplate h1{display:flex; flex-direction:row; flex-wrap:nowrap; align-items:baseline;
-    justify-content:center; line-height:.96; white-space:nowrap;
+    justify-content:flex-start; line-height:.96; white-space:nowrap;
     font-family:'Times New Roman', Times, serif; font-weight:700; letter-spacing:-.5px;}
   .np-l1, .np-l2{display:inline-block; color:#fff;}
   .np-l1::after{content:'\00a0';}
@@ -482,7 +478,7 @@
   .nameplate .np-kicker i{background:#9BA98A;}
   .nameplate h1{color:#fff;}
   .nameplate h1 em{color:#fff;}
-  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin:11px auto 0; max-width:62ch; text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin:16px 0 0; max-width:62ch; text-shadow:0 1px 2px rgba(0,0,0,.35);}
   @media (max-width:640px){ .nameplate{padding:16px 18px 18px;} .np-lede{font-size:13px;} }
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
     font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#14532D; margin-bottom:6px;}
@@ -823,7 +819,15 @@
   @media (max-width:640px){ .hero-rail{flex:0 0 auto; max-width:none; width:100%;} }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
-  .hero-copy{max-width:none; margin:0 -12px;}
+  .hero-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(520px,1.12fr);gap:24px;align-items:center;max-width:none;margin:0;}
+  .hero-copy.without-advisors{grid-template-columns:1fr;}
+  .hero-copy.without-advisors .nameplate{text-align:center;}
+  .hero-copy.without-advisors .np-kicker,.hero-copy.without-advisors .nameplate h1{justify-content:center;}
+  .hero-copy.without-advisors .np-lede{margin:11px auto 0;}
+  @media(min-width:961px){.hero-copy:not(.without-advisors) .nameplate{container-type:inline-size;}.hero-copy:not(.without-advisors) .nameplate h1{font-size:clamp(28px,11cqi,82px);}}
+  @media(max-width:1000px){.hero-copy{gap:26px;}.hero .nameplate h1{font-size:clamp(28px,5.3vw,53px);}}
+  @media(max-width:960px){.hero-copy{grid-template-columns:1fr;}}
+  @media(max-width:760px){.hero-copy{grid-template-columns:1fr;gap:26px;}.hero .nameplate{padding:0;}.hero .nameplate h1{font-size:clamp(28px,8vw,60px);}.np-kicker{flex-wrap:wrap;font-size:9px;letter-spacing:.1em;}}
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
   /* Three columns in the hero: the rail, your map, the news. */
@@ -1760,6 +1764,7 @@
 </style>
 <link rel="stylesheet" href="/enhancements.css">
 <link rel="stylesheet" href="/browse.css">
+<link rel="stylesheet" href="/admin-content.css">
 </head>
 <body>
 <a href="#mainContent" class="skip-link">Skip to main content</a>
@@ -1868,11 +1873,21 @@
   <div class="hero-bg" id="heroBgA"></div>
   <div class="hero-bg" id="heroBgB"></div>
   <div class="wrap">
-    <div class="hero-copy">
+    <div class="hero-copy without-advisors">
       <div class="nameplate">
         <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
         <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. <span class="city-count">101</span> cities and towns across nine Bay Area counties.</p>
+      </div>
+      <div class="front-admin rail-card" id="frontAdmin" aria-label="Admin advisors and media panel" hidden>
+        <aside class="front-admin-card" aria-labelledby="frontAdvisorsTitle">
+          <div class="rail-head"><span id="frontAdvisorsTitle">Advisors</span><span class="front-admin-badge">Admin only</span></div>
+          <div class="front-admin-body" id="frontAdvisorsBody"></div>
+        </aside>
+        <aside class="front-admin-card" aria-labelledby="frontFeaturedTitle">
+          <div class="rail-head"><span id="frontFeaturedTitle">Featured On</span><span class="front-admin-badge">Admin only</span></div>
+          <div class="front-admin-body" id="frontFeaturedBody"></div>
+        </aside>
       </div>
     </div>
 
@@ -12268,6 +12283,7 @@ function setAuthSession(token, username){
   adminStatsCache=null;adminStatsAt=0;communityCountText='';communityCountAt=0;
   adminUserRows=[];adminUserCursor=null;adminUserQuery='';
   document.getElementById('acctNavAdmin').hidden=true;
+  globalThis.SiteAdmin?.refreshAccess();
   document.getElementById('adminUserTableWrap').textContent='';
 }
 function clearAuthSession(){
@@ -12277,6 +12293,7 @@ function clearAuthSession(){
   adminStatsCache=null;adminStatsAt=0;communityCountText='';communityCountAt=0;
   adminUserRows=[];adminUserCursor=null;adminUserQuery='';
   document.getElementById('acctNavAdmin').hidden=true;
+  globalThis.SiteAdmin?.refreshAccess();
   document.getElementById('adminUserTableWrap').textContent='';
 }
 
@@ -17009,5 +17026,6 @@ if (window.L) {
 </script>
 <script type="module" src="/futures/app.js"></script>
 <script src="/site-visuals.js"></script>
+<script src="/admin-content.js"></script>
 </body>
 </html>
