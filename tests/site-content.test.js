@@ -52,7 +52,7 @@ test('features retain their source links and display in the chosen order',async(
 test('initial profiles have links and restart preserves owner edits',async()=>{
  const {initSiteContent}=await import('../site-content.js');
  const entries=(await call('/api/admin/site-content/advisors',{token:owner})).body.entries;
- assert.deepEqual(entries.filter(entry=>entry.id.startsWith('advisor-')).map(entry=>entry.name),['Emily Gnecco','Erik Nolthenius']);
+ assert.deepEqual(entries.filter(entry=>entry.id.startsWith('advisor-')).map(entry=>entry.name),['Emily Gnecco','Erik Nolthenius','Kimberly Mosley','Dr. Jeannice Fairrer Samani']);
  assert.ok(entries.filter(entry=>entry.id.startsWith('advisor-')).every(entry=>entry.url.startsWith('https://')));
  const emily=entries.find(entry=>entry.id==='advisor-emily-gnecco');
  assert.equal((await call('/api/admin/site-content/advisors/'+emily.id,{token:owner,method:'PUT',body:{...emily,role:'Independent advisor'}})).status,200);
