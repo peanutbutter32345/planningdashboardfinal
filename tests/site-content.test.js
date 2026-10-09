@@ -61,12 +61,25 @@ test('initial profiles have links and restart preserves owner edits',async()=>{
  assert.equal(after.find(entry=>entry.id===emily.id).role,'Independent advisor');
  assert.equal(after.filter(entry=>entry.id===emily.id).length,1);
 });
+test('existing advisor defaults migrate once while custom links and images are preserved',async()=>{
+ const {initSiteContent}=await import('../site-content.js');
+ await pool.query(`UPDATE site_content SET data=data || $1::jsonb WHERE id='advisor-kimberly-mosley'`,[JSON.stringify({url:'https://www.linkedin.com/in/kimrmosley',image:''})]);
+ await initSiteContent(pool);
+ const read=async()=>(await pool.query("SELECT * FROM site_content WHERE id='advisor-kimberly-mosley'")).rows[0];
+ const migrated=await read();
+ assert.equal(migrated.data.url,'https://www.losaltoschamber.org/chamber-staff/');
+ assert.equal(migrated.data.image,'/api/admin/site-content/assets/kimberly-mosley.jpg');
+ await initSiteContent(pool);assert.equal((await read()).version,migrated.version);
+ await pool.query(`UPDATE site_content SET data=data || $1::jsonb WHERE id='advisor-kimberly-mosley'`,[JSON.stringify({url:'https://example.com/custom-profile',image:'https://example.com/custom-photo.jpg'})]);
+ await initSiteContent(pool);const custom=await read();
+ assert.equal(custom.data.url,'https://example.com/custom-profile');assert.equal(custom.data.image,'https://example.com/custom-photo.jpg');
+});
 test('all portraits and logos require admin authorization and are not public static files',async()=>{
- for(const asset of ['emily-gnecco.png','erik.png','brisbane.png','south-bay-today.png','civic-tech-guide.png']){
+ for(const asset of ['emily-gnecco.png','erik.png','brisbane.png','south-bay-today.png','civic-tech-guide.png','kimberly-mosley.jpg','jeannice-fairrer-samani.png']){
   const path='/api/admin/site-content/assets/'+asset;
   for(const token of [undefined,reader,'forged-token'])assert.equal((await fetch(base+path,{headers:token?{authorization:'Bearer '+token}:{}})).status,404);
   const response=await fetch(base+path,{headers:{authorization:'Bearer '+owner}});
-  assert.equal(response.status,200);assert.match(response.headers.get('content-type'),/image\/png/);assert.match(response.headers.get('cache-control'),/no-store/);
+  assert.equal(response.status,200);assert.match(response.headers.get('content-type'),asset.endsWith('.jpg')?/image\/jpeg/:/image\/png/);assert.match(response.headers.get('cache-control'),/no-store/);
   assert.ok((await response.arrayBuffer()).byteLength>100);
   for(const path of ['/data/site-profile-assets/','/site-profile-assets/'])assert.equal((await fetch(base+path+asset)).status,404);
  }

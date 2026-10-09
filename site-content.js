@@ -1,9 +1,9 @@
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import {SITE_CONTENT_SEED} from './data/site-content-seed.js';
+import {SITE_CONTENT_SEED, SITE_CONTENT_PATCHES} from './data/site-content-seed.js';
 
 const types = new Set(['advisors', 'featured']);
-const assets = new Set(['emily-gnecco.png','erik.png','brisbane.png','south-bay-today.png','civic-tech-guide.png']);
+const assets = new Set(['emily-gnecco.png','erik.png','brisbane.png','south-bay-today.png','civic-tech-guide.png','kimberly-mosley.jpg','jeannice-fairrer-samani.png']);
 const assetPrefix = '/api/admin/site-content/assets/';
 export async function initSiteContent(pool) {
   await pool.query(`CREATE TABLE IF NOT EXISTS site_content (
@@ -15,6 +15,11 @@ export async function initSiteContent(pool) {
   for (const {id, kind, position, ...data} of SITE_CONTENT_SEED) {
     await pool.query('INSERT INTO site_content(id,kind,position,data) VALUES($1,$2,$3,$4) ON CONFLICT(id) DO NOTHING',
       [id,kind,position,JSON.stringify(data)]);
+  }
+  for (const [id, field, previous] of SITE_CONTENT_PATCHES) {
+    const value = SITE_CONTENT_SEED.find(entry => entry.id === id)[field];
+    await pool.query(`UPDATE site_content SET data=jsonb_set(data,ARRAY[$2]::text[],to_jsonb($3::text)),
+      version=version+1,updated_at=now() WHERE id=$1 AND COALESCE(data->>$2,'')=$4`, [id,field,value,previous]);
   }
 }
 function validate(kind, body) {
