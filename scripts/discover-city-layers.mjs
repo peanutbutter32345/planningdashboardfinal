@@ -43,15 +43,20 @@ const TARGETS = {
   projects: {
     file: 'project-sources.json',
     service: /project|development|planning|permit|cip|capital/i,
-    field: /^(project|project_?name|projname|description|proj_?desc|status|project_?status|casenumber|case_?no|permit_?no)$/i,
+    // The field has to NAME the project. Accepting "status" as an identifier is what matched
+    // Fairfield's plan-review table (4,231 rows whose status is one of M, T or U) and Campbell's
+    // public-works maintenance agreements. Neither is a development pipeline.
+    field: /^(project|project_?name|projname|proj_?title|title|casenumber|case_?no|case_?number|file_?no|permit_?no|application_?no|app_?no)$/i,
     geometry: ['esriGeometryPoint', 'esriGeometryPolygon'],
     // A city's GIS usually carries both a live pipeline and an archive of everything ever filed.
     // The archive is larger, so anything picking the first or biggest match lands on it: Sunnyvale's
     // "History Point - All Time" has 660 rows against 155 in Planning/Projects, and almost all of
     // them are finished. Excluded by name, along with the asset inventories that are not projects.
-    exclude: /histor|complete|archive|closed|expired|pavement|tree|sign|streetlight|hydrant|sewer|water.?main|parcel/i,
+    exclude: /histor|complete|archive|closed|expired|pavement|tree|sign|streetlight|hydrant|sewer|water.?main|parcel|agreement|easement|covenant|maint|encroach|abandon|annex|assessment|lighting|landscap/i,
     // Among what is left, prefer the layer that sounds like the current pipeline.
     prefer: /current|active|pipeline|under.?review|^projects$|development/i,
+    // Measured against the sample, not the whole layer.
+    distinctRatio: 0.25,
     label: 'project layer',
   },
 };
@@ -182,7 +187,12 @@ async function zoningLayerIn(root, service) {
     // Prove it answers before recording it, and keep the districts it actually contains.
     const rows = await get(`${url}/query?where=1%3D1&outFields=${field.name}&returnGeometry=false&f=json&resultRecordCount=400`);
     const districts = [...new Set((rows?.features || []).map(f => f.attributes[field.name]).filter(Boolean))].sort();
-    if (districts.length < 2) continue;      // a single value is a mask, not a zoning map
+    // A real list of projects has about as many distinct names as it has rows. A handful of
+    // repeated codes across thousands of rows is a lookup table that happens to sit in a service
+    // whose name mentions planning.
+    if (districts.length < 2) continue;      // a single value is a mask, not a map
+    const sampled = (rows?.features || []).length;
+    if (TARGET.distinctRatio && sampled && districts.length / sampled < TARGET.distinctRatio) continue;
     const count = await get(`${url}/query?where=1%3D1&returnCountOnly=true&f=json`);
     return { url, field: field.name, layerName: layer.name, districts, polygons: count?.count ?? null };
   }
