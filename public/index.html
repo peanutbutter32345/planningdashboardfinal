@@ -2845,6 +2845,7 @@
 
 <script src="/data/regions.js"></script>
 <script src="/data/market-data.js"></script>
+<script src="/data/city-projects.js"></script>
 <script src="/data/housing-records.js"></script>
 <script src="/data/city-news.js"></script>
 <script src="/housing-data.js"></script>
@@ -6286,6 +6287,10 @@ const CITIES = {
 for(const [key,c] of Object.entries(window.REGIONAL_DATA?.cities||{})){
  CITIES[key]={...c,data:[...c.data],feed:c.data.filter(p=>p.lastDate).map(p=>({date:p.lastDate,id:p.id,title:p.addr,body:p.lastNote,stage:p.stage})),sources:[c.planning,c.stats.source],ctaLinks:c.resources.map(r=>({label:r.title,url:r.url}))};
 }
+// The cities that publish their own pipeline, merged before the HCD sample so that where both
+// describe one address the live city record is the one shown and the annual return is the
+// duplicate. This is the only source for anything that is not housing: HCD reports housing alone.
+DashboardHousing.mergeCityProjects(CITIES,window.CITY_PROJECTS);
 DashboardHousing.merge(CITIES,window.HOUSING_RECORDS);
 const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
 // Counted here, before the "All Cities" aggregate below joins the object, so this is the number
@@ -7908,6 +7913,8 @@ function projectSheetHtml(record, cityKey, city){
     +'<section class="ps-sec"><h3>Where this comes from</h3>'
       +'<p class="ps-note">'+(hcd
         ? 'This is '+escapeHtml(city.label)+'&rsquo;s own '+escapeHtml(String(record.reportYear||''))+' submission to the California Department of Housing and Community Development, published as '+escapeHtml(record.sourceLabel||'an annual progress report')+'. It is what the city reported once a year, not a live permit status, and the homes counted may be one phase of something larger. A permit being issued does not mean anything has been built.'
+        : record.sourceType==='city-gis'
+        ? 'Read from '+escapeHtml(city.label)+'&rsquo;s own mapping server, from the layer it keeps its '+escapeHtml(city.livePipeline?.what||'projects')+' in. That makes it as current as the city&rsquo;s own system rather than an annual filing, and it covers what the city puts in that layer and nothing else &mdash; which is why the status below is worded the way the city words it.'
         : 'Compiled from '+escapeHtml(city.label)+'&rsquo;s published planning records and meeting agendas. Dates are the ones in the public file, so a record can be accurate and still be out of date if the city has not posted anything since.')
       +'</p><div class="ps-links" style="margin-top:11px;">'+links+'</div></section>'
 
