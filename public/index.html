@@ -16282,8 +16282,34 @@ function renderRailCityPicker(){
   if(now)now.textContent=currentCity==='all'?'COUNTY & CITY VIEW':'';
 }
 
-let heroMap = null, heroLayer = null;
+/* Real city limits, from the US Census Bureau's Incorporated Places layer. Until this arrived,
+   every city carried a bounding box someone had typed by hand and rounded to two decimals, and
+   22 of the 32 written out here cut off part of their own city - Palo Alto by twelve kilometres,
+   because the rectangle stopped at the flatlands and the city runs well up into the foothills.
+   Anything framing a map on c.bbox was framing it on that.
+
+   Fetched the first time a map wants it rather than on page load: it is 312 KB, and the front
+   page does not need a single outline to draw. Once it lands, every city's bbox is replaced with
+   the one measured from its own boundary. */
+let cityBoundaries = null, cityBoundariesPending = null;
+function loadCityBoundaries(){
+  if(cityBoundaries) return Promise.resolve(cityBoundaries);
+  if(!cityBoundariesPending) cityBoundariesPending = fetch('/data/city-boundaries.json')
+    .then(r=>{ if(!r.ok) throw Error('boundaries '+r.status); return r.json(); })
+    .then(d=>{
+      cityBoundaries = d;
+      for(const [key, b] of Object.entries(d.cities||{})) if(CITIES[key] && b.bbox) CITIES[key].bbox = b.bbox;
+      return d;
+    })
+    .catch(()=>{ cityBoundariesPending = null; return null; });   // maps keep their typed box
+  return cityBoundariesPending;
+}
+function cityRing(key){ return cityBoundaries?.cities?.[key]?.ring || null; }
+
+let heroMap = null, heroLayer = null, heroOutline = null;
 function renderHeroMap(){
+  // First map on the page triggers the fetch; when it lands every bbox is real and this redraws.
+  if(!cityBoundaries) loadCityBoundaries().then(d=>{ if(d) renderHeroMap(); });
   const card = document.getElementById('heroMapCard');
   if(!card) return;
   if(typeof L === 'undefined'){ noteMapUnavailable(document.getElementById('heroMap')); return; }
@@ -16324,9 +16350,15 @@ function renderHeroMap(){
     ?(activeCounty||'Bay Area')+' · '+DashboardBrowse.citiesIn(CITIES,activeCounty).length+' areas'
     :here.length?here.length+' pinned'
     :(yaPins||[]).length?yaPins.length+' pinned elsewhere':'nothing pinned';
+  // The city's own outline, so a reader can see where the line actually runs rather than
+  // inferring it from where the pins stop.
+  if(heroOutline){ heroMap.removeLayer(heroOutline); heroOutline = null; }
+  const ring = currentCity==='all' ? null : cityRing(currentCity);
+  if(ring) heroOutline = L.polygon(ring, {color:'#3E4F24', weight:1.5, opacity:.75, fill:false, interactive:false}).addTo(heroMap);
   if(currentCity==='all')heroMap.fitBounds([[c.bbox.minLat,c.bbox.minLng],[c.bbox.maxLat,c.bbox.maxLng]],{padding:[20,20]});
   else if(here.length > 1) heroMap.fitBounds(here, {padding:[24,24]});
   else if(here.length === 1) heroMap.setView(here[0], 13);
+  else if(ring) heroMap.fitBounds([[c.bbox.minLat,c.bbox.minLng],[c.bbox.maxLat,c.bbox.maxLng]],{padding:[14,14]});
   else heroMap.setView([c.center.lat, c.center.lng], 11);
   setTimeout(()=>{ try{ heroMap.invalidateSize(); }catch(e){} }, 80);
 
