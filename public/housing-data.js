@@ -45,6 +45,26 @@
    city.coverage='sample';city.housingActivity=snapshot.activity[key];
   }
  }
+ /* A city's own GIS, merged on the same address rule. Run before the HCD merge: where both
+    describe the same address the city's record is the live one and the HCD row is a line from an
+    annual return, so the city wins and HCD is skipped as a duplicate.
+
+    Kept separate from merge() above because these are not a housing sample. Each city means
+    something different by "project" - a planning pipeline, a commercial list, an affordable
+    housing programme, a capital improvement programme - so every record carries the name of the
+    layer it came from and the city note says which, rather than implying they are all the same. */
+ function mergeCityProjects(cities,snapshot){
+  if(!snapshot?.cities)return;
+  for(const [key,entry] of Object.entries(snapshot.cities)){
+   const city=cities[key];if(!city||!entry?.records?.length)continue;
+   const seen=new Set(city.data.map(p=>addressKey(p.addr)));
+   const additions=entry.records.filter(p=>{const id=addressKey(p.addr);if(seen.has(id))return false;seen.add(id);return true;});
+   if(!additions.length)continue;
+   city.data.push(...additions);
+   city.feed.push(...additions.filter(p=>p.lastDate).map(p=>({date:p.lastDate,id:p.id,title:p.addr,body:p.lastNote,stage:p.stage})));
+   city.livePipeline={what:entry.what,layer:entry.layer,url:entry.url,count:additions.length};
+  }
+ }
  // Totalling homes across records means counting each address once. Eleven addresses in the
  // curated data carry two records apiece, the same project filed at two stages: "1855-81 Rollins
  // Road" approved and "1855-1881 Rollins Rd" under construction, both reporting 420 homes. Both
@@ -66,5 +86,5 @@
   largest.forEach(function(v){total+=v;});
   return total;
  }
- root.DashboardHousing={merge,addressKey,sumUnits};
+ root.DashboardHousing={merge,mergeCityProjects,addressKey,sumUnits};
 })(globalThis);

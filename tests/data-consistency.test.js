@@ -48,3 +48,21 @@ test('reader-facing copy never hardcodes a count that the data can change', () =
   assert.deepEqual(noteCounts, [],
     'A city note must not claim a record count; the data changes and the sentence does not.');
 });
+
+// SB 79 is the upzoning law this dashboard has led on for months, and MTC maps where it applies.
+// Its absence from Napa, Sonoma and Solano is the reach of the statute, not missing data, so the
+// file has to say which source it came from and what the tiers mean.
+test('the SB 79 zones name their source and carry the statute\'s own tiers', () => {
+  const sb79 = JSON.parse(readFileSync(new URL('../public/data/sb79-zones.json', import.meta.url), 'utf8'));
+  assert.match(sb79.source, /Metropolitan Transportation Commission/);
+  assert.ok(sb79.zones.length > 100, `only ${sb79.zones.length} zones`);
+  const tiers = new Set(sb79.zones.map(z => z.tier));
+  for (const tier of tiers) assert.match(tier, /^Tier [12] - (200ft|Quarter Mile|Half Mile)$/, `odd tier: ${tier}`);
+  assert.ok(tiers.size >= 4, 'both tiers at more than one distance should be present');
+  for (const zone of sb79.zones) {
+    assert.ok(zone.ring.length >= 3, `${zone.id} has no usable outline`);
+    const lats = zone.ring.map(p => p[0]), lngs = zone.ring.map(p => p[1]);
+    assert.ok(Math.min(...lats) > 36.5 && Math.max(...lats) < 39, `${zone.id} is outside the Bay Area`);
+    assert.ok(Math.min(...lngs) > -124 && Math.max(...lngs) < -121, `${zone.id} is outside the Bay Area`);
+  }
+});

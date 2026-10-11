@@ -2902,6 +2902,7 @@
 
 <script src="/data/regions.js"></script>
 <script src="/data/market-data.js"></script>
+<script src="/data/city-projects.js"></script>
 <script src="/data/housing-records.js"></script>
 <script src="/data/city-news.js"></script>
 <script src="/housing-data.js"></script>
@@ -6350,6 +6351,10 @@ const CITIES = {
 for(const [key,c] of Object.entries(window.REGIONAL_DATA?.cities||{})){
  CITIES[key]={...c,data:[...c.data],feed:c.data.filter(p=>p.lastDate).map(p=>({date:p.lastDate,id:p.id,title:p.addr,body:p.lastNote,stage:p.stage})),sources:[c.planning,c.stats.source],ctaLinks:c.resources.map(r=>({label:r.title,url:r.url}))};
 }
+// The cities that publish their own pipeline, merged before the HCD sample so that where both
+// describe one address the live city record is the one shown and the annual return is the
+// duplicate. This is the only source for anything that is not housing: HCD reports housing alone.
+DashboardHousing.mergeCityProjects(CITIES,window.CITY_PROJECTS);
 DashboardHousing.merge(CITIES,window.HOUSING_RECORDS);
 const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
 // Counted here, before the "All Cities" aggregate below joins the object, so this is the number
@@ -7867,6 +7872,86 @@ function regionCardHtml(d){
    parcel numbers, where the coordinates came from and how good they are, which board decides it,
    and the several things the record deliberately does not claim - goes here. Nothing is composed
    for this view: every line is a field of the record or a link to the body that published it. */
+/* What the rules say about this address, asked of the bodies that set them when the record opens.
+
+   Zoning is city by city because zoning authority is: a city zones inside its own limits and the
+   county only zones what is outside them, so there is no regional layer to call and no county
+   fallback. Checked: Sonoma County's zoning answers for unincorporated Geyserville and returns
+   nothing at all for Santa Rosa, Petaluma or Healdsburg. A minority of cities publish a layer a
+   browser can query - zoning-sources.json is the list - and for the rest this section says so and
+   links to where the city keeps it.
+
+   SB 79 is the opposite shape - one regional layer from MTC - so that part works everywhere the
+   law reaches. */
+let zoningSources = null, sb79Zones = null;
+function loadRuleLayers(){
+  if(zoningSources && sb79Zones) return Promise.resolve();
+  return Promise.all([
+    zoningSources ? null : fetch('/data/zoning-sources.json').then(r=>r.json()).then(d=>{zoningSources=d;}).catch(()=>{zoningSources={cities:{}};}),
+    sb79Zones ? null : fetch('/data/sb79-zones.json').then(r=>r.json()).then(d=>{sb79Zones=d;}).catch(()=>{sb79Zones={zones:[]};}),
+  ]);
+}
+// Ray casting. The zones are simple rings, and a reader only ever asks about one point.
+function pointInRing(lat, lng, ring){
+  let inside = false;
+  for(let i=0, j=ring.length-1; i<ring.length; j=i++){
+    const [latI, lngI] = ring[i], [latJ, lngJ] = ring[j];
+    if((lngI > lng) !== (lngJ > lng) && lat < (latJ - latI) * (lng - lngI) / (lngJ - lngI) + latI) inside = !inside;
+  }
+  return inside;
+}
+function sb79At(lat, lng){
+  for(const zone of (sb79Zones?.zones || [])) if(pointInRing(lat, lng, zone.ring)) return zone.tier;
+  return null;
+}
+// The city's own server, asked about this exact point. Nothing is cached across addresses: a
+// zoning map changes when the council changes it, and a stale answer here is worse than none.
+async function zoningAt(cityKey, lat, lng){
+  const source = zoningSources?.cities?.[cityKey];
+  if(!source) return null;
+  const geometry = encodeURIComponent(JSON.stringify({x:lng, y:lat, spatialReference:{wkid:4326}}));
+  const url = source.url + '/query?geometry=' + geometry
+    + '&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields='
+    + encodeURIComponent(source.field) + '&returnGeometry=false&f=json';
+  try{
+    const res = await fetch(url, {signal: AbortSignal.timeout(8000)});
+    if(!res.ok) return null;
+    const data = await res.json();
+    const value = data.features?.[0]?.attributes?.[source.field];
+    return value ? {district: String(value), source} : {district: null, source};
+  }catch{ return null; }   // their server, not ours; the section says it could not be reached
+}
+async function renderRules(record, cityKey, city){
+  const host = document.getElementById('psRules');
+  if(!host) return;
+  await loadRuleLayers();
+  const located = Number.isFinite(record.lat) && Number.isFinite(record.lng);
+  if(!located){ host.innerHTML = '<p class="ps-note">No coordinates were published for this record, so the rules at this address cannot be looked up.</p>'; return; }
+
+  const tier = sb79At(record.lat, record.lng);
+  const zoning = await zoningAt(cityKey, record.lat, record.lng);
+  const source = zoningSources?.cities?.[cityKey];
+  const planning = (city.ctaLinks || []).find(l => /zoning|planning|development/i.test(l.label));
+
+  const zoningLine = zoning && zoning.district
+    ? 'Zoned <b>' + escapeHtml(zoning.district) + '</b> in ' + escapeHtml(city.label) + '&rsquo;s own zoning map, read from the city just now.'
+    : zoning
+      ? escapeHtml(city.label) + ' publishes a zoning map and it returns no district at this point. That usually means the pin sits just off the parcel, since these coordinates are a geocode rather than a survey.'
+      : source
+        ? escapeHtml(city.label) + '&rsquo;s zoning map could not be reached just now. It is the city&rsquo;s server, not this one.'
+        : escapeHtml(city.label) + ' does not publish its zoning map in a form this page can read. Zoning is set by each city inside its own limits, so there is no regional map to fall back on'
+          + (planning ? ', but the city keeps it here: <a href="' + escapeHtml(planning.url) + '" target="_blank" rel="noopener">' + escapeHtml(String(planning.label).replace(/&amp;/g,'&')) + ' &#8599;</a>' : '.');
+
+  const sb79Line = tier
+    ? 'Inside an <b>SB 79 ' + escapeHtml(tier) + '</b> zone, so the state&rsquo;s transit-oriented housing standards apply here on top of the city&rsquo;s own rules.'
+    : 'Outside the SB 79 transit zones, so the state&rsquo;s transit-oriented housing standards do not apply at this address.';
+
+  host.innerHTML = '<p class="ps-note">' + zoningLine + '</p><p class="ps-note" style="margin-top:9px;">' + sb79Line + '</p>'
+    + '<p class="ps-note" style="margin-top:9px; font-size:11.5px; color:var(--text-soft);">'
+    + (source ? 'Zoning from ' + escapeHtml(city.label) + '&rsquo;s GIS. ' : '')
+    + 'SB 79 zones from the Metropolitan Transportation Commission. Both describe the rules, not a decision: check with the city before relying on either.</p>';
+}
+
 let projSheetReturnFocus = null;
 function findProject(id){
   for(const key of Object.keys(CITIES)){
@@ -7944,9 +8029,12 @@ function projectSheetHtml(record, cityKey, city){
     +'<section class="ps-sec"><h3>Where this comes from</h3>'
       +'<p class="ps-note">'+(hcd
         ? 'This is '+escapeHtml(city.label)+'&rsquo;s own '+escapeHtml(String(record.reportYear||''))+' submission to the California Department of Housing and Community Development, published as '+escapeHtml(record.sourceLabel||'an annual progress report')+'. It is what the city reported once a year, not a live permit status, and the homes counted may be one phase of something larger. A permit being issued does not mean anything has been built.'
+        : record.sourceType==='city-gis'
+        ? 'Read from '+escapeHtml(city.label)+'&rsquo;s own mapping server, from the layer it keeps its '+escapeHtml(city.livePipeline?.what||'projects')+' in. That makes it as current as the city&rsquo;s own system rather than an annual filing, and it covers what the city puts in that layer and nothing else &mdash; which is why the status below is worded the way the city words it.'
         : 'Compiled from '+escapeHtml(city.label)+'&rsquo;s published planning records and meeting agendas. Dates are the ones in the public file, so a record can be accurate and still be out of date if the city has not posted anything since.')
       +'</p><div class="ps-links" style="margin-top:11px;">'+links+'</div></section>'
 
+    +'<section class="ps-sec"><h3>What the rules say here</h3><div id="psRules"><p class="ps-note">Checking with '+escapeHtml(city.label)+'\u2026</p></div></section>'
     +'<section class="ps-sec"><h3>On the map</h3><p class="ps-note">'
       +(located
         ? 'Placed at '+record.lat.toFixed(5)+', '+record.lng.toFixed(5)+'.'
@@ -7972,6 +8060,7 @@ function openProjectSheet(id){
   document.body.style.overflow='hidden';
   document.getElementById('projSheetClose').focus();
 
+  renderRules(found.record, found.cityKey, found.city);
   document.getElementById('psLocate')?.addEventListener('click',()=>{
     closeProjectSheet();
     if(found.cityKey!==currentCity&&currentCity!=='all') switchCity(found.cityKey);
