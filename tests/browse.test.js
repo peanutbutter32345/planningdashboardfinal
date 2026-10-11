@@ -50,10 +50,15 @@ test('county views retain every matching map record and restore the full Bay dat
  const housing=JSON.parse(fs.readFileSync(new URL('../public/data/housing-records.json',import.meta.url)));
  const context=vm.createContext({window:{REGIONAL_DATA,HOUSING_RECORDS:housing},DashboardHousing:globalThis.DashboardHousing,DashboardBrowse:globalThis.DashboardBrowse});
  vm.runInContext(html.slice(html.indexOf('const STAGES ='),html.indexOf('// ---------------- HELPERS ----------------')),context);
- const result=vm.runInContext(`(()=>{const total=CITIES.all.data.length;setCountyScope('Alameda');const rows=CITIES.all.data;const county={label:CITIES.all.label,count:rows.length,expected:Object.values(CITIES).filter(c=>c!==CITIES.all&&c.county==='Alameda').reduce((n,c)=>n+c.data.length,0),onlyLocal:rows.every(p=>CITIES[p._sourceCity].county==='Alameda')};setCountyScope('San Francisco');const sf=CITIES.all.data.length===CITIES.sanfrancisco.data.length;setCountyScope('');return {total,county,sf,restored:CITIES.all.data.length};})()`,context);
+ const result=vm.runInContext(`(()=>{const total=CITIES.all.data.length;setCountyScope('Alameda');const rows=CITIES.all.data;const county={label:CITIES.all.label,count:rows.length,expected:Object.values(CITIES).filter(c=>c!==CITIES.all&&c.county==='Alameda').reduce((n,c)=>n+c.data.length,0),onlyLocal:rows.every(p=>CITIES[p._sourceCity].county==='Alameda')};setCountyScope('San Francisco');const sf=CITIES.all.data.length===CITIES.sanfrancisco.data.length;setCountyScope('');const everyCity=Object.values(CITIES).filter(c=>c!==CITIES.all).reduce((n,c)=>n+c.data.length,0);return {total,county,sf,everyCity,restored:CITIES.all.data.length};})()`,context);
  assert.equal(result.county.label,'Alameda County');
  assert.equal(result.county.count,result.county.expected);
  assert.ok(result.county.onlyLocal&&result.sf);
- assert.equal(result.total,2833);
- assert.equal(result.restored,result.total);
+ // The claim is that the Bay-wide view holds every city's records and nothing else, so it is
+ // measured against those same cities rather than against a number typed in here. A literal
+ // total fails on every legitimate data refresh, which teaches whoever runs the refresh to edit
+ // the test instead of reading it.
+ assert.equal(result.total,result.everyCity,'the Bay-wide view should hold exactly every city\'s records');
+ assert.ok(result.total>2000,'and the dataset should not have quietly emptied');
+ assert.equal(result.restored,result.total,'leaving a county scope must restore the full set');
 });

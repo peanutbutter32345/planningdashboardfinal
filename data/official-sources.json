@@ -740,7 +740,7 @@
     "city": "Pacifica",
     "category": "Meetings",
     "title": "Committee / Commission Meeting Materials",
-    "url": "https://www.cityofpacifica.org/i-want-to/view/committee-commission-meeting-materials",
+    "url": "https://www.cityofpacifica.org/government/commissions-committees",
     "note": "Official Pacifica page."
   },
   {
@@ -1004,7 +1004,7 @@
     "city": "South San Francisco",
     "category": "Permits",
     "title": "Permit Center",
-    "url": "https://www.ssfca.gov/Departments/Economic-and-Community-Development/Permit-Center",
+    "url": "https://www.ssfca.gov/Services/Permit-Center",
     "note": "Official South San Francisco page."
   },
   {
@@ -1772,7 +1772,7 @@
     "city": "Gilroy",
     "category": "Planning",
     "title": "Planning Division",
-    "url": "https://www.cityofgilroy.org/193/Planning-Division",
+    "url": "https://www.cityofgilroy.org/269/Planning",
     "note": "Current and long-range planning for the city."
   },
   {
@@ -1867,9 +1867,9 @@
     "id": "gilroy-dashboard-12",
     "city": "Gilroy",
     "category": "Zoning",
-    "title": "Zoning Code Update",
-    "url": "https://www.cityofgilroy.org/1004/Zoning-Code-Update",
-    "note": "The in-progress rewrite of the city’s zoning code."
+    "title": "Zoning Ordinance",
+    "url": "https://www.codepublishing.com/CA/Gilroy/",
+    "note": "The city’s adopted zoning code, as published."
   },
   {
     "id": "gilroy-dashboard-13",
@@ -1884,7 +1884,7 @@
     "city": "Gilroy",
     "category": "Meetings",
     "title": "Agendas & Minutes",
-    "url": "https://www.cityofgilroy.org/1151/Agendas-Minutes",
+    "url": "https://www.cityofgilroy.org/965/Agendas-Minutes",
     "note": "Council, Planning Commission, and committee agendas."
   },
   {
@@ -1892,7 +1892,7 @@
     "city": "Gilroy",
     "category": "Boards",
     "title": "Boards, Commissions & Committees",
-    "url": "https://www.cityofgilroy.org/1150/Boards-Commissions-Committees",
+    "url": "https://www.cityofgilroy.org/148/Boards-Commissions-Committees",
     "note": "Bodies you can apply to serve on."
   },
   {
@@ -2059,7 +2059,7 @@
     "id": "losgatos-dashboard-4",
     "city": "Los Gatos",
     "category": "Housing",
-    "title": "General Plan — Housing Element",
+    "title": "General Plan - Housing Element",
     "url": "https://www.losgatosca.gov/1735/General-Plan---Housing-Element",
     "note": "State-required housing plan and site inventory."
   },
@@ -2220,7 +2220,7 @@
     "city": "Campbell",
     "category": "Planning",
     "title": "Community Development Department",
-    "url": "https://www.campbellca.gov/151/Community-Development",
+    "url": "https://www.campbellca.gov/1350/Community-Development",
     "note": "Planning, building, and housing for the city."
   },
   {

@@ -6,6 +6,24 @@ const number=s=>s!==null&&s!==''&&Number.isFinite(Number(s))&&Number(s)>=0?Numbe
 const date=s=>/^\d{4}-\d{2}-\d{2}$/.test(s||'')&&s>='2000-01-01'&&s<='2026-09-19'?s:null;
 const validText=s=>{const t=clean(s);return /^(?:-|0|n\/?a|none|null)$/i.test(t)?'':t;};
 const restricted=(r,prefix)=>{const values=['ACUTELY_LOW','EXTREMELY_LOW','VLOW','LOW','MOD'].map(k=>number(r[prefix+k+'_INCOME_DR']));return values.every(v=>v===null)?null:values.reduce((sum,v)=>sum+(v||0),0);};
+// HCD reassigns _id on every publish: the same parcel came back as 602042 in September and
+// 604551 in October. Building the record id from it meant every star, every pinned project,
+// every reminder and every ?project= link in an already-sent email broke the moment the data was
+// refreshed. The id is now built from what identifies the parcel to the city - its APN, or its
+// address where no APN is given - plus the reporting year, so the same row keeps the same id
+// across refreshes and a different row cannot collide with it.
+export function hcdRecordId(cityKey,table,r){
+ const slug=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);
+ // One parcel can carry several rows in a year - phases, or a mix of unit types - so the parcel
+ // alone is not unique. The address and the reported size and status separate them, and all three
+ // belong to the row itself rather than to HCD's numbering, so they survive a refresh.
+ const parcel=slug(r.APN)||slug(r.JURS_TRACKING_ID);
+ const where=slug(r.STREET_ADDRESS);
+ const shape=[r.UNIT_CAT_DESC,r.TOTAL_UNITS,r.ENT_UNITS_TOTAL,r.PERMIT_UNITS_TOTAL,r.CERT_UNITS_TOTAL]
+   .map(v=>slug(v)).filter(Boolean).join('-').slice(0,32);
+ const key=[parcel,where,shape].filter(Boolean).join('-')||String(r._id);
+ return ['hcd',cityKey,table.toLowerCase(),slug(r.YEAR)||'x',key].join('-').slice(0,120);
+}
 export function recordIdentity(r){return normalizeName(r.STREET_ADDRESS)||normalizeName(r.APN)||normalizeName(r.JURS_TRACKING_ID);}
 export function normalizeRecord(r,table,city){
  let stage,units,lastDate,prefix='',reportedStatus;
@@ -33,7 +51,7 @@ export function normalizeRecord(r,table,city){
  const kind=validText(r.UNIT_CAT)||'Housing',affordable=restricted(r,prefix);
  const milestone=reportedStatus.toLowerCase();
  const annualNote='Annual '+r.YEAR+' city submission to California HCD; not a live status. Units refer to the reported milestone and may represent one phase. Permitting does not establish that construction started.';
- return {id:'hcd-'+city.key+'-'+table.toLowerCase()+'-'+r._id,addr:address||name||'Parcel '+apn,lat,lng,cat:'dev',type:'Residential',stage,reportedStatus,units,bmr:affordable===null?null:Math.min(units,affordable),applicant:'',fileNo:validText(r.JURS_TRACKING_ID)||'APN '+apn,filed:table==='A'?date(r.APP_SUBMIT_DT):null,lastDate,
+ return {id:hcdRecordId(city.key,table,r),addr:address||name||'Parcel '+apn,lat,lng,cat:'dev',type:'Residential',stage,reportedStatus,units,bmr:affordable===null?null:Math.min(units,affordable),applicant:'',fileNo:validText(r.JURS_TRACKING_ID)||'APN '+apn,filed:table==='A'?date(r.APP_SUBMIT_DT):null,lastDate,
   desc:(name&&name!==address?name+'. ':'')+kind+' · '+units.toLocaleString('en-US')+' reported homes. '+annualNote,
   lastNote:reportedStatus+(lastDate?' · '+lastDate:' · '+r.YEAR+' annual report')+'. Check the city for subsequent activity.',
   sourceUrl,sourceType:'hcd-apr',sourceLabel:'HCD APR Table '+table,reportYear:Number(r.YEAR),sourceRecordId:r._id,apn,locationSource:lat===null?'Unverified location':'HCD ArcGIS geocode · approximate',geocodeScore:number(r.SCORE),flag:lastDate?null:'The annual report does not provide an exact milestone date.'};
