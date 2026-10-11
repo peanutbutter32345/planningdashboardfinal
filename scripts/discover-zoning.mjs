@@ -26,17 +26,31 @@ const ZONE_SERVICE = /zon|land.?use/i;
 // Fire, flood, climate and seismic layers all call themselves zones. They are not land use.
 const NOT_LAND_USE = /fire|flood|fema|seismic|liquefact|climate|noise|tsunami|evacuat|parking.?zone|school/i;
 
-function cityHosts() {
+// Every city's own links tell us its domain. The 33 written into index.html carry ctaLinks; the
+// 69 in regional.js carry planning, meetings and website. Earlier this read only the first set,
+// so two thirds of the cities were never asked.
+async function cityHosts() {
+  const { REGIONAL_CITIES } = await import('../data/regional.js');
+  const { CITY_LABELS } = await import('../digest.js');
   const html = readFileSync(new URL('../public/index.html', import.meta.url), 'utf8');
   const hosts = {};
-  // Each city's own official links tell us its domain; no need to guess at hostnames.
-  const re = /(\w+): \{label:'([^']+)',[\s\S]{0,4000}?ctaLinks:\s*\[([\s\S]{0,1200}?)\]/g;
+  const pick = urls => urls
+    .map(u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return null; } })
+    .find(h => h && /\.(gov|org|us|net|com)$/.test(h));
+
+  for (const [key, city] of Object.entries(REGIONAL_CITIES)) {
+    const domain = pick([city.website, city.planning, city.meetings, ...(city.resources || []).map(r => r.url)]);
+    if (domain) hosts[key] = { label: city.label, domain };
+  }
+  const re = /(\w+): \{label:'([^']+)',[\s\S]{0,4000}?ctaLinks:\s*\[([\s\S]{0,1500}?)\]/g;
   let m;
   while ((m = re.exec(html))) {
-    const urls = [...m[3].matchAll(/https?:\/\/([a-z0-9.-]+)/gi)].map(u => u[1]);
-    const domain = urls.map(h => h.replace(/^www\./, '')).find(h => /\.(gov|org|us|net)$/.test(h));
+    if (hosts[m[1]]) continue;
+    const domain = pick([...m[3].matchAll(/https?:\/\/[^'"\s]+/g)].map(u => u[0]));
     if (domain) hosts[m[1]] = { label: m[2], domain };
   }
+  const without = Object.keys(CITY_LABELS).filter(k => k !== 'all' && !hosts[k]);
+  if (without.length) console.log(`no domain found for: ${without.join(', ')}\n`);
   return hosts;
 }
 
@@ -80,7 +94,7 @@ async function zoningLayerIn(root, service) {
 }
 
 const only = process.argv[2];
-const hosts = cityHosts();
+const hosts = await cityHosts();
 const keys = Object.keys(hosts).filter(k => !only || k === only);
 console.log(`${keys.length} cities with a known domain\n`);
 
