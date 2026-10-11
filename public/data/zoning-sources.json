@@ -1,5 +1,5 @@
 {
- "retrieved": "2026-10-11T00:35:25.855Z",
+ "retrieved": "2026-10-11T00:43:01.744Z",
  "note": "Each entry is a city's own published ArcGIS zoning layer, queried live. Cities absent from this file do not publish one in a machine-readable form; their zoning is not shown rather than being inferred from anywhere else.",
  "cities": {
   "dublin": {
@@ -171,6 +171,55 @@
    ],
    "polygons": 1480
   },
+  "cupertino": {
+   "label": "Cupertino",
+   "url": "https://gis.cupertino.org/cupgis/rest/services/Public/AmazonData/FeatureServer/12",
+   "field": "LAND_USE",
+   "layerName": "General Plan Land Use",
+   "districts": [
+    "Com/Off/Res",
+    "Com/Res H/VH",
+    "Com/Res M",
+    "Com/Res M/H",
+    "Com/ResVH",
+    "County",
+    "Creek",
+    "Ind",
+    "Ind/Res/Com",
+    "Neigh Com/BQ",
+    "Neigh Com/Res",
+    "Off/Ind/Com/Res",
+    "OffIndComResQuas",
+    "Parks",
+    "Private OS",
+    "Public",
+    "Public OS",
+    "Quasi-Public",
+    "RS",
+    "RS/Res",
+    "Res 0-4.4",
+    "Res 1-6 Rancho",
+    "Res 10-15",
+    "Res 10-20 OUT",
+    "Res 20-35 OUT",
+    "Res 4.4-12",
+    "Res 4.4-7.7",
+    "Res H/VH",
+    "Res Low 1-5",
+    "Res Low 1-5 OUT",
+    "Res MH 20-35",
+    "Res ML 5-10",
+    "Res Medium 10-20",
+    "Res VHD",
+    "Res VL 1/2",
+    "Res VL 5-20",
+    "Res VVH",
+    "Res Very Low S/D",
+    "Trans",
+    "Water"
+   ],
+   "polygons": 395
+  },
   "mountainview": {
    "label": "Mountain View",
    "url": "https://maps.mountainview.gov/arcgis/rest/services/Public/ZoningDistrict/FeatureServer/0",
@@ -309,6 +358,42 @@
     "U"
    ],
    "polygons": 894
+  },
+  "menlopark": {
+   "label": "Menlo Park",
+   "url": "https://gisweb.menlopark.gov/server/rest/services/ZoningLabels/MapServer/1",
+   "field": "Zoning",
+   "layerName": "Zoning Label (>24K)",
+   "districts": [
+    "AAGP",
+    "C-MU",
+    "C1",
+    "C1(X)",
+    "C1C",
+    "C1C(X)",
+    "C1S(X)",
+    "C2",
+    "C2S",
+    "C4(X)",
+    "H",
+    "LS",
+    "LS-B",
+    "M2",
+    "M3(X)",
+    "O",
+    "O-B",
+    "O-CH",
+    "OSC",
+    "P",
+    "PF",
+    "R-MU-B",
+    "R1S",
+    "R1S(FG)",
+    "R1S(X)",
+    "R1U",
+    "U"
+   ],
+   "polygons": 581
   }
  }
 }

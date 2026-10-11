@@ -1,6 +1,7 @@
-// Finds each city's own zoning layer on its own GIS server.
+// Finds a city's own zoning or development-project layer on its own GIS server.
 //
-//   node scripts/discover-zoning.mjs            every city
+//   node scripts/discover-city-layers.mjs                      zoning, every city
+//   TARGET=projects node scripts/discover-city-layers.mjs      project pipelines
 //   node scripts/discover-zoning.mjs sunnyvale  one city
 //
 // Writes public/data/zoning-sources.json: for each city that publishes one, the ArcGIS layer URL,
@@ -21,10 +22,44 @@ const get = async (url, ms = 12000) => {
 };
 
 // A zoning layer names its district field something like this, and nothing else does.
-const ZONE_FIELD = /^(zoning|zone|zone_?code|zoning_?code|zone_?class|zoning_?district|zonedist|zn_?code|landuse|land_?use)$/i;
-const ZONE_SERVICE = /zon|land.?use/i;
-// Fire, flood, climate and seismic layers all call themselves zones. They are not land use.
-const NOT_LAND_USE = /fire|flood|fema|seismic|liquefact|climate|noise|tsunami|evacuat|parking.?zone|school/i;
+// Two things worth pulling from a city's own GIS, found the same way and told apart by what the
+// layer is called and what its fields are.
+//
+//   zoning   - the land-use district a parcel sits in.
+//   projects - what has been applied for and where it has got to. This is the one the annual HCD
+//              return cannot give us: HCD reports housing only, by statute, so a city's own
+//              project layer is the only route to the offices, hotels, industrial and civic work
+//              that makes up most of what is actually being built.
+const TARGETS = {
+  zoning: {
+    file: 'zoning-sources.json',
+    service: /zon|land.?use/i,
+    field: /^(zoning|zone|zone_?code|zoning_?code|zone_?class|zoning_?district|zonedist|zn_?code|landuse|land_?use)$/i,
+    geometry: ['esriGeometryPolygon'],
+    // Fire, flood, climate and seismic layers all call themselves zones. They are not land use.
+    exclude: /fire|flood|fema|seismic|liquefact|climate|noise|tsunami|evacuat|parking.?zone|school/i,
+    label: 'zoning layer',
+  },
+  projects: {
+    file: 'project-sources.json',
+    service: /project|development|planning|permit|cip|capital/i,
+    field: /^(project|project_?name|projname|description|proj_?desc|status|project_?status|casenumber|case_?no|permit_?no)$/i,
+    geometry: ['esriGeometryPoint', 'esriGeometryPolygon'],
+    // A city's GIS usually carries both a live pipeline and an archive of everything ever filed.
+    // The archive is larger, so anything picking the first or biggest match lands on it: Sunnyvale's
+    // "History Point - All Time" has 660 rows against 155 in Planning/Projects, and almost all of
+    // them are finished. Excluded by name, along with the asset inventories that are not projects.
+    exclude: /histor|complete|archive|closed|expired|pavement|tree|sign|streetlight|hydrant|sewer|water.?main|parcel/i,
+    // Among what is left, prefer the layer that sounds like the current pipeline.
+    prefer: /current|active|pipeline|under.?review|^projects$|development/i,
+    label: 'project layer',
+  },
+};
+const TARGET = TARGETS[process.env.TARGET || 'zoning'];
+if (!TARGET) { console.error('TARGET must be zoning or projects'); process.exit(1); }
+const ZONE_FIELD = TARGET.field;
+const ZONE_SERVICE = TARGET.service;
+const NOT_LAND_USE = TARGET.exclude;
 
 // Every city's own links tell us its domain. The 33 written into index.html carry ctaLinks; the
 // 69 in regional.js carry planning, meetings and website. Earlier this read only the first set,
@@ -108,7 +143,7 @@ async function agolZoning(owner) {
     for (const layer of layers) {
       if (NOT_LAND_USE.test(layer.name)) continue;
       const meta = await get(`${item.url}/${layer.id}?f=json`);
-      if (meta?.geometryType !== 'esriGeometryPolygon') continue;
+      if (!TARGET.geometry.includes(meta?.geometryType)) continue;
       const field = (meta.fields || []).find(f => ZONE_FIELD.test(f.name));
       if (!field) continue;
       const url = `${item.url}/${layer.id}`;
@@ -140,7 +175,7 @@ async function zoningLayerIn(root, service) {
     if (NOT_LAND_USE.test(layer.name)) continue;
     if (!ZONE_SERVICE.test(layer.name) && !ZONE_SERVICE.test(service.name)) continue;
     const meta = await get(`${root}/${service.name}/${service.type}/${layer.id}?f=json`);
-    if (meta?.geometryType !== 'esriGeometryPolygon') continue;
+    if (!TARGET.geometry.includes(meta?.geometryType)) continue;
     const field = (meta.fields || []).find(f => ZONE_FIELD.test(f.name));
     if (!field) continue;
     const url = `${root}/${service.name}/${service.type}/${layer.id}`;
@@ -185,7 +220,11 @@ for (const key of keys) {
   for (const root of live) {
     const services = await servicesUnder(root);
     if (!services) continue;
-    for (const service of services.filter(s => ZONE_SERVICE.test(s.name) && !NOT_LAND_USE.test(s.name))) {
+    const candidates = services
+      .filter(s => ZONE_SERVICE.test(s.name) && !NOT_LAND_USE.test(s.name))
+      .sort((a, b) => Number(Boolean(TARGET.prefer?.test(b.name.split('/').pop())))
+                    - Number(Boolean(TARGET.prefer?.test(a.name.split('/').pop()))));
+    for (const service of candidates) {
       hit = await zoningLayerIn(root, service);
       if (hit) break;
     }
@@ -203,7 +242,7 @@ for (const key of keys) {
   } else { none.push(label); process.stdout.write('.'); }
 }
 
-writeFileSync(new URL('../public/data/zoning-sources.json', import.meta.url), JSON.stringify({
+writeFileSync(new URL(`../public/data/${TARGET.file}`, import.meta.url), JSON.stringify({
   retrieved: new Date().toISOString(),
   note: 'Each entry is a city\'s own published ArcGIS zoning layer, queried live. Cities absent from '
       + 'this file do not publish one in a machine-readable form; their zoning is not shown rather '
@@ -211,4 +250,4 @@ writeFileSync(new URL('../public/data/zoning-sources.json', import.meta.url), JS
   cities: found,
 }, null, 1));
 
-console.log(`\n\n${Object.keys(found).length} cities publish a zoning layer; ${none.length} do not.`);
+console.log(`\n\n${Object.keys(found).length} cities publish a ${TARGET.label}; ${none.length} do not.`);
