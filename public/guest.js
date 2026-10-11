@@ -8,13 +8,24 @@
     what the email flow checks before putting a made-up name on a real account. */
  const NAME_WORDS=['Heron','Otter','Egret','Quail','Finch','Kestrel','Plover','Pelican','Poppy','Cedar','Alder','Willow','Laurel','Juniper','Madrone','Manzanita','Sequoia','Lupine','Sorrel','Bayberry'];
  const generateUsername=()=>NAME_WORDS[Math.floor(Math.random()*NAME_WORDS.length)]+' '+(Math.floor(Math.random()*9000)+1000);
+ function uuid(){
+  if(crypto.randomUUID)return crypto.randomUUID();
+  const bytes=crypto.getRandomValues(new Uint8Array(16));bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;
+  const hex=Array.from(bytes,x=>x.toString(16).padStart(2,'0')).join('');
+  return [hex.slice(0,8),hex.slice(8,12),hex.slice(12,16),hex.slice(16,20),hex.slice(20)].join('-');
+ }
+ function browserStorage(getter){
+  try{return getter();}catch{
+   const memory=new Map();
+   return {getItem:key=>memory.get(key)||null,setItem:(key,value)=>{memory.set(key,value);throw Error('Browser storage is unavailable.');},removeItem:key=>memory.delete(key)};
+  }
+ }
  const encode=bytes=>Array.from(bytes,x=>x.toString(16).padStart(2,'0')).join('');
  async function verifier(password,salt){const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);return encode(new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:new TextEncoder().encode(salt),iterations:210000},key,256)));}
  class GuestStore{
-  // A brand-new profile starts with no username at all - onboarding requires one be typed before
-  // the site is usable, rather than handing out a name nobody chose. A returning device keeps
-  // whatever name is already stored, even an older randomly-generated one.
-  constructor(storage,session){this.storage=storage;this.session=session;this.persistent=true;let d;try{d=JSON.parse(storage.getItem(KEY));}catch{}this.data=d&&d.version===1&&typeof d.id==='string'&&typeof d.username==='string'&&['stars','timeline','reminders','history'].every(k=>Array.isArray(d[k]))&&d.preferences&&typeof d.preferences==='object'?d:{version:1,id:crypto.randomUUID(),username:'',stars:[],timeline:[],reminders:[],history:[],preferences:{email:null,emailFrequency:'off',homeCity:null,categories:[]}};if(this.data.username==='Guest')this.data.username='';this.save();}
+  // Give every visitor an identity immediately, including someone who leaves before setup.
+  // Existing ids and names survive, so a returning missed profile can be recovered once.
+  constructor(storage,session){this.storage=storage;this.session=session;this.persistent=true;let d;try{d=JSON.parse(storage.getItem(KEY));}catch{}this.data=d&&d.version===1&&typeof d.id==='string'&&typeof d.username==='string'&&['stars','timeline','reminders','history'].every(k=>Array.isArray(d[k]))&&d.preferences&&typeof d.preferences==='object'?d:{version:1,id:uuid(),username:generateUsername(),namePicked:false,stars:[],timeline:[],reminders:[],history:[],preferences:{email:null,emailFrequency:'off',homeCity:null,categories:[]}};if(!this.data.username||this.data.username==='Guest'){this.data.username=generateUsername();this.data.namePicked=false;}this.save();}
   save(){try{this.storage.setItem(KEY,JSON.stringify(this.data));}catch{this.persistent=false;}}
   get unlocked(){if(!this.data.passwordHash)return true;try{return this.session.getItem(KEY)===this.data.id;}catch{return false;}}
   lock(){try{this.session.removeItem(KEY);}catch{}}
@@ -62,12 +73,12 @@
    }else if(path.startsWith('/api/reminders')){
     if(method==='GET')return {reminders:d.reminders};
     const id=path.split('/').pop();
-    if(method==='POST'){const row={id:crypto.randomUUID(),kind:b.kind,ref_id:b.refId,label:b.label,detail:b.detail,url:b.url,city:b.city,in_digest:false,created_at:new Date().toISOString()};d.reminders=d.reminders.filter(x=>!(x.kind===b.kind&&x.ref_id===b.refId));d.reminders.push(row);result={reminder:row};}
+    if(method==='POST'){const row={id:uuid(),kind:b.kind,ref_id:b.refId,label:b.label,detail:b.detail,url:b.url,city:b.city,in_digest:false,created_at:new Date().toISOString()};d.reminders=d.reminders.filter(x=>!(x.kind===b.kind&&x.ref_id===b.refId));d.reminders.push(row);result={reminder:row};}
     if(method==='DELETE')d.reminders=d.reminders.filter(x=>x.id!==id);
     if(method==='PATCH')throw Error('Email digest settings need a password on your account.');
    }else if(path.startsWith('/api/chat/history')){
     if(method==='GET')return {history:d.history};
-    if(method==='POST'){const row={...b,id:crypto.randomUUID(),created_at:new Date().toISOString()};d.history.unshift(row);result={id:row.id};}
+    if(method==='POST'){const row={...b,id:uuid(),created_at:new Date().toISOString()};d.history.unshift(row);result={id:row.id};}
     if(method==='DELETE')d.history=path==='/api/chat/history'?[]:d.history.filter(x=>x.id!==path.split('/').pop());
    }else throw Error('This needs a password on your account.');
    this.save();if(!this.persistent)throw Error('Browser storage is unavailable. Changes are kept only until this page closes.');return result;
@@ -84,11 +95,50 @@
    const stale=!last||!(now-Number(last.at)<24*60*60*1000);
    return {payload,due:changed||stale};
   }
-  markSynced(now=Date.now()){
-   const {payload}=this.syncState(now);
+  markSynced(now=Date.now(),payload=this.syncState(now).payload){
    this.data.serverSync={at:now,username:payload.username,homeCity:payload.homeCity,namePicked:payload.namePicked};
    this.save();
   }
  }
- root.DashboardGuest={GuestStore};
+ // Only acknowledge the snapshot actually sent. Changes made while a request is pending
+ // remain due, and failures leave the persisted profile available for another attempt.
+ class GuestSync {
+  constructor(store,{fetch:send=root.fetch.bind(root),active=()=>true,now=()=>Date.now(),schedule=root.setTimeout.bind(root),cancel=root.clearTimeout.bind(root)}={}){
+   this.store=store;this.send=send;this.active=active;this.now=now;this.schedule=schedule;this.cancel=cancel;
+   this.pending=null;this.timer=null;this.failures=0;this.retryAt=0;
+  }
+  stop(){if(this.timer!==null)this.cancel(this.timer);this.timer=null;}
+  retry(delay){this.stop();this.retryAt=this.now()+delay;this.timer=this.schedule(()=>{this.timer=null;this.sync();},delay);}
+  sync(){
+   if(this.pending)return this.pending;
+   if(!this.active()||!this.store.data.username)return Promise.resolve(false);
+   const {payload,due}=this.store.syncState(this.now());
+   if(!due)return Promise.resolve(true);
+   if(this.retryAt>this.now()){if(this.timer===null)this.retry(this.retryAt-this.now());return Promise.resolve(false);}
+   this.stop();
+   this.pending=this.attempt(payload).finally(()=>{this.pending=null;});
+   return this.pending;
+  }
+  async attempt(payload){
+   let retryAfter=0;
+   const controller=new AbortController();
+   const timeout=this.schedule(()=>controller.abort(),15000);
+   try{
+    const response=await this.send('/api/guest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true,signal:controller.signal});
+    if(response.ok&&(await response.json()).ok){
+     this.store.markSynced(this.now(),payload);this.failures=0;this.retryAt=0;
+     if(this.store.syncState(this.now()).due)this.retry(0);
+     return true;
+    }
+    const header=response.headers?.get('Retry-After');
+    if(header)retryAfter=/^\d+$/.test(header)?Number(header)*1000:Math.max(0,Date.parse(header)-this.now());
+    // Invalid input needs an edit, not a background request loop.
+    if(response.status>=400&&response.status<500&&![408,429].includes(response.status))return false;
+   }catch{}
+   finally{this.cancel(timeout);}
+   this.failures++;this.retry(Math.max(retryAfter||0,Math.min(300000,2000*2**Math.min(this.failures-1,8))));
+   return false;
+  }
+ }
+ root.DashboardGuest={GuestStore,GuestSync,browserStorage,uuid};
 })(globalThis);

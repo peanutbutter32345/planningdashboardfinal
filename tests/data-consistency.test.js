@@ -13,13 +13,34 @@ test('dashboard and server use identical project facts',()=>{
 // named. Both had been wrong for a while. Counts belong in an interpolation, not in prose.
 import {readFileSync} from 'node:fs';
 const indexHtml = readFileSync(new URL('../public/index.html', import.meta.url), 'utf8');
+// What a visitor actually reads: the file with its comments removed, and with the placeholder
+// inside each count span taken out, since the script overwrites that number on load. A count
+// named in a comment is a note to whoever is editing the file, not copy.
+const readerFacingHtml = indexHtml
+  .replace(/^[ \t]*\/\/.*$/gm, '')
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/(<span class="(?:city|area)-count">)\d+(<\/span>)/g, '$1$2');
+
 test('reader-facing copy never hardcodes a count that the data can change', () => {
-  const hardcodedCities = [...indexHtml.matchAll(/\b\d{2,4}\s+(?:Bay Area\s+)?cities(?:\s+and\s+towns)?\b/g)]
+  // An adjective between the number and the noun used to walk straight past this: "All 101
+  // incorporated cities and towns" sat in the About section for as long as the check existed.
+  // Any word or two may stand between them now.
+  const hardcodedCities = [...readerFacingHtml.matchAll(
+    /\b\d{2,4}\s+(?:[a-z]+\s+){0,2}(?:Bay Area\s+)?(?:cities|towns|areas)(?:\s+and\s+towns)?\b/g)]
     .map(m => m[0])
     // The interpolated forms are what these should look like.
     .filter(hit => !hit.includes('${'));
   assert.deepEqual(hardcodedCities, [],
-    'Use ${CITY_COUNT} or a .city-count span instead of typing the number.');
+    'Use a .city-count span (incorporated cities) or .area-count (every profile) instead of typing the number.');
+
+  // The spans carry two different figures and the wrong one reads as a false claim. "Cities and
+  // towns" means the incorporated places; West San Jose is a neighborhood profile and belongs
+  // only in the total. The nine-county Bay Area has 101 incorporated cities and towns, so this
+  // is a fact about California, not a number derived from the file it is checking.
+  const cityCountSpans = (readerFacingHtml.match(/class="city-count"/g) || []).length;
+  assert.ok(cityCountSpans > 0, 'the page should state how many cities it covers');
+  assert.match(indexHtml, /const NON_CITY_AREAS=\[/,
+    'the non-city areas have to be named somewhere, or the two counts collapse into one');
 
   const noteCounts = [...indexHtml.matchAll(/note:\s*'((?:[^'\\]|\\.)*)'/g)]
     .map(m => m[1])

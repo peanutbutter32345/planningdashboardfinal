@@ -4,14 +4,15 @@ import '../public/guest.js';
 const {GuestStore}=globalThis.DashboardGuest;
 const memory=()=>{const m=new Map();return {getItem:k=>m.get(k)||null,setItem:(k,v)=>m.set(k,v),removeItem:k=>m.delete(k)};};
 const post=(data,method='POST')=>({method,body:JSON.stringify(data)});
-test('a new guest profile starts with no username and requires one be chosen',async()=>{
+test('a new visitor has a persistent identity before choosing any setup options',async()=>{
  const storage=memory(),g=new GuestStore(storage,memory());
- assert.equal(g.data.username,'');
- assert.equal(new GuestStore(storage,memory()).data.username,'');
+ assert.match(g.data.username,/^[A-Za-z]+ \d{4}$/);
+ assert.equal(g.nameWasGenerated,true);
+ assert.equal(new GuestStore(storage,memory()).data.username,g.data.username);
  await g.update('My Custom Name');
  assert.equal(new GuestStore(storage,memory()).data.username,'My Custom Name');
  const old={...g.data,username:'Guest'};storage.setItem('sbpd_guest_v1',JSON.stringify(old));
- assert.equal(new GuestStore(storage,memory()).data.username,'');
+ assert.match(new GuestStore(storage,memory()).data.username,/^[A-Za-z]+ \d{4}$/);
 });
 test('guest saves survive reload and preserve encoded item IDs',async()=>{
  const storage=memory(),session=memory(),g=new GuestStore(storage,session);
@@ -101,7 +102,7 @@ test('a guest profile syncs once, again when it changes, and again a day later',
 // password anywhere until an email address is involved.
 test('exploring without setup names the reader and leaves the name changeable',async()=>{
  const storage=memory(),g=new GuestStore(storage,memory());
- assert.equal(g.data.username,'','nothing is assumed before they act');
+ assert.match(g.data.username,/^[A-Za-z]+ \d{4}$/,'they are identifiable before they act');
  const given=g.ensureUsername();
  assert.match(given,/^[A-Za-z]+ \d{4}$/);
  assert.equal(g.nameWasGenerated,true);

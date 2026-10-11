@@ -19,7 +19,10 @@ async function one(city){
    if(!placePattern.test(title)||!/housing|homes|development|planning|zoning|council|apartment|transit|rail|bus\b|affordable|construction|commission|road|bridge|budget|permit|infrastructure|redevelop|land use|station/i.test(title)||/obituar|legacy|newswire|business wire|real estate agent/i.test(title+' '+publisher)||!publisher||!Number.isFinite(+published)||+published>Date.now()||!link.startsWith('https://news.google.com/'))continue;
    if(title.split(/\s+/).length>25)title=title.split(/\s+/).slice(0,24).join(' ')+'…';
    const topic=/hous|apartmen|affordable|\badu\b|rent|homes/i.test(title)?'housing':/transit|rail|bus|bike|transport|street|traffic/i.test(title)?'transportation':/develop|building|construct|zoning/i.test(title)?'developments':'civic';
-   articles.push({city:city.key,topic,title,snippet:'Reporting from '+publisher+'. Open the original story through Google News for the full reporting and publication context.',source:publisher,date:published.toISOString().slice(0,10),url:link,kind:'reporting',feed:url,reviewed:new Date().toISOString().slice(0,10)});
+   // No snippet. The article text is not ours to copy, and a stand-in sentence naming the
+   // publisher told the reader nothing the source line underneath already said. A headline with
+   // no summary renders as a headline; the renderers skip an empty snippet.
+   articles.push({city:city.key,topic,title,snippet:'',source:publisher,date:published.toISOString().slice(0,10),url:link,kind:'reporting',feed:url,reviewed:new Date().toISOString().slice(0,10)});
    if(++count===6)break;
   }
   console.log(city.label,count);

@@ -99,12 +99,19 @@
   .funnel-seg:hover:not(.empty){background-position:100% 50%; transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,.28); z-index:1;}
   .funnel-seg.empty{opacity:.42; cursor:default;}
   .funnel-seg.active{outline:2px solid #1A1A1A; outline-offset:-2px;}
-  .funnel-seg .n{display:block; font-size:20px; font-weight:800; color:#fff;}
-  .funnel-seg .l{display:block; font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:rgba(255,255,255,0.92); margin-top:2px; font-weight:600;}
+  /* --seg-ink is set per segment from the stage's ink, so a light stage gets dark text. The
+     fallback keeps white for anything rendered before the variable is set. */
+  .funnel-seg .n{display:block; font-size:20px; font-weight:800; color:var(--seg-ink, #fff);}
+  .funnel-seg .l{display:block; font-family:'Open Sans',sans-serif; font-size:10.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--seg-ink, #fff); opacity:.92; margin-top:2px; font-weight:600;}
 
   .stats{padding:30px 0 8px;}
-  .stat-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;}
-  @media (max-width:900px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
+  /* Scoped to its own section. The Statistics screen reuses the class name .stat-grid for a
+     three-column grid of metric cards, and because that rule is written later in this stylesheet
+     it was winning here too: the overview's four cards laid out three across, leaving the fourth
+     alone on a row with three quarters of it empty. auto-fit also means the row stays filled if a
+     card is ever added or dropped. */
+  .stats .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px;}
+  @media (max-width:900px){ .stats .stat-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} }
   .stat-card{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:16px 16px 14px; border-top:3px solid var(--ink);}
   .stat-card .k{font-size:25px; font-weight:800; color:#1A1A1A;}
   .stat-card .u{font-family:'Open Sans',sans-serif; font-size:11px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.03em; margin-top:5px; font-weight:700;}
@@ -147,6 +154,11 @@
   .gate-links{margin-top:10px; font-size:11.5px; color:var(--text-soft);}
   .gate-note{margin-top:12px; font-size:11px; color:var(--text-soft); border-top:1px solid var(--rule); padding-top:10px;}
   .gate-error{margin-top:10px; font-size:12px; color:var(--flag); background:#FBEAE9; border-left:3px solid var(--flag); padding:7px 9px; border-radius:2px; display:none;}
+  /* Shown in place of a map when Leaflet could not be fetched. Centred in the container it
+     replaces, so the panel keeps its shape instead of collapsing or showing an empty box. */
+  .map-unavailable{display:flex; align-items:center; justify-content:center; height:100%; margin:0;
+    padding:18px; box-sizing:border-box; text-align:center; font-size:12.5px; color:var(--text-soft);
+    background:var(--paper-2); border:1px solid var(--paper-3); border-radius:2px;}
   #mapGoogle, #map{height:480px; width:100%; background:var(--paper-2);}
   #mapGoogle{display:none;} #mapLeafletWrap{display:none;}
   .map-provider-tag{position:absolute; z-index:5; margin:10px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700; background:rgba(30,30,30,0.85); color:#fff; padding:4px 9px; border-radius:2px;}
@@ -185,6 +197,13 @@
   .card-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
   .card{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:15px; display:flex; flex-direction:column; gap:7px; border-top:3px solid var(--ink);}
   .card .row1{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+  /* The status badge sets white-space:nowrap so it never breaks mid-word. A flex item defaults to
+     min-width:auto, so the address column next to it refused to shrink and pushed the badge off
+     the right edge instead, which scrolled the whole page sideways at tablet widths. Letting the
+     text column shrink keeps the badge inside; the address wraps, which is what it should do. */
+  .card .row1 > div:first-child{min-width:0; flex:1 1 auto;}
+  .card .row1 > div:last-child{flex:0 0 auto;}
+  .card .addr, .card .type{overflow-wrap:anywhere;}
   .card .addr{font-weight:700; font-size:15px; color:#1A1A1A; line-height:1.3;}
   .card .type{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.03em; margin-top:2px; font-weight:600;}
   .card .desc{font-size:12.3px; color:var(--text-soft); flex-grow:1;}
@@ -447,14 +466,10 @@
   /* The title reads as a masthead block rather than floating text over the photo. */
   .nameplate{background:transparent; color:#fff; padding:6px 0 2px; border-radius:0;
     max-width:none; margin:0; border-left:none; box-shadow:none;}
-  /* One face and one colour, so it reads as a single name - and one line, the way a nameplate
-     is actually set, rather than the two stacked words it was before. */
-  /* Centered as a masthead - the kicker, the title and the lede all line up on the same axis,
-     the way a real newspaper's own nameplate sits centered above its own strap line. */
-  .nameplate{text-align:center;}
-  .nameplate .np-kicker{justify-content:center;}
+  .nameplate{text-align:left; min-width:0;}
+  .nameplate .np-kicker{justify-content:flex-start;}
   .nameplate h1{display:flex; flex-direction:row; flex-wrap:nowrap; align-items:baseline;
-    justify-content:center; line-height:.96; white-space:nowrap;
+    justify-content:flex-start; line-height:.96; white-space:nowrap;
     font-family:'Times New Roman', Times, serif; font-weight:700; letter-spacing:-.5px;}
   .np-l1, .np-l2{display:inline-block; color:#fff;}
   .np-l1::after{content:'\00a0';}
@@ -463,7 +478,7 @@
   .nameplate .np-kicker i{background:#9BA98A;}
   .nameplate h1{color:#fff;}
   .nameplate h1 em{color:#fff;}
-  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin:11px auto 0; max-width:62ch; text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin:16px 0 0; max-width:62ch; text-shadow:0 1px 2px rgba(0,0,0,.35);}
   @media (max-width:640px){ .nameplate{padding:16px 18px 18px;} .np-lede{font-size:13px;} }
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
     font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#14532D; margin-bottom:6px;}
@@ -525,7 +540,11 @@
   .community-count{font-family:'Open Sans',sans-serif; font-size:11px; color:var(--text-soft);
     line-height:1.5; margin:10px 0 0; padding-top:10px; border-top:1px solid var(--rule);}
   /* ---- Newsletter ---- */
-  .nl-shell{padding:26px 0 40px;}
+  /* Only the vertical padding. The shorthand set the horizontal padding to 0, which overrode
+     the 22px gutter .wrap puts on the same element, so the newsletter masthead and its sidebar
+     sat flush against the window edge while every other screen kept its margin. Writing the two
+     axes separately also keeps the 16px gutter .wrap switches to on a phone. */
+  .nl-shell{padding-top:26px; padding-bottom:40px;}
   .nl-masthead{border-bottom:3px double var(--ink); padding-bottom:16px; margin-bottom:22px;}
   .nl-mast-kicker{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800;
     letter-spacing:.18em; text-transform:uppercase; color:var(--text-soft);}
@@ -546,7 +565,7 @@
   .nl-issue-btn[aria-current="true"] b, .nl-issue-btn[aria-current="true"] span{color:#fff;}
   .nl-method{font-size:10.5px; color:var(--text-soft); line-height:1.55; margin-top:14px;}
   /* A paper tone rather than white, so an issue reads as a printed sheet on the page. */
-  .nl-shell{padding:26px 0 40px;}
+  .nl-shell{padding-top:26px; padding-bottom:40px;}
   /* The sheet itself is a light grey; the page around it stays as it was. */
   .nl-issue{background:#F0F1EC; border:1px solid var(--rule); padding:30px 34px 34px; min-width:0;}
   .nl-mast-date{font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:.06em;
@@ -607,7 +626,9 @@
   .nl-sources{margin-top:22px; border-top:1px solid var(--rule); padding-top:12px;}
   .nl-sources ol{margin:0; padding-left:18px; columns:2; column-gap:26px;}
   .nl-sources li{font-size:11px; color:var(--text-soft); line-height:1.5; margin-bottom:5px; break-inside:avoid;}
-  .arc-shell{padding:26px 0 44px;}
+  /* Vertical only, like .nl-shell: this sits on the same element as .wrap, and the shorthand's
+     0 replaced the side gutter, so the archive's masthead touched the window edge. */
+  .arc-shell{padding-top:26px; padding-bottom:44px;}
   .arc-head{display:flex; flex-wrap:wrap; gap:22px; justify-content:space-between; align-items:flex-start;
     border-bottom:3px double var(--ink); padding-bottom:18px; margin-bottom:18px;}
   .arc-kicker{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.18em;
@@ -798,7 +819,15 @@
   @media (max-width:640px){ .hero-rail{flex:0 0 auto; max-width:none; width:100%;} }
 
   /* Featured news, beside the hero copy. Two stories at a time, rotating. */
-  .hero-copy{max-width:none; margin:0 -12px;}
+  .hero-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(520px,1.12fr);gap:24px;align-items:center;max-width:none;margin:0;}
+  .hero-copy.without-advisors{grid-template-columns:1fr;}
+  .hero-copy.without-advisors .nameplate{text-align:center;}
+  .hero-copy.without-advisors .np-kicker,.hero-copy.without-advisors .nameplate h1{justify-content:center;}
+  .hero-copy.without-advisors .np-lede{margin:11px auto 0;}
+  @media(min-width:961px){.hero-copy:not(.without-advisors) .nameplate{container-type:inline-size;}.hero-copy:not(.without-advisors) .nameplate h1{font-size:clamp(28px,11cqi,82px);}}
+  @media(max-width:1000px){.hero-copy{gap:26px;}.hero .nameplate h1{font-size:clamp(28px,5.3vw,53px);}}
+  @media(max-width:960px){.hero-copy{grid-template-columns:1fr;}}
+  @media(max-width:760px){.hero-copy{grid-template-columns:1fr;gap:26px;}.hero .nameplate{padding:0;}.hero .nameplate h1{font-size:clamp(28px,8vw,60px);}.np-kicker{flex-wrap:wrap;font-size:9px;letter-spacing:.1em;}}
   /* Negative margin pulls the two panels out past the wrap's gutter so they sit near the edges,
      while the masthead keeps the normal measure between them. */
   /* Three columns in the hero: the rail, your map, the news. */
@@ -1066,6 +1095,10 @@
   .admin-user-table tr:last-child td{border-bottom:none;}
   /* Nine columns of real data does not fit a phone, and squeezing it makes every one unreadable. */
   #adminUserTableWrap{overflow-x:auto;}
+  .admin-user-controls{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin:12px 0;}
+  .admin-user-controls label{display:grid;gap:5px;flex:1 1 220px;}
+  .admin-user-controls input{padding:9px;border:1px solid var(--rule);font:inherit;width:100%;}
+  #adminMoreUsers{margin-top:12px;}
   .admin-user-table .mono{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:11px;}
   .admin-ip-note{margin-left:5px; font-size:10px; color:var(--text-soft); font-style:italic;}
   .acct-boardlist{display:grid; gap:10px;}
@@ -1322,7 +1355,7 @@
   .ya-picker{margin-top:12px; border:1px solid var(--ink); border-radius:2px; background:#fff; padding:14px 16px;}
   .ya-picker-head{display:flex; justify-content:space-between; align-items:center;
     font-family:'Open Sans',sans-serif; font-size:13px; font-weight:800; color:var(--ink); margin-bottom:9px;}
-  .ya-picker-x{background:none; border:none; font-size:21px; line-height:1; cursor:pointer; color:var(--text-soft);}
+  .ya-picker-x{background:none; border:none; font-size:21px; line-height:1; cursor:pointer; color:var(--text-soft); min-width:32px; min-height:32px; display:inline-flex; align-items:center; justify-content:center;}
   #yaPickSearch{width:100%; padding:9px 11px; border:1.5px solid var(--rule); border-radius:2px;
     font-family:'Open Sans',sans-serif; font-size:13px; margin:8px 0 10px;}
   #yaPickSearch:focus{outline:none; border-color:var(--ink);}
@@ -1563,7 +1596,13 @@
   .starred-empty{padding:30px 20px; text-align:center; color:var(--text-soft); font-size:13px; background:var(--paper-2); border-radius:2px;}
 
   /* ---- Star button (used on project/news/board cards and resource links) ---- */
-  .star-btn{background:none; border:none; cursor:pointer; font-size:19px; line-height:1; padding:2px 4px; color:#C9B458; flex-shrink:0;}
+  /* 25x23 before this, which is under the 24px minimum a target needs and fiddly to hit on a
+     phone next to a link that opens the article. The glyph is unchanged; only the area around
+     it grows, and it stays inline so the card layout is unaffected. */
+  .star-btn{background:none; border:none; cursor:pointer; font-size:19px; line-height:1; padding:2px 4px; color:#C9B458; flex-shrink:0;
+    min-width:32px; min-height:32px; display:inline-flex; align-items:center; justify-content:center;}
+  /* The month steppers next to the hero paper were 22x22, also under the minimum. */
+  .hp-step button{min-width:32px; min-height:32px;}
   .star-btn[aria-pressed="false"]{color:#B5B5B5;}
   .star-btn:hover{color:#C9B458;}
   .card .row1{align-items:flex-start;}
@@ -1725,6 +1764,7 @@
 </style>
 <link rel="stylesheet" href="/enhancements.css">
 <link rel="stylesheet" href="/browse.css">
+<link rel="stylesheet" href="/admin-content.css">
 </head>
 <body>
 <a href="#mainContent" class="skip-link">Skip to main content</a>
@@ -1833,11 +1873,21 @@
   <div class="hero-bg" id="heroBgA"></div>
   <div class="hero-bg" id="heroBgB"></div>
   <div class="wrap">
-    <div class="hero-copy">
+    <div class="hero-copy without-advisors">
       <div class="nameplate">
         <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
         <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. <span class="city-count">101</span> cities and towns across nine Bay Area counties.</p>
+      </div>
+      <div class="front-admin rail-card" id="frontAdmin" aria-label="Admin advisors and media panel" hidden>
+        <aside class="front-admin-card" aria-labelledby="frontAdvisorsTitle">
+          <div class="rail-head"><span id="frontAdvisorsTitle">Advisors</span><span class="front-admin-badge">Admin only</span></div>
+          <div class="front-admin-body" id="frontAdvisorsBody"></div>
+        </aside>
+        <aside class="front-admin-card" aria-labelledby="frontFeaturedTitle">
+          <div class="rail-head"><span id="frontFeaturedTitle">Featured On</span><span class="front-admin-badge">Admin only</span></div>
+          <div class="front-admin-body" id="frontFeaturedBody"></div>
+        </aside>
       </div>
     </div>
 
@@ -2611,8 +2661,15 @@
             <div id="adminByCity" class="admin-breakdown"></div>
             <div class="acct-sec-h">Email frequency</div>
             <div id="adminByFrequency" class="admin-breakdown"></div>
-            <div class="acct-sec-h">Recent users</div>
-            <div id="adminUserTableWrap"><button class="btn secondary" id="adminLoadUsers" type="button">Load user list</button></div>
+            <div class="acct-sec-h">User list</div>
+            <form id="adminUserSearchForm" class="admin-user-controls">
+              <label for="adminUserSearch">Find a name or email<input id="adminUserSearch" type="search" maxlength="100" autocomplete="off"></label>
+              <button class="btn secondary" type="submit">Search users</button>
+              <button class="btn secondary" id="adminLoadUsers" type="button">Refresh counts and users</button>
+            </form>
+            <p class="section-note" id="adminUserListStatus" role="status">Load the list to browse every stored profile. Profiles that never reached the server are recovered when that browser revisits.</p>
+            <div id="adminUserTableWrap"></div>
+            <button class="btn secondary" id="adminMoreUsers" type="button" hidden>Load more users</button>
           </section>
         </div>
       </div>
@@ -2667,7 +2724,7 @@
       <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Each project shows the city's own file number and links to the register it came from, where that number can be looked up.</p>
 
       <h4>What it covers</h4>
-      <p>All 101 incorporated cities and towns across the nine Bay Area counties, plus a separate West San Jose neighborhood profile. Every area has official resources, a meeting directory and a local photograph. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
+      <p>All <span class="city-count">101</span> incorporated cities and towns across the nine Bay Area counties, plus a separate West San Jose neighborhood profile. Every area has official resources, a meeting directory and a local photograph. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
       <div class="about-mosaic" id="aboutMosaic"></div>
 
       <p class="about-credits" id="aboutCredits"></p>
@@ -2858,13 +2915,20 @@
 const TODAY = new Date();
 TODAY.setHours(0,0,0,0);
 const STAGES = [
-  {key:'proposed',     label:'Proposed',            color:'#A3AC90', light:'#B7BEA8', dark:'#858D76'},
-  {key:'review',       label:'Under Review',        color:'#87956B', light:'#A1AC8B', dark:'#6E7A57'},
-  {key:'approved',     label:'Approved',            color:'#67794A', light:'#889671', dark:'#54633C'},
-  {key:'construction', label:'Under Construction',  color:'#4E6330', light:'#74855D', dark:'#3F5127'},
-  {key:'completed',    label:'Completed',           color:'#3E4F24', light:'#687554', dark:'#32401D'},
+  // `ink` is the text colour that stays readable on `color` when it is used as a badge. The two
+  // lightest stages take dark ink: white on #A3AC90 is 2.37:1 and on #87956B is 3.21:1, both
+  // well under the 4.5:1 that 10px text needs, and the stage badges are 10px. Darkening the two
+  // swatches instead would have flattened the light-to-dark ramp, which is what tells a reader
+  // at a glance how far along a project is. Dark ink on them measures 7.34:1 and 5.42:1.
+  {key:'proposed',     label:'Proposed',            color:'#A3AC90', light:'#B7BEA8', dark:'#858D76', ink:'#1A1A1A'},
+  {key:'review',       label:'Under Review',        color:'#87956B', light:'#A1AC8B', dark:'#6E7A57', ink:'#1A1A1A'},
+  {key:'approved',     label:'Approved',            color:'#67794A', light:'#889671', dark:'#54633C', ink:'#FFFFFF'},
+  {key:'construction', label:'Under Construction',  color:'#4E6330', light:'#74855D', dark:'#3F5127', ink:'#FFFFFF'},
+  {key:'completed',    label:'Completed',           color:'#3E4F24', light:'#687554', dark:'#32401D', ink:'#FFFFFF'},
 ];
 const STAGE_MAP = Object.fromEntries(STAGES.map(s=>[s.key,s]));
+// One place that knows how a stage badge is painted, so the seven call sites cannot drift.
+const stampStyle = st => `background:${st.color}; border-color:${st.color}; color:${st.ink}`;
 const CATEGORIES = [
   {key:'Housing',        label:'Housing',                          color:'#3E4F24'},
   {key:'Building',       label:'Commercial & Industrial',          color:'#8C9481'},
@@ -3574,11 +3638,11 @@ const SC_DATA = [
   units:1600, bmr:null, applicant:'Hunter/Storm', filed:null, stage:'approved',
   lastDate:null, lastNote:'City of Santa Clara development activity layer lists this project in 3 sections: Approved, Approved, one Completed.', fileNo:null, flag:null},
 {id:'sc-gateway-village-essex-property', addr:'3610 & 3700 El Camino Real', lat:37.35087, lng:-121.99796, cat:'dev', type:'Residential',
-  desc:'Leading edge urban village featuring 476 apartment homes, 108K prime retail, live work units nestled among quixotic landscaping.',
+  desc:'476 apartments with live-work units and about 108,000 sq ft of retail.',
   units:476, bmr:null, applicant:'Essex Property Trust', filed:null, stage:'completed',
   lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Completed. Site area about 12.6 acres.', fileNo:null, flag:null},
 {id:'sc-gateway-village-essex-property-2', addr:'3680 El Camino Real', lat:37.35149, lng:-121.99798, cat:'dev', type:'Residential',
-  desc:'Leading edge urban village featuring 476 apartment homes, 108K prime retail, live work units nestled among quixotic landscaping.',
+  desc:'476 apartments with live-work units and about 108,000 sq ft of retail.',
   units:476, bmr:null, applicant:'Essex Property Trust', filed:null, stage:'approved',
   lastDate:null, lastNote:'City of Santa Clara development activity layer lists this as Approved. Site area about 12.6 acres.', fileNo:null, flag:null},
 {id:'sc-great-america-parkway-tasman', addr:'2901 Tasman Drive', lat:37.40456, lng:-121.979, cat:'dev', type:'Industrial',
@@ -6297,6 +6361,13 @@ const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
 // of real places. It is written into the page rather than typed into it: the figure was 101 in
 // three separate sentences and a hundred and second city had already been added.
 const CITY_COUNT=Object.keys(CITIES).length;
+// West San Jose is a neighborhood profile, not an incorporated city, so a sentence that says
+// "cities and towns" must not count it. The .city-count spans were filled with CITY_COUNT, so
+// the page read "102 cities and towns across nine Bay Area counties" while the About section
+// correctly said 101 cities plus a West San Jose profile. Anything added later that is not an
+// incorporated city belongs in this list.
+const NON_CITY_AREAS=['westsanjose'];
+const INCORPORATED_CITY_COUNT=Object.keys(CITIES).filter(k=>!NON_CITY_AREAS.includes(k)).length;
 let currentCity = 'sunnyvale';
 
 // "All Cities" - a real aggregation of every tracked city's data, not a separate dataset.
@@ -6341,9 +6412,16 @@ let state = {q:'', stage:'all', cat:'all'};
 let registerLimit=60,registerScope='';
 // Auth/starring state - declared here (not at script bottom) because renderAll() below
 // calls projectCardHtml() -> starButtonHtml() -> isStarred(), which reads these.
-let authToken = localStorage.getItem('sbpd_token') || null;
-const guestProfile = new DashboardGuest.GuestStore(localStorage,sessionStorage);
-let authUsername = authToken ? localStorage.getItem('sbpd_username') : guestProfile.data.username;
+const profileStorage=DashboardGuest.browserStorage(()=>localStorage);
+const profileSession=DashboardGuest.browserStorage(()=>sessionStorage);
+function storedProfileValue(key){try{return profileStorage.getItem(key);}catch{return null;}}
+let authToken = storedProfileValue('sbpd_token') || null;
+let accountSessionVersion=0;
+const guestProfile = new DashboardGuest.GuestStore(profileStorage,profileSession);
+let authUsername = authToken ? storedProfileValue('sbpd_username') : guestProfile.data.username;
+// Start registration before any of the map or page renderers can fail or delay it.
+const guestSync=new DashboardGuest.GuestSync(guestProfile,{active:()=>!authToken});
+guestSync.sync();
 let guestAuthForm=false;
 let starredMap = new Map(!authToken && guestProfile.unlocked ? guestProfile.data.stars.map(s=>[s.item_type+':'+s.item_id,s.item_data]) : []);
 // Declared here rather than with the rest of the reminder code: the board cards read it during
@@ -6448,7 +6526,19 @@ function renderFunnel(){
     const n=DATA().filter(d=>d.stage===s.key).length;
     const isActive = state.stage===s.key;
     const empty = n === 0;
-    return `<button type="button" class="funnel-seg${isActive?' active':''}${empty?' empty':''}" style="background-image:linear-gradient(120deg, ${s.light} 0%, ${s.color} 45%, ${s.dark} 100%)" data-stage="${s.key}" aria-pressed="${isActive}"${empty?' disabled aria-disabled="true" title="No records at this stage"':''}><span class="n">${n}</span><span class="l">${s.label}</span></button>`;
+    // The label and count sit directly on this gradient, so the ink has to be readable against
+    // every stop of it, not just the middle. White on the Proposed ramp measured 1.92:1 at the
+    // light end, which is close to invisible. The two light stages take dark ink, and their
+    // gradient stops one step earlier (light to color, rather than through dark) so the dark ink
+    // clears 4.5:1 across the whole sweep, including where hover slides it. The three dark
+    // stages keep white, which they already passed on.
+    // Each ramp spans one step of the stage's own three-tone scale, chosen so the ink clears
+    // 4.5:1 against both ends. White needed the darker half: on the old light-to-dark sweep it
+    // measured 3.16:1 over the Approved light tone and 4.00:1 over Under Construction's.
+    const ramp = s.ink === '#FFFFFF'
+      ? `${s.color} 0%, ${s.color} 20%, ${s.dark} 100%`
+      : `${s.light} 0%, ${s.light} 20%, ${s.color} 100%`;
+    return `<button type="button" class="funnel-seg${isActive?' active':''}${empty?' empty':''}" style="background-image:linear-gradient(120deg, ${ramp}); --seg-ink:${s.ink}" data-stage="${s.key}" aria-pressed="${isActive}"${empty?' disabled aria-disabled="true" title="No records at this stage"':''}><span class="n">${n}</span><span class="l">${s.label}</span></button>`;
   }).join('');
   el.querySelectorAll('.funnel-seg').forEach(seg=>{
     seg.addEventListener('click', ()=>{ const st=seg.getAttribute('data-stage'); state.stage=(state.stage===st)?'all':st; renderAll(); });
@@ -6523,7 +6613,7 @@ async function tryLiveCupertinoData(){
         const marker = new google.maps.Marker({ position:{lat:d.lat,lng:d.lng}, map:gMap,
           icon:{path:google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, scale:5, fillColor:'#44572A', fillOpacity:1, strokeColor:'#fff', strokeWeight:1.5, rotation:180},
           title:'[LIVE] '+d.addr });
-        marker.addListener('click', ()=>{ gInfoWindow.setContent(`<div class="infowin"><b><span class="live-badge">LIVE</span>${d.addr}</b><span class="stamp" style="background:${st.color};border-color:${st.color}">${st.label}</span><div class="desc">${d.notes||d.name}</div>${d.editedDate?`<div class="meta">Last edited (city record): ${d.editedDate}</div>`:''}${d.url?`<div class="meta"><a href="${d.url}" target="_blank" rel="noopener">City project page &#8594;</a></div>`:''}</div>`); gInfoWindow.open(gMap, marker); });
+        marker.addListener('click', ()=>{ gInfoWindow.setContent(`<div class="infowin"><b><span class="live-badge">LIVE</span>${d.addr}</b><span class="stamp" style="${stampStyle(st)}">${st.label}</span><div class="desc">${d.notes||d.name}</div>${d.editedDate?`<div class="meta">Last edited (city record): ${d.editedDate}</div>`:''}${d.url?`<div class="meta"><a href="${d.url}" target="_blank" rel="noopener">City project page &#8594;</a></div>`:''}</div>`); gInfoWindow.open(gMap, marker); });
         liveMarkers[d.id] = marker;
       } else if(mapProvider==='leaflet' && lMap){
         const marker = L.circleMarker([d.lat,d.lng], {radius:6, color:'#fff', weight:1.5, fillColor:'#44572A', fillOpacity:0.95});
@@ -6543,10 +6633,12 @@ function renderStats(){
   if(CITIES[currentCity].coverage==='directory'){document.getElementById('statGrid').innerHTML='<div class="stat-card directory-stat"><div class="u">City guide available</div><div class="sub">Open Statistics for Census estimates, Resources for official planning records, and Get Involved for meeting agendas. Project totals will appear when an inventory is imported.</div></div>';return;}
   const list = DATA();
   const housing = list.filter(d=>categoryOf(d)==='Housing');
-  const devUnits = housing.filter(d=>Number.isFinite(d.units)).reduce((a,d)=>a+d.units,0);
+  // Counted one address at a time. Eleven addresses carry two records apiece, the same project
+  // filed at two stages, and adding both reported 1,049 homes that do not exist.
+  const devUnits = DashboardHousing.sumUnits(housing);
   const bmrKnown = housing.filter(d=>Number.isFinite(d.bmr) && Number.isFinite(d.units) && d.units>0);
-  const bmrUnits = bmrKnown.reduce((a,d)=>a+d.bmr,0);
-  const bmrTotalOfKnown = bmrKnown.reduce((a,d)=>a+(d.units||0),0);
+  const bmrUnits = DashboardHousing.sumUnits(bmrKnown, 'bmr');
+  const bmrTotalOfKnown = DashboardHousing.sumUnits(bmrKnown);
   const bmrShare = bmrTotalOfKnown ? Math.round(100*bmrUnits/bmrTotalOfKnown) : 0;
   const flagged = list.filter(d=>d.flag).length;
   const cards = [
@@ -6572,7 +6664,7 @@ function markerIconGoogle(d){
 function popupHtmlPlain(d){
   const st = STAGE_MAP[d.stage]; const c = CAT_MAP[categoryOf(d)];
   return `<div class="infowin"><b>${d.addr}</b>
-    <span class="stamp" style="background:${st.color};border-color:${st.color}">${st.label}</span>
+    <span class="stamp" style="${stampStyle(st)}">${st.label}</span>
     <span class="cattag" style="margin-left:8px;"><i style="background:${c.color}"></i>${c.label}</span>
     <div class="desc">${d.desc}</div>
     <div class="meta">${d.units?d.units.toLocaleString()+' units':'no housing units'}${d.bmr?' · '+d.bmr+' affordable':''}</div>
@@ -6715,10 +6807,24 @@ window.addEventListener('resize',()=>{
   googleResizeTimer=setTimeout(()=>{if(gMap)google.maps.event.trigger(gMap,'resize');},150);
 });
 window.initGoogleMap=initGoogleMapReal;
+// Reached from three places for one failure: Google's own auth callback, the script tag's
+// onerror, and a twelve second timeout. Each of them appended the same sentence, so the status
+// line read "Google Maps unavailable; showing the project map." twice over, behind a separator
+// with nothing in front of it when the counts had not been written yet.
+let overviewFallbackDone=false;
 function overviewMapFallback(){
   clearTimeout(googleLoadTimer);googleLoadPending=false;
+  if(overviewFallbackDone)return;
+  overviewFallbackDone=true;
   initLeafletMap();syncMapProviderButton();
-  document.getElementById('overviewMapStatus').textContent+=' · Google Maps unavailable; showing the project map.';
+  // Only worth saying when there is in fact a project map to fall back to. With Leaflet blocked
+  // as well, initLeafletMap has already said that the map library could not be loaded, and
+  // promising a fallback that is not there would contradict it.
+  if(!window.L)return;
+  const status=document.getElementById('overviewMapStatus');
+  const note='Google Maps unavailable; showing the project map.';
+  if(status.textContent.includes(note))return;
+  status.textContent=status.textContent.trim()?status.textContent+' · '+note:note;
 }
 window.gm_authFailure=overviewMapFallback;
 function loadGoogleMapsWithKey(key){
@@ -6739,7 +6845,7 @@ function loadGoogleMaps(){
   loadGoogleMapsWithKey(key);
 }
 const MAP_TILE_URL='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
-const CARTO_ATTRIB='Tiles &copy; Esri — Esri, HERE, Garmin, USGS, OpenStreetMap contributors';
+const CARTO_ATTRIB='Tiles &copy; Esri: Esri, HERE, Garmin, USGS, OpenStreetMap contributors';
 // Voyager reads as a place; Positron is the flat backdrop the dashboard map plots onto.
 function tileVoyager(lat, lng, z){
   z = z || 16;
@@ -6751,7 +6857,17 @@ function tileVoyager(lat, lng, z){
 }
 
 function initLeafletMap(){
-  if(!window.L){document.getElementById('gateError').textContent='Map unavailable. Project records and city links remain below.';document.getElementById('gateError').style.display='block';return;}
+  if(!window.L){
+    // The panel keeps its "Loading the map..." heading underneath, so a reader was told the map
+    // was both loading and unavailable at the same time. Once it has failed, nothing is loading.
+    const gate=document.getElementById('mapGate'), heading=gate&&gate.querySelector('h3');
+    if(heading)heading.textContent='Map unavailable';
+    const lede=gate&&gate.querySelector('p');
+    if(lede)lede.textContent='Select a project from the register below.';
+    document.getElementById('gateError').textContent='The map library could not be loaded on this connection. Every record it plots is listed below.';
+    document.getElementById('gateError').style.display='block';
+    return;
+  }
   document.getElementById('mapGate').style.display='none';document.getElementById('mapGoogle').style.display='none';document.getElementById('mapGoogleEmbed').hidden=true;document.getElementById('mapLeafletWrap').style.display='block';
   if(!lMap){lMap=L.map('map',{scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat,CITIES[currentCity].center.lng],CITIES[currentCity].zoom);L.tileLayer(MAP_TILE_URL,{attribution:CARTO_ATTRIB,maxZoom:19}).addTo(lMap);}
   mapProvider='leaflet';syncMapProviderButton();renderLegend();buildMarkersForCurrentProvider();
@@ -7320,7 +7436,7 @@ function renderFeed(){
   el.innerHTML = list.slice(0,80).map(f=>{
     const d = DATA().find(x=>x.id===f.id);
     const color = d ? STAGE_MAP[d.stage].color : '#333';
-    return `<div class="feed-item" data-id="${f.id}"><div class="fd-date">${fmtDate(f.date)}</div><div class="fd-title">${f.title}</div><div class="fd-body">${f.body}</div>${d?`<span class="fd-tag" style="background:${color}">${STAGE_MAP[d.stage].label}</span>`:''}</div>`;
+    return `<div class="feed-item" data-id="${f.id}"><div class="fd-date">${fmtDate(f.date)}</div><div class="fd-title">${f.title}</div><div class="fd-body">${f.body}</div>${d?`<span class="fd-tag" style="${stampStyle(STAGE_MAP[d.stage])}">${STAGE_MAP[d.stage].label}</span>`:''}</div>`;
   }).join('');
   el.querySelectorAll('.feed-item').forEach(item=> item.addEventListener('click', ()=>flyTo(item.getAttribute('data-id'))));
 }
@@ -7734,7 +7850,7 @@ function projectCardHtml(d){
   return `<div class="card" data-project-id="${d.id}" style="border-top-color:${c.color}">
       ${thumb ? `<div class="card-thumb"><img src="${thumb}" alt="Map of the area around ${d.addr}" loading="lazy" onerror="imgFallback(this,cityOfProject('${d.id}'));" /><span class="map-thumb-credit">Map: Esri, HERE, Garmin, USGS</span></div>` : `<div class="card-thumb"><img src="${photo.url}" alt="${escapeHtml(photo.cap)}" loading="lazy"><span class="map-thumb-credit">${photoCredit(photo)}</span></div>`}
       <div class="row1"><div><div class="addr">${d.addr}</div><div class="type">${d.type}</div><div class="cattag" style="margin-top:4px;"><i style="background:${c.color}"></i>${c.label}</div></div>
-      <div style="display:flex; align-items:flex-start; gap:6px;">${starButtonHtml('project', d.id, starData)}<span class="stamp" style="background:${st.color}; border-color:${st.color}">${st.label}</span></div></div>
+      <div style="display:flex; align-items:flex-start; gap:6px;">${starButtonHtml('project', d.id, starData)}<span class="stamp" style="${stampStyle(st)}">${st.label}</span></div></div>
       <div class="desc">${d.desc}</div>
       <div class="meta">${unitsBit}${bmrBit}${expiresBit}</div>
       <div class="meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
@@ -7892,7 +8008,7 @@ function projectSheetHtml(record, cityKey, city){
   return '<div class="ps-eyebrow">'+escapeHtml(city.label)+' &middot; '+escapeHtml(city.county)+' County</div>'
     +'<h2 id="projSheetAddr">'+escapeHtml(record.addr||record.id)+'</h2>'
     +'<div class="ps-stamps">'
-      +'<span class="stamp" style="background:'+stage.color+';border-color:'+stage.color+'">'+escapeHtml(stage.label)+'</span>'
+      +'<span class="stamp" style="'+stampStyle(stage)+'">'+escapeHtml(stage.label)+'</span>'
       +'<span class="cattag"><i style="background:'+cat.color+'"></i>'+escapeHtml(cat.label)+'</span>'
       +'<span class="fresh">'+freshnessLabel(record)+'</span>'
     +'</div>'
@@ -8355,7 +8471,7 @@ function renderYourArea(){
           <div class="addr">${d.addr}</div>
           <div class="desc">${d.desc}</div>
           <div class="ya-tags">
-            <span class="stamp" style="background:${st.color};border-color:${st.color}">${st.label}</span>
+            <span class="stamp" style="${stampStyle(st)}">${st.label}</span>
             <span class="cattag"><i style="background:${c.color}"></i>${c.label}</span>
           </div>
         </div>
@@ -8386,13 +8502,13 @@ function finishOnboard(){
   guestProfile.data.setup={county:onboard.county,city:onboard.city,interests:[...onboard.interests],wantInvolved:onboard.wantInvolved,userLoc:onboard.userLoc};
   guestProfile.data.explored=true;
   if(isGuest()&&guestProfile.unlocked){guestProfile.data.preferences.homeCity=onboard.city;guestProfile.data.preferences.homeCounty=onboard.county;guestProfile.data.preferences.categories=[...onboard.interests];}
-  guestProfile.save();cityBrowseCounty=onboard.county;
+  guestProfile.save();syncGuestProfile();cityBrowseCounty=onboard.county;
   setCountyScope(onboard.city?'':onboard.county);switchCity(onboard.city||'all');
 }
 async function saveGuestName(input,statusId){
   if(!isGuest()||!guestProfile.unlocked)return true;
   const status=document.getElementById(statusId);
-  try{await guestProfile.update(input.value.trim());authUsername=guestProfile.data.username;for(const id of ['onboardUsername','guestUsername']){const field=document.getElementById(id);if(field!==input)field.value=authUsername;}renderAuthNavState();document.getElementById('accountUsername').textContent=authUsername;status.textContent=guestProfile.persistent?'Saved automatically on this device.':'Browser storage is unavailable; changes last until this page closes.';input.removeAttribute('aria-invalid');return true;}
+  try{if(input.value.trim()!==guestProfile.data.username)await guestProfile.update(input.value.trim());authUsername=guestProfile.data.username;for(const id of ['onboardUsername','guestUsername']){const field=document.getElementById(id);if(field!==input)field.value=authUsername;}renderAuthNavState();document.getElementById('accountUsername').textContent=authUsername;status.textContent=guestProfile.persistent?'Saved automatically on this device.':'Browser storage is unavailable; changes last until this page closes.';input.removeAttribute('aria-invalid');syncGuestProfile();return true;}
   catch(err){status.textContent=err.message;input.setAttribute('aria-invalid','true');return false;}
 }
 function wireGuestName(input,statusId){let timer;input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(()=>saveGuestName(input,statusId),450);refreshOnboardGate();});input.addEventListener('blur',()=>{clearTimeout(timer);saveGuestName(input,statusId);});}
@@ -8740,9 +8856,20 @@ function renderTopicLaws(topicKey, cap){
 
 // ---- A map of just this topic's records, for the city being viewed ----
 const topicMaps = {};
+// Leaflet comes from a CDN, so a blocked or filtered network leaves these containers empty. The
+// overview map and the futures map both say so and point at the records underneath; these three
+// used to return quietly and leave a bordered box with nothing in it. Writes the note once, and
+// only when the container is genuinely empty, so it can never land on top of a drawn map.
+function noteMapUnavailable(el){
+  if(!el || el.dataset.mapNote === 'set' || el.children.length) return;
+  el.dataset.mapNote = 'set';
+  el.innerHTML = '<p class="map-unavailable">Map unavailable. The records it plots are listed below.</p>';
+}
+
 function renderTopicMap(topicKey, cap, categoryKey){
   const el = document.getElementById('topicMap'+cap);
-  if(!el || typeof L === 'undefined') return;
+  if(!el) return;
+  if(typeof L === 'undefined'){ noteMapUnavailable(el); return; }
   if(!el.offsetWidth)return;
   const c = CITIES[currentCity];
   let m = topicMaps[cap];
@@ -9176,7 +9303,8 @@ function yaTogglePin(item){
 
 let yaMapWatch = null;
 function ensureYaMap(){
-  if(yaMap || typeof L === 'undefined') return yaMap;
+  if(yaMap) return yaMap;
+  if(typeof L === 'undefined'){ noteMapUnavailable(document.getElementById('yaMap')); return yaMap; }
   const el = document.getElementById('yaMap');
   if(!el) return null;
   // The screen can still be laid out at zero width when this first runs. Rather than give up
@@ -9784,13 +9912,13 @@ function renderTkPanel(list){
     body = (s.image ? '<img class="tk-p-img'+(s.imageFit==='contain'?' tk-p-fit':'')+'" src="'+s.image+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'" />' : '')
       + '<div class="tk-p-meta">'+escapeHtml(s.meta)+(CITIES[s.city]?' · '+CITIES[s.city].label:'')+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
-      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
       + '<a class="btn tk-p-cta" href="'+s.url+'" target="_blank" rel="noopener">Read it at '+domainOf(s.url)+' &#8599;</a>';
   } else if(s.kind === 'figure'){
     body = '<div class="tk-p-meta">'+escapeHtml(s.meta)+'</div>'
       + '<div class="tk-p-big">'+s.big+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
-      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
       + (s.src && s.src.u ? '<a class="tk-p-src" href="'+s.src.u+'" target="_blank" rel="noopener">'+escapeHtml(s.src.l)+' &#8599;</a>'
                           : (s.src ? '<div class="tk-p-src">'+escapeHtml(s.src.l)+'</div>' : ''));
   } else if(s.kind === 'quiz'){
@@ -9803,7 +9931,7 @@ function renderTkPanel(list){
   } else if(s.kind === 'write'){
     body = '<div class="tk-p-meta">'+escapeHtml(s.meta)+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
-      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
       + '<label class="tk-lab" for="tkWriteWhat">What is it about?</label>'
       + '<input id="tkWriteWhat" type="text" placeholder="e.g. the apartments proposed on Oak Road" />'
       + '<label class="tk-lab" for="tkWritePts">Your reasons, one per line</label>'
@@ -9823,7 +9951,7 @@ function renderTkPanel(list){
   } else {
     body = '<div class="tk-p-meta">'+escapeHtml(s.meta||'')+'</div>'
       + '<h3>'+escapeHtml(s.title)+'</h3>'
-      + '<p>'+escapeHtml(s.body||'')+'</p>'
+      + (s.body ? '<p>'+escapeHtml(s.body)+'</p>' : '')
       + (s.url ? '<a class="btn tk-p-cta" href="'+s.url+'" target="_blank" rel="noopener">'+(s.cta||'Open')+' &#8599;</a>' : '')
       + boardActionsHtml(tkProfile.city || acctCity(), s.title, s.meta||'', s.url||'');
   }
@@ -9950,7 +10078,10 @@ function buildBankIndex(){
   // News.
   NEWS_ARTICLES.forEach(a=>{
     out.push({ type:'news', city:a.city, title:a.title,
-      sub:a.source+' · '+fmtDate(a.date), body:a.snippet+' '+a.topic, url:a.url, date:a.date });
+      // The publisher belongs in the searchable text in its own right. It used to be reachable
+      // only because every snippet began "Reporting from <publisher>", so dropping that sentence
+      // would otherwise have made publishers unsearchable.
+      sub:a.source+' · '+fmtDate(a.date), body:[a.snippet,a.topic,a.source].filter(Boolean).join(' '), url:a.url, date:a.date });
   });
 
   // Official documents and tools.
@@ -10452,7 +10583,7 @@ function generatePlan(){
     const projects = s.projects ? `<div class="plan-projects">${s.projects.map(({d,dist})=>`
       <a class="plan-project" href="?project=${encodeURIComponent(d.id)}">
         <span class="addr">${d.addr}</span>
-        <span class="stamp" style="background:${STAGE_MAP[d.stage].color}; border-color:${STAGE_MAP[d.stage].color}">${STAGE_MAP[d.stage].label}</span>
+        <span class="stamp" style="${stampStyle(STAGE_MAP[d.stage])}">${STAGE_MAP[d.stage].label}</span>
         ${dist!==null ? `<span class="dist">${dist.toFixed(1)} mi away</span>` : ''}
       </a>`).join('')}</div>` : '';
     const link = s.link
@@ -10935,7 +11066,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/santa-clara-county-housing-gets-approved-but-not-built/' },
   { topic:'transportation', city:'sunnyvale', title:'Silicon Valley cities work with transit agency on safer route to school', source:'San José Spotlight', date:'2024-04-10',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/04/09160800/PXL_20240409_194336345.MP_-1200x630.jpg',
-    snippet:'A partnership between multiple cities and a Silicon Valley transit agency is going to construct a long-needed safer route for students biking and walking to school. The Homestead Safe Routes to School project aims to make traveling to school easier for students attending Cupertino Middle School, Homestead High School and West Valley Elementary School by...',
+    snippet:'A partnership between multiple cities and a Silicon Valley transit agency is going to construct a long-needed safer route for students biking and walking to school.',
     url:'https://sanjosespotlight.com/silicon-valley-cities-work-with-transit-agency-on-safer-route-to-school/' },
   { topic:'transportation', city:'cupertino', title:'Silicon Valley cities get funding for ride-share service', source:'San José Spotlight', date:'2024-11-05',
     image:'https://sanjosespotlight.com/wp-content/uploads/2024/03/SV-Hopper-1-1200x630.png',
@@ -10983,7 +11114,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/mountain-view-approves-four-story-condo-development/' },
   { topic:'housing', city:'mountainview', title:'Mountain View approves 8-story affordable housing development', source:'San José Spotlight', date:'2024-12-19',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/12/19150736/Screen-Shot-2024-12-19-at-3.06.45-PM.png',
-    snippet:'Making some tradeoffs to get more homes built, Mountain View backed an affordable housing development that will support lower-income residents, but will have very few parking spaces for them. CRP Affordable Housing is proposing to build an eight-story apartment complex at 334 San Antonio Road, replacing a Valero gas station and auto repair shop. The City Council...',
+    snippet:'Making some tradeoffs to get more homes built, Mountain View backed an affordable housing development that will support lower-income residents, but will have very few parking spaces for them. CRP Affordable Housing is proposing to build an eight-story apartment complex at 334 San Antonio Road, replacing a Valero gas station and auto repair shop.',
     url:'https://sanjosespotlight.com/mountain-view-approves-8-story-affordable-housing-development/' },
   { topic:'housing', city:'mountainview', title:'6-story housing approved to replace Mountain View’s historic Chase Bank', source:'San José Spotlight', date:'2025-11-24',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/11/24105134/Screenshot-2025-11-18-212327-scaled-1-1200x630.jpg',
@@ -10999,11 +11130,11 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/mountain-view-backs-plan-for-more-housing-south-of-el-camino-real/' },
   { topic:'housing', city:'mountainview', title:'Mountain View approves 8-story condos after parkland fee dispute', source:'San José Spotlight', date:'2026-05-04',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/02165756/Mountain-View-Castor-1200x630.png',
-    snippet:'A developer’s plan to build an eight-story condominium complex at a prominent gateway to downtown Mountain View got the greenlight Tuesday evening after a legal dispute over parkland fees threatened to derail the project earlier this year. In a split 4-2 vote, the City Council approved a 140-unit condominium project with nearly 10,000 square feet of ground floor retail...',
+    snippet:'A developer’s plan to build an eight-story condominium complex at a prominent gateway to downtown Mountain View got the greenlight Tuesday evening after a legal dispute over parkland fees threatened to derail the project earlier this year.',
     url:'https://sanjosespotlight.com/mountain-view-approves-8-story-condos-after-parkland-fee-dispute/' },
   { topic:'housing', city:'santaclara', title:'How Santa Clara County divvied up its housing bond dollars', source:'San José Spotlight', date:'2024-12-30',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/09/19101033/IMG_7371-1200x630.jpg',
-    snippet:'A $950 million affordable housing bond has helped build thousands of affordable homes across Santa Clara County, though its efforts have focused on some parts of the region more than others. Measure A, passed by voters in 2016, has helped fund the construction of 5,135 new homes and smashed the county’s goal of 4,800 in...',
+    snippet:'A $950 million affordable housing bond has helped build thousands of affordable homes across Santa Clara County, though its efforts have focused on some parts of the region more than others.',
     url:'https://sanjosespotlight.com/how-santa-clara-county-divvied-up-its-housing-bond-dollars/' },
   { topic:'housing', city:'cupertino', title:'Views of SB 9 vary among Silicon Valley cities', source:'San José Spotlight', date:'2022-01-24',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2019/12/19203519/Screenshot-2019-12-06-at-6.25.45-PM-1-1200x630.jpg',
@@ -11043,7 +11174,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/campbell-council-closes-housing-development-loophole/' },
   { topic:'developments', city:'campbell', title:'Campbell office park could flip into large housing development', source:'San José Spotlight', date:'2025-02-06',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/01/30160607/PXL_20250130_182826457-1200x630.jpg',
-    snippet:'Campbell’s Technology Parkway could become home to one of the city’s largest developments in recent years. The Campbell Planning Commission initiated the community feedback process Jan. 28 for a proposed 290-home development located between 635 and 695 Campbell Technology Parkway. Campbell-based Bay West Development submitted the site’s plans in 2023, including 27 single-family homes and...',
+    snippet:'Campbell’s Technology Parkway could become home to one of the city’s largest developments in recent years. The Campbell Planning Commission initiated the community feedback process Jan. 28 for a proposed 290-home development located between 635 and 695 Campbell Technology Parkway.',
     url:'https://sanjosespotlight.com/campbell-office-park-to-flip-into-large-housing-development/' },
   { topic:'housing', city:'paloalto', title:'Palo Alto City Council approves 8-story housing complex', source:'San José Spotlight', date:'2026-08-18',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/08/18095052/Palo-Alto-8-story-dev-rendering-Embarcadero-1200x630.webp',
@@ -11059,11 +11190,11 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/palo-alto-leaders-approve-183-apartment-complex/' },
   { topic:'housing', city:'paloalto', title:'Palo Alto approves 368-apartment complex on El Camino Real', source:'San José Spotlight', date:'2025-07-25',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/23162028/Screen-Shot-2025-07-23-at-4.19.57-PM.png',
-    snippet:'One of Palo Alto’s largest and most ambitious housing projects, a 368-apartment complex proposed for the former site of The Fish Market on El Camino Real, has received the green light from the city, clearing the way for construction to begin. The proposal from Acclaim Companies for 3150 El Camino Real exemplifies more than any...',
+    snippet:'One of Palo Alto’s largest and most ambitious housing projects, a 368-apartment complex proposed for the former site of The Fish Market on El Camino Real, has received the green light from the city, clearing the way for construction to begin.',
     url:'https://sanjosespotlight.com/palo-alto-approves-368-apartment-complex-on-el-camino-real/' },
   { topic:'developments', city:'paloalto', title:'Palo Alto downtown aims to raise heights, spur residential growth', source:'San José Spotlight', date:'2025-07-28',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/07/28104727/PA_DOWNTOWN_Mar2025_WEB_16-1200x630.jpg',
-    snippet:'As Palo Alto leaders forge a new strategy for increasing housing in the downtown neighborhood, one edge of the 90-acre planning area is emerging as a promising site for a future residential boom. Downtown has seen virtually no residential growth over the past decade, even as other areas have experienced an influx of proposals. The...',
+    snippet:'As Palo Alto leaders forge a new strategy for increasing housing in the downtown neighborhood, one edge of the 90-acre planning area is emerging as a promising site for a future residential boom. Downtown has seen virtually no residential growth over the past decade, even as other areas have experienced an influx of proposals.',
     url:'https://sanjosespotlight.com/palo-alto-downtown-aims-to-raise-heights-spur-residential-growth/' },
   { topic:'housing', city:'paloalto', title:'Palo Alto seeks \'pro-housing\' designation after resisting growth', source:'San José Spotlight', date:'2026-05-29',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2026/05/29122515/Palo-Alto-Embarcadero-1200x630.webp',
@@ -11079,7 +11210,7 @@ const NEWS_ARTICLES = [
     url:'https://sanjosespotlight.com/palo-alto-breaks-ground-on-large-housing-project-at-former-fish-market-site/' },
   { topic:'developments', city:'paloalto', title:'Palo Alto Town & Country Village looks to construct apartment buildings', source:'San José Spotlight', date:'2025-11-19',
     image:'https://sanjosespotlight.s3.us-east-2.amazonaws.com/wp-content/uploads/2025/11/17094907/TownCountry3-1200x630.jpg',
-    snippet:'After fiercely opposing a recently approved development with 10 condominiums on an adjacent lot, the owners of Town & Country Village are now looking to build a pair of seven-story apartment buildings on a parking lot next to the shopping center. Real estate investor Ellis Partners, which bought the property in 2004, filed a pre-application...',
+    snippet:'After fiercely opposing a recently approved development with 10 condominiums on an adjacent lot, the owners of Town & Country Village are now looking to build a pair of seven-story apartment buildings on a parking lot next to the shopping center.',
     url:'https://sanjosespotlight.com/palo-alto-town-country-village-looks-to-construct-apartment-buildings/' },
   { topic:'developments', city:'paloalto', title:'Preliminary Permits For 4146 El Camino Real, Palo Alto', source:'SF YIMBY', date:'2026-09-03',
     image:'https://sfyimby.com/wp-content/uploads/2026/09/4146-El-Camino-Real-front-elevation-illustration-by-SDG-Architects.jpg',
@@ -11279,7 +11410,7 @@ const NEWS_ARTICLES = [
     url:'https://milpitasbeat.com/2-adults-and-2-children-found-dead-at-turing-apartment-in-milpitas/' },
   { topic:'developments', city:'morganhill', title:'SB330 Filed for Residences at 600 West Edmundson Avenue, Morgan Hill', source:'SF YIMBY', date:'2024-12-01',
     image:'https://sfyimby.com/wp-content/uploads/2024/04/600-West-Edmundson-Avenue-farm-style-home-image-by-Bassenian-Lagoni-Architecture-Planning.jpg',
-    snippet:'A preliminary application has been filed seeking the approval of a new residential project proposed for development at 600 West Edmundson Avenue in Morgan Hill, Santa Clara County. The project proposal includes the development of...',
+    snippet:'A preliminary application has been filed seeking the approval of a new residential project proposed for development at 600 West Edmundson Avenue in Morgan Hill, Santa Clara County.',
     url:'https://sfyimby.com/2024/12/sb330-filed-for-residences-at-600-west-edmundson-avenue-morgan-hill.html' },
   { topic:'housing', city:'morganhill', title:'Housing options expand for ag sector', source:'Morgan Hill Times', date:'2024-11-30',
     image:'https://morganhilltimes.com/wp-content/uploads/sites/18/2024/11/RoyalOaks_GrandOpening.jpg',
@@ -11443,7 +11574,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2023/09/construction-tops-out-for-belmont-village-senior-living-san-ramon.html' },
   { topic:'developments', city:'belmont', title:'Office-Research Project Planned At 2 Davis Drive, Belmont, San Mateo County', source:'SF YIMBY', date:'2023-08-28',
     image:'https://sfyimby.com/wp-content/uploads/2023/08/2-Davis-Drive.jpg',
-    snippet:'A new mixed-use project has been proposed for development at 2 Davis Drive in Belmont, San Mateo County. The project proposal includes the development of a four-story mixed-use building offering spaces for office and research…',
+    snippet:'A new mixed-use project has been proposed for development at 2 Davis Drive in Belmont, San Mateo County.',
     url:'https://sfyimby.com/2023/08/office-research-project-planned-at-2-davis-drive-belmont-san-mateo-county.html' },
   { topic:'developments', city:'brisbane', title:'Brisbane’s award-winning Little Green Cyclo hosts weekend pop-ups and introduces new Vietnamese coffee flavors', source:'The Almanac', date:'2025-05-27',
     image:'https://www.almanacnews.com/wp-content/uploads/2025/05/QM1-scaled-1.jpg',
@@ -11483,7 +11614,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2024/08/topping-out-for-1766-el-camino-real-burlingame.html' },
   { topic:'housing', city:'burlingame', title:'Concrete Rising for Affordable Housing in Burlingame', source:'SF YIMBY', date:'2024-08-30',
     image:'https://sfyimby.com/wp-content/uploads/2023/02/Eucalyptus-Grove-at-1875-California-Drive-rendering-by-Studio-T-Square.jpg',
-    snippet:'Construction is moving quickly for Eucalyptus Grove, the growing affordable housing complex at 1875 California Street in Burlingame, San Mateo County. Concrete is already surpassing the third floor on the future eight-story building overlooking the…',
+    snippet:'Construction is moving quickly for Eucalyptus Grove, the growing affordable housing complex at 1875 California Street in Burlingame, San Mateo County.',
     url:'https://sfyimby.com/2024/08/concrete-rising-for-affordable-housing-in-burlingame.html' },
   { topic:'transportation', city:'burlingame', title:'Meeting Today for 1499 Old Bayshore Highway, Burlingame', source:'SF YIMBY', date:'2024-04-08',
     image:'https://sfyimby.com/wp-content/uploads/2024/04/1499-Old-Bayshore-Highway-aerial-view-rendering-by-DGA.jpg',
@@ -11707,7 +11838,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2026/06/updated-plans-for-laurel-landing-menlo-park.html' },
   { topic:'developments', city:'menlopark', title:'Significantly Modified Masterplan Revealed For Parkline, Menlo Park', source:'SF YIMBY', date:'2026-06-25',
     image:'https://sfyimby.com/wp-content/uploads/2026/06/Parkline-offices-rendering-by-SOM.jpg',
-    snippet:'Updated plans have been filed for the proposed redevelopment of the former SRI campus around 333 Ravenswood Avenue in Menlo Park, San Mateo County. The modified master plan significantly reduces office capacity and moderately increases…',
+    snippet:'Updated plans have been filed for the proposed redevelopment of the former SRI campus around 333 Ravenswood Avenue in Menlo Park, San Mateo County.',
     url:'https://sfyimby.com/2026/06/significantly-modified-masterplan-revealed-for-parkline-menlo-park.html' },
   { topic:'housing', city:'menlopark', title:'Updated Plans Filed For USGS Campus Redevelopment, Menlo Park', source:'SF YIMBY', date:'2026-06-19',
     image:'https://sfyimby.com/wp-content/uploads/2026/06/345-Middlefield-Road-pedestrian-view-from-Redwood-Meadow-rendering-by-Gensler-scaled.jpg',
@@ -11875,7 +12006,7 @@ const NEWS_ARTICLES = [
     url:'https://sfyimby.com/2023/04/shop-designed-youtube-hq-construction-underway-in-san-bruno-san-mateo-county.html' },
   { topic:'transportation', city:'sanbruno', title:'New Affordable Housing Community Inaugurated At 3300 College Road, San Bruno', source:'SF YIMBY', date:'2023-02-07',
     image:'https://sfyimby.com/wp-content/uploads/2023/02/3300-College-Road.jpg',
-    snippet:'A new affordable housing community has been opened at 3300 College Road in San Bruno. The project proposal includes the construction of a three-story building offering affordable units, amenities, and onsite parking. In partnership with…',
+    snippet:'A new affordable housing community has been opened at 3300 College Road in San Bruno. The project proposal includes the construction of a three-story building offering affordable units, amenities, and onsite parking.',
     url:'https://sfyimby.com/2023/02/new-affordable-housing-community-inaugurated-at-3300-college-road-san-bruno.html' },
   { topic:'transportation', city:'sanbruno', title:'Meeting Today for Tanforan Mall Redevelopment Project in San Bruno', source:'SF YIMBY', date:'2022-10-25',
     image:'https://sfyimby.com/wp-content/uploads/2022/10/Tanforan-Mall-Redevelopment-as-seen-from-the-San-Bruno-BART-entrance-rendering-by-Gensler.jpg',
@@ -12190,18 +12321,12 @@ async function apiLogin(username, password){ return apiCall('/api/login', {metho
    It is the only thing a guest sends us; their saved items, timeline and reminders stay on the
    device. Failure is silent by design: someone offline, or blocking the request, still gets the
    whole dashboard. */
-let guestSyncInFlight=false;
-async function syncGuestProfile(){
-  if(guestSyncInFlight||authToken||!guestProfile?.unlocked||!guestProfile?.data?.username)return;
-  const {payload,due}=guestProfile.syncState();
-  if(!due)return;
-  guestSyncInFlight=true;
-  try{
-    const response=await fetch('/api/guest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    if(response.ok)guestProfile.markSynced();
-  }catch{}
-  finally{guestSyncInFlight=false;}
+function syncGuestProfile(){
+  return guestSync.sync();
 }
+window.addEventListener('online',syncGuestProfile);
+window.addEventListener('focus',syncGuestProfile);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncGuestProfile();});
 async function apiGetStars(){ return apiCall('/api/stars'); }
 async function apiAddStar(itemType, itemId, itemData){ return apiCall('/api/stars', {method:'POST', body:JSON.stringify({itemType,itemId,itemData})}); }
 async function apiRemoveStar(itemType, itemId){ return apiCall('/api/stars/'+encodeURIComponent(itemType)+'/'+encodeURIComponent(itemId), {method:'DELETE'}); }
@@ -12240,16 +12365,25 @@ function resetAccountMemory(){
   yaPins=[];remItems=[];
 }
 function setAuthSession(token, username){
-  resetAccountMemory();
+  accountSessionVersion++;resetAccountMemory();
   authToken = token; authUsername = username;guestAuthForm=false;starredMap=new Map();tkProfileLoaded=false;yaPins=[];remItems=[];
-  localStorage.setItem('sbpd_token', token);
-  localStorage.setItem('sbpd_username', username);
+  try{profileStorage.setItem('sbpd_token',token);profileStorage.setItem('sbpd_username',username);}
+  catch{document.getElementById('accountSyncStatus').textContent='Signed in for this visit. Browser storage is unavailable, so you will need to log in again next time.';}
+  adminStatsCache=null;adminStatsAt=0;communityCountText='';communityCountAt=0;
+  adminUserRows=[];adminUserCursor=null;adminUserQuery='';
+  document.getElementById('acctNavAdmin').hidden=true;
+  globalThis.SiteAdmin?.refreshAccess();
+  document.getElementById('adminUserTableWrap').textContent='';
 }
 function clearAuthSession(){
-  resetAccountMemory();
+  accountSessionVersion++;resetAccountMemory();
   authToken = null; authUsername = guestProfile.data.username; starredMap = new Map(guestProfile.unlocked?guestProfile.data.stars.map(s=>[starKey(s.item_type,s.item_id),s.item_data]):[]);yaPins=[];remItems=[];
-  localStorage.removeItem('sbpd_token');
-  localStorage.removeItem('sbpd_username');
+  try{profileStorage.removeItem('sbpd_token');profileStorage.removeItem('sbpd_username');}catch{}
+  adminStatsCache=null;adminStatsAt=0;communityCountText='';communityCountAt=0;
+  adminUserRows=[];adminUserCursor=null;adminUserQuery='';
+  document.getElementById('acctNavAdmin').hidden=true;
+  globalThis.SiteAdmin?.refreshAccess();
+  document.getElementById('adminUserTableWrap').textContent='';
 }
 
 // Event delegation - handles every star button on the page, including ones added after this script ran.
@@ -12432,8 +12566,11 @@ function acctNewsCards(list, emptyMsg){
     return '<a class="news-card" href="'+a.url+'" target="_blank" rel="noopener">'
       + starButtonHtml('news', a.url, starData)
       + '<img src="'+articleImageSrc(a, usedImgs)+'" data-article-img loading="lazy" alt="" onerror="imgFallback(this,\''+a.city+'\')" />'
-      + '<div class="news-body"><div class="news-meta">'+a.source+' - '+(CITIES[a.city]?CITIES[a.city].label:'Regional')+'</div>'
-      + '<h4>'+a.title+'</h4><p>'+a.snippet+'</p>'
+      + '<div class="news-body"><div class="news-meta">'+escapeHtml(a.source)+' - '+escapeHtml(CITIES[a.city]?CITIES[a.city].label:'Regional')+'</div>'
+      // Headlines and summaries arrive from publisher feeds, so they are escaped like any other
+      // outside text. Most headlines have no summary, and an empty <p> left a gap under the
+      // title that read as a missing sentence.
+      + '<h4>'+escapeHtml(a.title)+'</h4>'+(a.snippet?'<p>'+escapeHtml(a.snippet)+'</p>':'')
       + '<div class="news-date">'+fmtDate(a.date)+'</div></div></a>';
   }).join('');
 }
@@ -12891,19 +13028,22 @@ function renderAuthNavState(){
    about anybody. A server without a database, or an older one, simply says nothing. */
 /* How many people use the site. Only the owner sees this: the request carries their session, and
    the server answers it for nobody else, so an ordinary reader's copy stays empty and hidden. */
-let communityCountText='';
-async function renderCommunityCount(){
+let communityCountText='',communityCountAt=0;
+async function renderCommunityCount(force=false){
   const el=document.getElementById('communityCount');
   if(!el||!authToken)return;
-  if(!communityCountText){
+  const session=accountSessionVersion;
+  if(force||!communityCountText||Date.now()-communityCountAt>30000){
     try{
       const data=await apiCall('/api/community');
+      if(session!==accountSessionVersion)return;
       if(!data.ok||!data.users)return;
       // Everyone who opens the site has an account, so there is no "them and the real users" split
       // to report. What is worth saying is how many have added a password, since that is what
       // carries an account off one device.
-      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'person uses':'people use')+' this dashboard, '
-        +data.registered.toLocaleString()+' of them with a password. Everyone who opens it counts.';
+      communityCountText=data.users.toLocaleString()+' '+(data.users===1?'profile recorded':'profiles recorded')+', '
+        +data.registered.toLocaleString()+' with a password. Counted by saved browser profile or account.';
+      communityCountAt=Date.now();
     }catch{ return; }   // a reader who is not the owner gets a 404 here, and nothing is shown
   }
   el.textContent=communityCountText;
@@ -12912,9 +13052,9 @@ async function renderCommunityCount(){
 
 // Same reasoning as renderCommunityCount above: the request only succeeds for an account listed
 // in the server's ADMIN_USERNAMES, so an ordinary reader's tab just never appears. Stats are
-// fetched once and cached for the session; the full user list is loaded on demand since it can
+// refreshed after 30 seconds or on demand; the full user list is paged since it can
 // run to hundreds of rows and most admin visits only want the summary.
-let adminStatsCache = null;
+let adminStatsCache = null,adminStatsAt=0;
 function admBar(rows, total){
   return rows.map(([label,n])=>{
     const pct = total ? Math.round(n/total*100) : 0;
@@ -12935,11 +13075,12 @@ function renderAdminStats(data){
   const freqRows = Object.entries(data.byFrequency).sort((a,b)=>b[1]-a[1]);
   document.getElementById('adminByFrequency').innerHTML = freqRows.length ? admBar(freqRows, data.registered) : '<p class="section-note">No registered accounts yet.</p>';
 }
-async function renderAdminAccess(){
+async function renderAdminAccess(force=false){
   const nav = document.getElementById('acctNavAdmin');
   if(!nav || !authToken) return;
-  if(!adminStatsCache){
-    try{ adminStatsCache = await apiCall('/api/admin/stats'); }
+  const session=accountSessionVersion;
+  if(force||!adminStatsCache||Date.now()-adminStatsAt>30000){
+    try{const data=await apiCall('/api/admin/stats');if(session!==accountSessionVersion)return;adminStatsCache=data;adminStatsAt=Date.now();}
     catch{ return; }   // 404 for anyone not in ADMIN_USERNAMES - the tab just never shows up
   }
   if(!adminStatsCache || !adminStatsCache.ok) return;
@@ -12951,7 +13092,7 @@ async function renderAdminAccess(){
 // name rather than a class of user. Anyone who arrived before this was recorded gets nothing said
 // about them, because we do not know.
 function nameOriginHtml(u){
-  if(u.name_chosen === false) return '<span class="admin-ip-note" title="Generated when they explored without setting up">ours</span>';
+  if(u.name_chosen === false) return '<span class="admin-ip-note" title="Generated on their first visit">ours</span>';
   if(u.name_chosen === true) return '<span class="admin-ip-note" title="They typed this name">theirs</span>';
   return '';
 }
@@ -12967,15 +13108,28 @@ function deviceLabel(ua){
     : /bot|crawl|spider|curl|python|wget/i.test(ua) ? 'Bot or script' : '';
   return [os, browser].filter(Boolean).join(' · ') || 'Unrecognised';
 }
-document.getElementById('adminLoadUsers')?.addEventListener('click', async ()=>{
+let adminUserRows=[],adminUserCursor=null,adminUserTotal=0,adminUserQuery='',adminUsersLoading=false;
+async function loadAdminUsers(more=false){
+  if(adminUsersLoading)return;
+  const session=accountSessionVersion;
   const wrap = document.getElementById('adminUserTableWrap');
-  wrap.textContent = 'Loading…';
+  const status=document.getElementById('adminUserListStatus');
+  const moreButton=document.getElementById('adminMoreUsers');
+  adminUsersLoading=true;moreButton.disabled=true;
+  const controls=[...document.querySelectorAll('#adminUserSearchForm input, #adminUserSearchForm button'),document.getElementById('adminLoadUsers')];
+  controls.forEach(el=>{if(el)el.disabled=true;});
+  status.textContent='Loading users…';
   try{
-    const data = await apiCall('/api/admin/users?limit=500');
-    const rows = data.users || [];
+    const params=new URLSearchParams({limit:'100',q:adminUserQuery});
+    if(more&&adminUserCursor)params.set('before',adminUserCursor);
+    const data = await apiCall('/api/admin/users?'+params);
+    if(session!==accountSessionVersion)return;
+    adminUserRows=more?adminUserRows.concat(data.users||[]):data.users||[];
+    adminUserCursor=data.nextCursor;adminUserTotal=data.total;
+    const rows = adminUserRows;
     const ips = rows.map(u=>u.last_ip).filter(Boolean);
     const repeated = new Set(ips.filter((ip,i)=>ips.indexOf(ip)!==i));
-    wrap.innerHTML = '<p class="section-note">'+rows.length.toLocaleString()+' most recent, newest first.'
+    wrap.innerHTML = '<p class="section-note">'+rows.length.toLocaleString()+' of '+adminUserTotal.toLocaleString()+' matching profiles, newest first.'
       + (repeated.size?' '+repeated.size+(repeated.size===1?' address appears':' addresses appear')+' on more than one row, marked below.':'')+'</p>'
       + '<table class="admin-user-table"><thead><tr><th>Name</th><th>Email</th><th>Home city</th><th>Frequency</th><th>Address</th><th>Device</th><th>Joined</th><th>Last seen</th></tr></thead><tbody>'
       + rows.map(u=>{
@@ -12991,10 +13145,21 @@ document.getElementById('adminLoadUsers')?.addEventListener('click', async ()=>{
             +'<td>'+(u.last_seen_at?new Date(u.last_seen_at).toLocaleDateString():'')+'</td></tr>';
         }).join('')
       + '</tbody></table>';
+    moreButton.hidden=!adminUserCursor;
+    status.textContent=rows.length.toLocaleString()+' of '+adminUserTotal.toLocaleString()+' matching profiles displayed.';
   }catch(err){
-    wrap.textContent = "Couldn't load the user list: " + err.message;
+    if(session===accountSessionVersion)status.textContent = "Couldn't load the user list: " + err.message;
   }
+  finally{adminUsersLoading=false;moreButton.disabled=false;controls.forEach(el=>{if(el)el.disabled=false;});}
+}
+document.getElementById('adminLoadUsers')?.addEventListener('click',async()=>{
+  adminUserQuery=document.getElementById('adminUserSearch').value.trim();
+  await Promise.all([renderAdminAccess(true),renderCommunityCount(true),loadAdminUsers()]);
 });
+document.getElementById('adminUserSearchForm')?.addEventListener('submit',e=>{
+  e.preventDefault();adminUserQuery=document.getElementById('adminUserSearch').value.trim();loadAdminUsers();
+});
+document.getElementById('adminMoreUsers')?.addEventListener('click',()=>loadAdminUsers(true));
 
 async function renderAccountPage(){
   renderAuthNavState();
@@ -15970,7 +16135,7 @@ function cityFacts(key){
   const byType = {}; active.forEach(d=>{ byType[d.type]=(byType[d.type]||0)+(d.units||0); });
   return {
     projects: active.length,
-    units: withUnits.length ? active.reduce((n,d)=>n+(d.units||0),0) : null,
+    units: withUnits.length ? DashboardHousing.sumUnits(active) : null,
     bmr: active.some(d=>Number.isFinite(d.bmr)) ? active.reduce((n,d)=>n+(d.bmr||0),0) : null,
     unitsKnown: withUnits.length,
     medianUnits: median(withUnits.map(d=>d.units)),
@@ -16209,7 +16374,8 @@ function renderRailCityPicker(){
 let heroMap = null, heroLayer = null;
 function renderHeroMap(){
   const card = document.getElementById('heroMapCard');
-  if(!card || typeof L === 'undefined') return;
+  if(!card) return;
+  if(typeof L === 'undefined'){ noteMapUnavailable(document.getElementById('heroMap')); return; }
   const el = document.getElementById('heroMap');
   if(!el) return;
   // The hero is often not laid out yet on the first pass, and Leaflet cannot size itself into a
@@ -16510,7 +16676,7 @@ function railSlides(){
       href:'planner', cta:'Build a plan'});
   }
   const active = (CITIES[c] ? CITIES[c].data : []).filter(d=>d.stage!=='completed');
-  const units = active.reduce((n,d)=>n+(d.units||0),0);
+  const units = DashboardHousing.sumUnits(active);
   if(units){
     out.push({k:units.toLocaleString(), l:'Homes in the pipeline, '+label,
       s:'Across <b>'+active.length+'</b> active projects tracked here.',
@@ -16836,7 +17002,9 @@ function renderFooter(){
 }
 // The city count appears in three sentences of static copy. Written in rather than typed, so
 // adding a city cannot leave them saying a number that stopped being true.
-document.querySelectorAll('.city-count').forEach(el=>{el.textContent=CITY_COUNT;});
+document.querySelectorAll('.city-count').forEach(el=>{el.textContent=INCORPORATED_CITY_COUNT;});
+// Every area the dashboard holds a profile for, including the West San Jose neighborhood.
+document.querySelectorAll('.area-count').forEach(el=>{el.textContent=CITY_COUNT;});
 renderFooter();
 
 // ================= EMAIL DEEP LINKS =================
@@ -16932,8 +17100,21 @@ new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))ensureOv
 // rather than waiting for a screen change that may never come.
 renderHeroPaper();
 </script>
-<script src="/vendor/leaflet-heat.js"></script>
+<script>
+// The heat plugin extends Leaflet and assumes L is already there, so loading it unconditionally
+// threw "L is not defined" on any network where the Leaflet CDN is blocked, filtered or simply
+// slow - a corporate proxy or a content blocker is enough. Every map in this app already checks
+// for Leaflet and falls back to the records underneath; this script tag was the one thing that
+// did not, and its uncaught error was the first entry in the console. The futures view tests
+// window.L.heatLayer before using it, so arriving a moment later is fine.
+if (window.L) {
+  var heatPlugin = document.createElement('script');
+  heatPlugin.src = '/vendor/leaflet-heat.js';
+  document.head.appendChild(heatPlugin);
+}
+</script>
 <script type="module" src="/futures/app.js"></script>
 <script src="/site-visuals.js"></script>
+<script src="/admin-content.js"></script>
 </body>
 </html>
