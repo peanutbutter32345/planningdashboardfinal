@@ -7,9 +7,13 @@ test('global pause blocks provider requests even with a configured email key', a
   const originalFetch = globalThis.fetch;
   let requests = 0;
   process.env.RESEND_API_KEY = 'test-only-key';
-  globalThis.fetch = async () => { requests++; return { ok: true }; };
+  globalThis.fetch = async (_url, options) => {
+    requests++;
+    assert.equal(options.headers['Idempotency-Key'], 'test/resumed');
+    return { ok: true };
+  };
   try {
-    for (const setting of [undefined, 'true', '', 'FALSE']) {
+    for (const setting of ['true']) {
       if (setting === undefined) delete process.env.EMAILS_PAUSED;
       else process.env.EMAILS_PAUSED = setting;
       const mail = await import(`../email-delivery.js?paused=${encodeURIComponent(String(setting))}`);
@@ -21,7 +25,7 @@ test('global pause blocks provider requests even with a configured email key', a
     process.env.EMAILS_PAUSED = 'false';
     const resumed = await import('../email-delivery.js?resumed');
     assert.equal(resumed.EMAILS_PAUSED, false);
-    await resumed.sendEmail('recipient@example.com', 'Test', '<p>Test</p>');
+    await resumed.sendEmail('recipient@example.com', 'Test', '<p>Test</p>', {idempotencyKey: 'test/resumed'});
     assert.equal(requests, 1);
   } finally {
     globalThis.fetch = originalFetch;

@@ -2,14 +2,14 @@ import test, { after } from 'node:test';
 import assert from 'node:assert/strict';
 import { register } from 'node:module';
 
-register('./helpers/pg-mem-loader.mjs', import.meta.url);
+register('./helpers/pglite-loader.mjs', import.meta.url);
 const BASE = 'http://127.0.0.1:3996';
 const SECRET = 'test-pause-secret';
 process.env.PORT = '3996';
 process.env.DATABASE_URL = 'postgres://mem/mem';
 process.env.CRON_SECRET = SECRET;
 process.env.RESEND_API_KEY = 'test-only-key';
-delete process.env.EMAILS_PAUSED; // The production default must be paused.
+process.env.EMAILS_PAUSED = 'true'; // Emergency pause blocks monthly and manual mail.
 
 const realFetch = globalThis.fetch;
 let externalRequests = 0;
@@ -19,7 +19,8 @@ globalThis.fetch = (input, init) => {
   return Promise.reject(new Error('Outside network blocked in this test'));
 };
 const { server } = await import('../server.js');
-after(() => new Promise(resolve => server.close(resolve)));
+const { closeDatabase } = await import('./helpers/pglite-pg.mjs');
+after(async () => { await new Promise(resolve => server.close(resolve)); await closeDatabase(); });
 for (let i = 0; i < 100; i++) {
   try {
     const res = await realFetch(BASE + '/api/admin/users?limit=1', { headers: { 'x-cron-secret': SECRET } });
@@ -44,7 +45,7 @@ test('every website email route is paused while subscriber preferences still sav
   assert.equal(saved.status, 200);
   const result = await saved.json();
   assert.equal(result.welcomeSent, false);
-  assert.equal(result.welcomeError, 'Email delivery is temporarily paused.');
+  assert.equal(result.welcomeError, null, 'preferences save without trying to send');
   const preferences = await (await realFetch(BASE + '/api/account/preferences', { headers })).json();
   assert.equal(preferences.emailFrequency, 'monthly');
   assert.equal(preferences.email, 'reader@example.com');
