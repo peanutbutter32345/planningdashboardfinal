@@ -113,14 +113,14 @@ test('explicit self-email remains available but repeated archive requests send o
   const token=await account('selfreader','self@example.com');
   const before=mail.length;
   const requests=await Promise.all(Array.from({length:6},()=>call('/api/newsletter/email',{
-    method:'POST',token,body:{issue:'2026-07',to:'someone-else@example.com'}
+    method:'POST',token,body:{emailIntent:'self',issue:'2026-07',to:'someone-else@example.com'}
   })));
   assert.ok(requests.every(r=>r.status===200));
   assert.equal(mail.length,before+1);
   assert.deepEqual(mail.at(-1).to,['self@example.com']);
   const results=await Promise.all(requests.map(r=>r.json()));
   assert.equal(results.filter(r=>r.alreadyRequested).length,5);
-  const another=await call('/api/newsletter/email',{method:'POST',token,body:{issue:'2026-08'}});
+  const another=await call('/api/newsletter/email',{method:'POST',token,body:{emailIntent:'self',issue:'2026-08'}});
   assert.equal(another.status,200);
   assert.equal(mail.length,before+2,'a different explicitly requested issue is allowed');
   assert.equal((await (await run('selfreader')).json()).sent,0,'manual mail never starts automatic mail');
@@ -138,8 +138,8 @@ test('unknown automatic outcomes retain their slot instead of retrying', async (
 test('unknown manual outcomes are not resent on retry', async () => {
   const token=await account('manualunknown','manualunknown@example.com');
   const before=mail.length; failNextSend=true;
-  assert.equal((await call('/api/newsletter/email',{method:'POST',token,body:{issue:'2026-06'}})).status,502);
-  const retry=await call('/api/newsletter/email',{method:'POST',token,body:{issue:'2026-06'}});
+  assert.equal((await call('/api/newsletter/email',{method:'POST',token,body:{emailIntent:'self',issue:'2026-06'}})).status,502);
+  const retry=await call('/api/newsletter/email',{method:'POST',token,body:{emailIntent:'self',issue:'2026-06'}});
   assert.equal(retry.status,200);
   assert.equal((await retry.json()).alreadyRequested,true);
   assert.equal(mail.length,before+1);
@@ -151,4 +151,21 @@ test('Off remains Off and is excluded from automatic delivery', async () => {
   const before=mail.length;
   assert.equal((await (await run('offreader')).json()).sent,0);
   assert.equal(mail.length,before);
+});
+
+
+test('old or background requests cannot send without explicit self-email intent', async () => {
+  const token=await account('intentreader','intent@example.com');
+  const before=mail.length;
+  for (const path of ['/api/newsletter/email','/api/reminders/email','/api/meetings/summary/email']) {
+    for (const emailIntent of [undefined, false, 'automatic']) {
+      const response=await call(path,{method:'POST',token,body:{issue:'2026-07',cityKey:'cupertino',emailIntent}});
+      assert.equal(response.status,400);
+      assert.match((await response.json()).error,/press Email me/);
+    }
+  }
+  assert.equal(mail.length,before);
+  const explicit=await call('/api/newsletter/email',{method:'POST',token,body:{emailIntent:'self',issue:'2026-07'}});
+  assert.equal(explicit.status,200);
+  assert.equal(mail.length,before+1);
 });

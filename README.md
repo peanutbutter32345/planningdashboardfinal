@@ -136,7 +136,7 @@ The one-time monthly-policy migration converts existing subscribers to Monthly, 
 
 The existing scheduler may continue calling `GET` or `POST /api/cron/send-digests` daily with `x-cron-secret`. The endpoint checks who is due, selects the latest published newsletter, and reserves each monthly delivery in Postgres before sending. Overlapping calls cannot send a second copy, and `force=1` is rejected. Unknown provider outcomes retain their reservation for review rather than retrying automatically. `dryRun=1` reports candidates without sending or reserving deliveries.
 
-Readers can explicitly email an archived issue, reminder, or meeting summary to their own saved address. Repeated requests for the same item within ten minutes are acknowledged without sending another copy. Both manual and monthly deliveries also carry a Resend idempotency key.
+Readers can explicitly email an archived issue, reminder, or meeting summary to their own saved address. Each Email me click marks its request with `emailIntent: self`; the server rejects unmarked or outdated requests before sending. Repeated requests for the same item within ten minutes are acknowledged without sending another copy. Both manual and monthly deliveries also carry a Resend idempotency key.
 
 Set `EMAILS_PAUSED=true` to block all mail in an emergency; otherwise the monthly policy applies. `/api/health` reports `emailsPaused`, `emailPolicyReady`, and the one-time reset date.
 

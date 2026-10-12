@@ -50,7 +50,7 @@ test('every website email route is paused while subscriber preferences still sav
   assert.equal(preferences.emailFrequency, 'monthly');
   assert.equal(preferences.email, 'reader@example.com');
   for (const path of ['/api/reminders/email', '/api/newsletter/email', '/api/meetings/summary/email']) {
-    const response = await realFetch(BASE + path, { method: 'POST', headers, body: '{}' });
+    const response = await realFetch(BASE + path, { method: 'POST', headers, body: JSON.stringify({emailIntent:'self'}) });
     assert.equal(response.status, 503);
     assert.equal((await response.json()).error, 'Email delivery is temporarily paused.');
   }

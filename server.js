@@ -636,6 +636,15 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
 });
 
 // ---------------- STARS ROUTES ----------------
+// Self-send endpoints require the explicit intent supplied by the Email me click handlers.
+// Old clients or background requests with only an issue/id must not send mail.
+function requireSelfEmailIntent(req, res, next) {
+  if (req.body?.emailIntent !== 'self') {
+    return res.status(400).json({ error: 'Refresh the page and press Email me to request a copy.' });
+  }
+  next();
+}
+
 // ---------------- REMINDERS ----------------
 const REMINDER_KINDS = ['board', 'plan', 'project', 'hearing'];
 const REMINDERS_MAX = 60;
@@ -736,7 +745,7 @@ app.delete('/api/reminders/:id', authMiddleware, async (req, res) => {
 
 // Mail the reader their own reminders, to the address already on their account. It only ever
 // sends to that address - nothing here takes a recipient from the request.
-app.post('/api/reminders/email', authMiddleware, async (req, res) => {
+app.post('/api/reminders/email', authMiddleware, requireSelfEmailIntent, async (req, res) => {
   if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   try {
     const u = await pool.query('SELECT email FROM users WHERE username = $1', [req.username]);
@@ -1201,7 +1210,7 @@ function issueEmailHtml(issue) {
       Every issue and its sources: <a href="${SITE_URL}/" style="color:#3E4F24">${esc(SITE_URL)}</a>
     </p></div>`;
 }
-app.post('/api/newsletter/email', authMiddleware, async (req, res) => {
+app.post('/api/newsletter/email', authMiddleware, requireSelfEmailIntent, async (req, res) => {
   if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   const issue = newsletterIssues().find(i => i.id === (req.body || {}).issue);
   if (!issue) return res.status(404).json({ error: 'That issue is not in the archive.' });
@@ -1646,7 +1655,7 @@ function meetingSummaryEmailHtml(cityLabel, days, summary) {
       Sent because you pressed "Email this summary" on the dashboard. Manage this under Your Account.
       <br>${SITE_URL}</p></div>`;
 }
-app.post('/api/meetings/summary/email', authMiddleware, async (req, res) => {
+app.post('/api/meetings/summary/email', authMiddleware, requireSelfEmailIntent, async (req, res) => {
   if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   try {
     const cityKey = String(req.body?.cityKey || '').trim();
