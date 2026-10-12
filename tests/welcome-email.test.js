@@ -19,6 +19,7 @@ process.env.DATABASE_URL = 'postgres://mem/mem';
 process.env.PORT = String(PORT);
 process.env.CRON_SECRET = SECRET;
 process.env.RESEND_API_KEY = 'test-resend-key';
+process.env.EMAILS_PAUSED = 'false'; // Exercise normal behavior after an explicit resume.
 
 // Resend is answered as if it accepted the message, and the message is kept so the test can count
 // them. Every other outside host fails at once, so the hearings lookup inside the recap does not

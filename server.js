@@ -18,6 +18,7 @@ import { buildBriefing, CITY_LABELS, cityLabel } from './digest.js';
 import { getHearings, getRecentMeetings } from './hearings.js';
 
 dotenv.config();
+const { EMAILS_PAUSED, EMAIL_PAUSE_MESSAGE, sendEmail } = await import('./email-delivery.js');
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
@@ -50,7 +51,6 @@ function completionBudget(base) {
   return base;
 }
 const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
-const RESEND_FROM = process.env.RESEND_FROM || 'The Bay Dashboard <onboarding@resend.dev>';
 // Only used to summarize recent meetings for a city with no Legistar feed configured - the
 // Legistar path above needs no key and is preferred whenever it's available. Free tier at
 // https://tavily.com.
@@ -637,6 +637,8 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
       // Nothing to report. An address left blank or updates set to Off is the reader's own
       // choice, and an existing subscriber is not owed another setup email; the client shows
       // a plain "Saved" when neither field comes back.
+    } else if (EMAILS_PAUSED) {
+      welcomeError = EMAIL_PAUSE_MESSAGE;
     } else if (!RESEND_API_KEY) {
       welcomeError = 'The server has no RESEND_API_KEY configured, so no email can be sent.';
     } else {
@@ -764,6 +766,7 @@ app.delete('/api/reminders/:id', authMiddleware, async (req, res) => {
 // Mail the reader their own reminders, to the address already on their account. It only ever
 // sends to that address - nothing here takes a recipient from the request.
 app.post('/api/reminders/email', authMiddleware, async (req, res) => {
+  if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   try {
     const u = await pool.query('SELECT email FROM users WHERE username = $1', [req.username]);
     const email = u.rows[0] && u.rows[0].email;
@@ -1062,7 +1065,7 @@ const outputSchema = {
 app.get('/api/health', async (_req,res) => {
   let provider = LLM_BASE_URL; try { provider = new URL(LLM_BASE_URL).host; } catch {}
   res.json({ok:true, model, provider, askConfigured:Boolean(LLM_API_KEY), sourceCount:SOURCES.length,
-    database:Boolean(pool), databaseReady:await databaseReady, guestRegistrationReady:guestSchemaReady});
+    emailsPaused:EMAILS_PAUSED, database:Boolean(pool), databaseReady:await databaseReady, guestRegistrationReady:guestSchemaReady});
 });
 
 app.get('/api/sources', (req,res) => {
@@ -1227,6 +1230,7 @@ function issueEmailHtml(issue) {
     </p></div>`;
 }
 app.post('/api/newsletter/email', authMiddleware, async (req, res) => {
+  if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   const issue = newsletterIssues().find(i => i.id === (req.body || {}).issue);
   if (!issue) return res.status(404).json({ error: 'That issue is not in the archive.' });
   try {
@@ -1242,19 +1246,6 @@ app.post('/api/newsletter/email', authMiddleware, async (req, res) => {
 });
 
 // ---------------- EMAIL DIGESTS ----------------
-async function sendEmail(to, subject, html) {
-  if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY not configured');
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: RESEND_FROM, to: [to], subject, html })
-  });
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    throw new Error(`Resend API error (${res.status}): ${body}`);
-  }
-}
-
 // Compares the current PROJECTS/NEWS_ARTICLES (from the frontend-mirrored data files) against
 // what's stored in the database. First-ever run just seeds the tables silently - it does not
 // treat "every project" as a change, since that would blast every subscriber on day one.
@@ -1359,6 +1350,7 @@ async function runDigests(req, res) {
   // Secret first, so an unauthenticated caller learns nothing about how the server is configured.
   const provided = req.headers['x-cron-secret'] || req.query.secret;
   if (!CRON_SECRET || provided !== CRON_SECRET) return res.status(401).json({ error: 'Invalid or missing cron secret.' });
+  if (EMAILS_PAUSED) return res.json({ ok: true, paused: true, sent: 0 });
   if (!requireDb(res)) return;
 
   // Testing switches. All three are behind the same shared secret as the run itself, so only
@@ -1845,6 +1837,7 @@ function meetingSummaryEmailHtml(cityLabel, days, summary) {
       <br>${SITE_URL}</p></div>`;
 }
 app.post('/api/meetings/summary/email', authMiddleware, async (req, res) => {
+  if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   try {
     const cityKey = String(req.body?.cityKey || '').trim();
     const cityLabel = String(req.body?.cityLabel || cityKey).trim();

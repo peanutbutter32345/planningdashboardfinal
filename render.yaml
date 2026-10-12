@@ -26,6 +26,9 @@ services:
       # Postgres connection string. Required for full accounts and email digests. Device-only guest profiles still work without it.
       - key: DATABASE_URL
         sync: false
+      # Global pause for every outgoing website email. Set false only to resume delivery.
+      - key: EMAILS_PAUSED
+        value: "true"
       # Resend API key. Without this no digest email can be sent.
       - key: RESEND_API_KEY
         sync: false

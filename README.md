@@ -162,6 +162,10 @@ That writes `preview-welcome.html` (first send), `preview-update.html` (things c
 `preview-quiet.html` (nothing changed). Set `PREVIEW_CITY` to try a different home city, e.g.
 `PREVIEW_CITY=cupertino npm run digest:preview`.
 
+### Pausing all website email
+
+Outgoing mail is currently paused by default. This blocks scheduled briefings, welcome recaps, reminders, newsletter copies, and meeting summaries without changing subscriber preferences. `/api/health` reports `emailsPaused`, and scheduled digest requests return `paused: true` with `sent: 0`. To resume only when requested, set `EMAILS_PAUSED=false` in Render and redeploy.
+
 ### Required environment variables
 
 ```text
