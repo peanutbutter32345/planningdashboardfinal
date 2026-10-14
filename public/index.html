@@ -2906,6 +2906,9 @@
 
 <script src="/data/regions.js"></script>
 <script src="/data/market-data.js"></script>
+<!-- Loaded only when ?tour=1 is in the URL: a self-driving walkthrough for recording a landing
+     page tour. Costs an ordinary reader nothing, because it is not fetched. -->
+<script>if(new URLSearchParams(location.search).get('tour')==='1'){const t=document.createElement('script');t.src='/tour.js';t.defer=true;document.head.appendChild(t);}</script>
 <script src="/data/city-projects.js"></script>
 <script src="/data/housing-records.js"></script>
 <script src="/data/city-news.js"></script>
