@@ -1904,7 +1904,7 @@
         <div class="rail-card rail-signup">
           <div class="rail-head">Get the briefing</div>
           <div class="rail-body">
-            <p>A plain-English recap of what's being built, what's changing, and which meetings decide it. Every two weeks or once a month, for your city.</p>
+            <p>A plain-English recap of what's being built, what's changing, and which meetings decide it. One published newsletter per month.</p>
             <button type="button" class="btn rail-btn" data-signup>Sign up now</button>
           </div>
         </div>
@@ -2550,9 +2550,9 @@
           </section>
 
           <section class="acct-panel" data-panel="email" hidden>
-            <h2>Stay updated with email summaries</h2>
+            <h2>Your monthly newsletter</h2>
             <div class="prefs-panel">
-              <p class="section-note">A plain-English recap of what is being built, what changed, and which meetings decide it. Quiet weeks still send - the point is to keep you current, not only to alert you.</p>
+              <p class="section-note">A plain-English recap of what is being built, what changed, and which meetings decide it. One published issue per month, with no extra email when you save settings.</p>
               <label for="prefsEmail" class="onboard-label">Email address</label>
               <input id="prefsEmail" type="email" placeholder="you@example.com" autocomplete="email" />
               <label for="prefsCity" class="onboard-label" style="margin-top:12px;">Your city</label>
@@ -2596,32 +2596,24 @@
                   <option value="woodside">Woodside</option>
                 </optgroup>
               </select>
-              <div class="auth-hint">Your city's news comes right after anything you've starred, ahead of the rest of the Bay Area.</div>
+              <div class="auth-hint">Choose your city for the dashboard. The monthly newsletter covers the Bay Area.</div>
               <label for="prefsFrequency" class="onboard-label" style="margin-top:12px;">How often</label>
               <select id="prefsFrequency">
                 <option value="off">Off</option>
-                <option value="biweekly">Every 2 weeks</option>
-                <option value="monthly">Monthly</option>
+                <option value="monthly">One newsletter per month</option>
               </select>
-              <span class="onboard-label" style="display:block; margin-top:14px;">Topics to include</span>
-              <div class="onboard-interests" id="prefsCategories"></div>
-              <div class="auth-hint">Your starred projects, boards and articles are always included, whatever you pick here.</div>
+              <div class="auth-hint">One published newsletter per month. Saving preferences sends no email. You can also email an issue to yourself from the archive.</div>
+              <div class="onboard-interests" id="prefsCategories" hidden></div>
               <button class="btn" id="prefsSaveBtn" type="button" style="margin-top:12px;">Save preferences</button>
               <div class="auth-error" id="prefsStatus" role="status" aria-live="polite"></div>
             </div>
-            <div class="acct-sec-h">What a briefing contains</div>
-            <ol class="acct-steps">
-              <li><b>What you're following</b> - every starred project, board and article, with anything that changed marked and sorted first.</li>
-              <li><b>In your city</b> - housing, transportation, other development, news, and who decides it.</li>
-              <li><b>Around the Bay Area</b> - projects that moved elsewhere, plus regional coverage.</li>
-              <li><b>Official links</b> - your city's own planning, permit and GIS pages.</li>
-            </ol>
-            <p class="acct-fineprint">Nothing in the briefing is model-generated. Status text is quoted from the record, and the summary line is assembled from counts.</p>
+            <div class="acct-sec-h">Your monthly newsletter</div>
+            <p class="acct-fineprint">Get one published issue per month, covering housing, development, transportation and civic news around the Bay Area. No welcome email or extra email when you save settings. Choose Off to unsubscribe. The archive stays available to read or email to yourself.</p>
           </section>
 
           <section class="acct-panel" data-panel="reminders" hidden>
             <h2>Reminders</h2>
-            <p class="section-note">Meeting schedules and plans you asked to keep. Send them to yourself now, or let them ride along with your regular briefing.</p>
+            <p class="section-note">Meeting schedules and plans you asked to keep. Email them to yourself when you need a copy.</p>
             <div class="rem-actions">
               <button type="button" class="btn" id="remEmailAll">Email all of these to me</button>
               <span class="rem-status" id="remStatus" role="status" aria-live="polite"></span>
@@ -2650,7 +2642,7 @@
 
           <section class="acct-panel" data-panel="saved" hidden>
             <h2>Saved</h2>
-            <p class="section-note">Everything you've starred, grouped by type. Starred items always lead your email briefing.</p>
+            <p class="section-note">Everything you've starred, grouped by type. Your saved items stay here for you to revisit.</p>
             <div id="starredContent"></div>
           </section>
           <section class="acct-panel" data-panel="admin" hidden>
@@ -7257,6 +7249,7 @@ async function renderArchive(){
 }
 // Sending an issue needs somewhere to send it, so a reader without an account is taken to the
 // signup form with the issue remembered.
+const pendingIssueEmails = new Set();
 async function emailIssue(id,button){
   const status=document.getElementById('arcStatus');
   if(!authToken){
@@ -7264,13 +7257,15 @@ async function emailIssue(id,button){
     document.querySelector('.arc-signup [data-signup]').click();
     return;
   }
+  if(pendingIssueEmails.has(id)) return;
+  pendingIssueEmails.add(id);
   const label=button.textContent;button.textContent='Sending...';button.disabled=true;
   try{
-    const result=await apiCall('/api/newsletter/email',{method:'POST',body:JSON.stringify({issue:id})});
-    status.textContent='Sent to '+result.to+'.';
+    const result=await apiCall('/api/newsletter/email',{method:'POST',body:JSON.stringify({issue:id,emailIntent:'self'})});
+    status.textContent=result.alreadyRequested ? 'This issue was requested recently. Please check your inbox.' : 'Sent to '+result.to+'.';
   }catch(error){
     status.textContent=error.message;
-  }finally{button.textContent=label;button.disabled=false;}
+  }finally{pendingIssueEmails.delete(id);button.textContent=label;button.disabled=false;}
 }
 document.getElementById('nlArchiveBtn').addEventListener('click',()=>showScreen('archive'));
 document.getElementById('arcSearch').addEventListener('input',e=>{archiveQuery=e.target.value;renderArchive();});
@@ -8698,7 +8693,6 @@ async function renderAcctReminders(){
     +   (r.city && CITIES[r.city] ? '<div class="rem-city">'+CITIES[r.city].label+'</div>' : '')
     + '</div>'
     + '<div class="rem-side">'
-    +   '<label class="rem-toggle"><input type="checkbox" data-remdigest="'+r.id+'"'+(r.in_digest?' checked':'')+' /> In my briefing</label>'
     +   '<button type="button" class="rem-mini" data-rememail="'+r.id+'">Email me this</button>'
     +   (r.url ? '<a class="rem-mini" href="'+r.url+'" target="_blank" rel="noopener">Open &#8599;</a>' : '')
     +   '<button type="button" class="rem-mini rem-del" data-remdel="'+r.id+'">Remove</button>'
@@ -8720,8 +8714,8 @@ async function remSend(id){
   const say = t => { if(st) st.textContent = t; };
   say('Sending…');
   try{
-    const r = await apiCall('/api/reminders/email', {method:'POST', body:JSON.stringify(id ? {id} : {})});
-    say('Sent to ' + (r.to || 'your address') + '.');
+    const r = await apiCall('/api/reminders/email', {method:'POST', body:JSON.stringify(id ? {id,emailIntent:'self'} : {emailIntent:'self'})});
+    say(r.alreadyRequested ? 'Already requested recently. Please check your inbox.' : 'Sent to ' + (r.to || 'your address') + '.');
   }catch(err){
     if(st){ st.innerHTML = emailBlockedHtml(err.message); wireAddPasswordButtons(st); } else say(err.message);
   }
@@ -8764,8 +8758,8 @@ function wireBoardActions(root){
           row = remItems.find(r=>r.kind==='board' && r.ref_id===d.refId);
         }
         if(!row) throw new Error('Could not save it first.');
-        const res = await apiCall('/api/reminders/email', {method:'POST', body:JSON.stringify({id:row.id})});
-        say('Sent to ' + (res.to || 'your address') + '.');
+        const res = await apiCall('/api/reminders/email', {method:'POST', body:JSON.stringify({id:row.id,emailIntent:'self'})});
+        say(res.alreadyRequested ? 'Already requested recently. Please check your inbox.' : 'Sent to ' + (res.to || 'your address') + '.');
         // Saving it also turns the Remind me button on.
         const rb = b.parentElement.querySelector('[data-remind]');
         if(rb){ rb.classList.add('on'); rb.innerHTML = '&#10003; In my reminders'; }
@@ -10544,7 +10538,7 @@ function generatePlan(){
     steps.push({
       time:'2 min',
       title:'Star them, and get the briefing',
-      body:'Starring a project puts it at the top of your emailed briefing, so you hear when its status changes instead of checking back. Set your city and frequency on the Account page.',
+      body:'Star a project to keep it on your account. Sign up for one monthly newsletter, or email saved reminders to yourself when you need them.',
       action:'signup',
     });
   }
@@ -10974,8 +10968,8 @@ document.getElementById('msEmail').addEventListener('click', async ()=>{
   btn.disabled = true;
   status.textContent = 'Sending…';
   try{
-    const r = await apiCall('/api/meetings/summary/email', {method:'POST', body:JSON.stringify({cityKey:msLastResult.cityKey, cityLabel:msLastResult.cityLabel})});
-    status.textContent = 'Sent to ' + (r.to || 'your email') + ' ✓';
+    const r = await apiCall('/api/meetings/summary/email', {method:'POST', body:JSON.stringify({cityKey:msLastResult.cityKey, cityLabel:msLastResult.cityLabel,emailIntent:'self'})});
+    status.textContent = r.alreadyRequested ? 'Already requested recently. Please check your inbox.' : 'Sent to ' + (r.to || 'your email') + ' ✓';
   }catch(err){
     status.innerHTML = 'Could not send that email: ' + emailBlockedHtml(err && err.message ? err.message : 'Unknown error');
     wireAddPasswordButtons(status);
@@ -12528,7 +12522,7 @@ async function renderAcctOverview(){
   const tiles = document.getElementById('acctTiles');
   if(tiles){
     tiles.innerHTML =
-        acctTile(s.project+s.news+s.board+s.resource, 'Items you follow', 'Starred things lead every briefing.')
+        acctTile(s.project+s.news+s.board+s.resource, 'Items you follow', 'Saved on your account.')
       + acctTile(projects, 'Tracked projects in ' + c.label, projects ? 'From the city’s own records.' : 'No public pipeline for this city yet.')
       + acctTile(news, 'Articles for ' + c.label, 'From local newsrooms.')
       + (r ? acctTile(r.pct + '%', 'Housing target permitted', r.units.toLocaleString() + ' of ' + r.target.toLocaleString() + ' homes this cycle.') : '');
@@ -12676,7 +12670,7 @@ function renderAcctPlan(){
     l:(c.deciders[0]||{}).link});
   if(c.data.length){
     steps.push({t:'10 min', h:'Pick a project to follow',
-      b:c.label+' has '+c.data.length+' tracked project'+(c.data.length===1?'':'s')+'. Star one and it leads your briefing whenever it moves.',
+      b:c.label+' has '+c.data.length+' tracked project'+(c.data.length===1?'':'s')+'. Star one to keep it on your account.',
       l:null});
   }
   if(RHNA[city]){
@@ -12706,7 +12700,7 @@ function renderAcctPlan(){
     +   reminderButtonHtml('plan', 'plan:'+city+':'+plannerEffort,
           'My get-involved plan for '+c.label,
           planText.slice(0, 900), null, city)
-    +   '<span class="plan-remind-note">Keeps the plan on your account. You can email it to yourself, or have it come with your briefing.</span>'
+    +   '<span class="plan-remind-note">Keeps the plan on your account. You can email it to yourself when you need it.</span>'
     + '</div>';
   wireReminderButtons(out);
   renderDraftPicker();
@@ -13340,16 +13334,9 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
   const homeCity = document.getElementById('prefsCity').value;
   statusEl.textContent = 'Saving…';
   try{
-    const result = await apiSavePreferences(email || null, emailFrequency, homeCity || null, [...prefsCategories]);
-    if(result && result.welcomeSent){
-      statusEl.textContent = 'Saved \u2713 - a recap is on its way to your inbox now.';
-    } else if(result && result.welcomeError){
-      // Say why nothing arrived. A silent "Saved" makes a misconfigured sender domain look
-      // like the email feature is simply broken.
-      statusEl.textContent = 'Saved \u2713 - but no email went out: ' + result.welcomeError;
-    } else {
-      statusEl.textContent = 'Saved \u2713';
-    }
+    await apiSavePreferences(email || null, emailFrequency, homeCity || null, [...prefsCategories]);
+    statusEl.textContent = emailFrequency === 'monthly'
+      ? 'Saved ✓ — one newsletter per month. No email was sent now.' : 'Saved ✓';
   } catch(err){
     statusEl.innerHTML = "Couldn't save: " + emailBlockedHtml(err.message);
     wireAddPasswordButtons(statusEl);
@@ -16371,8 +16358,34 @@ function renderRailCityPicker(){
   if(now)now.textContent=currentCity==='all'?'COUNTY & CITY VIEW':'';
 }
 
-let heroMap = null, heroLayer = null;
+/* Real city limits, from the US Census Bureau's Incorporated Places layer. Until this arrived,
+   every city carried a bounding box someone had typed by hand and rounded to two decimals, and
+   22 of the 32 written out here cut off part of their own city - Palo Alto by twelve kilometres,
+   because the rectangle stopped at the flatlands and the city runs well up into the foothills.
+   Anything framing a map on c.bbox was framing it on that.
+
+   Fetched the first time a map wants it rather than on page load: it is 312 KB, and the front
+   page does not need a single outline to draw. Once it lands, every city's bbox is replaced with
+   the one measured from its own boundary. */
+let cityBoundaries = null, cityBoundariesPending = null;
+function loadCityBoundaries(){
+  if(cityBoundaries) return Promise.resolve(cityBoundaries);
+  if(!cityBoundariesPending) cityBoundariesPending = fetch('/data/city-boundaries.json')
+    .then(r=>{ if(!r.ok) throw Error('boundaries '+r.status); return r.json(); })
+    .then(d=>{
+      cityBoundaries = d;
+      for(const [key, b] of Object.entries(d.cities||{})) if(CITIES[key] && b.bbox) CITIES[key].bbox = b.bbox;
+      return d;
+    })
+    .catch(()=>{ cityBoundariesPending = null; return null; });   // maps keep their typed box
+  return cityBoundariesPending;
+}
+function cityRing(key){ return cityBoundaries?.cities?.[key]?.ring || null; }
+
+let heroMap = null, heroLayer = null, heroOutline = null;
 function renderHeroMap(){
+  // First map on the page triggers the fetch; when it lands every bbox is real and this redraws.
+  if(!cityBoundaries) loadCityBoundaries().then(d=>{ if(d) renderHeroMap(); });
   const card = document.getElementById('heroMapCard');
   if(!card) return;
   if(typeof L === 'undefined'){ noteMapUnavailable(document.getElementById('heroMap')); return; }
@@ -16413,9 +16426,15 @@ function renderHeroMap(){
     ?(activeCounty||'Bay Area')+' · '+DashboardBrowse.citiesIn(CITIES,activeCounty).length+' areas'
     :here.length?here.length+' pinned'
     :(yaPins||[]).length?yaPins.length+' pinned elsewhere':'nothing pinned';
+  // The city's own outline, so a reader can see where the line actually runs rather than
+  // inferring it from where the pins stop.
+  if(heroOutline){ heroMap.removeLayer(heroOutline); heroOutline = null; }
+  const ring = currentCity==='all' ? null : cityRing(currentCity);
+  if(ring) heroOutline = L.polygon(ring, {color:'#3E4F24', weight:1.5, opacity:.75, fill:false, interactive:false}).addTo(heroMap);
   if(currentCity==='all')heroMap.fitBounds([[c.bbox.minLat,c.bbox.minLng],[c.bbox.maxLat,c.bbox.maxLng]],{padding:[20,20]});
   else if(here.length > 1) heroMap.fitBounds(here, {padding:[24,24]});
   else if(here.length === 1) heroMap.setView(here[0], 13);
+  else if(ring) heroMap.fitBounds([[c.bbox.minLat,c.bbox.minLng],[c.bbox.maxLat,c.bbox.maxLng]],{padding:[14,14]});
   else heroMap.setView([c.center.lat, c.center.lng], 11);
   setTimeout(()=>{ try{ heroMap.invalidateSize(); }catch(e){} }, 80);
 

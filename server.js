@@ -14,10 +14,13 @@ import { SYSTEM_INSTRUCTIONS, PLAIN_STYLE } from './instructions.js';
 import { PROJECTS } from './data/projects.js';
 import { NEWS_ARTICLES } from './data/news.js';
 import { BOARDS } from './data/boards.js';
-import { buildBriefing, CITY_LABELS, cityLabel } from './digest.js';
+import { CITY_LABELS, cityLabel } from './digest.js';
 import { getHearings, getRecentMeetings } from './hearings.js';
 
 dotenv.config();
+const { EMAILS_PAUSED, EMAIL_PAUSE_MESSAGE, sendEmail } = await import('./email-delivery.js');
+const { EMAIL_POLICY_VERSION, initEmailPolicy, scheduleFirstNewsletter,
+  claimMonthlyNewsletter, newsletterMonth, sendManualEmail } = await import('./email-policy.js');
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
@@ -50,7 +53,6 @@ function completionBudget(base) {
   return base;
 }
 const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
-const RESEND_FROM = process.env.RESEND_FROM || 'The Bay Dashboard <onboarding@resend.dev>';
 // Only used to summarize recent meetings for a city with no Legistar feed configured - the
 // Legistar path above needs no key and is preferred whenever it's available. Free tier at
 // https://tavily.com.
@@ -84,6 +86,8 @@ const pool = process.env.DATABASE_URL
   : null;
 
 let guestSchemaReady = false;
+let emailPolicyReady = false;
+let newsletterResetAt = null;
 async function initDb() {
   if (!pool) return;
   await pool.query(`
@@ -148,9 +152,8 @@ async function initDb() {
   } catch (err) {
     console.error('Case-insensitive username migration failed - two accounts differing only in case may still be possible until it succeeds:', err.message);
   }
-  // Biweekly and monthly are the only cadences now - move anyone on daily/weekly to the closest
-  // one still offered, rather than leaving them on a frequency the Account page can't display.
-  await pool.query(`UPDATE users SET email_frequency = 'biweekly' WHERE email_frequency IN ('daily','weekly');`);
+  newsletterResetAt = await initEmailPolicy(pool);
+  emailPolicyReady = true;
   await pool.query(`
     CREATE TABLE IF NOT EXISTS sessions (
       token TEXT PRIMARY KEY,
@@ -558,9 +561,7 @@ app.post('/api/logout', authMiddleware, async (req, res) => {
 });
 
 // ---------------- EMAIL DIGEST PREFERENCES ----------------
-// Two cadences only. The underlying records are updated by hand, so anything more frequent would
-// send the same briefing twice. daily/weekly are still honoured in FREQUENCY_DAYS so any row
-// predating this is scheduled sensibly until the migration below converts it.
+// Only one automatic newsletter per month. Saving preferences never sends an email.
 const VALID_CATEGORIES = ['Housing', 'Transportation', 'Building', 'Civic'];
 function parseCategories(raw) {
   if (!raw) return [...VALID_CATEGORIES];
@@ -568,17 +569,17 @@ function parseCategories(raw) {
   return picked.length ? picked : [...VALID_CATEGORIES];
 }
 
-const VALID_FREQUENCIES = ['off', 'biweekly', 'monthly'];
-const FREQUENCY_DAYS = { daily: 1, weekly: 7, biweekly: 14, monthly: 30 };
+const VALID_FREQUENCIES = ['off', 'monthly'];
 function validEmail(e) { return typeof e === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
 app.get('/api/account/preferences', authMiddleware, async (req, res) => {
   try {
-    const result = await pool.query('SELECT email, email_frequency, home_city, categories FROM users WHERE username = $1', [req.username]);
+    const result = await pool.query('SELECT email, email_frequency, home_city, categories, next_newsletter_at FROM users WHERE username = $1', [req.username]);
     if (!result.rows.length) return res.status(404).json({ error: 'Account not found.' });
     res.json({
       email: result.rows[0].email,
       emailFrequency: result.rows[0].email_frequency,
+      nextNewsletterAt: result.rows[0].next_newsletter_at,
       homeCity: result.rows[0].home_city,
       categories: parseCategories(result.rows[0].categories),
       allCategories: VALID_CATEGORIES,
@@ -591,12 +592,14 @@ app.get('/api/account/preferences', authMiddleware, async (req, res) => {
 });
 
 app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
-  const { email, emailFrequency, homeCity, categories } = req.body || {};
+  const { email, homeCity, categories } = req.body || {};
+  // Older open tabs may still submit the removed biweekly choice. Normalize it to monthly.
+  const emailFrequency = req.body?.emailFrequency === 'biweekly' ? 'monthly' : req.body?.emailFrequency;
   if (email !== undefined && email !== null && email !== '' && !validEmail(email)) {
     return res.status(400).json({ error: 'That doesn\'t look like a valid email address.' });
   }
   if (emailFrequency !== undefined && !VALID_FREQUENCIES.includes(emailFrequency)) {
-    return res.status(400).json({ error: 'Frequency must be off, biweekly, or monthly.' });
+    return res.status(400).json({ error: 'Frequency must be off or monthly.' });
   }
   if (homeCity !== undefined && homeCity !== null && homeCity !== '' && !CITY_LABELS[homeCity]) {
     return res.status(400).json({ error: 'Unknown city.' });
@@ -608,6 +611,7 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     if (!categories.length) return res.status(400).json({ error: 'Pick at least one category, or the briefing would be empty.' });
   }
   try {
+    const before = (await pool.query('SELECT email, email_frequency FROM users WHERE username = $1', [req.username])).rows[0];
     const fields = [];
     const values = [];
     let i = 1;
@@ -619,43 +623,12 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
     values.push(req.username);
     await pool.query(`UPDATE users SET ${fields.join(', ')} WHERE username = $${i}`, values);
 
-    // Signing up for the briefing sends an immediate recap, so the reader sees what they signed
-    // up for instead of waiting for the next scheduled run. Only on the way in, though: this
-    // fired on every save, so changing a city or unticking a category re-sent an email titled
-    // "Your profile on The Bay Dashboard is ready". It also left last_digest_sent_at null, so
-    // the next cron run read the reader as new and sent the setup briefing a third time. A
-    // successful recap now records itself, which is what both this route and runDigests use to
-    // tell a new subscriber from an existing one.
-    const after = await pool.query(
-      'SELECT email, email_frequency, home_city, categories, last_digest_sent_at FROM users WHERE username = $1',
-      [req.username]);
-    const u = after.rows[0];
-    const subscribing = Boolean(u.email) && u.email_frequency !== 'off' && !u.last_digest_sent_at;
-    let welcomeSent = false;
-    let welcomeError = null;
-    if (!subscribing) {
-      // Nothing to report. An address left blank or updates set to Off is the reader's own
-      // choice, and an existing subscriber is not owed another setup email; the client shows
-      // a plain "Saved" when neither field comes back.
-    } else if (!RESEND_API_KEY) {
-      welcomeError = 'The server has no RESEND_API_KEY configured, so no email can be sent.';
-    } else {
-      try {
-        await sendWelcomeRecap({ username: req.username, email: u.email, homeCity: u.home_city,
-                                 frequency: u.email_frequency, categories: parseCategories(u.categories) });
-        welcomeSent = true;
-        // Only after it actually went. A failed send leaves this null so the reader's next save
-        // can try again rather than silently never sending one.
-        await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [req.username]);
-      } catch (err) {
-        // A failed welcome must not fail the save - preferences are already persisted. Surfacing
-        // the reason matters though: silently showing "Saved" for a failed send makes a
-        // misconfigured sender domain look like the feature simply doesn't work.
-        console.error(`Welcome recap to ${req.username} failed:`, err.message);
-        welcomeError = err.message;
-      }
+    const after = (await pool.query('SELECT email, email_frequency, next_newsletter_at FROM users WHERE username = $1', [req.username])).rows[0];
+    if (after.email && after.email_frequency === 'monthly' &&
+        (before?.email_frequency !== 'monthly' || before?.email !== after.email || !after.next_newsletter_at)) {
+      await scheduleFirstNewsletter(pool, req.username);
     }
-    res.json({ ok: true, welcomeSent, welcomeError });
+    res.json({ ok: true, welcomeSent: false, welcomeError: null });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Could not save preferences.' });
@@ -663,6 +636,15 @@ app.patch('/api/account/preferences', authMiddleware, async (req, res) => {
 });
 
 // ---------------- STARS ROUTES ----------------
+// Self-send endpoints require the explicit intent supplied by the Email me click handlers.
+// Old clients or background requests with only an issue/id must not send mail.
+function requireSelfEmailIntent(req, res, next) {
+  if (req.body?.emailIntent !== 'self') {
+    return res.status(400).json({ error: 'Refresh the page and press Email me to request a copy.' });
+  }
+  next();
+}
+
 // ---------------- REMINDERS ----------------
 const REMINDER_KINDS = ['board', 'plan', 'project', 'hearing'];
 const REMINDERS_MAX = 60;
@@ -763,7 +745,8 @@ app.delete('/api/reminders/:id', authMiddleware, async (req, res) => {
 
 // Mail the reader their own reminders, to the address already on their account. It only ever
 // sends to that address - nothing here takes a recipient from the request.
-app.post('/api/reminders/email', authMiddleware, async (req, res) => {
+app.post('/api/reminders/email', authMiddleware, requireSelfEmailIntent, async (req, res) => {
+  if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   try {
     const u = await pool.query('SELECT email FROM users WHERE username = $1', [req.username]);
     const email = u.rows[0] && u.rows[0].email;
@@ -780,9 +763,10 @@ app.post('/api/reminders/email', authMiddleware, async (req, res) => {
       : (await pool.query('SELECT * FROM reminders WHERE username = $1 ORDER BY created_at DESC', [req.username])).rows;
     if (!rows.length) return res.status(400).json({ error: 'Nothing to send yet.' });
 
-    await sendEmail(email, rows.length === 1 ? 'Reminder: ' + rows[0].label : 'Your reminders',
-                    reminderHtml(rows, req.username));
-    res.json({ ok: true, sent: rows.length, to: email.replace(/(.{2}).*(@.*)/, '$1***$2') });
+    const delivery = await sendManualEmail(pool, req.username, 'reminders',
+      rows.map(r => r.id).sort((a,b) => a-b), email,
+      rows.length === 1 ? 'Reminder: ' + rows[0].label : 'Your reminders', reminderHtml(rows, req.username));
+    res.json({ ok: true, ...delivery, sent: delivery.alreadyRequested ? 0 : 1, to: email.replace(/(.{2}).*(@.*)/, '$1***$2') });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Could not send that email: ' + err.message });
@@ -1062,7 +1046,7 @@ const outputSchema = {
 app.get('/api/health', async (_req,res) => {
   let provider = LLM_BASE_URL; try { provider = new URL(LLM_BASE_URL).host; } catch {}
   res.json({ok:true, model, provider, askConfigured:Boolean(LLM_API_KEY), sourceCount:SOURCES.length,
-    database:Boolean(pool), databaseReady:await databaseReady, guestRegistrationReady:guestSchemaReady});
+    emailsPaused:EMAILS_PAUSED, emailPolicy:EMAIL_POLICY_VERSION, emailPolicyReady, newsletterResetAt, database:Boolean(pool), databaseReady:await databaseReady, guestRegistrationReady:guestSchemaReady});
 });
 
 app.get('/api/sources', (req,res) => {
@@ -1226,244 +1210,71 @@ function issueEmailHtml(issue) {
       Every issue and its sources: <a href="${SITE_URL}/" style="color:#3E4F24">${esc(SITE_URL)}</a>
     </p></div>`;
 }
-app.post('/api/newsletter/email', authMiddleware, async (req, res) => {
+app.post('/api/newsletter/email', authMiddleware, requireSelfEmailIntent, async (req, res) => {
+  if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   const issue = newsletterIssues().find(i => i.id === (req.body || {}).issue);
   if (!issue) return res.status(404).json({ error: 'That issue is not in the archive.' });
   try {
     const row = await pool.query('SELECT email FROM users WHERE username = $1', [req.username]);
     const to = row.rows[0]?.email;
     if (!to) return res.status(400).json({ error: 'Add an email address on your account page first, then try again.' });
-    await sendEmail(to, `The Bay Dashboard: ${issue.month}`, issueEmailHtml(issue));
-    res.json({ ok: true, to });
+    const delivery = await sendManualEmail(pool, req.username, 'newsletter', issue.id,
+      to, `The Bay Dashboard: ${issue.month}`, issueEmailHtml(issue));
+    res.json({ ok: true, ...delivery, to });
   } catch (err) {
     console.error('Newsletter send failed:', err.message);
     res.status(502).json({ error: 'The email could not be sent from this server.' });
   }
 });
 
-// ---------------- EMAIL DIGESTS ----------------
-async function sendEmail(to, subject, html) {
-  if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY not configured');
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: RESEND_FROM, to: [to], subject, html })
-  });
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    throw new Error(`Resend API error (${res.status}): ${body}`);
-  }
-}
-
-// Compares the current PROJECTS/NEWS_ARTICLES (from the frontend-mirrored data files) against
-// what's stored in the database. First-ever run just seeds the tables silently - it does not
-// treat "every project" as a change, since that would blast every subscriber on day one.
-async function syncSnapshotsAndGetChanges() {
-  // One read per table, then the comparison in memory, then only the writes that are needed.
-  // This used to issue a SELECT for every single record and an INSERT or UPDATE after it: with
-  // 2,800 projects, 900 articles and 460 boards that is over four thousand round trips in series,
-  // inside the HTTP request the scheduler is waiting on. A slow database turned a digest run into
-  // a platform timeout, which cut the run off before anyone's email was sent.
-  //
-  // Writes go through the primary key with ON CONFLICT, so a record added between the read and
-  // the write lands as an update instead of raising a duplicate key.
-  const seedIfEmpty = count => (Number(count) === 0 ? new Date(0) : new Date());
-
-  // --- projects ---
-  const projectRows = await pool.query('SELECT project_id, stage, last_note, flag FROM project_snapshots');
-  const projectsBefore = new Map(projectRows.rows.map(r => [r.project_id, r]));
-  const projectStamp = seedIfEmpty(projectRows.rows.length);
-  for (const p of PROJECTS) {
-    const row = projectsBefore.get(p.id);
-    if (!row) {
-      await pool.query(
-        `INSERT INTO project_snapshots (project_id, stage, last_note, flag, addr, city, updated_at)
-         VALUES ($1,$2,$3,$4,$5,$6,$7)
-         ON CONFLICT (project_id) DO UPDATE
-           SET stage=EXCLUDED.stage, last_note=EXCLUDED.last_note, flag=EXCLUDED.flag,
-               addr=EXCLUDED.addr, city=EXCLUDED.city, updated_at=EXCLUDED.updated_at`,
-        [p.id, p.stage, p.lastNote, p.flag, p.addr, p.city, projectStamp]);
-    } else if (row.stage !== p.stage || row.last_note !== p.lastNote || row.flag !== p.flag) {
-      await pool.query(
-        `UPDATE project_snapshots SET stage=$1, last_note=$2, flag=$3, updated_at=now() WHERE project_id=$4`,
-        [p.stage, p.lastNote, p.flag, p.id]);
-    }
-  }
-
-  // --- news ---
-  const newsRows = await pool.query('SELECT url FROM news_seen');
-  const newsBefore = new Set(newsRows.rows.map(r => r.url));
-  const newsStamp = seedIfEmpty(newsRows.rows.length);
-  for (const a of NEWS_ARTICLES) {
-    if (newsBefore.has(a.url)) continue;
-    await pool.query(
-      `INSERT INTO news_seen (url, title, first_seen_at) VALUES ($1,$2,$3)
-       ON CONFLICT (url) DO NOTHING`,
-      [a.url, a.title, newsStamp]);
-    // Two records can carry the same URL, so without this the second one inserts again on the
-    // next run and the article reads as new a second time.
-    newsBefore.add(a.url);
-  }
-
-  // --- boards ---
-  const boardRows = await pool.query('SELECT board_id, when_text, body FROM board_snapshots');
-  const boardsBefore = new Map(boardRows.rows.map(r => [r.board_id, r]));
-  const boardStamp = seedIfEmpty(boardRows.rows.length);
-  for (const b of BOARDS) {
-    const row = boardsBefore.get(b.id);
-    if (!row) {
-      await pool.query(
-        `INSERT INTO board_snapshots (board_id, name, when_text, body, city, board_type, updated_at)
-         VALUES ($1,$2,$3,$4,$5,$6,$7)
-         ON CONFLICT (board_id) DO UPDATE
-           SET name=EXCLUDED.name, when_text=EXCLUDED.when_text, body=EXCLUDED.body,
-               city=EXCLUDED.city, board_type=EXCLUDED.board_type, updated_at=EXCLUDED.updated_at`,
-        [b.id, b.name, b.when, b.body, b.city, b.boardType, boardStamp]);
-    } else if (row.when_text !== b.when || row.body !== b.body) {
-      await pool.query(
-        `UPDATE board_snapshots SET when_text=$1, body=$2, updated_at=now() WHERE board_id=$3`,
-        [b.when, b.body, b.id]);
-    }
-  }
-}
-
-async function starIdsFor(username) {
-  const starred = await pool.query('SELECT item_type, item_id FROM stars WHERE username = $1', [username]);
-  return {
-    projects: new Set(starred.rows.filter(r => r.item_type === 'project').map(r => r.item_id)),
-    boards: new Set(starred.rows.filter(r => r.item_type === 'board').map(r => r.item_id)),
-    news: new Set(starred.rows.filter(r => r.item_type === 'news').map(r => r.item_id)),
-  };
-}
-
-// Sends the immediate "you're set up" recap. Rendering lives in digest.js; this only supplies
-// the user's starred items and hands the result to Resend.
-async function sendWelcomeRecap({ username, email, homeCity, frequency, categories }) {
-  const stars = await starIdsFor(username);
-  let hearings = [];
-  try { hearings = (await getHearings()).hearings; }
-  catch (err) { console.error('Hearings unavailable for welcome recap:', err.message); }
-  const { subject, html } = buildBriefing({
-    username, homeCity, frequency, stars, categories, hearings,
-    changed: null,   // nothing to compare against on the first send
-    isFirst: true,
-  });
-  await sendEmail(email, subject, html);
-}
-
-// Protected by a shared secret so only your external scheduler (e.g. cron-job.org) can trigger it.
-// Accepts GET as well as POST because most hosted schedulers send a plain GET by default.
-// Checks EVERY user each time it runs, but only emails whoever is individually due - so it's meant
-// to be called on a fixed daily schedule regardless of each user's chosen frequency.
+// ---------------- MONTHLY NEWSLETTER ----------------
+// The existing scheduler URL is retained. It now sends only the latest published issue,
+// once per subscribed account and inbox per month. There is no forced-send bypass.
 async function runDigests(req, res) {
-  // Secret first, so an unauthenticated caller learns nothing about how the server is configured.
   const provided = req.headers['x-cron-secret'] || req.query.secret;
   if (!CRON_SECRET || provided !== CRON_SECRET) return res.status(401).json({ error: 'Invalid or missing cron secret.' });
+  if (EMAILS_PAUSED) return res.json({ ok: true, paused: true, sent: 0 });
   if (!requireDb(res)) return;
-
-  // Testing switches. All three are behind the same shared secret as the run itself, so only
-  // whoever holds CRON_SECRET can use them. Without these there is no way to exercise a
-  // biweekly/monthly briefing without waiting out the real interval.
-  //   dryRun=1   - build every briefing and report what would go out, but send nothing
-  //   force=1    - ignore the interval check, so a user who isn't due yet still gets one
-  //   only=<user> - restrict the run to a single username
-  const dryRun = ['1', 'true'].includes(String(req.query.dryRun || '').toLowerCase());
-  const force = ['1', 'true'].includes(String(req.query.force || '').toLowerCase());
-  const only = (req.query.only || '').trim();
-
-  if (!RESEND_API_KEY && !dryRun) {
-    return res.status(500).json({ error: 'RESEND_API_KEY is not configured, so no email can be sent.' });
+  if (['1', 'true'].includes(String(req.query.force || '').toLowerCase())) {
+    return res.status(400).json({ error: 'The monthly newsletter limit cannot be bypassed.' });
   }
-
+  const dryRun = ['1', 'true'].includes(String(req.query.dryRun || '').toLowerCase());
+  const only = String(req.query.only || '').trim();
   try {
-    await syncSnapshotsAndGetChanges();
-
-    // One fetch for the whole run, shared by every briefing. A Legistar outage must not stop the
-    // emails: an empty list just means the hearings section is omitted.
-    let hearingData = { hearings: [] };
-    try { hearingData = await getHearings(); }
-    catch (err) { console.error('Hearings unavailable for this run:', err.message); }
-
-    // Interval differs per user's chosen frequency, so filter in JS rather than a single SQL interval.
-    const params = [];
-    let sql = `SELECT username, email, email_frequency, home_city, categories, last_digest_sent_at, created_at FROM users
-               WHERE email_frequency != 'off' AND email IS NOT NULL`;
-    if (only) { params.push(only); sql += ` AND username = $${params.length}`; }
-    const allCandidates = await pool.query(sql, params);
-
-    const now = Date.now();
-    const due = allCandidates.rows.filter(u => {
-      if (force) return true;
-      const days = FREQUENCY_DAYS[u.email_frequency] || 7;
-      const last = u.last_digest_sent_at ? new Date(u.last_digest_sent_at).getTime() : new Date(u.created_at).getTime();
-      return (now - last) >= days * 24 * 60 * 60 * 1000;
-    });
-
-    let sent = 0, failed = 0;
-    const report = [];
-    for (const u of due) {
-      const since = u.last_digest_sent_at || u.created_at;
-      const [projectsChanged, articlesNew, boardsChanged, stars, remindersRow] = await Promise.all([
-        pool.query('SELECT project_id FROM project_snapshots WHERE updated_at > $1', [since]),
-        pool.query('SELECT url FROM news_seen WHERE first_seen_at > $1', [since]),
-        pool.query('SELECT board_id FROM board_snapshots WHERE updated_at > $1', [since]),
-        starIdsFor(u.username),
-        // Only the ones this reader marked to ride along with the briefing.
-        pool.query('SELECT label, detail, url, city FROM reminders WHERE username = $1 AND in_digest = true ORDER BY created_at DESC', [u.username]),
-      ]);
-
-      // A quiet period still gets a briefing - these sets only control what's marked "Updated"
-      // and what sorts to the top, not whether an email goes out at all.
-      const changed = {
-        projects: new Set(projectsChanged.rows.map(r => r.project_id)),
-        boards: new Set(boardsChanged.rows.map(r => r.board_id)),
-        news: new Set(articlesNew.rows.map(r => r.url)),
-      };
-
-      const briefing = buildBriefing({
-        username: u.username,
-        homeCity: u.home_city,
-        frequency: u.email_frequency,
-        categories: parseCategories(u.categories),
-        hearings: hearingData.hearings,
-        reminders: remindersRow.rows,
-        stars,
-        changed,
-        sinceLabel: new Date(since).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),
-        isFirst: !u.last_digest_sent_at,
-      });
-
-      if (dryRun) {
-        // Everything above already ran, so this proves the briefing builds for this user - it
-        // just stops short of Resend and leaves last_digest_sent_at alone.
-        report.push({
-          username: u.username,
-          to: u.email.replace(/^(.).*(@.*)$/, '$1***$2'),
-          frequency: u.email_frequency,
-          city: u.home_city || null,
-          subject: briefing.subject,
-          htmlBytes: briefing.html.length,
-          markedUpdated: changed.projects.size + changed.boards.size + changed.news.size,
-        });
-        continue;
-      }
-
+    const issue = newsletterIssues().filter(i => i.id <= newsletterMonth())
+      .sort((a,b) => b.id.localeCompare(a.id))[0];
+    if (!issue) return res.json({ ok: true, sent: 0, note: 'No published newsletter issue.' });
+    const params = [issue.id];
+    let sql = `SELECT username, email FROM users
+      WHERE kind = 'account' AND email_frequency = 'monthly' AND email IS NOT NULL
+      AND next_newsletter_at <= now()
+      AND (last_newsletter_issue IS NULL OR last_newsletter_issue <> $1)`;
+    if (only) { params.push(only); sql += ` AND username = $2`; }
+    const candidates = (await pool.query(sql, params)).rows;
+    if (dryRun) return res.json({ ok: true, dryRun: true, due: candidates.length, sent: 0, issue: issue.id });
+    if (!RESEND_API_KEY) return res.status(503).json({ error: 'Email is not configured on the server yet.' });
+    let sent = 0, skipped = 0, failed = 0;
+    for (const account of candidates) {
+      const claim = await claimMonthlyNewsletter(pool, account.username, issue.id);
+      if (!claim) { skipped++; continue; }
       try {
-        await sendEmail(u.email, briefing.subject, briefing.html);
-        await pool.query('UPDATE users SET last_digest_sent_at = now() WHERE username = $1', [u.username]);
+        await sendEmail(claim.email, `The Bay Dashboard: ${issue.month}`, issueEmailHtml(issue),
+          { idempotencyKey: 'monthly/' + claim.id });
+        await pool.query(`UPDATE monthly_newsletter_deliveries SET status = 'sent', sent_at = now() WHERE id = $1`, [claim.id]);
+        await pool.query(`UPDATE users SET last_digest_sent_at = now(), last_newsletter_issue = $1 WHERE username = $2`,
+          [issue.id, claim.username]);
         sent++;
-        report.push({ username: u.username, to: u.email.replace(/^(.).*(@.*)$/, '$1***$2'), subject: briefing.subject, ok: true });
-      } catch (err) {
-        console.error(`Failed to send briefing to ${u.username}:`, err.message);
+      } catch (error) {
+        // Keep the reserved monthly slot even when delivery or recording has an unknown outcome.
+        await pool.query(`UPDATE monthly_newsletter_deliveries SET status = 'unknown' WHERE id = $1`, [claim.id]).catch(() => {});
+        console.error('Monthly newsletter delivery needs review:', claim.id, error.message);
         failed++;
-        report.push({ username: u.username, ok: false, error: err.message });
       }
     }
-
-    res.json({ ok: true, dryRun, force, checked: allCandidates.rows.length, due: due.length, sent, failed, report });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Digest run failed: ' + err.message });
+    res.json({ ok: true, dryRun: false, issue: issue.id, due: candidates.length, sent, skipped, failed });
+  } catch (error) {
+    console.error('Monthly newsletter run failed:', error.message);
+    res.status(500).json({ error: 'The monthly newsletter run failed.' });
   }
 }
 
@@ -1844,7 +1655,8 @@ function meetingSummaryEmailHtml(cityLabel, days, summary) {
       Sent because you pressed "Email this summary" on the dashboard. Manage this under Your Account.
       <br>${SITE_URL}</p></div>`;
 }
-app.post('/api/meetings/summary/email', authMiddleware, async (req, res) => {
+app.post('/api/meetings/summary/email', authMiddleware, requireSelfEmailIntent, async (req, res) => {
+  if (EMAILS_PAUSED) return res.status(503).json({ error: EMAIL_PAUSE_MESSAGE });
   try {
     const cityKey = String(req.body?.cityKey || '').trim();
     const cityLabel = String(req.body?.cityLabel || cityKey).trim();
@@ -1861,8 +1673,9 @@ app.post('/api/meetings/summary/email', authMiddleware, async (req, res) => {
     if (!result.supported) return res.status(400).json({ error: result.note || `No meeting feed is configured for ${cityLabel} yet.` });
     if (!result.summary) return res.status(503).json({ error: result.note || 'No summary is available to send yet.' });
 
-    await sendEmail(to, `Recent meetings - ${cityLabel}`, meetingSummaryEmailHtml(cityLabel, result.days, result.summary));
-    res.json({ ok: true, to });
+    const delivery = await sendManualEmail(pool, req.username, 'meeting-summary', cityKey, to,
+      `Recent meetings - ${cityLabel}`, meetingSummaryEmailHtml(cityLabel, result.days, result.summary));
+    res.json({ ok: true, ...delivery, to });
   } catch (err) {
     console.error('Meeting summary email failed:', err.message);
     res.status(502).json({ error: 'The email could not be sent: ' + err.message });

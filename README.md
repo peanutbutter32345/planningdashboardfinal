@@ -128,124 +128,19 @@ The existing Ask page already renders `answer` on the left and `resources` on th
 - The browser never receives the API key.
 - The assistant can only expose resource URLs that are already in the server's approved source registry.
 
-## Email briefings
+## Monthly newsletter emails
 
-Every send is a **standing briefing, not a change alert**. A quiet week still produces a full
-email - the point is to keep readers aware of housing, transportation, development, and the boards
-that decide them, whether or not anything moved. Anything that *has* changed since the reader's
-last email is marked **Updated** and sorts to the top of its section.
+Automatic email is limited to one published newsletter issue per subscribed account and inbox per month. Preferences offer Monthly or Off; saving them never sends a welcome or setup email. Dashboard city and topic preferences do not create separate email streams.
 
-Each briefing is ordered the same way:
+The one-time monthly-policy migration converts existing subscribers to Monthly, preserves opt-outs and addresses, and starts their next delivery at least one month after the reset. Restarting or redeploying does not repeat the reset. New subscriptions and changed email addresses also wait a month.
 
-1. **What you're following** - every starred project, board, and article; changed ones first.
-2. **In {your city}** - Housing · Transportation · Other development · In the news ·
-   Who decides and when they meet · Ways to get involved.
-3. **Around the rest of the Bay Area** - projects that moved, plus recent regional news.
-4. **Official {your city} links** - the city's own planning, permit, and GIS pages.
+The existing scheduler may continue calling `GET` or `POST /api/cron/send-digests` daily with `x-cron-secret`. The endpoint checks who is due, selects the latest published newsletter, and reserves each monthly delivery in Postgres before sending. Overlapping calls cannot send a second copy, and `force=1` is rejected. Unknown provider outcomes retain their reservation for review rather than retrying automatically. `dryRun=1` reports candidates without sending or reserving deliveries.
 
-Every project title links to `?project=<id>` on the dashboard, which switches to that city, filters
-to that record, and highlights it. Board titles link to the city's own board page, and articles
-link to the source.
+Readers can explicitly email an archived issue, reminder, or meeting summary to their own saved address. Each Email me click marks its request with `emailIntent: self`; the server rejects unmarked or outdated requests before sending. Repeated requests for the same item within ten minutes are acknowledged without sending another copy. Both manual and monthly deliveries also carry a Resend idempotency key.
 
-Nothing here is model-generated. Status text is quoted verbatim from the data files, and the one
-summary sentence is assembled from integer counts - a model in that position could hallucinate a
-project's status, and people may act on this.
+Set `EMAILS_PAUSED=true` to block all mail in an emergency; otherwise the monthly policy applies. `/api/health` reports `emailsPaused`, `emailPolicyReady`, and the one-time reset date.
 
-Rendering lives in `digest.js` as pure functions: no database, no network. Preview every variant
-without sending anything:
-
-```bash
-npm run digest:preview
-```
-
-That writes `preview-welcome.html` (first send), `preview-update.html` (things changed), and
-`preview-quiet.html` (nothing changed). Set `PREVIEW_CITY` to try a different home city, e.g.
-`PREVIEW_CITY=cupertino npm run digest:preview`.
-
-### Required environment variables
-
-```text
-DATABASE_URL=postgres://...
-RESEND_API_KEY=re_...
-RESEND_FROM=The Bay Dashboard <updates@your-verified-domain.com>
-CRON_SECRET=<a long random string>
-SITE_URL=https://your-site.com
-ADMIN_USERNAMES=<your account username>
-```
-
-`RESEND_FROM` matters: the default `onboarding@resend.dev` only delivers to the email address on
-your own Resend account, so real subscribers will silently receive nothing until you verify a
-domain in Resend and set this.
-
-### The newsletter
-
-`node scripts/build-newsletter.mjs` writes `public/data/newsletter.json`: eighteen issues, one a
-month from April 2025, newest first, read from the Newsletter tab. Re-run it after refreshing news,
-housing records or market data.
-
-Each issue is an article: a photograph, a lead story, the month in brief, housing and development
-with its statistics and a chart of the market years that issue was allowed to know, transportation,
-county by county, cities in focus, who decides, and what to watch next. Datelines fall between the
-23rd and the 30th - drawn from the month's own characters, so rebuilding never moves a published
-issue - and an issue covers the ground since the previous dateline rather than the calendar month,
-so nothing falls down the gap.
-
-`data/newsletter-research.json` carries events researched outside this site's datasets - state laws,
-regional funding, the decisions cities then work inside - each with the date it was published and
-the source it was checked against.
-
-Each issue is fixed at the end of its month and may contain only what had been **published** by
-then - not everything that had happened by then. Every source carries its own availability date:
-
-| Source | Available from |
-| --- | --- |
-| News article | its publication date |
-| Curated city record | the date the city posted it |
-| HCD annual report row | June of the year after its reporting year, once Table A2 is on data.ca.gov |
-| Zillow ZHVI / ZORI | 20 August of each series year, since each point is that year's 31 July value |
-| ACS 2020-2024 5-year | 11 December 2025, its release |
-| RHNA 6th cycle progress | August 2026, the vintage of the file this site carries |
-| RHNA allocation target | already public; allocations were adopted in 2021-2022 |
-
-So the October 2025 issue quotes the 2025 Zillow index and no ACS, no RHNA progress and no 2025
-annual reports, and it says so in its own "What this issue could not know" box. `tests/newsletter.test.js`
-enforces all of it, including that no issue cites a source dated after itself.
-
-### Seeing how many people use the site
-
-Every unique visitor is a user: someone who signs up, and someone who only ever browses with the
-guest profile their browser made. Both are rows in `users`, told apart by `kind`, and a guest who
-later signs up keeps their original row rather than becoming a second person.
-
-Set `ADMIN_USERNAMES` to your own account username (comma-separated for more than one) and the
-total appears on your account page. Nobody else can read it - for any other reader the request
-answers 404. From a terminal, the same figures come back with the cron secret:
-
-```bash
-curl -s "https://your-site.com/api/community" -H "x-cron-secret: YOUR_CRON_SECRET"
-```
-
-`/api/admin/stats`, behind the same secret, adds the breakdown by city, by email frequency, how
-many were seen in the last 30 days, and when the first and latest signups were.
-
-### Scheduling with cron-job.org
-
-Render's own cron jobs are a paid service type, so on the free plan use an external scheduler.
-
-- **URL** - `https://your-site.com/api/cron/send-digests?secret=YOUR_CRON_SECRET`
-- **Method** - GET or POST; both work. (Passing the secret as the `x-cron-secret` header instead of
-  a query parameter keeps it out of the scheduler's logs, if your scheduler supports headers.)
-- **Schedule** - once a day. Run it daily no matter what frequencies your users pick: the endpoint
-  checks everyone on each run and only emails whoever is actually due.
-
-A successful run returns JSON like `{"ok":true,"checked":4,"due":2,"sent":1,"skipped":1,"failed":0}`.
-`skipped` means the user was due but nothing had changed, so no email was sent and their clock was
-left alone - the next run still compares against their last real email.
-
-A `401` means the secret is missing or wrong. A `503` means `DATABASE_URL` isn't set.
-
-Free Render web services spin down when idle and take a few seconds to wake, so allow a generous
-timeout in the scheduler, or hit `/api/health` on a separate schedule to keep the service warm.
+Required private configuration: `DATABASE_URL`, `RESEND_API_KEY`, a verified `RESEND_FROM`, `CRON_SECRET`, and `SITE_URL`. The default `onboarding@resend.dev` sender only delivers to the Resend account owner; configure a verified domain for subscriber mail. Keep the scheduler secret in a header, and allow time for Render startup.
 
 ## Deploy on Render
 
