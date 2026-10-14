@@ -261,6 +261,9 @@
   .proj-sheet h2{font-size:25px; line-height:1.2; margin:4px 0 9px; padding-right:34px;}
   .ps-stamps{display:flex; gap:7px; flex-wrap:wrap; align-items:center; margin-bottom:15px;}
   .ps-what{font-size:15px; line-height:1.55; color:var(--text); margin:0 0 9px;}
+  .ps-more{font:inherit; font-size:13px; font-weight:700; color:var(--blue); background:none;
+    border:none; padding:0 0 0 2px; cursor:pointer; text-decoration:underline; white-space:nowrap;}
+  .ps-more:hover{color:var(--ink);}
   .ps-summary{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase;
     letter-spacing:.05em; color:#4A5A33; margin:0 0 11px;}
   .ps-map-wrap{position:relative; width:100%; margin-bottom:11px;}
@@ -488,7 +491,18 @@
   .nameplate .np-kicker i{background:#9BA98A;}
   .nameplate h1{color:#fff;}
   .nameplate h1 em{color:#fff;}
-  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin:16px 0 0; max-width:62ch; text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  /* The title and what the site is, side by side. The sentence used to sit under the title where
+     it read as a caption; beside it, it reads as the answer to "what is this". */
+  .np-head{display:flex; align-items:flex-end; gap:26px; flex-wrap:wrap;}
+  .np-head h1{flex:0 0 auto;}
+  .np-lede{font-size:15px; line-height:1.65; color:#E6EBDD; margin:0 0 7px; max-width:46ch; flex:1 1 320px; min-width:260px; text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .np-more{font:inherit; font-size:14px; font-weight:700; color:#fff; background:none; border:none;
+    padding:0 0 0 3px; cursor:pointer; text-decoration:underline; text-underline-offset:3px; white-space:nowrap;}
+  .np-more:hover{color:#D9E4C8;}
+  .np-lede-more{margin:14px 0 0; max-width:66ch; color:#E6EBDD; font-size:14px; line-height:1.65; text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .np-lede-more p{margin:0 0 8px;}
+  .np-lede-more[hidden]{display:none;}
+  @media(max-width:760px){ .np-head{gap:0;} .np-lede{margin-top:12px; flex-basis:100%;} }
   @media (max-width:640px){ .nameplate{padding:16px 18px 18px;} .np-lede{font-size:13px;} }
   .np-kicker{display:flex; align-items:center; gap:11px; font-family:'Open Sans',sans-serif; font-size:10.5px;
     font-weight:800; letter-spacing:.17em; text-transform:uppercase; color:#14532D; margin-bottom:6px;}
@@ -1889,8 +1903,15 @@
     <div class="hero-copy without-advisors">
       <div class="nameplate">
         <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
-        <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
-        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. <span class="city-count">101</span> cities and towns across nine Bay Area counties.</p>
+        <div class="np-head">
+          <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
+          <p class="np-lede" id="npLede">What is being built near you, which board decides it, and when that board meets.
+            <button type="button" class="np-more" id="npMore" aria-expanded="false" aria-controls="npLedeMore">What this is</button></p>
+        </div>
+        <div class="np-lede-more" id="npLedeMore" hidden>
+          <p><span class="city-count">101</span> cities and towns across nine Bay Area counties, built from the public record: what cities file with the state, what they post on their own planning pages, and the agendas of the boards that decide it.</p>
+          <p>Every figure on this site links back to the body that published it, so you can check it yourself. Nothing here is an estimate of ours.</p>
+        </div>
       </div>
       <div class="front-admin rail-card" id="frontAdmin" aria-label="Admin advisors and media panel" hidden>
         <aside class="front-admin-card" aria-labelledby="frontAdvisorsTitle">
@@ -2878,12 +2899,12 @@
     <div class="footer-col">
       <h3>Where the data comes from</h3>
       <ul class="footer-links">
-        <li><a href="https://www.zillow.com/research/data/" target="_blank" rel="noopener">Zillow Research</a> &mdash; home values and rents</li>
-        <li><a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener">US Census ACS</a> &mdash; commute, income, tenure</li>
-        <li><a href="https://data.ca.gov/dataset/rhna-progress-report" target="_blank" rel="noopener">California HCD</a> &mdash; housing targets</li>
-        <li><a href="https://webapi.legistar.com/" target="_blank" rel="noopener">Legistar</a> &mdash; meeting agendas</li>
+        <li><a href="https://www.zillow.com/research/data/" target="_blank" rel="noopener">Zillow Research</a>: home values and rents</li>
+        <li><a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener">US Census ACS</a>: commute, income, tenure</li>
+        <li><a href="https://data.ca.gov/dataset/rhna-progress-report" target="_blank" rel="noopener">California HCD</a>: housing targets</li>
+        <li><a href="https://webapi.legistar.com/" target="_blank" rel="noopener">Legistar</a>: meeting agendas</li>
         <li><a href="/photo-credits.html" target="_blank" rel="noopener">City photo credits</a></li>
-          <li><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &mdash; geocoding</li>
+          <li><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>: geocoding</li>
       </ul>
     </div>
   </div>
@@ -7934,15 +7955,16 @@ async function zoningAt(cityKey, lat, lng){
    rather than floating on a tile. The button flies out to the whole city and back in, which is the
    bit that actually answers "where is this?" for someone who does not know the street. */
 let sheetMap = null;
-const SHEET_MAP_ZOOM = 14;
+// Wide enough that the city's edge is in frame around the pin, which is the thing that places an
+// address for someone who does not know the street. At 14 the boundary was usually outside the
+// view; at 16 it was one block.
+const SHEET_MAP_ZOOM = 13;
 function renderSheetMap(record, cityKey, city){
   const host = document.getElementById('psMap');
   if(!host || typeof L === 'undefined') return;
   if(sheetMap){ try{ sheetMap.remove(); }catch{} sheetMap = null; }
   sheetMap = L.map(host, {scrollWheelZoom:false, zoomControl:true, attributionControl:true})
-        // Close enough to read the streets, wide enough that the city boundary is in frame:
-    // at 16 the map was a single block and told you nothing about where that block is.
-    .setView([record.lat, record.lng], SHEET_MAP_ZOOM);
+        .setView([record.lat, record.lng], SHEET_MAP_ZOOM);
   L.tileLayer(MAP_TILE_URL, {maxZoom:19, attribution:CARTO_ATTRIB}).addTo(sheetMap);
   const ring = cityRing(cityKey);
   // Drawn twice: a pale wide line underneath and the dark one over it. A single thin stroke
@@ -8065,12 +8087,15 @@ function projectSheetHtml(record, cityKey, city){
     +'<h2 id="projSheetAddr">'+escapeHtml(record.addr||record.id)+'</h2>'
     +(()=>{
       // What the project actually is, directly under the address, because that is the first thing
-      // anyone wants and it was three elements further down. The record's own description, cut to
-      // its first sentence when it runs long - the whole of it is still below.
+      // anyone wants and it used to sit three elements further down. Long descriptions open in
+      // place rather than being cut and repeated lower down the sheet.
       const full=String(record.desc||'').split(/\s*Annual \d{4} city submission to California HCD/)[0].trim();
       if(!full) return '';
-      const brief = full.length>150 ? (full.match(/^[^.]{30,150}\./)||[full.slice(0,147)+'\u2026'])[0] : full;
-      return '<p class="ps-what">'+escapeHtml(brief)+'</p>';
+      if(full.length<=150) return '<p class="ps-what">'+escapeHtml(full)+'</p>';
+      const brief=(full.match(/^[^.]{30,150}\./)||[full.slice(0,147)+'\u2026'])[0];
+      return '<p class="ps-what" id="psWhat" data-brief="'+escapeHtml(brief)+'" data-full="'+escapeHtml(full)+'">'
+        +escapeHtml(brief)
+        +' <button type="button" class="ps-more" id="psMore" aria-expanded="false" aria-controls="psWhat">Read the rest</button></p>';
     })()
     +(()=>{
       // The size and stage as a compact line of figures, under the description rather than in
@@ -8090,11 +8115,7 @@ function projectSheetHtml(record, cityKey, city){
     // Every HCD description carries the same four sentences of caveat. "Where this comes from"
     // below says all of it properly, so repeating it at the top just buries the one line that
     // actually describes this address.
-    +(()=>{
-      // Only when the brief line above had to cut it short; otherwise this would say it twice.
-      const full=String(record.desc||'').split(/\s*Annual \d{4} city submission to California HCD/)[0].trim();
-      return full.length>150 ? '<p class="ps-lede">'+escapeHtml(full.replace(/\.$/,''))+'.</p>' : '';
-    })()
+
 
     +'<section class="ps-sec"><h3>What the record says</h3><div class="ps-facts">'+facts+'</div></section>'
 
@@ -8106,7 +8127,7 @@ function projectSheetHtml(record, cityKey, city){
       +'<p class="ps-note">'+(hcd
         ? 'This is '+escapeHtml(city.label)+'&rsquo;s own '+escapeHtml(String(record.reportYear||''))+' submission to the California Department of Housing and Community Development, published as '+escapeHtml(record.sourceLabel||'an annual progress report')+'. It is what the city reported once a year, not a live permit status, and the homes counted may be one phase of something larger. A permit being issued does not mean anything has been built.'
         : record.sourceType==='city-gis'
-        ? 'Read from '+escapeHtml(city.label)+'&rsquo;s own mapping server, from the layer it keeps its '+escapeHtml(city.livePipeline?.what||'projects')+' in. That makes it as current as the city&rsquo;s own system rather than an annual filing, and it covers what the city puts in that layer and nothing else &mdash; which is why the status below is worded the way the city words it.'
+        ? 'Read from '+escapeHtml(city.label)+'&rsquo;s own mapping server, from the layer it keeps its '+escapeHtml(city.livePipeline?.what||'projects')+' in. That makes it as current as the city&rsquo;s own system rather than an annual filing, and it covers what the city puts in that layer and nothing else, which is why the status below is worded the way the city words it.'
         : 'Compiled from '+escapeHtml(city.label)+'&rsquo;s published planning records and meeting agendas. Dates are the ones in the public file, so a record can be accurate and still be out of date if the city has not posted anything since.')
       +'</p><div class="ps-links" style="margin-top:11px;">'+links+'</div></section>'
 
@@ -8139,6 +8160,14 @@ function openProjectSheet(id){
   document.body.style.overflow='hidden';
   document.getElementById('projSheetClose').focus();
 
+  const more=document.getElementById('psMore');
+  if(more) more.addEventListener('click', ()=>{
+    const para=document.getElementById('psWhat');
+    const open=more.getAttribute('aria-expanded')==='true';
+    para.firstChild.textContent=(open?para.dataset.brief:para.dataset.full)+' ';
+    more.textContent=open?'Read the rest':'Show less';
+    more.setAttribute('aria-expanded', String(!open));
+  });
   renderRules(found.record, found.cityKey, found.city);
   renderSheetMap(found.record, found.cityKey, found.city);
   document.getElementById('psLocate')?.addEventListener('click',()=>{
@@ -13434,7 +13463,7 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
   try{
     await apiSavePreferences(email || null, emailFrequency, homeCity || null, [...prefsCategories]);
     statusEl.textContent = emailFrequency === 'monthly'
-      ? 'Saved ✓ — one newsletter per month. No email was sent now.' : 'Saved ✓';
+      ? 'Saved ✓. One newsletter per month, and no email was sent just now.' : 'Saved ✓';
   } catch(err){
     statusEl.innerHTML = "Couldn't save: " + emailBlockedHtml(err.message);
     wireAddPasswordButtons(statusEl);
@@ -17125,6 +17154,17 @@ function renderFooter(){
 // The city count appears in three sentences of static copy. Written in rather than typed, so
 // adding a city cannot leave them saying a number that stopped being true.
 document.querySelectorAll('.city-count').forEach(el=>{el.textContent=INCORPORATED_CITY_COUNT;});
+// The rest of what the site is, opened from beside the title rather than printed under it.
+(() => {
+  const more=document.getElementById('npMore'), panel=document.getElementById('npLedeMore');
+  if(!more||!panel) return;
+  more.addEventListener('click', ()=>{
+    const open=more.getAttribute('aria-expanded')==='true';
+    panel.hidden=open;
+    more.textContent=open?'What this is':'Close';
+    more.setAttribute('aria-expanded', String(!open));
+  });
+})();
 // Every area the dashboard holds a profile for, including the West San Jose neighborhood.
 document.querySelectorAll('.area-count').forEach(el=>{el.textContent=CITY_COUNT;});
 renderFooter();
