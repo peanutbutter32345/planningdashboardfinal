@@ -15,7 +15,9 @@
  // A page holds whole rows of the grid, not a fixed count: three cards on a desktop row meant one
  // row per page (Housing read "1 / 48"). Five rows make a section worth reading; anything shorter
  // needs no pager, and `pad` below fills the leftover rows instead of leaving a half-empty page.
- const ROWS_PER_PAGE=5;
+ // Four rows, then a page. Past that a reader is scrolling rather than reading, and a list that
+ // runs to a hundred rows buries whatever is under it.
+ const ROWS_PER_PAGE=4;
  function columnsOf(el){
   const raw=getComputedStyle(el).gridTemplateColumns||'';
   const repeated=raw.match(/repeat\((\d+)/);           // hidden screens report the unresolved value

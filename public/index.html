@@ -260,6 +260,7 @@
   .ps-eyebrow{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-soft);}
   .proj-sheet h2{font-size:25px; line-height:1.2; margin:4px 0 9px; padding-right:34px;}
   .ps-stamps{display:flex; gap:7px; flex-wrap:wrap; align-items:center; margin-bottom:15px;}
+  .ps-what{font-size:15px; line-height:1.55; color:var(--text); margin:0 0 9px;}
   .ps-summary{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase;
     letter-spacing:.05em; color:#4A5A33; margin:0 0 11px;}
   .ps-map-wrap{position:relative; width:100%; margin-bottom:11px;}
@@ -7936,15 +7937,24 @@ async function zoningAt(cityKey, lat, lng){
    rather than floating on a tile. The button flies out to the whole city and back in, which is the
    bit that actually answers "where is this?" for someone who does not know the street. */
 let sheetMap = null;
+const SHEET_MAP_ZOOM = 14;
 function renderSheetMap(record, cityKey, city){
   const host = document.getElementById('psMap');
   if(!host || typeof L === 'undefined') return;
   if(sheetMap){ try{ sheetMap.remove(); }catch{} sheetMap = null; }
   sheetMap = L.map(host, {scrollWheelZoom:false, zoomControl:true, attributionControl:true})
-    .setView([record.lat, record.lng], 16);
+        // Close enough to read the streets, wide enough that the city boundary is in frame:
+    // at 16 the map was a single block and told you nothing about where that block is.
+    .setView([record.lat, record.lng], SHEET_MAP_ZOOM);
   L.tileLayer(MAP_TILE_URL, {maxZoom:19, attribution:CARTO_ATTRIB}).addTo(sheetMap);
   const ring = cityRing(cityKey);
-  if(ring) L.polygon(ring, {color:'#3E4F24', weight:1.5, opacity:.7, fill:false, interactive:false}).addTo(sheetMap);
+  // Drawn twice: a pale wide line underneath and the dark one over it. A single thin stroke
+  // disappears wherever it crosses a road or a park, which on a city boundary is most of its
+  // length.
+  if(ring){
+    L.polygon(ring, {color:'#FFFFFF', weight:5, opacity:.85, fill:false, interactive:false}).addTo(sheetMap);
+    L.polygon(ring, {color:'#2E3D1B', weight:2.5, opacity:.95, fill:false, interactive:false}).addTo(sheetMap);
+  }
   const stage = STAGE_MAP[record.stage] || {color:'#3E4F24', label:record.stage};
   L.circleMarker([record.lat, record.lng], {radius:9, color:'#fff', weight:3, fillColor:stage.color, fillOpacity:1})
     .bindPopup('<b>'+escapeHtml(record.addr||'')+'</b><br>'+escapeHtml(stage.label||''))
@@ -7963,7 +7973,7 @@ function renderSheetMap(record, cityKey, city){
     const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const out = () => bounds ? sheetMap.fitBounds(bounds, {padding:[18,18], animate:!still, duration:1.6})
       : c && sheetMap.setView([c.center.lat, c.center.lng], 12, {animate:!still, duration:1.6});
-    const back = () => sheetMap.setView([record.lat, record.lng], 17, {animate:!still, duration:2.2});
+    const back = () => sheetMap.setView([record.lat, record.lng], SHEET_MAP_ZOOM, {animate:!still, duration:2.2});
     out();
     setTimeout(back, still ? 1200 : 2200);
     setTimeout(()=>{ play.disabled = false; }, still ? 1600 : 4800);
@@ -8057,8 +8067,17 @@ function projectSheetHtml(record, cityKey, city){
   return '<div class="ps-eyebrow">'+escapeHtml(city.label)+' &middot; '+escapeHtml(city.county)+' County</div>'
     +'<h2 id="projSheetAddr">'+escapeHtml(record.addr||record.id)+'</h2>'
     +(()=>{
-      // What it is, in one line, assembled from the record's own fields. Nothing here is
-      // written for the project: it is the size, the kind and where it has got to.
+      // What the project actually is, directly under the address, because that is the first thing
+      // anyone wants and it was three elements further down. The record's own description, cut to
+      // its first sentence when it runs long - the whole of it is still below.
+      const full=String(record.desc||'').split(/\s*Annual \d{4} city submission to California HCD/)[0].trim();
+      if(!full) return '';
+      const brief = full.length>150 ? (full.match(/^[^.]{30,150}\./)||[full.slice(0,147)+'\u2026'])[0] : full;
+      return '<p class="ps-what">'+escapeHtml(brief)+'</p>';
+    })()
+    +(()=>{
+      // The size and stage as a compact line of figures, under the description rather than in
+      // place of it.
       const bits=[];
       if(record.units) bits.push(record.units.toLocaleString()+' home'+(record.units===1?'':'s'));
       if(record.bmr) bits.push(record.bmr.toLocaleString()+' affordable');
@@ -8075,8 +8094,9 @@ function projectSheetHtml(record, cityKey, city){
     // below says all of it properly, so repeating it at the top just buries the one line that
     // actually describes this address.
     +(()=>{
-      const lede=String(record.desc||'').split(/\s*Annual \d{4} city submission to California HCD/)[0].trim();
-      return lede?'<p class="ps-lede">'+escapeHtml(lede.replace(/\.$/,''))+'.</p>':'';
+      // Only when the brief line above had to cut it short; otherwise this would say it twice.
+      const full=String(record.desc||'').split(/\s*Annual \d{4} city submission to California HCD/)[0].trim();
+      return full.length>150 ? '<p class="ps-lede">'+escapeHtml(full.replace(/\.$/,''))+'.</p>' : '';
     })()
 
     +'<section class="ps-sec"><h3>What the record says</h3><div class="ps-facts">'+facts+'</div></section>'
@@ -8174,11 +8194,15 @@ function renderRegister(){
     const c=CITIES[currentCity],photo=CITY_PHOTOS[currentCity];
     el.innerHTML=c.coverage==='directory'?`<article class="directory-welcome">${photo?`<img src="${escapeHtml(photo.url)}" alt="${escapeHtml(photo.cap)}" loading="lazy">`:''}<div><span class="eyebrow">${escapeHtml(c.county)} County</span><h3>Explore ${escapeHtml(c.label)}</h3><p>Official planning sources, meeting agendas and Census statistics are ready. A verified project inventory has not yet been imported. This does not mean no development is underway.</p><a class="btn" href="${escapeHtml(c.planning)}" target="_blank" rel="noopener">Planning & development ↗</a> <a class="btn secondary" href="${escapeHtml(c.meetings)}" target="_blank" rel="noopener">Meetings & agendas ↗</a><p><a href="/photo-credits.html">Photo credits ↗</a></p></div></article>`:'<div class="empty">Nothing matches - try clearing a filter.</div>';return;
   }
-  const scope=currentCity+JSON.stringify(state);if(scope!==registerScope){registerLimit=60;registerScope=scope;}
-  document.getElementById('registerCount').textContent=Math.min(list.length,registerLimit)+' of '+list.length+' matching records displayed';
-  el.innerHTML = list.slice(0,registerLimit).map(projectCardHtml).join('')+(list.length>registerLimit?`<button class="btn register-more" type="button">Show ${Math.min(60,list.length-registerLimit)} more records (${list.length-registerLimit} remaining)</button>`:'');
-  el.querySelector('.register-more')?.addEventListener('click',()=>{registerLimit+=60;renderRegister();});
-  el.querySelectorAll('.locate-btn').forEach(btn=> btn.addEventListener('click', ()=>flyTo(btn.getAttribute('data-id'))));
+  // Four rows at a time, with the pager the topic pages already use. Sixty cards and a "show
+  // sixty more" button meant the register ran for screens on end and whatever sat under it was
+  // unreachable without a long scroll.
+  document.getElementById('registerCount').textContent=list.length+' matching records';
+  DashboardBrowse.mountPager(el, list, projectCardHtml, {
+    label:'Records', key:currentCity+':'+JSON.stringify(state), gridClass:'register-grid',
+    onRender:content=>content.querySelectorAll('.locate-btn').forEach(btn=>
+      btn.addEventListener('click',()=>flyTo(btn.getAttribute('data-id')))),
+  });
 }
 function renderInvolved(){
   const c = CITIES[currentCity];
@@ -10265,9 +10289,9 @@ function renderBank(){
       + '<p>Every word has to appear somewhere in a record. Try fewer words, a street name, or a commission name.</p></div>';
     return;
   }
-  const CAP = 120;
-  const shown = rows.slice(0, CAP);
-  host.innerHTML = '<div class="bank-list">' + shown.map(({x})=>{
+  // Paged rather than capped. A hundred and twenty rows in a single column was the longest
+  // scroll anywhere on the site, and the cap meant match 121 simply did not exist.
+  const bankRowHtml = ({x})=>{
     const cityLabel = CITIES[x.city] ? CITIES[x.city].label : 'Regional';
     const act = x.url
       ? '<a class="bank-go" href="'+x.url+'" target="_blank" rel="noopener">Open &#8599;</a>'
@@ -10279,9 +10303,14 @@ function renderBank(){
       + '<h4>'+escapeHtml(x.title)+'</h4>'
       + (x.sub ? '<div class="bank-sub">'+escapeHtml(x.sub)+'</div>' : '')
       + '</div>' + act + '</div>';
-  }).join('') + '</div>'
-  + (rows.length > CAP ? '<div class="bank-more">Showing the top '+CAP+' of '+rows.length.toLocaleString()+' matches. Narrow it with a filter or another word.</div>' : '');
-
+  };
+  DashboardBrowse.mountPager(host, rows, bankRowHtml, {
+    label:'Matches', key:'bank:'+bankQuery+':'+bankType+':'+bankCity, gridClass:'bank-list',
+    onRender:content=>wireBankActions(content),
+  });
+  return;
+}
+function wireBankActions(host){
   host.querySelectorAll('[data-bankact]').forEach(b=> b.addEventListener('click', ()=>{
     const kind = b.getAttribute('data-bankact');
     const ck = b.getAttribute('data-bankcityk');
@@ -16502,7 +16531,12 @@ function renderHeroMap(){
   // inferring it from where the pins stop.
   if(heroOutline){ heroMap.removeLayer(heroOutline); heroOutline = null; }
   const ring = currentCity==='all' ? null : cityRing(currentCity);
-  if(ring) heroOutline = L.polygon(ring, {color:'#3E4F24', weight:1.5, opacity:.75, fill:false, interactive:false}).addTo(heroMap);
+  if(ring){
+    heroOutline = L.layerGroup([
+      L.polygon(ring, {color:'#FFFFFF', weight:4.5, opacity:.8, fill:false, interactive:false}),
+      L.polygon(ring, {color:'#2E3D1B', weight:2, opacity:.95, fill:false, interactive:false}),
+    ]).addTo(heroMap);
+  }
   if(currentCity==='all')heroMap.fitBounds([[c.bbox.minLat,c.bbox.minLng],[c.bbox.maxLat,c.bbox.maxLng]],{padding:[20,20]});
   else if(here.length > 1) heroMap.fitBounds(here, {padding:[24,24]});
   else if(here.length === 1) heroMap.setView(here[0], 13);
