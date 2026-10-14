@@ -19,14 +19,37 @@
   // Each step: what the viewer should understand, and how long to leave it on screen.
   const TOUR = [
     { say: 'Every project near you, from the public record', ms: 3200, run: start },
-    { say: 'Pick any of 102 Bay Area cities', ms: 3400, run: pickCity },
+    { say: 'Explore 101 Bay Area cities', ms: 3400, run: pickCity },
     { say: 'What is being built, and how far along it is', ms: 4200, run: showRegister },
     { say: 'Open one for the whole record', ms: 4200, run: openRecord },
     { say: 'Filed, decided, who is building it, the file number', ms: 3600, run: showFacts },
     { say: 'The zoning, read live from the city itself', ms: 4200, run: showRules },
     { say: 'And where it actually is', ms: 5200, run: showMap },
-    { say: 'southbaydashboard.com', ms: 3000, run: finish },
+    { say: 'baydashboard.com', ms: 3000, run: finish },
   ];
+
+  // Fixed scenes for an edited video: /?tour=1&scene=housing. They use the real UI.
+  const captureScene=params.get('scene');
+  if(captureScene){
+    const valid=new Set(['intro','yourarea','housing','developments','transportation','statistics','futures','newsletter','meetingSummary','planner','bank','timeline','ask','account','finish']);
+    if(!valid.has(captureScene))return;
+    const capture=()=>{
+      const css=document.createElement('style');
+      css.textContent='#onboardOverlay,#frontAdmin,#navMenu{display:none!important;}html,body{scroll-behavior:auto!important;}';
+      document.head.appendChild(css);
+      if(typeof setNavMenu==='function')setNavMenu(false);
+      if(typeof switchCity==='function')switchCity(params.get('city')||'sunnyvale');
+      const screen=['intro','finish'].includes(captureScene)?'dashboard':captureScene;
+      if(typeof showScreen==='function')showScreen(screen);
+      setTimeout(()=>{
+        if(['intro','finish'].includes(captureScene))window.scrollTo({top:0,behavior:'instant'});
+        else if(typeof scrollToScreen==='function')scrollToScreen(screen);
+        document.body.dataset.tourScene=captureScene;
+      },1000);
+    };
+    if(document.readyState==='complete')capture();else window.addEventListener('load',capture,{once:true});
+    return;
+  }
 
   const CITY = params.get('city') || 'sunnyvale';
   const wait = ms => new Promise(r => setTimeout(r, ms));

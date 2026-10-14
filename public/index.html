@@ -1778,6 +1778,7 @@
 <link rel="stylesheet" href="/enhancements.css">
 <link rel="stylesheet" href="/browse.css">
 <link rel="stylesheet" href="/admin-content.css">
+<link rel="stylesheet" href="/site-intro.css">
 </head>
 <body>
 <a href="#mainContent" class="skip-link">Skip to main content</a>
@@ -1888,9 +1889,26 @@
   <div class="wrap">
     <div class="hero-copy without-advisors">
       <div class="nameplate">
+        <div class="nameplate-title">
         <div class="np-kicker"><span id="npKickerCounty">Nine Bay Area counties</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
-        <p class="np-lede">Keeping residents aware of what is being built near them, which board decides it, and when that board meets. <span class="city-count">101</span> cities and towns across nine Bay Area counties.</p>
+        </div>
+        <div class="site-intro">
+          <p class="np-lede">Follow housing developments, transportation projects, and community news across <span class="city-count">101</span> Bay Area cities. Find city meetings, boards, and ways to take part.</p>
+          <p class="intro-purpose">Independently built to make local information and civic participation easier to access.</p>
+          <div class="intro-actions">
+            <button class="watch-tour" id="watchTour" type="button" aria-haspopup="dialog"><span aria-hidden="true">▶</span> Watch the tour <span class="tour-length">30 sec</span></button>
+            <div class="intro-about" id="introAbout">
+              <button id="introMore" type="button" aria-expanded="false" aria-controls="introDetails">About the project <span aria-hidden="true">+</span></button>
+              <div id="introDetails" class="intro-details" hidden>
+                <strong>Local government, easier to follow.</strong>
+                <p>The Bay Dashboard brings together planning records, housing and transportation projects, local news, and public meetings from <span class="city-count">101</span> cities across the Bay Area’s nine counties. Explore your area, check a project’s sources, or find a board or meeting where you can get involved.</p>
+                <p>I built it independently because finding out what is happening in your neighborhood should not require searching through dozens of city pages. The goal is to make civic resources easier to find and help more residents take part.</p>
+                <p class="intro-note">An independent project, not an official government website. Check linked city records for the latest details.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="front-admin rail-card" id="frontAdmin" aria-label="Admin advisors and media panel" hidden>
         <aside class="front-admin-card" aria-labelledby="frontAdvisorsTitle">
@@ -17241,5 +17259,23 @@ if (window.L) {
 <script type="module" src="/futures/app.js"></script>
 <script src="/site-visuals.js"></script>
 <script src="/admin-content.js"></script>
+<dialog id="siteTourDialog" class="site-tour-dialog" aria-labelledby="siteTourTitle">
+  <div class="site-tour-heading"><div><span class="tour-eyebrow">A QUICK LOOK AROUND</span><h2 id="siteTourTitle">The Bay Dashboard in 30 seconds</h2></div><button id="closeSiteTour" type="button" aria-label="Close video">✕</button></div>
+  <video id="siteTourVideo" controls playsinline preload="none" poster="/media/bay-dashboard-tour.jpg" aria-label="A 30-second tour of The Bay Dashboard">
+    <track kind="captions" src="/media/bay-dashboard-tour.vtt" srclang="en" label="English">
+    Your browser does not support video. <a href="/media/bay-dashboard-tour.mp4">Download the tour</a>.
+  </video>
+  <p id="siteTourError" hidden>The video could not load. <a href="/media/bay-dashboard-tour.mp4">Open the video directly</a>.</p>
+  <nav class="tour-chapters" aria-label="Tour chapters">
+    <button type="button" data-tour-time="0"><span>0:00</span> Your area</button>
+    <button type="button" data-tour-time="5"><span>0:05</span> Projects</button>
+    <button type="button" data-tour-time="10"><span>0:10</span> Data &amp; scenarios</button>
+    <button type="button" data-tour-time="15"><span>0:15</span> News &amp; meetings</button>
+    <button type="button" data-tour-time="20"><span>0:20</span> Get involved</button>
+    <button type="button" data-tour-time="25"><span>0:25</span> Your tools</button>
+  </nav>
+  <p class="site-tour-note">A recorded walkthrough. Project details and figures may change. Captions are included; no sound is needed.</p>
+</dialog>
+<script src="/site-intro.js"></script>
 </body>
 </html>
