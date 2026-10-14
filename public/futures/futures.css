@@ -74,7 +74,7 @@
 .fx-map-footer input{accent-color:var(--fx-accent)}
 #fxLegend{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 #fxLegend i{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
-.fx-map-note{font-size:9px;color:#737f88;padding:0 18px 14px;margin:0}
+.fx-map-note{font-size:9px;color:#6A767F;padding:0 18px 14px;margin:0}
 .fx-map-error{position:absolute;top:60px;left:15px;right:15px;z-index:410;background:#fff7e9;border:1px solid #e6c58e;padding:12px;border-radius:2px;font-size:11px}
 .fx-analysis-row{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin-top:16px}
 .fx-chart-card,.fx-insight{border:1px solid var(--fx-line);border-radius:2px;background:#fff;padding:18px;min-width:0}

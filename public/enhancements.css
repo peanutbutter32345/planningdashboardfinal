@@ -84,7 +84,7 @@
 .section-photo-credit:hover{text-decoration:underline;}
 #screenStatistics .metric-photo{height:124px;}
 #screenStatistics .metric-photo img{filter:saturate(.88);}
-.metric-photo-credit{display:block;padding:5px 12px;color:#68765A;font-size:9px;line-height:1.4;text-decoration:none;background:#F4F6EF;}
+.metric-photo-credit{display:block;padding:5px 12px;color:#657357;font-size:9px;line-height:1.4;text-decoration:none;background:#F4F6EF;}
 .metric-photo-credit:hover{text-decoration:underline;}
 @media(max-width:700px){.section-masthead{padding:22px 20px 36px;background:linear-gradient(90deg,#F1F4EAF5,#F1F4EAD6),var(--section-photo) center/cover;}.section-masthead-copy{max-width:100%;}.section-masthead h2{font-size:29px!important;}.section-photo-credit{max-width:90%;}}
 
