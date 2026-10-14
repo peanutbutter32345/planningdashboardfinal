@@ -260,6 +260,15 @@
   .ps-eyebrow{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-soft);}
   .proj-sheet h2{font-size:25px; line-height:1.2; margin:4px 0 9px; padding-right:34px;}
   .ps-stamps{display:flex; gap:7px; flex-wrap:wrap; align-items:center; margin-bottom:15px;}
+  .ps-summary{font-family:'Open Sans',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.05em; color:#4A5A33; margin:0 0 11px;}
+  .ps-map-wrap{position:relative; width:100%; margin-bottom:11px;}
+  #psMap{width:100%; height:210px; border:1px solid var(--rule); border-radius:2px; background:#EFF1E8;}
+  .ps-map-play{position:absolute; left:10px; bottom:10px; z-index:500; font-family:'Open Sans',sans-serif;
+    font-size:11px; font-weight:700; padding:7px 11px; border:1px solid var(--ink); border-radius:2px;
+    background:#fff; color:var(--ink); cursor:pointer; box-shadow:0 1px 4px rgba(0,0,0,.25);}
+  .ps-map-play:hover{background:var(--ink); color:#fff;}
+  .ps-map-play:disabled{opacity:.6; cursor:default;}
   .ps-lede{font-size:14.5px; line-height:1.65; margin:0 0 18px;}
   .ps-sec{border-top:1px solid var(--rule); padding-top:14px; margin-top:16px;}
   .ps-sec > h3{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-soft); margin:0 0 9px;}
@@ -430,7 +439,7 @@
   .metric-card .s{font-size:12px; color:var(--text-soft); margin-top:8px; line-height:1.5;}
   .metric-card .s b{color:var(--ink);}
   .metric-card .rank{display:inline-block; margin-top:9px; font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:#F2F5EC; color:var(--ink);}
-  .metric-card .rank.hi{background:#EFF0EA; color:#6E7566;}
+  .metric-card .rank.hi{background:#EFF0EA; color:#656C5D;}
   .metric-card .rank.lo{background:#E9EFE0; color:#44572A;}
   .metric-card .spark{margin-top:11px;}
   .metric-card .spark svg{width:100%; height:auto; display:block;}
@@ -992,7 +1001,10 @@
   .res-card{background:#fff; border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; flex-direction:column;}
   .res-thumb{height:96px; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:12px 14px; position:relative; overflow:hidden;}
   .res-thumb::before{content:""; position:absolute; inset:0; background:repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 14px);}
-  .res-thumb-cat{position:relative; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:rgba(255,255,255,0.75);}
+  /* This label sits on a photograph, so there is no background colour to measure against and
+     no guarantee the photo underneath is dark. At 75% white it was legible on some thumbnails
+     and lost on others. Full white over a shadow holds on any of them. */
+  .res-thumb-cat{position:relative; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#FFFFFF; text-shadow:0 1px 3px rgba(0,0,0,.85), 0 0 10px rgba(0,0,0,.6);}
   .res-thumb-domain{position:relative; font-family:'Roboto Mono',monospace; font-size:13px; font-weight:600; color:#fff; margin-top:2px;}
   .res-card .res-body{padding:14px; display:flex; flex-direction:column; gap:6px; flex-grow:1;}
   .res-card .res-cat{font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink);}
@@ -7916,6 +7928,45 @@ async function zoningAt(cityKey, lat, lng){
     return value ? {district: String(value), source} : {district: null, source};
   }catch{ return null; }   // their server, not ours; the section says it could not be reached
 }
+/* A map inside the record, because "37.37820, -122.00231" tells almost nobody where something is.
+   It opens on the project with the city's outline around it, so the address is placed in the city
+   rather than floating on a tile. The button flies out to the whole city and back in, which is the
+   bit that actually answers "where is this?" for someone who does not know the street. */
+let sheetMap = null;
+function renderSheetMap(record, cityKey, city){
+  const host = document.getElementById('psMap');
+  if(!host || typeof L === 'undefined') return;
+  if(sheetMap){ try{ sheetMap.remove(); }catch{} sheetMap = null; }
+  sheetMap = L.map(host, {scrollWheelZoom:false, zoomControl:true, attributionControl:true})
+    .setView([record.lat, record.lng], 16);
+  L.tileLayer(MAP_TILE_URL, {maxZoom:19, attribution:CARTO_ATTRIB}).addTo(sheetMap);
+  const ring = cityRing(cityKey);
+  if(ring) L.polygon(ring, {color:'#3E4F24', weight:1.5, opacity:.7, fill:false, interactive:false}).addTo(sheetMap);
+  const stage = STAGE_MAP[record.stage] || {color:'#3E4F24', label:record.stage};
+  L.circleMarker([record.lat, record.lng], {radius:9, color:'#fff', weight:3, fillColor:stage.color, fillOpacity:1})
+    .bindPopup('<b>'+escapeHtml(record.addr||'')+'</b><br>'+escapeHtml(stage.label||''))
+    .addTo(sheetMap);
+  // Leaflet measures its container as it starts, and this one was display:none a moment ago.
+  setTimeout(()=>{ try{ sheetMap.invalidateSize(); }catch{} }, 60);
+
+  const play = document.getElementById('psMapPlay');
+  if(play) play.addEventListener('click', ()=>{
+    play.disabled = true;
+    const c = CITIES[cityKey];
+    const bounds = ring ? L.polygon(ring).getBounds() : null;
+    // A map that flies about is exactly the kind of movement that makes some people ill, and the
+    // browser is told when someone has asked for less of it. They still get the answer - the whole
+    // city, then the address - just cut rather than flown.
+    const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const out = () => bounds ? sheetMap.fitBounds(bounds, {padding:[18,18], animate:!still, duration:1.6})
+      : c && sheetMap.setView([c.center.lat, c.center.lng], 12, {animate:!still, duration:1.6});
+    const back = () => sheetMap.setView([record.lat, record.lng], 17, {animate:!still, duration:2.2});
+    out();
+    setTimeout(back, still ? 1200 : 2200);
+    setTimeout(()=>{ play.disabled = false; }, still ? 1600 : 4800);
+  });
+}
+
 async function renderRules(record, cityKey, city){
   const host = document.getElementById('psRules');
   if(!host) return;
@@ -8002,6 +8053,16 @@ function projectSheetHtml(record, cityKey, city){
 
   return '<div class="ps-eyebrow">'+escapeHtml(city.label)+' &middot; '+escapeHtml(city.county)+' County</div>'
     +'<h2 id="projSheetAddr">'+escapeHtml(record.addr||record.id)+'</h2>'
+    +(()=>{
+      // What it is, in one line, assembled from the record's own fields. Nothing here is
+      // written for the project: it is the size, the kind and where it has got to.
+      const bits=[];
+      if(record.units) bits.push(record.units.toLocaleString()+' home'+(record.units===1?'':'s'));
+      if(record.bmr) bits.push(record.bmr.toLocaleString()+' affordable');
+      if(record.type && !/^residential$/i.test(record.type)) bits.push(escapeHtml(record.type));
+      bits.push(escapeHtml((STAGE_MAP[record.stage]||{}).label||record.stage||''));
+      return bits.filter(Boolean).length ? '<p class="ps-summary">'+bits.filter(Boolean).join(' &middot; ')+'</p>' : '';
+    })()
     +'<div class="ps-stamps">'
       +'<span class="stamp" style="'+stampStyle(stage)+'">'+escapeHtml(stage.label)+'</span>'
       +'<span class="cattag"><i style="background:'+cat.color+'"></i>'+escapeHtml(cat.label)+'</span>'
@@ -8030,7 +8091,10 @@ function projectSheetHtml(record, cityKey, city){
       +'</p><div class="ps-links" style="margin-top:11px;">'+links+'</div></section>'
 
     +'<section class="ps-sec"><h3>What the rules say here</h3><div id="psRules"><p class="ps-note">Checking with '+escapeHtml(city.label)+'\u2026</p></div></section>'
-    +'<section class="ps-sec"><h3>On the map</h3><p class="ps-note">'
+    +'<section class="ps-sec"><h3>On the map</h3>'
+      +(located?'<div class="ps-map-wrap"><div id="psMap" role="region" aria-label="Map showing where '+escapeHtml(record.addr||'this project')+' sits in '+escapeHtml(city.label)+'"></div>'
+        +'<button type="button" class="ps-map-play" id="psMapPlay" aria-label="Zoom from the whole of '+escapeHtml(city.label)+' in to this address">&#9654; Show me where this is</button></div>':'')
+      +'<p class="ps-note">'
       +(located
         ? 'Placed at '+record.lat.toFixed(5)+', '+record.lng.toFixed(5)+'.'
           +(record.locationSource?' '+escapeHtml(record.locationSource[0].toUpperCase()+record.locationSource.slice(1))+'.':'')
@@ -8056,6 +8120,7 @@ function openProjectSheet(id){
   document.getElementById('projSheetClose').focus();
 
   renderRules(found.record, found.cityKey, found.city);
+  renderSheetMap(found.record, found.cityKey, found.city);
   document.getElementById('psLocate')?.addEventListener('click',()=>{
     closeProjectSheet();
     if(found.cityKey!==currentCity&&currentCity!=='all') switchCity(found.cityKey);
@@ -8078,6 +8143,7 @@ function openProjectSheet(id){
 function closeProjectSheet(){
   const back=document.getElementById('projSheet');
   if(!back||back.hidden) return;
+  if(sheetMap){ try{ sheetMap.remove(); }catch{} sheetMap = null; }
   back.hidden=true;
   document.body.style.overflow='';
   projSheetReturnFocus?.focus?.();
@@ -12559,7 +12625,10 @@ function acctNewsCards(list, emptyMsg){
     const starData = {title:a.title, desc:a.snippet, url:a.url};
     return '<a class="news-card" href="'+a.url+'" target="_blank" rel="noopener">'
       + starButtonHtml('news', a.url, starData)
-      + '<img src="'+articleImageSrc(a, usedImgs)+'" data-article-img loading="lazy" alt="" onerror="imgFallback(this,\''+a.city+'\')" />'
+      // An <img src=""> is not a silent no-op: the browser resolves the empty string against the
+      // page and fetches the document again as an image. A card with no picture gets no element.
+      + (()=>{ const src = articleImageSrc(a, usedImgs);
+          return src ? '<img src="'+src+'" data-article-img loading="lazy" alt="" onerror="imgFallback(this,\''+a.city+'\')" />' : ''; })()
       + '<div class="news-body"><div class="news-meta">'+escapeHtml(a.source)+' - '+escapeHtml(CITIES[a.city]?CITIES[a.city].label:'Regional')+'</div>'
       // Headlines and summaries arrive from publisher feeds, so they are escaped like any other
       // outside text. Most headlines have no summary, and an empty <p> left a gap under the
