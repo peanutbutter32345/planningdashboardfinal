@@ -3,7 +3,7 @@ import {fileURLToPath} from 'node:url';
 import {SITE_CONTENT_SEED, SITE_CONTENT_PATCHES} from './data/site-content-seed.js';
 
 const types = new Set(['advisors', 'featured']);
-const assets = new Set(['emily-gnecco.png','erik.png','brisbane.png','south-bay-today.png','civic-tech-guide.png','kimberly-mosley.jpg','jeannice-fairrer-samani.png']);
+const assets = new Set(['emily-gnecco.png','erik.png','brisbane.png','south-bay-today.png','civic-tech-guide.png','kimberly-mosley.jpg','jeannice-fairrer-samani.png','riley-anderson-barrett.png']);
 const assetPrefix = '/api/admin/site-content/assets/';
 export async function initSiteContent(pool) {
   await pool.query(`CREATE TABLE IF NOT EXISTS site_content (
