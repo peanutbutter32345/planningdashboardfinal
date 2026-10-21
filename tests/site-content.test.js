@@ -63,6 +63,10 @@ test('initial profiles have links and restart preserves owner edits',async()=>{
 });
 test('existing advisor defaults migrate once while custom links and images are preserved',async()=>{
  const {initSiteContent}=await import('../site-content.js');
+ await pool.query(`UPDATE site_content SET data=data - 'image' WHERE id='advisor-riley-anderson-barrett'`);
+ await initSiteContent(pool);
+ const riley=await pool.query("SELECT data FROM site_content WHERE id='advisor-riley-anderson-barrett'");
+ assert.equal(riley.rows[0].data.image,'/api/admin/site-content/assets/riley-anderson-barrett.png');
  await pool.query(`UPDATE site_content SET data=data || $1::jsonb WHERE id='advisor-kimberly-mosley'`,[JSON.stringify({url:'https://www.linkedin.com/in/kimrmosley',image:''})]);
  await initSiteContent(pool);
  const read=async()=>(await pool.query("SELECT * FROM site_content WHERE id='advisor-kimberly-mosley'")).rows[0];
@@ -75,7 +79,7 @@ test('existing advisor defaults migrate once while custom links and images are p
  assert.equal(custom.data.url,'https://example.com/custom-profile');assert.equal(custom.data.image,'https://example.com/custom-photo.jpg');
 });
 test('all portraits and logos require admin authorization and are not public static files',async()=>{
- for(const asset of ['emily-gnecco.png','erik.png','brisbane.png','south-bay-today.png','civic-tech-guide.png','kimberly-mosley.jpg','jeannice-fairrer-samani.png']){
+ for(const asset of ['emily-gnecco.png','erik.png','brisbane.png','south-bay-today.png','civic-tech-guide.png','kimberly-mosley.jpg','jeannice-fairrer-samani.png','riley-anderson-barrett.png']){
   const path='/api/admin/site-content/assets/'+asset;
   for(const token of [undefined,reader,'forged-token'])assert.equal((await fetch(base+path,{headers:token?{authorization:'Bearer '+token}:{}})).status,404);
   const response=await fetch(base+path,{headers:{authorization:'Bearer '+owner}});
