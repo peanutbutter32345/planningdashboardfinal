@@ -1,0 +1,13 @@
+{
+  "checked": "2026-10-25T09:33:20.088Z",
+  "note": "Confirmed HTTP 404 after both HEAD and GET. Omit these stale deep links while retaining the agency directory. Recheck before restoring.",
+  "urls": [
+    "https://www.cityofwatsonville.org/2250/Redistricting-Meeting-Schedule",
+    "https://www.sandiego.gov/=",
+    "https://www.sandiego.gov/arts-culture/about/committees/execcomm",
+    "https://www.sandiego.gov/arts-culture/about/committees/publicartcomm",
+    "https://www.sandiego.gov/arts-culture/meetings",
+    "https://www.sandiego.gov/city-clerk/boards-commissions/lajollashores",
+    "https://www.sandiego.gov/development-services/public-hearings-meetings-notices/technical-advisory-committee"
+  ]
+}

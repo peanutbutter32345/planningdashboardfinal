@@ -9,3 +9,7 @@ preview-update.html
 
 .DS_Store
 preview-quiet.html
+
+# Python importer bytecode
+__pycache__/
+*.pyc

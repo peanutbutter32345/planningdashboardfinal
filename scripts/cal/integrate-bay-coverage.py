@@ -6,6 +6,7 @@ the existing city renderer loads the complete selected locality on demand.
 import json
 import re
 import html
+from record_display import filing_display
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -28,7 +29,7 @@ existing_names = {(p['label'].lower(), p['county']) for p in existing}
 existing_keys = {p['key'] for p in existing}
 boundaries = json.loads((SOURCE / 'places.geojson').read_text())
 features = {f['properties']['id']:f for f in boundaries['features']}
-manifest = {'reviewed':'2026-10-25', 'districts':['24','19','20','26'], 'cities':{}, 'photos':{}, 'meetings':{}, 'activity':{}}
+manifest = {'reviewed':'2026-10-25', 'districts':read('geography.json')['metadata']['districts'], 'cities':{}, 'photos':{}, 'meetings':{}, 'activity':{}}
 all_records = {}
 extra_boundaries = {'source':'US Census TIGERweb locality boundaries, simplified for display','cities':{}}
 
@@ -63,17 +64,18 @@ for p in profiles['profiles']:
             'districts':r.get('districts',[]), 'futureDistricts':r.get('futureDistricts',[]), 'locationSource':'HCD geocode screened against locality boundary' if r.get('lat') is not None else 'No verified location'})
     for eid in env['places'].get(p['id'],[]):
         r = env['records'][eid]
-        rows.append({'id':key+'-'+eid, 'addr':r['name'], 'lat':None, 'lng':None, 'cat':'infra' if r['transportation'] else 'dev',
+        display = filing_display(r)
+        rows.append({'id':key+'-'+eid, 'addr':display['title'], 'originalTitle':display['originalTitle'], 'filingLabel':display['label'], 'documentType':display['documentType'], 'lat':None, 'lng':None, 'cat':'infra' if r['transportation'] else 'dev',
             'type':'Transportation' if r['transportation'] else 'Environmental review', 'desc':r['description'], 'units':None,'bmr':None,
-            'applicant':r['agency'], 'filed':r['date'], 'stage':'review', 'lastDate':r['date'],
-            'lastNote':r['type']+' environmental document filed. Consult the source for the decision and current status.', 'fileNo':r['sch'],
+            'applicant':r['agency'], 'filed':r['date'], 'stage':'filed', 'lastDate':r['date'],
+            'lastNote':display['summary'], 'fileNo':r['sch'],
             'flag':'Environmental filing, not a construction status or a separate count of homes.', 'sourceUrl':r['source'],
             'sourceType':'ceqanet', 'sourceLabel':'California CEQAnet', 'locationSource':'No verified project coordinates'})
     rows.sort(key=lambda r:(r.get('lastDate') or ''), reverse=True)
     # Existing project templates accept HTML-ready strings. Imported documents are data.
     for row in rows:
         row['floodCoverage']=p['county'] in ['Santa Clara','San Mateo','San Francisco','Alameda','Contra Costa','Marin','Napa','Solano','Sonoma']
-        for field in ['addr','type','desc','applicant','lastNote','fileNo','flag']:
+        for field in ['addr','type','desc','applicant','lastNote','fileNo','flag','originalTitle','filingLabel']:
             if isinstance(row.get(field),str): row[field]=html.escape(row[field],quote=True)
     write(OUT/(key+'.json'), {'records':rows})
     all_records[key] = rows
@@ -90,10 +92,11 @@ for p in profiles['profiles']:
     articles=[{'city':key,'topic':'developments','title':n['title'],'source':n['publisher'],'date':n['date'],'url':n['url'],'snippet':'','image':''} for n in news.get(p['id'],[])]
     for eid in env['places'].get(p['id'],[])[:4]:
         r=env['records'][eid]
+        display=filing_display(r)
         excerpt=r['description'][:450]
         stop=max(excerpt.rfind('. '),excerpt.rfind('.\n'))
         excerpt=excerpt[:stop+1] if stop>24 else ''
-        articles.append({'city':key,'topic':'transportation' if r['transportation'] else 'developments','title':r['name'],'source':'California CEQAnet · official filing','date':r['date'],'url':r['source'],'snippet':excerpt,'image':''})
+        articles.append({'city':key,'topic':'transportation' if r['transportation'] else 'developments','title':display['title'],'source':'California CEQAnet · official filing','date':r['date'],'url':r['source'],'snippet':excerpt,'image':''})
     if not articles:
         articles=[{'city':key,'topic':'developments','title':p['name']+' official notices and planning records','source':'Official source directory','date':'','url':p['meetingUrl'],'snippet':'No locality-specific article imported. Follow the official source for current notices.','image':''}]
     b=p['bounds']

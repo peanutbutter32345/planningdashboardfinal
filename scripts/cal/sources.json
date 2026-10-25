@@ -62,7 +62,16 @@
     "San Buenaventura (Ventura)": "https://www.cityofventura.ca.gov/",
     "Santa Paula": "https://www.spcity.org/",
     "Simi Valley": "https://www.simivalley.org/",
-    "Thousand Oaks": "https://www.toaks.gov/"
+    "Thousand Oaks": "https://www.toaks.gov/",
+    "Fowler": "https://www.fowlercity.org/",
+    "Kingsburg": "https://cityofkingsburg-ca.gov/",
+    "Parlier": "https://www.parlier.ca.us/",
+    "Reedley": "https://reedley.ca.gov/",
+    "Selma": "https://www.cityofselma.com/",
+    "Palmdale": "https://www.cityofpalmdaleca.gov/",
+    "Santa Clarita": "https://santaclarita.gov/",
+    "San Diego": "https://www.sandiego.gov/",
+    "Dinuba": "https://www.dinuba.org/"
   },
   "counties": {
     "Fresno": {
@@ -123,6 +132,12 @@
       "planning": "https://rma.venturacounty.gov/divisions/planning/",
       "meetings": "https://ventura.legistar.com/Calendar.aspx",
       "transit": "https://www.goventura.org/"
+    },
+    "San Diego": {
+      "website": "https://www.sandiegocounty.gov/",
+      "planning": "https://www.sandiegocounty.gov/content/sdc/pds.html",
+      "meetings": "https://www.sandiegocounty.gov/content/sdc/cob/bosa.html",
+      "transit": "https://www.sandag.org/"
     }
   },
   "overrides": {
@@ -213,6 +228,43 @@
     "Ojai": {
       "boards": "https://www.ojai.ca.gov/320/Planning-Commission",
       "meetings": "https://ojai.granicus.com/ViewPublisher.php?view_id=1"
+    },
+    "San Diego": {
+      "planning": "https://www.sandiego.gov/planning",
+      "projects": "https://www.sandiego.gov/development-services",
+      "meetings": "https://www.sandiego.gov/citywide-agendas-minutes",
+      "boards": "https://www.sandiego.gov/planning/public-hearings-meetings"
+    },
+    "Santa Clarita": {
+      "planning": "https://santaclarita.gov/planning/",
+      "boards": "https://santaclarita.gov/commission-information/planning-commission/planning-commission-agendas/"
+    },
+    "Palmdale": {
+      "boards": "https://www.cityofpalmdaleca.gov/284/Planning-Commission",
+      "planning": "https://www.cityofpalmdaleca.gov/176/Planning"
+    },
+    "Kingsburg": {
+      "planning": "https://cityofkingsburg-ca.gov/158/Planning-Department"
+    },
+    "Dinuba": {
+      "boards": "https://www.dinuba.org/government/city-council/boards-commissions/199-planning-commission"
+    },
+    "Los Angeles": {
+      "planning": "https://planning.lacity.gov/",
+      "projects": "https://planning.lacity.gov/",
+      "meetings": "https://clerk.lacity.gov/calendar",
+      "boards": "https://lacity.gov/government/boards-commissions"
+    },
+    "Fowler": {
+      "planning": "https://www.fowlercity.org/planning",
+      "meetings": "https://www.fowlercity.org/meetings/recent",
+      "boards": "https://www.fowlercity.org/planning"
+    },
+    "Parlier": {
+      "planning": "https://www.parlier.ca.us/157/Community-Development",
+      "housing": "https://www.parlier.ca.us/165/New-Housing",
+      "meetings": "https://www.parlier.ca.us/AgendaCenter/City-Council-Meetings-2",
+      "boards": "https://www.parlier.ca.us/AgendaCenter/City-Council-Meetings-2"
     }
   },
   "transportation": [
@@ -259,6 +311,18 @@
       "name": "VTA projects and programs",
       "county": "Santa Clara",
       "url": "https://www.vta.org/projects",
+      "kind": "directory"
+    },
+    {
+      "name": "San Diego Metropolitan Transit System",
+      "url": "https://www.sdmts.com/",
+      "county": "San Diego",
+      "kind": "directory"
+    },
+    {
+      "name": "SANDAG regional transportation projects",
+      "url": "https://www.sandag.org/",
+      "county": "San Diego",
       "kind": "directory"
     }
   ]

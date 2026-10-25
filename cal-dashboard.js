@@ -33,11 +33,13 @@ function featureCoverage(p){
 }
 let photos={photos:{}};
 try{photos=read('photos.json');}catch{}
-const districtIds=new Set(['19','20','24','26']);
+const districtIds=new Set(['19','20','21','24','26','27']);
 const districts=[
  {id:'24',name:'Central Coast',description:'Santa Barbara and parts of San Luis Obispo and Ventura counties.',url:'https://carbajal.house.gov/district/'},
  {id:'19',name:'Coast & South Bay',description:'Parts of Santa Clara, Santa Cruz, Monterey and San Luis Obispo counties.',url:'https://panetta.house.gov/about/our-district'},
  {id:'20',name:'Southern Central Valley',description:'Parts of Fresno, Kings, Tulare and Kern counties; boundaries change in 2027.',url:'https://www.house.gov/representatives/find-your-representative'},
+ {id:'21',name:'Fresno & Tulare',description:'Additional coverage in the Fresno and Tulare area; boundaries change in 2027.',url:'https://www.house.gov/representatives/find-your-representative'},
+ {id:'27',name:'Northern Los Angeles County',description:'Additional coverage around the Antelope and Santa Clarita valleys; boundaries change in 2027.',url:'https://www.house.gov/representatives/find-your-representative'},
  {id:'26',name:'Ventura & western Los Angeles',description:'Parts of Ventura and Los Angeles counties.',url:'https://juliabrownley.house.gov/about/our-district/'}
 ];
 const projectCache=new Map();
@@ -57,7 +59,7 @@ function localHousing(p){
  const members=countyMembers(p),reports=members.map(j=>housing.jurisdictions[j.id]),years=[...new Set(reports.map(h=>h.year).filter(Boolean))];
  const total=key=>reports.reduce((sum,h)=>sum+(h[key]||0),0);
  return {year:years.length===1?years[0]:null,records:total('records'),mapped:total('mapped'),permitted:years.length===1?total('permitted'):null,completed:years.length===1?total('completed'):null,entitled:years.length===1?total('entitled'):null,source:reports[0].source,
-  geography:'Covered reporting jurisdictions in this county, including county-reported unincorporated records and covered cities. This is not a complete county total where cities outside the four districts are absent.',reportingJurisdictions:members.map(j=>j.name)};
+  geography:'Covered reporting jurisdictions in this county, including county-reported unincorporated records and covered cities. This is not a complete county total where cities outside the selected coverage are absent.',reportingJurisdictions:members.map(j=>j.name)};
 }
 function photoFor(p){
  if(photos.photos[p.id])return {...photos.photos[p.id],scope:'place'};
@@ -71,7 +73,7 @@ function queryScope(query){
  if(district!=='all'&&!districtIds.has(district))throw Error('Unknown district.');
  return {boundary,district,field:boundary==='120'?'futureDistricts':'districts'};
 }
-const inScope=(p,s)=>s.district==='all'?p[s.field].length>0:p[s.field].includes(s.district);
+const inScope=(p,s)=>s.district==='all'?(p[s.field].length>0||p.id==='p0666000'||p.jurisdiction==='p0666000'):p[s.field].includes(s.district);
 const light=p=>{
  const s=stats.places[p.id]||{},photo=photoFor(p);
  return {id:p.id,name:p.name,county:p.county,kind:p.kind,center:p.center,bounds:p.bounds,districts:p.districts,futureDistricts:p.futureDistricts,split:p.split,
@@ -143,7 +145,7 @@ export function registerCalDashboard(app,{llm,model,hasAI=false}={}){
    if(!inScope(r,scope)){outside++;continue;}
    points.push({id:r.id,name:r.name,address:r.address,jurisdiction:r.jurisdiction,lat:r.lat,lng:r.lng,units:r.units,status:r.status,year:r.year,source:r.source});
   }
-  res.json({points,count:points.length,unlocated,outside,boundary:scope.boundary,note:'Only verified APR coordinates inside the selected district boundaries are mapped. These are reported annual milestones, not live construction sites. Unlocated records remain in the project list.'});
+  res.json({points,count:points.length,unlocated,outside,boundary:scope.boundary,note:'Only verified APR coordinates inside the selected district boundaries, or the separately included city of San Diego when all coverage is selected, are mapped. These are reported annual milestones, not live construction sites. Unlocated records remain in the project list.'});
  });
  app.get('/api/cal/meetings/:id',async(req,res)=>{
   const p=profiles.get(req.params.id);if(!p)return res.status(404).json({error:'Unknown locality.'});

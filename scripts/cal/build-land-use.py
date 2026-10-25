@@ -8,6 +8,7 @@ import json,pathlib,urllib.request,urllib.parse,re,datetime,concurrent.futures,h
 from html.parser import HTMLParser
 ROOT=pathlib.Path(__file__).resolve().parents[2];OUT=ROOT/'public/cal/data';CACHE=pathlib.Path('/tmp/cal-civic-cache');FRESH='--fresh' in sys.argv
 profiles=json.loads((OUT/'profiles.json').read_text())['profiles']
+EXCLUDED=set(json.loads((ROOT/'scripts/cal/unavailable-links.json').read_text())['urls'])
 SEEDS=json.loads((ROOT/'scripts/cal/land-use-seeds.json').read_text())
 patterns={
  'Zoning':r'\bzoning\b|zone map|land.?use (?:map|view)',
@@ -23,8 +24,9 @@ patterns={
  'GIS':r'\bgis\b|interactive map|mapping (?:system|portal)|parcel (?:map|viewer)'
 }
 class Links(HTMLParser):
- def __init__(self):super().__init__();self.items=[];self.href=None;self.text=[]
+ def __init__(self):super().__init__();self.base=None;self.items=[];self.href=None;self.text=[]
  def handle_starttag(self,t,a):
+  if t=='base' and self.base is None:self.base=dict(a).get('href')
   if t=='a':self.href=dict(a).get('href');self.text=[]
  def handle_data(self,d):
   if self.href:self.text.append(d)
@@ -32,7 +34,7 @@ class Links(HTMLParser):
   if t=='a' and self.href:self.items.append((self.href,re.sub(r'\s+',' ',' '.join(self.text)).strip()));self.href=None
 
 def get(url,js=False):
- key=CACHE/('land-'+hashlib.sha256(url.encode()).hexdigest()[:24]+'.json')
+ key=CACHE/('land-v2-'+hashlib.sha256(url.encode()).hexdigest()[:24]+'.json')
  if key.exists() and not FRESH:
   cached=json.loads(key.read_text())
   if cached.get('status')==200 and not cached.get('data',{}).get('error'):return cached
@@ -43,8 +45,8 @@ def get(url,js=False):
   else:
    p=Links();p.feed(raw);links=[]
    for h,t in p.items:
-    u=urllib.parse.urljoin(final,h).split('#')[0]
-    if u.startswith('https://') and 2<len(t)<170:links.append({'title':t,'url':u})
+    u=urllib.parse.urljoin(urllib.parse.urljoin(final,p.base or final),h).split('#')[0]
+    if u not in EXCLUDED and u.startswith('https://') and 2<len(t)<170:links.append({'title':t,'url':u})
    d={'links':list({(l['url'],l['title']):l for l in links}.values()),'status':200}
  except Exception as e:d={'status':str(e)[:120],'links':[]}
  key.write_text(json.dumps(d));return d
@@ -53,7 +55,7 @@ def layer(url):
  meta=get(url+'?f=json',True).get('data',{})
  title=meta.get('name','')
  if meta.get('geometryType')!='esriGeometryPolygon' or not re.search(r'zon|land.?use',title,re.I) or re.search(r'fire|flood|inspection|evac|school|noise|hazard|seismic|airport|safety|historic|history|draft|text|excluding|management area',title,re.I):return None
- fields=meta.get('fields',[]);field=next((f['name'] for f in fields if re.search(r'^(zone|zoning|zonecode|zone_code|zoneclass|zoningcode|zoning_code|zonedist|zone_district|zoning_district|landuse|land_use|lu_code|luc|zn_cd1|zone_desig|zonecd|zoning_cd)$',f['name'],re.I)),None)
+ fields=meta.get('fields',[]);field=next((f['name'] for f in fields if re.search(r'^(zone|zone_name|zoning|zonecode|zone_code|zoneclass|zoningcode|zoning_code|zonedist|zone_district|zoning_district|landuse|land_use|lu_code|luc|zn_cd1|zone_desig|zonecd|zoning_cd)$',f['name'],re.I)),None)
  if not field:return None
  q=urllib.parse.urlencode({'where':'1=1','outFields':field,'returnGeometry':'false','resultRecordCount':3,'f':'json'})
  sample=get(url+'/query?'+q,True).get('data',{})
@@ -116,11 +118,22 @@ def one(p):
  overlays.sort(key=lambda l:(not bool(re.fullmatch(r'zoning|.*_zoning|Zone Designation|Zoning Graphic|Land Use Outlines',l['name'],re.I)),len(l['name'])))
  return p['id'],{'authority':p['name'],'resources':list({(r['url'],r['category']):r for r in result}.values()),'layers':list({l['url']:l for l in overlays}.values()),'checks':checks}
 
-jurisdictions=[p for p in profiles if p['kind']!='community'];data={}
+previous=json.loads((OUT/'land-use.json').read_text()).get('places',{}) if (OUT/'land-use.json').exists() else {}
+data={p['id']:previous[p['id']] for p in profiles if p['id'] in previous}
+refresh_names=set(next((a.split('=',1)[1].split('|') for a in sys.argv if a.startswith('--places=')),[]))
+jurisdictions=[p for p in profiles if p['kind']!='community' and (FRESH or p['id'] not in previous or p['name'] in refresh_names)]
 with concurrent.futures.ThreadPoolExecutor(6) as ex:
  for key,value in ex.map(one,jurisdictions):data[key]=value;print(key,value['authority'],len(value['resources']),'links',len(value['layers']),'polygon layers',flush=True)
 for p in profiles:
  if p['kind']=='community':
   county=next(c for c in profiles if c['kind']=='county' and c['county']==p['county']);data[p['id']]=data[county['id']]
+# WordPress download refresh tokens expire; keep the stable document selector.
+for entry in data.values():
+ entry['resources']=[r for r in entry['resources'] if r['url'] not in EXCLUDED]
+ for r in entry['resources']:
+  r['url']=r['url'].replace('https://www.municode.com/library/ca/kingsburg/','https://library.municode.com/ca/kingsburg/').replace('https://www.municode.com/library/ca/parlier/','https://library.municode.com/ca/parlier/')
+  u=urllib.parse.urlsplit(r['url'])
+  if u.hostname=='reedley.ca.gov' and u.path.startswith('/download/'):
+   r['url']=urllib.parse.urlunsplit(u._replace(query=urllib.parse.urlencode([(k,v) for k,v in urllib.parse.parse_qsl(u.query) if k!='refresh'])))
 (OUT/'land-use.json').write_text(json.dumps({'retrieved':datetime.datetime.now(datetime.timezone.utc).isoformat(),'places':data,'note':'Links discovered on the responsible agency’s own pages. A directory link does not mean every record has been imported. Communities use county land-use authority. Polygon layers are only included after a successful official metadata and attribute query. Map display is informational; confirm zoning and overlays with the local planning department.'},indent=2))
 print('Total',sum(len(v['resources']) for v in data.values()),'links;',sum(bool(v['layers']) for v in data.values()),'profiles with verified polygon services',flush=True)

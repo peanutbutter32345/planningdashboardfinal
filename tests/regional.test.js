@@ -14,7 +14,7 @@ test('new cities are available to dashboard, server, meetings and guest city pre
  const context={window:{}};vm.runInNewContext(readFileSync(new URL('../public/data/regions.js',import.meta.url),'utf8'),context);
  assert.equal(JSON.stringify(context.window.REGIONAL_DATA),JSON.stringify({...REGIONAL_DATA,cities:Object.fromEntries(Object.entries(REGIONAL_CITIES).filter(([,c])=>!c.coverageId))}));
  assert.equal(Object.values(REGIONAL_CITIES).filter(c=>!c.coverageId).length,69);
- assert.equal(Object.keys(MEETING_DIRECTORY).length,356);
+ assert.equal(Object.keys(MEETING_DIRECTORY).length,102+Object.values(REGIONAL_CITIES).filter(c=>c.coverageId).length);
  assert.equal(Object.keys(LEGISTAR_CITIES).length,17);
  for(const [key,c]of Object.entries(REGIONAL_CITIES).filter(([,c])=>!c.coverageId)){
   assert.equal(CITY_LABELS[key],c.label);assert.ok(c.county);assert.ok(c.data.length||housing.cities[key].length);

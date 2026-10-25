@@ -1,13 +1,24 @@
 {
   "metadata": {
-    "retrieved": "2026-10-25T06:59:31.033299+00:00",
+    "retrieved": "2026-10-25T09:18:12.080916+00:00",
     "source": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer",
     "placesSource": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Places_CouSub_ConCity_SubMCD/MapServer",
+    "districts": [
+      "19",
+      "20",
+      "21",
+      "24",
+      "26",
+      "27"
+    ],
+    "extraCities": [
+      "San Diego"
+    ],
     "currentCongress": 119,
     "currentThrough": "2027-01-02",
     "futureCongress": 120,
     "futureFrom": "2027-01-03",
-    "method": "Census incorporated places and census-designated places with a positive-area intersection with a selected district. Split-place membership does not establish the district of an individual address. County remainders are covered through county profiles. Boundaries are simplified for display."
+    "method": "Census incorporated places and census-designated places with a positive-area intersection with a selected district. Split-place membership does not establish the district of an individual address. Explicitly requested cities are included in full even outside those districts. County remainders are covered through county profiles. Boundaries are simplified for display."
   },
   "places": [
     {
@@ -36,6 +47,60 @@
       ]
     },
     {
+      "id": "p0607750",
+      "geoid": "0607750",
+      "name": "Bowles",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.6131,
+        "lng": -119.75259
+      },
+      "bounds": [
+        -119.75487,
+        36.59807,
+        -119.74979,
+        36.61988
+      ]
+    },
+    {
+      "id": "p0610032",
+      "geoid": "0610032",
+      "name": "Calwa",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.71242,
+        "lng": -119.76109
+      },
+      "bounds": [
+        -119.77195,
+        36.70365,
+        -119.75356,
+        36.7214
+      ]
+    },
+    {
       "id": "p0612412",
       "geoid": "0612412",
       "name": "Centerville",
@@ -48,7 +113,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -75,7 +141,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -90,6 +157,87 @@
       ]
     },
     {
+      "id": "p0618674",
+      "geoid": "0618674",
+      "name": "Del Rey",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.65599,
+        "lng": -119.59987
+      },
+      "bounds": [
+        -119.61059,
+        36.64876,
+        -119.58348,
+        36.6632
+      ]
+    },
+    {
+      "id": "p0620928",
+      "geoid": "0620928",
+      "name": "Easton",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.65305,
+        "lng": -119.79078
+      },
+      "bounds": [
+        -119.80882,
+        36.64142,
+        -119.77277,
+        36.66336
+      ]
+    },
+    {
+      "id": "p0625436",
+      "geoid": "0625436",
+      "name": "Fowler",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.62266,
+        "lng": -119.67986
+      },
+      "bounds": [
+        -119.6958,
+        36.60111,
+        -119.64916,
+        36.64176
+      ]
+    },
+    {
       "id": "p0627000",
       "geoid": "0627000",
       "name": "Fresno",
@@ -99,10 +247,12 @@
         "Fresno"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -143,6 +293,33 @@
       ]
     },
     {
+      "id": "p0638562",
+      "geoid": "0638562",
+      "name": "Kingsburg",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.52611,
+        "lng": -119.54911
+      },
+      "bounds": [
+        -119.59433,
+        36.50339,
+        -119.53847,
+        36.54701
+      ]
+    },
+    {
       "id": "p0640746",
       "geoid": "0640746",
       "name": "Laton",
@@ -168,6 +345,60 @@
         36.41801,
         -119.67012,
         36.44301
+      ]
+    },
+    {
+      "id": "p0645232",
+      "geoid": "0645232",
+      "name": "Malaga",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.68296,
+        "lng": -119.73179
+      },
+      "bounds": [
+        -119.73674,
+        36.67793,
+        -119.72685,
+        36.68529
+      ]
+    },
+    {
+      "id": "p0646400",
+      "geoid": "0646400",
+      "name": "Mayfair",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.7705,
+        "lng": -119.76257
+      },
+      "bounds": [
+        -119.77087,
+        36.76503,
+        -119.74914,
+        36.77599
       ]
     },
     {
@@ -205,12 +436,13 @@
         "Fresno"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
         "20"
       ],
-      "split": false,
+      "split": true,
       "center": {
         "lat": 36.7341,
         "lng": -119.45728
@@ -223,6 +455,60 @@
       ]
     },
     {
+      "id": "p0648592",
+      "geoid": "0648592",
+      "name": "Monmouth",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.56502,
+        "lng": -119.74083
+      },
+      "bounds": [
+        -119.74609,
+        36.56176,
+        -119.73407,
+        36.56913
+      ]
+    },
+    {
+      "id": "p0653505",
+      "geoid": "0653505",
+      "name": "Old Fig Garden",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.79677,
+        "lng": -119.80511
+      },
+      "bounds": [
+        -119.8175,
+        36.78488,
+        -119.79114,
+        36.8085
+      ]
+    },
+    {
       "id": "p0654008",
       "geoid": "0654008",
       "name": "Orange Cove",
@@ -231,9 +517,12 @@
       "counties": [
         "Fresno"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -248,6 +537,60 @@
       ]
     },
     {
+      "id": "p0655856",
+      "geoid": "0655856",
+      "name": "Parlier",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.60826,
+        "lng": -119.53888
+      },
+      "bounds": [
+        -119.57488,
+        36.59591,
+        -119.51627,
+        36.62242
+      ]
+    },
+    {
+      "id": "p0660242",
+      "geoid": "0660242",
+      "name": "Reedley",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.59778,
+        "lng": -119.45024
+      },
+      "bounds": [
+        -119.47018,
+        36.57452,
+        -119.41659,
+        36.67678
+      ]
+    },
+    {
       "id": "p0667056",
       "geoid": "0667056",
       "name": "Sanger",
@@ -257,10 +600,12 @@
         "Fresno"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -272,6 +617,33 @@
         36.6412,
         -119.52928,
         36.73593
+      ]
+    },
+    {
+      "id": "p0670882",
+      "geoid": "0670882",
+      "name": "Selma",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.56699,
+        "lng": -119.61417
+      },
+      "bounds": [
+        -119.64638,
+        36.53796,
+        -119.58844,
+        36.59812
       ]
     },
     {
@@ -302,6 +674,33 @@
       ]
     },
     {
+      "id": "p0675994",
+      "geoid": "0675994",
+      "name": "Sunnyside",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.72839,
+        "lng": -119.6912
+      },
+      "bounds": [
+        -119.71268,
+        36.7163,
+        -119.67302,
+        36.74032
+      ]
+    },
+    {
       "id": "p0677960",
       "geoid": "0677960",
       "name": "Tarpey Village",
@@ -314,7 +713,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -326,6 +726,33 @@
         36.78339,
         -119.69107,
         36.80125
+      ]
+    },
+    {
+      "id": "p0684680",
+      "geoid": "0684680",
+      "name": "West Park",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.70068,
+        "lng": -119.84896
+      },
+      "bounds": [
+        -119.86238,
+        36.68297,
+        -119.84447,
+        36.72116
       ]
     },
     {
@@ -1392,7 +1819,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "27"
       ],
       "split": false,
       "center": {
@@ -1995,6 +2423,31 @@
       ]
     },
     {
+      "id": "p0600212",
+      "geoid": "0600212",
+      "name": "Acton",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 34.49738,
+        "lng": -118.18907
+      },
+      "bounds": [
+        -118.2599,
+        34.45193,
+        -118.07963,
+        34.54275
+      ]
+    },
+    {
       "id": "p0600394",
       "geoid": "0600394",
       "name": "Agoura Hills",
@@ -2019,6 +2472,31 @@
         34.12533,
         -118.71978,
         34.16821
+      ]
+    },
+    {
+      "id": "p0600450",
+      "geoid": "0600450",
+      "name": "Agua Dulce",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 34.50583,
+        "lng": -118.30859
+      },
+      "bounds": [
+        -118.37898,
+        34.4611,
+        -118.25534,
+        34.54491
       ]
     },
     {
@@ -2057,9 +2535,12 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
-        "26"
+        "26",
+        "27"
       ],
       "split": false,
       "center": {
@@ -2074,6 +2555,33 @@
       ]
     },
     {
+      "id": "p0619052",
+      "geoid": "0619052",
+      "name": "Desert View Highlands",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.58997,
+        "lng": -118.15342
+      },
+      "bounds": [
+        -118.1616,
+        34.58348,
+        -118.14748,
+        34.59827
+      ]
+    },
+    {
       "id": "p0621964",
       "geoid": "0621964",
       "name": "Elizabeth Lake",
@@ -2082,7 +2590,9 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
         "26"
       ],
@@ -2099,6 +2609,33 @@
       ]
     },
     {
+      "id": "p0631092",
+      "geoid": "0631092",
+      "name": "Green Valley",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.61777,
+        "lng": -118.40297
+      },
+      "bounds": [
+        -118.44398,
+        34.5871,
+        -118.35542,
+        34.64843
+      ]
+    },
+    {
       "id": "p0632385",
       "geoid": "0632385",
       "name": "Hasley Canyon",
@@ -2107,7 +2644,9 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
         "26"
       ],
@@ -2157,7 +2696,9 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
         "26"
       ],
@@ -2182,9 +2723,12 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
-        "26"
+        "26",
+        "27"
       ],
       "split": false,
       "center": {
@@ -2199,6 +2743,60 @@
       ]
     },
     {
+      "id": "p0641208",
+      "geoid": "0641208",
+      "name": "Leona Valley",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.6163,
+        "lng": -118.28141
+      },
+      "bounds": [
+        -118.36387,
+        34.5802,
+        -118.21849,
+        34.65256
+      ]
+    },
+    {
+      "id": "p0641880",
+      "geoid": "0641880",
+      "name": "Littlerock",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.52155,
+        "lng": -117.98039
+      },
+      "bounds": [
+        -118.00287,
+        34.51444,
+        -117.95361,
+        34.52839
+      ]
+    },
+    {
       "id": "p0644000",
       "geoid": "0644000",
       "name": "Los Angeles",
@@ -2207,11 +2805,14 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
-      "futureDistricts": [
-        "26"
+      "districts": [
+        "27"
       ],
-      "split": false,
+      "futureDistricts": [
+        "26",
+        "27"
+      ],
+      "split": true,
       "center": {
         "lat": 34.02023,
         "lng": -118.28657
@@ -2224,6 +2825,33 @@
       ]
     },
     {
+      "id": "p0655156",
+      "geoid": "0655156",
+      "name": "Palmdale",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.58604,
+        "lng": -118.08647
+      },
+      "bounds": [
+        -118.28773,
+        34.51004,
+        -117.91619,
+        34.66079
+      ]
+    },
+    {
       "id": "p0659052",
       "geoid": "0659052",
       "name": "Quartz Hill",
@@ -2232,9 +2860,12 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
-        "26"
+        "26",
+        "27"
       ],
       "split": false,
       "center": {
@@ -2249,6 +2880,87 @@
       ]
     },
     {
+      "id": "p0669088",
+      "geoid": "0669088",
+      "name": "Santa Clarita",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.42087,
+        "lng": -118.48988
+      },
+      "bounds": [
+        -118.61331,
+        34.34137,
+        -118.37871,
+        34.50003
+      ]
+    },
+    {
+      "id": "p0674130",
+      "geoid": "0674130",
+      "name": "Stevenson Ranch",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.393,
+        "lng": -118.59407
+      },
+      "bounds": [
+        -118.6223,
+        34.36706,
+        -118.5607,
+        34.41799
+      ]
+    },
+    {
+      "id": "p0677308",
+      "geoid": "0677308",
+      "name": "Sun Village",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.55711,
+        "lng": -117.9545
+      },
+      "bounds": [
+        -117.99695,
+        34.52828,
+        -117.91624,
+        34.58733
+      ]
+    },
+    {
       "id": "p0681967",
       "geoid": "0681967",
       "name": "Val Verde",
@@ -2257,7 +2969,9 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
         "26"
       ],
@@ -2677,6 +3391,29 @@
         36.62143,
         -121.64203,
         36.62777
+      ]
+    },
+    {
+      "id": "p0666000",
+      "geoid": "0666000",
+      "name": "San Diego",
+      "kind": "city",
+      "county": "San Diego",
+      "counties": [
+        "San Diego"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 32.8243,
+        "lng": -117.15202
+      },
+      "bounds": [
+        -117.28227,
+        32.53479,
+        -116.54561,
+        33.11419
       ]
     },
     {
@@ -5191,6 +5928,87 @@
       ]
     },
     {
+      "id": "p0617708",
+      "geoid": "0617708",
+      "name": "Cutler",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.52669,
+        "lng": -119.29134
+      },
+      "bounds": [
+        -119.30477,
+        36.5157,
+        -119.2734,
+        36.53379
+      ]
+    },
+    {
+      "id": "p0618450",
+      "geoid": "0618450",
+      "name": "Delft Colony",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.51341,
+        "lng": -119.44643
+      },
+      "bounds": [
+        -119.4493,
+        36.50953,
+        -119.44414,
+        36.51806
+      ]
+    },
+    {
+      "id": "p0619318",
+      "geoid": "0619318",
+      "name": "Dinuba",
+      "kind": "city",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.5498,
+        "lng": -119.39524
+      },
+      "bounds": [
+        -119.43962,
+        36.52634,
+        -119.36774,
+        36.57131
+      ]
+    },
+    {
       "id": "p0620032",
       "geoid": "0620032",
       "name": "Ducor",
@@ -5224,9 +6042,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -5295,6 +6116,33 @@
       ]
     },
     {
+      "id": "p0622235",
+      "geoid": "0622235",
+      "name": "El Monte Mobile Village",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.54703,
+        "lng": -119.42505
+      },
+      "bounds": [
+        -119.42577,
+        36.5462,
+        -119.42445,
+        36.54786
+      ]
+    },
+    {
       "id": "p0623126",
       "geoid": "0623126",
       "name": "Exeter",
@@ -5303,7 +6151,9 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
         "20"
       ],
@@ -5328,9 +6178,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -5353,9 +6206,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -5451,6 +6307,33 @@
       ]
     },
     {
+      "id": "p0636910",
+      "geoid": "0636910",
+      "name": "Ivanhoe",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.38329,
+        "lng": -119.22088
+      },
+      "bounds": [
+        -119.2317,
+        36.36906,
+        -119.21003,
+        36.39505
+      ]
+    },
+    {
       "id": "p0638076",
       "geoid": "0638076",
       "name": "Kennedy Meadows",
@@ -5487,6 +6370,7 @@
         "Tulare"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
@@ -5513,7 +6397,9 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
         "20"
       ],
@@ -5565,9 +6451,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -5579,6 +6468,33 @@
         36.30531,
         -119.22041,
         36.31246
+      ]
+    },
+    {
+      "id": "p0642566",
+      "geoid": "0642566",
+      "name": "London",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.48134,
+        "lng": -119.44525
+      },
+      "bounds": [
+        -119.45202,
+        36.47144,
+        -119.43394,
+        36.48845
       ]
     },
     {
@@ -5609,6 +6525,60 @@
       ]
     },
     {
+      "id": "p0648676",
+      "geoid": "0648676",
+      "name": "Monson",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.49097,
+        "lng": -119.33453
+      },
+      "bounds": [
+        -119.34427,
+        36.48712,
+        -119.32993,
+        36.49804
+      ]
+    },
+    {
+      "id": "p0654372",
+      "geoid": "0654372",
+      "name": "Orosi",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.54284,
+        "lng": -119.29152
+      },
+      "bounds": [
+        -119.30507,
+        36.53018,
+        -119.27788,
+        36.55665
+      ]
+    },
+    {
       "id": "p0655506",
       "geoid": "0655506",
       "name": "Panorama Heights",
@@ -5633,6 +6603,33 @@
         35.80288,
         -118.61921,
         35.81122
+      ]
+    },
+    {
+      "id": "p0656120",
+      "geoid": "0656120",
+      "name": "Patterson Tract",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.37976,
+        "lng": -119.29676
+      },
+      "bounds": [
+        -119.3057,
+        36.36445,
+        -119.28765,
+        36.39454
       ]
     },
     {
@@ -5823,6 +6820,33 @@
       ]
     },
     {
+      "id": "p0671078",
+      "geoid": "0671078",
+      "name": "Seville",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.48425,
+        "lng": -119.22537
+      },
+      "bounds": [
+        -119.23233,
+        36.48021,
+        -119.21857,
+        36.48684
+      ]
+    },
+    {
       "id": "p0671932",
       "geoid": "0671932",
       "name": "Silver City",
@@ -5956,6 +6980,33 @@
       ]
     },
     {
+      "id": "p0675672",
+      "geoid": "0675672",
+      "name": "Sultana",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.5435,
+        "lng": -119.33553
+      },
+      "bounds": [
+        -119.34954,
+        36.53782,
+        -119.32492,
+        36.5495
+      ]
+    },
+    {
       "id": "p0678638",
       "geoid": "0678638",
       "name": "Three Rivers",
@@ -6019,6 +7070,7 @@
         "Tulare"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
@@ -6034,6 +7086,33 @@
         36.28597,
         -119.11278,
         36.28966
+      ]
+    },
+    {
+      "id": "p0680280",
+      "geoid": "0680280",
+      "name": "Traver",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.45206,
+        "lng": -119.48257
+      },
+      "bounds": [
+        -119.49325,
+        36.444,
+        -119.47341,
+        36.4599
       ]
     },
     {
@@ -6073,10 +7152,12 @@
         "Tulare"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -6101,12 +7182,14 @@
         "Kings"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
-      "split": false,
+      "split": true,
       "center": {
         "lat": 36.34722,
         "lng": -119.4535
@@ -6154,9 +7237,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -6168,6 +7254,33 @@
         36.39393,
         -119.08088,
         36.43187
+      ]
+    },
+    {
+      "id": "p0686734",
+      "geoid": "0686734",
+      "name": "Yettem",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.48528,
+        "lng": -119.25895
+      },
+      "bounds": [
+        -119.26121,
+        36.48282,
+        -119.24953,
+        36.48772
       ]
     },
     {
@@ -7025,10 +8138,12 @@
         "Fresno"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -7052,10 +8167,12 @@
         "Tulare"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -7124,6 +8241,29 @@
       ]
     },
     {
+      "id": "c06073",
+      "geoid": "06073",
+      "name": "San Diego County",
+      "kind": "county",
+      "county": "San Diego",
+      "counties": [
+        "San Diego"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": true,
+      "center": {
+        "lat": 33.03822,
+        "lng": -116.73388
+      },
+      "bounds": [
+        -117.61108,
+        32.52951,
+        -116.08088,
+        33.50538
+      ]
+    },
+    {
       "id": "c06029",
       "geoid": "06029",
       "name": "Kern County",
@@ -7136,7 +8276,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "27"
       ],
       "split": true,
       "center": {
@@ -7189,10 +8330,12 @@
         "Los Angeles"
       ],
       "districts": [
+        "27",
         "26"
       ],
       "futureDistricts": [
-        "26"
+        "26",
+        "27"
       ],
       "split": true,
       "center": {

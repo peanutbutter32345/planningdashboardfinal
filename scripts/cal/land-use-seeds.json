@@ -376,5 +376,83 @@
       "title": "Mayor and City Council",
       "url": "https://cityofguadalupe.org/mayor-and-city-council/"
     }
+  ],
+  "San Diego": [
+    {
+      "title": "City of San Diego zoning and permit portal",
+      "url": "https://www.sandiego.gov/development-services/zoning",
+      "category": "Zoning"
+    },
+    {
+      "title": "City of San Diego planning maps",
+      "url": "https://www.sandiego.gov/planning/work/mapsua/map",
+      "category": "GIS"
+    },
+    {
+      "title": "San Diego city planning GIS layers",
+      "url": "https://webmaps.sandiego.gov/arcgis/rest/services/Planning/PLN_LongRangePlanning/MapServer",
+      "category": "GIS"
+    },
+    {
+      "title": "Citywide agendas and minutes",
+      "url": "https://www.sandiego.gov/citywide-agendas-minutes",
+      "category": "Meetings"
+    },
+    {
+      "title": "San Diego public hearings and public bodies",
+      "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+      "category": "Boards"
+    },
+    {
+      "category": "GIS",
+      "title": "City of San Diego base zones",
+      "url": "https://webmaps.sandiego.gov/arcgis/rest/services/Planning/PLN_LongRangePlanning/MapServer/27"
+    }
+  ],
+  "Fowler": [
+    {
+      "category": "Planning",
+      "title": "Fowler Planning Department",
+      "url": "https://www.fowlercity.org/planning"
+    },
+    {
+      "category": "Meetings",
+      "title": "Fowler council and commission meeting records",
+      "url": "https://www.fowlercity.org/meetings/recent"
+    }
+  ],
+  "Parlier": [
+    {
+      "category": "Planning",
+      "title": "Parlier Community Development",
+      "url": "https://www.parlier.ca.us/157/Community-Development"
+    },
+    {
+      "category": "Housing",
+      "title": "Parlier housing resources",
+      "url": "https://www.parlier.ca.us/165/New-Housing"
+    },
+    {
+      "category": "Meetings",
+      "title": "Parlier public notices and hearings",
+      "url": "https://www.parlier.ca.us/203/Public-Notices-and-Hearings"
+    }
+  ],
+  "Los Angeles": [
+    {
+      "category": "Boards",
+      "title": "Los Angeles boards and commissions",
+      "url": "https://lacity.gov/government/boards-commissions"
+    },
+    {
+      "category": "Zoning",
+      "title": "Los Angeles zoning search (ZIMAS)",
+      "url": "https://planning.lacity.gov/zoning/zoning-search"
+    },
+    {
+      "category": "Boards",
+      "title": "Los Angeles planning commissions",
+      "url": "https://planning.lacity.gov/about/commissioners"
+    }
   ]
 }

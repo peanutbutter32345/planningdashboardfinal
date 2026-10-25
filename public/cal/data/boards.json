@@ -1,7 +1,9 @@
 {
-  "retrieved": "2026-10-25T08:06:23.133296+00:00",
+  "retrieved": "2026-10-25T09:34:25.291274+00:00",
   "bodies": {
     "p0603190": [],
+    "p0607750": [],
+    "p0610032": [],
     "p0612412": [],
     "p0614218": [
       {
@@ -45,6 +47,9 @@
         "directory": "Clovis"
       }
     ],
+    "p0618674": [],
+    "p0620928": [],
+    "p0625436": [],
     "p0627000": [
       {
         "name": "City Council",
@@ -123,9 +128,30 @@
       }
     ],
     "p0627014": [],
+    "p0638562": [
+      {
+        "name": "Economic Development Committee",
+        "url": "https://cityofkingsburg-ca.gov/173/Economic-Development-Committee",
+        "directory": "Kingsburg"
+      },
+      {
+        "name": "Finance Committee",
+        "url": "https://cityofkingsburg-ca.gov/195/Finance-Committee",
+        "directory": "Kingsburg"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://www.cityofkingsburg-ca.gov/183/Planning-Commission",
+        "directory": "Kingsburg"
+      }
+    ],
     "p0640746": [],
+    "p0645232": [],
+    "p0646400": [],
     "p0647592": [],
     "p0647822": [],
+    "p0648592": [],
+    "p0653505": [],
     "p0654008": [
       {
         "name": "City Council",
@@ -148,6 +174,75 @@
         "directory": "Orange Cove"
       }
     ],
+    "p0655856": [
+      {
+        "name": "City Council",
+        "url": "https://www.parlier.ca.us/178/City-Council",
+        "directory": "Parlier"
+      }
+    ],
+    "p0660242": [
+      {
+        "name": "CITY COUNCIL",
+        "url": "https://reedley.ca.gov/city-council/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "AIRPORT COMMISSION",
+        "url": "https://reedley.ca.gov/boards-commissions/airport-commission/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "COMMUNITY SERVICES COMMISSION",
+        "url": "https://reedley.ca.gov/boards-commissions/community-services-commission/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "Measure G Oversight Committee",
+        "url": "https://reedley.ca.gov/boards-commissions/measure-g-oversight-commission/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://reedley.ca.gov/boards-commissions/planning-commission/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "RDA OVERSIGHT BOARD",
+        "url": "https://reedley.ca.gov/boards-commissions/rda-oversight-board/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "TRAFFIC SAFETY COMMISSION",
+        "url": "https://reedley.ca.gov/boards-commissions/traffic-safety-commission/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "STREETSCAPE MAINTENANCE COMMITTEE",
+        "url": "https://reedley.ca.gov/boards-commissions/streetscape-maintenance-committee/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "MEASURE G OVERSIGHT COMMISSION",
+        "url": "https://reedley.ca.gov/boards-commissions/measure-g-oversight-commission/",
+        "directory": "Reedley"
+      },
+      {
+        "name": "Notice of Public Hearing - City Council",
+        "url": "https://reedley.ca.gov/download/notice-of-public-hearing-city-council/?wpdmdl=20531&refresh=6addc9c78dead1792920007",
+        "directory": "Reedley"
+      },
+      {
+        "name": "Notice of Public Hearing - Planning Commission",
+        "url": "https://reedley.ca.gov/download/notice-of-public-hearing-planning-commission/?wpdmdl=20314&refresh=6addc9c79e88a1792920007",
+        "directory": "Reedley"
+      },
+      {
+        "name": "Notice of Public Hearing with Map of Affected Parcels - City Council",
+        "url": "https://reedley.ca.gov/download/notice-of-public-hearing-with-map-of-affected-parcels-city-council/?wpdmdl=19790&refresh=6addc9c7ad1bb1792920007",
+        "directory": "Reedley"
+      }
+    ],
     "p0667056": [
       {
         "name": "City Council",
@@ -155,8 +250,42 @@
         "directory": "Sanger"
       }
     ],
+    "p0670882": [
+      {
+        "name": "City Council",
+        "url": "https://www.cityofselma.com/government/city_council/index.php",
+        "directory": "Selma"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://www.cityofselma.com/government/committees__commissions/commission_agendas/planning_commission.php",
+        "directory": "Selma"
+      },
+      {
+        "name": "Recreation and Community Services Commission",
+        "url": "https://www.cityofselma.com/government/committees__commissions/commission_agendas/index.php",
+        "directory": "Selma"
+      },
+      {
+        "name": "Measure \"S\" Oversight Committee",
+        "url": "https://www.cityofselma.com/government/committees__commissions/commission_agendas/index.php",
+        "directory": "Selma"
+      },
+      {
+        "name": "Measure \"P\" Oversight Committee",
+        "url": "https://www.cityofselma.com/government/committees__commissions/commission_agendas/index.php",
+        "directory": "Selma"
+      },
+      {
+        "name": "Downtown Business Improvement District Advisory Board",
+        "url": "https://www.cityofselma.com/departments/economic_development/downtown_selma_bid.php",
+        "directory": "Selma"
+      }
+    ],
     "p0673794": [],
+    "p0675994": [],
     "p0677960": [],
+    "p0684680": [],
     "p0656294": [
       {
         "name": "Inyo County Local Transportation Commission",
@@ -604,6 +733,28 @@
       }
     ],
     "p0641166": [],
+    "p0600212": [
+      {
+        "name": "Records of the Board",
+        "url": "https://bos.lacounty.gov/services/records-of-the-board",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Rules of the Board",
+        "url": "https://assets-us-01.kc-usercontent.com:443/0234f496-d2b7-00b6-17a4-b43e949b70a2/0c4721a1-b505-4d85-b48c-32a71594ace9/Revised%20Rules%20of%20the%20Board%202.6.26%20final.pdf",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Functions delegated by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBODEAUMA",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Policies adopted by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBOSUPOMA",
+        "directory": "Los Angeles County"
+      }
+    ],
     "p0600394": [
       {
         "name": "City Council",
@@ -614,6 +765,28 @@
         "name": "Planning Commission",
         "url": "https://www.agourahillscity.gov/government/planning_commission/index.php",
         "directory": "Agoura Hills"
+      }
+    ],
+    "p0600450": [
+      {
+        "name": "Records of the Board",
+        "url": "https://bos.lacounty.gov/services/records-of-the-board",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Rules of the Board",
+        "url": "https://assets-us-01.kc-usercontent.com:443/0234f496-d2b7-00b6-17a4-b43e949b70a2/0c4721a1-b505-4d85-b48c-32a71594ace9/Revised%20Rules%20of%20the%20Board%202.6.26%20final.pdf",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Functions delegated by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBODEAUMA",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Policies adopted by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBOSUPOMA",
+        "directory": "Los Angeles County"
       }
     ],
     "p0609598": [],
@@ -639,7 +812,51 @@
         "directory": "Los Angeles County"
       }
     ],
+    "p0619052": [
+      {
+        "name": "Records of the Board",
+        "url": "https://bos.lacounty.gov/services/records-of-the-board",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Rules of the Board",
+        "url": "https://assets-us-01.kc-usercontent.com:443/0234f496-d2b7-00b6-17a4-b43e949b70a2/0c4721a1-b505-4d85-b48c-32a71594ace9/Revised%20Rules%20of%20the%20Board%202.6.26%20final.pdf",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Functions delegated by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBODEAUMA",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Policies adopted by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBOSUPOMA",
+        "directory": "Los Angeles County"
+      }
+    ],
     "p0621964": [
+      {
+        "name": "Records of the Board",
+        "url": "https://bos.lacounty.gov/services/records-of-the-board",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Rules of the Board",
+        "url": "https://assets-us-01.kc-usercontent.com:443/0234f496-d2b7-00b6-17a4-b43e949b70a2/0c4721a1-b505-4d85-b48c-32a71594ace9/Revised%20Rules%20of%20the%20Board%202.6.26%20final.pdf",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Functions delegated by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBODEAUMA",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Policies adopted by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBOSUPOMA",
+        "directory": "Los Angeles County"
+      }
+    ],
+    "p0631092": [
       {
         "name": "Records of the Board",
         "url": "https://bos.lacounty.gov/services/records-of-the-board",
@@ -713,14 +930,251 @@
       }
     ],
     "p0640130": [],
+    "p0641208": [
+      {
+        "name": "Records of the Board",
+        "url": "https://bos.lacounty.gov/services/records-of-the-board",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Rules of the Board",
+        "url": "https://assets-us-01.kc-usercontent.com:443/0234f496-d2b7-00b6-17a4-b43e949b70a2/0c4721a1-b505-4d85-b48c-32a71594ace9/Revised%20Rules%20of%20the%20Board%202.6.26%20final.pdf",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Functions delegated by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBODEAUMA",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Policies adopted by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBOSUPOMA",
+        "directory": "Los Angeles County"
+      }
+    ],
+    "p0641880": [
+      {
+        "name": "Records of the Board",
+        "url": "https://bos.lacounty.gov/services/records-of-the-board",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Rules of the Board",
+        "url": "https://assets-us-01.kc-usercontent.com:443/0234f496-d2b7-00b6-17a4-b43e949b70a2/0c4721a1-b505-4d85-b48c-32a71594ace9/Revised%20Rules%20of%20the%20Board%202.6.26%20final.pdf",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Functions delegated by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBODEAUMA",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Policies adopted by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBOSUPOMA",
+        "directory": "Los Angeles County"
+      }
+    ],
     "p0644000": [
       {
-        "name": "City Health Commission",
-        "url": "https://clerk.lacity.gov/clerk-services/council-and-public-services/city-health-commission",
+        "name": "Affordable Housing Commission",
+        "url": "https://housing2.lacity.org/affordable-housing-commission",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Cannabis Regulation Commission",
+        "url": "https://cannabis.lacity.org/about/cannabis-regulation-commision/cannabis-regulation-commission",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "City Ethics Commission",
+        "url": "https://ethics.lacity.org/",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Climate Emergency Mobilization Commission",
+        "url": "https://www.climate4la.org/",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Community Forest Advisory Committee",
+        "url": "https://dpw.lacity.gov/commissioners-boardroom/community-forest-advisory-committee",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Cultural Affairs Commission",
+        "url": "https://culture.lacity.gov/",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Cultural Heritage Commission",
+        "url": "https://planning.lacity.gov/about/commissioners",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Disabled Access Appeals Commission",
+        "url": "https://ladbs.org/our-organization/people/disabled-access",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "El Pueblo De Los Angeles Historical Monument Authority",
+        "url": "https://elpueblo.lacity.gov/commission",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Employee Relations Board",
+        "url": "https://erb.lacity.gov/",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Fire Commission",
+        "url": "https://lafd.org/about-fire-commission",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Health Commission",
+        "url": "https://clerk.lacity.org/clerk-services/cps/city-health-commission",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Human Relations Commission",
+        "url": "https://civilandhumanrights.lacity.org/commissions/human-relations-commission",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Los Angeles Homeless Services Authority",
+        "url": "https://www.lahsa.org/commission",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Los Angeles Memorial Coliseum Commission",
+        "url": "https://lamcc.lacounty.gov/",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Metropolitan Transportation Authority",
+        "url": "https://www.metro.net/about/board/executives",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://planning.lacity.gov/",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "Rent Adjustment Commission",
+        "url": "https://housing2.lacity.org/community-resources/rent-adjustment-commission",
+        "directory": "Los Angeles"
+      },
+      {
+        "name": "United to House Los Angeles Citizen Oversight Committee",
+        "url": "https://www.ulacoc.org/",
         "directory": "Los Angeles"
       }
     ],
+    "p0655156": [
+      {
+        "name": "Audit Committee",
+        "url": "https://www.cityofpalmdaleca.gov/375/Audit-Committee",
+        "directory": "Palmdale"
+      },
+      {
+        "name": "Housing Authority",
+        "url": "https://www.cityofpalmdaleca.gov/376/Housing-Authority",
+        "directory": "Palmdale"
+      },
+      {
+        "name": "Investment Oversight Committee",
+        "url": "https://www.cityofpalmdaleca.gov/791/Investment-Oversight-Committee",
+        "directory": "Palmdale"
+      },
+      {
+        "name": "Measure AV Oversight Committee",
+        "url": "https://www.cityofpalmdaleca.gov/1065/Measure-AV-Oversight-Committee",
+        "directory": "Palmdale"
+      },
+      {
+        "name": "Mobile Home Park Rental Review Board",
+        "url": "https://www.cityofpalmdaleca.gov/377/Mobile-Home-Park-Rental-Review-Board",
+        "directory": "Palmdale"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://www.cityofpalmdaleca.gov/DocumentCenter/Index/234",
+        "directory": "Palmdale"
+      },
+      {
+        "name": "Public Art Commission",
+        "url": "https://www.cityofpalmdaleca.gov/1058/Public-Art-Commission",
+        "directory": "Palmdale"
+      },
+      {
+        "name": "Your City Council",
+        "url": "https://www.cityofpalmdaleca.gov/304/City-Council",
+        "directory": "Palmdale"
+      },
+      {
+        "name": "City Council",
+        "url": "https://www.cityofpalmdaleca.gov/304/City-Council",
+        "directory": "Palmdale"
+      }
+    ],
     "p0659052": [
+      {
+        "name": "Records of the Board",
+        "url": "https://bos.lacounty.gov/services/records-of-the-board",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Rules of the Board",
+        "url": "https://assets-us-01.kc-usercontent.com:443/0234f496-d2b7-00b6-17a4-b43e949b70a2/0c4721a1-b505-4d85-b48c-32a71594ace9/Revised%20Rules%20of%20the%20Board%202.6.26%20final.pdf",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Functions delegated by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBODEAUMA",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Policies adopted by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBOSUPOMA",
+        "directory": "Los Angeles County"
+      }
+    ],
+    "p0669088": [
+      {
+        "name": "Planning Commission",
+        "url": "https://santaclarita.gov/commission-information/planning-commission/",
+        "directory": "Santa Clarita"
+      },
+      {
+        "name": "Arts Commission",
+        "url": "https://santaclarita.gov/commission-information/arts-commission/",
+        "directory": "Santa Clarita"
+      }
+    ],
+    "p0674130": [
+      {
+        "name": "Records of the Board",
+        "url": "https://bos.lacounty.gov/services/records-of-the-board",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Rules of the Board",
+        "url": "https://assets-us-01.kc-usercontent.com:443/0234f496-d2b7-00b6-17a4-b43e949b70a2/0c4721a1-b505-4d85-b48c-32a71594ace9/Revised%20Rules%20of%20the%20Board%202.6.26%20final.pdf",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Functions delegated by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBODEAUMA",
+        "directory": "Los Angeles County"
+      },
+      {
+        "name": "Policies adopted by the Board",
+        "url": "https://library.municode.com/ca/la_county_-_bos/codes/board_policy?nodeId=LOS_ANGELES_COBOSUPOMA",
+        "directory": "Los Angeles County"
+      }
+    ],
+    "p0677308": [
       {
         "name": "Records of the Board",
         "url": "https://bos.lacounty.gov/services/records-of-the-board",
@@ -848,32 +1302,32 @@
     "p0648872": [
       {
         "name": "Library Board",
-        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/your_city_hall/boards_commissions_committees/library_board.php",
+        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/library_board.php",
         "directory": "Monterey"
       },
       {
         "name": "NCIP Committee",
-        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/your_city_hall/boards_commissions_committees/ncip.php",
+        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/ncip.php",
         "directory": "Monterey"
       },
       {
         "name": "Parks & Rec Commission",
-        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/your_city_hall/boards_commissions_committees/parks_and_rec.php",
+        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/parks_and_rec.php",
         "directory": "Monterey"
       },
       {
         "name": "Planning Commission",
-        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/your_city_hall/boards_commissions_committees/planning.php",
+        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/planning.php",
         "directory": "Monterey"
       },
       {
         "name": "City Council",
-        "url": "https://monterey.gov/services/your_city_hall/city_council/index.php",
+        "url": "https://monterey.gov/your_city_hall/city_council/index.php",
         "directory": "Monterey"
       },
       {
         "name": "Meet the Mayor and Council",
-        "url": "https://monterey.gov/your_city_hall/boards_commissions_committees/your_city_hall/city_council/meet_the_mayor_and_council.php",
+        "url": "https://monterey.gov/your_city_hall/city_council/meet_the_mayor_and_council.php",
         "directory": "Monterey"
       }
     ],
@@ -881,87 +1335,87 @@
     "p0654848": [
       {
         "name": "City Council",
-        "url": "https://www.cityofpacificgrove.gov/our_city/departments/public_works/our_city/city_council_/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/city_council_/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Mayor & City Council",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/news_detail_T3_R66.php",
+        "url": "https://www.cityofpacificgrove.gov/news_detail_T3_R66.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Architectural Review Board",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/architectural_review_board/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/architectural_review_board/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Beautification and Natural Resources Commission",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/beautification_and_natural_resources_commission/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/beautification_and_natural_resources_commission/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Economic Development Commission",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/economic_development_commission/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/economic_development_commission/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Historic Resources Committee",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/historic_resources_committee/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/historic_resources_committee/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Library Board",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/library_board/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/library_board/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Museum Board",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/museum_board/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/museum_board/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Planning Commission",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/planning_commission/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/planning_commission/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Recreation Board",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/recreation_board/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/recreation_board/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Site Plan Review Committee",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/site_plan_review_committee.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/site_plan_review_committee.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Traffic Safety Commission",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/traffic_safety_commission/index.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/traffic_safety_commission/index.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Appointment to Public Board, Commission, or Committee",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/Document_Center/How Do I/application-app-boards-commissions-12-14-09_0_0.pdf",
+        "url": "https://www.cityofpacificgrove.gov/Document_Center/How Do I/application-app-boards-commissions-12-14-09_0_0.pdf",
         "directory": "Pacific Grove"
       },
       {
         "name": "Loan Committee",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/ad-hoc_committees/loan_committee.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/loan_committee.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Mansionization Sub-Committee",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/ad-hoc_committees/mansionization_sub-committee.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/mansionization_sub-committee.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Point Pinos Trail Project Committee",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/ad-hoc_committees/point_pinos_trail_project_committee.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/point_pinos_trail_project_committee.php",
         "directory": "Pacific Grove"
       },
       {
         "name": "Public Safety Sub-Committee",
-        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/our_city/boards_commissions___committees/ad-hoc_committees/public_safety_sub-committee.php",
+        "url": "https://www.cityofpacificgrove.gov/our_city/boards_commissions___committees/ad-hoc_committees/public_safety_sub-committee.php",
         "directory": "Pacific Grove"
       }
     ],
@@ -975,6 +1429,73 @@
     ],
     "p0670742": [],
     "p0673612": [],
+    "p0666000": [
+      {
+        "name": "City Council",
+        "url": "https://sandiego.hylandcloud.com/211agendaonlinecouncil/",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Land Use & Housing Committee of the City Council",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Historical Resources Board",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "More Info about Historical Resources Board",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings/historical-resources-board",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Resiliency Advisory Board",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Climate Advisory Board",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Mobility Board",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Park and Recreation Board",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "About about P&R Board",
+        "url": "https://www.sandiego.gov/parkandrecboard",
+        "directory": "San Diego"
+      },
+      {
+        "name": "La Jolla Shores Advisory Board",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Old Town Design Review Board",
+        "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+        "directory": "San Diego"
+      },
+      {
+        "name": "Ethics Commission",
+        "url": "https://www.sandiego.gov/ethics",
+        "directory": "San Diego"
+      }
+    ],
     "p0602868": [
       {
         "name": "City Council",
@@ -1160,6 +1681,11 @@
         "name": "Recreation & Parks Commission",
         "url": "https://cityofguadalupe.org/recreation-and-parks-commission/",
         "directory": "Guadalupe"
+      },
+      {
+        "name": "Mayor and City Council",
+        "url": "https://cityofguadalupe.org/mayor-and-city-council/",
+        "directory": "Guadalupe"
       }
     ],
     "p0636868": [],
@@ -1209,47 +1735,12 @@
       },
       {
         "name": "City Council",
-        "url": "https://calendar.santabarbaraca.gov/event/city-council-6418",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Parks & Recreation Commission",
-        "url": "https://calendar.santabarbaraca.gov/event/parks-recreation-commission-5145",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Single Family Design Board",
-        "url": "https://calendar.santabarbaraca.gov/event/single-family-design-board-5548",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Santa Barbara Youth Council",
-        "url": "https://calendar.santabarbaraca.gov/event/santa-barbara-youth-council-7223",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "CANCELLED: City Council",
-        "url": "https://calendar.santabarbaraca.gov/event/city-council-6419",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Sister Cities Board",
-        "url": "https://calendar.santabarbaraca.gov/event/sister-cities-board-6433",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Historic Landmarks Commission",
-        "url": "https://calendar.santabarbaraca.gov/event/historic-landmarks-commission-6771",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Golf Advisory Committee",
-        "url": "https://calendar.santabarbaraca.gov/event/golf-advisory-committee-4453",
+        "url": "https://santabarbaraca.gov/government/mayor-city-council/city-council-meetings",
         "directory": "Santa Barbara"
       },
       {
         "name": "Planning Commission",
-        "url": "https://calendar.santabarbaraca.gov/event/planning-commission-6729",
+        "url": "https://santabarbaraca.gov/planning-commission",
         "directory": "Santa Barbara"
       }
     ],
@@ -5539,11 +6030,6 @@
         "directory": "Watsonville"
       },
       {
-        "name": "Community Redistricting Advisory Committee",
-        "url": "https://www.cityofwatsonville.org/2250/Redistricting-Meeting-Schedule",
-        "directory": "Watsonville"
-      },
-      {
         "name": "Minor Land Division Committee",
         "url": "https://www.cityofwatsonville.org/2264/Minor-Land-Division-Committee",
         "directory": "Watsonville"
@@ -5749,10 +6235,25 @@
     "p0609822": [],
     "p0610494": [],
     "p0612314": [],
+    "p0617708": [],
+    "p0618450": [],
+    "p0619318": [
+      {
+        "name": "City Council",
+        "url": "https://www.dinuba.org/government/city-council",
+        "directory": "Dinuba"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://www.dinuba.org/planning-commission",
+        "directory": "Dinuba"
+      }
+    ],
     "p0620032": [],
     "p0620942": [],
     "p0621012": [],
     "p0621210": [],
+    "p0622235": [],
     "p0623126": [
       {
         "name": "Exeter City Council",
@@ -5786,6 +6287,7 @@
     "p0632324": [],
     "p0636135": [],
     "p0636168": [],
+    "p0636910": [],
     "p0638076": [],
     "p0641110": [],
     "p0641656": [],
@@ -5802,114 +6304,121 @@
       }
     ],
     "p0641740": [],
+    "p0642566": [],
     "p0644770": [],
+    "p0648676": [],
+    "p0654372": [],
     "p0655506": [],
+    "p0656120": [],
     "p0657011": [],
     "p0657134": [],
     "p0658134": [],
     "p0658240": [
       {
         "name": "City Council",
-        "url": "https://www.ci.porterville.ca.us/departments/engineering_division/government/city_council/index.php",
+        "url": "https://www.ci.porterville.ca.us/government/city_council/index.php",
         "directory": "Porterville"
       },
       {
         "name": "Sesquicentennial Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/city_manager/sesquicentennial_committee/index.php",
+        "url": "https://www.ci.porterville.ca.us/government/city_manager/sesquicentennial_committee/index.php",
         "directory": "Porterville"
       },
       {
         "name": "Animal Control Commission",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/animal_control_commission.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/animal_control_commission.php",
         "directory": "Porterville"
       },
       {
         "name": "Arts Commission",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/arts_commission/index.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/arts_commission/index.php",
         "directory": "Porterville"
       },
       {
         "name": "Community Development Block Grant Advisory and Housing Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/community_development_block_grant_advisory_and_housing_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/community_development_block_grant_advisory_and_housing_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Internal City Audit Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/internal_city_audit_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/internal_city_audit_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Library and Literacy Commission",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/library_and_literacy_commission/index.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/library_and_literacy_commission/index.php",
         "directory": "Porterville"
       },
       {
         "name": "Library Facility Planning Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/library_facility_planning_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/library_facility_planning_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Military Banner Program Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/military_banner_program_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/military_banner_program_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Parks and Leisure Services Commission",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/parks_and_leisure_services_commission.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/parks_and_leisure_services_commission.php",
         "directory": "Porterville"
       },
       {
         "name": "Porterville Youth Commission",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/porterville_youth_commission/index.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/porterville_youth_commission/index.php",
         "directory": "Porterville"
       },
       {
         "name": "Transaction and Use Tax Oversight Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/transaction_and_use_tax_oversight_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/transaction_and_use_tax_oversight_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Cannabis Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/cannabis_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/cannabis_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Charter Review Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/charter_review_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/charter_review_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Downtown Porterville Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/downtown_porterville_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/downtown_porterville_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Porterville Area Development Authority",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/porterville_area_development_authority.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/porterville_area_development_authority.php",
         "directory": "Porterville"
       },
       {
         "name": "Porterville Municipal Airport Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/porterville_airport_committee.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/porterville_airport_committee.php",
         "directory": "Porterville"
       },
       {
         "name": "Tule River - City of Porterville Annual Payment Fund Selection Committee",
-        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/government/boards_commissions_committees/tule_river_-_city_of_porterville_annual_payment_fund_selection_committee_.php",
+        "url": "https://www.ci.porterville.ca.us/government/boards_commissions_committees/tule_river_-_city_of_porterville_annual_payment_fund_selection_committee_.php",
         "directory": "Porterville"
       }
     ],
     "p0658422": [],
     "p0658436": [],
     "p0670966": [],
+    "p0671078": [],
     "p0671932": [],
     "p0673710": [],
     "p0675280": [],
     "p0675592": [],
     "p0675596": [],
+    "p0675672": [],
     "p0678638": [],
     "p0678932": [],
     "p0678949": [],
+    "p0680280": [],
     "p0680644": [],
     "p0682954": [],
     "p0684345": [],
@@ -5926,16 +6435,17 @@
         "directory": "Woodlake"
       }
     ],
+    "p0686734": [],
     "p0604938": [],
     "p0610046": [
       {
         "name": "CITY COUNCIL",
-        "url": "https://cityofcamarillo.org/residents/departments/city_council/index.php",
+        "url": "https://cityofcamarillo.org/departments/city_council/index.php",
         "directory": "Camarillo"
       },
       {
         "name": "PLANNING COMMISSION",
-        "url": "https://www.cityofcamarillo.org/departments/community_development/planning/departments/city_clerk/meeting_agendas___public_hearing_notices/planning_commission.php",
+        "url": "https://cityofcamarillo.org/departments/community_development/planning/planning_commission.php",
         "directory": "Camarillo"
       }
     ],
@@ -6095,22 +6605,22 @@
       },
       {
         "name": "Area Housing Authority",
-        "url": "https://www.toaks.gov/aha",
+        "url": "https://toaks.gov/aha",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Capital Facilities Committee",
-        "url": "https://www.toaks.gov/capitalfacilitiescommittee",
+        "url": "https://toaks.gov/capitalfacilitiescommittee",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Finance/Audit Committee",
-        "url": "https://www.toaks.gov/financeauditcommittee",
+        "url": "https://toaks.gov/financeauditcommittee",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Investment Review Committee",
-        "url": "https://www.toaks.gov/investmentreviewcommittee",
+        "url": "https://toaks.gov/investmentreviewcommittee",
         "directory": "Thousand Oaks"
       },
       {
@@ -6120,12 +6630,12 @@
       },
       {
         "name": "Youth Commission",
-        "url": "https://www.toaks.gov/youthcommission",
+        "url": "https://toaks.gov/youthcommission",
         "directory": "Thousand Oaks"
       },
       {
         "name": "CEAP Dashboard",
-        "url": "https://www.toaks.gov/index.php?section=ceap",
+        "url": "https://toaks.gov/index.php?section=ceap",
         "directory": "Thousand Oaks"
       },
       {
@@ -6135,37 +6645,37 @@
       },
       {
         "name": "Community Funding Review Committee",
-        "url": "https://www.toaks.gov/cfrc",
+        "url": "https://toaks.gov/cfrc",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Conejo Open Space Trails Action Committee",
-        "url": "https://www.toaks.gov/costac",
+        "url": "https://toaks.gov/costac",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Disabled Access Appeals and Advisory Board",
-        "url": "https://www.toaks.gov/daaab",
+        "url": "https://toaks.gov/daaab",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Santa Monica Mountains Conservancy Advisory Committee",
-        "url": "https://www.toaks.gov/smmcac",
+        "url": "https://toaks.gov/smmcac",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Traffic and Transportation Advisory Commission",
-        "url": "https://www.toaks.gov/trafficcommission",
+        "url": "https://toaks.gov/trafficcommission",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Ventura County Air Pollution and Control District Advisory Committee",
-        "url": "https://www.toaks.gov/vcapacdac",
+        "url": "https://toaks.gov/vcapacdac",
         "directory": "Thousand Oaks"
       },
       {
         "name": "Ventura County Citizens Transportation Advisory Committee",
-        "url": "https://www.toaks.gov/vcctac",
+        "url": "https://toaks.gov/vcctac",
         "directory": "Thousand Oaks"
       },
       {
@@ -6375,6 +6885,33 @@
     "c06107": [],
     "c06083": [],
     "c06031": [],
+    "c06073": [
+      {
+        "name": "Citizens Law Enforcement Review Board",
+        "url": "https://www.sandiegocounty.gov/content/sdc/clerb.html",
+        "directory": "San Diego County"
+      },
+      {
+        "name": "Civil Service Commission",
+        "url": "https://www.sandiegocounty.gov/content/sdc/civilservice.html",
+        "directory": "San Diego County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://www.sandiegocounty.gov/content/sdc/pds/PC/sop/PCHearing_stream.html",
+        "directory": "San Diego County"
+      },
+      {
+        "name": "Fire Authority",
+        "url": "https://www.sandiegocounty.gov/department/county-fire/",
+        "directory": "San Diego County"
+      },
+      {
+        "name": "Performance Review Committee",
+        "url": "https://www.sandiegocounty.gov/content/sdc/pds/Performance_Review_Committee",
+        "directory": "San Diego County"
+      }
+    ],
     "c06029": [
       {
         "name": "Planning Commission",
