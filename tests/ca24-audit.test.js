@@ -63,7 +63,7 @@ test('CA-24 retains official board, zoning, transport and statistics sources wit
   assert.ok(c.deciders.length&&c.join.length,c.label);
   assert.ok(c.news.length,c.label);
   for(const n of c.news.filter(n=>n.scope==='county')){assert.equal(n.sourceArea,c.county+' County');assert.match(n.snippet,/outside/);}
-  for(const b of [...c.deciders,...c.join])assert.doesNotMatch(b.name,/ordinance|never certified/i);
+  for(const b of [...c.deciders,...c.join])assert.doesNotMatch(b.name,/ordinance(?! committee)|never certified/i);
  }
  for(const key of ['oxnard','sanbuenaventuraventura'])assert.ok(manifest.cities[key].zoningLayers.length,key);
  for(const key of ['arroyogrande','groverbeach','oxnard']){

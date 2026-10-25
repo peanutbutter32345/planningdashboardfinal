@@ -36964,14 +36964,95 @@
           "url": "https://www.slocity.org/government/department-directory/public-works/construction-and-traffic-updates/slo-in-motion/transportation-improvements",
           "scope": "city",
           "authority": "San Luis Obispo"
+        },
+        {
+          "category": "GIS",
+          "title": "City zoning polygons",
+          "url": "https://mapsa.slocity.org/hosting/rest/services/sloGISlayers/slogisLandManagement/MapServer/5",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "Meetings",
+          "title": "San Luis Obispo: Meeting agendas and recordings",
+          "url": "https://pub-slocity.escribemeetings.com/",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "Boards",
+          "title": "San Luis Obispo: Boards and commissions",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "Meetings",
+          "title": "Meeting participation and public comment",
+          "url": "https://www.slocity.org/government/mayor-and-city-council/agendas-and-minutes",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "Boards",
+          "title": "Advisory body applications and handbook",
+          "url": "https://www.slocity.org/government/advisory-bodies/application-handbook",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "Boards",
+          "title": "Current advisory body vacancies",
+          "url": "https://www.slocity.org/government/advisory-bodies/vacancies",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "General plan",
+          "title": "General Plan and land use",
+          "url": "https://www.slocity.org/government/department-directory/community-development/planning-zoning/general-plan",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "Zoning",
+          "title": "Zoning regulations and parcel map",
+          "url": "https://www.slocity.org/government/department-directory/community-development/planning-zoning/zoning/-fsiteid-1",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "Transportation",
+          "title": "SLO Transit routes, schedules and service information",
+          "url": "https://www.slocity.org/government/department-directory/public-works/slo-transit-bus",
+          "scope": "city",
+          "authority": "San Luis Obispo"
+        },
+        {
+          "category": "Transportation",
+          "title": "Regional Transit Authority ride guide and connections",
+          "url": "https://www.slorta.org/ride-guide/",
+          "scope": "regional",
+          "authority": "San Luis Obispo"
         }
       ],
-      "layers": [],
+      "layers": [
+        {
+          "url": "https://mapsa.slocity.org/hosting/rest/services/sloGISlayers/slogisLandManagement/MapServer/5",
+          "field": "specificZone",
+          "name": "Zoning",
+          "description": "Polygon layer of city zoning types and categories.",
+          "copyright": "City of San Luis Obispo",
+          "checked": "2026-10-25T19:01:23.490881+00:00"
+        }
+      ],
       "checks": {
         "https://www.slocity.org/government/open-government/gis-mapping-division/maps": "HTTP Error 403: Forbidden",
         "https://www.slocity.org/government/department-directory/public-works/construction-and-traffic-updates/slo-in-motion/transportation-improvements": "HTTP Error 403: Forbidden",
         "https://www.slocity.org/": "HTTP Error 403: Forbidden",
-        "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission": "HTTP Error 403: Forbidden"
+        "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission": "HTTP Error 403: Forbidden",
+        "https://mapsa.slocity.org/hosting/rest/services/sloGISlayers/slogisLandManagement/MapServer/5": 200,
+        "https://mapsa.slocity.org/hosting/rest/services/sloGISlayers/slogisLandManagement/MapServer/5/query": 200
       }
     },
     "p0668266": {

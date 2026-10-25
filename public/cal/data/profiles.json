@@ -18296,7 +18296,7 @@
         {
           "category": "Planning",
           "title": "San Luis Obispo: Planning and development",
-          "url": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+          "url": "https://www.slocity.org/government/department-directory/community-development/planning-zoning",
           "scope": "city"
         },
         {
@@ -18314,7 +18314,7 @@
         {
           "category": "Boards",
           "title": "San Luis Obispo: Boards and commissions",
-          "url": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+          "url": "https://www.slocity.org/government/advisory-bodies",
           "scope": "city"
         },
         {
@@ -18352,10 +18352,40 @@
           "title": "Confirm your representative by address",
           "url": "https://www.house.gov/representatives/find-your-representative",
           "scope": "federal"
+        },
+        {
+          "category": "Meetings",
+          "title": "Meeting participation and public comment",
+          "url": "https://www.slocity.org/government/mayor-and-city-council/agendas-and-minutes",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Advisory body applications and handbook",
+          "url": "https://www.slocity.org/government/advisory-bodies/application-handbook",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Current advisory body vacancies",
+          "url": "https://www.slocity.org/government/advisory-bodies/vacancies",
+          "scope": "city"
+        },
+        {
+          "category": "General plan",
+          "title": "General Plan and land use",
+          "url": "https://www.slocity.org/government/department-directory/community-development/planning-zoning/general-plan",
+          "scope": "city"
+        },
+        {
+          "category": "Zoning",
+          "title": "Zoning regulations and parcel map",
+          "url": "https://www.slocity.org/government/department-directory/community-development/planning-zoning/zoning/-fsiteid-1",
+          "scope": "city"
         }
       ],
       "meetingUrl": "https://pub-slocity.escribemeetings.com/",
-      "boardUrl": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+      "boardUrl": "https://www.slocity.org/government/advisory-bodies",
       "meetingScope": "San Luis Obispo",
       "client": null
     },
@@ -20781,14 +20811,14 @@
         },
         {
           "category": "Meetings",
-          "title": "Santa Barbara: Meeting agendas and recordings",
-          "url": "https://records.santabarbaraca.gov/OnBaseAgendaOnline/",
+          "title": "Santa Barbara public meeting calendar",
+          "url": "https://santabarbaraca.gov/government/boards-commissions/public-meeting-calendar",
           "scope": "city"
         },
         {
           "category": "Boards",
           "title": "Santa Barbara: Boards and commissions",
-          "url": "https://santabarbaraca.gov/planning-commission",
+          "url": "https://santabarbaraca.gov/government/boards-commissions",
           "scope": "city"
         },
         {
@@ -20832,10 +20862,31 @@
           "title": "Confirm your representative by address",
           "url": "https://www.house.gov/representatives/find-your-representative",
           "scope": "federal"
+        },
+        {
+          "category": "Meetings",
+          "title": "City Council agendas, video and public comment",
+          "url": "https://santabarbaraca.gov/government/mayor-city-council/city-council-meetings",
+          "scope": "city",
+          "note": ""
+        },
+        {
+          "category": "Meetings",
+          "title": "Planning Commission agendas and meeting schedule",
+          "url": "https://santabarbaraca.gov/planning-commission",
+          "scope": "city",
+          "note": ""
+        },
+        {
+          "category": "Boards",
+          "title": "Board applications and vacancies",
+          "url": "https://santabarbaraca.gov/government/boards-commissions/applications-vacancies",
+          "scope": "city",
+          "note": ""
         }
       ],
-      "meetingUrl": "https://records.santabarbaraca.gov/OnBaseAgendaOnline/",
-      "boardUrl": "https://santabarbaraca.gov/planning-commission",
+      "meetingUrl": "https://santabarbaraca.gov/government/boards-commissions/public-meeting-calendar",
+      "boardUrl": "https://santabarbaraca.gov/government/boards-commissions",
       "meetingScope": "Santa Barbara",
       "client": null
     },

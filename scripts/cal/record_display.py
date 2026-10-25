@@ -27,7 +27,7 @@ def excerpt(value, limit=360):
 
 def display_title(record):
     title = clean(record['name'])
-    coded = bool(re.match(r'^\d{4,}[_-]', title) or (re.search(r'[_/]', title) and len(title.split()) < 3))
+    coded = bool(re.match(r'^\d{4,}[_-]|^[A-Z]{2,}\d{4}-\d+', title) or (re.search(r'[_/]', title) and len(title.split()) < 3))
     if not coded:
         return title
     project = clean(record.get('projectTitle'))

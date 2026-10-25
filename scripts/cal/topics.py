@@ -1,8 +1,8 @@
 """Conservative subject routing for sourced records, independent of filing status."""
 import re
 
-TRANSPORT = r'\b(?:transit|transportation|trains?|rail(?:way|road)?|buses|bus\b|bicycle|bikeway|bike lane|cycleway|sidewalk|pedestrian|interchange|highway|freeway|pavement|paving|roadway|roundabout|bridge replacement|street improvements?|traffic|commuter|airport|airfield|crosswalk)\b'
-HOUSING = r'\b(?:housing|homes?|apartments?|residential|townhomes?|townhouses?|condominiums?|dwelling|affordable units|renters?|rents?|homeless|tenants?)\b'
+TRANSPORT = r'\b(?:transit|transportation|trains?|rail(?:way|road)?|buses|bus\b|bicycle|bikeway|bike lane|bike path|pathway|cycleway|sidewalk|pedestrian|interchange|highway|freeway|pavement|paving|roadway|roundabout|bridge replacement|street improvements?|traffic|commuter|airport|airfield|crosswalk)\b'
+HOUSING = r'\b(?:housing|homes?|apartments?|residential|townhomes?|townhouses?|condominiums?|dwelling|affordable units|renters?|rents?|rentals?|homeshares?|homeless|tenants?)\b'
 
 def local_headline(title, publisher, name, kind):
     """Match the place in the headline, not in a publisher's name or a county name."""
@@ -34,6 +34,7 @@ def civic_news(title, publisher):
     """Keep planning/mobility reporting, excluding social reposts and isolated incidents."""
     if re.search(r'facebook|instagram|youtube|tiktok|reddit|obituar|legacy\.com|business wire|prnewswire', publisher, re.I):
         return False
+    if re.search(r'protest(?:ers)?|\bsign hung\b',title,re.I) and not re.search(r'project|development|housing|transit|zoning|bus service',title,re.I):return False
     policy = re.search(r'\b(?:projects?|plans?|planning|funding|funds|council|commission|budget|improvements?|construction|zoning|permits?|services?)\b', title, re.I)
-    incident = re.search(r'\b(?:crash|collision|killed|fatal|stabbing|arrested|sentenced|injuries|injured)\b', title, re.I)
+    incident = re.search(r'\b(?:crash|collision|killed|fatal|stabbing|arrested|sentenced|injuries|injured|fire|wildfire|evacuations?)\b', title, re.I)
     return bool((policy or re.search(HOUSING+'|'+TRANSPORT, title, re.I)) and (not incident or policy))
