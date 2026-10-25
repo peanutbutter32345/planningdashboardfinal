@@ -53,7 +53,7 @@
     ? 'Email needs a password, and a name you picked rather than the one we gave you. Both are on the Account page, and your saved items come with you.'
     : 'Email needs a password on your account. Add one on the Account page and your saved items come with you.';
   }
-  handles(path){return /^\/api\/(stars(?:\/|$)|account\/preferences$|timeline$|reminders(?:\/|$)|chat\/history(?:\/|$))/.test(path);}
+  handles(path){return /^\/api\/(stars(?:\/|$)|account\/preferences$|timeline(?:\/|$)|reminders(?:\/|$)|chat\/history(?:\/|$))/.test(path);}
   async request(path,options={},cities=[]){
    if(!this.unlocked)throw Error('Unlock your account in the Account page to reach your saved items.');
    const method=options.method||'GET',b=options.body?JSON.parse(options.body):{},d=this.data;
@@ -66,9 +66,10 @@
     if(method==='GET')return {...d.preferences,cities};
     if(b.email||b.emailFrequency&&b.emailFrequency!=='off')throw Error(this.emailBlocker());
     d.preferences={...d.preferences,...b,email:null,emailFrequency:'off'};
-   }else if(path==='/api/timeline'){
+   }else if(path==='/api/timeline'||path.startsWith('/api/timeline/')){
     if(method==='GET')return {items:d.timeline};
-    if(method==='PUT'){d.timeline=d.timeline.filter(x=>x.item_key!==b.itemKey);d.timeline.push({item_key:b.itemKey,status:b.status,note:b.note});}
+    if(method==='PUT'){d.timeline=d.timeline.filter(x=>x.item_key!==b.itemKey);d.timeline.push({item_key:b.itemKey,status:b.status||'todo',note:b.note??null,due_date:b.dueDate||null});}
+    if(method==='DELETE')d.timeline=d.timeline.filter(x=>x.item_key!==decodeURIComponent(path.slice('/api/timeline/'.length)));
    }else if(path==='/api/reminders/email'){throw Error('Email reminders need a password on your account. The reminder is saved on this device either way.');
    }else if(path.startsWith('/api/reminders')){
     if(method==='GET')return {reminders:d.reminders};

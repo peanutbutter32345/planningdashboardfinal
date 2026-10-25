@@ -12627,12 +12627,21 @@ function renderResources(){
 // earlier in the script, before renderAll() runs - see the note near "let state = ...".
 
 async function apiCall(path, options={}){
+  const session=accountSessionVersion,requestToken=authToken;
   if(!authToken && guestProfile.handles(path))return guestProfile.request(path,options,Object.entries(CITIES).filter(([k])=>k!=='all').map(([value,c])=>({value,label:c.label})));
   const headers = Object.assign({'Content-Type':'application/json'}, options.headers||{});
   if(authToken) headers.Authorization = 'Bearer '+authToken;
   const res = await fetch(path, Object.assign({}, options, {headers}));
   let data = {};
   try{ data = await res.json(); } catch(e){ /* no body */ }
+  // An old request must never populate a different reader's account after a switch.
+  if(session!==accountSessionVersion)throw new Error('Your account changed. Please try again.');
+  if(res.status===401&&requestToken&&!['/api/login','/api/register'].includes(path)){
+    clearAuthSession();guestAuthForm=true;
+    window.pendingLoginReason='Your session expired. Log in again to reach your saved items.';
+    renderAuthNavState();
+    if(currentScreen==='account')renderAccountPage();
+  }
   if(!res.ok) throw new Error(data.error || ('Request failed ('+res.status+')'));
   return data;
 }
@@ -12685,6 +12694,8 @@ function renderPrefsCategories(){
 }
 
 function resetAccountMemory(){
+  for(const id of ['loginPassword','signupPassword','guestNewPassword','guestCurrentPassword','guestUnlockPassword']){const field=document.getElementById(id);if(field)field.value='';}
+  clearTimeout(yaSaveTimer);yaSaveTimer=null;
   tkSaveTimers.forEach(clearTimeout);tkSaveTimers.clear();
   tkState=new Map();tkProfile={city:'',topics:[],stake:'',time:'',experience:''};tkProfileLoaded=false;
   yaPins=[];remItems=[];
@@ -13623,6 +13634,11 @@ document.getElementById('authTabSignup').addEventListener('click', ()=>{
 
 document.getElementById('loginForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
+  const form=e.currentTarget;
+  if(form.dataset.busy)return;
+  form.dataset.busy='true';
+  const submit=form.querySelector('[type="submit"]');
+  if(submit)submit.disabled=true;
   const errEl = document.getElementById('loginError');
   errEl.textContent = '';
   const username = document.getElementById('loginUsername').value.trim();
@@ -13633,11 +13649,31 @@ document.getElementById('loginForm').addEventListener('submit', async (e)=>{
     renderAccountPage();
   } catch(err){
     errEl.textContent = err.message;
+  } finally {
+    delete form.dataset.busy;if(submit)submit.disabled=false;
   }
 });
 
+// Try each saved item independently: one failed request must not skip the rest.
+// Originals stay in the device profile if the connection fails during the upgrade.
+async function transferGuestItems(items){
+  const session=accountSessionVersion,failed=[];
+  const transfer=async(label,send)=>{if(session!==accountSessionVersion){failed.push(label);return;}try{await send();}catch{failed.push(label);}};
+  for(const st of items.stars)await transfer('saved item',()=>apiAddStar(st.item_type,st.item_id,st.item_data));
+  for(const it of items.timeline)await transfer('timeline',()=>apiCall('/api/timeline',{method:'PUT',body:JSON.stringify({itemKey:it.item_key,status:it.status,note:it.note,dueDate:it.due_date})}));
+  for(const r of items.reminders)await transfer('reminder',()=>apiCall('/api/reminders',{method:'POST',body:JSON.stringify({kind:r.kind,refId:r.ref_id,label:r.label,detail:r.detail,url:r.url,city:r.city})}));
+  for(const h of items.history)await transfer('saved answer',()=>apiCall('/api/chat/history',{method:'POST',body:JSON.stringify({question:h.question,answer:h.answer,resources:h.resources,city:h.city})}));
+  await transfer('preferences',()=>apiSavePreferences(null,'off',items.preferences.homeCity,items.preferences.categories?.length?items.preferences.categories:undefined));
+  return failed;
+}
+
 document.getElementById('signupForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
+  const form=e.currentTarget;
+  if(form.dataset.busy)return;
+  form.dataset.busy='true';
+  const submit=form.querySelector('[type="submit"]');
+  if(submit)submit.disabled=true;
   const errEl = document.getElementById('signupError');
   errEl.textContent = '';
   const username = document.getElementById('signupUsername').value.trim();
@@ -13647,20 +13683,36 @@ document.getElementById('signupForm').addEventListener('submit', async (e)=>{
     const guestItems=guestProfile.unlocked?structuredClone(guestProfile.data):null;
     setAuthSession(data.token, data.username);
     if(guestItems){
-      try{for(const st of guestItems.stars)await apiAddStar(st.item_type,st.item_id,st.item_data);for(const it of guestItems.timeline)await apiCall('/api/timeline',{method:'PUT',body:JSON.stringify({itemKey:it.item_key,status:it.status,note:it.note})});for(const r of guestItems.reminders)await apiCall('/api/reminders',{method:'POST',body:JSON.stringify({kind:r.kind,refId:r.ref_id,label:r.label,detail:r.detail,url:r.url,city:r.city})});await apiSavePreferences(null,'off',guestItems.preferences.homeCity,guestItems.preferences.categories);}
-      catch(err){document.getElementById('accountSyncStatus').textContent='Account created. Some guest items could not sync; they remain saved in your guest profile on this device.';}
+      const session=accountSessionVersion;
+      const failed=await transferGuestItems(guestItems);
+      if(session!==accountSessionVersion)return;
+      if(failed.length)document.getElementById('accountSyncStatus').textContent='Account created. Some guest items could not sync; they remain saved in your guest profile on this device.';
     }
     renderAccountPage();
   } catch(err){
     errEl.textContent = err.message;
+  } finally {
+    delete form.dataset.busy;if(submit)submit.disabled=false;
   }
 });
 
-document.getElementById('logoutBtn').addEventListener('click', ()=>{
+async function logOutAccount(){
   if(isGuest()){guestAuthForm=true;renderAccountPage();return;}
-  clearAuthSession();
+  const token=authToken;
+  clearAuthSession();guestAuthForm=true;
+  const session=accountSessionVersion;
   renderAccountPage();
-});
+  try{
+    const response=await fetch('/api/logout',{method:'POST',headers:{Authorization:'Bearer '+token},keepalive:true,signal:AbortSignal.timeout(10000)});
+    if(!response.ok&&response.status!==401)throw Error('Could not revoke session.');
+  }catch{
+    if(session===accountSessionVersion&&!authToken){
+      window.pendingLoginReason='Signed out on this device. The server could not be reached to revoke the session. Reconnect and log in again if needed.';
+      renderAccountPage();
+    }
+  }
+}
+document.getElementById('logoutBtn').addEventListener('click',logOutAccount);
 document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
   const statusEl = document.getElementById('prefsStatus');
   const email = document.getElementById('prefsEmail').value.trim();
