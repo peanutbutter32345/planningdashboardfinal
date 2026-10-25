@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-25T08:18:37.765Z",
+  "generated": "2026-10-25T08:20:25.176Z",
   "reference": "Cupertino feature checklist: housing, statistics, news, local files, zoning, plans, code, capital improvements, boards, meetings, housing policy, transport, environmental review and contacts.",
   "summary": {
     "profiles": 268,
@@ -36688,11 +36688,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -37518,11 +37523,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -37717,11 +37727,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -37916,11 +37931,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -38115,11 +38135,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -38775,11 +38800,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -39168,11 +39198,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -39367,11 +39402,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -39566,11 +39606,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -39765,11 +39810,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -39964,11 +40014,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -40163,11 +40218,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -40362,11 +40422,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -41143,11 +41208,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -41342,11 +41412,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -41787,11 +41862,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -41986,11 +42066,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -42185,11 +42270,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -42384,11 +42474,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -42583,11 +42678,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
@@ -72373,11 +72473,16 @@
           "key": "meetings",
           "label": "Agendas and recordings",
           "status": "directory",
-          "count": 1,
+          "count": 2,
           "sources": [
             {
-              "title": "Santa Barbara County: Meeting agendas and recordings",
+              "title": "County Board of Supervisors calendar, agendas and comment links",
               "url": "https://santabarbara.legistar.com/Calendar.aspx",
+              "scope": "county"
+            },
+            {
+              "title": "County hearing and Planning Commission recordings",
+              "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3",
               "scope": "county"
             }
           ],
