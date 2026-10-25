@@ -65,6 +65,56 @@
       "category": "Capital projects",
       "title": "SLO in Motion transportation improvements",
       "url": "https://www.slocity.org/government/department-directory/public-works/construction-and-traffic-updates/slo-in-motion/transportation-improvements"
+    },
+    {
+      "category": "GIS",
+      "title": "City zoning polygons",
+      "url": "https://mapsa.slocity.org/hosting/rest/services/sloGISlayers/slogisLandManagement/MapServer/5"
+    },
+    {
+      "category": "Meetings",
+      "title": "San Luis Obispo: Meeting agendas and recordings",
+      "url": "https://pub-slocity.escribemeetings.com/"
+    },
+    {
+      "category": "Boards",
+      "title": "San Luis Obispo: Boards and commissions",
+      "url": "https://www.slocity.org/government/advisory-bodies"
+    },
+    {
+      "category": "Meetings",
+      "title": "Meeting participation and public comment",
+      "url": "https://www.slocity.org/government/mayor-and-city-council/agendas-and-minutes"
+    },
+    {
+      "category": "Boards",
+      "title": "Advisory body applications and handbook",
+      "url": "https://www.slocity.org/government/advisory-bodies/application-handbook"
+    },
+    {
+      "category": "Boards",
+      "title": "Current advisory body vacancies",
+      "url": "https://www.slocity.org/government/advisory-bodies/vacancies"
+    },
+    {
+      "category": "General plan",
+      "title": "General Plan and land use",
+      "url": "https://www.slocity.org/government/department-directory/community-development/planning-zoning/general-plan"
+    },
+    {
+      "category": "Zoning",
+      "title": "Zoning regulations and parcel map",
+      "url": "https://www.slocity.org/government/department-directory/community-development/planning-zoning/zoning/-fsiteid-1"
+    },
+    {
+      "category": "Transportation",
+      "title": "SLO Transit routes, schedules and service information",
+      "url": "https://www.slocity.org/government/department-directory/public-works/slo-transit-bus"
+    },
+    {
+      "category": "Transportation",
+      "title": "Regional Transit Authority ride guide and connections",
+      "url": "https://www.slorta.org/ride-guide/"
     }
   ],
   "Ventura County": [

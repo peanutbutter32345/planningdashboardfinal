@@ -4,6 +4,23 @@
   const q=query.trim().toLowerCase();
   return Object.entries(cities).filter(([key,c])=>key!=='all'&&(!county||c.county===county)&&(!q||c.label.toLowerCase().includes(q))).sort((a,b)=>a[1].label.localeCompare(b[1].label));
  }
+ // Navigation groups, with an explicit catch-all for covered places outside these regions.
+ const BAY_COUNTIES=new Set(['Alameda','Contra Costa','Marin','Napa','San Francisco','San Mateo','Santa Clara','Solano','Sonoma']);
+ const CENTRAL_COUNTIES=new Set(['Fresno','Kern','Kings','Madera','Merced','Monterey','San Benito','San Joaquin','San Luis Obispo','Santa Barbara','Santa Cruz','Stanislaus','Tulare']);
+ function regionGroups(cities){
+  const counties=[...new Set(citiesIn(cities).map(([,c])=>c.county).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+  return [
+   {id:'bay',label:'Bay Area',counties:counties.filter(c=>BAY_COUNTIES.has(c))},
+   {id:'central',label:'Central California',counties:counties.filter(c=>CENTRAL_COUNTIES.has(c))},
+   {id:'other',label:'Other California',counties:counties.filter(c=>!BAY_COUNTIES.has(c)&&!CENTRAL_COUNTIES.has(c))}
+  ].filter(g=>g.counties.length);
+ }
+ const optionEscape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function cityOptions(cities,county=''){
+  return regionGroups(cities).map(group=>group.counties.filter(c=>!county||c===county).map(c=>
+   '<optgroup label="'+optionEscape(group.label+' · '+c+' County')+'">'+citiesIn(cities,c).map(([key,city])=>'<option value="'+optionEscape(key)+'">'+optionEscape(city.label)+'</option>').join('')+'</optgroup>'
+  ).join('')).join('');
+ }
  function page(items,index,size){
   size=Math.max(1,Math.floor(size)||1);
   const pages=Math.max(1,Math.ceil(items.length/size));
@@ -68,5 +85,5 @@
   addEventListener('resize',resize);
   host._pagerCleanup=()=>{clearTimeout(resizeTimer);removeEventListener('resize',resize);};draw();
  }
- root.DashboardBrowse={citiesIn,page,setupValid,swipeDirection,mountPager};
+ root.DashboardBrowse={citiesIn,regionGroups,cityOptions,page,setupValid,swipeDirection,mountPager};
 })(globalThis);

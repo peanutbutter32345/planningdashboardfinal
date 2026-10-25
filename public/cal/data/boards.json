@@ -169,7 +169,7 @@
         "directory": "Orange Cove"
       },
       {
-        "name": "October 13, 2026 \u2013 NOTICE OF PUBLIC HEARING \u2013 City of Orange Cove Planning Commission",
+        "name": "October 13, 2026 – NOTICE OF PUBLIC HEARING – City of Orange Cove Planning Commission",
         "url": "https://cityoforangecove.com/wp-content/uploads/2026/10/Public-Hearing-Tattoo-Studio.pdf",
         "directory": "Orange Cove"
       }
@@ -1729,7 +1729,7 @@
         "directory": "Garden Grove"
       },
       {
-        "name": "Measure O - Citizens\u2019 Oversight Committee",
+        "name": "Measure O - Citizens’ Oversight Committee",
         "url": "https://ggcity.org/commissions/Measure%20O%20%E2%80%93%20Citizens%27%20Oversight%20Committee",
         "directory": "Garden Grove"
       },
@@ -1739,7 +1739,7 @@
         "directory": "Garden Grove"
       },
       {
-        "name": "Measure O \u2013 Citizens' Oversight Committee",
+        "name": "Measure O – Citizens' Oversight Committee",
         "url": "https://ggcity.org/commissions/Measure%20O%20%E2%80%93%20Citizens%27%20Oversight%20Committee",
         "directory": "Garden Grove"
       },
@@ -2503,8 +2503,93 @@
     ],
     "p0668154": [
       {
+        "name": "City Council",
+        "url": "https://www.slocity.org/government/mayor-and-city-council/agendas-and-minutes",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Active Transportation Committee",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Administrative Review Board",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Architectural Review Commission",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Construction Board of Appeals",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Council Compensation Committee",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Cultural Heritage Committee",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Housing Authority Board",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Human Relations Commission",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Mass Transportation Committee",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Parks and Recreation Commission",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Personnel Board",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
         "name": "Planning Commission",
         "url": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Promotional Coordinating Committee",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Revenue Enhancement Oversight Commission",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Tourism Business Improvement District Board",
+        "url": "https://www.slocity.org/government/advisory-bodies",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Tree Committee",
+        "url": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/tree-committee",
+        "directory": "San Luis Obispo"
+      },
+      {
+        "name": "Investment Oversight Committee",
+        "url": "https://www.slocity.org/government/advisory-bodies",
         "directory": "San Luis Obispo"
       }
     ],
@@ -2576,7 +2661,7 @@
         "directory": "Carpinteria"
       },
       {
-        "name": "Downtown \u201cT\u201d Business Advisory Board",
+        "name": "Downtown “T” Business Advisory Board",
         "url": "https://carpinteriaca.gov/business/downtown-t-business-advisory-board/",
         "directory": "Carpinteria"
       },
@@ -3143,13 +3228,218 @@
     ],
     "p0669070": [
       {
+        "name": "Mayor & City Council",
+        "url": "https://santabarbaraca.gov/government/mayor-city-council",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Access Advisory Committee",
+        "url": "https://santabarbaraca.gov/access-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Airport Commission",
+        "url": "https://santabarbaraca.gov/airport-commission",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Architectural Board of Review",
+        "url": "https://santabarbaraca.gov/architectural-board-review",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Arts Advisory Committee",
+        "url": "https://santabarbaraca.gov/arts-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Building & Fire Code Board of Appeals",
+        "url": "https://santabarbaraca.gov/building-fire-code-board-appeals",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Central Coast Commission for Senior Citizens",
+        "url": "https://santabarbaraca.gov/central-coast-commission-senior-citizens",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Citizens' Oversight Committee",
+        "url": "https://santabarbaraca.gov/citizens-oversight-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Civil Service Commission",
+        "url": "https://santabarbaraca.gov/civil-service-commission",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Community Development & Human Services Committee",
+        "url": "https://santabarbaraca.gov/community-development-human-services-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Housing Authority Commission",
+        "url": "https://santabarbaraca.gov/housing-authority-commission",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Integrated Pest Management Advisory Committee",
+        "url": "https://santabarbaraca.gov/integrated-pest-management-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Legislative Committee",
+        "url": "https://santabarbaraca.gov/legislative-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Library Board",
+        "url": "https://santabarbaraca.gov/library-board",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Metropolitan Transit District Board",
+        "url": "https://santabarbaraca.gov/metropolitan-transit-district-board",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Neighborhood Advisory Council",
+        "url": "https://santabarbaraca.gov/neighborhood-advisory-council",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Ordinance Committee",
+        "url": "https://santabarbaraca.gov/ordinance-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Oversight Board",
+        "url": "https://santabarbaraca.gov/oversight-board",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Oversized Vehicle Off-Street Parking Ad Hoc Stakeholder Committee",
+        "url": "https://santabarbaraca.gov/oversized-vehicle-street-parking-ad-hoc-stakeholder-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Parks & Recreation Commission",
+        "url": "https://santabarbaraca.gov/parks-recreation-commission",
+        "directory": "Santa Barbara"
+      },
+      {
         "name": "Planning Commission",
         "url": "https://santabarbaraca.gov/planning-commission",
         "directory": "Santa Barbara"
       },
       {
-        "name": "Mayor & City Council",
-        "url": "https://santabarbaraca.gov/government/mayor-city-council",
+        "name": "Rent Stabilization Board",
+        "url": "https://santabarbaraca.gov/rent-stabilization-board",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Rental Housing Mediation Board",
+        "url": "https://santabarbaraca.gov/rental-housing-mediation-board",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Santa Barbara Arts & Crafts Show Advisory Committee",
+        "url": "https://santabarbaraca.gov/santa-barbara-arts-crafts-show-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Santa Barbara Youth Council",
+        "url": "https://santabarbaraca.gov/santa-barbara-youth-council",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Sign Committee",
+        "url": "https://santabarbaraca.gov/sign-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Single Family Design Board",
+        "url": "https://santabarbaraca.gov/single-family-design-board",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Sister Cities Board",
+        "url": "https://santabarbaraca.gov/sister-cities-board",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Staff Hearing Officer",
+        "url": "https://santabarbaraca.gov/staff-hearing-officer",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "State Street Advisory Committee",
+        "url": "https://santabarbaraca.gov/state-street-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Street Tree Advisory Committee",
+        "url": "https://santabarbaraca.gov/street-tree-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Sustainability Committee",
+        "url": "https://santabarbaraca.gov/sustainability-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Transportation & Circulation Committee",
+        "url": "https://santabarbaraca.gov/transportation-circulation-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Water Commission",
+        "url": "https://santabarbaraca.gov/water-commission",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Community Events & Festivals Committee",
+        "url": "https://santabarbaraca.gov/community-events-festivals-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Creeks Advisory Committee",
+        "url": "https://santabarbaraca.gov/creeks-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "De La Guerra Plaza Revitalization Design Advisory Committee",
+        "url": "https://santabarbaraca.gov/de-la-guerra-plaza-revitalization-design-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Downtown Parking Committee",
+        "url": "https://santabarbaraca.gov/downtown-parking-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Finance Committee",
+        "url": "https://santabarbaraca.gov/government/mayor-city-council/city-council-meetings/finance-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Fire & Police Commission",
+        "url": "https://santabarbaraca.gov/fire-police-commission",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Golf Advisory Committee",
+        "url": "https://santabarbaraca.gov/golf-advisory-committee",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Harbor Commission",
+        "url": "https://santabarbaraca.gov/harbor-commission",
+        "directory": "Santa Barbara"
+      },
+      {
+        "name": "Historic Landmarks Commission",
+        "url": "https://santabarbaraca.gov/historic-landmarks-commission",
         "directory": "Santa Barbara"
       },
       {

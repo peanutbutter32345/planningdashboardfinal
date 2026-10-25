@@ -55,7 +55,7 @@ def layer(url):
  meta=get(url+'?f=json',True).get('data',{})
  title=meta.get('name','')
  if meta.get('geometryType')!='esriGeometryPolygon' or not re.search(r'zon|land.?use',title,re.I) or re.search(r'fire|flood|inspection|evac|school|noise|hazard|seismic|airport|safety|historic|history|1989|draft|text|excluding|management area',title,re.I):return None
- fields=meta.get('fields',[]);field=next((f['name'] for f in fields if re.search(r'^(zone|zone_name|zoning|zonecode|zone_code|zoneclass|zoningcode|zoning_code|zonedist|zone_district|zoning_district|landuse|land_use|lu_code|luc|zn_cd1|zone_desig|zonecd|zoning_cd|ZoneAbbreviation|ZoneCodeLabel|ZONING_SYMBOL|Zone2030)$',f['name'],re.I)),None)
+ fields=meta.get('fields',[]);field=next((f['name'] for f in fields if re.search(r'^(zone|zone_name|zoning|zonecode|zone_code|zoneclass|zoningcode|zoning_code|zonedist|zone_district|zoning_district|landuse|land_use|lu_code|luc|zn_cd1|zone_desig|zonecd|zoning_cd|ZoneAbbreviation|ZoneCodeLabel|ZONING_SYMBOL|Zone2030|specificZone)$',f['name'],re.I)),None)
  if not field:return None
  q=urllib.parse.urlencode({'where':'1=1','outFields':field,'returnGeometry':'false','resultRecordCount':3,'f':'json'})
  sample=get(url+'/query?'+q,True).get('data',{})

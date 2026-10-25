@@ -7,6 +7,7 @@ import json
 import re
 import html
 from record_display import filing_display
+from display_cleanup import resource_title, unique_bodies
 from topics import article_topic, record_type, civic_news
 from coordinates import published_point, within_locality
 from pathlib import Path
@@ -47,8 +48,8 @@ for p in profiles['profiles']:
         resource_key=(r['category'],r['url'])
         if resource_key in seen: continue
         seen.add(resource_key)
-        resources.append({'cat':r['category'], 'title':r['title'], 'url':r['url'],
-            'note':r.get('note') or ('Official '+r.get('scope','local')+' source. Check the agency for current records.')})
+        resources.append({'cat':r['category'], 'title':resource_title(r['title']), 'url':r['url'],
+            'note':r.get('note') or ''})
     for t in profiles['transportation']:
         if t.get('county') == p['county'] and t.get('url') not in {r['url'] for r in resources}:
             resources.append({'cat':'Transportation','title':t.get('title',t.get('name','Transportation projects')), 'url':t['url'], 'note':t.get('note','Regional agency projects. Coverage can extend beyond this locality.')})
@@ -75,7 +76,8 @@ for p in profiles['profiles']:
             'type':record_type(r), 'desc':r['description'], 'units':None,'bmr':None,
             'applicant':r['agency'], 'filed':r['date'], 'stage':'filed', 'lastDate':r['date'],
             'lastNote':display['summary'], 'fileNo':r['sch'],
-            'flag':'Environmental filing, not a construction status or a separate count of homes.', 'sourceUrl':r['source'],
+            'flag':('This filing lists multiple jurisdictions, including '+p['name']+'. It is not a project confined to this city. ' if len(r.get('cities',[]))>1 or len(r.get('counties',[]))>1 else 'CEQAnet lists '+p['name']+' as the locality; this can include nearby unincorporated areas. ')+ 'Environmental filing, not a construction status or a separate count of homes.', 'sourceUrl':r['source'],
+            'geographicScope':'Multiple jurisdictions' if len(r.get('cities',[]))>1 or len(r.get('counties',[]))>1 else 'Source-listed locality',
             'sourceType':'ceqanet', 'sourceLabel':'California CEQAnet', 'locationSource':'Published CEQAnet coordinates screened against locality boundary' if point else 'No verified project coordinates'})
     rows.sort(key=lambda r:(r.get('lastDate') or ''), reverse=True)
     # Existing project templates accept HTML-ready strings. Imported documents are data.
@@ -90,13 +92,16 @@ for p in profiles['profiles']:
         'renterSharePct':s.get('renterShare'), 'censusHomeValue':s.get('homeValue'), 'meanCommuteMin':s.get('commuteMinutes'),
         'transitSharePct':s.get('transitShare'), 'housingUnits':s.get('housingUnits'), 'medianYearBuilt':None,
         'homeValue':None, 'rent':None, 'homeValueSeries':[], 'rentSeries':[], 'asOf':s.get('period','ACS unavailable'), 'source':s.get('source'), 'margins':s.get('margins',{})}
-    bodies = [{'name':b['name'],'when':'Check the official agenda and current membership', 'body':p.get('meetingScope',p['name'])+' public body. Open the official page for its responsibilities and ways to participate.', 'link':b['url'],'cat':'Civic'} for b in boards.get(p['id'],[])]
+    bodies = [{'name':b['name'],'when':'Meeting schedule and membership', 'body':p.get('meetingScope',p['name'])+'. Agendas, membership and public comment information.', 'link':b['url'],'cat':'Civic'} for b in unique_bodies(boards.get(p['id'],[]))]
     deciders = [b for b in bodies if re.search(r'^(?:Mayor & |Mayor and )?(?:City Council|Town Council|Planning(?: (?:and|&) (?:Design|Environment|Housing))? Commission|Board of Supervisors)$',b['name'],re.I)]
     join = [b for b in bodies if b not in deciders]
-    if not join: join=[{'name':'Boards, commissions and participation','when':'Check official vacancies','body':'Use the responsible government’s directory to review current boards and application instructions.','link':p['boardUrl'],'cat':'Civic'}]
+    if not join: join=[{'name':'Boards, commissions and participation','when':'Check official vacancies','body':'Find current vacancies, eligibility requirements and application instructions.','link':p['boardUrl'],'cat':'Civic'}]
     if not deciders: deciders=[{'name':p.get('meetingScope',p['name'])+' public meetings','when':'Check official agendas','body':'Current hearing notices, public comment instructions and meeting records.','link':p['meetingUrl']}]
     articles=[{'city':key,'topic':article_topic(n['title']),'title':n['title'],'source':n['publisher'],'date':n['date'],'url':n['url'],'snippet':'','image':''} for n in news.get(p['id'],[])]
-    for eid in env['places'].get(p['id'],[])[:4]:
+    # Broad regulations can list hundreds of cities. Keep those records in the register,
+    # but do not present them as city-specific featured development news.
+    local_filings=[eid for eid in env['places'].get(p['id'],[]) if len(env['records'][eid].get('cities',[]))<=1 and len(env['records'][eid].get('counties',[]))<=1]
+    for eid in local_filings[:4]:
         r=env['records'][eid]
         display=filing_display(r)
         excerpt=r['description'][:450]
@@ -133,6 +138,9 @@ for p in profiles['profiles']:
         extra_boundaries['cities'][key]={'label':p['name'],'county':p['county'],'bbox':c['bbox'],'rings':rings,'ring':max(rings,key=len),'geojson':feature}
     manifest['activity'][key]={**h['metadata'],'reportYear':h['metadata'].get('year')}
     manifest['meetings'][key]={'label':p['name'],'county':p['county'],'links':[{'title':'Official agendas and participation','url':p['meetingUrl']},{'title':'Boards and commissions','url':p['boardUrl']}],'reviewed':'2026-10-25'}
+    if key in ['santabarbara','sanluisobispo']:
+        manifest['meetings'][key]['calendarFeed']={'santabarbara':'santa-barbara','sanluisobispo':'san-luis-obispo'}[key]
+        manifest['meetings'][key]['links']=[{'title':r['title'],'url':r['url']} for r in resources if r['cat'] in ['Meetings','Boards'] and not re.search(r'/events?/|\.pdf$',r['url'],re.I)]
     if p.get('client'): manifest['meetings'][key]['client']=p['client']
     photo=photos.get(p['id'])
     if not photo:

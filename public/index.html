@@ -195,12 +195,10 @@
   .card-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
   .card{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:15px; display:flex; flex-direction:column; gap:7px; border-top:3px solid var(--ink);}
   .card .row1{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
-  /* The status badge sets white-space:nowrap so it never breaks mid-word. A flex item defaults to
-     min-width:auto, so the address column next to it refused to shrink and pushed the badge off
-     the right edge instead, which scrolled the whole page sideways at tablet widths. Letting the
-     text column shrink keeps the badge inside; the address wraps, which is what it should do. */
+  /* Long filing labels must leave enough room for the address beside them. */
   .card .row1 > div:first-child{min-width:0; flex:1 1 auto;}
-  .card .row1 > div:last-child{flex:0 0 auto;}
+  .card .row1 > div:last-child{flex:0 1 auto;max-width:44%;min-width:0;}
+  .card .row1 .stamp{white-space:normal;overflow-wrap:break-word;text-align:right;line-height:1.35;}
   .card .addr, .card .type{overflow-wrap:anywhere;}
   .card .addr{font-weight:700; font-size:15px; color:#1A1A1A; line-height:1.3;}
   .card .type{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.03em; margin-top:2px; font-weight:600;}
@@ -208,7 +206,7 @@
   .card .meta{display:flex; flex-wrap:wrap; gap:7px; font-size:11.5px; font-family:'Open Sans',sans-serif; color:var(--text-soft);}
   .card .meta b{color:#1A1A1A; font-weight:700;}
   .card .flagnote{font-size:11px; color:var(--flag); background:#FBEAE9; border-left:3px solid var(--flag); padding:6px 8px; border-radius:2px;}
-  .card .footline{display:flex; justify-content:space-between; align-items:center; margin-top:2px;}
+  .card .footline{display:flex; flex-wrap:wrap; gap:8px 12px; justify-content:space-between; align-items:center; margin-top:2px;}
   .fresh{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft);}
   .locate-btn{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; background:none; border:1px solid var(--ink); color:var(--ink); border-radius:2px; padding:5px 10px; cursor:pointer;}
   .locate-btn:hover{background:var(--ink); color:#fff;}
@@ -1729,7 +1727,9 @@
   .ask-status{font-size:11px; color:var(--text-soft); margin-top:8px;}
 
   .ms-controls{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:18px 0 6px;}
-  .ms-controls select{font-family:'Open Sans',sans-serif; font-size:13px; padding:9px 10px; border:1.5px solid var(--ink); border-radius:2px; background:#fff; color:var(--ink); min-width:220px;}
+  .ms-main,.ms-side,.topic-links>*{min-width:0;}
+  .ms-side-links a,.ms-meeting-head,.fd-title,.project-card,.news-card,.board-row,.topic-links a{overflow-wrap:anywhere;}
+  .ms-controls select{max-width:100%;font-family:'Open Sans',sans-serif; font-size:13px; padding:9px 10px; border:1.5px solid var(--ink); border-radius:2px; background:#fff; color:var(--ink); min-width:220px;}
   .ms-summary{background:#fff; border:1px solid var(--rule); border-top:4px solid var(--ink); border-radius:2px; padding:20px 22px; font-size:14px; line-height:1.7; white-space:pre-wrap; margin-top:16px;}
   .ms-actions{display:flex; align-items:center; gap:10px; margin:14px 0 26px; flex-wrap:wrap;}
   .ms-meeting-list{display:flex; flex-direction:column; gap:10px;}
@@ -1892,7 +1892,7 @@
     <div class="hero-copy without-advisors">
       <div class="nameplate">
         <div class="nameplate-title">
-        <div class="np-kicker"><span id="npKickerCounty">Bay Area &amp; California communities</span><i></i><span>Public planning records</span></div>
+        <div class="np-kicker"><span id="npKickerCounty">California communities</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1"><img class="brand-california" src="/images/california-outline.svg" alt="" aria-hidden="true" />The California</span> <em class="np-l2">Civic Dashboard</em></h1>
         </div>
         <div class="site-intro">
@@ -1904,7 +1904,7 @@
               <button id="introMore" type="button" aria-expanded="false" aria-controls="introDetails">About the project <span aria-hidden="true">+</span></button>
               <div id="introDetails" class="intro-details" hidden>
                 <strong>Local government, easier to follow.</strong>
-                <p>The California Civic Dashboard brings together planning records, housing and transportation projects, local news, and public meetings from <span class="city-count">101</span> cities across the Bay Area and our expanded California coverage. Explore your area, check a project’s sources, or find a board or meeting where you can get involved.</p>
+                <p>The California Civic Dashboard brings together planning records, housing and transportation projects, local news, and public meetings from <span class="city-count">101</span> cities across California. Explore your area, check a project’s sources, or find a board or meeting where you can get involved.</p>
                 <p>I built it independently because finding out what is happening in your neighborhood should not require searching through dozens of city pages. The goal is to make civic resources easier to find and help more residents take part.</p>
                 <p class="intro-note">An independent project, not an official government website. Check linked city records for the latest details.</p>
               </div>
@@ -2279,7 +2279,7 @@
   <div class="wrap">
     <div class="planner-shell">
       <h2>Summarize recent meetings</h2>
-      <p class="section-note">Pick a city and get a plain-language summary of what its council, planning commission, and related boards actually did in the last 30 days - built from each city's own published agendas and minutes, not a general web search.</p>
+      <p class="section-note">Read recent council and planning meeting records. Summaries use connected agendas and minutes, or clearly labelled news reports when those records are unavailable. Official calendars and participation links are available for every city.</p>
 
       <div class="ms-controls">
         <label for="msCitySelect" class="onboard-label">City</label>
@@ -6392,7 +6392,6 @@ for(const [key,c] of Object.entries(window.REGIONAL_DATA?.cities||{})){
 // duplicate. This is the only source for anything that is not housing: HCD reports housing alone.
 DashboardHousing.mergeCityProjects(CITIES,window.CITY_PROJECTS);
 DashboardHousing.merge(CITIES,window.HOUSING_RECORDS);
-const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
 // Counted here, before the "All Cities" aggregate below joins the object, so this is the number
 // of real places. It is written into the page rather than typed into it: the figure was 101 in
 // three separate sentences and a hundred and second city had already been added.
@@ -6405,6 +6404,8 @@ const CITY_COUNT=Object.keys(CITIES).length;
 const NON_CITY_AREAS=['westsanjose',...Object.entries(CITIES).filter(([,c])=>c.kind==='community').map(([key])=>key)];
 const INCORPORATED_CITY_COUNT=Object.keys(CITIES).filter(k=>!NON_CITY_AREAS.includes(k)).length;
 let currentCity = 'sunnyvale';
+const REGION_GROUPS=DashboardBrowse.regionGroups(CITIES);
+const COUNTY_NAMES=REGION_GROUPS.flatMap(group=>group.counties);
 
 // "All Cities" - a real aggregation of every tracked city's data, not a separate dataset.
 // Built after all individual cities above are defined so it can safely reference them.
@@ -6506,7 +6507,7 @@ function filtered(){
 let cityBrowseQuery='',cityBrowseCounty='';
 function renderCitySwitch(){
   const host=document.getElementById('citySwitch');
-  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search ${CITY_COUNT} cities and communities…" value="${escapeHtml(cityBrowseQuery)}"></label><span>Choose a county, then a city</span><button class="city-tab" id="browseAllCities" aria-pressed="${currentCity==='all'&&!activeCounty}">All areas</button></div><div class="county-strip" aria-label="Covered counties">${COUNTY_NAMES.map((county,i)=>{const cities=DashboardBrowse.citiesIn(CITIES,county);return `<div class="county-option"><button class="county-button" data-county="${county}" aria-expanded="${county===cityBrowseCounty}" aria-controls="countyCities" aria-describedby="countyPreview${i}">${county}<small>${cities.length} ↗</small></button><div class="county-preview" id="countyPreview${i}" role="tooltip"><strong>${county} County</strong>${cities.map(([,c])=>c.label).join(' · ')}<span>Click to browse these cities</span></div></div>`;}).join('')}</div><div id="countyCities" class="city-browse-results" aria-live="polite"></div>`;
+  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search ${CITY_COUNT} cities and communities…" value="${escapeHtml(cityBrowseQuery)}"></label><span>Choose a county, then a city</span><button class="city-tab" id="browseAllCities" aria-pressed="${currentCity==='all'&&!activeCounty}">All areas</button></div>${REGION_GROUPS.map(group=>`<section class="county-region" aria-label="${group.label}"><h3>${group.label}</h3><div class="county-strip">${group.counties.map(county=>{const i=COUNTY_NAMES.indexOf(county);const cities=DashboardBrowse.citiesIn(CITIES,county);return `<div class="county-option"><button class="county-button" data-county="${county}" aria-expanded="${county===cityBrowseCounty}" aria-controls="countyCities" aria-describedby="countyPreview${i}">${county}<small>${cities.length} ↗</small></button><div class="county-preview" id="countyPreview${i}" role="tooltip"><strong>${county} County</strong>${cities.map(([,c])=>c.label).join(' · ')}<span>Click to browse these cities</span></div></div>`;}).join('')}</div></section>`).join('')}<div id="countyCities" class="city-browse-results" aria-live="polite"></div>`;
   const results=document.getElementById('countyCities');
   function renderResults(){
     const q=cityBrowseQuery.trim();
@@ -6680,7 +6681,7 @@ function renderStats(){
   const cards = [
     {k: devUnits.toLocaleString(), u:'Housing units tracked', sub:'In this sample for '+CITIES[currentCity].label},
     {k: bmrKnown.length ? bmrShare+'%' : 'N/A', u:'Affordable, where disclosed', sub: bmrKnown.length+' of '+housing.length+' housing records report a BMR split'},
-    {k: flagged, u:'Records flagged', sub:'Stale, expired, inactive, or ambiguous status'},
+    {k: flagged, u:'Records flagged', sub:'Records with caveats or older reported activity'},
     {k: list.filter(d=>d.stage==='construction'||d.stage==='approved').length, u:'Approved or building', sub:'Last reported status · check record dates'},
   ];
   document.getElementById('statGrid').innerHTML = cards.map(c=>`<div class="stat-card"><div class="k">${c.k}</div><div class="u">${c.u}</div><div class="sub">${c.sub}</div></div>`).join('');
@@ -7885,7 +7886,7 @@ function citySourceLink(cityKey){
 }
 function projectCardHtml(d){
   const st = projectStage(d); const c = CAT_MAP[categoryOf(d)];
-  const unitsBit = d.units ? `<span><b>${d.units.toLocaleString()}</b> units</span>` : '';
+  const unitsBit = d.units ? `<span><b>${d.units.toLocaleString()}</b> ${d.units===1?'unit':'units'}</span>` : '';
   const bmrBit = (d.bmr!==null && d.bmr!==undefined) ? `<span><b>${d.bmr.toLocaleString()}</b> affordable</span>` : (d.cat==='dev' && d.units ? `<span>affordability not disclosed</span>` : '');
   const expiresBit = d.expires ? `<span>expires <b>${fmtDate(d.expires)}</b></span>` : '';
   const starData = {title:d.addr, desc:d.desc + ' (' + st.label + ')'};
@@ -7893,7 +7894,7 @@ function projectCardHtml(d){
   const photo = (window.LOCAL_CITY_PHOTOS||{})[cityOfProject(d.id)||currentCity] || {url:'/img/hero.avif',cap:'Bay Area city context',by:'ZuperB',lic:'Public domain'};
   return `<div class="card" data-project-id="${d.id}" style="border-top-color:${c.color}">
       ${thumb ? `<div class="card-thumb"><img src="${thumb}" alt="Map of the area around ${d.addr}" loading="lazy" onerror="imgFallback(this,cityOfProject('${d.id}'));" /><span class="map-thumb-credit">Map: Esri, HERE, Garmin, USGS</span></div>` : `<div class="card-thumb"><img src="${photo.url}" alt="${escapeHtml(photo.cap)}" loading="lazy"><span class="map-thumb-credit">${photoCredit(photo)}</span></div>`}
-      <div class="row1"><div><div class="addr">${d.addr}</div><div class="type">${d.type}</div><div class="cattag" style="margin-top:4px;"><i style="background:${c.color}"></i>${c.label}</div></div>
+      <div class="row1"><div><div class="addr">${d.addr}</div><div class="type">${d.type}${d.geographicScope==='Multiple jurisdictions'?' · Multiple jurisdictions':''}</div><div class="cattag" style="margin-top:4px;"><i style="background:${c.color}"></i>${c.label}</div></div>
       <div style="display:flex; align-items:flex-start; gap:6px;">${starButtonHtml('project', d.id, starData)}<span class="stamp" style="${stampStyle(st)}">${st.label}</span></div></div>
       <div class="desc">${d.desc}</div>
       <div class="meta">${unitsBit}${bmrBit}${expiresBit}</div>
@@ -7990,7 +7991,7 @@ function renderSheetMap(record, cityKey, city){
   }
   const stage = projectStage(record) || {color:'#3E4F24', label:record.stage};
   L.circleMarker([record.lat, record.lng], {radius:9, color:'#fff', weight:3, fillColor:stage.color, fillOpacity:1})
-    .bindPopup('<b>'+escapeHtml(record.addr||'')+'</b><br>'+escapeHtml(stage.label||''))
+    .bindPopup('<b>'+escapeHtml(projectPlainText(record).addr||'')+'</b><br>'+escapeHtml(stage.label||''))
     .addTo(sheetMap);
   // Leaflet measures its container as it starts, and this one was display:none a moment ago.
   setTimeout(()=>{ try{ sheetMap.invalidateSize(); }catch{} }, 60);
@@ -8058,7 +8059,7 @@ function psFact(label, value){
   return value===null||value===undefined||value===''
     ? '' : '<div class="ps-fact"><b>'+escapeHtml(label)+'</b><span>'+value+'</span></div>';
 }
-function projectSheetHtml(record, cityKey, city){
+function projectPlainText(record){
   // Imported fields are escaped for the legacy card renderer. Decode once before this
   // sheet's text escaping, without inserting source HTML into a DOM element.
   if(record.sourceType==='hcd-apr'||record.sourceType==='ceqanet'){
@@ -8068,6 +8069,10 @@ function projectSheetHtml(record, cityKey, city){
       if(typeof record[field]==='string')record[field]=record[field].replace(/&(?:amp|lt|gt|quot);|&#(?:x27|39);/g,entity=>entities[entity]);
     }
   }
+  return record;
+}
+function projectSheetHtml(record, cityKey, city){
+  record=projectPlainText(record);
   const stage=projectStage(record)||{label:record.stage,color:'#777'};
   const cat=CAT_MAP[categoryOf(record)]||{label:'',color:'#777'};
   const hcd=record.sourceType==='hcd-apr';
@@ -8290,6 +8295,7 @@ function switchCity(key){
   if(overview3D&&key!==currentCity)setTimeout(()=>overview3D?.update(overviewPoints(),{focus:true}),0);
   if(key!=='all'){setCountyScope('');cityBrowseCounty=CITIES[key].county;}
   currentCity = key;
+  window.SiteVisuals?.setCity(key);
   railResourcePage=0;
   // Featured news leads with the selected city's stories, so it follows the tab.
   featuredPage = 0;
@@ -8375,7 +8381,7 @@ let onboardCityFilter = '';
 function renderOnboardCityBtns(){
   if(onboard.city&&CITIES[onboard.city]?.county)onboard.county=CITIES[onboard.city].county;
   const countySelect=document.getElementById('onboardCounty');
-  countySelect.innerHTML='<option value="">Select a county…</option>'+COUNTY_NAMES.map(c=>`<option${c===onboard.county?' selected':''}>${c}</option>`).join('');
+  countySelect.innerHTML='<option value="">Select a county…</option>'+REGION_GROUPS.map(group=>`<optgroup label="${group.label}">${group.counties.map(c=>`<option${c===onboard.county?' selected':''}>${c}</option>`).join('')}</optgroup>`).join('');
   const host=document.getElementById('onboardCityBtns');
   host.innerHTML=`<label class="onboard-label" for="onboardCityFilterInput">Search for a city <em>(optional)</em></label><input type="search" class="onboard-cityfilter" id="onboardCityFilterInput" placeholder="${onboard.county?'Search cities in '+onboard.county:'Select a county first'}" value="${escapeHtml(onboardCityFilter)}" ${onboard.county?'':'disabled'} autocomplete="off"><div class="onboard-selected" id="onboardSelected"></div><div class="onboard-search-results" id="onboardCityResults" aria-live="polite"></div>`;
   function drawResults(){
@@ -9098,13 +9104,17 @@ function renderTopicMap(topicKey, cap, categoryKey){
   }
   setupTopicZoning(cap,m);
   m.layer.clearLayers();
+  if(m.boundary){m.map.removeLayer(m.boundary);m.boundary=null;}
+  const rings=currentCity==='all'?null:cityRing(currentCity);
+  if(rings)m.boundary=L.polygon(rings,{color:'#3E4F24',weight:2,fill:false,interactive:false}).addTo(m.map);
+  else if(currentCity!=='all'&&!cityBoundaries){const selected=currentCity;loadCityBoundaries().then(d=>{if(d&&selected===currentCity&&el.offsetWidth)renderTopicMap(topicKey,cap,categoryKey);});}
   const rows = (c.data||[]).filter(d=> topicCategoryMatches(d,categoryKey) && Number.isFinite(d.lat) && Number.isFinite(d.lng));
   const pts = [];
   rows.forEach(d=>{
     const st = projectStage(d) || {label:d.stage||'', color:'#8A8A8A'};
     pts.push([d.lat,d.lng]);
     L.circleMarker([d.lat,d.lng], {radius:7, color:'#fff', weight:2, fillColor:st.color, fillOpacity:1})
-      .bindPopup('<b>'+escapeHtml(d.addr||d.id)+'</b><br>'+escapeHtml(st.label)
+      .bindPopup('<b>'+escapeHtml(projectPlainText(d).addr||d.id)+'</b><br>'+escapeHtml(st.label)
         + (d.units ? '<br>'+d.units.toLocaleString()+' homes' : '')
         + '<br><a href="?project='+encodeURIComponent(d.id)+'">Open the record &rarr;</a>')
       .addTo(m.layer);
@@ -9270,14 +9280,27 @@ function renderGiBoards(){
 // ---- The calendar ----
 // Recurring patterns the cities publish, plus the dates that are actually on an agenda.
 let giHearings = null;
+let giHearingsRequest=null,giHearingsRetryAt=0;
+function loadCalendarMeetings(){
+  if(giHearings)return Promise.resolve(giHearings);
+  if(giHearingsRequest)return giHearingsRequest;
+  if(Date.now()<giHearingsRetryAt)return Promise.resolve(null);
+  giHearingsRequest=fetch('/api/hearings',{signal:AbortSignal.timeout(18000)})
+    .then(r=>{if(!r.ok)throw Error('Meeting service unavailable');return r.json();})
+    .then(d=>{if(!Array.isArray(d.hearings))throw Error('Invalid calendar response');giHearings=d;return d;})
+    .catch(()=>{giHearingsRetryAt=Date.now()+60000;return null;})
+    .finally(()=>{giHearingsRequest=null;});
+  return giHearingsRequest;
+}
 
-function giMonthEvents(year, month){
+function giMonthEvents(year, month, cityOverride){
+  const matches=city=>cityOverride===undefined?giMatchesPlace(city):cityOverride==='all'?(!activeCounty||CITIES[city]?.county===activeCounty):city===(window.MEETING_DIRECTORY?.[cityOverride]?.alias||cityOverride);
   const events = [];   // {day, name, city, cityLabel, time, confirmed, url}
   giAllBoards().forEach(b=>{
-    if(!giMatchesPlace(b.city)) return;
+    if(!matches(b.city)) return;
     const sched = parseSchedule(b.when);
     if(!sched) return;
-    if(giOnlyStarred && !isStarred('board', b.city+':'+b.name)) return;
+    if(cityOverride===undefined && giOnlyStarred && !isStarred('board', b.city+':'+b.name)) return;
     datesFor(sched, year, month).forEach(d=> events.push({
       day:d, name:b.name, city:b.city, cityLabel:b.cityLabel,
       time:sched.time, confirmed:false, url:b.url}));
@@ -9285,13 +9308,13 @@ function giMonthEvents(year, month){
   // Real agenda dates win: if a hearing lands on the same day for the same body, mark it.
   if(giHearings && Array.isArray(giHearings.hearings)){
     giHearings.hearings.forEach(h=>{
-      if(!giMatchesPlace(h.city)) return;
+      if(!matches(h.city)) return;
       if(!h.date) return;
       const dt = new Date(h.date + 'T12:00:00');
       if(dt.getFullYear() !== year || dt.getMonth() !== month) return;
       const d = dt.getDate();
       const name = h.body || h.name || 'Public meeting';
-      if(giOnlyStarred && !isStarred('board', h.city+':'+name)) return;
+      if(cityOverride===undefined && giOnlyStarred && !isStarred('board', h.city+':'+name)) return;
       const existing = events.find(e=> e.day===d && e.city===h.city && e.name===name);
       if(existing){ existing.confirmed = true; existing.url = h.agendaUrl || existing.url; }
       else events.push({day:d, name, city:h.city, cityLabel:(CITIES[h.city]||{}).label||h.city,
@@ -9437,11 +9460,10 @@ function renderGetInvolved(){
   if(giTab === 'boards') renderGiBoards();
   else if(giTab === 'calendar'){
     if(giHearings === null){
-      giHearings = {hearings:[]};
-      fetch('/api/hearings').then(r=>r.json()).then(d=>{
-        giHearings = d && Array.isArray(d.hearings) ? d : {hearings:[]};
+      loadCalendarMeetings().then(()=>{
         if(currentScreen==='planner' && giTab==='calendar') renderGiCalendar();
-      }).catch(()=>{});
+        renderHeroCalendar();
+      });
     }
     renderGiCalendar();
   }
@@ -10989,28 +11011,42 @@ document.querySelectorAll('#askSuggestions .ask-chip').forEach(btn=>{
 // ---------------- SUMMARIZE RECENT MEETINGS ----------------
 let msCityPopulated = false;
 let msLastResult = null;
+let msRequest = 0, msController = null, msSelectedCity = null;
 function populateMsCitySelect(){
   const select = document.getElementById('msCitySelect');
   if(!select) return;
   if(!msCityPopulated){
-    select.innerHTML = COUNTY_NAMES.map(county =>
-      '<optgroup label="'+escapeHtml(county)+' County">'
-        + Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===county)
-          .map(([k,c])=>'<option value="'+k+'">'+escapeHtml(c.label)+'</option>').join('')
-        + '</optgroup>'
-    ).join('');
+    select.innerHTML = DashboardBrowse.cityOptions(CITIES);
     msCityPopulated = true;
   }
   if(currentCity!=='all') select.value = currentCity;
 }
 function renderMeetingSummaryScreen(){
   populateMsCitySelect();
-  renderMsSide(document.getElementById('msCitySelect').value);
+  selectMeetingCity(document.getElementById('msCitySelect').value);
 }
 // The city's own photo and its real official links (meeting calendar, boards, GIS maps - whatever
 // this city has) fill the sidebar from the moment a city is picked, not just after summarizing,
 // so the page never sits there looking empty while a reader decides whether to press the button.
+function meetingPageLinks(cityKey){
+  const directory=window.MEETING_DIRECTORY?.[cityKey]?.links||[];
+  const links=[...directory.map(l=>({label:l.title,url:l.url})),...(CITIES[cityKey]?.ctaLinks||[])];
+  return links.filter((l,i)=>links.findIndex(other=>other.url===l.url)===i).slice(0,8);
+}
+function selectMeetingCity(cityKey){
+  renderMsSide(cityKey);
+  if(msSelectedCity===cityKey)return;
+  msSelectedCity=cityKey;
+  msRequest++;msController?.abort();msController=null;stopMsLoading();msLastResult=null;
+  document.getElementById('msSummarize').disabled=false;
+  document.getElementById('msStatus').textContent='';
+  const connected=window.MEETING_DIRECTORY?.[cityKey]?.client;
+  renderMsFallback(cityKey,CITIES[cityKey].label,connected
+    ? 'Choose “Summarize recent meetings” to read the last 30 days of published meeting records. You can also open the official sources below.'
+    : 'Start with the official calendars, agendas and participation links below. Automatic agenda summaries are not connected for this city. If news search is available, the summary button can find reporting about recent meetings.');
+}
 function renderMsSide(cityKey){
+  window.SiteVisuals?.setCity(cityKey,'screenMeetingSummary');
   const side = document.getElementById('msSide');
   if(!side) return;
   const city = CITIES[cityKey];
@@ -11021,7 +11057,9 @@ function renderMsSide(cityKey){
   photoEl.style.display = photo ? 'block' : 'none';
   capEl.style.display = photo ? 'block' : 'none';
   if(photo){ photoEl.src = photo.url; photoEl.alt = photo.cap || city.label; }
-  const links = (city.ctaLinks||[]).slice(0,6);
+  capEl.textContent=photo ? photo.cap+' · '+photo.by+' · '+photo.lic : '';
+  capEl.href=photo?.source || '/photo-credits.html';
+  const links = meetingPageLinks(cityKey);
   document.getElementById('msSideLinks').innerHTML = links.length
     ? links.map(l=>'<a href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.label)+'</a>').join('')
     : '<div class="ms-meeting-items">No official links on file for '+escapeHtml(city.label)+' yet.</div>';
@@ -11094,19 +11132,8 @@ function msLoadingSteps(cityLabel){
 }
 let msLoadingTimer = null;
 function startMsLoading(cityLabel){
-  const host = document.getElementById('msLoading');
-  const stepsEl = document.getElementById('msLoadingSteps');
-  stepsEl.innerHTML = msLoadingSteps(cityLabel).map((s,i)=>'<li'+(i===0?' class="active"':'')+'>'+escapeHtml(s)+'</li>').join('');
-  host.hidden = false;
-  let i = 0;
-  clearInterval(msLoadingTimer);
-  msLoadingTimer = setInterval(()=>{
-    const items = stepsEl.querySelectorAll('li');
-    if(i >= items.length - 1) return;
-    items[i].classList.replace('active','done');
-    i++;
-    items[i].classList.add('active');
-  }, 1100);
+  document.getElementById('msLoadingSteps').innerHTML='<li class="active">Loading available meeting records for '+escapeHtml(cityLabel)+'…</li>';
+  document.getElementById('msLoading').hidden=false;
 }
 function stopMsLoading(){
   clearInterval(msLoadingTimer); msLoadingTimer = null;
@@ -11122,7 +11149,7 @@ function renderMsFallback(cityKey, cityLabel, reason){
   document.getElementById('msMeetingsTitle').style.display = 'none';
   document.getElementById('msMeetingList').innerHTML = '';
   document.getElementById('msFallbackText').textContent = reason;
-  const links = (CITIES[cityKey]?.ctaLinks || []).slice(0,6);
+  const links = meetingPageLinks(cityKey);
   document.getElementById('msFallbackLinks').innerHTML = links.length
     ? links.map(l=>'<a class="btn secondary" href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.label)+'</a>').join('')
     : '<p class="section-note">No official links on file for '+escapeHtml(cityLabel)+' yet - try the Get Involved tab.</p>';
@@ -11144,7 +11171,10 @@ async function runMeetingSummary(){
   const cityKey = select.value;
   const cityLabel = CITIES[cityKey] ? CITIES[cityKey].label : cityKey;
   if(!cityKey) return;
-
+  const request=++msRequest;
+  msController?.abort();
+  const controller=new AbortController();msController=controller;
+  msLastResult=null;
   button.disabled = true;
   result.style.display = 'none';
   status.textContent = '';
@@ -11152,12 +11182,13 @@ async function runMeetingSummary(){
   try{
     const res = await fetch('/api/meetings/summary', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({cityKey, cityLabel})
+      body: JSON.stringify({cityKey, cityLabel}), signal:controller.signal
     });
     let data = {};
     try{ data = await res.json(); } catch { throw new Error('Server returned HTTP '+res.status+' without valid JSON.'); }
     if(!res.ok) throw new Error(data.error || ('Request failed ('+res.status+')'));
 
+    if(request!==msRequest || select.value!==cityKey)return;
     if(!data.supported){
       const reason = data.note || (cityLabel+' does not have a structured meeting feed connected yet, so no automatic summary is available.');
       renderMsFallback(cityKey, cityLabel, reason);
@@ -11166,7 +11197,8 @@ async function runMeetingSummary(){
     }
     resetMsResultLayout();
     msLastResult = {cityKey, cityLabel, summary:data.summary, meetings:data.meetings||[], source:data.source};
-    document.getElementById('msSummaryText').textContent = data.summary || 'No summary returned.';
+    document.getElementById('msSummaryText').textContent = data.summary || 'Read the available records below. A written summary is not available.';
+    document.getElementById('msActionsBar').style.display=data.summary?'':'none';
     renderMsCategories(data.meetings);
     renderMsMeetings(data.meetings, data.source);
     result.style.display = 'block';
@@ -11175,15 +11207,15 @@ async function runMeetingSummary(){
     status.textContent = data.note || [caveat, updated].filter(Boolean).join(' ');
     document.getElementById('msActionStatus').textContent = '';
   }catch(err){
+    if(request!==msRequest || err.name==='AbortError')return;
     status.textContent = 'Could not summarize recent meetings: ' + (err && err.message ? err.message : 'Unknown error');
     console.error('Meeting summary error:', err);
   }finally{
-    stopMsLoading();
-    button.disabled = false;
+    if(request===msRequest){stopMsLoading();button.disabled=false;msController=null;}
   }
 }
 document.getElementById('msSummarize').addEventListener('click', runMeetingSummary);
-document.getElementById('msCitySelect').addEventListener('change', e => renderMsSide(e.target.value));
+document.getElementById('msCitySelect').addEventListener('change', e => selectMeetingCity(e.target.value));
 document.getElementById('msCopy').addEventListener('click', async ()=>{
   const status = document.getElementById('msActionStatus');
   if(!msLastResult || !msLastResult.summary){ status.textContent='Nothing to copy yet.'; return; }
@@ -12778,7 +12810,7 @@ async function renderAcctOverview(){
       hh.innerHTML = list.length ? list.map(h=>
           '<div class="acct-hearing"><div class="d">'+(h.dateLabel||h.date||'')+'</div>'
         + '<h4>'+(h.body||h.name||'Public meeting')+'</h4>'
-        + (h.agendaUrl ? '<a class="res-link" href="'+h.agendaUrl+'" target="_blank" rel="noopener">Agenda &#8594;</a>' : '')
+        + (h.agendaUrl ? '<a class="res-link" href="'+h.agendaUrl+'" target="_blank" rel="noopener">'+(h.source==='official-calendar'?'Meeting details':'Agenda')+' &#8594;</a>' : '')
         + '</div>').join('')
         : '<div class="starred-empty">No upcoming hearings published for '+c.label+' right now.</div>'+meetingDirectoryHtml(city);
     }catch(err){
@@ -13438,7 +13470,7 @@ async function renderAccountPage(){
   // Load the saved city before drawing its masthead.
   try{
     const prefs = await apiGetPreferences();
-    document.getElementById('prefsCity').innerHTML='<option value="">No city preference</option>'+COUNTY_NAMES.map(county=>'<optgroup label="'+escapeHtml(county)+' County">'+Object.entries(CITIES).filter(([k,c])=>k!=='all'&&c.county===county).map(([k,c])=>'<option value="'+k+'">'+escapeHtml(c.label)+'</option>').join('')+'</optgroup>').join('');
+    document.getElementById('prefsCity').innerHTML='<option value="">No city preference</option>'+DashboardBrowse.cityOptions(CITIES);
     document.getElementById('prefsStatus').textContent=isGuest()?'Guest profiles save city and topic preferences on this device. Email delivery needs a password on your profile.':'';
     document.getElementById('prefsEmail').value = prefs.email || '';
     document.getElementById('prefsFrequency').value = prefs.emailFrequency || 'off';
@@ -15500,15 +15532,15 @@ function hearingCard(h){
       + (h.location ? '<div class="hearing-loc">'+escapeHtml(h.location)+'</div>' : '')
       + (projectLinks ? '<div class="hearing-projs"><span class="lab">Tracked projects on this agenda</span>'+projectLinks+'</div>' : '')
       + (otherItems ? '<ul class="hearing-items">'+otherItems+'</ul>' : '')
-      + (!h.agendaPublished ? '<div class="hearing-note">Agenda not posted yet. Cities usually publish about a week ahead.</div>' : '')
-      + (h.agendaUrl ? '<a class="hearing-link" href="'+h.agendaUrl+'" target="_blank" rel="noopener">Official agenda &rarr;</a>' : '')
+      + (!h.agendaPublished ? '<div class="hearing-note">'+(h.source==='official-calendar'?'Date from the city calendar. Open the meeting page for agenda materials and any changes.':'Agenda items are not available here. Check the official meeting page for the latest documents.')+'</div>' : '')
+      + (h.agendaUrl ? '<a class="hearing-link" href="'+h.agendaUrl+'" target="_blank" rel="noopener">'+(h.source==='official-calendar'?'Meeting details':'Official agenda')+' &rarr;</a>' : '')
     + '</div></div>';
 }
 
 function meetingDirectoryHtml(scope='all'){
  const directory=window.MEETING_DIRECTORY||{};
  const cities=Object.entries(directory).filter(([k])=>scope==='all'||k===scope);
- return '<div class="meeting-directory">'+cities.map(([k,c])=>'<article class="meeting-city"><small>'+escapeHtml(c.county)+' County · '+(c.client?'Live feed available':'Official meeting directory')+'</small><h4>'+escapeHtml(c.label)+'</h4>'+c.links.map(l=>'<a href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.title)+' ↗</a>').join('')+'</article>').join('')+'</div>';
+ return '<div class="meeting-directory">'+cities.map(([k,c])=>'<article class="meeting-city"><small>'+escapeHtml(c.county)+' County · '+(c.client||c.calendarFeed?'Live calendar available':'Official meeting directory')+'</small><h4>'+escapeHtml(c.label)+'</h4>'+c.links.map(l=>'<a href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.title)+' ↗</a>').join('')+'</article>').join('')+'</div>';
 }
 function renderHearingsList(){
  const host=document.getElementById('hearingsContent');if(!host||!hearingsCache)return;
@@ -16594,8 +16626,7 @@ function renderRailCityPicker(){
   const sel = document.getElementById('railCitySelect');
   const now = document.getElementById('railCityNow');
   if(!sel) return;
-  const keys=DashboardBrowse.citiesIn(CITIES,currentCity==='all'?activeCounty:'').map(([k])=>k);
-  sel.innerHTML='<option value="all">'+CITIES.all.label+'</option>'+keys.map(k=>'<option value="'+k+'">'+CITIES[k].label+'</option>').join('');
+  sel.innerHTML='<option value="all">'+CITIES.all.label+'</option>'+DashboardBrowse.cityOptions(CITIES,currentCity==='all'?activeCounty:'');
   sel.value=currentCity;sel.onchange=()=>switchCity(sel.value);
   if(now)now.textContent=currentCity==='all'?'COUNTY & CITY VIEW':'';
 }
@@ -16615,7 +16646,9 @@ function loadCityBoundaries(){
   if(!cityBoundariesPending) cityBoundariesPending = fetch('/data/city-boundaries.json')
     .then(r=>{ if(!r.ok) throw Error('boundaries '+r.status); return r.json(); })
     .then(async d=>{
-      try{const extra=await fetch('/data/coverage/boundaries.json');if(extra.ok)Object.assign(d.cities,(await extra.json()).cities);}catch{}
+      const extra=await fetch('/data/coverage/boundaries.json');
+      if(!extra.ok)throw Error('Additional boundaries '+extra.status);
+      Object.assign(d.cities,(await extra.json()).cities);
       cityBoundaries = d;
       for(const [key,b] of Object.entries(d.cities||{}))if(b.rings)CITY_BOUNDS[key]=b.rings;
       for(const [key, b] of Object.entries(d.cities||{})) if(CITIES[key] && b.bbox) CITIES[key].bbox = b.bbox;
@@ -16624,7 +16657,7 @@ function loadCityBoundaries(){
     .catch(()=>{ cityBoundariesPending = null; return null; });   // maps keep their typed box
   return cityBoundariesPending;
 }
-function cityRing(key){ return cityBoundaries?.cities?.[key]?.ring || null; }
+function cityRing(key){ const b=cityBoundaries?.cities?.[key];return b?.rings?.map(r=>[r]) || b?.ring || null; }
 
 let heroMap = null, heroLayer = null, heroOutline = null;
 function renderHeroMap(){
@@ -16667,7 +16700,7 @@ function renderHeroMap(){
   const here = located.filter(p=>p.city===currentCity).map(p=>[p.lat,p.lng]);
   const cnt = document.getElementById('heroMapCount');
   if(cnt)cnt.textContent=currentCity==='all'
-    ?(activeCounty||'Bay Area')+' · '+DashboardBrowse.citiesIn(CITIES,activeCounty).length+' areas'
+    ?(activeCounty||'California')+' · '+DashboardBrowse.citiesIn(CITIES,activeCounty).length+' areas'
     :here.length?here.length+' pinned'
     :(yaPins||[]).length?yaPins.length+' pinned elsewhere':'nothing pinned';
   // The city's own outline, so a reader can see where the line actually runs rather than
@@ -16718,13 +16751,16 @@ function renderHeroCalendar(){
   if(!host) return;
   if(typeof giMonthEvents !== 'function'){ setTimeout(renderHeroCalendar, 300); return; }
   const ck = currentCity;
+  if(!giHearings&&!giHearingsRequest&&Date.now()>=giHearingsRetryAt&&(ck==='all'||window.MEETING_DIRECTORY?.[ck]?.client||window.MEETING_DIRECTORY?.[ck]?.calendarFeed)){
+    loadCalendarMeetings().then(()=>renderHeroCalendar());
+  }
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const out = [];
   // This month and the next two, so there is always something to show.
   for(let i=0; i<3 && out.length<8; i++){
     const d = new Date(now.getFullYear(), now.getMonth()+i, 1);
-    giMonthEvents(d.getFullYear(), d.getMonth())
+    giMonthEvents(d.getFullYear(), d.getMonth(),ck)
       .filter(e=>ck==='all'?(!activeCounty||CITIES[e.city]?.county===activeCounty):(e.city===ck||e.city===window.MEETING_DIRECTORY?.[ck]?.alias))
       .filter(e=> new Date(d.getFullYear(), d.getMonth(), e.day) >= today)
       .sort((a,b)=> a.day-b.day)
@@ -16946,8 +16982,9 @@ function railSlides(){
   const active = (CITIES[c] ? CITIES[c].data : []).filter(d=>d.stage!=='completed');
   const units = DashboardHousing.sumUnits(active);
   if(units){
-    out.push({k:units.toLocaleString(), l:'Homes in the pipeline, '+label,
-      s:'Across <b>'+active.length+'</b> active projects tracked here.',
+    const annual=CITIES[c]?.coverageId;
+    out.push({k:units.toLocaleString(), l:(annual?'Homes in reported milestones, ':'Homes in the pipeline, ')+label,
+      s:annual?'Annual housing records; milestones may overlap. Open individual source records for current status.':'Across <b>'+active.length+'</b> active projects tracked here.',
       fig:'units',
       href:'developments', cta:'See the register'});
   }
@@ -17161,7 +17198,7 @@ function renderRailResources(){
     + join.map(b=>row(b.name, b.body || 'How to serve on this body', b.link, 'Join')).join('')
     + links.map(l=>row(l.label, 'Official source', l.url, 'Link')).join('')
     + '<a class="rail-link" href="#" data-res-goto="resources">All '+city.label+' resources &rarr;</a>'
-    + (currentCity==='all'?'<div class="county-resource-pager"><button type="button" data-resource-step="-1" aria-label="Previous city resources">←</button><span>'+escapeHtml(activeCounty||'Bay Area')+' · '+(railResourcePage%countyCities.length+1)+' / '+countyCities.length+'</span><button type="button" data-resource-step="1" aria-label="Next city resources">→</button></div>':'');
+    + (currentCity==='all'?'<div class="county-resource-pager"><button type="button" data-resource-step="-1" aria-label="Previous city resources">←</button><span>'+escapeHtml(activeCounty||'California')+' · '+(railResourcePage%countyCities.length+1)+' / '+countyCities.length+'</span><button type="button" data-resource-step="1" aria-label="Next city resources">→</button></div>':'');
   host.querySelectorAll('[data-resource-step]').forEach(b=>b.onclick=()=>{railResourcePage=(railResourcePage+Number(b.dataset.resourceStep)+countyCities.length)%countyCities.length;renderRailResources();});
 
   const more = host.querySelector('[data-res-goto]');
@@ -17322,7 +17359,8 @@ async function applyDeepLink(){
   }
 }
 window.dashboardContext = {
-  cities: Object.fromEntries(Object.entries(CITIES).map(([key,c])=>[key,{label:c.label,center:c.center,zoom:c.zoom}])),
+  currentCity:()=>currentCity,
+  cities: Object.fromEntries(Object.entries(CITIES).map(([key,c])=>[key,{label:c.label,county:c.county,center:c.center,zoom:c.zoom}])),
   projects: Object.entries(CITIES).filter(([key])=>key!=='all').flatMap(([key,c])=>c.data.map(p=>({...p,city:key,cityLabel:c.label,sourceUrl:p.sourceUrl||(c.ctaLinks[0]||{}).url||'https://www.hcd.ca.gov/'}))),
   stats: CITY_STATS, statsSource: STATS_SOURCE,
   loadCity:async key=>{

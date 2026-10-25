@@ -1,5 +1,7 @@
 // Upcoming public meetings from verified public Legistar feeds. Each city also has an official meeting directory.
 import { PROJECTS } from './data/projects.js';
+import {fetchSantaBarbaraCalendar} from './santa-barbara-calendar.js';
+import {fetchSanLuisObispoCalendar} from './san-luis-obispo-calendar.js';
 
 import {readFileSync} from 'node:fs';
 export const MEETING_DIRECTORY=JSON.parse(readFileSync(new URL('./public/data/meetings.json',import.meta.url),'utf8'));
@@ -156,13 +158,16 @@ async function refreshHearings() {
   const fromIso = localDate(now);
   const toIso = localDate(to);
 
-  const results = await Promise.allSettled(
-    Object.entries(LEGISTAR_CITIES).map(([k, c]) => fetchCity(k, c, fromIso, toIso))
-  );
+  const cityKeys=[...Object.keys(LEGISTAR_CITIES),'santabarbara','sanluisobispo'];
+  const results = await Promise.allSettled([
+    ...Object.entries(LEGISTAR_CITIES).map(([k, c]) => fetchCity(k, c, fromIso, toIso)),
+    fetchSantaBarbaraCalendar(fromIso,toIso),
+    fetchSanLuisObispoCalendar(fromIso,toIso)
+  ]);
 
   const hearings = [];
   const errors = [];
-  Object.keys(LEGISTAR_CITIES).forEach((k, i) => {
+  cityKeys.forEach((k, i) => {
     const r = results[i];
     if (r.status === 'fulfilled') hearings.push(...r.value);
     else errors.push({ city: k, error: String(r.reason && r.reason.message || r.reason) });
@@ -172,7 +177,7 @@ async function refreshHearings() {
   const data = {
     generatedAt: new Date().toISOString(),
     days: DAYS_AHEAD,
-    cities: Object.keys(LEGISTAR_CITIES),
+    cities: cityKeys,
     hearings,
     directory: MEETING_DIRECTORY,
     errors,

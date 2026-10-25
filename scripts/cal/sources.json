@@ -207,9 +207,8 @@
   "overrides": {
     "Santa Barbara": {
       "planning": "https://santabarbaraca.gov/ComDev",
-      "meetings": "https://records.santabarbaraca.gov/OnBaseAgendaOnline/",
-      "boards": "https://santabarbaraca.gov/planning-commission",
-      "boardName": "Planning Commission"
+      "meetings": "https://santabarbaraca.gov/government/boards-commissions/public-meeting-calendar",
+      "boards": "https://santabarbaraca.gov/government/boards-commissions"
     },
     "Goleta": {
       "meetings": "https://goleta.legistar.com/Calendar.aspx",
@@ -249,11 +248,102 @@
       "planning": "https://www.oxnard.gov/community-development/planning-environmental-services"
     },
     "San Luis Obispo": {
-      "planning": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
-      "boards": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+      "planning": "https://www.slocity.org/government/department-directory/community-development/planning-zoning",
+      "boards": "https://www.slocity.org/government/advisory-bodies",
       "meetings": "https://pub-slocity.escribemeetings.com/",
-      "boardName": "Planning Commission",
-      "projects": "https://www.slocity.org/government/department-directory/community-development/planning-building-logs"
+      "projects": "https://www.slocity.org/government/department-directory/community-development/planning-building-logs",
+      "boardEntries": [
+        {
+          "name": "City Council",
+          "url": "https://www.slocity.org/government/mayor-and-city-council/agendas-and-minutes",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Active Transportation Committee",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Administrative Review Board",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Architectural Review Commission",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Construction Board of Appeals",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Council Compensation Committee",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Cultural Heritage Committee",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Housing Authority Board",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Human Relations Commission",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Mass Transportation Committee",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Parks and Recreation Commission",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Personnel Board",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Planning Commission",
+          "url": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Promotional Coordinating Committee",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Revenue Enhancement Oversight Commission",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Tourism Business Improvement District Board",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Tree Committee",
+          "url": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/tree-committee",
+          "directory": "San Luis Obispo"
+        },
+        {
+          "name": "Investment Oversight Committee",
+          "url": "https://www.slocity.org/government/advisory-bodies",
+          "directory": "San Luis Obispo"
+        }
+      ]
     },
     "Pismo Beach": {
       "planning": "https://pismobeach.org/70/Planning",
