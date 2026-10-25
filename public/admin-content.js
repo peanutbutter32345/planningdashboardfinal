@@ -67,7 +67,7 @@
     }
     const footer=el('div',undefined,'front-admin-footer');footer.append(button(kind==='advisors'?'+ Add advisor':'+ Add feature',()=>edit(null)),button('Refresh',()=>load(),'front-edit'));body.append(footer);
     if(archived.length){const details=el('details',undefined,'front-archive');details.append(el('summary','Archived ('+archived.length+')'));for(const entry of archived){const row=el('div',undefined,'front-entry');row.append(el('span',entry.name),button('Restore',()=>restore(entry),'front-edit'));details.append(row);}body.append(details);}
-    if(kind==='advisors')body.append(el('p','Advisors provide independent feedback. BayDashboard is not affiliated with or endorsed by their cities or employers.','front-disclaimer'));
+    if(kind==='advisors')body.append(el('p','Advisors provide independent feedback. The California Civic Dashboard is not affiliated with or endorsed by their cities or employers.','front-disclaimer'));
     body.append(status(message||'Visible only when signed in as an administrator.'));
     startRotation(pageCount);
   }

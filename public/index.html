@@ -3,13 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Bay Dashboard</title>
-<!-- The site mark: three towers of different heights on the bay shore, under the sun. The SVG is
-     the icon browsers show in a tab; scripts/make_icon.py rasterises the same drawing for the
-     phone home-screen icon. -->
-<link rel="icon" type="image/svg+xml" href="/img/logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/icon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/img/icon-180.png">
+<title>The California Civic Dashboard</title>
+<!-- California map mark; matching browser and home-screen icons. -->
+<link rel="icon" type="image/svg+xml" href="/img/logo.svg?v=california">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/icon-32.png?v=california">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/icon-180.png?v=california">
 <meta name="theme-color" content="#2E3B1C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Inter:wght@500;600;700&family=Bitter:wght@700;800&display=swap" rel="stylesheet">
@@ -478,11 +476,11 @@
     max-width:none; margin:0; border-left:none; box-shadow:none;}
   .nameplate{text-align:left; min-width:0;}
   .nameplate .np-kicker{justify-content:flex-start;}
-  .nameplate h1{display:flex; flex-direction:row; flex-wrap:nowrap; align-items:baseline;
-    justify-content:flex-start; line-height:.96; white-space:nowrap;
+  .nameplate h1{display:flex; flex-direction:column; align-items:flex-start; gap:.06em;
+    justify-content:flex-start; line-height:1; white-space:normal;
     font-family:'Times New Roman', Times, serif; font-weight:700; letter-spacing:-.5px;}
   .np-l1, .np-l2{display:inline-block; color:#fff;}
-  .np-l1::after{content:'\00a0';}
+  .np-l1, .np-l2{white-space:nowrap;}
   .np-l2{font-style:normal;}
   .nameplate .np-kicker{color:#CBD6BC;}
   .nameplate .np-kicker i{background:#9BA98A;}
@@ -675,10 +673,9 @@
   .fp-wrap{margin:0 0 26px;}
   .fp-page{background:#F7F4EA; border:1px solid #d8d2bf; padding:22px 26px 20px; color:#1c1a14;}
   .fp-masthead{border-bottom:4px double #1c1a14; padding-bottom:8px; margin-bottom:12px;}
-  /* "The Bay Dashboard" is three words shorter than the old name, so it needs more spread to
-     still read as a full masthead banner rather than a small word floating in the middle. */
+  /* Keep the newsletter masthead readable at narrow widths. */
   .fp-nameplate{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800;
-    font-size:clamp(30px,4.8vw,50px); letter-spacing:0.02em; text-align:center; color:#1c1a14;}
+    font-size:clamp(24px,3.6vw,44px); letter-spacing:0.01em; text-align:center; color:#1c1a14;}
   .fp-dateline{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
     font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:.07em;
     text-transform:uppercase; color:#4a4636; margin-top:6px; border-top:1px solid #b9b295;
@@ -832,9 +829,10 @@
   .hero-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(520px,1.12fr);gap:24px;align-items:center;max-width:none;margin:0;}
   .hero-copy.without-advisors{grid-template-columns:1fr;}
   .hero-copy.without-advisors .nameplate{text-align:center;}
+  .hero-copy.without-advisors .nameplate h1{align-items:center;}
   .hero-copy.without-advisors .np-kicker,.hero-copy.without-advisors .nameplate h1{justify-content:center;}
   .hero-copy.without-advisors .np-lede{margin:11px auto 0;}
-  @media(min-width:961px){.hero-copy:not(.without-advisors) .nameplate{container-type:inline-size;}.hero-copy:not(.without-advisors) .nameplate h1{font-size:clamp(28px,11cqi,82px);}}
+  @media(min-width:961px){.hero-copy:not(.without-advisors) .nameplate{container-type:inline-size;}.hero-copy:not(.without-advisors) .nameplate h1{font-size:clamp(24px,9.5cqi,72px);}}
   @media(max-width:1000px){.hero-copy{gap:26px;}.hero .nameplate h1{font-size:clamp(28px,5.3vw,53px);}}
   @media(max-width:960px){.hero-copy{grid-template-columns:1fr;}}
   @media(max-width:760px){.hero-copy{grid-template-columns:1fr;gap:26px;}.hero .nameplate{padding:0;}.hero .nameplate h1{font-size:clamp(28px,8vw,60px);}.np-kicker{flex-wrap:wrap;font-size:9px;letter-spacing:.1em;}}
@@ -1785,7 +1783,7 @@
 
 <div class="onboard-overlay" id="onboardOverlay" role="dialog" aria-modal="true" aria-labelledby="onboardHeading">
   <div class="onboard-card">
-    <div class="onboard-eyebrow">THE BAY DASHBOARD · WELCOME</div><h2 id="onboardHeading">Make the Bay your own.</h2>
+    <div class="onboard-eyebrow">THE CALIFORNIA CIVIC DASHBOARD · WELCOME</div><h2 id="onboardHeading">Get to know your community.</h2>
     <p class="sub">Choose a county to explore projects, news and public meetings. Add a city or location whenever you like.</p>
 
     <div class="onboard-profile" id="onboardGuestProfile"><label for="onboardUsername">What should we call you? <em>(optional)</em></label><input id="onboardUsername" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Leave blank and we will pick one" aria-describedby="onboardGuestStatus"><p id="onboardGuestStatus" role="status">This name is your account. No password and no email needed, and you can change it later.</p></div>
@@ -1891,7 +1889,7 @@
       <div class="nameplate">
         <div class="nameplate-title">
         <div class="np-kicker"><span id="npKickerCounty">Bay Area &amp; California communities</span><i></i><span>Public planning records</span></div>
-        <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
+        <h1><span class="np-l1">The California</span> <em class="np-l2">Civic Dashboard</em></h1>
         </div>
         <div class="site-intro">
           <p class="np-lede">Follow housing developments, transportation projects, and community news across <span class="city-count">101</span> cities and towns. Find city meetings, boards, and ways to take part.</p>
@@ -1902,7 +1900,7 @@
               <button id="introMore" type="button" aria-expanded="false" aria-controls="introDetails">About the project <span aria-hidden="true">+</span></button>
               <div id="introDetails" class="intro-details" hidden>
                 <strong>Local government, easier to follow.</strong>
-                <p>The Bay Dashboard brings together planning records, housing and transportation projects, local news, and public meetings from <span class="city-count">101</span> cities across the Bay Area and our expanded California coverage. Explore your area, check a project’s sources, or find a board or meeting where you can get involved.</p>
+                <p>The California Civic Dashboard brings together planning records, housing and transportation projects, local news, and public meetings from <span class="city-count">101</span> cities across the Bay Area and our expanded California coverage. Explore your area, check a project’s sources, or find a board or meeting where you can get involved.</p>
                 <p>I built it independently because finding out what is happening in your neighborhood should not require searching through dozens of city pages. The goal is to make civic resources easier to find and help more residents take part.</p>
                 <p class="intro-note">An independent project, not an official government website. Check linked city records for the latest details.</p>
               </div>
@@ -2014,7 +2012,7 @@
   <div class="wrap nl-shell">
     <div class="nl-masthead">
       <div class="nl-mast-kicker">Published monthly &middot; Nine Bay Area counties</div>
-      <h2 id="nlTitle">The Bay Dashboard Newsletter</h2>
+      <h2 id="nlTitle">The California Civic Dashboard Newsletter</h2>
       <div class="nl-mast-date" id="nlMastDate" role="status"></div>
       <nav class="nl-toc" id="nlToc" aria-label="Jump to a section"></nav>
     </div>
@@ -2907,7 +2905,7 @@
   </div>
   <div class="footer-bottom">
     <div class="wrap">
-      <span>The Bay Dashboard</span>
+      <span>The California Civic Dashboard</span>
       <span>An independent, student-built prototype. Not an official government product.</span>
     </div>
   </div>
@@ -7187,7 +7185,7 @@ function frontpageHtml(issue,{compact=false}={}){
     teasers='<div class="fp-columns">'+frontpageTeaser(housing)+frontpageTeaser(dev)+frontpageTeaser(transport)+'</div>';
   }
   return '<div class="fp-page'+(compact?' fp-page-compact':'')+'">'
-    +'<div class="fp-masthead"><div class="fp-nameplate">The Bay Dashboard</div>'
+    +'<div class="fp-masthead"><div class="fp-nameplate">The California Civic Dashboard</div>'
     +'<div class="fp-dateline"><span>'+escapeHtml(issue.dateline)+'</span><span>Vol. 1, No. '+issue.number+'</span><span>Nine Bay Area Counties</span></div></div>'
     +(issue.hero?'<figure class="fp-hero"><img src="'+escapeHtml(issue.hero.url)+'" alt="'+escapeHtml(issue.hero.caption||issue.hero.city)+'" loading="lazy"><figcaption>'+escapeHtml(issue.hero.city)+'</figcaption></figure>':'')
     +'<div class="fp-headline"><h3>'+(issue.lead?escapeHtml(issue.lead.title):escapeHtml(issue.month))+'</h3>'
@@ -9322,7 +9320,7 @@ function icsFor(d){
   const end = new Date(dt.getTime() + 2*60*60*1000);
   const fmt = x => x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(x.getHours())+pad(x.getMinutes())+'00';
   const esc = t => String(t||'').replace(/([,;\\])/g,'\\$1').replace(/\n/g,'\\n');
-  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//The Bay Dashboard//EN','BEGIN:VEVENT',
+  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//The California Civic Dashboard//EN','BEGIN:VEVENT',
     'UID:'+encodeURIComponent(d.ref)+'@southbaydashboard',
     'DTSTAMP:'+fmt(new Date()), 'DTSTART:'+fmt(dt), 'DTEND:'+fmt(end),
     'SUMMARY:'+esc(d.name+' - '+d.cityLabel),
@@ -17329,8 +17327,8 @@ if (window.L) {
 <script src="/site-visuals.js"></script>
 <script src="/admin-content.js"></script>
 <dialog id="siteTourDialog" class="site-tour-dialog" aria-labelledby="siteTourTitle">
-  <div class="site-tour-heading"><div><span class="tour-eyebrow">A QUICK LOOK AROUND</span><h2 id="siteTourTitle">The Bay Dashboard in 30 seconds</h2></div><button id="closeSiteTour" type="button" aria-label="Close video">✕</button></div>
-  <video id="siteTourVideo" controls playsinline preload="none" poster="/media/bay-dashboard-tour.jpg" aria-label="A 30-second tour of The Bay Dashboard">
+  <div class="site-tour-heading"><div><span class="tour-eyebrow">A QUICK LOOK AROUND</span><h2 id="siteTourTitle">The California Civic Dashboard in 30 seconds</h2></div><button id="closeSiteTour" type="button" aria-label="Close video">✕</button></div>
+  <video id="siteTourVideo" controls playsinline preload="none" poster="/media/bay-dashboard-tour.jpg" aria-label="A 30-second tour of The California Civic Dashboard">
     <track kind="captions" src="/media/bay-dashboard-tour.vtt" srclang="en" label="English">
     Your browser does not support video. <a href="/media/bay-dashboard-tour.mp4">Download the tour</a>.
   </video>

@@ -69,7 +69,7 @@ test('failed or partial locality loads retain existing records and can be retrie
 });
 test('the existing site remains the entrypoint with its original tabs and map integration',()=>{
  const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
- assert.match(html,/<title>The Bay Dashboard<\/title>/);assert.match(html,/id="mapGoogle"/);
+ assert.match(html,/<title>The California Civic Dashboard<\/title>/);assert.match(html,/id="mapGoogle"/);
  assert.match(html,/id="onboardOverlay"/);assert.match(html,/src="\/guest.js"/);assert.match(html,/src="\/admin-content.js"/);
  assert.ok(!existsSync(new URL('../public/cal/index.html',import.meta.url)));
  assert.ok(!existsSync(new URL('../render-cal.yaml',import.meta.url)));

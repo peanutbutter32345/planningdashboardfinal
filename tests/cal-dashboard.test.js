@@ -71,7 +71,7 @@ test('unreachable live meeting feeds retain the official agenda link and do not 
 });
 test('the retired separate preview redirects to the original BayDashboard',async()=>{
  const response=await fetch(base+'/cal/',{redirect:'manual'});assert.equal(response.status,302);assert.equal(response.headers.get('location'),'/');
- const bayHTML=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');assert.match(bayHTML,/<title>The Bay Dashboard<\/title>/);
+ const bayHTML=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');assert.match(bayHTML,/<title>The California Civic Dashboard<\/title>/);
 });
 
 test('every locality has the same evidence checklist, with missing data distinguished from directories',async()=>{
