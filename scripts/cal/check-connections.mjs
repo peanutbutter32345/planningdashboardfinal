@@ -2,9 +2,12 @@
 import {readFileSync,writeFileSync} from 'node:fs';
 const read=p=>JSON.parse(readFileSync(new URL('../../'+p,import.meta.url)));
 const expansion=read('scripts/cal/expansion-areas.json');
-const targets=new Set(expansion.anchors.flatMap(a=>[a.name,...a.nearby.filter(p=>p.kind==='city').map(p=>p.name)]));
+const district=process.argv.find(a=>a.startsWith('--district='))?.split('=')[1];
+let targets=new Set(expansion.anchors.flatMap(a=>[a.name,...a.nearby.filter(p=>p.kind==='city').map(p=>p.name)]));
 const manifest=read('public/data/coverage/manifest.json');
-let previous={results:[]};try{previous=read('public/cal/data/connection-audit.json')}catch{}
+if(district)targets=new Set(Object.values(manifest.cities).filter(c=>c.districts.includes(district)||c.futureDistricts.includes(district)).map(c=>c.label));
+const output='public/cal/data/'+(district?'ca'+district+'-connection-audit.json':'connection-audit.json');
+let previous={results:[]};try{previous=read(output)}catch{}
 const reuse=process.argv.includes('--retry')&&Date.now()-Date.parse(previous.checked)<3600000;
 const prior=new Map(previous.results.map(r=>[r.url,r]));
 const checks=new Map();
@@ -19,15 +22,15 @@ for(const [key,c] of Object.entries(manifest.cities).filter(([,c])=>targets.has(
  const row=records.find(r=>r.sourceType==='hcd-apr');if(row)add(row.sourceUrl,'hcd',c.label+' housing API');
 }
 // Check news, named boards, zoning and meeting directories across the entire expansion.
-for(const c of Object.values(manifest.cities)){
+for(const c of Object.values(manifest.cities).filter(c=>!district||targets.has(c.label))){
  for(const b of [...c.deciders,...c.join])add(b.link,'board',c.label+': '+b.name);
  for(const n of c.news)add(n.url,'news',c.label+': '+n.title);
  add(c.meetings,'meeting-directory',c.label+' agendas');
  for(const layer of c.zoningLayers||[])add(layer.url+'/query?where=1%3D1&outFields='+encodeURIComponent(layer.field)+'&returnGeometry=false&resultRecordCount=1&f=json','arcgis',c.label+' zoning');
 }
 const meetings={...read('public/data/meetings.json'),...manifest.meetings};
-for(const c of Object.values(meetings))if(c.client&&!c.alias)add('https://webapi.legistar.com/v1/'+c.client+'/Events?$top=1&$orderby=EventDate%20desc','legistar',c.label+' live meeting API');
-for(const path of ['/api/health','/api/sources?city=losangeles','/api/hearings'])add('https://baydashboard.com'+path,'site-api','Production '+path);
+for(const c of Object.values(meetings))if(c.client&&!c.alias&&(!district||targets.has(c.label)))add('https://webapi.legistar.com/v1/'+c.client+'/Events?$top=1&$orderby=EventDate%20desc','legistar',c.label+' live meeting API');
+for(const path of ['/api/health','/api/sources?city='+(district?'santabarbara':'losangeles'),'/api/hearings'])add('https://baydashboard.com'+path,'site-api','Production '+path);
 console.log('Checking resources for '+targets.size+' target cities and news, boards, meeting directories and zoning across all '+Object.keys(manifest.cities).length+' expansion profiles');
 const items=[...checks.values()];let next=0;const results=[];
 async function check(item){
@@ -52,5 +55,5 @@ async function check(item){
 await Promise.all(Array.from({length:4},async()=>{while(next<items.length){const item=items[next++];const result=await check(item);results.push(result);if(result.status!=='reachable')console.log(result.status,result.http||'',item.url);}}));
 results.sort((a,b)=>a.url.localeCompare(b.url));
 const summary={};for(const r of results)summary[r.status]=(summary[r.status]||0)+1;
-const report={checked:new Date().toISOString(),scope:{resourceCities:[...targets],newsBoardsMeetingsZoning:'All '+Object.keys(manifest.cities).length+' expansion profiles',liveMeetingFeeds:'All configured clients'},note:'HTTP reachability is not a guarantee of content freshness. Restricted hosts may work in a browser. --retry reuses successful checks from the past hour; each result preserves its check time. HCD, zoning and meeting JSON payloads are validated. Production mutations and emails are not invoked.',summary,results};
-writeFileSync(new URL('../../public/cal/data/connection-audit.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(summary));
+const report={checked:new Date().toISOString(),scope:{resourceCities:[...targets],newsBoardsMeetingsZoning:district?'CA-'+district+' current/incoming places':'All '+Object.keys(manifest.cities).length+' expansion profiles',liveMeetingFeeds:district?'Configured clients in selected places':'All configured clients'},note:'HTTP reachability is not a guarantee of content freshness. Restricted hosts may work in a browser. --retry reuses successful checks from the past hour; each result preserves its check time. HCD, zoning and meeting JSON payloads are validated. Production mutations and emails are not invoked.',summary,results};
+writeFileSync(new URL('../../'+output,import.meta.url),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(summary));

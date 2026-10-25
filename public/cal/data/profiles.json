@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-10-25T09:58:35.391587+00:00",
+  "retrieved": "2026-10-25T10:59:22.782695+00:00",
   "profiles": [
     {
       "id": "p0603190",
@@ -16194,16 +16194,22 @@
           "scope": "city"
         },
         {
+          "category": "Planning",
+          "title": "Arroyo Grande: Planning and development",
+          "url": "https://www.arroyogrande.org/132/Community-Development",
+          "scope": "city"
+        },
+        {
           "category": "Meetings",
           "title": "Arroyo Grande: Meeting agendas and recordings",
           "url": "https://www.arroyogrande.org/751/Agendas-Minutes",
           "scope": "city"
         },
         {
-          "category": "Planning",
-          "title": "San Luis Obispo County: Planning and development",
-          "url": "https://www.slocounty.ca.gov/departments/planning-building",
-          "scope": "county"
+          "category": "Boards",
+          "title": "Arroyo Grande: Boards and commissions",
+          "url": "https://www.arroyogrande.org/199/Planning-Commission",
+          "scope": "city"
         },
         {
           "category": "Transportation",
@@ -16243,7 +16249,7 @@
         }
       ],
       "meetingUrl": "https://www.arroyogrande.org/751/Agendas-Minutes",
-      "boardUrl": "https://www.arroyogrande.org/751/Agendas-Minutes",
+      "boardUrl": "https://www.arroyogrande.org/199/Planning-Commission",
       "meetingScope": "Arroyo Grande",
       "client": null
     },
@@ -17318,6 +17324,12 @@
           "scope": "city"
         },
         {
+          "category": "Planning",
+          "title": "Grover Beach: Planning and development",
+          "url": "https://www.groverbeach.org/21/Community-Development",
+          "scope": "city"
+        },
+        {
           "category": "Projects",
           "title": "Grover Beach: Project records and activity",
           "url": "https://storymaps.arcgis.com/stories/ad3216a1333143fdb48c184e8c9e1f97",
@@ -17326,7 +17338,19 @@
         {
           "category": "Meetings",
           "title": "Grover Beach: Meeting agendas and recordings",
-          "url": "https://www.grover.org/agendacenter",
+          "url": "https://www.groverbeach.org/160/Agendas-Staff-Reports-Minutes",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Grover Beach: Boards and commissions",
+          "url": "https://www.grover.org/72/Planning-Commission",
+          "scope": "city"
+        },
+        {
+          "category": "Housing",
+          "title": "Grover Beach: Housing policy and programs",
+          "url": "https://www.groverbeach.org/731/Housing-Element",
           "scope": "city"
         },
         {
@@ -17334,12 +17358,6 @@
           "title": "Grover Beach: Official news and notices",
           "url": "https://www.grover.org/Archive.aspx?AMID=36",
           "scope": "city"
-        },
-        {
-          "category": "Planning",
-          "title": "San Luis Obispo County: Planning and development",
-          "url": "https://www.slocounty.ca.gov/departments/planning-building",
-          "scope": "county"
         },
         {
           "category": "Transportation",
@@ -17378,8 +17396,8 @@
           "scope": "federal"
         }
       ],
-      "meetingUrl": "https://www.grover.org/agendacenter",
-      "boardUrl": "https://www.grover.org/agendacenter",
+      "meetingUrl": "https://www.groverbeach.org/160/Agendas-Staff-Reports-Minutes",
+      "boardUrl": "https://www.grover.org/72/Planning-Commission",
       "meetingScope": "Grover Beach",
       "client": null
     },
@@ -18282,6 +18300,12 @@
           "scope": "city"
         },
         {
+          "category": "Projects",
+          "title": "San Luis Obispo: Project records and activity",
+          "url": "https://www.slocity.org/government/department-directory/community-development/planning-building-logs",
+          "scope": "city"
+        },
+        {
           "category": "Meetings",
           "title": "San Luis Obispo: Meeting agendas and recordings",
           "url": "https://pub-slocity.escribemeetings.com/",
@@ -19030,13 +19054,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -19077,7 +19107,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -19126,6 +19156,12 @@
           "title": "Buellton: Meeting agendas and recordings",
           "url": "https://cityofbuellton.com/government/document-archive.php",
           "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
+          "scope": "county"
         },
         {
           "category": "Transportation",
@@ -19234,6 +19270,12 @@
           "scope": "city"
         },
         {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
+          "scope": "county"
+        },
+        {
           "category": "Transportation",
           "title": "Santa Barbara County regional transit and transportation",
           "url": "https://www.sbcag.org/",
@@ -19312,13 +19354,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -19359,7 +19407,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -19400,13 +19448,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -19447,7 +19501,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -19488,13 +19542,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -19535,7 +19595,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -19576,13 +19636,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -19623,7 +19689,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -19662,15 +19728,21 @@
           "scope": "city"
         },
         {
+          "category": "Planning",
+          "title": "Goleta: Planning and development",
+          "url": "https://www.cityofgoleta.org/your-city/planning-and-environmental-review/permits-and-regulations",
+          "scope": "city"
+        },
+        {
           "category": "Meetings",
           "title": "Goleta: Meeting agendas and recordings",
           "url": "https://goleta.legistar.com/Calendar.aspx",
           "scope": "city"
         },
         {
-          "category": "Planning",
-          "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -19768,6 +19840,12 @@
           "scope": "city"
         },
         {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
+          "scope": "county"
+        },
+        {
           "category": "Transportation",
           "title": "Santa Barbara County regional transit and transportation",
           "url": "https://www.sbcag.org/",
@@ -19846,13 +19924,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -19893,7 +19977,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -19932,6 +20016,12 @@
           "scope": "city"
         },
         {
+          "category": "Planning",
+          "title": "Lompoc: Planning and development",
+          "url": "https://www.cityoflompoc.com/government/departments/economic-community-development/planning-division",
+          "scope": "city"
+        },
+        {
           "category": "Meetings",
           "title": "Lompoc: Meeting agendas and recordings",
           "url": "https://www.cityoflompoc.com/government/committees-boards/city-council/live-webcast",
@@ -19942,12 +20032,6 @@
           "title": "Lompoc: Boards and commissions",
           "url": "https://www.cityoflompoc.com/government/committees-boards/planning-commission",
           "scope": "city"
-        },
-        {
-          "category": "Planning",
-          "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
-          "scope": "county"
         },
         {
           "category": "Transportation",
@@ -20028,13 +20112,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20075,7 +20165,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -20116,13 +20206,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20163,7 +20259,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -20204,13 +20300,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20251,7 +20353,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -20292,13 +20394,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20339,7 +20447,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -20380,13 +20488,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20427,7 +20541,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -20468,13 +20582,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20515,7 +20635,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -20556,13 +20676,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20603,7 +20729,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -20644,7 +20770,7 @@
         {
           "category": "Planning",
           "title": "Santa Barbara: Planning and development",
-          "url": "https://santabarbaraca.gov/planning-commission",
+          "url": "https://santabarbaraca.gov/ComDev",
           "scope": "city"
         },
         {
@@ -20662,7 +20788,7 @@
         {
           "category": "Boards",
           "title": "Santa Barbara: Boards and commissions",
-          "url": "https://santabarbaraca.gov/government/boards-commissions",
+          "url": "https://santabarbaraca.gov/planning-commission",
           "scope": "city"
         },
         {
@@ -20709,7 +20835,7 @@
         }
       ],
       "meetingUrl": "https://records.santabarbaraca.gov/OnBaseAgendaOnline/",
-      "boardUrl": "https://santabarbaraca.gov/government/boards-commissions",
+      "boardUrl": "https://santabarbaraca.gov/planning-commission",
       "meetingScope": "Santa Barbara",
       "client": null
     },
@@ -20760,6 +20886,12 @@
           "scope": "city"
         },
         {
+          "category": "Boards",
+          "title": "Santa Maria: Boards and commissions",
+          "url": "https://www.cityofsantamaria.org/services/departments/boards-commissions/planning-commission",
+          "scope": "city"
+        },
+        {
           "category": "Transportation",
           "title": "Santa Barbara County regional transit and transportation",
           "url": "https://www.sbcag.org/",
@@ -20797,7 +20929,7 @@
         }
       ],
       "meetingUrl": "https://www.cityofsantamaria.org/services/departments/city-clerk-records/agenda-center-meetings-portal",
-      "boardUrl": "https://www.cityofsantamaria.org/services/departments/city-clerk-records/agenda-center-meetings-portal",
+      "boardUrl": "https://www.cityofsantamaria.org/services/departments/boards-commissions/planning-commission",
       "meetingScope": "Santa Maria",
       "client": null
     },
@@ -20838,13 +20970,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20885,7 +21023,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -20926,13 +21064,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -20973,7 +21117,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -21012,6 +21156,18 @@
           "scope": "city"
         },
         {
+          "category": "Planning",
+          "title": "Solvang: Planning and development",
+          "url": "https://cityofsolvang.com/155/Community-Development-Department",
+          "scope": "city"
+        },
+        {
+          "category": "Projects",
+          "title": "Solvang: Project records and activity",
+          "url": "https://cityofsolvang.com/518/Current-Projects",
+          "scope": "city"
+        },
+        {
           "category": "Meetings",
           "title": "Solvang: Meeting agendas and recordings",
           "url": "https://cityofsolvang.com/593/2026-to-Current-Agenda-Minutes",
@@ -21022,12 +21178,6 @@
           "title": "Solvang: Boards and commissions",
           "url": "https://www.cityofsolvang.com/202/Planning-Commission",
           "scope": "city"
-        },
-        {
-          "category": "Planning",
-          "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
-          "scope": "county"
         },
         {
           "category": "Transportation",
@@ -21108,13 +21258,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -21155,7 +21311,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -21196,13 +21352,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -21243,7 +21405,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -21284,13 +21446,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -21331,7 +21499,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -21372,13 +21540,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -21419,7 +21593,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -21460,13 +21634,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -21507,7 +21687,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -30517,16 +30697,22 @@
           "scope": "city"
         },
         {
+          "category": "Planning",
+          "title": "Oxnard: Planning and development",
+          "url": "https://www.oxnard.gov/community-development/planning-environmental-services",
+          "scope": "city"
+        },
+        {
           "category": "Meetings",
           "title": "Oxnard: Meeting agendas and recordings",
           "url": "https://www.oxnard.gov/city-clerks-office/meeting-agendas",
           "scope": "city"
         },
         {
-          "category": "Planning",
-          "title": "Ventura County: Planning and development",
-          "url": "https://rma.venturacounty.gov/divisions/planning/",
-          "scope": "county"
+          "category": "Boards",
+          "title": "Oxnard: Boards and commissions",
+          "url": "https://www.oxnard.gov/community-development/planning-environmental-services/planning-commission",
+          "scope": "city"
         },
         {
           "category": "Transportation",
@@ -30566,7 +30752,7 @@
         }
       ],
       "meetingUrl": "https://www.oxnard.gov/city-clerks-office/meeting-agendas",
-      "boardUrl": "https://www.oxnard.gov/city-clerks-office/meeting-agendas",
+      "boardUrl": "https://www.oxnard.gov/community-development/planning-environmental-services/planning-commission",
       "meetingScope": "Oxnard",
       "client": null
     },
@@ -30797,6 +30983,12 @@
         {
           "category": "Meetings",
           "title": "San Buenaventura (Ventura): Meeting agendas and recordings",
+          "url": "https://www.cityofventura.ca.gov/agendacenter/Planning-Commission-19",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "San Buenaventura (Ventura): Boards and commissions",
           "url": "https://www.cityofventura.ca.gov/agendacenter/Planning-Commission-19",
           "scope": "city"
         },
@@ -32774,13 +32966,19 @@
         {
           "category": "Planning",
           "title": "Santa Barbara County: Planning and development",
-          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "url": "https://www.countyofsb.org/pl-planning-and-development",
           "scope": "county"
         },
         {
           "category": "Meetings",
           "title": "Santa Barbara County: Meeting agendas and recordings",
           "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Barbara County: Boards and commissions",
+          "url": "https://www.countyofsb.org/pl-hearings-committees",
           "scope": "county"
         },
         {
@@ -32821,7 +33019,7 @@
         }
       ],
       "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
-      "boardUrl": "https://www.countyofsb.org/",
+      "boardUrl": "https://www.countyofsb.org/pl-hearings-committees",
       "meetingScope": "Santa Barbara County",
       "client": null
     },
@@ -34227,195 +34425,201 @@
   "linkChecks": {
     "https://www.fresnocountyca.gov/": "HTTP Error 403: Forbidden",
     "https://www.inyocounty.us/": 200,
-    "https://www.kerncounty.com/": "HTTP Error 403: Forbidden",
-    "https://www.santaclaracounty.gov/": "HTTP Error 403: Forbidden",
     "https://www.countyofkingsca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.slocounty.ca.gov/": 200,
-    "https://lacounty.gov/": 200,
     "https://www.countyofmonterey.gov/": "HTTP Error 403: Forbidden",
+    "https://www.kerncounty.com/": "HTTP Error 403: Forbidden",
+    "https://www.slocounty.ca.gov/": 200,
+    "https://www.santaclaracounty.gov/": "HTTP Error 403: Forbidden",
+    "https://lacounty.gov/": 200,
     "https://www.countyofsb.org/": 200,
-    "https://www.slocounty.ca.gov/departments/planning-building": 200,
-    "https://plandev.santaclaracounty.gov/": "HTTP Error 403: Forbidden",
     "https://www.tularecounty.ca.gov/": "HTTP Error 403: Forbidden",
     "https://www.santacruzcountyca.gov/": 200,
+    "https://www.slocounty.ca.gov/departments/planning-building": 200,
     "https://planning.lacounty.gov/": 200,
-    "https://www.yolocounty.gov/": "HTTP Error 403: Forbidden",
-    "https://www.saccounty.gov/": 200,
-    "https://www.ventura.org/": 200,
-    "https://www.sandiegocounty.gov/": 200,
-    "https://www.countyofsb.org/159/Planning-Development": "HTTP Error 404: Not Found",
     "https://www.sccoplanning.com/": 200,
-    "https://planning.saccounty.gov/": 200,
-    "https://www.sandiegocounty.gov/content/sdc/pds.html": 200,
+    "https://www.ventura.org/": 200,
+    "https://www.countyofsb.org/pl-planning-and-development": 200,
+    "https://plandev.santaclaracounty.gov/": "HTTP Error 403: Forbidden",
+    "https://www.sandiegocounty.gov/": 200,
     "https://rma.venturacounty.gov/divisions/planning/": 200,
-    "https://www.ocgov.com/": 200,
-    "https://main.sbcounty.gov/": 200,
-    "https://housing.oc.gov/": 200,
     "https://www.sjgov.org/": 200,
+    "https://www.saccounty.gov/": 200,
+    "https://www.yolocounty.gov/": "HTTP Error 403: Forbidden",
+    "https://www.ocgov.com/": 200,
     "https://rivco.org/": 200,
-    "https://cityofclovis.com/": 200,
-    "https://lus.sbcounty.gov/planning/": 200,
-    "https://planning.rctlma.org/": "HTTP Error 403: Forbidden",
+    "https://housing.oc.gov/": 200,
+    "https://www.sjgov.org/department/cdd/planning/planning-commission": 200,
+    "https://www.sandiegocounty.gov/content/sdc/pds.html": 200,
+    "https://www.yolocounty.gov/government/general-government-departments/community-services/planning-division": "HTTP Error 403: Forbidden",
+    "https://planning.saccounty.gov/": 200,
+    "https://main.sbcounty.gov/": 200,
     "https://www.fresno.gov/": 200,
     "https://www.ci.sanger.ca.us/": 200,
-    "https://www.clovisca.gov/services/planning_development/index.php": 200,
+    "https://cityofclovis.com/": 200,
+    "https://planning.rctlma.org/": "HTTP Error 403: Forbidden",
     "https://www.cityoforangecove.com/": 200,
-    "https://www.bakersfieldcity.us/": 200,
     "https://www.ci.sanger.ca.us/177/Planning-Zoning": 200,
+    "https://lus.sbcounty.gov/planning/": 200,
     "https://www.cityofmaricopa.org/": 200,
-    "https://www.shafter.com/": 200,
-    "https://www.cityoftaft.ca.gov/": 200,
+    "https://www.clovisca.gov/services/planning_development/index.php": 200,
+    "https://www.bakersfieldcity.us/": 200,
     "https://www.ridgecrest-ca.gov/": 200,
+    "https://www.shafter.com/": 200,
     "https://www.liveuptehachapi.com/": 200,
-    "https://www.cityoftaft.ca.gov/5355/planning-and-development": 200,
-    "https://lemoore.com/": 200,
-    "https://www.cityofcalabasas.com/": "HTTP Error 403: Forbidden",
-    "https://www.hanfordca.gov/": 200,
-    "https://www.cityoflancasterca.org/": "HTTP Error 403: Forbidden",
-    "https://hiddenhillscity.org/": 200,
+    "https://www.cityoftaft.ca.gov/": 200,
     "https://www.agourahillscity.org/": 200,
-    "https://lacity.gov/": 200,
-    "https://www.agourahillscity.gov/government/departments/community_development/index.php": 200,
-    "https://ci.carmel.ca.us/": 200,
-    "https://planning.lacity.gov/": 200,
+    "https://www.hanfordca.gov/": 200,
+    "https://www.cityofcalabasas.com/": "HTTP Error 403: Forbidden",
+    "https://hiddenhillscity.org/": 200,
+    "https://lemoore.com/": 200,
+    "https://www.cityoflancasterca.org/": "HTTP Error 403: Forbidden",
+    "https://www.cityoftaft.ca.gov/5355/planning-and-development": 200,
     "https://www.wlv.org/": 200,
+    "https://ci.carmel.ca.us/": 200,
+    "https://www.agourahillscity.gov/government/departments/community_development/index.php": 200,
+    "https://lacity.gov/": 200,
     "https://www.delreyoaks.org/": "HTTP Error 403: Forbidden",
-    "https://ci.carmel.ca.us/community-planning-building": 200,
-    "https://monterey.gov/": 200,
-    "https://www.cityofpacificgrove.org/": 200,
-    "https://www.cityofmarina.org/": 200,
     "https://www.sandcity.org/": 200,
+    "https://www.cityofmarina.org/": 200,
+    "https://www.cityofpacificgrove.org/": 200,
+    "https://planning.lacity.gov/": 200,
+    "https://monterey.gov/": 200,
+    "https://ci.carmel.ca.us/community-planning-building": 200,
+    "https://sandcity.org/planning-department/": 200,
     "https://www.cityofpacificgrove.gov/our_city/departments/community_development/index.php": 200,
     "https://www.cityofmarina.org/161/Planning-Services": 200,
-    "https://sandcity.org/planning-department/": 200,
-    "https://monterey.gov/your_city_hall/departments/community_development/index.php": 200,
     "https://www.ci.seaside.ca.us/": 200,
-    "https://www.atascadero.org/": 200,
+    "https://monterey.gov/your_city_hall/departments/community_development/index.php": 200,
     "https://www.arroyogrande.org/": 200,
-    "https://www.prcity.com/": 200,
-    "https://www.morro-bay.ca.us/": 200,
     "https://www.grover.org/": 200,
-    "https://www.slocity.org/": "HTTP Error 403: Forbidden",
+    "https://www.atascadero.org/": 200,
+    "https://www.morro-bay.ca.us/": 200,
+    "https://www.prcity.com/": 200,
     "https://www.pismobeach.org/": 200,
-    "https://www.cityofbuellton.com/": "HTTP Error 403: Forbidden",
+    "https://www.slocity.org/": "HTTP Error 403: Forbidden",
     "https://www.morrobayca.gov/1127/Applications-and-Forms": 200,
     "https://pismobeach.org/70/Planning": 200,
+    "https://www.cityofbuellton.com/": "HTTP Error 403: Forbidden",
+    "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission": "HTTP Error 403: Forbidden",
+    "https://carpinteriaca.gov/": 200,
     "https://www.cityofgoleta.org/": "HTTP Error 403: Forbidden",
     "https://cityofbuellton.com/departments/planning.php": "HTTP Error 403: Forbidden",
-    "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission": "HTTP Error 403: Forbidden",
     "https://www.cityofguadalupe.org/": 200,
-    "https://carpinteriaca.gov/": 200,
-    "https://santabarbaraca.gov/": 200,
-    "https://www.cityoflompoc.com/": "HTTP Error 403: Forbidden",
     "https://carpinteriaca.gov/city-hall/community-development/": 200,
-    "https://santabarbaraca.gov/planning-commission": 200,
+    "https://www.cityoflompoc.com/": "HTTP Error 403: Forbidden",
+    "https://santabarbaraca.gov/": 200,
     "https://cityofguadalupe.org/planning-department/": 200,
     "https://www.cityofsantamaria.org/": "HTTP Error 403: Forbidden",
-    "https://www.cityofsolvang.com/": 200,
-    "https://www.sanjoseca.gov/": "HTTP Error 403: Forbidden",
     "https://www.cityofsantamaria.org/services/departments/community-development/planning-division": "HTTP Error 403: Forbidden",
-    "https://www.cityofsantacruz.com/": "HTTP Error 403: Forbidden",
-    "https://www.cityofcapitola.org/": 200,
+    "https://www.cityofsolvang.com/": 200,
+    "https://www.cityofgoleta.org/your-city/planning-and-environmental-review/permits-and-regulations": "HTTP Error 403: Forbidden",
     "https://www.morganhill.ca.gov/": 200,
-    "https://www.cityoffarmersville-ca.gov/": 200,
+    "https://www.sanjoseca.gov/": "HTTP Error 403: Forbidden",
+    "https://www.cityofcapitola.org/": 200,
+    "https://www.cityofsantacruz.com/": "HTTP Error 403: Forbidden",
     "https://www.scottsvalley.gov/": 200,
     "https://www.watsonville.gov/": 200,
     "https://cityofexeter.com/": 200,
-    "https://www.ci.porterville.ca.us/": 200,
-    "https://www.lindsay.ca.us/": 200,
-    "https://www.tulare.ca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.ci.porterville.ca.us/departments/community_development/index.php": 200,
     "https://cityofexeter.ca.gov/departments/administration/planningbuilding/": 200,
-    "https://www.cityofwoodlake.com/": 200,
+    "https://www.cityoffarmersville-ca.gov/": 200,
+    "https://www.lindsay.ca.us/": 200,
+    "https://www.ci.porterville.ca.us/": 200,
+    "https://www.ci.porterville.ca.us/departments/community_development/index.php": 200,
+    "https://www.tulare.ca.gov/": "HTTP Error 403: Forbidden",
     "https://www.visalia.gov/": "HTTP Error 403: Forbidden",
-    "https://www.cityofcamarillo.org/": 200,
+    "https://www.cityofwoodlake.com/": 200,
     "https://cityofwoodlake.com/departments/planning/": 200,
-    "https://www.moorparkca.gov/": 200,
+    "https://www.cityofcamarillo.org/": 200,
     "https://www.cityofcamarillo.org/departments/community_development/index.php": 200,
     "https://www.fillmoreca.gov/": 200,
-    "https://www.oxnard.gov/": "HTTP Error 403: Forbidden",
-    "https://www.ci.port-hueneme.ca.us/": 200,
     "https://www.fillmoreca.gov/189/Planning-Department": 200,
+    "https://www.moorparkca.gov/": 200,
     "https://www.ojai.ca.gov/": 200,
-    "https://www.cityofventura.ca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.simivalley.org/": "HTTP Error 403: Forbidden",
-    "https://www.spcity.org/": 200,
-    "https://www.cityofventura.ca.gov/432/Planning": "HTTP Error 403: Forbidden",
     "https://www.ojai.ca.gov/200/Community-Development-Department": 200,
-    "https://www.fowlercity.org/": "HTTP Error 403: Forbidden",
+    "https://www.oxnard.gov/": "HTTP Error 403: Forbidden",
+    "https://www.oxnard.gov/community-development/planning-environmental-services": "HTTP Error 403: Forbidden",
+    "https://www.ci.port-hueneme.ca.us/": 200,
+    "https://www.cityofventura.ca.gov/": "HTTP Error 403: Forbidden",
+    "https://www.cityofventura.ca.gov/432/Planning": "HTTP Error 403: Forbidden",
+    "https://www.spcity.org/": 200,
+    "https://www.simivalley.org/": "HTTP Error 403: Forbidden",
     "https://www.toaks.gov/": 200,
-    "https://cityofkingsburg-ca.gov/": 200,
-    "https://www.parlier.ca.us/": 200,
-    "https://cityofkingsburg-ca.gov/158/Planning-Department": 200,
     "https://www.toaks.gov/index.php?section=cdd": 200,
-    "https://www.parlier.ca.us/157/Community-Development": 200,
+    "https://www.fowlercity.org/": "HTTP Error 403: Forbidden",
     "https://www.fowlercity.org/planning": "HTTP Error 403: Forbidden",
-    "https://www.cityofselma.com/": 200,
-    "https://www.cityofpalmdaleca.gov/": 200,
+    "https://cityofkingsburg-ca.gov/": 200,
+    "https://www.cityoflompoc.com/government/departments/economic-community-development/planning-division": "HTTP Error 403: Forbidden",
+    "https://cityofkingsburg-ca.gov/158/Planning-Department": 200,
+    "https://www.parlier.ca.us/": 200,
+    "https://www.parlier.ca.us/157/Community-Development": 200,
     "https://reedley.ca.gov/": 200,
+    "https://www.cityofselma.com/": 200,
+    "https://reedley.ca.gov/community-development-department/": 200,
+    "https://www.cityofpalmdaleca.gov/": 200,
+    "https://www.cityofselma.com/departments/community_development/index.php": 200,
     "https://santaclarita.gov/": 200,
     "https://www.cityofpalmdaleca.gov/176/Planning": 200,
-    "https://reedley.ca.gov/community-development-department/": 200,
-    "https://www.cityofselma.com/departments/community_development/index.php": 200,
     "https://santaclarita.gov/planning/": 200,
     "https://www.sandiego.gov/": 200,
-    "https://www.cityofwestsacramento.org/": "HTTP Error 403: Forbidden",
-    "https://www.dinuba.org/": 200,
     "https://www.sandiego.gov/planning": 200,
+    "https://www.dinuba.org/": 200,
     "https://www.cityofsacramento.gov/": 200,
-    "https://elkgrove.gov/": "HTTP Error 403: Forbidden",
     "https://www.dinuba.org/departments/planning-development": 200,
+    "https://www.cityofwestsacramento.org/": "HTTP Error 403: Forbidden",
+    "https://www.cityofsacramento.gov/community-development/planning": 200,
     "https://www.cityofranchocordova.org/": "HTTP Error 403: Forbidden",
-    "https://www.longbeach.gov/": 200,
+    "https://elkgrove.gov/": "HTTP Error 403: Forbidden",
     "https://www.cityofranchocordova.org/departments/community-development/planning": "HTTP Error 403: Forbidden",
     "https://elkgrove.gov/departments-and-divisions/planning": "HTTP Error 403: Forbidden",
-    "https://www.cityofsacramento.gov/community-development/planning": 200,
     "https://www.hgcity.org/": "HTTP Error 403: Forbidden",
+    "https://www.longbeach.gov/": 200,
     "https://www.longbeach.gov/lbcd/planning/": 200,
-    "https://www.cityoflosalamitos.org/": 200,
     "https://www.cityofsignalhill.org/": 200,
-    "https://www.cypressca.org/": "HTTP Error 403: Forbidden",
     "https://www.paramountcity.gov/": 200,
+    "https://www.cityoflosalamitos.org/": 200,
     "https://www.bellflower.ca.gov/": 200,
+    "https://www.paramountcity.gov/government/departments/planning-and-building/planning/": 200,
+    "https://www.cypressca.org/": "HTTP Error 403: Forbidden",
     "https://www.comptoncity.org/": "HTTP Error 403: Forbidden",
     "https://www.cypressca.org/departments/community-development/information-on-notable-projects": "HTTP Error 403: Forbidden",
-    "https://www.paramountcity.gov/government/departments/planning-and-building/planning/": 200,
-    "https://www.sealbeachca.gov/": 200,
     "https://www.lakewoodca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.anaheim.net/": "HTTP Error 403: Forbidden",
-    "https://sealbeachca.gov/departments/community-development/planning-development/": 200,
+    "https://www.sealbeachca.gov/": 200,
     "https://carsonca.gov/": 200,
+    "https://sealbeachca.gov/departments/community-development/planning-development/": 200,
+    "https://www.anaheim.net/": "HTTP Error 403: Forbidden",
     "https://www.stantonca.gov/": 200,
+    "https://www.anaheim.net/490/Planning-Building": 200,
     "https://www.placentia.org/": 200,
     "https://www.stantonca.gov/departments/community_development/planning_division/index.php": 200,
-    "https://www.buenapark.com/": 200,
     "https://www.cityoffullerton.com/": "HTTP Error 403: Forbidden",
+    "https://www.buenapark.com/": 200,
     "https://ggcity.org/": 200,
-    "https://www.yorbalindaca.gov/": 200,
     "https://www.buenapark.com/city_departments/community_development/planning_division/index.php": 200,
     "https://www.cityoforange.org/": "HTTP Error 403: Forbidden",
-    "https://www.yorbalindaca.gov/334/Planning": 200,
-    "https://www.ci.lathrop.ca.us/": "Remote end closed connection without response",
+    "https://www.yorbalindaca.gov/": 200,
     "https://www.stocktonca.gov/": 200,
-    "https://www.manteca.gov/": 200,
+    "https://www.yorbalindaca.gov/334/Planning": 200,
     "https://www.stocktonca.gov/business/community_development.php": 200,
+    "https://www.ci.lathrop.ca.us/": "Remote end closed connection without response",
     "https://www.lodi.gov/": "The read operation timed out",
+    "https://www.manteca.gov/": 200,
+    "https://www.lodi.gov/1264/Planning-FAQs": 200,
     "https://www.riversideca.gov/": 200,
     "https://www.coltonca.gov/": 200,
-    "https://www.lodi.gov/1264/Planning-FAQs": 200,
-    "https://www.riversideca.gov/cedd/planning/zoning-code-and-regulations": 200,
-    "https://www.jurupavalley.org/": 200,
     "https://www.norco.ca.us/": "HTTP Error 403: Forbidden",
-    "https://www.coronaca.gov/": 200,
-    "https://www.jurupavalley.gov/336/Current-Planning-Development-Review": 200,
+    "https://www.riversideca.gov/cedd/planning/zoning-code-and-regulations": 200,
     "https://www.norco.ca.us/departments/planning": "HTTP Error 403: Forbidden",
-    "https://moval.gov/": 200,
+    "https://www.coronaca.gov/": 200,
+    "https://www.jurupavalley.org/": 200,
+    "https://www.jurupavalley.gov/336/Current-Planning-Development-Review": 200,
     "https://www.coronaca.gov/departments/planning-division": 200,
+    "https://moval.gov/": 200,
     "https://www.grandterrace-ca.gov/": 200,
     "https://www.grandterrace-ca.gov/departments/planning_development_services": 200,
-    "https://www.yolocounty.gov/government/general-government-departments/community-services/planning-division": "HTTP Error 403: Forbidden",
-    "https://www.sjgov.org/department/cdd/planning/planning-commission": 200,
-    "https://www.anaheim.net/490/Planning-Building": 200,
+    "https://santabarbaraca.gov/ComDev": 200,
+    "https://www.arroyogrande.org/132/Community-Development": 200,
+    "https://cityofsolvang.com/155/Community-Development-Department": 200,
+    "https://www.groverbeach.org/21/Community-Development": 200,
     "https://dot.ca.gov/caltrans-near-me/district-5/district-5-current-projects": 200,
     "https://dot.ca.gov/caltrans-near-me/district-6/district-6-projects": 200,
     "https://dot.ca.gov/caltrans-near-me/district-7/district-7-projects": 200,

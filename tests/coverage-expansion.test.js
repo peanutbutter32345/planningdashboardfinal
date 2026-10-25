@@ -34,7 +34,7 @@ test('complete city records and saved project identifiers agree between browser 
  for(const [key,c] of Object.entries(manifest.cities))for(const row of full(key)){
   assert.equal(index[row.id],key);assert.equal(backend.get(row.id)?.city,key);
   assert.ok(row.sourceUrl.startsWith('https://'));assert.equal(row.lat==null,row.lng==null);
-  if(row.sourceType==='ceqanet'){assert.equal(row.lat,null);assert.equal(row.units,null);assert.match(row.flag,/Environmental filing/);assert.ok(!row.desc.includes('<'));}
+  if(row.sourceType==='ceqanet'){if(row.lat!==null)assert.match(row.locationSource,/Published CEQAnet coordinates screened/);assert.equal(row.units,null);assert.match(row.flag,/Environmental filing/);assert.ok(!row.desc.includes('<'));}
  }
 });
 test('new locality outlines and photo credits are retained without inventing market data',()=>{

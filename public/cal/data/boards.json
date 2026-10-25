@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-10-25T10:03:28.935258+00:00",
+  "retrieved": "2026-10-25T10:59:30.533511+00:00",
   "bodies": {
     "p0603190": [],
     "p0607750": [],
@@ -2391,11 +2391,6 @@
     ],
     "p0602868": [
       {
-        "name": "City Council",
-        "url": "https://www.arroyogrande.org/201/City-Council",
-        "directory": "Arroyo Grande"
-      },
-      {
         "name": "Planning Commission",
         "url": "https://www.arroyogrande.org/199/Planning-Commission",
         "directory": "Arroyo Grande"
@@ -2419,6 +2414,11 @@
         "name": "Community Service Grant Program Committee",
         "url": "https://www.arroyogrande.org/789/Community-Service-Grant-Program-Committe",
         "directory": "Arroyo Grande"
+      },
+      {
+        "name": "City Council",
+        "url": "https://www.arroyogrande.org/201/City-Council",
+        "directory": "Arroyo Grande"
       }
     ],
     "p0603064": [],
@@ -2438,7 +2438,18 @@
       }
     ],
     "p0628210": [],
-    "p0631393": [],
+    "p0631393": [
+      {
+        "name": "Planning Commission",
+        "url": "https://www.grover.org/72/Planning-Commission",
+        "directory": "Grover Beach"
+      },
+      {
+        "name": "City Council",
+        "url": "https://www.grover.org/71/City-Council",
+        "directory": "Grover Beach"
+      }
+    ],
     "p0639670": [],
     "p0644042": [],
     "p0644182": [],
@@ -2478,11 +2489,6 @@
         "name": "Waterfront Masterplan Advisory Committee",
         "url": "https://www.morrobayca.gov/1100",
         "directory": "Morro Bay"
-      },
-      {
-        "name": "2005 Zoning Ordinance - never certified by Coastal Commission",
-        "url": "https://www.morrobayca.gov/DocumentCenter/View/19669",
-        "directory": "Morro Bay"
       }
     ],
     "p0651476": [],
@@ -2495,7 +2501,13 @@
         "directory": "Pismo Beach"
       }
     ],
-    "p0668154": [],
+    "p0668154": [
+      {
+        "name": "Planning Commission",
+        "url": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+        "directory": "San Luis Obispo"
+      }
+    ],
     "p0668266": [],
     "p0668434": [],
     "p0669182": [],
@@ -2503,7 +2515,48 @@
     "p0678162": [],
     "p0685222": [],
     "p0686380": [],
-    "p0603694": [],
+    "p0603694": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
     "p0608758": [
       {
         "name": "City Council",
@@ -2543,10 +2596,174 @@
         "directory": "Carpinteria"
       }
     ],
-    "p0611754": [],
-    "p0617727": [],
-    "p0620574": [],
-    "p0629070": [],
+    "p0611754": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0617727": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0620574": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0629070": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
     "p0630378": [
       {
         "name": "City Council",
@@ -2560,7 +2777,7 @@
       },
       {
         "name": "Planning Commission",
-        "url": "https://goleta.legistar.com/DepartmentDetail.aspx?ID=31074&GUID=3B719018-148D-4F12-A61B-68A6E6D055A5",
+        "url": "https://goleta.granicus.com/boards/w/ee26eeb27ed8332d/boards/7906",
         "directory": "Goleta"
       },
       {
@@ -2581,65 +2798,457 @@
         "directory": "Guadalupe"
       }
     ],
-    "p0636868": [],
-    "p0642524": [],
-    "p0643252": [],
-    "p0644168": [],
-    "p0648147": [],
-    "p0648186": [],
-    "p0648844": [],
-    "p0651028": [],
-    "p0654120": [],
+    "p0636868": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0642524": [
+      {
+        "name": "Planning Commission",
+        "url": "https://www.cityoflompoc.com/government/committees-boards/planning-commission",
+        "directory": "Lompoc"
+      }
+    ],
+    "p0643252": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0644168": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0648147": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0648186": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0648844": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0651028": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0654120": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
     "p0669070": [
+      {
+        "name": "Planning Commission",
+        "url": "https://santabarbaraca.gov/planning-commission",
+        "directory": "Santa Barbara"
+      },
       {
         "name": "Mayor & City Council",
         "url": "https://santabarbaraca.gov/government/mayor-city-council",
         "directory": "Santa Barbara"
       },
       {
-        "name": "Access Advisory Committee",
-        "url": "https://santabarbaraca.gov/access-advisory-committee",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Airport Commission",
-        "url": "https://santabarbaraca.gov/airport-commission",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Arts Advisory Committee",
-        "url": "https://santabarbaraca.gov/arts-advisory-committee",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Citizens' Oversight Committee",
-        "url": "https://santabarbaraca.gov/citizens-oversight-committee",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Civil Service Commission",
-        "url": "https://santabarbaraca.gov/civil-service-commission",
-        "directory": "Santa Barbara"
-      },
-      {
-        "name": "Community Development & Human Services Committee",
-        "url": "https://santabarbaraca.gov/community-development-human-services-committee",
-        "directory": "Santa Barbara"
-      },
-      {
         "name": "City Council",
         "url": "https://santabarbaraca.gov/government/mayor-city-council/city-council-meetings",
         "directory": "Santa Barbara"
+      }
+    ],
+    "p0669196": [
+      {
+        "name": "Planning Commission",
+        "url": "https://www.cityofsantamaria.org/services/departments/boards-commissions/planning-commission",
+        "directory": "Santa Maria"
+      }
+    ],
+    "p0670182": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
       },
       {
         "name": "Planning Commission",
-        "url": "https://santabarbaraca.gov/planning-commission",
-        "directory": "Santa Barbara"
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
       }
     ],
-    "p0669196": [],
-    "p0670182": [],
-    "p0672086": [],
+    "p0672086": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
     "p0672576": [
       {
         "name": "Design Review Committee",
@@ -2662,11 +3271,216 @@
         "directory": "Solvang"
       }
     ],
-    "p0675714": [],
-    "p0679529": [],
-    "p0681316": [],
-    "p0682072": [],
-    "p0682086": [],
+    "p0675714": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0679529": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0681316": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0682072": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
+    "p0682086": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
     "p0641282": [],
     "p0649278": [
       {
@@ -7418,7 +8232,13 @@
         "directory": "Ojai"
       }
     ],
-    "p0654652": [],
+    "p0654652": [
+      {
+        "name": "Planning Commission",
+        "url": "https://www.oxnard.gov/community-development/planning-environmental-services/planning-commission",
+        "directory": "Oxnard"
+      }
+    ],
     "p0657372": [],
     "p0658296": [
       {
@@ -7427,7 +8247,13 @@
         "directory": "Port Hueneme"
       }
     ],
-    "p0665042": [],
+    "p0665042": [
+      {
+        "name": "Planning Commission",
+        "url": "https://www.cityofventura.ca.gov/agendacenter/Planning-Commission-19",
+        "directory": "San Buenaventura (Ventura)"
+      }
+    ],
     "p0670042": [],
     "p0670130": [],
     "p0670140": [],
@@ -7778,7 +8604,48 @@
         "directory": "Sacramento County"
       }
     ],
-    "c06083": [],
+    "c06083": [
+      {
+        "name": "County Planning Commission",
+        "url": "https://www.countyofsb.org/pl-county-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Montecito Planning Commission",
+        "url": "https://www.countyofsb.org/pl-montecito-planning-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Historic Landmarks Advisory Commission",
+        "url": "https://www.countyofsb.org/pl-bc-historic-landmarks-advisory-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Subdivision / Development Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-subdivision-development-review-and-special-problems-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Systems Safety & Reliability Review Committee",
+        "url": "https://www.countyofsb.org/pl-bc-systems-safety-reliability-review-committee-ssrrc",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Agricultural Preserve Advisory Committee",
+        "url": "https://www.countyofsb.org/agwm-bc-agricultural-preserve-advisory-committee",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Fish & Wildlife Commission",
+        "url": "https://www.countyofsb.org/pl-bc-fish-wildlife-commission",
+        "directory": "Santa Barbara County"
+      },
+      {
+        "name": "Planning Commission",
+        "url": "https://sbcounty.granicus.com/boards/w/23ff8404489256c3/boards/2880",
+        "directory": "Santa Barbara County"
+      }
+    ],
     "c06031": [],
     "c06073": [
       {

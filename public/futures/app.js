@@ -26,7 +26,7 @@ function showFutureView(view){
 const money=value=>value==null?'—':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
 const compactMoney=value=>value==null?'—':value>=1e6?'$'+(value/1e6).toFixed(2)+'M':'$'+Math.round(value/1000)+'k';
 const controlKeys=['year','rate','costs','delay','gridDelay','priceTrend','elasticity','floodDiscount','energyUse'];
-const cityLabel=()=>state.city==='all'?'Bay Area':context.cities[state.city].label;
+const cityLabel=()=>state.city==='all'?'Covered California areas':context.cities[state.city].label;
 function notify(message){$('fxStatus').textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('fxStatus').textContent='',5000);}
 function projects(){return state.city==='all'?fullProjects:fullProjects.filter(p=>p.city===state.city);}
 function syncControls(){

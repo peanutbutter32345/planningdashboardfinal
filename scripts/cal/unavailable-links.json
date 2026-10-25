@@ -1,5 +1,5 @@
 {
-  "checked": "2026-10-25T09:33:20.088Z",
+  "checked": "2026-10-25T10:45:14.607640+00:00",
   "note": "Confirmed HTTP 404 after both HEAD and GET. Omit these stale deep links while retaining the agency directory. Recheck before restoring.",
   "urls": [
     "https://www.cityofwatsonville.org/2250/Redistricting-Meeting-Schedule",
@@ -10,6 +10,10 @@
     "https://www.sandiego.gov/city-clerk/boards-commissions/lajollashores",
     "https://www.sandiego.gov/development-services/public-hearings-meetings-notices/technical-advisory-committee",
     "https://lus.sbcounty.gov/planning-home/zoning-and-overlay-maps/zoning-maps/",
-    "https://maps.lodi.gov/Html5Viewer/index.html?viewer=GIS_External_Viewer.Lodi_Maps_Internal_Property_Viewer"
+    "https://maps.lodi.gov/Html5Viewer/index.html?viewer=GIS_External_Viewer.Lodi_Maps_Internal_Property_Viewer",
+    "https://carpinteriaca.gov/wp-content/uploads/2025/08/2025-MEETING-DATES.pdf",
+    "https://www.cityofsolvang.com/DocumentCenter/View/3872/Maddy-Act",
+    "https://www.countyofsb.org/159/Planning-Development",
+    "https://www.morrobayca.gov/248/Municipal-Code"
   ]
 }
