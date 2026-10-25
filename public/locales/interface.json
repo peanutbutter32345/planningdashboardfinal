@@ -1,0 +1,3386 @@
+{
+  "Dashboard": [
+    "Panel",
+    "概览",
+    "Dashboard",
+    "Bảng điều khiển",
+    "لوحة المعلومات",
+    "डैशबोर्ड"
+  ],
+  "Overview": [
+    "Vista general",
+    "概览",
+    "Pangkalahatang-ideya",
+    "Tổng quan",
+    "نظرة عامة",
+    "अवलोकन"
+  ],
+  "Your Area": [
+    "Tu zona",
+    "你的地区",
+    "Iyong Lugar",
+    "Khu vực của bạn",
+    "منطقتك",
+    "आपका क्षेत्र"
+  ],
+  "Get Involved": [
+    "Participa",
+    "参与社区",
+    "Makilahok",
+    "Tham gia",
+    "شارك",
+    "भाग लें"
+  ],
+  "Summarize Meetings": [
+    "Resumir reuniones",
+    "会议摘要",
+    "Buod ng mga Pulong",
+    "Tóm tắt cuộc họp",
+    "تلخيص الاجتماعات",
+    "बैठकों का सारांश"
+  ],
+  "Housing": [
+    "Vivienda",
+    "住房",
+    "Pabahay",
+    "Nhà ở",
+    "الإسكان",
+    "आवास"
+  ],
+  "Developments": [
+    "Proyectos urbanos",
+    "开发项目",
+    "Mga Proyekto",
+    "Dự án phát triển",
+    "مشاريع التطوير",
+    "विकास परियोजनाएँ"
+  ],
+  "Transportation": [
+    "Transporte",
+    "交通",
+    "Transportasyon",
+    "Giao thông",
+    "النقل",
+    "परिवहन"
+  ],
+  "Statistics": [
+    "Estadísticas",
+    "统计",
+    "Estadistika",
+    "Thống kê",
+    "الإحصاءات",
+    "आँकड़े"
+  ],
+  "Future Map": [
+    "Mapa de escenarios",
+    "未来情景地图",
+    "Mapa ng Hinaharap",
+    "Bản đồ tương lai",
+    "خريطة المستقبل",
+    "भविष्य का नक्शा"
+  ],
+  "Newsletter": [
+    "Boletín",
+    "通讯",
+    "Newsletter",
+    "Bản tin",
+    "النشرة الإخبارية",
+    "समाचार पत्र"
+  ],
+  "Ask a Question": [
+    "Haz una pregunta",
+    "提问",
+    "Magtanong",
+    "Đặt câu hỏi",
+    "اطرح سؤالاً",
+    "सवाल पूछें"
+  ],
+  "Timeline": [
+    "Cronología",
+    "时间线",
+    "Timeline",
+    "Dòng thời gian",
+    "التسلسل الزمني",
+    "समयरेखा"
+  ],
+  "Newsletter Archive": [
+    "Archivo de boletines",
+    "通讯存档",
+    "Mga Nakaraang Newsletter",
+    "Kho bản tin",
+    "أرشيف النشرات",
+    "समाचार पत्र संग्रह"
+  ],
+  "Resource Bank": [
+    "Banco de recursos",
+    "资源库",
+    "Mga Sanggunian",
+    "Kho tài nguyên",
+    "مكتبة الموارد",
+    "संसाधन संग्रह"
+  ],
+  "Your Account": [
+    "Tu cuenta",
+    "你的账户",
+    "Iyong Account",
+    "Tài khoản của bạn",
+    "حسابك",
+    "आपका खाता"
+  ],
+  "About": [
+    "Acerca del sitio",
+    "关于本站",
+    "Tungkol sa Site",
+    "Giới thiệu",
+    "حول الموقع",
+    "परिचय"
+  ],
+  "Search": [
+    "Buscar",
+    "搜索",
+    "Maghanap",
+    "Tìm kiếm",
+    "بحث",
+    "खोजें"
+  ],
+  "Language": [
+    "Idioma",
+    "语言",
+    "Wika",
+    "Ngôn ngữ",
+    "اللغة",
+    "भाषा"
+  ],
+  "Email recaps": [
+    "Resúmenes por correo",
+    "邮件摘要",
+    "Mga Buod sa Email",
+    "Tóm tắt qua email",
+    "ملخصات البريد الإلكتروني",
+    "ईमेल सारांश"
+  ],
+  "Sign up for email recaps": [
+    "Recibe resúmenes por correo",
+    "订阅邮件摘要",
+    "Mag-subscribe sa mga buod sa email",
+    "Đăng ký nhận tóm tắt qua email",
+    "اشترك في ملخصات البريد الإلكتروني",
+    "ईमेल सारांश के लिए सदस्यता लें"
+  ],
+  "Read this month's newsletter": [
+    "Lee el boletín de este mes",
+    "阅读本月通讯",
+    "Basahin ang newsletter ngayong buwan",
+    "Đọc bản tin tháng này",
+    "اقرأ نشرة هذا الشهر",
+    "इस महीने का समाचार पत्र पढ़ें"
+  ],
+  "Skip to main content": [
+    "Ir al contenido principal",
+    "跳至主要内容",
+    "Lumaktaw sa pangunahing nilalaman",
+    "Chuyển đến nội dung chính",
+    "انتقل إلى المحتوى الرئيسي",
+    "मुख्य सामग्री पर जाएँ"
+  ],
+  "Open menu": [
+    "Abrir menú",
+    "打开菜单",
+    "Buksan ang menu",
+    "Mở trình đơn",
+    "افتح القائمة",
+    "मेनू खोलें"
+  ],
+  "Close menu": [
+    "Cerrar menú",
+    "关闭菜单",
+    "Isara ang menu",
+    "Đóng trình đơn",
+    "أغلق القائمة",
+    "मेनू बंद करें"
+  ],
+  "Main sections": [
+    "Secciones principales",
+    "主要栏目",
+    "Mga Pangunahing Seksyon",
+    "Các mục chính",
+    "الأقسام الرئيسية",
+    "मुख्य अनुभाग"
+  ],
+  "Dashboard sections": [
+    "Secciones del panel",
+    "概览栏目",
+    "Mga Seksyon ng Dashboard",
+    "Các mục của bảng điều khiển",
+    "أقسام لوحة المعلومات",
+    "डैशबोर्ड अनुभाग"
+  ],
+  "Menus and common controls are translated. Project records, news, meeting documents and some descriptions remain in their original language.": [
+    "Los menús y controles habituales están traducidos. Los registros de proyectos, las noticias, los documentos de reuniones y algunas descripciones conservan su idioma original.",
+    "菜单和常用控件已翻译。项目记录、新闻、会议文件和部分说明保留原文。",
+    "Isinalin ang mga menu at karaniwang kontrol. Nananatili sa orihinal na wika ang mga rekord ng proyekto, balita, dokumento ng pulong at ilang paglalarawan.",
+    "Trình đơn và các nút điều khiển thông dụng đã được dịch. Hồ sơ dự án, tin tức, tài liệu họp và một số mô tả vẫn giữ nguyên ngôn ngữ gốc.",
+    "تمت ترجمة القوائم وعناصر التحكم الشائعة. تبقى سجلات المشاريع والأخبار ووثائق الاجتماعات وبعض الأوصاف بلغتها الأصلية.",
+    "मेनू और सामान्य नियंत्रणों का अनुवाद किया गया है। परियोजना रिकॉर्ड, समाचार, बैठक दस्तावेज़ और कुछ विवरण अपनी मूल भाषा में हैं।"
+  ],
+  "Get to know your community.": [
+    "Conoce tu comunidad.",
+    "了解你的社区。",
+    "Kilalanin ang iyong komunidad.",
+    "Tìm hiểu cộng đồng của bạn.",
+    "تعرّف على مجتمعك.",
+    "अपने समुदाय को जानें।"
+  ],
+  "Choose a county to explore projects, news and public meetings. Add a city or location whenever you like.": [
+    "Elige un condado para explorar proyectos, noticias y reuniones públicas. Puedes añadir una ciudad o ubicación cuando quieras.",
+    "选择一个县，浏览项目、新闻和公众会议。你可以随时添加城市或位置。",
+    "Pumili ng county para tingnan ang mga proyekto, balita at pampublikong pulong. Maaari kang magdagdag ng lungsod o lokasyon anumang oras.",
+    "Chọn một quận để khám phá dự án, tin tức và các cuộc họp công khai. Bạn có thể thêm thành phố hoặc địa điểm bất cứ lúc nào.",
+    "اختر مقاطعة لاستكشاف المشاريع والأخبار والاجتماعات العامة. يمكنك إضافة مدينة أو موقع متى شئت.",
+    "परियोजनाएँ, समाचार और सार्वजनिक बैठकें देखने के लिए काउंटी चुनें। आप कभी भी शहर या स्थान जोड़ सकते हैं।"
+  ],
+  "What should we call you?": [
+    "¿Cómo te llamamos?",
+    "我们该怎么称呼你？",
+    "Ano ang gusto mong itawag namin sa iyo?",
+    "Chúng tôi nên gọi bạn là gì?",
+    "بماذا نناديك؟",
+    "हम आपको किस नाम से बुलाएँ?"
+  ],
+  "(optional)": [
+    "(opcional)",
+    "（可选）",
+    "(opsyonal)",
+    "(không bắt buộc)",
+    "(اختياري)",
+    "(वैकल्पिक)"
+  ],
+  "(required)": [
+    "(obligatorio)",
+    "（必填）",
+    "(kailangan)",
+    "(bắt buộc)",
+    "(مطلوب)",
+    "(आवश्यक)"
+  ],
+  "Leave blank and we will pick one": [
+    "Déjalo vacío y elegiremos uno",
+    "留空，我们会为你选择一个",
+    "Iwanang blangko at pipili kami ng pangalan",
+    "Để trống và chúng tôi sẽ chọn tên",
+    "اتركه فارغاً وسنختار اسماً",
+    "खाली छोड़ें, हम नाम चुन देंगे"
+  ],
+  "This name is your account. No password and no email needed, and you can change it later.": [
+    "Este nombre es tu cuenta. No necesitas contraseña ni correo, y puedes cambiarlo después.",
+    "这个名称就是你的账户。无需密码或电子邮箱，以后可以更改。",
+    "Ang pangalang ito ang iyong account. Hindi kailangan ng password o email, at maaari mo itong palitan sa ibang pagkakataon.",
+    "Tên này là tài khoản của bạn. Không cần mật khẩu hay email, và bạn có thể đổi tên sau.",
+    "هذا الاسم هو حسابك. لا تحتاج إلى كلمة مرور أو بريد إلكتروني، ويمكنك تغييره لاحقاً.",
+    "यह नाम आपका खाता है। पासवर्ड या ईमेल की ज़रूरत नहीं है, और आप इसे बाद में बदल सकते हैं।"
+  ],
+  "1. Choose your county": [
+    "1. Elige tu condado",
+    "1. 选择所在县",
+    "1. Piliin ang iyong county",
+    "1. Chọn quận của bạn",
+    "1. اختر مقاطعتك",
+    "1. अपनी काउंटी चुनें"
+  ],
+  "Select a county…": [
+    "Selecciona un condado…",
+    "选择一个县…",
+    "Pumili ng county…",
+    "Chọn một quận…",
+    "اختر مقاطعة…",
+    "काउंटी चुनें…"
+  ],
+  "A county is all you need. Search for a city to narrow your view.": [
+    "Solo necesitas un condado. Busca una ciudad para acotar los resultados.",
+    "只需选择一个县。搜索城市可缩小范围。",
+    "County lang ang kailangan. Maghanap ng lungsod para paliitin ang saklaw.",
+    "Bạn chỉ cần chọn quận. Tìm thành phố để thu hẹp phạm vi.",
+    "يكفي اختيار مقاطعة. ابحث عن مدينة لتضييق نطاق العرض.",
+    "काउंटी चुनना पर्याप्त है। दायरा छोटा करने के लिए शहर खोजें।"
+  ],
+  "create a free account": [
+    "crea una cuenta gratuita",
+    "创建免费账户",
+    "gumawa ng libreng account",
+    "tạo tài khoản miễn phí",
+    "أنشئ حساباً مجانياً",
+    "मुफ़्त खाता बनाएँ"
+  ],
+  "2. Your address or approximate location": [
+    "2. Tu dirección o ubicación aproximada",
+    "2. 你的地址或大致位置",
+    "2. Iyong address o tinatayang lokasyon",
+    "2. Địa chỉ hoặc vị trí gần đúng của bạn",
+    "2. عنوانك أو موقعك التقريبي",
+    "2. आपका पता या अनुमानित स्थान"
+  ],
+  "Use my current location": [
+    "Usar mi ubicación actual",
+    "使用我的当前位置",
+    "Gamitin ang kasalukuyan kong lokasyon",
+    "Dùng vị trí hiện tại của tôi",
+    "استخدم موقعي الحالي",
+    "मेरी वर्तमान स्थिति का उपयोग करें"
+  ],
+  "3. Your interests": [
+    "3. Tus intereses",
+    "3. 你的兴趣",
+    "3. Mga interes mo",
+    "3. Mối quan tâm của bạn",
+    "3. اهتماماتك",
+    "3. आपकी रुचियाँ"
+  ],
+  "Open my dashboard →": [
+    "Abrir mi panel →",
+    "打开我的概览 →",
+    "Buksan ang dashboard ko →",
+    "Mở bảng điều khiển của tôi →",
+    "افتح لوحة معلوماتي ←",
+    "मेरा डैशबोर्ड खोलें →"
+  ],
+  "Explore without setup →": [
+    "Explorar sin configurar →",
+    "直接浏览 →",
+    "Mag-explore nang walang setup →",
+    "Khám phá không cần thiết lập →",
+    "استكشف دون إعداد ←",
+    "सेटअप के बिना देखें →"
+  ],
+  "California communities": [
+    "Comunidades de California",
+    "加州社区",
+    "Mga komunidad sa California",
+    "Các cộng đồng California",
+    "مجتمعات كاليفورنيا",
+    "कैलिफ़ोर्निया के समुदाय"
+  ],
+  "Public planning records": [
+    "Registros públicos de planificación",
+    "公共规划记录",
+    "Mga pampublikong rekord sa pagpaplano",
+    "Hồ sơ quy hoạch công khai",
+    "سجلات التخطيط العامة",
+    "सार्वजनिक नियोजन रिकॉर्ड"
+  ],
+  "Independently built to make local information and civic participation easier to access.": [
+    "Un proyecto independiente para facilitar el acceso a la información local y la participación cívica.",
+    "独立开发，让本地信息和公民参与更便捷。",
+    "Malayang binuo upang mas madaling ma-access ang lokal na impormasyon at pakikilahok sa komunidad.",
+    "Được xây dựng độc lập để giúp tiếp cận thông tin địa phương và tham gia cộng đồng dễ dàng hơn.",
+    "مشروع مستقل لتسهيل الوصول إلى المعلومات المحلية والمشاركة المدنية.",
+    "स्थानीय जानकारी और नागरिक भागीदारी को अधिक सुलभ बनाने के लिए स्वतंत्र रूप से बनाया गया।"
+  ],
+  "Watch the tour": [
+    "Ver el recorrido",
+    "观看导览",
+    "Panoorin ang paglilibot",
+    "Xem giới thiệu",
+    "شاهد الجولة",
+    "परिचय वीडियो देखें"
+  ],
+  "About the project": [
+    "Sobre el proyecto",
+    "关于本项目",
+    "Tungkol sa proyekto",
+    "Về dự án",
+    "عن المشروع",
+    "परियोजना के बारे में"
+  ],
+  "Local figures": [
+    "Cifras locales",
+    "本地数据",
+    "Lokal na datos",
+    "Số liệu địa phương",
+    "أرقام محلية",
+    "स्थानीय आँकड़े"
+  ],
+  "Local resources": [
+    "Recursos locales",
+    "本地资源",
+    "Mga lokal na sanggunian",
+    "Tài nguyên địa phương",
+    "موارد محلية",
+    "स्थानीय संसाधन"
+  ],
+  "Get the briefing": [
+    "Recibe el resumen",
+    "获取简报",
+    "Kunin ang buod",
+    "Nhận bản tóm tắt",
+    "احصل على الموجز",
+    "संक्षिप्त जानकारी पाएँ"
+  ],
+  "Sign up now": [
+    "Suscríbete",
+    "立即订阅",
+    "Mag-subscribe ngayon",
+    "Đăng ký ngay",
+    "اشترك الآن",
+    "अभी सदस्यता लें"
+  ],
+  "Your city": [
+    "Tu ciudad",
+    "你的城市",
+    "Iyong lungsod",
+    "Thành phố của bạn",
+    "مدينتك",
+    "आपका शहर"
+  ],
+  "Find a city": [
+    "Buscar una ciudad",
+    "查找城市",
+    "Maghanap ng lungsod",
+    "Tìm thành phố",
+    "ابحث عن مدينة",
+    "शहर खोजें"
+  ],
+  "County": [
+    "Condado",
+    "县",
+    "County",
+    "Quận",
+    "المقاطعة",
+    "काउंटी"
+  ],
+  "City": [
+    "Ciudad",
+    "城市",
+    "Lungsod",
+    "Thành phố",
+    "المدينة",
+    "शहर"
+  ],
+  "All cities": [
+    "Todas las ciudades",
+    "所有城市",
+    "Lahat ng lungsod",
+    "Tất cả thành phố",
+    "جميع المدن",
+    "सभी शहर"
+  ],
+  "All areas": [
+    "Todas las zonas",
+    "所有地区",
+    "Lahat ng lugar",
+    "Tất cả khu vực",
+    "جميع المناطق",
+    "सभी क्षेत्र"
+  ],
+  "All counties": [
+    "Todos los condados",
+    "所有县",
+    "Lahat ng county",
+    "Tất cả các quận",
+    "جميع المقاطعات",
+    "सभी काउंटियाँ"
+  ],
+  "Bay Area": [
+    "Área de la Bahía",
+    "旧金山湾区",
+    "Bay Area",
+    "Vùng Vịnh",
+    "منطقة الخليج",
+    "बे एरिया"
+  ],
+  "Central California": [
+    "California Central",
+    "加州中部",
+    "Gitnang California",
+    "Trung California",
+    "وسط كاليفورنيا",
+    "मध्य कैलिफ़ोर्निया"
+  ],
+  "Other California": [
+    "Otras zonas de California",
+    "加州其他地区",
+    "Iba pang lugar sa California",
+    "Các khu vực khác của California",
+    "مناطق أخرى في كاليفورنيا",
+    "कैलिफ़ोर्निया के अन्य क्षेत्र"
+  ],
+  "Projects": [
+    "Proyectos",
+    "项目",
+    "Mga proyekto",
+    "Dự án",
+    "المشاريع",
+    "परियोजनाएँ"
+  ],
+  "News": [
+    "Noticias",
+    "新闻",
+    "Balita",
+    "Tin tức",
+    "الأخبار",
+    "समाचार"
+  ],
+  "Meetings": [
+    "Reuniones",
+    "会议",
+    "Mga pulong",
+    "Cuộc họp",
+    "الاجتماعات",
+    "बैठकें"
+  ],
+  "Boards & commissions": [
+    "Juntas y comisiones",
+    "委员会",
+    "Mga lupon at komisyon",
+    "Hội đồng và ủy ban",
+    "المجالس واللجان",
+    "बोर्ड और आयोग"
+  ],
+  "Sources": [
+    "Fuentes",
+    "来源",
+    "Mga pinagmulan",
+    "Nguồn",
+    "المصادر",
+    "स्रोत"
+  ],
+  "Map": [
+    "Mapa",
+    "地图",
+    "Mapa",
+    "Bản đồ",
+    "الخريطة",
+    "नक्शा"
+  ],
+  "List": [
+    "Lista",
+    "列表",
+    "Listahan",
+    "Danh sách",
+    "القائمة",
+    "सूची"
+  ],
+  "Filters": [
+    "Filtros",
+    "筛选",
+    "Mga filter",
+    "Bộ lọc",
+    "عوامل التصفية",
+    "फ़िल्टर"
+  ],
+  "Clear filters": [
+    "Borrar filtros",
+    "清除筛选",
+    "Alisin ang mga filter",
+    "Xóa bộ lọc",
+    "مسح عوامل التصفية",
+    "फ़िल्टर हटाएँ"
+  ],
+  "Reset": [
+    "Restablecer",
+    "重置",
+    "I-reset",
+    "Đặt lại",
+    "إعادة ضبط",
+    "रीसेट करें"
+  ],
+  "All": [
+    "Todo",
+    "全部",
+    "Lahat",
+    "Tất cả",
+    "الكل",
+    "सभी"
+  ],
+  "Show": [
+    "Mostrar",
+    "显示",
+    "Ipakita",
+    "Hiển thị",
+    "عرض",
+    "दिखाएँ"
+  ],
+  "Sort by": [
+    "Ordenar por",
+    "排序方式",
+    "Ayusin ayon sa",
+    "Sắp xếp theo",
+    "ترتيب حسب",
+    "क्रम बदलें"
+  ],
+  "Category": [
+    "Categoría",
+    "类别",
+    "Kategorya",
+    "Danh mục",
+    "الفئة",
+    "श्रेणी"
+  ],
+  "Stage": [
+    "Etapa",
+    "阶段",
+    "Yugto",
+    "Giai đoạn",
+    "المرحلة",
+    "चरण"
+  ],
+  "Proposed": [
+    "Propuesto",
+    "已提出",
+    "Iminungkahi",
+    "Đề xuất",
+    "مقترح",
+    "प्रस्तावित"
+  ],
+  "Under review": [
+    "En revisión",
+    "审核中",
+    "Sinusuri",
+    "Đang xem xét",
+    "قيد المراجعة",
+    "समीक्षाधीन"
+  ],
+  "Approved": [
+    "Aprobado",
+    "已批准",
+    "Naaprubahan",
+    "Đã phê duyệt",
+    "معتمد",
+    "स्वीकृत"
+  ],
+  "Under construction": [
+    "En construcción",
+    "建设中",
+    "Itinatayo",
+    "Đang xây dựng",
+    "قيد الإنشاء",
+    "निर्माणाधीन"
+  ],
+  "Completed": [
+    "Finalizado",
+    "已完成",
+    "Natapos",
+    "Hoàn thành",
+    "مكتمل",
+    "पूर्ण"
+  ],
+  "Learn more": [
+    "Más información",
+    "了解更多",
+    "Alamin pa",
+    "Tìm hiểu thêm",
+    "اعرف المزيد",
+    "और जानें"
+  ],
+  "Locate on map ↗": [
+    "Ver en el mapa ↗",
+    "在地图上查看 ↗",
+    "Hanapin sa mapa ↗",
+    "Xem trên bản đồ ↗",
+    "اعرض على الخريطة ↗",
+    "नक्शे पर देखें ↗"
+  ],
+  "Location not verified": [
+    "Ubicación sin verificar",
+    "位置未核实",
+    "Hindi pa beripikado ang lokasyon",
+    "Vị trí chưa được xác minh",
+    "الموقع غير موثّق",
+    "स्थान सत्यापित नहीं है"
+  ],
+  "City record": [
+    "Registro municipal",
+    "市政府记录",
+    "Rekord ng lungsod",
+    "Hồ sơ thành phố",
+    "سجل المدينة",
+    "नगर रिकॉर्ड"
+  ],
+  "Close": [
+    "Cerrar",
+    "关闭",
+    "Isara",
+    "Đóng",
+    "إغلاق",
+    "बंद करें"
+  ],
+  "Back": [
+    "Volver",
+    "返回",
+    "Bumalik",
+    "Quay lại",
+    "رجوع",
+    "वापस"
+  ],
+  "Next": [
+    "Siguiente",
+    "下一页",
+    "Susunod",
+    "Tiếp theo",
+    "التالي",
+    "अगला"
+  ],
+  "Previous": [
+    "Anterior",
+    "上一页",
+    "Nakaraan",
+    "Trước",
+    "السابق",
+    "पिछला"
+  ],
+  "Save": [
+    "Guardar",
+    "保存",
+    "I-save",
+    "Lưu",
+    "حفظ",
+    "सहेजें"
+  ],
+  "Cancel": [
+    "Cancelar",
+    "取消",
+    "Kanselahin",
+    "Hủy",
+    "إلغاء",
+    "रद्द करें"
+  ],
+  "Edit": [
+    "Editar",
+    "编辑",
+    "I-edit",
+    "Chỉnh sửa",
+    "تعديل",
+    "बदलें"
+  ],
+  "Try again": [
+    "Volver a intentar",
+    "重试",
+    "Subukan muli",
+    "Thử lại",
+    "حاول مرة أخرى",
+    "फिर कोशिश करें"
+  ],
+  "Loading…": [
+    "Cargando…",
+    "加载中…",
+    "Naglo-load…",
+    "Đang tải…",
+    "جارٍ التحميل…",
+    "लोड हो रहा है…"
+  ],
+  "Swipe or use the arrows to explore.": [
+    "Desliza o usa las flechas para explorar.",
+    "滑动或使用箭头浏览。",
+    "Mag-swipe o gamitin ang mga arrow para mag-explore.",
+    "Vuốt hoặc dùng mũi tên để khám phá.",
+    "اسحب أو استخدم الأسهم للاستكشاف.",
+    "देखने के लिए स्वाइप करें या तीरों का उपयोग करें।"
+  ],
+  "No records in this view. Try All areas or another city.": [
+    "No hay registros en esta vista. Prueba Todas las zonas u otra ciudad.",
+    "当前视图没有记录。请选择所有地区或其他城市。",
+    "Walang rekord sa view na ito. Subukan ang Lahat ng lugar o ibang lungsod.",
+    "Không có hồ sơ trong chế độ xem này. Thử Tất cả khu vực hoặc thành phố khác.",
+    "لا توجد سجلات في هذا العرض. جرّب جميع المناطق أو مدينة أخرى.",
+    "इस दृश्य में कोई रिकॉर्ड नहीं है। सभी क्षेत्र या दूसरा शहर चुनें।"
+  ],
+  "What the record says": [
+    "Contenido del registro",
+    "记录内容",
+    "Nilalaman ng rekord",
+    "Nội dung hồ sơ",
+    "ما يذكره السجل",
+    "रिकॉर्ड में क्या है"
+  ],
+  "Latest record note": [
+    "Última nota del registro",
+    "最新记录备注",
+    "Pinakabagong tala",
+    "Ghi chú hồ sơ mới nhất",
+    "أحدث ملاحظة في السجل",
+    "नवीनतम रिकॉर्ड टिप्पणी"
+  ],
+  "Worth knowing": [
+    "Información útil",
+    "实用信息",
+    "Mahalagang malaman",
+    "Thông tin cần biết",
+    "معلومات مفيدة",
+    "जानने योग्य बातें"
+  ],
+  "Official sources": [
+    "Fuentes oficiales",
+    "官方来源",
+    "Mga opisyal na pinagmulan",
+    "Nguồn chính thức",
+    "المصادر الرسمية",
+    "आधिकारिक स्रोत"
+  ],
+  "Location": [
+    "Ubicación",
+    "位置",
+    "Lokasyon",
+    "Vị trí",
+    "الموقع",
+    "स्थान"
+  ],
+  "Zoning": [
+    "Zonificación",
+    "土地分区",
+    "Zoning",
+    "Phân khu",
+    "تقسيم المناطق",
+    "ज़ोनिंग"
+  ],
+  "Address": [
+    "Dirección",
+    "地址",
+    "Address",
+    "Địa chỉ",
+    "العنوان",
+    "पता"
+  ],
+  "Applicant": [
+    "Solicitante",
+    "申请人",
+    "Aplikante",
+    "Người nộp đơn",
+    "مقدم الطلب",
+    "आवेदक"
+  ],
+  "Filed": [
+    "Presentado",
+    "提交日期",
+    "Inihain",
+    "Ngày nộp",
+    "تاريخ التقديم",
+    "दाखिल"
+  ],
+  "File": [
+    "Expediente",
+    "档案",
+    "File",
+    "Hồ sơ",
+    "الملف",
+    "फ़ाइल"
+  ],
+  "Units": [
+    "Viviendas",
+    "住房套数",
+    "Mga yunit",
+    "Số căn",
+    "الوحدات",
+    "इकाइयाँ"
+  ],
+  "Affordable": [
+    "Asequible",
+    "可负担住房",
+    "Abot-kaya",
+    "Giá phải chăng",
+    "ميسور التكلفة",
+    "किफ़ायती"
+  ],
+  "Community": [
+    "Comunidad",
+    "社区",
+    "Komunidad",
+    "Cộng đồng",
+    "المجتمع",
+    "समुदाय"
+  ],
+  "Documents": [
+    "Documentos",
+    "文件",
+    "Mga dokumento",
+    "Tài liệu",
+    "الوثائق",
+    "दस्तावेज़"
+  ],
+  "Commissions": [
+    "Comisiones",
+    "委员会",
+    "Mga komisyon",
+    "Ủy ban",
+    "اللجان",
+    "आयोग"
+  ],
+  "Everything": [
+    "Todo",
+    "全部",
+    "Lahat",
+    "Tất cả",
+    "الكل",
+    "सब कुछ"
+  ],
+  "Load all project records": [
+    "Cargar todos los registros de proyectos",
+    "加载所有项目记录",
+    "I-load ang lahat ng rekord ng proyekto",
+    "Tải tất cả hồ sơ dự án",
+    "تحميل جميع سجلات المشاريع",
+    "सभी परियोजना रिकॉर्ड लोड करें"
+  ],
+  "Loading project records…": [
+    "Cargando registros de proyectos…",
+    "正在加载项目记录…",
+    "Nilo-load ang mga rekord ng proyekto…",
+    "Đang tải hồ sơ dự án…",
+    "جارٍ تحميل سجلات المشاريع…",
+    "परियोजना रिकॉर्ड लोड हो रहे हैं…"
+  ],
+  "Project records loaded.": [
+    "Registros de proyectos cargados.",
+    "项目记录已加载。",
+    "Na-load na ang mga rekord ng proyekto.",
+    "Đã tải hồ sơ dự án.",
+    "تم تحميل سجلات المشاريع.",
+    "परियोजना रिकॉर्ड लोड हो गए।"
+  ],
+  "Some project records could not load. Use the load button to retry.": [
+    "No se pudieron cargar algunos registros. Usa el botón de carga para reintentar.",
+    "部分项目记录未能加载。请使用加载按钮重试。",
+    "Hindi ma-load ang ilang rekord. Gamitin ang load button para subukan muli.",
+    "Không tải được một số hồ sơ. Dùng nút tải để thử lại.",
+    "تعذّر تحميل بعض السجلات. استخدم زر التحميل للمحاولة مجدداً.",
+    "कुछ रिकॉर्ड लोड नहीं हो सके। फिर कोशिश करने के लिए लोड बटन दबाएँ।"
+  ],
+  "Find boards and commissions in your area, their meeting schedules, and links to published agendas.": [
+    "Encuentra juntas y comisiones de tu zona, sus horarios de reunión y enlaces a las agendas publicadas.",
+    "查找本地委员会、会议时间及已公布议程的链接。",
+    "Hanapin ang mga lupon at komisyon sa iyong lugar, iskedyul ng pulong at mga link sa inilathalang agenda.",
+    "Tìm hội đồng và ủy ban trong khu vực, lịch họp và liên kết đến chương trình họp đã công bố.",
+    "اعثر على المجالس واللجان في منطقتك ومواعيد اجتماعاتها وروابط جداول الأعمال المنشورة.",
+    "अपने क्षेत्र के बोर्ड और आयोग, उनकी बैठक का समय और प्रकाशित कार्यसूची के लिंक खोजें।"
+  ],
+  "Upcoming meetings": [
+    "Próximas reuniones",
+    "即将举行的会议",
+    "Mga paparating na pulong",
+    "Cuộc họp sắp tới",
+    "الاجتماعات القادمة",
+    "आगामी बैठकें"
+  ],
+  "Meeting calendar": [
+    "Calendario de reuniones",
+    "会议日历",
+    "Kalendaryo ng mga pulong",
+    "Lịch họp",
+    "تقويم الاجتماعات",
+    "बैठक कैलेंडर"
+  ],
+  "Agenda": [
+    "Agenda",
+    "议程",
+    "Agenda",
+    "Chương trình họp",
+    "جدول الأعمال",
+    "कार्यसूची"
+  ],
+  "View agenda": [
+    "Ver agenda",
+    "查看议程",
+    "Tingnan ang agenda",
+    "Xem chương trình họp",
+    "عرض جدول الأعمال",
+    "कार्यसूची देखें"
+  ],
+  "Official website": [
+    "Sitio web oficial",
+    "官方网站",
+    "Opisyal na website",
+    "Trang web chính thức",
+    "الموقع الرسمي",
+    "आधिकारिक वेबसाइट"
+  ],
+  "Meeting summaries": [
+    "Resúmenes de reuniones",
+    "会议摘要",
+    "Mga buod ng pulong",
+    "Tóm tắt cuộc họp",
+    "ملخصات الاجتماعات",
+    "बैठकों के सारांश"
+  ],
+  "Select a meeting": [
+    "Selecciona una reunión",
+    "选择会议",
+    "Pumili ng pulong",
+    "Chọn cuộc họp",
+    "اختر اجتماعاً",
+    "बैठक चुनें"
+  ],
+  "Summarize": [
+    "Resumir",
+    "生成摘要",
+    "Ibuod",
+    "Tóm tắt",
+    "تلخيص",
+    "सारांश बनाएँ"
+  ],
+  "Ask": [
+    "Preguntar",
+    "提问",
+    "Magtanong",
+    "Hỏi",
+    "اسأل",
+    "पूछें"
+  ],
+  "Send": [
+    "Enviar",
+    "发送",
+    "Ipadala",
+    "Gửi",
+    "إرسال",
+    "भेजें"
+  ],
+  "Username": [
+    "Nombre de usuario",
+    "用户名",
+    "Username",
+    "Tên người dùng",
+    "اسم المستخدم",
+    "उपयोगकर्ता नाम"
+  ],
+  "Password": [
+    "Contraseña",
+    "密码",
+    "Password",
+    "Mật khẩu",
+    "كلمة المرور",
+    "पासवर्ड"
+  ],
+  "Email": [
+    "Correo electrónico",
+    "电子邮箱",
+    "Email",
+    "Email",
+    "البريد الإلكتروني",
+    "ईमेल"
+  ],
+  "Sign in": [
+    "Iniciar sesión",
+    "登录",
+    "Mag-sign in",
+    "Đăng nhập",
+    "تسجيل الدخول",
+    "साइन इन करें"
+  ],
+  "Sign out": [
+    "Cerrar sesión",
+    "退出登录",
+    "Mag-sign out",
+    "Đăng xuất",
+    "تسجيل الخروج",
+    "साइन आउट करें"
+  ],
+  "Create account": [
+    "Crear cuenta",
+    "创建账户",
+    "Gumawa ng account",
+    "Tạo tài khoản",
+    "إنشاء حساب",
+    "खाता बनाएँ"
+  ],
+  "Save changes": [
+    "Guardar cambios",
+    "保存更改",
+    "I-save ang mga pagbabago",
+    "Lưu thay đổi",
+    "حفظ التغييرات",
+    "बदलाव सहेजें"
+  ],
+  "Your interests": [
+    "Tus intereses",
+    "你的兴趣",
+    "Mga interes mo",
+    "Mối quan tâm của bạn",
+    "اهتماماتك",
+    "आपकी रुचियाँ"
+  ],
+  "Change my city & interests": [
+    "Cambiar mi ciudad e intereses",
+    "更改城市和兴趣",
+    "Palitan ang lungsod at mga interes ko",
+    "Đổi thành phố và mối quan tâm",
+    "تغيير مدينتي واهتماماتي",
+    "मेरा शहर और रुचियाँ बदलें"
+  ],
+  "Recent issues": [
+    "Ediciones recientes",
+    "近期通讯",
+    "Mga pinakabagong isyu",
+    "Các số gần đây",
+    "الأعداد الأخيرة",
+    "हाल के अंक"
+  ],
+  "All issues": [
+    "Todas las ediciones",
+    "所有通讯",
+    "Lahat ng isyu",
+    "Tất cả các số",
+    "جميع الأعداد",
+    "सभी अंक"
+  ],
+  "Future housing map": [
+    "Mapa de vivienda futura",
+    "未来住房地图",
+    "Mapa ng pabahay sa hinaharap",
+    "Bản đồ nhà ở tương lai",
+    "خريطة الإسكان المستقبلي",
+    "भविष्य के आवास का नक्शा"
+  ],
+  "Outlook": [
+    "Perspectiva",
+    "展望",
+    "Pananaw",
+    "Triển vọng",
+    "التوقعات",
+    "परिदृश्य"
+  ],
+  "Scenario": [
+    "Escenario",
+    "情景",
+    "Senaryo",
+    "Kịch bản",
+    "السيناريو",
+    "परिदृश्य"
+  ],
+  "Reference": [
+    "Referencia",
+    "参考",
+    "Batayan",
+    "Tham chiếu",
+    "المرجع",
+    "संदर्भ"
+  ],
+  "Change": [
+    "Cambio",
+    "变化",
+    "Pagbabago",
+    "Thay đổi",
+    "التغيير",
+    "बदलाव"
+  ],
+  "Find a project": [
+    "Buscar un proyecto",
+    "查找项目",
+    "Maghanap ng proyekto",
+    "Tìm dự án",
+    "ابحث عن مشروع",
+    "परियोजना खोजें"
+  ],
+  "Address or city…": [
+    "Dirección o ciudad…",
+    "地址或城市…",
+    "Address o lungsod…",
+    "Địa chỉ hoặc thành phố…",
+    "عنوان أو مدينة…",
+    "पता या शहर…"
+  ],
+  "Show more projects": [
+    "Mostrar más proyectos",
+    "显示更多项目",
+    "Ipakita ang iba pang proyekto",
+    "Hiển thị thêm dự án",
+    "عرض المزيد من المشاريع",
+    "और परियोजनाएँ दिखाएँ"
+  ],
+  "Reported units": [
+    "Viviendas declaradas",
+    "已报告套数",
+    "Naiulat na mga yunit",
+    "Số căn được báo cáo",
+    "الوحدات المبلغ عنها",
+    "दर्ज इकाइयाँ"
+  ],
+  "Estimated delivery": [
+    "Entrega estimada",
+    "预计交付",
+    "Tinatayang pagkumpleto",
+    "Dự kiến hoàn thành",
+    "التسليم المتوقع",
+    "अनुमानित पूर्णता"
+  ],
+  "Record quality": [
+    "Calidad del registro",
+    "记录质量",
+    "Kalidad ng rekord",
+    "Chất lượng hồ sơ",
+    "جودة السجل",
+    "रिकॉर्ड की गुणवत्ता"
+  ],
+  "Population": [
+    "Población",
+    "人口",
+    "Populasyon",
+    "Dân số",
+    "عدد السكان",
+    "जनसंख्या"
+  ],
+  "Median household income": [
+    "Ingreso mediano del hogar",
+    "家庭收入中位数",
+    "Median na kita ng sambahayan",
+    "Thu nhập trung vị hộ gia đình",
+    "وسيط دخل الأسرة",
+    "परिवार की माध्यिका आय"
+  ],
+  "Median home value": [
+    "Valor mediano de la vivienda",
+    "房价中位数",
+    "Median na halaga ng bahay",
+    "Giá trị nhà trung vị",
+    "وسيط قيمة المنزل",
+    "घर का माध्यिका मूल्य"
+  ],
+  "Median rent": [
+    "Alquiler mediano",
+    "租金中位数",
+    "Median na upa",
+    "Tiền thuê trung vị",
+    "وسيط الإيجار",
+    "माध्यिका किराया"
+  ],
+  "Housing units": [
+    "Viviendas",
+    "住房套数",
+    "Mga yunit ng pabahay",
+    "Số căn nhà",
+    "الوحدات السكنية",
+    "आवास इकाइयाँ"
+  ],
+  "Homeowners": [
+    "Propietarios",
+    "房主",
+    "Mga may-ari ng bahay",
+    "Chủ nhà",
+    "مالكو المنازل",
+    "घर के मालिक"
+  ],
+  "Renters": [
+    "Inquilinos",
+    "租户",
+    "Mga umuupa",
+    "Người thuê nhà",
+    "المستأجرون",
+    "किरायेदार"
+  ],
+  "Loading language…": [
+    "Cargando idioma…",
+    "正在加载语言…",
+    "Nilo-load ang wika…",
+    "Đang tải ngôn ngữ…",
+    "جارٍ تحميل اللغة…",
+    "भाषा लोड हो रही है…"
+  ],
+  "Language could not load. Please try again.": [
+    "No se pudo cargar el idioma. Inténtalo de nuevo.",
+    "语言未能加载，请重试。",
+    "Hindi ma-load ang wika. Pakisubukang muli.",
+    "Không tải được ngôn ngữ. Vui lòng thử lại.",
+    "تعذّر تحميل اللغة. يرجى المحاولة مجدداً.",
+    "भाषा लोड नहीं हो सकी। फिर कोशिश करें।"
+  ],
+  "Follow housing developments, transportation projects, and community news across": [
+    "Sigue proyectos de vivienda y transporte y noticias comunitarias en",
+    "关注住房开发、交通项目和社区新闻，覆盖",
+    "Subaybayan ang mga proyekto sa pabahay at transportasyon at balita ng komunidad sa",
+    "Theo dõi dự án nhà ở, giao thông và tin cộng đồng tại",
+    "تابع مشاريع الإسكان والنقل وأخبار المجتمع في",
+    "आवास विकास, परिवहन परियोजनाओं और सामुदायिक समाचारों की जानकारी पाएँ,"
+  ],
+  "cities and towns. Find city meetings, boards, and ways to take part.": [
+    "ciudades y pueblos. Encuentra reuniones, juntas municipales y formas de participar.",
+    "个城市和城镇。查找市政会议、委员会及参与方式。",
+    "mga lungsod at bayan. Maghanap ng mga pulong, lupon at paraan para makilahok.",
+    "thành phố và thị trấn. Tìm cuộc họp, hội đồng và cách tham gia.",
+    "مدينة وبلدة. اعثر على اجتماعات المدينة ومجالسها وطرق المشاركة.",
+    "शहरों और कस्बों में। नगर बैठकें, बोर्ड और भाग लेने के तरीके खोजें।"
+  ],
+  "No area selected? Explore starts in Santa Clara County, and we will pick a name for you. You can change it whenever you like.": [
+    "¿No has elegido una zona? Empezarás en el condado de Santa Clara y elegiremos un nombre para ti. Puedes cambiarlo cuando quieras.",
+    "还未选择地区？浏览将从圣克拉拉县开始，我们会为你选择一个名称。你可以随时更改。",
+    "Wala pang napiling lugar? Magsisimula sa Santa Clara County at pipili kami ng pangalan para sa iyo. Maaari mo itong palitan anumang oras.",
+    "Chưa chọn khu vực? Bạn sẽ bắt đầu ở Quận Santa Clara và được đặt tên tự động. Bạn có thể đổi tên bất cứ lúc nào.",
+    "لم تختر منطقة؟ يبدأ الاستكشاف في مقاطعة سانتا كلارا، وسنختار لك اسماً يمكنك تغييره متى شئت.",
+    "क्षेत्र नहीं चुना? शुरुआत सांता क्लारा काउंटी से होगी और हम आपके लिए नाम चुन देंगे। आप इसे कभी भी बदल सकते हैं।"
+  ],
+  "Your username and choices stay on this device, no signup needed. For access across devices and email updates,": [
+    "Tu nombre y preferencias se guardan en este dispositivo, sin registro. Para acceder desde otros dispositivos y recibir novedades por correo,",
+    "你的用户名和选择保存在此设备上，无需注册。若要跨设备访问并接收邮件更新，请",
+    "Mananatili sa device na ito ang username at mga pinili mo, nang walang signup. Para sa access sa ibang device at mga update sa email,",
+    "Tên người dùng và lựa chọn được lưu trên thiết bị này, không cần đăng ký. Để dùng trên nhiều thiết bị và nhận cập nhật qua email,",
+    "يبقى اسم المستخدم واختياراتك على هذا الجهاز دون تسجيل. للوصول من أجهزة أخرى وتلقي تحديثات البريد الإلكتروني،",
+    "आपका उपयोगकर्ता नाम और पसंद इस डिवाइस पर रहते हैं, साइनअप की ज़रूरत नहीं है। दूसरे डिवाइस से उपयोग और ईमेल अपडेट के लिए,"
+  ],
+  "e.g. a street name, cross streets, or neighborhood…": [
+    "p. ej., una calle, un cruce o un barrio…",
+    "例如街道名、交叉路口或社区…",
+    "hal. pangalan ng kalye, sangandaan o lugar…",
+    "ví dụ: tên đường, giao lộ hoặc khu phố…",
+    "مثلاً اسم شارع أو تقاطع أو حي…",
+    "जैसे सड़क का नाम, चौराहा या मोहल्ला…"
+  ],
+  "Which city's projects do you want to track?": [
+    "¿Qué ciudad quieres seguir?",
+    "你想关注哪个城市的项目？",
+    "Aling lungsod ang gusto mong subaybayan?",
+    "Bạn muốn theo dõi dự án của thành phố nào?",
+    "مشاريع أي مدينة تريد متابعتها؟",
+    "आप किस शहर की परियोजनाएँ देखना चाहते हैं?"
+  ],
+  "Search cities…": [
+    "Buscar ciudades…",
+    "搜索城市…",
+    "Maghanap ng lungsod…",
+    "Tìm thành phố…",
+    "ابحث عن المدن…",
+    "शहर खोजें…"
+  ],
+  "Change your city": [
+    "Cambiar ciudad",
+    "更改城市",
+    "Palitan ang lungsod",
+    "Đổi thành phố",
+    "تغيير مدينتك",
+    "अपना शहर बदलें"
+  ],
+  "Planning Commission": [
+    "Comisión de Planificación",
+    "规划委员会",
+    "Komisyon sa Pagpaplano",
+    "Ủy ban Quy hoạch",
+    "لجنة التخطيط",
+    "नियोजन आयोग"
+  ],
+  "City Council": [
+    "Concejo Municipal",
+    "市议会",
+    "Konseho ng Lungsod",
+    "Hội đồng Thành phố",
+    "مجلس المدينة",
+    "नगर परिषद"
+  ],
+  "Mayor & City Council": [
+    "Alcaldía y Concejo Municipal",
+    "市长和市议会",
+    "Alkalde at Konseho ng Lungsod",
+    "Thị trưởng và Hội đồng Thành phố",
+    "العمدة ومجلس المدينة",
+    "महापौर और नगर परिषद"
+  ],
+  "Board": [
+    "Junta",
+    "委员会",
+    "Lupon",
+    "Hội đồng",
+    "المجلس",
+    "बोर्ड"
+  ],
+  "Join": [
+    "Participar",
+    "参与",
+    "Sumali",
+    "Tham gia",
+    "انضم",
+    "जुड़ें"
+  ],
+  "Link": [
+    "Enlace",
+    "链接",
+    "Link",
+    "Liên kết",
+    "رابط",
+    "लिंक"
+  ],
+  "Official source": [
+    "Fuente oficial",
+    "官方来源",
+    "Opisyal na pinagmulan",
+    "Nguồn chính thức",
+    "مصدر رسمي",
+    "आधिकारिक स्रोत"
+  ],
+  "Official planning records": [
+    "Registros oficiales de planificación",
+    "官方规划记录",
+    "Mga opisyal na rekord sa pagpaplano",
+    "Hồ sơ quy hoạch chính thức",
+    "سجلات التخطيط الرسمية",
+    "आधिकारिक नियोजन रिकॉर्ड"
+  ],
+  "Meetings and agendas": [
+    "Reuniones y agendas",
+    "会议和议程",
+    "Mga pulong at agenda",
+    "Cuộc họp và chương trình họp",
+    "الاجتماعات وجداول الأعمال",
+    "बैठकें और कार्यसूचियाँ"
+  ],
+  "Decides land use here": [
+    "Decide el uso del suelo aquí",
+    "决定本地土地用途",
+    "Nagpapasya sa paggamit ng lupa rito",
+    "Quyết định việc sử dụng đất tại đây",
+    "يقرر استخدام الأراضي هنا",
+    "यहाँ भूमि उपयोग तय करता है"
+  ],
+  "A plain-English recap of what's being built, what's changing, and which meetings decide it. One published newsletter per month.": [
+    "Un resumen en inglés sencillo de las obras, los cambios y las reuniones que los deciden. Un boletín al mes.",
+    "以简明英语介绍建设项目、社区变化及相关决策会议。每月一期。",
+    "Buod sa simpleng Ingles ng mga itinatayo, pagbabago at pulong na nagpapasya tungkol dito. Isang newsletter bawat buwan.",
+    "Bản tóm tắt bằng tiếng Anh dễ hiểu về công trình, thay đổi và các cuộc họp quyết định. Mỗi tháng một bản tin.",
+    "ملخص بلغة إنجليزية مبسطة لما يُبنى وما يتغير والاجتماعات التي تقرره. نشرة واحدة كل شهر.",
+    "निर्माण, बदलाव और उनसे जुड़ी निर्णय लेने वाली बैठकों का सरल अंग्रेज़ी में सारांश। हर महीने एक समाचार पत्र।"
+  ],
+  "Search projects, news, boards, official documents and statistics across covered California communities. Project previews load first. Choose a city to load its full register, or load all project records below.": [
+    "Busca proyectos, noticias, juntas, documentos oficiales y estadísticas de las comunidades cubiertas de California. Primero se cargan vistas previas. Elige una ciudad para cargar su registro completo o carga todos los registros abajo.",
+    "搜索覆盖范围内加州社区的项目、新闻、委员会、官方文件和统计。首先加载项目预览。选择城市可加载完整记录，或在下方加载所有项目记录。",
+    "Maghanap ng mga proyekto, balita, lupon, opisyal na dokumento at estadistika sa mga sakop na komunidad sa California. Mga preview muna ang nilo-load. Pumili ng lungsod para sa buong rehistro, o i-load ang lahat ng rekord sa ibaba.",
+    "Tìm dự án, tin tức, hội đồng, tài liệu chính thức và thống kê tại các cộng đồng California được hỗ trợ. Bản xem trước được tải trước. Chọn thành phố để tải toàn bộ hồ sơ hoặc tải tất cả bên dưới.",
+    "ابحث في المشاريع والأخبار والمجالس والوثائق الرسمية والإحصاءات للمجتمعات المشمولة في كاليفورنيا. تُحمّل المعاينات أولاً. اختر مدينة لتحميل سجلها الكامل أو حمّل جميع السجلات أدناه.",
+    "कवर किए गए कैलिफ़ोर्निया समुदायों की परियोजनाएँ, समाचार, बोर्ड, आधिकारिक दस्तावेज़ और आँकड़े खोजें। पहले पूर्वावलोकन लोड होते हैं। पूरा रजिस्टर लोड करने के लिए शहर चुनें या नीचे सभी रिकॉर्ड लोड करें।"
+  ],
+  "Search anything: an address, a commission, “builder’s remedy”, “housing element”, a street name…": [
+    "Busca una dirección, una comisión, «builder’s remedy», «housing element», una calle…",
+    "搜索地址、委员会、“builder’s remedy”、“housing element”、街道名…",
+    "Maghanap ng address, komisyon, “builder’s remedy”, “housing element”, pangalan ng kalye…",
+    "Tìm địa chỉ, ủy ban, “builder’s remedy”, “housing element”, tên đường…",
+    "ابحث عن عنوان أو لجنة أو «builder’s remedy» أو «housing element» أو اسم شارع…",
+    "पता, आयोग, “builder’s remedy”, “housing element”, सड़क का नाम खोजें…"
+  ],
+  "Search the resource bank": [
+    "Buscar en el banco de recursos",
+    "搜索资源库",
+    "Maghanap sa mga sanggunian",
+    "Tìm trong kho tài nguyên",
+    "ابحث في مكتبة الموارد",
+    "संसाधन संग्रह में खोजें"
+  ],
+  "Population & households": [
+    "Población y hogares",
+    "人口和家庭",
+    "Populasyon at mga sambahayan",
+    "Dân số và hộ gia đình",
+    "السكان والأسر",
+    "जनसंख्या और परिवार"
+  ],
+  "Sources & methodology": [
+    "Fuentes y metodología",
+    "来源和方法",
+    "Mga pinagmulan at pamamaraan",
+    "Nguồn và phương pháp",
+    "المصادر والمنهجية",
+    "स्रोत और पद्धति"
+  ],
+  "Close video": [
+    "Cerrar video",
+    "关闭视频",
+    "Isara ang video",
+    "Đóng video",
+    "إغلاق الفيديو",
+    "वीडियो बंद करें"
+  ],
+  "Close project details": [
+    "Cerrar detalles del proyecto",
+    "关闭项目详情",
+    "Isara ang detalye ng proyekto",
+    "Đóng chi tiết dự án",
+    "إغلاق تفاصيل المشروع",
+    "परियोजना विवरण बंद करें"
+  ],
+  "THE CALIFORNIA CIVIC DASHBOARD · WELCOME": [
+    "THE CALIFORNIA CIVIC DASHBOARD · BIENVENIDA",
+    "加州公民信息平台 · 欢迎",
+    "THE CALIFORNIA CIVIC DASHBOARD · MALIGAYANG PAGDATING",
+    "THE CALIFORNIA CIVIC DASHBOARD · CHÀO MỪNG",
+    "لوحة المعلومات المدنية لكاليفورنيا · مرحباً",
+    "कैलिफ़ोर्निया सिविक डैशबोर्ड · स्वागत है"
+  ],
+  "Search for a city": [
+    "Busca una ciudad",
+    "搜索城市",
+    "Maghanap ng lungsod",
+    "Tìm thành phố",
+    "ابحث عن مدينة",
+    "शहर खोजें"
+  ],
+  "Housing developments": [
+    "Proyectos de vivienda",
+    "住房开发",
+    "Mga proyekto sa pabahay",
+    "Dự án nhà ở",
+    "مشاريع الإسكان",
+    "आवास विकास"
+  ],
+  "Transportation & infrastructure": [
+    "Transporte e infraestructura",
+    "交通和基础设施",
+    "Transportasyon at imprastraktura",
+    "Giao thông và cơ sở hạ tầng",
+    "النقل والبنية التحتية",
+    "परिवहन और बुनियादी ढाँचा"
+  ],
+  "Commercial & industrial": [
+    "Comercio e industria",
+    "商业和工业",
+    "Komersyal at industriyal",
+    "Thương mại và công nghiệp",
+    "التجارة والصناعة",
+    "वाणिज्य और उद्योग"
+  ],
+  "Civic & public facilities": [
+    "Instalaciones cívicas y públicas",
+    "市政和公共设施",
+    "Mga pasilidad na sibiko at pampubliko",
+    "Cơ sở dân sự và công cộng",
+    "المرافق المدنية والعامة",
+    "नागरिक और सार्वजनिक सुविधाएँ"
+  ],
+  "Meetings & how to get involved": [
+    "Reuniones y cómo participar",
+    "会议和参与方式",
+    "Mga pulong at paraan ng pakikilahok",
+    "Cuộc họp và cách tham gia",
+    "الاجتماعات وكيفية المشاركة",
+    "बैठकें और भाग लेने के तरीके"
+  ],
+  "We'll match a typed address to the nearest known projects - for a precise pin, \"use my current location\" instead.": [
+    "Relacionaremos la dirección que escribas con los proyectos conocidos más cercanos. Para un punto preciso, elige «Usar mi ubicación actual».",
+    "我们会将输入的地址与最近的已知项目匹配。如需精确位置，请选择“使用我的当前位置”。",
+    "Itutugma namin ang address sa pinakamalapit na kilalang mga proyekto. Para sa eksaktong pin, piliin ang “Gamitin ang kasalukuyan kong lokasyon”.",
+    "Chúng tôi sẽ ghép địa chỉ bạn nhập với các dự án gần nhất. Để ghim chính xác, chọn “Dùng vị trí hiện tại của tôi”.",
+    "سنطابق العنوان المدخل مع أقرب المشاريع المعروفة. لتحديد الموقع بدقة، اختر «استخدم موقعي الحالي».",
+    "हम दर्ज पते के सबसे पास की ज्ञात परियोजनाएँ दिखाएँगे। सटीक स्थान के लिए “मेरी वर्तमान स्थिति का उपयोग करें” चुनें।"
+  ],
+  "Selected: {city}": [
+    "Selección: {city}",
+    "已选择：{city}",
+    "Napili: {city}",
+    "Đã chọn: {city}",
+    "المحدد: {city}",
+    "चुना गया: {city}"
+  ],
+  "Ready to explore {city}. Your choices are remembered on this device.": [
+    "Todo listo para explorar {city}. Tus preferencias se guardan en este dispositivo.",
+    "可以开始浏览 {city}。你的选择会保存在此设备上。",
+    "Handa nang tuklasin ang {city}. Naka-save ang mga pinili mo sa device na ito.",
+    "Sẵn sàng khám phá {city}. Lựa chọn được lưu trên thiết bị này.",
+    "جاهز لاستكشاف {city}. تُحفظ اختياراتك على هذا الجهاز.",
+    "{city} देखने के लिए तैयार हैं। आपकी पसंद इस डिवाइस पर सहेजी जाती है।"
+  ],
+  "Load {city} project records": [
+    "Cargar registros de proyectos de {city}",
+    "加载 {city} 的项目记录",
+    "I-load ang mga rekord ng proyekto sa {city}",
+    "Tải hồ sơ dự án của {city}",
+    "تحميل سجلات مشاريع {city}",
+    "{city} के परियोजना रिकॉर्ड लोड करें"
+  ],
+  "{count} loaded records indexed": [
+    "{count} registros cargados e indexados",
+    "已索引 {count} 条加载的记录",
+    "{count} na na-load na rekord ang na-index",
+    "Đã lập chỉ mục {count} hồ sơ",
+    "تمت فهرسة {count} سجلاً محمّلاً",
+    "{count} लोड किए गए रिकॉर्ड सूचीबद्ध हैं"
+  ],
+  "DASHBOARD": [
+    "Panel",
+    "概览",
+    "Dashboard",
+    "Bảng điều khiển",
+    "لوحة المعلومات",
+    "डैशबोर्ड"
+  ],
+  "OVERVIEW": [
+    "Vista general",
+    "概览",
+    "Pangkalahatang-ideya",
+    "Tổng quan",
+    "نظرة عامة",
+    "अवलोकन"
+  ],
+  "YOUR AREA": [
+    "Tu zona",
+    "你的地区",
+    "Iyong Lugar",
+    "Khu vực của bạn",
+    "منطقتك",
+    "आपका क्षेत्र"
+  ],
+  "Your area": [
+    "Tu zona",
+    "你的地区",
+    "Iyong Lugar",
+    "Khu vực của bạn",
+    "منطقتك",
+    "आपका क्षेत्र"
+  ],
+  "GET INVOLVED": [
+    "Participa",
+    "参与社区",
+    "Makilahok",
+    "Tham gia",
+    "شارك",
+    "भाग लें"
+  ],
+  "Get involved": [
+    "Participa",
+    "参与社区",
+    "Makilahok",
+    "Tham gia",
+    "شارك",
+    "भाग लें"
+  ],
+  "SUMMARIZE MEETINGS": [
+    "Resumir reuniones",
+    "会议摘要",
+    "Buod ng mga Pulong",
+    "Tóm tắt cuộc họp",
+    "تلخيص الاجتماعات",
+    "बैठकों का सारांश"
+  ],
+  "Summarize meetings": [
+    "Resumir reuniones",
+    "会议摘要",
+    "Buod ng mga Pulong",
+    "Tóm tắt cuộc họp",
+    "تلخيص الاجتماعات",
+    "बैठकों का सारांश"
+  ],
+  "HOUSING": [
+    "Vivienda",
+    "住房",
+    "Pabahay",
+    "Nhà ở",
+    "الإسكان",
+    "आवास"
+  ],
+  "DEVELOPMENTS": [
+    "Proyectos urbanos",
+    "开发项目",
+    "Mga Proyekto",
+    "Dự án phát triển",
+    "مشاريع التطوير",
+    "विकास परियोजनाएँ"
+  ],
+  "TRANSPORTATION": [
+    "Transporte",
+    "交通",
+    "Transportasyon",
+    "Giao thông",
+    "النقل",
+    "परिवहन"
+  ],
+  "STATISTICS": [
+    "Estadísticas",
+    "统计",
+    "Estadistika",
+    "Thống kê",
+    "الإحصاءات",
+    "आँकड़े"
+  ],
+  "FUTURE MAP": [
+    "Mapa de escenarios",
+    "未来情景地图",
+    "Mapa ng Hinaharap",
+    "Bản đồ tương lai",
+    "خريطة المستقبل",
+    "भविष्य का नक्शा"
+  ],
+  "Future map": [
+    "Mapa de escenarios",
+    "未来情景地图",
+    "Mapa ng Hinaharap",
+    "Bản đồ tương lai",
+    "خريطة المستقبل",
+    "भविष्य का नक्शा"
+  ],
+  "NEWSLETTER": [
+    "Boletín",
+    "通讯",
+    "Newsletter",
+    "Bản tin",
+    "النشرة الإخبارية",
+    "समाचार पत्र"
+  ],
+  "ASK A QUESTION": [
+    "Haz una pregunta",
+    "提问",
+    "Magtanong",
+    "Đặt câu hỏi",
+    "اطرح سؤالاً",
+    "सवाल पूछें"
+  ],
+  "Ask a question": [
+    "Haz una pregunta",
+    "提问",
+    "Magtanong",
+    "Đặt câu hỏi",
+    "اطرح سؤالاً",
+    "सवाल पूछें"
+  ],
+  "TIMELINE": [
+    "Cronología",
+    "时间线",
+    "Timeline",
+    "Dòng thời gian",
+    "التسلسل الزمني",
+    "समयरेखा"
+  ],
+  "NEWSLETTER ARCHIVE": [
+    "Archivo de boletines",
+    "通讯存档",
+    "Mga Nakaraang Newsletter",
+    "Kho bản tin",
+    "أرشيف النشرات",
+    "समाचार पत्र संग्रह"
+  ],
+  "Newsletter archive": [
+    "Archivo de boletines",
+    "通讯存档",
+    "Mga Nakaraang Newsletter",
+    "Kho bản tin",
+    "أرشيف النشرات",
+    "समाचार पत्र संग्रह"
+  ],
+  "RESOURCE BANK": [
+    "Banco de recursos",
+    "资源库",
+    "Mga Sanggunian",
+    "Kho tài nguyên",
+    "مكتبة الموارد",
+    "संसाधन संग्रह"
+  ],
+  "Resource bank": [
+    "Banco de recursos",
+    "资源库",
+    "Mga Sanggunian",
+    "Kho tài nguyên",
+    "مكتبة الموارد",
+    "संसाधन संग्रह"
+  ],
+  "YOUR ACCOUNT": [
+    "Tu cuenta",
+    "你的账户",
+    "Iyong Account",
+    "Tài khoản của bạn",
+    "حسابك",
+    "आपका खाता"
+  ],
+  "Your account": [
+    "Tu cuenta",
+    "你的账户",
+    "Iyong Account",
+    "Tài khoản của bạn",
+    "حسابك",
+    "आपका खाता"
+  ],
+  "ABOUT": [
+    "Acerca del sitio",
+    "关于本站",
+    "Tungkol sa Site",
+    "Giới thiệu",
+    "حول الموقع",
+    "परिचय"
+  ],
+  "SEARCH": [
+    "Buscar",
+    "搜索",
+    "Maghanap",
+    "Tìm kiếm",
+    "بحث",
+    "खोजें"
+  ],
+  "LANGUAGE": [
+    "Idioma",
+    "语言",
+    "Wika",
+    "Ngôn ngữ",
+    "اللغة",
+    "भाषा"
+  ],
+  "EMAIL RECAPS": [
+    "Resúmenes por correo",
+    "邮件摘要",
+    "Mga Buod sa Email",
+    "Tóm tắt qua email",
+    "ملخصات البريد الإلكتروني",
+    "ईमेल सारांश"
+  ],
+  "SIGN UP FOR EMAIL RECAPS": [
+    "Recibe resúmenes por correo",
+    "订阅邮件摘要",
+    "Mag-subscribe sa mga buod sa email",
+    "Đăng ký nhận tóm tắt qua email",
+    "اشترك في ملخصات البريد الإلكتروني",
+    "ईमेल सारांश के लिए सदस्यता लें"
+  ],
+  "READ THIS MONTH'S NEWSLETTER": [
+    "Lee el boletín de este mes",
+    "阅读本月通讯",
+    "Basahin ang newsletter ngayong buwan",
+    "Đọc bản tin tháng này",
+    "اقرأ نشرة هذا الشهر",
+    "इस महीने का समाचार पत्र पढ़ें"
+  ],
+  "SKIP TO MAIN CONTENT": [
+    "Ir al contenido principal",
+    "跳至主要内容",
+    "Lumaktaw sa pangunahing nilalaman",
+    "Chuyển đến nội dung chính",
+    "انتقل إلى المحتوى الرئيسي",
+    "मुख्य सामग्री पर जाएँ"
+  ],
+  "OPEN MENU": [
+    "Abrir menú",
+    "打开菜单",
+    "Buksan ang menu",
+    "Mở trình đơn",
+    "افتح القائمة",
+    "मेनू खोलें"
+  ],
+  "CLOSE MENU": [
+    "Cerrar menú",
+    "关闭菜单",
+    "Isara ang menu",
+    "Đóng trình đơn",
+    "أغلق القائمة",
+    "मेनू बंद करें"
+  ],
+  "MAIN SECTIONS": [
+    "Secciones principales",
+    "主要栏目",
+    "Mga Pangunahing Seksyon",
+    "Các mục chính",
+    "الأقسام الرئيسية",
+    "मुख्य अनुभाग"
+  ],
+  "DASHBOARD SECTIONS": [
+    "Secciones del panel",
+    "概览栏目",
+    "Mga Seksyon ng Dashboard",
+    "Các mục của bảng điều khiển",
+    "أقسام لوحة المعلومات",
+    "डैशबोर्ड अनुभाग"
+  ],
+  "MENUS AND COMMON CONTROLS ARE TRANSLATED. PROJECT RECORDS, NEWS, MEETING DOCUMENTS AND SOME DESCRIPTIONS REMAIN IN THEIR ORIGINAL LANGUAGE.": [
+    "Los menús y controles habituales están traducidos. Los registros de proyectos, las noticias, los documentos de reuniones y algunas descripciones conservan su idioma original.",
+    "菜单和常用控件已翻译。项目记录、新闻、会议文件和部分说明保留原文。",
+    "Isinalin ang mga menu at karaniwang kontrol. Nananatili sa orihinal na wika ang mga rekord ng proyekto, balita, dokumento ng pulong at ilang paglalarawan.",
+    "Trình đơn và các nút điều khiển thông dụng đã được dịch. Hồ sơ dự án, tin tức, tài liệu họp và một số mô tả vẫn giữ nguyên ngôn ngữ gốc.",
+    "تمت ترجمة القوائم وعناصر التحكم الشائعة. تبقى سجلات المشاريع والأخبار ووثائق الاجتماعات وبعض الأوصاف بلغتها الأصلية.",
+    "मेनू और सामान्य नियंत्रणों का अनुवाद किया गया है। परियोजना रिकॉर्ड, समाचार, बैठक दस्तावेज़ और कुछ विवरण अपनी मूल भाषा में हैं।"
+  ],
+  "Menus and common controls are translated. project records, news, meeting documents and some descriptions remain in their original language.": [
+    "Los menús y controles habituales están traducidos. Los registros de proyectos, las noticias, los documentos de reuniones y algunas descripciones conservan su idioma original.",
+    "菜单和常用控件已翻译。项目记录、新闻、会议文件和部分说明保留原文。",
+    "Isinalin ang mga menu at karaniwang kontrol. Nananatili sa orihinal na wika ang mga rekord ng proyekto, balita, dokumento ng pulong at ilang paglalarawan.",
+    "Trình đơn và các nút điều khiển thông dụng đã được dịch. Hồ sơ dự án, tin tức, tài liệu họp và một số mô tả vẫn giữ nguyên ngôn ngữ gốc.",
+    "تمت ترجمة القوائم وعناصر التحكم الشائعة. تبقى سجلات المشاريع والأخبار ووثائق الاجتماعات وبعض الأوصاف بلغتها الأصلية.",
+    "मेनू और सामान्य नियंत्रणों का अनुवाद किया गया है। परियोजना रिकॉर्ड, समाचार, बैठक दस्तावेज़ और कुछ विवरण अपनी मूल भाषा में हैं।"
+  ],
+  "GET TO KNOW YOUR COMMUNITY.": [
+    "Conoce tu comunidad.",
+    "了解你的社区。",
+    "Kilalanin ang iyong komunidad.",
+    "Tìm hiểu cộng đồng của bạn.",
+    "تعرّف على مجتمعك.",
+    "अपने समुदाय को जानें।"
+  ],
+  "CHOOSE A COUNTY TO EXPLORE PROJECTS, NEWS AND PUBLIC MEETINGS. ADD A CITY OR LOCATION WHENEVER YOU LIKE.": [
+    "Elige un condado para explorar proyectos, noticias y reuniones públicas. Puedes añadir una ciudad o ubicación cuando quieras.",
+    "选择一个县，浏览项目、新闻和公众会议。你可以随时添加城市或位置。",
+    "Pumili ng county para tingnan ang mga proyekto, balita at pampublikong pulong. Maaari kang magdagdag ng lungsod o lokasyon anumang oras.",
+    "Chọn một quận để khám phá dự án, tin tức và các cuộc họp công khai. Bạn có thể thêm thành phố hoặc địa điểm bất cứ lúc nào.",
+    "اختر مقاطعة لاستكشاف المشاريع والأخبار والاجتماعات العامة. يمكنك إضافة مدينة أو موقع متى شئت.",
+    "परियोजनाएँ, समाचार और सार्वजनिक बैठकें देखने के लिए काउंटी चुनें। आप कभी भी शहर या स्थान जोड़ सकते हैं।"
+  ],
+  "Choose a county to explore projects, news and public meetings. add a city or location whenever you like.": [
+    "Elige un condado para explorar proyectos, noticias y reuniones públicas. Puedes añadir una ciudad o ubicación cuando quieras.",
+    "选择一个县，浏览项目、新闻和公众会议。你可以随时添加城市或位置。",
+    "Pumili ng county para tingnan ang mga proyekto, balita at pampublikong pulong. Maaari kang magdagdag ng lungsod o lokasyon anumang oras.",
+    "Chọn một quận để khám phá dự án, tin tức và các cuộc họp công khai. Bạn có thể thêm thành phố hoặc địa điểm bất cứ lúc nào.",
+    "اختر مقاطعة لاستكشاف المشاريع والأخبار والاجتماعات العامة. يمكنك إضافة مدينة أو موقع متى شئت.",
+    "परियोजनाएँ, समाचार और सार्वजनिक बैठकें देखने के लिए काउंटी चुनें। आप कभी भी शहर या स्थान जोड़ सकते हैं।"
+  ],
+  "WHAT SHOULD WE CALL YOU?": [
+    "¿Cómo te llamamos?",
+    "我们该怎么称呼你？",
+    "Ano ang gusto mong itawag namin sa iyo?",
+    "Chúng tôi nên gọi bạn là gì?",
+    "بماذا نناديك؟",
+    "हम आपको किस नाम से बुलाएँ?"
+  ],
+  "(OPTIONAL)": [
+    "(opcional)",
+    "（可选）",
+    "(opsyonal)",
+    "(không bắt buộc)",
+    "(اختياري)",
+    "(वैकल्पिक)"
+  ],
+  "(REQUIRED)": [
+    "(obligatorio)",
+    "（必填）",
+    "(kailangan)",
+    "(bắt buộc)",
+    "(مطلوب)",
+    "(आवश्यक)"
+  ],
+  "LEAVE BLANK AND WE WILL PICK ONE": [
+    "Déjalo vacío y elegiremos uno",
+    "留空，我们会为你选择一个",
+    "Iwanang blangko at pipili kami ng pangalan",
+    "Để trống và chúng tôi sẽ chọn tên",
+    "اتركه فارغاً وسنختار اسماً",
+    "खाली छोड़ें, हम नाम चुन देंगे"
+  ],
+  "THIS NAME IS YOUR ACCOUNT. NO PASSWORD AND NO EMAIL NEEDED, AND YOU CAN CHANGE IT LATER.": [
+    "Este nombre es tu cuenta. No necesitas contraseña ni correo, y puedes cambiarlo después.",
+    "这个名称就是你的账户。无需密码或电子邮箱，以后可以更改。",
+    "Ang pangalang ito ang iyong account. Hindi kailangan ng password o email, at maaari mo itong palitan sa ibang pagkakataon.",
+    "Tên này là tài khoản của bạn. Không cần mật khẩu hay email, và bạn có thể đổi tên sau.",
+    "هذا الاسم هو حسابك. لا تحتاج إلى كلمة مرور أو بريد إلكتروني، ويمكنك تغييره لاحقاً.",
+    "यह नाम आपका खाता है। पासवर्ड या ईमेल की ज़रूरत नहीं है, और आप इसे बाद में बदल सकते हैं।"
+  ],
+  "This name is your account. no password and no email needed, and you can change it later.": [
+    "Este nombre es tu cuenta. No necesitas contraseña ni correo, y puedes cambiarlo después.",
+    "这个名称就是你的账户。无需密码或电子邮箱，以后可以更改。",
+    "Ang pangalang ito ang iyong account. Hindi kailangan ng password o email, at maaari mo itong palitan sa ibang pagkakataon.",
+    "Tên này là tài khoản của bạn. Không cần mật khẩu hay email, và bạn có thể đổi tên sau.",
+    "هذا الاسم هو حسابك. لا تحتاج إلى كلمة مرور أو بريد إلكتروني، ويمكنك تغييره لاحقاً.",
+    "यह नाम आपका खाता है। पासवर्ड या ईमेल की ज़रूरत नहीं है, और आप इसे बाद में बदल सकते हैं।"
+  ],
+  "1. CHOOSE YOUR COUNTY": [
+    "1. Elige tu condado",
+    "1. 选择所在县",
+    "1. Piliin ang iyong county",
+    "1. Chọn quận của bạn",
+    "1. اختر مقاطعتك",
+    "1. अपनी काउंटी चुनें"
+  ],
+  "1. choose your county": [
+    "1. Elige tu condado",
+    "1. 选择所在县",
+    "1. Piliin ang iyong county",
+    "1. Chọn quận của bạn",
+    "1. اختر مقاطعتك",
+    "1. अपनी काउंटी चुनें"
+  ],
+  "SELECT A COUNTY…": [
+    "Selecciona un condado…",
+    "选择一个县…",
+    "Pumili ng county…",
+    "Chọn một quận…",
+    "اختر مقاطعة…",
+    "काउंटी चुनें…"
+  ],
+  "A COUNTY IS ALL YOU NEED. SEARCH FOR A CITY TO NARROW YOUR VIEW.": [
+    "Solo necesitas un condado. Busca una ciudad para acotar los resultados.",
+    "只需选择一个县。搜索城市可缩小范围。",
+    "County lang ang kailangan. Maghanap ng lungsod para paliitin ang saklaw.",
+    "Bạn chỉ cần chọn quận. Tìm thành phố để thu hẹp phạm vi.",
+    "يكفي اختيار مقاطعة. ابحث عن مدينة لتضييق نطاق العرض.",
+    "काउंटी चुनना पर्याप्त है। दायरा छोटा करने के लिए शहर खोजें।"
+  ],
+  "A county is all you need. search for a city to narrow your view.": [
+    "Solo necesitas un condado. Busca una ciudad para acotar los resultados.",
+    "只需选择一个县。搜索城市可缩小范围。",
+    "County lang ang kailangan. Maghanap ng lungsod para paliitin ang saklaw.",
+    "Bạn chỉ cần chọn quận. Tìm thành phố để thu hẹp phạm vi.",
+    "يكفي اختيار مقاطعة. ابحث عن مدينة لتضييق نطاق العرض.",
+    "काउंटी चुनना पर्याप्त है। दायरा छोटा करने के लिए शहर खोजें।"
+  ],
+  "CREATE A FREE ACCOUNT": [
+    "crea una cuenta gratuita",
+    "创建免费账户",
+    "gumawa ng libreng account",
+    "tạo tài khoản miễn phí",
+    "أنشئ حساباً مجانياً",
+    "मुफ़्त खाता बनाएँ"
+  ],
+  "Create a free account": [
+    "crea una cuenta gratuita",
+    "创建免费账户",
+    "gumawa ng libreng account",
+    "tạo tài khoản miễn phí",
+    "أنشئ حساباً مجانياً",
+    "मुफ़्त खाता बनाएँ"
+  ],
+  "2. YOUR ADDRESS OR APPROXIMATE LOCATION": [
+    "2. Tu dirección o ubicación aproximada",
+    "2. 你的地址或大致位置",
+    "2. Iyong address o tinatayang lokasyon",
+    "2. Địa chỉ hoặc vị trí gần đúng của bạn",
+    "2. عنوانك أو موقعك التقريبي",
+    "2. आपका पता या अनुमानित स्थान"
+  ],
+  "2. your address or approximate location": [
+    "2. Tu dirección o ubicación aproximada",
+    "2. 你的地址或大致位置",
+    "2. Iyong address o tinatayang lokasyon",
+    "2. Địa chỉ hoặc vị trí gần đúng của bạn",
+    "2. عنوانك أو موقعك التقريبي",
+    "2. आपका पता या अनुमानित स्थान"
+  ],
+  "USE MY CURRENT LOCATION": [
+    "Usar mi ubicación actual",
+    "使用我的当前位置",
+    "Gamitin ang kasalukuyan kong lokasyon",
+    "Dùng vị trí hiện tại của tôi",
+    "استخدم موقعي الحالي",
+    "मेरी वर्तमान स्थिति का उपयोग करें"
+  ],
+  "3. YOUR INTERESTS": [
+    "3. Tus intereses",
+    "3. 你的兴趣",
+    "3. Mga interes mo",
+    "3. Mối quan tâm của bạn",
+    "3. اهتماماتك",
+    "3. आपकी रुचियाँ"
+  ],
+  "3. your interests": [
+    "3. Tus intereses",
+    "3. 你的兴趣",
+    "3. Mga interes mo",
+    "3. Mối quan tâm của bạn",
+    "3. اهتماماتك",
+    "3. आपकी रुचियाँ"
+  ],
+  "OPEN MY DASHBOARD →": [
+    "Abrir mi panel →",
+    "打开我的概览 →",
+    "Buksan ang dashboard ko →",
+    "Mở bảng điều khiển của tôi →",
+    "افتح لوحة معلوماتي ←",
+    "मेरा डैशबोर्ड खोलें →"
+  ],
+  "EXPLORE WITHOUT SETUP →": [
+    "Explorar sin configurar →",
+    "直接浏览 →",
+    "Mag-explore nang walang setup →",
+    "Khám phá không cần thiết lập →",
+    "استكشف دون إعداد ←",
+    "सेटअप के बिना देखें →"
+  ],
+  "CALIFORNIA COMMUNITIES": [
+    "Comunidades de California",
+    "加州社区",
+    "Mga komunidad sa California",
+    "Các cộng đồng California",
+    "مجتمعات كاليفورنيا",
+    "कैलिफ़ोर्निया के समुदाय"
+  ],
+  "PUBLIC PLANNING RECORDS": [
+    "Registros públicos de planificación",
+    "公共规划记录",
+    "Mga pampublikong rekord sa pagpaplano",
+    "Hồ sơ quy hoạch công khai",
+    "سجلات التخطيط العامة",
+    "सार्वजनिक नियोजन रिकॉर्ड"
+  ],
+  "INDEPENDENTLY BUILT TO MAKE LOCAL INFORMATION AND CIVIC PARTICIPATION EASIER TO ACCESS.": [
+    "Un proyecto independiente para facilitar el acceso a la información local y la participación cívica.",
+    "独立开发，让本地信息和公民参与更便捷。",
+    "Malayang binuo upang mas madaling ma-access ang lokal na impormasyon at pakikilahok sa komunidad.",
+    "Được xây dựng độc lập để giúp tiếp cận thông tin địa phương và tham gia cộng đồng dễ dàng hơn.",
+    "مشروع مستقل لتسهيل الوصول إلى المعلومات المحلية والمشاركة المدنية.",
+    "स्थानीय जानकारी और नागरिक भागीदारी को अधिक सुलभ बनाने के लिए स्वतंत्र रूप से बनाया गया।"
+  ],
+  "WATCH THE TOUR": [
+    "Ver el recorrido",
+    "观看导览",
+    "Panoorin ang paglilibot",
+    "Xem giới thiệu",
+    "شاهد الجولة",
+    "परिचय वीडियो देखें"
+  ],
+  "ABOUT THE PROJECT": [
+    "Sobre el proyecto",
+    "关于本项目",
+    "Tungkol sa proyekto",
+    "Về dự án",
+    "عن المشروع",
+    "परियोजना के बारे में"
+  ],
+  "LOCAL FIGURES": [
+    "Cifras locales",
+    "本地数据",
+    "Lokal na datos",
+    "Số liệu địa phương",
+    "أرقام محلية",
+    "स्थानीय आँकड़े"
+  ],
+  "LOCAL RESOURCES": [
+    "Recursos locales",
+    "本地资源",
+    "Mga lokal na sanggunian",
+    "Tài nguyên địa phương",
+    "موارد محلية",
+    "स्थानीय संसाधन"
+  ],
+  "GET THE BRIEFING": [
+    "Recibe el resumen",
+    "获取简报",
+    "Kunin ang buod",
+    "Nhận bản tóm tắt",
+    "احصل على الموجز",
+    "संक्षिप्त जानकारी पाएँ"
+  ],
+  "SIGN UP NOW": [
+    "Suscríbete",
+    "立即订阅",
+    "Mag-subscribe ngayon",
+    "Đăng ký ngay",
+    "اشترك الآن",
+    "अभी सदस्यता लें"
+  ],
+  "YOUR CITY": [
+    "Tu ciudad",
+    "你的城市",
+    "Iyong lungsod",
+    "Thành phố của bạn",
+    "مدينتك",
+    "आपका शहर"
+  ],
+  "FIND A CITY": [
+    "Buscar una ciudad",
+    "查找城市",
+    "Maghanap ng lungsod",
+    "Tìm thành phố",
+    "ابحث عن مدينة",
+    "शहर खोजें"
+  ],
+  "COUNTY": [
+    "Condado",
+    "县",
+    "County",
+    "Quận",
+    "المقاطعة",
+    "काउंटी"
+  ],
+  "CITY": [
+    "Ciudad",
+    "城市",
+    "Lungsod",
+    "Thành phố",
+    "المدينة",
+    "शहर"
+  ],
+  "ALL CITIES": [
+    "Todas las ciudades",
+    "所有城市",
+    "Lahat ng lungsod",
+    "Tất cả thành phố",
+    "جميع المدن",
+    "सभी शहर"
+  ],
+  "ALL AREAS": [
+    "Todas las zonas",
+    "所有地区",
+    "Lahat ng lugar",
+    "Tất cả khu vực",
+    "جميع المناطق",
+    "सभी क्षेत्र"
+  ],
+  "ALL COUNTIES": [
+    "Todos los condados",
+    "所有县",
+    "Lahat ng county",
+    "Tất cả các quận",
+    "جميع المقاطعات",
+    "सभी काउंटियाँ"
+  ],
+  "BAY AREA": [
+    "Área de la Bahía",
+    "旧金山湾区",
+    "Bay Area",
+    "Vùng Vịnh",
+    "منطقة الخليج",
+    "बे एरिया"
+  ],
+  "Bay area": [
+    "Área de la Bahía",
+    "旧金山湾区",
+    "Bay Area",
+    "Vùng Vịnh",
+    "منطقة الخليج",
+    "बे एरिया"
+  ],
+  "CENTRAL CALIFORNIA": [
+    "California Central",
+    "加州中部",
+    "Gitnang California",
+    "Trung California",
+    "وسط كاليفورنيا",
+    "मध्य कैलिफ़ोर्निया"
+  ],
+  "Central california": [
+    "California Central",
+    "加州中部",
+    "Gitnang California",
+    "Trung California",
+    "وسط كاليفورنيا",
+    "मध्य कैलिफ़ोर्निया"
+  ],
+  "OTHER CALIFORNIA": [
+    "Otras zonas de California",
+    "加州其他地区",
+    "Iba pang lugar sa California",
+    "Các khu vực khác của California",
+    "مناطق أخرى في كاليفورنيا",
+    "कैलिफ़ोर्निया के अन्य क्षेत्र"
+  ],
+  "Other california": [
+    "Otras zonas de California",
+    "加州其他地区",
+    "Iba pang lugar sa California",
+    "Các khu vực khác của California",
+    "مناطق أخرى في كاليفورنيا",
+    "कैलिफ़ोर्निया के अन्य क्षेत्र"
+  ],
+  "PROJECTS": [
+    "Proyectos",
+    "项目",
+    "Mga proyekto",
+    "Dự án",
+    "المشاريع",
+    "परियोजनाएँ"
+  ],
+  "NEWS": [
+    "Noticias",
+    "新闻",
+    "Balita",
+    "Tin tức",
+    "الأخبار",
+    "समाचार"
+  ],
+  "MEETINGS": [
+    "Reuniones",
+    "会议",
+    "Mga pulong",
+    "Cuộc họp",
+    "الاجتماعات",
+    "बैठकें"
+  ],
+  "BOARDS & COMMISSIONS": [
+    "Juntas y comisiones",
+    "委员会",
+    "Mga lupon at komisyon",
+    "Hội đồng và ủy ban",
+    "المجالس واللجان",
+    "बोर्ड और आयोग"
+  ],
+  "SOURCES": [
+    "Fuentes",
+    "来源",
+    "Mga pinagmulan",
+    "Nguồn",
+    "المصادر",
+    "स्रोत"
+  ],
+  "MAP": [
+    "Mapa",
+    "地图",
+    "Mapa",
+    "Bản đồ",
+    "الخريطة",
+    "नक्शा"
+  ],
+  "LIST": [
+    "Lista",
+    "列表",
+    "Listahan",
+    "Danh sách",
+    "القائمة",
+    "सूची"
+  ],
+  "FILTERS": [
+    "Filtros",
+    "筛选",
+    "Mga filter",
+    "Bộ lọc",
+    "عوامل التصفية",
+    "फ़िल्टर"
+  ],
+  "CLEAR FILTERS": [
+    "Borrar filtros",
+    "清除筛选",
+    "Alisin ang mga filter",
+    "Xóa bộ lọc",
+    "مسح عوامل التصفية",
+    "फ़िल्टर हटाएँ"
+  ],
+  "RESET": [
+    "Restablecer",
+    "重置",
+    "I-reset",
+    "Đặt lại",
+    "إعادة ضبط",
+    "रीसेट करें"
+  ],
+  "ALL": [
+    "Todo",
+    "全部",
+    "Lahat",
+    "Tất cả",
+    "الكل",
+    "सभी"
+  ],
+  "SHOW": [
+    "Mostrar",
+    "显示",
+    "Ipakita",
+    "Hiển thị",
+    "عرض",
+    "दिखाएँ"
+  ],
+  "SORT BY": [
+    "Ordenar por",
+    "排序方式",
+    "Ayusin ayon sa",
+    "Sắp xếp theo",
+    "ترتيب حسب",
+    "क्रम बदलें"
+  ],
+  "CATEGORY": [
+    "Categoría",
+    "类别",
+    "Kategorya",
+    "Danh mục",
+    "الفئة",
+    "श्रेणी"
+  ],
+  "STAGE": [
+    "Etapa",
+    "阶段",
+    "Yugto",
+    "Giai đoạn",
+    "المرحلة",
+    "चरण"
+  ],
+  "PROPOSED": [
+    "Propuesto",
+    "已提出",
+    "Iminungkahi",
+    "Đề xuất",
+    "مقترح",
+    "प्रस्तावित"
+  ],
+  "UNDER REVIEW": [
+    "En revisión",
+    "审核中",
+    "Sinusuri",
+    "Đang xem xét",
+    "قيد المراجعة",
+    "समीक्षाधीन"
+  ],
+  "APPROVED": [
+    "Aprobado",
+    "已批准",
+    "Naaprubahan",
+    "Đã phê duyệt",
+    "معتمد",
+    "स्वीकृत"
+  ],
+  "UNDER CONSTRUCTION": [
+    "En construcción",
+    "建设中",
+    "Itinatayo",
+    "Đang xây dựng",
+    "قيد الإنشاء",
+    "निर्माणाधीन"
+  ],
+  "COMPLETED": [
+    "Finalizado",
+    "已完成",
+    "Natapos",
+    "Hoàn thành",
+    "مكتمل",
+    "पूर्ण"
+  ],
+  "LEARN MORE": [
+    "Más información",
+    "了解更多",
+    "Alamin pa",
+    "Tìm hiểu thêm",
+    "اعرف المزيد",
+    "और जानें"
+  ],
+  "LOCATE ON MAP ↗": [
+    "Ver en el mapa ↗",
+    "在地图上查看 ↗",
+    "Hanapin sa mapa ↗",
+    "Xem trên bản đồ ↗",
+    "اعرض على الخريطة ↗",
+    "नक्शे पर देखें ↗"
+  ],
+  "LOCATION NOT VERIFIED": [
+    "Ubicación sin verificar",
+    "位置未核实",
+    "Hindi pa beripikado ang lokasyon",
+    "Vị trí chưa được xác minh",
+    "الموقع غير موثّق",
+    "स्थान सत्यापित नहीं है"
+  ],
+  "CITY RECORD": [
+    "Registro municipal",
+    "市政府记录",
+    "Rekord ng lungsod",
+    "Hồ sơ thành phố",
+    "سجل المدينة",
+    "नगर रिकॉर्ड"
+  ],
+  "CLOSE": [
+    "Cerrar",
+    "关闭",
+    "Isara",
+    "Đóng",
+    "إغلاق",
+    "बंद करें"
+  ],
+  "BACK": [
+    "Volver",
+    "返回",
+    "Bumalik",
+    "Quay lại",
+    "رجوع",
+    "वापस"
+  ],
+  "NEXT": [
+    "Siguiente",
+    "下一页",
+    "Susunod",
+    "Tiếp theo",
+    "التالي",
+    "अगला"
+  ],
+  "PREVIOUS": [
+    "Anterior",
+    "上一页",
+    "Nakaraan",
+    "Trước",
+    "السابق",
+    "पिछला"
+  ],
+  "SAVE": [
+    "Guardar",
+    "保存",
+    "I-save",
+    "Lưu",
+    "حفظ",
+    "सहेजें"
+  ],
+  "CANCEL": [
+    "Cancelar",
+    "取消",
+    "Kanselahin",
+    "Hủy",
+    "إلغاء",
+    "रद्द करें"
+  ],
+  "EDIT": [
+    "Editar",
+    "编辑",
+    "I-edit",
+    "Chỉnh sửa",
+    "تعديل",
+    "बदलें"
+  ],
+  "TRY AGAIN": [
+    "Volver a intentar",
+    "重试",
+    "Subukan muli",
+    "Thử lại",
+    "حاول مرة أخرى",
+    "फिर कोशिश करें"
+  ],
+  "LOADING…": [
+    "Cargando…",
+    "加载中…",
+    "Naglo-load…",
+    "Đang tải…",
+    "جارٍ التحميل…",
+    "लोड हो रहा है…"
+  ],
+  "SWIPE OR USE THE ARROWS TO EXPLORE.": [
+    "Desliza o usa las flechas para explorar.",
+    "滑动或使用箭头浏览。",
+    "Mag-swipe o gamitin ang mga arrow para mag-explore.",
+    "Vuốt hoặc dùng mũi tên để khám phá.",
+    "اسحب أو استخدم الأسهم للاستكشاف.",
+    "देखने के लिए स्वाइप करें या तीरों का उपयोग करें।"
+  ],
+  "NO RECORDS IN THIS VIEW. TRY ALL AREAS OR ANOTHER CITY.": [
+    "No hay registros en esta vista. Prueba Todas las zonas u otra ciudad.",
+    "当前视图没有记录。请选择所有地区或其他城市。",
+    "Walang rekord sa view na ito. Subukan ang Lahat ng lugar o ibang lungsod.",
+    "Không có hồ sơ trong chế độ xem này. Thử Tất cả khu vực hoặc thành phố khác.",
+    "لا توجد سجلات في هذا العرض. جرّب جميع المناطق أو مدينة أخرى.",
+    "इस दृश्य में कोई रिकॉर्ड नहीं है। सभी क्षेत्र या दूसरा शहर चुनें।"
+  ],
+  "No records in this view. try all areas or another city.": [
+    "No hay registros en esta vista. Prueba Todas las zonas u otra ciudad.",
+    "当前视图没有记录。请选择所有地区或其他城市。",
+    "Walang rekord sa view na ito. Subukan ang Lahat ng lugar o ibang lungsod.",
+    "Không có hồ sơ trong chế độ xem này. Thử Tất cả khu vực hoặc thành phố khác.",
+    "لا توجد سجلات في هذا العرض. جرّب جميع المناطق أو مدينة أخرى.",
+    "इस दृश्य में कोई रिकॉर्ड नहीं है। सभी क्षेत्र या दूसरा शहर चुनें।"
+  ],
+  "WHAT THE RECORD SAYS": [
+    "Contenido del registro",
+    "记录内容",
+    "Nilalaman ng rekord",
+    "Nội dung hồ sơ",
+    "ما يذكره السجل",
+    "रिकॉर्ड में क्या है"
+  ],
+  "LATEST RECORD NOTE": [
+    "Última nota del registro",
+    "最新记录备注",
+    "Pinakabagong tala",
+    "Ghi chú hồ sơ mới nhất",
+    "أحدث ملاحظة في السجل",
+    "नवीनतम रिकॉर्ड टिप्पणी"
+  ],
+  "WORTH KNOWING": [
+    "Información útil",
+    "实用信息",
+    "Mahalagang malaman",
+    "Thông tin cần biết",
+    "معلومات مفيدة",
+    "जानने योग्य बातें"
+  ],
+  "OFFICIAL SOURCES": [
+    "Fuentes oficiales",
+    "官方来源",
+    "Mga opisyal na pinagmulan",
+    "Nguồn chính thức",
+    "المصادر الرسمية",
+    "आधिकारिक स्रोत"
+  ],
+  "LOCATION": [
+    "Ubicación",
+    "位置",
+    "Lokasyon",
+    "Vị trí",
+    "الموقع",
+    "स्थान"
+  ],
+  "ZONING": [
+    "Zonificación",
+    "土地分区",
+    "Zoning",
+    "Phân khu",
+    "تقسيم المناطق",
+    "ज़ोनिंग"
+  ],
+  "ADDRESS": [
+    "Dirección",
+    "地址",
+    "Address",
+    "Địa chỉ",
+    "العنوان",
+    "पता"
+  ],
+  "APPLICANT": [
+    "Solicitante",
+    "申请人",
+    "Aplikante",
+    "Người nộp đơn",
+    "مقدم الطلب",
+    "आवेदक"
+  ],
+  "FILED": [
+    "Presentado",
+    "提交日期",
+    "Inihain",
+    "Ngày nộp",
+    "تاريخ التقديم",
+    "दाखिल"
+  ],
+  "FILE": [
+    "Expediente",
+    "档案",
+    "File",
+    "Hồ sơ",
+    "الملف",
+    "फ़ाइल"
+  ],
+  "UNITS": [
+    "Viviendas",
+    "住房套数",
+    "Mga yunit",
+    "Số căn",
+    "الوحدات",
+    "इकाइयाँ"
+  ],
+  "AFFORDABLE": [
+    "Asequible",
+    "可负担住房",
+    "Abot-kaya",
+    "Giá phải chăng",
+    "ميسور التكلفة",
+    "किफ़ायती"
+  ],
+  "COMMUNITY": [
+    "Comunidad",
+    "社区",
+    "Komunidad",
+    "Cộng đồng",
+    "المجتمع",
+    "समुदाय"
+  ],
+  "DOCUMENTS": [
+    "Documentos",
+    "文件",
+    "Mga dokumento",
+    "Tài liệu",
+    "الوثائق",
+    "दस्तावेज़"
+  ],
+  "COMMISSIONS": [
+    "Comisiones",
+    "委员会",
+    "Mga komisyon",
+    "Ủy ban",
+    "اللجان",
+    "आयोग"
+  ],
+  "EVERYTHING": [
+    "Todo",
+    "全部",
+    "Lahat",
+    "Tất cả",
+    "الكل",
+    "सब कुछ"
+  ],
+  "LOAD ALL PROJECT RECORDS": [
+    "Cargar todos los registros de proyectos",
+    "加载所有项目记录",
+    "I-load ang lahat ng rekord ng proyekto",
+    "Tải tất cả hồ sơ dự án",
+    "تحميل جميع سجلات المشاريع",
+    "सभी परियोजना रिकॉर्ड लोड करें"
+  ],
+  "LOADING PROJECT RECORDS…": [
+    "Cargando registros de proyectos…",
+    "正在加载项目记录…",
+    "Nilo-load ang mga rekord ng proyekto…",
+    "Đang tải hồ sơ dự án…",
+    "جارٍ تحميل سجلات المشاريع…",
+    "परियोजना रिकॉर्ड लोड हो रहे हैं…"
+  ],
+  "PROJECT RECORDS LOADED.": [
+    "Registros de proyectos cargados.",
+    "项目记录已加载。",
+    "Na-load na ang mga rekord ng proyekto.",
+    "Đã tải hồ sơ dự án.",
+    "تم تحميل سجلات المشاريع.",
+    "परियोजना रिकॉर्ड लोड हो गए।"
+  ],
+  "SOME PROJECT RECORDS COULD NOT LOAD. USE THE LOAD BUTTON TO RETRY.": [
+    "No se pudieron cargar algunos registros. Usa el botón de carga para reintentar.",
+    "部分项目记录未能加载。请使用加载按钮重试。",
+    "Hindi ma-load ang ilang rekord. Gamitin ang load button para subukan muli.",
+    "Không tải được một số hồ sơ. Dùng nút tải để thử lại.",
+    "تعذّر تحميل بعض السجلات. استخدم زر التحميل للمحاولة مجدداً.",
+    "कुछ रिकॉर्ड लोड नहीं हो सके। फिर कोशिश करने के लिए लोड बटन दबाएँ।"
+  ],
+  "Some project records could not load. use the load button to retry.": [
+    "No se pudieron cargar algunos registros. Usa el botón de carga para reintentar.",
+    "部分项目记录未能加载。请使用加载按钮重试。",
+    "Hindi ma-load ang ilang rekord. Gamitin ang load button para subukan muli.",
+    "Không tải được một số hồ sơ. Dùng nút tải để thử lại.",
+    "تعذّر تحميل بعض السجلات. استخدم زر التحميل للمحاولة مجدداً.",
+    "कुछ रिकॉर्ड लोड नहीं हो सके। फिर कोशिश करने के लिए लोड बटन दबाएँ।"
+  ],
+  "FIND BOARDS AND COMMISSIONS IN YOUR AREA, THEIR MEETING SCHEDULES, AND LINKS TO PUBLISHED AGENDAS.": [
+    "Encuentra juntas y comisiones de tu zona, sus horarios de reunión y enlaces a las agendas publicadas.",
+    "查找本地委员会、会议时间及已公布议程的链接。",
+    "Hanapin ang mga lupon at komisyon sa iyong lugar, iskedyul ng pulong at mga link sa inilathalang agenda.",
+    "Tìm hội đồng và ủy ban trong khu vực, lịch họp và liên kết đến chương trình họp đã công bố.",
+    "اعثر على المجالس واللجان في منطقتك ومواعيد اجتماعاتها وروابط جداول الأعمال المنشورة.",
+    "अपने क्षेत्र के बोर्ड और आयोग, उनकी बैठक का समय और प्रकाशित कार्यसूची के लिंक खोजें।"
+  ],
+  "UPCOMING MEETINGS": [
+    "Próximas reuniones",
+    "即将举行的会议",
+    "Mga paparating na pulong",
+    "Cuộc họp sắp tới",
+    "الاجتماعات القادمة",
+    "आगामी बैठकें"
+  ],
+  "MEETING CALENDAR": [
+    "Calendario de reuniones",
+    "会议日历",
+    "Kalendaryo ng mga pulong",
+    "Lịch họp",
+    "تقويم الاجتماعات",
+    "बैठक कैलेंडर"
+  ],
+  "AGENDA": [
+    "Agenda",
+    "议程",
+    "Agenda",
+    "Chương trình họp",
+    "جدول الأعمال",
+    "कार्यसूची"
+  ],
+  "VIEW AGENDA": [
+    "Ver agenda",
+    "查看议程",
+    "Tingnan ang agenda",
+    "Xem chương trình họp",
+    "عرض جدول الأعمال",
+    "कार्यसूची देखें"
+  ],
+  "OFFICIAL WEBSITE": [
+    "Sitio web oficial",
+    "官方网站",
+    "Opisyal na website",
+    "Trang web chính thức",
+    "الموقع الرسمي",
+    "आधिकारिक वेबसाइट"
+  ],
+  "MEETING SUMMARIES": [
+    "Resúmenes de reuniones",
+    "会议摘要",
+    "Mga buod ng pulong",
+    "Tóm tắt cuộc họp",
+    "ملخصات الاجتماعات",
+    "बैठकों के सारांश"
+  ],
+  "SELECT A MEETING": [
+    "Selecciona una reunión",
+    "选择会议",
+    "Pumili ng pulong",
+    "Chọn cuộc họp",
+    "اختر اجتماعاً",
+    "बैठक चुनें"
+  ],
+  "SUMMARIZE": [
+    "Resumir",
+    "生成摘要",
+    "Ibuod",
+    "Tóm tắt",
+    "تلخيص",
+    "सारांश बनाएँ"
+  ],
+  "ASK": [
+    "Preguntar",
+    "提问",
+    "Magtanong",
+    "Hỏi",
+    "اسأل",
+    "पूछें"
+  ],
+  "SEND": [
+    "Enviar",
+    "发送",
+    "Ipadala",
+    "Gửi",
+    "إرسال",
+    "भेजें"
+  ],
+  "USERNAME": [
+    "Nombre de usuario",
+    "用户名",
+    "Username",
+    "Tên người dùng",
+    "اسم المستخدم",
+    "उपयोगकर्ता नाम"
+  ],
+  "PASSWORD": [
+    "Contraseña",
+    "密码",
+    "Password",
+    "Mật khẩu",
+    "كلمة المرور",
+    "पासवर्ड"
+  ],
+  "EMAIL": [
+    "Correo electrónico",
+    "电子邮箱",
+    "Email",
+    "Email",
+    "البريد الإلكتروني",
+    "ईमेल"
+  ],
+  "SIGN IN": [
+    "Iniciar sesión",
+    "登录",
+    "Mag-sign in",
+    "Đăng nhập",
+    "تسجيل الدخول",
+    "साइन इन करें"
+  ],
+  "SIGN OUT": [
+    "Cerrar sesión",
+    "退出登录",
+    "Mag-sign out",
+    "Đăng xuất",
+    "تسجيل الخروج",
+    "साइन आउट करें"
+  ],
+  "CREATE ACCOUNT": [
+    "Crear cuenta",
+    "创建账户",
+    "Gumawa ng account",
+    "Tạo tài khoản",
+    "إنشاء حساب",
+    "खाता बनाएँ"
+  ],
+  "SAVE CHANGES": [
+    "Guardar cambios",
+    "保存更改",
+    "I-save ang mga pagbabago",
+    "Lưu thay đổi",
+    "حفظ التغييرات",
+    "बदलाव सहेजें"
+  ],
+  "YOUR INTERESTS": [
+    "Tus intereses",
+    "你的兴趣",
+    "Mga interes mo",
+    "Mối quan tâm của bạn",
+    "اهتماماتك",
+    "आपकी रुचियाँ"
+  ],
+  "CHANGE MY CITY & INTERESTS": [
+    "Cambiar mi ciudad e intereses",
+    "更改城市和兴趣",
+    "Palitan ang lungsod at mga interes ko",
+    "Đổi thành phố và mối quan tâm",
+    "تغيير مدينتي واهتماماتي",
+    "मेरा शहर और रुचियाँ बदलें"
+  ],
+  "RECENT ISSUES": [
+    "Ediciones recientes",
+    "近期通讯",
+    "Mga pinakabagong isyu",
+    "Các số gần đây",
+    "الأعداد الأخيرة",
+    "हाल के अंक"
+  ],
+  "ALL ISSUES": [
+    "Todas las ediciones",
+    "所有通讯",
+    "Lahat ng isyu",
+    "Tất cả các số",
+    "جميع الأعداد",
+    "सभी अंक"
+  ],
+  "FUTURE HOUSING MAP": [
+    "Mapa de vivienda futura",
+    "未来住房地图",
+    "Mapa ng pabahay sa hinaharap",
+    "Bản đồ nhà ở tương lai",
+    "خريطة الإسكان المستقبلي",
+    "भविष्य के आवास का नक्शा"
+  ],
+  "OUTLOOK": [
+    "Perspectiva",
+    "展望",
+    "Pananaw",
+    "Triển vọng",
+    "التوقعات",
+    "परिदृश्य"
+  ],
+  "SCENARIO": [
+    "Escenario",
+    "情景",
+    "Senaryo",
+    "Kịch bản",
+    "السيناريو",
+    "परिदृश्य"
+  ],
+  "REFERENCE": [
+    "Referencia",
+    "参考",
+    "Batayan",
+    "Tham chiếu",
+    "المرجع",
+    "संदर्भ"
+  ],
+  "CHANGE": [
+    "Cambio",
+    "变化",
+    "Pagbabago",
+    "Thay đổi",
+    "التغيير",
+    "बदलाव"
+  ],
+  "FIND A PROJECT": [
+    "Buscar un proyecto",
+    "查找项目",
+    "Maghanap ng proyekto",
+    "Tìm dự án",
+    "ابحث عن مشروع",
+    "परियोजना खोजें"
+  ],
+  "ADDRESS OR CITY…": [
+    "Dirección o ciudad…",
+    "地址或城市…",
+    "Address o lungsod…",
+    "Địa chỉ hoặc thành phố…",
+    "عنوان أو مدينة…",
+    "पता या शहर…"
+  ],
+  "SHOW MORE PROJECTS": [
+    "Mostrar más proyectos",
+    "显示更多项目",
+    "Ipakita ang iba pang proyekto",
+    "Hiển thị thêm dự án",
+    "عرض المزيد من المشاريع",
+    "और परियोजनाएँ दिखाएँ"
+  ],
+  "REPORTED UNITS": [
+    "Viviendas declaradas",
+    "已报告套数",
+    "Naiulat na mga yunit",
+    "Số căn được báo cáo",
+    "الوحدات المبلغ عنها",
+    "दर्ज इकाइयाँ"
+  ],
+  "ESTIMATED DELIVERY": [
+    "Entrega estimada",
+    "预计交付",
+    "Tinatayang pagkumpleto",
+    "Dự kiến hoàn thành",
+    "التسليم المتوقع",
+    "अनुमानित पूर्णता"
+  ],
+  "RECORD QUALITY": [
+    "Calidad del registro",
+    "记录质量",
+    "Kalidad ng rekord",
+    "Chất lượng hồ sơ",
+    "جودة السجل",
+    "रिकॉर्ड की गुणवत्ता"
+  ],
+  "POPULATION": [
+    "Población",
+    "人口",
+    "Populasyon",
+    "Dân số",
+    "عدد السكان",
+    "जनसंख्या"
+  ],
+  "MEDIAN HOUSEHOLD INCOME": [
+    "Ingreso mediano del hogar",
+    "家庭收入中位数",
+    "Median na kita ng sambahayan",
+    "Thu nhập trung vị hộ gia đình",
+    "وسيط دخل الأسرة",
+    "परिवार की माध्यिका आय"
+  ],
+  "MEDIAN HOME VALUE": [
+    "Valor mediano de la vivienda",
+    "房价中位数",
+    "Median na halaga ng bahay",
+    "Giá trị nhà trung vị",
+    "وسيط قيمة المنزل",
+    "घर का माध्यिका मूल्य"
+  ],
+  "MEDIAN RENT": [
+    "Alquiler mediano",
+    "租金中位数",
+    "Median na upa",
+    "Tiền thuê trung vị",
+    "وسيط الإيجار",
+    "माध्यिका किराया"
+  ],
+  "HOUSING UNITS": [
+    "Viviendas",
+    "住房套数",
+    "Mga yunit ng pabahay",
+    "Số căn nhà",
+    "الوحدات السكنية",
+    "आवास इकाइयाँ"
+  ],
+  "HOMEOWNERS": [
+    "Propietarios",
+    "房主",
+    "Mga may-ari ng bahay",
+    "Chủ nhà",
+    "مالكو المنازل",
+    "घर के मालिक"
+  ],
+  "RENTERS": [
+    "Inquilinos",
+    "租户",
+    "Mga umuupa",
+    "Người thuê nhà",
+    "المستأجرون",
+    "किरायेदार"
+  ],
+  "LOADING LANGUAGE…": [
+    "Cargando idioma…",
+    "正在加载语言…",
+    "Nilo-load ang wika…",
+    "Đang tải ngôn ngữ…",
+    "جارٍ تحميل اللغة…",
+    "भाषा लोड हो रही है…"
+  ],
+  "LANGUAGE COULD NOT LOAD. PLEASE TRY AGAIN.": [
+    "No se pudo cargar el idioma. Inténtalo de nuevo.",
+    "语言未能加载，请重试。",
+    "Hindi ma-load ang wika. Pakisubukang muli.",
+    "Không tải được ngôn ngữ. Vui lòng thử lại.",
+    "تعذّر تحميل اللغة. يرجى المحاولة مجدداً.",
+    "भाषा लोड नहीं हो सकी। फिर कोशिश करें।"
+  ],
+  "Language could not load. please try again.": [
+    "No se pudo cargar el idioma. Inténtalo de nuevo.",
+    "语言未能加载，请重试。",
+    "Hindi ma-load ang wika. Pakisubukang muli.",
+    "Không tải được ngôn ngữ. Vui lòng thử lại.",
+    "تعذّر تحميل اللغة. يرجى المحاولة مجدداً.",
+    "भाषा लोड नहीं हो सकी। फिर कोशिश करें।"
+  ],
+  "FOLLOW HOUSING DEVELOPMENTS, TRANSPORTATION PROJECTS, AND COMMUNITY NEWS ACROSS": [
+    "Sigue proyectos de vivienda y transporte y noticias comunitarias en",
+    "关注住房开发、交通项目和社区新闻，覆盖",
+    "Subaybayan ang mga proyekto sa pabahay at transportasyon at balita ng komunidad sa",
+    "Theo dõi dự án nhà ở, giao thông và tin cộng đồng tại",
+    "تابع مشاريع الإسكان والنقل وأخبار المجتمع في",
+    "आवास विकास, परिवहन परियोजनाओं और सामुदायिक समाचारों की जानकारी पाएँ,"
+  ],
+  "CITIES AND TOWNS. FIND CITY MEETINGS, BOARDS, AND WAYS TO TAKE PART.": [
+    "ciudades y pueblos. Encuentra reuniones, juntas municipales y formas de participar.",
+    "个城市和城镇。查找市政会议、委员会及参与方式。",
+    "mga lungsod at bayan. Maghanap ng mga pulong, lupon at paraan para makilahok.",
+    "thành phố và thị trấn. Tìm cuộc họp, hội đồng và cách tham gia.",
+    "مدينة وبلدة. اعثر على اجتماعات المدينة ومجالسها وطرق المشاركة.",
+    "शहरों और कस्बों में। नगर बैठकें, बोर्ड और भाग लेने के तरीके खोजें।"
+  ],
+  "Cities and towns. find city meetings, boards, and ways to take part.": [
+    "ciudades y pueblos. Encuentra reuniones, juntas municipales y formas de participar.",
+    "个城市和城镇。查找市政会议、委员会及参与方式。",
+    "mga lungsod at bayan. Maghanap ng mga pulong, lupon at paraan para makilahok.",
+    "thành phố và thị trấn. Tìm cuộc họp, hội đồng và cách tham gia.",
+    "مدينة وبلدة. اعثر على اجتماعات المدينة ومجالسها وطرق المشاركة.",
+    "शहरों और कस्बों में। नगर बैठकें, बोर्ड और भाग लेने के तरीके खोजें।"
+  ],
+  "NO AREA SELECTED? EXPLORE STARTS IN SANTA CLARA COUNTY, AND WE WILL PICK A NAME FOR YOU. YOU CAN CHANGE IT WHENEVER YOU LIKE.": [
+    "¿No has elegido una zona? Empezarás en el condado de Santa Clara y elegiremos un nombre para ti. Puedes cambiarlo cuando quieras.",
+    "还未选择地区？浏览将从圣克拉拉县开始，我们会为你选择一个名称。你可以随时更改。",
+    "Wala pang napiling lugar? Magsisimula sa Santa Clara County at pipili kami ng pangalan para sa iyo. Maaari mo itong palitan anumang oras.",
+    "Chưa chọn khu vực? Bạn sẽ bắt đầu ở Quận Santa Clara và được đặt tên tự động. Bạn có thể đổi tên bất cứ lúc nào.",
+    "لم تختر منطقة؟ يبدأ الاستكشاف في مقاطعة سانتا كلارا، وسنختار لك اسماً يمكنك تغييره متى شئت.",
+    "क्षेत्र नहीं चुना? शुरुआत सांता क्लारा काउंटी से होगी और हम आपके लिए नाम चुन देंगे। आप इसे कभी भी बदल सकते हैं।"
+  ],
+  "No area selected? explore starts in santa clara county, and we will pick a name for you. you can change it whenever you like.": [
+    "¿No has elegido una zona? Empezarás en el condado de Santa Clara y elegiremos un nombre para ti. Puedes cambiarlo cuando quieras.",
+    "还未选择地区？浏览将从圣克拉拉县开始，我们会为你选择一个名称。你可以随时更改。",
+    "Wala pang napiling lugar? Magsisimula sa Santa Clara County at pipili kami ng pangalan para sa iyo. Maaari mo itong palitan anumang oras.",
+    "Chưa chọn khu vực? Bạn sẽ bắt đầu ở Quận Santa Clara và được đặt tên tự động. Bạn có thể đổi tên bất cứ lúc nào.",
+    "لم تختر منطقة؟ يبدأ الاستكشاف في مقاطعة سانتا كلارا، وسنختار لك اسماً يمكنك تغييره متى شئت.",
+    "क्षेत्र नहीं चुना? शुरुआत सांता क्लारा काउंटी से होगी और हम आपके लिए नाम चुन देंगे। आप इसे कभी भी बदल सकते हैं।"
+  ],
+  "YOUR USERNAME AND CHOICES STAY ON THIS DEVICE, NO SIGNUP NEEDED. FOR ACCESS ACROSS DEVICES AND EMAIL UPDATES,": [
+    "Tu nombre y preferencias se guardan en este dispositivo, sin registro. Para acceder desde otros dispositivos y recibir novedades por correo,",
+    "你的用户名和选择保存在此设备上，无需注册。若要跨设备访问并接收邮件更新，请",
+    "Mananatili sa device na ito ang username at mga pinili mo, nang walang signup. Para sa access sa ibang device at mga update sa email,",
+    "Tên người dùng và lựa chọn được lưu trên thiết bị này, không cần đăng ký. Để dùng trên nhiều thiết bị và nhận cập nhật qua email,",
+    "يبقى اسم المستخدم واختياراتك على هذا الجهاز دون تسجيل. للوصول من أجهزة أخرى وتلقي تحديثات البريد الإلكتروني،",
+    "आपका उपयोगकर्ता नाम और पसंद इस डिवाइस पर रहते हैं, साइनअप की ज़रूरत नहीं है। दूसरे डिवाइस से उपयोग और ईमेल अपडेट के लिए,"
+  ],
+  "Your username and choices stay on this device, no signup needed. for access across devices and email updates,": [
+    "Tu nombre y preferencias se guardan en este dispositivo, sin registro. Para acceder desde otros dispositivos y recibir novedades por correo,",
+    "你的用户名和选择保存在此设备上，无需注册。若要跨设备访问并接收邮件更新，请",
+    "Mananatili sa device na ito ang username at mga pinili mo, nang walang signup. Para sa access sa ibang device at mga update sa email,",
+    "Tên người dùng và lựa chọn được lưu trên thiết bị này, không cần đăng ký. Để dùng trên nhiều thiết bị và nhận cập nhật qua email,",
+    "يبقى اسم المستخدم واختياراتك على هذا الجهاز دون تسجيل. للوصول من أجهزة أخرى وتلقي تحديثات البريد الإلكتروني،",
+    "आपका उपयोगकर्ता नाम और पसंद इस डिवाइस पर रहते हैं, साइनअप की ज़रूरत नहीं है। दूसरे डिवाइस से उपयोग और ईमेल अपडेट के लिए,"
+  ],
+  "E.G. A STREET NAME, CROSS STREETS, OR NEIGHBORHOOD…": [
+    "p. ej., una calle, un cruce o un barrio…",
+    "例如街道名、交叉路口或社区…",
+    "hal. pangalan ng kalye, sangandaan o lugar…",
+    "ví dụ: tên đường, giao lộ hoặc khu phố…",
+    "مثلاً اسم شارع أو تقاطع أو حي…",
+    "जैसे सड़क का नाम, चौराहा या मोहल्ला…"
+  ],
+  "E.g. a street name, cross streets, or neighborhood…": [
+    "p. ej., una calle, un cruce o un barrio…",
+    "例如街道名、交叉路口或社区…",
+    "hal. pangalan ng kalye, sangandaan o lugar…",
+    "ví dụ: tên đường, giao lộ hoặc khu phố…",
+    "مثلاً اسم شارع أو تقاطع أو حي…",
+    "जैसे सड़क का नाम, चौराहा या मोहल्ला…"
+  ],
+  "WHICH CITY'S PROJECTS DO YOU WANT TO TRACK?": [
+    "¿Qué ciudad quieres seguir?",
+    "你想关注哪个城市的项目？",
+    "Aling lungsod ang gusto mong subaybayan?",
+    "Bạn muốn theo dõi dự án của thành phố nào?",
+    "مشاريع أي مدينة تريد متابعتها؟",
+    "आप किस शहर की परियोजनाएँ देखना चाहते हैं?"
+  ],
+  "SEARCH CITIES…": [
+    "Buscar ciudades…",
+    "搜索城市…",
+    "Maghanap ng lungsod…",
+    "Tìm thành phố…",
+    "ابحث عن المدن…",
+    "शहर खोजें…"
+  ],
+  "CHANGE YOUR CITY": [
+    "Cambiar ciudad",
+    "更改城市",
+    "Palitan ang lungsod",
+    "Đổi thành phố",
+    "تغيير مدينتك",
+    "अपना शहर बदलें"
+  ],
+  "PLANNING COMMISSION": [
+    "Comisión de Planificación",
+    "规划委员会",
+    "Komisyon sa Pagpaplano",
+    "Ủy ban Quy hoạch",
+    "لجنة التخطيط",
+    "नियोजन आयोग"
+  ],
+  "Planning commission": [
+    "Comisión de Planificación",
+    "规划委员会",
+    "Komisyon sa Pagpaplano",
+    "Ủy ban Quy hoạch",
+    "لجنة التخطيط",
+    "नियोजन आयोग"
+  ],
+  "CITY COUNCIL": [
+    "Concejo Municipal",
+    "市议会",
+    "Konseho ng Lungsod",
+    "Hội đồng Thành phố",
+    "مجلس المدينة",
+    "नगर परिषद"
+  ],
+  "City council": [
+    "Concejo Municipal",
+    "市议会",
+    "Konseho ng Lungsod",
+    "Hội đồng Thành phố",
+    "مجلس المدينة",
+    "नगर परिषद"
+  ],
+  "MAYOR & CITY COUNCIL": [
+    "Alcaldía y Concejo Municipal",
+    "市长和市议会",
+    "Alkalde at Konseho ng Lungsod",
+    "Thị trưởng và Hội đồng Thành phố",
+    "العمدة ومجلس المدينة",
+    "महापौर और नगर परिषद"
+  ],
+  "Mayor & city council": [
+    "Alcaldía y Concejo Municipal",
+    "市长和市议会",
+    "Alkalde at Konseho ng Lungsod",
+    "Thị trưởng và Hội đồng Thành phố",
+    "العمدة ومجلس المدينة",
+    "महापौर और नगर परिषद"
+  ],
+  "BOARD": [
+    "Junta",
+    "委员会",
+    "Lupon",
+    "Hội đồng",
+    "المجلس",
+    "बोर्ड"
+  ],
+  "JOIN": [
+    "Participar",
+    "参与",
+    "Sumali",
+    "Tham gia",
+    "انضم",
+    "जुड़ें"
+  ],
+  "LINK": [
+    "Enlace",
+    "链接",
+    "Link",
+    "Liên kết",
+    "رابط",
+    "लिंक"
+  ],
+  "OFFICIAL SOURCE": [
+    "Fuente oficial",
+    "官方来源",
+    "Opisyal na pinagmulan",
+    "Nguồn chính thức",
+    "مصدر رسمي",
+    "आधिकारिक स्रोत"
+  ],
+  "OFFICIAL PLANNING RECORDS": [
+    "Registros oficiales de planificación",
+    "官方规划记录",
+    "Mga opisyal na rekord sa pagpaplano",
+    "Hồ sơ quy hoạch chính thức",
+    "سجلات التخطيط الرسمية",
+    "आधिकारिक नियोजन रिकॉर्ड"
+  ],
+  "MEETINGS AND AGENDAS": [
+    "Reuniones y agendas",
+    "会议和议程",
+    "Mga pulong at agenda",
+    "Cuộc họp và chương trình họp",
+    "الاجتماعات وجداول الأعمال",
+    "बैठकें और कार्यसूचियाँ"
+  ],
+  "DECIDES LAND USE HERE": [
+    "Decide el uso del suelo aquí",
+    "决定本地土地用途",
+    "Nagpapasya sa paggamit ng lupa rito",
+    "Quyết định việc sử dụng đất tại đây",
+    "يقرر استخدام الأراضي هنا",
+    "यहाँ भूमि उपयोग तय करता है"
+  ],
+  "A PLAIN-ENGLISH RECAP OF WHAT'S BEING BUILT, WHAT'S CHANGING, AND WHICH MEETINGS DECIDE IT. ONE PUBLISHED NEWSLETTER PER MONTH.": [
+    "Un resumen en inglés sencillo de las obras, los cambios y las reuniones que los deciden. Un boletín al mes.",
+    "以简明英语介绍建设项目、社区变化及相关决策会议。每月一期。",
+    "Buod sa simpleng Ingles ng mga itinatayo, pagbabago at pulong na nagpapasya tungkol dito. Isang newsletter bawat buwan.",
+    "Bản tóm tắt bằng tiếng Anh dễ hiểu về công trình, thay đổi và các cuộc họp quyết định. Mỗi tháng một bản tin.",
+    "ملخص بلغة إنجليزية مبسطة لما يُبنى وما يتغير والاجتماعات التي تقرره. نشرة واحدة كل شهر.",
+    "निर्माण, बदलाव और उनसे जुड़ी निर्णय लेने वाली बैठकों का सरल अंग्रेज़ी में सारांश। हर महीने एक समाचार पत्र।"
+  ],
+  "A plain-english recap of what's being built, what's changing, and which meetings decide it. one published newsletter per month.": [
+    "Un resumen en inglés sencillo de las obras, los cambios y las reuniones que los deciden. Un boletín al mes.",
+    "以简明英语介绍建设项目、社区变化及相关决策会议。每月一期。",
+    "Buod sa simpleng Ingles ng mga itinatayo, pagbabago at pulong na nagpapasya tungkol dito. Isang newsletter bawat buwan.",
+    "Bản tóm tắt bằng tiếng Anh dễ hiểu về công trình, thay đổi và các cuộc họp quyết định. Mỗi tháng một bản tin.",
+    "ملخص بلغة إنجليزية مبسطة لما يُبنى وما يتغير والاجتماعات التي تقرره. نشرة واحدة كل شهر.",
+    "निर्माण, बदलाव और उनसे जुड़ी निर्णय लेने वाली बैठकों का सरल अंग्रेज़ी में सारांश। हर महीने एक समाचार पत्र।"
+  ],
+  "SEARCH PROJECTS, NEWS, BOARDS, OFFICIAL DOCUMENTS AND STATISTICS ACROSS COVERED CALIFORNIA COMMUNITIES. PROJECT PREVIEWS LOAD FIRST. CHOOSE A CITY TO LOAD ITS FULL REGISTER, OR LOAD ALL PROJECT RECORDS BELOW.": [
+    "Busca proyectos, noticias, juntas, documentos oficiales y estadísticas de las comunidades cubiertas de California. Primero se cargan vistas previas. Elige una ciudad para cargar su registro completo o carga todos los registros abajo.",
+    "搜索覆盖范围内加州社区的项目、新闻、委员会、官方文件和统计。首先加载项目预览。选择城市可加载完整记录，或在下方加载所有项目记录。",
+    "Maghanap ng mga proyekto, balita, lupon, opisyal na dokumento at estadistika sa mga sakop na komunidad sa California. Mga preview muna ang nilo-load. Pumili ng lungsod para sa buong rehistro, o i-load ang lahat ng rekord sa ibaba.",
+    "Tìm dự án, tin tức, hội đồng, tài liệu chính thức và thống kê tại các cộng đồng California được hỗ trợ. Bản xem trước được tải trước. Chọn thành phố để tải toàn bộ hồ sơ hoặc tải tất cả bên dưới.",
+    "ابحث في المشاريع والأخبار والمجالس والوثائق الرسمية والإحصاءات للمجتمعات المشمولة في كاليفورنيا. تُحمّل المعاينات أولاً. اختر مدينة لتحميل سجلها الكامل أو حمّل جميع السجلات أدناه.",
+    "कवर किए गए कैलिफ़ोर्निया समुदायों की परियोजनाएँ, समाचार, बोर्ड, आधिकारिक दस्तावेज़ और आँकड़े खोजें। पहले पूर्वावलोकन लोड होते हैं। पूरा रजिस्टर लोड करने के लिए शहर चुनें या नीचे सभी रिकॉर्ड लोड करें।"
+  ],
+  "Search projects, news, boards, official documents and statistics across covered california communities. project previews load first. choose a city to load its full register, or load all project records below.": [
+    "Busca proyectos, noticias, juntas, documentos oficiales y estadísticas de las comunidades cubiertas de California. Primero se cargan vistas previas. Elige una ciudad para cargar su registro completo o carga todos los registros abajo.",
+    "搜索覆盖范围内加州社区的项目、新闻、委员会、官方文件和统计。首先加载项目预览。选择城市可加载完整记录，或在下方加载所有项目记录。",
+    "Maghanap ng mga proyekto, balita, lupon, opisyal na dokumento at estadistika sa mga sakop na komunidad sa California. Mga preview muna ang nilo-load. Pumili ng lungsod para sa buong rehistro, o i-load ang lahat ng rekord sa ibaba.",
+    "Tìm dự án, tin tức, hội đồng, tài liệu chính thức và thống kê tại các cộng đồng California được hỗ trợ. Bản xem trước được tải trước. Chọn thành phố để tải toàn bộ hồ sơ hoặc tải tất cả bên dưới.",
+    "ابحث في المشاريع والأخبار والمجالس والوثائق الرسمية والإحصاءات للمجتمعات المشمولة في كاليفورنيا. تُحمّل المعاينات أولاً. اختر مدينة لتحميل سجلها الكامل أو حمّل جميع السجلات أدناه.",
+    "कवर किए गए कैलिफ़ोर्निया समुदायों की परियोजनाएँ, समाचार, बोर्ड, आधिकारिक दस्तावेज़ और आँकड़े खोजें। पहले पूर्वावलोकन लोड होते हैं। पूरा रजिस्टर लोड करने के लिए शहर चुनें या नीचे सभी रिकॉर्ड लोड करें।"
+  ],
+  "SEARCH ANYTHING: AN ADDRESS, A COMMISSION, “BUILDER’S REMEDY”, “HOUSING ELEMENT”, A STREET NAME…": [
+    "Busca una dirección, una comisión, «builder’s remedy», «housing element», una calle…",
+    "搜索地址、委员会、“builder’s remedy”、“housing element”、街道名…",
+    "Maghanap ng address, komisyon, “builder’s remedy”, “housing element”, pangalan ng kalye…",
+    "Tìm địa chỉ, ủy ban, “builder’s remedy”, “housing element”, tên đường…",
+    "ابحث عن عنوان أو لجنة أو «builder’s remedy» أو «housing element» أو اسم شارع…",
+    "पता, आयोग, “builder’s remedy”, “housing element”, सड़क का नाम खोजें…"
+  ],
+  "SEARCH THE RESOURCE BANK": [
+    "Buscar en el banco de recursos",
+    "搜索资源库",
+    "Maghanap sa mga sanggunian",
+    "Tìm trong kho tài nguyên",
+    "ابحث في مكتبة الموارد",
+    "संसाधन संग्रह में खोजें"
+  ],
+  "POPULATION & HOUSEHOLDS": [
+    "Población y hogares",
+    "人口和家庭",
+    "Populasyon at mga sambahayan",
+    "Dân số và hộ gia đình",
+    "السكان والأسر",
+    "जनसंख्या और परिवार"
+  ],
+  "SOURCES & METHODOLOGY": [
+    "Fuentes y metodología",
+    "来源和方法",
+    "Mga pinagmulan at pamamaraan",
+    "Nguồn và phương pháp",
+    "المصادر والمنهجية",
+    "स्रोत और पद्धति"
+  ],
+  "CLOSE VIDEO": [
+    "Cerrar video",
+    "关闭视频",
+    "Isara ang video",
+    "Đóng video",
+    "إغلاق الفيديو",
+    "वीडियो बंद करें"
+  ],
+  "CLOSE PROJECT DETAILS": [
+    "Cerrar detalles del proyecto",
+    "关闭项目详情",
+    "Isara ang detalye ng proyekto",
+    "Đóng chi tiết dự án",
+    "إغلاق تفاصيل المشروع",
+    "परियोजना विवरण बंद करें"
+  ],
+  "The california civic dashboard · welcome": [
+    "THE CALIFORNIA CIVIC DASHBOARD · BIENVENIDA",
+    "加州公民信息平台 · 欢迎",
+    "THE CALIFORNIA CIVIC DASHBOARD · MALIGAYANG PAGDATING",
+    "THE CALIFORNIA CIVIC DASHBOARD · CHÀO MỪNG",
+    "لوحة المعلومات المدنية لكاليفورنيا · مرحباً",
+    "कैलिफ़ोर्निया सिविक डैशबोर्ड · स्वागत है"
+  ],
+  "SEARCH FOR A CITY": [
+    "Busca una ciudad",
+    "搜索城市",
+    "Maghanap ng lungsod",
+    "Tìm thành phố",
+    "ابحث عن مدينة",
+    "शहर खोजें"
+  ],
+  "HOUSING DEVELOPMENTS": [
+    "Proyectos de vivienda",
+    "住房开发",
+    "Mga proyekto sa pabahay",
+    "Dự án nhà ở",
+    "مشاريع الإسكان",
+    "आवास विकास"
+  ],
+  "TRANSPORTATION & INFRASTRUCTURE": [
+    "Transporte e infraestructura",
+    "交通和基础设施",
+    "Transportasyon at imprastraktura",
+    "Giao thông và cơ sở hạ tầng",
+    "النقل والبنية التحتية",
+    "परिवहन और बुनियादी ढाँचा"
+  ],
+  "COMMERCIAL & INDUSTRIAL": [
+    "Comercio e industria",
+    "商业和工业",
+    "Komersyal at industriyal",
+    "Thương mại và công nghiệp",
+    "التجارة والصناعة",
+    "वाणिज्य और उद्योग"
+  ],
+  "CIVIC & PUBLIC FACILITIES": [
+    "Instalaciones cívicas y públicas",
+    "市政和公共设施",
+    "Mga pasilidad na sibiko at pampubliko",
+    "Cơ sở dân sự và công cộng",
+    "المرافق المدنية والعامة",
+    "नागरिक और सार्वजनिक सुविधाएँ"
+  ],
+  "MEETINGS & HOW TO GET INVOLVED": [
+    "Reuniones y cómo participar",
+    "会议和参与方式",
+    "Mga pulong at paraan ng pakikilahok",
+    "Cuộc họp và cách tham gia",
+    "الاجتماعات وكيفية المشاركة",
+    "बैठकें और भाग लेने के तरीके"
+  ],
+  "WE'LL MATCH A TYPED ADDRESS TO THE NEAREST KNOWN PROJECTS - FOR A PRECISE PIN, \"USE MY CURRENT LOCATION\" INSTEAD.": [
+    "Relacionaremos la dirección que escribas con los proyectos conocidos más cercanos. Para un punto preciso, elige «Usar mi ubicación actual».",
+    "我们会将输入的地址与最近的已知项目匹配。如需精确位置，请选择“使用我的当前位置”。",
+    "Itutugma namin ang address sa pinakamalapit na kilalang mga proyekto. Para sa eksaktong pin, piliin ang “Gamitin ang kasalukuyan kong lokasyon”.",
+    "Chúng tôi sẽ ghép địa chỉ bạn nhập với các dự án gần nhất. Để ghim chính xác, chọn “Dùng vị trí hiện tại của tôi”.",
+    "سنطابق العنوان المدخل مع أقرب المشاريع المعروفة. لتحديد الموقع بدقة، اختر «استخدم موقعي الحالي».",
+    "हम दर्ज पते के सबसे पास की ज्ञात परियोजनाएँ दिखाएँगे। सटीक स्थान के लिए “मेरी वर्तमान स्थिति का उपयोग करें” चुनें।"
+  ]
+}

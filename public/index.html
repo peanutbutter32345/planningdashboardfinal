@@ -1781,12 +1781,15 @@
 <link rel="stylesheet" href="/browse.css">
 <link rel="stylesheet" href="/admin-content.css">
 <link rel="stylesheet" href="/site-intro.css">
+<link rel="stylesheet" href="/language.css">
 </head>
 <body>
 <a href="#mainContent" class="skip-link">Skip to main content</a>
 
 <div class="onboard-overlay" id="onboardOverlay" role="dialog" aria-modal="true" aria-labelledby="onboardHeading">
   <div class="onboard-card">
+    <div class="language-control"><label for="onboardLanguage">Language</label><select id="onboardLanguage" data-language-select translate="no"><option value="en" lang="en">English</option><option value="es" lang="es">Español</option><option value="zh-Hans" lang="zh-Hans">中文（简体）</option><option value="tl" lang="tl">Tagalog</option><option value="vi" lang="vi">Tiếng Việt</option><option value="ar" lang="ar">العربية</option><option value="hi" lang="hi">हिन्दी</option></select><span class="language-status" data-language-status role="status"></span></div>
+    <p class="language-note" data-language-note hidden>Menus and common controls are translated. Project records, news, meeting documents and some descriptions remain in their original language.</p>
     <div class="onboard-eyebrow">THE CALIFORNIA CIVIC DASHBOARD · WELCOME</div><h2 id="onboardHeading">Get to know your community.</h2>
     <p class="sub">Choose a county to explore projects, news and public meetings. Add a city or location whenever you like.</p>
 
@@ -1828,6 +1831,7 @@
 
 <div class="util-bar">
   <div class="wrap util-bar-inner">
+    <div class="language-control"><label for="siteLanguage">Language</label><select id="siteLanguage" data-language-select translate="no"><option value="en" lang="en">English</option><option value="es" lang="es">Español</option><option value="zh-Hans" lang="zh-Hans">中文（简体）</option><option value="tl" lang="tl">Tagalog</option><option value="vi" lang="vi">Tiếng Việt</option><option value="ar" lang="ar">العربية</option><option value="hi" lang="hi">हिन्दी</option></select><span class="language-status" data-language-status role="status"></span></div>
     <span class="util-links"><a href="#" data-goto-screen="dashboard">Dashboard</a> &middot; <a href="#" data-goto-screen="planner">Get Involved</a> &middot; <a href="#" id="utilTop" data-util-search>Search</a> &middot; <a href="#" data-goto-screen="account" id="utilAccount">Your account</a></span>
     <div class="marquee" id="signupMarquee" aria-hidden="true">
       <div class="marquee-track">
@@ -1843,6 +1847,8 @@
     <a href="#" class="util-signup" data-open-newsletter>Newsletter</a>
   </div>
 </div>
+
+<p class="language-note" data-language-note hidden>Menus and common controls are translated. Project records, news, meeting documents and some descriptions remain in their original language.</p>
 
 <nav class="page-nav" aria-label="Main sections">
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
@@ -17564,5 +17570,6 @@ if (window.L) {
   <p class="site-tour-note">A recorded walkthrough. Project details and figures may change. Captions are included; no sound is needed.</p>
 </dialog>
 <script src="/site-intro.js"></script>
+<script type="module" src="/language.js"></script>
 </body>
 </html>

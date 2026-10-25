@@ -1,0 +1,30 @@
+.language-control{display:flex;align-items:center;gap:7px;font:600 12px 'Open Sans',Arial,sans-serif;flex-wrap:wrap;}
+.language-control label{white-space:nowrap;}
+.language-control select{font:inherit;min-height:34px;max-width:180px;padding:5px 9px;border:1px solid #87956B;border-radius:2px;background:#F2F4EE;color:#2E3B1C;cursor:pointer;direction:ltr;}
+.language-control select:focus-visible{outline:3px solid #87956B;outline-offset:2px;}
+.util-bar .language-control{order:3;color:#F2F4EE;}
+.language-status{font-size:12px;flex-basis:100%;}
+.language-status:empty{display:none;}
+.language-note{font-size:12px;line-height:1.5;padding:8px 22px;margin:0;background:#F2F4EE;color:#3E4F24;border-bottom:1px solid #D9D9D9;}
+.onboard-card>.language-control{margin-bottom:14px;padding-inline-end:34px;}
+.onboard-card>.language-note{padding:8px 0;margin-bottom:12px;border-bottom:0;}
+html[dir="rtl"] .page-nav-tab{text-align:right;}
+html[dir="rtl"] .util-links{margin-left:0;margin-right:auto;}
+html[dir="rtl"] .sub-nav-tab,html[dir="rtl"] .btn,html[dir="rtl"] .onboard-label{letter-spacing:normal;}
+html[dir="rtl"] .leaflet-container,html[dir="rtl"] .gm-style,html[dir="rtl"] canvas,html[dir="rtl"] video,html[dir="rtl"] .pager-controls{direction:ltr;}
+html[dir="rtl"] input[type="email"],html[dir="rtl"] input[type="password"],html[dir="rtl"] input[autocomplete="nickname"]{direction:ltr;text-align:left;}
+@media(max-width:700px){.util-bar .language-control{flex:1 1 100%;}.language-note{padding:8px 16px;}.util-bar .util-bar-inner{padding-inline-end:64px;}}
+/* The old off-screen skip link enlarged the RTL document by 10,000 pixels. */
+.skip-link{left:auto;inset-inline-start:0;transform:translateY(-200%);}
+.skip-link:focus{left:auto;transform:none;}
+html[dir="rtl"] .marquee{direction:ltr;}
+html[dir="rtl"] .marquee-item{direction:rtl;}
+/* Long city names must not force the mobile header beyond the viewport. */
+.hero-panels>*{min-width:0;max-width:100%;}
+.hero-citypick select{min-width:0;max-width:100%;}
+.card .row1 .stamp{min-width:0;overflow-wrap:anywhere;}
+@media(max-width:480px){
+  .card .row1{flex-wrap:wrap;}
+  .card .row1>div:last-child{max-width:100%;}
+  .funnel-seg{min-width:0;padding-inline:4px;overflow-wrap:anywhere;}
+}
