@@ -1,0 +1,26 @@
+# Optional standalone Cal edition. The existing render.yaml continues to serve The Bay Dashboard.
+services:
+  - type: web
+    name: cal-civic-dashboard
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: DASHBOARD_EDITION
+        value: cal
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_USERNAMES
+        sync: false
+      - key: SITE_URL
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b
+      - key: LLM_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: EMAILS_PAUSED
+        value: "true"

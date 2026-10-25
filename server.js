@@ -16,6 +16,7 @@ import { NEWS_ARTICLES } from './data/news.js';
 import { BOARDS } from './data/boards.js';
 import { CITY_LABELS, cityLabel } from './digest.js';
 import { getHearings, getRecentMeetings } from './hearings.js';
+import { registerCalDashboard } from './cal-dashboard.js';
 
 dotenv.config();
 const { EMAILS_PAUSED, EMAIL_PAUSE_MESSAGE, sendEmail } = await import('./email-delivery.js');
@@ -271,6 +272,7 @@ if (pool) setInterval(purgeExpiredSessions, 24 * 60 * 60_000).unref();
 // The public flood geometry and dashboard HTML compress substantially on mobile connections.
 app.use(compression());
 app.use(express.json({ limit: '4mb' }));
+registerCalDashboard(app, {llm, model, hasAI:Boolean(LLM_API_KEY)});
 // Everything was served with max-age=0, so a returning reader spent a round trip revalidating
 // every file before it could be used - about a dozen of them, in series, before the page could
 // draw. On a phone that is most of the wait. None of these filenames carry a content hash, so

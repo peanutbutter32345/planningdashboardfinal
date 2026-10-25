@@ -1,0 +1,322 @@
+{
+  "Santa Barbara": [
+    {
+      "category": "Zoning",
+      "title": "City zoning maps and GIS reference library",
+      "url": "https://santabarbaraca.gov/services/construction-land-development/reference-library/reference-library-maps"
+    },
+    {
+      "category": "GIS",
+      "title": "City zoning polygon service",
+      "url": "https://gisportal.santabarbaraca.gov/server1/rest/services/CitySantaBarbara/MapServer/401"
+    }
+  ],
+  "Santa Barbara County": [
+    {
+      "category": "Zoning",
+      "title": "Find my zoning: county land-use map",
+      "url": "https://www.countyofsb.org/pl-find-my-zoning"
+    },
+    {
+      "category": "Boards",
+      "title": "Clerk of the Board, appointments and public meetings",
+      "url": "https://www.countyofsb.org/ceo-clerk-of-the-board?contentId=ec0faba9-c496-43a3-89be-731b95690941"
+    }
+  ],
+  "San Luis Obispo County": [
+    {
+      "category": "Zoning",
+      "title": "County planning GIS and LandUseView",
+      "url": "https://www.slocounty.ca.gov/departments/planning-building/department-services/mapping-%28gis%29/"
+    },
+    {
+      "category": "GIS",
+      "title": "Published county planning layers",
+      "url": "https://gis.slocounty.ca.gov/arcgis/rest/services/PLN/PLN_WEB_SERVICES/MapServer"
+    }
+  ],
+  "San Luis Obispo": [
+    {
+      "category": "Zoning",
+      "title": "City zoning maps",
+      "url": "https://www.slocity.org/government/open-government/gis-mapping-division/maps"
+    }
+  ],
+  "Ventura County": [
+    {
+      "category": "GIS",
+      "title": "County land use and zoning layers",
+      "url": "https://maps.ventura.org/arcgis/rest/services/SDs/LandUse/MapServer"
+    }
+  ],
+  "Monterey County": [
+    {
+      "category": "Zoning",
+      "title": "County zoning and parcel lookup",
+      "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps"
+    }
+  ],
+  "Kern County": [
+    {
+      "category": "Zoning",
+      "title": "County planning interactive maps",
+      "url": "https://kernplanning.com/general-plan-update/interactive-maps/"
+    },
+    {
+      "category": "GIS",
+      "title": "County zoning districts, unincorporated areas",
+      "url": "https://services5.arcgis.com/Y8jwjGUWbRjuqpG5/ArcGIS/rest/services/Kern_County_Zoning/FeatureServer/0"
+    }
+  ],
+  "Tulare County": [
+    {
+      "category": "Zoning",
+      "title": "County zoning information and permit viewer",
+      "url": "https://tularecounty.ca.gov/rma/planning-building/zoning-entitlements"
+    },
+    {
+      "category": "Boards",
+      "title": "County boards and commissions",
+      "url": "https://tularecounty.ca.gov/clerkoftheboard/boards-and-commissions"
+    }
+  ],
+  "Fresno County": [
+    {
+      "category": "GIS",
+      "title": "County GIS and property mapping",
+      "url": "https://www.fresnocountyca.gov/Departments/Information-Technology-Services-Department/GIS-Geographic-Information-Systems"
+    },
+    {
+      "category": "Boards",
+      "title": "County boards, commissions and committees",
+      "url": "https://bosbcc.fresnocountyca.gov/"
+    }
+  ],
+  "Kings County": [
+    {
+      "category": "Municipal code",
+      "title": "County development code and zoning plan",
+      "url": "https://www.countyofkingsca.gov/departments/community-development-agency/information/zoning-ordinance"
+    },
+    {
+      "category": "Boards",
+      "title": "County boards and commissions",
+      "url": "https://www.countyofkingsca.gov/departments/board-of-supervisors/boards-commissions"
+    }
+  ],
+  "Inyo County": [
+    {
+      "category": "Planning",
+      "title": "County planning and zoning department",
+      "url": "https://www.inyocounty.us/services/planning-department"
+    }
+  ],
+  "Santa Cruz County": [
+    {
+      "category": "GIS",
+      "title": "County public GIS zoning layers",
+      "url": "https://sccgis.santacruzcountyca.gov/server/rest/services/giswebp/MapServer"
+    }
+  ],
+  "Fresno": [
+    {
+      "category": "Zoning",
+      "title": "Official zoning map and GIS library",
+      "url": "https://www.fresno.gov/planning/gis-mapping/"
+    }
+  ],
+  "Bakersfield": [
+    {
+      "category": "Zoning",
+      "title": "City GIS mapping portal",
+      "url": "https://www.bakersfieldcity.us/gis-mapping-portal"
+    },
+    {
+      "category": "GIS",
+      "title": "City zoning polygon layer",
+      "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/LandUse/MapServer/7"
+    }
+  ],
+  "Orange Cove": [
+    {
+      "category": "Zoning",
+      "title": "City zoning map and general plan forms",
+      "url": "https://cityoforangecove.com/building-engineering-forms/"
+    }
+  ],
+  "Ridgecrest": [
+    {
+      "category": "Zoning",
+      "title": "Interactive city zoning map",
+      "url": "https://www.ridgecrest-ca.gov/630/Interactive-City-Map"
+    }
+  ],
+  "Tehachapi": [
+    {
+      "category": "Zoning",
+      "title": "Planning documents, zone map and zoning code",
+      "url": "https://www.liveuptehachapi.com/272/Planning-Documents"
+    }
+  ],
+  "Hanford": [
+    {
+      "category": "Planning",
+      "title": "City planning, general plan and zoning",
+      "url": "https://hanfordca.gov/1233/Planning"
+    }
+  ],
+  "Lemoore": [
+    {
+      "category": "Zoning",
+      "title": "City zoning and general plan maps",
+      "url": "https://lemoore.com/communitydevelopement/maps/"
+    }
+  ],
+  "Seaside": [
+    {
+      "category": "Zoning",
+      "title": "Current city zoning, coastal and general plan maps",
+      "url": "https://www.ci.seaside.ca.us/858/Maps"
+    }
+  ],
+  "Morro Bay": [
+    {
+      "category": "Zoning",
+      "title": "Adopted planning documents and zoning map",
+      "url": "https://www.morrobayca.gov/1084/Planning-Documents"
+    }
+  ],
+  "Goleta": [
+    {
+      "category": "Zoning",
+      "title": "Zoning map, overlay map and regulations",
+      "url": "https://www.cityofgoleta.org/your-city/planning-and-environmental-review/permits-and-regulations"
+    }
+  ],
+  "Lompoc": [
+    {
+      "category": "Zoning",
+      "title": "Find my zoning interactive map",
+      "url": "https://www.cityoflompoc.com/government/departments/community-development/planning-division/find-my-zoning"
+    }
+  ],
+  "Santa Maria": [
+    {
+      "category": "Zoning",
+      "title": "City published zoning map, check for later amendments",
+      "url": "https://www.cityofsantamaria.org/home/showpublisheddocument/10037/638563088414970000"
+    },
+    {
+      "category": "Boards",
+      "title": "City boards and commissions",
+      "url": "https://www.cityofsantamaria.org/services/departments/boards-commissions"
+    }
+  ],
+  "San Jose": [
+    {
+      "category": "Zoning",
+      "title": "Zoning, general plan and active permit maps",
+      "url": "https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/maps-commonly-used-for-planning"
+    },
+    {
+      "category": "Boards",
+      "title": "City boards and commissions, applications and information",
+      "url": "https://www.sanjoseca.gov/your-government/appointees/city-clerk/boards-commissions"
+    }
+  ],
+  "Morgan Hill": [
+    {
+      "category": "Zoning",
+      "title": "City published zoning map",
+      "url": "https://www.morganhill.ca.gov/DocumentCenter/View/328/Zoning-Map"
+    }
+  ],
+  "Farmersville": [
+    {
+      "category": "Zoning",
+      "title": "Developer resources and zoning map",
+      "url": "https://www.cityoffarmersville-ca.gov/382/Developer-Resources"
+    }
+  ],
+  "Lindsay": [
+    {
+      "category": "Zoning",
+      "title": "City maps, updated zoning and general plan",
+      "url": "https://www.lindsay.ca.us/220/Maps-New"
+    },
+    {
+      "category": "Boards",
+      "title": "City board and commission application",
+      "url": "https://www.lindsay.ca.us/177/Boards-Commissions-and-Committees-Applic"
+    }
+  ],
+  "Tulare": [
+    {
+      "category": "Zoning",
+      "title": "City zoning map",
+      "url": "https://www.tulare.ca.gov/business/zoning-map"
+    },
+    {
+      "category": "GIS",
+      "title": "City zoning polygon layer",
+      "url": "https://maps.tulare.ca.gov/server/rest/services/Planning/Zoning/MapServer/0"
+    }
+  ],
+  "Visalia": [
+    {
+      "category": "Zoning",
+      "title": "City planning, zoning ordinance and GIS lookup",
+      "url": "https://www.visalia.gov/223/Planning"
+    }
+  ],
+  "Woodlake": [
+    {
+      "category": "Zoning",
+      "title": "City published zoning map, confirm amendments with planning",
+      "url": "https://www.cityofwoodlake.com/wp-content/uploads/2017/11/City-of-Woodlake-Zoning-Map.pdf"
+    },
+    {
+      "category": "Boards",
+      "title": "City government and planning commission",
+      "url": "https://cityofwoodlake.com/government/"
+    }
+  ],
+  "San Buenaventura (Ventura)": [
+    {
+      "category": "Zoning",
+      "title": "City GIS, zoning and project maps",
+      "url": "https://map.cityofventura.net/"
+    }
+  ],
+  "Carpinteria": [
+    {
+      "category": "Boards",
+      "title": "City council and appointed bodies",
+      "url": "https://carpinteriaca.gov/city-hall/citycouncil/"
+    }
+  ],
+  "Del Rey Oaks": [
+    {
+      "category": "Zoning",
+      "title": "City zoning map including Fort Ord property",
+      "url": "https://www.delreyoaks.org/bc-pc/page/zoning-map"
+    },
+    {
+      "category": "Boards",
+      "title": "City council and appointed bodies",
+      "url": "https://www.delreyoaks.org/citycouncil"
+    }
+  ],
+  "Maricopa": [
+    {
+      "category": "Zoning",
+      "title": "City zoning ordinance; official map held by planning department",
+      "url": "https://cityofmaricopa.org/wp-content/uploads/2025/02/Maricopa-Zoning-Ordinance.pdf"
+    },
+    {
+      "category": "Municipal code",
+      "title": "City zoning ordinance",
+      "url": "https://cityofmaricopa.org/wp-content/uploads/2025/02/Maricopa-Zoning-Ordinance.pdf"
+    }
+  ]
+}
