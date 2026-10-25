@@ -285,6 +285,8 @@ app.use(express.static(fileURLToPath(new URL('./public', import.meta.url)), {
     if (/\/(vendor|img)\//.test(path)) return res.setHeader('Cache-Control', 'public, max-age=604800');
     // Records refresh on a schedule. Ten minutes of reuse, then a background revalidation that
     // the reader never waits on.
+    // Coverage files share a manifest and record counts; always revalidate them together.
+    if (/\/data\/coverage\//.test(path)) return res.setHeader('Cache-Control', 'no-cache');
     if (/\/data\//.test(path)) return res.setHeader('Cache-Control', 'public, max-age=600, stale-while-revalidate=86400');
     // The page's own scripts and stylesheets revalidate every time. None of them carry a content
     // hash, so a plain max-age would let a deploy serve the new HTML - which is never cached -

@@ -11,12 +11,12 @@ const server=app.listen(0);await new Promise(resolve=>server.once('listening',re
 after(()=>new Promise(resolve=>server.close(resolve)));
 const call=async(path,body)=>{const response=await fetch(base+path,body?{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)}:{});return {status:response.status,body:await response.json(),headers:response.headers};};
 
-test('four current and future districts are distinct, and every covered place has a jurisdiction profile',()=>{
- for(const congress of ['119','120'])assert.deepEqual(read('districts-'+congress+'.geojson').features.map(f=>f.properties.district).sort(),['19','20','24','26']);
+test('six current and future districts are distinct, and every covered place has a jurisdiction profile',()=>{
+ for(const congress of ['119','120'])assert.deepEqual(read('districts-'+congress+'.geojson').features.map(f=>f.properties.district).sort(),['19','20','21','24','26','27']);
  assert.equal(geography.metadata.futureFrom,'2027-01-03');
  const ids=new Set(profiles.map(p=>p.id));assert.equal(ids.size,profiles.length);
  for(const p of [...geography.places,...geography.counties]){
-  assert.ok(ids.has(p.id),p.name);assert.ok(p.districts.length||p.futureDistricts.length,p.name);
+  assert.ok(ids.has(p.id),p.name);assert.ok(p.districts.length||p.futureDistricts.length||p.name==='San Diego'||p.name==='San Diego County',p.name);
   assert.ok(profiles.some(c=>c.kind==='county'&&c.county===p.county),p.county);
   assert.ok(Number.isFinite(p.center.lat)&&Number.isFinite(p.center.lng));
  }
@@ -96,4 +96,11 @@ test('zoning queries accept only bounded local areas and the verified agency lay
  const realFetch=globalThis.fetch;let upstream;
  globalThis.fetch=(input,options)=>String(input).startsWith('https://gisportal.santabarbaraca.gov/')?(upstream=String(input),Promise.resolve(new Response(JSON.stringify({type:'FeatureCollection',features:[{type:'Feature',geometry:{type:'Polygon',coordinates:[[[-119.71,34.41],[-119.70,34.41],[-119.70,34.42],[-119.71,34.41]]]},properties:{zone:'R-2',OWNER:'Must not expose unused attributes'}}]}),{status:200,headers:{'content-type':'application/json'}}))):realFetch(input,options);
  try{const r=await call('/api/cal/zoning/p0669070?bbox=-119.71,34.41,-119.70,34.42');assert.equal(r.status,200);assert.equal(r.body.features[0].properties.zone,'R-2');assert.deepEqual(Object.keys(r.body.features[0].properties),['zone']);assert.match(upstream,/MapServer\/401\/query/);assert.match(upstream,/resultRecordCount=1000/);}finally{globalThis.fetch=realFetch;}
+});
+
+
+test('the added district catalog and San Diego all-coverage map are available',async()=>{
+ const catalog=await call('/api/cal/catalog');assert.deepEqual(catalog.body.districts.map(d=>d.id).sort(),['19','20','21','24','26','27']);
+ const all=await call('/api/cal/map?id=p0666000&district=all');assert.equal(all.status,200);assert.ok(all.body.count>3000);assert.ok(all.body.points.every(p=>p.jurisdiction==='p0666000'));
+ const filtered=await call('/api/cal/map?id=p0666000&district=24');assert.equal(filtered.body.count,0);
 });

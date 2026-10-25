@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-10-25T06:59:10.638177+00:00",
+  "retrieved": "2026-10-25T09:19:15.521275+00:00",
   "articles": {
     "p0603190": [
       {
@@ -13,6 +13,8 @@
         "feed": "https://news.google.com/rss/search?q=%22Auberry%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0607750": [],
+    "p0610032": [],
     "p0612412": [],
     "p0614218": [
       {
@@ -64,6 +66,61 @@
         "county": "Fresno",
         "kind": "reporting",
         "feed": "https://news.google.com/rss/search?q=%22Clovis%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0618674": [
+      {
+        "title": "POM Wonderful invests $7M in new Del Rey Boys & Girls Club",
+        "publisher": "The Business Journal",
+        "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBUOXZtVVBycktMeXFaa3NHR0VZdUdSRnpENHVGVzdtRWtPT2NFNnhfdkpxU2J0ZjFuQ05uTW5SUVpGRTdhRzJ0TThPQ2FVZGduODdCQ09DblFWLVBNYldxNnljaWhoc1k3SVFydFBtQjdKMUdsRWVyNG9Zc1g?oc=5",
+        "date": "2026-09-22",
+        "place": "p0618674",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Del+Rey%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fresno\u2019s 244-unit Casa Del Rey apartments hit market for $37.9 million",
+        "publisher": "The Business Journal",
+        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOdnRMS1FLN1Q5anpmbTlEY21YWDNScGw3cGx1Sy0yLTdLWjhMdFpSa0IwZDNoYmoyTTNVbElzSm9zbTQ4UkxtNDFsZmdVbmo4eEZ6d0xPaGtlODBJNUZ2ZFcxV3p3QlgtNTBWdTZsUk95LXVoZVl2RGVHMktfa2ZnWF92U2RMR0FsUW5UZA?oc=5",
+        "date": "2026-07-09",
+        "place": "p0618674",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Del+Rey%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0620928": [],
+    "p0625436": [
+      {
+        "title": "Vacant lot at Shaw and Fowler avenues home to new Clovis project. Here are details",
+        "publisher": "Fresno Bee",
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBmNmhWMzQ0SGpUYVFyd3IxOFctdzlLaUgzbDY0Y21FLW1iMjVBTXVMcWVXdWc0cGNwb05MTHVvN2x5N1RWT3dDME9hRDQzWGJBVldTT1U1WDlzVWNqOHhqN0VFdDVrR1lMUlHSAWpBVV95cUxQdG42UDZiUW9mY2J2Yk9DTnhDZDN1ZmczZ2MxcEc3aDhOQnUwT0s2YVFieFJ1eEJpWmxQT2hneGttNVNVNHJrS0tUdEdpNk04NE1YcUdaNXl3WkJnbDlycTM3bFdvemlWUjNn?oc=5",
+        "date": "2026-07-28",
+        "place": "p0625436",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Fowler%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fowler leads Valley fastest-growing cities list, 4th year",
+        "publisher": "The Business Journal",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPZUxJRFNGalp3c3l3dnhXNkU1VEFtNFd1V1NLbkpoRFlmRjFsSGtaYldKYmpxVng0WnJ2clpiWTltRW0yYzhpdmFqM3Y3ckxKWWZSSjhybnBqeEFvMDJlMmF0b2REY2FzdENJTGJqLUlPUFJoOHhZSHU3WXNFMlJ0Z056SFpWSnRlYTFoU2xYbmM3SDA?oc=5",
+        "date": "2026-05-21",
+        "place": "p0625436",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Fowler%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fowler Mayor blocked Armenian councilman from speaking at genocide memorial, compared event to \"quincea\u00f1era\"",
+        "publisher": "The San Joaquin Valley Sun",
+        "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPaDBsM0l2ckVlTjJWODBJQy1kcU9PdF90WGtmVFBtRmVRakw3cGlsYWVza1JzWGJ2RW5Tdkx0UGZidG5ON1JnM1Vkb1VpZ0xlZlFya2RVVHduQTZzZDd5djhvVlhKejVRNzlIM0tHYjNQODQ2cHRFODZlbWttdHlZaUU3eVA0enByVmpzZ0VlaWU4ZWxVNFRiNDhmaFBnaTBDcW9fcVpyOGFjdTQ2SDMtMWZEajhSRmh4bG1lZmNlWFcxYTRXSjY4MjdxejdxdVVtdUpN?oc=5",
+        "date": "2026-05-10",
+        "place": "p0625436",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Fowler%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
     "p0627000": [
@@ -190,6 +247,58 @@
         "feed": "https://news.google.com/rss/search?q=%22Friant%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0638562": [
+      {
+        "title": "Kingsburg man appointed to state housing partnership",
+        "publisher": "Mid Valley Times",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQYkNpdUVHaEhPMU1tSlNFZHV0MUNpcU9vSFVadkFJVDAwYnU0eE1HN0gwVExNSU9oT0FoeTc3a0dOa0NjS0JCa2dmdXdLWXZrUHZjVlZFZ3A0amZhWXRJcEtUV0x2Zk1FWi1CVXNxYlhNdzFQQ2lOUXdnNjkzOXg5S2RjNVlvN1kzUm9xRUg2cFUwNGFELW1fN29YcEs1bC1OeWpGRGhsUQ?oc=5",
+        "date": "2026-09-23",
+        "place": "p0638562",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Kingsburg%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fresno State celebrates opening of first new housing project in 50 years | Local News | Selma / Kingsburg",
+        "publisher": "Hanford Sentinel",
+        "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxPTjBMV0M4d19Xem9nRzFlSmYzQWVQY2R2WWl0M3FmR2VZamQyN1RQU2pRNU56NnAzSVp4U0R4UVZ4Q3dFZUp4dHBNZmNXaGFpZzVwa0VJeDkweDk2anB1SW05ZlRxR2RJaUhoWldMcko3bUhYbkZ6M0MwRFQwdlBNaWtEa0RDU2RlNkpoOFFjUlE3N3JxMmZTaVRYS01fdV8xTFhPM1JZX0tfdGRwT0VlTENaZ3hHbTBBUUcyOVl4ZkpPX1EyT3lTRlFQeWhkUnlxVnVvTGhEWTJGaEZUYk1EN2dVVnJKa0kwZmFWTnN3X19XRlZjNEljdXFLcnF4MlFCM3pySTdXcFRfNVBKX1E?oc=5",
+        "date": "2026-08-18",
+        "place": "p0638562",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Kingsburg%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fresno Arts Council Selects Kingsburg's Lauren Nikkel to Guide Turnaround",
+        "publisher": "GV Wire",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNb1pPbWxzVzAxYVMtOTJjcGE3bnlyeDJTd3Q1RVd1VHZRbTdLWXpyQmNaRmtTc0VGQXlZbWR3ZmxaYV9OZUw5OVJUT3NnaG1RQXhhLXdLVVB4ckRQNTFNVWJkanBkVHVhcGlvQmhZZkdkSUZOaGpldUhac2RMRGRpQzVpejlEUGdWQloyQzM0YmpScVJjLTctWi16OVVYeVo1UFZveF93?oc=5",
+        "date": "2026-07-13",
+        "place": "p0638562",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Kingsburg%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Crash-landed plane rests in field by Kings Estates Homes in Kingsburg",
+        "publisher": "KMPH Fox 26",
+        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNRVBrQ2hjRzZ5WnoxNi1IQzFMSEcwUl91OWJnMXdnZ01WQnBRTWdPcFVnVW1CSXBBNmxONHozYjlRQWpsWkRNM1d4Y25wYXl4MVZwMERaQ0gtTU9pVzNvVGtjUno5bzh6dDBabGxhbTN1eVNLVkppcE5tTktTTDczeHg1Z3pvTW5SXzhwaEhzRWhYM0haTi1tN1MzVnRIdw?oc=5",
+        "date": "2026-06-26",
+        "place": "p0638562",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Kingsburg%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Small Plane Makes Emergency Landing in Kingsburg Housing Development",
+        "publisher": "GV Wire",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOWTRURHFpRTRsUkRHYW9leTJGWDM4Z0o2MDRBYmY2TVExWmJ6alo3NUZGOUdXRW5YcE0tSFRCRGFjcXNEZ2ZUNG1OQmVtRGxzbW40bjlmbExIWDdSa3BWZ3VPaXpOM0hhOEduV3dlSFJHLXgxN19PMUZJVlBMeWlvTWZZaHkta3QtQk9qY2szZ3JIbENselBaS1U4ZV9nOERh?oc=5",
+        "date": "2026-06-26",
+        "place": "p0638562",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Kingsburg%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0640746": [
       {
         "title": "Laton community donates to displaced family after fatal house fire",
@@ -212,8 +321,12 @@
         "feed": "https://news.google.com/rss/search?q=%22Laton%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0645232": [],
+    "p0646400": [],
     "p0647592": [],
     "p0647822": [],
+    "p0648592": [],
+    "p0653505": [],
     "p0654008": [
       {
         "title": "Will Orange Cove City Council oppose SoCalGas Hydrogen Blending pilot project?",
@@ -234,6 +347,60 @@
         "county": "Fresno",
         "kind": "reporting",
         "feed": "https://news.google.com/rss/search?q=%22Orange+Cove%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0655856": [
+      {
+        "title": "Parlier mayor on development project issues",
+        "publisher": "YourCentralValley.com",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPZ2FJUHlxWXIyYkEzLW5MN0dWSjkwRW5ZcXJ6U0JTemhBT1prcktsR09veXF2c0w0eUZlY3FrcVYwM3FocV9QSzFlVmd6Q2VDdEQtU2dZX1BQdGdPYmhPWnVlTUJsMlhpMHQzVk5meFFFWWdjMXhZb1RUOUVNaWdZM2tBcHZWRmJKeTg3bmxwY9IBlAFBVV95cUxORktDMmwtODVnTVl5YWthMkRFZUdvcVdLLWdQdXBkbUNpNDRkWk9vTDRQWklneHJTeUNhN0FWdEoxb3U0T1k0SE4yODIwdGVOLS1mMGRuVzc0WUxQRDdXd0xSVjBzUktmLVJxa3hQV3ZqNlZsV0NjMjlrRFpXd1ZLRjluQkUtWXZaSm0zV21DT0ZXV3pl?oc=5",
+        "date": "2026-07-23",
+        "place": "p0655856",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Parlier%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Parlier mayor on development project issues \u2013 YourCentralValley.com",
+        "publisher": "YourCentralValley.com",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPNnp2Y3dpWEkzbjRfaFNnQ3VSajRVWDhidHpxcDdjNW1TTVI4b0JkTEk2Nm9RQzdpWFVsbDNKRExJR19iQTEyWTJSdDlOOWZlVnNTVEZHcHBrcU5HWFVqZ2I0WGhWUEUyNlNDcExrbzRrdThnaVdkR3o5UGphdlZZSFExZUtaVFlMd3NpdVpRR3NFcG1ycXd5dQ?oc=5",
+        "date": "2026-07-23",
+        "place": "p0655856",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Parlier%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Parlier rejects proposed gas station and commercial development after debate",
+        "publisher": "The Business Journal",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPMjIzMk5ZQ0VQbTd5cjY5aVNVaGkzaktQYngxOU03a0ljcFBnc1ZadktoT2FDWkJ3SWhKY2tzUGZDcnF2OV92RE5MUU93MUhZQXZoMHZ6ZF9ValAzRExhMm93RzA4RjF2VGtCMDJaQ0RFSGhoY2M3OTI3djE0dmNWMUhiMl9hSnRydnc?oc=5",
+        "date": "2026-07-07",
+        "place": "p0655856",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Parlier%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Parlier High students learn how to launch businesses through Valley ROP initiative",
+        "publisher": "ABC30 Fresno",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOb2REOTE1ZnRqYTd6Z0JaVUltT0RGUnJZNU1TZzBZcVh3TkRRY1RFWWxKSzUtY3A1UTVDaktUbFROUER6a3EwdWlvV3BMV0drejJhWUhCWUJUajZJSlRYVTk3d2s1anVwaFU1NXpsMmhJTzhZNV91YTRYX2s5aVY2aUpOWm8yZENfc1g3OVVWdVF6M29jV1hkczFiT09Hdk0wUlpLY0ZPWdIBrAFBVV95cUxPWG9RZEp0MjhKYUNqUzRJY0dnN0hoazQzTWVrRlU3cElCTTJ1b0xvVTJpNks5Q2VIS184amJwNERlc0FEUjRiYkNmZW8yWW0ydDBrU01sdl9fd29Za1VMc3RPSTF1aEZlcUMzVWhpMkdQYkhYUDhOSEw2V1p6aFpkVU9uc3hadkhvSWFsOHM1ZUswdjMxNW0wTy1EdXV1VWM3MHVtZExRNXFCdGZX?oc=5",
+        "date": "2026-06-08",
+        "place": "p0655856",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Parlier%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0660242": [
+      {
+        "title": "BioSafe Systems seeks permits for vacant warehouse in Reedley",
+        "publisher": "KMPH Fox 26",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaG50NnlUbHZfTE9lN0I1S0p0cFdlcTJjMEVPM1RQOTNfVXQyR3FwS2I3d0I1aE1FSGNRLWRQa2x4cWUyamczWUo1YzdVbE1BZHJydzZIc2tNb01hMVlzTUhCbHd2Mkl4VVdXVlZNOGhjRjhrOFNWUGpxQm1fTmJKN28zYk5vY3BaNXZET1o4V0tCdWs?oc=5",
+        "date": "2026-06-28",
+        "place": "p0660242",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Reedley%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
     "p0667056": [
@@ -278,8 +445,22 @@
         "feed": "https://news.google.com/rss/search?q=%22Sanger%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0670882": [
+      {
+        "title": "Fresno State celebrates opening of first new housing project in 50 years | Local News | Selma / Kingsburg",
+        "publisher": "Hanford Sentinel",
+        "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxPTjBMV0M4d19Xem9nRzFlSmYzQWVQY2R2WWl0M3FmR2VZamQyN1RQU2pRNU56NnAzSVp4U0R4UVZ4Q3dFZUp4dHBNZmNXaGFpZzVwa0VJeDkweDk2anB1SW05ZlRxR2RJaUhoWldMcko3bUhYbkZ6M0MwRFQwdlBNaWtEa0RDU2RlNkpoOFFjUlE3N3JxMmZTaVRYS01fdV8xTFhPM1JZX0tfdGRwT0VlTENaZ3hHbTBBUUcyOVl4ZkpPX1EyT3lTRlFQeWhkUnlxVnVvTGhEWTJGaEZUYk1EN2dVVnJKa0kwZmFWTnN3X19XRlZjNEljdXFLcnF4MlFCM3pySTdXcFRfNVBKX1E?oc=5",
+        "date": "2026-08-18",
+        "place": "p0670882",
+        "county": "Fresno",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Selma%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0673794": [],
+    "p0675994": [],
     "p0677960": [],
+    "p0684680": [],
     "p0656294": [],
     "p0601358": [],
     "p0603526": [
@@ -703,6 +884,28 @@
       }
     ],
     "p0641166": [],
+    "p0600212": [
+      {
+        "title": "Court records back Acton's childhood abuse claims after mom calls her a liar in ad",
+        "publisher": "KATV",
+        "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQUlRReXNDX3NpNDlaYUlUd0tqOFNmREk2MWp1bEVfdTdhclc0Yl8zWi01WXdmWnQ4ajA0QVBSUnJwUkVwRldtdVlYRmpTNE85VzBvdFkteU13b1g5WE1QZ0Z1TmxFS1RpMmQyVWp6Zl9aZ2V1RWNaRjMtODFhUEM4QjZQeEFTN3ZKQWd1aXIwN1VJeHNYUWt4cVdtQW5tU1Zob2xfaU9oOGRjX2pNRnZDTFVVZTU4azhDakMxSjh6b0lpUmVfRnYtSkVEX2h4TW9OcFdWMDZ6V1FMSW1BTDRBVHRhbnNvODJaT21zdS1udFRmUmxaakE?oc=5",
+        "date": "2026-10-21",
+        "place": "p0600212",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Acton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "California's ADU Boom Hits Record Numbers as Acton ADU Brings the Backyard Housing Movement to Public Television Audiences Nationwide",
+        "publisher": "PR Newswire",
+        "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxOUHFkNmVneHlfa1FmX1EtMFB1c2I0QWNmVVZ1UHljV0ZJMzYwelVBT01ZV0JHUUhYTnJkRFFMc3BjSTUtekkwOGNIMjJJZjVyTnRUVmFSY09WT2pOS3M1c252VlZidXpaUXBSdlRzUHliVFZULU5jb3FhNEpKNldWc2FuUGxzem12cUJRakp4NGc4M1ZfaU9jNVVScENfR2RxTy1SMmRORzJlbzhfM2lJWXZUWXo0WTJ3N0NxdHI2ZG9OMlVRQUlORVRNWTMtUTdHbVNxWkV1V0cxSDRub200eFNyaWNfVW54MEczWnpxMEx4TERDNkQzRTRLaVZzM3ZRYWhUWV9NbTdVVXBCYWdodENzWWV3TjA?oc=5",
+        "date": "2026-10-20",
+        "place": "p0600212",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Acton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0600394": [
       {
         "title": "Agoura Hills residents push back against new housing complex over evacuation access on Kanan Road",
@@ -715,6 +918,7 @@
         "feed": "https://news.google.com/rss/search?q=%22Agoura+Hills%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0600450": [],
     "p0609598": [
       {
         "title": "Benson House for sale, Calabasas, California",
@@ -748,7 +952,9 @@
       }
     ],
     "p0611796": [],
+    "p0619052": [],
     "p0621964": [],
+    "p0631092": [],
     "p0632385": [],
     "p0633518": [
       {
@@ -795,6 +1001,8 @@
         "feed": "https://news.google.com/rss/search?q=%22Lancaster%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0641208": [],
+    "p0641880": [],
     "p0644000": [
       {
         "title": "A time bomb for renters: L.A. County\u2019s cheapest apartments are getting old, fast",
@@ -877,7 +1085,134 @@
         "feed": "https://news.google.com/rss/search?q=%22Los+Angeles%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0655156": [
+      {
+        "title": "Anain Robles, Palmdale City Council District 3 candidate, 2026 election questionnaire",
+        "publisher": "Los Angeles Daily News",
+        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNRTFHYUxFTUJ1RFlJMVVYMVZkRi1Ed2t1ZXZFMVdIWXVRaVlYTzdqWmpRQkZWbUFiZTFxQ0l0VXNndXIycTh0NEkwemhPeVhXNl95Y0dJNlI3UkRkTlpzdkQxcjVCbWZuV0szNjF2R2Z3OXNkMGF2QWhaZFR5NDdmUDYwdjJCQkRYS3d5cnVEUGtETjJUYUZwbEtxLXo5QVJ3NmszZTFwR3FnUjctaDdMRUVmZi0zU1FybkZWamJ3?oc=5",
+        "date": "2026-10-05",
+        "place": "p0655156",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Franzelle Johnson Jr., Palmdale City Council District 3 candidate, 2026 election questionnaire",
+        "publisher": "Los Angeles Daily News",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNc0JSdEZ0eXhLTVhHWVlQNXNZNFJ4WTFYVjdUdzRnbkhpcWMzem5HaUYxVFcxc2QzQlJIRmN4WDZlWWhoWUtnblU4YmZpaFFtM2tSeF84M3M3cTF1bVh6OW5FM0JTYUdqZlNMOGdWYzhCeU9aY0JMZ1hDZElpbFNuN0M0cXJlTURRSVV6aWY0czh3eEJXVTVoZXlwcWVCc2w0TGswWV9lOGtmTktwbXI0TkY1UkEtMlZUQmQtN2tWYmFlVkZsSHl2eA?oc=5",
+        "date": "2026-10-05",
+        "place": "p0655156",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "V. Jesse Smith, Palmdale City Council District 5 candidate, 2026 election questionnaire",
+        "publisher": "Los Angeles Daily News",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOLUoxdnBSZDFvd184U1BDRGlQRjVUWmpUb0ZfMGJGRzdGaHFNc2ZmQ0gyS1BVZnVIa08tVV9NWDFfWDRNMFFxVm14WmczX0lKMnFnLTZoMlZ1MmxBa2JLc3FkM1UyckFPNVA2aDRZVDZNLWF2SGR4YTBHazVKTTN3QlpURWJZOHEzVkJyZ3lQQ1BIbU9DVThjb1FjRUg2dXVaZnozUGdEX1A3TVV5aFdxeDVQT3EwX1lVcXNfRG12aw?oc=5",
+        "date": "2026-10-05",
+        "place": "p0655156",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Why a Palmdale City Council candidate appeared on a school board list",
+        "publisher": "Los Angeles Daily News",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNWlY1UjNnRVNwWmxrbG5SZFFkZ3ljNkFoM1ZrMEttS2xQQWlIOWxlc0Vfdmc2TjQ1bXdQdXJpWEZZYjdybTFoT1ExSEw0a19JS1gwWl9OZ0VFTExZRDRQRnBrNlhMdE14TktsS0VYNnp0eHh3N0pCNDNGVE1fNF9jX2VWVGJzWmRJTE1SMWdWU0NYLS1rNGh2aF9KdzdieFNIYnliR2M4MVY5Q2M?oc=5",
+        "date": "2026-09-01",
+        "place": "p0655156",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Man found guilty in ambush-style slaying of newly engaged sheriff\u2019s deputy in Palmdale",
+        "publisher": "Los Angeles Times",
+        "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQQ2NETy15UlZjdDBvckdRMjdiX1hLSGJjdXdFcmotdXExWlFZRGozb3pzcEFscmhYZ0dwUzFYU1hZYi1PT21FQnVDelQtMmcyQzFlYmRnQzgwNG9wYkVnYnVkaThMc0FKbHZzMGVvSVRZUi01aU1pX1VUdDh4Q3NEalBrZ3BHbVBEby01bTdhS0Z3MDBIbWhZVzNNeHlxTVNDakVVX3dwOGxmVzNtTDVTVXFaekIzQW0wWkwxUmNibmo5cEh1cDQ2VnpGZGlDRjdiUDhJ?oc=5",
+        "date": "2026-08-24",
+        "place": "p0655156",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "New MOU coordinates Palmdale high-speed rail connection",
+        "publisher": "Railway Supply",
+        "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQOFV2N3lYa29id19GZkhWOUViUG5qNVlBZmtXREllNHgwOVlBc3Q4V2xnd0g1Z2VOT0p1ekswODhwWUJZY1ZiVDgyWE1yYU9PcHVMLXRRdWJkQm1nR1VTU3pzWDNaMmlGTVlSN3pmQVpOdmpVcHVPVnduQklDanZTT2hZRTdsYkN3bTRn?oc=5",
+        "date": "2026-07-22",
+        "place": "p0655156",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "A call about illegal dumping in Palmdale leads to 800-pound meth bust",
+        "publisher": "Los Angeles Times",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdjNNcHBhc1VYMkdMVEF0TUROVVRBdnJsd2stTkgwRllyVE50TFctREhQdXRHMGcwOUNreE5uZDNtT2JaYkpxX0FqSXNQbTI1dmhIVWExMjZGVlZJTlVCczVhckhwNDRWUzJ0S0c0M1VVS091NjRvNXV5WElQa0xQWTFJaUVmZktBYXBNNW8ya1A1M2tra2NJejhBWWZ1LUhfOWhfX3RLSkZFNzV2OXdRaWtHNXlDSlJ2NGRZ?oc=5",
+        "date": "2026-06-26",
+        "place": "p0655156",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "SRS Real Estate Partners Completes $4.39 Million Sale of a New Construction Chipotle Property in Palmdale, California",
+        "publisher": "citybiz",
+        "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOaHc0YTJReFdQcXUyQVpLLVpDMTdxSGcxV2pZR2hNemZuakxxLVZtYlQ1c3VyNWZPYkd1empKY2xVTVU4U2F5VWxXRTYyTDBNU2F3MjlFVXdWM2QycUlrUHBSUVk4eXB4LXZTMlFJMldIQTJEeVp4dW9qX1YtczZmT0JrSF9nRW5LNnNKMnk0QlZxeHF2d1BhbEEzSFpNQ3dyQUhHT1BjM2Jfb1JvdkdjeW1MeDQtempDWGVZX1UzMV9JbV9KVFFzamxVbzhXSWh5M1dDbFNEemU2cDZuXy1Sa1o5dVBPX3RyLUE?oc=5",
+        "date": "2026-05-26",
+        "place": "p0655156",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0659052": [],
+    "p0669088": [
+      {
+        "title": "Crews make progress as Pointe fire threatens homes in Santa Clarita",
+        "publisher": "Los Angeles Times",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOUTdhSHB4OHJvZVJuQi0tSzNrTE9KSXB6R0g2TEJUT3RjbndyQThsN0dPSFgyTWdubVVuWmE1a0JnY1V0ZHNrTEd6R2pmVkt5Q3FYSXhmY3RGWnF5X3RwaXg2TlNndGRmSUZiRFdUTUZFVlZYQkEtb01ta1Y4eXQ3VlJyMlhYdS1fbGtsUVdka1FpcXZoVHVyQTBNNElqV0oyYVpEM3BPMUExQQ?oc=5",
+        "date": "2026-07-15",
+        "place": "p0669088",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Santa+Clarita%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "11 injured in Santa Clarita crash involving bus, big rig and cars",
+        "publisher": "ABC7 Los Angeles",
+        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPWUVVa0pHVW1KOWRUdU9lM2dURzNBRWVUdEFDd0Y0MEZxU21oazRYUmFCRmh3c3Q2X1Uzaml0NlBFc1U1b3I1MjdtdzBZM1h1aFBxLW5NazJPR1RwN0VKeHBTUDNmUHBmLUk1Q3JHTXRPTWo0emVNd0s1d0lRNUtBZmRvcGh6MjJvVWlUaWxpYTJuUdIBlwFBVV95cUxNVnM2SFBPTDdPajc3ZWhBMTY5UURINVpvOHVMa2lSam44YnVaWVlnNm54Zmt5TkNSaUQzZ0prLWRFS1lYZXc4aHVGVXFvTkg0c3I2UWpKWGVlLVpOOGN3cW1fV3doeTRxSnpQNjVSNndvcGFqRmpIblhiUkk5UkpqcHljNXFhaXQ2djB5UUZuSXJPNmFNTEE4?oc=5",
+        "date": "2026-05-13",
+        "place": "p0669088",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Santa+Clarita%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Santa Clarita Finalizes ADU Updates, Approves Future Council Pay Increase",
+        "publisher": "KHTS Radio",
+        "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNZzlLZ0x1LVRGYnpaXzNiTEVpZVkwQ2lNeEZOWnRReS1saHY3dDRQSmFBSEVRQ2tPZzFoWWs3NXRsSEVqbVFocklqRkxKbnZTdllGOXNRVkZXdGc2VlFPRHZVVTFWNmhqOVQ5YzNiakZYOFN3U1h5bldUdXIwTXVITndzaUlWZTlRdUcwOEV4Y0xMNnJieUswSHc0N2Y0WVJ3NWVBVElZSTRFR3hjSGlycFljQ1JHLVJXRjZYVTBGbmEyeDRJUzdDZjZJUDhsangycUlCLXZ0Nnk3Z3JDd2xER1BORWpnY1k2c0VNbWZ2MzNSeG4xNjZTcklB?oc=5",
+        "date": "2026-04-29",
+        "place": "p0669088",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Santa+Clarita%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0674130": [
+      {
+        "title": "Max Fire burns 45 acres near Stevenson Ranch homes in Santa Clarita Valley; evacuations lifted",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPYmRlMDlPa01CMFl0VkJtQzQ0M3BkS3lLVm9YdmJZdVJXV1doTTh6OXpWM2hLemxQWUJmeFRvNDFweWtVOEoydU5UUmxrS3dsOXh0Q3dJeVhvV0RocWMxem0tMW1vT2JFTE1uUTVsYmg1cUhkTmNNMVBIYmE0dV8wWUN2ZHBlT0lTRU1uVk9PNGNFX1RTYWRjbzltbzQ2Q3JvV1ZsV1V1RHdSSl9DY3QwNjc3eVRYbTlF?oc=5",
+        "date": "2026-06-16",
+        "place": "p0674130",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stevenson+Ranch%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0677308": [],
     "p0681967": [],
     "p0684438": [
       {
@@ -1262,6 +1597,88 @@
       }
     ],
     "p0673612": [],
+    "p0666000": [
+      {
+        "title": "San Diego\u2019s House candidates are running atypically conventional campaigns",
+        "publisher": "CalMatters",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE0xdEQ0U1B6MWFuLXdoWGw1UWpyUjk0eUxaTTNjSWlkMmctRFpoSkhteGRNTEtJaUJSOW9QWE1WMDRsbXZuRzh6UXBQcTdTTFdFZHhaOFlINHlET0VWeVoyV3paYkRFQ29KQmloZVE1R2QybjZDeWZpbFlZZw?oc=5",
+        "date": "2026-10-20",
+        "place": "p0666000",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "There\u2019s a $11.25 billion housing bond on the ballot this November. Here\u2019s what you should know",
+        "publisher": "Times of San Diego",
+        "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQblRjQzBYMmxtX2pxazhNQU01cW5OSjRGNVdpd0N5cVRWVFA1eWJDUjRJbFJ0TGlDZjlPWnJJNGxVLWRXcXVrNzRZS1ZyM2hCTTMwMV9GeWVkUDdhbkpBX1BvbG0wYmt0TzEzNU4xc1VXaWJMNVkwNlMzcXNmQWJhTU01OHVKRFdkZHdHcW5RaHJVU3V1NEFXVUJmSkdpenZTa0h6YzY4Ym1ucjFleTZITkpEWkZ6UWVCazZ2cVp6T0xnWVVnNDF5WWZoN3E3c0RzWEVfZg?oc=5",
+        "date": "2026-10-18",
+        "place": "p0666000",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Opinion: How city\u2019s Housing Commission makes housing less affordable",
+        "publisher": "San Diego Union-Tribune",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxONWNnbVBSeExrWF82SUYtT3hHaUNDZUNGVUp0V3MzU013bUxGQU14amlRMC1CWjM0MEtDUEVIQm1EUDlfZHloNmM0LUgwNHkxZ1ZMaGdSeUFTcnVvVUVUOV81Tld2UFprR2VlX3RTblhfeE5VWHVHM1pvYXJCZkhBdkQzeUkwVlp3OTN1cUVZRGRLZG5wcDJEUTdYand5aXZGWmJnWnRiOUlYU0x0dDFuNFhEZnZPdw?oc=5",
+        "date": "2026-10-16",
+        "place": "p0666000",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Midway Rising May Not Create 2,000 \u2018Net-New\u2019 Affordable Homes",
+        "publisher": "Voice of San Diego",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQbFRFUUs3ejA5M3o0bERsdHBRcGdaZTEyNWZWVV9rWExqRGRJZUo0Q1dEWVQ0XzZNTlZCdWVxNlhPRzNQQ1NZMUlhTnhaVkNnaGNwbDdZSURBZ2I1UWwtRExseTJRZnRXR2NlTUVPR0M5bDRlVEhWRWc5Tkc4RDlQTlVBc0YtbUpqNzE4Ymw3dXhWUkZrZ1FnUlhNWlljMkk?oc=5",
+        "date": "2026-10-15",
+        "place": "p0666000",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "California just passed a ton of housing laws. Here\u2019s how they will affect San Diego",
+        "publisher": "San Diego Union-Tribune",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOT1l4NWxHdjhKR0JiczVJOS16ZWdjb2dqLTV5dFMzMWR2OXptYUZaN2dTOUl5SkRKczRLa1NNQ0pxWGR2YmZucmhHWksxQUdLQjBoenVwUXhZLUdoc01qdFV1ZnFtZFVKTmxrQ0pWeUdkc05OMThKcTU5TF9EbWdiVnhpMzlEN0kyOUYwSnRVTXM3WlFOWUtRaVF4VjlOc3lKNG1ucTBCbVgyeDA5MTdMSUhVcjJOZFlvNW1HNzFNdklCNkhtYk5LbUJn?oc=5",
+        "date": "2026-10-14",
+        "place": "p0666000",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "City of San Diego, California Coastal Commission calling on NOAA to protect La Jolla Cove sea lions",
+        "publisher": "cbs8.com",
+        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQNF9pY3gtYkxBeF9FMXZVZVRVamtVYVMxaWpfb0hWbVVSVDJnWnVDMS13UFpmT01iWUd3LTFQVGJaSlVXOGRfZlQ5RHIxYVY2NlZpMnV4X2JiZ3ZtLXVlVF8zbnF0OEU0cVNxYnJRQ21LMnY3YmFhNmlUVC1SNlludDdaaHFaUVFWTUhMYVBXWEthQzgyak5TcFdaeGdwaXVvS2RDVXZqSzltM0pmLXJKcTFENnR2eEt5eFdQLVhjRFF4ZDhkTjBuX2hxZEpKZ3UyRU9oa0EwampGRTV5ejlUX3VJRTYzUQ?oc=5",
+        "date": "2026-10-14",
+        "place": "p0666000",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Diego councilmember switches stance on Flock cameras, calls for their removal",
+        "publisher": "NBC 7 San Diego",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTi15N0JvaU1ab0dwbjhpekFkLS1lVHVCMkZCM0wxakJLc0JoekZMRVNLMHpFS3lNQWh2UUhoWHpBVnZ1d0dFUmVKRVE5SlhmdFNrZHRhQXhvTndlRUliV3hJVnQ4dFNBSVJXNXIzZE5teVlxcUxjQlEyZGNNbDQ1MFNwd2xRNXpQOFQxSEJKR1RVTDAzN2RSRmhIQ2Q3dzEyUnZrN0xGanptZTJhRWNIUtIBuAFBVV95cUxNMW5EQzhIaUFvTUhUTUZPdDBMS0hOWVVxaTNlUWkwU29UOTJweDkzaTVDYXdXd0ZkMmVaOG9fR2gtTE1QWk9XNWVJTDZuOFE2cjJQQVR1dTd2Y01MUVVUenE3VFRSZGZuc3JJWDZqNm5zOWY4cHpTRGtRNHptUXQ3MTFaMjZwMVYtLW5vMXpZQlhPc3FESnBzRlNHc195Y2ZfcjFaN08tZk5mQ1BEa3YyS21MQTg5RXFZ?oc=5",
+        "date": "2026-10-13",
+        "place": "p0666000",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Diego City Council approves code amendments to prosecute wage theft",
+        "publisher": "NBC 7 San Diego",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOaW91RU9lYXdUeEZFZjU4ZGFicm5XcFFPaFNtbzhTaXJrVTdEOTFOeFJKWFdTRUR3UjV5U2FQblJZbVhSYXBobzluVy0zMWRuVXJXR2dsMWt1MUwwVXlqb2lCUmtYdXZuYVQyNzhVT3cxUlplSU5ieF9rdXBCN2pIaC1RMUp1WjExOWQwOXNSNjgtMlhRR0RHd1JSS09sOEVYWmowcjd3MlNZcVVFbU5EeTZkRlg1b1RNd1hr0gHDAUFVX3lxTE5xVVVlUlV0SXdlMDVmVkFXdnh5Rjh0Y19udzc5d25PdS05cjNtN0diSWxKMHdDS2ZYVnlDSnFHNXZFMms2b1IwN0xlZkZTdU85VjRvRnQxLVJJYVpucTNuTkNGaEFWS1pucmt0NXgxcTZ3MnlZaHpIT0xtSm9veUJ3QXJidlBEYnk2Y3pTZUZfYUo3aXNMNzVqMzdYaTdWY0RNUkt6amRiYXpQR1ZTa2JiZTlndjBTc1Z4bjJQTldiRVBpWQ?oc=5",
+        "date": "2026-10-13",
+        "place": "p0666000",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0602868": [
       {
         "title": "Fact check: Where do Arroyo Grande mayor candidates stand on water access?",
@@ -2153,6 +2570,16 @@
     ],
     "p0642524": [
       {
+        "title": "Lompoc Council Grants 2 More Years for Space Base California to Meet Key Milestones",
+        "publisher": "Noozhawk",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNdnhWajc1RFNEcWd0RXlaSFAwZ2RnMmcwYllLZXVBRFBYTGo4RTgxaGdEcnlyYzkwMVFNTTVjQWVDVGMwd0wwWkhQSC0ySW5objhXMlpzVC1TUnJKeHFGOG5XaHVadndmMXhmREl3cFRLbC1jazJoTUdaSkptd3JQeXlIczUtYjFoeWpyRmZaYXBRN1l6T2ZCQnhYbzhoM053VjUtejMwT2s2WURfcEE?oc=5",
+        "date": "2026-10-25",
+        "place": "p0642524",
+        "county": "Santa Barbara",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lompoc%22+%22Santa+Barbara%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
         "title": "Lompoc Police Chief Defends License Plate Readers as Council Raises Concerns",
         "publisher": "Noozhawk",
         "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOYkxVNV9pNERNSW1hZFRoRzN3XzA2clJzd2luY1JrUXd0MUZSSkJ0R3NwQzVNREZGRm5EdzYyQ0YtTFZTemVXTERkMXA5RWw4YmxPN3BJaU9iWTJvOFhFTmpJc1Z0OGxjTVNIeTZoTTlCUENoUlNYR3VHb091Q2E4b3VfUWJLcGM1Z1RUOWtjWTlSNmNZVU1MZ0FkRnZTbmM0UGMxMA?oc=5",
@@ -2217,16 +2644,6 @@
         "publisher": "Noozhawk",
         "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNc2xFV2dSV0dvZ0ktV19TbWtuZ3ZCWUhsQnJNNnhCVjNRNHRidzh0ZWFXMnBoVnE1NHg2d0pLWVZQNHM1amk0RWk4bHdwcVZ4TTZYcktFZ3lFRURSai1NQ2JXMXU3c0pWQVRNREFPc3VPRTFvczQ3UzRFRktfb1dld1ktTGcxSl9wRllJ?oc=5",
         "date": "2026-07-26",
-        "place": "p0642524",
-        "county": "Santa Barbara",
-        "kind": "reporting",
-        "feed": "https://news.google.com/rss/search?q=%22Lompoc%22+%22Santa+Barbara%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
-      },
-      {
-        "title": "Lompoc City Manager Dean Albro Keeps Job After Council\u2019s Closed-Session Review",
-        "publisher": "Noozhawk",
-        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNRHJCb0I0bkhfRXJzNEVQSUhKSGQ4M2VaNEhtMHJaSEdoS21QUXItMVlNbWp4RDNGbTlLRU5TbFpQNG9zRUVrVklQZV9HUGllT2VaU3k3VWkzMkZXZEFCckJ0RjYtVk9ZRkJZTEFldDJiM2dNa1pUQmFDVV9TVGY3cmhvY1dRYThTWUFvbmpJYldsb2lMVzFUaW5YUDQxTmN3bFlpN3RR?oc=5",
-        "date": "2026-07-15",
         "place": "p0642524",
         "county": "Santa Barbara",
         "kind": "reporting",
@@ -3368,10 +3785,25 @@
     "p0609822": [],
     "p0610494": [],
     "p0612314": [],
+    "p0617708": [],
+    "p0618450": [],
+    "p0619318": [
+      {
+        "title": "Dinuba begins annexation of 40 acres along Road 92",
+        "publisher": "The Sun-Gazette Newspaper",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPRXlaUF8tSWtjb1RPdVVEbnExQXMzeXRUTmFJUmNkNXJ5ZlJoelppVE1tb29fOGVMMnRMckhxeVVob2Q1UTRyNjk1dDhsQTd4YWc0eGFZVHFhYWptRElWQUNya3ZCRHU3SlBIeFE4SWVnU3dYOFJfNmFzdUVfX1BveDlSejNSUENlZlFqTlZONVJVSHhHU19kN0dyTTV0V3VDSHZN?oc=5",
+        "date": "2026-08-13",
+        "place": "p0619318",
+        "county": "Tulare",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Dinuba%22+%22Tulare%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0620032": [],
     "p0620942": [],
     "p0621012": [],
     "p0621210": [],
+    "p0622235": [],
     "p0623126": [
       {
         "title": "Exeter moves forward with housing element plan",
@@ -3450,6 +3882,7 @@
     "p0632324": [],
     "p0636135": [],
     "p0636168": [],
+    "p0636910": [],
     "p0638076": [],
     "p0641110": [],
     "p0641656": [],
@@ -3466,8 +3899,12 @@
       }
     ],
     "p0641740": [],
+    "p0642566": [],
     "p0644770": [],
+    "p0648676": [],
+    "p0654372": [],
     "p0655506": [],
+    "p0656120": [],
     "p0657011": [],
     "p0657134": [],
     "p0658134": [],
@@ -3546,6 +3983,7 @@
     "p0658422": [],
     "p0658436": [],
     "p0670966": [],
+    "p0671078": [],
     "p0671932": [],
     "p0673710": [
       {
@@ -3572,9 +4010,11 @@
     "p0675280": [],
     "p0675592": [],
     "p0675596": [],
+    "p0675672": [],
     "p0678638": [],
     "p0678932": [],
     "p0678949": [],
+    "p0680280": [],
     "p0680644": [
       {
         "title": "Tulare City Council seeks applicants for vacant District 3 seat",
@@ -3753,6 +4193,7 @@
         "feed": "https://news.google.com/rss/search?q=%22Woodlake%22+%22Tulare%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0686734": [],
     "p0604938": [],
     "p0610046": [
       {
@@ -4574,6 +5015,7 @@
         "feed": "https://news.google.com/rss/search?q=%22Ventura+County%22+%22Ventura%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "c06027": [],
     "c06087": [
       {
         "title": "Santa Cruz County public defender joins California Independent Commission on Public Defense",
@@ -5064,6 +5506,88 @@
         "county": "Kings",
         "kind": "reporting",
         "feed": "https://news.google.com/rss/search?q=%22Kings+County%22+%22Kings%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "c06073": [
+      {
+        "title": "San Diego County Supervisors approve Jacumba rezoning plan",
+        "publisher": "KPBS",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPalZpTFp1OVRYaDVzLWxSdGh0MkRkMEVHZm55RnV0WW5JRVI2am1MMURQNVpUZTZKUjZWRnRCWkFWUVpLTlBIQlVwaTdpV3pFcVNxXzUzVG5NbnNuNUozRWRDWHJoZG0xTWdtbERuNS1ZSHJCcEpSVFhBOHppS0ZTbmFzZHVNUEVtWUtCa3dKb1FROG9ac0ZER1NwSklpQjZNZkpieDEwVnNxd0Znc19acQ?oc=5",
+        "date": "2026-10-08",
+        "place": "c06073",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego+County%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Diego County transit fares jump this week. Here\u2019s what to expect.",
+        "publisher": "San Diego Union-Tribune",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNX0w0VDd2Zmw4ZzRyMmJCX183N0JQTy1TV1VLUTVGQkNlT2pWbjU4MWlPSXFLbmp1YzBWdVpPNDdYdXQtTUgzZDZhOHRVVG5sSm1qREFsYmo0dXNzMWozaVFIQW9aX3B0ZTZpOWVYMDdQdlQ3X0dhUnNaYkV2V1d1NWctLThIcUw2X1YyTkhjZDZQaTFjcWl5Z1ZkMW0taWZKZXhJckNuRk1NTXBobGFXSVljTUJ0Zw?oc=5",
+        "date": "2026-09-29",
+        "place": "c06073",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego+County%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Procopio Helps Secure Unanimous Approval for Major San Diego County Solar and Battery Storage Project",
+        "publisher": "Procopio",
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1YOUxRMHBaRjVCbTdsMFpkdy1LTlYyenllRzhNTWI4NDlMckhqdkxvUzhqMHJoZmQxaHZzbUdyR2lfaF9WT09ULXVJM1paVl94a1FDZGlQTFBqc2dOREIwUkFNRnZWMWJId2c?oc=5",
+        "date": "2026-09-23",
+        "place": "c06073",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego+County%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Qdoba signs 17-unit development agreement across San Diego County",
+        "publisher": "Nation\u2019s Restaurant News",
+        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPMS1ONGl6OXBQNmFYSmpKRWZzNlJKMHZVdUR1NXNWbTNFcU9nM3REMlBwWE9oUDNwTmZDM0h2aXV3VzFLZnZsR0lWYmVqcUxhaF9qZ0E1V1FENkxObmRXbjFJRmtjb3hWMnNmRzdpaGZINmwybjUwQkhPcVZlUGtMbmdBV2Y2Y0hwQ0lXV04wVm1ic2dfZm1vZTV4U3otQQ?oc=5",
+        "date": "2026-09-11",
+        "place": "c06073",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego+County%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "QDOBA Signs 17-Restaurant Development Deal Across San Diego County",
+        "publisher": "citybiz",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNODdzZU05dnl2d042Q0NlX0lMVlExNVhjdGwySXdESWg4Z05UVUZERW9NZEE2TElMRDhrMm9VeG1kOTBDT1dtejVSY0VVNXdGTlFqR1hVMHlNZWNJbVJCMUdDQmRuWUFpLUlmbGJCRjRKZTlKUjExcllYV0lIMEVNcUlCZF9Dam1Fd2t4Q3VsTFhaV2FaajhpckxvUVc0cUg0T3NuNXRQMnA?oc=5",
+        "date": "2026-09-09",
+        "place": "c06073",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego+County%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Diego County\u2019s many colleges and universities spending big bucks on construction boom",
+        "publisher": "San Diego Union-Tribune",
+        "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNbWhIZUJGVERWdlNtZWh2X0tmdHZqbi1BVER2ZnFPNlBMOFBydGE0NkxNS2ZqR2FkdW9hbEdJZnlhU0hST3hyWVo3MF83U2FCZDBjYkZ3eTJJVE41Q1IzUUROZlM3ZG1xOGxRNlp3TnR5YTV3Nlgzck9pMTlzRlBhVUlXSC1BM2NzeUlMdWE4X21fOXVWOHE2ZmgwbllvUFh5VU5pWU5qMWpjYlZUa1NhczA0RURnVXVJWUpWVUpObUR2c2FHWHBHdTFMdjBIZzM2NmJF?oc=5",
+        "date": "2026-08-28",
+        "place": "c06073",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego+County%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Diego County to build affordable housing and health clinic on surplus land",
+        "publisher": "San Diego Union-Tribune",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNV3g1dVBla3pQOVJzMV9PQzIxQnRTVlpGdkxkV1c5Ni1PQjZ6eUF6eU5SUjZjam5Ka2ZZV1UwRXBIZjhpUThHWWZnV3FFWWZLaTVIV2NjQzlXNlhKanVGVTNZZU5oVG14UUdLSlduNWlQTEZGQ0xvc3ZmeTRGYWhBSkdLbmJpV2NiNy1XR0pzc3BwMmo5WVdSbGRfSmZnMDUyZDJkNzZVcElmVzhXMlFNUlVwbHdzQ1FYemZrYVJOM3JnUDgwVVE?oc=5",
+        "date": "2026-08-21",
+        "place": "c06073",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego+County%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Housing affordability holds steady in San Diego County",
+        "publisher": "KPBS",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOX0dDNGJTeFcwVWFTSmhsLWhZUE00SE9MdVZUNTZTYVRDeklIc0RuSzFxQ1lXaUtCRTlheUN2RGFra2dTeGVkaUc3OWRNNzBQZWlhOU5vbXlyeVFpcDEzYjJVVmZnU3NhV0RDWUlNWGdOT3FlS1lBeEE5bEg1djN6Z1RhVHBhS254T2NncTgzNmtmUGN0SEttemNKaC02N0Zp?oc=5",
+        "date": "2026-08-06",
+        "place": "c06073",
+        "county": "San Diego",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Diego+County%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
     "c06029": [

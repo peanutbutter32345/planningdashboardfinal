@@ -4,13 +4,14 @@ No API key is needed. Raw tables stream from census.gov, with only covered geogr
 import sys
 FRESH="--fresh" in sys.argv
 
+import hashlib
 import json,urllib.request,pathlib,concurrent.futures,datetime,csv,io
 ROOT=pathlib.Path(__file__).resolve().parents[2];OUT=ROOT/'public/cal/data';CACHE=pathlib.Path('/tmp/cal-civic-cache')
 g=json.loads((OUT/'geography.json').read_text());places=g['places']+g['counties'];tables=['B01003','B19013','B25064','B25003','B25077','B08301','B08013','B25001']
 ids={('0500000US' if p['kind']=='county' else '1600000US')+p['geoid']:p for p in places}
 BASE='https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/'
 def get(table):
- url=BASE+'acsdt5y2024-'+table.lower()+'.dat';cache=CACHE/('summary-v2-'+table+'.json')
+ url=BASE+'acsdt5y2024-'+table.lower()+'.dat';cache=CACHE/('summary-v3-'+table+'-'+hashlib.sha256('|'.join(sorted(ids)).encode()).hexdigest()[:10]+'.json')
  if cache.exists() and not FRESH:return table,json.loads(cache.read_text())
  with urllib.request.urlopen(url,timeout=120) as response:
   reader=csv.DictReader(io.TextIOWrapper(response,encoding='utf-8-sig'),delimiter='|');rows={r['GEO_ID']:r for r in reader if r['GEO_ID'] in ids}

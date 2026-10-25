@@ -24,7 +24,8 @@ def get(url):
 norm=lambda s:re.sub('[^A-Z0-9]','',str(s).upper())
 aliases={'San Buenaventura (Ventura)':'SAN BUENAVENTURA','El Paso de Robles (Paso Robles)':'PASO ROBLES','Carmel-by-the-Sea':'CARMEL'}
 def fetch_table(args):
- county,table=args;cache=CACHE/('hcd-'+norm(county)+'-'+table+'.json')
+ county,table=args;scope=','.join(sorted(p['name'] for p in places if p['kind']=='city' and p['county']==county))
+ cache=CACHE/('hcd-'+norm(county)+'-'+table+'-'+hashlib.sha256(scope.encode()).hexdigest()[:10]+'.json')
  if cache.exists() and not FRESH:return county,table,json.loads(cache.read_text())
  names=[aliases.get(p['name'],p['name'].upper()) for p in places if p['kind']=='city' and p['county']==county]+[county.upper()+' COUNTY']
  names.extend(['VENTURA'] if county=='Ventura' else ['EL PASO DE ROBLES'] if county=='San Luis Obispo' else [])
@@ -35,8 +36,8 @@ def fetch_table(args):
 allrows={}
 with concurrent.futures.ThreadPoolExecutor(4) as ex:
  for county,table,rows in ex.map(fetch_table,[(c['county'],t) for c in counties for t in IDS]):allrows[(county,table)]=rows
-regions={f['properties']['CD119']:shape(f['geometry']).buffer(0) for f in json.loads((CACHE/'Legislative-MapServer-4.json').read_text())['features']}
-future={f['properties']['CD120']:shape(f['geometry']).buffer(0) for f in json.loads((CACHE/'Legislative-MapServer-0.json').read_text())['features']}
+regions={f['properties']['district']:shape(f['geometry']).buffer(0) for f in json.loads((OUT/'districts-119.geojson').read_text())['features']}
+future={f['properties']['district']:shape(f['geometry']).buffer(0) for f in json.loads((OUT/'districts-120.geojson').read_text())['features']}
 regions={k:prep(v) for k,v in regions.items()};future={k:prep(v) for k,v in future.items()}
 place_shapes={f['properties']['id']:shape(f['geometry']).buffer(0) for f in json.loads((OUT/'places.geojson').read_text())['features']}
 city_buffers={key:prep(g.buffer(.008)) for key,g in place_shapes.items()}
@@ -46,7 +47,7 @@ def num(x):
   n=float(x);return n if n>=0 else None
  except:return None
 def number(x):return num(x) or 0
-def date(x):return x if isinstance(x,str) and re.fullmatch(r'\d{4}-\d{2}-\d{2}',x) and x<='2026-10-24' else None
+def date(x):return x if isinstance(x,str) and re.fullmatch(r'\d{4}-\d{2}-\d{2}',x) and x<=datetime.date.today().isoformat() else None
 def record(r,table,jur):
  if table=='A':
   if r.get('APPLICATION_STATUS') not in ['Approved','Pending']:return None

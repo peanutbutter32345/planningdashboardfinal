@@ -181,8 +181,8 @@
   .feed-item{padding:12px 16px; border-bottom:1px solid var(--rule); cursor:pointer;}
   .feed-item:hover{background:var(--paper-2);}
   .feed-item .fd-date{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); font-weight:700; text-transform:uppercase;}
-  .feed-item .fd-title{font-size:13px; font-weight:700; margin-top:3px; color:#1A1A1A;}
-  .feed-item .fd-body{font-size:12px; color:var(--text-soft); margin-top:3px;}
+  .feed-item .fd-title{overflow-wrap:anywhere; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; font-size:13px; font-weight:700; margin-top:3px; color:#1A1A1A;}
+  .feed-item .fd-body{overflow-wrap:anywhere; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; font-size:12px; color:var(--text-soft); margin-top:3px;}
   .feed-item .fd-tag{display:inline-block; margin-top:6px; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:700; padding:2px 7px; border-radius:2px; color:#fff; text-transform:uppercase;}
 
   .stamp{display:inline-flex; align-items:center; gap:6px; font-family:'Open Sans',sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; padding:5px 10px; border-radius:2px; color:#fff; white-space:nowrap;}
@@ -1890,7 +1890,7 @@
     <div class="hero-copy without-advisors">
       <div class="nameplate">
         <div class="nameplate-title">
-        <div class="np-kicker"><span id="npKickerCounty">Bay Area &amp; Central California</span><i></i><span>Public planning records</span></div>
+        <div class="np-kicker"><span id="npKickerCounty">Bay Area, Central &amp; Southern California</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
         </div>
         <div class="site-intro">
@@ -2747,7 +2747,7 @@
       <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Each project shows the city's own file number and links to the register it came from, where that number can be looked up.</p>
 
       <h4>What it covers</h4>
-      <p>All <span class="city-count">101</span> incorporated cities and towns across the Bay Area and the areas covered by CA-24, CA-19, CA-20 and CA-26, plus community and neighborhood profiles. Every area has official resources, a meeting directory and a local photograph. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
+      <p>All <span class="city-count">101</span> incorporated cities and towns across the Bay Area and the areas covered by CA-19, CA-20, CA-21, CA-24, CA-26 and CA-27, plus San Diego and community and neighborhood profiles. Each area has official resources and a meeting directory. Photos identify the place pictured. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
       <div class="about-mosaic" id="aboutMosaic"></div>
 
       <p class="about-credits" id="aboutCredits"></p>
@@ -2934,7 +2934,7 @@
 <script src="/housing-data.js"></script>
 <script src="/data/city-photos.js"></script>
 <script src="/data/meetings.js"></script>
-<script src="/data/coverage/manifest.js"></script>
+<script src="/data/coverage/manifest.js?v=20261025"></script>
 <script src="/coverage-data.js"></script>
 <script src="/guest.js"></script>
 <script src="/browse.js"></script>
@@ -2955,6 +2955,8 @@ const STAGES = [
   {key:'completed',    label:'Completed',           color:'#3E4F24', light:'#687554', dark:'#32401D', ink:'#FFFFFF'},
 ];
 const STAGE_MAP = Object.fromEntries(STAGES.map(s=>[s.key,s]));
+STAGE_MAP.filed={key:'filed',label:'Environmental filing',color:'#DDE2D5',ink:'#344026'};
+const projectStage = record => record.sourceType==='ceqanet'?{...STAGE_MAP.filed,label:record.filingLabel||'Environmental filing'}:(STAGE_MAP[record.stage]||STAGE_MAP.filed);
 // One place that knows how a stage badge is painted, so the seven call sites cannot drift.
 const stampStyle = st => `background:${st.color}; border-color:${st.color}; color:${st.ink}`;
 const CATEGORIES = [
@@ -6636,7 +6638,7 @@ async function tryLiveCupertinoData(){
     }).filter(d => typeof d.lat === 'number' && typeof d.lng === 'number' && Number.isFinite(d.lat) && Number.isFinite(d.lng));
     liveMarkers = {};
     live.forEach(d=>{
-      const st = STAGE_MAP[d.stage] || STAGE_MAP.proposed;
+      const st = projectStage(d) || STAGE_MAP.proposed;
       if(mapProvider==='google' && gMap){
         const marker = new google.maps.Marker({ position:{lat:d.lat,lng:d.lng}, map:gMap,
           icon:{path:google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, scale:5, fillColor:'#44572A', fillOpacity:1, strokeColor:'#fff', strokeWeight:1.5, rotation:180},
@@ -6690,7 +6692,7 @@ function markerIconGoogle(d){
   return { path: google.maps.SymbolPath.CIRCLE, scale:8, fillColor:color, fillOpacity:0.95, strokeColor:'#1A1A1A', strokeWeight:1.4 };
 }
 function popupHtmlPlain(d){
-  const st = STAGE_MAP[d.stage]; const c = CAT_MAP[categoryOf(d)];
+  const st = projectStage(d); const c = CAT_MAP[categoryOf(d)];
   return `<div class="infowin"><b>${d.addr}</b>
     <span class="stamp" style="${stampStyle(st)}">${st.label}</span>
     <span class="cattag" style="margin-left:8px;"><i style="background:${c.color}"></i>${c.label}</span>
@@ -6772,13 +6774,13 @@ function buildMarkersForCurrentProvider(){
   for(const group of OverviewMapUtils.groupLocations(DATA())){
     const d=group[0];let marker;
     if(mapProvider==='google' && gMap){
-      marker=new google.maps.Marker({position:{lat:d.lat,lng:d.lng},map:gMap,icon:markerIconGoogle(d),title:d.addr,optimized:false});
+      marker=new google.maps.Marker({position:{lat:d.lat,lng:d.lng},map:gMap,icon:markerIconGoogle(d),title:d.addr,optimized:true});
       marker.addListener('click',()=>{gInfoWindow.setContent(locationPopup(markerProjects.get(marker).visible));gInfoWindow.open(gMap,marker);});
       group.forEach(p=>gMarkers[p.id]=marker);
     }else if(mapProvider==='leaflet' && lMap){
       const color=CAT_MAP[categoryOf(d)].color;
       marker=L.circleMarker([d.lat,d.lng],{radius:group.length>1?11:7,color:'#1A1A1A',weight:1.2,fillColor:color,fillOpacity:.92}).addTo(lMap);
-      marker.bindPopup(locationPopup(group));group.forEach(p=>lMarkers[p.id]=marker);
+      marker.bindPopup(()=>locationPopup(markerProjects.get(marker)?.visible||group));group.forEach(p=>lMarkers[p.id]=marker);
     }
     if(marker)markerProjects.set(marker,{all:group,visible:group});
   }
@@ -6897,7 +6899,7 @@ function initLeafletMap(){
     return;
   }
   document.getElementById('mapGate').style.display='none';document.getElementById('mapGoogle').style.display='none';document.getElementById('mapGoogleEmbed').hidden=true;document.getElementById('mapLeafletWrap').style.display='block';
-  if(!lMap){lMap=L.map('map',{scrollWheelZoom:false}).setView([CITIES[currentCity].center.lat,CITIES[currentCity].center.lng],CITIES[currentCity].zoom);L.tileLayer(MAP_TILE_URL,{attribution:CARTO_ATTRIB,maxZoom:19}).addTo(lMap);}
+  if(!lMap){lMap=L.map('map',{scrollWheelZoom:false,preferCanvas:true}).setView([CITIES[currentCity].center.lat,CITIES[currentCity].center.lng],CITIES[currentCity].zoom);L.tileLayer(MAP_TILE_URL,{attribution:CARTO_ATTRIB,maxZoom:19}).addTo(lMap);}
   mapProvider='leaflet';syncMapProviderButton();renderLegend();buildMarkersForCurrentProvider();
 }
 document.getElementById('fitOverviewMap').addEventListener('click',fitOverviewMap);
@@ -6941,7 +6943,7 @@ function overviewPoints(){
       // Roads, parks and civic works publish no unit count. They still belong on the map, so they
       // stand at a fixed height and the popup says why they are not taller.
       height:d.units?undefined:45,
-      detail:(d.units?d.units.toLocaleString()+' units \u00b7 ':'no unit count published \u00b7 ')+(STAGE_MAP[d.stage]?.label||d.stage)};
+      detail:(d.units?d.units.toLocaleString()+' units \u00b7 ':'no unit count published \u00b7 ')+(projectStage(d)?.label||d.stage)};
   });
 }
 function yaPoints(){
@@ -7421,7 +7423,7 @@ function updateMapVisibility(){
     }else if(lMap){
       if(group.visible.length&&!lMap.hasLayer(m))m.addTo(lMap);
       if(!group.visible.length&&lMap.hasLayer(m))lMap.removeLayer(m);
-      m.setPopupContent(locationPopup(group.visible));
+      m.setPopupContent(()=>locationPopup(markerProjects.get(m)?.visible||[]));
       if(group.visible.length>1)m.bindTooltip(String(group.visible.length),{permanent:true,direction:'center',className:'overview-count-label'});else m.unbindTooltip();
     }
   });
@@ -7453,9 +7455,10 @@ function flyTo(id){
 
 // ---------------- FEED / REGISTER / INVOLVED ----------------
 function renderFeed(){
+  const projectById = new Map(DATA().map(d=>[d.id,d]));
   const feed = [...CITIES[currentCity].feed].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   const list = feed.filter(f=>{
-    const d = DATA().find(x=>x.id===f.id);
+    const d = projectById.get(f.id);
     if(!d) return true;
     if(state.stage!=='all' && d.stage!==state.stage) return false;
     if(state.cat!=='all' && categoryOf(d)!==state.cat) return false;
@@ -7465,11 +7468,15 @@ function renderFeed(){
   const el = document.getElementById('feed');
   if(!list.length){const c=CITIES[currentCity];el.innerHTML=c.coverage==='directory'?`<div class="empty">Project updates have not yet been imported. <a href="${escapeHtml(c.planning)}" target="_blank" rel="noopener">Read ${escapeHtml(c.label)}’s official planning notices ↗</a></div>`:'<div class="empty">No change-feed entries match the current filters.</div>';return;}
   el.innerHTML = list.slice(0,80).map(f=>{
-    const d = DATA().find(x=>x.id===f.id);
-    const color = d ? STAGE_MAP[d.stage].color : '#333';
-    return `<div class="feed-item" data-id="${f.id}"><div class="fd-date">${fmtDate(f.date)}</div><div class="fd-title">${f.title}</div><div class="fd-body">${f.body}</div>${d?`<span class="fd-tag" style="${stampStyle(STAGE_MAP[d.stage])}">${STAGE_MAP[d.stage].label}</span>`:''}</div>`;
+    const d = projectById.get(f.id);
+    const color = d ? projectStage(d).color : '#333';
+    return `<div class="feed-item" data-id="${f.id}"><div class="fd-date">${fmtDate(f.date)}</div><div class="fd-title">${f.title}</div><div class="fd-body">${f.body}</div>${d?`<span class="fd-tag" style="${stampStyle(projectStage(d))}">${projectStage(d).label}</span>`:''}</div>`;
   }).join('');
-  el.querySelectorAll('.feed-item').forEach(item=> item.addEventListener('click', ()=>flyTo(item.getAttribute('data-id'))));
+  el.querySelectorAll('.feed-item').forEach(item=>{
+    item.tabIndex=0;item.setAttribute('role','button');item.setAttribute('aria-label','Read '+item.querySelector('.fd-title').textContent);
+    const open=()=>openProjectSheet(item.getAttribute('data-id'));
+    item.addEventListener('click',open);item.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();open();}});
+  });
 }
 // ================= OFFICIAL CITY LINKS =================
 // Every URL below returned HTTP 200 on 2026-09-03, checked one at a time. The paloalto.gov,
@@ -7871,7 +7878,7 @@ function citySourceLink(cityKey){
   return cta ? {url:cta.url, label:cta.label} : null;
 }
 function projectCardHtml(d){
-  const st = STAGE_MAP[d.stage]; const c = CAT_MAP[categoryOf(d)];
+  const st = projectStage(d); const c = CAT_MAP[categoryOf(d)];
   const unitsBit = d.units ? `<span><b>${d.units.toLocaleString()}</b> units</span>` : '';
   const bmrBit = (d.bmr!==null && d.bmr!==undefined) ? `<span><b>${d.bmr.toLocaleString()}</b> affordable</span>` : (d.cat==='dev' && d.units ? `<span>affordability not disclosed</span>` : '');
   const expiresBit = d.expires ? `<span>expires <b>${fmtDate(d.expires)}</b></span>` : '';
@@ -7887,7 +7894,7 @@ function projectCardHtml(d){
       <div class="meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
       <div class="meta" style="color:var(--text);">${d.lastNote}</div>
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
-      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':'City record'} &#8599;</a>`:'';})()}<button class="card-more" data-more="${d.id}">Learn more</button><button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
+      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':d.sourceType==='ceqanet'?'CEQAnet filing':'City record'} &#8599;</a>`:'';})()}<button class="card-more" data-more="${d.id}">Learn more</button><button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
     </div>`;
 }
 // Cards borrowed from other cities to finish a short section. The card itself only shows an
@@ -7975,7 +7982,7 @@ function renderSheetMap(record, cityKey, city){
     L.polygon(ring, {color:'#FFFFFF', weight:5, opacity:.85, fill:false, interactive:false}).addTo(sheetMap);
     L.polygon(ring, {color:'#2E3D1B', weight:2.5, opacity:.95, fill:false, interactive:false}).addTo(sheetMap);
   }
-  const stage = STAGE_MAP[record.stage] || {color:'#3E4F24', label:record.stage};
+  const stage = projectStage(record) || {color:'#3E4F24', label:record.stage};
   L.circleMarker([record.lat, record.lng], {radius:9, color:'#fff', weight:3, fillColor:stage.color, fillOpacity:1})
     .bindPopup('<b>'+escapeHtml(record.addr||'')+'</b><br>'+escapeHtml(stage.label||''))
     .addTo(sheetMap);
@@ -8046,13 +8053,23 @@ function psFact(label, value){
     ? '' : '<div class="ps-fact"><b>'+escapeHtml(label)+'</b><span>'+value+'</span></div>';
 }
 function projectSheetHtml(record, cityKey, city){
-  const stage=STAGE_MAP[record.stage]||{label:record.stage,color:'#777'};
+  // Imported fields are escaped for the legacy card renderer. Decode once before this
+  // sheet's text escaping, without inserting source HTML into a DOM element.
+  if(record.sourceType==='hcd-apr'||record.sourceType==='ceqanet'){
+    const entities={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#x27;':"'",'&#39;':"'"};
+    record={...record};
+    for(const field of ['addr','originalTitle','desc','type','applicant','fileNo','apn','lastNote','flag','sourceLabel','reportedStatus']){
+      if(typeof record[field]==='string')record[field]=record[field].replace(/&(?:amp|lt|gt|quot);|&#(?:x27|39);/g,entity=>entities[entity]);
+    }
+  }
+  const stage=projectStage(record)||{label:record.stage,color:'#777'};
   const cat=CAT_MAP[categoryOf(record)]||{label:'',color:'#777'};
   const hcd=record.sourceType==='hcd-apr';
   const located=Number.isFinite(record.lat)&&Number.isFinite(record.lng);
 
   const facts=[
     psFact('Type', escapeHtml(record.type||'')),
+    psFact('Official document title', record.originalTitle&&record.originalTitle!==record.addr?escapeHtml(record.originalTitle):null),
     psFact('Homes reported', record.units?record.units.toLocaleString():null),
     psFact('Of those, affordable', record.bmr===null||record.bmr===undefined?null:record.bmr.toLocaleString()),
     psFact('Applicant', escapeHtml(record.applicant||'')),
@@ -8081,7 +8098,7 @@ function projectSheetHtml(record, cityKey, city){
     ...(city.ctaLinks||[]).filter(l=>aboutProjects.test(l.label)),
   ].slice(0, 2);
   const links=[
-    sourceHref?'<a class="btn secondary" href="'+escapeHtml(sourceHref)+'" target="_blank" rel="noopener">'+(hcd?'The source record at HCD':'The city\'s record')+' &#8599;</a>':'',
+    sourceHref?'<a class="btn secondary" href="'+escapeHtml(sourceHref)+'" target="_blank" rel="noopener">'+(hcd?'The source record at HCD':record.sourceType==='ceqanet'?'Original CEQAnet filing':'The city\'s record')+' &#8599;</a>':'',
     ...official.map(l=>'<a class="btn secondary" href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(String(l.label).replace(/&amp;/g,'&'))+' &#8599;</a>'),
   ].filter(Boolean).join('');
 
@@ -8103,7 +8120,7 @@ function projectSheetHtml(record, cityKey, city){
       if(record.units) bits.push(record.units.toLocaleString()+' home'+(record.units===1?'':'s'));
       if(record.bmr) bits.push(record.bmr.toLocaleString()+' affordable');
       if(record.type && !/^residential$/i.test(record.type)) bits.push(escapeHtml(record.type));
-      bits.push(escapeHtml((STAGE_MAP[record.stage]||{}).label||record.stage||''));
+      bits.push(escapeHtml((projectStage(record)||{}).label||record.stage||''));
       return bits.filter(Boolean).length ? '<p class="ps-summary">'+bits.filter(Boolean).join(' &middot; ')+'</p>' : '';
     })()
     +'<div class="ps-stamps">'
@@ -8129,6 +8146,8 @@ function projectSheetHtml(record, cityKey, city){
     +'<section class="ps-sec"><h3>Where this comes from</h3>'
       +'<p class="ps-note">'+(hcd
         ? 'This is '+escapeHtml(city.label)+'&rsquo;s own '+escapeHtml(String(record.reportYear||''))+' submission to the California Department of Housing and Community Development, published as '+escapeHtml(record.sourceLabel||'an annual progress report')+'. It is what the city reported once a year, not a live permit status, and the homes counted may be one phase of something larger. A permit being issued does not mean anything has been built.'
+        : record.sourceType==='ceqanet'
+        ? 'Published in California’s CEQAnet environmental document registry. The label identifies the type of filing, not the project’s current construction status. Several filings can refer to the same project. Read the original notice for the agency’s decision and any comment deadlines.'
         : record.sourceType==='city-gis'
         ? 'Read from '+escapeHtml(city.label)+'&rsquo;s own mapping server, from the layer it keeps its '+escapeHtml(city.livePipeline?.what||'projects')+' in. That makes it as current as the city&rsquo;s own system rather than an annual filing, and it covers what the city puts in that layer and nothing else &mdash; which is why the status below is worded the way the city words it.'
         : 'Compiled from '+escapeHtml(city.label)+'&rsquo;s published planning records and meeting agendas. Dates are the ones in the public file, so a record can be accurate and still be out of date if the city has not posted anything since.')
@@ -8178,7 +8197,7 @@ function openProjectSheet(id){
     pin.addEventListener('click',()=>{
       const r=found.record;
       yaTogglePin({type:'project', id, label:r.addr||id,
-        sub:[found.city.label, (STAGE_MAP[r.stage]||{}).label].filter(Boolean).join(' · '),
+        sub:[found.city.label, (projectStage(r)||{}).label].filter(Boolean).join(' · '),
         lat:r.lat, lng:r.lng, city:found.cityKey});
       label();
     });
@@ -8609,7 +8628,7 @@ function renderYourArea(){
   if(!withDist.length){ list.innerHTML = '<div class="empty">Nothing matches your selected interests in this city\'s sample.</div>'; }
   else {
     list.innerHTML = withDist.map(({d,dist})=>{
-      const st = STAGE_MAP[d.stage]; const c = CAT_MAP[categoryOf(d)];
+      const st = projectStage(d); const c = CAT_MAP[categoryOf(d)];
       return `<div class="ya-item" data-id="${d.id}">
         <div class="ya-dist">${dist.toFixed(1)} mi</div>
         <div class="ya-body">
@@ -9027,7 +9046,7 @@ function renderTopicMap(topicKey, cap, categoryKey){
   const rows = (c.data||[]).filter(d=> categoryOf(d)===categoryKey && Number.isFinite(d.lat) && Number.isFinite(d.lng));
   const pts = [];
   rows.forEach(d=>{
-    const st = STAGE_MAP[d.stage] || {label:d.stage||'', color:'#8A8A8A'};
+    const st = projectStage(d) || {label:d.stage||'', color:'#8A8A8A'};
     pts.push([d.lat,d.lng]);
     L.circleMarker([d.lat,d.lng], {radius:7, color:'#fff', weight:2, fillColor:st.color, fillOpacity:1})
       .bindPopup('<b>'+escapeHtml(d.addr||d.id)+'</b><br>'+escapeHtml(st.label)
@@ -9045,7 +9064,7 @@ function renderTopicMap(topicKey, cap, categoryKey){
   const legend = document.getElementById('topicLegend'+cap);
   if(legend){
     const seen = {};
-    rows.forEach(d=>{ const st=STAGE_MAP[d.stage]; if(st) seen[st.label]=st.color; });
+    rows.forEach(d=>{ const st=projectStage(d); if(st) seen[st.label]=st.color; });
     legend.innerHTML = Object.entries(seen).map(([l,col])=>
       '<span class="tm-key"><i style="background:'+col+'"></i>'+escapeHtml(l)+'</span>').join('');
   }
@@ -10732,7 +10751,7 @@ function generatePlan(){
     const projects = s.projects ? `<div class="plan-projects">${s.projects.map(({d,dist})=>`
       <a class="plan-project" href="?project=${encodeURIComponent(d.id)}">
         <span class="addr">${d.addr}</span>
-        <span class="stamp" style="${stampStyle(STAGE_MAP[d.stage])}">${STAGE_MAP[d.stage].label}</span>
+        <span class="stamp" style="${stampStyle(projectStage(d))}">${projectStage(d).label}</span>
         ${dist!==null ? `<span class="dist">${dist.toFixed(1)} mi away</span>` : ''}
       </a>`).join('')}</div>` : '';
     const link = s.link
@@ -10764,7 +10783,7 @@ document.getElementById('plannerGenerate').addEventListener('click', generatePla
 document.getElementById('plannerCopy').addEventListener('click', async ()=>{
   const text = lastPlan.map((s,i)=>{
     const projects = s.projects ? s.projects.map(({d,dist})=>
-      `   - ${d.addr} (${STAGE_MAP[d.stage].label}${dist!==null?`, ${dist.toFixed(1)} mi`:''})`).join('\n') : '';
+      `   - ${d.addr} (${projectStage(d).label}${dist!==null?`, ${dist.toFixed(1)} mi`:''})`).join('\n') : '';
     return `${i+1}. ${s.title} [${s.time}]\n   ${s.body.replace(/<[^>]*>/g,'')}`
       + (projects ? '\n' + projects : '')
       + (s.link ? `\n   ${s.link}` : '');

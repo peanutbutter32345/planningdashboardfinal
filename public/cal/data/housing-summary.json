@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-10-25T07:21:46.795510+00:00",
+  "retrieved": "2026-10-25T09:19:10.185432+00:00",
   "years": [
     2024,
     2025
@@ -17,6 +17,17 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
     },
+    "p0625436": {
+      "year": 2025,
+      "records": 104,
+      "sourceRows": 108,
+      "mapped": 80,
+      "permitted": 101.0,
+      "completed": 0,
+      "entitled": 0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
     "p0627000": {
       "year": 2025,
       "records": 3624,
@@ -25,6 +36,17 @@
       "permitted": 2014.0,
       "completed": 2058.0,
       "entitled": 2117.0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
+    "p0638562": {
+      "year": 2025,
+      "records": 62,
+      "sourceRows": 62,
+      "mapped": 50,
+      "permitted": 18.0,
+      "completed": 0,
+      "entitled": 0,
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
     },
@@ -39,6 +61,28 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
     },
+    "p0655856": {
+      "year": 2025,
+      "records": 18,
+      "sourceRows": 18,
+      "mapped": 18,
+      "permitted": 32.0,
+      "completed": 0,
+      "entitled": 0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
+    "p0660242": {
+      "year": 2025,
+      "records": 67,
+      "sourceRows": 79,
+      "mapped": 67,
+      "permitted": 22.0,
+      "completed": 129.0,
+      "entitled": 234.0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
     "p0667056": {
       "year": 2024,
       "records": 36,
@@ -47,6 +91,17 @@
       "permitted": 31.0,
       "completed": 6.0,
       "entitled": 7.0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
+    "p0670882": {
+      "year": 2025,
+      "records": 79,
+      "sourceRows": 86,
+      "mapped": 68,
+      "permitted": 22.0,
+      "completed": 43.0,
+      "entitled": 487.0,
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
     },
@@ -193,6 +248,28 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
     },
+    "p0655156": {
+      "year": 2025,
+      "records": 458,
+      "sourceRows": 460,
+      "mapped": 394,
+      "permitted": 188.0,
+      "completed": 208.0,
+      "entitled": 1217.0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
+    "p0669088": {
+      "year": 2025,
+      "records": 589,
+      "sourceRows": 590,
+      "mapped": 76,
+      "permitted": 182.0,
+      "completed": 626.0,
+      "entitled": 448.0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
     "p0684438": {
       "year": 2025,
       "records": 10,
@@ -278,6 +355,17 @@
       "permitted": 60.0,
       "completed": 134.0,
       "entitled": 60.0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
+    "p0666000": {
+      "year": 2025,
+      "records": 3391,
+      "sourceRows": 3702,
+      "mapped": 3155,
+      "permitted": 7942.0,
+      "completed": 460.0,
+      "entitled": 3.0,
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
     },
@@ -509,6 +597,17 @@
       "permitted": 68.0,
       "completed": 50.0,
       "entitled": 68.0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
+    "p0619318": {
+      "year": 2025,
+      "records": 212,
+      "sourceRows": 212,
+      "mapped": 124,
+      "permitted": 116.0,
+      "completed": 95.0,
+      "entitled": 0,
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
     },
@@ -798,6 +897,17 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
     },
+    "c06073": {
+      "year": 2025,
+      "records": 2356,
+      "sourceRows": 2657,
+      "mapped": 1884,
+      "permitted": 932.0,
+      "completed": 943.0,
+      "entitled": 462.0,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+    },
     "c06029": {
       "year": 2025,
       "records": 1439,
@@ -841,10 +951,50 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0607750": {
+      "year": 2025,
+      "records": 3,
+      "mapped": 3,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0610032": {
+      "year": 2025,
+      "records": 2,
+      "mapped": 2,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0612412": {
       "year": 2025,
       "records": 0,
       "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0618674": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0620928": {
+      "year": 2025,
+      "records": 2,
+      "mapped": 2,
       "permitted": null,
       "completed": null,
       "entitled": null,
@@ -871,6 +1021,26 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0645232": {
+      "year": 2025,
+      "records": 3,
+      "mapped": 3,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0646400": {
+      "year": 2025,
+      "records": 4,
+      "mapped": 4,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0647592": {
       "year": 2025,
       "records": 0,
@@ -891,6 +1061,26 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0648592": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0653505": {
+      "year": 2025,
+      "records": 17,
+      "mapped": 17,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0673794": {
       "year": 2025,
       "records": 0,
@@ -901,7 +1091,27 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0675994": {
+      "year": 2025,
+      "records": 3,
+      "mapped": 3,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0677960": {
+      "year": 2025,
+      "records": 3,
+      "mapped": 3,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0684680": {
       "year": 2025,
       "records": 3,
       "mapped": 3,
@@ -1451,6 +1661,26 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0600212": {
+      "year": 2025,
+      "records": 23,
+      "mapped": 23,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0600450": {
+      "year": 2025,
+      "records": 5,
+      "mapped": 5,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0611796": {
       "year": 2025,
       "records": 48,
@@ -1461,10 +1691,30 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0619052": {
+      "year": 2025,
+      "records": 6,
+      "mapped": 6,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0621964": {
       "year": 2025,
       "records": 5,
       "mapped": 5,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0631092": {
+      "year": 2025,
+      "records": 2,
+      "mapped": 2,
       "permitted": null,
       "completed": null,
       "entitled": null,
@@ -1491,10 +1741,50 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0641208": {
+      "year": 2025,
+      "records": 7,
+      "mapped": 7,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0641880": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0659052": {
       "year": 2025,
       "records": 61,
       "mapped": 61,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0674130": {
+      "year": 2025,
+      "records": 6,
+      "mapped": 6,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0677308": {
+      "year": 2025,
+      "records": 95,
+      "mapped": 95,
       "permitted": null,
       "completed": null,
       "entitled": null,
@@ -2301,6 +2591,26 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0617708": {
+      "year": 2025,
+      "records": 3,
+      "mapped": 3,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0618450": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0620032": {
       "year": 2025,
       "records": 0,
@@ -2332,6 +2642,16 @@
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
     "p0621210": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0622235": {
       "year": 2025,
       "records": 0,
       "mapped": 0,
@@ -2381,6 +2701,16 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0636910": {
+      "year": 2025,
+      "records": 3,
+      "mapped": 3,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0638076": {
       "year": 2025,
       "records": 0,
@@ -2421,6 +2751,16 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0642566": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0644770": {
       "year": 2025,
       "records": 0,
@@ -2431,10 +2771,40 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0648676": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0654372": {
+      "year": 2025,
+      "records": 6,
+      "mapped": 6,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0655506": {
       "year": 2025,
       "records": 0,
       "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0656120": {
+      "year": 2025,
+      "records": 2,
+      "mapped": 2,
       "permitted": null,
       "completed": null,
       "entitled": null,
@@ -2501,6 +2871,16 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0671078": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0671932": {
       "year": 2025,
       "records": 0,
@@ -2551,6 +2931,16 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0675672": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0678638": {
       "year": 2025,
       "records": 11,
@@ -2581,6 +2971,16 @@
       "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
       "geography": "Located county-reported records only. CDP annual totals are not published in this source."
     },
+    "p0680280": {
+      "year": 2025,
+      "records": 0,
+      "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
     "p0684345": {
       "year": 2025,
       "records": 0,
@@ -2595,6 +2995,16 @@
       "year": 2025,
       "records": 0,
       "mapped": 0,
+      "permitted": null,
+      "completed": null,
+      "entitled": null,
+      "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+      "geography": "Located county-reported records only. CDP annual totals are not published in this source."
+    },
+    "p0686734": {
+      "year": 2025,
+      "records": 1,
+      "mapped": 1,
       "permitted": null,
       "completed": null,
       "entitled": null,

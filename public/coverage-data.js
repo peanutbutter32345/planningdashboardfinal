@@ -14,7 +14,7 @@
   if(!c?.recordsUrl||loaded.has(key))return false;
   if(pending.has(key))return pending.get(key);
   const request=(async()=>{
-   const response=await fetcher(c.recordsUrl);
+   const response=await fetcher(c.recordsUrl,{cache:'no-cache'});
    if(!response.ok)throw Error('The city records could not be loaded. Please retry.');
    const data=await response.json();
    if(!Array.isArray(data.records)||data.records.length!==c.recordCount)throw Error('Incomplete city record response. Please retry.');

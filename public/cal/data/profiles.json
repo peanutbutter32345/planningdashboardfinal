@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-10-25T07:40:30.696138+00:00",
+  "retrieved": "2026-10-25T09:22:18.701027+00:00",
   "profiles": [
     {
       "id": "p0603190",
@@ -76,6 +76,158 @@
       "client": null
     },
     {
+      "id": "p0607750",
+      "geoid": "0607750",
+      "name": "Bowles",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.6131,
+        "lng": -119.75259
+      },
+      "bounds": [
+        -119.75487,
+        36.59807,
+        -119.74979,
+        36.61988
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Bowles Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0607750",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
+      "id": "p0610032",
+      "geoid": "0610032",
+      "name": "Calwa",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.71242,
+        "lng": -119.76109
+      },
+      "bounds": [
+        -119.77195,
+        36.70365,
+        -119.75356,
+        36.7214
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Calwa Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0610032",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
       "id": "p0612412",
       "geoid": "0612412",
       "name": "Centerville",
@@ -88,7 +240,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -164,7 +317,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -252,6 +406,252 @@
       "client": null
     },
     {
+      "id": "p0618674",
+      "geoid": "0618674",
+      "name": "Del Rey",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.65599,
+        "lng": -119.59987
+      },
+      "bounds": [
+        -119.61059,
+        36.64876,
+        -119.58348,
+        36.6632
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Del Rey Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0618674",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
+      "id": "p0620928",
+      "geoid": "0620928",
+      "name": "Easton",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.65305,
+        "lng": -119.79078
+      },
+      "bounds": [
+        -119.80882,
+        36.64142,
+        -119.77277,
+        36.66336
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Easton Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0620928",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
+      "id": "p0625436",
+      "geoid": "0625436",
+      "name": "Fowler",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.62266,
+        "lng": -119.67986
+      },
+      "bounds": [
+        -119.6958,
+        36.60111,
+        -119.64916,
+        36.64176
+      ],
+      "website": "https://www.fowlercity.org/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fowler official website",
+          "url": "https://www.fowlercity.org/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "Fowler: Planning and development",
+          "url": "https://www.fowlercity.org/planning",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "Fowler: Meeting agendas and recordings",
+          "url": "https://www.fowlercity.org/meetings/recent",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Fowler: Boards and commissions",
+          "url": "https://www.fowlercity.org/planning",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Fowler Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0625436",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fowlercity.org/meetings/recent",
+      "boardUrl": "https://www.fowlercity.org/planning",
+      "meetingScope": "Fowler",
+      "client": null
+    },
+    {
       "id": "p0627000",
       "geoid": "0627000",
       "name": "Fresno",
@@ -261,10 +661,12 @@
         "Fresno"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -409,6 +811,106 @@
       "client": null
     },
     {
+      "id": "p0638562",
+      "geoid": "0638562",
+      "name": "Kingsburg",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.52611,
+        "lng": -119.54911
+      },
+      "bounds": [
+        -119.59433,
+        36.50339,
+        -119.53847,
+        36.54701
+      ],
+      "website": "https://cityofkingsburg-ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Kingsburg official website",
+          "url": "https://cityofkingsburg-ca.gov/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "Kingsburg: Planning and development",
+          "url": "https://cityofkingsburg-ca.gov/158/Planning-Department",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "Kingsburg: Meeting agendas and recordings",
+          "url": "https://cityofkingsburg-ca.gov/agendacenter",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Kingsburg: Boards and commissions",
+          "url": "https://cityofkingsburg-ca.gov/183/Planning-Commission",
+          "scope": "city"
+        },
+        {
+          "category": "Housing",
+          "title": "Kingsburg: Housing policy and programs",
+          "url": "https://cityofkingsburg-ca.gov/DocumentCenter/View/1863",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Kingsburg Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0638562",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://cityofkingsburg-ca.gov/agendacenter",
+      "boardUrl": "https://cityofkingsburg-ca.gov/183/Planning-Commission",
+      "meetingScope": "Kingsburg",
+      "client": null
+    },
+    {
       "id": "p0640746",
       "geoid": "0640746",
       "name": "Laton",
@@ -471,6 +973,158 @@
           "category": "Statistics",
           "title": "Laton Census data",
           "url": "https://data.census.gov/profile?g=160XX00US0640746",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
+      "id": "p0645232",
+      "geoid": "0645232",
+      "name": "Malaga",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.68296,
+        "lng": -119.73179
+      },
+      "bounds": [
+        -119.73674,
+        36.67793,
+        -119.72685,
+        36.68529
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Malaga Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0645232",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
+      "id": "p0646400",
+      "geoid": "0646400",
+      "name": "Mayfair",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.7705,
+        "lng": -119.76257
+      },
+      "bounds": [
+        -119.77087,
+        36.76503,
+        -119.74914,
+        36.77599
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Mayfair Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0646400",
           "scope": "community"
         },
         {
@@ -569,12 +1223,13 @@
         "Fresno"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
         "20"
       ],
-      "split": false,
+      "split": true,
       "center": {
         "lat": 36.7341,
         "lng": -119.45728
@@ -636,6 +1291,158 @@
       "client": null
     },
     {
+      "id": "p0648592",
+      "geoid": "0648592",
+      "name": "Monmouth",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.56502,
+        "lng": -119.74083
+      },
+      "bounds": [
+        -119.74609,
+        36.56176,
+        -119.73407,
+        36.56913
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Monmouth Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0648592",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
+      "id": "p0653505",
+      "geoid": "0653505",
+      "name": "Old Fig Garden",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.79677,
+        "lng": -119.80511
+      },
+      "bounds": [
+        -119.8175,
+        36.78488,
+        -119.79114,
+        36.8085
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Old Fig Garden Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0653505",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
       "id": "p0654008",
       "geoid": "0654008",
       "name": "Orange Cove",
@@ -644,9 +1451,12 @@
       "counties": [
         "Fresno"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -728,6 +1538,212 @@
       "client": null
     },
     {
+      "id": "p0655856",
+      "geoid": "0655856",
+      "name": "Parlier",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.60826,
+        "lng": -119.53888
+      },
+      "bounds": [
+        -119.57488,
+        36.59591,
+        -119.51627,
+        36.62242
+      ],
+      "website": "https://www.parlier.ca.us/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Parlier official website",
+          "url": "https://www.parlier.ca.us/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "Parlier: Planning and development",
+          "url": "https://www.parlier.ca.us/157/Community-Development",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "Parlier: Meeting agendas and recordings",
+          "url": "https://www.parlier.ca.us/AgendaCenter/City-Council-Meetings-2",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Parlier: Boards and commissions",
+          "url": "https://www.parlier.ca.us/AgendaCenter/City-Council-Meetings-2",
+          "scope": "city"
+        },
+        {
+          "category": "Housing",
+          "title": "Parlier: Housing policy and programs",
+          "url": "https://www.parlier.ca.us/165/New-Housing",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Parlier Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0655856",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.parlier.ca.us/AgendaCenter/City-Council-Meetings-2",
+      "boardUrl": "https://www.parlier.ca.us/AgendaCenter/City-Council-Meetings-2",
+      "meetingScope": "Parlier",
+      "client": null
+    },
+    {
+      "id": "p0660242",
+      "geoid": "0660242",
+      "name": "Reedley",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.59778,
+        "lng": -119.45024
+      },
+      "bounds": [
+        -119.47018,
+        36.57452,
+        -119.41659,
+        36.67678
+      ],
+      "website": "https://reedley.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Reedley official website",
+          "url": "https://reedley.ca.gov/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "Reedley: Planning and development",
+          "url": "https://reedley.ca.gov/community-development-department/",
+          "scope": "city"
+        },
+        {
+          "category": "Projects",
+          "title": "Reedley: Project records and activity",
+          "url": "https://reedley.ca.gov/community-development-department/major-projects/",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "Reedley: Meeting agendas and recordings",
+          "url": "https://reedley.ca.gov/events/categories/council-meetings/",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Reedley: Boards and commissions",
+          "url": "https://reedley.ca.gov/boards-commissions/",
+          "scope": "city"
+        },
+        {
+          "category": "Housing",
+          "title": "Reedley: Housing policy and programs",
+          "url": "https://reedley.ca.gov/housing-element/",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Reedley Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0660242",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://reedley.ca.gov/events/categories/council-meetings/",
+      "boardUrl": "https://reedley.ca.gov/boards-commissions/",
+      "meetingScope": "Reedley",
+      "client": null
+    },
+    {
       "id": "p0667056",
       "geoid": "0667056",
       "name": "Sanger",
@@ -737,10 +1753,12 @@
         "Fresno"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -828,6 +1846,100 @@
       "client": null
     },
     {
+      "id": "p0670882",
+      "geoid": "0670882",
+      "name": "Selma",
+      "kind": "city",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.56699,
+        "lng": -119.61417
+      },
+      "bounds": [
+        -119.64638,
+        36.53796,
+        -119.58844,
+        36.59812
+      ],
+      "website": "https://www.cityofselma.com/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Selma official website",
+          "url": "https://www.cityofselma.com/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "Selma: Planning and development",
+          "url": "https://www.cityofselma.com/departments/community_development/index.php",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "Selma: Meeting agendas and recordings",
+          "url": "https://www.cityofselma.com/government/committees__commissions/commission_agendas/index.php",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Selma: Boards and commissions",
+          "url": "https://www.cityofselma.com/government/committees__commissions/index.php",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Selma Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0670882",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.cityofselma.com/government/committees__commissions/commission_agendas/index.php",
+      "boardUrl": "https://www.cityofselma.com/government/committees__commissions/index.php",
+      "meetingScope": "Selma",
+      "client": null
+    },
+    {
       "id": "p0673794",
       "geoid": "0673794",
       "name": "Squaw Valley",
@@ -904,6 +2016,82 @@
       "client": null
     },
     {
+      "id": "p0675994",
+      "geoid": "0675994",
+      "name": "Sunnyside",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.72839,
+        "lng": -119.6912
+      },
+      "bounds": [
+        -119.71268,
+        36.7163,
+        -119.67302,
+        36.74032
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Sunnyside Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0675994",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
       "id": "p0677960",
       "geoid": "0677960",
       "name": "Tarpey Village",
@@ -916,7 +2104,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -965,6 +2154,82 @@
           "category": "Statistics",
           "title": "Tarpey Village Census data",
           "url": "https://data.census.gov/profile?g=160XX00US0677960",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "boardUrl": "https://www.fresnocountyca.gov/",
+      "meetingScope": "Fresno County",
+      "client": null
+    },
+    {
+      "id": "p0684680",
+      "geoid": "0684680",
+      "name": "West Park",
+      "kind": "community",
+      "county": "Fresno",
+      "counties": [
+        "Fresno"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.70068,
+        "lng": -119.84896
+      },
+      "bounds": [
+        -119.86238,
+        36.68297,
+        -119.84447,
+        36.72116
+      ],
+      "website": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "West Park Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0684680",
           "scope": "community"
         },
         {
@@ -4008,7 +5273,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "27"
       ],
       "split": false,
       "center": {
@@ -5804,6 +7070,104 @@
       "client": null
     },
     {
+      "id": "p0600212",
+      "geoid": "0600212",
+      "name": "Acton",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 34.49738,
+        "lng": -118.18907
+      },
+      "bounds": [
+        -118.2599,
+        34.45193,
+        -118.07963,
+        34.54275
+      ],
+      "website": "https://lacounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Acton Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0600212",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "boardUrl": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+      "meetingScope": "Los Angeles County",
+      "client": null
+    },
+    {
       "id": "p0600394",
       "geoid": "0600394",
       "name": "Agoura Hills",
@@ -5910,6 +7274,104 @@
       "client": null
     },
     {
+      "id": "p0600450",
+      "geoid": "0600450",
+      "name": "Agua Dulce",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 34.50583,
+        "lng": -118.30859
+      },
+      "bounds": [
+        -118.37898,
+        34.4611,
+        -118.25534,
+        34.54491
+      ],
+      "website": "https://lacounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Agua Dulce Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0600450",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "boardUrl": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+      "meetingScope": "Los Angeles County",
+      "client": null
+    },
+    {
       "id": "p0609598",
       "geoid": "0609598",
       "name": "Calabasas",
@@ -6012,9 +7474,12 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
-        "26"
+        "26",
+        "27"
       ],
       "split": false,
       "center": {
@@ -6102,6 +7567,106 @@
       "client": null
     },
     {
+      "id": "p0619052",
+      "geoid": "0619052",
+      "name": "Desert View Highlands",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.58997,
+        "lng": -118.15342
+      },
+      "bounds": [
+        -118.1616,
+        34.58348,
+        -118.14748,
+        34.59827
+      ],
+      "website": "https://lacounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Desert View Highlands Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0619052",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "boardUrl": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+      "meetingScope": "Los Angeles County",
+      "client": null
+    },
+    {
       "id": "p0621964",
       "geoid": "0621964",
       "name": "Elizabeth Lake",
@@ -6110,7 +7675,9 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
         "26"
       ],
@@ -6200,6 +7767,106 @@
       "client": null
     },
     {
+      "id": "p0631092",
+      "geoid": "0631092",
+      "name": "Green Valley",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.61777,
+        "lng": -118.40297
+      },
+      "bounds": [
+        -118.44398,
+        34.5871,
+        -118.35542,
+        34.64843
+      ],
+      "website": "https://lacounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Green Valley Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0631092",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "boardUrl": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+      "meetingScope": "Los Angeles County",
+      "client": null
+    },
+    {
       "id": "p0632385",
       "geoid": "0632385",
       "name": "Hasley Canyon",
@@ -6208,7 +7875,9 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
         "26"
       ],
@@ -6410,7 +8079,9 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
         "26"
       ],
@@ -6508,9 +8179,12 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
-        "26"
+        "26",
+        "27"
       ],
       "split": false,
       "center": {
@@ -6592,6 +8266,206 @@
       "client": null
     },
     {
+      "id": "p0641208",
+      "geoid": "0641208",
+      "name": "Leona Valley",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.6163,
+        "lng": -118.28141
+      },
+      "bounds": [
+        -118.36387,
+        34.5802,
+        -118.21849,
+        34.65256
+      ],
+      "website": "https://lacounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Leona Valley Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0641208",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "boardUrl": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+      "meetingScope": "Los Angeles County",
+      "client": null
+    },
+    {
+      "id": "p0641880",
+      "geoid": "0641880",
+      "name": "Littlerock",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.52155,
+        "lng": -117.98039
+      },
+      "bounds": [
+        -118.00287,
+        34.51444,
+        -117.95361,
+        34.52839
+      ],
+      "website": "https://lacounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Littlerock Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0641880",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "boardUrl": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+      "meetingScope": "Los Angeles County",
+      "client": null
+    },
+    {
       "id": "p0644000",
       "geoid": "0644000",
       "name": "Los Angeles",
@@ -6600,11 +8474,14 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
-      "futureDistricts": [
-        "26"
+      "districts": [
+        "27"
       ],
-      "split": false,
+      "futureDistricts": [
+        "26",
+        "27"
+      ],
+      "split": true,
       "center": {
         "lat": 34.02023,
         "lng": -118.28657
@@ -6624,22 +8501,34 @@
           "scope": "city"
         },
         {
+          "category": "Planning",
+          "title": "Los Angeles: Planning and development",
+          "url": "https://planning.lacity.gov/",
+          "scope": "city"
+        },
+        {
+          "category": "Projects",
+          "title": "Los Angeles: Project records and activity",
+          "url": "https://planning.lacity.gov/",
+          "scope": "city"
+        },
+        {
           "category": "Meetings",
           "title": "Los Angeles: Meeting agendas and recordings",
           "url": "https://clerk.lacity.gov/calendar",
           "scope": "city"
         },
         {
-          "category": "Planning",
-          "title": "Los Angeles County: Planning and development",
-          "url": "https://planning.lacounty.gov/",
-          "scope": "county"
+          "category": "Boards",
+          "title": "Los Angeles: Boards and commissions",
+          "url": "https://lacity.gov/government/boards-commissions",
+          "scope": "city"
         },
         {
-          "category": "Boards",
-          "title": "Los Angeles County: Boards and commissions",
-          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
-          "scope": "county"
+          "category": "Housing",
+          "title": "Los Angeles: Housing policy and programs",
+          "url": "https://planning.lacity.gov/plans-policies/housing-element-rezoning-program",
+          "scope": "city"
         },
         {
           "category": "Transportation",
@@ -6679,8 +8568,108 @@
         }
       ],
       "meetingUrl": "https://clerk.lacity.gov/calendar",
-      "boardUrl": "https://clerk.lacity.gov/calendar",
+      "boardUrl": "https://lacity.gov/government/boards-commissions",
       "meetingScope": "Los Angeles",
+      "client": null
+    },
+    {
+      "id": "p0655156",
+      "geoid": "0655156",
+      "name": "Palmdale",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.58604,
+        "lng": -118.08647
+      },
+      "bounds": [
+        -118.28773,
+        34.51004,
+        -117.91619,
+        34.66079
+      ],
+      "website": "https://www.cityofpalmdaleca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Palmdale official website",
+          "url": "https://www.cityofpalmdaleca.gov/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "Palmdale: Planning and development",
+          "url": "https://www.cityofpalmdaleca.gov/176/Planning",
+          "scope": "city"
+        },
+        {
+          "category": "Projects",
+          "title": "Palmdale: Project records and activity",
+          "url": "https://www.cityofpalmdaleca.gov/157/Current-Capital-Improvement-Projects",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "Palmdale: Meeting agendas and recordings",
+          "url": "https://www.cityofpalmdaleca.gov/955/Agendas-and-Meetings",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Palmdale: Boards and commissions",
+          "url": "https://www.cityofpalmdaleca.gov/284/Planning-Commission",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Palmdale Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0655156",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.cityofpalmdaleca.gov/955/Agendas-and-Meetings",
+      "boardUrl": "https://www.cityofpalmdaleca.gov/284/Planning-Commission",
+      "meetingScope": "Palmdale",
       "client": null
     },
     {
@@ -6692,9 +8681,12 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
-        "26"
+        "26",
+        "27"
       ],
       "split": false,
       "center": {
@@ -6782,6 +8774,318 @@
       "client": null
     },
     {
+      "id": "p0669088",
+      "geoid": "0669088",
+      "name": "Santa Clarita",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.42087,
+        "lng": -118.48988
+      },
+      "bounds": [
+        -118.61331,
+        34.34137,
+        -118.37871,
+        34.50003
+      ],
+      "website": "https://santaclarita.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Santa Clarita official website",
+          "url": "https://santaclarita.gov/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "Santa Clarita: Planning and development",
+          "url": "https://santaclarita.gov/planning/",
+          "scope": "city"
+        },
+        {
+          "category": "Projects",
+          "title": "Santa Clarita: Project records and activity",
+          "url": "https://santaclarita.gov/planning/major-development-projects/",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "Santa Clarita: Meeting agendas and recordings",
+          "url": "https://santaclarita.gov/agendas",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Clarita: Boards and commissions",
+          "url": "https://santaclarita.gov/commission-information/planning-commission/planning-commission-agendas/",
+          "scope": "city"
+        },
+        {
+          "category": "Housing",
+          "title": "Santa Clarita: Housing policy and programs",
+          "url": "https://santaclarita.gov/planning/housing-element-update/",
+          "scope": "city"
+        },
+        {
+          "category": "News",
+          "title": "Santa Clarita: Official news and notices",
+          "url": "https://santaclarita.gov/news/",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Santa Clarita Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0669088",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://santaclarita.gov/agendas",
+      "boardUrl": "https://santaclarita.gov/commission-information/planning-commission/planning-commission-agendas/",
+      "meetingScope": "Santa Clarita",
+      "client": null
+    },
+    {
+      "id": "p0674130",
+      "geoid": "0674130",
+      "name": "Stevenson Ranch",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.393,
+        "lng": -118.59407
+      },
+      "bounds": [
+        -118.6223,
+        34.36706,
+        -118.5607,
+        34.41799
+      ],
+      "website": "https://lacounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Stevenson Ranch Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0674130",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "boardUrl": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+      "meetingScope": "Los Angeles County",
+      "client": null
+    },
+    {
+      "id": "p0677308",
+      "geoid": "0677308",
+      "name": "Sun Village",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [
+        "27"
+      ],
+      "futureDistricts": [
+        "27"
+      ],
+      "split": false,
+      "center": {
+        "lat": 34.55711,
+        "lng": -117.9545
+      },
+      "bounds": [
+        -117.99695,
+        34.52828,
+        -117.91624,
+        34.58733
+      ],
+      "website": "https://lacounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Sun Village Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0677308",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "boardUrl": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+      "meetingScope": "Los Angeles County",
+      "client": null
+    },
+    {
       "id": "p0681967",
       "geoid": "0681967",
       "name": "Val Verde",
@@ -6790,7 +9094,9 @@
       "counties": [
         "Los Angeles"
       ],
-      "districts": [],
+      "districts": [
+        "27"
+      ],
       "futureDistricts": [
         "26"
       ],
@@ -8204,6 +10510,102 @@
       "meetingUrl": "https://www.countyofmonterey.gov/",
       "boardUrl": "https://www.countyofmonterey.gov/",
       "meetingScope": "Monterey County",
+      "client": null
+    },
+    {
+      "id": "p0666000",
+      "geoid": "0666000",
+      "name": "San Diego",
+      "kind": "city",
+      "county": "San Diego",
+      "counties": [
+        "San Diego"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 32.8243,
+        "lng": -117.15202
+      },
+      "bounds": [
+        -117.28227,
+        32.53479,
+        -116.54561,
+        33.11419
+      ],
+      "website": "https://www.sandiego.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "San Diego official website",
+          "url": "https://www.sandiego.gov/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "San Diego: Planning and development",
+          "url": "https://www.sandiego.gov/planning",
+          "scope": "city"
+        },
+        {
+          "category": "Projects",
+          "title": "San Diego: Project records and activity",
+          "url": "https://www.sandiego.gov/development-services",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "San Diego: Meeting agendas and recordings",
+          "url": "https://www.sandiego.gov/citywide-agendas-minutes",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "San Diego: Boards and commissions",
+          "url": "https://www.sandiego.gov/planning/public-hearings-meetings",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "San Diego County regional transit and transportation",
+          "url": "https://www.sandag.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "San Diego Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0666000",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.sandiego.gov/citywide-agendas-minutes",
+      "boardUrl": "https://www.sandiego.gov/planning/public-hearings-meetings",
+      "meetingScope": "San Diego",
       "client": null
     },
     {
@@ -17249,6 +19651,258 @@
       "client": null
     },
     {
+      "id": "p0617708",
+      "geoid": "0617708",
+      "name": "Cutler",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.52669,
+        "lng": -119.29134
+      },
+      "bounds": [
+        -119.30477,
+        36.5157,
+        -119.2734,
+        36.53379
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Cutler Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0617708",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
+      "id": "p0618450",
+      "geoid": "0618450",
+      "name": "Delft Colony",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.51341,
+        "lng": -119.44643
+      },
+      "bounds": [
+        -119.4493,
+        36.50953,
+        -119.44414,
+        36.51806
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Delft Colony Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0618450",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
+      "id": "p0619318",
+      "geoid": "0619318",
+      "name": "Dinuba",
+      "kind": "city",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.5498,
+        "lng": -119.39524
+      },
+      "bounds": [
+        -119.43962,
+        36.52634,
+        -119.36774,
+        36.57131
+      ],
+      "website": "https://www.dinuba.org/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Dinuba official website",
+          "url": "https://www.dinuba.org/",
+          "scope": "city"
+        },
+        {
+          "category": "Planning",
+          "title": "Dinuba: Planning and development",
+          "url": "https://www.dinuba.org/departments/planning-development",
+          "scope": "city"
+        },
+        {
+          "category": "Meetings",
+          "title": "Dinuba: Meeting agendas and recordings",
+          "url": "https://www.dinuba.org/government/city-council/meeting-agendas",
+          "scope": "city"
+        },
+        {
+          "category": "Boards",
+          "title": "Dinuba: Boards and commissions",
+          "url": "https://www.dinuba.org/government/city-council/boards-commissions/199-planning-commission",
+          "scope": "city"
+        },
+        {
+          "category": "Housing",
+          "title": "Dinuba: Housing policy and programs",
+          "url": "https://www.dinuba.org/departments/104-planning-development/722-housing-element-update-2024",
+          "scope": "city"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Dinuba Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0619318",
+          "scope": "city"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.dinuba.org/government/city-council/meeting-agendas",
+      "boardUrl": "https://www.dinuba.org/government/city-council/boards-commissions/199-planning-commission",
+      "meetingScope": "Dinuba",
+      "client": null
+    },
+    {
       "id": "p0620032",
       "geoid": "0620032",
       "name": "Ducor",
@@ -17331,9 +19985,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -17549,6 +20206,82 @@
       "client": null
     },
     {
+      "id": "p0622235",
+      "geoid": "0622235",
+      "name": "El Monte Mobile Village",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.54703,
+        "lng": -119.42505
+      },
+      "bounds": [
+        -119.42577,
+        36.5462,
+        -119.42445,
+        36.54786
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "El Monte Mobile Village Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0622235",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
       "id": "p0623126",
       "geoid": "0623126",
       "name": "Exeter",
@@ -17557,7 +20290,9 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
         "20"
       ],
@@ -17655,9 +20390,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -17735,9 +20473,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -18029,6 +20770,82 @@
       "client": null
     },
     {
+      "id": "p0636910",
+      "geoid": "0636910",
+      "name": "Ivanhoe",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.38329,
+        "lng": -119.22088
+      },
+      "bounds": [
+        -119.2317,
+        36.36906,
+        -119.21003,
+        36.39505
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Ivanhoe Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0636910",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
       "id": "p0638076",
       "geoid": "0638076",
       "name": "Kennedy Meadows",
@@ -18114,6 +20931,7 @@
         "Tulare"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
@@ -18189,7 +21007,9 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
         "20"
       ],
@@ -18345,9 +21165,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -18396,6 +21219,82 @@
           "category": "Statistics",
           "title": "Linnell Camp Census data",
           "url": "https://data.census.gov/profile?g=160XX00US0641740",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
+      "id": "p0642566",
+      "geoid": "0642566",
+      "name": "London",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.48134,
+        "lng": -119.44525
+      },
+      "bounds": [
+        -119.45202,
+        36.47144,
+        -119.43394,
+        36.48845
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "London Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0642566",
           "scope": "community"
         },
         {
@@ -18487,6 +21386,158 @@
       "client": null
     },
     {
+      "id": "p0648676",
+      "geoid": "0648676",
+      "name": "Monson",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.49097,
+        "lng": -119.33453
+      },
+      "bounds": [
+        -119.34427,
+        36.48712,
+        -119.32993,
+        36.49804
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Monson Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0648676",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
+      "id": "p0654372",
+      "geoid": "0654372",
+      "name": "Orosi",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.54284,
+        "lng": -119.29152
+      },
+      "bounds": [
+        -119.30507,
+        36.53018,
+        -119.27788,
+        36.55665
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Orosi Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0654372",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
       "id": "p0655506",
       "geoid": "0655506",
       "name": "Panorama Heights",
@@ -18548,6 +21599,82 @@
           "category": "Statistics",
           "title": "Panorama Heights Census data",
           "url": "https://data.census.gov/profile?g=160XX00US0655506",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
+      "id": "p0656120",
+      "geoid": "0656120",
+      "name": "Patterson Tract",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.37976,
+        "lng": -119.29676
+      },
+      "bounds": [
+        -119.3057,
+        36.36445,
+        -119.28765,
+        36.39454
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Patterson Tract Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0656120",
           "scope": "community"
         },
         {
@@ -19117,6 +22244,82 @@
       "client": null
     },
     {
+      "id": "p0671078",
+      "geoid": "0671078",
+      "name": "Seville",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.48425,
+        "lng": -119.22537
+      },
+      "bounds": [
+        -119.23233,
+        36.48021,
+        -119.21857,
+        36.48684
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Seville Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0671078",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
       "id": "p0671932",
       "geoid": "0671932",
       "name": "Silver City",
@@ -19495,6 +22698,82 @@
       "client": null
     },
     {
+      "id": "p0675672",
+      "geoid": "0675672",
+      "name": "Sultana",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.5435,
+        "lng": -119.33553
+      },
+      "bounds": [
+        -119.34954,
+        36.53782,
+        -119.32492,
+        36.5495
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Sultana Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0675672",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
       "id": "p0678638",
       "geoid": "0678638",
       "name": "Three Rivers",
@@ -19656,6 +22935,7 @@
         "Tulare"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
@@ -19708,6 +22988,82 @@
           "category": "Statistics",
           "title": "Tooleville Census data",
           "url": "https://data.census.gov/profile?g=160XX00US0678949",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
+      "client": null
+    },
+    {
+      "id": "p0680280",
+      "geoid": "0680280",
+      "name": "Traver",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.45206,
+        "lng": -119.48257
+      },
+      "bounds": [
+        -119.49325,
+        36.444,
+        -119.47341,
+        36.4599
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Traver Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0680280",
           "scope": "community"
         },
         {
@@ -19820,10 +23176,12 @@
         "Tulare"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -19909,12 +23267,14 @@
         "Kings"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
-      "split": false,
+      "split": true,
       "center": {
         "lat": 36.34722,
         "lng": -119.4535
@@ -20060,9 +23420,12 @@
       "counties": [
         "Tulare"
       ],
-      "districts": [],
+      "districts": [
+        "21"
+      ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": false,
       "center": {
@@ -20135,6 +23498,82 @@
       "meetingUrl": "https://drive.google.com/drive/folders/1qdP8MGGz6FW5vb_ZJwHLmo3QsArrda0b?usp=sharing",
       "boardUrl": "https://drive.google.com/drive/folders/1qdP8MGGz6FW5vb_ZJwHLmo3QsArrda0b?usp=sharing",
       "meetingScope": "Woodlake",
+      "client": null
+    },
+    {
+      "id": "p0686734",
+      "geoid": "0686734",
+      "name": "Yettem",
+      "kind": "community",
+      "county": "Tulare",
+      "counties": [
+        "Tulare"
+      ],
+      "districts": [
+        "21"
+      ],
+      "futureDistricts": [
+        "21"
+      ],
+      "split": false,
+      "center": {
+        "lat": 36.48528,
+        "lng": -119.25895
+      },
+      "bounds": [
+        -119.26121,
+        36.48282,
+        -119.24953,
+        36.48772
+      ],
+      "website": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Yettem Census data",
+          "url": "https://data.census.gov/profile?g=160XX00US0686734",
+          "scope": "community"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "boardUrl": "https://www.tularecounty.ca.gov/",
+      "meetingScope": "Tulare County",
       "client": null
     },
     {
@@ -22953,10 +26392,12 @@
         "Fresno"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -23029,10 +26470,12 @@
         "Tulare"
       ],
       "districts": [
+        "21",
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "21"
       ],
       "split": true,
       "center": {
@@ -23260,6 +26703,102 @@
       "client": null
     },
     {
+      "id": "c06073",
+      "geoid": "06073",
+      "name": "San Diego County",
+      "kind": "county",
+      "county": "San Diego",
+      "counties": [
+        "San Diego"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": true,
+      "center": {
+        "lat": 33.03822,
+        "lng": -116.73388
+      },
+      "bounds": [
+        -117.61108,
+        32.52951,
+        -116.08088,
+        33.50538
+      ],
+      "website": "https://www.sandiegocounty.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "San Diego County official website",
+          "url": "https://www.sandiegocounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "San Diego County: Planning and development",
+          "url": "https://www.sandiegocounty.gov/content/sdc/pds.html",
+          "scope": "county"
+        },
+        {
+          "category": "Projects",
+          "title": "San Diego County: Project records and activity",
+          "url": "https://www.sandiegocounty.gov/content/sdc/pds/Current_Projects.html",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "San Diego County: Meeting agendas and recordings",
+          "url": "https://www.sandiegocounty.gov/content/sdc/cob/bosa.html",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "San Diego County: Boards and commissions",
+          "url": "https://www.sandiegocounty.gov/content/sdc/pds/PC/sop/PCHearing_stream.html",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "San Diego County regional transit and transportation",
+          "url": "https://www.sandag.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "San Diego County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06073",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ],
+      "meetingUrl": "https://www.sandiegocounty.gov/content/sdc/cob/bosa.html",
+      "boardUrl": "https://www.sandiegocounty.gov/content/sdc/pds/PC/sop/PCHearing_stream.html",
+      "meetingScope": "San Diego County",
+      "client": null
+    },
+    {
       "id": "c06029",
       "geoid": "06029",
       "name": "Kern County",
@@ -23272,7 +26811,8 @@
         "20"
       ],
       "futureDistricts": [
-        "20"
+        "20",
+        "27"
       ],
       "split": true,
       "center": {
@@ -23441,10 +26981,12 @@
         "Los Angeles"
       ],
       "districts": [
+        "27",
         "26"
       ],
       "futureDistricts": [
-        "26"
+        "26",
+        "27"
       ],
       "split": true,
       "center": {
@@ -23578,6 +27120,18 @@
       "name": "VTA projects and programs",
       "county": "Santa Clara",
       "url": "https://www.vta.org/projects",
+      "kind": "directory"
+    },
+    {
+      "name": "San Diego Metropolitan Transit System",
+      "url": "https://www.sdmts.com/",
+      "county": "San Diego",
+      "kind": "directory"
+    },
+    {
+      "name": "SANDAG regional transportation projects",
+      "url": "https://www.sandag.org/",
+      "county": "San Diego",
       "kind": "directory"
     },
     {
@@ -24436,117 +27990,140 @@
     }
   ],
   "linkChecks": {
+    "https://www.fresnocountyca.gov/": "HTTP Error 403: Forbidden",
     "https://www.inyocounty.us/": 200,
     "https://www.kerncounty.com/": "HTTP Error 403: Forbidden",
-    "https://www.countyofkingsca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.fresnocountyca.gov/": "HTTP Error 403: Forbidden",
+    "https://www.slocounty.ca.gov/": 200,
     "https://lacounty.gov/": 200,
     "https://www.countyofmonterey.gov/": "HTTP Error 403: Forbidden",
     "https://www.santaclaracounty.gov/": "HTTP Error 403: Forbidden",
+    "https://www.countyofkingsca.gov/": "HTTP Error 403: Forbidden",
     "https://www.countyofsb.org/": 200,
-    "https://www.slocounty.ca.gov/": 200,
-    "https://www.tularecounty.ca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.santacruzcountyca.gov/": 200,
-    "https://plandev.santaclaracounty.gov/": "HTTP Error 403: Forbidden",
     "https://www.slocounty.ca.gov/departments/planning-building": 200,
     "https://planning.lacounty.gov/": 200,
+    "https://plandev.santaclaracounty.gov/": "HTTP Error 403: Forbidden",
+    "https://www.santacruzcountyca.gov/": 200,
+    "https://www.tularecounty.ca.gov/": "HTTP Error 403: Forbidden",
     "https://www.ventura.org/": 200,
-    "https://cityofclovis.com/": 200,
-    "https://www.sccoplanning.com/": 200,
-    "https://www.fresno.gov/": 200,
     "https://www.countyofsb.org/159/Planning-Development": "HTTP Error 404: Not Found",
+    "https://cityofclovis.com/": 200,
+    "https://www.fresno.gov/": 200,
+    "https://www.sccoplanning.com/": 200,
+    "https://www.sandiegocounty.gov/": 200,
     "https://www.cityoforangecove.com/": 200,
     "https://www.clovisca.gov/services/planning_development/index.php": 200,
     "https://www.ci.sanger.ca.us/": 200,
+    "https://rma.venturacounty.gov/divisions/planning/": 200,
+    "https://www.sandiegocounty.gov/content/sdc/pds.html": 200,
     "https://www.cityofmaricopa.org/": 200,
     "https://www.bakersfieldcity.us/": 200,
-    "https://www.ci.sanger.ca.us/177/Planning-Zoning": 200,
-    "https://www.ridgecrest-ca.gov/": 200,
     "https://www.shafter.com/": 200,
     "https://www.liveuptehachapi.com/": 200,
+    "https://www.ci.sanger.ca.us/177/Planning-Zoning": 200,
+    "https://www.cityoftaft.ca.gov/": 200,
+    "https://www.ridgecrest-ca.gov/": 200,
     "https://www.hanfordca.gov/": 200,
-    "https://www.agourahillscity.org/": 200,
-    "https://lemoore.com/": 200,
     "https://www.cityofcalabasas.com/": "HTTP Error 403: Forbidden",
-    "https://hiddenhillscity.org/": 200,
-    "https://www.agourahillscity.gov/government/departments/community_development/index.php": 200,
     "https://www.cityoflancasterca.org/": "HTTP Error 403: Forbidden",
+    "https://www.cityoftaft.ca.gov/5355/planning-and-development": 200,
+    "https://lemoore.com/": 200,
     "https://lacity.gov/": 200,
-    "https://www.delreyoaks.org/": "HTTP Error 403: Forbidden",
+    "https://hiddenhillscity.org/": 200,
+    "https://www.agourahillscity.org/": 200,
     "https://www.wlv.org/": 200,
     "https://ci.carmel.ca.us/": 200,
     "https://www.cityofmarina.org/": 200,
-    "https://www.cityofpacificgrove.org/": 200,
-    "https://monterey.gov/": 200,
-    "https://ci.carmel.ca.us/community-planning-building": 200,
+    "https://www.agourahillscity.gov/government/departments/community_development/index.php": 200,
+    "https://www.delreyoaks.org/": "HTTP Error 403: Forbidden",
     "https://www.cityofmarina.org/161/Planning-Services": 200,
-    "https://www.cityofpacificgrove.gov/our_city/departments/community_development/index.php": 200,
+    "https://ci.carmel.ca.us/community-planning-building": 200,
+    "https://monterey.gov/": 200,
+    "https://www.cityofpacificgrove.org/": 200,
     "https://www.sandcity.org/": 200,
-    "https://monterey.gov/your_city_hall/departments/community_development/index.php": 200,
+    "https://www.cityofpacificgrove.gov/our_city/departments/community_development/index.php": 200,
     "https://www.arroyogrande.org/": 200,
-    "https://www.atascadero.org/": 200,
     "https://sandcity.org/planning-department/": 200,
     "https://www.ci.seaside.ca.us/": 200,
-    "https://www.grover.org/": 200,
+    "https://monterey.gov/your_city_hall/departments/community_development/index.php": 200,
+    "https://www.atascadero.org/": 200,
     "https://www.prcity.com/": 200,
-    "https://www.morro-bay.ca.us/": 200,
+    "https://www.grover.org/": 200,
     "https://www.pismobeach.org/": 200,
-    "https://www.morrobayca.gov/1127/Applications-and-Forms": 200,
     "https://www.slocity.org/": "HTTP Error 403: Forbidden",
-    "https://pismobeach.org/70/Planning": 200,
-    "https://www.cityofbuellton.com/": "HTTP Error 403: Forbidden",
+    "https://www.morro-bay.ca.us/": 200,
     "https://carpinteriaca.gov/": 200,
+    "https://www.cityofbuellton.com/": "HTTP Error 403: Forbidden",
+    "https://www.morrobayca.gov/1127/Applications-and-Forms": 200,
     "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission": "HTTP Error 403: Forbidden",
-    "https://www.cityofgoleta.org/": "HTTP Error 403: Forbidden",
-    "https://www.cityofguadalupe.org/": 200,
-    "https://cityofbuellton.com/departments/planning.php": "HTTP Error 403: Forbidden",
-    "https://www.cityoflompoc.com/": "HTTP Error 403: Forbidden",
-    "https://cityofguadalupe.org/planning-department/": 200,
-    "https://santabarbaraca.gov/": 200,
+    "https://pismobeach.org/70/Planning": 200,
     "https://carpinteriaca.gov/city-hall/community-development/": 200,
+    "https://cityofbuellton.com/departments/planning.php": "HTTP Error 403: Forbidden",
+    "https://www.cityofguadalupe.org/": 200,
+    "https://www.cityoflompoc.com/": "HTTP Error 403: Forbidden",
+    "https://santabarbaraca.gov/": 200,
+    "https://www.cityofgoleta.org/": "HTTP Error 403: Forbidden",
     "https://www.cityofsantamaria.org/": "HTTP Error 403: Forbidden",
-    "https://www.morganhill.ca.gov/": 200,
-    "https://www.cityofsantamaria.org/services/departments/community-development/planning-division": "HTTP Error 403: Forbidden",
-    "https://santabarbaraca.gov/planning-commission": 200,
     "https://www.cityofsolvang.com/": 200,
+    "https://www.cityofsantamaria.org/services/departments/community-development/planning-division": "HTTP Error 403: Forbidden",
+    "https://www.sanjoseca.gov/": "HTTP Error 403: Forbidden",
+    "https://www.morganhill.ca.gov/": 200,
+    "https://cityofguadalupe.org/planning-department/": 200,
+    "https://santabarbaraca.gov/planning-commission": 200,
     "https://www.cityofsantacruz.com/": "HTTP Error 403: Forbidden",
     "https://www.cityofcapitola.org/": 200,
     "https://www.scottsvalley.gov/": 200,
-    "https://www.sanjoseca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.watsonville.gov/": 200,
     "https://cityofexeter.com/": 200,
-    "https://www.cityoffarmersville-ca.gov/": 200,
+    "https://www.watsonville.gov/": 200,
     "https://cityofexeter.ca.gov/departments/administration/planningbuilding/": 200,
+    "https://www.cityoffarmersville-ca.gov/": 200,
     "https://www.lindsay.ca.us/": 200,
     "https://www.ci.porterville.ca.us/": 200,
-    "https://www.visalia.gov/": "HTTP Error 403: Forbidden",
-    "https://www.cityofwoodlake.com/": 200,
     "https://www.tulare.ca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.ci.porterville.ca.us/departments/community_development/index.php": 200,
-    "https://www.cityofcamarillo.org/": 200,
+    "https://www.visalia.gov/": "HTTP Error 403: Forbidden",
     "https://www.fillmoreca.gov/": 200,
-    "https://cityofwoodlake.com/departments/planning/": 200,
+    "https://www.cityofwoodlake.com/": 200,
     "https://www.moorparkca.gov/": 200,
-    "https://www.cityofcamarillo.org/departments/community_development/index.php": 200,
-    "https://www.ojai.ca.gov/": 200,
-    "https://www.oxnard.gov/": "HTTP Error 403: Forbidden",
     "https://www.fillmoreca.gov/189/Planning-Department": 200,
+    "https://www.cityofcamarillo.org/": 200,
+    "https://www.ci.porterville.ca.us/departments/community_development/index.php": 200,
+    "https://www.ojai.ca.gov/": 200,
+    "https://www.cityofcamarillo.org/departments/community_development/index.php": 200,
+    "https://cityofwoodlake.com/departments/planning/": 200,
+    "https://www.oxnard.gov/": "HTTP Error 403: Forbidden",
+    "https://www.cityofventura.ca.gov/": "HTTP Error 403: Forbidden",
     "https://www.ci.port-hueneme.ca.us/": 200,
+    "https://www.ojai.ca.gov/200/Community-Development-Department": 200,
     "https://www.spcity.org/": 200,
     "https://www.simivalley.org/": "HTTP Error 403: Forbidden",
-    "https://www.cityofventura.ca.gov/": "HTTP Error 403: Forbidden",
-    "https://www.ojai.ca.gov/200/Community-Development-Department": 200,
-    "https://www.cityofventura.ca.gov/432/Planning": "HTTP Error 403: Forbidden",
     "https://www.toaks.gov/": 200,
+    "https://www.cityofventura.ca.gov/432/Planning": "HTTP Error 403: Forbidden",
+    "https://cityofkingsburg-ca.gov/": 200,
+    "https://www.fowlercity.org/": "HTTP Error 403: Forbidden",
+    "https://www.parlier.ca.us/": 200,
+    "https://reedley.ca.gov/": 200,
     "https://www.toaks.gov/index.php?section=cdd": 200,
-    "https://rma.venturacounty.gov/divisions/planning/": 200,
-    "https://www.cityoftaft.ca.gov/": 200,
-    "https://www.cityoftaft.ca.gov/5355/planning-and-development": 200,
+    "https://cityofkingsburg-ca.gov/158/Planning-Department": 200,
+    "https://www.cityofpalmdaleca.gov/": 200,
+    "https://reedley.ca.gov/community-development-department/": 200,
+    "https://www.cityofselma.com/": 200,
+    "https://santaclarita.gov/": 200,
+    "https://www.cityofselma.com/departments/community_development/index.php": 200,
+    "https://santaclarita.gov/planning/": 200,
+    "https://www.sandiego.gov/": 200,
+    "https://www.sandiego.gov/planning": 200,
+    "https://www.dinuba.org/": 200,
+    "https://www.dinuba.org/departments/planning-development": 200,
+    "https://www.fowlercity.org/planning": "HTTP Error 403: Forbidden",
+    "https://www.parlier.ca.us/157/Community-Development": 200,
+    "https://www.cityofpalmdaleca.gov/176/Planning": 200,
+    "https://planning.lacity.gov/": 200,
     "https://dot.ca.gov/caltrans-near-me/district-5/district-5-current-projects": 200,
     "https://dot.ca.gov/caltrans-near-me/district-6/district-6-projects": 200,
     "https://dot.ca.gov/caltrans-near-me/district-7/district-7-projects": 200,
     "https://dot.ca.gov/caltrans-near-me/district-9/district-9-projects": 200,
-    "https://www.vta.org/projects": 200
+    "https://www.vta.org/projects": 200,
+    "https://www.sdmts.com/": 200,
+    "https://www.sandag.org/": 200
   },
   "note": "Direct local links are discovered on official homepages or planning pages. County links are labelled when they serve unincorporated communities or replace an unavailable city-specific directory. A linked directory is not a scheduled event or a complete inventory."
 }

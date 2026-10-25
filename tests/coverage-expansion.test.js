@@ -14,7 +14,7 @@ const coverage=read('public/cal/data/profiles.json').profiles;
 const full=key=>read('public/data/coverage/'+key+'.json').records;
 
 test('every covered city joins the original city directory without replacing a Bay Area city',()=>{
- assert.equal(Object.values(manifest.cities).filter(c=>c.kind==='city').length,61);
+ assert.equal(Object.values(manifest.cities).filter(c=>c.kind==='city').length,70);
  for(const city of base)assert.ok(!manifest.cities[city.key],city.label+' must not be overwritten');
  for(const p of coverage.filter(p=>p.kind==='city')){
   assert.ok(base.some(c=>c.label===p.name&&c.county===p.county)||Object.values(manifest.cities).some(c=>c.coverageId===p.id),p.name);
@@ -73,4 +73,32 @@ test('the existing site remains the entrypoint with its original tabs and map in
  assert.match(html,/id="onboardOverlay"/);assert.match(html,/src="\/guest.js"/);assert.match(html,/src="\/admin-content.js"/);
  assert.ok(!existsSync(new URL('../public/cal/index.html',import.meta.url)));
  assert.ok(!existsSync(new URL('../render-cal.yaml',import.meta.url)));
+});
+
+test('requested additional cities have housing, local filings, statistics, news and official resources',()=>{
+ for(const key of ['fowler','kingsburg','parlier','reedley','selma','palmdale','santaclarita','dinuba','sandiego','losangeles']){
+  const city=manifest.cities[key];assert.ok(city,key);assert.ok(city.recordCount>0,key);assert.ok(city.stats.population>0,key);
+  assert.ok(city.news.some(n=>n.source!=='Official source directory'),key);
+  for(const category of ['Planning','Meetings','Transportation'])assert.ok(city.resources.some(r=>r.cat===category),key+' '+category);
+  assert.ok(manifest.photos[key]?.source,key);assert.ok(city.deciders.length&&city.join.length,key);
+ }
+});
+test('environmental notices have factual filing labels, source descriptions and original titles',()=>{
+ const rows=full('losangeles');
+ const bicycle=rows.find(r=>r.fileNo==='2026100905');assert.equal(bicycle.stage,'filed');assert.equal(bicycle.filingLabel,'Notice of exemption filed');assert.match(bicycle.lastNote,/bicycle/i);
+ const gas=rows.find(r=>r.fileNo==='2026100878');assert.ok(!gas.addr.startsWith('853886_'));assert.match(gas.addr,/Gas Company|Gas Storage/i);assert.equal(gas.originalTitle,'853886_0100006_SoCalGas_UGS');
+ for(const r of rows.filter(r=>r.sourceType==='ceqanet')){assert.equal(r.stage,'filed');assert.ok(r.filingLabel);assert.ok(r.originalTitle);assert.ok(r.lastNote.length<=370);}
+});
+
+test('coverage records revalidate so an old browser cache cannot contradict the manifest',async()=>{
+ let options;const c=loader(async(_url,opts)=>{options=opts;return {ok:true,json:async()=>({records:[{id:'1'},{id:'2'}]})};});
+ await c.api.load('a',c.cities);assert.equal(options.cache,'no-cache');
+});
+
+test('named boards exclude individual calendar events and confirmed stale links',()=>{
+ const excluded=new Set(read('scripts/cal/unavailable-links.json').urls);
+ for(const [key,c] of Object.entries(manifest.cities)){
+  for(const b of [...c.deciders,...c.join]){assert.ok(!/\/events?\//i.test(b.link),key+' '+b.link);assert.ok(!excluded.has(b.link));assert.ok(!/^cancelled:/i.test(b.name));}
+  assert.ok(c.resources.every(r=>!excluded.has(r.url)),key);
+ }
 });
