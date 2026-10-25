@@ -9,6 +9,8 @@ ROOT=pathlib.Path(__file__).resolve().parents[2];OUT=ROOT/'public/cal/data';OUT.
 CACHE=pathlib.Path('/tmp/cal-civic-cache');CACHE.mkdir(exist_ok=True)
 DISTRICTS=['19','20','21','24','26','27']
 EXTRA_CITIES={'San Diego'}
+EXPANSION=json.loads((ROOT/'scripts/cal/expansion-areas.json').read_text())
+EXTRA_GEOIDS={a['geoid'] for a in EXPANSION['anchors']}|{p['geoid'] for a in EXPANSION['anchors'] for p in a['nearby']}
 BASE='https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/'
 def query(path,where):
  params={'where':where,'outFields':'*','returnGeometry':'true','outSR':'4326','geometryPrecision':'5','maxAllowableOffset':'.0001','f':'geojson'}
@@ -31,7 +33,7 @@ for kind,features_in in [('city',inc['features']),('community',cdp['features'])]
   if not g.area:continue
   memberships=[k for k,h in regions.items() if g.intersection(h).area/g.area>.0001]
   future_memberships=[k for k,h in future_regions.items() if g.intersection(h).area/g.area>.0001]
-  if not memberships and not future_memberships and p['BASENAME'] not in EXTRA_CITIES:continue
+  if not memberships and not future_memberships and p['BASENAME'] not in EXTRA_CITIES and p['GEOID'] not in EXTRA_GEOIDS:continue
   county_parts=sorted([(name,g.intersection(h).area) for name,h in county_shapes if g.intersects(h) and g.intersection(h).area/g.area>.0001],key=lambda x:-x[1])
   label=p['BASENAME'];geoid=p['GEOID'];key='p'+geoid;point=g.representative_point()
   places.append({'id':key,'geoid':geoid,'name':label,'kind':kind,'county':county_parts[0][0],'counties':[n for n,a in county_parts], 'districts':memberships,'futureDistricts':future_memberships,'split':any(g.intersection(regions[k]).area/g.area<.995 for k in memberships),'center':{'lat':round(point.y,5),'lng':round(point.x,5)},'bounds':list(g.bounds)})
@@ -47,7 +49,7 @@ for f in counties['features']:
 places.sort(key=lambda p:(p['county'],p['name']))
 def boundaries(d,key):
  return {'type':'FeatureCollection','features':[{'type':'Feature','properties':{'district':f['properties'][key]},'geometry':mapping(shape(f['geometry']).buffer(0).simplify(.0008,preserve_topology=True))} for f in d['features']]}
-meta={'retrieved':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source':BASE+'Legislative/MapServer','placesSource':BASE+'Places_CouSub_ConCity_SubMCD/MapServer','districts':DISTRICTS,'extraCities':sorted(EXTRA_CITIES),'currentCongress':119,'currentThrough':'2027-01-02','futureCongress':120,'futureFrom':'2027-01-03','method':'Census incorporated places and census-designated places with a positive-area intersection with a selected district. Split-place membership does not establish the district of an individual address. Explicitly requested cities are included in full even outside those districts. County remainders are covered through county profiles. Boundaries are simplified for display.'}
+meta={'retrieved':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source':BASE+'Legislative/MapServer','placesSource':BASE+'Places_CouSub_ConCity_SubMCD/MapServer','districts':DISTRICTS,'extraCities':sorted(EXTRA_CITIES),'extraPlaces':sorted(EXTRA_GEOIDS),'populationExpansion':EXPANSION,'currentCongress':119,'currentThrough':'2027-01-02','futureCongress':120,'futureFrom':'2027-01-03','method':'Census incorporated places and census-designated places with a positive-area intersection with a selected district. Split-place membership does not establish the district of an individual address. Explicitly requested cities are included in full even outside those districts. County remainders are covered through county profiles. Boundaries are simplified for display.'}
 (OUT/'geography.json').write_text(json.dumps({'metadata':meta,'places':places,'counties':county_profiles},indent=2)+'\n')
 (OUT/'districts-119.geojson').write_text(json.dumps(boundaries(current,'CD119')))
 (OUT/'districts-120.geojson').write_text(json.dumps(boundaries(future,'CD120')))

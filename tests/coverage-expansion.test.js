@@ -14,7 +14,7 @@ const coverage=read('public/cal/data/profiles.json').profiles;
 const full=key=>read('public/data/coverage/'+key+'.json').records;
 
 test('every covered city joins the original city directory without replacing a Bay Area city',()=>{
- assert.equal(Object.values(manifest.cities).filter(c=>c.kind==='city').length,70);
+ assert.equal(Object.values(manifest.cities).filter(c=>c.kind==='city').length,104);
  for(const city of base)assert.ok(!manifest.cities[city.key],city.label+' must not be overwritten');
  for(const p of coverage.filter(p=>p.kind==='city')){
   assert.ok(base.some(c=>c.label===p.name&&c.county===p.county)||Object.values(manifest.cities).some(c=>c.coverageId===p.id),p.name);
@@ -101,4 +101,27 @@ test('named boards exclude individual calendar events and confirmed stale links'
   for(const b of [...c.deciders,...c.join]){assert.ok(!/\/events?\//i.test(b.link),key+' '+b.link);assert.ok(!excluded.has(b.link));assert.ok(!/^cancelled:/i.test(b.name));}
   assert.ok(c.resources.every(r=>!excluded.has(r.url)),key);
  }
+});
+
+ test('population expansion includes five ranked anchors and every selected nearby locality',()=>{
+ const expansion=read('scripts/cal/expansion-areas.json');
+ assert.deepEqual(expansion.anchors.map(a=>a.name),['Sacramento','Long Beach','Anaheim','Stockton','Riverside']);
+ assert.deepEqual(expansion.anchors.map(a=>a.stateRank),[6,7,10,11,12]);
+ const ids=new Set([...base.map(c=>c.geoid),...Object.values(manifest.cities).map(c=>c.coverageId.slice(1))]);
+ for(const a of expansion.anchors)for(const p of [a,...a.nearby]){
+  assert.ok(ids.has(p.geoid)||coverage.some(c=>c.geoid===p.geoid),p.name);
+  const city=Object.values(manifest.cities).find(c=>c.coverageId==='p'+p.geoid);
+  if(!city)continue;
+  assert.ok(city.news.length&&city.resources.length&&city.deciders.length&&city.join.length,p.name);
+  if(p.kind==='community')assert.ok(coverage.find(c=>c.id==='p'+p.geoid).resources.some(r=>r.scope==='county'),p.name);
+ }
+ for(const a of expansion.anchors){const c=Object.values(manifest.cities).find(c=>c.coverageId==='p'+a.geoid);assert.ok(c.recordCount>100);}
+});
+
+test('the added cities retain named planning bodies and exclude dead map links',()=>{
+ for(const key of ['sacramento','longbeach','anaheim','stockton','riverside']){
+  assert.ok(manifest.cities[key].deciders.some(b=>/Planning.*Commission/i.test(b.name)),key);
+ }
+ const removed=read('scripts/cal/unavailable-links.json').urls;
+ for(const c of Object.values(manifest.cities))assert.ok(c.resources.every(r=>!removed.includes(r.url)),c.label);
 });

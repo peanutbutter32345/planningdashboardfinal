@@ -54,8 +54,8 @@ def get(url,js=False):
 def layer(url):
  meta=get(url+'?f=json',True).get('data',{})
  title=meta.get('name','')
- if meta.get('geometryType')!='esriGeometryPolygon' or not re.search(r'zon|land.?use',title,re.I) or re.search(r'fire|flood|inspection|evac|school|noise|hazard|seismic|airport|safety|historic|history|draft|text|excluding|management area',title,re.I):return None
- fields=meta.get('fields',[]);field=next((f['name'] for f in fields if re.search(r'^(zone|zone_name|zoning|zonecode|zone_code|zoneclass|zoningcode|zoning_code|zonedist|zone_district|zoning_district|landuse|land_use|lu_code|luc|zn_cd1|zone_desig|zonecd|zoning_cd)$',f['name'],re.I)),None)
+ if meta.get('geometryType')!='esriGeometryPolygon' or not re.search(r'zon|land.?use',title,re.I) or re.search(r'fire|flood|inspection|evac|school|noise|hazard|seismic|airport|safety|historic|history|1989|draft|text|excluding|management area',title,re.I):return None
+ fields=meta.get('fields',[]);field=next((f['name'] for f in fields if re.search(r'^(zone|zone_name|zoning|zonecode|zone_code|zoneclass|zoningcode|zoning_code|zonedist|zone_district|zoning_district|landuse|land_use|lu_code|luc|zn_cd1|zone_desig|zonecd|zoning_cd|ZoneAbbreviation|ZoneCodeLabel|ZONING_SYMBOL)$',f['name'],re.I)),None)
  if not field:return None
  q=urllib.parse.urlencode({'where':'1=1','outFields':field,'returnGeometry':'false','resultRecordCount':3,'f':'json'})
  sample=get(url+'/query?'+q,True).get('data',{})
@@ -116,7 +116,7 @@ def one(p):
      entry=layer(u+'/'+str(l['id']))
      if entry:overlays.append(entry)
  overlays.sort(key=lambda l:(not bool(re.fullmatch(r'zoning|.*_zoning|Zone Designation|Zoning Graphic|Land Use Outlines',l['name'],re.I)),len(l['name'])))
- return p['id'],{'authority':p['name'],'resources':list({(r['url'],r['category']):r for r in result}.values()),'layers':list({l['url']:l for l in overlays}.values()),'checks':checks}
+ return p['id'],{'authority':p['name'],'resources':list({(r['url'],r['category']):r for r in result}.values()),'layers':list({l['url'].lower():l for l in overlays}.values()),'checks':checks}
 
 previous=json.loads((OUT/'land-use.json').read_text()).get('places',{}) if (OUT/'land-use.json').exists() else {}
 data={p['id']:previous[p['id']] for p in profiles if p['id'] in previous}
@@ -129,6 +129,7 @@ for p in profiles:
   county=next(c for c in profiles if c['kind']=='county' and c['county']==p['county']);data[p['id']]=data[county['id']]
 # WordPress download refresh tokens expire; keep the stable document selector.
 for entry in data.values():
+ entry['layers']=list({l['url'].lower():l for l in entry.get('layers',[])}.values())
  entry['resources']=[r for r in entry['resources'] if r['url'] not in EXCLUDED]
  for r in entry['resources']:
   r['url']=r['url'].replace('https://www.municode.com/library/ca/kingsburg/','https://library.municode.com/ca/kingsburg/').replace('https://www.municode.com/library/ca/parlier/','https://library.municode.com/ca/parlier/')

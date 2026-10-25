@@ -12,6 +12,7 @@ class Links(HTMLParser):
   if self.href:self.text.append(d)
  def handle_endtag(self,t):
   if t=='a' and self.href:self.items.append((self.href,' '.join(self.text)));self.href=None
+source_overrides=json.loads((ROOT/'scripts/cal/sources.json').read_text())['overrides']
 cache={}
 def one(p):
  url=p['boardUrl']
@@ -39,6 +40,9 @@ for p in profiles:
  if p['kind']=='community':
   county=next(c for c in profiles if c['kind']=='county' and c['county']==p['county']);owner=byurl.get(county['boardUrl']);items=cache.get(owner['id'],[]) if owner else []
  items=list(items)
+ override=source_overrides.get(p['name'],{}) if p['kind']=='city' else {}
+ if override.get('boardName') and override.get('boards') not in EXCLUDED:
+  items.insert(0,{'name':override['boardName'],'url':override['boards'],'directory':p['name']})
  for r in land.get(p['id'],{}).get('resources',[]):
   if r['url'] not in EXCLUDED and not re.search(r'/events?/',urllib.parse.urlparse(r['url']).path,re.I) and re.search(r'(?:commission|committee|council|board|authority)$',r['title'],re.I) and not re.search(r'cancelled|canceled|apply|application|agenda|minutes|meeting|report|calendar|boards? (?:and|&)',r['title'],re.I):items.append({'name':r['title'],'url':r['url'],'directory':land[p['id']]['authority']})
  result[p['id']]=list({b['name'].lower():b for b in items}.values())

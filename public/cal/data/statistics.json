@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-10-25T09:18:51.134089+00:00",
+  "retrieved": "2026-10-25T09:52:56.277238+00:00",
   "note": "US Census Bureau ACS 2024 five-year estimates, directly from table-based summary files. Estimates cover the whole named place or county, including portions outside selected districts. Medians cannot be added or treated as current market prices. Margins of error are retained.",
   "places": {
     "p0603190": {
@@ -2854,6 +2854,37 @@
         "housingUnits": 164.0
       }
     },
+    "p0604982": {
+      "available": true,
+      "population": 76819.0,
+      "income": 78722.0,
+      "rent": 1830.0,
+      "homeValue": 705700.0,
+      "housingUnits": 24683.0,
+      "renterShare": 60.7,
+      "transitShare": 1.9,
+      "commuteMinutes": 29.4,
+      "source": "https://data.census.gov/profile?g=160XX00US0604982",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Bellflower",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 90.0,
+        "income": 4435.0,
+        "rent": 40.0,
+        "homeValue": 20723.0,
+        "housingUnits": 624.0
+      }
+    },
     "p0609598": {
       "available": true,
       "population": 22669.0,
@@ -2883,6 +2914,37 @@
         "rent": 154.0,
         "homeValue": 91484.0,
         "housingUnits": 366.0
+      }
+    },
+    "p0611530": {
+      "available": true,
+      "population": 92871.0,
+      "income": 108703.0,
+      "rent": 1956.0,
+      "homeValue": 704400.0,
+      "housingUnits": 28178.0,
+      "renterShare": 26.0,
+      "transitShare": 1.6,
+      "commuteMinutes": 27.5,
+      "source": "https://data.census.gov/profile?g=160XX00US0611530",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Carson",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 74.0,
+        "income": 4237.0,
+        "rent": 109.0,
+        "homeValue": 13988.0,
+        "housingUnits": 733.0
       }
     },
     "p0611796": {
@@ -2916,6 +2978,37 @@
         "housingUnits": 266.0
       }
     },
+    "p0615044": {
+      "available": true,
+      "population": 92698.0,
+      "income": 78465.0,
+      "rent": 1664.0,
+      "homeValue": 580200.0,
+      "housingUnits": 25039.0,
+      "renterShare": 43.6,
+      "transitShare": 3.9,
+      "commuteMinutes": 30.5,
+      "source": "https://data.census.gov/profile?g=160XX00US0615044",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Compton",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 51.0,
+        "income": 4163.0,
+        "rent": 62.0,
+        "homeValue": 10342.0,
+        "housingUnits": 568.0
+      }
+    },
     "p0619052": {
       "available": true,
       "population": 2613.0,
@@ -2945,6 +3038,37 @@
         "rent": 343.0,
         "homeValue": 40215.0,
         "housingUnits": 226.0
+      }
+    },
+    "p0621034": {
+      "available": true,
+      "population": 14603.0,
+      "income": 72895.0,
+      "rent": 1701.0,
+      "homeValue": 573600.0,
+      "housingUnits": 3636.0,
+      "renterShare": 44.9,
+      "transitShare": 2.8,
+      "commuteMinutes": 32.2,
+      "source": "https://data.census.gov/profile?g=160XX00US0621034",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "East Rancho Dominguez",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1790.0,
+        "income": 12999.0,
+        "rent": 84.0,
+        "homeValue": 28620.0,
+        "housingUnits": 307.0
       }
     },
     "p0621964": {
@@ -3040,6 +3164,37 @@
         "housingUnits": 98.0
       }
     },
+    "p0632506": {
+      "available": true,
+      "population": 13691.0,
+      "income": 76341.0,
+      "rent": 1696.0,
+      "homeValue": 554100.0,
+      "housingUnits": 4105.0,
+      "renterShare": 56.2,
+      "transitShare": 4.0,
+      "commuteMinutes": 26.6,
+      "source": "https://data.census.gov/profile?g=160XX00US0632506",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Hawaiian Gardens",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 26.0,
+        "income": 4179.0,
+        "rent": 171.0,
+        "homeValue": 77846.0,
+        "housingUnits": 268.0
+      }
+    },
     "p0633518": {
       "available": true,
       "population": 2150.0,
@@ -3100,6 +3255,37 @@
         "rent": 1209.0,
         "homeValue": 175999.0,
         "housingUnits": 162.0
+      }
+    },
+    "p0639892": {
+      "available": true,
+      "population": 79850.0,
+      "income": 119177.0,
+      "rent": 2347.0,
+      "homeValue": 827200.0,
+      "housingUnits": 26867.0,
+      "renterShare": 28.6,
+      "transitShare": 1.0,
+      "commuteMinutes": 28.4,
+      "source": "https://data.census.gov/profile?g=160XX00US0639892",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Lakewood",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 71.0,
+        "income": 4606.0,
+        "rent": 99.0,
+        "homeValue": 7022.0,
+        "housingUnits": 529.0
       }
     },
     "p0640130": {
@@ -3195,6 +3381,37 @@
         "housingUnits": 153.0
       }
     },
+    "p0643000": {
+      "available": true,
+      "population": 455548.0,
+      "income": 87430.0,
+      "rent": 1871.0,
+      "homeValue": 806600.0,
+      "housingUnits": 181477.0,
+      "renterShare": 58.8,
+      "transitShare": 3.8,
+      "commuteMinutes": 29.9,
+      "source": "https://data.census.gov/profile?g=160XX00US0643000",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Long Beach",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 128.0,
+        "income": 2036.0,
+        "rent": 20.0,
+        "homeValue": 9518.0,
+        "housingUnits": 2078.0
+      }
+    },
     "p0644000": {
       "available": true,
       "population": 3857263.0,
@@ -3257,6 +3474,37 @@
         "housingUnits": 1004.0
       }
     },
+    "p0655618": {
+      "available": true,
+      "population": 52050.0,
+      "income": 75250.0,
+      "rent": 1875.0,
+      "homeValue": 533700.0,
+      "housingUnits": 14773.0,
+      "renterShare": 57.0,
+      "transitShare": 3.4,
+      "commuteMinutes": 28.4,
+      "source": "https://data.census.gov/profile?g=160XX00US0655618",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Paramount",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 59.0,
+        "income": 6365.0,
+        "rent": 55.0,
+        "homeValue": 26114.0,
+        "housingUnits": 454.0
+      }
+    },
     "p0659052": {
       "available": true,
       "population": 11510.0,
@@ -3317,6 +3565,37 @@
         "rent": 58.0,
         "homeValue": 8976.0,
         "housingUnits": 1290.0
+      }
+    },
+    "p0671876": {
+      "available": true,
+      "population": 11468.0,
+      "income": 113298.0,
+      "rent": 1851.0,
+      "homeValue": 783300.0,
+      "housingUnits": 4811.0,
+      "renterShare": 49.7,
+      "transitShare": 1.4,
+      "commuteMinutes": 31.0,
+      "source": "https://data.census.gov/profile?g=160XX00US0671876",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Signal Hill",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 30.0,
+        "income": 17174.0,
+        "rent": 120.0,
+        "homeValue": 72587.0,
+        "housingUnits": 396.0
       }
     },
     "p0674130": {
@@ -3877,6 +4156,1184 @@
         "housingUnits": 71.0
       }
     },
+    "p0602000": {
+      "available": true,
+      "population": 344521.0,
+      "income": 95227.0,
+      "rent": 2175.0,
+      "homeValue": 831200.0,
+      "housingUnits": 110705.0,
+      "renterShare": 53.8,
+      "transitShare": 1.8,
+      "commuteMinutes": 27.4,
+      "source": "https://data.census.gov/profile?g=160XX00US0602000",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Anaheim",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 90.0,
+        "income": 2995.0,
+        "rent": 22.0,
+        "homeValue": 9063.0,
+        "housingUnits": 1355.0
+      }
+    },
+    "p0608786": {
+      "available": true,
+      "population": 82871.0,
+      "income": 110550.0,
+      "rent": 2206.0,
+      "homeValue": 838800.0,
+      "housingUnits": 24877.0,
+      "renterShare": 45.0,
+      "transitShare": 1.5,
+      "commuteMinutes": 28.8,
+      "source": "https://data.census.gov/profile?g=160XX00US0608786",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Buena Park",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 110.0,
+        "income": 4245.0,
+        "rent": 51.0,
+        "homeValue": 13578.0,
+        "housingUnits": 656.0
+      }
+    },
+    "p0617750": {
+      "available": true,
+      "population": 49498.0,
+      "income": 130215.0,
+      "rent": 2483.0,
+      "homeValue": 913900.0,
+      "housingUnits": 16920.0,
+      "renterShare": 31.9,
+      "transitShare": 0.2,
+      "commuteMinutes": 28.9,
+      "source": "https://data.census.gov/profile?g=160XX00US0617750",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Cypress",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 85.0,
+        "income": 7921.0,
+        "rent": 104.0,
+        "homeValue": 18564.0,
+        "housingUnits": 538.0
+      }
+    },
+    "p0628000": {
+      "available": true,
+      "population": 140968.0,
+      "income": 104286.0,
+      "rent": 2194.0,
+      "homeValue": 902600.0,
+      "housingUnits": 50344.0,
+      "renterShare": 48.2,
+      "transitShare": 1.9,
+      "commuteMinutes": 30.5,
+      "source": "https://data.census.gov/profile?g=160XX00US0628000",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Fullerton",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 79.0,
+        "income": 3310.0,
+        "rent": 37.0,
+        "homeValue": 12634.0,
+        "housingUnits": 858.0
+      }
+    },
+    "p0629000": {
+      "available": true,
+      "population": 170964.0,
+      "income": 92174.0,
+      "rent": 2012.0,
+      "homeValue": 814100.0,
+      "housingUnits": 50960.0,
+      "renterShare": 46.9,
+      "transitShare": 1.1,
+      "commuteMinutes": 28.5,
+      "source": "https://data.census.gov/profile?g=160XX00US0629000",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Garden Grove",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 82.0,
+        "income": 2652.0,
+        "rent": 48.0,
+        "homeValue": 8919.0,
+        "housingUnits": 882.0
+      }
+    },
+    "p0643224": {
+      "available": true,
+      "population": 11794.0,
+      "income": 97155.0,
+      "rent": 2365.0,
+      "homeValue": 1061900.0,
+      "housingUnits": 4623.0,
+      "renterShare": 57.6,
+      "transitShare": 0.4,
+      "commuteMinutes": 31.3,
+      "source": "https://data.census.gov/profile?g=160XX00US0643224",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Los Alamitos",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 42.0,
+        "income": 10484.0,
+        "rent": 80.0,
+        "homeValue": 53752.0,
+        "housingUnits": 241.0
+      }
+    },
+    "p0653980": {
+      "available": true,
+      "population": 138266.0,
+      "income": 117113.0,
+      "rent": 2327.0,
+      "homeValue": 945800.0,
+      "housingUnits": 46952.0,
+      "renterShare": 43.3,
+      "transitShare": 1.1,
+      "commuteMinutes": 25.8,
+      "source": "https://data.census.gov/profile?g=160XX00US0653980",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Orange",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 77.0,
+        "income": 4442.0,
+        "rent": 50.0,
+        "homeValue": 15015.0,
+        "housingUnits": 883.0
+      }
+    },
+    "p0657526": {
+      "available": true,
+      "population": 52826.0,
+      "income": 115929.0,
+      "rent": 2388.0,
+      "homeValue": 921000.0,
+      "housingUnits": 17890.0,
+      "renterShare": 36.4,
+      "transitShare": 0.8,
+      "commuteMinutes": 26.6,
+      "source": "https://data.census.gov/profile?g=160XX00US0657526",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Placentia",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 59.0,
+        "income": 6317.0,
+        "rent": 84.0,
+        "homeValue": 16946.0,
+        "housingUnits": 521.0
+      }
+    },
+    "p0663050": {
+      "available": true,
+      "population": 11532.0,
+      "income": 211597.0,
+      "rent": 3501.0,
+      "homeValue": 1406900.0,
+      "housingUnits": 3996.0,
+      "renterShare": 10.2,
+      "transitShare": 0.0,
+      "commuteMinutes": 27.6,
+      "source": "https://data.census.gov/profile?g=160XX00US0663050",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Rossmoor",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1171.0,
+        "income": 35560.0,
+        "rent": null,
+        "homeValue": 128824.0,
+        "housingUnits": 323.0
+      }
+    },
+    "p0670686": {
+      "available": true,
+      "population": 24722.0,
+      "income": 85964.0,
+      "rent": 2649.0,
+      "homeValue": 486800.0,
+      "housingUnits": 14632.0,
+      "renterShare": 23.4,
+      "transitShare": 0.0,
+      "commuteMinutes": 28.8,
+      "source": "https://data.census.gov/profile?g=160XX00US0670686",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Seal Beach",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 41.0,
+        "income": 8468.0,
+        "rent": 138.0,
+        "homeValue": 35226.0,
+        "housingUnits": 471.0
+      }
+    },
+    "p0673962": {
+      "available": true,
+      "population": 39402.0,
+      "income": 84707.0,
+      "rent": 1997.0,
+      "homeValue": 579300.0,
+      "housingUnits": 13269.0,
+      "renterShare": 51.9,
+      "transitShare": 2.0,
+      "commuteMinutes": 29.0,
+      "source": "https://data.census.gov/profile?g=160XX00US0673962",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Stanton",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 56.0,
+        "income": 4119.0,
+        "rent": 92.0,
+        "homeValue": 27895.0,
+        "housingUnits": 619.0
+      }
+    },
+    "p0686832": {
+      "available": true,
+      "population": 67170.0,
+      "income": 157582.0,
+      "rent": 2846.0,
+      "homeValue": 1147100.0,
+      "housingUnits": 23887.0,
+      "renterShare": 17.0,
+      "transitShare": 0.4,
+      "commuteMinutes": 31.0,
+      "source": "https://data.census.gov/profile?g=160XX00US0686832",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Yorba Linda",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 53.0,
+        "income": 8394.0,
+        "rent": 149.0,
+        "homeValue": 25911.0,
+        "housingUnits": 547.0
+      }
+    },
+    "p0616350": {
+      "available": true,
+      "population": 159670.0,
+      "income": 109242.0,
+      "rent": 2228.0,
+      "homeValue": 700700.0,
+      "housingUnits": 50799.0,
+      "renterShare": 36.2,
+      "transitShare": 0.9,
+      "commuteMinutes": 34.3,
+      "source": "https://data.census.gov/profile?g=160XX00US0616350",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Corona",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 80.0,
+        "income": 3495.0,
+        "rent": 65.0,
+        "homeValue": 11004.0,
+        "housingUnits": 872.0
+      }
+    },
+    "p0622457": {
+      "available": true,
+      "population": 13129.0,
+      "income": 165682.0,
+      "rent": 2880.0,
+      "homeValue": 836300.0,
+      "housingUnits": 3935.0,
+      "renterShare": 7.7,
+      "transitShare": 0.4,
+      "commuteMinutes": 36.6,
+      "source": "https://data.census.gov/profile?g=160XX00US0622457",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "El Sobrante",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1209.0,
+        "income": 22490.0,
+        "rent": 243.0,
+        "homeValue": 37368.0,
+        "housingUnits": 313.0
+      }
+    },
+    "p0633574": {
+      "available": true,
+      "population": 8366.0,
+      "income": 114125.0,
+      "rent": 1463.0,
+      "homeValue": 625800.0,
+      "housingUnits": 2593.0,
+      "renterShare": 26.1,
+      "transitShare": 0.7,
+      "commuteMinutes": 31.0,
+      "source": "https://data.census.gov/profile?g=160XX00US0633574",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Highgrove",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1650.0,
+        "income": 35505.0,
+        "rent": 283.0,
+        "homeValue": 47718.0,
+        "housingUnits": 366.0
+      }
+    },
+    "p0634302": {
+      "available": true,
+      "population": 10506.0,
+      "income": 96342.0,
+      "rent": 2065.0,
+      "homeValue": 538700.0,
+      "housingUnits": 2832.0,
+      "renterShare": 22.2,
+      "transitShare": 1.0,
+      "commuteMinutes": 36.8,
+      "source": "https://data.census.gov/profile?g=160XX00US0634302",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Home Gardens",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1122.0,
+        "income": 10042.0,
+        "rent": 255.0,
+        "homeValue": 28051.0,
+        "housingUnits": 323.0
+      }
+    },
+    "p0637692": {
+      "available": true,
+      "population": 107011.0,
+      "income": 97550.0,
+      "rent": 1741.0,
+      "homeValue": 574600.0,
+      "housingUnits": 29248.0,
+      "renterShare": 29.9,
+      "transitShare": 0.6,
+      "commuteMinutes": 31.7,
+      "source": "https://data.census.gov/profile?g=160XX00US0637692",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Jurupa Valley",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 46.0,
+        "income": 4978.0,
+        "rent": 58.0,
+        "homeValue": 13081.0,
+        "housingUnits": 673.0
+      }
+    },
+    "p0645680": {
+      "available": true,
+      "population": 1273.0,
+      "income": 72411.0,
+      "rent": 1639.0,
+      "homeValue": null,
+      "housingUnits": 851.0,
+      "renterShare": 96.3,
+      "transitShare": 8.5,
+      "commuteMinutes": 36.3,
+      "source": "https://data.census.gov/profile?g=160XX00US0645680",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "March ARB",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 403.0,
+        "income": 39575.0,
+        "rent": 473.0,
+        "homeValue": null,
+        "housingUnits": 179.0
+      }
+    },
+    "p0649270": {
+      "available": true,
+      "population": 211666.0,
+      "income": 93222.0,
+      "rent": 2135.0,
+      "homeValue": 503700.0,
+      "housingUnits": 57381.0,
+      "renterShare": 36.7,
+      "transitShare": 0.8,
+      "commuteMinutes": 35.5,
+      "source": "https://data.census.gov/profile?g=160XX00US0649270",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Moreno Valley",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 83.0,
+        "income": 2557.0,
+        "rent": 38.0,
+        "homeValue": 10094.0,
+        "housingUnits": 837.0
+      }
+    },
+    "p0651560": {
+      "available": true,
+      "population": 25054.0,
+      "income": 127566.0,
+      "rent": 1925.0,
+      "homeValue": 782400.0,
+      "housingUnits": 6842.0,
+      "renterShare": 18.9,
+      "transitShare": 0.2,
+      "commuteMinutes": 36.5,
+      "source": "https://data.census.gov/profile?g=160XX00US0651560",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Norco",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 118.0,
+        "income": 7447.0,
+        "rent": 222.0,
+        "homeValue": 26417.0,
+        "housingUnits": 267.0
+      }
+    },
+    "p0662000": {
+      "available": true,
+      "population": 319069.0,
+      "income": 91045.0,
+      "rent": 1914.0,
+      "homeValue": 584800.0,
+      "housingUnits": 99910.0,
+      "renterShare": 43.2,
+      "transitShare": 1.4,
+      "commuteMinutes": 31.3,
+      "source": "https://data.census.gov/profile?g=160XX00US0662000",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Riverside",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 87.0,
+        "income": 1764.0,
+        "rent": 33.0,
+        "homeValue": 5570.0,
+        "housingUnits": 1105.0
+      }
+    },
+    "p0686244": {
+      "available": true,
+      "population": 17368.0,
+      "income": 153731.0,
+      "rent": 2909.0,
+      "homeValue": 786300.0,
+      "housingUnits": 4954.0,
+      "renterShare": 9.5,
+      "transitShare": 0.6,
+      "commuteMinutes": 39.6,
+      "source": "https://data.census.gov/profile?g=160XX00US0686244",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Woodcrest",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1741.0,
+        "income": 10185.0,
+        "rent": 540.0,
+        "homeValue": 50888.0,
+        "housingUnits": 488.0
+      }
+    },
+    "p0602553": {
+      "available": true,
+      "population": 94994.0,
+      "income": 77321.0,
+      "rent": 1588.0,
+      "homeValue": 560200.0,
+      "housingUnits": 40578.0,
+      "renterShare": 53.8,
+      "transitShare": 1.5,
+      "commuteMinutes": 25.9,
+      "source": "https://data.census.gov/profile?g=160XX00US0602553",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Arden-Arcade",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 2963.0,
+        "income": 4493.0,
+        "rent": 37.0,
+        "homeValue": 25545.0,
+        "housingUnits": 1015.0
+      }
+    },
+    "p0622020": {
+      "available": true,
+      "population": 179155.0,
+      "income": 125924.0,
+      "rent": 2262.0,
+      "homeValue": 630100.0,
+      "housingUnits": 57004.0,
+      "renterShare": 26.2,
+      "transitShare": 0.8,
+      "commuteMinutes": 30.8,
+      "source": "https://data.census.gov/profile?g=160XX00US0622020",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Elk Grove",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 117.0,
+        "income": 3447.0,
+        "rent": 50.0,
+        "homeValue": 5375.0,
+        "housingUnits": 1000.0
+      }
+    },
+    "p0624498": {
+      "available": true,
+      "population": 50211.0,
+      "income": 71111.0,
+      "rent": 1622.0,
+      "homeValue": 386900.0,
+      "housingUnits": 15677.0,
+      "renterShare": 43.9,
+      "transitShare": 0.6,
+      "commuteMinutes": 26.8,
+      "source": "https://data.census.gov/profile?g=160XX00US0624498",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Florin",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 2432.0,
+        "income": 4929.0,
+        "rent": 76.0,
+        "homeValue": 13878.0,
+        "housingUnits": 609.0
+      }
+    },
+    "p0625590": {
+      "available": true,
+      "population": 0.0,
+      "income": null,
+      "rent": null,
+      "homeValue": null,
+      "housingUnits": 0.0,
+      "renterShare": null,
+      "transitShare": null,
+      "commuteMinutes": null,
+      "source": "https://data.census.gov/profile?g=160XX00US0625590",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Freeport",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 14.0,
+        "income": null,
+        "rent": null,
+        "homeValue": null,
+        "housingUnits": 14.0
+      }
+    },
+    "p0627130": {
+      "available": true,
+      "population": 6095.0,
+      "income": 62528.0,
+      "rent": 1473.0,
+      "homeValue": 362200.0,
+      "housingUnits": 2079.0,
+      "renterShare": 43.0,
+      "transitShare": 1.5,
+      "commuteMinutes": 22.5,
+      "source": "https://data.census.gov/profile?g=160XX00US0627130",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Fruitridge Pocket",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 814.0,
+        "income": 14100.0,
+        "rent": 261.0,
+        "homeValue": 35294.0,
+        "housingUnits": 233.0
+      }
+    },
+    "p0640410": {
+      "available": true,
+      "population": 11492.0,
+      "income": 97975.0,
+      "rent": 1849.0,
+      "homeValue": 459200.0,
+      "housingUnits": 4709.0,
+      "renterShare": 39.1,
+      "transitShare": 0.9,
+      "commuteMinutes": 25.8,
+      "source": "https://data.census.gov/profile?g=160XX00US0640410",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "La Riviera",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1378.0,
+        "income": 6198.0,
+        "rent": 60.0,
+        "homeValue": 19401.0,
+        "housingUnits": 307.0
+      }
+    },
+    "p0641142": {
+      "available": true,
+      "population": 15312.0,
+      "income": 48762.0,
+      "rent": 1421.0,
+      "homeValue": 349900.0,
+      "housingUnits": 4614.0,
+      "renterShare": 60.4,
+      "transitShare": 3.6,
+      "commuteMinutes": 25.2,
+      "source": "https://data.census.gov/profile?g=160XX00US0641142",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Lemon Hill",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1462.0,
+        "income": 5438.0,
+        "rent": 85.0,
+        "homeValue": 14471.0,
+        "housingUnits": 349.0
+      }
+    },
+    "p0644760": {
+      "available": true,
+      "population": 1486.0,
+      "income": 23750.0,
+      "rent": 1888.0,
+      "homeValue": null,
+      "housingUnits": 487.0,
+      "renterShare": 100.0,
+      "transitShare": 6.7,
+      "commuteMinutes": 26.3,
+      "source": "https://data.census.gov/profile?g=160XX00US0644760",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "McClellan Park",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 475.0,
+        "income": 12823.0,
+        "rent": 744.0,
+        "homeValue": null,
+        "housingUnits": 129.0
+      }
+    },
+    "p0651924": {
+      "available": true,
+      "population": 47957.0,
+      "income": 65495.0,
+      "rent": 1636.0,
+      "homeValue": 367600.0,
+      "housingUnits": 16876.0,
+      "renterShare": 48.9,
+      "transitShare": 0.6,
+      "commuteMinutes": 30.7,
+      "source": "https://data.census.gov/profile?g=160XX00US0651924",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "North Highlands",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 2791.0,
+        "income": 4671.0,
+        "rent": 59.0,
+        "homeValue": 8885.0,
+        "housingUnits": 718.0
+      }
+    },
+    "p0655800": {
+      "available": true,
+      "population": 15397.0,
+      "income": 64375.0,
+      "rent": 1517.0,
+      "homeValue": 374700.0,
+      "housingUnits": 4983.0,
+      "renterShare": 53.9,
+      "transitShare": 1.0,
+      "commuteMinutes": 24.7,
+      "source": "https://data.census.gov/profile?g=160XX00US0655800",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Parkway",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1454.0,
+        "income": 9462.0,
+        "rent": 124.0,
+        "homeValue": 14703.0,
+        "housingUnits": 304.0
+      }
+    },
+    "p0659444": {
+      "available": true,
+      "population": 81849.0,
+      "income": 89585.0,
+      "rent": 1787.0,
+      "homeValue": 477600.0,
+      "housingUnits": 29313.0,
+      "renterShare": 41.8,
+      "transitShare": 1.2,
+      "commuteMinutes": 26.7,
+      "source": "https://data.census.gov/profile?g=160XX00US0659444",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Rancho Cordova",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 49.0,
+        "income": 6261.0,
+        "rent": 53.0,
+        "homeValue": 8298.0,
+        "housingUnits": 614.0
+      }
+    },
+    "p0660942": {
+      "available": true,
+      "population": 16335.0,
+      "income": 96364.0,
+      "rent": 1839.0,
+      "homeValue": 458300.0,
+      "housingUnits": 5356.0,
+      "renterShare": 27.1,
+      "transitShare": 1.8,
+      "commuteMinutes": 28.7,
+      "source": "https://data.census.gov/profile?g=160XX00US0660942",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Rio Linda",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1241.0,
+        "income": 11916.0,
+        "rent": 200.0,
+        "homeValue": 15796.0,
+        "housingUnits": 331.0
+      }
+    },
+    "p0662910": {
+      "available": true,
+      "population": 23766.0,
+      "income": 90046.0,
+      "rent": 1831.0,
+      "homeValue": 460700.0,
+      "housingUnits": 9016.0,
+      "renterShare": 38.5,
+      "transitShare": 3.5,
+      "commuteMinutes": 27.7,
+      "source": "https://data.census.gov/profile?g=160XX00US0662910",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Rosemont",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1357.0,
+        "income": 7352.0,
+        "rent": 103.0,
+        "homeValue": 8868.0,
+        "housingUnits": 524.0
+      }
+    },
+    "p0664000": {
+      "available": true,
+      "population": 528706.0,
+      "income": 87321.0,
+      "rent": 1779.0,
+      "homeValue": 506300.0,
+      "housingUnits": 212485.0,
+      "renterShare": 48.3,
+      "transitShare": 1.8,
+      "commuteMinutes": 25.3,
+      "source": "https://data.census.gov/profile?g=160XX00US0664000",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Sacramento",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 125.0,
+        "income": 1746.0,
+        "rent": 19.0,
+        "homeValue": 8938.0,
+        "housingUnits": 1579.0
+      }
+    },
+    "p0614890": {
+      "available": true,
+      "population": 53772.0,
+      "income": 71208.0,
+      "rent": 1661.0,
+      "homeValue": 443800.0,
+      "housingUnits": 17856.0,
+      "renterShare": 47.2,
+      "transitShare": 1.4,
+      "commuteMinutes": 27.5,
+      "source": "https://data.census.gov/profile?g=160XX00US0614890",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Colton",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 47.0,
+        "income": 2603.0,
+        "rent": 55.0,
+        "homeValue": 8259.0,
+        "housingUnits": 610.0
+      }
+    },
+    "p0630658": {
+      "available": true,
+      "population": 13078.0,
+      "income": 83628.0,
+      "rent": 2024.0,
+      "homeValue": 517600.0,
+      "housingUnits": 5069.0,
+      "renterShare": 35.6,
+      "transitShare": 0.0,
+      "commuteMinutes": 25.6,
+      "source": "https://data.census.gov/profile?g=160XX00US0630658",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Grand Terrace",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 57.0,
+        "income": 7326.0,
+        "rent": 152.0,
+        "homeValue": 32665.0,
+        "housingUnits": 301.0
+      }
+    },
     "p0666000": {
       "available": true,
       "population": 1389526.0,
@@ -3906,6 +5363,378 @@
         "rent": 18.0,
         "homeValue": 6879.0,
         "housingUnits": 2466.0
+      }
+    },
+    "p0603209": {
+      "available": true,
+      "population": 8825.0,
+      "income": 53173.0,
+      "rent": 1221.0,
+      "homeValue": 296100.0,
+      "housingUnits": 2572.0,
+      "renterShare": 44.1,
+      "transitShare": 0.0,
+      "commuteMinutes": 46.6,
+      "source": "https://data.census.gov/profile?g=160XX00US0603209",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "August",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1700.0,
+        "income": 18156.0,
+        "rent": 207.0,
+        "homeValue": 38441.0,
+        "housingUnits": 285.0
+      }
+    },
+    "p0616651": {
+      "available": true,
+      "population": 10161.0,
+      "income": 81464.0,
+      "rent": 1848.0,
+      "homeValue": 382500.0,
+      "housingUnits": 3619.0,
+      "renterShare": 28.4,
+      "transitShare": 0.0,
+      "commuteMinutes": 36.0,
+      "source": "https://data.census.gov/profile?g=160XX00US0616651",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Country Club",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1185.0,
+        "income": 8473.0,
+        "rent": 230.0,
+        "homeValue": 20305.0,
+        "housingUnits": 326.0
+      }
+    },
+    "p0626028": {
+      "available": true,
+      "population": 3264.0,
+      "income": 90893.0,
+      "rent": 1991.0,
+      "homeValue": 386600.0,
+      "housingUnits": 455.0,
+      "renterShare": 40.2,
+      "transitShare": 0.0,
+      "commuteMinutes": 26.0,
+      "source": "https://data.census.gov/profile?g=160XX00US0626028",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "French Camp",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 492.0,
+        "income": 21383.0,
+        "rent": 355.0,
+        "homeValue": 74690.0,
+        "housingUnits": 123.0
+      }
+    },
+    "p0628182": {
+      "available": true,
+      "population": 10667.0,
+      "income": 66474.0,
+      "rent": 1354.0,
+      "homeValue": 336000.0,
+      "housingUnits": 3094.0,
+      "renterShare": 45.8,
+      "transitShare": 0.1,
+      "commuteMinutes": 41.2,
+      "source": "https://data.census.gov/profile?g=160XX00US0628182",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Garden Acres",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 1266.0,
+        "income": 8690.0,
+        "rent": 190.0,
+        "homeValue": 19774.0,
+        "housingUnits": 301.0
+      }
+    },
+    "p0638065": {
+      "available": true,
+      "population": 2576.0,
+      "income": 70213.0,
+      "rent": 1697.0,
+      "homeValue": 355000.0,
+      "housingUnits": 750.0,
+      "renterShare": 48.1,
+      "transitShare": 0.0,
+      "commuteMinutes": 43.4,
+      "source": "https://data.census.gov/profile?g=160XX00US0638065",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Kennedy",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 699.0,
+        "income": 7850.0,
+        "rent": 111.0,
+        "homeValue": 48678.0,
+        "housingUnits": 156.0
+      }
+    },
+    "p0640704": {
+      "available": true,
+      "population": 35052.0,
+      "income": 126421.0,
+      "rent": 2570.0,
+      "homeValue": 643600.0,
+      "housingUnits": 9092.0,
+      "renterShare": 14.7,
+      "transitShare": 2.0,
+      "commuteMinutes": 45.2,
+      "source": "https://data.census.gov/profile?g=160XX00US0640704",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Lathrop",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 47.0,
+        "income": 12568.0,
+        "rent": 236.0,
+        "homeValue": 14935.0,
+        "housingUnits": 427.0
+      }
+    },
+    "p0641558": {
+      "available": true,
+      "population": 4241.0,
+      "income": 96230.0,
+      "rent": 2127.0,
+      "homeValue": 461900.0,
+      "housingUnits": 1688.0,
+      "renterShare": 16.6,
+      "transitShare": 0.0,
+      "commuteMinutes": 27.8,
+      "source": "https://data.census.gov/profile?g=160XX00US0641558",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Lincoln Village",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 687.0,
+        "income": 21641.0,
+        "rent": 503.0,
+        "homeValue": 29722.0,
+        "housingUnits": 219.0
+      }
+    },
+    "p0642202": {
+      "available": true,
+      "population": 67607.0,
+      "income": 88530.0,
+      "rent": 1680.0,
+      "homeValue": 492500.0,
+      "housingUnits": 24806.0,
+      "renterShare": 43.2,
+      "transitShare": 0.5,
+      "commuteMinutes": 24.1,
+      "source": "https://data.census.gov/profile?g=160XX00US0642202",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Lodi",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 52.0,
+        "income": 5421.0,
+        "rent": 66.0,
+        "homeValue": 10064.0,
+        "housingUnits": 744.0
+      }
+    },
+    "p0645484": {
+      "available": true,
+      "population": 89043.0,
+      "income": 97055.0,
+      "rent": 2065.0,
+      "homeValue": 589900.0,
+      "housingUnits": 28771.0,
+      "renterShare": 27.6,
+      "transitShare": 0.8,
+      "commuteMinutes": 37.6,
+      "source": "https://data.census.gov/profile?g=160XX00US0645484",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Manteca",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 58.0,
+        "income": 5252.0,
+        "rent": 67.0,
+        "homeValue": 11184.0,
+        "housingUnits": 825.0
+      }
+    },
+    "p0649180": {
+      "available": true,
+      "population": 3383.0,
+      "income": 96896.0,
+      "rent": 1867.0,
+      "homeValue": 637000.0,
+      "housingUnits": 1387.0,
+      "renterShare": 6.6,
+      "transitShare": 0.0,
+      "commuteMinutes": 27.1,
+      "source": "https://data.census.gov/profile?g=160XX00US0649180",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Morada",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 631.0,
+        "income": 29102.0,
+        "rent": 273.0,
+        "homeValue": 103593.0,
+        "housingUnits": 188.0
+      }
+    },
+    "p0675000": {
+      "available": true,
+      "population": 322326.0,
+      "income": 79907.0,
+      "rent": 1577.0,
+      "homeValue": 440900.0,
+      "housingUnits": 105162.0,
+      "renterShare": 46.1,
+      "transitShare": 1.0,
+      "commuteMinutes": 31.7,
+      "source": "https://data.census.gov/profile?g=160XX00US0675000",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Stockton",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 89.0,
+        "income": 2147.0,
+        "rent": 34.0,
+        "homeValue": 4747.0,
+        "housingUnits": 1146.0
+      }
+    },
+    "p0677595": {
+      "available": true,
+      "population": 1343.0,
+      "income": 59297.0,
+      "rent": 1786.0,
+      "homeValue": 369200.0,
+      "housingUnits": 417.0,
+      "renterShare": 59.2,
+      "transitShare": 0.0,
+      "commuteMinutes": 35.9,
+      "source": "https://data.census.gov/profile?g=160XX00US0677595",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Taft Mosswood",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 475.0,
+        "income": 35225.0,
+        "rent": 324.0,
+        "homeValue": 23453.0,
+        "housingUnits": 120.0
       }
     },
     "p0602868": {
@@ -9147,6 +10976,99 @@
         "housingUnits": 866.0
       }
     },
+    "p0684816": {
+      "available": true,
+      "population": 54927.0,
+      "income": 93188.0,
+      "rent": 1665.0,
+      "homeValue": 525800.0,
+      "housingUnits": 20826.0,
+      "renterShare": 39.8,
+      "transitShare": 1.0,
+      "commuteMinutes": 24.7,
+      "source": "https://data.census.gov/profile?g=160XX00US0684816",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "West Sacramento",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": 73.0,
+        "income": 3323.0,
+        "rent": 117.0,
+        "homeValue": 18345.0,
+        "housingUnits": 541.0
+      }
+    },
+    "c06077": {
+      "available": true,
+      "population": 797334.0,
+      "income": 92179.0,
+      "rent": 1734.0,
+      "homeValue": 530700.0,
+      "housingUnits": 260151.0,
+      "renterShare": 38.0,
+      "transitShare": 0.9,
+      "commuteMinutes": 34.1,
+      "source": "https://data.census.gov/profile?g=050XX00US06077",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "San Joaquin County",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": null,
+        "income": 1619.0,
+        "rent": 23.0,
+        "homeValue": 6613.0,
+        "housingUnits": 238.0
+      }
+    },
+    "c06059": {
+      "available": true,
+      "population": 3165820.0,
+      "income": 116289.0,
+      "rent": 2434.0,
+      "homeValue": 962600.0,
+      "housingUnits": 1146169.0,
+      "renterShare": 43.6,
+      "transitShare": 1.2,
+      "commuteMinutes": 26.7,
+      "source": "https://data.census.gov/profile?g=050XX00US06059",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Orange County",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": null,
+        "income": 871.0,
+        "rent": 13.0,
+        "homeValue": 4214.0,
+        "housingUnits": 308.0
+      }
+    },
     "c06053": {
       "available": true,
       "population": 437613.0,
@@ -9178,6 +11100,37 @@
         "housingUnits": 143.0
       }
     },
+    "c06071": {
+      "available": true,
+      "population": 2197104.0,
+      "income": 85478.0,
+      "rent": 1801.0,
+      "homeValue": 505000.0,
+      "housingUnits": 743886.0,
+      "renterShare": 37.9,
+      "transitShare": 0.9,
+      "commuteMinutes": 32.6,
+      "source": "https://data.census.gov/profile?g=050XX00US06071",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "San Bernardino County",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": null,
+        "income": 924.0,
+        "rent": 15.0,
+        "homeValue": 4319.0,
+        "housingUnits": 278.0
+      }
+    },
     "c06111": {
       "available": true,
       "population": 837469.0,
@@ -9207,6 +11160,37 @@
         "rent": 25.0,
         "homeValue": 6187.0,
         "housingUnits": 141.0
+      }
+    },
+    "c06113": {
+      "available": true,
+      "population": 220564.0,
+      "income": 91752.0,
+      "rent": 1857.0,
+      "homeValue": 620700.0,
+      "housingUnits": 82447.0,
+      "renterShare": 45.7,
+      "transitShare": 2.8,
+      "commuteMinutes": 24.0,
+      "source": "https://data.census.gov/profile?g=050XX00US06113",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Yolo County",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": null,
+        "income": 3365.0,
+        "rent": 42.0,
+        "homeValue": 8741.0,
+        "housingUnits": 113.0
       }
     },
     "c06027": {
@@ -9362,6 +11346,68 @@
         "rent": 25.0,
         "homeValue": 4959.0,
         "housingUnits": 147.0
+      }
+    },
+    "c06065": {
+      "available": true,
+      "population": 2478600.0,
+      "income": 93074.0,
+      "rent": 1901.0,
+      "homeValue": 557300.0,
+      "housingUnits": 869414.0,
+      "renterShare": 30.9,
+      "transitShare": 0.7,
+      "commuteMinutes": 33.8,
+      "source": "https://data.census.gov/profile?g=050XX00US06065",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Riverside County",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": null,
+        "income": 1015.0,
+        "rent": 17.0,
+        "homeValue": 2765.0,
+        "housingUnits": 362.0
+      }
+    },
+    "c06067": {
+      "available": true,
+      "population": 1594006.0,
+      "income": 92175.0,
+      "rent": 1790.0,
+      "homeValue": 534200.0,
+      "housingUnits": 598385.0,
+      "renterShare": 41.0,
+      "transitShare": 1.3,
+      "commuteMinutes": 27.3,
+      "source": "https://data.census.gov/profile?g=050XX00US06067",
+      "period": "2020\u20132024 ACS five-year estimates",
+      "geography": "Sacramento County",
+      "tables": {
+        "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+        "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+        "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+        "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+        "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+        "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+        "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+        "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+      },
+      "margins": {
+        "population": null,
+        "income": 1010.0,
+        "rent": 12.0,
+        "homeValue": 3984.0,
+        "housingUnits": 452.0
       }
     },
     "c06083": {

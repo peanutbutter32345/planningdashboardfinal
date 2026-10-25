@@ -1,7 +1,8 @@
 // Read-only checks. Never calls registration, email, subscription, or cron routes.
 import {readFileSync,writeFileSync} from 'node:fs';
 const read=p=>JSON.parse(readFileSync(new URL('../../'+p,import.meta.url)));
-const targets=new Set(['Fowler','Kingsburg','Parlier','Reedley','Selma','Palmdale','Santa Clarita','Dinuba','San Diego','Los Angeles']);
+const expansion=read('scripts/cal/expansion-areas.json');
+const targets=new Set(expansion.anchors.flatMap(a=>[a.name,...a.nearby.filter(p=>p.kind==='city').map(p=>p.name)]));
 const manifest=read('public/data/coverage/manifest.json');
 let previous={results:[]};try{previous=read('public/cal/data/connection-audit.json')}catch{}
 const reuse=process.argv.includes('--retry')&&Date.now()-Date.parse(previous.checked)<3600000;
@@ -27,7 +28,7 @@ for(const c of Object.values(manifest.cities)){
 const meetings={...read('public/data/meetings.json'),...manifest.meetings};
 for(const c of Object.values(meetings))if(c.client&&!c.alias)add('https://webapi.legistar.com/v1/'+c.client+'/Events?$top=1&$orderby=EventDate%20desc','legistar',c.label+' live meeting API');
 for(const path of ['/api/health','/api/sources?city=losangeles','/api/hearings'])add('https://baydashboard.com'+path,'site-api','Production '+path);
-console.log('Checking resources for 10 target cities and news, boards, meeting directories and zoning across all '+Object.keys(manifest.cities).length+' expansion profiles');
+console.log('Checking resources for '+targets.size+' target cities and news, boards, meeting directories and zoning across all '+Object.keys(manifest.cities).length+' expansion profiles');
 const items=[...checks.values()];let next=0;const results=[];
 async function check(item){
  const old=prior.get(item.url);if(reuse&&old?.status==='reachable')return {...old,...item,checkedAt:old.checkedAt||previous.checked};
@@ -48,7 +49,7 @@ async function check(item){
   return {...item,checkedAt:new Date().toISOString(),status,http:res.status,finalUrl:res.url,detail,ms:Date.now()-started};
  }catch(error){return {...item,checkedAt:new Date().toISOString(),status:'unavailable',detail:error.message,ms:Date.now()-started};}
 }
-await Promise.all(Array.from({length:10},async()=>{while(next<items.length){const item=items[next++];const result=await check(item);results.push(result);if(result.status!=='reachable')console.log(result.status,result.http||'',item.url);}}));
+await Promise.all(Array.from({length:4},async()=>{while(next<items.length){const item=items[next++];const result=await check(item);results.push(result);if(result.status!=='reachable')console.log(result.status,result.http||'',item.url);}}));
 results.sort((a,b)=>a.url.localeCompare(b.url));
 const summary={};for(const r of results)summary[r.status]=(summary[r.status]||0)+1;
 const report={checked:new Date().toISOString(),scope:{resourceCities:[...targets],newsBoardsMeetingsZoning:'All '+Object.keys(manifest.cities).length+' expansion profiles',liveMeetingFeeds:'All configured clients'},note:'HTTP reachability is not a guarantee of content freshness. Restricted hosts may work in a browser. --retry reuses successful checks from the past hour; each result preserves its check time. HCD, zoning and meeting JSON payloads are validated. Production mutations and emails are not invoked.',summary,results};

@@ -73,7 +73,8 @@ function queryScope(query){
  if(district!=='all'&&!districtIds.has(district))throw Error('Unknown district.');
  return {boundary,district,field:boundary==='120'?'futureDistricts':'districts'};
 }
-const inScope=(p,s)=>s.district==='all'?(p[s.field].length>0||p.id==='p0666000'||p.jurisdiction==='p0666000'):p[s.field].includes(s.district);
+const extraPlaceIds=new Set(['p0666000',...(geography.metadata.extraPlaces||[]).map(id=>'p'+id)]);
+const inScope=(p,s)=>s.district==='all'?(p[s.field].length>0||extraPlaceIds.has(p.id)||extraPlaceIds.has(p.jurisdiction)):p[s.field].includes(s.district);
 const light=p=>{
  const s=stats.places[p.id]||{},photo=photoFor(p);
  return {id:p.id,name:p.name,county:p.county,kind:p.kind,center:p.center,bounds:p.bounds,districts:p.districts,futureDistricts:p.futureDistricts,split:p.split,
@@ -137,15 +138,16 @@ export function registerCalDashboard(app,{llm,model,hasAI=false}={}){
  app.get('/api/cal/map',(req,res)=>{
   let scope;try{scope=queryScope(req.query);}catch(e){return res.status(400).json({error:e.message});}
   const id=req.query.id;if(id&&!profiles.has(id))return res.status(404).json({error:'Unknown locality.'});
-  const selected=id?[profiles.get(id)]:[...profiles.values()].filter(p=>p.kind!=='community'&&inScope(p,scope));
+  const selected=id?[profiles.get(id)]:[...profiles.values()].filter(p=>(p.kind!=='community'||extraPlaceIds.has(p.id))&&inScope(p,scope));
   const points=[],seen=new Set();let unlocated=0,outside=0;
   for(const p of selected)for(const r of (id?localRecords(p):records(p.id))){
-   if(seen.has(r.id))continue;seen.add(r.id);
+   if(seen.has(r.id))continue;
    if(r.lat===null||r.lng===null){unlocated++;continue;}
-   if(!inScope(r,scope)){outside++;continue;}
+   if(!inScope(r,scope)&&!(scope.district==='all'&&p.kind==='community'&&extraPlaceIds.has(p.id))){outside++;continue;}
+   seen.add(r.id);
    points.push({id:r.id,name:r.name,address:r.address,jurisdiction:r.jurisdiction,lat:r.lat,lng:r.lng,units:r.units,status:r.status,year:r.year,source:r.source});
   }
-  res.json({points,count:points.length,unlocated,outside,boundary:scope.boundary,note:'Only verified APR coordinates inside the selected district boundaries, or the separately included city of San Diego when all coverage is selected, are mapped. These are reported annual milestones, not live construction sites. Unlocated records remain in the project list.'});
+  res.json({points,count:points.length,unlocated,outside,boundary:scope.boundary,note:'Only verified APR coordinates inside the selected district boundaries, or explicitly included cities and communities when all coverage is selected, are mapped. These are reported annual milestones, not live construction sites. Unlocated records remain in the project list.'});
  });
  app.get('/api/cal/meetings/:id',async(req,res)=>{
   const p=profiles.get(req.params.id);if(!p)return res.status(404).json({error:'Unknown locality.'});

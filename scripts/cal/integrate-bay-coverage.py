@@ -85,7 +85,7 @@ for p in profiles['profiles']:
         'transitSharePct':s.get('transitShare'), 'housingUnits':s.get('housingUnits'), 'medianYearBuilt':None,
         'homeValue':None, 'rent':None, 'homeValueSeries':[], 'rentSeries':[], 'asOf':s.get('period','ACS unavailable'), 'source':s.get('source'), 'margins':s.get('margins',{})}
     bodies = [{'name':b['name'],'when':'Check the official agenda and current membership', 'body':p.get('meetingScope',p['name'])+' public body. Open the official page for its responsibilities and ways to participate.', 'link':b['url'],'cat':'Civic'} for b in boards.get(p['id'],[])]
-    deciders = [b for b in bodies if re.search(r'^(?:Mayor & |Mayor and )?(?:City Council|Town Council|Planning Commission|Board of Supervisors)$',b['name'],re.I)]
+    deciders = [b for b in bodies if re.search(r'^(?:Mayor & |Mayor and )?(?:City Council|Town Council|Planning(?: (?:and|&) (?:Design|Environment|Housing))? Commission|Board of Supervisors)$',b['name'],re.I)]
     join = [b for b in bodies if b not in deciders]
     if not join: join=[{'name':'Boards, commissions and participation','when':'Check official vacancies','body':'Use the responsible government’s directory to review current boards and application instructions.','link':p['boardUrl'],'cat':'Civic'}]
     if not deciders: deciders=[{'name':p.get('meetingScope',p['name'])+' public meetings','when':'Check official agendas','body':'Current hearing notices, public comment instructions and meeting records.','link':p['meetingUrl']}]
