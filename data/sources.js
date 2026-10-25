@@ -207,6 +207,6 @@ for(const source of sharedSources){const key=source.city+':'+source.url;if(!sour
 const sourceLabels=JSON.parse(readFileSync(new URL('../public/data/municipalities.json',import.meta.url))).cities;
 export function sourcesForCity(value=''){
  const city=String(value).trim();if(!city||city.toLowerCase()==='all')return SOURCES;
- const label=city.toLowerCase()==='westsanjose'?'West San Jose':sourceLabels.find(c=>c.key===city.toLowerCase()||c.label.toLowerCase()===city.toLowerCase())?.label||city;
+ const label=city.toLowerCase()==='westsanjose'?'West San Jose':sourceLabels.find(c=>c.key===city.toLowerCase()||c.label.toLowerCase()===city.toLowerCase())?.label||REGIONAL_CITIES[city.toLowerCase()]?.label||city;
  return SOURCES.filter(s=>s.city===label);
 }

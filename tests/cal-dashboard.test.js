@@ -69,12 +69,9 @@ test('unreachable live meeting feeds retain the official agenda link and do not 
  const realFetch=globalThis.fetch;globalThis.fetch=(input,options)=>String(input).startsWith('https://webapi.legistar.com/')?Promise.reject(Error('Test feed outage')):realFetch(input,options);
  try{const r=await call('/api/cal/meetings/'+profiles.find(p=>p.client==='fresno').id);assert.equal(r.status,200);assert.equal(r.body.status,'unavailable');assert.deepEqual(r.body.events,[]);assert.ok(r.body.url.startsWith('https://'));}finally{globalThis.fetch=realFetch;}
 });
-test('a standalone Cal deployment can serve Cal at its root without changing the default edition',async()=>{
- const previous=process.env.DASHBOARD_EDITION;process.env.DASHBOARD_EDITION='cal';const standalone=express();registerCalDashboard(standalone);if(previous===undefined)delete process.env.DASHBOARD_EDITION;else process.env.DASHBOARD_EDITION=previous;
- const local=standalone.listen(0);await new Promise(resolve=>local.once('listening',resolve));
- try{const response=await fetch('http://127.0.0.1:'+local.address().port+'/');assert.equal(response.status,200);assert.match(await response.text(),/<title>Cal Civic Dashboard<\/title>/);}finally{await new Promise(resolve=>local.close(resolve));}
+test('the retired separate preview redirects to the original BayDashboard',async()=>{
+ const response=await fetch(base+'/cal/',{redirect:'manual'});assert.equal(response.status,302);assert.equal(response.headers.get('location'),'/');
  const bayHTML=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');assert.match(bayHTML,/<title>The Bay Dashboard<\/title>/);
- const editions=read('editions.json');assert.ok(editions.editions.length);for(const edition of editions.editions){const document=read('editions/'+edition.id+'.json');assert.equal(document.issued,edition.issued);assert.equal(document.counties.length,geography.counties.length);assert.ok(document.counties.every(c=>c.housing.source&&c.statistics.period));}
 });
 
 test('every locality has the same evidence checklist, with missing data distinguished from directories',async()=>{

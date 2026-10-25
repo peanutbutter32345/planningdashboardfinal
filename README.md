@@ -250,6 +250,6 @@ Housing, Developments and Transportation use separate Projects, News, Map & sour
 
 County-only visitors see a county-wide local map with selectable city markers and rotating official city resources. The navigation menu starts open and can be dismissed. Future Map separates Map, Results, Bills & policies, and Project details into accessible tabs; advanced assumptions collapse, mobile scenario controls open on demand, and hidden results are rendered only when selected.
 
-## Cal Civic Dashboard edition
+## Expanded California coverage
 
-A separate district-focused edition is available at `/cal/`. It covers CA-24 and neighboring congressional districts CA-19, CA-20 and CA-26, with current and incoming boundary sets, sourced local profiles, paginated housing records, maps, statistics, news, meetings and participation resources. See [the Cal edition documentation](scripts/cal/README.md) for coverage, refresh commands and optional standalone hosting with `render-cal.yaml`.
+The existing BayDashboard now includes localities intersecting CA-24 and neighboring CA-19, CA-20 and CA-26, using the same layout, map providers, tabs and account system. See [coverage sources and refresh instructions](scripts/cal/README.md). There is no separate site or deployment.

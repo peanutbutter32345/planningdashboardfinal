@@ -22,6 +22,7 @@ export function hazardIndex(collection){
  });
 }
 export function screenFlood(project,index){
+ if(project.floodCoverage===false)return {level:'unknown',label:'Outside this Bay Area flood snapshot · check FEMA'};
  if(!Number.isFinite(project.lat)||!Number.isFinite(project.lng)||!index)return {level:'unknown',label:'Not screened'};
  let moderate=null;
  for(const {feature,bounds:[minX,minY,maxX,maxY]} of index){

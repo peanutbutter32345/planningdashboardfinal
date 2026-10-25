@@ -265,11 +265,11 @@ function init(){
  });
  document.querySelectorAll('a[href="#fxBills"]').forEach(a=>a.addEventListener('click',()=>showFutureView('policies')));
  $('fxLayerSelect').addEventListener('change',e=>{state.layer=e.target.value;if(state.layer==='exposure')state.flood=true;syncControls();renderMap();});
- $('fxCity').innerHTML='<option value="all">All Bay Area cities</option>'+Object.entries(context.cities).filter(([k])=>k!=='all').sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(([key,c])=>`<option value="${key}">${esc(c.label)}</option>`).join('');
+ $('fxCity').innerHTML='<option value="all">All covered areas</option>'+Object.entries(context.cities).filter(([k])=>k!=='all').sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(([key,c])=>`<option value="${key}">${esc(c.label)}</option>`).join('');
  $('fxPolicyControls').innerHTML=POLICIES.filter(p=>p.months).map(p=>`<label class="fx-policy-control"><span><b>${p.code}</b><small>${p.tag} · ${p.kind==='pending'?'If approved':'Extra uptake'}</small></span><input type="checkbox" data-policy-toggle="${p.id}" aria-label="Test ${p.code} acceleration"></label>`).join('');
  $('fxReviewed').textContent=`Status checked September 18, 2026 · Curated watchlist, not every housing bill. Open the official source for subsequent changes.`;
  if(shared)preset=Object.keys(DEFAULTS).every(key=>JSON.stringify(state[key])===JSON.stringify(DEFAULTS[key]))?'baseline':'custom';
- $('fxCity').addEventListener('change',e=>{state.city=e.target.value;limit=20;selected=null;update(true);});
+ $('fxCity').addEventListener('change',async e=>{const city=e.target.value;state.city=city;limit=20;selected=null;update(true);try{await context.loadCity?.(city);if(state.city===city)update(true);}catch{notify('Additional city records could not load. Select the city again to retry.');}});
  for(const key of controlKeys)$('fx'+key[0].toUpperCase()+key.slice(1)).addEventListener('input',e=>{state[key]=Number(e.target.value);if(key!=='year')preset='custom';update();});
  document.querySelectorAll('[data-policy-toggle]').forEach(el=>el.addEventListener('change',()=>togglePolicy(el.dataset.policyToggle)));
  document.querySelectorAll('[data-preset]').forEach(el=>el.addEventListener('click',()=>setPreset(el.dataset.preset)));
@@ -295,7 +295,8 @@ function init(){
  document.addEventListener('visibilitychange',()=>{if(document.hidden)pausePlayback();});
 
  document.querySelector('.fx-disclosure a').addEventListener('click',()=>{$('fxMethod').open=true;});
- window.addEventListener('dashboard:screen',e=>{if(e.detail==='futures'){update(!initialized);initialized=true;}else {pausePlayback();if(map)clearHeat();}});
+ window.addEventListener('dashboard:coverage',()=>{if(initialized)update();});
+ window.addEventListener('dashboard:screen',e=>{if(e.detail==='futures'){update(!initialized);initialized=true;context.loadCity?.(state.city).catch(()=>notify('Additional records could not load. Select the area again to retry.'));}else {pausePlayback();if(map)clearHeat();}});
  update();
  if(shared){$('onboardOverlay').style.display='none';context.showScreen('futures');}
 }

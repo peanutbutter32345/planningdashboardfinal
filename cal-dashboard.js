@@ -1,5 +1,4 @@
 import {readFileSync} from 'node:fs';
-import {fileURLToPath} from 'node:url';
 
 const root=new URL('./public/cal/data/',import.meta.url);
 const read=name=>JSON.parse(readFileSync(new URL(name,root),'utf8'));
@@ -82,7 +81,8 @@ const light=p=>{
 const meetingCache=new Map();
 export function registerCalDashboard(app,{llm,model,hasAI=false}={}){
  app.use('/api/cal', (req,res,next)=>{res.set('Cache-Control',req.method==='GET'?'public, max-age=300, stale-while-revalidate=1800':'no-store');next();});
- if(process.env.DASHBOARD_EDITION==='cal')app.get('/',(_req,res)=>res.sendFile(fileURLToPath(new URL('./public/cal/index.html',import.meta.url)),{dotfiles:'allow'}));
+ // Old preview links return to the original dashboard. There is only one site UI.
+ app.get(['/cal','/cal/'],(_req,res)=>res.redirect(302,'/'));
  app.get('/api/cal/catalog',(_req,res)=>res.json({name:'Cal Civic Dashboard',districts,metadata:geography.metadata,housingMetadata:{retrieved:housing.retrieved,note:housing.note},statisticsMetadata:{retrieved:stats.retrieved,note:stats.note},newsMetadata:{retrieved:news.retrieved,note:news.note},aiAvailable:hasAI,places:[...profiles.values()].map(light)}));
  app.get('/api/cal/place/:id',(req,res)=>{
   const p=profiles.get(req.params.id);if(!p)return res.status(404).json({error:'Unknown locality.'});

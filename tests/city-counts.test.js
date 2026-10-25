@@ -37,9 +37,10 @@ test('the incorporated count is every profile minus the areas that are not citie
 // contain 101 incorporated cities and towns. If a city is added or dropped by accident, this is
 // what notices.
 test('the dashboard covers all 101 incorporated Bay Area cities and towns', () => {
-  const { incorporated } = dashboardCounts();
-  assert.equal(incorporated, 101,
-    'Either a city was added or removed by mistake, or a tenth county crept into the data.');
+  const { keys } = dashboardCounts();
+  const bay=JSON.parse(readFileSync(new URL('../public/data/municipalities.json',import.meta.url))).cities;
+  assert.equal(bay.length,101);
+  for(const city of bay)assert.ok(keys.includes(city.key),city.label+' must remain available');
 });
 
 test('every count a reader sees comes from a span the script fills', () => {
