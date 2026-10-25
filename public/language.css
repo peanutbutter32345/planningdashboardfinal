@@ -22,9 +22,6 @@ html[dir="rtl"] .marquee-item{direction:rtl;}
 /* Long city names must not force the mobile header beyond the viewport. */
 .hero-panels>*{min-width:0;max-width:100%;}
 .hero-citypick select{min-width:0;max-width:100%;}
-.card .row1 .stamp{min-width:0;overflow-wrap:anywhere;}
 @media(max-width:480px){
-  .card .row1{flex-wrap:wrap;}
-  .card .row1>div:last-child{max-width:100%;}
   .funnel-seg{min-width:0;padding-inline:4px;overflow-wrap:anywhere;}
 }

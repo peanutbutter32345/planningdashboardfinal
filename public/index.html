@@ -187,26 +187,40 @@
   .cattag{display:inline-flex; align-items:center; gap:5px; font-family:'Open Sans',sans-serif; font-size:9.5px; font-weight:600; text-transform:uppercase; letter-spacing:.02em; color:var(--text-soft);}
   .cattag i{width:8px;height:8px;border-radius:50%;display:inline-block;}
 
-  .register-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;}
-  @media (max-width:960px){ .register-grid{grid-template-columns:repeat(2,1fr);} }
+  .register-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px;}
+  @media (max-width:960px){ .register-grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
   @media (max-width:640px){ .register-grid{grid-template-columns:1fr;} }
   .card-thumb{margin:-14px -14px 11px; height:104px; overflow:hidden; background:#EDEFE6;
     border-bottom:1px solid var(--rule);}
   .card-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
   .card{background:#fff; border:1px solid var(--rule); border-radius:2px; padding:15px; display:flex; flex-direction:column; gap:7px; border-top:3px solid var(--ink);}
-  .card .row1{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
-  /* Long filing labels must leave enough room for the address beside them. */
-  .card .row1 > div:first-child{min-width:0; flex:1 1 auto;}
-  .card .row1 > div:last-child{flex:0 1 auto;max-width:44%;min-width:0;}
-  .card .row1 .stamp{white-space:normal;overflow-wrap:break-word;text-align:right;line-height:1.35;}
+  .card{min-width:0;}
+  .card .row1{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:8px;}
+  .card .row1>div{min-width:0;}
+  .card .card-actions{display:flex;align-items:flex-start;}
+  /* Filing types can be much longer than construction statuses. Give both a full row. */
+  .card-labels{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px;min-width:0;}
+  .card-labels .stamp{max-width:100%;white-space:normal;word-break:normal;overflow-wrap:normal;line-height:1.4;}
+  .card-labels .cattag{min-width:0;}
   .card .addr, .card .type{overflow-wrap:anywhere;}
   .card .addr{font-weight:700; font-size:15px; color:#1A1A1A; line-height:1.3;}
   .card .type{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft); text-transform:uppercase; letter-spacing:.03em; margin-top:2px; font-weight:600;}
-  .card .desc{font-size:12.3px; color:var(--text-soft); flex-grow:1;}
+  /* The same preview length applies to every city. The project sheet retains the full record. */
+  .card .addr,.card .desc,.card .record-note,.card .flagnote,.card .record-meta{
+    display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .card .addr{-webkit-line-clamp:3;line-clamp:3;}
+  .card .type{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;-webkit-line-clamp:2;line-clamp:2;}
+  .card .desc{font-size:12.3px;color:var(--text-soft);line-height:1.55;-webkit-line-clamp:4;line-clamp:4;}
+  .card .record-note{-webkit-line-clamp:2;line-clamp:2;color:var(--text);}
+  .card .record-meta{-webkit-line-clamp:3;line-clamp:3;overflow-wrap:anywhere;}
+  .card .record-meta>span{margin-inline-end:7px;}
   .card .meta{display:flex; flex-wrap:wrap; gap:7px; font-size:11.5px; font-family:'Open Sans',sans-serif; color:var(--text-soft);}
+  .card .meta.record-note,.card .meta.record-meta{display:-webkit-box;}
   .card .meta b{color:#1A1A1A; font-weight:700;}
   .card .flagnote{font-size:11px; color:var(--flag); background:#FBEAE9; border-left:3px solid var(--flag); padding:6px 8px; border-radius:2px;}
-  .card .footline{display:flex; flex-wrap:wrap; gap:8px 12px; justify-content:space-between; align-items:center; margin-top:2px;}
+  .card .flagnote{-webkit-line-clamp:4;line-clamp:4;}
+  .card .footline{display:flex; flex-wrap:wrap; gap:8px 12px; justify-content:space-between; align-items:center; margin-top:auto;padding-top:2px;}
   .fresh{font-family:'Open Sans',sans-serif; font-size:10.5px; color:var(--text-soft);}
   .locate-btn{font-family:'Open Sans',sans-serif; font-size:10.5px; font-weight:700; background:none; border:1px solid var(--ink); color:var(--ink); border-radius:2px; padding:5px 10px; cursor:pointer;}
   .locate-btn:hover{background:var(--ink); color:#fff;}
@@ -7915,12 +7929,13 @@ function projectCardHtml(d){
   const photo = (window.LOCAL_CITY_PHOTOS||{})[cityOfProject(d.id)||currentCity] || {url:'/img/hero.avif',cap:'Bay Area city context',by:'ZuperB',lic:'Public domain'};
   return `<div class="card" data-project-id="${d.id}" style="border-top-color:${c.color}">
       ${thumb ? `<div class="card-thumb"><img src="${thumb}" alt="Map of the area around ${d.addr}" loading="lazy" onerror="imgFallback(this,cityOfProject('${d.id}'));" /><span class="map-thumb-credit">Map: Esri, HERE, Garmin, USGS</span></div>` : `<div class="card-thumb"><img src="${photo.url}" alt="${escapeHtml(photo.cap)}" loading="lazy"><span class="map-thumb-credit">${photoCredit(photo)}</span></div>`}
-      <div class="row1"><div><div class="addr">${d.addr}</div><div class="type">${d.type}${d.geographicScope==='Multiple jurisdictions'?' · Multiple jurisdictions':''}</div><div class="cattag" style="margin-top:4px;"><i style="background:${c.color}"></i>${c.label}</div></div>
-      <div style="display:flex; align-items:flex-start; gap:6px;">${starButtonHtml('project', d.id, starData)}<span class="stamp" style="${stampStyle(st)}">${st.label}</span></div></div>
+      <div class="row1"><div><div class="addr" title="${escapeHtml(d.addr)}">${d.addr}</div><div class="type">${d.type}${d.geographicScope==='Multiple jurisdictions'?' · Multiple jurisdictions':''}</div></div>
+      <div class="card-actions">${starButtonHtml('project', d.id, starData)}</div></div>
+      <div class="card-labels"><span class="cattag"><i style="background:${c.color}"></i>${c.label}</span><span class="stamp" style="${stampStyle(st)}">${st.label}</span></div>
       <div class="desc">${d.desc}</div>
       <div class="meta">${unitsBit}${bmrBit}${expiresBit}</div>
-      <div class="meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
-      <div class="meta" style="color:var(--text);">${d.lastNote}</div>
+      <div class="meta record-meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
+      ${d.lastNote&&!String(d.desc||'').startsWith(d.lastNote)?`<div class="meta record-note">${d.lastNote}</div>`:''}
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
       <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':d.sourceType==='ceqanet'?'CEQAnet filing':'City record'} &#8599;</a>`:'';})()}<button class="card-more" data-more="${d.id}">Learn more</button>${Number.isFinite(d.lat)&&Number.isFinite(d.lng)?`<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button>`:'<span class="unlocated-note">Location not verified</span>'}</div>
     </div>`;
