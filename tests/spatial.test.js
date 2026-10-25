@@ -34,3 +34,9 @@ test('public snapshots have complete unique flood features, energy provenance an
  const stock=load('housing-stock.json');assert.equal(Object.keys(stock.cities).length,102);assert.equal(stock.cities.sunnyvale.units,61272);assert.ok(Object.values(stock.cities).every(c=>c.units>0&&c.year===2020));
  const index=hazardIndex(flood),housing=estimateProjects(PROJECTS).rows;const hits=housing.filter(p=>screenFlood(p,index).level==='high');assert.ok(hits.length>0&&hits.length<housing.length);
 });
+
+test('out-of-coverage projects never receive a Bay Area flood classification',()=>{
+ const index=hazardIndex({features:[{geometry:polygon,properties:{SFHA_TF:'T',FLD_ZONE:'AE'}}]});
+ assert.equal(screenFlood({lat:1,lng:1,floodCoverage:false},index).level,'unknown');
+ assert.equal(screenFlood({lat:1,lng:1,floodCoverage:true},index).level,'high');
+});

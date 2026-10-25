@@ -249,3 +249,7 @@ First-time visitors receive a device-local guest profile immediately, with a nou
 Housing, Developments and Transportation use separate Projects, News, Map & sources and Field guide views. Collections render three records per page on desktop and one on narrow screens, with arrow buttons, keyboard navigation and touch swipes. Topic maps initialize only when opened, the overview map waits until needed, and offscreen hero rotations pause.
 
 County-only visitors see a county-wide local map with selectable city markers and rotating official city resources. The navigation menu starts open and can be dismissed. Future Map separates Map, Results, Bills & policies, and Project details into accessible tabs; advanced assumptions collapse, mobile scenario controls open on demand, and hidden results are rendered only when selected.
+
+## Expanded California coverage
+
+The existing BayDashboard now includes localities intersecting CA-24 and neighboring CA-19, CA-20 and CA-26, using the same layout, map providers, tabs and account system. See [coverage sources and refresh instructions](scripts/cal/README.md). There is no separate site or deployment.

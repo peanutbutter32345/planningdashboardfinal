@@ -74136,3 +74136,8 @@ export const PROJECTS = [
     "city": "windsor"
   }
 ];
+
+// Added localities are loaded from the shared coverage files, without duplicating them here.
+import {REGIONAL_CITIES as coverageCities} from './regional.js';
+const projectIds=new Set(PROJECTS.map(p=>p.id));
+for(const [city,c] of Object.entries(coverageCities))if(c.coverageId)for(const record of c.data)if(!projectIds.has(record.id)){PROJECTS.push({...record,city});projectIds.add(record.id);}

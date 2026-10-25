@@ -3,6 +3,7 @@ import { PROJECTS } from './data/projects.js';
 
 import {readFileSync} from 'node:fs';
 export const MEETING_DIRECTORY=JSON.parse(readFileSync(new URL('./public/data/meetings.json',import.meta.url),'utf8'));
+Object.assign(MEETING_DIRECTORY,JSON.parse(readFileSync(new URL('./public/data/coverage/manifest.json',import.meta.url),'utf8')).meetings);
 export const LEGISTAR_CITIES=Object.fromEntries(Object.entries(MEETING_DIRECTORY).filter(([k,c])=>c.client&&!c.alias).map(([k,c])=>[k,c.client]));
 
 // Only bodies that actually decide land use. Pulling agenda items is one request per meeting,

@@ -1,0 +1,1762 @@
+{
+  "id": "cal-2026-10-25",
+  "issued": "2026-10-25",
+  "title": "The Cal Civic Letter",
+  "subtitle": "The local record, from the coast to the valley.",
+  "sourceDates": {
+    "housing": "2026-10-25T07:21:46.795510+00:00",
+    "statistics": "2026-10-25T07:00:58.764376+00:00",
+    "news": "2026-10-25T06:59:10.638177+00:00"
+  },
+  "note": "This edition combines dated reporting links with Census estimates and the latest available annual housing submissions. County-reported permits describe the county reporting jurisdiction, not the sum of all incorporated cities. It is not a retrospective claim about everything that happened during this month.",
+  "counties": [
+    {
+      "id": "c06083",
+      "name": "Santa Barbara County",
+      "districts": [
+        "24"
+      ],
+      "futureDistricts": [
+        "24"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 676,
+        "sourceRows": 676,
+        "mapped": 597,
+        "permitted": 613.0,
+        "completed": 244.0,
+        "entitled": 1949.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 443701.0,
+        "income": 98161.0,
+        "rent": 2131.0,
+        "homeValue": 790700.0,
+        "housingUnits": 160592.0,
+        "renterShare": 47.6,
+        "transitShare": 2.2,
+        "commuteMinutes": 20.8,
+        "source": "https://data.census.gov/profile?g=050XX00US06083",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Santa Barbara County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 2430.0,
+          "rent": 35.0,
+          "homeValue": 17571.0,
+          "housingUnits": 195.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0608758.jpg",
+        "caption": "Buellton, California",
+        "by": "Taken by Antandrus",
+        "license": "Public domain",
+        "source": "https://commons.wikimedia.org/wiki/File:Buellton.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Buellton.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "news": [
+        {
+          "title": "They fight wildfires. Housing is another battle",
+          "publisher": "Santa Barbara News-Press",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNmJnemt6TWNtOWxkMUpNQUJienNQdmp2WXVRakVwVjlVUFhUMF9FT1FDQ2QwSWFsNVAxdWpGQVRqaWkwOHZ0VktCQWUwNXk2SW5xc2ZRV1RYenlwRldmYXJMenZJdlJnamNRTTlJcGIxZGZ0OGR6Z1B4YTdNRTdERnZ2cWF6Vi1qWC1zcA?oc=5",
+          "date": "2026-10-24",
+          "place": "p0669070",
+          "county": "Santa Barbara",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Santa+Barbara%22+%22Santa+Barbara%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Supervisors to discuss hotel, residential development at Vandenberg Village",
+          "publisher": "Santa Maria Times",
+          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQWU9KZWtvMTVDbHZQeWFjelZsTVozeTRQMGw5ZFlTMlE4Sll2eDVUSUJKVFR1eUFnV0dxS1c2Z19acFFCLUtlQjBPTzFJMGVfb3NzREtraFBPTUJsdFFrcmZPdEEwM1p6NjU5WWpJUWZzVXBxTHR0VFlvVUkwdGFSNnROQzdRVGNEcWtDdl9UMk1FMGZNa1Uzak9Cdm00Z1RyckVIb2U0eVRCUk9NSmJ6SzQwNkJ1TzRWNG9HZEh0elR1SlA4Q0FJcFRGblp0TTZvWTN4b3pCZkxlOTBvQVBzby1NSjN1YklGSkU5b29zdTNhOGlWWlE?oc=5",
+          "date": "2026-10-24",
+          "place": "p0682086",
+          "county": "Santa Barbara",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Vandenberg+Village%22+%22Santa+Barbara%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Santa Barbara Zoo President & CEO Charles Hopper Appointed to California State Park and Recreation Commission",
+          "publisher": "The Santa Barbara Independent",
+          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQa3ZheDRXZUpzSVpTZUkxNlR6Ykk1RmxHQ1NHMk1xaWFOMWRnQW5pVmFkT1k1eV9ES09wRWtSSXNhYmV1dXdoNXowQzJVdVNGWm02Rm1LR1dvUy1wUFNxVDV0TWYtdS1GR21wVm5wR3FOSWRwYk9qVjloaHc4dmlueFY2Qy13elBodEtBb0JzZlR0TUJ6ejhGcklIZEVxbjVFTENjOFZDZUwyTlIxblo1Zmwza2tiVTltbWxZYnhxTjFnS3htV3N5QjZaOGNWTXlKUU05X1J2azltYTloRUo0dw?oc=5",
+          "date": "2026-10-23",
+          "place": "p0669070",
+          "county": "Santa Barbara",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Santa+Barbara%22+%22Santa+Barbara%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://santabarbara.legistar.com/Calendar.aspx",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Santa Barbara County official website",
+          "url": "https://www.countyofsb.org/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Santa Barbara County: Planning and development",
+          "url": "https://www.countyofsb.org/159/Planning-Development",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Santa Barbara County: Meeting agendas and recordings",
+          "url": "https://santabarbara.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Santa Barbara County regional transit and transportation",
+          "url": "https://www.sbcag.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Santa Barbara County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06083",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06079",
+      "name": "San Luis Obispo County",
+      "districts": [
+        "19",
+        "24"
+      ],
+      "futureDistricts": [
+        "19",
+        "24"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 744,
+        "sourceRows": 763,
+        "mapped": 609,
+        "permitted": 204.0,
+        "completed": 161.0,
+        "entitled": 42.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 281555.0,
+        "income": 97446.0,
+        "rent": 1992.0,
+        "homeValue": 824700.0,
+        "housingUnits": 125669.0,
+        "renterShare": 37.9,
+        "transitShare": 0.6,
+        "commuteMinutes": 22.3,
+        "source": "https://data.census.gov/profile?g=050XX00US06079",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "San Luis Obispo County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 2876.0,
+          "rent": 45.0,
+          "homeValue": 12237.0,
+          "housingUnits": 104.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0602868.jpg",
+        "caption": "Arroyo Grande, California",
+        "by": "Allie_Caulfield",
+        "license": "CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2012-04-06_04-08_Big_Sur_130_Arroyo_Grande_(7089817179).jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/2012-04-06_04-08_Big_Sur_130_Arroyo_Grande_%287089817179%29.jpg/960px-2012-04-06_04-08_Big_Sur_130_Arroyo_Grande_%287089817179%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "Court Ruling Clears Path for Waterman Village Affordable Housing and Historic Preservation in San Luis Obispo",
+          "publisher": "edhat",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPdmRYSnU1Z2FaN25zal9PYXhIM3NyUEwyMmJFSkNiYV9BQU1QMHJONWdHaFVUci1GTEZBbWpXVkxVR2NtR2dGZGNMQ3EzUjN2dmpQZTBDWTZuZWtnRHBweDAyZ0N5WXo4Sk1RVFFqZjBMMmEyaVhlR2owaEVZVklMVjd4eXNuQUViS0pBdjhrRTlrcmR2Rm9nc1I5YTk?oc=5",
+          "date": "2026-10-24",
+          "place": "p0668154",
+          "county": "San Luis Obispo",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22San+Luis+Obispo%22+%22San+Luis+Obispo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Reality Check: Did Pismo Beach councilmember take mayoral candidate\u2019s flyers?",
+          "publisher": "San Luis Obispo Tribune",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQSUlySEwwY2hxTEphd1JxQlVldElMMEhObjRFOTRjQkN3djNEakQxYmVUYjdjYnhBWUFrMHc4S3pnZ3JwUFY5cnQzTE1sNk5BbVB3RW82aWJXMkRoYXFPM1VaYnBZNG5nZUU0MWh3UGhJeGhmV0t1b2M2QzhkS2g4ZThqc0d6RXBib3lfenRR0gGOAUFVX3lxTE50VWpqcHZ2SnJWZlNKUG1ub3ZfNUpPNm0wMVU3X0dWZG15QlhqVnF1VzFvUnpOdXdpQlZCSWgtemlNNU1TZWphQng5WmtTZ3ZpeTVZaGR2MmRaRk1fVUdRTUQ1OGI3TGhDNXE0RjBrLXdMS0VXbk5ITHR2N1NwOTQzdThINlh4S2xqVXNSeVE?oc=5",
+          "date": "2026-10-20",
+          "place": "p0668154",
+          "county": "San Luis Obispo",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22San+Luis+Obispo%22+%22San+Luis+Obispo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Grover Beach Fills Council Vacancy",
+          "publisher": "California City News",
+          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPUDBwNm1jaVMzTl9CeVVYQWppd3FPTGthdms1MC02TFlFaDBjUzg0MG1VbXJNb2t0MHYwQkJCZUwzQnh3bkhYTzFkV3dXLTdLWmZKZHpROEdZNjAxMXBtc1VDRGZ1SVZQNms4ZmlXOTY4Ni1uT0FGeW82T21YUzBRcE15dW5qNDFOd2c?oc=5",
+          "date": "2026-10-15",
+          "place": "p0631393",
+          "county": "San Luis Obispo",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Grover+Beach%22+%22San+Luis+Obispo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://agenda.slocounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "San Luis Obispo County official website",
+          "url": "https://www.slocounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "San Luis Obispo County: Planning and development",
+          "url": "https://www.slocounty.ca.gov/departments/planning-building",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "San Luis Obispo County: Meeting agendas and recordings",
+          "url": "https://agenda.slocounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "San Luis Obispo County: Official news and notices",
+          "url": "https://www.slocounty.ca.gov/Home/County-News.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "San Luis Obispo County regional transit and transportation",
+          "url": "https://www.slocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "San Luis Obispo County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06079",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06111",
+      "name": "Ventura County",
+      "districts": [
+        "24",
+        "26"
+      ],
+      "futureDistricts": [
+        "24",
+        "26"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 636,
+        "sourceRows": 647,
+        "mapped": 348,
+        "permitted": 152.0,
+        "completed": 268.0,
+        "entitled": 215.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 837469.0,
+        "income": 109797.0,
+        "rent": 2317.0,
+        "homeValue": 822700.0,
+        "housingUnits": 295878.0,
+        "renterShare": 35.4,
+        "transitShare": 0.6,
+        "commuteMinutes": 25.6,
+        "source": "https://data.census.gov/profile?g=050XX00US06111",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Ventura County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 1753.0,
+          "rent": 25.0,
+          "homeValue": 6187.0,
+          "housingUnits": 141.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0610046.jpg",
+        "caption": "Camarillo, California",
+        "by": "Fettlemap",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Mary_Magdalene_Chapel_(cropped).jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Mary_Magdalene_Chapel_%28cropped%29.jpg/960px-Mary_Magdalene_Chapel_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "Is a Libertarian cabal trying to take over the Oxnard City Council?",
+          "publisher": "Ventura County Star",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOTlRZbFJGY0dWRFZjd2hEWlRuakxXVllKX05uak9idjlrbk55WEROUmF6eHhFbmJwV0l1T1RvMWxvRTdKa3JsYzZrV1lnZlE1R1YtelpSWExTdzRrR2pMcXV6ZXFwYWZRaVlJTlRGR1pwMjNEd3JuWldDak5Xd1N4aE44amhlYk40RUF0MjhhcXJnVWZlem9sS3VwaWJMTFhNanM2ZkNwWW9CZGV4YS1MTUJTdUQ4OUtQY1lOaEdsOEtSS3U5b2NveWlPNTFvZ2NZZ0VPeEFBb21EbGc?oc=5",
+          "date": "2026-10-24",
+          "place": "p0654652",
+          "county": "Ventura",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Oxnard%22+%22Ventura%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "The Military Affairs Council (MAC) and the Hawaii Defense Alliance visited the Fathomwerx facilities in Port Hueneme, California",
+          "publisher": "DVIDS",
+          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNeF9CVEZob1M4NmxlajVuQzE3MDFCY3BaMTlxWEFJdFhCQ3lNSHBpX3hKTzhlRi1fTG14dkF3YmRZbGFhaXhnRnFyTERLNmJ5T1BtaElQWC0zcVBKSE5BTEM5MnNyc09rYmkydEtiaThhWll5MlVQTUtTTzNIU2RwT09SYjh5QUhMY3dWYnFsSU83clJZbVFPcHpBOTBWOV9xd0tKdlo5M0VLaWRkWnJIaHdjZm4tQzZfbF9zN1VmWnR3SXlFeFFmUGlPWlNBb1ZVTnRxdndGS3U2NkV1bFI0Uw?oc=5",
+          "date": "2026-10-23",
+          "place": "p0658296",
+          "county": "Ventura",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Port+Hueneme%22+%22Ventura%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Assembly District 42 candidates discuss public safety, housing, more",
+          "publisher": "Ventura County Star",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRGFKMERxS3BWUnNQMnJOZFRHdVJLS01QMnlBbXRRV1I1N25aMzJBWWh0VkRuSzZzLVpERUJ5ZHdxZElFLWxfUHBrdXBKNXFVTWFzNkFhTlBEaTZpdXN3aXg5ZjhpdnVXRnAzcHluUmJnZ29JSnQyWm1JV0QyaGdMRUtHYlJXWi1BUGwwaVZWZnBLaTlha2ZfOXVGdHVOQjlwTEhvcHZZQ29wdE42RHVmUA?oc=5",
+          "date": "2026-10-22",
+          "place": "c06111",
+          "county": "Ventura",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Ventura+County%22+%22Ventura%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://ventura.legistar.com/Calendar.aspx",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Ventura County official website",
+          "url": "https://www.ventura.org/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Ventura County: Planning and development",
+          "url": "https://vcrma.org/divisions/planning/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Ventura County: Meeting agendas and recordings",
+          "url": "https://ventura.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Ventura County regional transit and transportation",
+          "url": "https://www.goventura.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Ventura County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06111",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06019",
+      "name": "Fresno County",
+      "districts": [
+        "20"
+      ],
+      "futureDistricts": [
+        "20"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 443,
+        "sourceRows": 463,
+        "mapped": 218,
+        "permitted": 184.0,
+        "completed": 158.0,
+        "entitled": 30.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 1016725.0,
+        "income": 74201.0,
+        "rent": 1392.0,
+        "homeValue": 388800.0,
+        "housingUnits": 344894.0,
+        "renterShare": 44.5,
+        "transitShare": 0.8,
+        "commuteMinutes": 23.5,
+        "source": "https://data.census.gov/profile?g=050XX00US06019",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Fresno County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 1322.0,
+          "rent": 16.0,
+          "homeValue": 3630.0,
+          "housingUnits": 170.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0614218.jpg",
+        "caption": "Clovis, California",
+        "by": "Aaron T Harris",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Old_Town_Clovis,_California,_Pollasky_Ave,_2026.jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Old_Town_Clovis%2C_California%2C_Pollasky_Ave%2C_2026.jpg/1280px-Old_Town_Clovis%2C_California%2C_Pollasky_Ave%2C_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "City Council eyes immigrant defense fund in Fresno",
+          "publisher": "Fresnoland",
+          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFB0T3NYejVfTEZsd3pfOXhqY1NuWGtoa0ZCdHJfU1ZJSUxUNmwzMEZnMU41NlNtalNNZldiUl9MTDFiSmxuV3FTTk9tSV83aFNWTGk1c2IwdGJ4MmVqVGZ2ZmItWmlEUHJfSGQyMG50UjN2dw?oc=5",
+          "date": "2026-10-20",
+          "place": "p0627000",
+          "county": "Fresno",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Fresno%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Inside the new group hoping to shake up Fresno\u2019s development politics (and make homes more affordable)",
+          "publisher": "Fresnoland",
+          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOMnlacExYYXZBVlZlMzRvdm91Tm5haWpaMU5uTEtZMGxiaTl3UWVmMEZGVFV4MXUtdVBuZm1DWnJKeWdwTWNsU0o2c2NxcGhUdFhfcEJCWDFyVTJYb09BdzJUNThQNy1yTVdPT1oyUWNsdjNnb0pPcEpCa1k2RnY1dkc1U3lOTGRMMkpNaURJbjlrY2prcGNVN2k0S0pzRkJhMlJLcVJvUkhsZV9wYWU1SDJuUUJ2SS1sT09VeXZGR2hXaHVyTVdaRVNweFFKejA?oc=5",
+          "date": "2026-10-13",
+          "place": "p0627000",
+          "county": "Fresno",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Fresno%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Fresno seeks stricter regulations on group homes housing sex offenders",
+          "publisher": "ABC30 Fresno",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOTmhCVTB1YXRvN3hoekFrZFBvSC1rQmhrMkVqY3I5bDNqbFZZQzJydVd2UjRweFZqSWZXOEtRTE5VVVlGeFhMY1E1c1BtdHdWVHJnTHBXY0ZKZjk5eDdNSFllajJ4MUVzZVRSRGpKajBDWm5vNVF5dnd5YktBLVJUaEJsRWxqWGVzX19GVjdZdTNKU2xId0ItRkJveXIwZkZnd2fSAacBQVVfeXFMT0w3Q29XbWpJZXlhdUZDN05tWHdfdkIyckd1Z1RKWkk5bWpMSndsQU5ZTXllR1hmbVJrcVlmQW5JU0d6SHNuUzZNRzVyaGh2aWVRYzRRMzhKM2lWck1vRC1wSjlGT1AtLUdkRExvWlMwdENrYV9OMV94SGF2bTdhYjB0YnBnMWs1Q3l3enI5M28yTmFlVHdMZjlkc2UzUmtGSnhFMjB4WEk?oc=5",
+          "date": "2026-10-13",
+          "place": "p0627000",
+          "county": "Fresno",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Fresno%22+%22Fresno%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://www.fresnocountyca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Fresno County official website",
+          "url": "https://www.fresnocountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Fresno County regional transit and transportation",
+          "url": "https://www.fresnocog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Fresno County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06019",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06027",
+      "name": "Inyo County",
+      "districts": [
+        "20"
+      ],
+      "futureDistricts": [
+        "20"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 45,
+        "sourceRows": 45,
+        "mapped": 28,
+        "permitted": 14.0,
+        "completed": 9.0,
+        "entitled": 0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 18739.0,
+        "income": 73991.0,
+        "rent": 1189.0,
+        "homeValue": 348700.0,
+        "housingUnits": 9524.0,
+        "renterShare": 33.6,
+        "transitShare": 0.7,
+        "commuteMinutes": 16.0,
+        "source": "https://data.census.gov/profile?g=050XX00US06027",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Inyo County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 4815.0,
+          "rent": 112.0,
+          "homeValue": 43595.0,
+          "housingUnits": 111.0
+        }
+      },
+      "photo": null,
+      "news": [],
+      "meetingUrl": "https://inyococa.civicclerk.com/web/home.aspx",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Inyo County official website",
+          "url": "https://www.inyocounty.us/",
+          "scope": "county"
+        },
+        {
+          "category": "Projects",
+          "title": "Inyo County: Project records and activity",
+          "url": "https://www.inyocounty.us/services/planning-department/current-projects",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Inyo County: Meeting agendas and recordings",
+          "url": "https://inyococa.civicclerk.com/web/home.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Inyo County: Boards and commissions",
+          "url": "https://www.inyocounty.us/government/commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Inyo County: Official news and notices",
+          "url": "https://elections.inyocounty.us/news/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Inyo County regional transit and transportation",
+          "url": "https://www.estransit.com/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Inyo County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06027",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06029",
+      "name": "Kern County",
+      "districts": [
+        "20"
+      ],
+      "futureDistricts": [
+        "20"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 1439,
+        "sourceRows": 1492,
+        "mapped": 184,
+        "permitted": 518.0,
+        "completed": 490.0,
+        "entitled": 0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 915075.0,
+        "income": 70210.0,
+        "rent": 1300.0,
+        "homeValue": 338300.0,
+        "housingUnits": 306999.0,
+        "renterShare": 39.9,
+        "transitShare": 0.4,
+        "commuteMinutes": 24.4,
+        "source": "https://data.census.gov/profile?g=050XX00US06029",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Kern County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 1287.0,
+          "rent": 21.0,
+          "homeValue": 2944.0,
+          "housingUnits": 246.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0603526.jpg",
+        "caption": "Bakersfield, California",
+        "by": "Bobak Ha'Eri",
+        "license": "CC BY 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2009-0726-CA-Bakersfield-FoxTheater_(cropped).jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/2009-0726-CA-Bakersfield-FoxTheater_%28cropped%29.jpg/1280px-2009-0726-CA-Bakersfield-FoxTheater_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "Bakersfield council sets aside $4 million to explore housing low-level offenders amid jail bed shortage",
+          "publisher": "23ABC News Bakersfield",
+          "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxQdXM2SGRPeXhHWU1sNWR1dkpvTU4zS1pXUUF3N29nNUJJREpHLTJyT0ctOEE5RGx5NndTRjJxa1p2V1g3T1F6WWxYV0QzQlJGbndXTzVia1UzYVVMdzloVU5HTVQ3Wm1wbm5aSG9GcUxxZmo3bFh3dm92VXBQRjhHYkdkdm1kRGJZeE9nWHJjS3Jxd2xObkI5WllBaWxxMkFkbjY4clFjS0I0anhiVlo3THpLVngtX2syVF8xcktfc015S3oxN0VkcWd6QjVUSTdkT3Z6YUJydzZ2SXhsWW5XZnJWWWFtWGVBejB6Zm1iQUE3VHNGbld6Mw?oc=5",
+          "date": "2026-10-22",
+          "place": "p0603526",
+          "county": "Kern",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Bakersfield%22+%22Kern%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Data center proposed in Inyokern draws water, other concerns in east Kern",
+          "publisher": "Bakersfield.com",
+          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNWWVhQWluWFNmT01wT09ueWRrZWl1UWItZkkyZEpLaFl3ckxnTlo0MTVianFGd3NTZTcyNDE4RFdBTFpueFZVZUM2a1JrX1QxU0FZMTJXbDFaRzlZYXVjbUVNY2lPU250ZHUwWWx5bTNwZGlfLTNkM0k2R3N4QjFjSFJyZ2h4akdhSFkzTjM3NXg2STFvdzY0QllCbXBaWFlIajctU3MwRFZ0cDhrYlVJb0Z3U2o4bi1HOXV1c0ZfZlRDN2ZrUk1uLTJXWmZEaG4zNFFLSjFCNVFkNlc4SDk2ck95QVQ3U25fRUk4?oc=5",
+          "date": "2026-10-17",
+          "place": "p0636658",
+          "county": "Kern",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Inyokern%22+%22Kern%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Kern County judge rips California over 'invalid' fracking ban",
+          "publisher": "Courthouse News",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOMTRhMkhXVkhzQ25TU3N5VFJ5ajVXS01WUmFuS0JUcnF1WVloUXR3RzBKdDRvMGFiMExYOUt4dlhfWjM5YTRYM252MHVyVzRXVVc1a0tvMTJGY2lRenhlSnptczA4ajg1N1BXOE5UX2RTNjdOZi1FWWVpTDFYOU1aR1VlYjI5TlQ2clBGcXJLTGE?oc=5",
+          "date": "2026-10-10",
+          "place": "c06029",
+          "county": "Kern",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Kern+County%22+%22Kern%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://www.kerncounty.com/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Kern County official website",
+          "url": "https://www.kerncounty.com/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Kern County regional transit and transportation",
+          "url": "https://www.kerntransit.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Kern County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06029",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06031",
+      "name": "Kings County",
+      "districts": [
+        "20"
+      ],
+      "futureDistricts": [
+        "20"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 52,
+        "sourceRows": 52,
+        "mapped": 37,
+        "permitted": 16.0,
+        "completed": 15.0,
+        "entitled": 0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 153298.0,
+        "income": 70995.0,
+        "rent": 1331.0,
+        "homeValue": 324300.0,
+        "housingUnits": 46986.0,
+        "renterShare": 45.8,
+        "transitShare": 0.4,
+        "commuteMinutes": 23.0,
+        "source": "https://data.census.gov/profile?g=050XX00US06031",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Kings County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 2735.0,
+          "rent": 49.0,
+          "homeValue": 7846.0,
+          "housingUnits": 126.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0631960.jpg",
+        "caption": "Hanford, California",
+        "by": "Julie Jordan Scott from Bakersfield, California, USA",
+        "license": "CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Hanford,_California_(11774483763)_(cropped).jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Hanford%2C_California_%2811774483763%29_%28cropped%29.jpg/960px-Hanford%2C_California_%2811774483763%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "Avenal officials say Kings County wrongly ran recall election without council approval",
+          "publisher": "KMPH Fox 26",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNRnIxdEMxS1VMRHpxTm0zMHNoa011YVktU2l1amQ4NUFrYjZMbE1RYUwxRXpCNVkyRTY5eTZTZ3B3TWVyZ1A2YUxiLWs5MDNDdkVSRlBHMnQwWGswRFc4c0pyQTU2X0pINGJkZm5wREZ5MmtvcnRqb0Q0OFVTUmt6SHM5Z3BWMUw5aW9pdVpzd3NaR01pV1d6Z1ZTYkNsTm80bGdOUW90NjByM3E0cFgxRG5YUHk?oc=5",
+          "date": "2026-10-15",
+          "place": "c06031",
+          "county": "Kings",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Kings+County%22+%22Kings%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Kings County officials to ship millions through Davis for affordable housing repairs",
+          "publisher": "Abridged \u2013 PBS KVIE",
+          "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE80MXliZ24wcnE4ZXVtdUxOV0NYUEJ3czFqbVBPT21sc3VaWlhscjR3dWJvYmJJNXVUeTNaZXg2VXdPVmIwSTVYbktiNXQ0LXFmdUJlazhpTUtMSUN1VkZ0MHdvZS1mYUxXby1YVWxxZGY?oc=5",
+          "date": "2026-10-07",
+          "place": "c06031",
+          "county": "Kings",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Kings+County%22+%22Kings%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Kings County court: Recalled Avenal council members unlawfully holding office",
+          "publisher": "Hanford Sentinel",
+          "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNNVZhNWhqWllHTlJ1cms0NGQwa0t5N0F4S1E0UEtpWG8xTkE0dDZGa0dxQ1NXM3FFanJxZFgyRjdXQjJ5cW9qTkhKR3pCLWVVT25HZms0TmtvSUVBbnRKS1ZsanQ5SUN2ZThyS2tTQTZLLXhibnI3eXVXeUpkVmdlWGhHWGxhOW12ZTBVU0htUHNDaUQyN3JiQ1l4bW9BbTM1ajVlenNIalZzb3NzMk9SekJKT3plUHNSbDVJUktkQ0pLRlZ1Z1B2U3JxWGp3dlN2WF82dFhaS0o0LTU5M0RmeWg5T1dHVllwWjdWTFlPUDhNdXc2am5CbVRKcWZZV2oyUVJxbGJCYk1qRjZYMWxzZtIBlgJBVV95cUxOYnpmcGpDaXgtMzhydTFxaTVEa29ndUMxVGFkUkQtRUhnMk1iMDFuQmNrcWtMcU1lTmk2TzQybVVNU2xva1F2dEVmano1MlVxNG1OX0VnM016V0NVV3JnbzQ1ZDZHYVNzMGJmd1BxLS1OZkZQM1BmVjNFMU4tQVRHZjRhRGY3dU1KYTIwanhtUFpJdUlnZUlMblNkU21URnFOSVRlT2Y4cEM2OVFBa19ackQtTGdrbEFhS2x4ZUVUOXRDRkVRWUZwbGx2bl9Od2VYUWlhTmF3a1VzMHBFUkxPQU8ydGVqcTF4UENnQ3k1X0VZN1hGUEZBWjlySHFaTjdrLWFSVkkxZjBzSTVoNnhDQmpySDFUUQ?oc=5",
+          "date": "2026-08-25",
+          "place": "c06031",
+          "county": "Kings",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Kings+County%22+%22Kings%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://www.countyofkingsca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Kings County official website",
+          "url": "https://www.countyofkingsca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Kings County regional transit and transportation",
+          "url": "https://www.kingscog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Kings County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06031",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06037",
+      "name": "Los Angeles County",
+      "districts": [
+        "26"
+      ],
+      "futureDistricts": [
+        "26"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 12248,
+        "sourceRows": 12541,
+        "mapped": 10977,
+        "permitted": 3257.0,
+        "completed": 2235.0,
+        "entitled": 7600.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 9808667.0,
+        "income": 90112.0,
+        "rent": 1954.0,
+        "homeValue": 834200.0,
+        "housingUnits": 3650466.0,
+        "renterShare": 54.1,
+        "transitShare": 3.9,
+        "commuteMinutes": 30.4,
+        "source": "https://data.census.gov/profile?g=050XX00US06037",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Los Angeles County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 392.0,
+          "rent": 6.0,
+          "homeValue": 2194.0,
+          "housingUnits": 972.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0600394.jpg",
+        "caption": "Agoura Hills, California",
+        "by": "Arspickles17 at English Wikipedia",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Agouravista.jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Agouravista.jpg/960px-Agouravista.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "A time bomb for renters: L.A. County\u2019s cheapest apartments are getting old, fast",
+          "publisher": "Los Angeles Times",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQUGF5dTNtaDdJUXhsdEU2MTRYZFQ2Y2lVTGlsdG1sLTZiTXM2N3FUMVgyNldZbVhZa0hpTDZ0ZWpiOU5FRnBlRDU4aGFFNk85aFBrQkxHUUhUbDd6cXQwdDdlck1Mal9jR1ppQldDazQ0X0s0cmhlZ2lnSmNpekNHbkZHQTNWbHkwbTV5TTZpajdVa0ZkYWNGY1JFREpfUmdiYnNtQU9IdWZjbGVfaHBMWEwtT2hjUmNLTjgwYWpHQXJuV3M?oc=5",
+          "date": "2026-10-23",
+          "place": "p0644000",
+          "county": "Los Angeles",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Los+Angeles%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Bass vs. Raman: Who can make housing more affordable?",
+          "publisher": "Los Angeles Times",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQelR0NGliblpWTEdQVTd2WmVhSjgxNzlrcmQtRUJXYnV1NEpuMU4zSlZHWXF3Y0dnVmdWVUxBNmEySWVicW5NTEpOVHdsMEtSaEJEc2YxRTZpeTQ0N2JEVW1KbWhDS0p2bWpxX29BUXRzN1FIQ0VtSE5ITmR6aG1zaFloZHpibmlLX2F1aHJQVWM3X3N4X0p0TkZsVkhyQ2pFd250VQ?oc=5",
+          "date": "2026-10-16",
+          "place": "p0644000",
+          "county": "Los Angeles",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Los+Angeles%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "LA City Council bans nitrous oxide sales at tobacco and cannabis shops",
+          "publisher": "NBC Los Angeles",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQa3hubjl1dzYwdy1NS2RvcWdqeFBJa0FsYjVCX3hQejdRaXJYYU55WmhDU0gyT2w4Ynd2MTFDTlU4T1h1amVQbVdVbEY4ci1OdVNSdmc0alVGVDh6eXJ4cTBRNmE1ZHcxQmlFWlM4V0RocEQtN1N1S2NOdmx3QmNaQWJiRGxqYUM0SEpzbHJGbTNtakJ1aTFUNGhlai1qODBnRHhncFhLeVNaMkF6ZlBFT0c3LVNGUdIBvgFBVV95cUxNaFI3Rl9JNlBCS0gzU1V0ekppeWtvWkkwczBXOUhzZEZNS25sTTFvbkZxd04zcGRJeWNmTVRhVE5wOC1TWjE5X3RaWGdma3h1WHRBbHl5NkVua0lUTmZZV25oenRMamM0dml3cVBXUUtOUkd1VVdya1FBT0Z5S2x5c0IyUTNRNVZwOFlESFRWZjhjZEI0bm12QXZoWmg0SzRrM0tGRWNmRG9HWmJrMndWcVlKVUJEcklLYzI3VmJR?oc=5",
+          "date": "2026-10-07",
+          "place": "p0644000",
+          "county": "Los Angeles",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Los+Angeles%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://lacounty.legistar.com/Calendar.aspx",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Los Angeles County official website",
+          "url": "https://lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Los Angeles County: Planning and development",
+          "url": "https://planning.lacounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Los Angeles County: Meeting agendas and recordings",
+          "url": "https://lacounty.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Los Angeles County: Boards and commissions",
+          "url": "https://bos.lacounty.gov/Services/Commission-Services/Our-Commissions",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Los Angeles County: Official news and notices",
+          "url": "https://lacounty.gov/newsroom/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Los Angeles County regional transit and transportation",
+          "url": "https://www.metro.net/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Los Angeles County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06037",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06053",
+      "name": "Monterey County",
+      "districts": [
+        "19"
+      ],
+      "futureDistricts": [
+        "19"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 452,
+        "sourceRows": 461,
+        "mapped": 411,
+        "permitted": 269.0,
+        "completed": 174.0,
+        "entitled": 361.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 437613.0,
+        "income": 97230.0,
+        "rent": 2055.0,
+        "homeValue": 781000.0,
+        "housingUnits": 145469.0,
+        "renterShare": 47.9,
+        "transitShare": 1.1,
+        "commuteMinutes": 25.4,
+        "source": "https://data.census.gov/profile?g=050XX00US06053",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Monterey County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 1883.0,
+          "rent": 32.0,
+          "homeValue": 13801.0,
+          "housingUnits": 143.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0611250.jpg",
+        "caption": "Carmel-by-the-Sea, California",
+        "by": "McGhiever",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Carmel_Mission_Church.jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Carmel_Mission_Church.jpg/960px-Carmel_Mission_Church.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "California American Water Submits Monterey Desalination Project Financing and Cost Updates to the California Public Utilities Commission",
+          "publisher": "PR Newswire",
+          "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxPcU52UTVDc05FTkJ4WFQ3cDA5S0R1ZnZvNVBCbTF6Ym4zVk16QlZ2OWY2aVJDMjZyU3hreG9vUUx0SVpEZ20wVmVldVlLbzNJQ3BacW9qVXd5YkVFR1A3cGIyX3BHRUtzTkNidF9wWDF4a21adzhySE5FcTk2RGdINk50SE1kNEtMeU82N0hwcTdnc3lHSVktd0g4c0hLZF9tam9CR0FGd3g1aGJDLWdFWVBYa01OQ2ZPbjkyT1FPYnBISm9oNUs4Rnp5elp4Vkt1QTdXS3cwNkdaM0ZVeDZqcUJlOENCekMxci1WLV9lbW91bnlHbGFaVDJUS2JYMU8tVWpHLU9MenNIc1lzSEU3V1lVMVlEdVZ5dENQNQ?oc=5",
+          "date": "2026-10-23",
+          "place": "p0648872",
+          "county": "Monterey",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Monterey%22+%22Monterey%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "For Monterey's water project, proposed rate measures are estimated to reduce customer impact by $588 million over 40 years.",
+          "publisher": "Stock Titan",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxONUIzMTJON0JHQ19uUWJpWlJaRFZWZDhmRHRFaVZxV2JMWUxCX1FiTDI1Zk1QaENMd2d0WHk3X0c5QUFnYkV1UWgyLTY1cm5nUHVrSjJJTE1TTUoyNHJQeEd5RUE3enFYbzB4c0pXT3BISkhJUGxwTnIzSEZYaEdxX3daS19YdVVsb0Rtc3plalU5TkFhQmNaM2NmWXR3b0xiSUZyYlVkcEFOcmRDemVWbHdERE9Vc1lH?oc=5",
+          "date": "2026-10-23",
+          "place": "p0648872",
+          "county": "Monterey",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Monterey%22+%22Monterey%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "The developer of the Carmel Valley Village airfield refiles for a 90-unit development.",
+          "publisher": "Monterey County Weekly",
+          "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxQVUJuNzVfN290OTVwTV9uNHVUQmRnVnVxZEJnaWdFMk9hY2wyYkFZSzhvNXoxZ3ZnSlFlNjRONzdHNnlqQXJvdTBmdzFZWHNfT290bEVNVnhHOTFXYkIwOTdTaXpLWjhvY3Vvb05Oc3gzb2xRZE5tOW1pbzdnU1dJVUJDRDM4bm5obmU1d0ZjeklaQ3hWRDJ4ekJ2SHlWMDQ4UmJOMTBLUEtMM1pRVExEaXZaRno1OTV1V0ZGRllZdjYyUGRQMkNVSS1ES21hVHlmcEhFTTlWN2xyRDdMWHlqRUNhRUxHTEhDN1ZYampTeThoMmlBeUM4TjFfVmtGR0pGN205QXppZmJxTF9LNjZMemt1NNIBmAJBVV95cUxOeUlmeTdoUExDSzI2WTUwQkRqYzgyclh1UkxDcHM0OFpXbFpUUHRqVFpHMHNiMjdvc0FtVTVHVDkyYUFmeTRSSWV1VlhGSmViai1kNjY2Qk5lbjhoUHhjZFk4SmNIeGhxWThmbGZ2MzZMSWZaQVZpcGQyeEJfUXBlXzFNTHZqVk1ZNkIzRkozWUFBME1tVHhlM1AwdUsxSFVyOUxWZUdtSUJ1RjR4Mm85ZndER1N3OS11ZlRIZWk4dTh6UGRYYTFMakpJOWNaSW1BNU9JTktkM2JURDM0SmZxUm9mNUNIVnZ3aTRIOURXQ1VLSS1Sa1EtOUlRQ2REdEVVQk9HeHFWWGJkeDR4TjhVaVQ0VXhmMkcy?oc=5",
+          "date": "2026-10-22",
+          "place": "p0611324",
+          "county": "Monterey",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Carmel+Valley+Village%22+%22Monterey%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://www.countyofmonterey.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Monterey County official website",
+          "url": "https://www.countyofmonterey.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Monterey County regional transit and transportation",
+          "url": "https://mst.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Monterey County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06053",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06085",
+      "name": "Santa Clara County",
+      "districts": [
+        "19"
+      ],
+      "futureDistricts": [
+        "19"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 440,
+        "sourceRows": 454,
+        "mapped": 378,
+        "permitted": 121.0,
+        "completed": 96.0,
+        "entitled": 33.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 1902047.0,
+        "income": 164281.0,
+        "rent": 2857.0,
+        "homeValue": 1490600.0,
+        "housingUnits": 698837.0,
+        "renterShare": 44.9,
+        "transitShare": 2.3,
+        "commuteMinutes": 26.2,
+        "source": "https://data.census.gov/profile?g=050XX00US06085",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Santa Clara County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 1955.0,
+          "rent": 19.0,
+          "homeValue": 14163.0,
+          "housingUnits": 290.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0649278.jpg",
+        "caption": "Morgan Hill, California",
+        "by": "Cristiano Tom\u00e1s",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Morgan_Hill_Montage.jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Morgan_Hill_Montage.jpg/1280px-Morgan_Hill_Montage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "100 homes planned off freeway exit in Morgan Hill",
+          "publisher": "San Jos\u00e9 Spotlight",
+          "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNMDFvZnVBb2xwa2laNlJ3dkJTVEpBc3VRM3p3SG92Qm5rLWs2bDlkR25EUkNVZzdFTTJZUm83azZSb1lWM2dJZXBhM2FDQUZKZGxBRFhGd2NVdHJqZTU2TGFwNmh4cW9vN0RhQnhKczBwbHdsTXR2WC10NXQ5cW5VVDgzWjhFUQ?oc=5",
+          "date": "2026-10-16",
+          "place": "p0649278",
+          "county": "Santa Clara",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Morgan+Hill%22+%22Santa+Clara%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Construction begins on a 15-story tower bringing 220 affordable apartments to downtown San Jose",
+          "publisher": "The Mercury News",
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPTG9ibkxMZlRDT1lyN0lOYmR4WU9xSkZJY0oyeDVDRVVUTy1Kb1lZNWR0RkJGT2NWMFUtcHNhcERTelRyTHFoZlNRYzhRSGFCbkFERkdBUWtnS256OTVFbjFsUjRqanBDeEJVN3NVaXB6TDFzcTRhMWxwQ1M1ZUZzWEVDaXBzSmg5UWdJXzkxMVVNWFEwemx6azBDSVZWZ1hVdmRKUDkyeTRJZw?oc=5",
+          "date": "2026-10-15",
+          "place": "p0668000",
+          "county": "Santa Clara",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22San+Jose%22+%22Santa+Clara%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Seven candidates seek Morgan Hill mayor, City Council seats",
+          "publisher": "San Jos\u00e9 Spotlight",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNWEkzMWpuU0FjVEZiNk9BNS1sUktLdXRtZ09WOEJ3ZWVkMGhLYUxKcm9YcS1aTWRyQXpXaWVTQjRSb0w0LVpkRGtKR3lYZVJzREJGa2dPNUpDVWg2cnpTVFE1RUM4M2NPamp6MjJxTE5ZcXU2dGNOVXplWUJDRjVIUmpUSFlMQndIWjNKWnNBMmFldw?oc=5",
+          "date": "2026-10-12",
+          "place": "p0649278",
+          "county": "Santa Clara",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Morgan+Hill%22+%22Santa+Clara%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://sccgov.legistar.com/Calendar.aspx",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Santa Clara County official website",
+          "url": "https://www.santaclaracounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Santa Clara County: Planning and development",
+          "url": "https://plandev.santaclaracounty.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Santa Clara County: Meeting agendas and recordings",
+          "url": "https://sccgov.legistar.com/Calendar.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Santa Clara County regional transit and transportation",
+          "url": "https://www.vta.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Santa Clara County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06085",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06087",
+      "name": "Santa Cruz County",
+      "districts": [
+        "19"
+      ],
+      "futureDistricts": [
+        "19"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 189,
+        "sourceRows": 191,
+        "mapped": 162,
+        "permitted": 55.0,
+        "completed": 96.0,
+        "entitled": 471.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 264926.0,
+        "income": 111093.0,
+        "rent": 2264.0,
+        "homeValue": 1027500.0,
+        "housingUnits": 106977.0,
+        "renterShare": 40.1,
+        "transitShare": 1.9,
+        "commuteMinutes": 25.7,
+        "source": "https://data.census.gov/profile?g=050XX00US06087",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Santa Cruz County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 2734.0,
+          "rent": 51.0,
+          "homeValue": 15133.0,
+          "housingUnits": 177.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0611040.jpg",
+        "caption": "Capitola, California",
+        "by": "Don DeBold from San Jose, CA, USA",
+        "license": "CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Colorful_Venetian_Hotel_on_the_Beach_in_Capitola_(8038026675)_(cropped).jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Colorful_Venetian_Hotel_on_the_Beach_in_Capitola_%288038026675%29_%28cropped%29.jpg/1280px-Colorful_Venetian_Hotel_on_the_Beach_in_Capitola_%288038026675%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "Kidder Mathews Brings 178 Townhomes to Market as Part of 496-Unit Development in Aptos California",
+          "publisher": "Yield PRO",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE02ZjQ1aTVoemVNNG11WFJYMEF4QUU2T0F2aExYSUM2MldrNlhFY2oxQU5tU21CVmRhQjNZSXRCZ0dqelZLTWY2MWI3Y0FnOFh0R0xjaGVSVXhQZm5TTnBzNm12N1htanNJZnpoRS1YRzNIVzNNNVE?oc=5",
+          "date": "2026-10-22",
+          "place": "p0602378",
+          "county": "Santa Cruz",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Aptos%22+%22Santa+Cruz%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Santa Cruz County public defender joins California Independent Commission on Public Defense",
+          "publisher": "Santa Cruz Sentinel",
+          "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNRmxqUGZRMlVVZkpRd2FsRlpaME9neDZTZW9sWlVlVjdWeS1YcDdfV0hWWW05VTJDLUJpYWVhdTZ0VWl3NmJNN0RkRElDR0MzMnNNV2xZSGlDWElLVll4QVZvaTRmNFFVMHI4LWFJYmg5MlVBVDhuNVFTclhTQ1FTck5YWlVTVmVVREoteW56RkhnN1huS3hLZlZvQ3ZlcFJyaGRGRml4WlVoMzNtakdEQUxLVEdnT2FXWER4TFB0SWd4aE4xelNWVXhyOGlkTzUycmcw?oc=5",
+          "date": "2026-10-22",
+          "place": "c06087",
+          "county": "Santa Cruz",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Santa+Cruz+County%22+%22Santa+Cruz%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Mayor\u2019s Message | Housing Santa Cruz\u2019s future",
+          "publisher": "Santa Cruz Sentinel",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPUGJtNGp0UVhsUGdRZ1pEZzMzTW9fSk95d1A4b2oweTlHbkhvdThCWWw0eWNzay1pZUsxNkUtdmg1dHZoUVdwQmNTV01wSk11Tk5XZGtQOGRpZUVkUTBOTEVLT1R2T05EVkRCRkJtWk5kTk1vUFVoNUhMX2tqY1lrc1VOR0QteTlvOG5OelhpY2Y?oc=5",
+          "date": "2026-10-17",
+          "place": "p0669112",
+          "county": "Santa Cruz",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Santa+Cruz%22+%22Santa+Cruz%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://www.santacruzcountyca.gov/Government/BoardofSupervisors/SantaCruzCountyMeetingMaterials.aspx",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Santa Cruz County official website",
+          "url": "https://www.santacruzcountyca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Planning",
+          "title": "Santa Cruz County: Planning and development",
+          "url": "https://www.sccoplanning.com/",
+          "scope": "county"
+        },
+        {
+          "category": "Projects",
+          "title": "Santa Cruz County: Project records and activity",
+          "url": "https://cdi.santacruzcountyca.gov/UPC/GetInvolved/MajorProjects.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Meetings",
+          "title": "Santa Cruz County: Meeting agendas and recordings",
+          "url": "https://www.santacruzcountyca.gov/Government/BoardofSupervisors/SantaCruzCountyMeetingMaterials.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Boards",
+          "title": "Santa Cruz County: Boards and commissions",
+          "url": "https://www.santacruzcountyca.gov/Government/Commissions,CommitteesAdvisoryBodies.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Housing",
+          "title": "Santa Cruz County: Housing policy and programs",
+          "url": "https://cdi.santacruzcountyca.gov/Planning/Housing/2023HousingElement.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "News",
+          "title": "Santa Cruz County: Official news and notices",
+          "url": "https://www.santacruzcountyca.gov/Government/Pressreleases.aspx",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Santa Cruz County regional transit and transportation",
+          "url": "https://www.scmtd.com/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Santa Cruz County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06087",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    },
+    {
+      "id": "c06107",
+      "name": "Tulare County",
+      "districts": [
+        "20"
+      ],
+      "futureDistricts": [
+        "20"
+      ],
+      "housing": {
+        "year": 2025,
+        "records": 403,
+        "sourceRows": 791,
+        "mapped": 189,
+        "permitted": 147.0,
+        "completed": 362.0,
+        "entitled": 1.0,
+        "source": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+        "geography": "Reporting jurisdiction, which may extend outside the selected congressional districts."
+      },
+      "statistics": {
+        "available": true,
+        "population": 478693.0,
+        "income": 71300.0,
+        "rent": 1280.0,
+        "homeValue": 330100.0,
+        "housingUnits": 154202.0,
+        "renterShare": 41.5,
+        "transitShare": 0.4,
+        "commuteMinutes": 23.7,
+        "source": "https://data.census.gov/profile?g=050XX00US06107",
+        "period": "2020\u20132024 ACS five-year estimates",
+        "geography": "Tulare County",
+        "tables": {
+          "B01003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01003.dat",
+          "B19013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat",
+          "B25064": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat",
+          "B25003": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25003.dat",
+          "B25077": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat",
+          "B08301": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08301.dat",
+          "B08013": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b08013.dat",
+          "B25001": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b25001.dat"
+        },
+        "margins": {
+          "population": null,
+          "income": 1532.0,
+          "rent": 25.0,
+          "homeValue": 4959.0,
+          "housingUnits": 147.0
+        }
+      },
+      "photo": {
+        "url": "/cal/img/p0623126.jpg",
+        "caption": "Exeter, California",
+        "by": "Bobak Ha'Eri",
+        "license": "CC BY 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2009-0725-CA-Exeter.jpg",
+        "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/2009-0725-CA-Exeter.jpg/960px-2009-0725-CA-Exeter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "news": [
+        {
+          "title": "Springville Apple Festival draws thousands to downtown",
+          "publisher": "Porterville Recorder",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNTl84VEdtcnM1NFgzUC0tWVlEZG9LZXhBRWM4dUVaeUFfeGFLQ1ZGbG1hR0ZlQkJGYXRNRVpURHZ0SU50U01hR1hTSjU3clJBWnY3WGdIWElHY0IyZmVWUTZwQ0hRdGFTbjhoSUNXTGJnSXBzOVBqbEt1SzlsWjNmeHo5SlNlS3pDb1R2TWpsTnhzb0p1NGFjeVdYTnZLcndUNmxseWxSY1RQSTFLSFlmUE16cTJYbnMxWTRCNzNMeFJLZXZZSEE4RXRodGJyR3RGVjlUR3JFSHN0X1k?oc=5",
+          "date": "2026-10-20",
+          "place": "p0673710",
+          "county": "Tulare",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Springville%22+%22Tulare%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Springville businesses fear festival losses amid SCE power shutoff",
+          "publisher": "ABC30 Fresno",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNNVNRcUNRVXJJX1ZuS2FocUF0ek5yU3hyTGlhWDYxdWZoRHpPRWU0NGNXYmxZQ3VIeXNuRVF4OXctQTd2NFJuc3drN2x3Q1BRQ2p6SUt3cWFTN3kyY0xEM2dKQmJCV2VWYjgxNm9nUDI5Y2NoS2NJdjhEOXJLbUxlaVJTNkF4dDNxb0ZTSDVPZThzVWtCRnY4bW1SVV94eGFD0gGmAUFVX3lxTE8xVmFvZTJVMHdSa01mY09UMUVacURINV9hVXdwRHVoWl96c3Ftd3EzNDRnY0lBMnM4YnByaU12d1FvMU1yWTNWQjFjQUZnbXFoZm1fek53b2pnN0IwclJlRC1BOTN6d1Z3Mk1ybzVRLWNYTzJYTGl2NTZlakdOTDhONDFlU2J3RXpXSm1ZcTFjWjd2WmZySU14MVdHRHRJRk5HclJjSXc?oc=5",
+          "date": "2026-10-16",
+          "place": "p0673710",
+          "county": "Tulare",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Springville%22+%22Tulare%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        },
+        {
+          "title": "Tulare City Council seeks applicants for vacant District 3 seat",
+          "publisher": "Visalia Times-Delta",
+          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNSnlZUmp5NW5fXzZsdnlrYjRhYnZrbS05WGkzbHhMakVwWHVoeXQ5SkR2TXhocmZQLUw5REZsUmV1THRPOWE1QnVqTEhqMWozelhCc19WckJya1ltbzRXbGpFQ3ZhTngzMFBYUWVGbXVFV0JXUVQ1cThsOV9NRlg4bVQwdUNrUDdzM01OTGp1NGtJZVBJUWZCUXFJemphaWgzYnI1T0t0bVFPdS1XMDRNLXdkLUJ6dnVNeWpKOG0ya1dpSzBVdHg5NnZqWUxUcGhtd1pGYVJ2bEY?oc=5",
+          "date": "2026-10-15",
+          "place": "p0682954",
+          "county": "Tulare",
+          "kind": "reporting",
+          "feed": "https://news.google.com/rss/search?q=%22Visalia%22+%22Tulare%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+        }
+      ],
+      "meetingUrl": "https://www.tularecounty.ca.gov/",
+      "resources": [
+        {
+          "category": "Government",
+          "title": "Tulare County official website",
+          "url": "https://www.tularecounty.ca.gov/",
+          "scope": "county"
+        },
+        {
+          "category": "Transportation",
+          "title": "Tulare County regional transit and transportation",
+          "url": "https://tularecog.org/",
+          "scope": "regional"
+        },
+        {
+          "category": "Housing",
+          "title": "California HCD housing reports and data",
+          "url": "https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard",
+          "scope": "state"
+        },
+        {
+          "category": "Environmental review",
+          "title": "CEQAnet environmental documents",
+          "url": "https://ceqanet.lci.ca.gov/",
+          "scope": "state"
+        },
+        {
+          "category": "Flood",
+          "title": "FEMA flood map service center",
+          "url": "https://msc.fema.gov/portal/home",
+          "scope": "federal"
+        },
+        {
+          "category": "Statistics",
+          "title": "Tulare County Census data",
+          "url": "https://data.census.gov/profile?g=050XX00US06107",
+          "scope": "county"
+        },
+        {
+          "category": "Representation",
+          "title": "Confirm your representative by address",
+          "url": "https://www.house.gov/representatives/find-your-representative",
+          "scope": "federal"
+        }
+      ]
+    }
+  ]
+}

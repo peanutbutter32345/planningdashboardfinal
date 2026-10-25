@@ -1,0 +1,265 @@
+{
+  "cityWebsites": {
+    "Clovis": "https://cityofclovis.com/",
+    "Fresno": "https://www.fresno.gov/",
+    "Orange Cove": "https://www.cityoforangecove.com/",
+    "Sanger": "https://www.ci.sanger.ca.us/",
+    "Bakersfield": "https://www.bakersfieldcity.us/",
+    "Maricopa": "https://www.cityofmaricopa.org/",
+    "Ridgecrest": "https://www.ridgecrest-ca.gov/",
+    "Shafter": "https://www.shafter.com/",
+    "Taft": "https://www.cityoftaft.ca.gov/",
+    "Tehachapi": "https://www.liveuptehachapi.com/",
+    "Hanford": "https://www.hanfordca.gov/",
+    "Lemoore": "https://lemoore.com/",
+    "Agoura Hills": "https://www.agourahillscity.org/",
+    "Calabasas": "https://www.cityofcalabasas.com/",
+    "Hidden Hills": "https://hiddenhillscity.org/",
+    "Lancaster": "https://www.cityoflancasterca.org/",
+    "Los Angeles": "https://lacity.gov/",
+    "Westlake Village": "https://www.wlv.org/",
+    "Carmel-by-the-Sea": "https://ci.carmel.ca.us/",
+    "Del Rey Oaks": "https://www.delreyoaks.org/",
+    "Marina": "https://www.cityofmarina.org/",
+    "Monterey": "https://monterey.gov/",
+    "Pacific Grove": "https://www.cityofpacificgrove.org/",
+    "Sand City": "https://www.sandcity.org/",
+    "Seaside": "https://www.ci.seaside.ca.us/",
+    "Arroyo Grande": "https://www.arroyogrande.org/",
+    "Atascadero": "https://www.atascadero.org/",
+    "El Paso de Robles (Paso Robles)": "https://www.prcity.com/",
+    "Grover Beach": "https://www.grover.org/",
+    "Morro Bay": "https://www.morro-bay.ca.us/",
+    "Pismo Beach": "https://www.pismobeach.org/",
+    "San Luis Obispo": "https://www.slocity.org/",
+    "Buellton": "https://www.cityofbuellton.com/",
+    "Carpinteria": "https://carpinteriaca.gov/",
+    "Goleta": "https://www.cityofgoleta.org/",
+    "Guadalupe": "https://www.cityofguadalupe.org/",
+    "Lompoc": "https://www.cityoflompoc.com/",
+    "Santa Barbara": "https://santabarbaraca.gov/",
+    "Santa Maria": "https://www.cityofsantamaria.org/",
+    "Solvang": "https://www.cityofsolvang.com/",
+    "Morgan Hill": "https://www.morganhill.ca.gov/",
+    "San Jose": "https://www.sanjoseca.gov/",
+    "Capitola": "https://www.cityofcapitola.org/",
+    "Santa Cruz": "https://www.cityofsantacruz.com/",
+    "Scotts Valley": "https://www.scottsvalley.gov/",
+    "Watsonville": "https://www.watsonville.gov/",
+    "Exeter": "https://cityofexeter.com/",
+    "Farmersville": "https://www.cityoffarmersville-ca.gov/",
+    "Lindsay": "https://www.lindsay.ca.us/",
+    "Porterville": "https://www.ci.porterville.ca.us/",
+    "Tulare": "https://www.tulare.ca.gov/",
+    "Visalia": "https://www.visalia.gov/",
+    "Woodlake": "https://www.cityofwoodlake.com/",
+    "Camarillo": "https://www.cityofcamarillo.org/",
+    "Fillmore": "https://www.fillmoreca.gov/",
+    "Moorpark": "https://www.moorparkca.gov/",
+    "Ojai": "https://www.ojai.ca.gov/",
+    "Oxnard": "https://www.oxnard.gov/",
+    "Port Hueneme": "https://www.ci.port-hueneme.ca.us/",
+    "San Buenaventura (Ventura)": "https://www.cityofventura.ca.gov/",
+    "Santa Paula": "https://www.spcity.org/",
+    "Simi Valley": "https://www.simivalley.org/",
+    "Thousand Oaks": "https://www.toaks.gov/"
+  },
+  "counties": {
+    "Fresno": {
+      "website": "https://www.fresnocountyca.gov/",
+      "transit": "https://www.fresnocog.org/"
+    },
+    "Inyo": {
+      "website": "https://www.inyocounty.us/",
+      "transit": "https://www.estransit.com/"
+    },
+    "Kern": {
+      "website": "https://www.kerncounty.com/",
+      "transit": "https://www.kerntransit.org/"
+    },
+    "Kings": {
+      "website": "https://www.countyofkingsca.gov/",
+      "transit": "https://www.kingscog.org/"
+    },
+    "Los Angeles": {
+      "website": "https://lacounty.gov/",
+      "planning": "https://planning.lacounty.gov/",
+      "meetings": "https://lacounty.legistar.com/Calendar.aspx",
+      "transit": "https://www.metro.net/"
+    },
+    "Monterey": {
+      "website": "https://www.countyofmonterey.gov/",
+      "transit": "https://mst.org/"
+    },
+    "San Luis Obispo": {
+      "website": "https://www.slocounty.ca.gov/",
+      "planning": "https://www.slocounty.ca.gov/departments/planning-building",
+      "meetings": "https://agenda.slocounty.ca.gov/",
+      "transit": "https://www.slocog.org/"
+    },
+    "Santa Barbara": {
+      "website": "https://www.countyofsb.org/",
+      "planning": "https://www.countyofsb.org/159/Planning-Development",
+      "meetings": "https://santabarbara.legistar.com/Calendar.aspx",
+      "transit": "https://www.sbcag.org/"
+    },
+    "Santa Clara": {
+      "website": "https://www.santaclaracounty.gov/",
+      "planning": "https://plandev.santaclaracounty.gov/",
+      "meetings": "https://sccgov.legistar.com/Calendar.aspx",
+      "transit": "https://www.vta.org/"
+    },
+    "Santa Cruz": {
+      "website": "https://www.santacruzcountyca.gov/",
+      "planning": "https://www.sccoplanning.com/",
+      "transit": "https://www.scmtd.com/"
+    },
+    "Tulare": {
+      "website": "https://www.tularecounty.ca.gov/",
+      "transit": "https://tularecog.org/"
+    },
+    "Ventura": {
+      "website": "https://www.ventura.org/",
+      "planning": "https://rma.venturacounty.gov/divisions/planning/",
+      "meetings": "https://ventura.legistar.com/Calendar.aspx",
+      "transit": "https://www.goventura.org/"
+    }
+  },
+  "overrides": {
+    "Santa Barbara": {
+      "planning": "https://santabarbaraca.gov/planning-commission",
+      "meetings": "https://records.santabarbaraca.gov/OnBaseAgendaOnline/"
+    },
+    "Goleta": {
+      "meetings": "https://goleta.legistar.com/Calendar.aspx",
+      "client": "goleta"
+    },
+    "Santa Maria": {
+      "planning": "https://www.cityofsantamaria.org/services/departments/community-development/planning-division",
+      "meetings": "https://www.cityofsantamaria.org/services/departments/city-clerk-records/agenda-center-meetings-portal"
+    },
+    "Lompoc": {
+      "boards": "https://www.cityoflompoc.com/government/committees-boards/planning-commission",
+      "meetings": "https://www.cityoflompoc.com/government/committees-boards/city-council/live-webcast"
+    },
+    "San Jose": {
+      "client": "sanjose",
+      "meetings": "https://sanjose.legistar.com/Calendar.aspx"
+    },
+    "Santa Cruz": {
+      "meetings": "https://santacruz.legistar.com/Calendar.aspx"
+    },
+    "Fresno": {
+      "client": "fresno",
+      "meetings": "https://fresno.legistar.com/Calendar.aspx"
+    },
+    "Bakersfield": {
+      "meetings": "https://bakersfield.legistar.com/Calendar.aspx"
+    },
+    "Oxnard": {
+      "meetings": "https://www.oxnard.gov/city-clerks-office/meeting-agendas"
+    },
+    "San Luis Obispo": {
+      "planning": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+      "boards": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
+      "meetings": "https://pub-slocity.escribemeetings.com/"
+    },
+    "Pismo Beach": {
+      "planning": "https://pismobeach.org/70/Planning",
+      "meetings": "https://pismobeach.org/897/Agenda-Center"
+    },
+    "Buellton": {
+      "planning": "https://cityofbuellton.com/departments/planning.php",
+      "meetings": "https://cityofbuellton.com/government/document-archive.php"
+    },
+    "Solvang": {
+      "boards": "https://www.cityofsolvang.com/202/Planning-Commission",
+      "meetings": "https://cityofsolvang.com/593/2026-to-Current-Agenda-Minutes"
+    },
+    "San Buenaventura (Ventura)": {
+      "planning": "https://www.cityofventura.ca.gov/432/Planning",
+      "meetings": "https://www.cityofventura.ca.gov/agendacenter/Planning-Commission-19",
+      "projects": "https://map.cityofventura.net/docs/projects/listproj.htm"
+    },
+    "Calabasas": {
+      "meetings": "https://www.cityofcalabasas.com/government/meeting-agendas"
+    },
+    "Simi Valley": {
+      "meetings": "https://simivalley.granicus.com/ViewPublisher.php?view_id=6"
+    },
+    "Del Rey Oaks": {
+      "meetings": "https://www.delreyoaks.org/meetings/recent"
+    },
+    "Morgan Hill": {
+      "meetings": "https://www.morganhill.ca.gov/2101/Agendas-Minutes",
+      "boards": "https://www.morganhill.ca.gov/569/Planning-Commission"
+    },
+    "Tulare": {
+      "meetings": "https://www.tulare.ca.gov/government/agendas-staff-reports-minutes-audio-listing/-toggle-all",
+      "boards": "https://www.tulare.ca.gov/government/boards-commissions-committees/planning-commission/-toggle-allpast"
+    },
+    "Visalia": {
+      "meetings": "https://visalia.legistar.com/Calendar.aspx",
+      "client": "visalia",
+      "boards": "https://www.visalia.gov/AgendaCenter/Planning-Commission-3/"
+    },
+    "Lancaster": {
+      "meetings": "https://www.cityoflancasterca.org/our-city/departments-services/city-clerk/meetings-agendas-and-minutes"
+    },
+    "Marina": {
+      "planning": "https://www.cityofmarina.org/161/Planning-Services",
+      "meetings": "https://cityofmarina.org/958/Access-View-Meetings"
+    },
+    "Ojai": {
+      "boards": "https://www.ojai.ca.gov/320/Planning-Commission",
+      "meetings": "https://ojai.granicus.com/ViewPublisher.php?view_id=1"
+    }
+  },
+  "transportation": [
+    {
+      "name": "State Route 46 Corridor Improvement Project",
+      "county": "San Luis Obispo",
+      "url": "https://dot.ca.gov/caltrans-near-me/district-5/district-5-current-projects/05-3307a"
+    },
+    {
+      "name": "Ventura Overhead Bridge Replacement Project",
+      "county": "Ventura",
+      "url": "https://dot.ca.gov/DOT/caltrans-near-me/district-7/district-7-projects/d7-ventura-overhead-bridge-replacement-project"
+    },
+    {
+      "name": "Our Future 101 corridor improvements",
+      "county": "Ventura",
+      "url": "https://www.goventura.org/our-future-101/"
+    },
+    {
+      "name": "District 5 current transportation projects",
+      "county": "Santa Barbara",
+      "url": "https://dot.ca.gov/caltrans-near-me/district-5/district-5-current-projects",
+      "kind": "directory"
+    },
+    {
+      "name": "District 6 transportation projects",
+      "county": "Kern",
+      "url": "https://dot.ca.gov/caltrans-near-me/district-6/district-6-projects",
+      "kind": "directory"
+    },
+    {
+      "name": "District 7 transportation projects",
+      "county": "Ventura",
+      "url": "https://dot.ca.gov/caltrans-near-me/district-7/district-7-projects",
+      "kind": "directory"
+    },
+    {
+      "name": "District 9 transportation projects",
+      "county": "Inyo",
+      "url": "https://dot.ca.gov/caltrans-near-me/district-9/district-9-projects",
+      "kind": "directory"
+    },
+    {
+      "name": "VTA projects and programs",
+      "county": "Santa Clara",
+      "url": "https://www.vta.org/projects",
+      "kind": "directory"
+    }
+  ]
+}
