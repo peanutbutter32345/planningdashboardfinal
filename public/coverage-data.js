@@ -14,10 +14,10 @@
   if(!c?.recordsUrl||loaded.has(key))return false;
   if(pending.has(key))return pending.get(key);
   const request=(async()=>{
-   const response=await fetcher(c.recordsUrl,{cache:'no-cache'});
+   const response=await fetcher(c.recordsUrl,{cache:'no-cache',signal:root.AbortSignal.timeout(15000)});
    if(!response.ok)throw Error('The city records could not be loaded. Please retry.');
    const data=await response.json();
-   if(!Array.isArray(data.records)||data.records.length!==c.recordCount)throw Error('Incomplete city record response. Please retry.');
+   if(!Array.isArray(data.records)||data.records.length!==c.recordCount||data.records.some(r=>!r||typeof r.id!=='string'||!r.id)||new Set(data.records.map(r=>r.id)).size!==data.records.length)throw Error('Incomplete city record response. Please retry.');
    c.data=data.records;
    c.feed=data.records.filter(r=>r.lastDate).map(r=>({date:r.lastDate,id:r.id,title:r.addr,body:r.lastNote,stage:r.stage}));
    loaded.add(key);

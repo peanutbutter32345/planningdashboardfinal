@@ -127,7 +127,7 @@ export const BOARDS = [
   {
     "name": "Rental Housing Committee",
     "when": "6 p.m. \u00b7 4th Thursday \u00b7 Council Chambers, City Hall",
-    "body": "Oversees Mountain View's rent stabilization program - directly tied to the housing projects above.",
+    "body": "Oversees Mountain View's rent stabilization program, including rent limits and tenant protections.",
     "cat": "Housing",
     "link": "https://www.mountainview.gov/our-city/city-council/boards-commissions-and-committees/rental-housing-committee",
     "city": "mountainview",

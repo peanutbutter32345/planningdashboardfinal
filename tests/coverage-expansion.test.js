@@ -47,7 +47,7 @@ test('new locality outlines and photo credits are retained without inventing mar
 });
 function loader(fetcher){
  const root={COVERAGE_EXPANSION:{cities:{a:{label:'A',recordsUrl:'/data/coverage/a.json',recordCount:2,data:[]}},photos:{},meetings:{},activity:{}},REGIONAL_DATA:{cities:{original:{label:'Original'}}},LOCAL_CITY_PHOTOS:{},MEETING_DIRECTORY:{},HOUSING_RECORDS:{activity:{}},fetch:fetcher};
- const ctx=vm.createContext(root);
+ const ctx=vm.createContext({...root,AbortSignal});
  vm.runInContext(readFileSync(new URL('../public/coverage-data.js',import.meta.url),'utf8'),ctx);
  return {api:ctx.DashboardCoverage,cities:ctx.REGIONAL_DATA.cities};
 }
@@ -93,6 +93,26 @@ test('environmental notices have factual filing labels, source descriptions and 
 test('coverage records revalidate so an old browser cache cannot contradict the manifest',async()=>{
  let options;const c=loader(async(_url,opts)=>{options=opts;return {ok:true,json:async()=>({records:[{id:'1'},{id:'2'}]})};});
  await c.api.load('a',c.cities);assert.equal(options.cache,'no-cache');
+});
+
+test('duplicate record identifiers are rejected without replacing the city preview',async()=>{
+ const c=loader(async()=>({ok:true,json:async()=>({records:[{id:'duplicate'},{id:'duplicate'}]})}));
+ c.cities.a.data=[{id:'preview'}];
+ await assert.rejects(c.api.load('a',c.cities),/Incomplete/);
+ assert.equal(c.cities.a.data[0].id,'preview');assert.equal(c.api.loaded.has('a'),false);
+});
+
+test('timed-out requests preserve previews and release the shared request for retry',async()=>{
+ let attempts=0,signal;
+ const c=loader(async(_url,options)=>{
+   attempts++;signal=options.signal;
+   if(attempts===1)throw new DOMException('Timed out','TimeoutError');
+   return {ok:true,json:async()=>({records:[{id:'1'},{id:'2'}]})};
+ });
+ c.cities.a.data=[{id:'preview'}];
+ await assert.rejects(c.api.load('a',c.cities),{name:'TimeoutError'});
+ assert.ok(signal instanceof AbortSignal);assert.equal(c.cities.a.data[0].id,'preview');
+ await c.api.load('a',c.cities);assert.equal(c.cities.a.data.length,2);assert.equal(attempts,2);
 });
 
 test('named boards exclude individual calendar events and confirmed stale links',()=>{

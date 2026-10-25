@@ -17,7 +17,7 @@ const get=async path=>{const response=await fetch(base+path);assert.equal(respon
 test('all 55 CA-24 localities load complete records without losing or duplicating a project',async()=>{
  assert.equal(places.length,55);
  const requests=new Map();
- const context=vm.createContext({COVERAGE_EXPANSION:structuredClone(manifest),REGIONAL_DATA:{cities:{}},LOCAL_CITY_PHOTOS:{},MEETING_DIRECTORY:{},HOUSING_RECORDS:{activity:{}},fetch:async url=>{
+ const context=vm.createContext({AbortSignal,COVERAGE_EXPANSION:structuredClone(manifest),REGIONAL_DATA:{cities:{}},LOCAL_CITY_PHOTOS:{},MEETING_DIRECTORY:{},HOUSING_RECORDS:{activity:{}},fetch:async url=>{
   requests.set(url,(requests.get(url)||0)+1);
   return {ok:true,json:async()=>read('public'+url)};
  }});
