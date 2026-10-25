@@ -54,6 +54,11 @@
       "category": "Zoning",
       "title": "County zoning and parcel lookup",
       "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps"
+    },
+    {
+      "category": "Boards",
+      "title": "County boards, committees and commissions",
+      "url": "https://apps.co.monterey.ca.us/bccsite"
     }
   ],
   "Kern County": [
@@ -177,6 +182,11 @@
       "category": "Zoning",
       "title": "Current city zoning, coastal and general plan maps",
       "url": "https://www.ci.seaside.ca.us/858/Maps"
+    },
+    {
+      "category": "Boards",
+      "title": "City boards and commissions",
+      "url": "https://www.ci.seaside.ca.us/156/Boards-Commissions"
     }
   ],
   "Morro Bay": [
@@ -191,6 +201,11 @@
       "category": "Zoning",
       "title": "Zoning map, overlay map and regulations",
       "url": "https://www.cityofgoleta.org/your-city/planning-and-environmental-review/permits-and-regulations"
+    },
+    {
+      "category": "Boards",
+      "title": "City boards and commissions",
+      "url": "https://goleta.granicus.com/boards/w/ee26eeb27ed8332d/boards/18612"
     }
   ],
   "Lompoc": [
@@ -236,6 +251,11 @@
       "category": "Zoning",
       "title": "Developer resources and zoning map",
       "url": "https://www.cityoffarmersville-ca.gov/382/Developer-Resources"
+    },
+    {
+      "category": "Boards",
+      "title": "Planning Commission",
+      "url": "https://www.cityoffarmersville-ca.gov/234/Planning-Commission"
     }
   ],
   "Lindsay": [
@@ -317,6 +337,34 @@
       "category": "Municipal code",
       "title": "City zoning ordinance",
       "url": "https://cityofmaricopa.org/wp-content/uploads/2025/02/Maricopa-Zoning-Ordinance.pdf"
+    }
+  ],
+  "Santa Clara County": [
+    {
+      "category": "Boards",
+      "title": "County board and commission applications and vacancies",
+      "url": "https://www.scc.info/vacancies"
+    }
+  ],
+  "Arroyo Grande": [
+    {
+      "category": "Boards",
+      "title": "City advisory bodies and applications",
+      "url": "https://arroyogrande.org/192/Advisory-Bodies"
+    }
+  ],
+  "Grover Beach": [
+    {
+      "category": "Boards",
+      "title": "City commissions, committees and boards",
+      "url": "https://www.grover.org/185/Commissions-Committees-Boards"
+    }
+  ],
+  "Guadalupe": [
+    {
+      "category": "Boards",
+      "title": "Mayor and City Council",
+      "url": "https://cityofguadalupe.org/mayor-and-city-council/"
     }
   ]
 }

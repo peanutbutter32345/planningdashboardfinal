@@ -4932,6 +4932,13 @@
           "category": "Contact",
           "scope": "city",
           "authority": "Seaside"
+        },
+        {
+          "category": "Boards",
+          "title": "City boards and commissions",
+          "url": "https://www.ci.seaside.ca.us/156/Boards-Commissions",
+          "authority": "Seaside",
+          "scope": "city"
         }
       ],
       "layers": [],
@@ -5007,6 +5014,13 @@
           "category": "Contact",
           "scope": "city",
           "authority": "Arroyo Grande"
+        },
+        {
+          "category": "Boards",
+          "title": "City advisory bodies and applications",
+          "url": "https://arroyogrande.org/192/Advisory-Bodies",
+          "authority": "Arroyo Grande",
+          "scope": "city"
         }
       ],
       "layers": [],
@@ -5404,6 +5418,13 @@
           "category": "Contact",
           "scope": "city",
           "authority": "Grover Beach"
+        },
+        {
+          "category": "Boards",
+          "title": "City commissions, committees and boards",
+          "url": "https://www.grover.org/185/Commissions-Committees-Boards",
+          "authority": "Grover Beach",
+          "scope": "city"
         }
       ],
       "layers": [],
@@ -6446,6 +6467,13 @@
           "url": "https://www.cityofgoleta.org/your-city/planning-and-environmental-review/permits-and-regulations",
           "scope": "city",
           "authority": "Goleta"
+        },
+        {
+          "category": "Boards",
+          "title": "City boards and commissions",
+          "url": "https://goleta.granicus.com/boards/w/ee26eeb27ed8332d/boards/18612",
+          "authority": "Goleta",
+          "scope": "city"
         }
       ],
       "layers": [],
@@ -6569,6 +6597,13 @@
           "category": "Contact",
           "scope": "city",
           "authority": "Guadalupe"
+        },
+        {
+          "category": "Boards",
+          "title": "Mayor and City Council",
+          "url": "https://cityofguadalupe.org/mayor-and-city-council/",
+          "authority": "Guadalupe",
+          "scope": "city"
         }
       ],
       "layers": [],
@@ -8554,6 +8589,13 @@
           "category": "Contact",
           "scope": "city",
           "authority": "Farmersville"
+        },
+        {
+          "category": "Boards",
+          "title": "Planning Commission",
+          "url": "https://www.cityoffarmersville-ca.gov/234/Planning-Commission",
+          "authority": "Farmersville",
+          "scope": "city"
         }
       ],
       "layers": [],
@@ -11462,6 +11504,13 @@
           "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps",
           "scope": "county",
           "authority": "Monterey County"
+        },
+        {
+          "category": "Boards",
+          "title": "County boards, committees and commissions",
+          "url": "https://apps.co.monterey.ca.us/bccsite",
+          "authority": "Monterey County",
+          "scope": "county"
         }
       ],
       "layers": [],
@@ -12365,7 +12414,15 @@
     },
     "c06085": {
       "authority": "Santa Clara County",
-      "resources": [],
+      "resources": [
+        {
+          "category": "Boards",
+          "title": "County board and commission applications and vacancies",
+          "url": "https://www.scc.info/vacancies",
+          "authority": "Santa Clara County",
+          "scope": "county"
+        }
+      ],
       "layers": [],
       "checks": {
         "https://www.santaclaracounty.gov/": "HTTP Error 403: Forbidden",
@@ -23985,6 +24042,13 @@
           "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps",
           "scope": "county",
           "authority": "Monterey County"
+        },
+        {
+          "category": "Boards",
+          "title": "County boards, committees and commissions",
+          "url": "https://apps.co.monterey.ca.us/bccsite",
+          "authority": "Monterey County",
+          "scope": "county"
         }
       ],
       "layers": [],
@@ -24002,6 +24066,13 @@
           "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps",
           "scope": "county",
           "authority": "Monterey County"
+        },
+        {
+          "category": "Boards",
+          "title": "County boards, committees and commissions",
+          "url": "https://apps.co.monterey.ca.us/bccsite",
+          "authority": "Monterey County",
+          "scope": "county"
         }
       ],
       "layers": [],
@@ -24019,6 +24090,13 @@
           "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps",
           "scope": "county",
           "authority": "Monterey County"
+        },
+        {
+          "category": "Boards",
+          "title": "County boards, committees and commissions",
+          "url": "https://apps.co.monterey.ca.us/bccsite",
+          "authority": "Monterey County",
+          "scope": "county"
         }
       ],
       "layers": [],
@@ -24036,6 +24114,13 @@
           "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps",
           "scope": "county",
           "authority": "Monterey County"
+        },
+        {
+          "category": "Boards",
+          "title": "County boards, committees and commissions",
+          "url": "https://apps.co.monterey.ca.us/bccsite",
+          "authority": "Monterey County",
+          "scope": "county"
         }
       ],
       "layers": [],
@@ -24053,6 +24138,13 @@
           "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps",
           "scope": "county",
           "authority": "Monterey County"
+        },
+        {
+          "category": "Boards",
+          "title": "County boards, committees and commissions",
+          "url": "https://apps.co.monterey.ca.us/bccsite",
+          "authority": "Monterey County",
+          "scope": "county"
         }
       ],
       "layers": [],
@@ -24070,6 +24162,13 @@
           "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps",
           "scope": "county",
           "authority": "Monterey County"
+        },
+        {
+          "category": "Boards",
+          "title": "County boards, committees and commissions",
+          "url": "https://apps.co.monterey.ca.us/bccsite",
+          "authority": "Monterey County",
+          "scope": "county"
         }
       ],
       "layers": [],
@@ -24087,6 +24186,13 @@
           "url": "https://www.countyofmonterey.gov/government/departments-a-h/housing-community-development/monterey-county-gis-maps",
           "scope": "county",
           "authority": "Monterey County"
+        },
+        {
+          "category": "Boards",
+          "title": "County boards, committees and commissions",
+          "url": "https://apps.co.monterey.ca.us/bccsite",
+          "authority": "Monterey County",
+          "scope": "county"
         }
       ],
       "layers": [],
@@ -29015,7 +29121,15 @@
     },
     "p0641282": {
       "authority": "Santa Clara County",
-      "resources": [],
+      "resources": [
+        {
+          "category": "Boards",
+          "title": "County board and commission applications and vacancies",
+          "url": "https://www.scc.info/vacancies",
+          "authority": "Santa Clara County",
+          "scope": "county"
+        }
+      ],
       "layers": [],
       "checks": {
         "https://www.santaclaracounty.gov/": "HTTP Error 403: Forbidden",

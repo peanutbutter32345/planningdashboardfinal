@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-25T08:13:02.337Z",
+  "generated": "2026-10-25T08:18:37.765Z",
   "reference": "Cupertino feature checklist: housing, statistics, news, local files, zoning, plans, code, capital improvements, boards, meetings, housing policy, transport, environmental review and contacts.",
   "summary": {
     "profiles": 268,
@@ -81,9 +81,9 @@
         "label": "Boards and commissions",
         "imported": 0,
         "live": 0,
-        "directory": 250,
+        "directory": 266,
         "lookup": 0,
-        "unavailable": 18
+        "unavailable": 2
       },
       "meetings": {
         "label": "Agendas and recordings",
@@ -24061,9 +24061,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County boards, committees and commissions",
+              "url": "https://apps.co.monterey.ca.us/bccsite",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -24675,9 +24681,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County boards, committees and commissions",
+              "url": "https://apps.co.monterey.ca.us/bccsite",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -24851,9 +24863,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County boards, committees and commissions",
+              "url": "https://apps.co.monterey.ca.us/bccsite",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -25215,9 +25233,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County boards, committees and commissions",
+              "url": "https://apps.co.monterey.ca.us/bccsite",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -26155,9 +26179,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County boards, committees and commissions",
+              "url": "https://apps.co.monterey.ca.us/bccsite",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -26844,9 +26874,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County boards, committees and commissions",
+              "url": "https://apps.co.monterey.ca.us/bccsite",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -27404,9 +27440,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "City boards and commissions",
+              "url": "https://www.ci.seaside.ca.us/156/Boards-Commissions",
+              "scope": "city"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -27627,9 +27669,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County boards, committees and commissions",
+              "url": "https://apps.co.monterey.ca.us/bccsite",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -27815,9 +27863,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "City advisory bodies and applications",
+              "url": "https://arroyogrande.org/192/Advisory-Bodies",
+              "scope": "city"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -31272,9 +31326,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "City commissions, committees and boards",
+              "url": "https://www.grover.org/185/Commissions-Committees-Boards",
+              "scope": "city"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -38234,9 +38294,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "City boards and commissions",
+              "url": "https://goleta.granicus.com/boards/w/ee26eeb27ed8332d/boards/18612",
+              "scope": "city"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -38474,9 +38540,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "Mayor and City Council",
+              "url": "https://cityofguadalupe.org/mayor-and-city-council/",
+              "scope": "city"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -42684,9 +42756,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County board and commission applications and vacancies",
+              "url": "https://www.scc.info/vacancies",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -55835,9 +55913,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "Planning Commission",
+              "url": "https://www.cityoffarmersville-ca.gov/234/Planning-Commission",
+              "scope": "city"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -70403,9 +70487,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County boards, committees and commissions",
+              "url": "https://apps.co.monterey.ca.us/bccsite",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
@@ -71705,9 +71795,15 @@
         {
           "key": "boards",
           "label": "Boards and commissions",
-          "status": "unavailable",
-          "count": 0,
-          "sources": [],
+          "status": "directory",
+          "count": 1,
+          "sources": [
+            {
+              "title": "County board and commission applications and vacancies",
+              "url": "https://www.scc.info/vacancies",
+              "scope": "county"
+            }
+          ],
           "note": "Membership and vacancies must be checked on the official page."
         },
         {
