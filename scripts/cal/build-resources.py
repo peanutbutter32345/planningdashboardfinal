@@ -6,8 +6,9 @@ import json,urllib.request,urllib.parse,pathlib,concurrent.futures,datetime,re,h
 from html.parser import HTMLParser
 ROOT=pathlib.Path(__file__).resolve().parents[2];OUT=ROOT/'public/cal/data';CACHE=pathlib.Path('/tmp/cal-civic-cache');sources=json.loads((ROOT/'scripts/cal/sources.json').read_text());geo=json.loads((OUT/'geography.json').read_text())
 class Links(HTMLParser):
- def __init__(self):super().__init__();self.links=[];self.href=None;self.text=[]
+ def __init__(self):super().__init__();self.links=[];self.base=None;self.href=None;self.text=[]
  def handle_starttag(self,t,attrs):
+  if t=='base' and not self.base:self.base=dict(attrs).get('href')
   if t=='a':self.href=dict(attrs).get('href');self.text=[]
  def handle_data(self,d):
   if self.href:self.text.append(d)
@@ -23,7 +24,7 @@ def crawl(url):
    final=r.url;body=r.read(1800000).decode('utf-8',errors='replace');status=r.status
   parser=Links();parser.feed(body);links=[]
   for href,title in parser.links:
-   link=urllib.parse.urljoin(final,href)
+   link=urllib.parse.urljoin(urllib.parse.urljoin(final,parser.base or ''),href)
    if not link.startswith('https://') or not title or len(title)>150 or len(title)<3 or re.search('javascript:|mailto:|tel:',href):continue
    links.append({'title':re.sub(r'\s+',' ',html.unescape(title)),'url':link.split('#')[0]})
   links=list({(x['title'],x['url']):x for x in links}.values());checks[url]=status
@@ -33,7 +34,7 @@ patterns={'planning':r'planning (?:division|department|building)|planning &|plan
 def discover(url,overrides):
  links=crawl(url);chosen={}
  for kind,pattern in patterns.items():
-  options=[x for x in links if re.search(pattern,x['title'],re.I)]
+  options=[x for x in links if re.search(pattern,x['title'],re.I) and (kind!='boards' or not re.search(r'calendar|/event/|cancelled|canceled',x['url']+' '+x['title'],re.I))]
   if options:chosen[kind]=min(options,key=lambda x:len(x['title']))['url']
  chosen.update({k:v for k,v in overrides.items() if k in patterns})
  # Inspect a published planning link for more specific project and housing resources.

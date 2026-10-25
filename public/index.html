@@ -1890,7 +1890,7 @@
     <div class="hero-copy without-advisors">
       <div class="nameplate">
         <div class="nameplate-title">
-        <div class="np-kicker"><span id="npKickerCounty">Bay Area, Central &amp; Southern California</span><i></i><span>Public planning records</span></div>
+        <div class="np-kicker"><span id="npKickerCounty">Bay Area &amp; California communities</span><i></i><span>Public planning records</span></div>
         <h1><span class="np-l1">The Bay</span><em class="np-l2">Dashboard</em></h1>
         </div>
         <div class="site-intro">
@@ -2328,7 +2328,7 @@
   <div class="wrap">
     <div class="planner-shell">
       <h2>Statistics</h2>
-      <p class="section-note">Housing costs and development activity across the Bay Area, with <span id="statsCityName">your city</span> marked. Market figures are citywide indexes from Zillow's public research data; pipeline figures are counted from the records in this dashboard.</p>
+      <p class="section-note">Housing costs and development activity across covered California communities, with <span id="statsCityName">your city</span> marked. Each figure identifies its source and reporting period. Census estimates, Zillow indexes and annual housing reports measure different things.</p>
       <div id="statsContent"></div>
       <p class="section-note" id="statsSource" style="margin-top:22px;"></p>
     </div>
@@ -2747,7 +2747,7 @@
       <p>Statuses lag their source. A city that updates its pipeline quarterly can show a status here that is up to a quarter old, and a project can change between the last refresh and now. Each project shows the city's own file number and links to the register it came from, where that number can be looked up.</p>
 
       <h4>What it covers</h4>
-      <p>All <span class="city-count">101</span> incorporated cities and towns across the Bay Area and the areas covered by CA-19, CA-20, CA-21, CA-24, CA-26 and CA-27, plus San Diego and community and neighborhood profiles. Each area has official resources and a meeting directory. Photos identify the place pictured. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
+      <p>All <span class="city-count">101</span> incorporated cities and towns across the Bay Area and the areas covered by CA-19, CA-20, CA-21, CA-24, CA-26 and CA-27, plus San Diego, Sacramento, Long Beach, Anaheim, Stockton, Riverside and nearby community and neighborhood profiles. Each area has official resources and a meeting directory. Photos identify the place pictured. Project inventories are researched samples; newer directory profiles provide Census statistics and official sources while their project inventory is being assembled.</p>
       <div class="about-mosaic" id="aboutMosaic"></div>
 
       <p class="about-credits" id="aboutCredits"></p>
@@ -16565,7 +16565,7 @@ function cityRing(key){ return cityBoundaries?.cities?.[key]?.ring || null; }
 let heroMap = null, heroLayer = null, heroOutline = null;
 function renderHeroMap(){
   // First map on the page triggers the fetch; when it lands every bbox is real and this redraws.
-  if(!cityBoundaries) loadCityBoundaries().then(d=>{ if(d){renderHeroMap();renderCityBoundary();} });
+  if(!cityBoundaries) loadCityBoundaries().then(d=>{ if(d){renderHeroMap();renderCityBoundary();renderLegend();} });
   const card = document.getElementById('heroMapCard');
   if(!card) return;
   if(typeof L === 'undefined'){ noteMapUnavailable(document.getElementById('heroMap')); return; }

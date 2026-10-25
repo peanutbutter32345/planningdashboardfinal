@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "retrieved": "2026-10-25T09:18:12.080916+00:00",
+    "retrieved": "2026-10-25T09:52:47.191233+00:00",
     "source": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer",
     "placesSource": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Places_CouSub_ConCity_SubMCD/MapServer",
     "districts": [
@@ -14,6 +14,402 @@
     "extraCities": [
       "San Diego"
     ],
+    "extraPlaces": [
+      "0602000",
+      "0602553",
+      "0603209",
+      "0604982",
+      "0608786",
+      "0611530",
+      "0614890",
+      "0615044",
+      "0616350",
+      "0616651",
+      "0617750",
+      "0621034",
+      "0622020",
+      "0622457",
+      "0624498",
+      "0625590",
+      "0626028",
+      "0627130",
+      "0628000",
+      "0628182",
+      "0629000",
+      "0630658",
+      "0632506",
+      "0633574",
+      "0634302",
+      "0637692",
+      "0638065",
+      "0639892",
+      "0640410",
+      "0640704",
+      "0641142",
+      "0641558",
+      "0642202",
+      "0643000",
+      "0643224",
+      "0644000",
+      "0644760",
+      "0645484",
+      "0645680",
+      "0649180",
+      "0649270",
+      "0651560",
+      "0651924",
+      "0653980",
+      "0655618",
+      "0655800",
+      "0657526",
+      "0659444",
+      "0660942",
+      "0662000",
+      "0662910",
+      "0663050",
+      "0664000",
+      "0670686",
+      "0671876",
+      "0673962",
+      "0675000",
+      "0677595",
+      "0684816",
+      "0686244",
+      "0686832"
+    ],
+    "populationExpansion": {
+      "source": "https://dof.ca.gov/media/docs/forecasting/Demographics/estimates-e1/RankCities_2026.xlsx",
+      "populationDate": "2026-01-01",
+      "released": "2026-05-01",
+      "selection": "Five largest California incorporated cities missing after PR 83. Include Census places sharing or nearly sharing their boundaries (0.002-degree tolerance), plus the three nearest incorporated-city representative points within 40 km. Original coverage is retained. Nearby regions are selected places, not entire counties.",
+      "anchors": [
+        {
+          "name": "Sacramento",
+          "geoid": "0664000",
+          "population": 539765,
+          "stateRank": 6,
+          "nearby": [
+            {
+              "name": "West Sacramento",
+              "geoid": "0684816",
+              "kind": "city"
+            },
+            {
+              "name": "Elk Grove",
+              "geoid": "0622020",
+              "kind": "city"
+            },
+            {
+              "name": "Freeport",
+              "geoid": "0625590",
+              "kind": "community"
+            },
+            {
+              "name": "Fruitridge Pocket",
+              "geoid": "0627130",
+              "kind": "community"
+            },
+            {
+              "name": "Lemon Hill",
+              "geoid": "0641142",
+              "kind": "community"
+            },
+            {
+              "name": "La Riviera",
+              "geoid": "0640410",
+              "kind": "community"
+            },
+            {
+              "name": "Parkway",
+              "geoid": "0655800",
+              "kind": "community"
+            },
+            {
+              "name": "McClellan Park",
+              "geoid": "0644760",
+              "kind": "community"
+            },
+            {
+              "name": "Rosemont",
+              "geoid": "0662910",
+              "kind": "community"
+            },
+            {
+              "name": "Florin",
+              "geoid": "0624498",
+              "kind": "community"
+            },
+            {
+              "name": "North Highlands",
+              "geoid": "0651924",
+              "kind": "community"
+            },
+            {
+              "name": "Rio Linda",
+              "geoid": "0660942",
+              "kind": "community"
+            },
+            {
+              "name": "Arden-Arcade",
+              "geoid": "0602553",
+              "kind": "community"
+            },
+            {
+              "name": "Rancho Cordova",
+              "geoid": "0659444",
+              "kind": "city"
+            }
+          ]
+        },
+        {
+          "name": "Long Beach",
+          "geoid": "0643000",
+          "population": 462193,
+          "stateRank": 7,
+          "nearby": [
+            {
+              "name": "Hawaiian Gardens",
+              "geoid": "0632506",
+              "kind": "city"
+            },
+            {
+              "name": "Signal Hill",
+              "geoid": "0671876",
+              "kind": "city"
+            },
+            {
+              "name": "Los Alamitos",
+              "geoid": "0643224",
+              "kind": "city"
+            },
+            {
+              "name": "Paramount",
+              "geoid": "0655618",
+              "kind": "city"
+            },
+            {
+              "name": "Bellflower",
+              "geoid": "0604982",
+              "kind": "city"
+            },
+            {
+              "name": "Cypress",
+              "geoid": "0617750",
+              "kind": "city"
+            },
+            {
+              "name": "Compton",
+              "geoid": "0615044",
+              "kind": "city"
+            },
+            {
+              "name": "Lakewood",
+              "geoid": "0639892",
+              "kind": "city"
+            },
+            {
+              "name": "Seal Beach",
+              "geoid": "0670686",
+              "kind": "city"
+            },
+            {
+              "name": "Carson",
+              "geoid": "0611530",
+              "kind": "city"
+            },
+            {
+              "name": "Los Angeles",
+              "geoid": "0644000",
+              "kind": "city"
+            },
+            {
+              "name": "East Rancho Dominguez",
+              "geoid": "0621034",
+              "kind": "community"
+            },
+            {
+              "name": "Rossmoor",
+              "geoid": "0663050",
+              "kind": "community"
+            }
+          ]
+        },
+        {
+          "name": "Anaheim",
+          "geoid": "0602000",
+          "population": 340433,
+          "stateRank": 10,
+          "nearby": [
+            {
+              "name": "Stanton",
+              "geoid": "0673962",
+              "kind": "city"
+            },
+            {
+              "name": "Cypress",
+              "geoid": "0617750",
+              "kind": "city"
+            },
+            {
+              "name": "Placentia",
+              "geoid": "0657526",
+              "kind": "city"
+            },
+            {
+              "name": "Buena Park",
+              "geoid": "0608786",
+              "kind": "city"
+            },
+            {
+              "name": "Fullerton",
+              "geoid": "0628000",
+              "kind": "city"
+            },
+            {
+              "name": "Garden Grove",
+              "geoid": "0629000",
+              "kind": "city"
+            },
+            {
+              "name": "Yorba Linda",
+              "geoid": "0686832",
+              "kind": "city"
+            },
+            {
+              "name": "Orange",
+              "geoid": "0653980",
+              "kind": "city"
+            }
+          ]
+        },
+        {
+          "name": "Stockton",
+          "geoid": "0675000",
+          "population": 322436,
+          "stateRank": 11,
+          "nearby": [
+            {
+              "name": "Taft Mosswood",
+              "geoid": "0677595",
+              "kind": "community"
+            },
+            {
+              "name": "Lincoln Village",
+              "geoid": "0641558",
+              "kind": "community"
+            },
+            {
+              "name": "August",
+              "geoid": "0603209",
+              "kind": "community"
+            },
+            {
+              "name": "Kennedy",
+              "geoid": "0638065",
+              "kind": "community"
+            },
+            {
+              "name": "Country Club",
+              "geoid": "0616651",
+              "kind": "community"
+            },
+            {
+              "name": "Garden Acres",
+              "geoid": "0628182",
+              "kind": "community"
+            },
+            {
+              "name": "French Camp",
+              "geoid": "0626028",
+              "kind": "community"
+            },
+            {
+              "name": "Morada",
+              "geoid": "0649180",
+              "kind": "community"
+            },
+            {
+              "name": "Lathrop",
+              "geoid": "0640704",
+              "kind": "city"
+            },
+            {
+              "name": "Lodi",
+              "geoid": "0642202",
+              "kind": "city"
+            },
+            {
+              "name": "Manteca",
+              "geoid": "0645484",
+              "kind": "city"
+            }
+          ]
+        },
+        {
+          "name": "Riverside",
+          "geoid": "0662000",
+          "population": 321884,
+          "stateRank": 12,
+          "nearby": [
+            {
+              "name": "Colton",
+              "geoid": "0614890",
+              "kind": "city"
+            },
+            {
+              "name": "Norco",
+              "geoid": "0651560",
+              "kind": "city"
+            },
+            {
+              "name": "Jurupa Valley",
+              "geoid": "0637692",
+              "kind": "city"
+            },
+            {
+              "name": "Corona",
+              "geoid": "0616350",
+              "kind": "city"
+            },
+            {
+              "name": "Moreno Valley",
+              "geoid": "0649270",
+              "kind": "city"
+            },
+            {
+              "name": "Home Gardens",
+              "geoid": "0634302",
+              "kind": "community"
+            },
+            {
+              "name": "Highgrove",
+              "geoid": "0633574",
+              "kind": "community"
+            },
+            {
+              "name": "El Sobrante",
+              "geoid": "0622457",
+              "kind": "community"
+            },
+            {
+              "name": "Woodcrest",
+              "geoid": "0686244",
+              "kind": "community"
+            },
+            {
+              "name": "March ARB",
+              "geoid": "0645680",
+              "kind": "community"
+            },
+            {
+              "name": "Grand Terrace",
+              "geoid": "0630658",
+              "kind": "city"
+            }
+          ]
+        }
+      ]
+    },
     "currentCongress": 119,
     "currentThrough": "2027-01-02",
     "futureCongress": 120,
@@ -2500,6 +2896,29 @@
       ]
     },
     {
+      "id": "p0604982",
+      "geoid": "0604982",
+      "name": "Bellflower",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.88793,
+        "lng": -118.1275
+      },
+      "bounds": [
+        -118.15131,
+        33.86557,
+        -118.10691,
+        33.91045
+      ]
+    },
+    {
       "id": "p0609598",
       "geoid": "0609598",
       "name": "Calabasas",
@@ -2524,6 +2943,29 @@
         34.10391,
         -118.6062,
         34.16862
+      ]
+    },
+    {
+      "id": "p0611530",
+      "geoid": "0611530",
+      "name": "Carson",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.84271,
+        "lng": -118.24632
+      },
+      "bounds": [
+        -118.28888,
+        33.79255,
+        -118.2059,
+        33.88619
       ]
     },
     {
@@ -2555,6 +2997,29 @@
       ]
     },
     {
+      "id": "p0615044",
+      "geoid": "0615044",
+      "name": "Compton",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.89355,
+        "lng": -118.22892
+      },
+      "bounds": [
+        -118.26315,
+        33.86303,
+        -118.17995,
+        33.92313
+      ]
+    },
+    {
       "id": "p0619052",
       "geoid": "0619052",
       "name": "Desert View Highlands",
@@ -2579,6 +3044,29 @@
         34.58348,
         -118.14748,
         34.59827
+      ]
+    },
+    {
+      "id": "p0621034",
+      "geoid": "0621034",
+      "name": "East Rancho Dominguez",
+      "kind": "community",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.89732,
+        "lng": -118.19445
+      },
+      "bounds": [
+        -118.20615,
+        33.88162,
+        -118.18626,
+        33.90642
       ]
     },
     {
@@ -2663,6 +3151,29 @@
       ]
     },
     {
+      "id": "p0632506",
+      "geoid": "0632506",
+      "name": "Hawaiian Gardens",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.83053,
+        "lng": -118.07275
+      },
+      "bounds": [
+        -118.08272,
+        33.82217,
+        -118.06123,
+        33.83873
+      ]
+    },
+    {
       "id": "p0633518",
       "geoid": "0633518",
       "name": "Hidden Hills",
@@ -2712,6 +3223,29 @@
         34.65933,
         -118.41178,
         34.70899
+      ]
+    },
+    {
+      "id": "p0639892",
+      "geoid": "0639892",
+      "name": "Lakewood",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.84494,
+        "lng": -118.09217
+      },
+      "bounds": [
+        -118.1677,
+        33.82005,
+        -118.05899,
+        33.86908
       ]
     },
     {
@@ -2797,6 +3331,29 @@
       ]
     },
     {
+      "id": "p0643000",
+      "geoid": "0643000",
+      "name": "Long Beach",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.78701,
+        "lng": -118.15868
+      },
+      "bounds": [
+        -118.24897,
+        33.69059,
+        -118.06317,
+        33.88553
+      ]
+    },
+    {
       "id": "p0644000",
       "geoid": "0644000",
       "name": "Los Angeles",
@@ -2852,6 +3409,29 @@
       ]
     },
     {
+      "id": "p0655618",
+      "geoid": "0655618",
+      "name": "Paramount",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.89792,
+        "lng": -118.16527
+      },
+      "bounds": [
+        -118.18815,
+        33.87981,
+        -118.14274,
+        33.91871
+      ]
+    },
+    {
       "id": "p0659052",
       "geoid": "0659052",
       "name": "Quartz Hill",
@@ -2904,6 +3484,29 @@
         34.34137,
         -118.37871,
         34.50003
+      ]
+    },
+    {
+      "id": "p0671876",
+      "geoid": "0671876",
+      "name": "Signal Hill",
+      "kind": "city",
+      "county": "Los Angeles",
+      "counties": [
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.80436,
+        "lng": -118.17172
+      },
+      "bounds": [
+        -118.18458,
+        33.78984,
+        -118.14965,
+        33.81892
       ]
     },
     {
@@ -3394,6 +3997,881 @@
       ]
     },
     {
+      "id": "p0602000",
+      "geoid": "0602000",
+      "name": "Anaheim",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.83404,
+        "lng": -117.93345
+      },
+      "bounds": [
+        -118.01742,
+        33.78886,
+        -117.67455,
+        33.87923
+      ]
+    },
+    {
+      "id": "p0608786",
+      "geoid": "0608786",
+      "name": "Buena Park",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.85227,
+        "lng": -118.00894
+      },
+      "bounds": [
+        -118.03736,
+        33.80983,
+        -117.97628,
+        33.89556
+      ]
+    },
+    {
+      "id": "p0617750",
+      "geoid": "0617750",
+      "name": "Cypress",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange",
+        "Los Angeles"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.82036,
+        "lng": -118.04135
+      },
+      "bounds": [
+        -118.06332,
+        33.792,
+        -118.01068,
+        33.8462
+      ]
+    },
+    {
+      "id": "p0628000",
+      "geoid": "0628000",
+      "name": "Fullerton",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.88985,
+        "lng": -117.9218
+      },
+      "bounds": [
+        -117.9854,
+        33.85418,
+        -117.86386,
+        33.92461
+      ]
+    },
+    {
+      "id": "p0629000",
+      "geoid": "0629000",
+      "name": "Garden Grove",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.76911,
+        "lng": -117.94696
+      },
+      "bounds": [
+        -118.04279,
+        33.73248,
+        -117.89428,
+        33.80569
+      ]
+    },
+    {
+      "id": "p0643224",
+      "geoid": "0643224",
+      "name": "Los Alamitos",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.7994,
+        "lng": -118.05238
+      },
+      "bounds": [
+        -118.09303,
+        33.78113,
+        -118.03277,
+        33.81968
+      ]
+    },
+    {
+      "id": "p0653980",
+      "geoid": "0653980",
+      "name": "Orange",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.80753,
+        "lng": -117.84815
+      },
+      "bounds": [
+        -117.90473,
+        33.76784,
+        -117.72978,
+        33.84713
+      ]
+    },
+    {
+      "id": "p0657526",
+      "geoid": "0657526",
+      "name": "Placentia",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.88182,
+        "lng": -117.85793
+      },
+      "bounds": [
+        -117.88497,
+        33.85363,
+        -117.81626,
+        33.91015
+      ]
+    },
+    {
+      "id": "p0663050",
+      "geoid": "0663050",
+      "name": "Rossmoor",
+      "kind": "community",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.79246,
+        "lng": -118.07975
+      },
+      "bounds": [
+        -118.08948,
+        33.7748,
+        -118.07196,
+        33.80307
+      ]
+    },
+    {
+      "id": "p0670686",
+      "geoid": "0670686",
+      "name": "Seal Beach",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.75682,
+        "lng": -118.06917
+      },
+      "bounds": [
+        -118.1178,
+        33.72299,
+        -118.04157,
+        33.78757
+      ]
+    },
+    {
+      "id": "p0673962",
+      "geoid": "0673962",
+      "name": "Stanton",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.79525,
+        "lng": -117.99509
+      },
+      "bounds": [
+        -118.01809,
+        33.77373,
+        -117.96757,
+        33.81577
+      ]
+    },
+    {
+      "id": "p0686832",
+      "geoid": "0686832",
+      "name": "Yorba Linda",
+      "kind": "city",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.89149,
+        "lng": -117.7733
+      },
+      "bounds": [
+        -117.84583,
+        33.86348,
+        -117.68358,
+        33.91844
+      ]
+    },
+    {
+      "id": "p0616350",
+      "geoid": "0616350",
+      "name": "Corona",
+      "kind": "city",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.85813,
+        "lng": -117.57057
+      },
+      "bounds": [
+        -117.6732,
+        33.80008,
+        -117.48357,
+        33.91619
+      ]
+    },
+    {
+      "id": "p0622457",
+      "geoid": "0622457",
+      "name": "El Sobrante",
+      "kind": "community",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.86923,
+        "lng": -117.46305
+      },
+      "bounds": [
+        -117.50265,
+        33.84776,
+        -117.42816,
+        33.88978
+      ]
+    },
+    {
+      "id": "p0633574",
+      "geoid": "0633574",
+      "name": "Highgrove",
+      "kind": "community",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 34.00795,
+        "lng": -117.30552
+      },
+      "bounds": [
+        -117.34464,
+        33.99731,
+        -117.28754,
+        34.01935
+      ]
+    },
+    {
+      "id": "p0634302",
+      "geoid": "0634302",
+      "name": "Home Gardens",
+      "kind": "community",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.87871,
+        "lng": -117.51638
+      },
+      "bounds": [
+        -117.53225,
+        33.86831,
+        -117.49443,
+        33.88914
+      ]
+    },
+    {
+      "id": "p0637692",
+      "geoid": "0637692",
+      "name": "Jurupa Valley",
+      "kind": "city",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.99157,
+        "lng": -117.47181
+      },
+      "bounds": [
+        -117.55234,
+        33.94961,
+        -117.3673,
+        34.03428
+      ]
+    },
+    {
+      "id": "p0645680",
+      "geoid": "0645680",
+      "name": "March ARB",
+      "kind": "community",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.88795,
+        "lng": -117.26783
+      },
+      "bounds": [
+        -117.31937,
+        33.85903,
+        -117.24359,
+        33.91681
+      ]
+    },
+    {
+      "id": "p0649270",
+      "geoid": "0649270",
+      "name": "Moreno Valley",
+      "kind": "city",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.92289,
+        "lng": -117.19815
+      },
+      "bounds": [
+        -117.29652,
+        33.8587,
+        -117.08827,
+        33.98809
+      ]
+    },
+    {
+      "id": "p0651560",
+      "geoid": "0651560",
+      "name": "Norco",
+      "kind": "city",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.92785,
+        "lng": -117.55531
+      },
+      "bounds": [
+        -117.60729,
+        33.89373,
+        -117.51169,
+        33.9625
+      ]
+    },
+    {
+      "id": "p0662000",
+      "geoid": "0662000",
+      "name": "Riverside",
+      "kind": "city",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.94595,
+        "lng": -117.40739
+      },
+      "bounds": [
+        -117.52386,
+        33.87261,
+        -117.27897,
+        34.01935
+      ]
+    },
+    {
+      "id": "p0686244",
+      "geoid": "0686244",
+      "name": "Woodcrest",
+      "kind": "community",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 33.87982,
+        "lng": -117.39212
+      },
+      "bounds": [
+        -117.43282,
+        33.85791,
+        -117.31386,
+        33.90191
+      ]
+    },
+    {
+      "id": "p0602553",
+      "geoid": "0602553",
+      "name": "Arden-Arcade",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.60888,
+        "lng": -121.38761
+      },
+      "bounds": [
+        -121.42169,
+        38.56281,
+        -121.34614,
+        38.64468
+      ]
+    },
+    {
+      "id": "p0622020",
+      "geoid": "0622020",
+      "name": "Elk Grove",
+      "kind": "city",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.40626,
+        "lng": -121.39092
+      },
+      "bounds": [
+        -121.48847,
+        38.36137,
+        -121.26934,
+        38.45291
+      ]
+    },
+    {
+      "id": "p0624498",
+      "geoid": "0624498",
+      "name": "Florin",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.47959,
+        "lng": -121.40963
+      },
+      "bounds": [
+        -121.44607,
+        38.45257,
+        -121.37198,
+        38.50488
+      ]
+    },
+    {
+      "id": "p0625590",
+      "geoid": "0625590",
+      "name": "Freeport",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.46276,
+        "lng": -121.50214
+      },
+      "bounds": [
+        -121.50414,
+        38.45587,
+        -121.50043,
+        38.46974
+      ]
+    },
+    {
+      "id": "p0627130",
+      "geoid": "0627130",
+      "name": "Fruitridge Pocket",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.53218,
+        "lng": -121.45962
+      },
+      "bounds": [
+        -121.46471,
+        38.52491,
+        -121.44594,
+        38.53945
+      ]
+    },
+    {
+      "id": "p0640410",
+      "geoid": "0640410",
+      "name": "La Riviera",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.57018,
+        "lng": -121.34909
+      },
+      "bounds": [
+        -121.38285,
+        38.55885,
+        -121.32735,
+        38.58037
+      ]
+    },
+    {
+      "id": "p0641142",
+      "geoid": "0641142",
+      "name": "Lemon Hill",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.51766,
+        "lng": -121.45374
+      },
+      "bounds": [
+        -121.47749,
+        38.51033,
+        -121.43923,
+        38.52496
+      ]
+    },
+    {
+      "id": "p0644760",
+      "geoid": "0644760",
+      "name": "McClellan Park",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.66429,
+        "lng": -121.39905
+      },
+      "bounds": [
+        -121.4235,
+        38.63862,
+        -121.38287,
+        38.69059
+      ]
+    },
+    {
+      "id": "p0651924",
+      "geoid": "0651924",
+      "name": "North Highlands",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.67292,
+        "lng": -121.37672
+      },
+      "bounds": [
+        -121.40315,
+        38.63989,
+        -121.33594,
+        38.70451
+      ]
+    },
+    {
+      "id": "p0655800",
+      "geoid": "0655800",
+      "name": "Parkway",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.49249,
+        "lng": -121.44984
+      },
+      "bounds": [
+        -121.47527,
+        38.48156,
+        -121.43076,
+        38.51049
+      ]
+    },
+    {
+      "id": "p0659444",
+      "geoid": "0659444",
+      "name": "Rancho Cordova",
+      "kind": "city",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.56771,
+        "lng": -121.22329
+      },
+      "bounds": [
+        -121.33647,
+        38.50191,
+        -121.18625,
+        38.63357
+      ]
+    },
+    {
+      "id": "p0660942",
+      "geoid": "0660942",
+      "name": "Rio Linda",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.68695,
+        "lng": -121.44316
+      },
+      "bounds": [
+        -121.48281,
+        38.669,
+        -121.40132,
+        38.70523
+      ]
+    },
+    {
+      "id": "p0662910",
+      "geoid": "0662910",
+      "name": "Rosemont",
+      "kind": "community",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.54739,
+        "lng": -121.35691
+      },
+      "bounds": [
+        -121.38635,
+        38.529,
+        -121.33493,
+        38.56609
+      ]
+    },
+    {
+      "id": "p0664000",
+      "geoid": "0664000",
+      "name": "Sacramento",
+      "kind": "city",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.56023,
+        "lng": -121.44913
+      },
+      "bounds": [
+        -121.56012,
+        38.43789,
+        -121.36274,
+        38.6856
+      ]
+    },
+    {
+      "id": "p0614890",
+      "geoid": "0614890",
+      "name": "Colton",
+      "kind": "city",
+      "county": "San Bernardino",
+      "counties": [
+        "San Bernardino"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 34.05714,
+        "lng": -117.31173
+      },
+      "bounds": [
+        -117.37165,
+        34.01864,
+        -117.27007,
+        34.09611
+      ]
+    },
+    {
+      "id": "p0630658",
+      "geoid": "0630658",
+      "name": "Grand Terrace",
+      "kind": "city",
+      "county": "San Bernardino",
+      "counties": [
+        "San Bernardino"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 34.03254,
+        "lng": -117.31112
+      },
+      "bounds": [
+        -117.33752,
+        34.01929,
+        -117.29085,
+        34.04529
+      ]
+    },
+    {
       "id": "p0666000",
       "geoid": "0666000",
       "name": "San Diego",
@@ -3414,6 +4892,282 @@
         32.53479,
         -116.54561,
         33.11419
+      ]
+    },
+    {
+      "id": "p0603209",
+      "geoid": "0603209",
+      "name": "August",
+      "kind": "community",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.98063,
+        "lng": -121.26194
+      },
+      "bounds": [
+        -121.27698,
+        37.9696,
+        -121.24824,
+        37.99123
+      ]
+    },
+    {
+      "id": "p0616651",
+      "geoid": "0616651",
+      "name": "Country Club",
+      "kind": "community",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.96889,
+        "lng": -121.33393
+      },
+      "bounds": [
+        -121.3691,
+        37.95668,
+        -121.31386,
+        37.98076
+      ]
+    },
+    {
+      "id": "p0626028",
+      "geoid": "0626028",
+      "name": "French Camp",
+      "kind": "community",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.87624,
+        "lng": -121.27175
+      },
+      "bounds": [
+        -121.30332,
+        37.8556,
+        -121.26443,
+        37.89729
+      ]
+    },
+    {
+      "id": "p0628182",
+      "geoid": "0628182",
+      "name": "Garden Acres",
+      "kind": "community",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.96533,
+        "lng": -121.22825
+      },
+      "bounds": [
+        -121.24988,
+        37.94894,
+        -121.20216,
+        37.98195
+      ]
+    },
+    {
+      "id": "p0638065",
+      "geoid": "0638065",
+      "name": "Kennedy",
+      "kind": "community",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.92961,
+        "lng": -121.24531
+      },
+      "bounds": [
+        -121.25942,
+        37.9199,
+        -121.23068,
+        37.94071
+      ]
+    },
+    {
+      "id": "p0640704",
+      "geoid": "0640704",
+      "name": "Lathrop",
+      "kind": "city",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.80917,
+        "lng": -121.29426
+      },
+      "bounds": [
+        -121.41434,
+        37.75977,
+        -121.26167,
+        37.85852
+      ]
+    },
+    {
+      "id": "p0641558",
+      "geoid": "0641558",
+      "name": "Lincoln Village",
+      "kind": "community",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.00637,
+        "lng": -121.33034
+      },
+      "bounds": [
+        -121.34973,
+        37.99908,
+        -121.31905,
+        38.01375
+      ]
+    },
+    {
+      "id": "p0642202",
+      "geoid": "0642202",
+      "name": "Lodi",
+      "kind": "city",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.12612,
+        "lng": -121.27955
+      },
+      "bounds": [
+        -121.40527,
+        38.08245,
+        -121.24131,
+        38.15494
+      ]
+    },
+    {
+      "id": "p0645484",
+      "geoid": "0645484",
+      "name": "Manteca",
+      "kind": "city",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.80472,
+        "lng": -121.22087
+      },
+      "bounds": [
+        -121.29298,
+        37.7526,
+        -121.16067,
+        37.85561
+      ]
+    },
+    {
+      "id": "p0649180",
+      "geoid": "0649180",
+      "name": "Morada",
+      "kind": "community",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.04089,
+        "lng": -121.24607
+      },
+      "bounds": [
+        -121.25939,
+        38.02342,
+        -121.2248,
+        38.05756
+      ]
+    },
+    {
+      "id": "p0675000",
+      "geoid": "0675000",
+      "name": "Stockton",
+      "kind": "city",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.96309,
+        "lng": -121.28471
+      },
+      "bounds": [
+        -121.41974,
+        37.86748,
+        -121.18389,
+        38.05876
+      ]
+    },
+    {
+      "id": "p0677595",
+      "geoid": "0677595",
+      "name": "Taft Mosswood",
+      "kind": "community",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 37.91452,
+        "lng": -121.28181
+      },
+      "bounds": [
+        -121.29032,
+        37.90474,
+        -121.27723,
+        37.92409
       ]
     },
     {
@@ -7988,9 +9742,78 @@
         -118.77647,
         34.25078
       ]
+    },
+    {
+      "id": "p0684816",
+      "geoid": "0684816",
+      "name": "West Sacramento",
+      "kind": "city",
+      "county": "Yolo",
+      "counties": [
+        "Yolo"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": false,
+      "center": {
+        "lat": 38.5555,
+        "lng": -121.54914
+      },
+      "bounds": [
+        -121.58835,
+        38.50194,
+        -121.50627,
+        38.6046
+      ]
     }
   ],
   "counties": [
+    {
+      "id": "c06077",
+      "geoid": "06077",
+      "name": "San Joaquin County",
+      "kind": "county",
+      "county": "San Joaquin",
+      "counties": [
+        "San Joaquin"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": true,
+      "center": {
+        "lat": 37.89127,
+        "lng": -121.24776
+      },
+      "bounds": [
+        -121.58508,
+        37.48178,
+        -120.9206,
+        38.30025
+      ]
+    },
+    {
+      "id": "c06059",
+      "geoid": "06059",
+      "name": "Orange County",
+      "kind": "county",
+      "county": "Orange",
+      "counties": [
+        "Orange"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": true,
+      "center": {
+        "lat": 33.64561,
+        "lng": -117.75383
+      },
+      "bounds": [
+        -118.14781,
+        33.33399,
+        -117.41299,
+        33.94764
+      ]
+    },
     {
       "id": "c06053",
       "geoid": "06053",
@@ -8016,6 +9839,29 @@
         35.78898,
         -120.21398,
         36.91968
+      ]
+    },
+    {
+      "id": "c06071",
+      "geoid": "06071",
+      "name": "San Bernardino County",
+      "kind": "county",
+      "county": "San Bernardino",
+      "counties": [
+        "San Bernardino"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": true,
+      "center": {
+        "lat": 34.83894,
+        "lng": -116.11097
+      },
+      "bounds": [
+        -117.80254,
+        33.87107,
+        -114.13121,
+        35.80924
       ]
     },
     {
@@ -8045,6 +9891,29 @@
         33.16349,
         -118.63249,
         34.90117
+      ]
+    },
+    {
+      "id": "c06113",
+      "geoid": "06113",
+      "name": "Yolo County",
+      "kind": "county",
+      "county": "Yolo",
+      "counties": [
+        "Yolo"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": true,
+      "center": {
+        "lat": 38.61944,
+        "lng": -121.85393
+      },
+      "bounds": [
+        -122.42205,
+        38.31305,
+        -121.50102,
+        38.92593
       ]
     },
     {
@@ -8184,6 +10053,52 @@
         35.78894,
         -117.98076,
         36.74482
+      ]
+    },
+    {
+      "id": "c06065",
+      "geoid": "06065",
+      "name": "Riverside County",
+      "kind": "county",
+      "county": "Riverside",
+      "counties": [
+        "Riverside"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": true,
+      "center": {
+        "lat": 33.75206,
+        "lng": -116.02026
+      },
+      "bounds": [
+        -117.67628,
+        33.42593,
+        -114.43495,
+        34.07988
+      ]
+    },
+    {
+      "id": "c06067",
+      "geoid": "06067",
+      "name": "Sacramento County",
+      "kind": "county",
+      "county": "Sacramento",
+      "counties": [
+        "Sacramento"
+      ],
+      "districts": [],
+      "futureDistricts": [],
+      "split": true,
+      "center": {
+        "lat": 38.37711,
+        "lng": -121.27564
+      },
+      "bounds": [
+        -121.86262,
+        38.01847,
+        -121.02708,
+        38.7364
       ]
     },
     {

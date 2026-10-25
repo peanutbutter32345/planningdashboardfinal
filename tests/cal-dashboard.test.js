@@ -16,7 +16,7 @@ test('six current and future districts are distinct, and every covered place has
  assert.equal(geography.metadata.futureFrom,'2027-01-03');
  const ids=new Set(profiles.map(p=>p.id));assert.equal(ids.size,profiles.length);
  for(const p of [...geography.places,...geography.counties]){
-  assert.ok(ids.has(p.id),p.name);assert.ok(p.districts.length||p.futureDistricts.length||p.name==='San Diego'||p.name==='San Diego County',p.name);
+  assert.ok(ids.has(p.id),p.name);assert.ok(p.districts.length||p.futureDistricts.length||p.name==='San Diego'||p.kind==='county'||geography.metadata.extraPlaces.includes(p.geoid),p.name);
   assert.ok(profiles.some(c=>c.kind==='county'&&c.county===p.county),p.county);
   assert.ok(Number.isFinite(p.center.lat)&&Number.isFinite(p.center.lng));
  }
@@ -27,7 +27,7 @@ test('all profiles have official source links, explicit scopes and usable annual
   assert.ok(p.resources.length>=7,p.name);assert.equal(new URL(p.website).protocol,'https:');assert.ok(p.meetingUrl);assert.ok(p.boardUrl);
   for(const r of p.resources){assert.equal(new URL(r.url).protocol,'https:',r.url);assert.ok(r.scope);}
   const data=read('housing/'+p.id+'.json');assert.equal(data.records.length,housing.jurisdictions[p.id].records,p.name);
-  const seen=new Set();for(const r of data.records){assert.ok(!seen.has(r.id),r.id);seen.add(r.id);assert.ok(r.units>0);assert.ok([2024,2025].includes(r.year));assert.equal(r.lat===null,r.lng===null);if(r.lat!==null){assert.ok(r.lat>=32&&r.lat<=42.1);assert.ok(r.lng>=-125&&r.lng<=-113.9);}const source=new URL(r.source);assert.equal(source.hostname,'data.ca.gov');const filters=JSON.parse(source.searchParams.get('filters'));assert.ok(filters.JURIS_NAME);assert.ok(filters.APN||filters.STREET_ADDRESS);}
+  const seen=new Set();for(const r of data.records){assert.ok(!seen.has(r.id),r.id);seen.add(r.id);assert.ok(r.units>0);assert.ok([2023,2024,2025].includes(r.year));assert.equal(r.lat===null,r.lng===null);if(r.lat!==null){assert.ok(r.lat>=32&&r.lat<=42.1);assert.ok(r.lng>=-125&&r.lng<=-113.9);}const source=new URL(r.source);assert.equal(source.hostname,'data.ca.gov');const filters=JSON.parse(source.searchParams.get('filters'));assert.ok(filters.JURIS_NAME);assert.ok(filters.APN||filters.STREET_ADDRESS);}
  }
 });
 test('estimates retain their periods and uncertainty, and photographs have licenses and local files',()=>{
@@ -103,4 +103,30 @@ test('the added district catalog and San Diego all-coverage map are available',a
  const catalog=await call('/api/cal/catalog');assert.deepEqual(catalog.body.districts.map(d=>d.id).sort(),['19','20','21','24','26','27']);
  const all=await call('/api/cal/map?id=p0666000&district=all');assert.equal(all.status,200);assert.ok(all.body.count>3000);assert.ok(all.body.points.every(p=>p.jurisdiction==='p0666000'));
  const filtered=await call('/api/cal/map?id=p0666000&district=24');assert.equal(filtered.body.count,0);
+});
+
+ test('all five added city maps include their own coordinates without claiming CA-24 membership',async()=>{
+ for(const anchor of geography.metadata.populationExpansion.anchors){
+  const id='p'+anchor.geoid;
+  const all=await call('/api/cal/map?id='+id+'&district=all');
+  assert.equal(all.status,200);assert.ok(all.body.count>0,anchor.name);
+  assert.ok(all.body.points.every(p=>p.jurisdiction===id));
+  const district=await call('/api/cal/map?id='+id+'&district=24');assert.equal(district.body.count,0);
+ }
+});
+
+test('new community maps retain county-owned records that fall inside their Census boundary',async()=>{
+ const communities=profiles.filter(p=>p.kind==='community'&&geography.metadata.extraPlaces.includes(p.geoid)&&housing.jurisdictions[p.id].mapped);
+ assert.ok(communities.length);
+ for(const p of communities){
+  const response=await call('/api/cal/map?id='+p.id+'&district=all');
+  assert.equal(response.body.count,housing.jurisdictions[p.id].mapped,p.name);
+  assert.ok(response.body.points.every(r=>r.jurisdiction.startsWith('c')));
+ }
+});
+test('Compton uses its dated published report instead of inventing recent housing activity',()=>{
+ const p=profiles.find(p=>p.name==='Compton');
+ assert.equal(housing.jurisdictions[p.id].year,2023);
+ assert.ok(housing.jurisdictions[p.id].records>0);
+ assert.ok(read('housing/'+p.id+'.json').records.every(r=>r.year===2023));
 });

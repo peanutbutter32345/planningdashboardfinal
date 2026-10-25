@@ -71,7 +71,41 @@
     "Palmdale": "https://www.cityofpalmdaleca.gov/",
     "Santa Clarita": "https://santaclarita.gov/",
     "San Diego": "https://www.sandiego.gov/",
-    "Dinuba": "https://www.dinuba.org/"
+    "Dinuba": "https://www.dinuba.org/",
+    "Sacramento": "https://www.cityofsacramento.gov/",
+    "West Sacramento": "https://www.cityofwestsacramento.org/",
+    "Elk Grove": "https://elkgrove.gov/",
+    "Rancho Cordova": "https://www.cityofranchocordova.org/",
+    "Long Beach": "https://www.longbeach.gov/",
+    "Hawaiian Gardens": "https://www.hgcity.org/",
+    "Signal Hill": "https://www.cityofsignalhill.org/",
+    "Los Alamitos": "https://www.cityoflosalamitos.org/",
+    "Paramount": "https://www.paramountcity.gov/",
+    "Bellflower": "https://www.bellflower.ca.gov/",
+    "Cypress": "https://www.cypressca.org/",
+    "Compton": "https://www.comptoncity.org/",
+    "Lakewood": "https://www.lakewoodca.gov/",
+    "Seal Beach": "https://www.sealbeachca.gov/",
+    "Carson": "https://carsonca.gov/",
+    "Anaheim": "https://www.anaheim.net/",
+    "Stanton": "https://www.stantonca.gov/",
+    "Placentia": "https://www.placentia.org/",
+    "Buena Park": "https://www.buenapark.com/",
+    "Fullerton": "https://www.cityoffullerton.com/",
+    "Garden Grove": "https://ggcity.org/",
+    "Yorba Linda": "https://www.yorbalindaca.gov/",
+    "Orange": "https://www.cityoforange.org/",
+    "Stockton": "https://www.stocktonca.gov/",
+    "Lathrop": "https://www.ci.lathrop.ca.us/",
+    "Lodi": "https://www.lodi.gov/",
+    "Manteca": "https://www.manteca.gov/",
+    "Riverside": "https://www.riversideca.gov/",
+    "Colton": "https://www.coltonca.gov/",
+    "Norco": "https://www.norco.ca.us/",
+    "Jurupa Valley": "https://www.jurupavalley.org/",
+    "Corona": "https://www.coronaca.gov/",
+    "Moreno Valley": "https://moval.gov/",
+    "Grand Terrace": "https://www.grandterrace-ca.gov/"
   },
   "counties": {
     "Fresno": {
@@ -138,6 +172,36 @@
       "planning": "https://www.sandiegocounty.gov/content/sdc/pds.html",
       "meetings": "https://www.sandiegocounty.gov/content/sdc/cob/bosa.html",
       "transit": "https://www.sandag.org/"
+    },
+    "Sacramento": {
+      "website": "https://www.saccounty.gov/",
+      "transit": "https://www.sacrt.com/",
+      "planning": "https://planning.saccounty.gov/"
+    },
+    "Yolo": {
+      "website": "https://www.yolocounty.gov/",
+      "transit": "https://yolobus.com/",
+      "planning": "https://www.yolocounty.gov/government/general-government-departments/community-services/planning-division",
+      "meetings": "https://www.yolocounty.gov/government/board-of-supervisors/board-meetings"
+    },
+    "Orange": {
+      "website": "https://www.ocgov.com/",
+      "transit": "https://www.octa.net/"
+    },
+    "San Joaquin": {
+      "website": "https://www.sjgov.org/",
+      "transit": "https://sanjoaquinrtd.com/",
+      "planning": "https://www.sjgov.org/department/cdd/planning/planning-commission"
+    },
+    "Riverside": {
+      "website": "https://rivco.org/",
+      "transit": "https://www.riversidetransit.com/",
+      "planning": "https://planning.rctlma.org/"
+    },
+    "San Bernardino": {
+      "website": "https://main.sbcounty.gov/",
+      "transit": "https://omnitrans.org/",
+      "planning": "https://lus.sbcounty.gov/planning/"
     }
   },
   "overrides": {
@@ -265,6 +329,128 @@
       "housing": "https://www.parlier.ca.us/165/New-Housing",
       "meetings": "https://www.parlier.ca.us/AgendaCenter/City-Council-Meetings-2",
       "boards": "https://www.parlier.ca.us/AgendaCenter/City-Council-Meetings-2"
+    },
+    "Sacramento": {
+      "planning": "https://www.cityofsacramento.gov/community-development/planning",
+      "projects": "https://www.cityofsacramento.gov/community-development/planning/major-projects",
+      "meetings": "https://www.cityofsacramento.gov/clerk/meetings-and-agendas",
+      "boards": "https://www.cityofsacramento.gov/community-development/meetings-and-hearings/planning-and-design-commission",
+      "client": "sacramento",
+      "news": "https://www.cityofsacramento.gov/",
+      "boardName": "Planning and Design Commission"
+    },
+    "Long Beach": {
+      "planning": "https://www.longbeach.gov/lbcd/planning/",
+      "meetings": "https://www.longbeach.gov/cityclerk/meetings/",
+      "boards": "https://www.longbeach.gov/lbcd/planning/current/commission/",
+      "boardName": "Planning Commission"
+    },
+    "Anaheim": {
+      "boards": "https://www.anaheim.net/176/Boards-Commissions",
+      "meetings": "https://anaheim.granicus.com/ViewPublisher.php?view_id=2",
+      "planning": "https://www.anaheim.net/490/Planning-Building"
+    },
+    "Stockton": {
+      "meetings": "https://stockton.legistar.com/Calendar.aspx",
+      "boards": "https://stockton.granicus.com/boards/w/cdf8ef02a7737626/boards/338",
+      "client": "stockton",
+      "boardName": "Planning Commission"
+    },
+    "Riverside": {
+      "boards": "https://riversideca.gov/cityclerk/boards-commissions/planning-commission",
+      "planning": "https://www.riversideca.gov/cedd/planning/zoning-code-and-regulations",
+      "client": "riversideca",
+      "boardName": "Planning Commission"
+    },
+    "West Sacramento": {
+      "boards": "https://www.cityofwestsacramento.org/government/commissions-committees/planning-commission-1461",
+      "meetings": "https://meetings.cityofwestsacramento.org/OnBaseAgendaOnline",
+      "boardName": "Planning Commission"
+    },
+    "Elk Grove": {
+      "planning": "https://elkgrove.gov/departments-and-divisions/planning",
+      "boards": "https://elkgrove.gov/city-government/commissions-and-committees",
+      "meetings": "https://elkgrove.granicus.com/ViewPublisher.php?view_id=13"
+    },
+    "Rancho Cordova": {
+      "planning": "https://www.cityofranchocordova.org/departments/community-development/planning",
+      "meetings": "https://www.cityofranchocordova.org/departments/city-clerk/public-meetings-portal"
+    },
+    "Hawaiian Gardens": {
+      "boards": "https://www.hgcity.org/government/boards-commissions-committees/commissions",
+      "meetings": "https://www.hgcity.org/government/boards-commissions-committees/commissions"
+    },
+    "Compton": {
+      "boards": "https://www.comptoncity.org/departments/city-clerk/commissions-and-boards/overview",
+      "meetings": "https://www.comptoncity.org/departments/community-development/planning-commission-agendas",
+      "boardName": "Planning Commission"
+    },
+    "Cypress": {
+      "planning": "https://www.cypressca.org/departments/community-development/information-on-notable-projects",
+      "projects": "https://www.cypressca.org/departments/community-development/information-on-notable-projects",
+      "meetings": "https://www.cypressca.org/government/departments/city-management-city-clerk"
+    },
+    "Lakewood": {
+      "boards": "https://www.lakewoodca.gov/Government/Commissions-Boards-Committees",
+      "meetings": "https://www.lakewoodca.gov/Government/Commissions-Boards-Committees/Planning-Environment-Commission"
+    },
+    "Fullerton": {
+      "boards": "https://fullerton.granicus.com/boards/w/6c8509a5367939e3/boards/5809",
+      "meetings": "https://fullerton.granicus.com/ViewPublisher.php?view_id=2",
+      "boardName": "Planning Commission"
+    },
+    "Orange": {
+      "boards": "https://cityoforange.legistar.com/DepartmentDetail.aspx?ID=41867&GUID=CD6FA12A-DAE1-4194-95A7-35B8D17F4EB7",
+      "meetings": "https://cityoforange.legistar.com/Calendar.aspx",
+      "client": "cityoforange",
+      "boardName": "Planning Commission"
+    },
+    "Norco": {
+      "planning": "https://www.norco.ca.us/departments/planning",
+      "meetings": "https://norco.civicweb.net/Portal/",
+      "boards": "https://norco.civicweb.net/Portal/MeetingInformation.aspx?Id=1905",
+      "boardName": "Planning Commission"
+    },
+    "Lathrop": {
+      "boards": "https://www.ci.lathrop.ca.us/bc-pc",
+      "meetings": "https://www.ci.lathrop.ca.us/city-clerk/page/public-hearing-notices-legal-notices-comment-opportunities",
+      "boardName": "Planning Commission"
+    },
+    "Lodi": {
+      "planning": "https://www.lodi.gov/1264/Planning-FAQs",
+      "meetings": "https://www.lodi.gov/AgendaCenter",
+      "boards": "https://www.lodi.gov/AgendaCenter/Planning-Commission-3",
+      "boardName": "Planning Commission"
+    },
+    "Los Alamitos": {
+      "boards": "https://cityoflosalamitos.org/163/Planning-Commission",
+      "boardName": "Planning Commission"
+    },
+    "Yorba Linda": {
+      "boards": "https://www.yorbalindaca.gov/206/Planning-Commission",
+      "planning": "https://www.yorbalindaca.gov/334/Planning",
+      "boardName": "Planning Commission"
+    },
+    "Jurupa Valley": {
+      "boards": "https://www.jurupavalley.org/214/Planning-Commission",
+      "planning": "https://www.jurupavalley.gov/336/Current-Planning-Development-Review",
+      "boardName": "Planning Commission"
+    },
+    "Seal Beach": {
+      "boards": "https://sealbeachca.gov/Departments/City-Clerk/Agendas-Notices-Meeting-Videos/",
+      "planning": "https://sealbeachca.gov/departments/community-development/planning-development/"
+    },
+    "Corona": {
+      "planning": "https://www.coronaca.gov/departments/planning-division"
+    },
+    "Colton": {
+      "meetings": "https://www.coltonca.gov/AgendaCenter"
+    },
+    "Moreno Valley": {
+      "boards": "https://moval.org/city_council/commissions-agendas-openings.html"
+    },
+    "Signal Hill": {
+      "client": "cityofsignalhill"
     }
   },
   "transportation": [
@@ -323,6 +509,42 @@
       "name": "SANDAG regional transportation projects",
       "url": "https://www.sandag.org/",
       "county": "San Diego",
+      "kind": "directory"
+    },
+    {
+      "name": "Sacramento Regional Transit",
+      "county": "Sacramento",
+      "url": "https://www.sacrt.com/",
+      "kind": "directory"
+    },
+    {
+      "name": "Yolo Transportation District",
+      "county": "Yolo",
+      "url": "https://yolobus.com/",
+      "kind": "directory"
+    },
+    {
+      "name": "Orange County Transportation Authority",
+      "county": "Orange",
+      "url": "https://www.octa.net/",
+      "kind": "directory"
+    },
+    {
+      "name": "San Joaquin Regional Transit District",
+      "county": "San Joaquin",
+      "url": "https://sanjoaquinrtd.com/",
+      "kind": "directory"
+    },
+    {
+      "name": "Riverside Transit Agency",
+      "county": "Riverside",
+      "url": "https://www.riversidetransit.com/",
+      "kind": "directory"
+    },
+    {
+      "name": "Omnitrans",
+      "county": "San Bernardino",
+      "url": "https://omnitrans.org/",
       "kind": "directory"
     }
   ]

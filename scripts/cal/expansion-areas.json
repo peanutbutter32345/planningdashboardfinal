@@ -1,0 +1,333 @@
+{
+  "source": "https://dof.ca.gov/media/docs/forecasting/Demographics/estimates-e1/RankCities_2026.xlsx",
+  "populationDate": "2026-01-01",
+  "released": "2026-05-01",
+  "selection": "Five largest California incorporated cities missing after PR 83. Include Census places sharing or nearly sharing their boundaries (0.002-degree tolerance), plus the three nearest incorporated-city representative points within 40 km. Original coverage is retained. Nearby regions are selected places, not entire counties.",
+  "anchors": [
+    {
+      "name": "Sacramento",
+      "geoid": "0664000",
+      "population": 539765,
+      "stateRank": 6,
+      "nearby": [
+        {
+          "name": "West Sacramento",
+          "geoid": "0684816",
+          "kind": "city"
+        },
+        {
+          "name": "Elk Grove",
+          "geoid": "0622020",
+          "kind": "city"
+        },
+        {
+          "name": "Freeport",
+          "geoid": "0625590",
+          "kind": "community"
+        },
+        {
+          "name": "Fruitridge Pocket",
+          "geoid": "0627130",
+          "kind": "community"
+        },
+        {
+          "name": "Lemon Hill",
+          "geoid": "0641142",
+          "kind": "community"
+        },
+        {
+          "name": "La Riviera",
+          "geoid": "0640410",
+          "kind": "community"
+        },
+        {
+          "name": "Parkway",
+          "geoid": "0655800",
+          "kind": "community"
+        },
+        {
+          "name": "McClellan Park",
+          "geoid": "0644760",
+          "kind": "community"
+        },
+        {
+          "name": "Rosemont",
+          "geoid": "0662910",
+          "kind": "community"
+        },
+        {
+          "name": "Florin",
+          "geoid": "0624498",
+          "kind": "community"
+        },
+        {
+          "name": "North Highlands",
+          "geoid": "0651924",
+          "kind": "community"
+        },
+        {
+          "name": "Rio Linda",
+          "geoid": "0660942",
+          "kind": "community"
+        },
+        {
+          "name": "Arden-Arcade",
+          "geoid": "0602553",
+          "kind": "community"
+        },
+        {
+          "name": "Rancho Cordova",
+          "geoid": "0659444",
+          "kind": "city"
+        }
+      ]
+    },
+    {
+      "name": "Long Beach",
+      "geoid": "0643000",
+      "population": 462193,
+      "stateRank": 7,
+      "nearby": [
+        {
+          "name": "Hawaiian Gardens",
+          "geoid": "0632506",
+          "kind": "city"
+        },
+        {
+          "name": "Signal Hill",
+          "geoid": "0671876",
+          "kind": "city"
+        },
+        {
+          "name": "Los Alamitos",
+          "geoid": "0643224",
+          "kind": "city"
+        },
+        {
+          "name": "Paramount",
+          "geoid": "0655618",
+          "kind": "city"
+        },
+        {
+          "name": "Bellflower",
+          "geoid": "0604982",
+          "kind": "city"
+        },
+        {
+          "name": "Cypress",
+          "geoid": "0617750",
+          "kind": "city"
+        },
+        {
+          "name": "Compton",
+          "geoid": "0615044",
+          "kind": "city"
+        },
+        {
+          "name": "Lakewood",
+          "geoid": "0639892",
+          "kind": "city"
+        },
+        {
+          "name": "Seal Beach",
+          "geoid": "0670686",
+          "kind": "city"
+        },
+        {
+          "name": "Carson",
+          "geoid": "0611530",
+          "kind": "city"
+        },
+        {
+          "name": "Los Angeles",
+          "geoid": "0644000",
+          "kind": "city"
+        },
+        {
+          "name": "East Rancho Dominguez",
+          "geoid": "0621034",
+          "kind": "community"
+        },
+        {
+          "name": "Rossmoor",
+          "geoid": "0663050",
+          "kind": "community"
+        }
+      ]
+    },
+    {
+      "name": "Anaheim",
+      "geoid": "0602000",
+      "population": 340433,
+      "stateRank": 10,
+      "nearby": [
+        {
+          "name": "Stanton",
+          "geoid": "0673962",
+          "kind": "city"
+        },
+        {
+          "name": "Cypress",
+          "geoid": "0617750",
+          "kind": "city"
+        },
+        {
+          "name": "Placentia",
+          "geoid": "0657526",
+          "kind": "city"
+        },
+        {
+          "name": "Buena Park",
+          "geoid": "0608786",
+          "kind": "city"
+        },
+        {
+          "name": "Fullerton",
+          "geoid": "0628000",
+          "kind": "city"
+        },
+        {
+          "name": "Garden Grove",
+          "geoid": "0629000",
+          "kind": "city"
+        },
+        {
+          "name": "Yorba Linda",
+          "geoid": "0686832",
+          "kind": "city"
+        },
+        {
+          "name": "Orange",
+          "geoid": "0653980",
+          "kind": "city"
+        }
+      ]
+    },
+    {
+      "name": "Stockton",
+      "geoid": "0675000",
+      "population": 322436,
+      "stateRank": 11,
+      "nearby": [
+        {
+          "name": "Taft Mosswood",
+          "geoid": "0677595",
+          "kind": "community"
+        },
+        {
+          "name": "Lincoln Village",
+          "geoid": "0641558",
+          "kind": "community"
+        },
+        {
+          "name": "August",
+          "geoid": "0603209",
+          "kind": "community"
+        },
+        {
+          "name": "Kennedy",
+          "geoid": "0638065",
+          "kind": "community"
+        },
+        {
+          "name": "Country Club",
+          "geoid": "0616651",
+          "kind": "community"
+        },
+        {
+          "name": "Garden Acres",
+          "geoid": "0628182",
+          "kind": "community"
+        },
+        {
+          "name": "French Camp",
+          "geoid": "0626028",
+          "kind": "community"
+        },
+        {
+          "name": "Morada",
+          "geoid": "0649180",
+          "kind": "community"
+        },
+        {
+          "name": "Lathrop",
+          "geoid": "0640704",
+          "kind": "city"
+        },
+        {
+          "name": "Lodi",
+          "geoid": "0642202",
+          "kind": "city"
+        },
+        {
+          "name": "Manteca",
+          "geoid": "0645484",
+          "kind": "city"
+        }
+      ]
+    },
+    {
+      "name": "Riverside",
+      "geoid": "0662000",
+      "population": 321884,
+      "stateRank": 12,
+      "nearby": [
+        {
+          "name": "Colton",
+          "geoid": "0614890",
+          "kind": "city"
+        },
+        {
+          "name": "Norco",
+          "geoid": "0651560",
+          "kind": "city"
+        },
+        {
+          "name": "Jurupa Valley",
+          "geoid": "0637692",
+          "kind": "city"
+        },
+        {
+          "name": "Corona",
+          "geoid": "0616350",
+          "kind": "city"
+        },
+        {
+          "name": "Moreno Valley",
+          "geoid": "0649270",
+          "kind": "city"
+        },
+        {
+          "name": "Home Gardens",
+          "geoid": "0634302",
+          "kind": "community"
+        },
+        {
+          "name": "Highgrove",
+          "geoid": "0633574",
+          "kind": "community"
+        },
+        {
+          "name": "El Sobrante",
+          "geoid": "0622457",
+          "kind": "community"
+        },
+        {
+          "name": "Woodcrest",
+          "geoid": "0686244",
+          "kind": "community"
+        },
+        {
+          "name": "March ARB",
+          "geoid": "0645680",
+          "kind": "community"
+        },
+        {
+          "name": "Grand Terrace",
+          "geoid": "0630658",
+          "kind": "city"
+        }
+      ]
+    }
+  ]
+}

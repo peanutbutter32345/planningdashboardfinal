@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-10-25T09:19:15.521275+00:00",
+  "retrieved": "2026-10-25T09:55:40.571139+00:00",
   "articles": {
     "p0603190": [
       {
@@ -919,6 +919,18 @@
       }
     ],
     "p0600450": [],
+    "p0604982": [
+      {
+        "title": "1 victim, 1 suspect dead following deputy-involved shooting in Bellflower house",
+        "publisher": "Long Beach Press-Telegram",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQzZWOUVKNlR2N3ZYb2VVMHV2enkxSlM5VGZTSEs3c2ZSRVdmMEhpRXViQ2tvWEZMMHJiSmo1eFVIekRSNTBUR3YwMVEzeVl5eXhuZTNtd0tFTHdzVU5NM0JuOWRmQlVqVlV3R3pKR0FvZnhEM1N3Yl91bl85S0NYT3JpaVIzVElzUGZOejlRc0IyYU1waXlwVDZiVTRDYzJlS0xyeE9YRXdtWGR6ZzZhZUhpM2l4MUw5NWhCcQ?oc=5",
+        "date": "2026-09-27",
+        "place": "p0604982",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Bellflower%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0609598": [
       {
         "title": "Benson House for sale, Calabasas, California",
@@ -951,11 +963,167 @@
         "feed": "https://news.google.com/rss/search?q=%22Calabasas%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0611530": [
+      {
+        "title": "Carson mayor rules out rent control, shelves housing initiative",
+        "publisher": "The California Apartment Association",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOTEhZbnVib2dwRVpvUlNUc2ZYWE1GSk9OZF9EYk83LW1rcG9tRUpjbWcxb2FpY0VOSjROZ2lGcUhqRzZ6a1dSMHhpUlBuVlJMbk5pY1B1YUszeDRIN1VycGpnejRNZ3RvQzlnYS0yVVZaOHRYckd4YXRLNVQ4N3FndEJnNmRIMXNnREE?oc=5",
+        "date": "2026-10-13",
+        "place": "p0611530",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Carson%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "388 apartments to replace offices at 3200 E. Carson St. in Lakewood",
+        "publisher": "Urbanize LA",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQeXRfODZjUXV5bE9yZ1AxM2puYk5ka2puT2o0cGNpZ1RoMDdDU2JKUWxNa3NRZEhQS0lmdjF2S1FqVlRMUnV6QnVmVGRDUDl3Z0N2ZGJWeURwMVc1XzhwdjAtdVhqeEpUcVM2V1NjTm1wY0JmalF3SFY5UnN3N3JKb1NnUEhqVnNTdm1oOVlYYw?oc=5",
+        "date": "2026-10-07",
+        "place": "p0611530",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Carson%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Arleen Bocatija Rojas, Carson City Council District 4 candidate, 2026 election questionnaire",
+        "publisher": "Daily Breeze",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPQ2VQaDF1SmNOSDJ5X2hrNTV6Q1hRVTZhNDdoaXBEY285bVdDUWpFcVlPMzhLUEx1UnpoYk02TXh4SHFKR0FiandEYXJfcGpLclI1a3FndS0ybjFlYmF5a1hlMkhLT1NYMHJoSkRKWXMzSkFlWF9Lb193Z0VVUHVGb0FOWUw3a2ZMQVpSY1l6dTU3WHR6a0FKRUR1VlcydmZ4YmRDMnBkTGtZTmRCQ0lWOVNiSXBVTGc0cGg4cEpoZ2hCc1ZPZFVlUjFn?oc=5",
+        "date": "2026-10-05",
+        "place": "p0611530",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Carson%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "200 apartments fully framed at 3863 Carson Street in Torrance",
+        "publisher": "Urbanize LA",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQVmQ0cTJ1S3lIZHo1NlRjV2RNUDJuUmpubUVNUE1WNEo2TGFwMHhMYmxMRkMwRnFuVDB0VHBCV2tMbGE4bUNnZkhmeGp3NGVmR0kxVms2MmRXajFSODhKOXZjakNJTTZJSEI5WUZsLXlnMzNTT1B5YkZfaXRKRlgyc194YklFN203ZUlYRHF3?oc=5",
+        "date": "2026-09-03",
+        "place": "p0611530",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Carson%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Carson City Council withdraws refinery tax ballot measure, accepts $370M settlement",
+        "publisher": "Daily Breeze",
+        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQMEpxZjhFbnZYX25mREpvc21BUjVJOTQzNGlzWmllWDgwR3hCRnJUbmFya3c5cU5uVHAzbkJ4NjJ0bnlvUnZxSmItdUctdEZyM1B1TFgtS1hKR3hVRUtYbnJ1SVhnRGxpa2tMTjhmTy1fUU5ZS1ZzVHRmTVQxVG9rX0Z1UkhUUGMyZlg1ZlN5S0gwUkM1V0lPSWV0ZlFUdy1udEVvNGZNcFZYUEdCZ090T3p6N3hoMk9JSERKYjRB?oc=5",
+        "date": "2026-08-11",
+        "place": "p0611530",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Carson%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Carson welcomes first community solar project",
+        "publisher": "Spectrum News",
+        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNeGZ2MUkteWVpME43Wmc3RW93cnJkNHZWRjJYVF90MVE4UnpES0M0M2NvM0JRTzJBWGh4clRuN1BzMW9iWmoyR1BQOFlPdm0tLVpMeGFRUU9BNzNqMWVKTmNScnFFczZ0WlhHdFF6bjZGdlVhVnNsLXBGMThBVUp5anVMQjJZRnhyNFE0dFFCTEZMbWRuRkRQX3BBMHRidw?oc=5",
+        "date": "2026-07-06",
+        "place": "p0611530",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Carson%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Single mother moves from homelessness to new Carson apartment with help from local nonprofit",
+        "publisher": "ABC7 Los Angeles",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQTXZSNFAzYjNialhySjFSVlVERTMzWkxPby1XYWtHTWJJWTdwVUFUY1VyYi0wYVZ0RWlvMVU1Y2lnaS16a3ZQTHhxSGJqOGJ3R2dTNWVXdkRlbmNnQ0NEQnlVRnoxWmdoNEpSNGxVN2dJYVZteFVuMktEMEktem5DYjVwLWFBLVhVeGpSVHVnY1gzN3fSAZgBQVVfeXFMTzF2SDRiZFBNTHdLZ1BMcEMycWdfN0RzZ21BQ1haS1phSEFDcVowaTl6aUlGaXVsSEhvS3JjczJDZklqV0NBM3AyZklnTklVc0dYSU50Tl9VdmNJNzcwX2p3UmtsRjIyNmdDQjdyREFpSm5Gdk13bVZkSGY5TnZ2aGlhRmtBeFd1SGxrd2JGeWlWcUdSWGs0Q04?oc=5",
+        "date": "2026-07-04",
+        "place": "p0611530",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Carson%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Carson council approves $147.9 million 2026-27 capital improvement program",
+        "publisher": "Daily Breeze",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOOTVKQUZvWlVLRGprNWlPRnFiQ21PdTdrUll0dDhEN0pYNl9GVmdQR19HcGpGVThJTEF4YjhTSXc4cjh6ZVEydHk1VkdOV0xZcWw5bXpVcFBMT0JsMW5wNzdleFMwX2pCM0RmSldfQjV5NjlidTIyVXlHS0F6SHpJYzRJTVhvNENXU2h5REdHdE1vS3Jkb3I3UG42VHBCV29GNFo0T19EeGRQcm0xeGhwMDVGVQ?oc=5",
+        "date": "2026-06-26",
+        "place": "p0611530",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Carson%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0611796": [],
+    "p0615044": [
+      {
+        "title": "Former City Councilmen for Baldwin Park and Compton Sentenced to Federal Prison for Their Roles in Bribery Schemes",
+        "publisher": "Sierra Sun Times",
+        "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxQZ1pZb0tycXVqRnVISGFvcU9kNF91Rm1LU3c3NV8tc1I1VGZVVnl3dDVwYXFiSTlIenVhQlFEWFpBMjZ2UVhrQzZpdkRwbHZxNGhfSXV2LXUwTFItSmdZUXdLSmRzeEVnZVdnWjR1S1laaC1FYmtxWmRIaWF6Y3ZkNEJrVVM2QXhjOUxCaFNab2hhbHZOX25CZ1dlUHVzS2tERGo1Mk4xdy1KRklmQW5lWjZmRWo4ZjRoTFJ2alN3VWFfcEpteWRTMDJNUXpWMnJNcFV3MDhjMGVoaGNFS2w4TFk0SFhZbFFyOTRudlhRWnBOUGVBU1RxYS1NOUFmOHAzTlFHYWVtWnhMd2w4dDROUWhVUQ?oc=5",
+        "date": "2026-08-25",
+        "place": "p0615044",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Compton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Man, woman killed during July 4th celebration at Compton apartment building",
+        "publisher": "Los Angeles Daily News",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPbjAxaDFybW9QVzdsZ2pGNHVocC1lMGFyZUs5N0wxRnBqcFRscVNjbG82aFN6OF9NYzhReEExNTNaNUZ0REwxVUpLbUFNdWNpeWZhQ1A1SW5QUmZqeDdwOHM2dEF6cUd0VHVaN3hkZDFkRDc4NUM5VTQtYV9yem1qRXVqekRLbWszYlJqVDl2MzdVRXp0VGFoSXRqS3FfNm5udTJHUEpLbWVlTjJPNHdyLVB3?oc=5",
+        "date": "2026-07-05",
+        "place": "p0615044",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Compton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Hand grenade recovered after about 3 blocks of Compton homes evacuated, Los Angeles County sheriff's department says",
+        "publisher": "ABC7 Los Angeles",
+        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPcmF5dGxHb3NPWHQ3UnduT3hwM2tWN3JPTkpQR2w0bWtiNFNjM19EWFdTbmtxbGw0X0xTS25GTkdHR05FWV84d3Rjd0VPNUlFNWpqbXJmaHJTNFJMM3JzbExyZWJjS3cwQVQzZ2tBUjNsZmpPb2g1V3VYUWs3VjZ5Y3N6Zk9IVVBaSXJ4SXBvZTJZRktJbTVjQWY5ckMxQURvMGVmaENlQmlTNHhFMXZyYjRxYjJMeGt1T1JzeUprb1dvNjNuRTZEM1c5MlV2MjJKMVHSAdcBQVVfeXFMTjZpekNGN3NVMWlvR3EtanBKUy01R0h6bmRQbFNBaTA5WEtQdUF5ZklLekgtQnZ6SG5zVkllVHdJM1VYWWdtTWVfSm5hYVpFamVOQjU1TFM2ckhUc21JQkpSTVdTUHZ2MUR0d2h2dmEwQ2otRGlER3ZOSnp2NzIzYnFWS0kxSVY0M1hjNURQN0tERjBMUmhndXd4d2xDM3M4N2otbW50M2hRTlMtM2plQVAwMDIwcHVVNmlvR29KU0FvTTZweTZlRjFvaXUtQ2NTMGlLYk1rUjQ?oc=5",
+        "date": "2026-06-14",
+        "place": "p0615044",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Compton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "2026 Election Results: Here\u2019s where LBUSD, Compton Unified school board races stand",
+        "publisher": "Long Beach Press-Telegram",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOOGhqcHVuVkNoZlJUTG9tbFZUNUJYQXVqYk1rV1N2c1gwc3hGZzdWLWZTNlBLTlhQanZaMjE5VXk2MDBVQWFURjRxcGVIbUIyWF9EWXNORmpfRGFFRHJfUGF1NV9TZGhZWXB3RjYtY3F6cV9IdVlwV3ROY1Jub0w2Q0dZdERLdHk0UV9MUFVpeU1nS3Nnb3R0TWxXUGVQZ2ktNHpuQlFMV21wM2VLUEhtWTRkd29BSzhjRWtBWHIxQTNza1ZoTnJQbWl3?oc=5",
+        "date": "2026-06-02",
+        "place": "p0615044",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Compton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Maxine Waters, Dr. Dre at odds in Compton school bond campaign",
+        "publisher": "Politico",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNN2lQeHhPSWFFODlFRjlGdXpJRVMzazBzWnZmOWJLR1JXX3ljZ2QwYVVsdlZjS0lJcE1NSkQydWFMbzd4OUx3Q21pVXYyU1lYQzYtc1hJZmpsM3ljeHRRbDhseFRwRF9rd3dUaGdCcnNiY3g1T2J5SE5pbmxnai1RcThlQjJOdUxqaF8wOXN2UjVDd2ZCSlYtakpDR1dkVzUt?oc=5",
+        "date": "2026-06-01",
+        "place": "p0615044",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Compton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Commentary: Election mystery: Why is Rep. Maxine Waters opposing help for Compton schools?",
+        "publisher": "Los Angeles Times",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPSU9BWGIyWmF3Q0ZhZU1IWks0OUVhbkpmSTFjMi1tV2hfZjdNRFhxbGc1Y3RzbEZ4NFpCRll4eV9BUXdVWnZOV2tJLTFUM3BPa202UE1yT0xLOVQ5b2hqaUJlTGZHazFuTTdOZGV6NmNrY1NTbUNySDVpTFVpNi1tSzlROFhyOHZpVVBTRkd3MElEbHBtVUJjOUFYR280bEo1SGVvZnZ6N0xQLWtabjhaMzFXU3YzVUQ3aV9qdHZQUQ?oc=5",
+        "date": "2026-05-29",
+        "place": "p0615044",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Compton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Compton City Council to vote on censuring Councilman Andre Spicer",
+        "publisher": "2 Urban Girls",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNeGs4dWV4bXNydE1Ed2ZwVVNBM1o3STNTWXNPXzZ2dXZFQ1p4dzNkVTVWWW12U0RfY3V2TldDQUxWZldRM2dhajhiM2dxelhYaEZSR2FzdWgta09DaXNrYVowMHgzT3FXT2V6cm1ENG9UQld3dXZJMFVNZE5FazZhLWxzQ05NMFBHXzFfSWl4OHFiNGFzdno5bjNvNHNTam8?oc=5",
+        "date": "2026-05-26",
+        "place": "p0615044",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Compton%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0619052": [],
+    "p0621034": [],
     "p0621964": [],
     "p0631092": [],
     "p0632385": [],
+    "p0632506": [],
     "p0633518": [
       {
         "title": "Man Arrested After Alleged Burglary at Kim Kardashian's Hidden Hills Compound",
@@ -979,6 +1147,58 @@
       }
     ],
     "p0639556": [],
+    "p0639892": [
+      {
+        "title": "388 apartments to replace offices at 3200 E. Carson St. in Lakewood",
+        "publisher": "Urbanize LA",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQeXRfODZjUXV5bE9yZ1AxM2puYk5ka2puT2o0cGNpZ1RoMDdDU2JKUWxNa3NRZEhQS0lmdjF2S1FqVlRMUnV6QnVmVGRDUDl3Z0N2ZGJWeURwMVc1XzhwdjAtdVhqeEpUcVM2V1NjTm1wY0JmalF3SFY5UnN3N3JKb1NnUEhqVnNTdm1oOVlYYw?oc=5",
+        "date": "2026-10-07",
+        "place": "p0639892",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lakewood%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "JPI plans nearly 400 apartments to replace offices in Lakewood",
+        "publisher": "The Real Deal",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQSlg5VlVqN1VOaWg2QlFOR3VycUtSYlZ5cm1yV3ZxX2tGMklhRnd1cEg3VVJQYnJ1SVVMYXppSGwyQUdOWnhFTE9TUW9lbzJHRzJTbG41Uk5IX241NGpMTW9QOTFWQ1laMXJsei1nTkZFa3BaNUIyTHR1VjlkMDNXSUFJODRnVmJSY3V4LU0xNlAwYnFU?oc=5",
+        "date": "2026-10-07",
+        "place": "p0639892",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lakewood%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Faris Lee Brokers $38.7 Million Sale of Two Retail Properties at Lakewood Center in California",
+        "publisher": "Shopping Center Business",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNZ04ybWU3RDR0dkQ1WGNIZmQ5QlNWZWZsWjR1blNEaXVJREdqRjR2Y1AyZGZDWnF2WHV1UFk5dmZub2w4cUtvY1lac3hNb2tvNzZUdXZVYlV3VUxrdzVNLXRwVWlCVThrb1FkWnJYTFdCX09iQVlEU21fa1dWY1VKeGxpRmFZR242ZXVjQy03TkMwRHpXT1RuR1IwdTdfWDFHc210bWR2bkNKWXhtUVJTT2c0UWFnRjZlRmJ1dVV0R0NGVC1ZNkxCUg?oc=5",
+        "date": "2026-09-30",
+        "place": "p0639892",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lakewood%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Homeowners in Artesia, Burbank and Lakewood Can Now Finance Roofing, HVAC, Renewable Energy, EV Charging, Earthquake Resiliency, and Water Saving Projects through Property Assessed Clean Energy (PACE) Financing with Home Run Financing",
+        "publisher": "Morningstar",
+        "url": "https://news.google.com/rss/articles/CBMimwNBVV95cUxNQmdvdl8xbV9rMERIUlhZYzNPOC1PcmZnS3dqcEZmSGVveWVVLW9oNUJrSE9CTWNoVm95T0lqLTRmYWpMSWpaeFY2ODF6N3R3RjJ5Y2lLcEJDby1pWXlIYUNhYWNXTUR1Z2gzSmhVbGpfRW9qUWIxYmZXckpQQzU2LVVqcFlhMGFTbFpCcTA0TF8yZVVxTnQzaGI3Vk9GU1V0UUFrU2tWTTQ2MFdldzZQUzZTVXE0aEpTd3dEOVdkLVgtTHpTWTVLc3dZbnVXQ04xVVU1Q1JsQjhOTHlIRjJxemh4UGFLVEo0Qjg1bm5WOFI3SGdqQlNZYktNaU52Y3NTN2JXOFRWcGM5eGRGVHZ2dlNDbGZZSE1TT0ZRUHRvR29Fb3VldlhMNFg1RkItQ1B5NmkxX29LMEJ3anZfclg1ZEk2cnhfOExXYW44OWVyWmQ0UFRWZnZ3Ym8xcG04OTZPOHVyQm4tQzd0R0JkX3JLQjNRSGd2OV9yYmlpbU5Dd2ZmZU1HbTNVLVplRlVQNFgzc2ZIM0pvc2JzYTA?oc=5",
+        "date": "2026-09-28",
+        "place": "p0639892",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lakewood%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Lakewood Teacher Charged With Abusing Disabled Students",
+        "publisher": "Hoodline",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxObnhhQ3ozeTZvbkl5d1RzMGd4MEllLV9malFZY1JRd2I1akl6eUR5QlFwMjVuQlR4YkRFSm5zeUd2cy1FNzVvbndUWVZ5b3E1Vlk0Vjlha2Y1cV9LeDg5WXB6N3BZbVhwSlEwRVpBb0NvZGpWUVMxSE8xbVl1aHJQaVRxckdNamtNRmpGOXBoYlNDTGY1ZTNlYkJDY0pjMzZ1SzFzeEl3TzRta2I4TVJIeGNyZw?oc=5",
+        "date": "2026-09-18",
+        "place": "p0639892",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lakewood%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0640130": [
       {
         "title": "Remains of 2 people found in old greenhouse in Lancaster",
@@ -1003,6 +1223,88 @@
     ],
     "p0641208": [],
     "p0641880": [],
+    "p0643000": [
+      {
+        "title": "40 Affordable Apartments Proposed For Long-Stalled Long Beach Property",
+        "publisher": "Patch",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNaWlyakZCV09uVmRESlJ3cXhUN1Q4RXEtX3ZuSHdvcGtDRnNnOTRfRHFHcmpGR3BKb2s3VFZPdFR6MmF3d04xMGNNQ2xfX3ZyMzBJTE1uYkp0dkM2VFMzN25weW1FOHQ4ajVSU1B0WVVuZ0dRMTVSblVSazBkcWdnbWxOWVM0UjcydnVBc3VCN0NEdlg1aFUtODVzTl9FbDNCNm4yQ1hEZmxkcXPSAcMBQVVfeXFMUHFhUzE3VEd0Sy1EOTdmLVVzSzRTY0hEV1pFbGUwRklkcVVseFFfRXhxQnRORktEaFRETnVQbU5La2Y1cExqUnQ0NW9IVklQaTdjY0IzTE1kUG9vYnM5MVZTWk40dzBVRUoxVm9wTnlHQWNCaGdjTXVHbjFsdXo0WmpoMS01VkJJakppWDl6NXFuWVpZbUFCTWZQTEl5N1BQd1prOGt1eF9YSHFNV184c0FsMmxzYklfdS1mZ05UaG4xNVh3?oc=5",
+        "date": "2026-10-20",
+        "place": "p0643000",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Long+Beach%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Rendering vs. Reality: Affordable housing at 1400 Long Beach Blvd.",
+        "publisher": "Urbanize LA",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNd1lvRzNrWDhYSGJpUHRvMlJjM0hpc0tEVXp0dnZTa3Z4UmVJdUVvTXJIcEhJMEpBbDdrV0FxdDBxeXBWaDZvQ2g2SDhLLUJOLXdmUjRfVUItOTBScFBrcXM5aThvWk9pd2ZIX3RueVBHZzhabWxqczl5ek1Sbk9zajZ6RlFWOTVMWS1tQzRxbU5ZTktx?oc=5",
+        "date": "2026-10-08",
+        "place": "p0643000",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Long+Beach%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "1 detained in investigation involving Long Beach Transit bus in East Los Angeles",
+        "publisher": "ABC7 Los Angeles",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZFJQTTBmTjIyZ3ExNzdoMlRSdE1YUnRSY1h3eGdRUmtKRjUtR3dfTVg5NXh2SDMxYmxIbHAzRGhpeVY5VXpUSm85T0VtU3g3ZXV0TXYwTlRlbTFPWEt4Z2ZaTWpQTktMZHRlRFRXcmJsemw0STR5SmZFeHFNeVo2Smk4S1BVaFFfTmY4c0NZMW15MXJpMVphNVpPUV9odUt10gGmAUFVX3lxTE1PeUlsczF1aG03cS10OEN4dC1PX3NNNHA3eHB6UGpJWng1NTh1Q1F4VzNMY192UlpsQjhCOV9KSlVfeHhQMDZPVEFqNG5wd045V1FPR05wSHRqVnZFakJrVEhoQjR3Rkx3WDgwY2F0OXYyd3k2ejdrMlhSYWt4dDVWdWdFSTZYUV9xbTBpaXprNXVyWkZja1ZjMVVsc2ZBM3h6SDB6YXc?oc=5",
+        "date": "2026-09-14",
+        "place": "p0643000",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Long+Beach%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Long Beach Transit receives nearly $550K to upgrade water taxi fleet",
+        "publisher": "Press Telegram",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPS3VEZFU5VUpRb1hMSG5adVA0Q3dScVp6bDZPOHpyRWk4eFVhR1gyV3V3UC1wc1dGS2s1ajFSQ1piT2V2U05SNEpxdENlTHEtbl9IYzU2ajhYNC14Y2c0Z3hDREtjUXN1amt0bEUtaGRWdXFaMDRmLVhtVVpIS0NyeXllZVZPWmpBZXZrME5teDQ4OGtuendENUVqNHliX0ZySzVqbC1qUUxGUncwTEE?oc=5",
+        "date": "2026-08-25",
+        "place": "p0643000",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Long+Beach%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Long Beach Transit receives $544K grant for water taxi upgrades",
+        "publisher": "KTLA",
+        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNRDdWYzFtdHFyd1lYNzk2bU11dVJ3U1dZSVJKMnJrcnZIczVobzB5ZDF2eHY4akpmWUlLMVNFX1k0enlnWDF4S185b05PMWlxR2RpVE9feDJsY3pNTDRhYURHc0YtaTNZd094SFM0enNCTnVZYkh2cVpFaFNUWFBSZlFmUdIBiAFBVV95cUxOM1ZVX2RuR21YNXgzbGxhcEo3Qzc2OHB5ZmxkWXQ1M1hMTWdIcUNKZXgwUWZQLUNNRWI0ZDd1T3VQNzZrdzZ3c3ZacjBGa3pBb1ROeTJVWUxTLTVScGNDajAtVUljR2VPMTRuMUNaYVkzeEs0RURleWhUdW4zZUhwNkFudEIxRnU1?oc=5",
+        "date": "2026-08-24",
+        "place": "p0643000",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Long+Beach%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "LA County will add people to its public housing waitlist for the first time in years",
+        "publisher": "Long Beach Post",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNS1NTeFVFbm1fTzJ0WTlGdndodF93c0hBQU9sM3RGbjkweUVhV1BaaVRJOHQ5anJnTFFQNmRwZGxNVEVOX0JxcHNBWHVpNHJKTHcxUFA2M1lybjR2LW1fTFpaZnMtdHJ5NEhkX0VHRjJlNlFsQTlONjFoOVRLUnY5dWF6UWRCaVlKOUk0N3RDdlc2TGRNYXBNQm8yamU3T3R5QjhjYkswNnYyMl8yb0E?oc=5",
+        "date": "2026-08-18",
+        "place": "p0643000",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Long+Beach%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Affordable housing project moves forward at 3401 Cerritos Ave. in Long Beach",
+        "publisher": "Urbanize LA",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQeXU4TFRqNEpTVDltTUMzYW9iQzItZy10YS1WWTI3dGxmR3YxanRTSW1RMEZqV0M4bGhqNTJRTVJIWXNwcWJuTl9wT0JJdnZQcmI5dzd5RlNrNWsyUTAwOTRXUERzVVJzbFYtR0h4VElPWl8yNVN4V2dtSWdJSlRJZ2xQRmhoaE5feHBCS2IydHN4dEx6NXlDbUFsSG1hZ1pR?oc=5",
+        "date": "2026-08-18",
+        "place": "p0643000",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Long+Beach%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Long Beach says library fence cost $790K. Records show $418K in construction costs",
+        "publisher": "NBC Los Angeles",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNZmtJUjVNSGxLZXVBRk51ai1fX25jOWtUX0lOMENReGd1WC1kWlIxazFBNnl1ZFVXREhIRVRwdERuUWpocGs1a2tLRFJ6czJlcVU5NEI0a3pEMjRreXM0MEdYbmlvSENmVi0xUDVvZ0FVZHV3elpJSWgwcEtQUDc0ZC1KdHJIUjRMckh3WW9XVEdINlhfWHFUbkFPd9IBowFBVV95cUxPb0h4aFVFam5LdWtTWDJIZUF3cUxEeUU4VkhURkVNVDdaNVdPUy1pT1FyVHdnRVpKOGEyaDBXbnljcmZ0MkpBV2R0cDF2LXhTTjhyaUpOZ3Y5SUlxTmhNXzl2dDV0VzY2MkR2UVctZzZjLV9UUzJuVjl1ekFua2NqZld3X3VodHdEWURQTEJkNWtNbTlhYXFvbDBIMlN6bk9LbmlJ?oc=5",
+        "date": "2026-08-13",
+        "place": "p0643000",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Long+Beach%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0644000": [
       {
         "title": "A time bomb for renters: L.A. County\u2019s cheapest apartments are getting old, fast",
@@ -1167,6 +1469,18 @@
         "feed": "https://news.google.com/rss/search?q=%22Palmdale%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0655618": [
+      {
+        "title": "Paramount may be planning a California exit",
+        "publisher": "Local News Pasadena",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQczdyRFdXeTlrQkxteV9wWFpxNmVCcUhVd0FtczBqVThDVkNKeUdtRFV2M3YzU1d3dEVHVi1KY2sxU3F0R2FRRXN2LUpXQUlwNjFCQW5tYXhzRU5ad19ucU5USmF5S1B0UmxVNzV5NW5EcFdHVzg2TTlwYlZYWGN2ZG9fWkRxQQ?oc=5",
+        "date": "2026-09-18",
+        "place": "p0655618",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Paramount%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "p0659052": [],
     "p0669088": [
       {
@@ -1198,6 +1512,18 @@
         "county": "Los Angeles",
         "kind": "reporting",
         "feed": "https://news.google.com/rss/search?q=%22Santa+Clarita%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0671876": [
+      {
+        "title": "Signal Hill plans new zoning rules for \"oil patch\" district",
+        "publisher": "Urbanize LA",
+        "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNMm1rWXp4eTQ3Vk1YRzlwaWJ1R0l5bk8wTzNDNXBrY1pxSlg5bGxQM3pNS0VzRVBOTUVMc1JaNTdmZFhEQ0dWRi03aVBGNjJwZlpTV1NmcjFWYVJjY1JGMDF3ay1UbDBFaDZxaTJiY01mNnZlMnRTei1hNTd4SmlUSWV0Qks3Tm9XWVJF?oc=5",
+        "date": "2026-07-22",
+        "place": "p0671876",
+        "county": "Los Angeles",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Signal+Hill%22+%22Los+Angeles%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
     "p0674130": [
@@ -1597,6 +1923,1340 @@
       }
     ],
     "p0673612": [],
+    "p0602000": [
+      {
+        "title": "Natalie Rubalcava, Anaheim City Council District 3 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPMWw2SUdmckcxUXg2c3ROZm5ULWptOWxMcEdxZFJjYU0xRVhsanlZUjJsRW54emtSaG5IbWN2cmJhYVZFYWNsNjFXMk5Ta0dhbXljc1NGUl9hUEJqSjBtb0Y2SmVtd1k1OWE4UWpFNDNQcWtPTHZ0eWxiMGtUdG1uTGViMzZwTTljcFpQUE5JSzV0NVFTRFRPejBoa1ByTjJpcXk1Q0lxejktbTZrVUVsVFVoUGk5MXgzNUY1N2wwajRnMUpm?oc=5",
+        "date": "2026-10-05",
+        "place": "p0602000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Anaheim%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Elia Renteria-Garcia, Anaheim City Council District 3 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMmtNU3NpaTZXcHptTXNDeV9VSFNuVjhFNmxkV2Y2Z2YtcWlsMUozWm9YTEQ2al9vS3ZuWXZaU091S0pzSzF3dXlJQTQtakhjSEQwYUF3VmY5NW5yRmRpVmQ5a01PTW9XWWJIWGgzb3RaSnZGZk9GdERaXzFTOWNMaDRqNmZTYmptZkMySG52Y3pIMGM2RlVFRl9XX2xrMGllckRIX2owMUEweUpCSzJLd3ZjYUNDN0NOTkQ2SVYyRVdxSzgxSUlvdw?oc=5",
+        "date": "2026-10-05",
+        "place": "p0602000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Anaheim%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Museum vs Bullet Train: Anaheim Swaps Land With OC Vibe Eyed by High Speed Rail Officials",
+        "publisher": "Voice of OC",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOY0NOTkdVbWljdHJ6TnhKQlZMU2s5c0VfdEZiVjV6RGp4T3EyVVUwcmF2SGNKUmxqeFdRa1VLNHFTdGdIdDVKTk8xZUVINERYSFEtc3NUbFE2OWluVjNfaE9VUEdCd084SVFLek4xQnEzX0xCOHduYnh1UDREUHNmTGFVc2dyUFdzOXFCOTQ4TFdYZzZKNlowQzNHUE44S1p1N2IwMURYOEpBMElrNFdVX1RmNWp4RVdQRzFv?oc=5",
+        "date": "2026-09-03",
+        "place": "p0602000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Anaheim%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Anaheim Says Local Taxes Shouldn\u2019t Pay For California\u2019s High Speed Rail",
+        "publisher": "Voice of OC",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOR0tWbnpRT3gybEI0MGVYSC1XS0toQ19Xai1uU1NhOWlsbDAyWEZnZnhNZXhxNGUxTXdGR2I2emYyUjZJLWFSNVdSM01zRU9KUTNZS2hNWmVkX3NPbXE0c3VLZVY4U21COGlvYUFhaUxNcTlCaVAyWGhXRzhaVl80bGVlN2ltWlBFd2g0MldXZ09tMWc1YkRlNDNoYXdnZ2o3Ymc?oc=5",
+        "date": "2026-05-13",
+        "place": "p0602000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Anaheim%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0608786": [
+      {
+        "title": "Hakeem Jeffries headlines \u2018Take Back the House\u2019 campaign rally in Buena Park",
+        "publisher": "Daily Breeze",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOOFNXT0ZuX0ZETGRZRC1xdFhKTGtlN1pfVWJadDJwTW9tMHZRYS0tZEZpS0ttRnp2REhqRVJJM3FKV3EtT0dwYUJGMnZNVzY3d0wwUmhHbGdoRWp6VVNOdWFuYTBXNWtvN0daeGNmc3htbEp0LTI1RGlnMi1jZ1cxOGVBNjhKTWRCOTN6aGRDRFdIM1pPNmJsanVqRm51MnlfVG9JeHVWcm5mVWZYc2V1RkJnVWc?oc=5",
+        "date": "2026-10-23",
+        "place": "p0608786",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Buena+Park%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "2026 Election: Buena Park voters decide two council districts",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPbmJWOTFIOTMwSi1UZC1makQ0YmNzNWpqMGtiNWhnT1dTVVl2Wjg4UnBqaURQMGpjcXhHM3BoMG12YjgyZURiLU9CLUNEWERlY0Z2QkpQZTNWQXJYa2tpVFJZd3hkQTVEOE1DWU1PNVV0dFRLUlVBV0lMa1hvTHF0OGNDRDhGLUl6LXFYS0ttWE9iS1ROcEtjZFllSWxRZnhC?oc=5",
+        "date": "2026-10-18",
+        "place": "p0608786",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Buena+Park%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sharena Walker, Buena Park City Council District 5 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQUXpoTXFTZDdvYUpyOEE2SWNxc3Q5N2VfcHhER3p5TDFwS3M5Nl8wZHJVM0RLd3Z4VnExMUVMMExqX3FWSTZEZVhLZWhMck5DMzlOODRtVVJ2b1dSUzEyUVV4bDhGdG05QjdjbjJ5amZxaHM5TFNHbFdmTTlIYVJxTkRMNWswTFVhZ3pCYk55TzBVS09fb09ZOUVmUlEwRkpMdHhtd2NDdUxmbTVQR0ZvSGF3WDBvU1FpSWFhYkpCbGo2cWdS?oc=5",
+        "date": "2026-10-05",
+        "place": "p0608786",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Buena+Park%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Carlos Franco, Buena Park City Council District 2 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNZlMtUTNsajFuRW9ucmFxcUxmOTBGQnVPSXR3UE5RNVVydC1obllUWjhvVl9PSEphQ3RQZHdHYW5WZHdLX0xvWUxRMHBGbUhzY1lLMExTNjluN1pQSFhxOGk4Mndxc2QxVXVWVmhUbFpPTzVFRFdvS3BfYmpwdGJVdUtTajFQbHRKYlhpekRGR3lJUUFJWF8zS1pmdG9PRjI0MGFhRldaUW9MU1FvT1EwZEtrWjZ5SndmWUVUMlNud0FkTTA?oc=5",
+        "date": "2026-10-05",
+        "place": "p0608786",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Buena+Park%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Brandon Schooner, Buena Park City Council District 5 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPTDNYcDdKS25XUUl6YWtPYV9hTGNVREhZUHBTV0xKbTJGRTV2Nk1DMmR4OTRydUJTbm5NcE1ESDVSbzgxTmdqdVR2alhxR2lsb0NzOV9MdXFTUFdKQXNWRmU5bkhuZUk5SmlmdUNTRXJqR05CbkZvMmNGRmJYbnBLQnNwT1JMakFhRFVnZkRkSUdYSXdQLUoxbVZkVUNsaHlFYVA1SnFtcFg0eWhGMXZ5OXNzVGl1c29WeXhzZW5KNmhNZFVzcFY0?oc=5",
+        "date": "2026-10-05",
+        "place": "p0608786",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Buena+Park%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Claim Jumper steakhouse in Buena Park closes",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSGxfdDNfanJaSWNVdVd4dldCaUtxQTRrNTVEelBWcjVETk8wa0pxcm41Tjc3WjBTdkdNQXpKSmR0d2FpQ3lSNzBjNW5UY3VFajEtUFQ0Q1VTMWRMZEhuLWpNQnBZN05MOGxFclFHbzE3M0E0azhmRVZEc1BnNURaVDZvWkthSWdjUTc4?oc=5",
+        "date": "2026-09-22",
+        "place": "p0608786",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Buena+Park%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Buena Park Revives Butterfly Site With $85M-Plus Attraction",
+        "publisher": "Orange County Business Journal",
+        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQmI0SWhrZU9laEQwemwzRGx2WjFHanZhczh6WWIzcWV4VFZoMEtmcE1hSEEyMEVMOTJLRXZZTE91QjJzTnVTM1I4dzhTLWN6WVlxdHpIQUpKYkNMOGhVaVQzOTB0UjRZS2UzdjI3cU5rRFZocnNyVlBsQlhiNDFDaFlRUXR5b00tS1RLYUpJeXlpTm5mNDVn?oc=5",
+        "date": "2026-09-21",
+        "place": "p0608786",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Buena+Park%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Plans advance for 304 homes in Buena Park, Newport Beach",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNdGYzYUV4Q1o3djhRejFlNHNBRko0aFppenhndjFqUVRBLUVDSFEtb2ZZWjE3NFBySW92Nl9jS0N4alJNTmdaSmlFN3dtbmhBLTMyLVZmVGJIbGowcmg4M3FqWVN2X3M4OVd6MjlqZWtzUXJ6aFBLVmJpXzNFZmJ0UGVwWUEwT3dLRXdXVG1jZnNFeWxlQk1ZcEdn?oc=5",
+        "date": "2026-08-24",
+        "place": "p0608786",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Buena+Park%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0617750": [
+      {
+        "title": "Yamaha Motor Corp. Sells 25-Acre Headquarters Campus in Cypress, California",
+        "publisher": "REBusinessOnline",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOUGp3NkdsaGl2Y0l3NFE2LWNWc0diQlN3Sl9xUkhkeF9SX0ZrLU5UR29XTlFOZUVaaWxMblRJaTZtZHZ2VUYwbU9kZTczYnB1THZHekNZVzIyR2ItWEZwNHBfMllhUUZqYkRlNldaYnREckFVRGNPM0RNVWpXamlwOTh4MXgtWHo3R3lXeTNQWkdjT2JtQTJNc0plY3UwM0FfZktRelN3?oc=5",
+        "date": "2026-10-08",
+        "place": "p0617750",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Cypress%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Bonnie Peat, Cypress City Council District 2 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQTkhHSWFRRElVTEcwUjUzVUVPem01czBlUUxiaFNJNFhSNEJjeVhsSEpZYjFneFg3aDdFRkhsenBlMHJhOHdXemlhbzVud3l3MlNVaEVhdzBVNmlsaUhCVWdaanFfOTAzTk1lclBRTTV6TFhSS2o5UXZneG8zUWlaZXFJU2ZHNDdKSHRYejlMZ2lHcGEzMzZNX3BJTDFqT3RRSTZyTmJwT3lvLUZkVFE5UDF3TU5Jc0VZXzhwOQ?oc=5",
+        "date": "2026-10-05",
+        "place": "p0617750",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Cypress%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Helen Le, Cypress City Council District 2 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNd2hpQ2kwdUhzU0lGUkNwWTBSdmNTWTJUQncwV09oY0E1LURsRnVhSXRHT2toZ3B5Vl9VTHprVUtIQTVycXh3eEd6UE9LdzNaOGlXYVlCMmJjZ1JuSVl3VGZwMEluTElBSUw2S09KU2pmbF9lcm5KYjh3eFdKZlpkQ3oxUnZ3TmhjMUlka3lpV1pZZXBkZEtDb1llX1VUeV9SOURqRzFWYWNMLWFvWGpxank5ekNCRnBp?oc=5",
+        "date": "2026-10-05",
+        "place": "p0617750",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Cypress%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Rachel Strong Carnahan, Cypress City Council District 5 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQeVNYSkxiUjgtXzBFTFhtUFZmdkJDVGlrNm8yR2xOcmR0azFlUEJCVVlOMEpUN1pUZ2d6NXNjcXA4aXNsdXVxRENSRTFSZXdhS0JuYVY3ZDhCQ2RpRV96NTFCUWloMWRvWUp3aUM1RDFPbXJLQ3VOaEZkOFRVS3RaNW0tR2tqQU9OUEtwNWRGUFVUTlVMWlZWdHR4WG1JTnVZd3htVGl6OUtUYTZMRVc5bk1RY2NNOHZuTW5BYldaVDdMbllQNzZNWmU1VQ?oc=5",
+        "date": "2026-10-05",
+        "place": "p0617750",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Cypress%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Anne Hertz-Mallari, Cypress City Council District 1 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNbkZnOEdpb2RrdklIWUh2cEVwb3VXamx5RHdxWWd4RDRfYklNX0JkTkl5SnVlLWRlcmdlMk5GMlhySGxQMW11b0pLNGIzSmN3bDFFSjJZQUUxSW42a3UzanVUcE94QUhQeTI2TWE3cXd0WnZSNWJ1ZEpSWXppZlFaRVc1QTlFQXNmQmNmZHZfYlJyVDJIbWIxUlM3OVFpUVY0QWFQTF84dkhoOWJRZ1Y2Mk04QUEyZ2c5MkVNYmF1QUFjUVhfN0E?oc=5",
+        "date": "2026-10-05",
+        "place": "p0617750",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Cypress%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "David Burke, Cypress City Council District 1 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNd08tbmhwTHBMSm8yVVd1WmRjZXR0OVh2eWtodEVtUno4VVBuRFJhUm1XbTVsYTZOYUNfSkZQaFZZWUZmTnI5QWNsZkFReTlNcV90ekZIY3d0Z19TTGlpb1pLU3FQcUw2a0psUmQyUVduLXdRR25OOUxUbUVuTFo4VFdoaENyTURITjh0c20tNG1vSXRTWjNMMXp1Z25lOHNuOWc1dWlqTUhzT25JbTZPSl9yeFZqeDhoWWViMg?oc=5",
+        "date": "2026-10-05",
+        "place": "p0617750",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Cypress%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Prime Pizza Planning Cypress Location",
+        "publisher": "WhatNow",
+        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTW9ybFl2cURRRFgxUVJGa2ZoYnJMYm84b1RHWVBqaThTZXBGT05sV2lQMlhhcVZJYVZnVFJSZTkyTVNEa1owbVlvVFZuaVRKNGtGY3JNbFkwMURUb241R2RRb29WOWFJUDhlV3dkdjBSU1MwTkx0QzY4cHhuSEhSZUszVGY3d2tBTHhsVw?oc=5",
+        "date": "2026-09-26",
+        "place": "p0617750",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Cypress%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Cypress council looking at approvals needed toward future redevelopment of Los Alamitos Race Course",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPVl9zd2QwZzVqQnQyeml5NUkxb2JXYVdVXzc4TGZUdVFFR1RSYm5OQ3lURVBxMjNlOFl2ZHdkR0tEbmVzMXN2cUl1UUJMeTZ2anN5aS1WOHFuM0xYS1BPUmZ6OXFBQllYVXZLOXgtN28zZzhEaFUxeDR1VjhTd1FCV0VqeWFpMTRscUJNV2FzWHc1YlZqTElSdjVJSGpZM3ZqWkdZaE03RWlwUDV0ZXhCYTEzOVpwcWhyeDJrcC1DQnpQNnJEd2VEWW1EZXBmWG9JbmctSQ?oc=5",
+        "date": "2026-07-23",
+        "place": "p0617750",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Cypress%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0628000": [
+      {
+        "title": "Jozef Maldonado, Fullerton City Council District 5 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNaWY0U0czdU13Z3h2aUVhMGhqSS1EX18xTDI5N3VVUVBXcmZMajVLTzFvOVV2cWdUNzNiODkweklySHhnQVlFQmtvX2N6ZG1xUDZuSUJMUkk0TF9HODFQRlRJMXowQWp2V2FCODVJWDlmTzlPWnZxeFBFZFZwUWhiSTBVdG5LeTlRaEtFSk11QmJpVmNwNTBvbTZEbzNGZmZKWEQ2YUxzdjhPSlgxbHdTTml1Z3U4cF9GM1Rfbnlyd1pKNDVP?oc=5",
+        "date": "2026-10-05",
+        "place": "p0628000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Fullerton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "David Fischbein, Fullerton City Council District 5 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQVEo0YUdCX1dZM3Z3Z2M2dVROOXk4bTFtbU9sRTUtYVluSWZIZk1QRkNWalg5RURhYzRzLU9qZXQyVVhqc2UxWGZsckdHVlBpdnlsRWFtN0JGWmgtRW9SdmFCaVhJeGtnQ1VjWkFnRnlkazFVUXdMLXRMdWhkLV9HUU1uYjJ0MWhjRmh0UnJCQXFUMk5nMS1UbFBOUVlRQ1FRUUp5QnB4bmlDV3JQMTFJNlV4ZWs1Uk02STNnOW9MajFhZ3p2?oc=5",
+        "date": "2026-10-05",
+        "place": "p0628000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Fullerton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fullerton eyes downtown parking lots for multifamily development",
+        "publisher": "The Real Deal",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPczhuanJCeHZNbi0wb0FzVkpZMTlWc2gteGpkZG1zczktdkM5TV91T2o2ZzUzVlBPSFppNGRWNjBEaUpIcFpwTTFMT2lKcDU0MkpxQlBJRFh6QVlXRFU3Rnh5UC1PaVoxSjZmVE5laGt2LTN3QWp6NTh0aGJLNjhmTVZXOEdINndOUFFvLWQxY2VaY3JrNnc?oc=5",
+        "date": "2026-09-03",
+        "place": "p0628000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Fullerton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fullerton Eyes Parking Lots in Downtown for New Housing",
+        "publisher": "Voice of OC",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxObkRWZFItekVCYjI4Q19QQzRxN0dfVXRYTDZMV3JaektwMzZYVXlTNnN0S0t1N2VRNTF3TEhKSm83NkFWVmwzUDJvRldQU2JDcEhtd1o5MlhlUzV6eDZaQWF3Y0ZnM1BkQlRZTjJmTENTaS1qODJJWElLVTI0S2pXeGFSbTJmRVo1TF9QbGJqWQ?oc=5",
+        "date": "2026-08-25",
+        "place": "p0628000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Fullerton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fullerton to tell grand jury state housing targets are out of reach \u2014 and that student housing should count",
+        "publisher": "Fullerton Observer",
+        "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOSVFjRXYyZWxZcDdManFpRFE5czR0QThDOE1ab2l2bmZSSU5kM25LRGlBM2lyNVY1ME1nMVhpSWx4ZGhsdUJSSlFPQVp2b1ZwYkNzQmFoZ1BYVDdCRjRlNE5DemZCOVYyc3VMWEtEb0NSa05aZHl2aVMwWEtMQmtyMGtYSW96a0tWdWJnQlpfQ3NGLUxzaThJMWl3RVVlVmFNRDFlNkdFczJhX1pENnMtWFpxNzQ4MlExY2d0VVVfdGs4aVJQRGZoVV9LWU1VdWNkcDlGZG9tcDRQa3BpR2lkeQ?oc=5",
+        "date": "2026-08-15",
+        "place": "p0628000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Fullerton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0629000": [
+      {
+        "title": "Patrick Phat Bui, Garden Grove City Council District 4 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOc1N0Um5JdXdHNm9ZS0NoUzU4UDZIc2FXYlFWWVo1Q0dyNEJ3ZHdLX29oUXVUb3NSMVp1OHdUSXgyMVhwSlpYM1N6enRwVWotNGYtMXdyWmpiMWREZjFTdUZ4WjV4UU1UMUhPbVI2SFJoN3poN1hrTXZYcUFNRWVjaHJEZW9vZHpyaDZNTnJKTkpPd3ctZlliTnFVN1o1bHV6UkoyNDVBcmljelVEY0stZ3dZZGh4cmplYkN2SkJVT2hLdUNjRlhHMTFB?oc=5",
+        "date": "2026-10-05",
+        "place": "p0629000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Garden+Grove%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Cindy Ngoc Tran, Garden Grove City Council District 3 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQYXhCMUxaWTlUQTNBX3RhOG5QV3kzZEdreG56VlYxMTZfcDZUVTVMN1VWM29SM3c2UTh2b1F5SUtMTDZVQXkzcDhQQWNHNXVjREd2aEY4UVNvdVd6Q0RQUmVWbWxZOEt6aDhsMnF2bjZpQ3ROMVhOUXM5eFg0VEFlT0VqWVVVYlNCTmZwVUIyVXVnMUxHaDk1OW5WVUZCWXRCYkVFYzJ6R0g1ekRmTklOdTJtM2tRaXd4OGpOTzlGTG01b3hYaXlBeQ?oc=5",
+        "date": "2026-10-05",
+        "place": "p0629000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Garden+Grove%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Hieu Nguyen, Garden Grove City Council District 4 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQcXVGNE1LMTdLMHpfaHVUU3h6YzJ4OE5jOVlYd1g1MWtqSm8wRmhVb2tyRGNJejRFZTBlMTNXSVhxS0pxU29JTl9rUEpkOUpaNDhuYVdKVnMwM1V6ekJEQUpFMjh2YjduSFczdnNIU3Z5RllKdG10QWpOWjQ2YU9WR1VWOWxtUEZUYkM0QXdJZVNhbFlnUFlseVVqLXpGMG9nQVJWYndENmhvTlNGMXdYcmJXak9TUUUyOFU4cW5CQmVDYUk?oc=5",
+        "date": "2026-10-05",
+        "place": "p0629000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Garden+Grove%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Joe DoVinh, Garden Grove City Council District 4 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNbjF5YlB5V2lzd0NNUGczRjJVR2hmdWJyazY3Qk9IcVpKNE1JVmhnbUJyR1RLNUgwNERFVVBReURhMUx0UmF3NlZoa1ZIRjVReWVyTEhyRGpaU1hvSEk4RjFkRDhicGdyOUdTMmEtNUk3Z2hRd0NIajdmQ3cxN2VSQTdBMk9JYlI5REFQQjBpRldrQVVPQXZsRC10SkZDcWlibHBmMHJpOHkwUS0zRzQ0cVliUThfQ0YzMzZrSGFVUnBNdw?oc=5",
+        "date": "2026-10-05",
+        "place": "p0629000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Garden+Grove%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "OCTA selects Clean Energy to build out hydrogen fueling station at Garden Grove facility",
+        "publisher": "Mass Transit",
+        "url": "https://news.google.com/rss/articles/CBMirAJBVV95cUxQWkpYdGU1ZS1iajB1YjNBcktIOXFPNmJOZlo2Xy1NeEZXNl9GMDRHTi0yT3hqVms2SmN5REFEZE5BSmdQQWQ3QXdPeVJsLU1QVVFmU01TV1VUN090ZWhqeUM2R0pPN3ZTRmpia1JmTnJST3I4UHBBeXBUb1Z6MFVWMUdFQ1NvMmpDMGI5OHpJc3Y1V01YVDZPVm1ORE91N21vYWpxVHJpN2E2elV0MnN3elNHZWJNQ3RKNk9qUFI1Z1ZZdkRjVlJ3b09OSzVMY1lwTUk3OHJiMkN1YTVuVUtPNFJ5WkdpNUxLOWlneldDRENfRkE4RjMzNUhWR3JtZ2FBTEFockFUVEt5X2dhRHFONVdlUVlmSDdnSXFxRmNDX3NNTkswZmwxUjU2c0U?oc=5",
+        "date": "2026-08-06",
+        "place": "p0629000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Garden+Grove%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "GKN Aerospace Senior VP Addressed Chemical Crisis at Garden Grove Council Meeting",
+        "publisher": "LAmag",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOejkzeHpOSHYzVkVqcGFPS2JqZDE2ZTdwOVhLRVpwTHludWZzdGpodUpyVXNNeV9DWXdkdkpXRjBKUGFXM3FDeUQ1S3dxVnQ4N0oybFV0R3AyU2hxUEthTkVVZjNJS1BIbG1BRVI2YXd6cUstdnN0V3JuM3ZKbnlrTktNeDMySWpDekFybFpwSzZZTzROcmZiaU9hU0F4Z2I2ZkUxdzVCNHI?oc=5",
+        "date": "2026-06-10",
+        "place": "p0629000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Garden+Grove%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "GKN Aerospace Executive to Attend Garden Grove Special City Council Meeting",
+        "publisher": "LAmag",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNWmJyaHF1bXMtcXVETXV5OTZpODdWV2NrcXhzZFpralVxdXhBY3hXR01vc21NSDRjSzc4cnRqTE9CRzZ5MFFvcDdOOW1Ka0FMcG1VanRjcE5JelFaLW1KSEFxWXFmQzhWUlNmRFdhYlV3OG9LNWZHZS1kZXY3Z09vbW5LMDdFSXdfbzljbTc0RF9oT1dCRWRGQklNYTRKdFdj?oc=5",
+        "date": "2026-06-09",
+        "place": "p0629000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Garden+Grove%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "GKN Aerospace to attend Garden Grove city council meeting after chemical emergency",
+        "publisher": "KTLA",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQYVpyS3lUOEt2ZURNVDY2RlNlT0p1aGtXdHhGNlZCdEpFcGxndzZrUnlLLWxIdUdBbzN6MWhwZVZtUDZUbnB2aGFPZWhieXdvQVhSZzVNV3RESlZkZnk2TGpYd2dpM2NpM1Y5M1ltNEpSMUZhZ085YjltbU1SVDdZazk2V0ZVUdIBiwFBVV95cUxPZERBRkJ4SWV4bjlyRnAwZ2Rlc1VCQm5Vc05UN2FZeHdRT3RCNjNKN0NIbzh2OHZIRkkwREEyWDlPTnlvanVtNTNLd3BwdWdUcFV1YUxwMjN3RTM0bGVBTVlJY0U5Qkw5R0M5emEyczhFT2F2YUZRbUtzanB3ZW5uZWZVVktFTk5fSHZv?oc=5",
+        "date": "2026-06-08",
+        "place": "p0629000",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Garden+Grove%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0643224": [
+      {
+        "title": "John Delavigne, Los Alamitos City Council District 5 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOMzlWWEFodzV2Sjg4NUEzM1ZlbmNnSVJQYXkwalBieVoxOVpXc2ZCWkR4ZlMzRDRyV0JWYUFtRDR2Z1MwSTc0MUtheWp6aUlELW5uY1lXM09MZXNrWXphVDJISy0wYXY5a0xsVml5R1dKY0FxaVhVdE1ISlAyRzN5a1p3VWJ6RHFtU0NZSnNtMWZsQzk3bVZHVzJhLTVUdVdDZlVyR2pidjBnVGtJS0FmeUNaSjhBLVkwSkhzYnI4Z1ZpNWxGU1gw?oc=5",
+        "date": "2026-10-05",
+        "place": "p0643224",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Los+Alamitos%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Shelley Hasselbrink, Los Alamitos City Council District 4 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPOUlkcjBCRVdDUC10cVpfSU9YYkxzQVdoTVJzXzFSWnBiZmlpOHZqclViTDM4ZkEycHJRR1JsandCS0FyVjd5TUhpX3Z4TnNsaml1MzZHZHVDSlFFYUwzbUlsYlpnUFdfRUN2cFdDcXJUb2NXdVlLVXRYN1JsYVNTSVprVF9kY2JXSEY5cnJVSmJEU3Y0VFhQdklnbVBuZlZGaWw2dTNmOUVnc29RbGp0ZXdkbklCT2wtLXlPRXRZWU51clk0TWloaldhRFZTUQ?oc=5",
+        "date": "2026-10-05",
+        "place": "p0643224",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Los+Alamitos%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Cypress council looking at approvals needed toward future redevelopment of Los Alamitos Race Course",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPVl9zd2QwZzVqQnQyeml5NUkxb2JXYVdVXzc4TGZUdVFFR1RSYm5OQ3lURVBxMjNlOFl2ZHdkR0tEbmVzMXN2cUl1UUJMeTZ2anN5aS1WOHFuM0xYS1BPUmZ6OXFBQllYVXZLOXgtN28zZzhEaFUxeDR1VjhTd1FCV0VqeWFpMTRscUJNV2FzWHc1YlZqTElSdjVJSGpZM3ZqWkdZaE03RWlwUDV0ZXhCYTEzOVpwcWhyeDJrcC1DQnpQNnJEd2VEWW1EZXBmWG9JbmctSQ?oc=5",
+        "date": "2026-07-23",
+        "place": "p0643224",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Los+Alamitos%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0653980": [
+      {
+        "title": "California\u2019s construction unions are running ads against their own jobs",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOOVplRUhNd1E1bFNCOTFFbTBhTHcyeWFUWnFMUU9qc2dBRWs3VWd6a1UxSEZkNGd6cjhuTGg2QWprVkgzUENNZEpXWG82ZFVuVEhybDEtTlBlcmtTdzczZW9USXFST3NKM1RRZmRud2VRSHBHWU1EZmhaMkFFVnl3eUdYTjRvUFlZWTJDWXlhcU1TaDAzb01ZczIyc21DZDVaTDJXejRQU0U0MlpLVEE?oc=5",
+        "date": "2026-10-21",
+        "place": "p0653980",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "California\u2019s leading environmental law is leaving housing behind",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPcDhXdDBCUVhWYTd0b2VSWlpTeXpkS1dEM0ZMVmVzZ0xQRF9Xc1RLWGlhYzBaWl9hV1EwWm50TDdYcm9xbXRSWUlVS21JQTd2U0M3Zkxjellnd3ItbW5UaWRBUjY1YXp5Wl8yZFhrTWNOcUdQeFpBNVBVdVhSdGllUHBQdEVHYkVuZjItaFhybWYzdkR0ZGNjZFkxRGlKRmZQQWp2Wg?oc=5",
+        "date": "2026-10-13",
+        "place": "p0653980",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "California multifamily permits jump 33% this year",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxON3NtczkxTHRlN0ZNQWJfX0JZeEJuLVdtcjVYeENWdXpGUXc4ajZXUTlQT25ETDRuTVhPQ2RUM0U2dWtfQ2ZxTkJkSkF1Z0t4TF9uS2pCVzkxT09nb25QaXVFQWw0MnV0VXhZb2ZydUc3cE9FdTJPNEtiLVVETGx3amoxYlpkYTlUUk1ISGlPMG4?oc=5",
+        "date": "2026-10-08",
+        "place": "p0653980",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Orange County residents blast emergency shoreline armoring",
+        "publisher": "Courthouse News",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQZTE1V0pUdGdfb3lCZV90cTRPVmgtMEtzZkIwYjhHeWM5Nm91NUpTZUpyckRIQnQ5RGRKLWZTUWRaeWRZV1ByV0JwSWg5bG8tT19HMlVqVEkxOHNSVUxsSC1KQUlsUVRLbEs1RUNCeGlZWU13em4ybldlaThIRWpZbW14TXdFUDVzREs4WTFOaWFEaDg?oc=5",
+        "date": "2026-10-07",
+        "place": "p0653980",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Endorsement: No on Prop. 1. More debt won\u2019t fix California\u2019s housing shortage",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOWW5jbVFTNUN5YVRRR1BjNDZiR0ZKRUN4VVFsaVFQTXZLMW91WldiR3RMV3YwT1dDS0FBSnRRRENCWDNHSnZncmpUdXItcTFvQU1wQS1CcnlkRE1idm5sSXdTZjV6QmhyOFhwVG9XYkdSbGdnZ1FWTGVWZTM1OTB6OWlGaXg2a2RJd1h2T3EzSlNkazYtQUd2UnJ1bm9EN3ZkTVl6RGdITnBlOHZ0bjVnWg?oc=5",
+        "date": "2026-09-23",
+        "place": "p0653980",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Endorsement: No on Proposition 37, a risky $25 billion housing experiment",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPa1JSeTZlZ1l0WC1ORnZ5cDZPeUtPd0pUeUc0YzgyNWxfNjZvQ2RteDkzUF9PamVEblU4RWh2NENRY1BKUG53R0pSTU56a2VaTlNUN0VhLUdadlE1eXE5UGhKS3Q0NWZBRy1EQ0QtYS0zU2V3TlA0blc5UjJKRG5XY1NmSkZCZGI5TnNEenVWRzRoU045UW5PVDRVdGl0OEpWblBMeFktVEtuNmZGU1E?oc=5",
+        "date": "2026-09-20",
+        "place": "p0653980",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Orange County declares state of emergency after severe coastal erosion, high surf damage multiple homes",
+        "publisher": "ABC7 Los Angeles",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNSW8wLXVYb1hZM2lhZ2Nra1pUZ21uVDRBLVhwUEd6MmtzMFk4TDZHemtjSG9JcThrRFhGUnlGNzkzeWtJVS1hSE9QYng1NUpyMWhERU9nZjBLZms2M2RJTVlyaXJUQldORmp6SEk2QjJqSDJ5eGhxUUpjMi1wWnRrdDV1MzFyblhuZFJ6STdtazlrZVZITlItZlFwcGpkV2tGZTlNeWdhcEhOVVVTeU1zam0wZzRxeTRZR3lGSmxxdDJOZDTSAcgBQVVfeXFMUFA0RUpWdkNvbno1U1ROWE9fNV9lM3N6UGJQenFIQ1IySjBsNTNKQnZRTmhaeVk0TTZoUV9fdnBhaDFGMTdIMmdaT2VFSTR0dEZpQ0Rya0NEb2JpT3dLblg5THhJY3ZJemhMUXpMRDRVT2k5X3UtbnlUeEhmSHJNMS10LXZQdS1XbXRMTldBcUVaQjNWVDdIa0RFNlV0UjBRN295bmVGeTZzM3ZTZEQ1S0FycnJCekFycVNGWV9keXBpNU5vczlWaFI?oc=5",
+        "date": "2026-09-17",
+        "place": "p0653980",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Simon Launches Multi-Million-Dollar Renovation of The Outlets at Orange in Metro Los Angeles",
+        "publisher": "Shopping Center Business",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOdEQtSDJkNVM0QTNVdWxydk00OEhxNEZwQkxLRm1wMWVObERDMXJWeE4ycVl6WlZQLUlvdWJSd2hfYXdPdExBSGpsT05ySzdGYmhNQThYRFNINDBZbENJZ3RxUnU4d3lWREp2M1g4ZXpqOHFxU3ZwVHR5QjZ4UDBzRkxVQ0VUVC1RZnlWVUh1a0lwU1pmLW9vTTVhdjU1OGdmVTczckY3bksxUERFYlRWV1BEMmRnVVRCRGRqU1U3SF85SERsa2Nn?oc=5",
+        "date": "2026-09-16",
+        "place": "p0653980",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0657526": [
+      {
+        "title": "Placentia City Council candidates promise to address budget concerns, roads",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNY2tUbDgwWG1VSElaQ19kWndNVWE3b0VpYllCYVNfeVFoaUk5cmdrX1ZxYmh1a0hOM0p1bWlmbFlxZ3ctU1hMMVdEX3NmQ1lBSVRXU3NtOWczaU1MRC1MR2dKYkZXUUMzeVFLWnFWUVdqdnJLZThCekVzT0NlOUw1RkxMZlJZN21vUEo1U0Y3V2t1WEFwZWJnTVA2WVpVU3Q4c1BVM01ybFM2cHNpQ2xNRm00bw?oc=5",
+        "date": "2026-10-20",
+        "place": "p0657526",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Placentia%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Julie Suchard, Placentia City Council District 2 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNTm1sUS1QQUQ4Tmh4U3ZJR0ZUQy1NUXJEVVhvUU5fcEJLXzRFLW1sMlcxd2tlR1kxZUJGZi0yWFNLVXNSdDJIeU00V1B5SFc1cjJNZlk1TTMyOWp6UzN2UVo4RzAxX0xxdUg1NFF2OUlTcjBobWhfTmtzbE9uU05Id3hyMVg4emIzLXpzRW4ta3VhZ3VZZkV1dmpJdTZiY2hmMlFSdjhmLVpaN1p6SllMWXhUVUNLbldmckliVVQ3bG1kZw?oc=5",
+        "date": "2026-10-05",
+        "place": "p0657526",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Placentia%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Matthew Waugh, Placentia City Council District 2 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNeU9Cb3dOdmR0M0RJaU04MmdpSVpua2g5R01KeFVTYjVrRDFFUlF4QUV1cGNqUXViQm5laHVyakM3Q29XdFhFcEItZGczQzB4ekhVT3oxQy00clVWLWEzT3h1THdJRUJUZVZPU2FyTDkxclRtdzQxdG1SdUxyalduVUhDbjdfN1VrSlREb2VkOE1mT2l5QTl6T0RPOVF6SFMtUURYYjhaRHg5andnRXFmd21iVE8wYVh0LWVfX2JHQ3JBUQ?oc=5",
+        "date": "2026-10-05",
+        "place": "p0657526",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Placentia%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "James Burandt, Placentia City Council District 4 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdldJd0Z6cXAyaDk3XzhuLWIwbVJlekJhNVhGcVp2Ry1fYnJVQkZiclJLamZJc3VyZXUtc2FkeHpORkxJZUlUX01zZE12cm1DeVRZdWY5OWtGaGhybFc3MnBrVXRxTmtkTW80NGhaT2F3dmFhbWUtaU1zVnVuN2htZVF2NVBjMG1BWDFDc3RJSW5Ec1V6MTdBdU1ySWFhYjI2TDRkWnlfOEpBNjBmNXpjTUtSQnFURlJzQWw5cGtvZm52dw?oc=5",
+        "date": "2026-10-05",
+        "place": "p0657526",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Placentia%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Santosh Dattatray Sabnis, Placentia City Council District 2 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPaUlHeHZ1dHZDLVdUOXUwS3dVb2d4S0kwTTVMaWVIa3d6bTdXdHZuSEk1R0Z6NEZjQTlJMm1Na1JYTHpRSnBiNHBLVEZ3UnFIYzZ3QWgyNEdCdEt6UWVfYXROaUZyRDdiSWM5WmpWZ3lpdzNkZm5OZUo2ZEJQUnFwendHNkY2eXhFcU5oX3QtSVhvQ3R1dThHS0FuNDR6MkJ5Z2lHOXdwejBzTjA0UXdpR2lkb0xxRjF1enB5Q0l2aG5tbG5UOHRQV3ZiOXpuMm1j?oc=5",
+        "date": "2026-10-05",
+        "place": "p0657526",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Placentia%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Julie Suchard for Placentia Council (district 2)",
+        "publisher": "Orange Juice Blog",
+        "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5wQXBBSVFDRk51SHdTVWlZTThPd1kyRjcxa1ZwUXkzU1gtejZua21mNFVvcExwZWVUUlRDa0w1Wkc4a1VGMEIzd1Z0MTRUMmJpUVVHbGJQMlZzVFB6WXo1RXJ5SEc?oc=5",
+        "date": "2026-09-26",
+        "place": "p0657526",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Placentia%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Bonn Coffee Planning New Placentia Location",
+        "publisher": "WhatNow",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPUDVmQUwxaXVGZ2k4a2tybTJDUHpOcGN1Q2dBbmxLbXhxU2R5dC1Qb2QycDFnaDhtaG1ralhxN2taSWR3UzdLdHVROHhIYW1odW94dElibFFBdlZ5TTNFRHN4YkpnWF9reVNJQkZzVnZHeXo4OG9oNmh1V2stcG12T0x1NDJRd0dRcGpfU24tbWJtbWRz?oc=5",
+        "date": "2026-09-13",
+        "place": "p0657526",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Placentia%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Placentia Uses Spending Cuts and Layoffs to Close Budget Deficit",
+        "publisher": "Voice of OC",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNRGY4clhhM080VnlnbWNxd3JXTnNYVUdsUG13SFFLZVZPU2NhLU9YSjloeGNHQm5Ld2pTTFFrWm9tblJmcERaeGtLLXpyTDFoUDhjU0dKU2F5ZjY3UmVNa3dEbzltQnZVSlBiYjI4V1NWSFJwVHNYWXJrbWN5NkhJSXA3cFN3Q1g3bThIbjd0NGMxY1pDNzBIMlVzSQ?oc=5",
+        "date": "2026-07-13",
+        "place": "p0657526",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Placentia%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0663050": [],
+    "p0670686": [
+      {
+        "title": "San Gabriel River Trash project update",
+        "publisher": "Seal Beach Sun Newspaper",
+        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE84SzczT1l6VUp1TEZWYmg1SnhfN1VjakYweEV0V3VybHdyMnpxdU5QZTZzLVRJUzhVcEFObEtwLWdtMG1rdlZtb3pPYXozOWVRcjRWLWd1R0tSNHpDMGdKR2VYY0VOSXZlZ1pZUldpOG4?oc=5",
+        "date": "2026-10-08",
+        "place": "p0670686",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Seal+Beach%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Matt Smith, Seal Beach City Council District 1 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQYW5VX01Haktza0Q1all0LWlPcmVRQUVHcG8wZWIzN09TeUEwcjVJZjY0eWtZWmNyNlhWU01palZSTU4yZkdDb1lRdlB4QmswSXJmR2ZJQjZLZHlJMGpWbE9GZlhKZmZIVzVIYmNhZV92OFZQUEh6NjhWZkFnT2tkdjQ2bkgwMzJLU2pMd2VtVUNEOThzaWlQZU5hNzFkR2RSaDdfb0FrelI3TEV2ZUdCc0xzOVIwWHdETlRUQ1J3NA?oc=5",
+        "date": "2026-10-05",
+        "place": "p0670686",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Seal+Beach%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Matthew Terry, Seal Beach City Council District 1 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOV2NPX3NvS2NLN2Y3X3RFdl9kZG93Z0ZjTDI3OUh0UVlObE5BVkR4MmR4bTlVZ19VZ3IwUTdaaW5ocWhnTWlzU1h0emhYVFB0SDBDcDdhMDZpdVppNHNYbmpfQ0ttY3gtTC1QMW5OVS1KNUdOS2ZvSGJEUi1WdGc0T0xyZ2tHSlhJQUY3enlYX1R6LXZBVkV5RDYwR1lpQ3ltWkR4aW5yZTY5bGtNSDNqbGEtTENXcW84YVZnaG1GbEdnNkU?oc=5",
+        "date": "2026-10-05",
+        "place": "p0670686",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Seal+Beach%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Perla Mendoza, Seal Beach City Council District 1 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNLXl1eHpsdmlNbVV0YWJkWktVOTJDU1VBRVJ3V1RHNkFjMGM0QzV6QmxjTnFBUDlFZklHQkZFcGRfQ0lIa0kxTTdkT3lCdlVUMzBtaEM5VUhldjQ1ZUYyZXRFZXRSTm9mQTF3Z0ROUFd4LWR4Rm5KTk9XeVQtbHNKQ1BPOFVQTzBBb3FVTmVwLXRqX3dQSHAtZEk3WHd3NHdoU2dHcUkwcjNUUHRXQ2otQVNQSkRqOWhsZG56QzFVSUpvZVU?oc=5",
+        "date": "2026-10-05",
+        "place": "p0670686",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Seal+Beach%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "U.S. Navy Markets Prime Seal Beach Property",
+        "publisher": "Orange County Business Journal",
+        "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOa2FfMU9LcDV0eHY3UXhGN0h4RGVWWFU2N08xeE5pQjhlTlNxZFZXMTVaM1dzWWF5STlCNWRmU1Q2RnhCOVd1WlFkMl9oUUd3TkZqS0w0TlpiWndWRzRkSm4wR2I5Qm9IXzB4SDQyc1dCaTExUFRnZ3JrY2l0R2JHd3l3?oc=5",
+        "date": "2026-09-28",
+        "place": "p0670686",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Seal+Beach%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Seal Beach naval station is looking for a developer to make use of 28 unused acres",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQd0hKOTg2aHVCOU9ySWtqMTU3OHppLTR5cUtlTGZUbXlxMTM0YlF3akZsMExIb3FDQUVZSmxrSnVUYjlaQzNpVWpjNDNzNTFNZFhHcTlaaVF4cGtXSk01TG5takV4R2dWM3Q3UWtENDdub3UzejQ5RXpkdE9OeTRkeTFaelVzd1NZaFV4SnBKUFlnY0JBODgzR1BQU0NnakhBUXNQZ1JJZkFaQmRBWC11LXhKVnVWMUwtNGlrTzhR?oc=5",
+        "date": "2026-09-11",
+        "place": "p0670686",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Seal+Beach%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Seal Beach Looks to Overhaul Parking Rules, Expand Residential Permits",
+        "publisher": "Voice of OC",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPRy1nelNFNndiNkJ0cU1wejAtNjdfeDNzOEd6QUNLeFVKdWt4dGdscERWYWtLV3pTMHJFc3p2cTdrMEl3b0tLX2dhR2FoNS1SVGl0QmVoSjJsYXgtdXJ2TnJ3REROT2U0SnFKOVQ5bGZWOGEyeE9TeVFnTmlDNTctQU15TVBYNHNhbEdRVFhMUTd3RWdxUnI4emZRTlNSdHdfZnc?oc=5",
+        "date": "2026-05-05",
+        "place": "p0670686",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Seal+Beach%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0673962": [
+      {
+        "title": "Marlon-Ray Velasco, Stanton City Council District 3 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOSjhsSDAyMlJCcVNzY3NsWGJDVUxiVDU0cTBncnl3ZEhlb0RwcFJvamxBcjRtQzcyMkNkY3hlaEg4ZU42UURNOEFpM2NIdkE3cXBxMzl3eFJUY2RiNXFsRFhMNEJYRC1CeHlJSnNQaHJRVkxZeVQzV1VYd1RIUzVrSFFSRlpERFUzVXBrN0ZVWWJlcmZQUGhUejZKYVZKcndabVhfTEYwTTM5Q2N4OTRnWE0xOVFES2hvMTdDOGdUYURCM3FuYXc?oc=5",
+        "date": "2026-10-05",
+        "place": "p0673962",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stanton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Donald Torres, Stanton City Council District 1 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNUHNxVDJ0M0RNU2pkdjJQUDVmZFBVTGlHN04wcVkyelZJa2kydWpUYlJzbmhtS1JoODZGOUpzWEpmbi1tUUZyWE5XOUNwSnlhTHFjR3Fpc1VacUQ0VG1XTnlUWEk0U1RBdDBHWTJkTzBkT25hOWZwVU9KTUhhV2YzOWptakpaTjgwN19iVjlGbzI4QUJtU3V6ejFtU0VpaUxzak5lQlNWZVBmS1VWZDlFZjhIaDJFV1RmOVV3eDJqbw?oc=5",
+        "date": "2026-10-05",
+        "place": "p0673962",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stanton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "DeWayne Normand, Stanton City Council District 3 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxORHA1a1hlOG1PbXdvYml4OC0tZ3BQRU1sR1lXbE1xRjBoLWNHMTUxZmRub0dnd0ZEY2Fib1daVjFfQ0xLRDFYNW1MUjB5Wlo5TVlPM3QyVTN0aWUzU1I3TFJsUWFCWldBa0pRdDI5MDI1QkJubENUWVp4dW1XNFB3NzlfT09EcnpBVDlzYXlxeWtUc3lmM0xlUXBSMUtGcWdIUE5aTHlycGRFNzF5NmFtaFBxa05VR1ZzaWpJbmg4ZDduUQ?oc=5",
+        "date": "2026-10-05",
+        "place": "p0673962",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stanton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Thomas Frazier, Stanton City Council District 1 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQRUpmTXc5NXJ0T2JCZV9nZVFpUHhEbVc3V3F6Rmc5Z2toUDZtOXZlWUg5UHVHRF9kLWxxcVM4eW54N1h5RjkwWTYyckVyXzA1Qk5mUGxTdVVrTGJLVUhTQjFKcEtxTXhEeDFPZEF1dV9BWW1JelBzMVRHUFJUSVVYX2dlUXREVExfY2trQW1ibzNBdXFYNW9XV19iWFhFOVdyTWlQb3F6RVlPQThZNFhfSWh5Z1J6WWh0ZHIzTWpjS08?oc=5",
+        "date": "2026-10-05",
+        "place": "p0673962",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stanton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Debora Donathan, Stanton City Council District 3 candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOT1N1MFhRUGpoM1V1NHZGTXdqQUxqZXI5SjZXZUJyU25Uem1xeUVHZUxNS2RnQ2M1alZuVHlDc0x4dmJJMFNVSVd6emhnSzZBX1lIUzE3RG02cmRPczNFUmoyYUlhSHlDNkhkbnVHNDh0WnZtXzFWSzN3bEpKcG5uVkdoTk9LckdYdnZkaVFXZGlZREliYjZGYWcwNGxaeEpRc09ONmJsZWN3Y0Z1RTgtdk5IY3Bod2RUVW80VU9RNmFYUQ?oc=5",
+        "date": "2026-10-05",
+        "place": "p0673962",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stanton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Stanton Looks to Curb Crime Hot Spots With New Business License Rules",
+        "publisher": "Voice of OC",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQYUNLUnhpVWtxcU1qYnNYalV6dEFfdUFYMk1zbXI0eVR2RV85a0xVQkhqMVRxS3paNHljTnZxbUxyRUVsLVlCNDlUd25kN2dXYXk4Ymw4RjhOMEh2akxhcTgxVFBvb0cySGdHS1pTOFl5aEpESFc2SkVCMDAwMjlGdXl1M0VYNmNfRVpheEYxbFQ1TG1qUTBNQlh2eG81dmx1X2c?oc=5",
+        "date": "2026-09-28",
+        "place": "p0673962",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stanton%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0686832": [
+      {
+        "title": "Drummond: 26-year-old law regulate campaigns for Yorba Linda council",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQdGk5SVdXVjl6MTF2Y0RJaWRmVWVBU3lOQmpZaktvUFl1WTY1N0ZubkkxSk1xY09kWXFOcWphakhpNDhzdGc0WFdYLUxfbGhWLTQ1S0ZmR3dvcF84bF9OMkNmZE4weXZzWDhyMFJidGVpS082SzFNYlo1MDR4XzdwWkpuTnZpT056b0VLdERBMzJrVW1rM2Vxdy1ValJOLUdXck0wYW03OUFWUQ?oc=5",
+        "date": "2026-10-22",
+        "place": "p0686832",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yorba+Linda%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "2026 Election: 5 vying for 2 Yorba Linda City Council seats",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVXFVdm1VZE1GYlI0dDIzY090dkpFWmxCODFxcWNxRXNnSmlUek5VemVMcjhxT2NaaWlNdzR0TE5LVGI4SzZXY2FLSWFUMm9kTHY1LWNzNE1oMEJma3A2VFBWSFFjemN0djAxYnZYQXljNHB1WmFaSmp5OFNQd0gwTHRzUlBCWURhVVFkNjd5SDlNRXp3UnZCbE9qVk5RZw?oc=5",
+        "date": "2026-10-19",
+        "place": "p0686832",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yorba+Linda%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sean Phayakapong, Yorba Linda City Council candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNUDlNSmg1UW90VXZDLTNQLVJUemQ3cXFnczJHQzFiSFBiVW5vYU5uWndPUHRyY0E4VHUxdXJjM1NqZG8zczg1NC1aaTZzWlZQaHIxUEFYWG1NajVGY0h1Vk9DMlZWZVFxVmpraElwdE5vSVkwLTB1M2VFa09iYUxnRFdDai1UTE5nMUNkZExfc2pSYlQzbU4tTnZHNV9MSGJvQ2RzelhjajNrbUhEQnhEVUNRVnQzai1IWFE?oc=5",
+        "date": "2026-10-05",
+        "place": "p0686832",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yorba+Linda%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Janice Lim, Yorba Linda City Council candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQMXBUN19kTXZNNGtEU1hQZFhSSm1IMU4yN0NpZXJNN0NwUGhvVnRsTEhHeUFZd3g3M25rWnB6cDd0Ukx1aTlucFNnQl9ycDY5ZUFMb0JpVHQzZDdFcDlPZWNmYjBfNjM4M2Y4QkZfWEppdGJHTEEwTlRYY1BvUE9wRGctWENPbFNjbXlJRWNxTWdVMGJ0d3ExdURmSVd0c2d6akdJTmtRZTlmeGs4cDdBYVVB?oc=5",
+        "date": "2026-10-05",
+        "place": "p0686832",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yorba+Linda%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Raymond Potter, Yorba Linda City Council candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPSmRJM18xUHFrQ09WTHZaa1RzRWpUbWNnT1VrN0ZfTTN5dDdXN1hHUlpYQmRvTzluWWNLZlppb1JMSnFObzZTRTFkOGJZN2dlSnhleHlRMHhyTGJEM2RxRGQ1b2tEYXFoalFEQ0c0OFdVRkZIdm1CWmhBZXRULWdseFQ1UmlxT2J2QUhKVm5YR0c2MTA0VGRmMEZPN2gxNDZHYXZLOHV3WUw5VGZ1N0dHd2FMaHJIcTA?oc=5",
+        "date": "2026-10-05",
+        "place": "p0686832",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yorba+Linda%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Carlos Rodriguez, Yorba Linda City Council candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNcmxBYWh3SWVzaXE1MW8zVFNnTG9rM2VOYlk5YUluZk1vc2REQTBZajdJQTRuR1dZUUYxbEl5UHRRTVdtc2kzNUFpYWVXdjI4RnE0QWFoOVM3cGc5LV9YR2paY3pWNjJVT254NjdjY0g2OVI5NmI5eVlOcHN6VVpEN0hKTHhGYTZXTU1sQ0plM1QtZTJWN3lrd0RhS1dscU9iMzhZRjFZQWwtREtPN2dWMEhJTXZMd1hlSlE?oc=5",
+        "date": "2026-10-05",
+        "place": "p0686832",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yorba+Linda%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Robert R. Pease II, Yorba Linda City Council candidate, 2026 election questionnaire",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNOTVpcnc5Wm1aTnhTNHNwem40d1dGOGRSZkczSldpM19PeUJPMW95WkRaTGItRHdSQ0Q5T1dLbmtfLWNtN20zTk1aRWR2cnRiQlVKMmpQTEttTl90VUQ5blcwc3RkN1praG13MmViQUhSLTdCSkFra0c4Y0V0ZEhXTlBLbzJyckJhM0dGMndLWV9zU2FYeWtQTXJzRld2M3IzWnBEMDlZZkNOdGZIQzlOeXcyMnRVVGdhZktn?oc=5",
+        "date": "2026-10-05",
+        "place": "p0686832",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yorba+Linda%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Endorsement: Carlos Rodriguez for Yorba Linda City Council",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOREpVZmJRaENqZUhoTFNnOHNXdlRDZjliTUNwcTdyN3hlbGdob2dZT1JkdkR0Q2h1bUlRZ0pCbHRlb2w4QjhlWWxacG9UajFYYmlkbXVicU0zS0VYVjBwam5uVHhWMjhKdzNsTmNJSEp4d2JIdC1SbDdkclhYZDhTR1p0ckRiRkhvcnZlazhZZ0VfamNFaUZPZENBYms?oc=5",
+        "date": "2026-10-03",
+        "place": "p0686832",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yorba+Linda%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0616350": [
+      {
+        "title": "Wes Speake, Corona City Council District 5 candidate, 2026 election questionnaire",
+        "publisher": "The Press-Enterprise",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOd0FPa1BvekFDLXdfU0tNcXJJUWpMVjE3eXRaQThWWVNYNWlabHR6MWtjZXNsS213bEhId1FLSFNtckdqMl9hV0EyVFJCNlA1MUFMMWRTSGx1T0x5MGlsOFFWaFJldlNuRGd0YVZJRUdya3Vla2hjUG1Pc3VvMmZZZUowdVpINWpDOVkydXVFeVdINW1NYUlZZ0R0XzR6em5QaGJrTXpIVGNOcUFPM1I4NzVnT0xKWTI5T1FNcWR6RXM?oc=5",
+        "date": "2026-10-05",
+        "place": "p0616350",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Corona%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Corona must protect tribal remains at city construction site, court rules",
+        "publisher": "The Press-Enterprise",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPMjlidU9vMkhfNHFWY3NpTU5hTFpYdkwyVVQ3MlZLbHNUMklTMFl3SkpMRHNGck9SZUZLaE5mUm5CcHF2cEIzaTVQNzdYMTlPbGs2ZENVMmttSmphaG1aY0dFVzRjVFlhbTkzaTU4RTJCS1MxMTIxQ3dHSWRqdjFNdGV3QS1rWEpGVDJkVHVuQWxTWWRhdXFyLWo4aXNTUUJUVkw0QmdUbEdIWDdFdkFpM0xzSkdxM1k?oc=5",
+        "date": "2026-06-22",
+        "place": "p0616350",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Corona%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0622457": [],
+    "p0633574": [],
+    "p0634302": [],
+    "p0637692": [
+      {
+        "title": "What\u2019s new: These Jurupa Valley homes will sell for $115,000 or less",
+        "publisher": "The Press-Enterprise",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOMUpNS3dYWEplZ05tZHNxb0gxSHhYTExTeVB6a01BSERZejRyRnhtVzY5LW4tdmhXM3VjN2VrdGp3bFdzZWk1a1U4MkJieEFsTFhBb3M2dzRHdDJRTTkyNjRJamlIVTB6ZHNPeHN3anJLMVJRUDItenRBM0R0azhhSU9VcGZuT05Vc21peDZrY1k2YlhUWjZKckdUbjFzUUNXeUxTLWdOaThIMlIy?oc=5",
+        "date": "2026-09-07",
+        "place": "p0637692",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Jurupa+Valley%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "District at Jurupa Valley bringing 1,200 housing units, shopping, logistics to 250-acre site",
+        "publisher": "The Press-Enterprise",
+        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQTmhtNUtWVUM0SUJLbllEWkpBLUZJOThwM0tLVEVRYXBkb3dIVnAzaEJVd3ZQTnYxR3FYaEU5RTc4c2poWGNDbGhpZ2dDWDBZMGlVQzFYUHUzS1cwSnI5YkYzVDN6QWFrNFdPdm9fU2NLbmh4cGZyQ2JxMkxpYUJHT0dZM0JsVERQVHZTeVFuOVFicHJod0dzd1NwWGhEUnpUNmJWalA1YVdzMS0wdF9QQ1Q2U1FTRW84cEVrNDEwa1k1dXl4V05uNEprZmtzUQ?oc=5",
+        "date": "2026-06-04",
+        "place": "p0637692",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Jurupa+Valley%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Environmental Groups, Developers Agree to Protect Ancient Oak Tree in Jurupa Valley",
+        "publisher": "MyNewsLA.com",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOQlFXTXctelA4WXJHcUxqcXpqMmNWRlAxay1Tc2lBSUhFWlFwT0d6dk13bGRSQjlGOFdPYWJCRTlWNVRncnZObzh3SkpqZDQ5QUhnemJuOExTN1M3aGZBbkFWT3JDSFNTamFRaWk3WnNFcFlWbGFLYWFGYUxuVE1DbnprcTQ3Z2x3b3diMkYzelZBYVpoRXFScWFSLWxtS1E1MEEtTkpjM2o1RnhabjM4OFRjUQ?oc=5",
+        "date": "2026-05-12",
+        "place": "p0637692",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Jurupa+Valley%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0645680": [],
+    "p0649270": [
+      {
+        "title": "Moreno Valley - On Tuesday, August 18, 2026, at the City Council meeting, the Moreno Valley City Council issued a proclamation and presented four individual honors during a special recognition session. The Moreno Valley City Council recognized August 2",
+        "publisher": "Facebook",
+        "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNUGN0WXVMTGl4MmJ0d2dMVHNSZXIyY3lYTEtPUUFQVE5IcTRqQzdpMFJBLVFEN2pwLU5DZFlwX19tclpxZ1Z3SGRkbGx5dUx4aDhBd0NJTTZzc1BRSlBvZ2tveXBKdFc5c1VDTDVjUHNTdjVoR0EyT2doM0gwcWJuY2RfZVJaZnR5ZDlOYnRKMzA2akNYNHhKZnQ4TGU3OTRhVGJMTmUwMkZNSUlIRUZKNXpad0pLQndxbU9OZlVKN2JIU3FreDczcWdNM2QwQlpfSEZZdmxUTjNCdVAwc28wdkhSYnA?oc=5",
+        "date": "2026-08-18",
+        "place": "p0649270",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Moreno+Valley%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0651560": [
+      {
+        "title": "Norco residents voice opposition to SoCal Edison power line project",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNUmdnLTlRR0UtMGJqc3FpRUtGOGp3dG8zelVKMGJzbVU2UXQ1Z0ZBbE5GbVNZM3I1NkNFYnZiNWVZUjJWM0phUzFlVTV4RHlWR0otX1luQkFNT04yeGxIODhOVTlvcVZpd0R0THk0NHhPN29mZklBd0Zxa2JnSmlBdE5HN09DRHVTMmtCbm1JMzFRS0RPUGhiaDdLbEFQNHczQlJPVkFwLXc0VGwySHc?oc=5",
+        "date": "2026-08-19",
+        "place": "p0651560",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Norco%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Norco residents voice opposition to SoCal Edison's Riverside County power line project",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNUUFPalBaaTZCOWdhQU96bzhuVFBJRmNCcGFNbkRwWGFmUzZDQi1zY1ZkLTd1ajZDM3hMenQ1Q2hXaGR4WVZEaDM5MWNJTk9TaFVNX1BldVdtMUtlTnQ5a0JqTDBkWlhEa2NBWVpnTkE4UExrWWVVMUlIUHE2UWl2WGsycmg3WTFPVl96THdIY20yNXNldEVmZHgtSQ?oc=5",
+        "date": "2026-08-18",
+        "place": "p0651560",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Norco%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0662000": [
+      {
+        "title": "Police say 2 teen girls arrested for planning Riverside County school shooting may have had motive of revenge",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQbF83S2E2NktJRW1KMkowWXQ5WjdCWkREaXpjUWNoQUR3NTVsYVhnM2U4RUtudUlhbnBlYURCNG1CWkNYRWxlRW43TTFlajloRFN0T2NrLXVpaEhFSVI1T0hXSUlMQ2JhTjA2amZBaEZTeGsxcmtfQXh5dHdXNVNBeTY1X1RlNWptVkg2ZllmWnVJRFlCbXhRd2tZZ2ZBeUs3bl83QnRYMXl3djFEdGQ4R3ZjLU80dw?oc=5",
+        "date": "2026-10-21",
+        "place": "p0662000",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Inland Mayors Rally for Prop 1 Housing Bond at Riverside's Mulberry Gardens",
+        "publisher": "The Raincross Gazette",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOR3IyZU1zZDRFS0VqVXVpOTFnc1NEek9lc21BOV9RdkhMSVdncUpoTmpVMmZsMzhRWmZPeHVEWGlUeXh4M2RPaEc5UVNIT3h0c2NKOFBGajllX3RiV1F6aGdCX0FPTlVtWkt6OW1PVXYxTy0xSzdkQV9LWWJiSDBpdWw1OFFGZmFYN3U4X005cDN0RjBpRk9VekdTNllYWThZV1NVX3FldXlRUzhm?oc=5",
+        "date": "2026-10-20",
+        "place": "p0662000",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Riverside council appoints city\u2019s 1st inspector general",
+        "publisher": "Hey SoCal. Change is our intention.",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNZldxdklVWmNJZVZobGRCUmVlZmtSWEhKSnZhdXdwd0phSElSbHlEeFRFNjJEX1BTZm9faW9jdlZuTm9jTXRnQlRXaUFYcWYwNkVxX3hOUEEzR05kTFhLYW0teEt3dm0xb1h6R1hWWWVnZW5CZzlSMDY0QzAxYWFzTy1hT0pwUXVBRFhZSUhiWHY?oc=5",
+        "date": "2026-10-08",
+        "place": "p0662000",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "BART, Riverside Transit Agency launch new digital tools to improve transit accessibility",
+        "publisher": "Mass Transit",
+        "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxQM0NJcnk4UzRjRnhjWFZwOWdkdUFLVWVGS0FHMlVTMDdzNndSMmFERlJJQWNjSDJqblpVX2h4aDVHU21uMkJ6T21GWjM3ZERpRHdwNGlLalh0R2NUYkdWNXh1b0ExOW9xbXhpbWVYWmF2T3NQbHhFekxQNHpncW1WVzRQbjRuVERJc0pCOUc4djVlRU9WbV8xd1ZndGNEaDBFR01FTFNoU0R1c2tqWjR5WnVqZVVMbUE4ZFdnVk5hV1hiczA0REg1bm9GWFM0RDB3QzN1N1pBSjV2aDF5c2paTnBDYzNfeExlUy12OUFkY0doenZqUFBualVfblBVb2JNeFFENmRCbVVuUQ?oc=5",
+        "date": "2026-10-07",
+        "place": "p0662000",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Riverside City Council Moves to Back $11.25 Billion Housing Bond on November Ballot",
+        "publisher": "Realtor.com",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONXhGYWNNSzNldzVuNGdzVm9ZQVAyMWJ0eHlPS1hGR3N0bGNjRldqeGI3OXJVbktEMmFXcWZTQWVFYnA1RVhaOG1wMk9GSG1HSU9XU0hZcTlKazBpRmc0SXpmbGhNRk5DQ1h3aC1mTC1yNDc1bE5iUFRwdkFmNVh0ZjBfS19wZDVQeVVuMWRwN0tEczVXeXZYcFdxTXRZd3JuODdMSDFvczhhUVRRYmpSNEtTMVBac2JtRzlrSm1EU1ZwZw?oc=5",
+        "date": "2026-10-02",
+        "place": "p0662000",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Kidder Mathews Arranges $21.8M Sale of Two Apartment Properties in Riverside, California",
+        "publisher": "REBusinessOnline",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPN2JmdndYODd3eWNoN3pDU3JMd0JzUFNmSHJLUWtqZDJJZWswTFdRSHU1ZzZ5ZVZYcVpUM25WNUgzZGs0UEprSDQ2bFFxUlZWZlVhSG9IY0xRLXJRcWlHTklCSWROZHlCZ0FEN0ZNVUM4cnh3LWNaWGxmVVdkTHg4M3lRZGJ3S0hSeDJUZUU4VUp5YkFTeW43eHFhZ0tyWjFGbFp1M2pZSkgwLTNBYURfOG9UOU1GM2M?oc=5",
+        "date": "2026-09-24",
+        "place": "p0662000",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Kidder Mathews Arranges $21.8M Sale of Two Apartment Properties in Riverside California",
+        "publisher": "Yield PRO",
+        "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5jdG5BS3RlcmdQU1NBU3o5NzQyTXR0N0daMHBJbHlPU05VRk9jcDZPb3NPdC1VWEtCN25jU29QRmhTb3NhRUtrVnRKOU9PbHhBdldkeVY4VHRidDNRWWc?oc=5",
+        "date": "2026-09-24",
+        "place": "p0662000",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Riverside Taps Two Retired City Managers as Interim Economic Development Deputies",
+        "publisher": "The Raincross Gazette",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQU2w3bmlvM3BtWWdpUGdzVzFzUVRsUXE5UGduOWZkQXVDcDBRNlNRbE9FM0JPTGszSm5DSWNHZWZVVkxxUWdodXVJTURRYTZ1LWlySTNaUjIxdkNxcTdoQnVoR1VMMmt2Zkxzb0tYODJsRWdURV9jc2FiQlRlSk03Z2ozcTBsSzVZVjctdFYzNnI2MEgwTFdJUEVZUjh5dktlUm85OHJuLTEyblBiVmhfZ05OaWhXZw?oc=5",
+        "date": "2026-09-11",
+        "place": "p0662000",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0686244": [],
+    "p0602553": [
+      {
+        "title": "Two 1950s Arden-Arcade apartment properties sell for $20M combined",
+        "publisher": "The Business Journals",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPc1hiYjF1amZJX1ZUcFA0eElVdkx2VC16S05oOVJ4VEJCeWtSSWRwSDFvSXhSQ0V4MUw5dy1naEx4clBPMjBZN2o2U3FRLUZLdDRMa29kX2JkQkRoZ09seHlYYTFrZkdCajBwalBJcXlscmtFMlJGSEtqRDltNVFLMl9PbzZRMFZBa1VIZDd2VXBmU1B1X1hXMmZMMlQ0SlQ4WG16R19WcXc?oc=5",
+        "date": "2026-04-29",
+        "place": "p0602553",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Arden-Arcade%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0622020": [
+      {
+        "title": "Controversial 499-home project in rural Elk Grove heading to Planning Commission",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9mMGtVM3EyazFQcm1JamMzUDNpNEN2WXkwbjMzVmcwZGFrZnZaYWE1aGRnbHRhSm1mUWIwNHJiX3dDRGhGUS1Qel9UazJBTnlWRjZlQXhQWUtvT1BMYlFXMmtRZTFTUTg?oc=5",
+        "date": "2026-10-22",
+        "place": "p0622020",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Elk+Grove%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "120-home Elk Grove project advances despite residents\u2019 traffic concerns",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE12YWduXzVnNEVGR051RWZsVW4zRU5HQ1hYX0NLYk1ZMlZ4dVl1VTJBWVhULXN3VDhTcGJiUVpjQUtsTEVsMVNHZFp5NXlCT1dEWnJmVUZHSm1uYWh3NXEtOUxWc0ZXWDdNV2JoSzNLTWFlZw?oc=5",
+        "date": "2026-10-21",
+        "place": "p0622020",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Elk+Grove%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Elk Grove appoints mayor, councilmember to new terms in unopposed races",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9qbDdLNlZvRDJWUENXcDNsY0p5bDd6TlpBSDFWQTh5cGFBWE5NM0tYMVJSVnE2d043THpaVkRlMTg0LUxtQ0dSa2R0dk9UMlh6U2NtVXNtUlBIRFA4NzZOZmtPM1FNUQ?oc=5",
+        "date": "2026-08-20",
+        "place": "p0622020",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Elk+Grove%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Elk Grove City Hall to be renovated next year. \u2018Planning for our future\u2019",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5EV05vY0VRdzhfUnNZMzlqYkZqeDBYRVJRWUY3dVhPMjVoMmcteHVNZjRTSEZBZlhWUGt3TVBlVXpHX1J3UVhOTE1XZFktclNRMUVWNXVjek1OazhESUhROWFCbDRvZw?oc=5",
+        "date": "2026-08-19",
+        "place": "p0622020",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Elk+Grove%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "5 things: Savi Mexican Grill begins soft opening in Elk Grove",
+        "publisher": "The Business Journals",
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPZDBJcDQ3aU1OT0JJQjJUcFlKME5lV2dTdmVoWG0zSlFKcXBkLWZOamt1cjEwcGt2WjZxdjFfUFlEb2ZnQXRmQUdRejJJRG9KMTJsOFE3ckdhc055cTZHajMxTFB0dEV3TGNIWEl6M0puTEhfTV94amVUNnFsYXhsRXMwaURrNWtmUjg4Qm1mekpWQ3JudkxUUnpPSy1uaG1tcTlSSzJLVFoxbFRzYnI0?oc=5",
+        "date": "2026-08-18",
+        "place": "p0622020",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Elk+Grove%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Elk Grove City Council approves $450K purchase of armored police vehicle",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1BVzBTNnBmbllEQjRYZUU1dTl2d01UN29vaU1CMW5WR2tXVjhidXBkZ21OT09QYkl0NC0waFlnS0FRQkJzV0dOa2xTcVVoZ2pqeEhacmd1RVN6SGhyNmVPYjNuekxJQQ?oc=5",
+        "date": "2026-08-14",
+        "place": "p0622020",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Elk+Grove%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Elk Grove proposes changes to types of businesses allowed in Old Town",
+        "publisher": "The Business Journals",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPV2ctXzB2MmRwLUJHXzFsNWRKN0R1SXRIR1NpckpERDlGQUItT245M1R1YmlnUFc3dGt2cWVvYTZqMGxFbHBKd1NuM2Jwd1A4N3pWVEhjRG9aaXU2di1zMEctZk9MZElEVEVYbDVQaGlidlFReGExcXNpZTlzb09mdjltbXJnc2V1a3cydVV0X29WbTBUQWxPUFRkODlPVEZE?oc=5",
+        "date": "2026-08-10",
+        "place": "p0622020",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Elk+Grove%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Elk Grove residents\u2019 Flock camera data shared with thousands of groups, audit finds",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE13Sm5HcHdzS2trSGNDMnNQWGxGSDRJX1k3VVdHSUlTOGdYV2NkYVZDR2U5bTJMZl9vQU83NDlGMUlNeXY3bXVCb0xIWUxOd0VBMGxEb1pnNWVEVEFGZ1FGNmU1QnQxQQ?oc=5",
+        "date": "2026-08-04",
+        "place": "p0622020",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Elk+Grove%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0624498": [
+      {
+        "title": "$1M in federal funding brings bathrooms, showers to Florin Road homeless shelter",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5ZNUVIaXZYYVZtei1jQzk0bVQzbUFBZW5iZ3d0Z3llWnlHc1RvMFBCYzlKeVFJUUU0dktGMmV3SjBmT291dHI5NkY2aFVkWnVMNWlIMldRd3g0d2VMaXB2QnJUZC1LdFnSAWdBVV95cUxOR05QVVpyNDVPR3NkQTJIZXlOaHZCVjRMTFdlU191V1lUbUE5bEI4QnlIazJNX2NRVmg4MFpnMkVnUms4aTcwMDAtd29GUEp3YmVhd0lyRGRtaWI1V2wyUkJua21YRlN3?oc=5",
+        "date": "2026-10-07",
+        "place": "p0624498",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Florin%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "7 Brew Coffee joins redevelopment project at former Sears site on Florin Road",
+        "publisher": "The Business Journals",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOSzBfUm5MSFdZM1JTOWcxVzJPdm5hTDlZOVFwbWpMU1ZhZjV2THktam05eXNIc210VWowWWp4MlQtSmt3QTJzblVKWDlYWHhzTUljYkZySm9Kb2FOaGwwbGwzTmI4OWdmYlVWdFZQV2JESEJNNGV5NkdTWHBxMFhabXNhTU9LQk5WQVpfTGt3bnM3ME9IRVRRY0dLTmI1NXJnNG9JXzJB?oc=5",
+        "date": "2026-07-27",
+        "place": "p0624498",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Florin%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Stretch of Sacramento's Florin Road to get technology aimed at reducing crashes involving red light runners",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNdzFfYlBPbTFOWVlmTWNUUDQ3ck9ibEpvOWtxbGttU0dXeGx1MlQ0c3hIOHZkeXk0eTJqQ2I3emFxTklsU2kwbE9NVm8ya2Y5Q3RNczR3RmIwUGlyMjBNN3NnUXBYN0NzdUNoVThKRzBrY0tzTU5KeWcwXzZpeGI0SnU1dURKaXVtbkFrcHB2cDRRTjVONEtzeEhtM01PYm05?oc=5",
+        "date": "2026-05-14",
+        "place": "p0624498",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Florin%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0625590": [],
+    "p0627130": [],
+    "p0640410": [],
+    "p0641142": [
+      {
+        "title": "FIFA Fan Festival is bringing thousands of soccer fans to Lemon Hill: \"This is a party\"",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPZ1NrS2NGX0p2MjZYNTI4RktqRVFITUdrWTNJYy1VZXZDMEJlaHIySU1TZC02Yjc4OFRnc2xwSk5jaWlKOGtaQk95MENjLWxtT3NGZkZnbU9HbEJTOXBDbWhWblRiWk1MWkc2X0tDaFpiaDMwdkRWUW54YXR2VXdkVEViZU9JN3hwMW1CT2U2cDBOYlhrOGVkNWhBYWxWeUhsYTZTUERURlhfTFFsdmlsdlBGeWc0czlOM1hyNTNldHMxbVd5UXZn?oc=5",
+        "date": "2026-06-15",
+        "place": "p0641142",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lemon+Hill%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0644760": [],
+    "p0651924": [
+      {
+        "title": "5 things: Tsunami Buffet replacing Golden Corral in North Highlands",
+        "publisher": "The Business Journals",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNbkM3R2liODc3b0V4TWwzbzBaVk53VTBiMkh3QlZFano5YWxvMEMzcm1TaDZkNlpxdXpBUDF2OUVCWDU0ZTBEbW1vY3hnNjZ5SHlubHJyNjdsSUVJSV9TbGVUX2F0SXU4MnBSeTJ6Sll5S1pDOE9yVm9KdFp6ZFhJSDVqa215NllreXhES0dJQ3NJdElaanVRaWViNHZ1cWxRdjhfV3I5dUNTQQ?oc=5",
+        "date": "2026-09-23",
+        "place": "p0651924",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22North+Highlands%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "North Highlands apartment complex proposed for conversion to mixed-income housing",
+        "publisher": "The Business Journals",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNMWxrTHRkX09GQ3plTDlfV0V5TzNDNFNRbnhFbzVQS3VPcHJ2dTFOUkRKREhoNnBmUzYtdjY0c245MXhXVFB6aTlzVURxR2NWOFZKRHpyN2JheWFHMUZva0RSbS1Sc1o0ckotX1BfbE5nRVVnN09OUTg0VnI5UElHTnczTFJBbGZkYURRQ3BId3ZyU0lwaWZUTDJJQ0hPUVE?oc=5",
+        "date": "2026-07-13",
+        "place": "p0651924",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22North+Highlands%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0655800": [
+      {
+        "title": "City Council approves start of Roseville Parkway expansion near the Galleria",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE4tVW1XcHJHNUhKaDNCNV96NFVOZkVJX1U4WUZWVks3NjFnQVZyZmpsMVlEMDdaSG1FNm1SM1ZyY3VjYnlkeDVQd1U3cUZiUXVYYVFKMmZvYUhRZXpNZWtqZ293ZDlBZw?oc=5",
+        "date": "2026-07-17",
+        "place": "p0655800",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Parkway%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Long-awaited Placer Parkway project moves from planning to construction",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE55SUZ0US16YlU1WnJQZWJYQzZiRW5TUE5OSWJYajBMakhGZFhWS09OZDhMWkYwb3Z6bDZJTjRWeXZTeXhqVXRzaEtuSF9ZZjNTcUE0Y2NkMlVTVzlJWThva0p4a1dNZw?oc=5",
+        "date": "2026-07-15",
+        "place": "p0655800",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Parkway%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "$3.66 million contract to widen Roseville Parkway up for City Council vote",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE90Z1JjN0xDSVlLbm5wVFU4QXl2WllHclRqRzNUSDgydW9WR21rYlEzVVBRUzExa29BdjE5cUUwb3AwTmFjcFNjbjdkY3RXczZka0lTU2tPRl9LQlVQUEEzbnhhak5ad9IBZkFVX3lxTE9pOHYxN3JCMjhleUpRNy1GWUs5OFFnWUpsWVFIcGJmdlo3NURiTk9YMF9zcFlYb1QyYXoyY3pkaTdYQmd3dm5XNHNfR1VtMEFoanBhUTZGUHlzS20ySFk2RWh5WUVQQQ?oc=5",
+        "date": "2026-07-14",
+        "place": "p0655800",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Parkway%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0659444": [
+      {
+        "title": "Man sentenced for 2023 deadly stabbing at light rail station in Rancho Cordova",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1aUEJsVnU3ZDJxc3NNME5Pa194V2w2TG1xb05KLWJzcXQzd0k0TWlMSWtwUDRqd1p1cDFXNUJhVklwX08yaTZ5U2hyaFNwYkNEMHVoYkRpd2FYWjQ4NGVXb2FVaTV4bmN1MWZBRDdn0gFuQVVfeXFMTVltMDZpRks0czltcHJiNjdKT2ZmZlNuNlZkelFYWHFvY0RDTEg3TEF1b2pwX2VtNkJNSHBJSFp2aHJfLWltQ3FaZUM1Yk14MzFpTDNick1tWF9PVEVHLVphSHl6RTNqelhkeWNvUWc?oc=5",
+        "date": "2026-10-24",
+        "place": "p0659444",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rancho+Cordova%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "166 new homes approved for Rancho Cordova. Where they\u2019ll be built",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE02S3Y1MVZTM09pSUlWSWlwVE53VTVpRjNMOEU5N2hFQTlNY09maXNBVDIxTlY2c0NQUWp1NnRtT3JhRjhidUI5VWxWczJjRUk2QmRfSlZNS3ZpMnVkaUVlQVg2R0ZFUdIBZkFVX3lxTE54cE1DcW9ZQWMyWlg3clM3OVJ4RnRDdjFIMnltbEcxa2Jldl9POVpoZnFXRmx5ckc1X09qX0ZudXlKcGJ6cW4zMUtkR21VVnRYQkxjYXJUU0JING10NWtFTFd6cGQ2QQ?oc=5",
+        "date": "2026-10-20",
+        "place": "p0659444",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rancho+Cordova%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Rancho Cordova city manager gets $36K in raises, bonus after council vote",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5qTmN2b0lINTd5RFJmUG1RRjBvZTBONEVRcWtQTEJBWWJjcTJWRDRXV3ZkQVA4dnNKeHdYaV9aUHpVNkJIblZKUVFpOGw5WlJMal82Z1ZzczFfRDU0MW12LUM3OGtNZ9IBZkFVX3lxTFBLZkNieHZ1NDhxdGJIQUlKbWdleDhDcmhCTFlKTFppZ0VoZFM1RVZXVXJ4NGs2bEY2cUc4NkRodGt2dmxVaVl6QkJ6ekxmbnNiY2xybVkwalN4MjFIWC02cVpSTzJldw?oc=5",
+        "date": "2026-10-20",
+        "place": "p0659444",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rancho+Cordova%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Fact Check: What Rancho Cordova candidates say about Downtown Dova arena project",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9IS1NMRGd3dFFicDVCcFNiSzV4SWRXWURyclo3TDJpZVJrTzB3OGtQaWRNcExnSzdLVVpMT0ktck93QTlLN2hZUzJ4Z1lsSWlmLWRNMUpVTU1BWDczRktDS0ticEdnUQ?oc=5",
+        "date": "2026-10-07",
+        "place": "p0659444",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rancho+Cordova%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Rancho Cordova awarded over $3M for road improvements. Where projects will be",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5NU21DTjRELTNubmx5YmZidlIxalpuRmZZaVNYMEZlNzJNOF9PSUZ0YjltdzMxWjdEbWhGenRqZWsyVU1YYVNTNHVLR2hZWGVxM2lDdXlPTjJsZ2FvZlNyMHRPcG1YZ9IBZkFVX3lxTE1OYm5oUkhoU0JxODhWLVg4a0tvVEEwMGR1TGRiTUJ5ekx4UUVfblNkb3BEZjdiZmFyV3BpMUtXQzQxTHBiUEVsYll6ZHV2MVlITGFkQXpDTVhVeTRFVWtMVHRWWDhSQQ?oc=5",
+        "date": "2026-10-07",
+        "place": "p0659444",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rancho+Cordova%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Lincoln Avenue plans 250-unit affordable project Liora in Rancho Cordova",
+        "publisher": "The Business Journals",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPemRhZWx2eHZ2NW15T1NPTjY5eEtfTDhpN1FZVlB4OU9JejctanRBOWFYV0NqUWZ2WjNBeTUtVlhpdllkdW1XRVNRVC1wUGJOWXJmUmlxWkRHYnlEZ3lDb09QTTRXYXJDUHh6TUQxaFczMWpOQXlLWWlGc1pXRElWQkhoMEVManY3ckswazdqNHFUamtvb3c?oc=5",
+        "date": "2026-10-06",
+        "place": "p0659444",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rancho+Cordova%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Your guide to Rancho Cordova City Council races in the November election",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNQ1VGZnpwbEJFS1U2TVZBU1dQdFBKZkZBMEY1bkNrMzRFZ3VkaHQ5Mnd0WFcwWE1pV2lIUDdyZ1k2N0FOT0twb0VnUnlxSVdqYlFuZXRZWDZUdERMM2hyX09XOXFoVWhFVE9SX0gtM0t0b1FBTlBweWhUX1hFUFNjNmJXMUJzSUFNeTFiTzB6c3JRenZ5NTNXVdIBmAFBVV95cUxPR2pNdWpBYlg2Z0w0Z2ZwcHBOb3Z4eTdOMHZpdlhCRzdid2dRSGxmbDdtU2tDRGgxN0VqdkNsbTVLeHJENFZBM1NrQ3k2MHAtSlFDOXBWS09BcTA2b1dXWU1Ycndra1Y4enA5QUduWG9qNTVaelFEX25oVGRVUUdOWlp6Z2JfOWhtMnBKZWh6RjY4Z1lGZjhnMA?oc=5",
+        "date": "2026-10-02",
+        "place": "p0659444",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rancho+Cordova%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Rancho Cordova planning commission approves Downtown Dova project",
+        "publisher": "KCRA",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNekctTFh2NlhOU1UtN3k3blhVRU9JWlllWlJkLUZDR1h6ZGUxMm1USEN4YVJDSi1GQXY2VzNrZ2VleFpEQktEdzM0N3ppeHlkZXlwM1pZeUtkckE3NEtsWEdpbjUxdTFpeDlhelhHR0tBRTZONnZ3Y2JNdndKX0xzMEtiQjFxbUlQcFlLaHFZdDRPaHhTdzRxcENQQzhfSW80OS1vRUJB?oc=5",
+        "date": "2026-10-01",
+        "place": "p0659444",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rancho+Cordova%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0660942": [
+      {
+        "title": "Developer Vignocchi hopes Rio Linda Senior Housing can be model for cost-efficient affordable housing",
+        "publisher": "The Business Journals",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNYkNQbFd2dWtPZVhVZjR0cktSR212UGlpcEdycU1RTFA0OXFVNWtIbmM2X2s5T0lpSzdLYnYwU3FKNFNwcEdQMVpZVmROTlJQNVlfbF9PLVhvaEl6MjVmSnpFTDZ5Zm9CM09VVXFBbDlqcW5sZHpJeGRBdmliQ3I3RW0yVldLWWVqeHpBOTRxZVp0U1Qya01nVG5VbnRJbU9WbnpIV3RZNGM?oc=5",
+        "date": "2026-08-03",
+        "place": "p0660942",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rio+Linda%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Upcoming Rio Linda/Elverta CPAC Meeting Set to Review Major Development Proposals",
+        "publisher": "Rio Linda Online",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNSUhJMDRLSHNoZW1PZ0t4czJ4dEYyVklEdWU4VHNLbGdScm1XRS14bUZSM0dXR2gyMUpWam1FcV9ZMU5sUzh2Y0QtTFBfVlotM3QwTTdkWXNaWGJ1ZVZPMEkzTjFlSW1FRTY2OXlTQmpNVmVpVHpuZEVQYWM1V3hZSTdtUUcwdjJGVmF6eGVuc3JFUld2S2ROaUhKUzBOZUdHQTJVcEllQlpPTVZadE9lWk5VUQ?oc=5",
+        "date": "2026-05-27",
+        "place": "p0660942",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Rio+Linda%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0662910": [],
+    "p0664000": [
+      {
+        "title": "Sacramento Railyards housing debate heats up again ahead of council vote",
+        "publisher": "capradio.org",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPaXZiS2ctOHFIcU1vRk0xaktiZmpJYlJZRl93NWpWNzh4UUk4VHlZOG4za2hOeVZMWmRtQUFYWDdCQW92ak9ZQWNBU25FWVFEcHdfSmV6M19wN3Ruckh2azFaUzlEV2hYc3VBV294bmpwRTBVNS1DdGd6MTQxZTV4R3ZtMUN2VGdpTTBrMEdnTW56VTNIT3p6aGlKOTA2aGxyaTA0M3laLTVwSW03TmYzejZLcXlvRDduSnc?oc=5",
+        "date": "2026-10-23",
+        "place": "p0664000",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "A Sacramento County solar project could spare thousands of blue oaks",
+        "publisher": "ABC10",
+        "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQaEVRWjdDajJrdGF1aW1xX1VFRUlqU2U5UGxiMnc4MkEyUDh1NDJtS1dCOXAwbWcteWJZcGF0X3B2RFpTNDBja09XRTBHRXRuYi1keXZJMFVXLVVyUzNHR2NpLTRCc1BGTlNyNWZpbEtFMzhOWVhxQmdIY1pYN1h3U3htaWVTYjNXOTNUSzhKUG1SQ2RONmY5eUtpVmJfdmZ2TkJEbF9jSDk4ZDV4dGpkaFVQSlRrWUlmSDZjYkNDSDZTdnhqOHRVcTJQVXdaMzdxVjh5ZmVLY3JjZWd6ZDhrSUlCOXJIX1ZubGpNNQ?oc=5",
+        "date": "2026-10-20",
+        "place": "p0664000",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sacramento news roundup: Housing, ICE ID law and 'No Kings Day'",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBsVHpNMWxjbFRiU2ZtUnRPME9CeWtPZ19tUTVjYnpfaWozTkpYRzFOUGVXd0RzMGdtc2dJOTR6bjVTZVVwbV9HcDZuc3F3SFJPbVlOdmxQcWhSWTEycWRDX2UwLW43QQ?oc=5",
+        "date": "2026-10-15",
+        "place": "p0664000",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sacramento City Council looks to improve behavioral health programs",
+        "publisher": "ABC10",
+        "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNZ29zcUZVX0ZOeUdDTFNYM0FjNUxKU2E0OTN3SWVLbFRhekljQTFuZHFmLVZOc3E3Y19CUXV4Zy1EbmFMRjVEUlgzYzNrU1ZMaWFlZWM2ZkNOWE1SMERsMWE5RU5nMzZUdHRhejZURHZiVDlLWUp2bThjZkR6N0sycW9KZFNZenpCVmRPd3JSdVRzY2w4SEVGZkRoMWVURy03RnFVWGd4Rkw0X3RUcVU1cEpsOXRMa2dFZlE5MWs2N1pMXzZXXzFqcE53c3N6UDRZbG1kV29BV19SLUI4NDJ0WW4wemVvVlVwNFRZVmxHYm94Zw?oc=5",
+        "date": "2026-10-14",
+        "place": "p0664000",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sacramento Regional Transit offers free rides for California Clean Air Day",
+        "publisher": "KCRA",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQZlpEQWVPWk9qc1JBa0RraGVqNEgwQWJvWkVvYlJVTHlQaWp2ZDdMWjlSZDRNZnN0YW43dDRDcnBtZ1poM2lWV1hTcEEweWJFbXVscXhiTUJMY25fOWlrOWl5TXc4RXo1Z2FIcDlDWWktNkxBdnExdzdKT0lfcEpvMUlfcTlxSm0tQlhYSV9aMm4xY2k3VFZZVXJURUQ4WEgxbWFz?oc=5",
+        "date": "2026-10-07",
+        "place": "p0664000",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sacramento region sees boom in new multifamily housing as construction slows",
+        "publisher": "Abridged \u2013 PBS KVIE",
+        "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9zNTZaWWFVVUtpUWVtUTZ0SzgtbS0tbWgzX19DOWVJMzVNekFzb0FSSC1SYTRVTXREeHVOZW42dzlCdjVGS1M5ZlRkTlk4NEZERW9uVDZEM1E2eGFNMmx2ZFkzWWE3OGhQVkk2Rkt5eF9EMkFBU2pOZWxkeGZOUQ?oc=5",
+        "date": "2026-10-01",
+        "place": "p0664000",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sacramento council picks sides on five propositions. What did they endorse?",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBqTHJaQ2NBNURQZklXV2tWcHVyRWxsakhwbFF4LUtreUhwczhmbEhDa1ozdmM5UFpCc3o3TEs1aE1kRVFuMFlPZFJDa043eHNZZ3FVbjJSX0M3SU04RzIwWXNxN2pPZ9IBZkFVX3lxTE1nbWUtbDQ2cnQ3T04wZGV3OWN0NkZYTjNuSjIwbGhtUWlrM2NubkRUUUxDd29UejVJSjh3OFVLbzUyOE13c3I3aDRhZHpVcUFfck4zelJVZFFMM2hHaEhOODBtTm9sQQ?oc=5",
+        "date": "2026-09-30",
+        "place": "p0664000",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sacramento spent $12M on 102-acre lot for development, now it plans to sell",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9QVFMwVDh2RktZQ0QyeVJBWGRwVEE4aFFRc2xmeFktTGFpR0pWOVlVTUhGcWdhOE9UNE51QlNTWGZaRmpIVGQ1WF9PTWFFV2xUUHp6TlBwRUV4UlVDbnVyT29VYW1aQdIBZkFVX3lxTE9vWUlEM19adlk5MDk0SzR4YXJSVUFoUVpxS09SemFxLWp0RnprWGp6dWF4SDM0ZnVGUmRjUFNDbmNRTDZZdnByUWd2WW1WM1RVY1ZCNHg4TmpXN3EzZHFmN283V2lTQQ?oc=5",
+        "date": "2026-09-24",
+        "place": "p0664000",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0614890": [
+      {
+        "title": "Colton school board approves deal with warehouse developer to preserve Bloomington elementary school",
+        "publisher": "KVCR News",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxONFVCU0pxSjA3bVNwUFBnd0M3VjF2Qk9BdUJGbDFfWTZqX1NJR2RfYmNiN1RfSTd3OGpFb09VbGZJTXVubGUydzNyMWVnZ1dyWFRtdDVIUldpZDdzbVNNVVBfcGtlVk01M2ZzQWZrejBIYTRtdWpWLW5FTHBwaHMyenFRcUR2MFB0OHlYeFM3ZVM2ejJiaU9sZ1FuTU5UZ19yVHVsOXFMb2FGNW10LWFZbTlMMUZsNTE0eWt1SzlhYw?oc=5",
+        "date": "2026-08-13",
+        "place": "p0614890",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Colton%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Colton driver crashes into OmniTrans bus, dies",
+        "publisher": "San Bernardino Sun",
+        "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE00RmhLNVNkS29DRWRIUGFxZjlPTXVKTkVUZVQ0XzdwWW1sMHpaN3JHdTRfaWN1alVHNDlqNjh5X25ueUMwRDJnaW8yV0tnNUVwc2pRRTNjMTRCVExsVnNKSnhCcHhtUE0weWVLckpxZXlpWjB0b015TV9uNFdwUFU?oc=5",
+        "date": "2026-06-12",
+        "place": "p0614890",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Colton%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0630658": [],
     "p0666000": [
       {
         "title": "San Diego\u2019s House candidates are running atypically conventional campaigns",
@@ -1679,6 +3339,273 @@
         "feed": "https://news.google.com/rss/search?q=%22San+Diego%22+%22San+Diego%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0603209": [],
+    "p0616651": [],
+    "p0626028": [],
+    "p0628182": [],
+    "p0638065": [
+      {
+        "title": "Robert F. Kennedy Jr. makes Atwater, California appearance",
+        "publisher": "The Merced FOCUS",
+        "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNWWwwelBmQzdJTjY4MVRwZldKbnlYRWdJa2RWU0lyV21LY0Znb3g2WmtmTVFyMnNZWDNGQklkZjJXdjN0ZW9ZUVczRTVaYy1vVjZRWkdObjI0R2VWWTNrS2RFWXpmdlgzX2Nub1V6R3RlOWI0V1B0R1NIOGV5RWhLVmpFc05UXzJiUjE3VWtUQTYwdzlFcjFBbU8ycVl0dGxQeFIzTE42bnV2TXNTa2NteFBuX1J0b29nSzd3ZHBHM1F2VTZjcEZVVUxoZklEUnNGVGxsVDR5WVNuWDQ?oc=5",
+        "date": "2026-08-13",
+        "place": "p0638065",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Kennedy%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0640704": [
+      {
+        "title": "Sam\u2019s Club opens first San Joaquin County warehouse store in Lathrop",
+        "publisher": "The Stockton Record",
+        "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNZkwzLVA5cldpVVE2QVFDSFBCQm9QNFRQZmxyN0xkYXJmX3N4ZC1UdDF0OWM4ZUt4VFdlcFRTUVN1RV9TbEI3eXhKcVhUNy1kT2c2d2llcTVLcHF5MTNUamN0c3hzZENodk9vMy11MXF5MUZ2cEVlSVBZbEVfY1JnZ2hxdVBuWERDdXAyMXliVVFPV0o4bkZIclNSRXpEcTRJNWZ5OXN1YkVwa3VickY4ZXlFeWRVbmtsdDJrMTZTNGpVaExrMEw3OHVTOG9QcDUtLU9sRDVkMmI3b09y?oc=5",
+        "date": "2026-09-24",
+        "place": "p0640704",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lathrop%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0641558": [],
+    "p0642202": [
+      {
+        "title": "2026 Election: Lodi City Council \u2014 Duncan enters race on fiscal, safety platform",
+        "publisher": "Lodinews.com",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPVlFMcnh6RFV4TGdaRWRlU0tSNXo1V0RUdFJ6QjVGTHlUbGtmZFlQOHlVaFJTSFp2T1ZfeVg5aDh1alZPV3loeFBOS0toRl94N09FcDdWbzNnYmxSNEZJLXFnaDI5QUVOOXdPTTVZX1h2Z3RPY1JFaFc2QXNiWk9ySVc2Z1JXZw?oc=5",
+        "date": "2026-08-22",
+        "place": "p0642202",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lodi%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Lodi looks to expand: City takes first step toward annexing 95 acres west of Lower Sacramento Road",
+        "publisher": "Lodinews.com",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNM21Bd0VwT1JCZDluWER2VUx1cUIwN1hIbWtYVS0yUjJNWlAwa3A1SEVUWnBMNm9HUUdfMHU4YTQwMVZpNzI1dVJxMTdVemNBRUh2YU1RaXFxR19wY0h5MFFGQ3R5cFJPWHZkTlpKbU5OQVlEUnJla1FzMXMtUjZfWHZRMVdTUQ?oc=5",
+        "date": "2026-08-15",
+        "place": "p0642202",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lodi%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Lodi lags on affordable housing: City at 77% of state goal for high-income housing and o% for low-income",
+        "publisher": "Lodinews.com",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNdmhYai04UlR2MjQtUzNWYm4yckFkckRHUjNyWFE4OUxITDFBZ0g4OEdycGdLcExuamdWSktueU5oLTBYdWQ0Yk4xU0RWT09VbTN0R0dsMGNyNkRvN1ZDNm9seDNvVUxhVTF4Q1BKM2tiMG1CMklWYnZYSVRfUkJld1ptQlJlQQ?oc=5",
+        "date": "2026-08-13",
+        "place": "p0642202",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lodi%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Why were clean energy projects in Stockton and Lodi cut? California didn\u2019t vote for Trump",
+        "publisher": "Stocktonia",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPbm1EbVVtd0dNbFhNb3p0Z3d4WHlpRVlhWHl5VThDdnNYNnV1LTRpSUxjbEhmYnd3LTVhT3RJTHJrWnlmUzJuN0dmOWJVOFRrNl9WV1llSWM4ZjlTb3liTHFjVU9WTTFxc1A5R2kzNDR0UmlkSzI5U1h4VUdVd1Z1ZWQtUjlsOW40eGN1cnMtUjRhTnZuUnc?oc=5",
+        "date": "2026-07-28",
+        "place": "p0642202",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lodi%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "2026 Election: Lodi City Council \u2014 Bregman cites improvements, seeks 2nd term",
+        "publisher": "Lodinews.com",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPOFNsSER2RFJYelQwS091Rl9ITG9KNHpsVmY1ODhKRFpkZnRtUUo5dmE5eFpNbFNENWUtdF85NHhDRkV3TER5TTVQX19PSHFVcW9JUlY5SHlMOUNzTmktQVlLT1ZGaUhPbkFENXdUYTRQMHNSS1VGNU9ncXlKSWpFZTF5VEllZw?oc=5",
+        "date": "2026-07-25",
+        "place": "p0642202",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lodi%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Council set to hire Lodi\u2019s first female city manager",
+        "publisher": "Stocktonia",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPdFg2eEFsSG9FQUt3eG9KSU9HMkVxa29lTlhYRFBITVJyOHhMRHpLc3FNYS1EMzV0Y2FGVGxvMVlPN0NuU1NJWTZkWDhRNVRJZVlzTjVkYTZIR0hoWEptNlI5T1BRTDd4UVFzMVRia1RGX2tEcWFESmM0MlFVRnhXYU9Va1IyNW5xWm9lcE1LazFaaDRRZWFRY0hNQ2ZLbjBrV3g5d1Zscm5yTGUw?oc=5",
+        "date": "2026-05-01",
+        "place": "p0642202",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lodi%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Former Lodi hotel opens as transitional housing for people dealing with homelessness",
+        "publisher": "ABC10",
+        "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxPaWJhTDZVTW11eHg0MjVYSEN5aWpYSGRzd2luak9aakRzaHNpQ3U3QXlPZl9IZlk3U2MtODFxcFhzbFkwb0hfNWRyYkc1MnliNl9SbjVUelVmM0Z4V21yTWFyV3I4YXNwTXNkbExENFY5RW4zWVR5ckdOOG5qN1FSYm5ndHBUQVZtZnZEc1U5ak5YNFdfWHJ4VnJFWHVtTG12cUpaY0w5a1ozeUwtOGpibVNCU2tfbWxYTllpbm5iMmptVUp2WGJjQVJYWUVUWlNKVFp0V0o3aXU2Q3RtV3B4dzZEZ3hpbHI4Rkw5b2ROWno3WlMxeF8xRmJR?oc=5",
+        "date": "2026-04-29",
+        "place": "p0642202",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Lodi%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0645484": [
+      {
+        "title": "High speed rail, $8 diesel, & what San Joaquin Valley and California really need",
+        "publisher": "Manteca Bulletin",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPSWZPdWZ5bjFicVRtUGpSR2hHRllIZ09aeE1xUGRremtjVjF3TGtHOWhRNDNreVhOQmRQbzU0X0pQZTdqOS1pRGI0QWZHd0FRcFd5eXBTWFl1VHpiN0lWR2pNWklKVFhoYi1nMmYtYmZER1ZtU0FDQ1RPU01Rd1dmMVltaUxzRHBpdjExR1J4ZmlVVUFnYWVFanUtSUZPRFROTDZ1QWx2VzQ1Vkx2ZXc5OUVHelM1UGx6LVRDc2tqLXRBeUkyODk0OU9B?oc=5",
+        "date": "2026-09-24",
+        "place": "p0645484",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Manteca%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "\u2018It does pay off to vote for your mayor\u2019: Manteca mayor accused of buying votes after video with local business",
+        "publisher": "FOX40",
+        "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBEZFZkaXdWcEZEZ001TGx5Z09nNmttdWFJb3pIbzRHVXE5YXEtYUE2VXJrbmZMN3pBV2JvLXVuT2NSZGZaZHFpWmxYY3hYNjZIenJmdmctVEU2c3Q3cnUwWklQSFQ3VmM2aEFZT1M1S19QemE1WmpB0gF8QVVfeXFMT185LTN3TVJ2UmpsM3N6TldEN19hdTZkOHlGc0hfeWhfQmZrQ2o1aEpfeXk4V3lYVlQ2dGxJYlBTc29PRkhrT2ZOZ3RFVGd6VnpJcXhILTNNSjdTcmF6akpSZTgxMEVPUlBCNDA5MzctY0g5bUo5UXg5b0d2MQ?oc=5",
+        "date": "2026-09-01",
+        "place": "p0645484",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Manteca%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Groundbreaking Sept. 8 for transitional housing for homeless veterans",
+        "publisher": "Manteca Bulletin",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOUmRCaWkwUWt4RVhnMjN6YzhGT19STFdLQ0p2b1gyNGhxdmNiV2M5YkRKakJlMndfZWR1eDZJY2E0NnNSclc1OWdtY01VeDR3WEJwVlFZbEpWbE9QSE5UUnk5NHVHSXN2d2Q2Tk5RMXdZZXR4RW1SSEZ5MWc4VkZMd2pQZ2ZKbndZUFVyYloxUS1TMDhoMjdVUXp4bGc3UWpNSmd5TUZiTW5CTURGczFCeENwZU1nLVhS?oc=5",
+        "date": "2026-08-21",
+        "place": "p0645484",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Manteca%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "CAPTURING A DAY\u2019S POWER NEEDS FOR 474,000 HOMES",
+        "publisher": "Manteca Bulletin",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQajVDdmRpVkJCcUd5VTNWb2NJT2RiZEFXVDlrVzM0VGVFUHFFOHpuYTFJQTAzOEtrV0FhTklKRjVzQXNBMUhBbUdBYUplSlVCcng4b2lsc01sbEpPRUVxOEpLWGFWZDBpQ3pBTG9DUkJTaUtVemd5Wm5hR3ppM01pbWIxNHExWUJob0E1a3FpQjhDNkpScnpSS3Jn?oc=5",
+        "date": "2026-07-29",
+        "place": "p0645484",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Manteca%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "4,000 new rental homes in River Islands could be a housing market changer",
+        "publisher": "Manteca Bulletin",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQUWtKNk5Tek1IbzFIQWhkdjdZOTRQbjJIVFhsaVpaZ2RESl8xOWU5R3o2eG9wSnIyQXNVbGNEeWNOQ05DZWtpWC1SZGpyUjdzZ0pyV1B1aGh3QTVIMkowcHBTVF8tQlV1d3BhZDRRMUtfc3NsdUFNNVAzMkhtTWQtSmJVc0dxVHZtcGE0QzFZMS1pQ25zWEt6R1Z4QndjbDctX2gyYTVHZ0lTWGNjWU1rUkJkM0ZVZm5vSFVNSi1ESnZMb3B2MXc?oc=5",
+        "date": "2026-06-26",
+        "place": "p0645484",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Manteca%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Wedding high speed rail & data centers: Destroying the San Joaquin Valley to save it",
+        "publisher": "Manteca Bulletin",
+        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOTFl2emFIV0d3ZnVJZmcyYTU3MEN0czFHZTkyZTRxTjFFUlRPWV9Ta0VCc0Zjel9pRGFzZDFLWDNaa0RyQkotRFk3Q0Fkc3Q1SFZqNGRpblFjSUlJNjNlVGNIdVBNX3Z5UG5wNGFZSC1ybUZUOXh3dnF3OUltaExFZWtfSExoa1VlMmVETTNOb2pzN0hnbDBGbWhSX1ZYMHBoTmVzQ1RUZHY3bmlZamNHY0pfV2pDemxkWTdFWnNZMF9sQjREdmhXTElmWTJBMUlVbHc?oc=5",
+        "date": "2026-06-23",
+        "place": "p0645484",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Manteca%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "SJCOG PROJECT: CHANGING & SAVING LIVES",
+        "publisher": "Manteca Bulletin",
+        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQ1ZZelY3UU8xOTB2QlB0XzRLVGxWeS1RTGUtUDMtbmlwZ0M2NjFTeHZWY3pjY0xGZ3pWbEpnTm5mZGVRSzl6bGFiRHdiQU9Oek5LNDc0OGdSNktzSFZzQXdTbmRBMkFNV0k2ZDlqbF9rN2JaLUlVN3VtekNsU3RDSGtmV0ZweHlnY2JSbQ?oc=5",
+        "date": "2026-06-18",
+        "place": "p0645484",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Manteca%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "ELEMENTARY SCHOOL DILEMMA: THE MANTECA WATER TORTURE",
+        "publisher": "Manteca Bulletin",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNN3h3ZjhDbTFVZVp4RU9taHF1NFoyeXQ5dE9BMEp3ckpyVXJnRkpoRmg0anFKZEtJZjdGWi1DYTB5OUFwWXFmZVk3S05WTGR0RVVSMExzNlRPd3NqeXNKWDVIV0V0TGFSTlg0OWdjSzF5VENNemh1QU9qY0dYTUE2YmlOWGs2VnhlNWFUOWJ3YXJFb1c0b0ZHbEsteHBNc0pETkE?oc=5",
+        "date": "2026-05-27",
+        "place": "p0645484",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Manteca%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0649180": [],
+    "p0675000": [
+      {
+        "title": "Stockton proposes new council conduct rules, ethics oversight after grand jury report",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQbGdKN0ExSWZqWTRKS1VEY01iS3FsWllZTjBHZ0o5NjhKOVNSUlV5NU1MSWwyRS1CQTY2UE92TG9NS0VfeUVneTFtdTBPYWI5ZjFGazRDSWpHYTZsdHhBa01STUVqY0JWRWNmTnRjYjR1T2IwdlJRd3BHM005V1FoYzliRDE3UQ?oc=5",
+        "date": "2026-09-25",
+        "place": "p0675000",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stockton%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "The Hunter House Breaks Ground: 120 Affordable Homes Coming to Downtown Stockton",
+        "publisher": "Caravan News",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOZzk2cXRQMHlyNGZFY2ZFSERSREk0aE1PaElDR3dYdGRxLVc1YlRDalljN2Z3cUhXTUgzaTZPdDFfRzlsbDF0Z0M2UDFmdnpiM241UGlxcnR4UmZpd0VMWFI0NGg4SmdFQ09aZ2ZjdGNfSHd4YXRSeHpucFRPeTFxc2F6blVIOTlGaXFpdXZkVDBwb1k4Zm40OFZtZHZyMU96ZkNCLW9KZFMwNC1qQTlGQThn?oc=5",
+        "date": "2026-09-24",
+        "place": "p0675000",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stockton%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Stockton Seniors Gain Access to 76 Affordable Homes with Health Net's $3 Million Investment",
+        "publisher": "PR Newswire",
+        "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNNFRqZ0FObnVuXzFNTWFSdUZNVmpIbkJzeTBnM1UyMDVHcWFQNVFQR2M3VV9TRnZGdmtSSFF0UFVvOXRNMHY5bFJGM2V4UFBvLTNVYVlPeHoyM1NXMHZYcWx0X1FqQURheVp1RkUtN3pqOXRnXzB6VWFWQ094cXJ5SU9zWHF2QW5PZnBRZFFyZUNXQndjcDVadVB0elZ4ZTJ5VTdreW96cFV0VFFUTEJIQUxvVWhIMjFpSW44aDFKbTNNamlJZEFkd2JRcTRHMndkczdxeGxEWW5PVFIxdlE?oc=5",
+        "date": "2026-09-22",
+        "place": "p0675000",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stockton%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Former Stockton City Council candidate facing multiple felony charges, including weapon charge",
+        "publisher": "KCRA",
+        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQdXdNRHBVRnpNdHhob3NBSkJ1VFJ6YnJlb2swZjlVNmoxZmFfWFBCc3FiWDBfU19MTmg4amFWZnBmNVdpQ3MtMU04RTNJc2FjUlV1RkFQZFJVWlNBOXAwOWZhZmFROFJiZHVhMDFVN2Q4Y01zeE9xMWJTckU4Zk8zNF9Sc3hTcEdxendKaw?oc=5",
+        "date": "2026-09-02",
+        "place": "p0675000",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stockton%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Former Stockton City Council candidate arraigned on 6 felony charges in election fraud case",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNcWdzbG9aOWE5Z3N4Tk9kZ2pudXhhc01NSEZKUEtiQ3lsS3FGQk53YlB4ekdSeUlzUXAydUFjWVBhTU5OeG1Xd2xxY3ZJVFliSFlKbTBRZC1UZjhUakdIcjdPSnotSXJLdmUwRmU4bzNvdTkxaWtwaDRzRWZZT0lUSTBYcnEweXEyWHROa09qbVhkams?oc=5",
+        "date": "2026-09-02",
+        "place": "p0675000",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stockton%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "After several hours of public comment, Stockton council unanimously removes data centers from city's economic plan",
+        "publisher": "ABC10",
+        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOaEhQaWlNSFpsT2JEbFE2V0NBU2ZtNlQxZzN3UlprVWEtTkRRMy1oTF9vN3JoRmpyNTBFQzRRdjd6WGVieUlVTU16VGQxelc5TEYtVHhZY1llazFIUm1xU0hLNjhzdlJ1b0V2RHNBaE1pbzYyOFAzZDJJRkdBZndfZXI4Vk5uUS1OR1hsTTRCU2dqbzBtUXZFN3RucFpkOVc4eVczREhHekVBLXhoUEVDRVZOeEozUUMwNWlOSW1wOWIyUXZtUmdZcEJuUnJIdw?oc=5",
+        "date": "2026-09-01",
+        "place": "p0675000",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stockton%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Stockton waterfront RV park residents told to leave after decades of calling it home",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPYjZNVHZZSjFzRWFON3FFSHlVZy0xckdMVVpkT1pSNmRGY3RBZ0ktdXJCX2h3ZGQ3VW1fTF9ONHZJLVdiNzhHQkE0NmE3dUgwOUFsSVFEREhTWkJMRENKZ2JueVNhSGQzWDV0MV9HbGNHMkJHdjZmblNqUjM4Xy1kTW1GdkR3cWhjVEQ3b0hid3ppOGRHZEl4MEZROA?oc=5",
+        "date": "2026-08-31",
+        "place": "p0675000",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stockton%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Desiree Lynch withdrew from Stockton council race. A judge confirmed her name will remain on the ballot",
+        "publisher": "Stocktonia",
+        "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPbXI1YWN1VWtobjl5emRfdTVDWTJtUnYtdS1ZWHVTQ3FoRS0tVVlDQUtJSlNCZU4tUGNKZklucjAtblZmdnFvaHRobUxiRWZVS2d5bkRLLXNXSGV1NnVJNVNqWWkxejVvcnItZGlFUWt6Q3FUeGNmcFNSY2NSZ0dYcFNzRWM4SlhORDJ0Y1lKV2VwaVc1MkdYdGJOVmU0QlRCTVlpR0dWTDMxdzJfTWNWSXh0NVVMeHNveXh5cFAzaUJwTzAzZVVaMkNLa1pxSjlveGV2aDZvbGRObTVnRm1JN1otbHlXV21KbzlnMEhKMVVnVmFJ?oc=5",
+        "date": "2026-08-26",
+        "place": "p0675000",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Stockton%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "p0677595": [],
     "p0602868": [
       {
         "title": "Fact check: Where do Arroyo Grande mayor candidates stand on water access?",
@@ -4851,6 +6778,162 @@
         "feed": "https://news.google.com/rss/search?q=%22Thousand+Oaks%22+%22Ventura%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "p0684816": [
+      {
+        "title": "West Sacramento to answer community questions about trash contract at open house",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE45MW83VTZHcDJ5djlPWjVQeTBheUNteUNsN2FzajNEcTJwX0dWOE1DaDMzSkZTYUI2eW1GT3hNZUstRWNnVVV2aExKclB2eC1wZVB0RTdjOUNHZjJ4M21VSlVoZ2s0UdIBZkFVX3lxTE5HYzJsRXZkV1hDcHpuMUFsbFpQYVBQRzNpaHJwSEd3MnlJUWZMbERoNnpEQ0dmYUxKeHg2MmhUc3RWZlhYU1daOFNZMnJsTFVVZHVXck92c1MxUGFENjlxaEtxeWpzQQ?oc=5",
+        "date": "2026-08-31",
+        "place": "p0684816",
+        "county": "Yolo",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22West+Sacramento%22+%22Yolo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "c06077": [
+      {
+        "title": "San Joaquin County reports 40% drop in unhoused population",
+        "publisher": "KCRA",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPRXdXMEhPUVFwN0JNV2NZWXNfeU1xM3RqSmFMNVJta1dNT0VFSEh5aHZOZ0d0eEFILVNjMTIySFliVDkwcFJtSnJYUzVUajBPRkk5V3VQdy1wclEzbTZOYWhMWXZsdGdhQ3FtTXkzcm1QMEJXMGpZMmVkcnRWdW5uRm1OX1NLbjRzNEVDMTFnZ2tVX3JmLU1pTQ?oc=5",
+        "date": "2026-10-20",
+        "place": "c06077",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Joaquin+County%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Joaquin County halts new data center approvals amid water, power concerns",
+        "publisher": "Stocktonia",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVUpMcG84d202WHE5cHhZalZQOEFjWE1UZkItckxhMUdGMDJfckNENThWTkluRjhKUUxQbFRzSXozWDhrdlVhVmo4NGtOVWRnTU5xdmxHR2dLRmtLTFFDSzdsdk9IcnNvejFFeFRhODZ4cU45TmMtZS1ibUZObWtOQVlSQTZ1TXlzWm5WYzZYQ0pJaDJoQy1TWl9RX1BtQ25qLTE5Y3I3Nl9iT1lnYzR6bDhyek9lTWtCSFdiMS1oU19GOUk?oc=5",
+        "date": "2026-10-07",
+        "place": "c06077",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Joaquin+County%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "2026 San Joaquin County's Affordable Housing Production Pipeline",
+        "publisher": "Enterprise Community Partners",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPT2pRS2JWeUJZUmItQUVkS2R3YTBpcENQTUhsQUJ0ZVNGOEx3c1VuY1NBQVZkcjVnSEkxeTJnOUgxMnYtclJXcWs2cDJmUkM3MjVpVXJ5ZkEtcGMxNUsyelZ4Nk5CM1dDVFVVSzJjN0wwZkxUMjlua3kzMUpmd2lZZzJ2cWE0RHVBTHJxVk5BeElSVmduMThZRmhEcHk3QkREUnRGamZKTmtrNGJ2UGk3Mk5ZZy1uOUUzNy1WeUdVVzJ2dDg?oc=5",
+        "date": "2026-08-24",
+        "place": "c06077",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Joaquin+County%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "How many people live in subsidized housing in San Joaquin County, CA?",
+        "publisher": "USAFacts",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOSWU3VHhycmhmXzdXd3haSXkzNVFXbDdtcDdOc0FQdnhpbHpVZFJDM21QUGdCUzdMT210WVJUVUZsdVZzT0ZTdjI0dW9peVNGVnFWYnNENGswckF4QndkckxjbG5YekdudDZvNmh2VWgtTTdKSjc4WjVfSTlkMmkyX3YzbkJCWGZjYTRCdW9ET2hUR2pwZDhRNkxkVFhzOW9tRDUw?oc=5",
+        "date": "2026-06-18",
+        "place": "c06077",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Joaquin+County%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "'Record time' ballot counting in San Joaquin County shows all three Stockton City Council incumbents could be heading into November runoffs",
+        "publisher": "Stocktonia",
+        "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxOdGxlaWltYzBYd0J6SDYxSGQxTzE3V0NjZjdYUV93S24tSzdIaC1RenhIaGgwM3pRSHc5NTBvcHZGb3ZQdzIwSFdFLVF4cWJFb1NlMHRxcURJa1lsc0t4ajk5alFydnV1ckhRUkVlOVNSTS1MSk5rU3hFcVVpRDJFOG01emtHSE44Ujl1YVRhNFlMQjEzSUZjbUNjN1Z1MWdUcEZSQ3hBb3BfejkzVDZ1eC01QnZoNGJmQk9EUl9mcUZMaEFPU3Y0dVBpTTBXN3hHQXVoeW42Njl5QUJSS0FoS0Fpd3RWekFTWm1aZFNnZ2k1eUdJY1hjWmMzSnRIT3FINThNQXM3TkNjUFdOR2ZxRWNnckFjUlI4cWx5MmxKTQ?oc=5",
+        "date": "2026-06-11",
+        "place": "c06077",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Joaquin+County%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Joaquin County\u2019s old courthouse heads toward demolition",
+        "publisher": "Stocktonia",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQZEFhXzVXb2dGMDRFY3c2WW1YN2tVZmFFbUJTSWJQcFBFWERUbTVyVE02VmRiRjVVa3JMdGczUDZmSXlobG9EQXZ3cmlDUFh4QlN0c0N1bTd0TWpqWF9FejY5QUFZU2hQSmhFMXludGdCMW5MTW12TWNJc0NTeG40TUJ6dl81OG5jRHgyM1F5ejhjWnNsbml0bUZwSzNVeTND?oc=5",
+        "date": "2026-06-09",
+        "place": "c06077",
+        "county": "San Joaquin",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Joaquin+County%22+%22San+Joaquin%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "c06059": [
+      {
+        "title": "Drummond: 26-year-old law regulate campaigns for Yorba Linda council",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQdGk5SVdXVjl6MTF2Y0RJaWRmVWVBU3lOQmpZaktvUFl1WTY1N0ZubkkxSk1xY09kWXFOcWphakhpNDhzdGc0WFdYLUxfbGhWLTQ1S0ZmR3dvcF84bF9OMkNmZE4weXZzWDhyMFJidGVpS082SzFNYlo1MDR4XzdwWkpuTnZpT056b0VLdERBMzJrVW1rM2Vxdy1ValJOLUdXck0wYW03OUFWUQ?oc=5",
+        "date": "2026-10-22",
+        "place": "c06059",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange+County%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "California\u2019s construction unions are running ads against their own jobs",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOOVplRUhNd1E1bFNCOTFFbTBhTHcyeWFUWnFMUU9qc2dBRWs3VWd6a1UxSEZkNGd6cjhuTGg2QWprVkgzUENNZEpXWG82ZFVuVEhybDEtTlBlcmtTdzczZW9USXFST3NKM1RRZmRud2VRSHBHWU1EZmhaMkFFVnl3eUdYTjRvUFlZWTJDWXlhcU1TaDAzb01ZczIyc21DZDVaTDJXejRQU0U0MlpLVEE?oc=5",
+        "date": "2026-10-21",
+        "place": "c06059",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange+County%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "In Mission Viejo, 8 candidates are running for 4 City Council district seats",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPQ2paX3ZDVXdhTGlGZ3BoVFppZnlrUVkwaVVKZGNGSzdtRWM2b1QtRGlFWjZHVzBzN1A4aGwySDBmWEhFUVp2Q2JsMFEwZGNJR19uQWZzTFAyNXRkQjhjM0hMSTVhV3RzeHYzMkdfeVZkRWE5a3I2MWNFTWNiQ0I1eW14Q0NYVTNhOWdiZkdOYzR2ZHBGUGJxamdwQzRwSXFVQmZUSjVpZHVsWEl0V1FaWUlmYjY?oc=5",
+        "date": "2026-10-20",
+        "place": "c06059",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange+County%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "What\u2019s the best housing market in Southern California?",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNaTQ3R3pGcHhjOU5UNTJtU0ZNdk9PZ2dxbGl1Zjh1OHVKc2J6aHZMV1F6ZGE1c1gwRk82ZTBuZDRzOGwxVHdUTDllX0VuMWUyaXJPSWZ2Qk1qZnAxQkJJcXlXVTFmaHJDa0ZKQVdEVUN4NEZqTW16clVzaEREaWt6TnBwNE5NWk43U3VpWnZCOUpHaFEyMFE?oc=5",
+        "date": "2026-09-08",
+        "place": "c06059",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange+County%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Costa Mesa to consider housing element changes tonight",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOb1lhZUFLREduRTdXb0Qyc3ZuUVphSjB1TkNnTzFVemc4VEd3NEJBQW1SZmNSUmhEbGszQWlxa3c1cjJBWW9KSm16UE9NbVFiY05oSE9VVmdWYUgyOWpGdVF5ekVhZVNwXzlyaHZDX2JYNWhYaWpudWoxaUdwQ3FuM2poZXVpQkJkQkNQQWsza3d5bmFBeDJVNkk2MDM2YUQwUlF2enVCMDVFaWI1N2Uxa202YU9QbXNY?oc=5",
+        "date": "2026-08-29",
+        "place": "c06059",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange+County%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Santa Ana launches first zoning code rewrite in 60 years",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQZF9XTU94SU1SUXJvZFBxYkdaLU9pcFF2U2hpSmR0cGM4TEJCWS1xN1BLMVc5XzJURjhMM0ZHemxTdVkwalp3cXJRNjlKa0xwRExGb0FZdHBOVHlrNVQ2T0xTWTE0U3JUMDFRdGc4T0t6ZUJGMGtoUDlrbnRIbnM4UVJIWjVoQndHd1luc1o5OFlVeWFBSFJFNkZQbw?oc=5",
+        "date": "2026-08-18",
+        "place": "c06059",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange+County%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "California housing is frozen, but not underwater",
+        "publisher": "Orange County Register",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTDl3LWE4azBqejdlU1B0UVhSektfNzQ4b1VHNTJxM21lZjJrX0FsX0NuLVJMZG16a1hIRHdUdHcxaUw2NU0xRXUyamhrQ2RRYWhOaFlsbDlNeTJoUHM4TXJXdW9Va0JScE9TMWFucExiQXo4UlJqQXJnUldRYXdvazEyRjJFVGE1ajlRWV8tVQ?oc=5",
+        "date": "2026-08-08",
+        "place": "c06059",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange+County%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Orange County Register : Newsom\u2019s latest housing bill proves impact fees are extortion",
+        "publisher": "Pacific Legal Foundation",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQaWdOLW0wV0Y3WV9CMXRMaG1iSHR4VGJyMjB2czFQNXdXV1dtZWRTM0RXRFZqblpMcm5HY2ZZUWJ3Y0NkY0ZpSWVVdlpFdS0tVmRjT180bjNYOGUwdWZTb3NybGt2emxSb0NCanBuWWhEOVAxSURBNzFwQW85T0VpQUx3ZlVrRGJRNVA4ZUhzcXJsSm54WC1yektia3l6dVJPSk5fX1NNeW1heV9tNkE?oc=5",
+        "date": "2026-07-27",
+        "place": "c06059",
+        "county": "Orange",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Orange+County%22+%22Orange%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "c06053": [
       {
         "title": "Monterey County planning commission approves overdue housing plan",
@@ -4933,6 +7016,78 @@
         "feed": "https://news.google.com/rss/search?q=%22Monterey+County%22+%22Monterey%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
+    "c06071": [
+      {
+        "title": "San Bernardino County Backs Legacy Village Housing Project",
+        "publisher": "Hoodline",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQODFIdUVPNXRXZWs4NGQ3SEJWTWtuSGdFTGg1cHpVZTl0d2RUTE1yOEMxVGhjSVVYZnpXZzBhX1dNbXhGQjF4QW80Vm02Nk92cFpkazZjcWxoSUhrZVhQZ2lLblh6T05kazZodzBLYVB6NllXRWJXcEFQWkQwOGcydzFiV1RHSE41UHBaTzhZeXVjT1o2SGtDRjVRb1JzdDNfajhGcTZBSHVPTVZi?oc=5",
+        "date": "2026-10-24",
+        "place": "c06071",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Bernardino+County%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Supervisors adopt resolution supporting Legacy Village housing project",
+        "publisher": "San Bernardino County (.gov)",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPYkh5NEVGZzMzVjExSHkzRXU5RjN0TmpFeGFUc3h3OVdfb2RFLVp2TDdKWk9XNUVmNjNuT1RHQTJxR2xCWXpZVU9CUlV0cGxlUVZPS3RVblZPRTJlZlJWT2FTbS1NV1NsVENCTnJlMG5MMzF2bjhRQTNOamJXWENDYzVWZ0s2RWp4blYxNzdGUlpCaXhkT1hrR1FIZHlCR1loYVg1Z2d3ZFNHdk9k?oc=5",
+        "date": "2026-10-22",
+        "place": "c06071",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Bernardino+County%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Bernardino County partners with Housing Authority to expand support",
+        "publisher": "Hey SoCal. Change is our intention.",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPbUhkR0xmclhBUDViRVNtUG01OWlWQVlaRUpoVGNSdzczM2pIWnBzRnNhbFJsMzZtVGhsN09FZ1dTOXg4M0czem04a21BaWdyNXcyUUpPZWZkLU01dC1aZ2pBdTJSLWFQdjYyVzc4Y1ZiU2tzeXFUX2pwWFNsUkd4WEQwTkFFeGl0U2V4d3NXSGlwdS1ERUIwYkFMNXNjMjh3Rmo5YVY4dw?oc=5",
+        "date": "2026-10-09",
+        "place": "c06071",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Bernardino+County%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "2026 State of the County to spotlight businesses and celebrate 100th anniversary of Route 66",
+        "publisher": "San Bernardino County (.gov)",
+        "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNY290b3lIbTcxQjNmeFBxM2x5QXM0VlpTUko2TndySWptX2FzdEs3MEpQSFBxQjU0UzUtZy0xSVR5ME8zWXhqeGJWLXdFbm42QWIwQWdDcDlkV1ZYT2dyWlFxVlpSbk9FcFZDajhXS2Z5UU9SSEItNFNicVpaUGl1cWtqal9SY2d4VmlGRS1ncU9SV3NvRzFSWmtaNkp1TXBsTkNWTUtIb2M2V3IzaFRwdnA0SklZRERrdmRlNXhUVHNnMWtFQ3l4QkFvS3Q?oc=5",
+        "date": "2026-09-17",
+        "place": "c06071",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Bernardino+County%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Man found murdered at San Bernardino County bus stop",
+        "publisher": "KTLA",
+        "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE55akk2cGZqZDJ6SDMxUHBkM3ZrQlZvWWk3WVVybGZHTDBXT3o2c3FSVGROR1VGWWxiM1dPY3JNaEVUX2c1TzRFcmF5ZDFrb0hxQ2RVQThnd0V6YUkweGFoVlRqZ2I5czNydF91b1NZaHJEVWs3Mmw1RmpZbVI2UdIBgwFBVV95cUxOd1V1TVZOWE9TMFNJcjVHNW1MWHNySE9UVXA3V2R3bHYyQ08xWWRMbkVQZ3Vyei1EUHRPNVpObTJwdmhHNnhoN0xZUzVCRmpQRVJDc0RNLVpuSXg5WUpORVl2S05vR09ZLURrV2JvUFdqVDFzZS1oa2Naa2lkb29BamZwcw?oc=5",
+        "date": "2026-08-18",
+        "place": "c06071",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Bernardino+County%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Ties strong between San Bernardino County elected officials, West Covina businessman implicated in FBI probe",
+        "publisher": "Daily Bulletin",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPcWdfdGFLR1RTRWN4bERtb2VLVnhZcUd3RFlxTEhPbTN2b040SlgzTDZOVVhhUjJHRWJ6eVVEY1NUcTRUM3N2X0xycU9oc2wyY0dZM3FJeGo1aC0yb0pab1ZxREZmLTE5SE5rRVFkX0paNzlacmZpMGR1bTVacmg0ZXhJUVNtN01ETUQtVzZHNVFOUDktOVV4YWdGTDJwMlZQREJzTjhsajRyQnpuNjhHd05pX2w5Rlo3dG9kV0ZyN3Buek5OMjZqNFZn?oc=5",
+        "date": "2026-07-29",
+        "place": "c06071",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Bernardino+County%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "San Bernardino County housing for homeless veterans | Veterans' Voices",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNQTNDcFNZNnBZWmdheFdUX3htU2Q4MjIySTF3TklSSENkM19SZjFCRjhaSTZCWG5IS2JMeEQ2dXZibnVJTU9wcGhnVUozdWVKVEIwZzV2YkxIUjZZMXBxSWFyZTJmQW5tZmVLREdXRjk1bjZWUlk4N0ZzMURPaGdDdUlYNzRfWVhiOGswUjRpTzhhZ2hRRHdNQg?oc=5",
+        "date": "2026-05-06",
+        "place": "c06071",
+        "county": "San Bernardino",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22San+Bernardino+County%22+%22San+Bernardino%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
     "c06111": [
       {
         "title": "Assembly District 42 candidates discuss public safety, housing, more",
@@ -5013,6 +7168,58 @@
         "county": "Ventura",
         "kind": "reporting",
         "feed": "https://news.google.com/rss/search?q=%22Ventura+County%22+%22Ventura%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "c06113": [
+      {
+        "title": "Letter: League of Women Voters of Yolo County Endorses Measure W, Urges Davis Voters to Support Housing Proposal",
+        "publisher": "Davis Vanguard",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE04MjZsRzlkODJtQ1lPY3BzNFA2TDRZdG5HSHR6T3lFbXVHR1E1ZHFuLVhtNlZ4eVo5OHJjN1lSTVE5UGZSampfazJaZ3BnTk0za0tqalpIRFR2V2U3T0syTXdrc25ROUlxSDFvRA?oc=5",
+        "date": "2026-10-19",
+        "place": "c06113",
+        "county": "Yolo",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yolo+County%22+%22Yolo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Thompson hosts Yolo County roundtable on housing",
+        "publisher": "The Davis Enterprise",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPMWc3TVVfNENfcXMyMFk5bTl4OTZzcHhjME9HOHkwaDhWdFZTT0prWXJ5aVVYQ2Q1QXhpQWNRSGxNd24wcmczekpJanRWank4YTRvbFQzeGx2SDUwbVlmdDM0eFRfQkZ2bVhPck83T3luaENwanhkbndWUFVZN2FQbmZfWldoNUYzRURWYjNkSDZ1RU8taUZvbGVWaE5ONE9PcDEzQnNuV09ONDV3dm5NRmhBbS1CY1FxbzdqZkQ1Q0FESVEwTnlsMWxEQUMxUmw2?oc=5",
+        "date": "2026-08-28",
+        "place": "c06113",
+        "county": "Yolo",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yolo+County%22+%22Yolo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Yolo County news: Yolo Causeway construction and Flock cameras in Woodland",
+        "publisher": "Abridged \u2013 PBS KVIE",
+        "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9rRENudm9obzY4QWcxSTNPSkg3WndEbmU2TXJOSXpGY1p6N1NYdnRkVUY5bmxMYnlBd0RJMVVwR0kyTXY4MXN1NndTQkxiSkdva0FyVlZqaE9CNDJMM1E?oc=5",
+        "date": "2026-08-12",
+        "place": "c06113",
+        "county": "Yolo",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yolo+County%22+%22Yolo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Man killed in Davis apartment fire identified by Yolo County coroner",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9qQ1M1T2ZsdlhVc2pRWEttb0F0QTkxOFVKRjgxYTRLdk1vWHA4d2JsTDlZek5IS3BmektTWUt5aVhZczFBR2FZMnFLR1V5T2JSZmY3WFhpZm41MUNnOUJfQTJ2OUdCUdIBZkFVX3lxTE1YLTF5SVg1V3lOU2dkbkZMSE1heXQwTGVzZHVwdHQtZVhSTkNYTVVkcC1razNQbkJYMTNxRTlfV3hJbnJfdzdXVEQxR3Z4LXpNZnhZQjNTR2w4ZmxYX3dfZkFwRDNudw?oc=5",
+        "date": "2026-07-13",
+        "place": "c06113",
+        "county": "Yolo",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yolo+County%22+%22Yolo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Yolo County landfill project turns methane into renewable fuel",
+        "publisher": "Biomass Magazine",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNa2E1WlRlRWZ3QlByYm1nU19Banh0MEREYUxCZ0VOOG1SWklrMzVZeGZ6bkxmb3VoOVAxRWMtZXRrTXBTcUI2MnhlWFNjUm5vZEplemFULUNUQ0dxNWFZNHR1NEFlc1FiaFI5NkJmR1BKVHBqTjFyN05rSXkzSE9Sc2d5X2g1UXVQM1pyRlJpanlacWV0ajZaSllTRld2UnRp?oc=5",
+        "date": "2026-07-09",
+        "place": "c06113",
+        "county": "Yolo",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Yolo+County%22+%22Yolo%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
     "c06027": [],
@@ -5342,6 +7549,140 @@
         "county": "Tulare",
         "kind": "reporting",
         "feed": "https://news.google.com/rss/search?q=%22Tulare+County%22+%22Tulare%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "c06065": [
+      {
+        "title": "Riverside County Planning Commission Delays Mead Valley Boundary Decision Amid Concerns Over Warehouse Expansion",
+        "publisher": "ie community news",
+        "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5rX284SVIxNkZWbk9OanZMZXZNN29NUTZvdHk0MWg4OVpyNkJKbFlPUm56NkNuRXNCQjFveHI2eDZMM1FKZDNTY0hSb3FQeVVtWVJGM1VkQVNzQ0p5R0xOcU1qODNJQ0JxQlU2bnpGLTlGUQ?oc=5",
+        "date": "2026-10-23",
+        "place": "c06065",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside+County%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Police say 2 teen girls arrested for planning Riverside County school shooting may have had motive of revenge",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQbF83S2E2NktJRW1KMkowWXQ5WjdCWkREaXpjUWNoQUR3NTVsYVhnM2U4RUtudUlhbnBlYURCNG1CWkNYRWxlRW43TTFlajloRFN0T2NrLXVpaEhFSVI1T0hXSUlMQ2JhTjA2amZBaEZTeGsxcmtfQXh5dHdXNVNBeTY1X1RlNWptVkg2ZllmWnVJRFlCbXhRd2tZZ2ZBeUs3bl83QnRYMXl3djFEdGQ4R3ZjLU80dw?oc=5",
+        "date": "2026-10-21",
+        "place": "c06065",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside+County%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Norco residents voice opposition to SoCal Edison's Riverside County power line project",
+        "publisher": "CBS News",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNUUFPalBaaTZCOWdhQU96bzhuVFBJRmNCcGFNbkRwWGFmUzZDQi1zY1ZkLTd1ajZDM3hMenQ1Q2hXaGR4WVZEaDM5MWNJTk9TaFVNX1BldVdtMUtlTnQ5a0JqTDBkWlhEa2NBWVpnTkE4UExrWWVVMUlIUHE2UWl2WGsycmg3WTFPVl96THdIY20yNXNldEVmZHgtSQ?oc=5",
+        "date": "2026-08-18",
+        "place": "c06065",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside+County%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "How many people live in subsidized housing in Riverside County, CA?",
+        "publisher": "USAFacts",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPQ3M1OWpIR3NKTUxtUnR3dnVBU1UyUWV5cUhYMU8yVFhob2ROUWF6STBtWU1aMnVfV3pYSkpBeGh5a0dPMFB3ck13OGwxTUVnQ2pKb2gzbmRHMEQzWHBUSkVUSU1Ybnh2MFNZcURqNTA5eUt1ZnU1VkJqUE5ERFIxWGF4MW8wNTBIeG83SGF3X20ydUtyZjBHZjduUnQxcTQ3?oc=5",
+        "date": "2026-06-18",
+        "place": "c06065",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside+County%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "La Quinta Council Member Steve Sanchez Challenges Incumbent V. Manuel Perez for Riverside County Supervisor Seat",
+        "publisher": "NBC Palm Springs",
+        "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNTDlnbnR5akN0UEVMVEhIeHJJTHNYSGlSQ2lfLWpnNmxIQ2YySzExcU1faGIzQnE0TEdobDJMTTQwT2h1WHpEZnhkZmtyaTZGb24tSThfb0ttb1B0VTdlckc0SVVMdmtRMl9MRDhsYjQ3OEhhbm1iLXhTNVh6OU5GX2NfYzNNY0hidXNnVjZVbFBORnMxR2lfX2dBaUZuVVFBaEpRbDJncE1wYkpnM3BBZWV1UG4wSnozV3JESGgzX3VPeVZGNzR5YTU2aWphOE5wM0RQeGtCR3NnSWdvOFEtV25OdVU5Nl9yU0dhLXdxc09qZGxqMXNMYU5iUQ?oc=5",
+        "date": "2026-05-21",
+        "place": "c06065",
+        "county": "Riverside",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Riverside+County%22+%22Riverside%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      }
+    ],
+    "c06067": [
+      {
+        "title": "A Sacramento County solar project could spare thousands of blue oaks",
+        "publisher": "ABC10",
+        "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQaEVRWjdDajJrdGF1aW1xX1VFRUlqU2U5UGxiMnc4MkEyUDh1NDJtS1dCOXAwbWcteWJZcGF0X3B2RFpTNDBja09XRTBHRXRuYi1keXZJMFVXLVVyUzNHR2NpLTRCc1BGTlNyNWZpbEtFMzhOWVhxQmdIY1pYN1h3U3htaWVTYjNXOTNUSzhKUG1SQ2RONmY5eUtpVmJfdmZ2TkJEbF9jSDk4ZDV4dGpkaFVQSlRrWUlmSDZjYkNDSDZTdnhqOHRVcTJQVXdaMzdxVjh5ZmVLY3JjZWd6ZDhrSUlCOXJIX1ZubGpNNQ?oc=5",
+        "date": "2026-10-20",
+        "place": "c06067",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento+County%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Settlement saves Coyote Creek trees as Sacramento County solar project shrinks",
+        "publisher": "Abridged \u2013 PBS KVIE",
+        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBSeXJJdWctTjFlcGZ0eDN6M2pTUU1Hc3BoVWVseHduSENyZExUM3AybEpiNWRCbHJzVnZxcEJMQXBxRmFWVXpaOGFSZ3NjUmZYQU5iS1N0RHgtcDVvOEZ6WXpTYWNCOVE5ekdUbF9XY05QVGN6?oc=5",
+        "date": "2026-10-16",
+        "place": "c06067",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento+County%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Anchored Tiny Homes CEO faces 35 felony charges in Sacramento County",
+        "publisher": "ABC10",
+        "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNOUdZSHRyOVZldnJWQS1oQUhHOGs1eVpNRnI2bGpueXpXbXNLWEZ0VEk5NGdsVnFaVUt4WXVSUHhMQkV5QVB4VmRaSWpDZHEzWXZTcktvekJNUUV3YnBZcWhkQXN6SWxUZGpfd3RmTDRtR3RuV083Z1oyUG9IUGJ2ZTRGdWYxb3NwQ2c3UmZpMWxaWFZSZHNWZF9BMzlzQkFzNDEzZjVRVElKeFFzNEJfa05GTnlqMWtSaTZxNEMzU2w2cnBDSlEwVGgyVXM1VC1jZU1VcEYxellzNkwzMUo0dGRuS25tNXN0WS12NTZkR1I?oc=5",
+        "date": "2026-09-04",
+        "place": "c06067",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento+County%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Op-ed | Sacramento County\u2019s Jail System Master Planning Update Continues\u2026",
+        "publisher": "Davis Vanguard",
+        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5FVnZQMnI1WEFwdkRoNFprNU14NlU5YkFGcUkwM1NBc1ZYUlNpb1dBeXhBalFCV0RUa0hZN0lkeGZVdnZKQktUa254eTlpUVFzUTZqVDhvcjlqcVBjQl9leXd0Q0dGTjNpWl9wMGdBclA4V0d4?oc=5",
+        "date": "2026-08-30",
+        "place": "c06067",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento+County%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "After heated debate, Sacramento County adds incentive for affordable housing developers",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYc1FqY1hWb0N5cnRMYy1wQWtONjljM0dfTG0yVkZWUndQb0Q3eFBma2dGbkZrM2lHSllMd2l1WFRJUkZBVDB4bWFONmxwZHNsalY2SnYycEtzT2pESTNjRVFJZE9EZ9IBZkFVX3lxTFBuQkRheXlrVTB4a3JjWmhyMWc5ZGp5dlZsQTZNXzg4c1NvZFNrTFRWTWJuaWRjY2FRQ2IwX1VYRmhCOUk4WDRzRTZ3d0VJX1c5OHJYN2FVNnE2Z2kwd2lDOGlsZ01nQQ?oc=5",
+        "date": "2026-08-12",
+        "place": "c06067",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento+County%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Grand jury: Foster kids at risk of exploitation in Sacramento County temp housing",
+        "publisher": "Sacramento Bee",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1lREY5RVlkZ3l3Sl9oamVkUDZ6X19XSVd1aTFFc3IzQk90SGNHTVBCRUVURXF5bE5qMk1hRm53NVp1XzJtcWh1ZXJIdVdLN0E5ZUJ1bS1taDRQUURBRU4yN1g2MHJ4Z9IBZkFVX3lxTE01dGlxejVoNVVtWWhjSDNnT0VjT0lYZHBsSlNXM29LT3BtN2E0OGo0bUNOYlNIcl90U1BieTZxRk4zNDYxOEdEYlQyUzl6Y0pUeE1ZbS1UemJxUmg0U192VjBXTEpzQQ?oc=5",
+        "date": "2026-07-02",
+        "place": "c06067",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento+County%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "How many subsidized housing units are available in Sacramento County, CA?",
+        "publisher": "USAFacts",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQVzczcEZlbGg5OEZuc1B0eGFQdk5YRmlrbTNfcGtVMVlNaHQ5YVhrUEVzaXpqU01zdHNGaGh3bGlRVmtYR2tQUVFmZWN0NzNJLXdSM2RMaDY3ek5UcEZ4bnB3RTA3UEFUeU84YkVfOF9QMmp6ck0ySmNGTURzZmlIRV9qRGxENXZ5QV92dnI1c25hLWhUSnVTS3hUVlpfV0tRWWdZSWRWVmc?oc=5",
+        "date": "2026-06-29",
+        "place": "c06067",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento+County%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
+      },
+      {
+        "title": "Sacramento County Vote Highlights Progress and Persistent Obstacles in California's Housing Push",
+        "publisher": "Davis Vanguard",
+        "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9FU1JaaWJrQ211NjU5ZTR5U2JyODk2Q2t4NnNZY2tnNG1DZExqamIxZ1B6ZFNDVjA2b21RZGZWQ2JndXl3YWJqaWZnQ1A4eWdab3dOZWJEZ2lzUGR4NUhWSVRieGtBYXRBLUdwckhRTkZYcDc1cUFibXNlaGQ?oc=5",
+        "date": "2026-06-20",
+        "place": "c06067",
+        "county": "Sacramento",
+        "kind": "reporting",
+        "feed": "https://news.google.com/rss/search?q=%22Sacramento+County%22+%22Sacramento%22+California+%28housing+OR+planning+OR+development+OR+transit+OR+council+OR+commission%29+when%3A180d&hl=en-US&gl=US&ceid=US%3Aen"
       }
     ],
     "c06083": [

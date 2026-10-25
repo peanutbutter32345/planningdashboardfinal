@@ -1,6 +1,8 @@
 # The Bay Dashboard
 
-This package contains the civic dashboard plus a server-side AI assistant for the cities it covers across all nine Bay Area counties.
+This package contains the civic dashboard plus a server-side AI assistant for covered California communities, including all nine Bay Area counties.
+
+The latest expansion adds Sacramento, Long Beach, Anaheim, Stockton and Riverside with 55 nearby cities and communities. See [coverage and verification](docs/largest-city-expansion-2026-10-25.md) for the exact scope, source dates and availability limits.
 
 ## What is already wired
 

@@ -1,4 +1,4 @@
-"""Import complete 2024/2025 APR rows for each covered reporting jurisdiction.
+"""Import complete 2024/2025 APR rows, with a labelled 2023 fallback where both are absent.
 Keeps annual milestones separate from a live project pipeline and never assigns city centers to records.
 """
 import sys
@@ -76,6 +76,18 @@ for jur in [p for p in places if p['kind']=='city']+counties:
  expected=norm(aliases.get(jur['name'],jur['name']))
  def matches(r):return norm(r['JURIS_NAME'])==expected or (jur['name']=='El Paso de Robles (Paso Robles)' and norm(r['JURIS_NAME'])=='ELPASODEROBLES') or (jur['name']=='San Buenaventura (Ventura)' and norm(r['JURIS_NAME'])=='VENTURA')
  rows={t:[r for r in allrows[(jur['county'],t)] if matches(r)] for t in IDS}
+ # Some jurisdictions have not published either recent reporting year. Keep an older
+ # published report explicitly dated instead of representing missing reports as zero activity.
+ if not any(rows.values()):
+  for table in IDS:
+   cache=CACHE/('hcd-fallback-2023-'+jur['id']+'-'+table+'.json')
+   if cache.exists() and not FRESH:rows[table]=json.loads(cache.read_text())
+   else:
+    filters={'CNTY_NAME':jur['county'],'JURIS_NAME':aliases.get(jur['name'],jur['name'].upper()),'YEAR':2023}
+    result=get(BASE+'datastore_search?'+urllib.parse.urlencode({'resource_id':IDS[table],'filters':json.dumps(filters),'limit':100000}))
+    if result['total']>len(result['records']):raise RuntimeError('Truncated fallback report '+jur['name'])
+    rows[table]=result['records'];cache.write_text(json.dumps(rows[table]))
+  print(jur['name'],'2023 fallback rows',sum(map(len,rows.values())),flush=True)
  years=[int(r['YEAR']) for rs in rows.values() for r in rs];year=max(years) if years else None
  recent={t:[r for r in rs if int(r['YEAR'])==year] for t,rs in rows.items()}
  records=[];seen=set()
@@ -96,5 +108,5 @@ for p in [p for p in places if p['kind']=='community']:
  records=[county_points[county['id']][int(i)] for i in trees[county['id']].query(g,predicate='covers')]
  stats={'year':summary[county['id']]['year'],'records':len(records),'mapped':len(records),'permitted':None,'completed':None,'entitled':None,'source':summary[county['id']]['source'],'geography':'Located county-reported records only. CDP annual totals are not published in this source.'}
  summary[p['id']]=stats;(OUT/'housing'/(p['id']+'.json')).write_text(json.dumps({'metadata':stats,'records':records},separators=(',',':')))
-(OUT/'housing-summary.json').write_text(json.dumps({'retrieved':datetime.datetime.now(datetime.timezone.utc).isoformat(),'years':[2024,2025],'note':'Full usable rows from the latest available year for each reporting jurisdiction. Table A applications and Table A2 milestones can describe the same project and must not be added together as unique homes. A permit is not evidence of a construction start. Unverified coordinates stay off the map.','jurisdictions':summary},indent=2))
+(OUT/'housing-summary.json').write_text(json.dumps({'retrieved':datetime.datetime.now(datetime.timezone.utc).isoformat(),'years':[2023,2024,2025],'note':'Full usable rows from 2024/2025 reports, using a dated 2023 report only where both newer years are absent. Table A applications and Table A2 milestones can describe the same project and must not be added together as unique homes. A permit is not evidence of a construction start. Unverified coordinates stay off the map.','jurisdictions':summary},indent=2))
 print('Housing',sum(s['records'] for k,s in summary.items() if k in datasets),'rows;',sum(s['mapped'] for k,s in summary.items() if k in datasets),'mapped',flush=True)

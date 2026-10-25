@@ -15,7 +15,7 @@ test('new cities are available to dashboard, server, meetings and guest city pre
  assert.equal(JSON.stringify(context.window.REGIONAL_DATA),JSON.stringify({...REGIONAL_DATA,cities:Object.fromEntries(Object.entries(REGIONAL_CITIES).filter(([,c])=>!c.coverageId))}));
  assert.equal(Object.values(REGIONAL_CITIES).filter(c=>!c.coverageId).length,69);
  assert.equal(Object.keys(MEETING_DIRECTORY).length,102+Object.values(REGIONAL_CITIES).filter(c=>c.coverageId).length);
- assert.equal(Object.keys(LEGISTAR_CITIES).length,17);
+ assert.equal(Object.keys(LEGISTAR_CITIES).length,22);
  for(const [key,c]of Object.entries(REGIONAL_CITIES).filter(([,c])=>!c.coverageId)){
   assert.equal(CITY_LABELS[key],c.label);assert.ok(c.county);assert.ok(c.data.length||housing.cities[key].length);
   assert.ok(c.resources.length>=4);assert.ok(c.deciders.length>=2);

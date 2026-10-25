@@ -454,5 +454,96 @@
       "title": "Los Angeles planning commissions",
       "url": "https://planning.lacity.gov/about/commissioners"
     }
+  ],
+  "Sacramento": [
+    {
+      "category": "Zoning",
+      "title": "City zoning and land information",
+      "url": "https://www.cityofsacramento.gov/community-development/planning/zoning"
+    },
+    {
+      "category": "GIS",
+      "title": "City of Sacramento zoning polygons published by county GIS",
+      "url": "https://mapservices.gis.saccounty.net/arcgis/rest/services/CITY_of_SACRAMENTO/MapServer/3"
+    }
+  ],
+  "Sacramento County": [
+    {
+      "category": "Zoning",
+      "title": "County planning and community maps",
+      "url": "https://planning.saccounty.gov/us/en/planning-environmental-review/resources/library/maps.html"
+    },
+    {
+      "category": "Municipal code",
+      "title": "County land use regulation library",
+      "url": "https://landuse.saccounty.gov/"
+    },
+    {
+      "category": "Projects",
+      "title": "County major planning projects",
+      "url": "https://development.saccounty.gov/us/en/planning-environmental-review/projects.html"
+    }
+  ],
+  "Anaheim": [
+    {
+      "category": "GIS",
+      "title": "City current zoning polygons",
+      "url": "https://gis.anaheim.net/map/rest/services/Zoning/MapServer/15"
+    },
+    {
+      "category": "Zoning",
+      "title": "City property and zoning information",
+      "url": "https://www.anaheim.gov/1002/Property-Info"
+    },
+    {
+      "category": "Boards",
+      "title": "Planning Commission",
+      "url": "https://www.anaheim.net/2229/Planning-Commission"
+    }
+  ],
+  "Stockton": [
+    {
+      "category": "Zoning",
+      "title": "City zoning open data",
+      "url": "https://data.stocktonca.gov/d/3j77-wvct"
+    },
+    {
+      "category": "GIS",
+      "title": "City of Stockton zoning polygons",
+      "url": "https://gisportal.stocktonca.gov/arcgis2/rest/services/GeoHub/GeoHub/FeatureServer/7"
+    }
+  ],
+  "Riverside": [
+    {
+      "category": "Zoning",
+      "title": "City zoning regulations and interactive map",
+      "url": "https://www.riversideca.gov/cedd/planning/zoning-code-and-regulations"
+    },
+    {
+      "category": "GIS",
+      "title": "City of Riverside current zoning designations",
+      "url": "https://services.arcgis.com/Fu2oOWg1Aw7azh41/arcgis/rest/services/RivODCityZoning/FeatureServer"
+    }
+  ],
+  "San Joaquin County": [
+    {
+      "category": "Boards",
+      "title": "County Planning Commission",
+      "url": "https://www.sjgov.org/department/cdd/planning/planning-commission"
+    }
+  ],
+  "Yolo County": [
+    {
+      "category": "GIS",
+      "title": "County planning and zoning polygons",
+      "url": "https://gis.yolocounty.gov/ext/rest/services/Public/Planning/MapServer/2"
+    }
+  ],
+  "Long Beach": [
+    {
+      "category": "GIS",
+      "title": "City current zoning polygons",
+      "url": "https://services6.arcgis.com/yCArG7wGXGyWLqav/arcgis/rest/services/Zoning/FeatureServer/0"
+    }
   ]
 }
