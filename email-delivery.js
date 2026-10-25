@@ -11,7 +11,7 @@ export async function sendEmail(to, subject, html, { idempotencyKey } = {}) {
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json',
       ...(idempotencyKey ? { 'Idempotency-Key': idempotencyKey } : {}) },
     body: JSON.stringify({
-      from: process.env.RESEND_FROM || 'The Bay Dashboard <onboarding@resend.dev>',
+      from: process.env.RESEND_FROM || 'The California Civic Dashboard <onboarding@resend.dev>',
       to: [to], subject, html
     })
   });

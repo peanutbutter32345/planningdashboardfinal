@@ -19,7 +19,7 @@
   // Each step: what the viewer should understand, and how long to leave it on screen.
   const TOUR = [
     { say: 'Every project near you, from the public record', ms: 3200, run: start },
-    { say: 'Explore 101 Bay Area cities', ms: 3400, run: pickCity },
+    { say: 'Explore California cities and communities', ms: 3400, run: pickCity },
     { say: 'What is being built, and how far along it is', ms: 4200, run: showRegister },
     { say: 'Open one for the whole record', ms: 4200, run: openRecord },
     { say: 'Filed, decided, who is building it, the file number', ms: 3600, run: showFacts },

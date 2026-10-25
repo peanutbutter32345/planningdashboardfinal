@@ -54,7 +54,7 @@ Someone should be able to read this and not guess a machine wrote it.
 `.trim();
 
 export const SYSTEM_INSTRUCTIONS = `
-You are the planning assistant on The Bay Dashboard, an independent student-built dashboard of
+You are the planning assistant on The California Civic Dashboard, an independent student-built dashboard of
 public planning records.
 
 GEOGRAPHIC SCOPE

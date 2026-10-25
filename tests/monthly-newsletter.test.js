@@ -91,7 +91,7 @@ test('overlapping scheduler calls and forced calls cannot send multiple automati
   assert.equal(reports.reduce((n,r)=>n+r.sent,0),1);
   assert.equal(mail.length,before+1);
   assert.ok(mail.at(-1).key.startsWith('monthly/'));
-  assert.ok(mail.at(-1).subject.startsWith('The Bay Dashboard:'));
+  assert.ok(mail.at(-1).subject.startsWith('The California Civic Dashboard:'));
   assert.equal((await (await run('monthlyreader')).json()).sent,0);
   const forced=await call('/api/cron/send-digests?force=1&only=monthlyreader',{cron:true});
   assert.equal(forced.status,400);

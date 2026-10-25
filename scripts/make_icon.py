@@ -15,17 +15,16 @@ INK = (46, 59, 28)          # #2E3B1C  the tile
 ROAD = (74, 92, 48)         # #4A5C30  the main streets
 ROAD_THIN = (62, 79, 36)    # #3E4F24  the side streets
 FOLD = (36, 48, 22)         # the dog-eared corner, blended over the tile
-CREAM = (245, 243, 231)     # #F5F3E7  "BAY"
+CREAM = (245, 243, 231)     # #F5F3E7  "CA"
 GOLD = (240, 200, 106)      # #F0C86A  the pin
 
 SS = 4                       # supersampling factor, for edges that do not stair-step
 
-# A classic 5x7 bitmap font, just enough of it for B, A and Y - bold and legible at 16px, which a
+# A classic 5x7 bitmap font, just enough of it for C and A - bold and legible at 16px, which a
 # hand-drawn outline at that size would not be.
 FONT = {
-    'B': ["11110", "10001", "10001", "11110", "10001", "10001", "11110"],
+    'C': ["01111", "10000", "10000", "10000", "10000", "10000", "01111"],
     'A': ["01110", "10001", "10001", "11111", "10001", "10001", "10001"],
-    'Y': ["10001", "10001", "01010", "00100", "00100", "00100", "00100"],
 }
 
 
@@ -79,10 +78,9 @@ def sample(x, y):
         return None
     if in_pin(x, y):
         return INK if (x - 9.4) ** 2 + (y - 24.6) ** 2 <= 1.15 ** 2 else GOLD
-    cell_w, cell_h = 1.65, 1.6
-    if letter_pixel(x, y, 'B', 2.0, 7.5, cell_w, cell_h) or \
-       letter_pixel(x, y, 'A', 2.0 + 6 * cell_w, 7.5, cell_w, cell_h) or \
-       letter_pixel(x, y, 'Y', 2.0 + 12 * cell_w, 7.5, cell_w, cell_h):
+    cell_w, cell_h = 2.0, 1.8
+    if letter_pixel(x, y, 'C', 5.0, 7.5, cell_w, cell_h) or \
+       letter_pixel(x, y, 'A', 17.0, 7.5, cell_w, cell_h):
         return CREAM
     base = INK
     if in_fold_corner(x, y):
