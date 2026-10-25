@@ -6392,7 +6392,6 @@ for(const [key,c] of Object.entries(window.REGIONAL_DATA?.cities||{})){
 // duplicate. This is the only source for anything that is not housing: HCD reports housing alone.
 DashboardHousing.mergeCityProjects(CITIES,window.CITY_PROJECTS);
 DashboardHousing.merge(CITIES,window.HOUSING_RECORDS);
-const COUNTY_NAMES=[...new Set(Object.values(CITIES).map(c=>c.county))];
 // Counted here, before the "All Cities" aggregate below joins the object, so this is the number
 // of real places. It is written into the page rather than typed into it: the figure was 101 in
 // three separate sentences and a hundred and second city had already been added.
@@ -6405,6 +6404,8 @@ const CITY_COUNT=Object.keys(CITIES).length;
 const NON_CITY_AREAS=['westsanjose',...Object.entries(CITIES).filter(([,c])=>c.kind==='community').map(([key])=>key)];
 const INCORPORATED_CITY_COUNT=Object.keys(CITIES).filter(k=>!NON_CITY_AREAS.includes(k)).length;
 let currentCity = 'sunnyvale';
+const REGION_GROUPS=DashboardBrowse.regionGroups(CITIES);
+const COUNTY_NAMES=REGION_GROUPS.flatMap(group=>group.counties);
 
 // "All Cities" - a real aggregation of every tracked city's data, not a separate dataset.
 // Built after all individual cities above are defined so it can safely reference them.
@@ -6506,7 +6507,7 @@ function filtered(){
 let cityBrowseQuery='',cityBrowseCounty='';
 function renderCitySwitch(){
   const host=document.getElementById('citySwitch');
-  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search ${CITY_COUNT} cities and communities…" value="${escapeHtml(cityBrowseQuery)}"></label><span>Choose a county, then a city</span><button class="city-tab" id="browseAllCities" aria-pressed="${currentCity==='all'&&!activeCounty}">All areas</button></div><div class="county-strip" aria-label="Covered counties">${COUNTY_NAMES.map((county,i)=>{const cities=DashboardBrowse.citiesIn(CITIES,county);return `<div class="county-option"><button class="county-button" data-county="${county}" aria-expanded="${county===cityBrowseCounty}" aria-controls="countyCities" aria-describedby="countyPreview${i}">${county}<small>${cities.length} ↗</small></button><div class="county-preview" id="countyPreview${i}" role="tooltip"><strong>${county} County</strong>${cities.map(([,c])=>c.label).join(' · ')}<span>Click to browse these cities</span></div></div>`;}).join('')}</div><div id="countyCities" class="city-browse-results" aria-live="polite"></div>`;
+  host.innerHTML=`<div class="city-browse-tools"><label>Find a city<input id="cityBrowseSearch" type="search" placeholder="Search ${CITY_COUNT} cities and communities…" value="${escapeHtml(cityBrowseQuery)}"></label><span>Choose a county, then a city</span><button class="city-tab" id="browseAllCities" aria-pressed="${currentCity==='all'&&!activeCounty}">All areas</button></div>${REGION_GROUPS.map(group=>`<section class="county-region" aria-label="${group.label}"><h3>${group.label}</h3><div class="county-strip">${group.counties.map(county=>{const i=COUNTY_NAMES.indexOf(county);const cities=DashboardBrowse.citiesIn(CITIES,county);return `<div class="county-option"><button class="county-button" data-county="${county}" aria-expanded="${county===cityBrowseCounty}" aria-controls="countyCities" aria-describedby="countyPreview${i}">${county}<small>${cities.length} ↗</small></button><div class="county-preview" id="countyPreview${i}" role="tooltip"><strong>${county} County</strong>${cities.map(([,c])=>c.label).join(' · ')}<span>Click to browse these cities</span></div></div>`;}).join('')}</div></section>`).join('')}<div id="countyCities" class="city-browse-results" aria-live="polite"></div>`;
   const results=document.getElementById('countyCities');
   function renderResults(){
     const q=cityBrowseQuery.trim();
@@ -8375,7 +8376,7 @@ let onboardCityFilter = '';
 function renderOnboardCityBtns(){
   if(onboard.city&&CITIES[onboard.city]?.county)onboard.county=CITIES[onboard.city].county;
   const countySelect=document.getElementById('onboardCounty');
-  countySelect.innerHTML='<option value="">Select a county…</option>'+COUNTY_NAMES.map(c=>`<option${c===onboard.county?' selected':''}>${c}</option>`).join('');
+  countySelect.innerHTML='<option value="">Select a county…</option>'+REGION_GROUPS.map(group=>`<optgroup label="${group.label}">${group.counties.map(c=>`<option${c===onboard.county?' selected':''}>${c}</option>`).join('')}</optgroup>`).join('');
   const host=document.getElementById('onboardCityBtns');
   host.innerHTML=`<label class="onboard-label" for="onboardCityFilterInput">Search for a city <em>(optional)</em></label><input type="search" class="onboard-cityfilter" id="onboardCityFilterInput" placeholder="${onboard.county?'Search cities in '+onboard.county:'Select a county first'}" value="${escapeHtml(onboardCityFilter)}" ${onboard.county?'':'disabled'} autocomplete="off"><div class="onboard-selected" id="onboardSelected"></div><div class="onboard-search-results" id="onboardCityResults" aria-live="polite"></div>`;
   function drawResults(){
@@ -10993,12 +10994,7 @@ function populateMsCitySelect(){
   const select = document.getElementById('msCitySelect');
   if(!select) return;
   if(!msCityPopulated){
-    select.innerHTML = COUNTY_NAMES.map(county =>
-      '<optgroup label="'+escapeHtml(county)+' County">'
-        + Object.entries(CITIES).filter(([k,c])=>k!=='all' && c.county===county)
-          .map(([k,c])=>'<option value="'+k+'">'+escapeHtml(c.label)+'</option>').join('')
-        + '</optgroup>'
-    ).join('');
+    select.innerHTML = DashboardBrowse.cityOptions(CITIES);
     msCityPopulated = true;
   }
   if(currentCity!=='all') select.value = currentCity;
@@ -13438,7 +13434,7 @@ async function renderAccountPage(){
   // Load the saved city before drawing its masthead.
   try{
     const prefs = await apiGetPreferences();
-    document.getElementById('prefsCity').innerHTML='<option value="">No city preference</option>'+COUNTY_NAMES.map(county=>'<optgroup label="'+escapeHtml(county)+' County">'+Object.entries(CITIES).filter(([k,c])=>k!=='all'&&c.county===county).map(([k,c])=>'<option value="'+k+'">'+escapeHtml(c.label)+'</option>').join('')+'</optgroup>').join('');
+    document.getElementById('prefsCity').innerHTML='<option value="">No city preference</option>'+DashboardBrowse.cityOptions(CITIES);
     document.getElementById('prefsStatus').textContent=isGuest()?'Guest profiles save city and topic preferences on this device. Email delivery needs a password on your profile.':'';
     document.getElementById('prefsEmail').value = prefs.email || '';
     document.getElementById('prefsFrequency').value = prefs.emailFrequency || 'off';
@@ -16594,8 +16590,7 @@ function renderRailCityPicker(){
   const sel = document.getElementById('railCitySelect');
   const now = document.getElementById('railCityNow');
   if(!sel) return;
-  const keys=DashboardBrowse.citiesIn(CITIES,currentCity==='all'?activeCounty:'').map(([k])=>k);
-  sel.innerHTML='<option value="all">'+CITIES.all.label+'</option>'+keys.map(k=>'<option value="'+k+'">'+CITIES[k].label+'</option>').join('');
+  sel.innerHTML='<option value="all">'+CITIES.all.label+'</option>'+DashboardBrowse.cityOptions(CITIES,currentCity==='all'?activeCounty:'');
   sel.value=currentCity;sel.onchange=()=>switchCity(sel.value);
   if(now)now.textContent=currentCity==='all'?'COUNTY & CITY VIEW':'';
 }
@@ -17322,7 +17317,7 @@ async function applyDeepLink(){
   }
 }
 window.dashboardContext = {
-  cities: Object.fromEntries(Object.entries(CITIES).map(([key,c])=>[key,{label:c.label,center:c.center,zoom:c.zoom}])),
+  cities: Object.fromEntries(Object.entries(CITIES).map(([key,c])=>[key,{label:c.label,county:c.county,center:c.center,zoom:c.zoom}])),
   projects: Object.entries(CITIES).filter(([key])=>key!=='all').flatMap(([key,c])=>c.data.map(p=>({...p,city:key,cityLabel:c.label,sourceUrl:p.sourceUrl||(c.ctaLinks[0]||{}).url||'https://www.hcd.ca.gov/'}))),
   stats: CITY_STATS, statsSource: STATS_SOURCE,
   loadCity:async key=>{

@@ -265,7 +265,7 @@ function init(){
  });
  document.querySelectorAll('a[href="#fxBills"]').forEach(a=>a.addEventListener('click',()=>showFutureView('policies')));
  $('fxLayerSelect').addEventListener('change',e=>{state.layer=e.target.value;if(state.layer==='exposure')state.flood=true;syncControls();renderMap();});
- $('fxCity').innerHTML='<option value="all">All covered areas</option>'+Object.entries(context.cities).filter(([k])=>k!=='all').sort((a,b)=>a[1].label.localeCompare(b[1].label)).map(([key,c])=>`<option value="${key}">${esc(c.label)}</option>`).join('');
+ $('fxCity').innerHTML='<option value="all">All covered areas</option>'+globalThis.DashboardBrowse.cityOptions(context.cities);
  $('fxPolicyControls').innerHTML=POLICIES.filter(p=>p.months).map(p=>`<label class="fx-policy-control"><span><b>${p.code}</b><small>${p.tag} · ${p.kind==='pending'?'If approved':'Extra uptake'}</small></span><input type="checkbox" data-policy-toggle="${p.id}" aria-label="Test ${p.code} acceleration"></label>`).join('');
  $('fxReviewed').textContent=`Status checked September 18, 2026 · Curated watchlist, not every housing bill. Open the official source for subsequent changes.`;
  if(shared)preset=Object.keys(DEFAULTS).every(key=>JSON.stringify(state[key])===JSON.stringify(DEFAULTS[key]))?'baseline':'custom';
