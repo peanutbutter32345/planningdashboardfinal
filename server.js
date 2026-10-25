@@ -31,6 +31,20 @@ const port = Number(process.env.PORT || 3000);
 // The count is 1 because there is exactly one proxy in front - raising it would let a caller put
 // whatever they liked in X-Forwarded-For and be believed.
 app.set('trust proxy', 1);
+// Keep old bookmarks and shared links working at the dashboard's primary address.
+// Use an explicit list so local development and Render health checks keep working.
+const redirectedHosts = new Set([
+  'baydashboard.com', 'www.baydashboard.com',
+  'southbaydashboard.com', 'www.southbaydashboard.com',
+  'www.calcivicdashboard.com'
+]);
+app.use((req, res, next) => {
+  const host = (req.headers.host || '').split(':')[0].toLowerCase();
+  if (redirectedHosts.has(host)) {
+    return res.redirect(308, 'https://calcivicdashboard.com' + req.originalUrl);
+  }
+  next();
+});
 // The address and browser a request arrived from. Kept so the site's owner can see who is
 // actually using it and spot one machine registering repeatedly.
 const clientIp = visitorIp;
@@ -59,7 +73,7 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 // https://tavily.com.
 const TAVILY_API_KEY = (process.env.TAVILY_API_KEY || '').trim();
 const CRON_SECRET = process.env.CRON_SECRET || '';
-const SITE_URL = process.env.SITE_URL || 'https://southbaydashboard.com';
+const SITE_URL = process.env.SITE_URL || 'https://calcivicdashboard.com';
 
 if (!LLM_API_KEY) {
   console.warn('LLM_API_KEY is not set. The site will load, but /api/ask will return a configuration error. Get a free key at https://console.groq.com/keys');

@@ -45,4 +45,4 @@ services:
         sync: false
       # Public site origin, used to build the links inside the emails. No trailing slash.
       - key: SITE_URL
-        value: https://southbaydashboard.com
+        value: https://calcivicdashboard.com
