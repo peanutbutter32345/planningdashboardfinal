@@ -63,7 +63,7 @@
    const extra=room>0?pad.items.slice(0,room):[];
    // With nothing local to show, the filled rows are the whole section, so they carry the note that
    // says so rather than an empty-state message the reader would then have to reconcile with them.
-   const empty=p.items.length?'':(extra.length?'':'<div class="empty">No records in this view. Try the Bay Area view or another city.</div>');
+   const empty=p.items.length?'':(extra.length?'':'<div class="empty">No records in this view. Try All areas or another city.</div>');
    content.innerHTML=(p.items.length?p.items.map(render).join(''):empty)
     +(extra.length?'<p class="pager-fill-note">'+(p.items.length?pad.note:pad.noteEmpty||pad.note)+'</p>'+extra.map(pad.render).join(''):'');
    host.querySelector('.pager-count').textContent=p.total?p.start+'–'+p.end+' of '+p.total.toLocaleString()+' '+label.toLowerCase():'No '+label.toLowerCase();

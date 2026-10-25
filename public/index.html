@@ -2211,7 +2211,7 @@
   <div class="wrap">
     <div class="planner-shell">
       <h2>Get involved</h2>
-      <p class="section-note">City boards and commissions across the Bay Area, when they meet, and which of those meetings are actually confirmed on an agenda.</p>
+      <p class="section-note">Find boards and commissions in your area, their meeting schedules, and links to published agendas.</p>
 
       <div class="gi-tabs" id="giTabs"></div>
 
@@ -2708,7 +2708,9 @@
     <div class="bank-mosaic" id="bankMosaic" aria-hidden="true"></div>
     <div class="bank-hero">
       <h2>Resource bank</h2>
-      <p class="bank-lede">Every record this site holds, searchable at once - projects, news, commissions, official documents, statistics and housing targets, across all <span class="city-count">101</span> Bay Area cities and towns.</p>
+      <p class="bank-lede">Search projects, news, boards, official documents and statistics across covered California communities. Project previews load first. Choose a city to load its full register, or load all project records below.</p>
+      <button type="button" class="btn secondary" id="bankLoadRecords">Load all project records</button>
+      <p id="bankLoadStatus" class="section-note" role="status"></p>
       <div class="bank-searchwrap">
         <input id="bankSearch" type="search" placeholder="Search anything: an address, a commission, &ldquo;builder&rsquo;s remedy&rdquo;, &ldquo;housing element&rdquo;, a street name&hellip;" autocomplete="off" aria-label="Search the resource bank" />
         <div class="bank-count" id="bankCount"></div>
@@ -2735,14 +2737,14 @@
       </div>
 
       
-      <p>This site collects what is being built across the Bay Area and when the meetings that decide it take place. All of it is public information already. It is spread across city and county websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
+      <p>This site collects public planning records across covered California communities, along with meeting dates and ways to participate. It is spread across city and county websites, a state housing portal and several meeting systems, so it is gathered here in one place.</p>
 
       <h4>Where the data comes from</h4>
       <div class="bank-sources" id="bankSources"></div>
       <p>Projects come from each city's development records: GIS feature services, published pipelines and posted project lists. Hearings come from city Legistar feeds. Housing target progress comes from the California Department of Housing and Community Development's 6th Cycle RHNA Progress Report. Home values and rents come from Zillow's public research data. Commute times, income, tenure and housing age come from the Census Bureau's American Community Survey. News comes from local newsrooms and links to the publisher.</p>
 
       <h4>How records are handled</h4>
-      <p>Project statuses are quoted from the source. Counts are worked out from those records. Nothing on this site is written for you.</p>
+      <p>Records retain their source links and reported dates. Display labels group similar filings; open the original record for its exact wording and later updates.</p>
       <p>Directory profiles have official resources, meeting links and Census estimates. They show no project totals until a verified inventory has been imported. An empty register is a coverage gap, not evidence that no development is underway.</p>
 
       <h4>How current it is</h4>
@@ -3333,7 +3335,7 @@ const MV_DECIDERS = [
 ];
 const MV_JOIN = [
   {name:'Youth Advisory Committee', when:'Applications open for the 2026–2027 school year', body:'An official city body specifically for youth input - the strongest direct path in of any city in this tracker.', cat:'Civic', link:'https://www.mountainview.gov/our-city/city-council/boards-commissions-and-committees/youth-advisory-committee'},
-  {name:'Rental Housing Committee', when:'6 p.m. · 4th Thursday · Council Chambers, City Hall', body:'Oversees Mountain View\'s rent stabilization program - directly tied to the housing projects above.', cat:'Housing', link:'https://www.mountainview.gov/our-city/city-council/boards-commissions-and-committees/rental-housing-committee'},
+  {name:'Rental Housing Committee', when:'6 p.m. · 4th Thursday · Council Chambers, City Hall', body:'Oversees Mountain View\'s rent stabilization program, including rent limits and tenant protections.', cat:'Housing', link:'https://www.mountainview.gov/our-city/city-council/boards-commissions-and-committees/rental-housing-committee'},
   {name:'Bicycle and Pedestrian Advisory Committee', when:'Check current agenda', body:'Advises Council on bike/ped issues citywide.', cat:'Transportation', link:'https://www.mountainview.gov/our-city/city-council/boards-commissions-and-committees'},
 ];
 const MV_SOURCES = ['City of Mountain View - Development Projects (bi-monthly update)', 'Mountain View Voice &amp; San José Spotlight reporting, 2025–2026', 'City of Mountain View - Boards, Commissions, and Committees', 'City of Mountain View - Strategic Priorities and Council Work Plan'];
@@ -6661,7 +6663,7 @@ async function tryLiveCupertinoData(){
     });
     statusHtml = `<span class="status-ok">✓ Loaded ${live.length} live projects</span> directly from Cupertino's GIS server (red arrow markers on the map - click one for details). This is the city's raw building-permit dataset: major projects only, no unit counts or applicant info, separate from the researched records below.`;
   } catch(e){
-    statusHtml = `<span class="status-err">Live data unavailable in this browser session</span> - the city's server likely blocks cross-origin requests from other websites (a common, reasonable security setting), or it's temporarily unreachable. The researched dataset below is unaffected and still fully accurate as of its snapshot date. <span class="mono" style="font-size:10.5px;">(${e.message})</span>`;
+    statusHtml = '<span class="status-err">Live data could not load.</span> The saved records below remain available. Check their dates and official sources for updates.';
   }
   inner.innerHTML = `<div style="margin-bottom:8px;">${statusHtml}</div><button class="btn secondary" id="tryLiveBtn" type="button" style="padding:7px 13px; font-size:11.5px;">Try again</button>`;
   document.getElementById('tryLiveBtn').addEventListener('click', tryLiveCupertinoData);
@@ -6693,6 +6695,7 @@ let gMap=null, gMarkers={}, gInfoWindow=null;
 let lMap=null, lMarkers={};
 let googleLoadTimer=null, googleLoadPending=false;
 const markerProjects=new WeakMap();
+let overviewMarkersDirty=true, overviewBuildVersion=0;
 function markerIconGoogle(d){
   const color = CAT_MAP[categoryOf(d)].color;
   if(d.cat==='infra'){ return { path:'M 0,-9 9,0 0,9 -9,0 Z', fillColor:color, fillOpacity:0.95, strokeColor:'#1A1A1A', strokeWeight:1.4, scale:1 }; }
@@ -6775,10 +6778,21 @@ function renderCityBoundary(){
 function locationPopup(projects){
   return (projects.length>1?'<div class="map-shared-location">'+projects.length+' projects share this mapped location</div>':'')+projects.map(popupHtmlPlain).join('<hr>');
 }
-function buildMarkersForCurrentProvider(){
+async function buildMarkersForCurrentProvider(){
+  const version=++overviewBuildVersion;
+  if(!mapProvider||!document.getElementById('screenDashboard').offsetWidth){overviewMarkersDirty=true;return;}
+  overviewMarkersDirty=false;
   clearMarkers();
   document.getElementById('overviewLocationNotice').hidden=true;
-  for(const group of OverviewMapUtils.groupLocations(DATA())){
+  const groups=OverviewMapUtils.groupLocations(DATA());
+  for(let i=0;i<groups.length;i++){
+    if(i&&i%250===0){
+      document.getElementById('overviewMapStatus').textContent='Drawing '+i.toLocaleString()+' of '+groups.length.toLocaleString()+' mapped locations…';
+      await new Promise(resolve=>requestAnimationFrame(resolve));
+      if(version!==overviewBuildVersion)return;
+      if(!document.getElementById('screenDashboard').offsetWidth){overviewMarkersDirty=true;return;}
+    }
+    const group=groups[i];
     const d=group[0];let marker;
     if(mapProvider==='google' && gMap){
       marker=new google.maps.Marker({position:{lat:d.lat,lng:d.lng},map:gMap,icon:markerIconGoogle(d),title:d.addr,optimized:true});
@@ -7415,6 +7429,7 @@ function renderLegend(){
   document.getElementById('legend').innerHTML = html;
 }
 function updateMapVisibility(){
+  if(!document.getElementById('screenDashboard').offsetWidth)return;
   if(overview3D)overview3D.update(overviewPoints());
   if(!mapProvider)return;
   const list=filtered(),visible=new Set(list.map(d=>d.id));
@@ -7901,7 +7916,7 @@ function projectCardHtml(d){
       <div class="meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
       <div class="meta" style="color:var(--text);">${d.lastNote}</div>
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
-      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':d.sourceType==='ceqanet'?'CEQAnet filing':'City record'} &#8599;</a>`:'';})()}<button class="card-more" data-more="${d.id}">Learn more</button><button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button></div>
+      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':d.sourceType==='ceqanet'?'CEQAnet filing':'City record'} &#8599;</a>`:'';})()}<button class="card-more" data-more="${d.id}">Learn more</button>${Number.isFinite(d.lat)&&Number.isFinite(d.lng)?`<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button>`:'<span class="unlocated-note">Location not verified</span>'}</div>
     </div>`;
 }
 // Cards borrowed from other cities to finish a short section. The card itself only shows an
@@ -7928,13 +7943,27 @@ function regionCardHtml(d){
 
    SB 79 is the opposite shape - one regional layer from MTC - so that part works everywhere the
    law reaches. */
-let zoningSources = null, sb79Zones = null;
+let zoningSources = null, sb79Zones = null, ruleLayersPending = null;
 function loadRuleLayers(){
   if(zoningSources && sb79Zones) return Promise.resolve();
-  return Promise.all([
-    zoningSources ? null : fetch('/data/zoning-sources.json').then(r=>r.json()).then(d=>{for(const [key,c] of Object.entries(window.COVERAGE_EXPANSION?.cities||{})){const layer=c.zoningLayers?.[0];if(layer)d.cities[key]={label:c.label,url:layer.url,field:layer.field,layerName:layer.name};}zoningSources=d;}).catch(()=>{zoningSources={cities:{}};}),
-    sb79Zones ? null : fetch('/data/sb79-zones.json').then(r=>r.json()).then(d=>{sb79Zones=d;}).catch(()=>{sb79Zones={zones:[]};}),
-  ]);
+  if(ruleLayersPending)return ruleLayersPending;
+  const read=async url=>{
+    const response=await fetch(url,{signal:AbortSignal.timeout(10000)});
+    if(!response.ok)throw Error('Map data unavailable');
+    return response.json();
+  };
+  ruleLayersPending=Promise.allSettled([
+    zoningSources ? null : read('/data/zoning-sources.json').then(d=>{
+      if(!d.cities||typeof d.cities!=='object'||Array.isArray(d.cities))throw Error('Invalid zoning directory');
+      for(const [key,c] of Object.entries(window.COVERAGE_EXPANSION?.cities||{})){const layer=c.zoningLayers?.[0];if(layer)d.cities[key]={label:c.label,url:layer.url,field:layer.field,layerName:layer.name};}
+      zoningSources=d;
+    }),
+    sb79Zones ? null : read('/data/sb79-zones.json').then(d=>{
+      if(!Array.isArray(d.zones)||d.zones.some(z=>!Array.isArray(z.ring)||z.ring.length<3))throw Error('Invalid transit-zone data');
+      sb79Zones=d;
+    }),
+  ]).finally(()=>{ruleLayersPending=null;});
+  return ruleLayersPending;
 }
 // Ray casting. The zones are simple rings, and a reader only ever asks about one point.
 function pointInRing(lat, lng, ring){
@@ -7962,6 +7991,7 @@ async function zoningAt(cityKey, lat, lng){
     const res = await fetch(url, {signal: AbortSignal.timeout(8000)});
     if(!res.ok) return null;
     const data = await res.json();
+    if(data.error||!Array.isArray(data.features))return null;
     const value = data.features?.[0]?.attributes?.[source.field];
     return value ? {district: String(value), source} : {district: null, source};
   }catch{ return null; }   // their server, not ours; the section says it could not be reached
@@ -7971,11 +8001,14 @@ async function zoningAt(cityKey, lat, lng){
    rather than floating on a tile. The button flies out to the whole city and back in, which is the
    bit that actually answers "where is this?" for someone who does not know the street. */
 let sheetMap = null;
+let sheetMapTimers = [];
+function clearSheetMapTimers(){sheetMapTimers.forEach(clearTimeout);sheetMapTimers=[];}
 const SHEET_MAP_ZOOM = 14;
 function renderSheetMap(record, cityKey, city){
+  clearSheetMapTimers();
+  if(sheetMap){ try{ sheetMap.remove(); }catch{} sheetMap = null; }
   const host = document.getElementById('psMap');
   if(!host || typeof L === 'undefined') return;
-  if(sheetMap){ try{ sheetMap.remove(); }catch{} sheetMap = null; }
   sheetMap = L.map(host, {scrollWheelZoom:false, zoomControl:true, attributionControl:true})
         // Close enough to read the streets, wide enough that the city boundary is in frame:
     // at 16 the map was a single block and told you nothing about where that block is.
@@ -7994,7 +8027,7 @@ function renderSheetMap(record, cityKey, city){
     .bindPopup('<b>'+escapeHtml(projectPlainText(record).addr||'')+'</b><br>'+escapeHtml(stage.label||''))
     .addTo(sheetMap);
   // Leaflet measures its container as it starts, and this one was display:none a moment ago.
-  setTimeout(()=>{ try{ sheetMap.invalidateSize(); }catch{} }, 60);
+  sheetMapTimers.push(setTimeout(()=>{ try{ sheetMap?.invalidateSize(); }catch{} }, 60));
 
   const play = document.getElementById('psMapPlay');
   if(play) play.addEventListener('click', ()=>{
@@ -8009,8 +8042,8 @@ function renderSheetMap(record, cityKey, city){
       : c && sheetMap.setView([c.center.lat, c.center.lng], 12, {animate:!still, duration:1.6});
     const back = () => sheetMap.setView([record.lat, record.lng], SHEET_MAP_ZOOM, {animate:!still, duration:2.2});
     out();
-    setTimeout(back, still ? 1200 : 2200);
-    setTimeout(()=>{ play.disabled = false; }, still ? 1600 : 4800);
+    sheetMapTimers.push(setTimeout(back, still ? 1200 : 2200));
+    sheetMapTimers.push(setTimeout(()=>{ play.disabled = false; }, still ? 1600 : 4800));
   });
 }
 
@@ -8018,32 +8051,35 @@ async function renderRules(record, cityKey, city){
   const host = document.getElementById('psRules');
   if(!host) return;
   await loadRuleLayers();
+  if(document.getElementById('psRules')!==host)return;
   const located = Number.isFinite(record.lat) && Number.isFinite(record.lng);
   if(!located){ host.innerHTML = '<p class="ps-note">No coordinates were published for this record, so the rules at this address cannot be looked up.</p>'; return; }
 
   const tier = sb79At(record.lat, record.lng);
   const zoning = await zoningAt(cityKey, record.lat, record.lng);
+  if(document.getElementById('psRules')!==host)return;
   const source = zoningSources?.cities?.[cityKey];
   const planning = (city.ctaLinks || []).find(l => /zoning|planning|development/i.test(l.label));
 
   const zoningLine = zoning && zoning.district
     ? 'Zoned <b>' + escapeHtml(zoning.district) + '</b> in ' + escapeHtml(city.label) + '&rsquo;s own zoning map, read from the city just now.'
     : zoning
-      ? escapeHtml(city.label) + ' publishes a zoning map and it returns no district at this point. That usually means the pin sits just off the parcel, since these coordinates are a geocode rather than a survey.'
+      ? 'The connected zoning layer returned no district at this point. Check the location and the official map with the planning department.'
       : source
-        ? escapeHtml(city.label) + '&rsquo;s zoning map could not be reached just now. It is the city&rsquo;s server, not this one.'
-        : escapeHtml(city.label) + ' does not publish its zoning map in a form this page can read. Zoning is set by each city inside its own limits, so there is no regional map to fall back on'
-          + (planning ? ', but the city keeps it here: <a href="' + escapeHtml(planning.url) + '" target="_blank" rel="noopener">' + escapeHtml(String(planning.label).replace(/&amp;/g,'&')) + ' &#8599;</a>' : '.');
+        ? 'The connected zoning service did not return usable data. Try again or check the official planning records.'
+        : (zoningSources ? 'This dashboard has no connected zoning layer for '+escapeHtml(city.label)+'.' : 'The zoning source directory could not load. Reopen this record to retry.')
+          + (planning ? ' <a href="' + escapeHtml(planning.url) + '" target="_blank" rel="noopener">' + escapeHtml(String(planning.label).replace(/&amp;/g,'&')) + ' &#8599;</a>' : '');
 
   const sb79Covered=['Santa Clara','San Mateo','San Francisco','Alameda','Contra Costa','Marin','Napa','Solano','Sonoma'].includes(city.county);
-  const sb79Line = !sb79Covered ? 'This dashboard’s MTC transit-zone dataset covers the Bay Area. It cannot establish SB 79 eligibility here. Check the local planning agency for the applicable transit map.' : tier
-    ? 'Inside an <b>SB 79 ' + escapeHtml(tier) + '</b> zone, so the state&rsquo;s transit-oriented housing standards apply here on top of the city&rsquo;s own rules.'
-    : 'Outside the SB 79 transit zones, so the state&rsquo;s transit-oriented housing standards do not apply at this address.';
+  const sb79Line = !sb79Covered ? 'The connected MTC transit-zone dataset covers the Bay Area. Check the local planning agency for the applicable transit map here.' : !sb79Zones
+    ? 'Transit-zone data could not load. Reopen this record to retry; no eligibility conclusion is available.' : tier
+    ? 'This point falls within an <b>SB 79 ' + escapeHtml(tier) + '</b> zone in the connected MTC dataset. Confirm parcel eligibility and current requirements with the planning department.'
+    : 'No transit zone in the connected MTC dataset contains this point. This lookup does not establish whether the parcel qualifies under SB 79; check with the planning department.';
 
   host.innerHTML = '<p class="ps-note">' + zoningLine + '</p><p class="ps-note" style="margin-top:9px;">' + sb79Line + '</p>'
     + '<p class="ps-note" style="margin-top:9px; font-size:11.5px; color:var(--text-soft);">'
     + (source ? 'Zoning from ' + escapeHtml(city.label) + '&rsquo;s GIS. ' : '')
-    + 'SB 79 zones from the Metropolitan Transportation Commission. Both describe the rules, not a decision: check with the city before relying on either.</p>';
+    + 'Transit-zone source: Metropolitan Transportation Commission. Map boundaries and project coordinates may differ from parcel boundaries.</p>';
 }
 
 let projSheetReturnFocus = null;
@@ -8131,7 +8167,6 @@ function projectSheetHtml(record, cityKey, city){
       if(record.units) bits.push(record.units.toLocaleString()+' home'+(record.units===1?'':'s'));
       if(record.bmr) bits.push(record.bmr.toLocaleString()+' affordable');
       if(record.type && !/^residential$/i.test(record.type)) bits.push(escapeHtml(record.type));
-      bits.push(escapeHtml((projectStage(record)||{}).label||record.stage||''));
       return bits.filter(Boolean).length ? '<p class="ps-summary">'+bits.filter(Boolean).join(' &middot; ')+'</p>' : '';
     })()
     +'<div class="ps-stamps">'
@@ -8150,7 +8185,7 @@ function projectSheetHtml(record, cityKey, city){
 
     +'<section class="ps-sec"><h3>What the record says</h3><div class="ps-facts">'+facts+'</div></section>'
 
-    +(record.lastNote?'<section class="ps-sec"><h3>Where it stands</h3><p class="ps-note">'+escapeHtml(record.lastNote)+'</p></section>':'')
+    +(record.lastNote&&!String(record.desc||'').startsWith(record.lastNote)?'<section class="ps-sec"><h3>Latest record note</h3><p class="ps-note">'+escapeHtml(record.lastNote)+'</p></section>':'')
 
     +(record.flag?'<section class="ps-sec"><h3>Worth knowing</h3><p class="ps-caveat">'+escapeHtml(record.flag)+'</p></section>':'')
 
@@ -8160,7 +8195,7 @@ function projectSheetHtml(record, cityKey, city){
         : record.sourceType==='ceqanet'
         ? 'Published in California’s CEQAnet environmental document registry. The label identifies the type of filing, not the project’s current construction status. Several filings can refer to the same project. Read the original notice for the agency’s decision and any comment deadlines.'
         : record.sourceType==='city-gis'
-        ? 'Read from '+escapeHtml(city.label)+'&rsquo;s own mapping server, from the layer it keeps its '+escapeHtml(city.livePipeline?.what||'projects')+' in. That makes it as current as the city&rsquo;s own system rather than an annual filing, and it covers what the city puts in that layer and nothing else &mdash; which is why the status below is worded the way the city words it.'
+        ? 'Imported from '+escapeHtml(city.label)+'&rsquo;s '+escapeHtml(city.livePipeline?.what||'project')+' GIS layer. The status follows the agency record. Check the source for updates and projects outside that layer.'
         : 'Compiled from '+escapeHtml(city.label)+'&rsquo;s published planning records and meeting agendas. Dates are the ones in the public file, so a record can be accurate and still be out of date if the city has not posted anything since.')
       +'</p><div class="ps-links" style="margin-top:11px;">'+links+'</div></section>'
 
@@ -8173,7 +8208,7 @@ function projectSheetHtml(record, cityKey, city){
         ? 'Placed at '+record.lat.toFixed(5)+', '+record.lng.toFixed(5)+'.'
           +(record.locationSource?' '+escapeHtml(record.locationSource[0].toUpperCase()+record.locationSource.slice(1))+'.':'')
           +(Number.isFinite(record.geocodeScore)&&record.geocodeScore<100?' The match scored '+record.geocodeScore+' out of 100, so treat the pin as the block rather than the building.':'')
-        : 'No coordinates were published for this record, so it is not on the map. It has not been given the city centre instead, because that would put it somewhere it is not.')
+        : 'This record has no verified coordinates. It remains in the list and is omitted from the map.')
       +'</p></section>'
 
     +(boards?'<section class="ps-sec"><h3>Who decides land use in '+escapeHtml(city.label)+'</h3>'+boards+'</section>':'')
@@ -8215,6 +8250,7 @@ function openProjectSheet(id){
   }
 }
 function closeProjectSheet(){
+  clearSheetMapTimers();
   const back=document.getElementById('projSheet');
   if(!back||back.hidden) return;
   if(sheetMap){ try{ sheetMap.remove(); }catch{} sheetMap = null; }
@@ -8319,6 +8355,8 @@ function rebuildCoverageAggregates(){
   BAY_AREA_VIEW.data=Object.entries(CITIES).filter(([k])=>k!=='all').flatMap(([k,c])=>c.data.map(d=>({...d,_sourceCity:k})));
   BAY_AREA_VIEW.feed=Object.entries(CITIES).filter(([k])=>k!=='all').flatMap(([k,c])=>c.feed.map(d=>({...d,_sourceCity:k}))).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
   PROJECT_CITY=null;
+  BANK_INDEX=null;
+  if(activeCounty)setCountyScope(activeCounty);
   if(window.dashboardContext){
     const projects=window.dashboardContext.projects;
     projects.length=0;
@@ -8465,7 +8503,7 @@ function useMyLocation(){
       setOnboardBusy(false, `You're actually in ${newLabel}, not ${oldLabel} - switched you there.`);
     } else if(!matchedCity){
       // Naming all 33 made this a paragraph. The counties say the same thing in a line.
-      setOnboardBusy(false, `Location found, but it is outside the area this tracker covers - the ${Object.keys(CITIES).filter(k=>k!=='all').length} cities and towns covered across the Bay Area. Pick a city above to look around anyway.`);
+      setOnboardBusy(false, `Location found, but it is outside the area this tracker covers - the ${Object.keys(CITIES).filter(k=>k!=='all').length} covered California cities and communities. Pick a city above to look around anyway.`);
     } else {
       setOnboardBusy(false, 'Location found \u2713');
     }
@@ -9097,7 +9135,7 @@ function renderTopicMap(topicKey, cap, categoryKey){
   const c = CITIES[currentCity];
   let m = topicMaps[cap];
   if(!m){
-    m = topicMaps[cap] = {map:L.map('topicMap'+cap, {scrollWheelZoom:false}).setView([c.center.lat, c.center.lng], c.zoom||12)};
+    m = topicMaps[cap] = {map:L.map('topicMap'+cap, {scrollWheelZoom:false,preferCanvas:true}).setView([c.center.lat, c.center.lng], c.zoom||12)};
     L.tileLayer(MAP_TILE_URL,
       {attribution:CARTO_ATTRIB, subdomains:'abcd', maxZoom:19}).addTo(m.map);
     m.layer = L.layerGroup().addTo(m.map);
@@ -9990,7 +10028,7 @@ function tkBuildStations(){
     body:(c.data.length
       ? 'Together they account for '+c.data.reduce((a,p)=>a+(p.units||0),0).toLocaleString()
         +' homes on record. '+c.data.filter(p=>p.stage==='review').length+' are still under review, which is the stage where public comment still changes things.'
-      : c.label+' does not publish a machine-readable project list, so there is no register here for it.'),
+      : 'No project records are connected for '+c.label+'. Check the official planning sources below.'),
     src:{l:c.label+' development records', u:(citySourceLink(city)||{}).url}});
   figs.forEach(f=> local.push(f));
 
@@ -10291,6 +10329,21 @@ let BANK_INDEX = null;
 let bankType = 'all';
 let bankCity = 'all';
 let bankQuery = '';
+const bankLoads=new Set();
+async function loadBankRecords(key){
+  if(bankLoads.has(key))return;
+  bankLoads.add(key);
+  const status=document.getElementById('bankLoadStatus');
+  status.textContent='Loading project records…';
+  let error='';
+  try{await window.dashboardContext.loadCity(key);}catch{error='Some project records could not load. Use the load button to retry.';}
+  finally{
+    bankLoads.delete(key);
+    renderBank();
+    status.textContent=error||(bankLoads.size?'Loading project records…':'Project records loaded.');
+  }
+}
+document.getElementById('bankLoadRecords').addEventListener('click',()=>loadBankRecords(bankCity));
 
 function buildBankIndex(){
   if(BANK_INDEX) return BANK_INDEX;
@@ -10400,6 +10453,11 @@ function bankScore(item, terms){
 
 function renderBank(){
   const all = buildBankIndex();
+  const loadButton=document.getElementById('bankLoadRecords');
+  const scope=bankCity==='all'?Object.entries(CITIES).filter(([k])=>k!=='all'):[[bankCity,CITIES[bankCity]]];
+  loadButton.hidden=!scope.some(([key,c])=>c?.recordsUrl&&c.recordCount>0&&!DashboardCoverage.loaded.has(key));
+  loadButton.disabled=bankLoads.has(bankCity)||bankLoads.has('all');
+  loadButton.textContent=bankCity==='all'?'Load all project records':'Load '+CITIES[bankCity].label+' project records';
   const terms = bankQuery.toLowerCase().split(/\s+/).map(t=>t.trim()).filter(Boolean);
 
   const chips = document.getElementById('bankTypeChips');
@@ -10421,6 +10479,7 @@ function renderBank(){
       + (k==='all'?'All cities':CITIES[k].label) + '</button>').join('');
     cchips.querySelectorAll('[data-bankcity]').forEach(b=> b.addEventListener('click', ()=>{
       bankCity = b.getAttribute('data-bankcity'); renderBank();
+      if(bankCity!=='all'&&CITIES[bankCity].recordsUrl&&!DashboardCoverage.loaded.has(bankCity))loadBankRecords(bankCity);
     }));
   }
 
@@ -10441,7 +10500,7 @@ function renderBank(){
   if(countEl){
     countEl.textContent = terms.length
       ? rows.length.toLocaleString()+' of '+all.length.toLocaleString()+' records match'
-      : all.length.toLocaleString()+' records indexed';
+      : all.length.toLocaleString()+' loaded records indexed';
   }
 
   const host = document.getElementById('bankResults');
@@ -10692,7 +10751,7 @@ function showScreen(name){
     applyPageChrome(owningPage);
   }
   scrollToScreen(name);
-  if(name === 'dashboard') requestAnimationFrame(()=>{ensureOverviewMap();fitOverviewMap();});
+  if(name === 'dashboard') requestAnimationFrame(()=>{ensureOverviewMap();if(mapProvider&&overviewMarkersDirty)buildMarkersForCurrentProvider();else fitOverviewMap();});
   refreshCurrentScreen();
   window.dispatchEvent(new CustomEvent('dashboard:screen', {detail:name}));
 }
@@ -12516,10 +12575,12 @@ function renderTopicPage(topicKey, categoryKey){
   // Smaller cities hold only a handful of records in a category. Rather than end the section on a
   // half-empty row, the rest of the page is filled with the same category from other Bay Area
   // cities, newest filings first, under a heading that says exactly what they are.
+  const visibleIds=new Set(list.map(d=>d.id));
+  const nearbyCounty=activeCounty||CITIES[currentCity].county;
   const pad=view.scope==='region'?null:{
-    items:BAY_AREA_VIEW.data.filter(d=>topicCategoryMatches(d,categoryKey)&&d._sourceCity!==currentCity)
+    items:BAY_AREA_VIEW.data.filter(d=>topicCategoryMatches(d,categoryKey)&&!visibleIds.has(d.id)&&d._sourceCity!==currentCity)
       // Neighbours first - a Woodside reader is better served by San Mateo County - then newest.
-      .sort((a,b)=>(CITIES[b._sourceCity].county===CITIES[currentCity].county)-(CITIES[a._sourceCity].county===CITIES[currentCity].county)
+      .sort((a,b)=>(CITIES[b._sourceCity].county===nearbyCounty)-(CITIES[a._sourceCity].county===nearbyCounty)
         ||String(b.filed||'').localeCompare(String(a.filed||''))),
     render:regionCardHtml,
     note:'Across covered areas - the same category in other cities',
@@ -12917,7 +12978,7 @@ function renderAcctStats(){
       // Rank 1 is the top of whichever direction the metric reads as "more".
       const better = vals.filter(x=> m.dir==='lo' ? x < v : x > v).length + 1;
       return acctTile(m.fmt ? m.fmt(v) : v, m.label,
-        vals.length ? ('#'+better+' of '+vals.length+' Bay Area cities') : '');
+        vals.length ? ('#'+better+' of '+vals.length+' covered cities') : '');
     }).join('') : '<div class="empty">No comparable statistics for this city yet.</div>';
   }
   const rh = document.getElementById('acctStatRhna');
@@ -13609,7 +13670,7 @@ document.getElementById('prefsSaveBtn').addEventListener('click', async ()=>{
   try{
     await apiSavePreferences(email || null, emailFrequency, homeCity || null, [...prefsCategories]);
     statusEl.textContent = emailFrequency === 'monthly'
-      ? 'Saved ✓ — one newsletter per month. No email was sent now.' : 'Saved ✓';
+      ? 'Saved. One newsletter per month. No email was sent now.' : 'Saved ✓';
   } catch(err){
     statusEl.innerHTML = "Couldn't save: " + emailBlockedHtml(err.message);
     wireAddPasswordButtons(statusEl);
@@ -16731,7 +16792,7 @@ function renderHeroMap(){
       ? '<span class="hero-map-lab">Add</span>' + cand.map(p=>
           '<button type="button" class="hero-map-chip" data-heroadd="'+escapeHtml(p.id)+'" title="'+escapeHtml(p.addr||p.id)+'">'
           + escapeHtml((p.addr||p.id).length>22 ? (p.addr||p.id).slice(0,21)+'…' : (p.addr||p.id)) + '</button>').join('')
-      : '<span class="hero-map-lab">All the nearby projects are on your map.</span>';
+      : '<span class="hero-map-lab">'+(DATA().some(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng))?'All located records in this view are on your map.':'No records with verified coordinates in this view.')+'</span>';
     add.querySelectorAll('[data-heroadd]').forEach(b=> b.addEventListener('click', ()=>{
       const p = DATA().find(x=>x.id===b.getAttribute('data-heroadd'));
       const ck=p?._sourceCity||currentCity;
@@ -16786,14 +16847,16 @@ function renderHeroCalendar(){
 
 // The hero photograph cycles through the cities on the same rhythm as the featured
 // stories. Two layers, so one fades in over the other rather than the image snapping.
-let heroBgIdx = 0, heroBgWhich = 0, heroBgTimer = null;
+let heroBgIdx = 0, heroBgWhich = 0, heroBgTimer = null, heroBgRequest = 0;
 function heroBgOrder(){
   const keys = Object.keys(CITY_PHOTOS).filter(k => CITIES[k]);
-  // Start on whichever city is selected, so the first frame matches the page.
-  const i = keys.indexOf(currentCity);
-  return i > 0 ? keys.slice(i).concat(keys.slice(0, i)) : keys;
+  if(currentCity!=='all'&&CITY_PHOTOS[currentCity])return [currentCity];
+  const county=activeCounty||CITIES[currentCity]?.county;
+  const nearby=county?keys.filter(k=>CITIES[k].county===county):keys;
+  return nearby.length?nearby:keys;
 }
 function paintHeroBg(){
+  const request=++heroBgRequest;
   const order = heroBgOrder();
   if(!order.length) return;
   const key = order[heroBgIdx % order.length];
@@ -16804,12 +16867,13 @@ function paintHeroBg(){
   const show = heroBgWhich === 0 ? a : b, hide = heroBgWhich === 0 ? b : a;
   const img = new Image();
   img.onload = ()=>{
+    if(request!==heroBgRequest)return;
     show.style.backgroundImage = 'url("'+ph.url+'")';
     show.classList.add('on'); hide.classList.remove('on');
     heroBgWhich = 1 - heroBgWhich;
     const cred = document.querySelector('.hero-credit');
-    if(cred) cred.innerHTML = escapeHtml(ph.cap) + ' &middot; ' + escapeHtml(ph.by) + ', ' + ph.lic
-      + ', via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>';
+    if(cred) cred.innerHTML = escapeHtml(ph.cap) + ' &middot; ' + escapeHtml(ph.by) + ', ' + escapeHtml(ph.lic)
+      + ', via <a href="'+escapeHtml(ph.source||'https://commons.wikimedia.org/')+'" target="_blank" rel="noopener">Wikimedia Commons</a>';
   };
   img.src = ph.url;
 }
