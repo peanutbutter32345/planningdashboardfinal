@@ -7,6 +7,8 @@ import json
 import re
 import html
 from record_display import filing_display
+from topics import article_topic, record_type, civic_news
+from coordinates import published_point, within_locality
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -19,7 +21,7 @@ def write(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, separators=(',', ':')) + '\n')
 profiles = read('profiles.json')
 stats = read('statistics.json')['places']
-news = read('news.json')['articles']
+news = {key:[n for n in rows if civic_news(n['title'],n['publisher'])] for key,rows in read('news.json')['articles'].items()}
 land = read('land-use.json')['places']
 boards = read('boards.json')['bodies']
 photos = read('photos.json')['photos']
@@ -42,14 +44,16 @@ for p in profiles['profiles']:
     resources = []
     seen = set()
     for r in p['resources'] + land.get(p['id'],{}).get('resources',[]):
-        if r['url'] in seen: continue
-        seen.add(r['url'])
+        resource_key=(r['category'],r['url'])
+        if resource_key in seen: continue
+        seen.add(resource_key)
         resources.append({'cat':r['category'], 'title':r['title'], 'url':r['url'],
             'note':r.get('note') or ('Official '+r.get('scope','local')+' source. Check the agency for current records.')})
     for t in profiles['transportation']:
-        if t.get('county') == p['county'] and t.get('url') not in seen:
+        if t.get('county') == p['county'] and t.get('url') not in {r['url'] for r in resources}:
             resources.append({'cat':'Transportation','title':t.get('title',t.get('name','Transportation projects')), 'url':t['url'], 'note':t.get('note','Regional agency projects. Coverage can extend beyond this locality.')})
-            seen.add(t['url'])
+    if p['kind']=='community':
+        resources.append({'cat':'Environmental','title':p['county']+' County environmental filings','url':env['sources'][p['county']]['url'],'note':'County search includes other communities. Use the published project location to confirm whether a filing concerns this place.'})
     h = read('housing/'+p['id']+'.json')
     rows = []
     for r in h['records']:
@@ -65,12 +69,14 @@ for p in profiles['profiles']:
     for eid in env['places'].get(p['id'],[]):
         r = env['records'][eid]
         display = filing_display(r)
-        rows.append({'id':key+'-'+eid, 'addr':display['title'], 'originalTitle':display['originalTitle'], 'filingLabel':display['label'], 'documentType':display['documentType'], 'lat':None, 'lng':None, 'cat':'infra' if r['transportation'] else 'dev',
-            'type':'Transportation' if r['transportation'] else 'Environmental review', 'desc':r['description'], 'units':None,'bmr':None,
+        point = published_point(r.get('coordinates'))
+        if not within_locality(point, features.get(p['id'],{}).get('geometry')): point=None
+        rows.append({'id':key+'-'+eid, 'addr':display['title'], 'originalTitle':display['originalTitle'], 'filingLabel':display['label'], 'documentType':display['documentType'], 'lat':point[1] if point else None, 'lng':point[0] if point else None, 'cat':'infra' if record_type(r)=='Transportation' else 'dev',
+            'type':record_type(r), 'desc':r['description'], 'units':None,'bmr':None,
             'applicant':r['agency'], 'filed':r['date'], 'stage':'filed', 'lastDate':r['date'],
             'lastNote':display['summary'], 'fileNo':r['sch'],
             'flag':'Environmental filing, not a construction status or a separate count of homes.', 'sourceUrl':r['source'],
-            'sourceType':'ceqanet', 'sourceLabel':'California CEQAnet', 'locationSource':'No verified project coordinates'})
+            'sourceType':'ceqanet', 'sourceLabel':'California CEQAnet', 'locationSource':'Published CEQAnet coordinates screened against locality boundary' if point else 'No verified project coordinates'})
     rows.sort(key=lambda r:(r.get('lastDate') or ''), reverse=True)
     # Existing project templates accept HTML-ready strings. Imported documents are data.
     for row in rows:
@@ -89,19 +95,31 @@ for p in profiles['profiles']:
     join = [b for b in bodies if b not in deciders]
     if not join: join=[{'name':'Boards, commissions and participation','when':'Check official vacancies','body':'Use the responsible government’s directory to review current boards and application instructions.','link':p['boardUrl'],'cat':'Civic'}]
     if not deciders: deciders=[{'name':p.get('meetingScope',p['name'])+' public meetings','when':'Check official agendas','body':'Current hearing notices, public comment instructions and meeting records.','link':p['meetingUrl']}]
-    articles=[{'city':key,'topic':'developments','title':n['title'],'source':n['publisher'],'date':n['date'],'url':n['url'],'snippet':'','image':''} for n in news.get(p['id'],[])]
+    articles=[{'city':key,'topic':article_topic(n['title']),'title':n['title'],'source':n['publisher'],'date':n['date'],'url':n['url'],'snippet':'','image':''} for n in news.get(p['id'],[])]
     for eid in env['places'].get(p['id'],[])[:4]:
         r=env['records'][eid]
         display=filing_display(r)
         excerpt=r['description'][:450]
         stop=max(excerpt.rfind('. '),excerpt.rfind('.\n'))
         excerpt=excerpt[:stop+1] if stop>24 else ''
-        articles.append({'city':key,'topic':'transportation' if r['transportation'] else 'developments','title':display['title'],'source':'California CEQAnet · official filing','date':r['date'],'url':r['source'],'snippet':excerpt,'image':''})
+        articles.append({'city':key,'topic':article_topic(display['title']),'title':display['title'],'source':'California CEQAnet · official filing','date':r['date'],'url':r['source'],'snippet':excerpt,'image':''})
+    if not news.get(p['id']) and p['kind']=='community':
+        county_id=next(x['id'] for x in profiles['profiles'] if x['kind']=='county' and x['county']==p['county'])
+        regional=news.get(county_id,[])
+        if not regional:
+            county_ids={x['id'] for x in profiles['profiles'] if x['county']==p['county']}
+            candidates=sorted({n['url']:n for place_id in county_ids for n in news.get(place_id,[])}.values(),key=lambda n:n['date'],reverse=True)
+            regional=[n for topic in ['housing','transportation','developments'] for n in [a for a in candidates if article_topic(a['title'])==topic][:2]]
+        for n in regional:
+            articles.append({'city':key,'topic':article_topic(n['title']),'title':n['title'],'source':n['publisher'],'date':n['date'],'url':n['url'],'snippet':p['county']+' County coverage; this report may concern places outside '+p['name']+'.','sourceArea':p['county']+' County','scope':'county','image':''})
     if not articles:
         articles=[{'city':key,'topic':'developments','title':p['name']+' official notices and planning records','source':'Official source directory','date':'','url':p['meetingUrl'],'snippet':'No locality-specific article imported. Follow the official source for current notices.','image':''}]
+    for article in articles:
+        for field in ['title','source','snippet','sourceArea']:
+            if isinstance(article.get(field),str):article[field]=html.escape(article[field],quote=True)
     b=p['bounds']
     c={'label':p['name'],'county':p['county'],'kind':p['kind'],'center':p['center'],'zoom':12,'bbox':{'minLng':b[0],'minLat':b[1],'maxLng':b[2],'maxLat':b[3]},
-        'fips':p['geoid'][2:],'planning':next((r['url'] for r in resources if re.search('Planning|Projects',r['cat'])),p['website']),
+        'fips':p['geoid'][2:],'planning':next((r['url'] for r in p['resources'] if r['category']=='Planning' and (p['kind']!='city' or r.get('scope')=='city')),p['website']),
         'meetings':p['meetingUrl'],'data':[{**r,'desc':r['desc'][:600]} for r in rows[:8]],'news':articles,'resources':resources,'stats':st,'deciders':deciders,'join':join,
         'note':'Public housing milestones and environmental filings, with official planning, meeting and board sources. Records cover the named locality, including portions outside a district. Environmental filings are not construction statuses.',
         'coverageId':p['id'],'districts':p['districts'],'futureDistricts':p['futureDistricts'],'recordCount':len(rows),'recordsUrl':'/data/coverage/'+key+'.json',

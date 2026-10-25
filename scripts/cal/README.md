@@ -37,3 +37,7 @@ See [the verification report](../../docs/largest-city-expansion-2026-10-25.md) f
 Importers respect HTML base URLs, discard confirmed stale deep links recorded in `unavailable-links.json`, omit individual calendar events from permanent board lists, and remove expiring WordPress download refresh parameters. Coverage manifest and city files revalidate together to prevent mixed revisions in returning browsers.
 
 Live coverage is not uniform: most agencies provide agenda directories rather than machine-readable meeting feeds. Some localities lack a connected zoning polygon layer, project inventory, or specialized source category. `coverage-audit.json` records these gaps; empty fields must not be represented as verified zeroes. HCD figures are annual reports, CEQAnet items are environmental filings, and neither establishes a current construction status. Compton uses explicitly dated 2023 HCD records because neither 2024 nor 2025 has published rows in the queried tables.
+
+## CA-24 follow-up audit
+
+See [the CA-24 audit](../../docs/ca24-coverage-audit-2026-10-25.md) for the subsequent 55-locality review, recovered CEQAnet coordinates, on-demand zoning overlays, topic news and jurisdiction corrections. `import-news.py`, `build-boards.py` and `check-connections.mjs` accept `--district=24` for a scoped refresh/check. The connection checker writes `public/cal/data/ca24-connection-audit.json` when scoped to that district.

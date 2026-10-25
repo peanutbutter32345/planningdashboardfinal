@@ -31,6 +31,11 @@
       "category": "Meetings",
       "title": "County hearing and Planning Commission recordings",
       "url": "https://sbcounty.granicus.com/ViewPublisher.php?view_id=3"
+    },
+    {
+      "category": "Boards",
+      "title": "County planning hearings, commissions and review boards",
+      "url": "https://www.countyofsb.org/pl-hearings-committees"
     }
   ],
   "San Luis Obispo County": [
@@ -43,6 +48,11 @@
       "category": "GIS",
       "title": "Published county planning layers",
       "url": "https://gis.slocounty.ca.gov/arcgis/rest/services/PLN/PLN_WEB_SERVICES/MapServer"
+    },
+    {
+      "category": "Capital projects",
+      "title": "Five-Year Capital Improvement Plan",
+      "url": "https://www.slocounty.ca.gov/departments/public-works/services/plans-reports/five-year-capital-improvement-plan"
     }
   ],
   "San Luis Obispo": [
@@ -50,6 +60,11 @@
       "category": "Zoning",
       "title": "City zoning maps",
       "url": "https://www.slocity.org/government/open-government/gis-mapping-division/maps"
+    },
+    {
+      "category": "Capital projects",
+      "title": "SLO in Motion transportation improvements",
+      "url": "https://www.slocity.org/government/department-directory/public-works/construction-and-traffic-updates/slo-in-motion/transportation-improvements"
     }
   ],
   "Ventura County": [
@@ -216,6 +231,11 @@
       "category": "Boards",
       "title": "City boards and commissions",
       "url": "https://goleta.granicus.com/boards/w/ee26eeb27ed8332d/boards/18612"
+    },
+    {
+      "category": "Capital projects",
+      "title": "Project Connect: streets, bridge and pedestrian improvements",
+      "url": "https://www.cityofgoleta.org/your-city/public-works/capital-improvement-program-division/project-connect"
     }
   ],
   "Lompoc": [
@@ -235,6 +255,11 @@
       "category": "Boards",
       "title": "City boards and commissions",
       "url": "https://www.cityofsantamaria.org/services/departments/boards-commissions"
+    },
+    {
+      "category": "Capital projects",
+      "title": "2025 Capital Improvement Program",
+      "url": "https://pub-santamaria.escribemeetings.com/FileStream.ashx?DocumentId=7194"
     }
   ],
   "San Jose": [
@@ -316,6 +341,16 @@
       "category": "Zoning",
       "title": "City GIS, zoning and project maps",
       "url": "https://map.cityofventura.net/"
+    },
+    {
+      "category": "GIS",
+      "title": "City zoning polygons",
+      "url": "https://map.cityofventura.net/arcgis/rest/services/CityShift/zoning/MapServer/8"
+    },
+    {
+      "category": "Projects",
+      "title": "Planning and development activity",
+      "url": "https://www.cityofventura.ca.gov/432/Planning"
     }
   ],
   "Carpinteria": [
@@ -323,6 +358,16 @@
       "category": "Boards",
       "title": "City council and appointed bodies",
       "url": "https://carpinteriaca.gov/city-hall/citycouncil/"
+    },
+    {
+      "category": "Zoning",
+      "title": "City planning, zoning map and project activity",
+      "url": "https://carpinteriaca.gov/city-hall/community-development/planning/"
+    },
+    {
+      "category": "Capital projects",
+      "title": "Capital Improvements Program",
+      "url": "https://carpinteriaca.gov/public-works/engineering-division/capital-improvements-program/"
     }
   ],
   "Del Rey Oaks": [
@@ -361,6 +406,21 @@
       "category": "Boards",
       "title": "City advisory bodies and applications",
       "url": "https://arroyogrande.org/192/Advisory-Bodies"
+    },
+    {
+      "category": "Zoning",
+      "title": "City zoning and land-use maps",
+      "url": "https://www.arroyogrande.org/580/City-Maps"
+    },
+    {
+      "category": "General plan",
+      "title": "General Plan and Development Code update",
+      "url": "https://planarroyogrande.com/"
+    },
+    {
+      "category": "Capital projects",
+      "title": "Pavement Management Program",
+      "url": "https://www.arroyogrande.org/874/Pavement-Management-Program"
     }
   ],
   "Grover Beach": [
@@ -368,6 +428,21 @@
       "category": "Boards",
       "title": "City commissions, committees and boards",
       "url": "https://www.grover.org/185/Commissions-Committees-Boards"
+    },
+    {
+      "category": "Zoning",
+      "title": "City zoning maps and Development Code",
+      "url": "https://www.grover.org/309/Development-Code"
+    },
+    {
+      "category": "Municipal code",
+      "title": "Development Code, December 2025",
+      "url": "https://www.groverbeach.org/DocumentCenter/View/16783"
+    },
+    {
+      "category": "Projects",
+      "title": "Current development project map",
+      "url": "https://storymaps.arcgis.com/stories/ad3216a1333143fdb48c184e8c9e1f97"
     }
   ],
   "Guadalupe": [
@@ -544,6 +619,30 @@
       "category": "GIS",
       "title": "City current zoning polygons",
       "url": "https://services6.arcgis.com/yCArG7wGXGyWLqav/arcgis/rest/services/Zoning/FeatureServer/0"
+    }
+  ],
+  "Pismo Beach": [
+    {
+      "category": "GIS",
+      "title": "Official land-use and zoning parcel viewer",
+      "url": "https://experience.arcgis.com/experience/fe5e528e09334c4c9ed67c80ea2e5118"
+    }
+  ],
+  "Oxnard": [
+    {
+      "category": "Zoning",
+      "title": "City zoning code and property map",
+      "url": "https://www.oxnard.gov/community-development/planning-environmental-services/zoning"
+    },
+    {
+      "category": "General plan",
+      "title": "City General Plan and zoning maps",
+      "url": "https://www.oxnard.gov/community-development/maps"
+    },
+    {
+      "category": "GIS",
+      "title": "City zoning polygons",
+      "url": "https://maps.oxnard.org/arcgis/rest/services/PlanningLayers/MapServer/5"
     }
   ]
 }

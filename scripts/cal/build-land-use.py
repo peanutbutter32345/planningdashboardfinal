@@ -55,7 +55,7 @@ def layer(url):
  meta=get(url+'?f=json',True).get('data',{})
  title=meta.get('name','')
  if meta.get('geometryType')!='esriGeometryPolygon' or not re.search(r'zon|land.?use',title,re.I) or re.search(r'fire|flood|inspection|evac|school|noise|hazard|seismic|airport|safety|historic|history|1989|draft|text|excluding|management area',title,re.I):return None
- fields=meta.get('fields',[]);field=next((f['name'] for f in fields if re.search(r'^(zone|zone_name|zoning|zonecode|zone_code|zoneclass|zoningcode|zoning_code|zonedist|zone_district|zoning_district|landuse|land_use|lu_code|luc|zn_cd1|zone_desig|zonecd|zoning_cd|ZoneAbbreviation|ZoneCodeLabel|ZONING_SYMBOL)$',f['name'],re.I)),None)
+ fields=meta.get('fields',[]);field=next((f['name'] for f in fields if re.search(r'^(zone|zone_name|zoning|zonecode|zone_code|zoneclass|zoningcode|zoning_code|zonedist|zone_district|zoning_district|landuse|land_use|lu_code|luc|zn_cd1|zone_desig|zonecd|zoning_cd|ZoneAbbreviation|ZoneCodeLabel|ZONING_SYMBOL|Zone2030)$',f['name'],re.I)),None)
  if not field:return None
  q=urllib.parse.urlencode({'where':'1=1','outFields':field,'returnGeometry':'false','resultRecordCount':3,'f':'json'})
  sample=get(url+'/query?'+q,True).get('data',{})
@@ -65,15 +65,21 @@ def layer(url):
 def one(p):
  extras=SEEDS.get(p['name'],[])
  seeds=[r['url'] for r in extras]+[p['website']]+[r['url'] for r in p['resources'] if r['category'] in ['Planning','Projects','Boards'] and r['scope'] in ['city','county']][:4]
+ # A county planning link reached through a city footer is not city zoning authority.
+ county_domains={urllib.parse.urlparse(c['website']).hostname.removeprefix('www.') for c in profiles if c['kind']=='county'}
+ county_domains.update(['slocounty.ca.gov','countyofsb.org','venturacounty.gov'])
+ def responsible(url):
+  host=urllib.parse.urlparse(url).hostname or ''
+  return p['kind']!='city' or not any(host==d or host.endswith('.'+d) for d in county_domains)
  links=[];checks={}
- for u in dict.fromkeys(seeds):
+ for u in dict.fromkeys(u for u in seeds if responsible(u)):
   d=get(u);checks[u]=d['status'];links+=d.get('links',[])
  follow=[l['url'] for l in links if re.search(r'zoning|general plan|municipal code|\bgis\b|current projects|planning commission|public works|engineering|boards|commissions|community development',l['title'],re.I) and not re.search(r'\.pdf|\.doc|\.jpg',l['url'],re.I)]
- for u in list(dict.fromkeys(follow))[:9]:
+ for u in list(dict.fromkeys(u for u in follow if responsible(u)))[:9]:
   d=get(u);checks[u]=d['status'];links+=d.get('links',[])
  result=[{**r,'scope':'city' if p['kind']=='city' else 'county','authority':p['name']} for r in extras]
  for category,pattern in patterns.items():
-  matches=[l for l in links if re.search(pattern,l['title'],re.I) and not re.search(r'login|sign in|subscribe|facebook|twitter'+(r'|county' if p['kind']=='city' else ''),l['title'],re.I)]
+  matches=[l for l in links if responsible(l['url']) and re.search(pattern,l['title'],re.I) and not re.search(r'login|sign in|subscribe|facebook|twitter'+(r'|county' if p['kind']=='city' else ''),l['title'],re.I)]
   for l in list({l['url']:l for l in sorted(matches,key=lambda x:len(x['title']))}.values())[:8]:result.append({**l,'category':category,'scope':'city' if p['kind']=='city' else 'county','authority':p['name']})
  # Traverse only map apps/services actually linked by the agency, not search-result guesses.
  candidates=set();items=set()
@@ -82,15 +88,20 @@ def one(p):
   for m in re.finditer(r'https://[^\s?"<>]+/(?:FeatureServer|MapServer)(?:/\d+)?',u,re.I):candidates.add(m.group())
   if 'arcgis' in u or 'experience' in u:
    for m in re.finditer(r'(?:id|appid|webmap)=([a-f0-9]{32})|/items/([a-f0-9]{32})|/experience/([a-f0-9]{32})',u,re.I):items.add(next(g for g in m.groups() if g))
+ pending=list(sorted(items));visited=set()
  def walk(v):
   if isinstance(v,dict):
    for k,x in v.items():
+    if isinstance(x,str) and k.lower() in ['itemid','webmap','webmapid','mapid'] and re.fullmatch('[a-f0-9]{32}',x):pending.append(x)
     if k=='url' and isinstance(x,str) and re.search(r'/(?:FeatureServer|MapServer)',x):candidates.add(x.split('?')[0])
     else:walk(x)
   elif isinstance(v,list):
    for x in v:walk(x)
  owners=set()
- for item in sorted(items)[:5]:
+ while pending and len(visited)<12:
+  item=pending.pop(0)
+  if item in visited:continue
+  visited.add(item)
   info=get('https://www.arcgis.com/sharing/rest/content/items/'+item+'?f=json',True).get('data',{})
   # Only city-labelled apps establish a city GIS account, not linked county portals.
   label=' '.join(str(info.get(k) or '') for k in ['title','description','snippet'])

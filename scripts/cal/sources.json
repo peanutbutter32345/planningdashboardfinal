@@ -142,7 +142,7 @@
     },
     "Santa Barbara": {
       "website": "https://www.countyofsb.org/",
-      "planning": "https://www.countyofsb.org/159/Planning-Development",
+      "planning": "https://www.countyofsb.org/pl-planning-and-development",
       "meetings": "https://santabarbara.legistar.com/Calendar.aspx",
       "transit": "https://www.sbcag.org/"
     },
@@ -206,20 +206,27 @@
   },
   "overrides": {
     "Santa Barbara": {
-      "planning": "https://santabarbaraca.gov/planning-commission",
-      "meetings": "https://records.santabarbaraca.gov/OnBaseAgendaOnline/"
+      "planning": "https://santabarbaraca.gov/ComDev",
+      "meetings": "https://records.santabarbaraca.gov/OnBaseAgendaOnline/",
+      "boards": "https://santabarbaraca.gov/planning-commission",
+      "boardName": "Planning Commission"
     },
     "Goleta": {
       "meetings": "https://goleta.legistar.com/Calendar.aspx",
-      "client": "goleta"
+      "client": "goleta",
+      "planning": "https://www.cityofgoleta.org/your-city/planning-and-environmental-review/permits-and-regulations"
     },
     "Santa Maria": {
       "planning": "https://www.cityofsantamaria.org/services/departments/community-development/planning-division",
-      "meetings": "https://www.cityofsantamaria.org/services/departments/city-clerk-records/agenda-center-meetings-portal"
+      "meetings": "https://www.cityofsantamaria.org/services/departments/city-clerk-records/agenda-center-meetings-portal",
+      "boards": "https://www.cityofsantamaria.org/services/departments/boards-commissions/planning-commission",
+      "boardName": "Planning Commission"
     },
     "Lompoc": {
       "boards": "https://www.cityoflompoc.com/government/committees-boards/planning-commission",
-      "meetings": "https://www.cityoflompoc.com/government/committees-boards/city-council/live-webcast"
+      "meetings": "https://www.cityoflompoc.com/government/committees-boards/city-council/live-webcast",
+      "boardName": "Planning Commission",
+      "planning": "https://www.cityoflompoc.com/government/departments/economic-community-development/planning-division"
     },
     "San Jose": {
       "client": "sanjose",
@@ -236,12 +243,17 @@
       "meetings": "https://bakersfield.legistar.com/Calendar.aspx"
     },
     "Oxnard": {
-      "meetings": "https://www.oxnard.gov/city-clerks-office/meeting-agendas"
+      "meetings": "https://www.oxnard.gov/city-clerks-office/meeting-agendas",
+      "boards": "https://www.oxnard.gov/community-development/planning-environmental-services/planning-commission",
+      "boardName": "Planning Commission",
+      "planning": "https://www.oxnard.gov/community-development/planning-environmental-services"
     },
     "San Luis Obispo": {
       "planning": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
       "boards": "https://www.slocity.org/government/advisory-bodies/agendas-and-minutes/planning-commission",
-      "meetings": "https://pub-slocity.escribemeetings.com/"
+      "meetings": "https://pub-slocity.escribemeetings.com/",
+      "boardName": "Planning Commission",
+      "projects": "https://www.slocity.org/government/department-directory/community-development/planning-building-logs"
     },
     "Pismo Beach": {
       "planning": "https://pismobeach.org/70/Planning",
@@ -253,12 +265,15 @@
     },
     "Solvang": {
       "boards": "https://www.cityofsolvang.com/202/Planning-Commission",
-      "meetings": "https://cityofsolvang.com/593/2026-to-Current-Agenda-Minutes"
+      "meetings": "https://cityofsolvang.com/593/2026-to-Current-Agenda-Minutes",
+      "planning": "https://cityofsolvang.com/155/Community-Development-Department"
     },
     "San Buenaventura (Ventura)": {
       "planning": "https://www.cityofventura.ca.gov/432/Planning",
       "meetings": "https://www.cityofventura.ca.gov/agendacenter/Planning-Commission-19",
-      "projects": "https://map.cityofventura.net/docs/projects/listproj.htm"
+      "projects": "https://map.cityofventura.net/docs/projects/listproj.htm",
+      "boardName": "Planning Commission",
+      "boards": "https://www.cityofventura.ca.gov/agendacenter/Planning-Commission-19"
     },
     "Calabasas": {
       "meetings": "https://www.cityofcalabasas.com/government/meeting-agendas"
@@ -451,6 +466,15 @@
     },
     "Signal Hill": {
       "client": "cityofsignalhill"
+    },
+    "Grover Beach": {
+      "boards": "https://www.grover.org/72/Planning-Commission",
+      "boardName": "Planning Commission",
+      "meetings": "https://www.groverbeach.org/160/Agendas-Staff-Reports-Minutes",
+      "planning": "https://www.groverbeach.org/21/Community-Development"
+    },
+    "Arroyo Grande": {
+      "planning": "https://www.arroyogrande.org/132/Community-Development"
     }
   },
   "transportation": [
