@@ -3382,5 +3382,821 @@
     "Chúng tôi sẽ ghép địa chỉ bạn nhập với các dự án gần nhất. Để ghim chính xác, chọn “Dùng vị trí hiện tại của tôi”.",
     "سنطابق العنوان المدخل مع أقرب المشاريع المعروفة. لتحديد الموقع بدقة، اختر «استخدم موقعي الحالي».",
     "हम दर्ज पते के सबसे पास की ज्ञात परियोजनाएँ दिखाएँगे। सटीक स्थान के लिए “मेरी वर्तमान स्थिति का उपयोग करें” चुनें।"
+  ],
+  "Can the city still say no?": [
+    "¿Todavía puede la ciudad decir que no?",
+    "市政府还能否决吗？",
+    "Maaari pa bang tumanggi ang lungsod?",
+    "Thành phố còn có thể từ chối không?",
+    "هل ما زال بإمكان المدينة الرفض؟",
+    "क्या शहर अब भी मना कर सकता है?"
+  ],
+  "CAN THE CITY STILL SAY NO?": [
+    "¿Todavía puede la ciudad decir que no?",
+    "市政府还能否决吗？",
+    "Maaari pa bang tumanggi ang lungsod?",
+    "Thành phố còn có thể từ chối không?",
+    "هل ما زال بإمكان المدينة الرفض؟",
+    "क्या शहर अब भी मना कर सकता है?"
+  ],
+  "City discretion:": [
+    "Margen de decisión municipal:",
+    "市政府裁量权：",
+    "Kapangyarihang magpasya ng lungsod:",
+    "Quyền quyết định của thành phố:",
+    "سلطة المدينة التقديرية:",
+    "शहर का निर्णय अधिकार:"
+  ],
+  "CITY DISCRETION:": [
+    "Margen de decisión municipal:",
+    "市政府裁量权：",
+    "Kapangyarihang magpasya ng lungsod:",
+    "Quyền quyết định của thành phố:",
+    "سلطة المدينة التقديرية:",
+    "शहर का निर्णय अधिकार:"
+  ],
+  "Streamlined or limited": [
+    "Agilizado o limitado",
+    "简化或受限",
+    "Pinadali o limitado",
+    "Rút gọn hoặc hạn chế",
+    "مسار مبسّط أو محدود",
+    "सरलीकृत या सीमित"
+  ],
+  "STREAMLINED OR LIMITED": [
+    "Agilizado o limitado",
+    "简化或受限",
+    "Pinadali o limitado",
+    "Rút gọn hoặc hạn chế",
+    "مسار مبسّط أو محدود",
+    "सरलीकृत या सीमित"
+  ],
+  "Ministerial": [
+    "Reglado",
+    "依客观标准审批",
+    "Batay sa mga obhetibong pamantayan",
+    "Phê duyệt theo tiêu chuẩn khách quan",
+    "مراجعة وفق معايير موضوعية",
+    "वस्तुनिष्ठ मानकों के आधार पर मंज़ूरी"
+  ],
+  "MINISTERIAL": [
+    "Reglado",
+    "依客观标准审批",
+    "Batay sa mga obhetibong pamantayan",
+    "Phê duyệt theo tiêu chuẩn khách quan",
+    "مراجعة وفق معايير موضوعية",
+    "वस्तुनिष्ठ मानकों के आधार पर मंज़ूरी"
+  ],
+  "Discretionary": [
+    "Discrecional",
+    "酌情审批",
+    "May pagpapasya ang lungsod",
+    "Có quyền cân nhắc",
+    "تقديري",
+    "विवेकाधीन"
+  ],
+  "DISCRETIONARY": [
+    "Discrecional",
+    "酌情审批",
+    "May pagpapasya ang lungsod",
+    "Có quyền cân nhắc",
+    "تقديري",
+    "विवेकाधीन"
+  ],
+  "Not established": [
+    "Sin determinar",
+    "尚未确认",
+    "Hindi pa natitiyak",
+    "Chưa xác định",
+    "غير محدد",
+    "स्थापित नहीं"
+  ],
+  "NOT ESTABLISHED": [
+    "Sin determinar",
+    "尚未确认",
+    "Hindi pa natitiyak",
+    "Chưa xác định",
+    "غير محدد",
+    "स्थापित नहीं"
+  ],
+  "Last checked": [
+    "Última comprobación",
+    "上次核查",
+    "Huling sinuri",
+    "Kiểm tra lần cuối",
+    "آخر تحقق",
+    "अंतिम जाँच"
+  ],
+  "LAST CHECKED": [
+    "Última comprobación",
+    "上次核查",
+    "Huling sinuri",
+    "Kiểm tra lần cuối",
+    "آخر تحقق",
+    "अंतिम जाँच"
+  ],
+  "Source check date not recorded": [
+    "Fecha de comprobación no registrada",
+    "来源核查日期未记录",
+    "Walang naitalang petsa ng pagsusuri",
+    "Chưa ghi nhận ngày kiểm tra nguồn",
+    "تاريخ التحقق من المصدر غير مسجل",
+    "स्रोत की जाँच की तारीख दर्ज नहीं है"
+  ],
+  "SOURCE CHECK DATE NOT RECORDED": [
+    "Fecha de comprobación no registrada",
+    "来源核查日期未记录",
+    "Walang naitalang petsa ng pagsusuri",
+    "Chưa ghi nhận ngày kiểm tra nguồn",
+    "تاريخ التحقق من المصدر غير مسجل",
+    "स्रोत की जाँच की तारीख दर्ज नहीं है"
+  ],
+  "Project timeline": [
+    "Cronología del proyecto",
+    "项目时间线",
+    "Timeline ng proyekto",
+    "Tiến trình dự án",
+    "التسلسل الزمني للمشروع",
+    "परियोजना की समयरेखा"
+  ],
+  "PROJECT TIMELINE": [
+    "Cronología del proyecto",
+    "项目时间线",
+    "Timeline ng proyekto",
+    "Tiến trình dự án",
+    "التسلسل الزمني للمشروع",
+    "परियोजना की समयरेखा"
+  ],
+  "Approval steps and dated records": [
+    "Pasos de aprobación y registros fechados",
+    "审批步骤和有日期的记录",
+    "Mga hakbang sa pag-apruba at may petsang rekord",
+    "Các bước phê duyệt và hồ sơ có ngày",
+    "خطوات الموافقة والسجلات المؤرخة",
+    "मंज़ूरी के चरण और दिनांकित रिकॉर्ड"
+  ],
+  "APPROVAL STEPS AND DATED RECORDS": [
+    "Pasos de aprobación y registros fechados",
+    "审批步骤和有日期的记录",
+    "Mga hakbang sa pag-apruba at may petsang rekord",
+    "Các bước phê duyệt và hồ sơ có ngày",
+    "خطوات الموافقة والسجلات المؤرخة",
+    "मंज़ूरी के चरण और दिनांकित रिकॉर्ड"
+  ],
+  "Preliminary application": [
+    "Solicitud preliminar",
+    "初步申请",
+    "Paunang aplikasyon",
+    "Hồ sơ sơ bộ",
+    "طلب أولي",
+    "प्रारंभिक आवेदन"
+  ],
+  "PRELIMINARY APPLICATION": [
+    "Solicitud preliminar",
+    "初步申请",
+    "Paunang aplikasyon",
+    "Hồ sơ sơ bộ",
+    "طلب أولي",
+    "प्रारंभिक आवेदन"
+  ],
+  "Application complete": [
+    "Solicitud completa",
+    "申请材料齐全",
+    "Kumpleto ang aplikasyon",
+    "Hồ sơ đầy đủ",
+    "الطلب مكتمل",
+    "आवेदन पूर्ण"
+  ],
+  "APPLICATION COMPLETE": [
+    "Solicitud completa",
+    "申请材料齐全",
+    "Kumpleto ang aplikasyon",
+    "Hồ sơ đầy đủ",
+    "الطلب مكتمل",
+    "आवेदन पूर्ण"
+  ],
+  "Appeal window": [
+    "Plazo de apelación",
+    "申诉期",
+    "Panahon para umapela",
+    "Thời hạn kháng nghị",
+    "مهلة الطعن",
+    "अपील की अवधि"
+  ],
+  "APPEAL WINDOW": [
+    "Plazo de apelación",
+    "申诉期",
+    "Panahon para umapela",
+    "Thời hạn kháng nghị",
+    "مهلة الطعن",
+    "अपील की अवधि"
+  ],
+  "Building permit": [
+    "Permiso de construcción",
+    "施工许可",
+    "Permiso sa pagtatayo",
+    "Giấy phép xây dựng",
+    "رخصة بناء",
+    "निर्माण परमिट"
+  ],
+  "BUILDING PERMIT": [
+    "Permiso de construcción",
+    "施工许可",
+    "Permiso sa pagtatayo",
+    "Giấy phép xây dựng",
+    "رخصة بناء",
+    "निर्माण परमिट"
+  ],
+  "Construction": [
+    "Construcción",
+    "施工",
+    "Pagtatayo",
+    "Thi công",
+    "البناء",
+    "निर्माण"
+  ],
+  "CONSTRUCTION": [
+    "Construcción",
+    "施工",
+    "Pagtatayo",
+    "Thi công",
+    "البناء",
+    "निर्माण"
+  ],
+  "Not documented in the connected records.": [
+    "No consta en los registros enlazados.",
+    "所关联记录中没有记载。",
+    "Walang dokumento sa mga nakakonektang rekord.",
+    "Chưa được ghi trong các hồ sơ liên kết.",
+    "غير موثق في السجلات المرتبطة.",
+    "जुड़े रिकॉर्ड में दर्ज नहीं है।"
+  ],
+  "NOT DOCUMENTED IN THE CONNECTED RECORDS.": [
+    "No consta en los registros enlazados.",
+    "所关联记录中没有记载。",
+    "Walang dokumento sa mga nakakonektang rekord.",
+    "Chưa được ghi trong các hồ sơ liên kết.",
+    "غير موثق في السجلات المرتبطة.",
+    "जुड़े रिकॉर्ड में दर्ज नहीं है।"
+  ],
+  "How to participate": [
+    "Cómo participar",
+    "如何参与",
+    "Paano makilahok",
+    "Cách tham gia",
+    "كيفية المشاركة",
+    "भाग कैसे लें"
+  ],
+  "HOW TO PARTICIPATE": [
+    "Cómo participar",
+    "如何参与",
+    "Paano makilahok",
+    "Cách tham gia",
+    "كيفية المشاركة",
+    "भाग कैसे लें"
+  ],
+  "Next hearing": [
+    "Próxima audiencia",
+    "下次听证会",
+    "Susunod na pagdinig",
+    "Phiên điều trần tiếp theo",
+    "الجلسة القادمة",
+    "अगली सुनवाई"
+  ],
+  "NEXT HEARING": [
+    "Próxima audiencia",
+    "下次听证会",
+    "Susunod na pagdinig",
+    "Phiên điều trần tiếp theo",
+    "الجلسة القادمة",
+    "अगली सुनवाई"
+  ],
+  "Ways to speak": [
+    "Formas de intervenir",
+    "发言方式",
+    "Mga paraan ng pagsasalita",
+    "Cách phát biểu",
+    "طرق المشاركة بالكلام",
+    "बोलने के तरीके"
+  ],
+  "WAYS TO SPEAK": [
+    "Formas de intervenir",
+    "发言方式",
+    "Mga paraan ng pagsasalita",
+    "Cách phát biểu",
+    "طرق المشاركة بالكلام",
+    "बोलने के तरीके"
+  ],
+  "Written comments": [
+    "Comentarios escritos",
+    "书面意见",
+    "Nakasulat na komento",
+    "Ý kiến bằng văn bản",
+    "تعليقات مكتوبة",
+    "लिखित टिप्पणियाँ"
+  ],
+  "WRITTEN COMMENTS": [
+    "Comentarios escritos",
+    "书面意见",
+    "Nakasulat na komento",
+    "Ý kiến bằng văn bản",
+    "تعليقات مكتوبة",
+    "लिखित टिप्पणियाँ"
+  ],
+  "Speaking time": [
+    "Tiempo para hablar",
+    "发言时长",
+    "Oras ng pagsasalita",
+    "Thời lượng phát biểu",
+    "مدة الكلام",
+    "बोलने का समय"
+  ],
+  "SPEAKING TIME": [
+    "Tiempo para hablar",
+    "发言时长",
+    "Oras ng pagsasalita",
+    "Thời lượng phát biểu",
+    "مدة الكلام",
+    "बोलने का समय"
+  ],
+  "Participation source": [
+    "Fuente de las instrucciones",
+    "参与说明来源",
+    "Pinagmulan ng mga tagubilin",
+    "Nguồn hướng dẫn tham gia",
+    "مصدر تعليمات المشاركة",
+    "भागीदारी निर्देशों का स्रोत"
+  ],
+  "PARTICIPATION SOURCE": [
+    "Fuente de las instrucciones",
+    "参与说明来源",
+    "Pinagmulan ng mga tagubilin",
+    "Nguồn hướng dẫn tham gia",
+    "مصدر تعليمات المشاركة",
+    "भागीदारी निर्देशों का स्रोत"
+  ],
+  "No upcoming hearing for this project is verified here. Check the official calendar.": [
+    "No hay una próxima audiencia verificada para este proyecto. Consulta el calendario oficial.",
+    "此处尚未核实本项目即将举行的听证会。请查看官方日历。",
+    "Walang beripikadong paparating na pagdinig para sa proyektong ito. Tingnan ang opisyal na kalendaryo.",
+    "Chưa xác minh phiên điều trần sắp tới cho dự án này. Hãy kiểm tra lịch chính thức.",
+    "لا توجد هنا جلسة قادمة موثقة لهذا المشروع. راجع التقويم الرسمي.",
+    "इस परियोजना की आगामी सुनवाई यहाँ सत्यापित नहीं है। आधिकारिक कैलेंडर देखें।"
+  ],
+  "NO UPCOMING HEARING FOR THIS PROJECT IS VERIFIED HERE. CHECK THE OFFICIAL CALENDAR.": [
+    "No hay una próxima audiencia verificada para este proyecto. Consulta el calendario oficial.",
+    "此处尚未核实本项目即将举行的听证会。请查看官方日历。",
+    "Walang beripikadong paparating na pagdinig para sa proyektong ito. Tingnan ang opisyal na kalendaryo.",
+    "Chưa xác minh phiên điều trần sắp tới cho dự án này. Hãy kiểm tra lịch chính thức.",
+    "لا توجد هنا جلسة قادمة موثقة لهذا المشروع. راجع التقويم الرسمي.",
+    "इस परियोजना की आगामी सुनवाई यहाँ सत्यापित नहीं है। आधिकारिक कैलेंडर देखें।"
+  ],
+  "No upcoming hearing for this project is verified here. check the official calendar.": [
+    "No hay una próxima audiencia verificada para este proyecto. Consulta el calendario oficial.",
+    "此处尚未核实本项目即将举行的听证会。请查看官方日历。",
+    "Walang beripikadong paparating na pagdinig para sa proyektong ito. Tingnan ang opisyal na kalendaryo.",
+    "Chưa xác minh phiên điều trần sắp tới cho dự án này. Hãy kiểm tra lịch chính thức.",
+    "لا توجد هنا جلسة قادمة موثقة لهذا المشروع. راجع التقويم الرسمي.",
+    "इस परियोजना की आगामी सुनवाई यहाँ सत्यापित नहीं है। आधिकारिक कैलेंडर देखें।"
+  ],
+  "Speaking format, comment email and speaking time are not yet verified for this project. The current agenda has the instructions.": [
+    "Aún no se han verificado el formato, el correo para comentarios ni el tiempo de intervención. Consulta las instrucciones de la agenda vigente.",
+    "本项目的发言方式、意见邮箱和发言时长尚未核实。请查看最新议程中的说明。",
+    "Hindi pa beripikado ang paraan ng pagsasalita, email para sa komento at oras ng pagsasalita. Nasa kasalukuyang agenda ang mga tagubilin.",
+    "Chưa xác minh hình thức phát biểu, email nhận ý kiến và thời lượng phát biểu. Hướng dẫn có trong chương trình họp hiện hành.",
+    "لم تُتحقق بعد طريقة المشاركة والبريد الإلكتروني للتعليقات ومدة الكلام لهذا المشروع. التعليمات في جدول الأعمال الحالي.",
+    "इस परियोजना के बोलने के तरीके, टिप्पणी ईमेल और बोलने की अवधि अभी सत्यापित नहीं हैं। वर्तमान कार्यसूची में निर्देश देखें।"
+  ],
+  "SPEAKING FORMAT, COMMENT EMAIL AND SPEAKING TIME ARE NOT YET VERIFIED FOR THIS PROJECT. THE CURRENT AGENDA HAS THE INSTRUCTIONS.": [
+    "Aún no se han verificado el formato, el correo para comentarios ni el tiempo de intervención. Consulta las instrucciones de la agenda vigente.",
+    "本项目的发言方式、意见邮箱和发言时长尚未核实。请查看最新议程中的说明。",
+    "Hindi pa beripikado ang paraan ng pagsasalita, email para sa komento at oras ng pagsasalita. Nasa kasalukuyang agenda ang mga tagubilin.",
+    "Chưa xác minh hình thức phát biểu, email nhận ý kiến và thời lượng phát biểu. Hướng dẫn có trong chương trình họp hiện hành.",
+    "لم تُتحقق بعد طريقة المشاركة والبريد الإلكتروني للتعليقات ومدة الكلام لهذا المشروع. التعليمات في جدول الأعمال الحالي.",
+    "इस परियोजना के बोलने के तरीके, टिप्पणी ईमेल और बोलने की अवधि अभी सत्यापित नहीं हैं। वर्तमान कार्यसूची में निर्देश देखें।"
+  ],
+  "Speaking format, comment email and speaking time are not yet verified for this project. the current agenda has the instructions.": [
+    "Aún no se han verificado el formato, el correo para comentarios ni el tiempo de intervención. Consulta las instrucciones de la agenda vigente.",
+    "本项目的发言方式、意见邮箱和发言时长尚未核实。请查看最新议程中的说明。",
+    "Hindi pa beripikado ang paraan ng pagsasalita, email para sa komento at oras ng pagsasalita. Nasa kasalukuyang agenda ang mga tagubilin.",
+    "Chưa xác minh hình thức phát biểu, email nhận ý kiến và thời lượng phát biểu. Hướng dẫn có trong chương trình họp hiện hành.",
+    "لم تُتحقق بعد طريقة المشاركة والبريد الإلكتروني للتعليقات ومدة الكلام لهذا المشروع. التعليمات في جدول الأعمال الحالي.",
+    "इस परियोजना के बोलने के तरीके, टिप्पणी ईमेल और बोलने की अवधि अभी सत्यापित नहीं हैं। वर्तमान कार्यसूची में निर्देश देखें।"
+  ],
+  "No verified open comment or appeal deadline is recorded. Do not assume that comments or appeals remain open.": [
+    "No consta un plazo abierto y verificado para comentarios o apelaciones. No supongas que sigue abierto.",
+    "尚未记录已核实且仍开放的意见或申诉截止期限。请勿假定仍可提交。",
+    "Walang naitalang beripikadong bukas na deadline para sa komento o apela. Huwag ipagpalagay na bukas pa ito.",
+    "Chưa ghi nhận thời hạn góp ý hoặc kháng nghị còn mở đã được xác minh. Đừng mặc định rằng vẫn còn hạn.",
+    "لا يوجد موعد نهائي موثق ومفتوح للتعليقات أو الطعون. لا تفترض أن التقديم ما زال متاحاً.",
+    "टिप्पणी या अपील की कोई सत्यापित खुली समय-सीमा दर्ज नहीं है। यह न मानें कि अभी भी अवसर खुला है।"
+  ],
+  "NO VERIFIED OPEN COMMENT OR APPEAL DEADLINE IS RECORDED. DO NOT ASSUME THAT COMMENTS OR APPEALS REMAIN OPEN.": [
+    "No consta un plazo abierto y verificado para comentarios o apelaciones. No supongas que sigue abierto.",
+    "尚未记录已核实且仍开放的意见或申诉截止期限。请勿假定仍可提交。",
+    "Walang naitalang beripikadong bukas na deadline para sa komento o apela. Huwag ipagpalagay na bukas pa ito.",
+    "Chưa ghi nhận thời hạn góp ý hoặc kháng nghị còn mở đã được xác minh. Đừng mặc định rằng vẫn còn hạn.",
+    "لا يوجد موعد نهائي موثق ومفتوح للتعليقات أو الطعون. لا تفترض أن التقديم ما زال متاحاً.",
+    "टिप्पणी या अपील की कोई सत्यापित खुली समय-सीमा दर्ज नहीं है। यह न मानें कि अभी भी अवसर खुला है।"
+  ],
+  "No verified open comment or appeal deadline is recorded. do not assume that comments or appeals remain open.": [
+    "No consta un plazo abierto y verificado para comentarios o apelaciones. No supongas que sigue abierto.",
+    "尚未记录已核实且仍开放的意见或申诉截止期限。请勿假定仍可提交。",
+    "Walang naitalang beripikadong bukas na deadline para sa komento o apela. Huwag ipagpalagay na bukas pa ito.",
+    "Chưa ghi nhận thời hạn góp ý hoặc kháng nghị còn mở đã được xác minh. Đừng mặc định rằng vẫn còn hạn.",
+    "لا يوجد موعد نهائي موثق ومفتوح للتعليقات أو الطعون. لا تفترض أن التقديم ما زال متاحاً.",
+    "टिप्पणी या अपील की कोई सत्यापित खुली समय-सीमा दर्ज नहीं है। यह न मानें कि अभी भी अवसर खुला है।"
+  ],
+  "Official meetings and agendas": [
+    "Reuniones y agendas oficiales",
+    "官方会议和议程",
+    "Mga opisyal na pulong at agenda",
+    "Cuộc họp và chương trình họp chính thức",
+    "الاجتماعات وجداول الأعمال الرسمية",
+    "आधिकारिक बैठकें और कार्यसूचियाँ"
+  ],
+  "OFFICIAL MEETINGS AND AGENDAS": [
+    "Reuniones y agendas oficiales",
+    "官方会议和议程",
+    "Mga opisyal na pulong at agenda",
+    "Cuộc họp và chương trình họp chính thức",
+    "الاجتماعات وجداول الأعمال الرسمية",
+    "आधिकारिक बैठकें और कार्यसूचियाँ"
+  ],
+  "Project source": [
+    "Fuente del proyecto",
+    "项目来源",
+    "Pinagmulan ng proyekto",
+    "Nguồn dự án",
+    "مصدر المشروع",
+    "परियोजना का स्रोत"
+  ],
+  "PROJECT SOURCE": [
+    "Fuente del proyecto",
+    "项目来源",
+    "Pinagmulan ng proyekto",
+    "Nguồn dự án",
+    "مصدر المشروع",
+    "परियोजना का स्रोत"
+  ],
+  "Freshness and fact sources": [
+    "Actualización y fuentes de los datos",
+    "时效性和事实来源",
+    "Pagiging napapanahon at mga pinagmulan",
+    "Độ cập nhật và nguồn thông tin",
+    "حداثة البيانات ومصادر الحقائق",
+    "जानकारी की नवीनता और तथ्य स्रोत"
+  ],
+  "FRESHNESS AND FACT SOURCES": [
+    "Actualización y fuentes de los datos",
+    "时效性和事实来源",
+    "Pagiging napapanahon at mga pinagmulan",
+    "Độ cập nhật và nguồn thông tin",
+    "حداثة البيانات ومصادر الحقائق",
+    "जानकारी की नवीनता और तथ्य स्रोत"
+  ],
+  "Sources disagree or have changed": [
+    "Las fuentes discrepan o han cambiado",
+    "来源存在分歧或已更新",
+    "Magkaiba o nagbago ang mga pinagmulan",
+    "Các nguồn khác nhau hoặc đã thay đổi",
+    "المصادر تختلف أو تغيرت",
+    "स्रोतों में अंतर है या वे बदल गए हैं"
+  ],
+  "SOURCES DISAGREE OR HAVE CHANGED": [
+    "Las fuentes discrepan o han cambiado",
+    "来源存在分歧或已更新",
+    "Magkaiba o nagbago ang mga pinagmulan",
+    "Các nguồn khác nhau hoặc đã thay đổi",
+    "المصادر تختلف أو تغيرت",
+    "स्रोतों में अंतर है या वे बदल गए हैं"
+  ],
+  "Keep track or correct a record": [
+    "Sigue el proyecto o corrige un registro",
+    "跟踪项目或纠正记录",
+    "Subaybayan o itama ang rekord",
+    "Theo dõi hoặc sửa hồ sơ",
+    "تابع المشروع أو صحح السجل",
+    "परियोजना पर नज़र रखें या रिकॉर्ड सुधारें"
+  ],
+  "KEEP TRACK OR CORRECT A RECORD": [
+    "Sigue el proyecto o corrige un registro",
+    "跟踪项目或纠正记录",
+    "Subaybayan o itama ang rekord",
+    "Theo dõi hoặc sửa hồ sơ",
+    "تابع المشروع أو صحح السجل",
+    "परियोजना पर नज़र रखें या रिकॉर्ड सुधारें"
+  ],
+  "Alert me when this project is on an agenda": [
+    "Avísame cuando este proyecto esté en una agenda",
+    "项目列入议程时提醒我",
+    "Abisuhan ako kapag nasa agenda ang proyektong ito",
+    "Báo cho tôi khi dự án có trong chương trình họp",
+    "أبلغني عند إدراج المشروع في جدول الأعمال",
+    "परियोजना कार्यसूची में आने पर सूचना दें"
+  ],
+  "ALERT ME WHEN THIS PROJECT IS ON AN AGENDA": [
+    "Avísame cuando este proyecto esté en una agenda",
+    "项目列入议程时提醒我",
+    "Abisuhan ako kapag nasa agenda ang proyektong ito",
+    "Báo cho tôi khi dự án có trong chương trình họp",
+    "أبلغني عند إدراج المشروع في جدول الأعمال",
+    "परियोजना कार्यसूची में आने पर सूचना दें"
+  ],
+  "Report an error": [
+    "Informar de un error",
+    "报告错误",
+    "Mag-ulat ng pagkakamali",
+    "Báo lỗi",
+    "الإبلاغ عن خطأ",
+    "गलती की सूचना दें"
+  ],
+  "REPORT AN ERROR": [
+    "Informar de un error",
+    "报告错误",
+    "Mag-ulat ng pagkakamali",
+    "Báo lỗi",
+    "الإبلاغ عن خطأ",
+    "गलती की सूचना दें"
+  ],
+  "What needs correcting?": [
+    "¿Qué hay que corregir?",
+    "哪些内容需要纠正？",
+    "Ano ang kailangang itama?",
+    "Cần sửa điều gì?",
+    "ما الذي يحتاج إلى تصحيح؟",
+    "क्या सुधारना है?"
+  ],
+  "WHAT NEEDS CORRECTING?": [
+    "¿Qué hay que corregir?",
+    "哪些内容需要纠正？",
+    "Ano ang kailangang itama?",
+    "Cần sửa điều gì?",
+    "ما الذي يحتاج إلى تصحيح؟",
+    "क्या सुधारना है?"
+  ],
+  "Send correction": [
+    "Enviar corrección",
+    "提交更正",
+    "Ipadala ang pagwawasto",
+    "Gửi thông tin sửa",
+    "إرسال التصحيح",
+    "सुधार भेजें"
+  ],
+  "SEND CORRECTION": [
+    "Enviar corrección",
+    "提交更正",
+    "Ipadala ang pagwawasto",
+    "Gửi thông tin sửa",
+    "إرسال التصحيح",
+    "सुधार भेजें"
+  ],
+  "Expired application": [
+    "Solicitud caducada",
+    "已过期申请",
+    "Nag-expire na aplikasyon",
+    "Hồ sơ hết hạn",
+    "طلب منتهي الصلاحية",
+    "समाप्त आवेदन"
+  ],
+  "EXPIRED APPLICATION": [
+    "Solicitud caducada",
+    "已过期申请",
+    "Nag-expire na aplikasyon",
+    "Hồ sơ hết hạn",
+    "طلب منتهي الصلاحية",
+    "समाप्त आवेदन"
+  ],
+  "Planning glossary": [
+    "Glosario de planificación",
+    "规划术语表",
+    "Talasalitaan sa pagpaplano",
+    "Thuật ngữ quy hoạch",
+    "مسرد التخطيط",
+    "नियोजन शब्दावली"
+  ],
+  "PLANNING GLOSSARY": [
+    "Glosario de planificación",
+    "规划术语表",
+    "Talasalitaan sa pagpaplano",
+    "Thuật ngữ quy hoạch",
+    "مسرد التخطيط",
+    "नियोजन शब्दावली"
+  ],
+  "Close glossary": [
+    "Cerrar glosario",
+    "关闭术语表",
+    "Isara ang talasalitaan",
+    "Đóng bảng thuật ngữ",
+    "إغلاق المسرد",
+    "शब्दावली बंद करें"
+  ],
+  "CLOSE GLOSSARY": [
+    "Cerrar glosario",
+    "关闭术语表",
+    "Isara ang talasalitaan",
+    "Đóng bảng thuật ngữ",
+    "إغلاق المسرد",
+    "शब्दावली बंद करें"
+  ],
+  "Projects on this map": [
+    "Proyectos de este mapa",
+    "此地图上的项目",
+    "Mga proyekto sa mapang ito",
+    "Dự án trên bản đồ này",
+    "المشاريع على هذه الخريطة",
+    "इस नक्शे पर परियोजनाएँ"
+  ],
+  "PROJECTS ON THIS MAP": [
+    "Proyectos de este mapa",
+    "此地图上的项目",
+    "Mga proyekto sa mapang ito",
+    "Dự án trên bản đồ này",
+    "المشاريع على هذه الخريطة",
+    "इस नक्शे पर परियोजनाएँ"
+  ],
+  "Previous map results": [
+    "Resultados anteriores del mapa",
+    "上一页地图结果",
+    "Mga nakaraang resulta sa mapa",
+    "Kết quả bản đồ trước",
+    "نتائج الخريطة السابقة",
+    "नक्शे के पिछले परिणाम"
+  ],
+  "PREVIOUS MAP RESULTS": [
+    "Resultados anteriores del mapa",
+    "上一页地图结果",
+    "Mga nakaraang resulta sa mapa",
+    "Kết quả bản đồ trước",
+    "نتائج الخريطة السابقة",
+    "नक्शे के पिछले परिणाम"
+  ],
+  "Next map results": [
+    "Resultados siguientes del mapa",
+    "下一页地图结果",
+    "Mga susunod na resulta sa mapa",
+    "Kết quả bản đồ tiếp theo",
+    "نتائج الخريطة التالية",
+    "नक्शे के अगले परिणाम"
+  ],
+  "NEXT MAP RESULTS": [
+    "Resultados siguientes del mapa",
+    "下一页地图结果",
+    "Mga susunod na resulta sa mapa",
+    "Kết quả bản đồ tiếp theo",
+    "نتائج الخريطة التالية",
+    "नक्शे के अगले परिणाम"
+  ],
+  "Partial project coverage": [
+    "Cobertura parcial de proyectos",
+    "项目覆盖不完整",
+    "Bahagyang saklaw ng proyekto",
+    "Phạm vi dự án chưa đầy đủ",
+    "تغطية جزئية للمشاريع",
+    "परियोजनाओं का आंशिक कवरेज"
+  ],
+  "PARTIAL PROJECT COVERAGE": [
+    "Cobertura parcial de proyectos",
+    "项目覆盖不完整",
+    "Bahagyang saklaw ng proyekto",
+    "Phạm vi dự án chưa đầy đủ",
+    "تغطية جزئية للمشاريع",
+    "परियोजनाओं का आंशिक कवरेज"
+  ],
+  "Resources and meetings only": [
+    "Solo recursos y reuniones",
+    "仅资源和会议",
+    "Mga sanggunian at pulong lamang",
+    "Chỉ có tài nguyên và cuộc họp",
+    "موارد واجتماعات فقط",
+    "केवल संसाधन और बैठकें"
+  ],
+  "RESOURCES AND MEETINGS ONLY": [
+    "Solo recursos y reuniones",
+    "仅资源和会议",
+    "Mga sanggunian at pulong lamang",
+    "Chỉ có tài nguyên và cuộc họp",
+    "موارد واجتماعات فقط",
+    "केवल संसाधन और बैठकें"
+  ],
+  "Public comment deadline in {count} days; confirm the cutoff time": [
+    "Plazo de comentarios en {count} días; confirma la hora límite",
+    "公众意见截止日期还有 {count} 天；请确认具体时间",
+    "Deadline ng komento sa loob ng {count} araw; kumpirmahin ang oras",
+    "Hạn góp ý còn {count} ngày; hãy xác nhận giờ chót",
+    "الموعد النهائي للتعليقات بعد {count} أيام؛ تأكد من الساعة",
+    "टिप्पणी की अंतिम तारीख में {count} दिन; समय की पुष्टि करें"
+  ],
+  "Public comment deadline in {count} day; confirm the cutoff time": [
+    "Plazo de comentarios en {count} día; confirma la hora límite",
+    "公众意见截止日期还有 {count} 天；请确认具体时间",
+    "Deadline ng komento sa loob ng {count} araw; kumpirmahin ang oras",
+    "Hạn góp ý còn {count} ngày; hãy xác nhận giờ chót",
+    "الموعد النهائي للتعليقات بعد {count} يوم؛ تأكد من الساعة",
+    "टिप्पणी की अंतिम तारीख में {count} दिन; समय की पुष्टि करें"
+  ],
+  "Public comment closes in {count} days": [
+    "Los comentarios cierran en {count} días",
+    "公众意见提交将在 {count} 天后截止",
+    "Magsasara ang komento sa loob ng {count} araw",
+    "Góp ý sẽ kết thúc sau {count} ngày",
+    "تُغلق التعليقات بعد {count} أيام",
+    "टिप्पणियाँ {count} दिन में बंद होंगी"
+  ],
+  "Appeal window deadline in {count} days; confirm the cutoff time": [
+    "Plazo de apelación en {count} días; confirma la hora límite",
+    "申诉截止日期还有 {count} 天；请确认具体时间",
+    "Deadline ng apela sa loob ng {count} araw; kumpirmahin ang oras",
+    "Hạn kháng nghị còn {count} ngày; hãy xác nhận giờ chót",
+    "الموعد النهائي للطعن بعد {count} أيام؛ تأكد من الساعة",
+    "अपील की अंतिम तारीख में {count} दिन; समय की पुष्टि करें"
+  ],
+  "Public comment deadline passed": [
+    "El plazo de comentarios ya pasó",
+    "公众意见截止日期已过",
+    "Lumipas na ang deadline ng komento",
+    "Đã hết hạn góp ý",
+    "انقضى الموعد النهائي للتعليقات",
+    "टिप्पणी की समय-सीमा समाप्त हो गई है"
+  ],
+  "Public comment deadline is today; confirm the cutoff time": [
+    "El plazo de comentarios vence hoy; confirma la hora límite",
+    "公众意见今日截止；请确认具体时间",
+    "Ngayong araw ang deadline ng komento; kumpirmahin ang oras",
+    "Hôm nay hết hạn góp ý; hãy xác nhận giờ chót",
+    "ينتهي موعد التعليقات اليوم؛ تأكد من الساعة",
+    "टिप्पणी की अंतिम तारीख आज है; समय की पुष्टि करें"
+  ],
+  "How to submit": [
+    "Cómo enviar",
+    "如何提交",
+    "Paano magsumite",
+    "Cách gửi",
+    "كيفية التقديم",
+    "जमा कैसे करें"
+  ],
+  "Read the original notice": [
+    "Lee el aviso original",
+    "阅读原始通知",
+    "Basahin ang orihinal na abiso",
+    "Đọc thông báo gốc",
+    "اقرأ الإشعار الأصلي",
+    "मूल सूचना पढ़ें"
+  ],
+  "Deadline source": [
+    "Fuente del plazo",
+    "截止日期来源",
+    "Pinagmulan ng deadline",
+    "Nguồn thời hạn",
+    "مصدر الموعد النهائي",
+    "समय-सीमा का स्रोत"
+  ],
+  "Lead agency contact": [
+    "Contacto de la agencia responsable",
+    "主管机构联系方式",
+    "Kontak ng pangunahing ahensiya",
+    "Liên hệ cơ quan chủ trì",
+    "جهة الاتصال بالهيئة المسؤولة",
+    "प्रमुख एजेंसी का संपर्क"
+  ],
+  "Open project details": [
+    "Abrir detalles del proyecto",
+    "打开项目详情",
+    "Buksan ang detalye ng proyekto",
+    "Mở chi tiết dự án",
+    "افتح تفاصيل المشروع",
+    "परियोजना विवरण खोलें"
+  ],
+  "The linked records do not establish how much discretion the city has. Ask the planning department which approval process applies.": [
+    "Los registros enlazados no permiten determinar el margen de decisión de la ciudad. Pregunta al departamento de planificación qué proceso se aplica.",
+    "所关联记录尚不能确定市政府的裁量范围。请向规划部门询问适用的审批程序。",
+    "Hindi natutukoy sa mga naka-link na rekord ang kapangyarihang magpasya ng lungsod. Itanong sa tanggapan ng pagpaplano kung anong proseso ang naaangkop.",
+    "Các hồ sơ liên kết chưa xác định quyền cân nhắc của thành phố. Hãy hỏi phòng quy hoạch về quy trình áp dụng.",
+    "لا تحدد السجلات المرتبطة مدى السلطة التقديرية للمدينة. اسأل إدارة التخطيط عن مسار الموافقة المطبق.",
+    "जुड़े रिकॉर्ड से शहर का निर्णय अधिकार तय नहीं होता। नियोजन विभाग से पूछें कि कौन-सी मंज़ूरी प्रक्रिया लागू है।"
+  ],
+  "General information, not legal advice. Eligibility and legal rights require the actual application and current law.": [
+    "Información general, no asesoramiento jurídico. La elegibilidad y los derechos dependen de la solicitud concreta y la ley vigente.",
+    "本页为一般信息，不是法律意见。资格和法律权利需结合实际申请及现行法律判断。",
+    "Pangkalahatang impormasyon, hindi payong legal. Nakabatay ang pagiging karapat-dapat at mga karapatan sa aktuwal na aplikasyon at kasalukuyang batas.",
+    "Thông tin chung, không phải tư vấn pháp lý. Điều kiện và quyền pháp lý phụ thuộc hồ sơ thực tế và luật hiện hành.",
+    "معلومات عامة وليست مشورة قانونية. تتطلب الأهلية والحقوق القانونية مراجعة الطلب الفعلي والقانون الحالي.",
+    "यह सामान्य जानकारी है, कानूनी सलाह नहीं। पात्रता और कानूनी अधिकार वास्तविक आवेदन और वर्तमान कानून पर निर्भर हैं।"
+  ],
+  "No live agenda feed is connected for this city. Automatic hearing alerts cannot detect its project hearings yet. Use the official calendar.": [
+    "Esta ciudad no tiene una fuente de agendas en directo conectada. Las alertas automáticas aún no pueden detectar sus audiencias. Consulta el calendario oficial.",
+    "此城市尚未接入实时议程。自动提醒暂时无法检测其项目听证会，请使用官方日历。",
+    "Walang nakakonektang live na agenda feed para sa lungsod na ito. Hindi pa matukoy ng awtomatikong alerto ang mga pagdinig nito. Gamitin ang opisyal na kalendaryo.",
+    "Thành phố này chưa có nguồn chương trình họp trực tiếp. Cảnh báo tự động chưa thể phát hiện các phiên điều trần. Hãy dùng lịch chính thức.",
+    "لا تتوفر لهذه المدينة تغذية مباشرة لجداول الأعمال. لا تستطيع التنبيهات الآلية رصد جلسات مشاريعها بعد. استخدم التقويم الرسمي.",
+    "इस शहर की लाइव कार्यसूची फ़ीड जुड़ी नहीं है। स्वचालित सूचनाएँ अभी इसकी परियोजना सुनवाइयाँ नहीं खोज सकतीं। आधिकारिक कैलेंडर देखें।"
+  ],
+  "CEQAnet publishes a public-review end date for this filing. Open the notice for submission instructions and the exact cutoff time. No speaking time or hearing is implied.": [
+    "CEQAnet publica la fecha final de revisión pública de este expediente. Consulta el aviso para saber cómo enviar comentarios y la hora exacta. Esto no implica una audiencia ni un tiempo para hablar.",
+    "CEQAnet公布了此文件的公众审阅截止日期。请打开通知查看提交方式和确切截止时间。这不代表已安排听证会或发言时间。",
+    "Inilathala ng CEQAnet ang pagtatapos ng pampublikong pagsusuri. Buksan ang abiso para sa paraan ng pagsusumite at eksaktong oras. Hindi nito ipinahihiwatig na may pagdinig o oras ng pagsasalita.",
+    "CEQAnet công bố ngày kết thúc xem xét công khai của hồ sơ này. Mở thông báo để xem cách gửi và giờ chót. Điều này không có nghĩa đã có phiên điều trần hay thời lượng phát biểu.",
+    "ينشر CEQAnet تاريخ انتهاء المراجعة العامة لهذا الملف. افتح الإشعار لمعرفة طريقة التقديم والوقت المحدد. لا يعني ذلك وجود جلسة أو مدة للكلام.",
+    "CEQAnet ने इस फ़ाइल की सार्वजनिक समीक्षा की अंतिम तारीख प्रकाशित की है। जमा करने के निर्देश और सटीक समय के लिए सूचना खोलें। इससे सुनवाई या बोलने का समय तय नहीं होता।"
   ]
 }

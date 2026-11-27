@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-27",
+  "scope": "Local private browser context, desktop 1280x900 and mobile 390x844. Automated checks only.",
+  "manualAssistiveTechnologyTests": "VoiceOver Mac/iPhone and NVDA Windows pending",
+  "lighthouse": [
+    {
+      "name": "First visit setup",
+      "score": 1,
+      "failed": []
+    },
+    {
+      "name": "Lodge map and mirrored list",
+      "score": 1,
+      "failed": []
+    },
+    {
+      "name": "Lodge project participation",
+      "score": 1,
+      "failed": []
+    },
+    {
+      "name": "Scofield source disagreement",
+      "score": 1,
+      "failed": []
+    },
+    {
+      "name": "Mobile participation, 390px",
+      "score": 1,
+      "failed": []
+    }
+  ],
+  "axe": [
+    {
+      "name": "First visit setup",
+      "violations": []
+    },
+    {
+      "name": "Lodge map and mirrored list",
+      "violations": []
+    },
+    {
+      "name": "Lodge project participation",
+      "violations": []
+    },
+    {
+      "name": "Scofield source disagreement",
+      "violations": []
+    },
+    {
+      "name": "Mobile participation, 390px",
+      "violations": []
+    }
+  ]
+}

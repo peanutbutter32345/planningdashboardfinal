@@ -78,7 +78,7 @@ for p in profiles['profiles']:
             'lastNote':display['summary'], 'fileNo':r['sch'],
             'flag':('This filing lists multiple jurisdictions, including '+p['name']+'. It is not a project confined to this city. ' if len(r.get('cities',[]))>1 or len(r.get('counties',[]))>1 else 'CEQAnet lists '+p['name']+' as the locality; this can include nearby unincorporated areas. ')+ 'Environmental filing, not a construction status or a separate count of homes.', 'sourceUrl':r['source'],
             'geographicScope':'Multiple jurisdictions' if len(r.get('cities',[]))>1 or len(r.get('counties',[]))>1 else 'Source-listed locality',
-            'sourceType':'ceqanet', 'sourceLabel':'California CEQAnet', 'locationSource':'Published CEQAnet coordinates screened against locality boundary' if point else 'No verified project coordinates'})
+            'sourceType':'ceqanet', 'sourceLabel':'California CEQAnet', 'publicReviewEnd':r.get('publicReviewEnd'), 'stateReviewEnd':r.get('stateReviewEnd'), 'deadlines':([{'kind':'comment','at':r['publicReviewEnd'],'sourceUrl':r['source'],'submitUrl':r['source'],'note':'Public review end date from CEQAnet. Confirm the cutoff time and submission instructions in the notice.'}] if r.get('publicReviewEnd') else []), 'locationSource':'Published CEQAnet coordinates screened against locality boundary' if point else 'No verified project coordinates'})
     rows.sort(key=lambda r:(r.get('lastDate') or ''), reverse=True)
     # Existing project templates accept HTML-ready strings. Imported documents are data.
     for row in rows:

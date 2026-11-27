@@ -75,6 +75,7 @@
   const name=field||'units';
   const largest=new Map();
   for(const record of (records||[])){
+   if(record?.stage==='inactive')continue;
    const value=Number(record&&record[name]);
    if(!isFinite(value)||value<=0)continue;
    // The server tags records with `city`; the All Cities aggregate uses `_sourceCity`; a single

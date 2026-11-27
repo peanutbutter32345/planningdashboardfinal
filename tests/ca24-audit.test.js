@@ -119,7 +119,7 @@ print(json.dumps([point,published_point('34°99\\\'0"N 119°0\\\'0"W'),published
 
 test('zoning ignores stale responses and keeps requests inside the API viewport limit',async()=>{
  const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
- const code=html.slice(html.indexOf('async function loadTopicZoning('),html.indexOf('function renderTopicMap('));
+ const code=html.slice(html.indexOf('async function loadTopicZoning('),html.indexOf('async function renderTopicMap('));
  let bounds=[-119.8,34.3,-119.6,34.5],zoom=12,painted=0;
  const requests=[];
  const m={zoningCity:'testcity',zoningToggle:{checked:true},zoningStatus:{textContent:''},zoning:{clearLayers(){}},map:{getBounds:()=>({getWest:()=>bounds[0],getSouth:()=>bounds[1],getEast:()=>bounds[2],getNorth:()=>bounds[3]}),getZoom:()=>zoom,setZoom:z=>{zoom=z;}}};

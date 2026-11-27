@@ -7,6 +7,10 @@ export const STORAGE_KEY = 'civic-dashboard-language';
 const CODES = LANGUAGES.map(([code]) => code);
 const ATTRIBUTES = ['placeholder', 'aria-label', 'title'];
 const TEMPLATES = [
+  [/^Public comment deadline in ([\d,]+) days; confirm the cutoff time$/, 'Public comment deadline in {count} days; confirm the cutoff time', 'count'],
+  [/^Public comment deadline in ([\d,]+) day; confirm the cutoff time$/, 'Public comment deadline in {count} day; confirm the cutoff time', 'count'],
+  [/^Public comment closes in ([\d,]+) days$/, 'Public comment closes in {count} days', 'count'],
+  [/^Appeal window deadline in ([\d,]+) days; confirm the cutoff time$/, 'Appeal window deadline in {count} days; confirm the cutoff time', 'count'],
   [/^Selected: (.+)$/, 'Selected: {city}', 'city'],
   [/^Ready to explore (.+)\. Your choices are remembered on this device\.$/, 'Ready to explore {city}. Your choices are remembered on this device.', 'city'],
   [/^Load (.+) project records$/, 'Load {city} project records', 'city'],

@@ -25,6 +25,9 @@
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
-    "pg-mem": "^3.0.14"
+    "axe-core": "^4.14.1",
+    "lighthouse": "^13.6.0",
+    "pg-mem": "^3.0.14",
+    "puppeteer-core": "^25.19.0"
   }
 }
