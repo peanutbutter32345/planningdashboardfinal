@@ -17,6 +17,8 @@ import { BOARDS } from './data/boards.js';
 import { CITY_LABELS, cityLabel } from './digest.js';
 import { getHearings, getRecentMeetings } from './hearings.js';
 import { registerCalDashboard } from './cal-dashboard.js';
+import {initCivicFeatures,registerCivicFeatures} from './civic-features.js';
+import './public/project-evidence.js';
 
 dotenv.config();
 const { EMAILS_PAUSED, EMAIL_PAUSE_MESSAGE, sendEmail } = await import('./email-delivery.js');
@@ -273,6 +275,7 @@ async function initDb() {
   // Optional content management must not prevent account registration from starting.
   try { await initSiteContent(pool); }
   catch (err) { console.error('Advisor/media storage unavailable:', err.message); }
+  try { await initCivicFeatures(pool); } catch (err) { console.error('Project feedback/alerts storage unavailable:',err.message); }
   console.log('Database tables ready.');
   await purgeExpiredSessions();
 }
@@ -1042,7 +1045,10 @@ function compactProject(p={}) {
   const out = {
     address: p.addr || p.address || p.name, type: p.type, stage: p.stage, units: p.units, affordable_units: p.bmr,
     file_number: p.fileNo || p.fileNumber, applicant: p.applicant, last_update: p.lastDate,
-    description: clip(p.desc || p.description, 260), latest_note: clip(p.lastNote, 220), caveat: clip(p.flag, 180)
+    description: clip(p.desc || p.description, 260), latest_note: clip(p.lastNote, 220), caveat: clip(p.flag, 180),
+    checked_at:globalThis.PROJECT_EVIDENCE?.[p.id]?.checkedAt||p.lastChecked||null,
+    city_discretion:globalThis.ProjectCivic.profile(p).explanation,
+    source_conflicts:globalThis.PROJECT_EVIDENCE?.[p.id]?.conflicts||[]
   };
   for (const k of Object.keys(out)) if (out[k] === null || out[k] === undefined || out[k] === '') delete out[k];
   return out;
@@ -1060,6 +1066,8 @@ const outputSchema = {
     resource_ids:{type:'array',items:{type:'string'},maxItems:8}
   }
 };
+
+app.get('/api/map-config',(_req,res)=>{res.set('Cache-Control','no-store');res.json({googleKey:process.env.GOOGLE_MAPS_API_KEY||''});});
 
 app.get('/api/health', async (_req,res) => {
   let provider = LLM_BASE_URL; try { provider = new URL(LLM_BASE_URL).host; } catch {}
@@ -1117,19 +1125,20 @@ app.post('/api/ask', async (req, res) => {
     if (!askAllowed(clientIp(req))) {
       return res.status(429).json({error:'That is a lot of questions in a short time. Wait a few minutes and ask again.'});
     }
-    const candidateSources = rankSources(question, cityLabel).slice(0, 10);
-    const candidateProjects = rankProjects(question, context.projects || []).slice(0, 12).map(compactProject);
+    const cityKey=Object.hasOwn(CITY_LABELS,String(context.cityKey||''))?String(context.cityKey):Object.entries(CITY_LABELS).find(([,label])=>label===cityLabel)?.[0];
+    // The browser chooses a place, but cannot supply authoritative facts or citation URLs.
+    const storedProjects=rankProjects(question,PROJECTS.filter(p=>!cityKey||p.city===cityKey||(cityKey==='sanjose'&&p.city==='westsanjose'))).slice(0,12);
+    const candidateProjects=storedProjects.map(compactProject);
+    const verifiedFacts=storedProjects.flatMap(p=>(globalThis.PROJECT_EVIDENCE?.[p.id]?.facts||[]).map((fact,i)=>({id:'fact-'+p.id+'-'+i,title:p.addr+': '+fact.label,category:'Project document',note:fact.value,url:fact.sourceUrl,verified_fact:fact.value})));
+    const projectSources=storedProjects.filter(p=>p.sourceUrl).map(p=>({id:'project-'+p.id,title:p.addr,category:'Project record',note:JSON.stringify(compactProject(p)),url:p.sourceUrl}));
+    const candidateSources=[...verifiedFacts,...projectSources,...rankSources(question,cityLabel)].filter(s=>globalThis.ProjectCivic.safeURL(s.url)).slice(0,30);
     const history = cleanHistory(req.body?.history || []);
 
-    const sourceIndex = candidateSources.map(s => ({id:s.id,title:s.title,category:s.category,note:clip(s.note,140)}));
+    const sourceIndex = candidateSources.map(s => ({id:s.id,title:s.title,category:s.category,evidence:clip(s.note,600)}));
     const civicContext = {
       selected_city: cityLabel,
       relevant_dashboard_projects: candidateProjects,
-      dashboard_participation: {
-        deciders: Array.isArray(context.deciders) ? context.deciders.slice(0,8).map(compactBoard) : [],
-        boards: Array.isArray(context.boards) ? context.boards.slice(0,8).map(compactBoard) : [],
-        links: Array.isArray(context.links) ? context.links.slice(0,6).map(l => ({title:l.label || l.title, url:l.url})) : []
-      },
+      dashboard_participation: {links:candidateSources.filter(s=>/meeting|board|commission|agenda/i.test(s.title)).map(s=>({id:s.id,title:s.title}))},
       candidate_official_sources: sourceIndex
     };
 
@@ -1172,14 +1181,14 @@ app.post('/api/ask', async (req, res) => {
       .map(id=>allowed.get(id)).filter(Boolean).slice(0,8)
       .map(({id,title,url,note,category})=>({id,title,url,note,category}));
 
-    if (!resources.length) {
-      candidateSources.slice(0,3).forEach(({id,title,url,note,category})=>resources.push({id,title,url,note,category}));
-    }
-
+    const cited=[...String(parsed.answer||'').matchAll(/\[([^\]\n]+)\]/g)].map(match=>match[1]);
+    const grounded=resources.length>0&&cited.length>0&&cited.every(id=>resources.some(source=>source.id===id));
+    // A list of nearby links is not evidence that the generated answer is supported.
+    const answer=grounded?stripEmDash(String(parsed.answer||'').trim()):"I don't know from the supplied records. Check the official project file or ask the planning department; I cannot verify a status, deadline or legal right without a supporting record.";
     res.json({
-      answer:stripEmDash(String(parsed.answer || '').trim()) || 'No answer returned.',
+      answer:answer||"I don't know from the supplied records.",
       resources,
-      meta:{city:cityLabel, model}
+      meta:{city:cityLabel,model,grounded,legalAdvice:false}
     });
   } catch (error) {
     console.error(error);
@@ -1324,6 +1333,7 @@ async function isAdminRequest(req) {
   } catch { return false; }
 }
 registerSiteContent(app, {pool, isAdminRequest});
+registerCivicFeatures(app,{pool,authMiddleware,isAdminRequest,cronSecret:CRON_SECRET,getHearings,sendEmail,emailsPaused:EMAILS_PAUSED,cityLabels:CITY_LABELS});
 app.get('/api/community', async (req, res) => {
   res.set('Cache-Control', 'private, no-store');
   if (!(await isAdminRequest(req))) return res.status(404).json({ error: 'API route not found.' });
@@ -1713,3 +1723,8 @@ app.use((err, _req, res, _next) => {
 
 // Exported so the auth tests can shut the listener down; nothing in the app itself uses it.
 export const server = app.listen(port, () => console.log(`The California Civic Dashboard running at http://localhost:${port}`));
+
+// Opt-in hearing alerts have their own delivery ledger and do not alter monthly recaps.
+if(pool&&CRON_SECRET){
+  setInterval(()=>{fetch('http://127.0.0.1:'+port+'/api/cron/hearing-alerts',{method:'POST',headers:{'Content-Type':'application/json','x-cron-secret':CRON_SECRET},body:JSON.stringify({dryRun:false}),signal:AbortSignal.timeout(120000)}).catch(()=>console.error('Scheduled hearing alert check failed.'));},6*60*60*1000).unref();
+}

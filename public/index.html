@@ -11,8 +11,8 @@
 <meta name="theme-color" content="#2E3B1C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Inter:wght@500;600;700&family=Bitter:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+<script src="/vendor/leaflet/leaflet.js"></script>
 <link rel="stylesheet" href="/futures/futures.css">
 <style>
   /* Any rule that sets display on an element also overrides the browser's [hidden] behaviour.
@@ -700,7 +700,7 @@
   .fp-hero img{width:100%; height:200px; object-fit:cover; display:block; filter:grayscale(.15) contrast(1.05);
     border:1px solid #1c1a14;}
   .fp-hero figcaption{font-family:'Open Sans',sans-serif; font-size:10px; color:#6b6650; margin-top:4px;}
-  .fp-headline h3{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800;
+  .fp-headline h2{font-family:'Bitter',Georgia,'Times New Roman',serif; font-weight:800;
     font-size:clamp(22px,3.4vw,34px); line-height:1.08; margin:0 0 8px; color:#161409;}
   .fp-lede{font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:1.65;
     column-width:230px; column-gap:22px; column-rule:1px solid #cfc8b0;}
@@ -951,7 +951,7 @@
   .fp-page-compact .fp-dateline{font-size:8.5px;}
   .fp-page-compact .fp-hero{width:38%; max-width:150px; margin-left:14px;}
   .fp-page-compact .fp-hero img{height:110px;}
-  .fp-page-compact .fp-headline h3{font-size:17px; -webkit-line-clamp:3; display:-webkit-box;
+  .fp-page-compact .fp-headline h2{font-size:17px; -webkit-line-clamp:3; display:-webkit-box;
     -webkit-box-orient:vertical; overflow:hidden;}
   .fp-page-compact .fp-lede{font-size:12.5px; line-height:1.55; columns:1; column-width:auto;
     display:-webkit-box; -webkit-line-clamp:8; -webkit-box-orient:vertical; overflow:hidden;}
@@ -1796,6 +1796,9 @@
 <link rel="stylesheet" href="/admin-content.css">
 <link rel="stylesheet" href="/site-intro.css">
 <link rel="stylesheet" href="/language.css">
+<link rel="stylesheet" href="/project-tools.css">
+<script src="/project-evidence.js"></script>
+<script src="/project-civic.js"></script>
 </head>
 <body>
 <a href="#mainContent" class="skip-link">Skip to main content</a>
@@ -1843,24 +1846,24 @@
   </div>
 </div>
 
-<div class="util-bar">
+<nav class="util-bar" aria-label="Quick navigation">
   <div class="wrap util-bar-inner">
     <div class="language-control"><label for="siteLanguage">Language</label><select id="siteLanguage" data-language-select translate="no"><option value="en" lang="en">English</option><option value="es" lang="es">Español</option><option value="zh-Hans" lang="zh-Hans">中文（简体）</option><option value="tl" lang="tl">Tagalog</option><option value="vi" lang="vi">Tiếng Việt</option><option value="ar" lang="ar">العربية</option><option value="hi" lang="hi">हिन्दी</option></select><span class="language-status" data-language-status role="status"></span></div>
     <span class="util-links"><a href="#" data-goto-screen="dashboard">Dashboard</a> &middot; <a href="#" data-goto-screen="planner">Get Involved</a> &middot; <a href="#" id="utilTop" data-util-search>Search</a> &middot; <a href="#" data-goto-screen="account" id="utilAccount">Your account</a></span>
     <div class="marquee" id="signupMarquee" aria-hidden="true">
       <div class="marquee-track">
-        <button type="button" class="marquee-item" data-signup>Sign up for email recaps</button>
-        <button type="button" class="marquee-item" data-open-newsletter>Read this month's newsletter</button>
-        <button type="button" class="marquee-item" data-signup>Sign up for email recaps</button>
-        <button type="button" class="marquee-item" data-open-newsletter>Read this month's newsletter</button>
-        <button type="button" class="marquee-item" data-signup>Sign up for email recaps</button>
-        <button type="button" class="marquee-item" data-open-newsletter>Read this month's newsletter</button>
+        <button type="button" class="marquee-item" tabindex="-1" data-signup>Sign up for email recaps</button>
+        <button type="button" class="marquee-item" tabindex="-1" data-open-newsletter>Read this month's newsletter</button>
+        <button type="button" class="marquee-item" tabindex="-1" data-signup>Sign up for email recaps</button>
+        <button type="button" class="marquee-item" tabindex="-1" data-open-newsletter>Read this month's newsletter</button>
+        <button type="button" class="marquee-item" tabindex="-1" data-signup>Sign up for email recaps</button>
+        <button type="button" class="marquee-item" tabindex="-1" data-open-newsletter>Read this month's newsletter</button>
       </div>
     </div>
     <a href="#" class="util-signup" data-signup>Email recaps</a>
     <a href="#" class="util-signup" data-open-newsletter>Newsletter</a>
   </div>
-</div>
+</nav>
 
 <p class="language-note" data-language-note hidden>Menus and common controls are translated. Project records, news, meeting documents and some descriptions remain in their original language.</p>
 
@@ -2603,7 +2606,7 @@
           </section>
 
           <section class="acct-panel" data-panel="email" hidden>
-            <h2>Your monthly newsletter</h2>
+            <h2>Your monthly newsletter</h2><section class="project-alert-settings"><h3>Project hearing alerts</h3><p>These are separate from monthly recaps and require an email address. Turn them on in a project’s details.</p><button class="btn secondary" type="button" id="refreshProjectAlerts">Refresh hearing alerts</button><div id="accountProjectAlerts" role="status">Refresh to see your tracked projects.</div></section>
             <div class="prefs-panel">
               <p class="section-note">A plain-English recap of what is being built, what changed, and which meetings decide it. One published issue per month, with no extra email when you save settings.</p>
               <label for="prefsEmail" class="onboard-label">Email address</label>
@@ -2700,7 +2703,7 @@
           </section>
           <section class="acct-panel" data-panel="admin" hidden>
             <h2>Admin</h2>
-            <p class="section-note">Visible only to the accounts listed in this server's ADMIN_USERNAMES. Nobody else can reach this panel or the API routes behind it.</p>
+            <p class="section-note">Visible only to the accounts listed in this server's ADMIN_USERNAMES. Nobody else can reach this panel or the API routes behind it.</p><h3>Project corrections</h3><button type="button" class="btn secondary" id="loadProjectCorrections">Load resident corrections</button><div id="projectCorrections" role="status"></div>
             <div class="acct-tiles" id="adminTiles"></div>
             <div class="acct-sec-h">Signups by city</div>
             <div id="adminByCity" class="admin-breakdown"></div>
@@ -2813,7 +2816,7 @@
             <div class="ask-resources-head">
               <h3>Sources &amp; resources</h3>
               <p>Official pages, project records, maps, reports, and other references used for the answer.</p>
-              <div class="ask-scope" id="askScopeCity">City: N/A</div>
+              <p class="ask-limit">Answers must cite the supplied records. Missing dates, deadlines and legal eligibility remain unknown. General information, not legal advice.</p><div class="ask-scope" id="askScopeCity">City: N/A</div>
             </div>
             <div class="ask-resource-list" id="askResourceList">
               <div class="ask-resource-empty">Ask a question and supporting links will appear here.</div>
@@ -2832,11 +2835,12 @@
 
 <section class="section" id="explore">
   <div class="wrap">
-    <div class="section-head"><h2>Map &amp; propositions</h2><span class="num" id="visCount" role="status" aria-live="polite"></span></div>
-    <p class="section-note">Click a marker to open its proposition. Sort by category, or search by address/applicant.</p>
+    <div class="section-head"><h2>Project map</h2><span class="num" id="visCount" role="status" aria-live="polite"></span></div>
+    <p class="section-note">Select a labeled pin with Tab and Enter, or use the matching text list. Filters and search apply to both views.</p>
     <div class="cat-row" id="catRow"></div>
     <div id="liveDataPanel" style="display:none;"></div>
     <div class="controls"><div class="search-box"><label class="search-label" for="search">Search</label><input id="search" placeholder="address, street, applicant…" /></div></div>
+    <div class="map-list-toolbar"><a href="#mapProjectList">Skip map pins and read the project list</a><a href="#register">Open the project register</a></div>
     <div class="explore-grid">
       <div>
         <div id="officialMapBar"></div>
@@ -2850,18 +2854,19 @@
               <button class="btn" id="loadGoogleBtn">Load Google Maps</button>
               <button class="btn secondary" id="useFreeMapBtn">Use free map instead</button>
             </div>
-            <div class="gate-error" id="gateError">That key didn't work - check that the <b>Maps JavaScript API</b> is enabled and billing is set up on this key, then try again.</div>
+            <div class="gate-error" id="gateError" role="status" hidden>The map could not load. The matching project list remains available below.</div>
             <div class="gate-links" hidden>Don't have one? <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" rel="noopener">Get a free key →</a></div>
             <div class="gate-note" hidden>Your key stays in your browser only - never sent to us or stored.</div>
           </div>
           <div id="mapGoogleEmbed" hidden></div>
-          <div id="mapGoogle" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div>
-          <div id="mapLeafletWrap"><span class="map-provider-tag">Map: Esri, HERE, Garmin, USGS, OpenStreetMap</span><div id="map" role="application" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div></div>
+          <div id="mapGoogle" role="region" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div>
+          <div id="mapLeafletWrap"><span class="map-provider-tag">Map: Esri, HERE, Garmin, USGS, OpenStreetMap</span><div id="map" role="region" aria-label="Interactive map of projects. All projects are also listed as text below in the Project register section."></div></div>
           <div id="map3d" hidden aria-label="Three-dimensional map of projects. Every project is also listed as text in the Project register section below."></div>
         </div>
         <div class="overview-map-tools"><span id="overviewMapStatus" role="status" aria-live="polite"></span><button type="button" class="btn secondary" id="overview3d" aria-pressed="false">&#9707; 3D view</button><button type="button" class="btn secondary" id="overviewFullscreen" aria-pressed="false">&#9974; Full screen</button><button type="button" class="btn secondary" id="fitOverviewMap">Fit all points</button><button type="button" class="btn secondary" id="retryOverviewGoogle" hidden>Switch to Google Maps</button></div>
         <div id="overviewLocationNotice" role="status" hidden></div>
         <div class="legend" id="legend"></div>
+        <section aria-labelledby="mapListTitle"><h3 id="mapListTitle">Projects on this map</h3><p id="projectResultsAnnouncement" role="status" aria-live="polite" aria-atomic="true"></p><ul id="mapProjectList" class="map-project-list"></ul><div class="map-list-toolbar"><button class="btn secondary" type="button" id="mapListPrev">Previous map results</button><span id="mapListPage"></span><button class="btn secondary" type="button" id="mapListNext">Next map results</button></div></section>
       </div>
       <div class="feed-panel" id="feed"></div>
     </div>
@@ -2897,7 +2902,7 @@
       <h3>Browse</h3>
       <ul class="footer-links">
         <li><a href="#" data-goto-screen="dashboard">Project register</a></li>
-        <li><a href="#" data-goto-screen="planner" data-open-hearings>Upcoming hearings</a></li>
+        <li><a href="#" data-goto-screen="planner" data-open-hearings>Upcoming hearings</a></li><li><button type="button" class="btn secondary" data-open-glossary>Planning glossary</button></li><li><a href="/accessibility.html">Accessibility statement</a></li><li><a href="/coverage.html">Coverage and source checks</a></li>
         <li><a href="#" data-goto-screen="statistics">Statistics</a></li>
         <li><a href="#" data-goto-screen="housing">Housing</a></li>
         <li><a href="#" data-goto-screen="transportation">Transportation</a></li>
@@ -2977,6 +2982,7 @@ const STAGES = [
   {key:'approved',     label:'Approved',            color:'#67794A', light:'#889671', dark:'#54633C', ink:'#FFFFFF'},
   {key:'construction', label:'Under Construction',  color:'#4E6330', light:'#74855D', dark:'#3F5127', ink:'#FFFFFF'},
   {key:'completed',    label:'Completed',           color:'#3E4F24', light:'#687554', dark:'#32401D', ink:'#FFFFFF'},
+  {key:'inactive',label:'Expired application',color:'#E3E7DB',light:'#E3E7DB',dark:'#87956B',ink:'#263719'},
 ];
 const STAGE_MAP = Object.fromEntries(STAGES.map(s=>[s.key,s]));
 STAGE_MAP.filed={key:'filed',label:'Environmental filing',color:'#DDE2D5',ink:'#344026'};
@@ -3233,7 +3239,7 @@ const CU_DATA = [
 {id:'cu-mcclellan', addr:'20865 McClellan Rd - McClellan Townhomes', lat:37.3159, lng:-122.0391, cat:'dev', type:'Residential', desc:'20 townhomes on a 0.99-acre Housing Element site, replacing one single-family home.', units:20, bmr:null, applicant:'Terra Holdings Corp.', filed:'2024-09-01', stage:'review', lastDate:'2024-10-09', lastNote:'Under review; architectural/site approval, tentative map, and tree removal permit requested.', fileNo:'Major Residential Project', flag:'No newer status logged since entering review in late 2024.'},
 {id:'cu-deanza', addr:'10710 S De Anza Blvd - Mixed Use Development', lat:37.3126, lng:-122.0319, cat:'dev', type:'Mixed Use', desc:'SB330 preliminary application for 100 residential units and ~5,505 sf commercial space at De Anza Blvd and Bollinger Rd.', units:100, bmr:null, applicant:'Chao Wu, Apricot Village LLC', filed:'2026-07-16', stage:'proposed', lastDate:'2026-07-16', lastNote:'SB330 preliminary application received; no formal application yet.', fileNo:'SB330 Prelim', flag:null},
 {id:'cu-vista', addr:'Vista Heights (Former McDonald Dorsa Quarry)', lat:37.2965, lng:-122.0844, cat:'dev', type:'Residential', desc:'Builder\'s Remedy project proposing 33 units and a private recreation center in the hillside quarry area.', units:33, bmr:null, applicant:'Builder\'s Remedy applicant', filed:'2023-01-01', stage:'review', lastDate:'2025-01-22', lastNote:'Deemed incomplete even after a resubmittal, per January 2025 city update - not yet approved to move forward.', fileNo:"Builder's Remedy", flag:'Location is approximate (hillside quarry area); exact parcel boundary not confirmed here.'},
-{id:'cu-scofield', addr:'20739 Scofield Dr', lat:37.3213, lng:-122.0367, cat:'dev', type:'Residential', desc:'Builder\'s Remedy housing project proposal.', units:null, bmr:null, applicant:"Builder's Remedy applicant", filed:'2023-01-01', stage:'review', lastDate:'2025-01-22', lastNote:'Deemed incomplete even after a resubmittal, per January 2025 city update.', fileNo:"Builder's Remedy", flag:'Unit count not specified in the available public record.'},
+{id:'cu-scofield', addr:'20739 Scofield Dr', lat:37.3213, lng:-122.0367, cat:'dev', type:'Residential', desc:'Proposed 20-unit residential building. The city lists an SB 330 and Builder\'s Remedy application.', units:20, bmr:null, applicant:'See the city application file', filed:null, stage:'review', reportedStatus:'In Review', lastDate:null, lastChecked:'2026-11-27', lastNote:'Current city table: In Review. A January 9, 2025 city letter said the application had expired; both records are linked in the details.', fileNo:'ASA-2024-009', sourceUrl:'https://www.cupertino.gov/Your-City/Departments/Community-Development/Planning/Major-Residential-Projects', flag:'Source history contains an expiration dispute. Do not treat the current table as a legal determination.'},
 {id:'cu-scofield-20783', addr:'20783 Scofield Dr', lat:37.3212, lng:-122.0378, cat:'dev', type:'Residential', desc:'Separate Builder\'s Remedy housing project proposal on a different Scofield Drive parcel than the 20739 Scofield project above - one of the most contested Builder\'s Remedy filings in the city.', units:null, bmr:null, applicant:"Builder's Remedy applicant", filed:'2024-01-01', stage:'review', lastDate:'2024-01-01', lastNote:'City issued an incompleteness letter. Hundreds of residents from the surrounding neighborhood gathered at Faria Elementary School for an organized petition signing opposing the project.', fileNo:"Builder's Remedy - Incomplete", flag:'Unit count not specified in the available public record. This project drew unusually large organized community opposition compared to most Builder\'s Remedy filings.'},
 {id:'cu-stevens-inactive', addr:'20015 Stevens Creek Blvd', lat:37.3238, lng:-122.0235, cat:'dev', type:'Mixed Use', desc:'Builder\'s Remedy proposal: five-story building with 141 units replacing three commercial buildings.', units:141, bmr:null, applicant:'Acclaim Properties', filed:'2023-05-08', stage:'review', lastDate:'2023-09-27', lastNote:'SB330 preapplication 5/8/23; formal application 9/27/23.', fileNo:'DP-2023-005', flag:'Marked INACTIVE by the city - application is no longer moving forward.'},
 {id:'cu-dolores-expired', addr:'21911 Dolores Ave', lat:37.3167, lng:-122.0578, cat:'dev', type:'Residential', desc:'Builder\'s Remedy proposal: 5 townhome units (4 market-rate, 1 low-income) replacing one single-family home.', units:5, bmr:1, applicant:'TDDG, LLC', filed:'2024-04-15', stage:'proposed', lastDate:'2024-10-12', lastNote:'SB330 preliminary application submitted 4/15/24.', fileNo:"Builder's Remedy Prelim", flag:'SB330 vesting EXPIRED 10/12/2024 - no formal application was ever submitted within the 180-day window.'},
@@ -3799,66 +3805,32 @@ const SC_SOURCES = ['City of Santa Clara - Development Activity story map and De
 // geocoded from the addresses via OpenStreetMap Nominatim. One tracker row (178 Twin Oaks Dr)
 // is omitted because it would not geocode, and a guessed pin is worse than a missing one.
 const LG_DATA = [
-{id:'lg-50-los-gatos', addr:'50 Los Gatos-Saratoga Road', lat:37.22495, lng:-121.97281, cat:'dev', type:'Residential',
-  desc:'Los Gatos Lodge. 155 residential units, 26 below market rate, 3 stories.',
-  units:155, bmr:26, applicant:'See the Town SB 330 application tracker', filed:null, stage:'approved',
-  lastDate:'2025-03-04', lastNote:'Approved by Town Council on 3/4/2025.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-14859-los-gatos', addr:'14859 Los Gatos Blvd', lat:37.25259, lng:-121.95327, cat:'dev', type:'Residential',
-  desc:'North 40 Phase II - Multi-Building. 450 residential units, 77 below market rate, 7 stories.',
-  units:450, bmr:77, applicant:'See the Town SB 330 application tracker', filed:null, stage:'approved',
-  lastDate:'2026-01-13', lastNote:'Approved by Town Council on 1/13/2026.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-15349-los-gatos', addr:'15349 Los Gatos Blvd', lat:37.24588, lng:-121.95854, cat:'dev', type:'Residential',
-  desc:'Genuine Automotive. 55 residential units, 8 below market rate, 3 stories.',
-  units:55, bmr:8, applicant:'See the Town SB 330 application tracker', filed:null, stage:'approved',
-  lastDate:'2025-06-03', lastNote:'Approved by Town Council on 6/3/2025.', fileNo:null, flag:null},
-{id:'lg-143-e-main', addr:'143 E Main Street', lat:37.22123, lng:-121.97769, cat:'dev', type:'Residential',
-  desc:'Cafe Dio - Proposal 2. 30 residential units, 6 below market rate, 4 stories.',
-  units:30, bmr:6, applicant:'See the Town SB 330 application tracker', filed:null, stage:'approved',
-  lastDate:'2025-05-27', lastNote:'Approved by Town Council on 5/27/2025.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-101-blossom-hill', addr:'101 Blossom Hill Road', lat:37.23469, lng:-121.97497, cat:'dev', type:'Residential',
-  desc:'Oswalt Building. 63 residential units, 13 below market rate, 7 stories.',
-  units:63, bmr:13, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Formal application in progress. Held pending the Town\'s declaratory relief complaint in Santa Clara County Superior Court (Case No. 25CV462276).', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-14288-capri-dr', addr:'14288 Capri Dr', lat:37.2608, lng:-121.96334, cat:'dev', type:'Residential',
-  desc:'Capri Fruitstand - Proposal 3. 119 residential units, 24 below market rate, 13 stories.',
-  units:119, bmr:24, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Completeness review incomplete. Held pending the Town\'s declaratory relief complaint (Case No. 25CV462276).', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-14849-los-gatos', addr:'14849 Los Gatos Blvd', lat:37.25285, lng:-121.95329, cat:'dev', type:'Residential',
-  desc:'North 40 Single Building. 120 residential units, 24 below market rate, 9 stories.',
-  units:120, bmr:24, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Formal application filed; completeness review incomplete.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-15300-los-gatos', addr:'15300 Los Gatos Blvd', lat:37.24688, lng:-121.95648, cat:'dev', type:'Residential',
-  desc:'ACE Hardware Property. 175 residential units, 35 below market rate, 9 stories.',
-  units:175, bmr:35, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Formal application filed; completeness review incomplete.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-15495-los-gatos', addr:'15495 Los Gatos Boulevard', lat:37.24404, lng:-121.96075, cat:'dev', type:'Residential',
-  desc:'Newtown - tolling agreement. 238 residential units, 48 below market rate, 7 stories.',
-  units:238, bmr:48, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:'2025-03-18', lastNote:'Tolling agreement approved by Town Council on 3/18/2025.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-16492-los-gatos', addr:'16492 Los Gatos Boulevard', lat:37.22915, lng:-121.96585, cat:'dev', type:'Residential',
-  desc:'Happy Cleaners. 10 residential units, 1 below market rate, 3 stories.',
-  units:10, bmr:1, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Formal application in progress.', fileNo:null, flag:null},
-{id:'lg-14789-oka-road', addr:'14789 Oka Road', lat:37.25511, lng:-121.95881, cat:'dev', type:'Residential',
-  desc:'Walnut Orchard. 138 residential units, 28 below market rate, 3 stories.',
-  units:138, bmr:28, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Formal application complete; pending decision.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-647-n-santa', addr:'647 N Santa Cruz Ave', lat:37.23533, lng:-121.97829, cat:'dev', type:'Residential',
-  desc:'State Farm - Proposal 2. 11 residential units, 1 below market rate, 3 stories.',
-  units:11, bmr:1, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Formal application in progress.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-101-s-santa', addr:'101 S Santa Cruz Ave', lat:37.22166, lng:-121.98451, cat:'dev', type:'Residential',
-  desc:'Post Office - Proposal 1. 58 residential units, 12 below market rate, 8 stories.',
-  units:58, bmr:12, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Formal application complete; pending decision.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-980-university-ave', addr:'980 University Ave', lat:37.25057, lng:-121.96607, cat:'dev', type:'Residential',
-  desc:'Cryptic. 68 residential units, 11 below market rate, 3 stories.',
-  units:68, bmr:11, applicant:'See the Town SB 330 application tracker', filed:null, stage:'review',
-  lastDate:null, lastNote:'Formal application complete; pending decision.', fileNo:null, flag:'Applicant has invoked Builder\'s Remedy, meaning they can argue the project is not subject to Los Gatos zoning or design standards. The Town makes its final determination at the end of review.'},
-{id:'lg-405-alberto-way', addr:'405 Alberto Way', lat:37.2268, lng:-121.97236, cat:'dev', type:'Residential',
-  desc:'Alberto Way. 52 residential units, 8 below market rate, 4 stories.',
-  units:52, bmr:8, applicant:'See the Town SB 330 application tracker', filed:null, stage:'proposed',
-  lastDate:null, lastNote:'SB 330 vesting expired.', fileNo:null, flag:null},
+{"id": "lg-50-los-gatos", "addr": "50 Los Gatos-Saratoga Road", "lat": 37.22495, "lng": -121.97281, "cat": "dev", "type": "Residential", "desc": "SummerHill Homes’ 155-townhome redevelopment of Los Gatos Lodge at 50 Los Gatos-Saratoga Road, next to Los Gatos High School. The plan includes 26 below-market-rate homes in 28 three-story buildings.", "units": 155, "bmr": 26, "applicant": "SummerHill Homes", "filed": null, "stage": "approved", "lastDate": "2025-03-04", "lastNote": "Planning Commission recommended approval on February 12, 2025. Town Council approved the development on March 4, 2025. The approval is documented; current permit and construction milestones require a separate check.", "fileNo": "S-23-042 / U-23-017 / M-23-009", "flag": "The Council report says the approved deviations were requested through State Density Bonus Law. Builder’s Remedy was asserted but had not been implemented in that report; it was not a ministerial approval.", "city": "losgatos", "reportedStatus": "Approved by Town Council on 3/4/2025", "sourceUrl": "https://mccmeetingspublic.blob.core.usgovcloudapi.net/losgatos-meet-0cde1e25f61a40e2a8209ce3493ae6b6/ITEM-Attachment-005-d81ba8008dd0462abed5f1f2c97216cb.pdf", "lastChecked": "2026-11-27", "displayName": "Los Gatos Lodge / Solana", "unitLabel": "townhomes"},
+{"id": "lg-14859-los-gatos", "addr": "14859 Los Gatos Blvd", "lat": 37.25259, "lng": -121.95327, "cat": "dev", "type": "Residential", "desc": "North 40 Phase II - Multi-Building. 450 proposed homes; 77 below-market-rate homes; 7 stories, as listed in the Town tracker.", "units": 450, "bmr": 77, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "approved", "lastDate": "2026-01-13", "lastNote": "Approved by Town Council on 1/13/2026. Completeness review: Complete**.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Approved by Town Council on 1/13/2026", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-15349-los-gatos", "addr": "15349-15367 Los Gatos Blvd", "lat": 37.24588, "lng": -121.95854, "cat": "dev", "type": "Residential", "desc": "Genuine Automotive. 55 proposed homes; 8 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 55, "bmr": 8, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "approved", "lastDate": "2025-06-03", "lastNote": "Approved by Town Council on 6/3/2025. Completeness review: Complete*.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Approved by Town Council on 6/3/2025", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-143-e-main", "addr": "143-151 E Main Street", "lat": 37.22123, "lng": -121.97769, "cat": "dev", "type": "Residential", "desc": "Cafe Dio - Proposal 2. 30 proposed homes; 6 below-market-rate homes; 4 stories, as listed in the Town tracker.", "units": 30, "bmr": 6, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "approved", "lastDate": "2025-05-27", "lastNote": "Approved by Town Council on 5/27/2025. Completeness review: Complete*.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Approved by Town Council on 5/27/2025", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-14789-oka-road", "addr": "14789 Oka Road", "lat": 37.25511, "lng": -121.95881, "cat": "dev", "type": "Residential", "desc": "Walnut Orchard. 138 proposed homes; 28 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 138, "bmr": 28, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "approved", "lastDate": "2026-08-18", "lastNote": "Approved by Town Council on 8/18/2026. Completeness review: Complete*.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Approved by Town Council on 8/18/2026", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-401-alberto-way", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "401-409 Alberto Way", "desc": "Alberto Way. 55 proposed homes; 8 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 55, "bmr": 8, "stage": "review", "reportedStatus": "Pending", "lastDate": null, "lastNote": "Pending. Completeness review: In Progress.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-101-blossom-hill", "addr": "101 Blossom Hill Road", "lat": 37.23469, "lng": -121.97497, "cat": "dev", "type": "Residential", "desc": "Oswalt Building. 63 proposed homes; 13 below-market-rate homes; 7 stories, as listed in the Town tracker.", "units": 63, "bmr": 13, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "review", "lastDate": null, "lastNote": "Pending. Completeness review: In Progress*.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Pending", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-14288-capri-dr", "addr": "14288 Capri Dr", "lat": 37.2608, "lng": -121.96334, "cat": "dev", "type": "Residential", "desc": "Capri Fruitstand - Proposal 3. 119 proposed homes; 24 below-market-rate homes; 13 stories, as listed in the Town tracker.", "units": 119, "bmr": 24, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "review", "lastDate": null, "lastNote": "Pending. Completeness review: Incomplete**.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Pending", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-14849-los-gatos", "addr": "14849 Los Gatos Blvd", "lat": 37.25285, "lng": -121.95329, "cat": "dev", "type": "Residential", "desc": "North 40 Single Building. 120 proposed homes; 24 below-market-rate homes; 9 stories, as listed in the Town tracker.", "units": 120, "bmr": 24, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "review", "lastDate": null, "lastNote": "Pending. Completeness review: Incomplete**.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Pending", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-15300-los-gatos", "addr": "15300 and 15330 Los Gatos Blvd", "lat": 37.24688, "lng": -121.95648, "cat": "dev", "type": "Residential", "desc": "ACE Hardware Property. 175 proposed homes; 35 below-market-rate homes; 9 stories, as listed in the Town tracker.", "units": 175, "bmr": 35, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "review", "lastDate": null, "lastNote": "Pending. Completeness review: Incomplete**.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Pending", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-15495-los-gatos", "addr": "15495 Los Gatos Boulevard - Old Application with Tolling Agreement", "lat": 37.24404, "lng": -121.96075, "cat": "dev", "type": "Residential", "desc": "Newtown. 238 proposed homes; 48 below-market-rate homes; 7 stories, as listed in the Town tracker.", "units": 238, "bmr": 48, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "approved", "lastDate": "2025-03-18", "lastNote": "Tolling Agreement Approved by Town Council on 3/18/2025.. Completeness review: Incomplete**.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Tolling Agreement Approved by Town Council on 3/18/2025.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-15495-newtown", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "15495 Los Gatos Boulevard - New Application", "desc": "Newtown. 81 proposed homes; 8 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 81, "bmr": 8, "stage": "review", "reportedStatus": "Pending", "lastDate": null, "lastNote": "Pending. Completeness review: In progress*.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-16492-los-gatos", "addr": "16492 Los Gatos Boulevard", "lat": 37.22915, "lng": -121.96585, "cat": "dev", "type": "Residential", "desc": "Happy Cleaners. 10 proposed homes; 1 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 10, "bmr": 1, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "review", "lastDate": null, "lastNote": "Pending. Completeness review: In progress*.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Pending", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-647-n-santa", "addr": "647 N Santa Cruz", "lat": 37.23533, "lng": -121.97829, "cat": "dev", "type": "Residential", "desc": "State Farm - Proposal 2. 11 proposed homes; 1 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 11, "bmr": 1, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "review", "lastDate": null, "lastNote": "Pending. Completeness review: In progress*.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Pending", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-101-s-santa", "addr": "101 S. Santa Cruz Ave", "lat": 37.22166, "lng": -121.98451, "cat": "dev", "type": "Residential", "desc": "Post Office - Proposal 1. 58 proposed homes; 12 below-market-rate homes; 8 stories, as listed in the Town tracker.", "units": 58, "bmr": 12, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "review", "lastDate": null, "lastNote": "Pending. Completeness review: Complete**.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Pending", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-178-surrey-farms", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "178 Twin Oaks Dr", "desc": "Surrey Farms. 12 proposed homes; 3 below-market-rate homes; 2 stories, as listed in the Town tracker.", "units": 12, "bmr": 3, "stage": "review", "reportedStatus": "Pending", "lastDate": null, "lastNote": "Pending. Completeness review: Complete**.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-980-university-ave", "addr": "980 University Ave", "lat": 37.25057, "lng": -121.96607, "cat": "dev", "type": "Residential", "desc": "Cryptic. 68 proposed homes; 11 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 68, "bmr": 11, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "review", "lastDate": null, "lastNote": "Pending. Completeness review: Complete*.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Pending", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-405-alberto-way", "addr": "405 Alberto Way", "lat": 37.2268, "lng": -121.97236, "cat": "dev", "type": "Residential", "desc": "Alberto Way. 52 proposed homes; 8 below-market-rate homes; 4 stories, as listed in the Town tracker.", "units": 52, "bmr": 8, "applicant": "See the Town SB 330 application tracker", "filed": null, "stage": "inactive", "lastDate": null, "lastNote": "Expired. Completeness review: **.", "fileNo": null, "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes.", "city": "losgatos", "reportedStatus": "Expired", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27"},
+{"id": "lg-220-mulberry-school", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "220 Belgatos Road", "desc": "Mulberry School. 30 proposed homes; 6 below-market-rate homes; 2 stories, as listed in the Town tracker.", "units": 30, "bmr": 6, "stage": "inactive", "reportedStatus": "Expired", "lastDate": null, "lastNote": "Expired. Completeness review: **.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-14288-capri-fruitstand-proposal-1", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "14288 Capri Dr", "desc": "Capri Fruitstand - Proposal 1. 175 proposed homes; 35 below-market-rate homes; 12 stories, as listed in the Town tracker.", "units": 175, "bmr": 35, "stage": "inactive", "reportedStatus": "Expired", "lastDate": null, "lastNote": "Expired. Completeness review: **.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-14288-capri-fruitstand-proposal-2", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "14288 Capri Dr", "desc": "Capri Fruitstand - Proposal 2. 95 proposed homes; 19 below-market-rate homes; 7 stories, as listed in the Town tracker.", "units": 95, "bmr": 19, "stage": "inactive", "reportedStatus": "Expired", "lastDate": null, "lastNote": "Expired. Completeness review: **.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-15171-union-76-gas-station", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "15171 Los Gatos Boulevard", "desc": "Union 76 Gas Station. 23 proposed homes; 9 below-market-rate homes; 5 stories, as listed in the Town tracker.", "units": 23, "bmr": 9, "stage": "inactive", "reportedStatus": "Expired", "lastDate": null, "lastNote": "Expired. Completeness review: In Progress*.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-143-cafe-dio-proposal-1", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "143-151 E Main Street", "desc": "Cafe Dio - Proposal 1. 26 proposed homes; 4 below-market-rate homes; 4 stories, as listed in the Town tracker.", "units": 26, "bmr": 4, "stage": "inactive", "reportedStatus": "Expired", "lastDate": null, "lastNote": "Expired. Completeness review: Complete**.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-101-post-office-proposal-2", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "101 S. Santa Cruz Ave", "desc": "Post Office - Proposal 2. 20 proposed homes; 4 below-market-rate homes; 4 stories, as listed in the Town tracker.", "units": 20, "bmr": 4, "stage": "inactive", "reportedStatus": "Expired", "lastDate": null, "lastNote": "Expired. Completeness review: **.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-647-state-farm-proposal-1", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "647 N Santa Cruz", "desc": "State Farm - Proposal 1. 11 proposed homes; 3 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 11, "bmr": 3, "stage": "inactive", "reportedStatus": "Expired", "lastDate": null, "lastNote": "Expired. Completeness review: Incomplete*.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
+{"id": "lg-15861-stanford-healthcare", "lat": null, "lng": null, "cat": "dev", "type": "Residential", "applicant": "Not identified in the Town tracker", "filed": null, "fileNo": null, "addr": "15861-15881 Winchester Blvd", "desc": "Stanford Healthcare. 20 proposed homes; 4 below-market-rate homes; 3 stories, as listed in the Town tracker.", "units": 20, "bmr": 4, "stage": "inactive", "reportedStatus": "Expired", "lastDate": null, "lastNote": "Expired. Completeness review: **.", "sourceUrl": "https://www.losgatosca.gov/2875/Senate-Bill-SB-330", "lastChecked": "2026-11-27", "flag": "The Town tracker covers SB 330 applications, including distinct versions at the same address. Do not add alternative proposals together as separate homes."},
 {id:'losgatos-rtp-21-t10-069', addr:'Service Frequency Boost - VTA - Local Bus', lat:37.25317, lng:-121.95243, cat:'infra', type:'Transportation',
   desc:'Plan Bay Area 2050 lists this as Local Bus on Service Frequency Boost - VTA. Mode: Transit - Local Bus. Opening window 2036 to 2050.',
   units:null, bmr:null, applicant:'Metropolitan Transportation Commission - Plan Bay Area 2050', filed:null, stage:'proposed',
@@ -6236,7 +6208,7 @@ const CITIES = {
       {label:'Major Development Projects', url:'https://www.sanjoseca.gov/your-government/departments-offices/planning-building-code-enforcement/planning-division/major-development-projects'},
       {label:'District 1 planning & policy', url:'https://www.sanjoseca.gov/your-government/departments-offices/mayor-and-city-council/district-1/projects-and-policy/planning'},
     ]},
-  losgatos: {label:'Los Gatos', center:{lat:37.2358,lng:-121.9624}, zoom:13, bbox:{minLat:37.20,maxLat:37.28,minLng:-122.00,maxLng:-121.93}, county:'Santa Clara', data:LG_DATA, feed:LG_FEED, deciders:LG_DECIDERS, join:LG_JOIN, sources:LG_SOURCES, note:'Every record here is an SB 330 housing application from the Town\'s own tracker, so this is the housing pipeline specifically rather than a general project list. Most carry Builder\'s Remedy, which Los Gatos is contesting in court - the flag on each card explains what that means.',
+  losgatos: {label:'Los Gatos', center:{lat:37.2358,lng:-121.9624}, zoom:13, bbox:{minLat:37.20,maxLat:37.28,minLng:-122.00,maxLng:-121.93}, county:'Santa Clara', data:LG_DATA, feed:LG_FEED, deciders:LG_DECIDERS, join:LG_JOIN, sources:LG_SOURCES, note:'This partial inventory combines Town SB 330 applications with other published records. Historical and expired proposals are kept separately. Check each project’s documents for the approval process and current status.',
     ctaLinks:[
       {label:'Town SB 330 application tracker', url:'https://www.losgatosca.gov/2875/Senate-Bill-SB-330'},
       {label:'Pending Planning Projects', url:'https://www.losgatosca.gov/2216/Pending-Planning-Projects'},
@@ -6545,7 +6517,7 @@ function renderCitySwitch(){
   }));
   document.getElementById('browseAllCities').addEventListener('click',()=>{cityBrowseCounty='';cityBrowseQuery='';setCountyScope('');switchCity('all');});
   renderResults();
-  document.getElementById('snapRow').innerHTML=`<span class="pill">Records: dated individually</span><span class="pill">${DATA().length} records tracked for ${CITIES[currentCity].label}</span><span class="pill">Researched sample · not each city’s full active list</span>`;
+  document.getElementById('snapRow').innerHTML=`<span class="pill">Records: dated individually</span><span class="pill">${DATA().length} records tracked for ${CITIES[currentCity].label}</span><span class="pill coverage-indicator">${ProjectCivic.coverage(CITIES[currentCity]).label}</span>`;
   renderQuickLinks();
 }
 function renderQuickLinks(){
@@ -6628,8 +6600,10 @@ function renderCatRow(){
 // cross-origin requests (CORS) or is unreachable, it fails gracefully and
 // the curated dataset above keeps working exactly as before.
 const CUPERTINO_PAM_URL = 'https://gis.cupertino.org/cupgis/rest/services/Public/PAM/MapServer/0/query?where=1%3D1&outFields=*&f=json&returnGeometry=false';
-let liveMarkers = {};
+let liveMarkers = {}, liveLoadVersion=0;
+function clearLiveMarkers(){Object.values(liveMarkers).forEach(m=>{if(m.setMap)m.setMap(null);else if(lMap?.hasLayer(m))lMap.removeLayer(m);});liveMarkers={};}
 function renderLivePanel(){
+  liveLoadVersion++;clearLiveMarkers();
   const panel = document.getElementById('liveDataPanel');
   if(currentCity !== 'cupertino'){ panel.style.display = 'none'; return; }
   panel.style.display = 'block';
@@ -6642,6 +6616,7 @@ function renderLivePanel(){
   document.getElementById('tryLiveBtn').addEventListener('click', tryLiveCupertinoData);
 }
 async function tryLiveCupertinoData(){
+  const liveVersion=++liveLoadVersion;clearLiveMarkers();
   const inner = document.getElementById('livePanelInner');
   const btn = document.getElementById('tryLiveBtn');
   if(btn){ btn.disabled = true; btn.textContent = 'Loading…'; }
@@ -6665,26 +6640,28 @@ async function tryLiveCupertinoData(){
         editedDate: a.last_edited_date ? new Date(a.last_edited_date).toISOString().slice(0,10) : null,
       };
     }).filter(d => typeof d.lat === 'number' && typeof d.lng === 'number' && Number.isFinite(d.lat) && Number.isFinite(d.lng));
-    liveMarkers = {};
+    if(liveVersion!==liveLoadVersion||currentCity!=='cupertino')return;
     live.forEach(d=>{
       const st = projectStage(d) || STAGE_MAP.proposed;
+      const livePopup='<b>LIVE '+escapeHtml(d.addr)+'</b><br>'+escapeHtml(st.label)+'<br>'+escapeHtml(d.notes||d.name)+(ProjectCivic.safeURL(d.url)?'<br><a href="'+escapeHtml(ProjectCivic.safeURL(d.url))+'" target="_blank" rel="noopener">City record ↗</a>':'');
       if(mapProvider==='google' && gMap){
         const marker = new google.maps.Marker({ position:{lat:d.lat,lng:d.lng}, map:gMap,
           icon:{path:google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, scale:5, fillColor:'#44572A', fillOpacity:1, strokeColor:'#fff', strokeWeight:1.5, rotation:180},
           title:'[LIVE] '+d.addr });
-        marker.addListener('click', ()=>{ gInfoWindow.setContent(`<div class="infowin"><b><span class="live-badge">LIVE</span>${d.addr}</b><span class="stamp" style="${stampStyle(st)}">${st.label}</span><div class="desc">${d.notes||d.name}</div>${d.editedDate?`<div class="meta">Last edited (city record): ${d.editedDate}</div>`:''}${d.url?`<div class="meta"><a href="${d.url}" target="_blank" rel="noopener">City project page &#8594;</a></div>`:''}</div>`); gInfoWindow.open(gMap, marker); });
+        marker.addListener('click', ()=>{gInfoWindow.setContent(livePopup);gInfoWindow.open(gMap,marker);});
         liveMarkers[d.id] = marker;
       } else if(mapProvider==='leaflet' && lMap){
-        const marker = L.circleMarker([d.lat,d.lng], {radius:6, color:'#fff', weight:1.5, fillColor:'#44572A', fillOpacity:0.95});
-        marker.bindPopup(`<b><span class="live-badge">LIVE</span>${d.addr}</b><br>${st.label}<br>${d.notes||d.name}`);
+        const marker = createCivicMarker({...d,pinLabel:d.addr+', city live record, '+st.label},'#44572A');
+        marker.bindPopup(livePopup);
         marker.addTo(lMap);
         liveMarkers[d.id] = marker;
       }
     });
-    statusHtml = `<span class="status-ok">✓ Loaded ${live.length} live projects</span> directly from Cupertino's GIS server (red arrow markers on the map - click one for details). This is the city's raw building-permit dataset: major projects only, no unit counts or applicant info, separate from the researched records below.`;
+    statusHtml = `<span class="status-ok">✓ Loaded ${live.length} live projects</span> directly from Cupertino's GIS server. The labeled pins also appear in the text list below. This is the city's raw building-permit dataset: major projects only, no unit counts or applicant info, separate from the researched records below.<ul>${live.map(d=>'<li>'+escapeHtml(d.addr)+' · '+escapeHtml(projectStage(d).label)+(ProjectCivic.safeURL(d.url)?' <a href="'+escapeHtml(ProjectCivic.safeURL(d.url))+'" target="_blank" rel="noopener">City record ↗</a>':'')+'</li>').join('')}</ul>`;
   } catch(e){
     statusHtml = '<span class="status-err">Live data could not load.</span> The saved records below remain available. Check their dates and official sources for updates.';
   }
+  if(liveVersion!==liveLoadVersion||currentCity!=='cupertino')return;
   inner.innerHTML = `<div style="margin-bottom:8px;">${statusHtml}</div><button class="btn secondary" id="tryLiveBtn" type="button" style="padding:7px 13px; font-size:11.5px;">Try again</button>`;
   document.getElementById('tryLiveBtn').addEventListener('click', tryLiveCupertinoData);
 }
@@ -6694,7 +6671,7 @@ function renderStats(){
   const housing = list.filter(d=>categoryOf(d)==='Housing');
   // Counted one address at a time. Eleven addresses carry two records apiece, the same project
   // filed at two stages, and adding both reported 1,049 homes that do not exist.
-  const devUnits = DashboardHousing.sumUnits(housing);
+  const devUnits = DashboardHousing.sumUnits(housing.filter(d=>d.stage!=='inactive'));
   const bmrKnown = housing.filter(d=>Number.isFinite(d.bmr) && Number.isFinite(d.units) && d.units>0);
   const bmrUnits = DashboardHousing.sumUnits(bmrKnown, 'bmr');
   const bmrTotalOfKnown = DashboardHousing.sumUnits(bmrKnown);
@@ -6715,6 +6692,7 @@ let gMap=null, gMarkers={}, gInfoWindow=null;
 let lMap=null, lMarkers={};
 let googleLoadTimer=null, googleLoadPending=false;
 const markerProjects=new WeakMap();
+const overviewMarkers=new Set();
 let overviewMarkersDirty=true, overviewBuildVersion=0;
 function markerIconGoogle(d){
   const color = CAT_MAP[categoryOf(d)].color;
@@ -6728,9 +6706,10 @@ function popupHtmlPlain(d){
     <span class="cattag" style="margin-left:8px;"><i style="background:${c.color}"></i>${c.label}</span>
     <div class="desc">${d.desc}</div>
     <div class="meta">${d.units?d.units.toLocaleString()+' units':'no housing units'}${d.bmr?' · '+d.bmr+' affordable':''}</div>
-    <div class="meta">${freshnessLabel(d)}</div></div>`;
+    <div class="meta">${freshnessLabel(d)}</div><button type="button" class="btn secondary" data-more="${escapeHtml(d.id)}">Open project details</button></div>`;
 }
 function clearMarkers(){
+  overviewMarkers.forEach(m=>{if(m.setMap)m.setMap(null);else if(lMap?.hasLayer(m))lMap.removeLayer(m);});overviewMarkers.clear();
   new Set(Object.values(gMarkers)).forEach(m=>m.setMap(null)); gMarkers={};
   Object.values(lMarkers).forEach(m=>{ if(lMap && lMap.hasLayer(m)) lMap.removeLayer(m); }); lMarkers={};
 }
@@ -6795,6 +6774,30 @@ function renderCityBoundary(){
           {color:'#3E4F24', weight:2.5, fillOpacity:0, dashArray:null}).addTo(lMap);
   }
 }
+function createCivicMarker(record,color,group=[record]){
+  const labels=group.map(p=>p.pinLabel||ProjectCivic.label(p,projectStage(p)?.label)).join('; ');
+  const marker=L.marker([record.lat,record.lng],{keyboard:true,autoPanOnFocus:true,title:labels,alt:labels,icon:L.divIcon({className:'project-pin'+(group.length>1?' multiple':''),html:'<span class="project-pin-dot" style="--pin-color:'+color+'" aria-hidden="true">'+(group.length>1?group.length:'')+'</span>',iconSize:[32,32],iconAnchor:[16,16]})});
+  marker.on('add',()=>{const element=marker.getElement();if(!element)return;element.setAttribute('aria-label',labels);element.setAttribute('role','button');element.addEventListener('keydown',event=>{if(event.key===' '){event.preventDefault();marker.openPopup();}});});
+  marker.on('popupopen',event=>{const popup=event.popup.getElement();popup?.addEventListener('keydown',key=>{if(key.key==='Escape'){key.preventDefault();key.stopPropagation();marker.closePopup();}});popup?.querySelector('button,a[href]')?.focus();});
+  marker.on('popupclose',()=>marker.getElement()?.focus({preventScroll:true}));
+  return marker;
+}
+let mapListPage=0,mapListFilter='';
+function renderAccessibleMapList(){
+  const host=document.getElementById('mapProjectList');if(!host)return;
+  const all=filtered(),rows=all.filter(OverviewMapUtils.validPoint),key=currentCity+JSON.stringify(state);
+  if(key!==mapListFilter){mapListFilter=key;mapListPage=0;}
+  const size=25,pages=Math.max(1,Math.ceil(rows.length/size));mapListPage=Math.min(mapListPage,pages-1);
+  const shown=rows.slice(mapListPage*size,(mapListPage+1)*size);
+  host.innerHTML=shown.map(d=>'<li><button type="button" data-more="'+escapeHtml(d.id)+'">'+escapeHtml(ProjectCivic.label(d,projectStage(d).label))+'</button><span>'+escapeHtml((CITIES[cityOfProject(d.id)]?.label||'')+' · '+(d.fileNo||'File number not recorded'))+'</span></li>').join('');
+  const announcement=document.getElementById('projectResultsAnnouncement');
+  const count=rows.length+' mapped projects match'+(state.q?' “'+state.q+'”':'')+'. '+(all.length-rows.length)+' additional records have no verified coordinates and remain in the project register.';
+  if(announcement.textContent!==count)announcement.textContent=count;
+  document.getElementById('mapListPage').textContent=rows.length?'Map list page '+(mapListPage+1)+' of '+pages:'No mapped projects match.';
+  const prev=document.getElementById('mapListPrev'),next=document.getElementById('mapListNext');prev.disabled=mapListPage===0;next.disabled=mapListPage===pages-1;
+  prev.onclick=()=>{mapListPage--;renderAccessibleMapList();host.querySelector('button')?.focus();};
+  next.onclick=()=>{mapListPage++;renderAccessibleMapList();host.querySelector('button')?.focus();};
+}
 function locationPopup(projects){
   return (projects.length>1?'<div class="map-shared-location">'+projects.length+' projects share this mapped location</div>':'')+projects.map(popupHtmlPlain).join('<hr>');
 }
@@ -6815,15 +6818,15 @@ async function buildMarkersForCurrentProvider(){
     const group=groups[i];
     const d=group[0];let marker;
     if(mapProvider==='google' && gMap){
-      marker=new google.maps.Marker({position:{lat:d.lat,lng:d.lng},map:gMap,icon:markerIconGoogle(d),title:d.addr,optimized:true});
+      marker=new google.maps.Marker({position:{lat:d.lat,lng:d.lng},map:gMap,icon:markerIconGoogle(d),title:globalThis.ProjectCivic?.label(d,d.stage)||d.addr,optimized:false});
       marker.addListener('click',()=>{gInfoWindow.setContent(locationPopup(markerProjects.get(marker).visible));gInfoWindow.open(gMap,marker);});
       group.forEach(p=>gMarkers[p.id]=marker);
     }else if(mapProvider==='leaflet' && lMap){
       const color=CAT_MAP[categoryOf(d)].color;
-      marker=L.circleMarker([d.lat,d.lng],{radius:group.length>1?11:7,color:'#1A1A1A',weight:1.2,fillColor:color,fillOpacity:.92}).addTo(lMap);
+      marker=createCivicMarker(d,color,group).addTo(lMap);
       marker.bindPopup(()=>locationPopup(markerProjects.get(marker)?.visible||group));group.forEach(p=>lMarkers[p.id]=marker);
     }
-    if(marker)markerProjects.set(marker,{all:group,visible:group});
+    if(marker){overviewMarkers.add(marker);markerProjects.set(marker,{all:group,visible:group});}
   }
   renderUserLocationMarker();renderCityBoundary();updateMapVisibility();
   requestAnimationFrame(fitOverviewMap);
@@ -6843,13 +6846,12 @@ function fitOverviewMap(){
     else lMap.setView([points[0]?.lat??c.center.lat,points[0]?.lng??c.center.lng],points.length?15:c.zoom,{animate:false});
   }
 }
-// ===== PASTE YOUR RESTRICTED GOOGLE MAPS API KEY BELOW =====
-// Get one at console.cloud.google.com, enable "Maps JavaScript API", and
-// restrict it (Application restrictions -> HTTP referrers) to your exact
-// site URL before putting it here, since this file is public.
-const GOOGLE_MAPS_API_KEY = 'AIzaSyCyvdlePDWHkTr_4c2fSTB8D1DtWo0dpbI';
+// The working project map is key-free. Google Maps is an optional, server-configured switch.
+let GOOGLE_MAPS_API_KEY = '';
+fetch('/api/map-config').then(r=>r.ok?r.json():{}).then(config=>{GOOGLE_MAPS_API_KEY=String(config.googleKey||'');syncMapProviderButton();}).catch(()=>{});
 
 function initGoogleMapReal(){
+  if(!googleRequested||googleAuthFailed)return;
   clearTimeout(googleLoadTimer);googleLoadPending=false;
   document.getElementById('mapGate').style.display='none';
   document.getElementById('mapGoogle').style.display='block';
@@ -6882,8 +6884,9 @@ window.initGoogleMap=initGoogleMapReal;
 // onerror, and a twelve second timeout. Each of them appended the same sentence, so the status
 // line read "Google Maps unavailable; showing the project map." twice over, behind a separator
 // with nothing in front of it when the counts had not been written yet.
-let overviewFallbackDone=false;
+let overviewFallbackDone=false,googleAuthFailed=false,googleRequested=false;
 function overviewMapFallback(){
+  googleRequested=false;
   clearTimeout(googleLoadTimer);googleLoadPending=false;
   if(overviewFallbackDone)return;
   overviewFallbackDone=true;
@@ -6897,11 +6900,13 @@ function overviewMapFallback(){
   if(status.textContent.includes(note))return;
   status.textContent=status.textContent.trim()?status.textContent+' · '+note:note;
 }
-window.gm_authFailure=overviewMapFallback;
+window.gm_authFailure=()=>{googleAuthFailed=true;overviewMapFallback();syncMapProviderButton();};
 function loadGoogleMapsWithKey(key){
+  if(googleAuthFailed){initLeafletMap();return;}
   if(googleLoadPending)return;
+  googleRequested=true;overviewFallbackDone=false;
   googleLoadPending=true;
-  document.getElementById('gateError').style.display='none';
+  document.getElementById('gateError').hidden=true;document.getElementById('gateError').style.display='none';
   if(window.google?.maps?.Map){initGoogleMapReal();return;}
   const existing=document.getElementById('overviewGoogleLoader');if(existing)existing.remove();
   const s=document.createElement('script');s.id='overviewGoogleLoader';
@@ -6911,7 +6916,7 @@ function loadGoogleMapsWithKey(key){
 }
 function loadGoogleMaps(){
   const key = document.getElementById('gmapsKey').value.trim();
-  if(!key){ document.getElementById('gateError').textContent='Paste a Google Maps API key first - or use the free map instead.'; document.getElementById('gateError').style.display='block'; return; }
+  if(!key){ document.getElementById('gateError').textContent='Paste a Google Maps API key first - or use the free map instead.'; document.getElementById('gateError').hidden=false;document.getElementById('gateError').style.display='block'; return; }
   document.getElementById('loadGoogleBtn').textContent='Loading…';
   loadGoogleMapsWithKey(key);
 }
@@ -6936,7 +6941,7 @@ function initLeafletMap(){
     const lede=gate&&gate.querySelector('p');
     if(lede)lede.textContent='Select a project from the register below.';
     document.getElementById('gateError').textContent='The map library could not be loaded on this connection. Every record it plots is listed below.';
-    document.getElementById('gateError').style.display='block';
+    document.getElementById('gateError').hidden=false;document.getElementById('gateError').style.display='block';
     return;
   }
   document.getElementById('mapGate').style.display='none';document.getElementById('mapGoogle').style.display='none';document.getElementById('mapGoogleEmbed').hidden=true;document.getElementById('mapLeafletWrap').style.display='block';
@@ -6951,20 +6956,17 @@ document.getElementById('loadGoogleBtn').addEventListener('click', loadGoogleMap
 document.getElementById('useFreeMapBtn').addEventListener('click', initLeafletMap);
 
 // Start the map as it approaches the viewport, after the setup dialog is complete.
-// The overview opens in Google Maps when a key is configured, and on the free Esri basemap
-// otherwise. Either way the button below the map switches to the other one, so a reader is never
-// stuck with the provider that happened to load.
+// The key-free map is always the default. A restricted Google key can enable an optional switch.
 function ensureOverviewMap(){
   if(mapProvider||googleLoadPending||document.getElementById('onboardOverlay').style.display!=='none')return;
-  if(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE')loadGoogleMapsWithKey(GOOGLE_MAPS_API_KEY);
-  else initLeafletMap();
+  initLeafletMap();
 }
 // One button, two directions: it always offers the provider the reader is not looking at.
 function syncMapProviderButton(){
   const button=document.getElementById('retryOverviewGoogle');
   if(!button)return;
   const hasKey=Boolean(GOOGLE_MAPS_API_KEY&&GOOGLE_MAPS_API_KEY!=='YOUR_API_KEY_HERE');
-  button.hidden=!hasKey&&mapProvider!=='google';
+  button.hidden=googleAuthFailed||(!hasKey&&mapProvider!=='google');
   button.textContent=mapProvider==='google'?'Switch to the free map':'Switch to Google Maps';
 }
 /* ---- 3D and full screen, shared with the Future Map ----
@@ -7231,7 +7233,7 @@ function frontpageHtml(issue,{compact=false}={}){
     +'<div class="fp-masthead"><div class="fp-nameplate">The California Civic Dashboard</div>'
     +'<div class="fp-dateline"><span>'+escapeHtml(issue.dateline)+'</span><span>Vol. 1, No. '+issue.number+'</span><span>Nine Bay Area Counties</span></div></div>'
     +(issue.hero?'<figure class="fp-hero"><img src="'+escapeHtml(issue.hero.url)+'" alt="'+escapeHtml(issue.hero.caption||issue.hero.city)+'" loading="lazy"><figcaption>'+escapeHtml(issue.hero.city)+'</figcaption></figure>':'')
-    +'<div class="fp-headline"><h3>'+(issue.lead?escapeHtml(issue.lead.title):escapeHtml(issue.month))+'</h3>'
+    +'<div class="fp-headline"><h2>'+(issue.lead?escapeHtml(issue.lead.title):escapeHtml(issue.month))+'</h2>'
     +(ledeFirst?'<p class="fp-lede">'+nlSpans(ledeFirst.spans)+'</p>':'')+'</div>'
     +teasers
     +'</div>';
@@ -7287,7 +7289,7 @@ async function renderHeroPaper(){
   if(next)next.onclick=()=>{heroPaperIndex--;renderHeroPaper();};
   // Reading the issue itself, or paging further back than three months, both hand off to the
   // places built for that: the full article, and the unrestricted archive.
-  const headline=body.querySelector('.fp-headline h3');
+  const headline=body.querySelector('.fp-headline h2');
   if(headline&&issue.lead){headline.style.cursor='pointer';headline.onclick=()=>{newsletterIssue=issue.id;showScreen('newsletter');renderNewsletter();};}
   if(archiveLink)archiveLink.onclick=(e)=>{e.preventDefault();showPage('archive');};
 }
@@ -7445,7 +7447,7 @@ function renderLegend(){
   let html = CATEGORIES.map(c=>`<span><i style="background:${c.color}"></i>${c.label}</span>`).join('');
   html += `<span><i class="dia" style="background:#5F7640"></i>Diamond = public works</span>`;
   if(onboard.userLoc) html += `<span><i style="background:#1A1A1A"></i>Your area</span>`;
-  if(currentCity !== 'all') html += `<span style="opacity:.75;">Green outline = ${CITIES[currentCity].label}${CITY_BOUNDS[currentCity] ? "'s city limits (US Census)" : "'s approximate area - a box, not the legal boundary"}</span>`;
+  if(currentCity !== 'all') html += `<span style="color:var(--text-soft);">Green outline = ${CITIES[currentCity].label}${CITY_BOUNDS[currentCity] ? "'s city limits (US Census)" : "'s approximate area - a box, not the legal boundary"}</span>`;
   document.getElementById('legend').innerHTML = html;
 }
 function updateMapVisibility(){
@@ -7454,23 +7456,24 @@ function updateMapVisibility(){
   if(!mapProvider)return;
   const list=filtered(),visible=new Set(list.map(d=>d.id));
   const markers=mapProvider==='google'?gMarkers:lMarkers;
-  new Set(Object.values(markers)).forEach(m=>{
+  overviewMarkers.forEach(m=>{
     const group=markerProjects.get(m);if(!group)return;
     group.visible=group.all.filter(p=>visible.has(p.id));
     if(mapProvider==='google'){
       m.setMap(group.visible.length?gMap:null);
-      m.setTitle(group.visible.map(p=>p.addr).join(' · '));
+      m.setTitle(group.visible.map(p=>ProjectCivic.label(p,projectStage(p).label)).join('; '));
       m.setLabel(group.visible.length>1?{text:String(group.visible.length),color:'#fff',fontSize:'10px',fontWeight:'700'}:null);
       if(group.visible.length){const icon=markerIconGoogle(group.visible[0]);if(group.visible.length>1){icon.path=google.maps.SymbolPath.CIRCLE;icon.scale=12;}m.setIcon(icon);}
     }else if(lMap){
       if(group.visible.length&&!lMap.hasLayer(m))m.addTo(lMap);
       if(!group.visible.length&&lMap.hasLayer(m))lMap.removeLayer(m);
       m.setPopupContent(()=>locationPopup(markerProjects.get(m)?.visible||[]));
-      if(group.visible.length>1)m.bindTooltip(String(group.visible.length),{permanent:true,direction:'center',className:'overview-count-label'});else m.unbindTooltip();
+      const pin=m.getElement?.();if(pin&&group.visible.length)pin.setAttribute('aria-label',group.visible.map(p=>ProjectCivic.label(p,projectStage(p).label)).join('; '));
+      if(pin){pin.classList.toggle('multiple',group.visible.length>1);const dot=pin.querySelector('.project-pin-dot');if(dot)dot.textContent=group.visible.length>1?String(group.visible.length):'';}m.unbindTooltip();
     }
   });
   const count=OverviewMapUtils.coverage(list);
-  document.getElementById('overviewMapStatus').textContent=count.mapped+' of '+count.total+' records mapped · '+count.locations+' locations'+(count.unlocated?' · '+count.unlocated+' awaiting verified coordinates':'')+(mapProvider==='leaflet'?' · Project map fallback':'');
+  document.getElementById('overviewMapStatus').textContent=count.mapped+' of '+count.total+' records mapped · '+count.locations+' locations'+(count.unlocated?' · '+count.unlocated+' awaiting verified coordinates':'')+(mapProvider==='leaflet'?' · Key-free project map':'');
 }
 function flyTo(id){
   const d = DATA().find(x=>x.id===id);
@@ -7937,7 +7940,8 @@ function projectCardHtml(d){
       <div class="meta record-meta">${d.filed ? `<span>Filed <b>${fmtDate(d.filed)}</b></span>` : ''}${d.fileNo ? `<span>File <b class="mono">${d.fileNo}</b></span>` : ''}${d.applicant ? `<span>${d.applicant}</span>` : ''}</div>
       ${d.lastNote&&!String(d.desc||'').startsWith(d.lastNote)?`<div class="meta record-note">${d.lastNote}</div>`:''}
       ${d.flag ? `<div class="flagnote">&#9873; ${d.flag}</div>` : ''}
-      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':d.sourceType==='ceqanet'?'CEQAnet filing':'City record'} &#8599;</a>`:'';})()}<button class="card-more" data-more="${d.id}">Learn more</button>${Number.isFinite(d.lat)&&Number.isFinite(d.lng)?`<button class="locate-btn" data-id="${d.id}" aria-label="Locate ${d.addr} on map">Locate on map &#8599;</button>`:'<span class="unlocated-note">Location not verified</span>'}</div>
+      ${globalThis.ProjectCivic?.card(d,CITIES[cityOfProject(d.id)||currentCity])||''}
+      <div class="footline"><span class="fresh">${freshnessLabel(d)}</span>${(()=>{const src=d.sourceUrl?{url:d.sourceUrl,label:'official project source'}:citySourceLink(cityOfProject(d.id));return src?`<a class="card-src" href="${src.url}" target="_blank" rel="noopener" title="Look up file ${d.fileNo} on ${src.label}">${d.sourceType==='hcd-apr'?'HCD source record':d.sourceType==='ceqanet'?'CEQAnet filing':'City record'} &#8599;</a>`:'';})()}<button class="card-more" data-more="${d.id}">Learn more</button>${Number.isFinite(d.lat)&&Number.isFinite(d.lng)?`<button class="locate-btn" data-id="${d.id}" aria-label="Locate on map ↗: ${escapeHtml(d.addr)}">Locate on map &#8599;</button>`:'<span class="unlocated-note">Location not verified</span>'}</div>
     </div>`;
 }
 // Cards borrowed from other cities to finish a short section. The card itself only shows an
@@ -8044,7 +8048,7 @@ function renderSheetMap(record, cityKey, city){
     L.polygon(ring, {color:'#2E3D1B', weight:2.5, opacity:.95, fill:false, interactive:false}).addTo(sheetMap);
   }
   const stage = projectStage(record) || {color:'#3E4F24', label:record.stage};
-  L.circleMarker([record.lat, record.lng], {radius:9, color:'#fff', weight:3, fillColor:stage.color, fillOpacity:1})
+  createCivicMarker(record,stage.color)
     .bindPopup('<b>'+escapeHtml(projectPlainText(record).addr||'')+'</b><br>'+escapeHtml(stage.label||''))
     .addTo(sheetMap);
   // Leaflet measures its container as it starts, and this one was display:none a moment ago.
@@ -8104,6 +8108,7 @@ async function renderRules(record, cityKey, city){
 }
 
 let projSheetReturnFocus = null;
+let projectBackground=[];
 function findProject(id){
   for(const key of Object.keys(CITIES)){
     if(key==='all') continue;
@@ -8135,18 +8140,20 @@ function projectSheetHtml(record, cityKey, city){
   const hcd=record.sourceType==='hcd-apr';
   const located=Number.isFinite(record.lat)&&Number.isFinite(record.lng);
 
+  const factSource=ProjectCivic.profile(record,city).source||(citySourceLink(cityKey)||{}).url;
+  const recordFact=(label,value)=>psFact(label,value&&factSource?value+' <a href="'+escapeHtml(factSource)+'" target="_blank" rel="noopener">Source record ↗</a>':value);
   const facts=[
-    psFact('Type', escapeHtml(record.type||'')),
-    psFact('Official document title', record.originalTitle&&record.originalTitle!==record.addr?escapeHtml(record.originalTitle):null),
-    psFact('Homes reported', record.units?record.units.toLocaleString():null),
-    psFact('Of those, affordable', record.bmr===null||record.bmr===undefined?null:record.bmr.toLocaleString()),
-    psFact('Applicant', escapeHtml(record.applicant||'')),
-    psFact('File number', record.fileNo?'<span class="mono">'+escapeHtml(record.fileNo)+'</span>':null),
-    psFact('Parcel (APN)', record.apn?'<span class="mono">'+escapeHtml(record.apn)+'</span>':null),
-    psFact('Application filed', record.filed?fmtDate(record.filed):null),
-    psFact('Last dated activity', record.lastDate?fmtDate(record.lastDate):null),
-    psFact('Reported as', escapeHtml(record.reportedStatus||'')),
-    psFact('Reporting year', record.reportYear||null),
+    recordFact('Type', escapeHtml(record.type||'')),
+    recordFact('Official document title', record.originalTitle&&record.originalTitle!==record.addr?escapeHtml(record.originalTitle):null),
+    recordFact('Homes reported', record.units?record.units.toLocaleString():null),
+    recordFact('Of those, affordable', record.bmr===null||record.bmr===undefined?null:record.bmr.toLocaleString()),
+    recordFact('Applicant', escapeHtml(record.applicant||'')),
+    recordFact('File number', record.fileNo?'<span class="mono">'+escapeHtml(record.fileNo)+'</span>':null),
+    recordFact('Parcel (APN)', record.apn?'<span class="mono">'+escapeHtml(record.apn)+'</span>':null),
+    recordFact('Application filed', record.filed?fmtDate(record.filed):null),
+    recordFact('Last dated activity', record.lastDate?fmtDate(record.lastDate):null),
+    recordFact('Reported as', escapeHtml(record.reportedStatus||'')),
+    recordFact('Reporting year', record.reportYear||null),
   ].join('');
 
   // Boards are per city, not per project: these are the bodies that decide land use here, which
@@ -8204,6 +8211,7 @@ function projectSheetHtml(record, cityKey, city){
       return full.length>150 ? '<p class="ps-lede">'+escapeHtml(full.replace(/\.$/,''))+'.</p>' : '';
     })()
 
+    +(globalThis.ProjectCivic?.details(record,city)||'')
     +'<section class="ps-sec"><h3>What the record says</h3><div class="ps-facts">'+facts+'</div></section>'
 
     +(record.lastNote&&!String(record.desc||'').startsWith(record.lastNote)?'<section class="ps-sec"><h3>Latest record note</h3><p class="ps-note">'+escapeHtml(record.lastNote)+'</p></section>':'')
@@ -8245,12 +8253,15 @@ function openProjectSheet(id){
   const back=document.getElementById('projSheet');
   document.getElementById('projSheetBody').innerHTML=projectSheetHtml(found.record, found.cityKey, found.city);
   projSheetReturnFocus=document.activeElement;
+  projectBackground=[...document.body.children].filter(el=>el!==back&&!el.contains(back)&&!['SCRIPT','STYLE','LINK','DIALOG'].includes(el.tagName)).map(el=>[el,el.inert]);
+  projectBackground.forEach(([el])=>{el.inert=true;});
   back.hidden=false;
   document.body.style.overflow='hidden';
   document.getElementById('projSheetClose').focus();
 
   renderRules(found.record, found.cityKey, found.city);
   renderSheetMap(found.record, found.cityKey, found.city);
+  window.dispatchEvent(new CustomEvent('project:open',{detail:{record:{...found.record,city:found.cityKey},city:found.city}}));
   document.getElementById('psLocate')?.addEventListener('click',()=>{
     closeProjectSheet();
     if(found.cityKey!==currentCity&&currentCity!=='all') switchCity(found.cityKey);
@@ -8276,13 +8287,23 @@ function closeProjectSheet(){
   if(!back||back.hidden) return;
   if(sheetMap){ try{ sheetMap.remove(); }catch{} sheetMap = null; }
   back.hidden=true;
+  projectBackground.forEach(([el,previous])=>{el.inert=previous;});projectBackground=[];
   document.body.style.overflow='';
   projSheetReturnFocus?.focus?.();
   projSheetReturnFocus=null;
 }
 document.getElementById('projSheetClose').addEventListener('click', closeProjectSheet);
 document.getElementById('projSheet').addEventListener('click', e=>{ if(e.target.id==='projSheet') closeProjectSheet(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeProjectSheet(); });
+document.addEventListener('keydown',e=>{
+  const sheet=document.getElementById('projSheet');if(sheet.hidden||document.querySelector('dialog[open]'))return;
+  if(e.key==='Escape'){e.preventDefault();closeProjectSheet();return;}
+  if(e.key==='Tab'){
+    const controls=[...sheet.querySelectorAll('a[href],button,input,select,textarea,summary,[tabindex="0"]')].filter(el=>!el.disabled&&el.getClientRects().length);
+    const first=controls[0],last=controls[controls.length-1];
+    if(e.shiftKey&&(document.activeElement===first||!sheet.contains(document.activeElement))){e.preventDefault();last?.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}
+  }
+});
 // One listener for every card on the page, wherever it was drawn - the register, the topic pages
 // and the resource bank all use the same markup, and all of them should open the same record.
 document.addEventListener('click', e=>{
@@ -8295,6 +8316,7 @@ document.addEventListener('click', e=>{
 
 function renderRegister(){
   const list = filtered();
+  renderAccessibleMapList();
   document.getElementById('registerCount').textContent = list.length+' of '+DATA().length+' records shown';
   document.getElementById('visCount').textContent = list.length+' matching this filter';
   const el = document.getElementById('registerGrid');
@@ -9148,7 +9170,7 @@ async function loadTopicZoning(cap){
   }catch(error){if(!controller.signal.aborted&&currentCity===city){m.zoningQuery=null;m.zoningStatus.textContent=error.message;}}
 }
 
-function renderTopicMap(topicKey, cap, categoryKey){
+async function renderTopicMap(topicKey, cap, categoryKey){
   const el = document.getElementById('topicMap'+cap);
   if(!el) return;
   if(typeof L === 'undefined'){ noteMapUnavailable(el); return; }
@@ -9162,6 +9184,7 @@ function renderTopicMap(topicKey, cap, categoryKey){
     m.layer = L.layerGroup().addTo(m.map);
   }
   setupTopicZoning(cap,m);
+  const renderVersion=m.renderVersion=(m.renderVersion||0)+1;
   m.layer.clearLayers();
   if(m.boundary){m.map.removeLayer(m.boundary);m.boundary=null;}
   const rings=currentCity==='all'?null:cityRing(currentCity);
@@ -9169,15 +9192,15 @@ function renderTopicMap(topicKey, cap, categoryKey){
   else if(currentCity!=='all'&&!cityBoundaries){const selected=currentCity;loadCityBoundaries().then(d=>{if(d&&selected===currentCity&&el.offsetWidth)renderTopicMap(topicKey,cap,categoryKey);});}
   const rows = (c.data||[]).filter(d=> topicCategoryMatches(d,categoryKey) && Number.isFinite(d.lat) && Number.isFinite(d.lng));
   const pts = [];
-  rows.forEach(d=>{
+  for(let index=0;index<rows.length;index++){
+    if(renderVersion!==m.renderVersion)return;
+    const d=rows[index];
     const st = projectStage(d) || {label:d.stage||'', color:'#8A8A8A'};
     pts.push([d.lat,d.lng]);
-    L.circleMarker([d.lat,d.lng], {radius:7, color:'#fff', weight:2, fillColor:st.color, fillOpacity:1})
-      .bindPopup('<b>'+escapeHtml(projectPlainText(d).addr||d.id)+'</b><br>'+escapeHtml(st.label)
-        + (d.units ? '<br>'+d.units.toLocaleString()+' homes' : '')
-        + '<br><a href="?project='+encodeURIComponent(d.id)+'">Open the record &rarr;</a>')
-      .addTo(m.layer);
-  });
+    createCivicMarker(d,st.color).bindPopup(popupHtmlPlain(d)).addTo(m.layer);
+    if(index%250===249)await new Promise(resolve=>setTimeout(resolve,0));
+  }
+  if(renderVersion!==m.renderVersion)return;
   const cnt = document.getElementById('topicMapCount'+cap);
   if(cnt){const total=(c.data||[]).filter(d=>topicCategoryMatches(d,categoryKey)).length;cnt.textContent=rows.length+' mapped in '+c.label+(total>rows.length?' · '+(total-rows.length)+' records have no verified coordinates':'');}
   if(pts.length > 1) m.map.fitBounds(pts, {padding:[26,26]});
@@ -9647,7 +9670,7 @@ function renderYaMap(){
   yaPins.forEach(p=>{
     if(!Number.isFinite(p.lat) || !Number.isFinite(p.lng)) return;
     const col = YA_PIN_COLOR[p.type] || '#3E4F24';
-    L.circleMarker([p.lat, p.lng], {radius:7, color:'#fff', weight:2, fillColor:col, fillOpacity:1})
+    createCivicMarker({...p,pinLabel:p.label+(p.sub?', '+p.sub:'')},col)
       .bindPopup('<b>'+escapeHtml(p.label)+'</b><br>'+escapeHtml(p.sub||'')
         + (p.approx ? '<br><i>Pinned at the city centre - no coordinates published.</i>' : ''))
       .addTo(yaLayer);
@@ -11047,6 +11070,11 @@ async function sendAskQuestion(){
     const answer=data.answer||data.reply||'No answer returned.';
     const answerEl=addAskMessage(answer,'assistant');
     const answerResources=data.resources || data.sources || data.links || [];
+    if(answerEl){
+      const citations=new Map(answerResources.map((source,index)=>[source.id,{...source,index:index+1}]));
+      const parts=String(answer).split(/(\[[^\]\n]+\])/g);answerEl.replaceChildren();
+      for(const part of parts){const source=citations.get(part.slice(1,-1));if(part.startsWith('[')&&source&&ProjectCivic.safeURL(source.url)){const cite=document.createElement('a');cite.href=source.url;cite.target='_blank';cite.rel='noopener';cite.textContent='['+source.index+']';cite.setAttribute('aria-label','Source '+source.index+': '+source.title);answerEl.append(cite);}else answerEl.append(document.createTextNode(part));}
+    }
     renderAskResources(answerResources);
     if(isLoggedIn() && answerEl){
       const save=document.createElement('button');
@@ -15674,7 +15702,7 @@ function hearingCard(h){
 function meetingDirectoryHtml(scope='all'){
  const directory=window.MEETING_DIRECTORY||{};
  const cities=Object.entries(directory).filter(([k])=>scope==='all'||k===scope);
- return '<div class="meeting-directory">'+cities.map(([k,c])=>'<article class="meeting-city"><small>'+escapeHtml(c.county)+' County · '+(c.client||c.calendarFeed?'Live calendar available':'Official meeting directory')+'</small><h4>'+escapeHtml(c.label)+'</h4>'+c.links.map(l=>'<a href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.title)+' ↗</a>').join('')+'</article>').join('')+'</div>';
+ return '<div class="meeting-directory">'+cities.map(([k,c])=>'<article class="meeting-city"><small>'+escapeHtml(c.county)+' County · '+(c.client||c.calendarFeed?'Live calendar available':'Official meeting directory')+'</small><p class="meeting-city-title"><strong>'+escapeHtml(c.label)+'</strong></p>'+c.links.map(l=>'<a href="'+escapeHtml(l.url)+'" target="_blank" rel="noopener">'+escapeHtml(l.title)+' ↗</a>').join('')+'</article>').join('')+'</div>';
 }
 function renderHearingsList(){
  const host=document.getElementById('hearingsContent');if(!host||!hearingsCache)return;
@@ -16819,12 +16847,11 @@ function renderHeroMap(){
   }
   heroLayer.clearLayers();
   if(currentCity==='all')DashboardBrowse.citiesIn(CITIES,activeCounty).forEach(([key,city])=>{
-    L.circleMarker([city.center.lat,city.center.lng],{radius:6,color:'#fff',weight:2,fillColor:'#3e4f24',fillOpacity:.9}).bindTooltip(escapeHtml(city.label)+' · '+city.data.length+' tracked records').on('click',()=>switchCity(key)).addTo(heroLayer);
+    createCivicMarker({...city.center,pinLabel:city.label+', '+city.data.length+' tracked records'},'#3e4f24').bindTooltip(escapeHtml(city.label)+' · '+city.data.length+' tracked records').on('click',()=>switchCity(key)).addTo(heroLayer);
   });
   (yaPins||[]).filter(p=>currentCity!=='all'||!activeCounty||CITIES[p.city]?.county===activeCounty).forEach(p=>{
     if(!Number.isFinite(p.lat) || !Number.isFinite(p.lng)) return;
-    L.circleMarker([p.lat,p.lng], {radius:5, color:'#fff', weight:2,
-      fillColor:(YA_PIN_COLOR[p.type]||'#3E4F24'), fillOpacity:1})
+    createCivicMarker({...p,pinLabel:p.label},YA_PIN_COLOR[p.type]||'#3E4F24')
       .bindPopup('<b>'+escapeHtml(p.label)+'</b>').addTo(heroLayer);
   });
   // Only the pins in the city on show may drive the view. Fitting every pin the reader has kept
@@ -17585,6 +17612,7 @@ if (window.L) {
   <p class="site-tour-note">A recorded walkthrough. Project details and figures may change. Captions are included; no sound is needed.</p>
 </dialog>
 <script src="/site-intro.js"></script>
+<script src="/project-tools.js"></script>
 <script type="module" src="/language.js"></script>
 </body>
 </html>

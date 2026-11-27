@@ -56,7 +56,7 @@ test('a replaced project sheet never receives a late zoning response',async()=>{
 
 test('closing a project sheet cancels its pending map animation',()=>{
   const cancelled=[];
-  const ctx=vm.createContext({clearTimeout:id=>cancelled.push(id),document:{getElementById:()=>({hidden:false}),body:{style:{}}},projSheetReturnFocus:null});
+  const ctx=vm.createContext({clearTimeout:id=>cancelled.push(id),document:{getElementById:()=>({hidden:false}),body:{style:{}}},projSheetReturnFocus:null,projectBackground:[]});
   vm.runInContext(section('let sheetMap =','const SHEET_MAP_ZOOM')+section('function closeProjectSheet(){',"document.getElementById('projSheetClose').addEventListener"),ctx);
   vm.runInContext('sheetMapTimers=[1,2,3];closeProjectSheet();',ctx);
   assert.deepEqual(cancelled,[1,2,3]);
@@ -98,7 +98,7 @@ test('cards without coordinates expose an honest location note instead of a dead
 test('large map builds yield between batches, cancel stale work, and defer hidden maps',async()=>{
   const frames=[],drawn=[];
   let visible=true,rows=Array.from({length:501},(_,i)=>({id:'old'+i,lat:35,lng:-120,addr:'Old'}));
-  const ctx=vm.createContext({overviewBuildVersion:0,overviewMarkersDirty:false,mapProvider:'google',gMap:{},gMarkers:{},markerProjects:new WeakMap(),document:{getElementById:id=>id==='screenDashboard'?{offsetWidth:visible?900:0}:{hidden:false,textContent:''}},DATA:()=>rows,OverviewMapUtils:{groupLocations:data=>data.map(p=>[p])},clearMarkers(){},markerIconGoogle(){return {};},google:{maps:{Marker:class {constructor(data){drawn.push(data);}addListener(){}}}},renderUserLocationMarker(){},renderCityBoundary(){},updateMapVisibility(){},fitOverviewMap(){},requestAnimationFrame:fn=>frames.push(fn)});
+  const ctx=vm.createContext({overviewBuildVersion:0,overviewMarkersDirty:false,mapProvider:'google',gMap:{},gMarkers:{},markerProjects:new WeakMap(),overviewMarkers:new Set(),document:{getElementById:id=>id==='screenDashboard'?{offsetWidth:visible?900:0}:{hidden:false,textContent:''}},DATA:()=>rows,OverviewMapUtils:{groupLocations:data=>data.map(p=>[p])},clearMarkers(){},markerIconGoogle(){return {};},google:{maps:{Marker:class {constructor(data){drawn.push(data);}addListener(){}}}},renderUserLocationMarker(){},renderCityBoundary(){},updateMapVisibility(){},fitOverviewMap(){},requestAnimationFrame:fn=>frames.push(fn)});
   vm.runInContext(section('async function buildMarkersForCurrentProvider(){','function fitOverviewMap(){'),ctx);
   const stale=ctx.buildMarkersForCurrentProvider();assert.equal(drawn.length,250);
   rows=[{id:'new',lat:34,lng:-119,addr:'New'}];await ctx.buildMarkersForCurrentProvider();
@@ -118,4 +118,14 @@ test('loading more records invalidates resource search and refreshes the active 
   vm.runInContext(section('function rebuildCoverageAggregates(){','let coverageSelectionVersion'),ctx);
   ctx.rebuildCoverageAggregates();assert.equal(ctx.BANK_INDEX,null);assert.equal(county,'Test');
   assert.equal(ctx.BAY_AREA_VIEW.data[0].id,'new');assert.equal(ctx.window.dashboardContext.projects[0].id,'new');
+});
+
+test('clearing the map removes every marker even when imported IDs repeat',()=>{
+  const removed=[],a={},b={},c={setMap:value=>removed.push(value)};
+  const ctx=vm.createContext({overviewMarkers:new Set([a,b,c]),lMarkers:{duplicate:b},gMarkers:{},lMap:{hasLayer:()=>true,removeLayer:m=>removed.push(m)}});
+  vm.runInContext(section('function clearMarkers(){','let userLocMarkerG='),ctx);
+  ctx.clearMarkers();
+  assert.ok(removed.includes(a),'a duplicate ID must not orphan its earlier marker');
+  assert.ok(removed.includes(b));assert.ok(removed.includes(null));
+  assert.equal(ctx.overviewMarkers.size,0);
 });
